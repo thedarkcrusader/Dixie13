@@ -6,8 +6,7 @@
 	max_integrity = 100
 	var/datum/gem_material/material_datum
 	var/completion_percentage = 100
-	var/direction_last_hit
-	var/next_direction_to_hit
+	var/next_side_to_hit
 	var/list/skill_hits = list()
 
 /obj/structure/unfinished_gem_carving/Initialize(mapload, /datum/gem_material/passed_material_datum)
@@ -48,6 +47,12 @@
 		randomness *= skill_level
 	end_result = skill_level * 10 += randomness
 
+	if(next_side_to_hit)
+		if(get_dir(src, user) == next_side_to_hit)
+			end_result += 5
+		else
+			end_result -= 5
+
 	var/feedback_message = span_notice("You carve the [src], but nothing happens!")
 
 	if(end_result < 0)
@@ -59,7 +64,16 @@
 		completion_percentage += end_result
 		obj_integrity = min(100, obj_integrity + end_result / 4)
 
-	handle_health_change()
+	var/amt2raise = user.STAINT + 5
+	var/boon = user.get_learning_boon(/datum/skill/craft/masonry)
+	user.adjust_experience(/datum/skill/craft/masonry, amt2raise * boon)
+
+	if(handle_health_change(user))
+		return
+
+	next_direction_to_hit = pick(ALL_CARDINALS)
+
+	to_chat(user, span_notice("now from the [dir2text(next_direction_to_hit)]"))
 
 /obj/structure/unfinished_gem_carving/proc/spawn_carving()
 	if(!length(skill_hits))
@@ -82,13 +96,16 @@
 
 		possible_types_to_spawn[checking_type] += checking_type::spawn_weight
 
-	new (loc, material_datum, pick_weight(possible_type_to_spawn))
+	new (loc, material_datum, pick_weight(possible_type_to_spawn), final_skill)
 
 	qdel(src)
 
-/obj/structure/unfinished_gem_carving/proc/handle_health_change()
+	return TRUE
+
+/obj/structure/unfinished_gem_carving/proc/handle_health_change(mob/living/user)
 	if(obj_integrity < 0)
 		qdel(src)
 
 	if(completion_percentage >= 100)
 		spawn_carving()
+		return TRUE

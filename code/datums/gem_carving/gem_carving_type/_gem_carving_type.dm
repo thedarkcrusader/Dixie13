@@ -1,7 +1,6 @@
 /datum/gem_carving_type
 	abstract_type = /datum/gem_carving_type
 	var/carving_name
-	var/carving_material
 	var/spawn_weight
 	var/needed_skill
 	var/carving_description
