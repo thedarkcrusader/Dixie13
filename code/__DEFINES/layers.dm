@@ -11,6 +11,7 @@
 #define MID_TURF_LAYER 2.02
 #define HIGH_TURF_LAYER 2.03
 #define TURF_PLATING_DECAL_LAYER 2.031
+#define CULT_OVERLAY_LAYER 2.01
 #define TURF_DECAL_LAYER 2.039 //! Makes turf decals appear in DM how they will look inworld.
 #define ABOVE_OPEN_TURF_LAYER 2.04
 #define CLOSED_TURF_LAYER 2.05
@@ -90,17 +91,19 @@
 #define WEATHER_OVERLAY_PLANE -80
 #define WEATHER_RENDER_TARGET "*WEATHER_RENDER_TARGET"
 
-#define OPENSPACE_PLANE -11 //! Openspace plane below all turfs
-#define OPENSPACE_BACKDROP_PLANE -10 //! Black square just over openspace plane to guaranteed cover all in openspace turf
+#define OPENSPACE_PLANE -12 //! Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -11 //! Black square just over openspace plane to guaranteed cover all in openspace turf
 
-#define FLOOR_PLANE -9
+#define FLOOR_PLANE -10
 #define FLOOR_PLANE_RENDER_TARGET "FLOOR_PLANE_RENDER_TARGET"
-#define REFLECTION_PLANE -8
+#define REFLECTION_PLANE -9
 
-#define GAME_PLANE -7
+#define GAME_PLANE -8
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE_RENDER_TARGET"
-#define GAME_PLANE_FOV_HIDDEN -6
-#define GAME_PLANE_UPPER -5
+#define GAME_PLANE_FOV_HIDDEN -7
+#define GAME_PLANE_UPPER -6
+
+#define SEETHROUGH_PLANE -5
 
 #define WEATHER_EFFECT_PLANE -4
 #define STRATEGY_PLANE -3
@@ -180,7 +183,8 @@
 #define BLIND_LAYER 4
 #define CRIT_LAYER 5
 #define CURSE_LAYER 6
-#define BACKHUD_LAYER 7
+#define ECHO_LAYER 7
+#define BACKHUD_LAYER 8
 
 //-------------------- HUD ---------------------
 //HUD layer defines
@@ -189,6 +193,20 @@
 
 #define ABOVE_HUD_PLANE 1100
 #define ABOVE_HUD_RENDER_TARGET "ABOVE_HUD_RENDER_TARGET"
+
+#define LOBBY_MENU_PLANE 5000
+#define LOBBY_MENU_RENDER_TARGET "LOBBY_MENU_RENDER_TARGET"
+
+///Layer for lobby menu collapse button
+#define LOBBY_BELOW_MENU_LAYER 2
+/// Layer for background
+#define LOBBY_BACKGROUND_LAYER 3
+///Layer for main buttons (Join/Ready, Observe, Character Prefs)
+#define LOBBY_MENU_LAYER 4
+///Layer for lobby menu shutter, which covers up the menu to collapse/expand it
+#define LOBBY_SHUTTER_LAYER 5
+///Layer for lobby menu buttons that are hanging away from and lower than the main panel
+#define LOBBY_BOTTOM_BUTTON_LAYER 6
 
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
 #define SPLASHSCREEN_PLANE 9999

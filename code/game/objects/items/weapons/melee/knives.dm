@@ -138,6 +138,37 @@
 	sellprice = 6
 
 
+/obj/item/weapon/knife/dagger/navaja
+	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust)
+	name = "navaja"
+	desc = "A folding Etruscan knife valued by merchants, mercenaries and peasants for its convenience. It possesses a long hilt, allowing for a sizeable blade with good reach."
+	force = 5
+	icon_state = "navaja_c"
+	item_state = "elfdag"
+	var/extended = 0
+	wdefense = 2
+	sellprice = 30 //shiny :o
+
+/obj/item/weapon/knife/dagger/navaja/attack_self(mob/user)
+	extended = !extended
+	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+	if(extended)
+		force = 20
+		wdefense = 6
+		w_class = WEIGHT_CLASS_NORMAL
+		throwforce = 23
+		icon_state = "navaja_o"
+		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		sharpness = IS_SHARP
+	else
+		force = 5
+		w_class = WEIGHT_CLASS_SMALL
+		throwforce = 5
+		icon_state = "navaja_c"
+		attack_verb = list("stubbed", "poked")
+		sharpness = IS_BLUNT
+		wdefense = 2
+
 /obj/item/weapon/knife/scissors
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
 	max_integrity = 100
@@ -486,7 +517,7 @@
 	max_integrity = 30
 	max_blade_int = 30
 	wdefense = TERRIBLE_PARRY
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	melting_material = null
 	sellprice = 5
 
@@ -528,6 +559,7 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 25, "embedded_fall_chance" = 20)
 	melting_material = /datum/material/iron
 	melt_amount = 50
+	sellprice = 3
 
 /obj/item/weapon/knife/throwingknife/steel
 	name = "steel tossblade"
@@ -541,6 +573,7 @@
 	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
 	melt_amount = 50
+	sellprice = 4
 
 /obj/item/weapon/knife/throwingknife/psydon
 	name = "psydonian tossblade"

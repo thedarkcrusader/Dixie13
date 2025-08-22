@@ -6,7 +6,6 @@
 	keeping the savages out, keeping the shit-covered knaves away from your foppish superiors. \
 	It will be a cold day in hell when you and your compatriots are slain, and nobody in this town will care. \
 	The nobility needs good men, and they only come in a pair of pairs."
-	flag = WATCHMAN
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_MENATARMS
@@ -65,6 +64,7 @@
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/weapon/polearm/spear/billhook
 	backl = /obj/item/storage/backpack/satchel
+	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -97,7 +97,7 @@
 
 /datum/outfit/job/watchman/swordsmen/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = pick(/obj/item/clothing/head/roguehood/guard, /obj/item/clothing/head/roguehood/guardsecond)
+	head = pick(/obj/item/clothing/head/roguehood/colored/guard, /obj/item/clothing/head/roguehood/colored/guardsecond)
 	armor = /obj/item/clothing/armor/leather/advanced
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget

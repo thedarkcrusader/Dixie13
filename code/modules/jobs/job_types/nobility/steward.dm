@@ -4,7 +4,6 @@
 	You're addicted to it, and you hold the position as the King's personal treasurer of both coin and information. \
 	You know the power silver and gold has on a man's mortal soul, \
 	and you know just what lengths they'll go to in order to get even more. Keep your festering economy and your rats alive, theyre the only two things you can weigh any trust into anymore."
-	flag = STEWARD
 	department_flag = NOBLEMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_STEWARD
@@ -42,6 +41,7 @@
 	beltr = /obj/item/storage/keyring/steward
 	beltl = /obj/item/weapon/knife/dagger/steel
 	backr = /obj/item/storage/backpack/satchel
+	scabbards = list(/obj/item/weapon/scabbard/knife)
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1, /obj/item/lockpickring/mundane = 1)
 
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

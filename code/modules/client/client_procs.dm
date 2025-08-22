@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	var/commendedsomeone
 	var/atom/movable/movingmob
 	var/whitelisted = 2
+	var/list/job_priority_boosts = list()
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -54,10 +55,30 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		var/title = href_list["id"]
 		if(!title)
 			return
-		if(SSpaintings.del_player_painting(title))
-			message_admins("[key_name_admin(src)] has deleted player made painting called: [title]")
-			SSpaintings.update_paintings()
-			manage_paintings()
+		if(alert("Are you sure you want to delete the painting '[title]'?", "Confirm Deletion", "Yes", "No") == "Yes")
+			if(SSpaintings.del_player_painting(title))
+				message_admins("[key_name_admin(src)] has deleted player made painting called: '[title]'")
+				SSpaintings.update_paintings()
+				manage_paintings()
+
+	if(href_list["delete_book"])
+		if(!holder)
+			return
+		var/title = href_list["id"]
+		if(!title)
+			return
+		if(alert("Are you sure you want to delete the book '[title]'?", "Confirm Deletion", "Yes", "No") == "Yes")
+			if(SSlibrarian.del_player_book(title))
+				message_admins("[key_name_admin(src)] has deleted player made book called: '[title]'")
+				manage_books()
+
+	if(href_list["show_book"])
+		if(!holder)
+			return
+		var/title = href_list["id"]
+		if(!title)
+			return
+		show_book_content(title)
 
 	// asset_cache
 	var/asset_cache_job
@@ -460,6 +481,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		update_movement_keys()
 
 //	chatOutput.start() // Starts the chat
+	INVOKE_ASYNC(src, PROC_REF(acquire_dpi))
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -614,10 +636,19 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	view_size.setZoomMode()
 	fit_viewport()
 	Master.UpdateTickRate()
+	SSjob.load_player_boosts(ckey)
 
 //////////////
 //DISCONNECT//
 //////////////
+
+/// This grabs the DPI of the user per their skin
+/client/proc/acquire_dpi()
+	if(prefs && (prefs.toggles & UI_SCALE))
+		window_scaling = prefs.ui_scale
+	else if(isnull(window_scaling))
+		window_scaling = text2num(winget(src, null, "dpi"))
+	debug_admins("scalies: [window_scaling]")
 
 /client/Del()
 	if(!gc_destroyed)
@@ -666,6 +697,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	SSambience.remove_ambience_client(src)
 	seen_messages = null
 	Master.UpdateTickRate()
+	SSjob.save_player_boosts(ckey)
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -981,7 +1013,8 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	var/failed = FALSE
 	SSoverwatch.CollectClientData(src)
 	failed = SSoverwatch.HandleClientAccessCheck(src)
-	SSoverwatch.HandleASNbanCheck(src)
+	if(!failed)
+		SSoverwatch.HandleASNbanCheck(src)
 
 	var/string
 	if(ip_info)
@@ -1002,6 +1035,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	return failed
 
 /client/Click(atom/object, atom/location, control, params)
+	if(isatom(object) && HAS_TRAIT(mob, TRAIT_IN_FRENZY))
+		return
+
 	if(click_intercept_time)
 		if(click_intercept_time >= world.time)
 			click_intercept_time = 0 //Reset and return. Next click should work, but not this one.
@@ -1234,6 +1270,36 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			whitelisted = 0
 		return whitelisted
 
+/client/proc/has_triumph_buy(triumph_id, unactivated_check = FALSE)
+	if(!triumph_id)
+		return FALSE
+
+	var/list/my_triumphs = SStriumphs.triumph_buy_owners[ckey]
+	if(!islist(my_triumphs))
+		return FALSE
+
+	for(var/datum/triumph_buy/T in my_triumphs)
+		if(T.triumph_buy_id == triumph_id)
+			if(unactivated_check)
+				if(!T.activated)
+					return TRUE
+			else
+				return TRUE
+	return FALSE
+
+/client/proc/activate_triumph_buy(triumph_id)
+	if(!triumph_id)
+		return FALSE
+
+	var/list/my_triumphs = SStriumphs.triumph_buy_owners[ckey]
+	if(!islist(my_triumphs) || !length(my_triumphs))
+		return FALSE
+
+	for(var/datum/triumph_buy/T in my_triumphs)
+		if(T.triumph_buy_id == triumph_id)
+			T.on_activate()
+	return TRUE
+
 /client/proc/commendsomeone(forced = FALSE)
 	set category = "OOC"
 	set name = "Commend"
@@ -1246,6 +1312,11 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	set category = "OOC"
 
 	show_round_stats(pick_assoc(GLOB.featured_stats))
+
+/client/proc/preload_music()
+	if(SSsounds.initialized == TRUE)
+		for(var/sound_path as anything in SSsounds.all_music_sounds)
+			src << load_resource(sound_path, -1)
 
 #undef LIMITER_SIZE
 #undef CURRENT_SECOND

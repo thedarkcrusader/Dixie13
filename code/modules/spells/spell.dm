@@ -264,8 +264,8 @@
 		return currently_charging
 	return ..()
 
-/datum/action/cooldown/spell/IsAvailable()
-	return ..() && can_cast_spell(feedback = FALSE)
+/datum/action/cooldown/spell/IsAvailable(feedback = FALSE)
+	return ..() && can_cast_spell(feedback = feedback)
 
 /datum/action/cooldown/spell/Trigger(trigger_flags, atom/target)
 	// We implement this can_cast_spell check before the parent call of Trigger()
@@ -625,7 +625,9 @@
 	if(owner)
 		SEND_SIGNAL(owner, COMSIG_MOB_CAST_SPELL, src, cast_on)
 		if(owner.ckey)
-			owner.log_message("cast the spell [name][cast_on != owner ? " on / at [cast_on]":""].", LOG_ATTACK)
+			owner.log_message("cast the spell [name][cast_on != owner ? " on / at [key_name_admin(cast_on)]":""].", LOG_ATTACK)
+			if(cast_on != owner)
+				cast_on.log_message("affected by spell [name] by [key_name_admin(owner)].", LOG_ATTACK)
 
 /**
  * Actions done after the main cast is finished.
@@ -843,8 +845,8 @@
 		return TRUE
 
 	if(!HAS_TRAIT(owner, TRAIT_NOSTAMINA))
-		var/stamina_spell = (spell_type == SPELL_STAMINA)
-		if(!caster.check_stamina(used_cost / (1 + stamina_spell)))
+		var/not_stamina_spell = (spell_type != SPELL_STAMINA)
+		if(!caster.check_stamina(used_cost / (1 + not_stamina_spell)))
 			if(feedback)
 				to_chat(owner, span_warning("I don't have enough stamina to cast!"))
 			return FALSE
@@ -855,6 +857,14 @@
 	switch(spell_type)
 		if(SPELL_MANA)
 			if(!caster.has_mana_available(attunements, used_cost))
+				if(feedback)
+					to_chat(owner, span_warning("I am too drained to cast!"))
+				return FALSE
+
+			return TRUE
+
+		if(SPELL_BLOOD)
+			if(!caster.has_bloodpool_cost(used_cost))
 				if(feedback)
 					to_chat(owner, span_warning("I am too drained to cast!"))
 				return FALSE
@@ -915,8 +925,8 @@
 		used_type = type_override
 
 	if(!re_run)
-		var/stamina_spell = (used_type == SPELL_STAMINA)
-		owner.adjust_stamina(-(used_cost / (1 + stamina_spell)))
+		var/not_stamina_spell = (used_type != SPELL_STAMINA)
+		owner.adjust_stamina(-(used_cost / (1 + not_stamina_spell)))
 
 	if(spell_type == NONE)
 		return // No return value == No exp
@@ -938,6 +948,11 @@
 				return invoke_cost(used_cost, SPELL_MANA, TRUE)
 
 			gaunt.consume_essence(used_cost, attunements)
+
+		if(SPELL_BLOOD)
+			var/mob/living/caster = owner
+			caster.adjust_bloodpool(-used_cost)
+
 
 	return used_cost
 

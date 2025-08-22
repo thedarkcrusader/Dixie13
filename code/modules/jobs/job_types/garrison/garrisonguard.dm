@@ -3,7 +3,6 @@
 	tutorial = "You are a member of the City Watch. \
 	You've proven yourself worthy to the Captain and now you've got yourself a salary... \
 	as long as you keep the peace that is."
-	flag = GUARDSMAN
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_CITYWATCHMEN
@@ -59,6 +58,7 @@
 	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/sword/short
 	beltl = /obj/item/weapon/mace/cudgel
+	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
 
@@ -93,7 +93,7 @@
 	head = /obj/item/clothing/head/helmet/townwatch/alt
 	neck = /obj/item/clothing/neck/chaincoif
 	armor = /obj/item/clothing/armor/gambeson/heavy
-	shirt = pick(/obj/item/clothing/shirt/undershirt/guard, /obj/item/clothing/shirt/undershirt/guardsecond)
+	shirt = pick(/obj/item/clothing/shirt/undershirt/colored/guard, /obj/item/clothing/shirt/undershirt/colored/guardsecond)
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/ammo_holder/quiver/arrows
@@ -137,6 +137,7 @@
 	backr = /obj/item/weapon/polearm/spear
 	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/weapon/mace/cudgel
+	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
 	//Stats for class

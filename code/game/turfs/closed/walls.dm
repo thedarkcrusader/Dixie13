@@ -18,6 +18,9 @@
 
 	var/list/dent_decals
 
+/turf/closed/wall/get_explosion_resistance()
+	return (turf_integrity) / 15
+
 /turf/closed/wall/handle_ricochet(obj/projectile/P)			//A huge pile of shitcode!
 	var/turf/p_turf = get_turf(P)
 	var/face_direction = get_dir(src, p_turf)
@@ -196,7 +199,6 @@
 	icon_state = ""
 	layer = FLY_LAYER
 	bullet_bounce_sound = null
-	canSmoo
 
 /turf/closed/splashscreen/New()
 	SStitle.splash_turf = src

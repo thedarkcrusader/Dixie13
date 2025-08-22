@@ -6,7 +6,6 @@
 	By your word the meals are served, the chambers kept, and the floors polished clean. \
 	You wear the royal colors and hold their semblance of dignity, \
 	for without you and the servants under your command, the court would have all starved to death."
-	flag = BUTLER
 	department_flag = SERFS
 	display_order = JDO_BUTLER
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
@@ -46,6 +45,7 @@
 
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE) // A well educated head of servants should at least have skilled literacy level
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE) // Someone who's been in charge of servants for a while should probably understand money well.
 	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
@@ -65,16 +65,16 @@
 
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights
-		shirt = /obj/item/clothing/shirt/undershirt/guard
+		shirt = /obj/item/clothing/shirt/undershirt/colored/guard
 		shoes = /obj/item/clothing/shoes/nobleboot
 		belt = /obj/item/storage/belt/leather/plaquesilver
 		beltr = /obj/item/storage/keyring/butler
 		beltl = /obj/item/storage/belt/pouch/coins/mid
-		armor = /obj/item/clothing/armor/leather/vest/butler
+		armor = /obj/item/clothing/armor/leather/vest/colored/butler
 		backr = /obj/item/storage/backpack/satchel
 
 	else
-		armor = /obj/item/clothing/shirt/dress/gen/maid
+		armor = /obj/item/clothing/shirt/dress/gen/colored/maid
 		shirt = /obj/item/clothing/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/ridingboots
 		cloak = /obj/item/clothing/cloak/apron

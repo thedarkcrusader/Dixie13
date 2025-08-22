@@ -17,22 +17,26 @@
 
 /obj/item/reagent_containers/food/snacks/smallrat/onbite(mob/living/carbon/human/user)
 	if(loc == user)
-		if(user.mind && user.mind.has_antag_datum(/datum/antagonist/vampire))
-			if(dead)
-				to_chat(user, "<span class='warning'>It's dead.</span>")
-				return
-			var/datum/antagonist/vampire/VD = user.mind.has_antag_datum(/datum/antagonist/vampire)
+		if(user.clan)
 			if(do_after(user, 3 DECISECONDS, src))
 				user.visible_message("<span class='warning'>[user] drinks from [src]!</span>",\
 				"<span class='warning'>I drink from [src].</span>")
 				playsound(user.loc, 'sound/misc/drink_blood.ogg', 100, FALSE, -4)
-				VD.adjust_vitae(50)
-				dead = TRUE
+
+				user.adjust_bloodpool(50)
+				var/blood_handle = BLOOD_PREFERENCE_RATS
+				if(dead)
+					blood_handle |= BLOOD_PREFERENCE_DEAD
+				else
+					blood_handle |= BLOOD_PREFERENCE_LIVING
+				user.clan.handle_bloodsuck(user, blood_handle)
 				playsound(get_turf(user), 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)
+				if(dead)
+					qdel(src)
+					return
 				icon_state = "srat1"
 				rotprocess = SHELFLIFE_SHORT
-				var/mob/living/carbon/V = user
-				V.add_stress(/datum/stressevent/drankrat)
+				dead = TRUE
 			return
 	return ..()
 

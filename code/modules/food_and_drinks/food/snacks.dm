@@ -81,7 +81,7 @@ All foods are distributed among various categories. Use common sense.
 	var/fertamount = 50
 
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 
 	var/chopping_sound = FALSE // does it play a choppy sound when batch sliced?
@@ -99,7 +99,7 @@ All foods are distributed among various categories. Use common sense.
 
 	var/plating_alt_icon // for food items not sprited in a way that fits the plating underlay, you can instead have a alt sprite specifically for its plated version.
 	var/plated_iconstate // used in afterattack to switch the above on or off
-	var/base_icon_state // used for procs manipulating icons when sliced and the like
+	base_icon_state // used for procs manipulating icons when sliced and the like
 	var/biting // if TRUE changes the icon state to the bitecount, for stuff like handpies. Will break unless you also set a base_icon_state
 	var/rot_away_timer
 
@@ -178,11 +178,6 @@ All foods are distributed among various categories. Use common sense.
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)
 					return PROCESS_KILL
-
-/obj/item/reagent_containers/food/snacks/can_craft_with()
-	if(eat_effect == /datum/status_effect/debuff/rotfood)
-		return FALSE
-	return ..()
 
 /obj/item/reagent_containers/food/snacks/proc/become_rotten()
 	if(QDELETED(src))
@@ -280,7 +275,7 @@ All foods are distributed among various categories. Use common sense.
 							eater.taste(reagents)
 							return
 						else
-							if (eater.has_stress(/datum/stressevent/noble_impoverished_food))
+							if (eater.has_stress_type(/datum/stressevent/noble_impoverished_food))
 								eater.add_stress(/datum/stressevent/noble_desperate)
 							apply_effect = FALSE
 					if (FARE_POOR to FARE_NEUTRAL)
@@ -634,7 +629,7 @@ All foods are distributed among various categories. Use common sense.
 			if(bitecount == 0 || prob(50))
 				M.emote("me", 1, "nibbles away at \the [src]")
 			bitecount++
-			L.food = min(L.food + 30, L.food_max)
+			SEND_SIGNAL(L, COMSIG_MOB_FEED, src, 30)
 			playsound(L.loc, 'sound/misc/eat.ogg', 25, TRUE)
 			L.taste(reagents) // why should carbons get all the fun?
 			if(bitecount >= 5)

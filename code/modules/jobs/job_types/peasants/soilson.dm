@@ -6,7 +6,6 @@
 	You know a good day's work, the sweat on your brow is yours: \
 	Famines and plague may take its toll, but you know how to celebrate life well. \
 	Till the soil and produce fresh food for those around you, and maybe you'll be more than an unsung hero someday."
-	flag = FARMER
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_SOILSON
@@ -64,28 +63,23 @@
 	H.change_stat(STATKEY_INT, -1)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
-	backpack_contents = list(/obj/item/recipe_book/cooking = 1)
+	backpack_contents = list(/obj/item/recipe_book/cooking = 1, /obj/item/bottle_kit = 1, /obj/item/recipe_book/agriculture = 1)
 
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	if(H.gender == MALE)
-		head = /obj/item/clothing/head/roguehood/random
-		if(prob(50))
-			head = /obj/item/clothing/head/strawhat
-		pants = /obj/item/clothing/pants/tights/random
+		head = /obj/item/clothing/head/strawhat
+		pants = /obj/item/clothing/pants/tights/colored/random
 		armor = /obj/item/clothing/armor/gambeson/light/striped
-		shirt = /obj/item/clothing/shirt/undershirt/random
-		shoes = /obj/item/clothing/shoes/simpleshoes
-		belt = /obj/item/storage/belt/leather/rope
-		beltr = /obj/item/key/soilson
-		beltl = /obj/item/weapon/knife/villager
+		shirt = /obj/item/clothing/shirt/undershirt/colored/random
 	else
 		head = /obj/item/clothing/head/armingcap
-		armor = /obj/item/clothing/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/colored/random
 		shirt = /obj/item/clothing/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/simpleshoes
-		belt = /obj/item/storage/belt/leather/rope
-		beltr = /obj/item/key/soilson
-		beltl = /obj/item/weapon/knife/villager
+	shoes = /obj/item/clothing/shoes/simpleshoes
+	belt = /obj/item/storage/belt/leather/rope
+	beltr = /obj/item/key/soilson
+	beltl = /obj/item/weapon/knife/villager
+	backl = /obj/item/storage/backpack/satchel/cloth
 
 /datum/job/soilchild
 	title = "Soilchild"
@@ -95,7 +89,6 @@
 	Though young, you already know the feel of dirt between your fingers and the joy of seeing seeds sprout. \
 	Help tend the crops, feed the animals, and learn the ways of your people. \
 	One day you'll grow to be a proper Soilson, but for now, enjoy learning the trade."
-	flag = SOILCHILD
 	department_flag = YOUNGFOLK
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_SOILCHILD
@@ -147,19 +140,19 @@
 	neck = /obj/item/storage/belt/pouch/coins/poor
 
 	if(H.gender == MALE)
-		head = /obj/item/clothing/head/roguehood/random
+		head = /obj/item/clothing/head/roguehood/colored/random
 		if(prob(50))
 			head = /obj/item/clothing/head/strawhat
-		pants = /obj/item/clothing/pants/tights/random
+		pants = /obj/item/clothing/pants/tights/colored/random
 		armor = /obj/item/clothing/armor/gambeson/light/striped
-		shirt = /obj/item/clothing/shirt/undershirt/random
+		shirt = /obj/item/clothing/shirt/undershirt/colored/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/leather/rope
 		beltr = /obj/item/key/soilson
 		beltl = /obj/item/weapon/knife/villager
 	else
 		head = /obj/item/clothing/head/armingcap
-		armor = /obj/item/clothing/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/colored/random
 		shirt = /obj/item/clothing/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/leather/rope

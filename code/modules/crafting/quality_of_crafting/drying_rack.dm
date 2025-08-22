@@ -175,8 +175,21 @@
 	crafting_message = "starts drying a pear"
 	craftdiff = 0
 
+/datum/repeatable_crafting_recipe/driedtea
+	name = "dried tea"
+	output = /obj/item/reagent_containers/food/snacks/produce/tealeaves_dry
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/tea
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/tea = 1,
+	)
+	attacked_atom = /obj/machinery/tanningrack
+
+	craft_time = 1.5 SECONDS
+	crafting_message = "starts drying some tea"
+	craftdiff = 0
+
 /datum/repeatable_crafting_recipe/parchment
-	name = "parchment"
+	name = "parchment (hide)"
 	output = /obj/item/paper
 	output_amount = 4
 	starting_atom = /obj/item/weapon/knife
@@ -196,6 +209,26 @@
 	crafting_message = "starts making some parchment"
 	craftdiff = 0
 	blacklisted_paths = list(/obj/item/natural/hide/cured)
+
+/datum/repeatable_crafting_recipe/parchment2
+	name = "parchment (timber)"
+	output = /obj/item/paper
+	output_amount = 4
+	starting_atom = /obj/item/weapon/knife
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to prepare the log", "start to prepare the log", 'sound/combat/hits/bladed/genstab (1).ogg'),
+	)
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/water = 33
+	)
+	attacked_atom = /obj/machinery/tanningrack
+
+	craft_time = 1.5 SECONDS
+	crafting_message = "starts making some parchment"
+	craftdiff = 0
 
 /datum/repeatable_crafting_recipe/tiefsugar
 	name = "tiefling sugar"

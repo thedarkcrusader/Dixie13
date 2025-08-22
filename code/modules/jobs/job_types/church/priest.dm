@@ -5,7 +5,6 @@
 	The divine is all that matters in an immoral world. \
 	The Sun Queen and her pantheon rule over all, and you will preach their wisdom to Vanderlin. \
 	It is up to you to shephard the flock into a Ten-fearing future."
-	flag = PRIEST
 	department_flag = CHURCHMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_PRIEST
@@ -36,7 +35,7 @@
 	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	head = /obj/item/clothing/head/priestmask
 	shirt = /obj/item/clothing/shirt/undershirt/priest
-	pants = /obj/item/clothing/pants/tights/black
+	pants = /obj/item/clothing/pants/tights/colored/black
 	shoes = /obj/item/clothing/shoes/shortboots
 	beltl = /obj/item/storage/keyring/priest
 	belt = /obj/item/storage/belt/leather/rope
@@ -81,7 +80,6 @@
 	title = "Ex-Priest"
 	f_title = "Ex-Priestess"
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
-	flag = PRIEST
 	department_flag = CHURCHMEN
 	faction = FACTION_TOWN
 	total_positions = 0
@@ -91,7 +89,6 @@
 	title = "Vice Priest"
 	f_title = "Vice Priestess"
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
-	flag = PRIEST
 	department_flag = CHURCHMEN
 	faction = FACTION_TOWN
 	total_positions = 0

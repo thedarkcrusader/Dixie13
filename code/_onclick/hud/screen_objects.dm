@@ -52,7 +52,10 @@
 /atom/movable/screen/text
 	icon = null
 	icon_state = null
+	layer = FLOAT_LAYER
+	plane = HUD_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	screen_loc = "CENTER-7,CENTER-7"
 	maptext_height = 480
 	maptext_width = 480
@@ -129,13 +132,14 @@
 	if(world.time < lastclick + 3 SECONDS)
 		return
 	lastclick = world.time
-	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		H.playsound_local(H, 'sound/misc/click.ogg', 100)
-		if(H.craftingthing)
-			last_craft = world.time
-			var/datum/component/personal_crafting/C = H.craftingthing
-			C.roguecraft(location, control, params, H)
+	if(!HAS_TRAIT(usr, TRAIT_BLUEPRINT_VISION))
+		var/mob/vision = usr
+		vision.enter_blueprint()
+	else
+		var/mob/vision = usr
+		REMOVE_TRAIT(usr, TRAIT_BLUEPRINT_VISION, TRAIT_GENERIC)
+		vision.blueprints.quit()
+		vision.blueprints = null
 
 /atom/movable/screen/craft/Destroy()
 	QDEL_NULL(book)
@@ -147,7 +151,7 @@
 	screen_loc = ui_building
 
 /atom/movable/screen/area_creator/Click()
-	if(usr.incapacitated(ignore_grab = TRUE) || (isobserver(usr) && !IsAdminGhost(usr)))
+	if(usr.incapacitated(IGNORE_GRAB) || (isobserver(usr) && !IsAdminGhost(usr)))
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
@@ -183,7 +187,7 @@
 	if(world.time <= usr.next_move)
 		return TRUE
 
-	if(usr.incapacitated(ignore_grab = TRUE))
+	if(usr.incapacitated(IGNORE_GRAB))
 		return TRUE
 
 	if(hud?.mymob && slot_id)
@@ -878,7 +882,7 @@
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(master)
 			var/obj/item/flipper = usr.get_active_held_item()
-			if(!flipper || (!usr.Adjacent(flipper) && !usr.DirectAccess(flipper)) || !isliving(usr) || usr.incapacitated(ignore_grab = TRUE))
+			if(!flipper || (!usr.Adjacent(flipper) && !usr.DirectAccess(flipper)) || !isliving(usr) || usr.incapacitated(IGNORE_GRAB))
 				return
 			var/old_width = flipper.grid_width
 			var/old_height = flipper.grid_height
@@ -889,7 +893,7 @@
 
 	if(world.time <= usr.next_move)
 		return TRUE
-	if(usr.incapacitated(ignore_grab = TRUE))
+	if(usr.incapacitated(IGNORE_GRAB))
 		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_held_item()
@@ -1316,6 +1320,61 @@
 		H.check_for_injuries(H)
 		to_chat(H, "I am [H.get_encumbrance() * 100]% encumbered.")
 
+/atom/movable/screen/party_member_health
+	name = "party_health"
+	icon = 'icons/mob/rogueheat.dmi'
+	icon_state = "dam0"
+	screen_loc = "WEST:28,CENTER-1:15"
+
+	var/member_key
+	var/mob/member
+	var/datum/party/party
+
+/atom/movable/screen/party_member_health/Destroy()
+	if(member)
+		UnregisterSignal(member, COMSIG_MOB_HEALTHHUD_UPDATE)
+	member = null
+	party = null
+	return ..()
+
+/atom/movable/screen/party_member_health/proc/set_party_member(mob/mob, datum/party/incoming_party)
+	member = mob
+	party = incoming_party
+	RegisterSignal(member, COMSIG_MOB_HEALTHHUD_UPDATE, PROC_REF(update_info))
+
+/atom/movable/screen/party_member_health/proc/update_info(incoming_state)
+	icon_state = incoming_state
+
+
+/atom/movable/screen/party_member_name
+	name = "party_member_name"
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "blank"
+	screen_loc = "EAST-1,CENTER-1:15"
+	maptext_width = 128
+	maptext_height = 48
+	maptext_x = -64
+	maptext_y = 0
+	var/member_key
+	var/mob/member
+	var/datum/party/party
+
+/atom/movable/screen/party_member_name/proc/set_party_member(mob/mob, datum/party/incoming_party, rank = "Recruit")
+	member = mob
+	party = incoming_party
+	member_key = mob.ckey
+	var/display_name = mob.real_name || mob.name
+
+	maptext = {"<div style="text-align: left; font-family: 'Small Fonts'; font-size: 7px; color: #FFFFFF; text-shadow: 1px 1px 0px #000000;">
+		<div style="color: #FFFFFF;">[display_name]</div>
+		<div style="color: #FFD700; margin-top: 1px;">[rank]</div>
+	</div>"}
+
+/atom/movable/screen/party_member_name/Destroy()
+	member = null
+	party = null
+	return ..()
+
 /atom/movable/screen/mood
 	name = "mood"
 	icon_state = "mood5"
@@ -1530,46 +1589,18 @@
 		if(LAZYACCESS(modifiers, LEFT_CLICK))
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 			to_chat(M, "*--------*")
-			var/list/already_printed = list()
-			var/list/pos_stressors = M.positive_stressors
-			for(var/datum/stressevent/S in pos_stressors)
-				if(S in already_printed)
-					continue
-				var/cnt = 1
-				for(var/datum/stressevent/CS in pos_stressors)
-					if(CS == S)
-						continue
-					if(CS.type == S.type)
-						cnt++
-						already_printed += CS
-				var/ddesc = S.desc
-				if(islist(S.desc))
-					ddesc = pick(S.desc)
-				if(cnt > 1)
-					to_chat(M, "• [ddesc] (x[cnt])")
+			if(!length(M.stressors))
+				to_chat(M, span_info("I'm not feeling much of anything right now."))
+			for(var/stress_type in M.stressors)
+				var/datum/stressevent/stress_event = M.stressors[stress_type]
+				var/count = stress_event.stacks
+				var/ddesc = islist(stress_event.desc) ? pick(stress_event.desc) : stress_event.desc
+				if(count > 1)
+					to_chat(M, "• [ddesc] (x[count])")
 				else
 					to_chat(M, "• [ddesc]")
-			var/list/neg_stressors = M.negative_stressors
-			for(var/datum/stressevent/S in neg_stressors)
-				if(S in already_printed)
-					continue
-				var/cnt = 1
-				for(var/datum/stressevent/CS in neg_stressors)
-					if(CS == S)
-						continue
-					if(CS.type == S.type)
-						cnt++
-						already_printed += CS
-				var/ddesc = S.desc
-				if(islist(S.desc))
-					ddesc = pick(S.desc)
-				if(cnt > 1)
-					to_chat(M, "[ddesc] (x[cnt])")
-				else
-					to_chat(M, "[ddesc]")
-			already_printed = list()
 			to_chat(M, "*--------*")
 		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			if(M.get_triumphs() <= 0)

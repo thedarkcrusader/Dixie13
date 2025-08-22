@@ -113,7 +113,7 @@
 		if(water_top_overlay)
 			QDEL_NULL(water_top_overlay)
 		make_unshiny()
-		var/mutable_appearance/dirty = mutable_appearance('icons/turf/floors.dmi', "dirt")
+		var/mutable_appearance/dirty = mutable_appearance('icons/turf/floors.dmi', "rock")
 		add_overlay(dirty)
 		for(var/obj/structure/waterwheel/rotator in contents)
 			rotator.set_rotational_direction_and_speed(null, 0)
@@ -723,7 +723,7 @@
 
 /turf/open/water/river/dirt
 	icon_state = MAP_SWITCH("dirty", "rivermovealt-dir")
-	water_reagent = /datum/reagent/water/gross/sewer
+	water_reagent = /datum/reagent/water/gross
 
 /turf/open/water/river/blood
 	icon_state = MAP_SWITCH("rocky", "rivermovealt2-dir")

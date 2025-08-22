@@ -3,7 +3,6 @@
 	tutorial = "Liquor, lodging, and lavish meals... your business is the beating heart of Vanderlin. \
 	You're the one who provides the the hardworking townsfolk with a place to eat and drink their sorrows away, \
 	and accommodations for weary travelers passing through."
-	flag = INNKEEP
 	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_INNKEEP
@@ -42,8 +41,8 @@
 	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 2, TRUE)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/pants/tights/random
-		shirt = /obj/item/clothing/shirt/shortshirt/random
+		pants = /obj/item/clothing/pants/tights/colored/random
+		shirt = /obj/item/clothing/shirt/shortshirt/colored/random
 		shoes = /obj/item/clothing/shoes/shortboots
 		belt = /obj/item/storage/belt/leather
 		beltl = /obj/item/storage/belt/pouch/coins/mid
@@ -61,5 +60,5 @@
 		beltr = /obj/item/reagent_containers/glass/bottle/beer/blackgoat
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_CON, 1)
-	backpack_contents = list(/obj/item/recipe_book/cooking)
+	backpack_contents = list(/obj/item/recipe_book/cooking, /obj/item/bottle_kit)
 	ADD_TRAIT(H, TRAIT_BOOZE_SLIDER, TRAIT_GENERIC)
