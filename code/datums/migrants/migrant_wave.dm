@@ -2,6 +2,8 @@
 	abstract_type = /datum/migrant_wave
 	/// Name of the wave
 	var/name = "MIGRANT WAVE"
+	/// Decides if the name is displayed in the lobby
+	var/display_name = FALSE
 	/// Assoc list of roles types to amount
 	var/list/roles = list()
 	/// If defined, this is the minimum active migrants required to roll the wave
@@ -28,6 +30,9 @@
 	var/shared_wave_type = null
 	/// Whether we want to spawn people on the rolled location, this may not be desired for bandits or other things that set the location
 	var/spawn_on_location = TRUE
+	///Code to make names secret, unless admin forced
+	if(display_name == FALSE)
+		name = "Secret Wave"
 
 /datum/migrant_wave/proc/get_roles_amount()
 	var/amount = 0
