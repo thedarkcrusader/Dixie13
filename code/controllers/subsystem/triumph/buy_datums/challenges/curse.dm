@@ -13,7 +13,7 @@
 		/datum/patron/divine/xylix = /datum/curse/xylix,
 		/datum/patron/divine/pestra = /datum/curse/pestra,
 		/datum/patron/divine/eora = /datum/curse/eora,
-		/datum/patron/inhumen/zizo = /datum/curse/zizo,
+		/datum/patron/inhumen/zizo = /datum/curse/zizo/minor,
 		/datum/patron/inhumen/matthios = /datum/curse/matthios,
 		/datum/patron/inhumen/baotha = /datum/curse/baotha
 	)
@@ -21,7 +21,7 @@
 /datum/triumph_buy/random_curse/on_after_spawn(mob/living/carbon/human/H)
 	. = ..()
 
-	var/list/available_curses = (TEN_CURSES + INHUMEN_CURSES) - list(/datum/curse/noc, /datum/curse/graggar)
+	var/list/available_curses = (TEN_CURSES + INHUMEN_CURSES) - list(/datum/curse/noc, /datum/curse/graggar, /datum/curse/zizo)
 
 	if(H.patron && patron_curse_map[H.patron.type])
 		var/datum/curse/patron_curse = patron_curse_map[H.patron.type]

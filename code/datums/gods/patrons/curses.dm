@@ -112,7 +112,12 @@
 	name = "Zizo's Curse"
 	description = "I can no longer distinguish reality from delusion."
 	trait = TRAIT_ZIZO_CURSE
+	/// Chance to call hallucination handle procs on life
+	var/hallucination_prob = 100
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
+
+/datum/curse/zizo/minor
+	hallucination_prob = 10
 
 /datum/curse/schizophrenic //zizo curse but without the jumpscares and meta hallucinations
 	name = "Schizophrenic"
@@ -212,10 +217,11 @@
 // Currently calls maniac hallucinations
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
-	handle_maniac_visions(owner, hallucinations)
-	handle_maniac_hallucinations(owner)
-	//handle_maniac_floors(owner)
-	handle_maniac_walls(owner)
+	if(prob(hallucination_prob))
+		handle_maniac_visions(owner, hallucinations)
+		handle_maniac_hallucinations(owner)
+		//handle_maniac_floors(owner)
+		handle_maniac_walls(owner)
 
 /datum/curse/schizophrenic/on_life(mob/living/carbon/human/owner)
 	. = ..()

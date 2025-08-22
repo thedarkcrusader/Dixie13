@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(curse_names, list())
 
 #define INHUMEN_CURSES list(\
 	/datum/curse/zizo,\
+	/datum/curse/zizo/minor,\
 	/datum/curse/graggar,\
 	/datum/curse/matthios,\
 	/datum/curse/baotha\
