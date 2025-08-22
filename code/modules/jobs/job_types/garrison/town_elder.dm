@@ -80,7 +80,7 @@
 	name = "Mayor"
 	allowed_races=(RACES_PLAYER_NONDISCRIMINATED) // Due to the inherent nobility coming from being a mayor, non-humen species are barred.
 	var/mob/living/carbon/H
-	tutorial = "Before politics, you were a bard, your voice stirred hearts, your tales traveled farther than your feet ever could. You carved your name in history not with steel, but with stories that moved kings and commoners alike. In time, your charisma became counsel, your songs gave way to speeches. Decades later, your skill in diplomacy and trade earned you the title of Mayor. Now, you lead not from a stage, but from the heart of the people you once sang for. Despite your influence, the town's nobility never recognized you as one of their own."
+	tutorial = "Before politics, you were a bard, your voice stirred hearts, your tales traveled farther than your feet ever could. You carved your name in history not with steel, but with stories that moved kings and commoners alike. In time, your charisma became counsel, your songs gave way to speeches. Decades later, your skill in diplomacy and trade earned you nobility, and with it, the title of Mayor. Now, you lead not from a stage, but from the heart of the people you once sang for."
 	outfit = /datum/outfit/job/town_elder/mayor
 
 	category_tags = list(CTAG_TOWN_ELDER)
