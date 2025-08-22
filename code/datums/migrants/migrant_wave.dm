@@ -31,7 +31,7 @@
 	/// Whether we want to spawn people on the rolled location, this may not be desired for bandits or other things that set the location
 	var/spawn_on_location = TRUE
 
-/datum/migrant_wave/secret_name()
+/datum/migrant_wave/proc/secret_name()
 	..()
 	if(display_name == FALSE)
 		name = "Secret Wave"
