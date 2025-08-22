@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 						for(var/obj/item/I in carbon.get_all_gear()) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
 							if(istype(I, /obj/item/weapon/knife/dagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
 								// carbon.visible_message("profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
-								to_chat(carbon, "profane dagger whispers, " + span_danger("\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\""))
+								to_chat(carbon, "profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
 				if(found_assassin == TRUE)
 					ADD_TRAIT(HL, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
 					log_hunted("[key_name(HL)] playing as [HL] had the hunted flaw by Zizoid curse.")
