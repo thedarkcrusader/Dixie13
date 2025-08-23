@@ -117,6 +117,7 @@
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
 /datum/curse/zizo/minor
+	description = "I struggle to distinguish reality from delusion."
 	hallucination_prob = 10
 
 /datum/curse/schizophrenic //zizo curse but without the jumpscares and meta hallucinations
