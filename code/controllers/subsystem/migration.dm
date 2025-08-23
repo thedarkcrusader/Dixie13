@@ -397,6 +397,9 @@ SUBSYSTEM_DEF(migrants)
 		migrants += player.client
 	return migrants
 
+/datum/controller/subsystem/migrants/proc/admin_force_next_migrant_wave(admin_activated)
+	return FALSE
+
 /client/proc/admin_force_next_migrant_wave()
 	set category = "GameMaster"
 	set name = "Force Migrant Wave"
@@ -404,18 +407,20 @@ SUBSYSTEM_DEF(migrants)
 		return
 	. = TRUE
 	var/mob/user = usr
-	var/admin_activated = TRUE
+	var/admin_activated = FALSE
 	var/if_admin_activated = SSmigrants.admin_force_next_migrant_wave(admin_activated)
 	message_admins("Admin [key_name_admin(user)] is forcing the next migrant wave.")
 	var/picked_wave_type = input(user, "Choose migrant wave to force:", "Migrants")  as null|anything in GLOB.migrant_waves
 	if(!picked_wave_type)
 		return
+	else
+		admin_activated = TRUE
 	message_admins("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type] (Arrival: 1 Minute)")
 	log_game("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type] (Arrival: 1 Minute)")
 	SSmigrants.set_current_wave(picked_wave_type, (1 MINUTES))
 
-/datum/controller/subsystem/migrants/proc/admin_force_next_migrant_wave(admin_activated)
-	return TRUE
+
+
 
 /proc/get_spawn_turf_for_job(jobname)
 	var/list/landmarks = list()
