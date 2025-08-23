@@ -308,9 +308,6 @@
 	icon_state = "psydagger"
 	sellprice = 60
 
-/obj/item/weapon/knife/dagger/psydon/Initialize(mapload)
-	. = ..()
-
 //................ Profane Dagger ............... //
 /obj/item/weapon/knife/dagger/steel/profane
 	// name = "profane dagger"
