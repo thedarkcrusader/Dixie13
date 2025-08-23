@@ -60,6 +60,7 @@
 				beltl = /obj/item/weapon/mace/elvenclub
 			else
 				beltl = /obj/item/weapon/mace
+			beltr = /obj/item/weapon/shovel/small //so they can burry the dead
 			H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 		if(/datum/patron/divine/eora)
@@ -102,7 +103,7 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			backr = /obj/item/weapon/polearm/spear //think fishing spear
-			beltl = /obj/item/fishingrod //no attachements, cleric can either discard it or embrace abyssor and fish like mans hould
+			beltl = /obj/item/fishingrod //no attachements, cleric can either discard it or embrace abyssor and fish like man was made to do
 			H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 		if(/datum/patron/divine/malum)
