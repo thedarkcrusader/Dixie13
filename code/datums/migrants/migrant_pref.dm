@@ -39,15 +39,16 @@
 	set_active(FALSE, TRUE)
 	hide_ui()
 
+var/client/proc/admin_force_next_migrant_wave/admin_activated
+
 /datum/migrant_pref/proc/show_ui()
 	var/client/client = prefs.parent
 	if(!client)
 		return
 	var/list/dat = list()
 	var/display_name = FALSE
-	var/client/proc/admin_force_next_migrant_wave/admin_activated()
-		if(admin_activated())
-			display_name = TRUE
+	if(admin_activated)
+		display_name = TRUE
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
 	dat += "WAVE: \Roman[SSmigrants.wave_number]"
 	dat += "<center><b>BE A MIGRANT: <a href='byond://?src=[REF(src)];task=toggle_active'>[active ? "YES" : "NO"]</a></b></center>"
