@@ -31,11 +31,6 @@
 	/// Whether we want to spawn people on the rolled location, this may not be desired for bandits or other things that set the location
 	var/spawn_on_location = TRUE
 
-/datum/migrant_wave/proc/secret_name()
-	..()
-	if(display_name == FALSE)
-		name = "Secret Wave"
-
 /datum/migrant_wave/proc/get_roles_amount()
 	var/amount = 0
 	for(var/role_type in roles)
@@ -176,3 +171,8 @@
 	roles = list(
 		/datum/migrant_role/mercenary = 1,
 	)
+
+/datum/migrant_wave/proc/secret_name()
+	..()
+	if(display_name == FALSE)
+		name = "Secret Wave"

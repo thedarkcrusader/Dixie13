@@ -1,3 +1,4 @@
+
 /datum/migrant_pref
 	/// Reference to our prefs
 	var/datum/preferences/prefs
@@ -51,11 +52,18 @@
 		dat += "<br><center>The mist will clear out of the way in [(SSmigrants.time_until_next_wave / (1 SECONDS))] seconds...</center>"
 	else
 		var/datum/migrant_wave/wave = MIGRANT_WAVE(SSmigrants.current_wave)
-		dat += "<br><center><b>[wave.name]</b></center>"
+		if(display_name == FALSE)
+			dat += "<br><center><b>Secret Wave</b></center>"
+		else
+			dat += "<br><center><b>[wave.name]</b></center>"
 		for(var/role_type in wave.roles)
 			var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
 			var/role_amount = wave.roles[role_type]
 			var/role_name = role.name
+			if(display_name == FALSE)
+				role_name = "The veil of mist hides the identity of these wanderers"
+			else
+				role_name = role.name
 			if(active  && (role_type in role_preferences))
 				role_name = "<u><b>[role_name]</b></u>"
 			var/stars_amount = SSmigrants.get_stars_on_role(role_type)
