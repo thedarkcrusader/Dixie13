@@ -138,12 +138,26 @@
 	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "ida_steel"
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/chop/)
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	gripped_intents = null
 	minstr = 5
 	wdefense = GOOD_PARRY
 	wbalance = HARD_TO_DODGE
 	sellprice = 50
+
+/obj/item/weapon/sword/ida/iron
+	force = DAMAGE_SHORTSWORD
+	name = "iron ida"
+	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ida_iron"
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	minstr = 4
+	wdefense = GOOD_PARRY
+	wbalance = HARD_TO_DODGE
+	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
+
 /*-------\
 | Sabres |	Onehanded, slightly weaker thrust, better for parries. Think rapier but cutting focus.
 \-------*/
@@ -270,7 +284,7 @@
 	wbalance = EASY_TO_DODGE
 	sellprice = 100
 
-	/obj/item/weapon/sword/scimitar/ngombe
+/obj/item/weapon/sword/scimitar/ngombe
 
 	name = "ngombe ngulu"
 	desc = "A heavy executioner's sword originating from Lakkari. It was used by Astratans to behead Psydonites settlers responsible for the Red Dune Massacre."

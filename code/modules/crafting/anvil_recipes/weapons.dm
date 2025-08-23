@@ -218,6 +218,26 @@
 	recipe_name = "a Short Sword"
 	created_item = /obj/item/weapon/sword/short
 
+/datum/anvil_recipe/weapons/iron/ida
+	name = "Ida"
+	recipe_name= "an Iron Ida"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/ida/iron
+
+/datum/anvil_recipe/weapons/iron/hwi
+	name = "Hwi (+Iron Bar)"
+	recipe_name= "an Iron Hwi"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items= list(/obj/item/ingot/iron,)
+	created_item = /obj/item/weapon/sword/sabre/hwi/iron
+
+/datum/anvil_recipe/weapons/iron/shotel
+	name = "Shotel (+Iron Bar)"
+	recipe_name= "an Iron Shotel"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/iron,)
+	created_item = /obj/item/weapon/sword/long/shotel/iron
+
 /datum/anvil_recipe/weapons/iron/sword_iron
 	name = "Sword"
 	recipe_name = "a Sword"
@@ -311,6 +331,36 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/sabre/cutlass
 
+/datum/anvil_recipe/weapons/steel/hwi
+	name = "Steel Hwi (+ Steel Bar)"
+	recipe_name = "a Steel Hwi"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/sabre/hwi
+
+/datum/anvil_recipe/weapons/steel/shotel
+
+	name = "Steel Shotel (+ Steel Bar)"
+	recipe_name = "a Steel Shotel"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/long/shotel
+
+/datum/anvil_recipe/weapons/steel/ida
+
+	name = "Steel Ida"
+	recipe_name = "a Steel Ida"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/ida
+
+/datum/anvil_recipe/weapons/steel/ngombe
+
+	name = "Ngombe Ngulu (+Steel Bar)"
+	recipe_name = "a Ngombe Ngulu"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/scimitar/ngombe
+
 /datum/anvil_recipe/weapons/steel/dagger_steel
 	name = "2x Steel Daggers"
 	recipe_name = "a couple Daggers"
@@ -341,6 +391,14 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/weapon/sword/rapier/dec
+	craftdiff = 3
+
+/datum/anvil_recipe/weapons/steel/nimcha
+	name = "Nimcha (+Gold Bar)"
+	recipe_name = "a Nimcha"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/gold)
+	created_item = /obj/item/weapon/sword/rapier/nimcha
 	craftdiff = 3
 
 /datum/anvil_recipe/weapons/steel/eaglebeak
