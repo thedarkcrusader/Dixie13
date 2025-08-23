@@ -33,7 +33,7 @@
 		if(SSmigrants.can_be_role(prefs.parent, role_type))
 			role_preferences += role_type
 			var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
-			to_chat(prefs.parent, span_nicegreen("You have prioritized the [role.name]. This does not guarantee getting the role"))
+			to_chat(prefs.parent, span_nicegreen("You have prioritized the associated role. This does not guarantee getting the role"))
 
 /datum/migrant_pref/proc/post_spawn()
 	set_active(FALSE, TRUE)
@@ -45,6 +45,9 @@
 		return
 	var/list/dat = list()
 	var/display_name = FALSE
+	/client/proc/admin_force_next_migrant_wave(admin_activated)
+	if(admin_activated)
+		display_name = TRUE
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
 	dat += "WAVE: \Roman[SSmigrants.wave_number]"
 	dat += "<center><b>BE A MIGRANT: <a href='byond://?src=[REF(src)];task=toggle_active'>[active ? "YES" : "NO"]</a></b></center>"
