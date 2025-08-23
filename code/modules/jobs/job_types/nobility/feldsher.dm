@@ -41,7 +41,7 @@
 	neck = /obj/item/clothing/neck/feld
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/feldsher
-	beltr = /obj/item/storage/belt/pouch/coins/poor
+	beltr = /obj/item/storage/belt/pouch
 
 	H.adjust_skillrank(/datum/skill/combat/wrestling, pick(2,2,3), TRUE)//so he can hold down unruly patients
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
