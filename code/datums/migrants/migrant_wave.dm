@@ -171,8 +171,3 @@
 	roles = list(
 		/datum/migrant_role/mercenary = 1,
 	)
-
-/datum/migrant_wave/proc/secret_name()
-	..()
-	if(display_name == FALSE)
-		name = "Secret Wave"
