@@ -714,6 +714,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	clean_effectiveness = 100
 	clean_strength = CLEAN_ALL
 	color = LIGHT_COLOR_BLOOD_MAGIC
+	uses = 200
 
 /proc/criminalstool(mob/user, turf/C)
 	new /obj/item/soap/cult(C)
