@@ -165,7 +165,7 @@
 		reagents.add_reagent(/datum/reagent/soap, amt2Add)
 		reagents.trans_to(O, reagents.total_volume, transfered_by = user, method = TOUCH)
 		to_chat(user, span_info("I dissolve some of \the [name] in the water."))
-		decreaseUses(1)//meant to consume less uses than it does on on_clean_success
+		decreaseUses(5)//meant to consume less uses than it does on on_clean_success
 
 /obj/item/soap/proc/scrub_scrub(mob/living/carbon/human/target, mob/living/carbon/user)
 	target.wash(clean_strength)
