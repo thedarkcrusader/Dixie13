@@ -39,15 +39,13 @@
 	set_active(FALSE, TRUE)
 	hide_ui()
 
-var/client/proc/admin_force_next_migrant_wave/admin_activated
-
 /datum/migrant_pref/proc/show_ui()
 	var/client/client = prefs.parent
 	if(!client)
 		return
 	var/list/dat = list()
 	var/display_name = FALSE
-	if(admin_activated)
+	if(SSmigrants.admin_force_next_migrant_wave(admin_activated = TRUE))
 		display_name = TRUE
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
 	dat += "WAVE: \Roman[SSmigrants.wave_number]"
