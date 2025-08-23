@@ -109,7 +109,7 @@
 	SET_BASE_PIXEL(0, 32)
 
 /obj/structure/fake_machine/hailerboard/r
-	SET_BASE_PIXEL(-32, 0)
+	SET_BASE_PIXEL(32, 0)
 
 /obj/structure/fake_machine/hailerboard/l
 	SET_BASE_PIXEL(-32, 0)
