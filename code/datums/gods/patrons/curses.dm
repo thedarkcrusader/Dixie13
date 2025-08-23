@@ -117,6 +117,7 @@
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
 /datum/curse/zizo/minor
+	name = "Zizo's Minor Curse"
 	description = "I struggle to distinguish reality from delusion."
 	hallucination_prob = 10
 
