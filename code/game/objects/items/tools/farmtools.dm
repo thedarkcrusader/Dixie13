@@ -4,6 +4,8 @@
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
 	experimental_onhip = TRUE
+	force = DAMAGE_STAFF
+	force_wielded = DAMAGE_STAFF_WIELD
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick,POLEARM_BASH,TILL_INTENT)
 	name = "copper hoe"
@@ -29,6 +31,7 @@
 	item_state = "cfork"
 	pixel_y = -16
 	pixel_x = -16
+	force_wielded = DAMAGE_SPEAR
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
 	experimental_onhip = TRUE
