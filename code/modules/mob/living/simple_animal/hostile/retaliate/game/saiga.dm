@@ -198,6 +198,7 @@
 						/obj/item/natural/hide = 5,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
+	head_butcher = /obj/item/natural/head/saiga
 
 	health = MALE_SAIGA_HEALTH
 	maxHealth = MALE_SAIGA_HEALTH
