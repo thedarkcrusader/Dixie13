@@ -440,6 +440,12 @@
 		used_str /= 2
 	//Your max STR is 20.
 	used_str = CLAMP(used_str, 1, 20)
+	//Vampire checks for Potence
+	if(ishuman(user))
+		var/mob/living/carbon/human/user_human = user
+		if(user_human.clan)
+			used_str += floor(0.5 * user_human.potence_weapon_buff)
+			// For each level of potence user gains 0.5 STR, at 5 Potence their STR buff is 2.5
 	if(used_str >= 11)
 		newforce = newforce + (newforce * ((used_str - 10) * 0.1))
 	else if(used_str <= 9)
@@ -448,7 +454,7 @@
 	if(I.minstr)
 		var/effective = I.minstr
 		if(HAS_TRAIT(I, TRAIT_WIELDED))
-			effective = I.minstr * 0.75
+			effective *= 0.75
 		//Strength influence is reduced to 30%
 		if(effective > user.STASTR)
 			newforce = max(newforce*0.3, 1)
@@ -674,6 +680,7 @@
  * * click_parameters - is the params string from byond [/atom/proc/Click] code, see that documentation.
  */
 /obj/item/proc/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	if(force && !user.used_intent.tranged && !user.used_intent.tshield)
