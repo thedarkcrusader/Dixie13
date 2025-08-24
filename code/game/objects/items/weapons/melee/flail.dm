@@ -95,7 +95,7 @@
 	icon_state = "peasantflail"
 	smeltresult = /obj/item/fertilizer/ash
 	melting_material = null
-	max_integrity = INTEGRITY_POOR
+	max_integrity = INTEGRITY_STANDARD
 	minstr = 5
 	sellprice = 10
 

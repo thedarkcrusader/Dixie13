@@ -523,8 +523,8 @@
 
 //................ Copper goden ............... //
 /obj/item/weapon/mace/goden/copper
-	force = DAMAGE_CLUB
-	force_wielded = DAMAGE_CLUB_WIELD + 5
+	force = DAMAGE_CLUB - 5
+	force_wielded = DAMAGE_CLUB_WIELD
 	slowdown = 1
 	name = "copper warclub"
 	desc = "A two handed club, decorated with a crown of spikes. A barbaric besign, good enough to be used as a weapon."

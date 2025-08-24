@@ -191,7 +191,7 @@
 	return ..()
 
 /obj/item/weapon/knife/scissors/steel
-	force = DAMAGE_DAGGER
+	force = DAMAGE_DAGGER + 2
 	max_integrity = INTEGRITY_POOR
 	name = "steel scissors"
 	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
@@ -231,7 +231,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop)
 	icon_state = "combatknife"
 	throwforce = 16
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STANDARD - 20
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	melting_material = /datum/material/iron
@@ -260,7 +260,6 @@
 
 //................ Steel Dagger ............... //
 /obj/item/weapon/knife/dagger/steel
-	force = DAMAGE_DAGGER
 	name = "steel dagger"
 	desc = "A dagger made of refined steel."
 	icon_state = "sdagger"
@@ -481,7 +480,7 @@
 	desc = "A tool favored by the wood-elves, easy to make, useful for skinning the flesh of beast and man alike."
 	icon_state = "stone_knife"
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
-	max_integrity = INTEGRITY_WORST - 50
+	max_integrity = INTEGRITY_WORST - 70
 	max_blade_int = 30
 	wdefense = TERRIBLE_PARRY
 	smeltresult = /obj/item/fertilizer/ash
@@ -504,7 +503,7 @@
 	desc = "A knife of an older design, the copper serves decent enough."
 	icon_state = "cdagger"
 	max_blade_int = 75
-	max_integrity = INTEGRITY_WORST
+	max_integrity = INTEGRITY_WORST - 25
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
@@ -518,7 +517,7 @@
 	desc = ""
 	item_state = "bone_dagger"
 	force = DAMAGE_DAGGER
-	throwforce = DAMAGE_DAGGER + 10
+	throwforce = DAMAGE_DAGGER + 13
 	throw_speed = 4
 	max_integrity = INTEGRITY_WORST - 50
 	wdefense = 1

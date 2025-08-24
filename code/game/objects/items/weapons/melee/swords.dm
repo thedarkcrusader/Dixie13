@@ -457,7 +457,7 @@
 
 // Repurposing this unused sword for the Paladin job as a heavy counter against vampires.
 /obj/item/weapon/sword/long/judgement// this sprite is a one handed sword, not a longsword.
-	force = DAMAGE_SWORD
+	force = DAMAGE_SWORD - 5
 	force_wielded = DAMAGE_GREATSWORD_WIELD
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
@@ -493,7 +493,7 @@
 	color = CLOTHING_SOOT_BLACK
 
 /obj/item/weapon/sword/long/vlord // this sprite is a one handed sword, not a longsword.
-	force = DAMAGE_SWORD
+	force = DAMAGE_SWORD - 2
 	force_wielded = DAMAGE_GREATSWORD_WIELD
 	icon_state = "vlord"
 	name = "Jaded Fang"
@@ -563,7 +563,7 @@
 	name = "duel settler"
 	desc = "The tenets of ravoxian duels are enscribed upon the blade of this sword."
 	icon_state = "ravoxflamberge"
-	force = DAMAGE_SWORD+2
+	force = DAMAGE_SWORD + 2
 	force_wielded = DAMAGE_LONGSWORD_WIELD
 
 //................ Psydonian Longsword ............... //
@@ -583,7 +583,7 @@
 
 /obj/item/weapon/sword/long/decorated
 	force = DAMAGE_SWORD - 5
-	force_wielded = DAMAGE_LONGSWORD_WIELD
+	force_wielded = DAMAGE_LONGSWORD_WIELD + 2
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
 	icon_state = "declong"
@@ -944,7 +944,7 @@
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
 	bigboy = TRUE
 	max_blade_int = 150 // Shitty Weapon
-	max_integrity = INTEGRITY_POOR + 50
+	max_integrity = INTEGRITY_POOR + 80
 	wlength = WLENGTH_LONG
 	gripsprite = TRUE
 	pixel_y = -16
@@ -1048,7 +1048,7 @@
 					)
 
 /obj/item/weapon/sword/gladius
-	force = DAMAGE_SWORD
+	force = DAMAGE_SWORD + 2
 	name = "gladius"
 	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
 	icon_state = "gladius"
