@@ -18,8 +18,7 @@
  */
 SUBSYSTEM_DEF(discord)
 	name = "Discord"
-	init_order = INIT_ORDER_DISCORD
-	flags = SS_NO_FIRE
+	flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// People who have tried to verify this round already
 	var/list/reverify_cache = list()
