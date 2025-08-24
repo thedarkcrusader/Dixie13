@@ -317,10 +317,11 @@ All foods are distributed among various categories. Use common sense.
 			record_round_statistic(STATS_LUXURIOUS_FOOD_EATEN)
 		if(eat_effect == /datum/status_effect/debuff/rotfood)
 			SEND_SIGNAL(eater, COMSIG_ROTTEN_FOOD_EATEN, src)
-		qdel(src)
+		var/old_loc = loc
 		var/obj/item/trash = generate_trash(drop_location())
-		if(trash && isliving(loc))
-			var/mob/living/L = loc
+		qdel(src)
+		if(trash && isliving(old_loc))
+			var/mob/living/L = old_loc
 			L.put_in_hands(trash)
 
 	update_appearance(UPDATE_ICON_STATE)
@@ -629,7 +630,7 @@ All foods are distributed among various categories. Use common sense.
 			if(bitecount == 0 || prob(50))
 				M.emote("me", 1, "nibbles away at \the [src]")
 			bitecount++
-			L.food = min(L.food + 30, L.food_max)
+			SEND_SIGNAL(L, COMSIG_MOB_FEED, src, 30)
 			playsound(L.loc, 'sound/misc/eat.ogg', 25, TRUE)
 			L.taste(reagents) // why should carbons get all the fun?
 			if(bitecount >= 5)

@@ -419,7 +419,7 @@
 	required_materials = list(/obj/item/grown/log/tree/small = 1)
 	craftdiff = 0
 
-/datum/blueprint_recipe/carpentry/structure/plough
+/datum/blueprint_recipe/carpentry/plough
 	name = "plough"
 	desc = "A plough."
 	result_type = /obj/structure/plough
@@ -448,3 +448,14 @@
 	)
 	craftdiff = 1
 	requires_ceiling = TRUE
+
+/datum/blueprint_recipe/carpentry/apiary
+	name = "Apiary"
+	desc = "A home for bees."
+	result_type = /obj/structure/apiary
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 2,
+		/obj/item/natural/wood/plank = 2,
+		/obj/item/natural/fibers = 2
+	)
+	craftdiff = 1
