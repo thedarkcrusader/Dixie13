@@ -1258,6 +1258,14 @@
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"hh" = (
+/obj/effect/landmark/start/adventurerlate,
+/obj/effect/landmark/latejoin,
+/obj/effect/landmark/start/lord{
+	dir = 8
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "hi" = (
 /obj/structure/table/wood/treestump/shroomstump,
 /turf/open/floor/dirt,
@@ -2297,6 +2305,7 @@
 /area/rogue/indoors/town/manor)
 "zZ" = (
 /obj/structure/throne,
+/obj/structure/fake_machine/titan,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Ab" = (
@@ -2705,9 +2714,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "GO" = (
-/obj/effect/landmark/start/adventurerlate,
 /obj/machinery/light/fueled/wallfire/candle,
-/obj/effect/landmark/latejoin,
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors)
 "GU" = (
@@ -2773,9 +2780,6 @@
 /obj/effect/decal/carpet/square{
 	pixel_y = -17;
 	pixel_x = -16
-	},
-/obj/effect/landmark/start/lord{
-	dir = 8
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -15455,7 +15459,7 @@ QN
 QN
 qc
 QN
-QN
+hh
 QN
 al
 al
