@@ -715,7 +715,6 @@
 	desc = "A dark red curved blade. Called forth from Her will, if you wield this blade you are to be feared, if you do not, you are dead."
 	icon_state = "zizosword"
 	wdefense = ULTMATE_PARRY
-	max_integrity = INTEGRITY_STRONGEST //blacksteel
 	minstr = 10
 	sellprice = 0 // Super evil Zizo sword, nobody wants this
 
