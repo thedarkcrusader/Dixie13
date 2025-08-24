@@ -81,7 +81,12 @@
 
 /obj/item/customlock/finished/attackby_secondary(obj/item/I, mob/user, params)
 
-/obj/item/customlock/finished/attack_obj(obj/O, mob/living/user)
+/obj/item/customlock/finished/attack_atom(atom/attacked_atom, mob/living/user)
+	if(!isobj(attacked_atom))
+		return ..()
+
+	var/obj/O = attacked_atom
+	. = TRUE
 	if(!O.can_add_lock)
 		to_chat(user, span_notice("There is no place for a lock on [O]."))
 		return

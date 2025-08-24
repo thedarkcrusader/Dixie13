@@ -174,13 +174,13 @@
 			user.changeNext_move(CLICK_CD_FAST)
 			return TRUE
 	if(I.obj_flags_ignore)
-		return I.attack_obj(src, user)
-	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
+		return I.attack_atom(src, user)
+	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_atom(src, user))
 
 /turf/attackby(obj/item/I, mob/living/user, params)
 	if(liquids && I.heat)
 		hotspot_expose(I.heat)
-	return ..() || (max_integrity && I.attack_turf(src, user))
+	return ..() || (uses_integrity && I.attack_atom(src, user))
 
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
@@ -383,25 +383,45 @@
 
 	return SECONDARY_ATTACK_CALL_NORMAL
 
-/// The equivalent of the standard version of [/obj/item/proc/attack] but for object targets.
-/obj/item/proc/attack_obj(obj/O, mob/living/user)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, O, user) & COMPONENT_NO_ATTACK_OBJ)
-		return
-	if(item_flags & NOBLUDGEON)
-		return
-	if(O.attacked_by(src, user))
-		user.do_attack_animation(O, used_intent = user.used_intent, used_item = src,)
+/// The equivalent of the standard version of [/obj/item/proc/attack] but for non-mob targets. Return TRUE to end the attack chain.
+/obj/item/proc/attack_atom(atom/attacked_atom, mob/living/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, attacked_atom, user) & COMPONENT_NO_ATTACK_OBJ)
 		return TRUE
+	if(item_flags & NOBLUDGEON)
+		return TRUE
+	user.changeNext_move(CLICK_CD_MELEE)
+	// if(attacked_atom.attacked_by(src, user))
+	// 	user.do_attack_animation(attacked_atom, used_intent = user.used_intent, used_item = src)
+	attacked_atom.attacked_by(src, user)
 
-/obj/item/proc/attack_turf(turf/T, mob/living/user)
-	if(T.max_integrity)
-		if(T.attacked_by(src, user))
-			user.do_attack_animation(T, used_intent = user.used_intent, used_item = src,)
-			return TRUE
+/// Called from [/obj/item/proc/attack_obj] and [/obj/item/proc/attack] if the attack succeeds.
+/atom/proc/attacked_by(obj/item/attacking_item, mob/living/user)
+	if(!uses_integrity)
+		CRASH("attacked_by() was called on [type], which doesn't use integrity!")
 
-/// Called from [/obj/item/proc/attack_obj] and [/obj/item/proc/attack] if the attack succeeds
-/atom/movable/proc/attacked_by()
-	return FALSE
+	if(user.used_intent.no_attack)
+		return
+
+	var/newforce = get_complex_damage(attacking_item, user, blade_dulling)
+	if(!newforce)
+		return
+
+	var/damage_verb = "hits"
+
+	damage_verb = pick(user.used_intent.attack_verb)
+	if(newforce > 1)
+		attacking_item.take_damage(1, BRUTE, "blunt")
+		if(!user.adjust_stamina(5))
+			damage_verb = "ineffectively hits"
+			newforce = 1
+
+	user.visible_message(span_danger("[user] [damage_verb] [src] with [attacking_item]!"))
+	take_damage(newforce, attacking_item.damtype, attacking_item.damage_type, TRUE)
+	log_combat(user, src, "attacked", attacking_item)
+	return TRUE
+
+/area/attacked_by(obj/item/attacking_item, mob/living/user)
+	CRASH("areas are NOT supposed to have attacked_by() called on them!")
 
 /*
 * I didnt code this but this is what ive deciphered.
@@ -410,7 +430,7 @@
 * This proc is also not overridable due to having no root.
 * -IP
 */
-/proc/get_complex_damage(obj/item/I, mob/living/user, blade_dulling, turf/closed/mineral/T)
+/proc/get_complex_damage(obj/item/I, mob/living/user, blade_dulling)
 	var/dullfactor = 1
 	if(!I?.force)
 		return 0
@@ -569,56 +589,31 @@
 	newforce = max(newforce, 1)
 	return newforce
 
-/obj/attacked_by(obj/item/I, mob/living/user)
-	user.changeNext_move(CLICK_CD_MELEE)
-	var/newforce = get_complex_damage(I, user, blade_dulling)
-	if(!newforce)
-		return 0
-	if(newforce < damage_deflection)
-		return 0
-	if(user.used_intent.no_attack)
-		return 0
-	log_combat(user, src, "attacked", I)
-	var/verbu = "hits"
-	verbu = pick(user.used_intent.attack_verb)
-	if(newforce > 1)
-		if(user.adjust_stamina(5))
-			user.visible_message("<span class='danger'>[user] [verbu] [src] with [I]!</span>")
-		else
-			user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
-			newforce = 1
-	else
-		user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
-	take_damage(newforce, I.damtype, I.damage_type, 1)
-	if(newforce > 1)
-		I.take_damage(1, BRUTE, "blunt")
-	return TRUE
+// /turf/proc/attacked_by(obj/item/I, mob/living/user)
+// 	var/newforce = get_complex_damage(I, user, blade_dulling)
+// 	if(!newforce)
+// 		return 0
+// 	if(newforce < damage_deflection)
+// 		return 0
+// 	if(user.used_intent.no_attack)
+// 		return 0
+// 	user.changeNext_move(CLICK_CD_MELEE)
+// 	log_combat(user, src, "attacked", I)
+// 	var/verbu = "hits"
+// 	verbu = pick(user.used_intent.attack_verb)
+// 	if(newforce > 1)
+// 		if(user.adjust_stamina(5))
+// 			user.visible_message("<span class='danger'>[user] [verbu] [src] with [I]!</span>")
+// 		else
+// 			user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
+// 			newforce = 1
+// 	else
+// 		user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
 
-/turf/proc/attacked_by(obj/item/I, mob/living/user)
-	var/newforce = get_complex_damage(I, user, blade_dulling)
-	if(!newforce)
-		return 0
-	if(newforce < damage_deflection)
-		return 0
-	if(user.used_intent.no_attack)
-		return 0
-	user.changeNext_move(CLICK_CD_MELEE)
-	log_combat(user, src, "attacked", I)
-	var/verbu = "hits"
-	verbu = pick(user.used_intent.attack_verb)
-	if(newforce > 1)
-		if(user.adjust_stamina(5))
-			user.visible_message("<span class='danger'>[user] [verbu] [src] with [I]!</span>")
-		else
-			user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
-			newforce = 1
-	else
-		user.visible_message("<span class='warning'>[user] [verbu] [src] with [I]!</span>")
-
-	take_damage(newforce, I.damtype, I.damage_type, 1)
-	if(newforce > 1)
-		I.take_damage(1, BRUTE, "blunt")
-	return TRUE
+// 	take_damage(newforce, I.damtype, I.damage_type, 1)
+// 	if(newforce > 1)
+// 		I.take_damage(1, BRUTE, "blunt")
+// 	return TRUE
 
 /mob/living/proc/simple_limb_hit(zone)
 	if(!zone)

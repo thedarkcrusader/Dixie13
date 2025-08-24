@@ -32,7 +32,7 @@
 	icon_state = "soil"
 	density = FALSE
 	climbable = FALSE
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 	UUID_saving = TRUE
 	/// Amount of water in the soil. It makes the plant and weeds not loose health
 	var/water = 0

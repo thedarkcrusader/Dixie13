@@ -17,7 +17,7 @@
 	possible_item_intents = list(/datum/intent/hit)
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
-	metalizer_result = /obj/structure/bars/pipe
+	metalizer_result = /obj/item/rotation_contraption/water_pipe
 	var/quality = SMELTERY_LEVEL_NORMAL // For it not to ruin recipes that need it
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
 	var/lumber_alt
@@ -100,20 +100,6 @@
 	if(disassembled)
 		return ..()
 	qdel(src)
-
-/obj/item/grown/log/tree/obj_destruction(damage_flag)
-	obj_destroyed = TRUE
-	if(damage_flag == "acid")
-		acid_melt()
-	else if(damage_flag == "fire")
-		burn()
-	else
-		if(destroy_sound)
-			playsound(src, destroy_sound, 100, TRUE)
-		if(destroy_message)
-			visible_message(destroy_message)
-		deconstruct(TRUE)
-	return TRUE
 
 /obj/item/grown/log/tree/small
 	name = "small log"

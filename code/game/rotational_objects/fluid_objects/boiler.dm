@@ -10,7 +10,7 @@
 
 	var/stored_steam = 0
 	var/maximum_steam = 1024
-
+	var/steam_output = 8
 
 /obj/structure/boiler/Initialize()
 	. = ..()
@@ -21,6 +21,16 @@
 	if(output)
 		output.remove_provider(/datum/reagent/steam, stored_steam)
 	. = ..()
+
+/obj/structure/boiler/attack_hand(mob/user, params)
+	var/new_output = input(user, "Set the steam output pressure.", "boiler") as num|null
+	if(!new_output)
+		return
+	if(!Adjacent(user))
+		return
+	steam_output = clamp(new_output, 0, maximum_steam)
+	to_chat(user, "You set the steam output pressure to [steam_output].")
+	return TRUE
 
 /obj/structure/boiler/setup_water()
 	var/turf/east_turf = get_step(src, turn(dir, 90))
@@ -34,8 +44,8 @@
 
 	return {"<span style='font-size:8pt;font-family:"Pterra";color:#808000;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
 			Input Pressure:[input ? input.water_pressure : "0"]
-			Output Pressure:[stored_steam]
-			Steam:[stored_steam ? round((stored_steam / maximum_steam) * 100, 1 ): "0"]%"}
+			Output Pressure:[steam_output]
+			Stored Steam:[stored_steam ? round((stored_steam / maximum_steam) * 100, 1 ): "0"]%"}
 
 // Assume boiler is facing south (dir = SOUTH). Input is coming in from the right (direction = WEST) and output is to the left (direction = EAST)
 /obj/structure/boiler/valid_water_connection(direction, obj/structure/water_pipe/pipe)
@@ -54,17 +64,15 @@
 		var/taking_pressure = min(steam_left,input.water_pressure)
 		if(taking_pressure)
 			picked_provider?.taking_from?.use_water_pressure(taking_pressure * 0.5)
-		stored_steam += taking_pressure
-
-	if(!output)
-		return
-	output.make_provider(/datum/reagent/steam, stored_steam, src)
+			stored_steam += taking_pressure
+			use_water_pressure(steam_output)
 
 /obj/structure/boiler/use_water_pressure(pressure)
-	stored_steam -= pressure
-	if(!output)
+	if(!output || !stored_steam)
 		return
-	output.make_provider(/datum/reagent/steam, stored_steam, src)
+	var/actual_pressure = min(pressure, stored_steam)
+	stored_steam -= actual_pressure
+	output.make_provider(/datum/reagent/steam, actual_pressure, src)
 
 /datum/reagent/steam
 	name = "Steam"
