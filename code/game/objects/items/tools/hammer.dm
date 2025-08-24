@@ -16,7 +16,6 @@
 
 	grid_width = 32
 	grid_height = 64
-	var/can_smith = TRUE
 	var/time_multiplier = 1
 
 /obj/proc/unbreak()

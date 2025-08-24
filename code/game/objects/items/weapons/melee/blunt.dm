@@ -124,6 +124,9 @@
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/thrust)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 30
+	minstr = 5
+	force = DAMAGE_MACE - 3
+	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCHRE_PARRY
 
 /obj/item/weapon/mace/courtphysician/getonmobprop(tag)
@@ -359,8 +362,7 @@
 	desc = "A two handed club, decorated with a spiked cap crown. A perfect way to say Good Morning to any would be noble-knight."
 	icon_state = "goedendag"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
+	SET_BASE_PIXEL(-16, -16)
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	bigboy = TRUE
@@ -468,8 +470,7 @@
 	desc = "Big old oak branch, carved to a deadly weapon."
 	icon_state = "shillelagh"
 	icon = 'icons/roguetown/weapons/shillelagh.dmi'
-	pixel_y = 0
-	pixel_x = 0
+	SET_BASE_PIXEL(0, 0)
 	bigboy = FALSE
 	gripsprite = TRUE
 	slot_flags = ITEM_SLOT_BACK
@@ -616,3 +617,9 @@
 	wbalance = DODGE_CHANCE_NORMAL
 	sellprice = 60
 	wdefense = GOOD_PARRY
+
+/obj/item/weapon/mace/goden/steel/ravox
+	name = "duel settler"
+	desc = "The tenets of ravoxian duels are enscribed upon the head of this maul."
+	icon_state = "ravoxhammer"
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
