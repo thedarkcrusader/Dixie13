@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(curse_names, list())
 
 #define INHUMEN_CURSES list(\
 	/datum/curse/zizo,\
+	/datum/curse/zizo/minor,\
 	/datum/curse/graggar,\
 	/datum/curse/matthios,\
 	/datum/curse/baotha\
@@ -63,8 +64,6 @@ GLOBAL_LIST_INIT(curse_names, list())
 
 GLOBAL_LIST_EMPTY(confessors)
 
-GLOBAL_LIST_INIT(wolf_prefixes, list("Red", "Moon", "Bloody", "Hairy", "Eager", "Sharp"))
-GLOBAL_LIST_INIT(wolf_suffixes, list("Fang", "Claw", "Stalker", "Prowler", "Roar", "Ripper"))
 //preference stuff
 #define FAMILY_NONE "None"
 #define FAMILY_PARTIAL "Siblings"
@@ -84,14 +83,13 @@ GLOBAL_LIST_INIT(wolf_suffixes, list("Fang", "Claw", "Stalker", "Prowler", "Roar
 
 GLOBAL_LIST_EMPTY(job_respawn_delays)
 
-//stress levels
-#define STRESS_MAX 30
+//stress levels. Stress starts at 0.
 #define STRESS_INSANE 7
 #define STRESS_VBAD 5
 #define STRESS_BAD 3
 #define STRESS_NEUTRAL 2
 #define STRESS_GOOD 1
-#define STRESS_VGOOD -1
+#define STRESS_VGOOD -4
 
 /*	........   Nutrition defines   ................ */
 #define MEAL_FILLING 30
@@ -164,7 +162,13 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_BUY_ANY_CLASS "pick_any"
 #define TRIUMPH_BUY_ADOPTION "adoption"
 #define TRIUMPH_BUY_FART "fart"
+#define TRIUMPH_BUY_SECRET_OFFICIANT "secret_officiant"
+
+// Character category and its buys
+#define TRIUMPH_CAT_CHALLENGES "CHALLENGES"
+
 #define TRIUMPH_BUY_LEPROSY "leprosy"
+#define TRIUMPH_BUY_CURSE "curse"
 
 // Storyteller category and its buys
 #define TRIUMPH_CAT_STORYTELLER "STORYTELLER"

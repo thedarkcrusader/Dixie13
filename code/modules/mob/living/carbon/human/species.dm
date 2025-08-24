@@ -1896,7 +1896,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 						else
 							H.emote("pain")
 				if(damage_amount > ((H.STACON*10) / 3) && !HAS_TRAIT(H, TRAIT_NOPAINSTUN))
-					H.Immobilize(8)
+					H.Immobilize(4)
 					shake_camera(H, 2, 2)
 					H.stuttering += 5
 				if(damage_amount > 10 && !HAS_TRAIT(H, TRAIT_NOPAINSTUN))
@@ -2103,6 +2103,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "on_fire", /datum/mood_event/on_fire)
 
 /datum/species/proc/CanIgniteMob(mob/living/carbon/human/H)
+	if(H.status_flags & GODMODE)
+		return FALSE
 	if(H.divine_fire_stacks > 0) // tieflings can't say no to astrata
 		return TRUE
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))
