@@ -1424,3 +1424,9 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
+
+/atom/movable/proc/pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
+	Move(new_loc, dir_pusher_to_pushed, glize_size)
+
+	if(pusher_dir)
+		setDir(dir_pusher_to_pushed)
