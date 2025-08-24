@@ -27,14 +27,14 @@
 	possible_item_intents = list(MACE_STRIKE)
 	gripped_intents = list(/datum/intent/flailthresh, MACE_STRIKE)
 
-	force = DAMAGE_WEAK_FLAIL - 5
+	force = DAMAGE_WEAK_FLAIL - 7
 	force_wielded = DAMAGE_WEAK_FLAIL - 3
 	wdefense = AVERAGE_PARRY
 	wlength = 66
 
 /obj/item/weapon/thresher/military
-	force = DAMAGE_WEAK_FLAIL - 3
-	force_wielded = DAMAGE_NORMAL_FLAIL
+	force = DAMAGE_WEAK_FLAIL - 5
+	force_wielded = DAMAGE_NORMAL_FLAIL + 2
 	possible_item_intents = list(MACE_STRIKE)
 	gripped_intents = list(/datum/intent/flail/strike/long, /datum/intent/flail/strike/smash/long, /datum/intent/flailthresh,)
 	name = "military flail"
