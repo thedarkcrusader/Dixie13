@@ -772,6 +772,9 @@
         ],
         "Wouju": [
             {
+                "rscadd": "Master of Nerves logs and text display has been improved"
+            },
+            {
                 "rscadd": "Clerics, both Ten and Inhumen, had their loadouts overhauled"
             },
             {
@@ -782,6 +785,11 @@
             },
             {
                 "code_imp": "hammers use defines for their force and integrity, set some maces integrity to use their defines"
+            }
+        ],
+        "grungussuss": [
+            {
+                "bugfix": "fixed seeing no name in the disconnected important role admin message"
             }
         ],
         "CheffieGithub": [
