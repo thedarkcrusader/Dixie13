@@ -10,7 +10,7 @@
 
 	var/stored_steam = 0
 	var/maximum_steam = 1024
-	var/steam_output = 8
+	var/pressure_target = 1024
 
 /obj/structure/boiler/Initialize()
 	. = ..()
@@ -28,8 +28,8 @@
 		return
 	if(!Adjacent(user))
 		return
-	steam_output = clamp(new_output, 0, maximum_steam)
-	to_chat(user, "You set the steam output pressure to [steam_output].")
+	pressure_target = clamp(new_output, 0, maximum_steam)
+	to_chat(user, "You set the steam output pressure to [pressure_target].")
 	return TRUE
 
 /obj/structure/boiler/setup_water()
@@ -44,7 +44,7 @@
 
 	return {"<span style='font-size:8pt;font-family:"Pterra";color:#808000;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
 			Input Pressure:[input ? input.water_pressure : "0"]
-			Output Pressure:[steam_output]
+			Output Pressure: ACTL:[min(pressure_target, stored_steam)] TGT:[pressure_target]
 			Stored Steam:[stored_steam ? round((stored_steam / maximum_steam) * 100, 1 ): "0"]%"}
 
 // Assume boiler is facing south (dir = SOUTH). Input is coming in from the right (direction = WEST) and output is to the left (direction = EAST)
@@ -64,15 +64,18 @@
 		var/taking_pressure = min(steam_left,input.water_pressure)
 		if(taking_pressure)
 			picked_provider?.taking_from?.use_water_pressure(taking_pressure * 0.5)
-			stored_steam += taking_pressure
-			use_water_pressure(steam_output)
+		stored_steam += taking_pressure
+
+	var/true_pressure = min(pressure_target, stored_steam)
+	if(!output || !true_pressure)
+		return
+	output.make_provider(/datum/reagent/steam, true_pressure, src)
 
 /obj/structure/boiler/use_water_pressure(pressure)
-	if(!output || !stored_steam)
+	stored_steam -= pressure
+	if(!output)
 		return
-	var/actual_pressure = min(pressure, stored_steam)
-	stored_steam -= actual_pressure
-	output.make_provider(/datum/reagent/steam, actual_pressure, src)
+	output.make_provider(/datum/reagent/steam, stored_steam, src)
 
 /datum/reagent/steam
 	name = "Steam"
