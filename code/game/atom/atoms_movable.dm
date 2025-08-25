@@ -1426,7 +1426,14 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 	Moved(old_loc, direction, TRUE)
 
 /atom/movable/proc/pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
-	Move(new_loc, dir_pusher_to_pushed, glize_size)
+	if(!Move(new_loc, dir_pusher_to_pushed, glize_size))
+		return FALSE
 
+	after_push(arglist(args))
+
+	return TRUE
+
+/// called after this atom has been successfully pushed
+/atom/movable/proc/after_pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
 	if(pusher_dir)
 		setDir(dir_pusher_to_pushed)

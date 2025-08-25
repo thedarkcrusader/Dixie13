@@ -25,11 +25,6 @@
 	. = ..()
 	calculate_blockers()
 
-/obj/structure/cannon/pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
-	Move(new_loc, dir_pusher_to_pushed, glize_size)
-
-	setDir(dir_pusher_to_pushed)
-
 /obj/structure/cannon/proc/calculate_blockers()
 	/*
 	switch(dir)
