@@ -426,9 +426,6 @@
 /atom/movable/proc/after_being_moved_by_pull(atom/movable/puller)
 	return
 
-/atom/movable/proc/attempt_to_be_pulled(atom/movable/puller)
-	return TRUE
-
 /mob/living/Move_Pulled(atom/movable/A)
 	. = ..()
 	if(!. || !isliving(A))

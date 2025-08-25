@@ -88,7 +88,7 @@
 
 	for(var/mob/living/seer in view(4, src))
 		shake_camera(seer, 2, 3)
-		seer.apply_effect(4, EFFECT_EYE_BLUR)
+		seer.apply_effect(8, EFFECT_EYE_BLUR)
 
 	for(var/atom/movable/loaded_thing as anything in contents)
 		var/target = get_edge_target_turf(src, dir)
@@ -123,11 +123,13 @@
 	var/obj/structure/cannon/cannon
 	var/obj/item/fuse/fuse
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
+	glide_size = 6
 
-/obj/effect/fuse/Initialize(mapload, obj/structure/cannon/cannon, obj/item/fuse/fuse)
+/obj/effect/fuse/Initialize(mapload, obj/structure/cannon/passed_cannon, obj/item/fuse/passed_fuse)
 	. = ..()
-	src.cannon = cannon
-	src.fuse = fuse
+	cannon = passed_cannon
+	fuse = passed_fuse
+	sync_with_fuse()
 	calculate_offsets()
 	RegisterSignal(cannon, COMSIG_PARENT_QDELETING, PROC_REF(on_deletion))
 	RegisterSignal(cannon, COMSIG_MOVABLE_MOVED, PROC_REF(calculate_offsets))
@@ -164,17 +166,24 @@
 
 /obj/effect/fuse/proc/sync_with_fuse()
 	appearance = fuse.appearance
-	icon_state = fuse.icon_state
+	transform = matrix()
 
 /obj/effect/fuse/proc/calculate_offsets()
-	if(get_turf(src) != get_turf(cannon))
-		Move(get_turf(cannon))
+	if(loc != cannon.loc)
+		forceMove(get_turf(cannon))
 
 	var/turf/center = src.loc
 	var/turf/cannon_barrel = get_step(cannon, cannon.dir)
 
-	pixel_w = (center.x - cannon_barrel.x) * 16
-	pixel_z = (center.y - cannon_barrel.y) * 16
+	var/matrix/new_matrix = matrix()
+	transform = new_matrix
+
+	var/new_pixel_w = (cannon_barrel.x - center.x) * 16
+	var/new_pixel_z = (cannon_barrel.y - center.y) * 16
+
+	pixel_w = new_pixel_w
+	pixel_z = new_pixel_z
+
 
 /obj/item/fuse
 	name = "fuse"
@@ -193,7 +202,7 @@
 		return FALSE
 
 	loc = null
-	var/obj/effect/fuse/fuse = new(get_turf(cannon), cannon, src)
+	new /obj/effect/fuse (get_turf(cannon), cannon, src)
 	return TRUE
 
 /obj/item/fuse/proc/remove_from_cannon(obj/structure/cannon/cannon)
@@ -224,8 +233,10 @@
 	qdel(src)
 
 /obj/item/fuse/fiber
+	name = "fiber fuse"
 	icon_state = "fiber_fuse"
 
 /obj/item/fuse/parchment
+	name = "parchment fuse"
 	icon_state = "parchment_fuse"
 	failure_chance = 10
