@@ -21,25 +21,25 @@
 	src.holder = null
 	return ..()
 
-/datum/lock/proc/toggle(mob/user, obj/item, silent = FALSE)
+/datum/lock/proc/toggle(mob/user, silent = FALSE)
 	if(!silent && user)
 		silent = user?.m_intent == MOVE_INTENT_SNEAK
 	if(locked)
-		unlock(user, item, silent)
+		unlock(user, silent)
 	else
-		lock(user, item, silent)
+		lock(user, silent)
 
-/datum/lock/proc/lock(user, obj/item, silent = FALSE)
+/datum/lock/proc/lock(user, silent = FALSE)
 	tampered = FALSE
 	locked = TRUE
 	if(user)
-		holder?.on_lock(user, item, silent)
+		holder?.on_lock(user, silent)
 
-/datum/lock/proc/unlock(user, obj/item, silent = FALSE)
+/datum/lock/proc/unlock(user, silent = FALSE)
 	tampered = FALSE
 	locked = FALSE
 	if(user)
-		holder?.on_unlock(user, item, silent)
+		holder?.on_unlock(user, silent)
 
 /// A keylock
 /datum/lock/key
@@ -117,7 +117,7 @@
 		if(!locked && !is_right)
 			holder?.lock_failed(user, silent, "It won't turn this way, try turning it to the right.")
 			return
-	toggle(user, I, silent)
+	toggle(user, silent)
 
 /datum/lock/key/proc/set_pick_difficulty(difficulty)
 	src.difficulty = CLAMP(difficulty, 1, 6)

@@ -1509,14 +1509,6 @@
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
-"mz" = (
-/obj/structure/door/fancy{
-	name = "Lord's Apartment"
-	},
-/obj/effect/mapping_helpers/access/keyset/manor/lord,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/hexstone,
-/area/rogue/outdoors)
 "mE" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/churchbrick,
@@ -2591,10 +2583,6 @@
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
-"Eq" = (
-/obj/item/key/lord,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "Ev" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -14957,7 +14945,7 @@ ji
 VG
 jC
 VG
-mz
+QN
 LA
 QN
 jC
@@ -15214,7 +15202,7 @@ ky
 QN
 ae
 QN
-Eq
+QN
 QN
 QN
 Wr
