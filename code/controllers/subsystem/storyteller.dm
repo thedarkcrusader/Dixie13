@@ -1284,6 +1284,7 @@ SUBSYSTEM_DEF(gamemode)
 			if(listed.name != event_name)
 				continue
 			listed.occurrences++
+			listed.last_round_occurrences++
 
 /// Chooses a number of chronicle stats from the chronicle sets which will be shown at the round end panel
 /datum/controller/subsystem/gamemode/proc/pick_chronicle_stats()
@@ -1671,6 +1672,8 @@ SUBSYSTEM_DEF(gamemode)
 			total_influence += max(min_mod, base_mod - (i - diminish_threshold))
 		else
 			total_influence += max(second_min_mod, base_mod - (i - diminish_threshold))
+
+	total_influence = total_influence * initialized_storyteller.influence_modifier
 
 	return total_influence
 

@@ -317,6 +317,66 @@
 			for(var/list/god_data in sorted_gods)
 				data += create_god_ranking_entry(god_data["name"], god_data["points"], god_data["color"])
 
+			// Gods' Events Section
+			data += "<div style='text-align: center; color: #e0e0f0; font-size: 1.2em; margin-top: 15px;'>GODS' EVENTS</div>"
+			data += "<div style='border-top: 1.5px solid #9a9aaa; margin: 0 auto 20px auto; width: 90%;'></div>"
+
+			var/list/event_categories = list(
+				EVENT_TRACK_MUNDANE,
+				EVENT_TRACK_PERSONAL,
+				EVENT_TRACK_MODERATE,
+				EVENT_TRACK_INTERVENTION,
+				EVENT_TRACK_CHARACTER_INJECTION,
+				EVENT_TRACK_OMENS,
+				EVENT_TRACK_RAIDS,
+			)
+
+			var/list/events_by_category = list()
+			var/has_events = FALSE
+
+			for(var/datum/round_event_control/event_control in SSgamemode.control)
+				var/occurrences_this_round = event_control.occurrences - event_control.last_round_occurrences
+				if(occurrences_this_round <= 0)
+					continue
+
+				if(!events_by_category[event_control.track])
+					events_by_category[event_control.track] = list()
+
+				events_by_category[event_control.track] += list(list(
+					"name" = event_control.name,
+					"count" = occurrences_this_round
+				))
+				has_events = TRUE
+
+			if(!has_events)
+				data += "<div style='text-align: center; color: #999; font-style: italic; padding: 30px 0;'>The Gods did not meddle with mortals, yet</div>"
+			else
+				data += "<div style='display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;'>"
+
+				var/category_count = 0
+				for(var/category in event_categories)
+					category_count++
+					var/list/category_events = events_by_category[category]
+
+					data += "<div style='background: #2a2a3a; border: 1px solid #4a4a5a; padding: 15px; border-radius: 4px;'>"
+					data += "<div style='color: #e0e0f0; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #6a6a7a; padding-bottom: 5px;'>[category]</div>"
+
+					if(length(category_events))
+						for(var/list/event_data in category_events)
+							data += "<div style='margin-bottom: 5px; padding-left: 8px; border-left: 2px solid #6a6a7a;'>"
+							data += "<span style='color: #b0b0b0;'>[event_data["name"]]:</span> <span style='color: #e0e0f0;'>[event_data["count"]]</span>"
+							data += "</div>"
+					else
+						data += "<div style='color: #999; font-style: italic; text-align: center; padding: 10px 0;'>No events occurred</div>"
+
+					data += "</div>"
+
+				while(category_count % 3 != 0)
+					data += "<div style='visibility: hidden;'></div>"
+					category_count++
+
+				data += "</div>"
+
 		if("Messages")
 			data += "<div style='display: table; width: 100%; table-layout: fixed;'>"
 			data += "<div style='display: table-row;'>"
