@@ -471,6 +471,7 @@
 	climb_offset = 10
 
 /obj/structure/rack/shelf
+	name = "shelf"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shelf"
 	climbable = FALSE
@@ -479,11 +480,16 @@
 	SET_BASE_PIXEL(0, 32)
 
 /obj/structure/rack/shelf/big
+	name = "shelf"
 	icon_state = "shelf_big"
 	SET_BASE_PIXEL(0, 16)
 
 /obj/structure/rack/shelf/biggest
+	name = "shelf"
 	icon_state = "shelf_biggest"
+	//this one is big enough it takes up the space of an entire tile, it should be dense
+	climbable = TRUE
+	density = TRUE
 	SET_BASE_PIXEL(0, 0)
 
 // Shelves have been made nondense. The only functional difference this has now is a lower pixel_y
