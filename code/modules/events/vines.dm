@@ -276,13 +276,10 @@
 /obj/structure/vine/attack_hand(mob/user)
 	for(var/datum/vine_mutation/SM in mutations)
 		SM.on_hit(src, user)
-	user_unbuckle_mob(user, user)
 	. = ..()
 
 /obj/structure/vine/attack_paw(mob/living/user)
-	for(var/datum/vine_mutation/SM in mutations)
-		SM.on_hit(src, user)
-	user_unbuckle_mob(user,user)
+	return attack_hand(user)
 
 /datum/vine_controller
 	var/list/obj/structure/vine/vines

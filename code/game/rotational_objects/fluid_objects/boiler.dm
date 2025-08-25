@@ -75,7 +75,8 @@
 	stored_steam -= pressure
 	if(!output)
 		return
-	output.make_provider(/datum/reagent/steam, stored_steam, src)
+	var/true_pressure = min(pressure_target, stored_steam)
+	output.make_provider(/datum/reagent/steam, true_pressure, src)
 
 /datum/reagent/steam
 	name = "Steam"
