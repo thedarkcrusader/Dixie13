@@ -213,7 +213,7 @@
 		. += span_notice("Node Essence: [installed_node.current_essence]/[installed_node.max_essence]")
 		qdel(temp)
 	else
-		. += span_notice("No node installed. Use an essence node or containment jar to install one.")
+		. += span_notice("No node installed. Use a portable essence node or containment jar with a node within to install one.")
 
 // Visual effect for harvesting
 /obj/effect/temp_visual/harvest_glow
