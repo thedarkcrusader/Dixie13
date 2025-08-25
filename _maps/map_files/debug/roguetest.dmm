@@ -1258,14 +1258,6 @@
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
-"hh" = (
-/obj/effect/landmark/start/adventurerlate,
-/obj/effect/landmark/latejoin,
-/obj/effect/landmark/start/lord{
-	dir = 8
-	},
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "hi" = (
 /obj/structure/table/wood/treestump/shroomstump,
 /turf/open/floor/dirt,
@@ -2132,16 +2124,6 @@
 /obj/structure/hotspring/border/nine,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
-"wx" = (
-/obj/effect/landmark/house_spot{
-	template_z = 2;
-	template_x = 6;
-	template_y = 6;
-	link_id = "test";
-	house_id = "test"
-	},
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "wD" = (
 /obj/structure/bridge_stakes{
 	dir = 8
@@ -2305,7 +2287,6 @@
 /area/rogue/indoors/town/manor)
 "zZ" = (
 /obj/structure/throne,
-/obj/structure/fake_machine/titan,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Ab" = (
@@ -2714,7 +2695,9 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "GO" = (
+/obj/effect/landmark/start/adventurerlate,
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/effect/landmark/latejoin,
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors)
 "GU" = (
@@ -2780,6 +2763,9 @@
 /obj/effect/decal/carpet/square{
 	pixel_y = -17;
 	pixel_x = -16
+	},
+/obj/effect/landmark/start/lord{
+	dir = 8
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -3116,12 +3102,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"SN" = (
-/obj/structure/sign/property_claim{
-	link_id = "test"
-	},
-/turf/closed/wall/mineral/stone,
-/area/rogue/indoors/town/manor)
 "SS" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -15459,7 +15439,7 @@ QN
 QN
 qc
 QN
-hh
+QN
 QN
 al
 al
@@ -16736,7 +16716,7 @@ jN
 jN
 hA
 jN
-wx
+QN
 aF
 pD
 zF
@@ -16993,7 +16973,7 @@ iC
 sE
 jq
 ZT
-SN
+jN
 ai
 Wr
 pD
