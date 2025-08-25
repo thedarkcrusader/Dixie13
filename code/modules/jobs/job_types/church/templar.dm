@@ -126,10 +126,11 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
-	//Max devotion limit - Templars are stronger but cannot pray to gain more abilities beyond t1
-	C.grant_spells_templar(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	var/holder = H.patron?.devotion_holder
+	if(holder)
+		var/datum/devotion/devotion = new holder()
+		devotion.make_templar()
+		devotion.grant_to(H)
 	if(H.dna?.species)
 		if(H.dna.species.id == SPEC_ID_HUMEN)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
@@ -161,7 +162,7 @@
 			var/obj/item/weapon/sword/long/ravox/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/divine/malum)
-			var/obj/item/weapon/mace/goden/steel/malum/P = new(get_turf(src))
+			var/obj/item/weapon/hammer/sledgehammer/war/malum/P = new(get_turf(src))
 			H.put_in_hands(P, forced = TRUE)
 		if(/datum/patron/divine/abyssor)
 			var/obj/item/weapon/polearm/spear/abyssor/P = new(get_turf(src))

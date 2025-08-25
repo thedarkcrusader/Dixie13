@@ -409,6 +409,7 @@
 					hud_used.bloods.icon_state = "dam[used]"
 				else
 					hud_used.bloods.icon_state = "damelse"
+			SEND_SIGNAL(src, COMSIG_MOB_HEALTHHUD_UPDATE, hud_used.bloods.icon_state)
 
 		if(hud_used.stamina)
 			if(stat != DEAD)
@@ -818,4 +819,4 @@
 	if(client)
 		return
 
-	message_admins("[src] is a [mind.assigned_role.get_informed_title(src)] and has been disconnected for more than 30 seconds!")
+	message_admins("[ADMIN_LOOKUPFLW_PP(src)] is a [mind.assigned_role.get_informed_title(src)] and has been disconnected for more than 30 seconds!")

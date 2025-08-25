@@ -759,12 +759,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(item_flags & DROPDEL)
 		qdel(src)
 		return
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
+	pixel_x = base_pixel_x
+	pixel_y = base_pixel_y
 	if(isturf(loc))
 		if(!ontable())
 			var/oldy = pixel_y
-			pixel_y = pixel_y+5
+			pixel_y += 5
 			animate(src, pixel_y = oldy, time = 0.5)
 	item_flags &= ~IN_INVENTORY
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED,user)
@@ -839,7 +839,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!isnull(action_slots))
 		return (slot & action_slots)
 	else if (slot_flags)
-		return (slot & slot_flags)
+		if(isweapon(src))
+			var/obj/item/active = user.get_active_held_item()
+			var/obj/item/inactive = user.get_inactive_hand_index()
+			if(active == src || inactive == src)
+				return TRUE
+			else
+				return FALSE
+		else
+			return (slot & slot_flags)
 	return TRUE
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
@@ -979,8 +987,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		. = callback.Invoke()
 	item_flags &= ~IN_INVENTORY
 	if(!pixel_y && !pixel_x)
-		pixel_x = rand(-8,8)
-		pixel_y = rand(-8,8)
+		pixel_x = base_pixel_x + rand(-8,8)
+		pixel_y = base_pixel_y + rand(-8,8)
 
 
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
@@ -1120,8 +1128,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!QDELETED(src))
 		var/turf/T = get_turf(src)
 		var/obj/effect/decal/cleanable/molten_object/MO = new(T)
-		MO.pixel_x = rand(-16,16)
-		MO.pixel_y = rand(-16,16)
+		MO.pixel_x = MO.base_pixel_x + rand(-16,16)
+		MO.pixel_y = MO.base_pixel_y + rand(-16,16)
 		MO.desc = ""
 		..()
 
@@ -1392,3 +1400,43 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	animate(pickup, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 0.3 SECONDS, transform = animation_matrix, easing = CUBIC_EASING)
 	animate(alpha = 0, transform = matrix().Scale(0.7), time = 0.1 SECONDS)
+
+/obj/item/proc/make_modifyable(sockets = 2, max_sockets = 2)
+	AddComponent(/datum/component/modifications, sockets, max_sockets)
+
+/proc/generate_random_socketed_item(item_type, socket_count, gem_quality_range = list(GEM_CHIPPED, GEM_PERFECT))
+	if(!item_type)
+		switch(rand(1, 2))
+			if(1)
+				item_type = pick(subtypesof(/obj/item/clothing))
+			if(2)
+				item_type = pick(subtypesof(/obj/item/weapon))
+
+	if(!socket_count)
+		socket_count = rand(1, 6)
+
+	var/obj/item/new_item = new item_type(get_turf(usr))
+	new_item.make_modifyable(socket_count, socket_count)
+
+	// Fill with random gems
+	var/list/gem_types = list(
+		/obj/item/gem/red,
+		/obj/item/gem/violet,
+		/obj/item/gem/yellow,
+		/obj/item/gem/green,
+		/obj/item/gem/diamond,
+		/obj/item/gem/blue,
+		/obj/item/gem/black
+	)
+
+	for(var/i = 1 to socket_count)
+		var/gem_type = pick(gem_types)
+		var/obj/item/gem/new_gem = new gem_type
+		new_gem.quality = rand(gem_quality_range[1], gem_quality_range[2])
+		new_gem.generate_socketing_properties()
+
+		var/datum/component/modifications/mod = new_item.GetComponent(/datum/component/modifications)
+		mod?.socket_gem(new_gem, null) // null user for automatic generation
+
+	return new_item
+

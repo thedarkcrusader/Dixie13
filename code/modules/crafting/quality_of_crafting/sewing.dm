@@ -381,7 +381,7 @@
 /datum/repeatable_crafting_recipe/sewing/flowercrown/rosa
 	name = "rosa crown"
 	requirements = list(/obj/item/rope = 1,\
-					/obj/item/alch/rosa = 2)
+					/obj/item/alch/herb/rosa = 2)
 	output = /obj/item/clothing/head/flowercrown/rosa
 
 /datum/repeatable_crafting_recipe/sewing/flowercrown/rosa/create_blacklisted_paths()
@@ -390,7 +390,7 @@
 /datum/repeatable_crafting_recipe/sewing/flowercrown/salvia
 	name = "salvia crown"
 	requirements = list(/obj/item/rope = 1,\
-					/obj/item/alch/salvia = 2)
+					/obj/item/alch/herb/salvia = 2)
 	output = /obj/item/clothing/head/flowercrown/salvia
 
 /datum/repeatable_crafting_recipe/sewing/flowercrown/salvia/create_blacklisted_paths()
@@ -791,3 +791,11 @@
 /datum/repeatable_crafting_recipe/sewing/carpet/red
 	name = "red carpet"
 	output = /obj/item/natural/carpet_fibers/red
+
+/datum/repeatable_crafting_recipe/sewing/beehood
+	name = "beehood"
+	output = /obj/item/clothing/head/beekeeper
+	requirements = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 2
+	category = "Hat"
