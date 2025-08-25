@@ -74,6 +74,12 @@
 	. = ..()
 	UnregisterSignal(loc, COMSIG_ATOM_ATTACK_HAND, PROC_REF(redirect_attack))
 
+/obj/structure/door/get_explosion_resistance()
+	if(!door_opened)
+		return max_integrity
+	else
+		return 0
+
 /obj/structure/door/proc/redirect_attack(turf/source, mob/user)
 	attack_hand(user)
 
@@ -343,6 +349,7 @@
 
 	if(close_delay > 0)
 		addtimer(CALLBACK(src, PROC_REF(Close), silent), close_delay)
+	air_update_turf(TRUE)
 
 /obj/structure/door/proc/force_open()
 	switching_states = TRUE
@@ -353,6 +360,7 @@
 	layer = OPEN_DOOR_LAYER
 	update_appearance(UPDATE_ICON_STATE)
 	switching_states = FALSE
+	air_update_turf(TRUE)
 
 /obj/structure/door/proc/Close(silent = FALSE)
 	if(switching_states || !door_opened)
@@ -371,6 +379,7 @@
 	layer = CLOSED_DOOR_LAYER
 	update_appearance(UPDATE_ICON_STATE)
 	switching_states = FALSE
+	air_update_turf(TRUE)
 
 /obj/structure/door/proc/force_closed()
 	switching_states = TRUE
@@ -381,6 +390,7 @@
 	layer = CLOSED_DOOR_LAYER
 	update_appearance(UPDATE_ICON_STATE)
 	switching_states = FALSE
+	air_update_turf(TRUE)
 
 /obj/structure/door/proc/viewport_toggle(mob/user)
 	if(switching_states || door_opened)
@@ -549,3 +559,28 @@
 
 	INVOKE_ASYNC(src, PROC_REF(unlock))
 	INVOKE_ASYNC(src, PROC_REF(force_open))
+
+/obj/structure/door/abyss
+	name = "abyssal door"
+	icon_state = "abyssdoor"
+	icon = 'icons/delver/abyss_objects.dmi'
+	armor = list("blunt" = 15, "slash" = 30, "stab" = 30,  "piercing" = 0, "fire" = 50, "acid" = 50)
+	open_sound = 'sound/foley/doors/stoneopen.ogg'
+	close_sound = 'sound/foley/doors/stoneclose.ogg'
+	repair_cost_first = /obj/item/natural/stone
+	repair_cost_second = /obj/item/natural/stone
+	repair_skill = /datum/skill/craft/masonry
+	smeltresult = null
+	metalizer_result = null
+
+/obj/structure/door/driftwood
+	name = "driftwood door"
+	icon_state = "driftwood_door"
+	icon = 'icons/delver/abyss_objects.dmi'
+	windowed = TRUE
+	opacity = FALSE
+	lock = null
+	metalizer_result = /obj/structure/door/iron/bars
+	bump_closed = TRUE
+	close_delay =  1 SECONDS
+	animate_time = 0.4 SECONDS
