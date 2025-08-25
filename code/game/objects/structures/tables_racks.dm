@@ -480,12 +480,10 @@
 	SET_BASE_PIXEL(0, 32)
 
 /obj/structure/rack/shelf/big
-	name = "shelf"
 	icon_state = "shelf_big"
 	SET_BASE_PIXEL(0, 16)
 
 /obj/structure/rack/shelf/biggest
-	name = "shelf"
 	icon_state = "shelf_biggest"
 	//this one is big enough it takes up the space of an entire tile, it should be dense
 	climbable = TRUE
