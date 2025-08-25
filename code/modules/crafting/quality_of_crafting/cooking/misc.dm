@@ -210,11 +210,9 @@
 		/obj/item/pestle = list("starts to grind and mix herbs in the mortar", "start to grind and mix herbs in the mortar", 'sound/foley/mortarpestle.ogg'),
 	)
 	requirements = list(
-		/obj/item/alch/salvia = 1,
-		/obj/item/alch/hypericum = 1,
-		/obj/item/alch/benedictus = 1,
-		/obj/item/alch/taraxacum = 1,
+		/obj/item/alch/herb = 4,
 	)
+	subtypes_allowed = TRUE
 	output = /obj/item/reagent_containers/powder/herbs
 	output_amount = 3
 	starting_atom = /obj/item/pestle
