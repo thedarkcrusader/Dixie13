@@ -1430,6 +1430,8 @@ SUBSYSTEM_DEF(gamemode)
 	for(var/stat_name in statistics_to_clear)
 		force_set_round_statistic(stat_name, 0)
 
+	var/total_wealth = 0
+
 	var/list/current_valid_humans = list()
 
 	var/mob/living/carbon/human/valid_psydon_favourite
@@ -1588,6 +1590,7 @@ SUBSYSTEM_DEF(gamemode)
 				set_chronicle_stat(CHRONICLE_STATS_FASTEST_PERSON, human_mob, "SPEEDSTER", "#54d6c2", "[human_mob.STASPD] speed")
 
 			var/wealth = get_mammons_in_atom(human_mob)
+			total_wealth += wealth
 			if(wealth > highest_wealth)
 				highest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_RICHEST_PERSON, human_mob, "MAGNATE", "#d8dd90", "[wealth] mammons")
@@ -1649,6 +1652,8 @@ SUBSYSTEM_DEF(gamemode)
 	else if(!isnull(GLOB.chronicle_stats[CHRONICLE_STATS_PSYDON_FAVOURITE]))
 		chosen_chronicle_stats = list()
 		pick_chronicle_stats()
+
+	force_set_round_statistic(STATS_MAMMONS_HELD, total_wealth)
 
 /// Returns total follower influence for the given storyteller
 /datum/controller/subsystem/gamemode/proc/get_follower_influence(datum/storyteller/chosen_storyteller)
