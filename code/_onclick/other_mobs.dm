@@ -153,7 +153,7 @@
 		to_chat(user, span_warning("Nothing to bite."))
 		return
 
-	user.do_attack_animation(src, ATTACK_EFFECT_BITE, atom_bounce = TRUE)
+	user.do_attack_animation(src, ATTACK_EFFECT_BITE, used_item = FALSE, atom_bounce = TRUE)
 	next_attack_msg.Cut()
 
 	var/nodmg = FALSE
@@ -250,7 +250,7 @@
 					var/mob/living/M = A
 					if(src.used_intent)
 
-						do_attack_animation(M, visual_effect_icon = ATTACK_EFFECT_KICK, atom_bounce = TRUE)
+						do_attack_animation(M, visual_effect_icon = ATTACK_EFFECT_KICK, used_item = FALSE, atom_bounce = TRUE)
 						playsound(src, pick(PUNCHWOOSH), 100, FALSE, -1)
 
 						sleep(src.used_intent.swingdelay)
@@ -370,7 +370,7 @@
 		if(istype(G) && G.Touch(A,0)) // for magic gloves
 			return
 	if(!used_intent.noaa && ismob(A))
-		do_attack_animation(A, visual_effect_icon = used_intent.animname, used_intent = used_intent)
+		do_attack_animation(A, visual_effect_icon = used_intent.animname, used_item = FALSE, used_intent = used_intent)
 		changeNext_move(used_intent.clickcd)
 		playsound(get_turf(src), used_intent.miss_sound, 100, FALSE)
 		if(used_intent.miss_text)

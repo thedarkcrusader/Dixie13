@@ -538,8 +538,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/move)
-			if(isturf(attacked_atom))
-				user.Move_Pulled(attacked_atom)
+			user.Move_Pulled(get_turf(attacked_atom))
 		if(/datum/intent/grab/smash)
 			if(!iscarbon(grabbed))
 				return
@@ -719,7 +718,7 @@
 	var/damage = user.get_punch_dmg()
 	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
 		damage = damage*2
-	user.do_attack_animation(C, ATTACK_EFFECT_BITE)
+	user.do_attack_animation(C, ATTACK_EFFECT_BITE, used_item = FALSE)
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		playsound(C.loc, "smallslash", 100, FALSE, -1)

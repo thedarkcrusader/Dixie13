@@ -14,12 +14,16 @@
 	if(!isclosedturf(attacked_atom))
 		return ..()
 
+	var/direction = get_dir(attacked_atom,user)
+	if(!(direction in GLOB.cardinals))
+		return ..()
+
 	. = TRUE
 	to_chat(user, span_warning("I place [src] on the wall."))
 	if(!do_after(user, 3 SECONDS, attacked_atom))
 		return
 	var/obj/structure/S = new deployed_structure(user.loc)
-	switch(get_cardinal_dir(attacked_atom, user))
+	switch(direction)
 		if(NORTH)
 			S.pixel_y = S.base_pixel_y - 32
 		if(SOUTH)
@@ -42,12 +46,15 @@
 	var/stolen_painting = /obj/item/painting
 
 /obj/structure/fluff/walldeco/painting/attack_hand(mob/user)
-	if(do_after(user, 3 SECONDS, user))
+	. = ..()
+	if(.)
+		return
+
+	if(do_after(user, 3 SECONDS, src))
 		var/obj/item/I = new stolen_painting(user.loc)
 		user.put_in_hands(I)
 		qdel(src)
 		return
-	..()
 
 /* Paintings */
 /obj/item/painting/queen
