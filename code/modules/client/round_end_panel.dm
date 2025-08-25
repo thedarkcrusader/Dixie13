@@ -504,7 +504,7 @@
 			// Right column
 			data += "<div style='width: 44%; display: flex; justify-content: flex-start;'>"
 			data += "<div style='text-align: left; padding-left: 20px;'>"
-			data += "<div style='margin-bottom: 4px;'><font color='#ebbf49'>Mammons in Circulation: </font>[GLOB.vanderlin_round_stats[STATS_MAMMONS_HELD]]</div>"
+			data += "<div style='margin-bottom: 4px;'><font color='#ebbf49'>Mammons Held: </font>[GLOB.vanderlin_round_stats[STATS_MAMMONS_HELD]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#db9a59'>Trade Value Exported: </font>[GLOB.vanderlin_round_stats[STATS_TRADE_VALUE_EXPORTED]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#dfbf57'>Trade Value Imported: </font>[GLOB.vanderlin_round_stats[STATS_TRADE_VALUE_IMPORTED]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#c0b283'>GOLDFACE Imports: </font>[GLOB.vanderlin_round_stats[STATS_GOLDFACE_VALUE_SPENT]]</div>"
