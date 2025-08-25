@@ -57,22 +57,26 @@
 		return
 	to_chat(user, span_notice("I lock \the [src]."))
 
+/mob
+	var/angleee = 180
+
 /mob/proc/lock_unlock_animation(obj/door, obj/item)
 	animate(src, time = 0.3 SECONDS, pixel_w = ((door.x - src.x) * 5), pixel_z = ((door.y - src.y) * 5), easing = SINE_EASING, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 	animate(time = 0.3 SECONDS, pixel_w = ((door.x - src.x) * -5), pixel_z = ((door.y - src.y) * -5), easing = SINE_EASING, flags = ANIMATION_RELATIVE)
-	var/mutable_appearance/key = mutable_appearance(item.icon, item.icon_state, src.layer, src.plane, alpha = 0)
-	key.appearance = item.appearance // yeah.
+	var/obj/effect/key = new(get_turf(src))
+	key.appearance = item.appearance
 
-	key.loc = door
+	var/direction = get_dir(src, door)
 
-	key.pixel_w = (door.x - src.x) * -16
-	key.pixel_z = (door.y - src.y) * -16
+	var/angle = dir2angle(direction)
 
-	key.transform.Turn(dir2angle(get_dir(src, door)))
+	var/new_transform = key.transform.Turn(angleee + angle)
+	new_transform = matrix(new_transform) * 0.6
+	key.transform = new_transform
+	key.alpha = 0
 
-	animate(key, time = 0.5 SECONDS, alpha = 255, easing = SINE_EASING)
-	animate(time = 1 SECONDS, pixel_w = ((door.x - src.x) * 10), pixel_z = ((door.y - src.y) * 10), easing = SINE_EASING, flags = ANIMATION_RELATIVE)
-	animate(time = 0.5 SECONDS, alpha = 0, easing = SINE_EASING)
+	animate(key, time = 0.5 SECONDS, alpha = 170, pixel_w = ((door.x - src.x) * 14), pixel_z = ((door.y - src.y) * 14), easing = SINE_EASING, flags = ANIMATION_RELATIVE)
+	animate(time = 0.4 SECONDS, alpha = 0, easing = SINE_EASING)
 
 /// Called when unlocked
 /obj/proc/on_unlock(mob/user, obj/item, silent = FALSE)
