@@ -61,6 +61,7 @@
 
 ///Default range of a sound.
 #define SOUND_RANGE 17
+#define SOUND_EXTRA_RANGE_CANNON 30
 #define MEDIUM_RANGE_SOUND_EXTRARANGE -5
 ///default extra range for sounds considered to be quieter
 #define SHORT_RANGE_SOUND_EXTRARANGE -9

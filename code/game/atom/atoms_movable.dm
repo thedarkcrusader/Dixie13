@@ -397,7 +397,7 @@
 			SEND_SIGNAL(old_pulling, COMSIG_ATOM_NO_LONGER_PULLED, src)
 	setGrabState(GRAB_PASSIVE)
 
-/atom/movable/proc/Move_Pulled(atom/A)
+/atom/movable/proc/Move_Pulled(atom/movable/A)
 	if(!pulling)
 		return FALSE
 	if(pulling.anchored || pulling.move_resist > move_force || !pulling.Adjacent(src))
@@ -423,7 +423,13 @@
 			source.update_vision_cone()
 	return TRUE
 
-/mob/living/Move_Pulled(atom/A)
+/atom/movable/proc/after_being_moved_by_pull(atom/movable/puller)
+	return
+
+/atom/movable/proc/attempt_to_be_pulled(atom/movable/puller)
+	return TRUE
+
+/mob/living/Move_Pulled(atom/movable/A)
 	. = ..()
 	if(!. || !isliving(A))
 		return
@@ -605,6 +611,7 @@
 						pulling_update_dir = FALSE
 						break
 				pulling.Move(T, get_dir(pulling, T), glide_size, pulling_update_dir) //the pullee tries to reach our previous position
+				pulling.after_being_moved_by_pull(src)
 				pulling.moving_from_pull = null
 			check_pulling()
 
@@ -1429,7 +1436,7 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 	if(!Move(new_loc, dir_pusher_to_pushed, glize_size))
 		return FALSE
 
-	after_push(arglist(args))
+	after_pushed(arglist(args))
 
 	return TRUE
 

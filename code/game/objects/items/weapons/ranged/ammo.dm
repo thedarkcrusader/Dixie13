@@ -513,7 +513,7 @@
 	damage = 300
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball_proj" // No one sees it anyway. I think.
+	icon_state = "cannonball"
 	ammo_type = /obj/item/ammo_casing/caseless/cball
 	range = 999
 	jitter = 5
@@ -539,12 +539,11 @@
 
 //................ Grapeshot ............... //
 /obj/item/ammo_casing/caseless/cball
-	name = "large lead ball"
+	name = "large cannonball"
 	desc = "A round lead ball. Complex and still spherical."
 	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "cannonball"
 	projectile_type = /obj/projectile/bullet/reusable/cannonball
-	dropshrink = 0.5
-	icon_state = "cball"
 	caliber = "cannoball"
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 1
