@@ -391,7 +391,7 @@
 	if(item_flags & NOBLUDGEON)
 		return TRUE
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(attacked_atom.attacked_by(src, user))
+	if(attacked_atom.attacked_by(src, user) && !isopenturf(attacked_atom)) // this check is due to attack animations in /obj/item/proc/afterattack()
 		user.do_attack_animation(attacked_atom, used_item = src, used_intent = user.used_intent)
 
 /// Called from [/obj/item/proc/attack_obj] and [/obj/item/proc/attack] if the attack succeeds.
@@ -654,6 +654,16 @@
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	if(force && !user.used_intent.tranged && !user.used_intent.tshield)
 		if(proximity_flag && isopenturf(target) && !user.used_intent?.noaa)
+			var/adf = user.used_intent.clickcd
+			if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
+				adf = round(adf * 1.4)
+			if(istype(user.rmb_intent, /datum/rmb_intent/swift))
+				adf = round(adf * 0.6)
+			user.changeNext_move(adf)
+			if(get_dist(get_turf(user), get_turf(target)) <= user.used_intent.reach)
+				user.do_attack_animation(target, visual_effect_icon = user.used_intent.animname, used_item = src, used_intent = user.used_intent)
+			else
+				user.do_attack_animation(get_ranged_target_turf(user, get_dir(user, target), 1), visual_effect_icon = user.used_intent.animname, used_item = src, used_intent = user.used_intent)
 			playsound(get_turf(src), pick(swingsound), 100, FALSE, -1)
 			user.aftermiss()
 		if(!proximity_flag && ismob(target) && !user.used_intent?.noaa) //this block invokes miss cost clicking on seomone who isn't adjacent to you
