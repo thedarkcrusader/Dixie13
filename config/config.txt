@@ -543,3 +543,9 @@ SMART_CACHE_ASSETS
 ## Useful for developers to debug potential spritesheet issues to determine where the issue is cropping up (either in DM-side sprite generation or in the TGUI-side display of said spritesheet).
 ## Will only seek to waste disk space if ran on production.
 #SAVE_SPRITESHEETS
+
+## Kick inactive players governed by afk_period
+KICK_INACTIVE
+
+## Time before we kick an inactive player in seconds
+AFK_PERIOD 2500
