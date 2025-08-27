@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(server_maint)
 	var/round_started = SSticker.HasRoundStarted()
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
 	var/afk_period = CONFIG_GET(number/inactivity_period)
-	var/kick_period = CONFIG_GET(number/afk_period)
+	var/kick_period = CONFIG_GET(number/afk_period) // :)
 
 	for(var/client/C as anything in currentrun)
 		// handle kicking inactive players
