@@ -124,6 +124,7 @@
 	icon_state = "border"
 	passcrawl = FALSE
 
+// This should be futher refactored but not today, not with all the mapping shit going on and the depth that this code needs to be cleansed by
 /obj/structure/fluff/fence
 	name = "wooden fence"
 	desc = "A sturdy fence of wooden planks."
@@ -139,6 +140,21 @@
 	. = ..()
 	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
 	AddElement(/datum/element/connect_loc, loc_connections)
+	var/lay = getwlayer(dir)
+	if(lay)
+		layer = lay
+
+/obj/structure/fluff/fence/proc/getwlayer(dirin)
+	switch(dirin)
+		if(NORTH)
+			layer = BELOW_MOB_LAYER-0.01
+		if(WEST)
+			layer = BELOW_MOB_LAYER
+		if(EAST)
+			layer = BELOW_MOB_LAYER
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+			plane = GAME_PLANE_UPPER
 
 /obj/structure/fluff/fence/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
@@ -156,7 +172,7 @@
 /obj/structure/fluff/fence/palisade
 	name = "palisade"
 	desc = "A sturdy fence of wooden stakes."
-	icon = 'icons/roguetown/misc/railing.dmi' // This should be futher refactored but not
+	icon = 'icons/roguetown/misc/railing.dmi'
 	icon_state = "fence"
 	opacity = TRUE
 	anchored = TRUE
