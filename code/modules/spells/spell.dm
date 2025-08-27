@@ -204,7 +204,7 @@
 		if(!check_cost(charge_drain))
 			to_chat(owner, span_userdanger("I cannot uphold the channeling!"))
 			cancel_casting()
-			return PROCESS_KILL
+			return
 		invoke_cost(charge_drain)
 
 	// If this is true we hit our charge goal so stop invoking the cost and update the pointer
@@ -213,10 +213,9 @@
 		if(!check_cost(charge_drain))
 			to_chat(owner, span_userdanger("I cannot uphold the channeling!"))
 			cancel_casting()
-			return PROCESS_KILL
+			return
 		owner.client.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
 		owner.update_mouse_pointer()
-		return PROCESS_KILL
 
 /datum/action/cooldown/spell/Grant(mob/grant_to)
 	// Spells are hard baked to pratically only work with living owners
