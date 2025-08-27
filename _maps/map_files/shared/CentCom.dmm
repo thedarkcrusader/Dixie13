@@ -1969,7 +1969,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/lich)
 "jO" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 1
 	},
 /turf/open/floor/grass/mixyel,
@@ -2195,7 +2195,7 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "lx" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 4
 	},
 /obj/machinery/light/fueled/firebowl/blackfire,
@@ -3537,7 +3537,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/lich)
 "uF" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 1
 	},
 /turf/open/floor/dirt/road,
@@ -4390,8 +4390,8 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/vampire_manor)
 "AI" = (
-/obj/structure/fluff/railing/fence,
-/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/fence/palisade,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "AJ" = (
@@ -4882,7 +4882,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/bandit_lair)
 "Ey" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 1
 	},
 /turf/open/floor/dirt,
@@ -5552,7 +5552,7 @@
 /turf/open/floor/twig,
 /area/rogue/indoors/lich)
 "Jo" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 8
 	},
 /turf/open/floor/dirt/road,
@@ -6000,7 +6000,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/vampire_manor)
 "MX" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 1
 	},
 /turf/open/floor/dirt,
@@ -6037,7 +6037,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "No" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 4
 	},
 /turf/open/floor/dirt,
@@ -6146,7 +6146,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors)
 "NU" = (
-/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/fence/palisade,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "NX" = (
@@ -6154,8 +6154,8 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/indoors/lich)
 "Oc" = (
-/obj/structure/fluff/railing/fence,
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/fence/palisade{
 	dir = 8
 	},
 /turf/open/floor/dirt/road,
@@ -6778,7 +6778,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "Sn" = (
-/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/fence/palisade,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "Sq" = (
@@ -7261,7 +7261,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/vampire_manor)
 "Vw" = (
-/obj/structure/fluff/railing/fence{
+/obj/structure/fluff/fence/palisade{
 	dir = 1
 	},
 /turf/open/floor/grass,
