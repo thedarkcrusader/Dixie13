@@ -134,10 +134,11 @@
 	dna?.species.handle_environment(src)
 
 /mob/living/carbon/human/proc/handle_hygiene()
-	if(stat == DEAD)
+	if(stat == DEAD || HAS_TRAIT(src, TRAIT_NOHYGIENE))
 		return
 	if(HAS_TRAIT(src, TRAIT_ALWAYS_CLEAN))
 		set_hygiene(HYGIENE_LEVEL_CLEAN)
+
 
 	else
 		var/hygiene_loss = 0
