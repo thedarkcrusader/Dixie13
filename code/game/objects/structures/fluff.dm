@@ -41,7 +41,7 @@
 	if(lay)
 		layer = lay
 
-/obj/structure/fluff/railing/init_connect_loc_element()
+/obj/structure/fluff/railing/proc/init_connect_loc_element()
 	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
 	AddElement(/datum/element/connect_loc, loc_connections)
 
