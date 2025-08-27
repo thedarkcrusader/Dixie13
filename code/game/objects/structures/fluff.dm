@@ -36,11 +36,14 @@
 
 /obj/structure/fluff/railing/Initialize()
 	. = ..()
-	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
-	AddElement(/datum/element/connect_loc, loc_connections)
+	init_connect_loc_element()
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
+
+/obj/structure/fluff/railing/init_connect_loc_element()
+	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/fluff/railing/proc/getwlayer(dirin)
 	switch(dirin)
@@ -153,7 +156,7 @@
 /obj/structure/fluff/fence/palisade
 	name = "palisade"
 	desc = "A sturdy fence of wooden stakes."
-	icon = 'icons/roguetown/misc/railing.dmi' // This should be futher refactored but not today...
+	icon = 'icons/roguetown/misc/railing.dmi' // This should be futher refactored but not
 	icon_state = "fence"
 	opacity = TRUE
 	anchored = TRUE
