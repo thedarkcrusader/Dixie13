@@ -210,7 +210,7 @@
 	name = "Lead Bullets 4x"
 	hammers_per_item = 4
 	created_item = /obj/item/ammo_casing/caseless/bullet
-	required_item = /obj/item/ingot/iron
+	required_item = /obj/item/ingot/tin
 	craftdiff = 2
 	created_amount = 4
 
