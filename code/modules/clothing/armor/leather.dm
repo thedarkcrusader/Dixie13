@@ -255,3 +255,8 @@
 	name = "renegade's coat"
 	desc = "An insulated leather coat with capelets. It protects you well from the elements, a useful thing for those who like to wait in ambush."
 	icon_state = "renegadecoat"
+
+/obj/item/clothing/armor/leather/jacket/leathercoat/wretchrenegade
+	name = "renegade's coat"
+	desc = "An insulated leather coat with capelets. It protects you well from the elements, a useful thing for those who like to wait in ambush."
+	color = CLOTHING_ASH_GREY

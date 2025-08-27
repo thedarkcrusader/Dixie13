@@ -208,6 +208,12 @@
 	max_ammo = 1
 	start_empty = TRUE
 
+/obj/item/ammo_box/magazine/internal/shot/musk/loaded
+	ammo_type = /obj/item/ammo_casing/caseless/bullet
+	caliber = "musketball"
+	max_ammo = 1
+	start_empty = FALSE
+
 /obj/item/reagent_containers/glass/bottle/aflask
 	name = "alchemical flask"
 	desc = "A small metal flask used for the secure storing of alchemical powders."
@@ -219,3 +225,18 @@
 /obj/item/reagent_containers/glass/bottle/aflask/Initialize()
 	. = ..()
 	icon_state = "aflask"
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/musk/loaded
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/Initialize()
+	. = ..()
+	cocked = TRUE
+	rammed = TRUE
+	powdered = TRUE
+	wound = TRUE
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	. = ..()
+	obj_integrity = 0
+	obj_break()
