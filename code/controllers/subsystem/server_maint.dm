@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(server_maint)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/currentrun
 	var/cleanup_ticker = 0
+	var/list/afk_clients
 
 /datum/controller/subsystem/server_maint/PreInit()
 	world.hub_password = "" //quickly! before the hubbies see us.
@@ -22,7 +23,7 @@ SUBSYSTEM_DEF(server_maint)
 	if(!resumed)
 		if(listclearnulls(GLOB.clients))
 			log_world("Found a null in clients list!")
-		src.currentrun = GLOB.clients.Copy()
+		currentrun = GLOB.clients.Copy()
 
 		switch (cleanup_ticker) // do only one of these at a time, once per 5 fires
 			if (0)
@@ -50,10 +51,10 @@ SUBSYSTEM_DEF(server_maint)
 			else
 				cleanup_ticker++
 
-	var/list/currentrun = src.currentrun
 	var/round_started = SSticker.HasRoundStarted()
 
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
+	var/afk_period = CONFIG_GET(number/inactivity_period)
 	var/kick_period = CONFIG_GET(number/afk_period)
 
 	for(var/client/C as anything in currentrun)
@@ -62,7 +63,7 @@ SUBSYSTEM_DEF(server_maint)
 			if(C.holder)
 				continue
 			var/mob/cmob = C.mob
-			if(isnewplayer(cmob) && SSticker.queued_players.Find(cmob))
+			if(isnewplayer(cmob) && (locate(cmob) in SSticker.queued_players))
 				continue
 			if(C.is_afk(kick_period))
 				log_access("IDLE DISCONNECT: [key_name(C)]")
@@ -71,6 +72,14 @@ SUBSYSTEM_DEF(server_maint)
 				<b><u><a href='byond://winset?command=.reconnect'>clicking here to reconnect</a></u></b>."))
 				QDEL_IN(C, 1) //to ensure they get our message before getting disconnected
 				continue
+			if(C.is_afk(afk_period))
+				if(locate(C) in afk_clients)
+					continue
+				LAZYADD(afk_clients, C)
+				log_access("AFK: [key_name(C)]")
+				to_chat(C, span_userdanger("You have been inactive for more than [DisplayTimeText(afk_period)] and will be kicked in [DisplayTimeText(kick_period - afk_period)]."))
+			else
+				LAZYREMOVE(afk_clients, C)
 
 		if(!(!C || world.time - C.connection_time < PING_BUFFER_TIME || C.inactivity >= (wait-1)))
 			winset(C, null, "command=.update_ping+[num2text(world.time+world.tick_lag*TICK_USAGE_REAL/100, 32)]")
