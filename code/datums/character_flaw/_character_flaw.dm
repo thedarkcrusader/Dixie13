@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	desc = "I'm a normal person, how rare! (Consumes 3 triumphs or randomizes)"
 	random_exempt = TRUE
 
-/datum/charflaw/randflaw/after_spawn(mob/user)
+/datum/charflaw/noflaw/after_spawn(mob/user)
 	. = ..()
 	if(!ishuman(user))
 		return
