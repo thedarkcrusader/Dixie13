@@ -70,6 +70,7 @@
 		update_stamina()
 		update_energy()
 		handle_environment()
+		handle_hygiene()
 		if(health <= 0)
 			apply_damage(1, OXY)
 		if(dna?.species)
@@ -131,6 +132,50 @@
 
 /mob/living/carbon/human/handle_environment()
 	dna?.species.handle_environment(src)
+
+/mob/living/carbon/human/proc/handle_hygiene()
+	if(stat == DEAD)
+		return
+	if(HAS_TRAIT(src, TRAIT_ALWAYS_CLEAN))
+		set_hygiene(HYGIENE_LEVEL_CLEAN)
+
+	else
+		var/hygiene_loss = 0
+		//If you're covered in blood, you'll start smelling like shit faster.
+		var/obj/item/head = get_item_by_slot(ITEM_SLOT_HEAD)
+		if(head && HAS_BLOOD_DNA(head))
+			hygiene_loss -= 1 * HYGIENE_FACTOR
+
+		var/obj/item/neck = get_item_by_slot(ITEM_SLOT_NECK)
+		if(neck && HAS_BLOOD_DNA(neck))
+			hygiene_loss -= 1 * HYGIENE_FACTOR
+
+		var/obj/item/mask = get_item_by_slot(ITEM_SLOT_MASK)
+		if(mask && HAS_BLOOD_DNA(mask))
+			hygiene_loss -= 1 * HYGIENE_FACTOR
+
+		var/obj/item/shirt = get_item_by_slot(ITEM_SLOT_SHIRT)
+		if(shirt && HAS_BLOOD_DNA(shirt))
+			hygiene_loss -= 2 * HYGIENE_FACTOR
+
+		var/obj/item/cloak = get_item_by_slot(ITEM_SLOT_CLOAK)
+		if(cloak && HAS_BLOOD_DNA(cloak))
+			hygiene_loss -= 2 * HYGIENE_FACTOR
+
+		var/obj/item/pants = get_item_by_slot(ITEM_SLOT_PANTS)
+		if(pants && HAS_BLOOD_DNA(pants))
+			hygiene_loss -= 3 * HYGIENE_FACTOR
+
+		var/obj/item/armor = get_item_by_slot(ITEM_SLOT_ARMOR)
+		if(armor && HAS_BLOOD_DNA(armor))
+			hygiene_loss -= 3 * HYGIENE_FACTOR
+
+		var/obj/item/shoes = get_item_by_slot(ITEM_SLOT_SHOES)
+		if(shoes && HAS_BLOOD_DNA(shoes))
+			hygiene_loss -= 0.5 * HYGIENE_FACTOR
+
+		adjust_hygiene(hygiene_loss)
+	dna?.species.handle_hygiene(src)
 
 ///FIRE CODE
 /mob/living/carbon/human/handle_fire()

@@ -98,6 +98,9 @@
 	stressadd = -5
 	desc = span_green("Down with the tyranny!")
 
+
+//Hygiene
+
 /datum/stressevent/clean
 	timer = 15 MINUTES
 	stressadd = -1
@@ -108,15 +111,18 @@
 	stressadd = -2
 	desc = span_green("That was an amazing bath.")
 
+/datum/stressevent/filth_lover
+	timer = 10 MINUTES
+	stressadd = -1
+	desc = span_green("I smell horrid.")
+
+//Music
 /datum/stressevent/music
 	timer = 30 SECONDS
 	stressadd = 0 // you suck at music
 	desc = span_green("This music is pleasant.")
 
-/datum/stressevent/beautiful
-	timer = 2 MINUTES
-	stressadd = -2
-	desc = span_green("Their face is a work of art!")
+
 
 /datum/stressevent/music/two
 	stressadd = -1
@@ -137,6 +143,11 @@
 /datum/stressevent/music/six
 	stressadd = -3
 	desc = span_green("This music is divine.")
+
+/datum/stressevent/beautiful
+	timer = 2 MINUTES
+	stressadd = -2
+	desc = span_green("Their face is a work of art!")
 
 /datum/stressevent/eora
 	stressadd = -4
@@ -218,3 +229,5 @@
 	stressadd = -1
 	desc = span_green("I love the night!")
 	timer = 20 MINUTES
+
+

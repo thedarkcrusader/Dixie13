@@ -75,7 +75,7 @@
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
-	ADD_TRAIT(character, TRAIT_NOSTINK, "[type]")
+	ADD_TRAIT(character, TRAIT_DEADNOSE, "[type]")
 
 /datum/special_trait/latentmagic
 	name = "Latent Magic"

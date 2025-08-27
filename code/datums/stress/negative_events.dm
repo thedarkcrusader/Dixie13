@@ -422,3 +422,20 @@
 	timer = INFINITY
 	stressadd = 3
 	desc = span_red("I've been taken hostage!")
+
+//Hygiene
+
+/datum/stressevent/dirty
+	timer = INFINITY
+	desc = span_warning("I smell horrid.")
+	stressadd = 1
+
+/datum/stressevent/disgusting
+	timer = INFINITY
+	desc = span_warning("I smell <i>DISGUSTING!</i>")
+	stressadd = 2
+
+/datum/stressevent/forced_clean
+	timer = 10 MINUTES
+	desc = span_warning("My wonderful musk has been washed away...")
+	stressadd = 1
