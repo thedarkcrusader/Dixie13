@@ -127,12 +127,15 @@ GLOBAL_LIST_EMPTY(patreon_races)
 
 	/// Multipler for how quickly nutrition decreases
 	var/nutrition_mod = 1
+	/// Multiplier for how quickly hygiene decreases
+	var/hygiene_mod = 1
 	/// Multipler for blood loss
 	var/bleed_mod = 1
 	/// Multipler for pain
 	var/pain_mod = 1
 	/// Electrocution coeffcient
 	var/siemens_coeff = 1
+
 
 	/// Type of damage melee attacks do
 	var/attack_type = BRUTE
@@ -1244,6 +1247,54 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	if(H.gender == FEMALE)
 		H.set_facial_hair_style(/datum/sprite_accessory/hair/facial/none, FALSE)
 	H.set_hair_style(/datum/sprite_accessory/hair/head/bald)
+
+
+/datum/species/proc/handle_hygiene(mob/living/carbon/human/H)
+	if(H.stat == DEAD)
+		return
+	if(HAS_TRAIT(H, TRAIT_NOHYGIENE))
+		return
+	if (H.hygiene > 0)
+		var/hygiene_rate = (HYGIENE_FACTOR * hygiene_mod)
+		H.adjust_hygiene(-hygiene_rate)
+	switch(H.hygiene)
+		if(HYGIENE_LEVEL_CLEAN to HYGIENE_LEVEL_CLEAN)
+			if(HAS_TRAIT(H, TRAIT_STINKY))
+				H.add_stress(/datum/stressevent/forced_clean)
+				H.remove_stress(/datum/stressevent/filth_lover)
+			else
+				H.add_stress(/datum/stressevent/clean)
+			H.remove_status_effect(/datum/status_effect/debuff/stinky_person)
+			H.remove_stress(/datum/stressevent/dirty)
+			H.remove_stress(/datum/stressevent/disgusting)
+		if(HYGIENE_LEVEL_DISGUSTING to HYGIENE_LEVEL_DISGUSTING)
+			if(HAS_TRAIT(H, TRAIT_STINKY))
+				H.add_stress(/datum/stressevent/filth_lover)
+			else
+				H.add_stress(/datum/stressevent/disgusting)
+			H.apply_status_effect(/datum/status_effect/debuff/stinky_person)
+			H.remove_stress(/datum/stressevent/forced_clean)
+			H.remove_stress(/datum/stressevent/dirty)
+			H.remove_stress(/datum/stressevent/clean)
+
+		if(HYGIENE_LEVEL_DIRTY to HYGIENE_LEVEL_CLEAN)
+			H.remove_stress(/datum/stressevent/dirty)
+			H.remove_stress(/datum/stressevent/disgusting)
+			H.remove_status_effect(/datum/status_effect/debuff/stinky_person)
+		if(HYGIENE_LEVEL_DISGUSTING to HYGIENE_LEVEL_DIRTY)
+			if(HAS_TRAIT(H, TRAIT_STINKY))
+				H.add_stress(/datum/stressevent/filth_lover)
+			else
+				H.add_stress(/datum/stressevent/dirty)
+			H.remove_status_effect(/datum/status_effect/debuff/stinky_person)
+			H.remove_stress(/datum/stressevent/forced_clean)
+			H.remove_stress(/datum/stressevent/disgusting)
+			H.remove_stress(/datum/stressevent/clean)
+
+
+
+
+
 
 //////////////////
 // ATTACK PROCS //

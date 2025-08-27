@@ -51,6 +51,8 @@
 
 	var/cached_use = 0
 
+	var/cleanliness_factor = 1 //related to hygiene for washing
+
 /turf/open/water/proc/set_watervolume(volume)
 	water_volume = volume
 	if(src in children)
@@ -409,6 +411,16 @@
 			if(!mapped)
 				adjust_originate_watervolume(-2)
 			playsound(user, pick(wash), 100, FALSE)
+
+			//handle hygiene
+			if(ishuman(user) && wash_in) //dirty water won't clean you
+				var/mob/living/carbon/human/H = user
+				var/list/equipped_items = H.get_equipped_items()
+				if(length(equipped_items) > 0)
+					to_chat(user, "<span class='notice'>I could probably get cleaner if I weren't wearing clothes...</span>")
+					H.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
+				else
+					H.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /turf/open/water/attackby_secondary(obj/item/item2wash, mob/user, params)
@@ -477,6 +489,7 @@
 	icon_state = MAP_SWITCH("bathtile", "bathtileW")
 	water_level = 2
 	slowdown = 15
+	cleanliness_factor = 5
 	water_reagent = /datum/reagent/water
 
 /turf/open/water/sewer
@@ -517,6 +530,9 @@
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
+		if(ishuman(AM))
+			var/mob/living/carbon/human/H = AM
+			H.adjust_hygiene(-1 * HYGIENE_FACTOR)
 
 /datum/reagent/water/gross/sewer
 	color = "#705a43"
@@ -563,6 +579,9 @@
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
+		if(ishuman(AM))
+			var/mob/living/carbon/human/H = AM
+			H.adjust_hygiene(-1 * HYGIENE_FACTOR)
 
 /turf/open/water/swamp/deep
 	name = "murk"
