@@ -123,46 +123,30 @@
 	icon_state = "border"
 	passcrawl = FALSE
 
-/obj/structure/fluff/railing/fence
-	name = "palisade"
-	desc = "A sturdy fence of wooden stakes."
-	icon_state = "fence"
-	density = TRUE
-	opacity = TRUE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
-	max_integrity = 400
-	pass_flags_self = PASSSTRUCTURE
-	passcrawl = FALSE
-	climb_offset = 6
-
-/obj/structure/fluff/railing/fence/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(get_dir(loc, target) == dir)
-		return FALSE
-	return TRUE
-
-/obj/structure/fluff/railing/woodfence
+/obj/structure/fluff/fence
 	name = "wooden fence"
 	desc = "A sturdy fence of wooden planks."
 	icon = 'icons/roguetown/misc/tallwoodenrailing.dmi'
 	icon_state = "tallwoodenrailing"
 	density = TRUE
 	opacity = FALSE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
+	layer = ABOVE_MOB_LAYER
 	max_integrity = 500
-	passcrawl = FALSE
-	climb_offset = 6
 	pass_flags_self = PASSSTRUCTURE
 
-/obj/structure/fluff/railing/woodfence/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fluff/fence/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(get_dir(loc, target) == dir)
 		return FALSE
 	return TRUE
+
+/obj/structure/fluff/fence/palisade
+	name = "palisade"
+	desc = "A sturdy fence of wooden stakes."
+	icon_state = "fence"
+	opacity = TRUE
+	anchored = TRUE
+	climb_offset = 6
 
 /obj/structure/bars
 	name = "bars"
