@@ -550,10 +550,10 @@
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors/town/vault)
 "aAB" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 8
 	},
 /turf/open/floor/grass/cold,
@@ -2698,7 +2698,7 @@
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors/town/vault)
 "cBA" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 8
 	},
 /obj/effect/falling_leaves,
@@ -4000,7 +4000,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cavewet)
 "dMg" = (
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/rtfield)
 "dMq" = (
@@ -4610,7 +4610,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/soilsons)
 "esL" = (
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/rtfield)
 "esO" = (
@@ -6062,7 +6062,7 @@
 	},
 /area/rogue/indoors/town/clocktower)
 "fQN" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 4
 	},
 /turf/open/floor/grass/cold,
@@ -7487,10 +7487,10 @@
 /turf/open/floor/concrete,
 /area/rogue/under/town/basement)
 "gZf" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 8
 	},
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /obj/effect/falling_leaves,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/rtfield)
@@ -9506,7 +9506,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/church/inquisition)
 "iYo" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 4
 	},
 /turf/open/floor/grass/yel,
@@ -12249,7 +12249,7 @@
 	},
 /area/rogue/under/cave)
 "lwF" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
 /turf/open/floor/dirt,
@@ -13201,7 +13201,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
 "mCT" = (
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /obj/effect/falling_leaves,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
@@ -13898,10 +13898,10 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/cave)
 "nfk" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 8
 	},
 /turf/open/floor/dirt,
@@ -16740,7 +16740,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue/indoors/town/tavern)
 "pFW" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 4
 	},
 /obj/effect/falling_leaves,
@@ -17576,10 +17576,10 @@
 /turf/open/floor/tile/checker,
 /area/rogue/indoors/town/manor)
 "qte" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 4
 	},
 /turf/open/floor/dirt,
@@ -19570,7 +19570,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/orphanage)
 "skA" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
 /turf/open/floor/grass/yel,
@@ -20704,7 +20704,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
 "toZ" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 1
 	},
 /turf/open/floor/grass/cold,
@@ -22324,7 +22324,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/church)
 "uSj" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 4
 	},
 /turf/open/floor/dirt,
@@ -23842,7 +23842,7 @@
 /turf/open/floor/tile/masonic/single,
 /area/rogue/indoors/town/bath)
 "whv" = (
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "whI" = (
@@ -24736,7 +24736,7 @@
 /turf/open/floor/tile/diamond/blue,
 /area/rogue/indoors/town/manor)
 "xaW" = (
-/obj/structure/fluff/fence/palisade,
+/obj/structure/fluff/railing/tall/palisade,
 /obj/effect/falling_leaves,
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/rtfield)
@@ -24993,7 +24993,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/church/chapel)
 "xmu" = (
-/obj/structure/fluff/fence/palisade{
+/obj/structure/fluff/railing/tall/palisade{
 	dir = 8
 	},
 /obj/effect/falling_leaves,
