@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(server_maint)
 	if(!resumed)
 		if(listclearnulls(GLOB.clients))
 			log_world("Found a null in clients list!")
-		currentrun = GLOB.clients.Copy()
+		src.currentrun = GLOB.clients.Copy()
 
 		switch (cleanup_ticker) // do only one of these at a time, once per 5 fires
 			if (0)
@@ -51,8 +51,9 @@ SUBSYSTEM_DEF(server_maint)
 			else
 				cleanup_ticker++
 
-	var/round_started = SSticker.HasRoundStarted()
+	var/list/currentrun = src.currentrun
 
+	var/round_started = SSticker.HasRoundStarted()
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
 	var/afk_period = CONFIG_GET(number/inactivity_period)
 	var/kick_period = CONFIG_GET(number/afk_period)
@@ -75,7 +76,7 @@ SUBSYSTEM_DEF(server_maint)
 			if(C.is_afk(afk_period))
 				if(locate(C) in afk_clients)
 					continue
-				LAZYADD(afk_clients, C)
+				LAZYOR(afk_clients, C)
 				log_access("AFK: [key_name(C)]")
 				to_chat(C, span_userdanger("You have been inactive for more than [DisplayTimeText(afk_period)] and will be kicked in [DisplayTimeText(kick_period - afk_period)]."))
 			else
