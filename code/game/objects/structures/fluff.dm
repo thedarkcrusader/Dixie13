@@ -36,14 +36,11 @@
 
 /obj/structure/fluff/railing/Initialize()
 	. = ..()
-	init_connect_loc_element()
+	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
+	AddElement(/datum/element/connect_loc, loc_connections)
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
-
-/obj/structure/fluff/railing/proc/init_connect_loc_element()
-	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
-	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/fluff/railing/proc/getwlayer(dirin)
 	switch(dirin)
@@ -76,6 +73,7 @@
 
 /obj/structure/fluff/railing/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
+
 	if(dir in CORNERDIRS)
 		return
 	if(istype(leaving, /obj/projectile))
@@ -134,6 +132,18 @@
 	max_integrity = 500
 	pass_flags_self = PASSSTRUCTURE
 
+/obj/structure/fluff/fence/Initialize()
+	. = ..()
+	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/structure/fluff/fence/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+	SIGNAL_HANDLER
+
+	if(get_dir(leaving.loc, new_location) == dir)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
+
 /obj/structure/fluff/fence/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(get_dir(loc, target) == dir)
@@ -143,6 +153,7 @@
 /obj/structure/fluff/fence/palisade
 	name = "palisade"
 	desc = "A sturdy fence of wooden stakes."
+	icon = 'icons/roguetown/misc/railing.dmi' // This should be futher refactored but not today...
 	icon_state = "fence"
 	opacity = TRUE
 	anchored = TRUE
