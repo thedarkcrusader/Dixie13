@@ -100,6 +100,7 @@
 		if((armor_value == 0 && skill_level > 0) || (armor_value > 0 && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
 			user.visible_message(span_info("[user] repairs [I]!"))
 			I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
+			use(1)
 		else
 			if(prob(20 - user.STALUC)) //Unlucky here!
 				I.take_damage(150, BRUTE, "slash")
@@ -109,6 +110,7 @@
 				I.obj_integrity = min(I.obj_integrity + 50, I.max_integrity)
 				playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
 				user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what [user.p_they()] [user.p_were()] doing!"))
+				use(1)
 			else
 				I.take_damage(50, BRUTE, "slash")
 				user.visible_message(span_warning("[user] damaged [I] due to a lack of skill!"))
