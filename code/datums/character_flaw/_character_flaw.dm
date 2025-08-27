@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		QDEL_NULL(charflaw)
 
 	charflaw = new flaw(src)
+	charflaw.after_spawn(src)
 
 /datum/charflaw/randflaw
 	name = "Random Flaw"
