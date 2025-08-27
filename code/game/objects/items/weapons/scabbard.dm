@@ -119,7 +119,7 @@
 /obj/item/weapon/scabbard/sword/noble
 	name = "gold decorated scabbard"
 	desc = "A scabbard designed to hold a sword. This one is decorated on a silver platter."
-	sellprice = 100
+	sellprice = 50
 	icon_state = "nscabbard"
 
 /obj/item/weapon/scabbard/sword/royal
