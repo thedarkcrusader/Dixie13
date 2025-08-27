@@ -157,7 +157,6 @@
 	pass_throwing = FALSE
 	pass_projectile = TRUE
 
-
 /obj/structure/fluff/railing/tall/palisade
 	name = "palisade"
 	desc = "A sturdy fence of wooden stakes."
