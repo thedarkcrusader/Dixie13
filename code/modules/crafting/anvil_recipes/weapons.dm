@@ -113,6 +113,14 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/iron
 
+/datum/anvil_recipe/weapons/iron/nsapo/iron
+
+	name = "Iron Kasuyu (+Stick)"
+	recipe_name = "an Iron Kasuyu Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/weapon/axe/nsapo/iron
+
 /datum/anvil_recipe/weapons/iron/bardiche
 	name = "Bardiche (+Bar, +Small Log)"
 	recipe_name = "a Bardiche"
@@ -308,6 +316,14 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/steel
+
+/datum/anvil_recipe/weapons/steel/nsapo/
+
+	name = "Steel Kasuyu (+Stick)"
+	recipe_name = "an Steel Kasuyu Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/weapon/axe/nsapo/
 
 /datum/anvil_recipe/weapons/steel/sledgehammer
 	name = "Steel Sledgehammer (+Small Log)"
