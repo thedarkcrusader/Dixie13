@@ -180,6 +180,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	base_item = /obj/item/kitchen/platter/copper
 */
+
 /obj/item/reagent_containers/glass/bowl
 	name = "bowl"
 	desc = "It is the empty space that makes the bowl useful."
