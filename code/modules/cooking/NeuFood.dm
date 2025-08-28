@@ -139,7 +139,7 @@
 	name = "pewter fork"
 	icon_state = "fork_iron"
 
-/// DEPRECIATED. USE /obj/item/plate instead.
+/* DEPRECIATED. USE /obj/item/plate instead.
 /obj/item/kitchen/platter
 	name = "platter"
 	desc = "Made from wood."
@@ -179,7 +179,7 @@
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	base_item = /obj/item/kitchen/platter/copper
-
+*/
 /obj/item/reagent_containers/glass/bowl
 	name = "bowl"
 	desc = "It is the empty space that makes the bowl useful."
@@ -514,6 +514,7 @@
 	..()
 	qdel(src)
 
+/*
 /*------------------\
 | Meals on platters |
 \------------------*/
@@ -539,7 +540,7 @@
 			to_chat(user, span_warning("[S] cannot be plated."))
 	else
 		return ..()
-
+*/
 
 
 /* * * * * * * * * * * **
