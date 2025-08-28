@@ -43,10 +43,10 @@
 				tag = "Hardened"
 			var/total_volume = metal.data[material]
 			var/reagent_color = initial(material.color)
-			if(total_volume / 3 < 1)
-				. += "It contains less than 1 oz of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
+			if(total_volume < 1)
+				. += "It contains less than 1 drop of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
 			else
-				. += "It contains [round(total_volume / 3)] oz of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
+				. += "It contains [total_volume] drops of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
 
 /obj/item/storage/crucible/process()
 	var/obj/machinery/light/fueled/smelter/smelter = loc
