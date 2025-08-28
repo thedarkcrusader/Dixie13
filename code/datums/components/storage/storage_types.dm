@@ -69,11 +69,11 @@
 	. = ..()
 
 	var/atom/boots = parent
-	if(istype(boots?.loc, /mob/living/carbon/human))
+	if(ishuman(boots?.loc))
 		var/mob/living/carbon/human/uncomfy = boots.loc
-		if(!istype(uncomfy) || (uncomfy.shoes != parent))
+		if((uncomfy.shoes != parent))
 			return
-		var/atom/real_location = src.real_location()
+		var/atom/real_location = real_location()
 		if(length(real_location.contents))
 			for(var/obj/item/I in real_location.contents)
 				if(!istype(I, /obj/item/weapon/knife))
@@ -86,16 +86,15 @@
 	if(slot != ITEM_SLOT_SHOES)
 		return
 
-	var/atom/real_location = real_location()
 	var/atom/boots = parent
-	if(length(real_location.contents))
-		var/list/irritants = list()
-		for(var/obj/item/I in real_location.contents)
-			if(!istype(I, /obj/item/weapon/knife))
-				irritants |= I
-		if(length(irritants) && ishuman(boots?.loc))
-			var/mob/living/carbon/wearer = user
-			wearer.add_stress(/datum/stressevent/fullshoe)
+	if(ishuman(boots?.loc))
+		var/mob/living/carbon/human/uncomfy = boots.loc
+		var/atom/real_location = real_location()
+		if(length(real_location.contents))
+			for(var/obj/item/I in real_location.contents)
+				if(!istype(I, /obj/item/weapon/knife))
+					uncomfy.add_stress(/datum/stressevent/fullshoe)
+					return
 
 /datum/component/storage/concrete/boots/proc/unequipped_stress(datum/source, mob/living/carbon/user)
 	if(!istype(user) || (user.shoes != parent) )

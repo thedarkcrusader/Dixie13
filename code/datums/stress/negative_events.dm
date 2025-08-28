@@ -123,7 +123,7 @@
 
 /datum/stressevent/fullshoe
 	stressadd = 1
-	desc = "<span class='red'>There is something in my shoe.</span>"
+	desc = span_red("There is something in my shoe.")
 
 /datum/stressevent/uncookedfood
 	timer = 2 MINUTES
