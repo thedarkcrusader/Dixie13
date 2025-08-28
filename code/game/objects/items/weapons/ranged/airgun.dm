@@ -29,6 +29,10 @@
 	associated_skill = /datum/skill/combat/axesmaces //what is used when swinging with it
 	var/cocked = FALSE
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/apply_components()
+	AddComponent(/datum/component/steam_storage, 500, 0)
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+
 /obj/item/ammo_box/magazine/internal/shot/airgun
 	ammo_type = /obj/item/ammo_casing/caseless/bullet
 	caliber = "musketball"
