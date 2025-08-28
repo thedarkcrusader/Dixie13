@@ -1631,7 +1631,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		character.set_flaw(charflaw.type)
 
 	if(culinary_preferences)
-		character.culinary_preferences = culinary_preferences
+		apply_culinary_preferences(character)
 
 	if(parent)
 		var/datum/role_bans/bans = get_role_bans_for_ckey(parent.ckey)

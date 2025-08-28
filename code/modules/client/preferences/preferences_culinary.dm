@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(cached_food_flat_icons)
 GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
-/proc/get_cached_food_flat_icon(obj/item/reagent_containers/food_type)
+/proc/get_cached_food_flat_icon(obj/item/reagent_containers/food/snacks/food_type)
 	var/cache_key = "[food_type]"
 	if(!GLOB.cached_food_flat_icons[cache_key])
 		var/image/dummy = image(initial(food_type.icon), null, initial(food_type.icon_state), initial(food_type.layer))
@@ -56,7 +56,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 			show_drink_selection_ui(user)
 		if("confirm_food")
 			var/food_type = text2path(href_list["food_type"])
-			if(ispath(food_type, /obj/item/reagent_containers/food))
+			if(ispath(food_type, /obj/item/reagent_containers/food/snacks))
 				culinary_preferences[CULINARY_FAVOURITE_FOOD] = food_type
 				user << browse(null, "window=food_selection")
 				show_culinary_ui(user)
@@ -109,7 +109,6 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 	dat += "</style>"
 
 	var/list/blacklisted_food = list(
-		/obj/item/reagent_containers/food/snacks,
 		/obj/item/reagent_containers/food/snacks/produce,
 		/obj/item/reagent_containers/food/snacks/produce/vegetable,
 		/obj/item/reagent_containers/food/snacks/produce/fruit,
@@ -143,13 +142,13 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/butterdough_slice,
 	)
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
 
 	var/list/filtered_food_types = list()
 	var/list/name_to_type = list()
 
 	for(var/food_type in food_types)
-		var/obj/item/reagent_containers/food/food_instance = food_type
+		var/obj/item/reagent_containers/food/snacks/food_instance = food_type
 		var/food_name = initial(food_instance.name)
 
 		if(!name_to_type[food_name])
@@ -164,7 +163,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
 	var/list/food_with_faretypes = list()
 	for(var/food_type in filtered_food_types)
-		var/obj/item/reagent_containers/food/food_instance = food_type
+		var/obj/item/reagent_containers/food/snacks/food_instance = food_type
 		var/food_faretype = initial(food_instance.faretype)
 		var/food_name = initial(food_instance.name)
 		food_with_faretypes += list(list("type" = food_type, "faretype" = food_faretype, "name" = food_name))
@@ -209,8 +208,25 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
 	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - blacklisted_drinks
 
-	var/list/drink_with_qualities = list()
+	var/list/filtered_drink_types = list()
+	var/list/name_to_type = list()
+
 	for(var/drink_type in drink_types)
+		var/datum/reagent/consumable/drink_instance = drink_type
+		var/drink_name = initial(drink_instance.name)
+
+		if(!name_to_type[drink_name])
+			name_to_type[drink_name] = drink_type
+			filtered_drink_types += drink_type
+		else
+			var/existing_type = name_to_type[drink_name]
+			if(ispath(drink_type, existing_type))
+				name_to_type[drink_name] = drink_type
+				filtered_drink_types -= existing_type
+				filtered_drink_types += drink_type
+
+	var/list/drink_with_qualities = list()
+	for(var/drink_type in filtered_drink_types)
 		var/datum/reagent/consumable/drink_instance = drink_type
 		var/drink_quality = initial(drink_instance.quality)
 		var/drink_name = initial(drink_instance.name)
@@ -257,7 +273,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
 	dat += print_culinary_page(user)
-	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 305, 245)
+	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 345, 245)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
