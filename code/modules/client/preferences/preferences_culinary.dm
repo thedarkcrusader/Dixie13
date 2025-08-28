@@ -145,7 +145,6 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
 	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
 
-	// Filter out subtypes that have the same name as their parent
 	var/list/filtered_food_types = list()
 	var/list/name_to_type = list()
 
@@ -153,19 +152,15 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		var/obj/item/reagent_containers/food/food_instance = food_type
 		var/food_name = initial(food_instance.name)
 
-		// If we haven't seen this name before, add it
 		if(!name_to_type[food_name])
 			name_to_type[food_name] = food_type
 			filtered_food_types += food_type
 		else
-			// If we have seen this name, keep the one that's lower in the type hierarchy (the more basic one)
 			var/existing_type = name_to_type[food_name]
 			if(ispath(food_type, existing_type))
-				// The new type is a subtype of the existing one, so replace it
 				name_to_type[food_name] = food_type
 				filtered_food_types -= existing_type
 				filtered_food_types += food_type
-			// else: The existing type is already more basic, so keep it
 
 	var/list/food_with_faretypes = list()
 	for(var/food_type in filtered_food_types)
@@ -261,7 +256,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 /datum/preferences/proc/show_culinary_ui(mob/user)
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
-	dat += print_culinary_page(user) // Pass the user to get the client for asset sending
+	dat += print_culinary_page(user)
 	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 305, 245)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)

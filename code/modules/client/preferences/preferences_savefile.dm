@@ -266,6 +266,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["culinary_preferences"] >> loaded_culinary_preferences
 	if(loaded_culinary_preferences)
 		culinary_preferences = loaded_culinary_preferences
+		validate_culinary_preferences()
 	else
 		reset_culinary_preferences()
 
