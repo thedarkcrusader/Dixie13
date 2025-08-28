@@ -309,6 +309,8 @@
 	. = ..()
 	new /obj/item/weapon/surgery/scalpel(loc)
 	new /obj/item/weapon/surgery/saw(loc)
+	//two hemostats because one is needed to clamp bleeders, the other is needed to actually remove stuff with it
+	new /obj/item/weapon/surgery/hemostat(loc)
 	new /obj/item/weapon/surgery/hemostat(loc)
 	new /obj/item/weapon/surgery/retractor(loc)
 	new /obj/item/weapon/surgery/bonesetter(loc)
@@ -333,7 +335,6 @@
 	)
 
 /obj/item/storage/belt/leather/knifebelt
-
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
 	icon_state = "knife"
@@ -348,7 +349,7 @@
 	if(length(contents) >= max_storage)
 		to_chat(user, span_warning("Your [src.name] is full!"))
 		return
-	to_chat(user, span_notice("You begin to gather the ammunition..."))
+	to_chat(user, span_notice("You begin to gather the tossblades..."))
 	for(var/obj/item/weapon/knife/throwingknife/knife in T.contents)
 		if(do_after(user, 5 DECISECONDS))
 			if(!eat_knife(knife))
