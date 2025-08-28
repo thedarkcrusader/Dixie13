@@ -1,3 +1,32 @@
+GLOBAL_LIST_EMPTY(cached_food_flat_icons)
+GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
+
+/proc/get_cached_food_flat_icon(obj/item/reagent_containers/food_type)
+	var/cache_key = "[food_type]"
+	if(!GLOB.cached_food_flat_icons[cache_key])
+		var/image/dummy = image(initial(food_type.icon), null, initial(food_type.icon_state), initial(food_type.layer))
+		GLOB.cached_food_flat_icons[cache_key] = "<img src='data:image/png;base64, [icon2base64(getFlatIcon(dummy))]'>"
+	return GLOB.cached_food_flat_icons[cache_key]
+
+/proc/get_cached_drink_flat_icon(drink_quality)
+	var/obj/item/reagent_containers/glass/icon_type
+	if(drink_quality <= 0)
+		icon_type = /obj/item/reagent_containers/glass/cup/wooden
+	else if(drink_quality <= 1)
+		icon_type = /obj/item/reagent_containers/glass/cup
+	else if(drink_quality <= 2)
+		icon_type = /obj/item/reagent_containers/glass/bottle
+	else if(drink_quality <= 3)
+		icon_type = /obj/item/reagent_containers/glass/cup/silver
+	else
+		icon_type = /obj/item/reagent_containers/glass/cup/golden
+
+	var/cache_key = "[icon_type]"
+	if(!GLOB.cached_drink_flat_icons[cache_key])
+		var/image/dummy = image(initial(icon_type.icon), null, initial(icon_type.icon_state), initial(icon_type.layer))
+		GLOB.cached_drink_flat_icons[cache_key] = "<img src='data:image/png;base64, [icon2base64(getFlatIcon(dummy))]'>"
+	return GLOB.cached_drink_flat_icons[cache_key]
+
 /datum/preferences/proc/validate_culinary_preferences()
 	if(!culinary_preferences)
 		culinary_preferences = list()
@@ -38,24 +67,29 @@
 				user << browse(null, "window=drink_selection")
 				show_culinary_ui(user)
 
-/datum/preferences/proc/print_culinary_page()
+/datum/preferences/proc/print_culinary_page(mob/user)
 	var/list/dat = list()
 
 	var/current_food = culinary_preferences[CULINARY_FAVOURITE_FOOD]
 	var/current_drink = culinary_preferences[CULINARY_FAVOURITE_DRINK]
 
 	var/food_name = "None"
+	var/food_icon
 	if(current_food)
 		var/obj/item/food_instance = current_food
 		food_name = capitalize(initial(food_instance.name))
+		food_icon = get_cached_food_flat_icon(current_food)
 
 	var/drink_name = "None"
+	var/drink_icon
 	if(current_drink)
-		var/datum/reagent/drink_instance = current_drink
+		var/datum/reagent/consumable/drink_instance = current_drink
 		drink_name = capitalize(initial(drink_instance.name))
+		var/drink_quality = initial(drink_instance.quality)
+		drink_icon = get_cached_drink_flat_icon(drink_quality)
 
-	dat += "<b>Favourite Food:</b> <a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[encode_special_chars(food_name)]</a><br>"
-	dat += "<b>Favourite Drink:</b> <a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a><br>"
+	dat += "<b>Favourite Food:</b> [food_icon] <a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[encode_special_chars(food_name)]</a><br>"
+	dat += "<b>Favourite Drink:</b> [drink_icon] <a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a><br>"
 
 	return dat
 
@@ -80,7 +114,8 @@
 		var/food_faretype = food_data["faretype"]
 
 		var/display_name = capitalize(food_name)
-		dat += "[icon2html(food_type, user)] <a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])<br>"
+		var/icon/food_icon = get_cached_food_flat_icon(food_type)
+		dat += "[food_icon] <a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])<br>"
 
 	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>Select Favourite Food</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -120,20 +155,9 @@
 		var/drink_name = drink_data["name"]
 		var/drink_quality = drink_data["quality"]
 
-		var/icon_type
-		if(drink_quality <= 0)
-			icon_type = /obj/item/reagent_containers/glass/cup/wooden
-		else if(drink_quality <= 1)
-			icon_type = /obj/item/reagent_containers/glass/cup
-		else if(drink_quality <= 2)
-			icon_type = /obj/item/reagent_containers/glass/bottle
-		else if(drink_quality <= 3)
-			icon_type = /obj/item/reagent_containers/glass/cup/silver
-		else
-			icon_type = /obj/item/reagent_containers/glass/cup/golden
-
 		var/display_name = capitalize(drink_name)
-		dat += "[icon2html(icon_type, user)] <a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])<br>"
+		var/icon/drink_icon = get_cached_drink_flat_icon(drink_quality)
+		dat += "[drink_icon] <a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])<br>"
 
 	var/datum/browser/popup = new(user, "drink_selection", "<div align='center'>Select Favourite Drink</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -164,7 +188,7 @@
 /datum/preferences/proc/show_culinary_ui(mob/user)
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
-	dat += print_culinary_page()
+	dat += print_culinary_page(user) // Pass the user to get the client for asset sending
 	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 305, 245)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
