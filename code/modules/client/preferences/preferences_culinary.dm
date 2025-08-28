@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/base_icon_state,
 	)
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - blacklisted_food
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
 
 	var/list/food_with_faretypes = list()
 	for(var/food_type in food_types)
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/datum/reagent/consumable/sugar,
 	)
 
-	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_drinks
+	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - blacklisted_drinks
 
 	var/list/drink_with_qualities = list()
 	for(var/drink_type in drink_types)
