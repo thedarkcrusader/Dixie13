@@ -123,12 +123,52 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/store,
 		/obj/item/reagent_containers/food/snacks/grown,
 		/obj/item/reagent_containers/food/snacks/base_icon_state,
+		/obj/item/reagent_containers/food/snacks/zybcake,
+		/obj/item/reagent_containers/food/snacks/zybcake_ready,
+		/obj/item/reagent_containers/food/snacks/strawbycake,
+		/obj/item/reagent_containers/food/snacks/strawbycake_ready,
+		/obj/item/reagent_containers/food/snacks/tangerinecake_ready,
+		/obj/item/reagent_containers/food/snacks/tangerinecake_cooked,
+		/obj/item/reagent_containers/food/snacks/crimsoncake,
+		/obj/item/reagent_containers/food/snacks/crimsoncake_ready,
+		/obj/item/reagent_containers/food/snacks/chescake,
+		/obj/item/reagent_containers/food/snacks/chescake_ready,
+		/obj/item/reagent_containers/food/snacks/chescake_poison_ready,
+		/obj/item/reagent_containers/food/snacks/cake,
+		/obj/item/reagent_containers/food/snacks/piedough,
+		/obj/item/reagent_containers/food/snacks/raisindough,
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/dough_slice,
+		/obj/item/reagent_containers/food/snacks/butterdough,
+		/obj/item/reagent_containers/food/snacks/butterdough_slice,
 	)
 
 	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
 
-	var/list/food_with_faretypes = list()
+	// Filter out subtypes that have the same name as their parent
+	var/list/filtered_food_types = list()
+	var/list/name_to_type = list()
+
 	for(var/food_type in food_types)
+		var/obj/item/reagent_containers/food/food_instance = food_type
+		var/food_name = initial(food_instance.name)
+
+		// If we haven't seen this name before, add it
+		if(!name_to_type[food_name])
+			name_to_type[food_name] = food_type
+			filtered_food_types += food_type
+		else
+			// If we have seen this name, keep the one that's lower in the type hierarchy (the more basic one)
+			var/existing_type = name_to_type[food_name]
+			if(ispath(food_type, existing_type))
+				// The new type is a subtype of the existing one, so replace it
+				name_to_type[food_name] = food_type
+				filtered_food_types -= existing_type
+				filtered_food_types += food_type
+			// else: The existing type is already more basic, so keep it
+
+	var/list/food_with_faretypes = list()
+	for(var/food_type in filtered_food_types)
 		var/obj/item/reagent_containers/food/food_instance = food_type
 		var/food_faretype = initial(food_instance.faretype)
 		var/food_name = initial(food_instance.name)
