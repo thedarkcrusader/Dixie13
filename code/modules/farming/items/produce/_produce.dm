@@ -229,7 +229,7 @@
 	icon_state = "berriesc0"
 	seed = /obj/item/neuFarm/seed/berry
 	tastes = list("berry" = 1)
-	faretype = FARE_NEUTRAL
+	faretype = FARE_POOR
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
 	dropshrink = 0.75
