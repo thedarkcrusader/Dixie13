@@ -6,6 +6,7 @@
 	sellprice = 0
 	force = 0
 	throwforce = 0
+	faretype = FARE_POOR
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0

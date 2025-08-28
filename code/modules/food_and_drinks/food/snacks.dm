@@ -714,6 +714,7 @@ All foods are distributed among various categories. Use common sense.
 	icon_state = "badrecipe"
 	list_reagents = list(/datum/reagent/toxin/bad_food = 30)
 	filling_color = "#8B4513"
+	faretype = FARE_IMPOVERISHED
 	foodtype = GROSS
 	burntime = 0
 	cooktime = 0

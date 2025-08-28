@@ -21,7 +21,7 @@
 /datum/stressevent/favourite_food
 	stressadd = -1
 	desc = span_green("I ate my favourite food!")
-	timer = 4 MINUTES
+	timer = 5 MINUTES
 
 /datum/stressevent/favourite_food/can_apply(mob/living/user)
 	. = ..()
@@ -34,7 +34,7 @@
 		if(human_eater.culinary_preferences && human_eater.culinary_preferences[CULINARY_FAVOURITE_FOOD])
 			var/favorite_food_type = human_eater.culinary_preferences[CULINARY_FAVOURITE_FOOD]
 			var/obj/item/reagent_containers/food/snacks/favorite_food_instance = favorite_food_type
-			timer = timer * (1 + initial(favorite_food_instance.faretype))
+			timer = timer * max(initial(favorite_food_instance.faretype), 1)
 			return TRUE
 
 /datum/stressevent/favourite_drink
@@ -53,5 +53,5 @@
 		if(human_drinker.culinary_preferences && human_drinker.culinary_preferences[CULINARY_FAVOURITE_DRINK])
 			var/favorite_drink_type = human_drinker.culinary_preferences[CULINARY_FAVOURITE_DRINK]
 			var/datum/reagent/consumable/favorite_drink_instance = favorite_drink_type
-			timer = timer * (1 + initial(favorite_drink_instance.quality))
+			timer = timer * max(1 + initial(favorite_drink_instance.quality), 1)
 			return TRUE

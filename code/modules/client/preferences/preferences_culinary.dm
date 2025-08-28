@@ -140,9 +140,25 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/dough_slice,
 		/obj/item/reagent_containers/food/snacks/butterdough,
 		/obj/item/reagent_containers/food/snacks/butterdough_slice,
+		/obj/item/reagent_containers/food/snacks/meat/wiener,
+		/obj/item/reagent_containers/food/snacks/meat/sausage,
+		/obj/item/reagent_containers/food/snacks/meat/fatty,
+		/obj/item/reagent_containers/food/snacks/rotten/sausage,
+		/obj/item/reagent_containers/food/snacks/rotten/poultry,
+		/obj/item/reagent_containers/food/snacks/rotten/bacon,
+		/obj/item/reagent_containers/food/snacks/rotten/mince,
+		/obj/item/reagent_containers/food/snacks/rotten/meat,
+		/obj/item/reagent_containers/food/snacks/rotten/egg,
+		/obj/item/reagent_containers/food/snacks/rotten/chickenleg,
+		/obj/item/reagent_containers/food/snacks/rotten/breadslice,
+		/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish,
+		/obj/item/reagent_containers/food/snacks/meat/mince/poultry,
+		/obj/item/reagent_containers/food/snacks/meat/poultry,
+		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet,
 	)
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - typesof(/obj/item/reagent_containers/food/snacks/fish) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
 
 	var/list/filtered_food_types = list()
 	var/list/name_to_type = list()
