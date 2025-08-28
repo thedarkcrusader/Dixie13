@@ -88,14 +88,25 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		var/drink_quality = initial(drink_instance.quality)
 		drink_icon = get_cached_drink_flat_icon(drink_quality)
 
-	dat += "<b>Favourite Food:</b> [food_icon] <a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[encode_special_chars(food_name)]</a><br>"
-	dat += "<b>Favourite Drink:</b> [drink_icon] <a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a><br>"
+	dat += "<style>"
+	dat += ".culinary-item { display: flex; align-items: center; margin-bottom: 5px; }"
+	dat += ".culinary-icon { vertical-align: middle; }"
+	dat += ".culinary-text { vertical-align: middle; line-height: 32px; }"
+	dat += "</style>"
+
+	dat += "<div class='culinary-item'><b>Favourite Food:</b> <span class='culinary-icon'>[food_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[encode_special_chars(food_name)]</a></span></div>"
+	dat += "<div class='culinary-item'><b>Favourite Drink:</b> <span class='culinary-icon'>[drink_icon]</span> <span class='culinary-text'><a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a></span></div>"
 
 	return dat
 
 /datum/preferences/proc/show_food_selection_ui(mob/user)
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
+	dat += "<style>"
+	dat += ".food-item { display: flex; align-items: center; margin-bottom: 5px; }"
+	dat += ".food-icon { vertical-align: middle; }"
+	dat += ".food-text { vertical-align: middle; line-height: 32px; }"
+	dat += "</style>"
 
 	var/list/food_types = subtypesof(/obj/item/reagent_containers/food)
 
@@ -114,8 +125,8 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		var/food_faretype = food_data["faretype"]
 
 		var/display_name = capitalize(food_name)
-		var/icon/food_icon = get_cached_food_flat_icon(food_type)
-		dat += "[food_icon] <a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])<br>"
+		var/food_icon = get_cached_food_flat_icon(food_type)
+		dat += "<div class='food-item'><span class='food-icon'>[food_icon]</span> <span class='food-text'><a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])</span></div>"
 
 	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>Select Favourite Food</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -124,6 +135,11 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 /datum/preferences/proc/show_drink_selection_ui(mob/user)
 	var/list/dat = list()
 	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
+	dat += "<style>"
+	dat += ".drink-item { display: flex; align-items: center; margin-bottom: 5px; }"
+	dat += ".drink-icon { vertical-align: middle; }"
+	dat += ".drink-text { vertical-align: middle; line-height: 32px; }"
+	dat += "</style>"
 
 	var/list/blacklisted_drinks = list(
 		/datum/reagent/consumable/ethanol,
@@ -156,8 +172,8 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		var/drink_quality = drink_data["quality"]
 
 		var/display_name = capitalize(drink_name)
-		var/icon/drink_icon = get_cached_drink_flat_icon(drink_quality)
-		dat += "[drink_icon] <a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])<br>"
+		var/drink_icon = get_cached_drink_flat_icon(drink_quality)
+		dat += "<div class='drink-item'><span class='drink-icon'>[drink_icon]</span> <span class='drink-text'><a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])</span></div>"
 
 	var/datum/browser/popup = new(user, "drink_selection", "<div align='center'>Select Favourite Drink</div>", 400, 600)
 	popup.set_content(dat.Join())
