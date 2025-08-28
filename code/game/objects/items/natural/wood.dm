@@ -87,7 +87,7 @@
 			to_chat(user, span_info("My poor skill has me ruin some of the timber..."))
 		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
-		qdel(src)
+		deconstruct()
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /*
