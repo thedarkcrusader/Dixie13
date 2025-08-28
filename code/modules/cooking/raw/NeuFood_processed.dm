@@ -144,11 +144,11 @@
 
 // -------------- SALTFISH -----------------
 /obj/item/reagent_containers/food/snacks/saltfish
-	eat_effect = null
-	icon = 'icons/roguetown/misc/fish.dmi'
 	name = "saltfish"
-	icon_state = ""
 	desc = "Dried fish."
+	icon = 'icons/roguetown/misc/fish.dmi'
+	icon_state = "clownfishdried"
+	eat_effect = null
 	bitesize = 4
 	slice_path = null
 	tastes = list("salted meat" = 1)
@@ -653,7 +653,7 @@
 
 /obj/item/reagent_containers/food/snacks/jellyslice_base
 	name = "plain gelatine slice"
-	icon_state = "basegelatineslice"
+	icon_state = "basegelatinslice"
 	dropshrink = 0.8
 	slices_num = 0
 	bitesize = 2

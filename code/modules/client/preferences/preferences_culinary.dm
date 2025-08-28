@@ -108,7 +108,24 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 	dat += ".food-text { vertical-align: middle; line-height: 32px; }"
 	dat += "</style>"
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food)
+	var/list/blacklisted_food = list(
+		/obj/item/reagent_containers/food/snacks,
+		/obj/item/reagent_containers/food/snacks/produce,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable,
+		/obj/item/reagent_containers/food/snacks/produce/fruit,
+		/obj/item/reagent_containers/food/snacks/produce/grain,
+		/obj/item/reagent_containers/food/snacks/pie,
+		/obj/item/reagent_containers/food/snacks/rotten,
+		/obj/item/reagent_containers/food/snacks/meat/mince,
+		/obj/item/reagent_containers/food/snacks/dough_base,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/veg,
+		/obj/item/reagent_containers/food/snacks/store,
+		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/reagent_containers/food/snacks/base_icon_state,
+	)
+
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - blacklisted_food
 
 	var/list/food_with_faretypes = list()
 	for(var/food_type in food_types)
@@ -126,7 +143,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
 		var/display_name = capitalize(food_name)
 		var/food_icon = get_cached_food_flat_icon(food_type)
-		dat += "<div class='food-item'><span class='food-icon'>[food_icon]</span> <span class='food-text'><a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])</span></div>"
+		dat += "<div class='food-item'><span class='food-icon'>[food_icon]</span> <span class='food-text'><a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [food_faretype])</span></div>"
 
 	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>Select Favourite Food</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -155,7 +172,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/datum/reagent/consumable/sugar,
 	)
 
-	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - blacklisted_drinks
+	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_drinks
 
 	var/list/drink_with_qualities = list()
 	for(var/drink_type in drink_types)
