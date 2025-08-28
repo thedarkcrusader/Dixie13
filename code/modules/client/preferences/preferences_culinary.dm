@@ -132,7 +132,9 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/crimsoncake_ready,
 		/obj/item/reagent_containers/food/snacks/chescake,
 		/obj/item/reagent_containers/food/snacks/chescake_ready,
+		/obj/item/reagent_containers/food/snacks/chescake_poison,
 		/obj/item/reagent_containers/food/snacks/chescake_poison_ready,
+		/obj/item/reagent_containers/food/snacks/cheesecake_poison_cooked,
 		/obj/item/reagent_containers/food/snacks/cake,
 		/obj/item/reagent_containers/food/snacks/piedough,
 		/obj/item/reagent_containers/food/snacks/raisindough,
@@ -158,7 +160,14 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet,
 	)
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - typesof(/obj/item/reagent_containers/food/snacks/fish) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food
+	var/list/slice_paths = list()
+	for(var/food_type in subtypesof(/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/F = food_type
+		var/slice_path = initial(F.slice_path)
+		if(slice_path)
+			slice_paths |= slice_path
+
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - typesof(/obj/item/reagent_containers/food/snacks/fish) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food - slice_paths
 
 	var/list/filtered_food_types = list()
 	var/list/name_to_type = list()
