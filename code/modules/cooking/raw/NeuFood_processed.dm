@@ -558,7 +558,6 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/cheese_wedge
 	become_rot_type = /obj/item/reagent_containers/food/snacks/cheddar/aged
 	slice_sound = TRUE
-	faretype = FARE_POOR
 	grid_height = 32
 	grid_width = 96
 
@@ -589,7 +588,6 @@
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1,
 					/obj/item/reagent_containers/food/snacks/fish/shrimp = 3)
-	faretype = FARE_FINE
 
 /obj/item/reagent_containers/food/snacks/cheese_wedge/aged
 	name = "wedge of aged cheese"
