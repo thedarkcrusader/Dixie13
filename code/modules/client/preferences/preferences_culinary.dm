@@ -47,20 +47,21 @@
 	var/food_name = "None"
 	if(current_food)
 		var/obj/item/food_instance = current_food
-		food_name = initial(food_instance.name)
+		food_name = capitalize(initial(food_instance.name))
 
 	var/drink_name = "None"
 	if(current_drink)
 		var/datum/reagent/drink_instance = current_drink
-		drink_name = initial(drink_instance.name)
+		drink_name = capitalize(initial(drink_instance.name))
 
-	dat += "<b>Favourite Food:</b> <a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[food_name]</a><br>"
-	dat += "<b>Favourite Drink:</b> <a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[drink_name]</a><br>"
+	dat += "<b>Favourite Food:</b> <a href='byond://?_src_=prefs;preference=choose_food;task=change_culinary_preferences'>[encode_special_chars(food_name)]</a><br>"
+	dat += "<b>Favourite Drink:</b> <a href='byond://?_src_=prefs;preference=choose_drink;task=change_culinary_preferences'>[encode_special_chars(drink_name)]</a><br>"
 
 	return dat
 
 /datum/preferences/proc/show_food_selection_ui(mob/user)
 	var/list/dat = list()
+	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
 
 	var/list/food_types = subtypesof(/obj/item/reagent_containers/food)
 
@@ -78,7 +79,8 @@
 		var/food_name = food_data["name"]
 		var/food_faretype = food_data["faretype"]
 
-		dat += "[icon2html(food_type, user)] <a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[food_name]</a> (Faretype: [food_faretype])<br>"
+		var/display_name = capitalize(food_name)
+		dat += "[icon2html(food_type, user)] <a href='byond://?_src_=prefs;preference=confirm_food;food_type=[food_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Faretype: [food_faretype])<br>"
 
 	var/datum/browser/popup = new(user, "food_selection", "<div align='center'>Select Favourite Food</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -86,6 +88,7 @@
 
 /datum/preferences/proc/show_drink_selection_ui(mob/user)
 	var/list/dat = list()
+	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
 
 	var/list/blacklisted_drinks = list(
 		/datum/reagent/consumable/ethanol,
@@ -129,7 +132,8 @@
 		else
 			icon_type = /obj/item/reagent_containers/glass/cup/golden
 
-		dat += "[icon2html(icon_type, user)] <a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[drink_name]</a> (Quality: [drink_quality])<br>"
+		var/display_name = capitalize(drink_name)
+		dat += "[icon2html(icon_type, user)] <a href='byond://?_src_=prefs;preference=confirm_drink;drink_type=[drink_type];task=change_culinary_preferences'>[encode_special_chars(display_name)]</a> (Quality: [drink_quality])<br>"
 
 	var/datum/browser/popup = new(user, "drink_selection", "<div align='center'>Select Favourite Drink</div>", 400, 600)
 	popup.set_content(dat.Join())
@@ -159,6 +163,7 @@
 
 /datum/preferences/proc/show_culinary_ui(mob/user)
 	var/list/dat = list()
+	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
 	dat += print_culinary_page()
 	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 305, 245)
 	popup.set_content(dat.Join())
@@ -169,3 +174,14 @@
 		return
 
 	character.culinary_preferences = culinary_preferences.Copy()
+
+/proc/encode_special_chars(text)
+	. = text
+	. = replacetext(., "ü", "&uuml;")
+	. = replacetext(., "Ü", "&Uuml;")
+	. = replacetext(., "ö", "&ouml;")
+	. = replacetext(., "Ö", "&Ouml;")
+	. = replacetext(., "ä", "&auml;")
+	. = replacetext(., "Ä", "&Auml;")
+	. = replacetext(., "ß", "&szlig;")
+	return .
