@@ -10,7 +10,7 @@
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/small = 2)
+	static_debris = list(/obj/item/grown/log/tree/small = 1)
 	obj_flags = CAN_BE_HIT
 	resistance_flags = FLAMMABLE
 	gripped_intents = list(/datum/intent/hit)
@@ -110,7 +110,7 @@
 	experimental_inhand = FALSE
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/stick = 3)
+	static_debris = list(/obj/item/grown/log/tree/stick = 1)
 	firefuel = 20 MINUTES
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
