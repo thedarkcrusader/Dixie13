@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 			filtered_food_types += food_type
 		else
 			var/existing_type = name_to_type[food_name]
-			if(ispath(food_type, existing_type))
+			if(ispath(existing_type, food_type))
 				name_to_type[food_name] = food_type
 				filtered_food_types -= existing_type
 				filtered_food_types += food_type
@@ -220,7 +220,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 			filtered_drink_types += drink_type
 		else
 			var/existing_type = name_to_type[drink_name]
-			if(ispath(drink_type, existing_type))
+			if(ispath(existing_type, drink_type))
 				name_to_type[drink_name] = drink_type
 				filtered_drink_types -= existing_type
 				filtered_drink_types += drink_type

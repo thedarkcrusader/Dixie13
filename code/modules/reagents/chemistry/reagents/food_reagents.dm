@@ -27,6 +27,20 @@
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if (method == INGEST && ishuman(M))
 		var/mob/living/carbon/human/HM = M
+
+		if(HM.culinary_preferences && HM.culinary_preferences[CULINARY_FAVOURITE_DRINK])
+			var/favorite_drink_type = HM.culinary_preferences[CULINARY_FAVOURITE_DRINK]
+
+			if(favorite_drink_type == type)
+				if(HM.add_stress(/datum/stressevent/favourite_drink))
+					to_chat(HM, span_green("Yum! My favorite drink!"))
+			else if(ispath(type, favorite_drink_type))
+				var/datum/reagent/consumable/favorite_drink_instance = favorite_drink_type
+				var/favorite_drink_name = initial(favorite_drink_instance.name)
+				if(favorite_drink_name == name)
+					if(HM.add_stress(/datum/stressevent/favourite_drink))
+						to_chat(HM, span_green("Yum! My favorite drink!"))
+
 		if (quality)
 			switch (quality)
 				if (DRINK_NICE)

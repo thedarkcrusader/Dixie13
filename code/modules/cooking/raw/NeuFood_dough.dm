@@ -286,7 +286,7 @@
 /obj/item/reagent_containers/food/snacks/stale_bread
 	name = "stale bread"
 	desc = "Old. Is that mold? Not fit for slicing, just eating in sullen silence."
-	icon_state = "loaf6"
+	icon_state = "loaf"
 	color = "#92908a"
 	dropshrink = 0.8
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)

@@ -218,14 +218,3 @@
 	stressadd = -1
 	desc = span_green("I love the night!")
 	timer = 20 MINUTES
-
-/datum/stressevent/favourite_food
-	stressadd = -1
-	desc = span_green("I ate my favourite food!")
-	timer = 5 MINUTES
-
-/datum/stressevent/favourite_drink
-	stressadd = -1
-	desc = span_green("I had my favourite drink!")
-	timer = 5 MINUTES
-
