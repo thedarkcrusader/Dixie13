@@ -113,8 +113,7 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/iron
 
-/datum/anvil_recipe/weapons/iron/nsapo/iron
-
+/datum/anvil_recipe/weapons/iron/nsapo
 	name = "Iron Kasuyu (+Stick)"
 	recipe_name = "an Iron Kasuyu Axe"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -128,6 +127,14 @@
 	additional_items = list(/obj/item/ingot/iron,/obj/item/grown/log/tree/small)
 	created_item = /obj/item/weapon/polearm/halberd/bardiche
 	craftdiff = 2
+
+/datum/anvil_recipe/weapons/iron/assegai
+
+	name = "Iron Assegai (+ Small Log)"
+	recipe_name = "an Iron Assegai"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/polearm/spear/assegai
 
 /datum/anvil_recipe/weapons/iron/woodcutter
 	name = "Woodcutter Axe (+Small Log)"
@@ -193,6 +200,14 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/mace
+
+/datum/anvil_recipe/weapons/iron/rungu
+
+	name = "Iron Rungu (+Stick)"
+	recipe_name = "an Iron Rungu"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/weapon/mace/rungu/iron
 
 /datum/anvil_recipe/weapons/iron/ibludgeon
 	name = "Iron Bludgeon (+Stick)"
@@ -310,6 +325,14 @@
 	craftdiff = 2
 ///////////////////////////////////////////////
 
+/datum/anvil_recipe/weapons/steel/assegai
+
+	name = "Steel Assegai (+ Small Log)"
+	recipe_name = "a Steel Assegai"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/polearm/spear/steel/assegai
+
 /datum/anvil_recipe/weapons/steel/axe_steel
 	name = "Steel Axe (+Stick)"
 	recipe_name = "an Axe"
@@ -324,6 +347,15 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/nsapo/
+
+/datum/anvil_recipe/weapons/steel/rungu
+
+	name = "Steel Rungu (+Stick)"
+	recipe_name = "an Steel Rungu"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/weapon/mace/steel/rungu
+
 
 /datum/anvil_recipe/weapons/steel/sledgehammer
 	name = "Steel Sledgehammer (+Small Log)"
@@ -612,3 +644,11 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/gold)
 	created_item = /obj/item/weapon/sword/long/decorated
+
+/datum/anvil_recipe/weapons/silver/rungu
+
+	name = "Silver Rungu (+ Stick)"
+	recipe_name = "a Silver Rungu"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/weapon/mace/silver/rungu
