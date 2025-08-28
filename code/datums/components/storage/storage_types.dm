@@ -41,25 +41,25 @@
 /datum/component/storage/concrete/boots/attackby(datum/source, obj/item/attacking_item, mob/user, params, storage_click)
 	if(isatom(parent) && can_be_inserted(attacking_item, stop_messages = TRUE))
 		var/atom/boots = parent
-		if(istype(attacking_item, /obj/item/weapon/knife) && istype(boots?.loc, /mob/living/carbon/human))
+		if(istype(attacking_item, /obj/item/weapon/knife) && ishuman(boots?.loc))
 			var/mob/living/carbon/human/unlucky = boots.loc
 			if(unlucky.shoes == parent && prob(40 - max((unlucky.STALUC * 4), 0)))
 				var/cached_aim = user.zone_selected
 				user.zone_selected = pick(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)
 				unlucky.attackby(attacking_item, user, params)
-				to_chat(unlucky, "<span class='danger'>UNLUCKY! I've stabbed myself with the [attacking_item]!</span>")
+				to_chat(unlucky, span_danger("UNLUCKY! I've stabbed myself with the [attacking_item]!"))
 				user.zone_selected = cached_aim
 
 	return ..()
 
 /datum/component/storage/concrete/boots/handle_item_insertion(obj/item/I, prevent_warning, mob/M, datum/component/storage/remote, params, storage_click)
 	. = ..()
+	if(!.)
+		return
 
 	if(!istype(I, /obj/item/weapon/knife) && isatom(parent))
 		var/obj/item/clothing/shoes/boots = parent
-		if(!.)
-			return
-		if(istype(boots?.loc, /mob/living/carbon/human))
+		if(ishuman(boots?.loc))
 			var/mob/living/carbon/human/uncomfy = boots.loc
 			if(uncomfy.shoes != parent)
 				return
@@ -75,13 +75,10 @@
 			return
 		var/atom/real_location = src.real_location()
 		if(length(real_location.contents))
-			var/list/irritants = list()
 			for(var/obj/item/I in real_location.contents)
 				if(!istype(I, /obj/item/weapon/knife))
-					irritants |= I
-			if(length(irritants))
-				uncomfy.add_stress(/datum/stressevent/fullshoe)
-				return
+					uncomfy.add_stress(/datum/stressevent/fullshoe)
+					return
 		uncomfy.remove_stress(/datum/stressevent/fullshoe)
 		return
 
@@ -96,7 +93,7 @@
 		for(var/obj/item/I in real_location.contents)
 			if(!istype(I, /obj/item/weapon/knife))
 				irritants |= I
-		if(length(irritants) && istype(boots?.loc, /mob/living/carbon))
+		if(length(irritants) && ishuman(boots?.loc))
 			var/mob/living/carbon/wearer = user
 			wearer.add_stress(/datum/stressevent/fullshoe)
 
