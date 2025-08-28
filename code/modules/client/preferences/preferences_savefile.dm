@@ -267,7 +267,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(loaded_culinary_preferences)
 		culinary_preferences = loaded_culinary_preferences
 	else
-		culinary_preferences = list()
+		reset_culinary_preferences()
 
 /datum/preferences/proc/_load_appearence(S)
 	S["real_name"] >> real_name

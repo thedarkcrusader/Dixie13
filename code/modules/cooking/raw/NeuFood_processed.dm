@@ -301,6 +301,7 @@
 \------------*/		// The base for making butter and cheese
 
 /datum/reagent/consumable/milk/gote
+	name = "gote milk"
 	taste_description = "gote milk"
 
 /datum/reagent/consumable/milk/salted_gote

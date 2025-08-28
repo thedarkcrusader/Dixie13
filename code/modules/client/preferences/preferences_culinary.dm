@@ -87,7 +87,21 @@
 /datum/preferences/proc/show_drink_selection_ui(mob/user)
 	var/list/dat = list()
 
-	var/list/drink_types = subtypesof(/datum/reagent/consumable)
+	var/list/blacklisted_drinks = list(
+		/datum/reagent/consumable/ethanol,
+		/datum/reagent/consumable/tea,
+		/datum/reagent/consumable/nutriment,
+		/datum/reagent/consumable/eggyolk,
+		/datum/reagent/consumable/sodiumchloride,
+		/datum/reagent/consumable/nutriment/vitamin,
+		/datum/reagent/consumable/ice,
+		/datum/reagent/consumable/honey,
+		/datum/reagent/consumable/caffeine,
+		/datum/reagent/consumable/coffee,
+		/datum/reagent/consumable/sugar,
+	)
+
+	var/list/drink_types = subtypesof(/datum/reagent/consumable) - typesof(/datum/reagent/consumable/soup) - typesof(/datum/reagent/consumable/herbal) - blacklisted_drinks
 
 	var/list/drink_with_qualities = list()
 	for(var/drink_type in drink_types)
