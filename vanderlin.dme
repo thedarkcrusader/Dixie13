@@ -955,6 +955,7 @@
 #include "code\datums\elements\holy_weakness.dm"
 #include "code\datums\elements\mob_overlay_effect.dm"
 #include "code\datums\elements\movetype_handler.dm"
+#include "code\datums\elements\no_mouse_drop.dm"
 #include "code\datums\elements\noisy_movement.dm"
 #include "code\datums\elements\relay_attackers.dm"
 #include "code\datums\elements\retaliate.dm"

@@ -113,6 +113,10 @@
 		var/obj/item/fuse/fuse = I
 		fuse.add_to_cannon(src, user)
 		return TRUE
+
+	if(isreagentcontainer(I))
+		var/obj/item/reagent_containers/reagent_container = I
+
 	. = ..()
 
 /obj/effect/fuse
@@ -133,6 +137,7 @@
 	RegisterSignal(fuse, COMSIG_PARENT_QDELETING, PROC_REF(on_deletion))
 	RegisterSignal(fuse, COMSIG_FUSE_LIT, PROC_REF(on_status_change))
 	RegisterSignal(fuse, COMSIG_FUSE_EXTINGUISHED, PROC_REF(on_status_change))
+	AddElement(/datum/element/no_mouse_drop)
 
 /obj/effect/fuse/Destroy(force)
 	. = ..()
@@ -159,7 +164,6 @@
 /obj/effect/fuse/fire_act(added, maxstacks)
 	if(added)
 		fuse.attempt_to_be_lit()
-		sync_with_fuse()
 
 /obj/effect/fuse/proc/on_status_change()
 	sync_with_fuse()
@@ -167,6 +171,7 @@
 
 /obj/effect/fuse/proc/sync_with_fuse()
 	appearance = fuse.appearance
+	filters += filter(type = "outline", color = "#FFFF00")
 	transform = matrix()
 
 /obj/effect/fuse/proc/calculate_offsets(datum/parent, current_dir, new_dir)
@@ -179,10 +184,15 @@
 
 	var/matrix/new_matrix = matrix()
 	transform = new_matrix
-	transform.Turn(180)
+	transform = transform.Turn(180 - dir2angle(get_dir(center, cannon_barrel)))
 
-	var/new_pixel_w = (center.x - cannon_barrel.x) * 16
-	var/new_pixel_z = (center.y - cannon_barrel.y) * 16
+	var/cannon_barrel_x = cannon_barrel.x
+	var/center_x = center.x
+	var/cannon_barrel_y = cannon_barrel.y
+	var/center_y = center.y
+
+	var/new_pixel_w = (center_x - cannon_barrel_x) * 20
+	var/new_pixel_z = (center_y - cannon_barrel_y) * 20
 
 	pixel_w = new_pixel_w
 	pixel_z = new_pixel_z
@@ -223,7 +233,10 @@
 	. = ..()
 
 /obj/item/fuse/proc/attempt_to_be_lit()
+	if(lit)
+		return
 	if(prob(failure_chance))
+		cannon.visible_message(span_danger("The fuse fails to light!"))
 		return
 	lit()
 
@@ -258,4 +271,4 @@
 
 /atom/proc/debug_turn()
 	var/enter = input(usr, "How much", "Meow", 180)
-	transform.Turn(enter)
+	transform = transform.Turn(enter)
