@@ -15,8 +15,11 @@
 /datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
 		return
-	active = new_state
+	if((new_state == TRUE) && SSmigrants.admin_disabled)
+		to_chat(prefs.parent, span_boldwarning("Migration is disabled!"))
+		return
 	role_preferences.Cut()
+	active = new_state
 	if(!silent && prefs.parent)
 		if(new_state)
 			to_chat(prefs.parent, span_notice("You are now in the migrant queue, and will join the game with them when they arrive"))
@@ -38,12 +41,14 @@
 	set_active(FALSE, TRUE)
 	hide_ui()
 
-/datum/migrant_pref/proc/show_ui()
-	var/client/client = prefs.parent
-	if(!client)
-		return
+/datum/migrant_pref/proc/build_html_data()
 	var/list/dat = list()
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
+
+	if(SSmigrants.admin_disabled)
+		dat += "<center> <h1> <b style='color:red;'> Migration has been disabled by an admin! </b>  </h1> </center>"
+		return dat
+
 	dat += "WAVE: \Roman[SSmigrants.wave_number]"
 	dat += "<center><b>BE A MIGRANT: <a href='byond://?src=[REF(src)];task=toggle_active'>[active ? "YES" : "NO"]</a></b></center>"
 	dat += "<br><center>Wandering fools: [current_migrants ? "\Roman[current_migrants]" : "None"]</center>"
@@ -64,6 +69,16 @@
 				stars_string = "(*\Roman[stars_amount])"
 			dat += "<center><a href='byond://?src=[REF(src)];task=toggle_role_preference;role=[role_type]'>[role_name]</a> - \Roman[role_amount] [stars_string]</center>"
 		dat += "<br><center>They will arrive in [(SSmigrants.wave_timer / (1 SECONDS))] seconds...</center>"
+
+	return dat
+
+/datum/migrant_pref/proc/show_ui()
+	var/client/client = prefs.parent
+	if(!client)
+		return
+	var/list/dat = list()
+	dat = build_html_data()
+
 	var/datum/browser/popup = new(client.mob, "migration", "<center>Find a purpose</center>", 330, 410, src)
 	popup.set_content(dat.Join())
 	popup.open()

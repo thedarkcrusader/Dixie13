@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(migrants)
 	var/wave_wait_time = 30 SECONDS
 
 	var/list/spawned_waves = list()
-
+	var/admin_disabled = FALSE
 
 /datum/controller/subsystem/migrants/Initialize()
 	return ..()
@@ -21,11 +21,26 @@ SUBSYSTEM_DEF(migrants)
 	process_migrants(2 SECONDS)
 	update_ui()
 
+/datum/controller/subsystem/migrants/proc/toggle_admin_disabled()
+	admin_disabled = !admin_disabled
+	if(admin_disabled)
+		unqueue_all_migrants()
+
+/datum/controller/subsystem/migrants/proc/unqueue_all_migrants()
+	for(var/client/client as anything in get_all_migrants())
+		client.prefs.migrant.set_active(FALSE, TRUE)
+		to_chat(client.mob, span_boldwarning("An admin has disabled migration and you are no longer in the migrant queue."))
+
+/datum/controller/subsystem/migrants/proc/get_current_disabled_status()
+	return admin_disabled ? "Disabled" : "Enabled"
+
 /datum/controller/subsystem/migrants/proc/set_current_wave(wave_type, time)
 	current_wave = wave_type
 	wave_timer = time
 
 /datum/controller/subsystem/migrants/proc/process_migrants(dt)
+	if(admin_disabled)
+		return
 	if(current_wave)
 		process_current_wave(dt)
 	else
