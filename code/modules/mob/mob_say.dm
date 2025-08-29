@@ -57,7 +57,7 @@
 
 ///The big me emote verb
 /mob/verb/me_big_verb()
-	set name = "Me (Big)"
+	set name = "Me(Big)"
 	set category = "IC"
 	set hidden = 1
 
@@ -73,7 +73,7 @@
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
-	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_BIGME))
+	message = trim(copytext_char(html_encode(message), 1, MAX_MESSAGE_BIGME))
 	message = parsemarkdown_basic(message, limited = TRUE, barebones = TRUE)
 	usr.emote("me",1,message,TRUE, custom_me = TRUE)
 
