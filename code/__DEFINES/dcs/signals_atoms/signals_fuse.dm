@@ -6,3 +6,5 @@
 
 ///from /obj/item/fuse/proc/extinguished()
 #define COMSIG_FUSE_EXTINGUISHED "fuse_extinguished"
+
+#define COMSIG_FUSE_CUT "fuse_cut"

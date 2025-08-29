@@ -62,19 +62,16 @@
 	try_light_fuse()
 
 /obj/structure/cannon/proc/try_light_fuse(mob/user)
-	playsound(src.loc, 'sound/items/fuse.ogg', 100)
+	inserted_fuse?.attempt_to_be_lit()
 
 /obj/structure/cannon/can_be_pulled(user, grab_state, force)
 	. = ..()
 	if(get_dir(user, src) != dir)
 		return FALSE
 
-/obj/structure/cannon/proc/attempt_light()
-	inserted_fuse?.attempt_to_be_lit()
-
 /obj/structure/cannon/fire_act(added, maxstacks)
 	. = ..()
-	attempt_light()
+	try_light_fuse()
 
 /obj/structure/cannon/proc/fire()
 	playsound(get_turf(src), 'sound/foley/tinnitus.ogg', 60, FALSE, -6)
@@ -123,7 +120,7 @@
 	var/obj/structure/cannon/cannon
 	var/obj/item/fuse/fuse
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
-	glide_size = 6
+	glide_size = 4
 
 /obj/effect/fuse/Initialize(mapload, obj/structure/cannon/passed_cannon, obj/item/fuse/passed_fuse)
 	. = ..()
@@ -132,10 +129,10 @@
 	sync_with_fuse()
 	calculate_offsets()
 	RegisterSignal(cannon, COMSIG_PARENT_QDELETING, PROC_REF(on_deletion))
-	RegisterSignal(cannon, COMSIG_MOVABLE_MOVED, PROC_REF(calculate_offsets))
+	RegisterSignal(cannon, COMSIG_ATOM_DIR_CHANGE, PROC_REF(calculate_offsets))
 	RegisterSignal(fuse, COMSIG_PARENT_QDELETING, PROC_REF(on_deletion))
-	RegisterSignal(fuse, COMSIG_FUSE_LIT, PROC_REF(sync_with_fuse))
-	RegisterSignal(fuse, COMSIG_FUSE_EXTINGUISHED, PROC_REF(sync_with_fuse))
+	RegisterSignal(fuse, COMSIG_FUSE_LIT, PROC_REF(on_status_change))
+	RegisterSignal(fuse, COMSIG_FUSE_EXTINGUISHED, PROC_REF(on_status_change))
 
 /obj/effect/fuse/Destroy(force)
 	. = ..()
@@ -164,22 +161,28 @@
 		fuse.attempt_to_be_lit()
 		sync_with_fuse()
 
+/obj/effect/fuse/proc/on_status_change()
+	sync_with_fuse()
+	calculate_offsets()
+
 /obj/effect/fuse/proc/sync_with_fuse()
 	appearance = fuse.appearance
 	transform = matrix()
 
-/obj/effect/fuse/proc/calculate_offsets()
+/obj/effect/fuse/proc/calculate_offsets(datum/parent, current_dir, new_dir)
+	SIGNAL_HANDLER
 	if(loc != cannon.loc)
 		forceMove(get_turf(cannon))
 
 	var/turf/center = src.loc
-	var/turf/cannon_barrel = get_step(cannon, cannon.dir)
+	var/turf/cannon_barrel = get_step(cannon, (new_dir || cannon.dir))
 
 	var/matrix/new_matrix = matrix()
 	transform = new_matrix
+	transform.Turn(180)
 
-	var/new_pixel_w = (cannon_barrel.x - center.x) * 16
-	var/new_pixel_z = (cannon_barrel.y - center.y) * 16
+	var/new_pixel_w = (center.x - cannon_barrel.x) * 16
+	var/new_pixel_z = (center.y - cannon_barrel.y) * 16
 
 	pixel_w = new_pixel_w
 	pixel_z = new_pixel_z
@@ -191,8 +194,10 @@
 	icon = 'icons/roguetown/misc/cannon_fuse.dmi'
 	mouse_opacity = MOUSE_OPACITY_ICON
 	layer = LOW_ITEM_LAYER
+	glide_size = 4
 	var/failure_chance = 50
 	var/lit = FALSE
+	var/obj/structure/cannon/cannon
 
 /obj/item/fuse/proc/add_to_cannon(obj/structure/cannon/cannon, mob/living/user)
 	if(cannon.inserted_fuse)
@@ -201,23 +206,32 @@
 	if(!user.dropItemToGround(src))
 		return FALSE
 
+	src.cannon = cannon
+	RegisterSignal(cannon, COMSIG_PARENT_PREQDELETED, PROC_REF(remove_from_cannon))
 	loc = null
 	new /obj/effect/fuse (get_turf(cannon), cannon, src)
 	return TRUE
 
-/obj/item/fuse/proc/remove_from_cannon(obj/structure/cannon/cannon)
+/obj/item/fuse/proc/remove_from_cannon()
+	UnregisterSignal(cannon, COMSIG_PARENT_PREQDELETED)
 	loc = get_turf(cannon)
 	cannon.inserted_fuse = null
+	cannon = null
+
+/obj/item/fuse/Destroy()
+	remove_from_cannon()
+	. = ..()
 
 /obj/item/fuse/proc/attempt_to_be_lit()
-	if(!prob(failure_chance))
+	if(prob(failure_chance))
 		return
 	lit()
 
 /obj/item/fuse/proc/lit()
-	icon_state = icon_state = "_lit"
+	icon_state = icon_state + "_lit"
 	lit = TRUE
-	addtimer(CALLBACK(PROC_REF(reached_end)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reached_end)), 5 SECONDS)
+	playsound(cannon.loc, 'sound/items/fuse.ogg', 100)
 	SEND_SIGNAL(src, COMSIG_FUSE_LIT)
 
 /obj/item/fuse/proc/extinguished()
@@ -229,7 +243,8 @@
 	if(!lit)
 		extinguished()
 
-	SEND_SIGNAL(src, COMSIG_FUSE_REACHED_END)
+	cannon.fire()
+
 	qdel(src)
 
 /obj/item/fuse/fiber
@@ -240,3 +255,7 @@
 	name = "parchment fuse"
 	icon_state = "parchment_fuse"
 	failure_chance = 10
+
+/atom/proc/debug_turn()
+	var/enter = input(usr, "How much", "Meow", 180)
+	transform.Turn(enter)
