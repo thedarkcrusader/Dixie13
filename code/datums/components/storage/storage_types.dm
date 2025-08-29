@@ -47,7 +47,7 @@
 				var/cached_aim = user.zone_selected
 				user.zone_selected = pick(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)
 				unlucky.attackby(attacking_item, user, params)
-				to_chat(unlucky, span_danger("UNLUCKY! I've stabbed myself with the [attacking_item]!"))
+				to_chat(unlucky, span_danger("UNLUCKY! I've stabbed myself with [attacking_item]!"))
 				user.zone_selected = cached_aim
 
 	return ..()
