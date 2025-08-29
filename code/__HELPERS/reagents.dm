@@ -1,3 +1,5 @@
+#define UNIT_FORM_STRING(amount) (amount == 1 ? "ligula" : "ligulae")
+
 /proc/chem_recipes_do_conflict(datum/chemical_reaction/r1, datum/chemical_reaction/r2)
 	//do the non-list tests first, because they are cheaper
 	if(r1.required_container != r2.required_container)
@@ -72,12 +74,6 @@
 	if(!GLOB.chemical_reactions_list[primary_reagent])
 		GLOB.chemical_reactions_list[primary_reagent] = list()
 	GLOB.chemical_reactions_list[primary_reagent] += R
-
-/proc/unit_form_string(amount)
-	if(amount <= 1)
-		return "ligula"
-	else
-		return "ligulae"
 
 //Creates foam from the reagent. Metaltype is for metal foam, notification is what to show people in textbox
 /datum/reagents/proc/create_foam(foamtype,foam_volume,metaltype = 0,notification = null)
