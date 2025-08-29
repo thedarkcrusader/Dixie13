@@ -3,9 +3,9 @@
 	desc = "A cute bottle, conviniently holding 3 swigs of a fluid."
 	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "vial_bottle"
-	amount_per_transfer_from_this = 9
-	possible_transfer_amounts = list(9)
-	volume = 27
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(10)
+	volume = 30
 	fill_icon_thresholds = list(0, 33, 66, 100)
 	dropshrink = 0.8
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
