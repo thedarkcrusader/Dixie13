@@ -73,6 +73,12 @@
 		GLOB.chemical_reactions_list[primary_reagent] = list()
 	GLOB.chemical_reactions_list[primary_reagent] += R
 
+/proc/unit_form_string(amount)
+	if(amount <= 1)
+		return "ligula"
+	else
+		return "ligulae"
+
 //Creates foam from the reagent. Metaltype is for metal foam, notification is what to show people in textbox
 /datum/reagents/proc/create_foam(foamtype,foam_volume,metaltype = 0,notification = null)
 	var/location = get_turf(my_atom)
