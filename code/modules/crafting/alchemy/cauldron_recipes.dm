@@ -83,7 +83,7 @@
 	html += {"
 		</div>
 		<div>
-			<h2>Requires 10oz Water</h2>
+			<h2>Requires 40 units Water</h2>
 			<h2>Creates</h2>
 	"}
 
