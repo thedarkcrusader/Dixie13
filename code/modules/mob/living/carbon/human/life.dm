@@ -140,41 +140,50 @@
 		set_hygiene(HYGIENE_LEVEL_CLEAN)
 
 	else
-		var/hygiene_loss = 0
-		//If you're covered in blood, you'll start smelling like shit faster.
+		var/hygiene_adjustment = 0
+
+		//Are our clothes dirty?
 		var/obj/item/head = get_item_by_slot(ITEM_SLOT_HEAD)
 		if(head && HAS_BLOOD_DNA(head))
-			hygiene_loss -= 1 * HYGIENE_FACTOR
+			hygiene_adjustment -= 1 * HYGIENE_FACTOR
 
 		var/obj/item/neck = get_item_by_slot(ITEM_SLOT_NECK)
 		if(neck && HAS_BLOOD_DNA(neck))
-			hygiene_loss -= 1 * HYGIENE_FACTOR
+			hygiene_adjustment -= 1 * HYGIENE_FACTOR
 
 		var/obj/item/mask = get_item_by_slot(ITEM_SLOT_MASK)
 		if(mask && HAS_BLOOD_DNA(mask))
-			hygiene_loss -= 1 * HYGIENE_FACTOR
+			hygiene_adjustment -= 1 * HYGIENE_FACTOR
 
 		var/obj/item/shirt = get_item_by_slot(ITEM_SLOT_SHIRT)
 		if(shirt && HAS_BLOOD_DNA(shirt))
-			hygiene_loss -= 2 * HYGIENE_FACTOR
+			hygiene_adjustment -= 2 * HYGIENE_FACTOR
 
 		var/obj/item/cloak = get_item_by_slot(ITEM_SLOT_CLOAK)
 		if(cloak && HAS_BLOOD_DNA(cloak))
-			hygiene_loss -= 2 * HYGIENE_FACTOR
+			hygiene_adjustment -= 2 * HYGIENE_FACTOR
 
 		var/obj/item/pants = get_item_by_slot(ITEM_SLOT_PANTS)
 		if(pants && HAS_BLOOD_DNA(pants))
-			hygiene_loss -= 3 * HYGIENE_FACTOR
+			hygiene_adjustment -= 3 * HYGIENE_FACTOR
 
 		var/obj/item/armor = get_item_by_slot(ITEM_SLOT_ARMOR)
 		if(armor && HAS_BLOOD_DNA(armor))
-			hygiene_loss -= 3 * HYGIENE_FACTOR
+			hygiene_adjustment -= 3 * HYGIENE_FACTOR
 
 		var/obj/item/shoes = get_item_by_slot(ITEM_SLOT_SHOES)
 		if(shoes && HAS_BLOOD_DNA(shoes))
-			hygiene_loss -= 0.5 * HYGIENE_FACTOR
+			hygiene_adjustment -= 0.5 * HYGIENE_FACTOR
 
-		adjust_hygiene(hygiene_loss)
+		//Are we bathing?
+		var/current_turf = get_turf(src)
+		if(istype(/turf/open/water/, current_turf))
+			var/turf/open/water/bathing_liquid = current_turf
+			hygiene_adjustment += 1 * bathing_liquid.cleanliness_factor * HYGIENE_FACTOR
+
+
+
+		adjust_hygiene(hygiene_adjustment)
 	dna?.species.handle_hygiene(src)
 
 ///FIRE CODE

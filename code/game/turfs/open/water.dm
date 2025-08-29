@@ -413,7 +413,7 @@
 			playsound(user, pick(wash), 100, FALSE)
 
 			//handle hygiene
-			if(ishuman(user) && wash_in) //dirty water won't clean you
+			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				var/list/equipped_items = H.get_equipped_items()
 				if(length(equipped_items) > 0)
@@ -504,6 +504,7 @@
 	footstep = FOOTSTEP_MUD
 	barefootstep = FOOTSTEP_MUD
 	heavyfootstep = FOOTSTEP_MUD
+	cleanliness_factor = -5
 
 /turf/open/water/sewer/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
@@ -530,9 +531,6 @@
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
-		if(ishuman(AM))
-			var/mob/living/carbon/human/H = AM
-			H.adjust_hygiene(-1 * HYGIENE_FACTOR)
 
 /datum/reagent/water/gross/sewer
 	color = "#705a43"
@@ -549,6 +547,7 @@
 	slowdown = 20
 	wash_in = FALSE
 	water_reagent = /datum/reagent/water/gross/sewer
+	cleanliness_factor = -5
 
 /turf/open/water/swamp/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -579,9 +578,6 @@
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
-		if(ishuman(AM))
-			var/mob/living/carbon/human/H = AM
-			H.adjust_hygiene(-1 * HYGIENE_FACTOR)
 
 /turf/open/water/swamp/deep
 	name = "murk"
@@ -626,6 +622,7 @@
 	slowdown = 15
 	wash_in = FALSE
 	water_reagent = /datum/reagent/water/gross/marshy
+	cleanliness_factor = -3
 
 /turf/open/water/marsh/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -658,6 +655,7 @@
 	name = "water"
 	desc = "Clear and shallow water, mostly untainted by surrounding soil."
 	icon_state = MAP_SWITCH("dirt", "dirtW5")
+	cleanliness_factor = -1
 
 /turf/open/water/cleanshallow/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -670,6 +668,7 @@
 	icon_state = MAP_SWITCH("rock", "rockb")
 	water_level = 2
 	slowdown = 15
+	cleanliness_factor = -5
 	water_reagent = /datum/reagent/blood
 
 /turf/open/water/blood/Initialize()
@@ -743,15 +742,18 @@
 /turf/open/water/river/dirt
 	icon_state = MAP_SWITCH("dirty", "rivermovealt-dir")
 	water_reagent = /datum/reagent/water/gross
+	cleanliness_factor = -5
 
 /turf/open/water/river/blood
 	icon_state = MAP_SWITCH("rocky", "rivermovealt2-dir")
 	water_reagent = /datum/reagent/blood
+	cleanliness_factor = -5
 
 /turf/open/water/acid // holy SHIT
 	name = "acid pool"
 	desc = "Well... how did THIS get here?"
 	water_reagent = /datum/reagent/rogueacid
+	cleanliness_factor = -100
 
 /turf/open/water/acid/mapped
 	desc = "You know how this got here. You think."
