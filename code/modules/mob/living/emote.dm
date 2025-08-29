@@ -817,6 +817,32 @@
 	message = "pouts."
 	emote_type = EMOTE_AUDIBLE
 
+/datum/emote/living/preen
+	key = "preen"
+	key_third_person = "preens"
+	message = "preens their feathers."
+	emote_type = EMOTE_AUDIBLE
+
+
+/mob/living/carbon/human/verb/emote_preen()
+	set name = "Preen"
+	set category = "Emotes"
+	emote("preen", intentional = TRUE)
+
+/datum/emote/living/preen/run_emote(mob/user, params, type_override, intentional, targetted)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(isharpy(H))
+			var/datum/species/harpy/bird_man = H.dna?.species
+			var/cooldown = bird_man.time_to_next_preen
+			if(world.time >= cooldown)
+				H.set_hygiene(HYGIENE_LEVEL_NORMAL)
+				bird_man.time_to_next_preen = world.time + HARPY_PREENING_COOLDOWN
+			else
+				to_chat(H, "<span class='warning'>I have preened my feathers recently! It has no effect on my hygiene.</span>")
+
+
 /datum/emote/living/scream/painscream
 	key = "painscream"
 	message = "screams in pain!"

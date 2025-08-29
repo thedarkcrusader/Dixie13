@@ -216,6 +216,8 @@
 #define HYGIENE_GAIN_CLOTHED 10
 #define HYGIENE_GAIN_UNCLOTHED 25
 
+#define HARPY_PREENING_COOLDOWN 10 MINUTES
+
 //Used as an upper limit for species that continuously gain nutriment
 #define NUTRITION_LEVEL_ALMOST_FULL 995
 

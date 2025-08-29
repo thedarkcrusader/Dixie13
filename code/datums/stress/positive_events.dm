@@ -200,6 +200,11 @@
 	desc = span_green("A soothing fragrance envelops me.")
 	timer = 10 MINUTES
 
+/datum/stressevent/odor_lover
+	stressadd = -1
+	desc = span_green("This pungent odor is wonderful!")
+	timer = 10 MINUTES
+
 /datum/stressevent/divine_beauty
 	stressadd = -2
 	desc = span_green("I feel touched by a divine beauty.")

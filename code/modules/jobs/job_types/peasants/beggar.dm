@@ -27,6 +27,14 @@
 	. = ..()
 	peopleknowme = list()
 
+/datum/job/vagrant/after_spawn(mob/living/spawned, client/player_client)
+	..()
+	if(ishuman(spawned))
+		var/mob/living/carbon/human/stinky_boy = spawned
+		stinky_boy.set_hygiene(HYGIENE_LEVEL_DIRTY)
+		if(prob(25))
+			stinky_boy.set_hygiene(HYGIENE_LEVEL_DISGUSTING)
+
 /datum/outfit/job/vagrant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(20))
@@ -64,3 +72,4 @@
 
 /datum/outfit/job/vagrant
 	name = "Beggar"
+
