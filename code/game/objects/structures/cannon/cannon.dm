@@ -171,7 +171,7 @@
 
 /obj/effect/fuse/proc/sync_with_fuse()
 	appearance = fuse.appearance
-	filters += filter(type = "outline", color = "#FFFF00")
+	add_filter("fuse_outline", 1, outline_filter(color = "#FFFF00"))
 	transform = matrix()
 
 /obj/effect/fuse/proc/calculate_offsets(datum/parent, current_dir, new_dir)

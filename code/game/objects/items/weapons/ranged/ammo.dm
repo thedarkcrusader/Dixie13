@@ -550,6 +550,10 @@
 	randomspread = 0
 	variance = 0
 	force = 10
+	item_weight = 70
+	grid_width = 96
+	grid_height = 96
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/ammo_casing/caseless/cball/grapeshot
 	name = "berryshot"
