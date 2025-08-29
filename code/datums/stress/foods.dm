@@ -55,3 +55,27 @@
 			var/datum/reagent/consumable/favorite_drink_instance = favorite_drink_type
 			timer = timer * max(1 + initial(favorite_drink_instance.quality), 1)
 			return TRUE
+
+/datum/stressevent/hated_food
+	stressadd = 1
+	desc = span_red("I had to eat my most hated food!")
+	timer = 10 MINUTES
+
+/datum/stressevent/hated_food/can_apply(mob/living/user)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(user.has_stress_type(/datum/stressevent/hated_food))
+		return FALSE
+
+/datum/stressevent/hated_drink
+	stressadd = 1
+	desc = span_red("I had to consume my most hated drink!")
+	timer = 10 MINUTES
+
+/datum/stressevent/hated_drink/can_apply(mob/living/user)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(user.has_stress_type(/datum/stressevent/hated_drink))
+		return FALSE

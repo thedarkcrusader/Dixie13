@@ -28,3 +28,5 @@
 
 #define CULINARY_FAVOURITE_FOOD "Favourite Food"
 #define CULINARY_FAVOURITE_DRINK "Favourite Drink"
+#define CULINARY_HATED_FOOD "Hated Food"
+#define CULINARY_HATED_DRINK "Hated Drink"

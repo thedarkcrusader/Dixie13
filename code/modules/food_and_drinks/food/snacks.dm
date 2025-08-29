@@ -260,9 +260,8 @@ All foods are distributed among various categories. Use common sense.
 	if(ishuman(eater))
 		var/mob/living/carbon/human/human_eater = eater
 
-		if(human_eater.culinary_preferences && human_eater.culinary_preferences[CULINARY_FAVOURITE_FOOD])
+		if(human_eater.culinary_preferences)
 			var/favorite_food_type = human_eater.culinary_preferences[CULINARY_FAVOURITE_FOOD]
-
 			if(favorite_food_type == type)
 				if(human_eater.add_stress(/datum/stressevent/favourite_food))
 					to_chat(human_eater, span_green("Yum! My favorite food!"))
@@ -278,6 +277,23 @@ All foods are distributed among various categories. Use common sense.
 				if(slice_path && type == slice_path)
 					if(human_eater.add_stress(/datum/stressevent/favourite_food))
 						to_chat(human_eater, span_green("Yum! My favorite food!"))
+
+			var/hated_food_type = human_eater.culinary_preferences[CULINARY_HATED_FOOD]
+			if(hated_food_type == type)
+				if(human_eater.add_stress(/datum/stressevent/hated_food))
+					to_chat(human_eater, span_red("Yuck! My hated food!"))
+			else if(ispath(type, hated_food_type))
+				var/obj/item/reagent_containers/food/snacks/hated_food_instance = hated_food_type
+				var/hated_food_name = initial(hated_food_instance.name)
+				if(hated_food_name == name)
+					if(human_eater.add_stress(/datum/stressevent/hated_food))
+						to_chat(human_eater, span_red("Yuck! My hated food!"))
+			else
+				var/obj/item/reagent_containers/food/snacks/hated_food_instance = hated_food_type
+				var/slice_path = initial(hated_food_instance.slice_path)
+				if(slice_path && type == slice_path)
+					if(human_eater.add_stress(/datum/stressevent/hated_food))
+						to_chat(human_eater, span_red("Yuck! My hated food!"))
 
 		if (!HAS_TRAIT(human_eater, TRAIT_NASTY_EATER))
 			if (human_eater.is_noble())
