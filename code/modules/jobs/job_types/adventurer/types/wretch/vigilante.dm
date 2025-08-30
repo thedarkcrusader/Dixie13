@@ -45,7 +45,7 @@
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_SPD, 1)
-	H.change_stat(STATKEY_FOR, 2) //Lucky son of a bitch
+	H.change_stat(STATKEY_LCK, 2) //Lucky son of a bitch
 	ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INHUMENCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -59,7 +59,7 @@
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/title
-		var/list/titles = list("The Showoff", "The Gunslinger", "Money Shot", "The Desperado", "Last Sight", "The Courier", "Lethal Shot", "Guns Blazing", "Punished Shade", "The One Who Sold The World", "V1", "V2", "The Opposition", "Mattarella", "High Noon", "Subterra-Walker") //Dude, Trust.
+		var/list/titles = list("The Showoff", "The Gunslinger", "Money Shot", "The Desperado", "Last Sight", "The Courier", "Lethal Shot", "Guns Blazing", "Punished Shade", "The One Who Sold The World", "V1", "V2", "The Opposition", "Mattarella", "High Noon", "Subterra-Walker", "Big Iron") //Dude, Trust.
 		title = pick(titles)
 		H.real_name = "[prev_real_name], [title]"
 		H.name = "[prev_name], [title]"
