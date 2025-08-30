@@ -1883,6 +1883,7 @@
 #include "code\modules\atmospherics\environmental\LINDA_fire.dm"
 #include "code\modules\awaymissions\corpse.dm"
 #include "code\modules\awaymissions\zlevel.dm"
+#include "code\modules\balloon_alert\balloon_alert.dm"
 #include "code\modules\buildmode\_build_screens.dm"
 #include "code\modules\buildmode\_building_menu.dm"
 #include "code\modules\buildmode\_list_generation.dm"
