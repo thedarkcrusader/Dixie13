@@ -58,7 +58,7 @@
 	worshippers = "Druids, Beasts, Madmen"
 	sins = "Deforestation, Overhunting, Disrespecting Nature"
 	boons = "You can move through bushes without being slowed."
-	added_traits = list(TRAIT_BUSHWALKER)
+	added_traits = list(TRAIT_KNEESTINGER_IMMUNITY, TRAIT_BUSHWALKER)
 	devotion_holder = /datum/devotion/divine/dendor
 	confess_lines = list(
 		"DENDOR PROVIDES!",
