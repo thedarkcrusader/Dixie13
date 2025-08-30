@@ -67,7 +67,7 @@
 	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME)
 		button.maptext = ""
 	else
-		button.maptext = "<b>[round(time_left/10, 0.1)]</b>"
+		button.maptext = MAPTEXT("<b>[round(time_left/10, 0.1)]</b>")
 
 	if(!IsAvailable() || !is_action_active(button))
 		return
