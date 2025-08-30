@@ -57,8 +57,8 @@
 	flaws = "Madness, Rebelliousness, Disorderliness"
 	worshippers = "Druids, Beasts, Madmen"
 	sins = "Deforestation, Overhunting, Disrespecting Nature"
-	boons = "You are immune to kneestingers."
-	added_traits = list(TRAIT_KNEESTINGER_IMMUNITY)
+	boons = "You can move through bushes without being slowed."
+	added_traits = list(TRAIT_BUSHWALKER)
 	devotion_holder = /datum/devotion/divine/dendor
 	confess_lines = list(
 		"DENDOR PROVIDES!",
@@ -74,8 +74,8 @@
 	flaws= "Reckless, Stubborn, Destructive"
 	worshippers = "Sailors of the Sea and Sky, Horrid Sea-Creachers, Fog Islanders"
 	sins = "Fear, Hubris, Forgetfulness"
-	boons = "Leeches will drain very little of your blood."
-	added_traits = list(TRAIT_LEECHIMMUNE)
+	boons = "You are immune to kneestingers."
+	added_traits = list(TRAIT_KNEESTINGER_IMMUNITY)
 	devotion_holder = /datum/devotion/divine/abyssor
 	confess_lines = list(
 		"ABYSSOR COMMANDS THE WAVES!",
