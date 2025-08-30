@@ -1048,14 +1048,22 @@
                 "rscadd": "Maximum 40% chance to cut yourself storing a knife in your boots at less than 10 luck."
             }
         ],
+        "wgtjunior743": [
+            {
+                "rscadd": "Golden Psycross unique description"
+            },
+            {
+                "bugfix": "Good Swim Trait name is not ugly anymore"
+            }
+        ],
         "CheffieGithub": [
             {
                 "bugfix": "fixed an issue with doubled flaw effects."
             }
         ],
-        "wgtjunior743": [
+        "Just-Sim": [
             {
-                "bugfix": "Good Swim Trait name is not ugly anymore"
+                "rscadd": "Door bumping with keys unlocks doors."
             }
         ]
     }
