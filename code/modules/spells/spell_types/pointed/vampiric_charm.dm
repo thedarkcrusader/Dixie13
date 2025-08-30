@@ -27,8 +27,8 @@
 
 /datum/action/cooldown/spell/vampiric_charm/cast(mob/living/cast_on)
 	. = ..()
-	var/charm_to_public = pick("<b style='color:pink'>[owner] is influenced by the beauty of Eora's follower.</b>", "<b style='color:pink'>[cast_on] stares mesmerized at [owner] and does not move.</b>")
-	var/charm_to_target = pick("<b style='color:pink'>Your eyes cannot move away from [owner].</b>", "<b style='color:pink'>You are enchanted by the beauty of the follower of Eora.</b>")
+	var/charm_to_public = pick("<b style='color:pink'>[owner] is influenced by the beauty of the person standing infront of them.</b>", "<b style='color:pink'>[cast_on] stares mesmerized at [owner] and does not move.</b>")
+	var/charm_to_target = pick("<b style='color:pink'>Your eyes cannot move away from [owner].</b>", "<b style='color:pink'>You are enchanted by the beauty of the person standing infront of you.</b>")
 	cast_on.visible_message(span_warning("[charm_to_public]"), span_warning("[charm_to_target]"))
-	cast_on.apply_status_effect(/datum/status_effect/eorapacify)
 	cast_on.Immobilize(85)
+
