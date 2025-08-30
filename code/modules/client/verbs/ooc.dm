@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 			to_chat(C, msg_to_send)
 
 
-/client/proc/lobbyooc(msg as text)
+/client/proc/lobbyooc()
 	set category = "OOC"
 	set name = "OOC"
 	set desc = "Talk with the other players."
@@ -113,45 +113,35 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 	if(!mob)
 		return
 
-		/*
-	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
-		return
-	*/
-
 	if(!holder)
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("I cannot use OOC (muted)."))
 			return
+
 	if(is_misc_banned(ckey, BAN_MISC_OOC))
 		to_chat(src, span_danger("I have been banned from OOC."))
 		return
-	if(QDELETED(src))
+
+	var/message = browser_input_text(src, "", "OOC")
+	if(!length(message) || QDELETED(src))
 		return
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	var/raw_msg = msg
-
-	if(!msg)
-		return
-
-	msg = emoji_parse(msg)
-
+	message = emoji_parse(message)
 
 	if(!holder)
-		if(handle_spam_prevention(msg,MUTE_OOC))
+		if(handle_spam_prevention(message, MUTE_OOC))
 			return
-		if(findtext(msg, "byond://"))
+		if(findtext(message, "byond://"))
 			to_chat(src, "<B>FOOL</B>")
-			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			log_admin("[key_name(src)] has attempted to advertise in OOC: [message]")
+			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [message]")
 			return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
 		to_chat(src, span_danger("I have OOC muted."))
 		return
 
-	mob.log_talk(raw_msg, LOG_OOC)
+	mob.log_talk(message, LOG_OOC)
 
 	var/keyname = get_display_ckey(ckey)
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
@@ -171,12 +161,11 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 				if(SSticker.current_state != GAME_STATE_FINISHED && !istype(C.mob, /mob/dead/new_player))
 					continue
 
-			msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='[chat_color]'><span class='message linkify'>[msg]</span></font>"
+			msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='[chat_color]'><span class='message linkify'>[message]</span></font>"
 			if(holder)
-				msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='[admin_message_color ? admin_message_color : GLOB.OOC_COLOR]'><span class='message linkify'>[msg]</span></font>"
+				msg_to_send = "<font color='[color2use]'><EM>[keyname][real_key]:</EM></font> <font color='[admin_message_color ? admin_message_color : GLOB.OOC_COLOR]'><span class='message linkify'>[message]</span></font>"
 
 			to_chat(C, msg_to_send)
-
 
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc

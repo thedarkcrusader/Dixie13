@@ -32,17 +32,19 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	return ..()
 
 ///Say verb
-/mob/dead/new_player/say_verb(message as text)
+/mob/dead/new_player/say_verb()
 	set name = "Say"
 	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
-	if(message)
-		if(client)
-			if(GLOB.ooc_allowed)
-				client.ooc(message)
-			else
-				client.lobbyooc(message)
+	var/message = browser_input_text(src, "", "OOC")
+	if(!length(message) || QDELETED(src))
+		return
+
+	if(GLOB.ooc_allowed)
+		client.ooc(message)
+	else
+		client.lobbyooc(message)
 
 /mob/dead/new_player/prepare_huds()
 	return

@@ -4,29 +4,37 @@
 /mob/verb/say_verb()
 	set name = "Say"
 	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
-	var/message = input(usr, "", "say") as text|null
+	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+
+	var/message = browser_input_text(src, "", "say")
+	if(QDELETED(src))
+		return
 	// If they don't type anything just drop the message.
+
 	set_typing_indicator(FALSE)
 	if(!length(message))
 		return
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-	if(message)
-		set_typing_indicator(FALSE)
-		say(message)
+
+	say(message)
 
 ///Whisper verb
-/mob/verb/whisper_verb(message as text)
+/mob/verb/whisper_verb()
 	set name = "Whisper"
 	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
+
+	var/message = browser_input_text(src, "", "whisper")
+	if(!length(message) || QDELETED(src))
+		return
+
 	whisper(message)
 
 ///whisper a message
@@ -37,23 +45,27 @@
 /mob/verb/me_verb()
 	set name = "Me"
 	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
-	if(client)
-		if(get_playerquality(client.ckey) <= -20)
-			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
-			return
-	var/message = input(usr, "", "me") as text|null
+	if(client && get_playerquality(client.ckey) <= -20)
+		to_chat(src, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
+		return
+
+	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+
+	var/message = browser_input_text(src, "", "me")
+	if(QDELETED(src))
+		return
+
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)
 	if(!length(message))
 		return
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+
 	message = parsemarkdown_basic(message, limited = TRUE, barebones = TRUE)
-	usr.emote("me",1,message,TRUE, custom_me = TRUE)
+	emote("me", 1, message, TRUE, custom_me = TRUE)
 
 ///Speak as a dead person (ghost etc)
 /mob/proc/say_dead(message)
