@@ -19,5 +19,5 @@
 	owner.emote("me", 1, "grits their teeth and farts!", TRUE, custom_me = TRUE)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/stinky_boy = owner
-		stinky_boy.adjust_hygiene(rand(-1, -10) * HYGIENE_FACTOR)
+		stinky_boy.adjust_hygiene(rand(-1, -10))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), get_turf(owner), fard, 100), 1 SECONDS)

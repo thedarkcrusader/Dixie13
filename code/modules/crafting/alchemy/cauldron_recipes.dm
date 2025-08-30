@@ -336,3 +336,37 @@
 		/datum/thaumaturgical_essence/cycle = 2,
 		/datum/thaumaturgical_essence/magic = 2
 	)
+
+/datum/alch_cauldron_recipe/rosa_perfume
+	recipe_name = "Rosa Perfume"
+	smells_like = "roses"
+	output_items = list(/obj/item/perfume/rose)
+	required_essences = list(
+		/datum/thaumaturgical_essence/air = 1
+	)
+
+/datum/alch_cauldron_recipe/mint_perfume
+	recipe_name = "Mint Perfume"
+	smells_like = "mint"
+	output_items = list(/obj/item/perfume/mint)
+	required_essences = list(
+		/datum/thaumaturgical_essence/air = 1
+	)
+
+
+/datum/alch_cauldron_recipe/pear_perfume
+	recipe_name = "Pear Perfume"
+	smells_like = "pears"
+	output_items = list(/obj/item/perfume/pear)
+	required_essences = list(
+		/datum/thaumaturgical_essence/air = 1
+	)
+
+/datum/alch_cauldron_recipe/strawberry_perfume
+	recipe_name = "Strawberry Perfume"
+	smells_like = "strawberries"
+	output_items = list(/obj/item/perfume/strawberry)
+	required_essences = list(
+		/datum/thaumaturgical_essence/air = 1
+	)
+

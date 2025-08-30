@@ -177,10 +177,9 @@
 
 		//Are we bathing?
 		var/current_turf = get_turf(src)
-		if(istype(/turf/open/water/, current_turf))
+		if(istype(current_turf, /turf/open/water))
 			var/turf/open/water/bathing_liquid = current_turf
-			hygiene_adjustment += 1 * bathing_liquid.cleanliness_factor * HYGIENE_FACTOR
-
+			hygiene_adjustment += bathing_liquid.cleanliness_factor
 
 
 		adjust_hygiene(hygiene_adjustment)
