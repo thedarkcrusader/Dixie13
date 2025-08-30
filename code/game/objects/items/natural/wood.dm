@@ -10,7 +10,7 @@
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/small = 1)
+	static_debris = list(/obj/item/grown/log/tree/small = 2)
 	obj_flags = CAN_BE_HIT
 	resistance_flags = FLAMMABLE
 	gripped_intents = list(/datum/intent/hit)
@@ -87,7 +87,7 @@
 			to_chat(user, span_info("My poor skill has me ruin some of the timber..."))
 		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
-		deconstruct()
+		qdel(src)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /*
@@ -101,6 +101,21 @@
 		return ..()
 	qdel(src)
 
+/obj/item/grown/log/tree/atom_destruction(damage_flag)
+	SHOULD_CALL_PARENT(FALSE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DESTRUCTION, damage_flag)
+	if(damage_flag == "acid")
+		acid_melt()
+	else if(damage_flag == "fire")
+		burn()
+	else
+		if(destroy_sound)
+			playsound(src, destroy_sound, 100, TRUE)
+		if(destroy_message)
+			visible_message(destroy_message)
+		deconstruct(TRUE)
+	return TRUE
+
 /obj/item/grown/log/tree/small
 	name = "small log"
 	desc = "A smaller log that came from a larger log. Suitable for building."
@@ -110,7 +125,7 @@
 	experimental_inhand = FALSE
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/stick = 1)
+	static_debris = list(/obj/item/grown/log/tree/stick = 2)
 	firefuel = 20 MINUTES
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
