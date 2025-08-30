@@ -45,14 +45,15 @@
 	)
 	leader = /datum/clan_leader/eoran
 
-/datum/clan/thronleer/get_blood_preference_string()
+/datum/clan/eoran/get_blood_preference_string()
 	return "Regular blood, blood of your loved ones"
 
-/datum/clan/thronleer/get_downside_string()
+/datum/clan/eoran/get_downside_string()
 	return "You are perfect, you do not have any downsides."
 
 /datum/clan/eoran/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
+
 
 
 
