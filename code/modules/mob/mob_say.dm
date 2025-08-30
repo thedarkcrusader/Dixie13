@@ -75,7 +75,7 @@
 		return
 	message = trim(copytext_char(html_encode(message), 1, MAX_MESSAGE_BIGME))
 	message = parsemarkdown_basic(message, limited = TRUE, barebones = TRUE)
-	usr.emote("me",1,message,TRUE, custom_me = TRUE)
+	usr.emote("me", 1, message, TRUE, custom_me = TRUE)
 
 ///Speak as a dead person (ghost etc)
 /mob/proc/say_dead(message)
