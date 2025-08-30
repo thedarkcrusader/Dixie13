@@ -183,7 +183,7 @@
 	return ..()
 
 /obj/structure/door/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/key) || istype(I, /obj/item/storage/keyring))
+	if(I.has_access())
 		return (..() || attack_hand(user))
 	if(switching_states)
 		return
