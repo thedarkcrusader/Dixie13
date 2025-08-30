@@ -85,7 +85,6 @@
 	body_parts_covered = HEAD_NECK
 	block2add = FOV_BEHIND
 
-
 //............... Frog Helmet ............... //
 /obj/item/clothing/head/helmet/heavy/frog
 	name = "frog helmet"
