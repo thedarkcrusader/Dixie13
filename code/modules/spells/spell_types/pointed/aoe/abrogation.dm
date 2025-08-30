@@ -95,11 +95,16 @@
 /datum/status_effect/debuff/abrogation/tick()
 	if(!owner)
 		return
+
 	if(prob(66))
 		owner.adjustFireLoss(base_tick * intensity)
+
 	if(prob(10))
 		to_chat(owner, span_warning("A frenzy of ghostly motes assail my form!"))
 		owner.emote("scream")
+
+	if(!debuffer)
+		return
 
 	var/mob/living/our_debuffer = debuffer.resolve()
 	if(get_dist(our_debuffer, owner) > range)
