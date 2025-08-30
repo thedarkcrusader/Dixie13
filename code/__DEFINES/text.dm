@@ -3,3 +3,6 @@
 
 /// Prepares text for maptext centered
 #define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}
+
+/// Large area entry maptext
+#define MAPTEXT_BLACKMOOR(text) {"<span style='font-family: \"Blackmoor LET\"; font-size: 24pt; -dm-text-outline: 1px black'>[##text]</span>"}
