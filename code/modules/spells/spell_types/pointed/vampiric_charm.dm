@@ -19,7 +19,7 @@
 	charge_drain = 1
 	charge_slowdown = 1.3
 	cooldown_time = 2 MINUTES
-	spell_cost = 80
+	spell_cost = 70
 	attunements = list(
 		/datum/attunement/blood = 0.5,
 	)
@@ -40,4 +40,5 @@
 	cast_on.Immobilize(40)
 	cast_on.Slowdown(15)
 	cast_on.blur_eyes(20)
+
 
