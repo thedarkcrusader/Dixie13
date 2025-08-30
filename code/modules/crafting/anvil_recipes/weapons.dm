@@ -159,6 +159,24 @@
 	createditem_extra = 1
 	craftdiff = 0 // To train with
 
+/datum/anvil_recipe/weapons/iron/njora
+
+	name = "2x Iron Seme's"
+	recipe_name = "a Iron Seme"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/knife/njora/iron
+	createditem_extra = 1
+	craftdiff = 0
+
+/datum/anvil_recipe/weapons/iron/jile
+
+	name = "2x Iron Jile Daggers"
+	recipe_name = "a Iron Jile"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/knife/jile/iron
+	createditem_extra = 1
+	craftdiff = 0
+
 /datum/anvil_recipe/weapons/iron/dagger_iron
 	name = "3x Villager Knives"
 	recipe_name = "three peasantry knives"
@@ -363,6 +381,24 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = 	/obj/item/weapon/hammer/sledgehammer/war
+
+/datum/anvil_recipe/weapons/steel/njora
+
+	name = "2x Steel Seme's"
+	recipe_name = "a Steel Seme"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/knife/njora/steel
+	createditem_extra = 1
+	craftdiff = 1
+
+/datum/anvil_recipe/weapons/steel/jile
+
+	name = "2x Steel Jile Daggers"
+	recipe_name = "a Steel Jile"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/knife/jile/steel
+	createditem_extra = 1
+	craftdiff = 1
 
 /datum/anvil_recipe/weapons/steel/battleaxe
 	name = "Battle Axe (+Bar x2)"

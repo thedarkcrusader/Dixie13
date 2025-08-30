@@ -507,8 +507,8 @@
 	icon_state = "shotel_steel"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	desc = "a long curved blade of Lakkarian Design. Shotels are the weapon of choice for pegasus knights."
-	possible_item_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/thrust/long)
-	gripped_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/thrust/long, /datum/intent/sword/chop/)
+	possible_item_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/chop/long/shotel)
+	gripped_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/shotel)
 	swingsound = BLADEWOOSH_LARGE
 	parrysound = "largeblade"
 	pickup_sound = "brandish_blade"
@@ -520,7 +520,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
-	dropshrink = 0.75
+	dropshrink = 0.9
 	sellprice = 80
 	max_integrity = 150 //this thing is long as hell, it would be more likely to break over time
 
@@ -544,8 +544,8 @@
 	icon_state = "shotel_iron"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	desc = "a long curved blade of Lakkarian Design. Shotels are the weapon of choice for pegasus knights."
-	possible_item_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/thrust/long)
-	gripped_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/thrust/long, /datum/intent/sword/chop/)
+	possible_item_intents = list(/datum/intent/sword/cut/, /datum/intent/sword/chop/long/shotel)
+	gripped_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/shotel)
 	swingsound = BLADEWOOSH_LARGE
 	parrysound = "largeblade"
 	pickup_sound = "brandish_blade"
@@ -557,7 +557,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
-	dropshrink = 0.75
+	dropshrink = 0.9
 	sellprice = 80
 	max_integrity = 100 //this thing is long as hell, it would be more likely to break over time
 	smeltresult = /obj/item/ingot/iron
