@@ -839,6 +839,9 @@
 			if(world.time >= cooldown)
 				H.set_hygiene(HYGIENE_LEVEL_NORMAL)
 				bird_man.time_to_next_preen = world.time + HARPY_PREENING_COOLDOWN
+				if(prob(50))
+					var/preened_feather = /obj/item/natural/feather
+					new preened_feather(user.loc)
 			else
 				to_chat(H, "<span class='warning'>I have preened my feathers recently! It has no effect on my hygiene.</span>")
 
