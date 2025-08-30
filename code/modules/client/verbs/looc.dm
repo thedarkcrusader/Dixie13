@@ -61,7 +61,7 @@
 	var/prefix = "LOOC"
 	var/list/mobs = list()
 	var/muted = prefs.muted
-	for(var/mob/M in viewers(7,src))
+	for(var/mob/M in range(7,src))
 		var/added_text
 		var/client/C = M.client
 		if(!M.client)
