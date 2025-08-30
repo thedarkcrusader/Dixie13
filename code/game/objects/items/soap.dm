@@ -183,7 +183,7 @@
 //Only get the buff if you use the good stuff
 /obj/item/soap/bath/scrub_scrub(mob/living/carbon/human/target, mob/living/carbon/user)
 	. = ..()
-	if(target.hygiene = HYGIENE_LEVEL_CLEAN)
+	if(target.hygiene == HYGIENE_LEVEL_CLEAN)
 		to_chat(target, span_green("I feel so relaxed and clean!"))
 		if(user != target)
 			//Someone else washing you applies the buff, otherwise just the stress event
