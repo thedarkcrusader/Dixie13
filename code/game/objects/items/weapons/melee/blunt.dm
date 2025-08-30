@@ -168,7 +168,11 @@
 	minstr = 5
 	force = DAMAGE_MACE - 3
 	force_wielded = DAMAGE_MACE - 1
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
+
+/obj/item/weapon/mace/courtphysician/Initialize()
+	. = ..()
+	AddComponent(/datum/component/walking_stick)
 
 /obj/item/weapon/mace/courtphysician/getonmobprop(tag)
 	. = ..()
@@ -292,7 +296,7 @@
 	icon_state = "ibludgeon"
 	max_integrity = INTEGRITY_STRONG-50
 	wbalance = HARD_TO_DODGE
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/bludgeon/getonmobprop(tag)
 	. = ..()
@@ -318,7 +322,7 @@
 	melting_material = /datum/material/copper
 	melt_amount = 75
 	sellprice = 10
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 
 //................ Club ............... //
@@ -336,7 +340,7 @@
 	melting_material = null
 	minstr = 2
 	sellprice = 5
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/woodclub/Initialize(mapload)
 	. = ..()
@@ -361,7 +365,7 @@
 	minstr = 2
 	wbalance = HARD_TO_DODGE
 	sellprice = 15
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 
 /obj/item/weapon/mace/cudgel/getonmobprop(tag)
@@ -570,8 +574,8 @@
 
 //................ Copper goden ............... //
 /obj/item/weapon/mace/goden/copper
-	force = 10
-	force_wielded = 20
+	force = DAMAGE_CLUB - 5
+	force_wielded = DAMAGE_CLUB_WIELD
 	slowdown = 1
 	name = "copper warclub"
 	desc = "A two handed club, decorated with a crown of spikes. A barbaric besign, good enough to be used as a weapon."
@@ -580,7 +584,7 @@
 	melt_amount = 75
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	parrysound = "parrywood"
-	max_integrity = 150
+	max_integrity = INTEGRITY_POOR
 	minstr = 10
 	sellprice = 35
 
