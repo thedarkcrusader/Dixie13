@@ -10,3 +10,5 @@
 	item_type = /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured
 	item_duration = null
 	item_outline ="#ababab"
+	delete_old = TRUE
+
