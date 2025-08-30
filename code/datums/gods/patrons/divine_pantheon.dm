@@ -74,7 +74,7 @@
 	flaws= "Reckless, Stubborn, Destructive"
 	worshippers = "Sailors of the Sea and Sky, Horrid Sea-Creachers, Fog Islanders"
 	sins = "Fear, Hubris, Forgetfulness"
-	boons = "You are immune to kneestingers."
+	boons = "You are immune to kneestingers and leeches."
 	added_traits = list(TRAIT_KNEESTINGER_IMMUNITY, TRAIT_LEECHIMMUNE)
 	devotion_holder = /datum/devotion/divine/abyssor
 	confess_lines = list(
