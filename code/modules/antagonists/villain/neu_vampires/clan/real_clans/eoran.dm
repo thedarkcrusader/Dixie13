@@ -22,6 +22,19 @@
 		TRAIT_BEAUTIFUL,
 		TRAIT_EMPATH,
 		TRAIT_EXTEROCEPTION,
+		TRAIT_STRONGBITE,
+		TRAIT_NOENERGY,
+		TRAIT_NOHUNGER,
+		TRAIT_NOBREATH,
+		TRAIT_NOPAIN,
+		TRAIT_TOXIMMUNE,
+		TRAIT_STEELHEARTED,
+		TRAIT_NOSLEEP,
+		TRAIT_VAMPMANSION,
+		TRAIT_VAMP_DREAMS,
+		TRAIT_NOAMBUSH,
+		TRAIT_DARKVISION,
+		TRAIT_LIMBATTACHMENT,
 		)
 
 	clane_covens = list(
@@ -40,5 +53,6 @@
 
 /datum/clan/eoran/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
+
 
 
