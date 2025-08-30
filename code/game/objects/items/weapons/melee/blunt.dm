@@ -127,7 +127,11 @@
 	minstr = 5
 	force = DAMAGE_MACE - 3
 	force_wielded = DAMAGE_MACE - 1
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
+
+/obj/item/weapon/mace/courtphysician/Initialize()
+	. = ..()
+	AddComponent(/datum/component/walking_stick)
 
 /obj/item/weapon/mace/courtphysician/getonmobprop(tag)
 	. = ..()
@@ -239,7 +243,7 @@
 	icon_state = "ibludgeon"
 	max_integrity = INTEGRITY_STRONG-50
 	wbalance = HARD_TO_DODGE
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/bludgeon/getonmobprop(tag)
 	. = ..()
@@ -265,7 +269,7 @@
 	melting_material = /datum/material/copper
 	melt_amount = 75
 	sellprice = 10
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 
 //................ Club ............... //
@@ -275,7 +279,7 @@
 	name = "club"
 	desc = "A weapon older than recorded time itself."
 	icon_state = "club1"
-	max_integrity = 120
+	max_integrity = INTEGRITY_WORST
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
@@ -283,7 +287,7 @@
 	melting_material = null
 	minstr = 2
 	sellprice = 5
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/woodclub/Initialize(mapload)
 	. = ..()
@@ -304,11 +308,11 @@
 	melting_material = null
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
-	max_integrity = 180
+	max_integrity = INTEGRITY_STANDARD
 	minstr = 2
 	wbalance = HARD_TO_DODGE
 	sellprice = 15
-	wdefense = MEDIOCHRE_PARRY
+	wdefense = MEDIOCRE_PARRY
 
 
 /obj/item/weapon/mace/cudgel/getonmobprop(tag)
@@ -338,7 +342,7 @@
 	associated_skill = /datum/skill/combat/swords
 	wdefense = ULTMATE_PARRY
 	metalizer_result = /obj/item/weapon/sword/iron
-	max_integrity = 240
+	max_integrity = INTEGRITY_STANDARD
 
 /obj/item/weapon/mace/woodclub/train_sword/getonmobprop(tag)
 	. = ..()
@@ -362,8 +366,7 @@
 	desc = "A two handed club, decorated with a spiked cap crown. A perfect way to say Good Morning to any would be noble-knight."
 	icon_state = "goedendag"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
+	SET_BASE_PIXEL(-16, -16)
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	bigboy = TRUE
@@ -376,7 +379,7 @@
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	minstr = 10
 	parrysound = "parrywood"
-	max_integrity = 300
+	max_integrity = INTEGRITY_STRONG
 	wbalance = EASY_TO_DODGE
 	sellprice = 35
 	wdefense = GOOD_PARRY
@@ -397,10 +400,10 @@
 	desc = "A staff made of seaglass and sturdy but unusual metal, holding no power after its misled owner's death. More useful as a bashing tool than a magic focus."
 	icon = 'icons/roguetown/mob/monster/pufferboss.dmi'
 	icon_state = "pufferprod"
-	force = 15
-	force_wielded = 35
+	force = DAMAGE_MACE - 5
+	force_wielded = DAMAGE_HEAVYCLUB_WIELD + 5
 	minstr = 11
-	max_integrity = 900
+	max_integrity = INTEGRITY_STRONGEST * 1.2
 
 //................ Grand mace ............... //
 /obj/item/weapon/mace/goden/steel
@@ -471,8 +474,7 @@
 	desc = "Big old oak branch, carved to a deadly weapon."
 	icon_state = "shillelagh"
 	icon = 'icons/roguetown/weapons/shillelagh.dmi'
-	pixel_y = 0
-	pixel_x = 0
+	SET_BASE_PIXEL(0, 0)
 	bigboy = FALSE
 	gripsprite = TRUE
 	slot_flags = ITEM_SLOT_BACK
@@ -519,8 +521,8 @@
 
 //................ Copper goden ............... //
 /obj/item/weapon/mace/goden/copper
-	force = 10
-	force_wielded = 20
+	force = DAMAGE_CLUB - 5
+	force_wielded = DAMAGE_CLUB_WIELD
 	slowdown = 1
 	name = "copper warclub"
 	desc = "A two handed club, decorated with a crown of spikes. A barbaric besign, good enough to be used as a weapon."
@@ -529,7 +531,7 @@
 	melt_amount = 75
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	parrysound = "parrywood"
-	max_integrity = 150
+	max_integrity = INTEGRITY_POOR
 	minstr = 10
 	sellprice = 35
 
