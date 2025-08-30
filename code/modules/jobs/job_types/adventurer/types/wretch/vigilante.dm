@@ -59,7 +59,7 @@
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/title
-		var/list/titles = list("The Showoff", "The Gunslinger", "Money Shot", "The Desperado", "Last Sight", "The Courier", "Lethal Shot", "Guns Blazing", "Punished Shade", "The One Who Sold The World", "V1", "V2", "The Opposition", "Mattarella", "High Noon", "Subterra-Walker", "Big Iron") //Dude, Trust.
+		var/list/titles = list("The Showoff", "The Gunslinger", "Mammon Shot", "The Desperado", "Last Sight", "The Courier", "Lethal Shot", "Guns Blazing", "Punished Shade", "The One Who Sold Creation", "V1", "V2", "The Opposition", "Mattarella", "High Noon", "Subterra-Walker", "Big Iron") //Dude, Trust.
 		title = pick(titles)
 		H.real_name = "[prev_real_name], [title]"
 		H.name = "[prev_name], [title]"
