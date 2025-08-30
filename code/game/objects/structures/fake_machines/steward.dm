@@ -12,7 +12,6 @@
 	icon_state = "steward_machine"
 	density = TRUE
 	blade_dulling = DULLING_BASH
-	max_integrity = 0
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 
@@ -26,6 +25,7 @@
 
 /obj/structure/fake_machine/steward/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/coin))
+		record_round_statistic(STATS_MAMMONS_DEPOSITED, I.get_real_price())
 		SStreasury.give_money_treasury(I.get_real_price(), "NERVE MASTER deposit")
 		qdel(I)
 		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
