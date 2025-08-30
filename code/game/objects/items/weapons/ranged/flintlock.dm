@@ -238,5 +238,5 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
-	obj_integrity = 0
-	obj_break()
+	atom_integrity = 0
+	atom_break()
