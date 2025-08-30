@@ -183,10 +183,10 @@
 	return ..()
 
 /obj/structure/door/attackby(obj/item/I, mob/user)
-	if(I.has_access())
-		return (..() || attack_hand(user))
 	if(switching_states)
 		return
+	if(I.has_access())
+		return (..() || attack_hand(user))
 	return ..()
 
 /obj/structure/door/attack_hand_secondary(mob/user, params)
