@@ -59,7 +59,7 @@
 /mob/verb/me_big_verb()
 	set name = "Me(Big)"
 	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(client)
 		if(get_playerquality(client.ckey) <= -20)
