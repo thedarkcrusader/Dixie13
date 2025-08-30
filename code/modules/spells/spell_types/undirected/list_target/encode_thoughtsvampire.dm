@@ -2,7 +2,7 @@
 	name = "Vampiric Manipulation"
 	desc = "Latch onto the mind of one who is nearby, encoding a particular thought into their mind."
 	button_icon_state = null
-	sound = 'sound/magic/whiteflame.ogg'
+	sound = 'sound/magic/PSY.ogg'
 
 	point_cost = 1
 	attunements = list(
@@ -35,4 +35,5 @@
 
 	to_chat(owner, "I pluck the strings of [cast_on]'s mind!")
 	to_chat(cast_on, "Your mind thinks to itself: </span><font color=#7246ff>\"[message]...\"</font>")
+
 
