@@ -696,7 +696,7 @@
 	desc = "Void energy is eating away at your very being!"
 	icon_state = "void_corruption"  // ICON NEEDED
 
-/datum/status_effect/void_corruption/on_creation(mob/living/new_owner, duration_override = 30 SECONDS)
+/datum/status_effect/void_corruption/on_creation(mob/living/new_owner, duration_override)
 	next_stage_time = world.time + stage_threshold
 	return ..()
 
