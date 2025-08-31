@@ -15,7 +15,7 @@
 	shirt = /obj/item/clothing/shirt/shadowshirt
 	armor = /obj/item/clothing/armor/plate/full/zizo
 	shoes = /obj/item/clothing/shoes/boots/armor/zizo
-	neck = /obj/item/clothing/neck/gorget
+	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/satchel
