@@ -18,7 +18,7 @@
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)

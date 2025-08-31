@@ -62,10 +62,10 @@
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
 
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) // Main weapon
+	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE) // Main off-hand weapon
 	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE) // Backup
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) // Guards should be going for less than lethal in reality. Unarmed would be a primary thing.
 	H.change_stat(STATKEY_STR, 1)
@@ -102,7 +102,7 @@
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
 		H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // You don't even have access to crossbows
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Backup
+		H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) // Backup
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -141,10 +141,10 @@
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
 	//Stats for class
-	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
