@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(ambience)
 	else if(HAS_TRAIT(src, TRAIT_DRUQK))
 		used = 'sound/music/spice.ogg'
 
-	if(!used || vol >= 0)
+	if(!used || vol <= 0)
 		cancel_looping_ambience()
 		return
 
