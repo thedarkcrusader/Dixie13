@@ -502,7 +502,6 @@
 	sellprice = 60
 
 /obj/item/weapon/sword/long/shotel
-
 	name = "steel shotel"
 	icon_state = "shotel_steel"
 	icon = 'icons/roguetown/weapons/64.dmi'
