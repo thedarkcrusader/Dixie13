@@ -26,7 +26,6 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/spectacles/inqglasses, // inquisitor bullshit
 		/obj/item/clothing/armor/medium/scale/inqcoat, // inquisitor bullshit
 		/obj/item/clothing/head/adeptcowl, // inquisitor bullshit
-		/obj/item/clothing/head/leather/inqhat, // inquisitor bullshit
 		/obj/item/clothing/face/facemask/steel/harlequin, // antag only
 		/obj/item/clothing/shirt/dress/gen/sexy, // we wanted to keep it but don't want it craftable ig
 		/obj/item/clothing/shirt/robe/necromancer, // antag
@@ -54,6 +53,9 @@ abstract types are automatically excluded.
 		/obj/item/clothing/gloves/leather/otavan/inqgloves,  // inquisitor bullshit
 		/obj/item/clothing/armor/amazon_chainkini, // no horni
 		/obj/item/clothing/head/helmet/leather/hood_ominous, // todo?
+		/obj/item/clothing/armor/leather/jacket/leathercoat/wretchrenegade, //same as leathercoat but diff color
+		/obj/item/clothing/head/leather/inqhat/vigilante, //Renegade Bullshit
+		/obj/item/clothing/face/phys/plaguebearer, //Plague Only
 
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.
