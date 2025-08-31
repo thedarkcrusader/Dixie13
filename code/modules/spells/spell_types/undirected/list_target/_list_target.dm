@@ -1,7 +1,7 @@
 /**
  * ## List Target spells
  *
- * These spells will prompt the user with a tgui list
+ * These spells will prompt the user with a browser list
  * of all nearby targets that they select on to cast.
  *
  * To add effects on cast, override "cast(atom/cast_on)".
@@ -12,7 +12,7 @@
 	has_visual_effects = FALSE
 	sound = null
 
-	/// The message displayed as the title of the tgui target input list.
+	/// The message displayed as the title of the browser target input list.
 	var/choose_target_message = "Choose a target."
 	/// Radius around the caster that living targets are picked to choose from
 	var/target_radius = 7
