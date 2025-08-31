@@ -59,6 +59,12 @@ abstract types are automatically excluded.
 		"goblin",
 		"rare",
 		"captain",
+		"matthios",
+		"zizo",
+		"graggar",
+		"steam",
+		"royalknight",
+		"warden",
 	)
 
 /datum/unit_test/craftable_clothes/Run()
