@@ -24,7 +24,6 @@
 	item_damage_type = "slash"
 
 /datum/intent/sword/chop/long/shotel
-
 	reach = 2 //shotels are long lol
 
 /datum/intent/sword/chop/long/guts
