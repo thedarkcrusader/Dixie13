@@ -18,8 +18,8 @@
 	charge_time = 3 SECONDS
 	charge_drain = 1
 	charge_slowdown = 1.3
-	cooldown_time = 2 MINUTES
-	spell_cost = 70
+	cooldown_time = 80 SECONDS
+	spell_cost = 80
 	attunements = list(
 		/datum/attunement/blood = 0.5,
 	)
@@ -32,7 +32,7 @@
 
 /datum/action/cooldown/spell/vampiric_charm/cast(mob/living/cast_on)
 	. = ..()
-	var/charm_to_public = pick("<b style='color:pink'>[owner] is influenced by the beauty of the person standing infront of them.</b>", "<b style='color:pink'>[cast_on] stares mesmerized at [owner] and does not move.</b>")
+	var/charm_to_public = pick("<b style='color:pink'>[owner]'s eyes glow as they look towards the person.</b>", "<b style='color:pink'>[cast_on] stares mesmerized at [owner] and does not move.</b>")
 	var/charm_to_target = pick("<b style='color:pink'>Your eyes cannot move away from [owner].</b>", "<b style='color:pink'>You are enchanted by the beauty of the person standing infront of you.</b>")
 	cast_on.visible_message(span_warning("[charm_to_public]"), span_warning("[charm_to_target]"))
 	cast_on.apply_status_effect(/datum/status_effect/eorapacify)
@@ -40,5 +40,4 @@
 	cast_on.Immobilize(40)
 	cast_on.Slowdown(15)
 	cast_on.blur_eyes(20)
-
-
+	cast_on.emote("drool")
