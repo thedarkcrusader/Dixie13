@@ -12,8 +12,6 @@
 	bigboy = TRUE
 	wlength = WLENGTH_LONG
 	sellprice = 250
-	//randomspread = 1 I dont think its used for anything?
-	spread = 0
 	can_parry = TRUE
 	wdefense = BAD_PARRY
 	wbalance = EASY_TO_DODGE
