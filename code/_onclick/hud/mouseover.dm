@@ -168,7 +168,7 @@
 			if(H.voice_color)
 				if(H.name != "Unknown")
 					mousecolor = "#[H.voice_color]"
-		p.client.mouseovertext.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[name]</span>")
+		p.client.mouseovertext.maptext = MAPTEXT_CENTER("<span style='color:[mousecolor]'>[name]</span>")
 		p.client.mouseovertext.movethis(PM)
 		p.client.screen |= p.client.mouseovertext
 	return TRUE
