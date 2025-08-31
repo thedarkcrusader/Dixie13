@@ -73,10 +73,6 @@ GLOBAL_LIST_EMPTY(prayers)
 	if(length(profane_words))
 		for(var/profanity in profane_words)
 			if(findtext(prayer, profanity))
-				if(ishuman(follower))
-					var/mob/living/carbon/human/blasphemer = follower
-					if(blasphemer.patron?.type == /datum/patron/psydon)
-						return FALSE
 				punish_prayer(follower)
 				return FALSE
 
