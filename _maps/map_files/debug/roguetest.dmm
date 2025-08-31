@@ -2601,7 +2601,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
 "EN" = (
-/obj/item/ammo_casing/caseless/cball,
+/obj/projectile/bullet/reusable/cannonball,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "ER" = (
@@ -2940,7 +2940,6 @@
 "LA" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/grass,
-/obj/structure/cannon,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "Me" = (
@@ -3405,6 +3404,10 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"Zf" = (
+/obj/structure/cannon,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors)
@@ -14961,7 +14964,7 @@ ji
 VG
 jC
 VG
-QN
+Zf
 LA
 QN
 jC
