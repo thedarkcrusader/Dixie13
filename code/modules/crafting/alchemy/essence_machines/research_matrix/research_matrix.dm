@@ -1,6 +1,6 @@
 /obj/machinery/essence/research_matrix
 	name = "Alchemical Engine"
-	desc = "A blackiconosphere mass which heat radiates from. It hums with alchemic energy, assisting in process of extraction. "
+	desc = "A black iconosphere which heat radiates from. It hums with alchemic energy, assisting in process of extraction. "
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "placeholder"
 	density = TRUE
