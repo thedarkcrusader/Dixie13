@@ -470,7 +470,6 @@
 	created_item = /obj/item/weapon/sword/scimitar/ngombe
 
 /datum/anvil_recipe/weapons/steel/kaskara // I FORGOT TO INCLUDE IT
-
 	name = "Steel Kaskara"
 	recipe_name = "a Steel Kaskara"
 	appro_skill = /datum/skill/craft/weaponsmithing
