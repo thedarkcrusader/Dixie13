@@ -146,7 +146,6 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/iron/assegai
-
 	name = "Iron Assegai (+ Small Log)"
 	recipe_name = "an Iron Assegai"
 	appro_skill = /datum/skill/craft/weaponsmithing
