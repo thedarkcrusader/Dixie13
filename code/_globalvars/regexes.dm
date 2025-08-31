@@ -13,7 +13,6 @@ GLOBAL_DATUM_INIT(has_discord_embeddable_links, /regex, regex("(https?://\[^\\s|
 //All < and > characters
 GLOBAL_DATUM_INIT(angular_brackets, /regex, regex(@"[<>]", "g"))
 
-
 //All characters between < a > inclusive of the bracket
 GLOBAL_DATUM_INIT(html_tags, /regex, regex(@"<.*?>", "g"))
 
