@@ -1,6 +1,6 @@
 /obj/machinery/essence/research_matrix
-	name = "Alchemical  research matrix"
-	desc = "A black hexagonal mass which heat radiates from. The heart of any dedicated alchemy setup, it allows for the  "
+	name = "Alchemical Engine"
+	desc = "A blackiconosphere mass which heat radiates from. It hums with alchemic energy, assisting in process of extraction. "
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "placeholder"
 	density = TRUE
@@ -79,7 +79,7 @@
 			if(vial.essence_amount <= 0)
 				vial.contained_essence = null
 			vial.update_appearance(UPDATE_OVERLAYS)
-			to_chat(user, span_info("You pour [transferred] units of essence into the matrix."))
+			to_chat(user, span_info("You pour [transferred] units of essence into the engine."))
 		return
 
 	return ..()
@@ -131,7 +131,7 @@
 				message_admins("test")
 		qdel(temp_node)
 
-	visible_message(span_notice("The research matrix pulses with alchemic energy as new knowledge is unlocked!"))
+	visible_message(span_notice("The engine hums and grumbles with alchemic energy as it's fueled!"))
 
 	var/boon = user.get_learning_boon(/datum/skill/craft/alchemy)
 	user.adjust_experience(/datum/skill/craft/alchemy, selected_research.experience_reward * boon, FALSE)
@@ -175,7 +175,7 @@
 		return
 
 	var/content = generate_interface_html()
-	window = new(user, "research_matrix", null, 800, 600)
+	window = new(user, "alchemic_engine", null, 800, 600)
 	window.set_content(content)
 	window.open()
 
