@@ -27,7 +27,6 @@
 	holder.screen += buttons
 	holder.click_intercept = src
 	init_blueprint_recipes()
-	open_recipe_browser()
 	RegisterSignal(holder.mob, COMSIG_MOUSE_ENTERED, PROC_REF(on_mouse_moved))
 	RegisterSignal(holder?.mob, COMSIG_ATOM_MOUSE_ENTERED, PROC_REF(on_mouse_moved_pre))
 
@@ -369,12 +368,13 @@
 			// Build tooltip content from data attributes
 			var name = card.getAttribute('data-recipe-name');
 			var desc = card.getAttribute('data-recipe-desc');
+			var initiateItem = card.getAttribute('data-initiate-item');
 			var materialsJson = card.getAttribute('data-materials');
 			var featuresJson = card.getAttribute('data-features');
 
 			var content = "<div class='tooltip-name'>" + name + "</div>";
 			content += "<div class='tooltip-desc'>" + desc + "</div>";
-
+			content += "<div class='tooltip-materials'>Build with: " + initiateItem + "<br>";
 			if (materialsJson && materialsJson !== '[]') {
 				try {
 					var materials = JSON.parse(materialsJson);
@@ -564,16 +564,16 @@
 
 		for(var/recipe_id in categories[category])
 			var/datum/blueprint_recipe/recipe = GLOB.blueprint_recipes[recipe_id]
-			var/list/tooltip_data = list()
-			tooltip_data["name"] = recipe.name
-			tooltip_data["desc"] = recipe.desc
+
+			var/initiate_item = "hand"
+			if(recipe.construct_tool)
+				initiate_item = "[recipe.construct_tool.name]"
 
 			var/list/materials = list()
 			for(var/mat_type in recipe.required_materials)
 				var/amount = recipe.required_materials[mat_type]
 				var/atom/temp = mat_type
 				materials += "[amount]x [initial(temp.name)]"
-			tooltip_data["materials"] = materials
 
 			var/list/features = list()
 			if(recipe.supports_directions)
@@ -581,8 +581,7 @@
 			if(!recipe.edge_density)
 				features += "No Edge Density"
 
-			tooltip_data["features"] = features
-			dat += "<div class='recipe-card' data-recipe-id='[recipe_id]' data-recipe-name='[html_encode(recipe.name)]' data-recipe-desc='[html_encode(recipe.desc)]' data-materials='[html_encode(json_encode(materials))]' data-features='[html_encode(json_encode(features))]' onclick='selectRecipe(\"[recipe_id]\")'>"
+			dat += "<div class='recipe-card' data-recipe-id='[recipe_id]' data-recipe-name='[html_encode(recipe.name)]' data-recipe-desc='[html_encode(recipe.desc)]' data-initiate-item='[html_encode(initiate_item)]' data-materials='[html_encode(json_encode(materials))]' data-features='[html_encode(json_encode(features))]' onclick='selectRecipe(\"[recipe_id]\")'>"
 			var/atom/result = recipe.result_type
 			dat += "<div class='recipe-card-icon'><img src='\ref[initial(result.icon)]?state=[initial(result.icon_state)]&dir=[initial(result.dir)]'/></div>"
 			dat += "<div class='recipe-card-name'>[recipe.name]</div>"
@@ -644,10 +643,10 @@
 		if(right_click)
 			if(istype(object, /obj/structure/blueprint))
 				var/obj/structure/blueprint/print = object
-				if(print.creator != user)
+				if(print.creator != user && world.time < print.time_when_placed + 3 MINUTES)
 					return TRUE
+				to_chat(user, span_red("[object.name] removed."))
 				qdel(object)
-				to_chat(user, "<span class='notice'>Blueprint removed!.</span>")
 	return FALSE
 
 // Modified blueprint system proc to handle wall fixture placement
@@ -693,6 +692,7 @@
 	B.recipe = selected_recipe
 	B.creator = user
 	B.blueprint_dir = build_dir
+	B.time_when_placed = world.time
 
 	// Calculate wall fixture pixel offsets
 	var/final_pixel_x = pixel_x_offset
@@ -713,7 +713,7 @@
 	B.stored_pixel_y = final_pixel_y
 	B.setup_blueprint()
 
-	to_chat(user, "<span class='notice'>Blueprint placed!.</span>")
+	to_chat(user, span_notice("[B.name] placed."))
 
 /datum/blueprint_system/proc/get_wall_direction(turf/wall_turf, mob/user)
 	// Check all cardinal directions for open floor space

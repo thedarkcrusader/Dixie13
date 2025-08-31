@@ -7,6 +7,15 @@
 	i_type = "General"
 	category = "General"
 
+/datum/artificer_recipe/general/bronze_cast
+	name = "Bronze Casting"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/ingot/tin = 1)
+	created_item = /obj/item/ingot/bronze
+	hammers_per_item = 3
+	created_amount = 2
+	craftdiff = 0
+
 /datum/artificer_recipe/general/woodcog //This looks a bit silly but due to how these datums work is necessary for other things to inherit from it
 	name = "Wooden Gear"
 	required_item = /obj/item/natural/wood/plank
@@ -65,14 +74,12 @@
 	craftdiff = 1
 	created_amount = 5
 
-/datum/artificer_recipe/general/bronze_cast
-	name = "Bronze Casting"
-	required_item = /obj/item/ingot/copper
-	additional_items = list(/obj/item/ingot/tin = 1)
-	created_item = /obj/item/ingot/bronze
-	hammers_per_item = 3
-	created_amount = 2
-	craftdiff = 0
+/datum/artificer_recipe/general/bronze_chisel
+	name = "Bronze Chisel"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/weapon/chisel/bronze
+	hammers_per_item = 5
+	craftdiff = 1
 
 /datum/artificer_recipe/general/headhook
 	name = "Bronze Headhook (+Fibers x2)"
@@ -104,7 +111,7 @@
 	craftdiff = 3
 
 /datum/artificer_recipe/tools/lockpicks
-	name = "2x Lockpicks"
+	name = "3x Lockpicks"
 	required_item = /obj/item/ingot/iron
 	created_item = /obj/item/lockpick
 	hammers_per_item = 5
@@ -200,12 +207,12 @@
 	category = "Ammo"
 
 /datum/artificer_recipe/ammo/lead_bullet
-	name = "Lead Bullets 2x"
-	hammers_per_item = 2
+	name = "Lead Bullets 4x"
+	hammers_per_item = 4
 	created_item = /obj/item/ammo_casing/caseless/bullet
-	required_item = /obj/item/ingot/iron
+	required_item = /obj/item/ingot/tin
 	craftdiff = 2
-	created_amount = 2
+	created_amount = 4
 
 /datum/artificer_recipe/ammo/bolts
 	name = "Crossbow Bolts 5x (+1 Iron)"

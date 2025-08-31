@@ -16,7 +16,7 @@
 	var/last_recharge = 0
 
 	// Visual states
-	var/base_icon_state = "node"
+	base_icon_state = "node"
 
 /obj/structure/essence_node/Initialize(mapload)
 	. = ..()
@@ -149,7 +149,7 @@
 		jar.update_appearance(UPDATE_OVERLAYS)
 
 		var/datum/thaumaturgical_essence/temp = new essence_type.type
-		to_chat(user, span_info("You carefully extract the essence node and place it in the containment jar. The [temp.name] node is now safely contained."))
+		to_chat(user, span_info("You carefully extract the essence node and place it in the [jar]. The [temp.name] node is now safely contained."))
 		qdel(temp)
 
 		qdel(src)
@@ -212,7 +212,7 @@
 	var/stamina_drain = 5
 	var/last_stamina_drain = 0
 
-	var/base_icon_state = "essence_node_item"
+	base_icon_state = "essence_node_item"
 
 /obj/item/essence_node_portable/Initialize()
 	. = ..()

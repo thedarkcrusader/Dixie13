@@ -51,7 +51,7 @@
 	var/obj/structure/fermentation_keg/source_keg = source
 	var/obj/item/bottle_kit/bottle_kit = attacked_item
 	var/bottle_name = secondary_name ? "[lowertext(secondary_name)]" : "[lowertext(name)]"
-	for(var/i in 1 to brewed_amount)
+	for(var/i in 1 to (brewed_amount * number_of_repeats))
 		var/obj/item/reagent_containers/glass/bottle/brewing_bottle/bottle_made = new /obj/item/reagent_containers/glass/bottle/brewing_bottle(get_turf(source))
 		bottle_made.icon_state = "[bottle_kit.glass_colour]"
 		bottle_made.name = "brewer's bottle of [bottle_name]"
@@ -142,11 +142,11 @@
 		html += "<h3>Liquids Required</h3>"
 		for(var/atom/path as anything in needed_reagents)
 			var/count = needed_reagents[path]
-			html += "[FLOOR(count / 3, 1)] oz of [initial(path.name)]<br>"
+			html += "[FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] of [initial(path.name)]<br>"
 		html += "<br>"
 
 	if(brewed_amount)
-		html += "Produces: [FLOOR((per_brew_amount * brewed_amount) / 3, 1)] oz of [name]"
+		html += "Produces: [FLOOR((per_brew_amount * brewed_amount), 1)] [UNIT_FORM_STRING(FLOOR((per_brew_amount * brewed_amount), 1))] of [name]"
 	if(brewed_item)
 		html += "Produces:[icon2html(new brewed_item, user)] [(brewed_item_count)] [initial(brewed_item.name)]"
 	html += {"

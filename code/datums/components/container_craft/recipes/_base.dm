@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 			if(!(listed_reagent.type in fake_reagents))
 				if(subtype_reagents_allowed)
 					var/reagent_found = FALSE
-					for(var/datum/reagent/reagent_requirement in fake_reagents)
+					for(var/datum/reagent/reagent_requirement as anything in fake_reagents)
 						if(ispath(listed_reagent.type, reagent_requirement))
 							reagent_found = TRUE
 							break
@@ -154,8 +154,9 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		initiator = get_mob_by_ckey(crafter.fingerprintslast)
 	var/datum/callback/on_craft_start_ref = on_craft_start
 	var/datum/callback/on_craft_fail_ref = on_craft_failed
-	if(!on_craft_start_ref && !on_craft_fail_ref)
+	if(!on_craft_start_ref)
 		on_craft_start_ref = create_start_callback(crafter, initiator, highest_multiplier)
+	if(!on_craft_fail_ref)
 		on_craft_fail_ref = create_fail_callback(crafter, initiator, highest_multiplier)
 	new /datum/container_craft_operation(crafter, src, initiator, highest_multiplier, on_craft_start_ref, on_craft_fail_ref, cooking_sound)
 	return TRUE
@@ -334,8 +335,8 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		// Remove all tracked items
 		for(var/obj/item/item_to_delete in items_to_delete)
 			qdel(item_to_delete)
-		var/turf/turf = get_turf(crafter)
-		turf.visible_message(span_green(complete_message))
+	var/turf/turf = get_turf(crafter)
+	turf.visible_message(span_green(complete_message))
 
 /datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	// Variables for quality calculation
@@ -485,7 +486,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		for(var/reagent_type in reagent_requirements)
 			var/reagent_amount = reagent_requirements[reagent_type]
 			var/datum/reagent/R = new reagent_type
-			html += "[CEILING(reagent_amount / 3, 1)] oz of [initial(R.name)]<br>"
+			html += "[CEILING(reagent_amount, 1)] [UNIT_FORM_STRING(reagent_amount)] of [initial(R.name)]<br>"
 			qdel(R)
 		html += "</div>"
 
@@ -517,7 +518,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		if(length(optional_reagent_requirements))
 			for(var/datum/reagent/reagent as anything in optional_reagent_requirements)
 				var/count = optional_reagent_requirements[reagent]
-				html += "[count / 3] oz of [reagent.name]"
+				html += "[count] [UNIT_FORM_STRING(count)] of [reagent.name]"
 		html += "</div>"
 
 	html += {"

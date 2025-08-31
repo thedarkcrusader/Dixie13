@@ -137,6 +137,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["menuoptions"]		>> menuoptions
 	S["enable_tips"]		>> enable_tips
 	S["tip_delay"]			>> tip_delay
+	S["ui_scale"]			>> ui_scale
 
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
@@ -238,6 +239,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["menuoptions"], menuoptions)
 	WRITE_FILE(S["enable_tips"], enable_tips)
 	WRITE_FILE(S["tip_delay"], tip_delay)
+	WRITE_FILE(S["ui_scale"], ui_scale)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	return TRUE
 
@@ -259,6 +261,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
 
+/datum/preferences/proc/_load_culinary_preferences(S)
+	var/list/loaded_culinary_preferences
+	S["culinary_preferences"] >> loaded_culinary_preferences
+	if(loaded_culinary_preferences)
+		culinary_preferences = loaded_culinary_preferences
+		validate_culinary_preferences()
+	else
+		reset_culinary_preferences()
+
 /datum/preferences/proc/_load_appearence(S)
 	S["real_name"] >> real_name
 	S["gender"] >> gender
@@ -272,6 +283,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["detail"] >> detail
 	S["randomise"] >> randomise
 	S["family"] >> family
+	S["gender_choice"] >> gender_choice
 	S["setspouse"] >> setspouse
 	S["selected_accent"] >> selected_accent
 
@@ -307,6 +319,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_species(S)
 
 	_load_flaw(S)
+
+	_load_culinary_preferences(S)
 
 	//Character
 	_load_appearence(S)
@@ -366,6 +380,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	voice_type = sanitize_text(voice_type, VOICE_TYPE_MASC)
 	skin_tone = skin_tone
 	family = family
+	gender_choice = gender_choice
 	setspouse = setspouse
 	selected_accent ||= ACCENT_DEFAULT
 
@@ -423,7 +438,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["voice_type"]		, voice_type)
 	WRITE_FILE(S["species"]			, pref_species.name)
 	WRITE_FILE(S["charflaw"]			, charflaw.type)
+	WRITE_FILE(S["culinary_preferences"], culinary_preferences)
 	WRITE_FILE(S["family"]			, 	family)
+	WRITE_FILE(S["gender_choice"]			, 	gender_choice)
 	WRITE_FILE(S["setspouse"]			, 	setspouse)
 	WRITE_FILE(S["selected_accent"], selected_accent)
 

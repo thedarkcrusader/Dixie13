@@ -35,16 +35,16 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	head = /obj/item/clothing/head/bardhat
 	shoes = /obj/item/clothing/shoes/boots
-	pants = /obj/item/clothing/pants/tights/random
+	pants = /obj/item/clothing/pants/tights/colored/random
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather
 	armor = /obj/item/clothing/armor/leather/vest
-	cloak = /obj/item/clothing/cloak/half/red
+	cloak = /obj/item/clothing/cloak/half/colored/red
 	backl = /obj/item/storage/backpack/satchel
 	beltl = /obj/item/weapon/sword/rapier
 	beltr = /obj/item/weapon/whip
 	neck = /obj/item/clothing/neck/chaincoif
-	mask = /obj/item/alch/rosa
+	mask = /obj/item/alch/herb/rosa
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_SPD, 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

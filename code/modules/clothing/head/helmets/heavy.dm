@@ -15,6 +15,7 @@
 	body_parts_covered = FULL_HEAD
 	prevent_crits = ALL_EXCEPT_STAB
 	max_integrity = INTEGRITY_STRONGEST // no moving parts, steel
+	abstract_type = /obj/item/clothing/head/helmet/heavy
 
 /obj/item/clothing/head/helmet/heavy/necked		// includes a coif or gorget part to cover neck. Why? So templars can wear their cross on their neck basically, also special thing for Temple
 	name = "bastion helm"
@@ -25,7 +26,6 @@
 	body_parts_covered = HEAD_NECK
 	prevent_crits = ALL_EXCEPT_BLUNT
 	block2add = FOV_BEHIND
-
 
 //................ Iron Plate Helmet ............... //
 /obj/item/clothing/head/helmet/heavy/ironplate
@@ -82,6 +82,8 @@
 	prevent_crits = ALL_CRITICAL_HITS_VAMP
 	max_integrity = INTEGRITY_STRONG
 	item_weight = 6 * IRON_MULTIPLIER
+	body_parts_covered = HEAD_NECK
+	block2add = FOV_BEHIND
 
 //............... Frog Helmet ............... //
 /obj/item/clothing/head/helmet/heavy/frog
@@ -267,6 +269,7 @@
 	var/picked = FALSE
 
 	prevent_crits = ALL_CRITICAL_HITS
+	abstract_type = /obj/item/clothing/head/helmet/heavy/decorated
 
 /obj/item/clothing/head/helmet/heavy/decorated/update_overlays()
 	. = ..()

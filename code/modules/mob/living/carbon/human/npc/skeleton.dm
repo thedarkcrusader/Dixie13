@@ -55,6 +55,7 @@
 			headdy.icon = 'icons/roguetown/mob/monster/skeletons.dmi'
 			headdy.icon_state = "skull"
 			headdy.headprice = rand(5,15)
+			headdy.sellprice = rand(5,15)
 	for(var/obj/item/bodypart/B as anything in bodyparts)
 		B.skeletonize(FALSE)
 	grant_undead_eyes()
@@ -80,15 +81,16 @@
 	H.base_constitution = 8
 	H.base_endurance = 8
 	H.base_intelligence = 1
+	H.recalculate_stats(FALSE)
 
 /datum/outfit/job/greater_skeleton/pre_equip(mob/living/carbon/human/H) //equipped onto Summon Greater Undead player skeletons only after the mind is added
 	..()
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(50))
-		shirt = /obj/item/clothing/shirt/undershirt/vagrant
+		shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
 	else
-		shirt = /obj/item/clothing/shirt/undershirt/vagrant/l
+		shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant/l
 	pants = /obj/item/clothing/pants/chainlegs/iron
 	head = /obj/item/clothing/head/helmet/leather
 	shoes = /obj/item/clothing/shoes/boots
@@ -98,6 +100,7 @@
 	H.base_constitution = 9
 	H.base_endurance = 15
 	H.base_intelligence = 1
+	H.recalculate_stats(FALSE)
 
 	//light labor skills for skeleton manual labor and some warrior-adventurer skills, equipment is still bad probably
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
@@ -151,10 +154,11 @@
 	H.base_speed = 8
 	H.base_constitution = 8
 	H.base_endurance = 8
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,7)
-	head = /obj/item/clothing/head/roguehood/random
-	pants = /obj/item/clothing/pants/tights/vagrant
-	shirt = /obj/item/clothing/shirt/undershirt/vagrant
+	head = /obj/item/clothing/head/roguehood/colored/random
+	pants = /obj/item/clothing/pants/tights/colored/vagrant
+	shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
 	switch(loadout)
 		if(1) //Axe Warrior
 			r_hand = /obj/item/weapon/axe/iron
@@ -176,7 +180,7 @@
 		if(7) //Ex Wife
 			r_hand = /obj/item/cooking/pan
 			head = /obj/item/clothing/head/armingcap
-			shirt = /obj/item/clothing/shirt/dress/gen/brown
+			shirt = /obj/item/clothing/shirt/dress/gen/colored/brown
 
 
 ///////////////////////////////////////////////////////////// EVENTMIN SKELETONGS
@@ -200,17 +204,17 @@
 	if(prob(50))
 		armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(30))
-		shirt = /obj/item/clothing/shirt/undershirt/vagrant
+		shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
 		if(prob(50))
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant/l
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant/l
 	if(prob(50))
-		pants = /obj/item/clothing/pants/tights/vagrant
+		pants = /obj/item/clothing/pants/tights/colored/vagrant
 		if(prob(50))
-			pants = /obj/item/clothing/pants/tights/vagrant/l
+			pants = /obj/item/clothing/pants/tights/colored/vagrant/l
 	if(prob(50))
 		head = /obj/item/clothing/head/helmet/leather
 	if(prob(50))
-		head = /obj/item/clothing/head/roguehood/random
+		head = /obj/item/clothing/head/roguehood/colored/random
 	if(prob(50))
 		r_hand = /obj/item/weapon/sword/iron
 	else
@@ -237,6 +241,7 @@
 	H.base_speed = 7
 	H.base_constitution = 10
 	H.base_endurance = 10
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,6)
 	switch(loadout)
 		if(1) //Skeleton Warrior
@@ -244,8 +249,8 @@
 			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/leather
 			armor = /obj/item/clothing/armor/chainmail/iron
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/pants/tights/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			head = /obj/item/clothing/head/helmet/kettle
@@ -254,8 +259,8 @@
 			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/leather
 			armor = /obj/item/clothing/armor/chainmail/iron
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/pants/tights/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
@@ -264,33 +269,33 @@
 			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/leather
 			armor = /obj/item/clothing/armor/chainmail/iron
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/pants/tights/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/skullcap
 		if(4) //Skeleton Warrior
 			r_hand =/obj/item/weapon/polearm/spear
 			armor = /obj/item/clothing/armor/chainmail/iron
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
-			pants = /obj/item/clothing/pants/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
 		if(5) //Skeleton Warrior
 			r_hand = /obj/item/weapon/sword/sabre
 			l_hand = /obj/item/weapon/knife/dagger
 			armor = /obj/item/clothing/armor/chainmail/iron
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/pants/tights/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			head = /obj/item/clothing/head/helmet/kettle
 		if(6) //Skeleton Warrior
 			r_hand = /obj/item/weapon/sword/scimitar/messer
 			l_hand = /obj/item/weapon/knife/dagger
-			shirt = /obj/item/clothing/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/pants/tights/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/chainmail/iron
 			wrists = /obj/item/clothing/wrists/bracers/leather

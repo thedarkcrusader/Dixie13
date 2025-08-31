@@ -82,8 +82,7 @@
 		target.name = "[name_prefix] [target.name]"
 
 	// Apply basic modifiers
-	target.max_integrity *= modifier
-	target.obj_integrity *= modifier
+	target.modify_max_integrity(target.max_integrity * modifier, can_break = FALSE)
 	if(target.sellprice)
 		target.sellprice *= modifier
 
@@ -105,18 +104,20 @@
 	// Weapons
 	else if(istype(target, /obj/item/weapon))
 		var/obj/item/weapon/W = target
-		W.force *= modifier
-		if(W.force_wielded)
-			W.force_wielded *= modifier
+		var/datum/component/two_handed/twohanded = W.GetComponent(/datum/component/two_handed)
+		if(twohanded)
+			twohanded.modify_base_force(multiplicative_modifier = modifier)
+		else
+			W.force *= modifier
 		if(W.throwforce)
 			W.throwforce *= modifier
 		if(W.blade_int)
 			W.blade_int *= modifier
 			W.max_blade_int *= modifier
-		if(W.armor_penetration)
-			W.armor_penetration *= modifier
-		if(W.wdefense)
-			W.wdefense *= modifier
+		// if(W.armor_penetration)
+		// 	W.armor_penetration *= modifier
+		// if(W.wdefense)
+		// 	W.wdefense *= modifier
 
 		// Special handling for axes and pick-axes - better at woodcutting
 		if(istype(target, /obj/item/weapon/axe/iron) || istype(target, /obj/item/weapon/pick/paxe))
@@ -141,11 +142,11 @@
 	// Clothing/Armor
 	else if(istype(target, /obj/item/clothing))
 		var/obj/item/clothing/C = target
-		if(C.damage_deflection)
-			C.damage_deflection *= modifier
+		// if(C.damage_deflection)
+		// 	C.damage_deflection *= modifier
 		if(C.integrity_failure)
 			C.integrity_failure /= modifier
-		if(C.armor)
-			C.armor = C.armor.multiplymodifyAllRatings(modifier)
-		if(C.equip_delay_self)
-			C.equip_delay_self *= modifier
+		// if(C.armor)
+		// 	C.armor = C.armor.multiplymodifyAllRatings(modifier)
+		// if(C.equip_delay_self)
+		// 	C.equip_delay_self *= modifier
