@@ -447,7 +447,6 @@
 	created_item = /obj/item/weapon/sword/sabre/hwi
 
 /datum/anvil_recipe/weapons/steel/shotel
-
 	name = "Steel Shotel (+ Steel Bar)"
 	recipe_name = "a Steel Shotel"
 	appro_skill = /datum/skill/craft/weaponsmithing
