@@ -57,6 +57,8 @@ abstract types are automatically excluded.
 		"rousman",
 		"orc",
 		"goblin",
+		"rare",
+		"captain",
 	)
 
 /datum/unit_test/craftable_clothes/Run()
