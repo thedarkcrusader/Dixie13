@@ -65,6 +65,7 @@ abstract types are automatically excluded.
 		"steam",
 		"royalknight",
 		"warden",
+		"sinistar",
 	)
 
 /datum/unit_test/craftable_clothes/Run()
