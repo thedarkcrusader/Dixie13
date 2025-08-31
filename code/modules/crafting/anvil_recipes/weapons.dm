@@ -462,7 +462,6 @@
 	created_item = /obj/item/weapon/sword/ida
 
 /datum/anvil_recipe/weapons/steel/ngombe
-
 	name = "Ngombe Ngulu (+Steel Bar)"
 	recipe_name = "a Ngombe Ngulu"
 	appro_skill = /datum/skill/craft/weaponsmithing
