@@ -102,7 +102,7 @@
 		current.client.screen |= requirement
 		register_element(requirement)
 		length++
-		requirement.maptext = MAPTEXT_PIXELIFY("<span class='center' style='color:[hover_color]'>[CEILING(recipe.reagent_requirements[path] / 3, 1)] Oz of [initial(path.name)]</span>")
+		requirement.maptext = MAPTEXT_PIXELIFY("<span class='center' style='color:[hover_color]'>[UNIT_FORM_STRING(CEILING(recipe.reagent_requirements[path], 1))] of [initial(path.name)]</span>")
 
 	var/obj/abstract/visual_ui_element/recipe_info_break/requirements_end = new /obj/abstract/visual_ui_element/recipe_info_break(null, parent)
 	requirements_end.offset_x = offset_x
