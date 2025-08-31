@@ -1573,11 +1573,6 @@
 "nG" = (
 /turf/open/floor/cobble,
 /area)
-"nM" = (
-/obj/effect/landmark/start/adventurerlate,
-/obj/effect/landmark/latejoin,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "nX" = (
 /obj/structure/flora/grass/herb/symphitum,
 /obj/structure/minecart_rail{
@@ -1968,10 +1963,6 @@
 "sK" = (
 /obj/structure/well,
 /turf/open/water,
-/area/rogue/outdoors)
-"sX" = (
-/obj/item/fuse/parchment,
-/turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "sZ" = (
 /obj/structure/essence_node/rare,
@@ -2403,10 +2394,6 @@
 /obj/effect/landmark/bounty_location/warehouse,
 /turf/open/floor/wood,
 /area/rogue/indoors)
-"BN" = (
-/obj/item/fuse/fiber,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "BW" = (
 /obj/structure/flora/grass,
 /obj/structure/minecart_rail{
@@ -2600,10 +2587,6 @@
 /obj/structure/gearbox,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
-"EN" = (
-/obj/projectile/bullet/reusable/cannonball,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "ER" = (
 /obj/structure/dungeon_descent,
 /turf/open/floor/cobblerock,
@@ -2722,7 +2705,9 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "GO" = (
+/obj/effect/landmark/start/adventurerlate,
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/effect/landmark/latejoin,
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors)
 "GU" = (
@@ -2987,10 +2972,6 @@
 "Nb" = (
 /obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
-"Ng" = (
-/obj/item/fuse/fiber,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "No" = (
@@ -3404,10 +3385,6 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
-"Zf" = (
-/obj/structure/cannon,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors)
@@ -14964,7 +14941,7 @@ ji
 VG
 jC
 VG
-Zf
+QN
 LA
 QN
 jC
@@ -15220,10 +15197,10 @@ ji
 ky
 QN
 ae
-EN
 QN
-sX
-sX
+QN
+QN
+QN
 Wr
 CO
 qc
@@ -15477,10 +15454,10 @@ QN
 QN
 QN
 qc
-EN
-nM
-Ng
-BN
+QN
+QN
+QN
+al
 al
 QN
 QN
