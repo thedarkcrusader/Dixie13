@@ -208,6 +208,8 @@
 	var/failure_chance = 50
 	var/lit = FALSE
 	var/obj/structure/cannon/cannon
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/fuse/proc/add_to_cannon(obj/structure/cannon/cannon, mob/living/user)
 	if(cannon.inserted_fuse)
