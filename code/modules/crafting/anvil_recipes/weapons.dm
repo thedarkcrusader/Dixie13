@@ -408,7 +408,6 @@
 	craftdiff = 1
 
 /datum/anvil_recipe/weapons/steel/jile
-
 	name = "2x Steel Jile Daggers"
 	recipe_name = "a Steel Jile"
 	appro_skill = /datum/skill/craft/weaponsmithing
