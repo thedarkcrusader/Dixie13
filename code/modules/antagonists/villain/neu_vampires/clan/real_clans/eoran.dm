@@ -14,7 +14,7 @@
 	lord_title = "Elder"
 
 /datum/clan/eoran
-	name = "Eorabella Family"
+	name = "Vitabella Family"
 	desc = "Eora, moved by your relentless pursuit of art and beauty, has bestowed her blessing upon your cursed bloodline. Yet, in her admiration, she has overlooked the darker facets of your nature: your twisted notion of love and your delusions of grandeur. "
 	curse = "Obsession with vanity, need to be loved"
 	blood_preference = BLOOD_PREFERENCE_ALL
@@ -53,6 +53,7 @@
 
 /datum/clan/eoran/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
+
 
 
 
