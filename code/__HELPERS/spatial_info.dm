@@ -80,7 +80,7 @@
 
 
 /**
- * returns every hearaing movable in view to the turf of source not taking into account lighting
+ * returns every hearing movable in view to the turf of source not taking into account lighting
  * useful when you need to maintain always being able to hear something if a sound is emitted from it and you can see it (and youre in range).
  * otherwise this is just a more expensive version of get_hearers_in_LOS().
  *
