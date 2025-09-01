@@ -36,6 +36,8 @@
 	if(!client)
 		return
 	var/used_content = get_over_text_content(client)
+	if(!length(used_content))
+		return
 	var/y_offset = maptext_height
 	var/atom/movable/mouse_over = client.mouseovertext
 	if(ismovable(src))
@@ -45,7 +47,7 @@
 		if(AM.screen_loc)
 			mouse_over.screen_loc = AM.screen_loc
 		else if(ismob(src) && src == client.mob) // Special little snowflake because it looks awful otherwise :(
-			mouse_over.screen_loc = "CENTER"
+			mouse_over.screen_loc = "CENTER" // Client mob is center of the universe
 	if(!mouse_over.screen_loc)
 		mouse_over.abstract_move(get_turf(src))
 	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
