@@ -139,10 +139,10 @@
 	i_type = "Weapons"
 
 /datum/artificer_recipe/weapons/crossbow
-	name = "Crossbow (+1 Steel) (+1 Rope)"
+	name = "Crossbow (+1 Steel) (+2 Fibers)"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	additional_items = list(/obj/item/ingot/steel, /obj/item/rope)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fibers)
 	hammers_per_item = 7
 	craftdiff = 4
 

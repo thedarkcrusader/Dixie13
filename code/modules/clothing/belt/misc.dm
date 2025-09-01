@@ -285,6 +285,7 @@
 	item_state = "artibackpack"
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+	//for those curious, yes the artibackpack preserves organs and food. Check _organ.dm and snacks.dm
 
 /obj/item/storage/backpack/satchel/surgbag
 	name = "surgery bag"
