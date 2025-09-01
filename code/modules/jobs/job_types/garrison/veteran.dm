@@ -255,7 +255,7 @@
 	backr = /obj/item/storage/backpack/satchel/black
 	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
-	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
+	H.cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
@@ -272,6 +272,7 @@
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+	H.grant_language(/datum/language/oldpsydonic)
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_END, 3) // two handed weapons require a LOT of stamina.
 	H.change_stat(STATKEY_CON, 1)
