@@ -336,3 +336,51 @@
 	crafting_time = 30 SECONDS
 	finished_smell = /datum/pollutant/food/strawberry_cake
 	complete_message = "The brew radiates heat and a sweet smell."
+
+/datum/container_craft/cooking/perfume/rosa
+	name = "Rosa Perfume"
+	created_reagent = /obj/item/perfume/rose
+	water_conversion = 0.5
+	requirements = list(
+		/datum/reagent/medicine/herbal/simple_rosa = 25,
+		/obj/item/alch/herb/rosa = 1
+	)
+	crafting_time = 30 SECONDS
+	finished_smell = /datum/pollutant/food/strawberry_cake
+	complete_message = "A strong, fragrant scent of rosa permeates the area."
+
+/datum/container_craft/cooking/perfume/mint
+	name = "Mint Perfume"
+	created_reagent = /obj/item/perfume/mint
+	water_conversion = 0.5
+	requirements = list(
+		/datum/reagent/medicine/herbal/simple_rosa = 25,
+		/obj/item/alch/herb/mentha = 1
+	)
+	crafting_time = 30 SECONDS
+	finished_smell = /datum/pollutant/food/strawberry_cake
+	complete_message = "A strong, fragrant scent of mint permeates the area."
+
+/datum/container_craft/cooking/perfume/pear
+	name = "Pear Perfume"
+	created_reagent = /obj/item/perfume/pear
+	water_conversion = 0.5
+	requirements = list(
+		/datum/reagent/medicine/herbal/simple_rosa = 25,
+		/obj/item/reagent_containers/food/snacks/produce/fruit/pear = 1
+	)
+	crafting_time = 30 SECONDS
+	finished_smell = /datum/pollutant/food/strawberry_cake
+	complete_message = "A strong, fragrant scent of pear permeates the area."
+
+/datum/container_craft/cooking/perfume/strawberry
+	name = "Strawberry Perfume"
+	created_reagent = /obj/item/perfume/strawberry
+	water_conversion = 0.5
+	requirements = list(
+		/datum/reagent/medicine/herbal/simple_rosa = 25,
+		/obj/item/reagent_containers/food/snacks/produce/fruit/strawberry = 1
+	)
+	crafting_time = 30 SECONDS
+	finished_smell = /datum/pollutant/food/strawberry_cake
+	complete_message = "A strong, fragrant scent of strawberry permeates the area."
