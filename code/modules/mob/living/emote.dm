@@ -597,7 +597,7 @@
 	restraint_check = TRUE
 
 /mob/living/carbon/human/verb/emote_headpat()
-	set name = "headpat"
+	set name = "Headpat"
 	set category = "Emotes"
 	emote("headpat", intentional = TRUE, targetted = TRUE)
 
