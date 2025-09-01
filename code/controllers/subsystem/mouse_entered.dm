@@ -10,11 +10,15 @@ SUBSYSTEM_DEF(mouse_entered)
 
 /datum/controller/subsystem/mouse_entered/fire()
 	for(var/hovering_client in hovers)
-		var/atom/hovering_atom = hovers[hovering_client]
+		var/list/hover_data = hovers[hovering_client]
+		if(!length(hover_data))
+			return
+		var/atom/hovering_atom = hover_data[1]
 		if(isnull(hovering_atom))
 			continue
 
-		hovering_atom.on_mouse_enter(hovering_client)
+		var/list/modifiers = hover_data[2]
+		hovering_atom.on_mouse_enter(hovering_client, modifiers)
 
 		// This intentionally runs `= null` and not `-= hovering_client`, as we want to prevent the list from shrinking,
 		// which could cause problems given the heat of MouseEntered.

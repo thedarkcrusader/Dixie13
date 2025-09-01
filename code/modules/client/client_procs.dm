@@ -697,9 +697,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 	//fullscreen()
 
-	// CHEFFIE TODO MAKE HUD VAR
-	mouseovertext = new /atom/movable/screen/movable/mouseover/maptext
-
 	view_size = new(src, getScreenSize())
 	view_size.resetFormat()
 	view_size.setZoomMode()
