@@ -29,37 +29,35 @@
 	var/client/client = usr?.client
 	if(!client)
 		return
-	client.mouseovertext.moveToNullspace()
+	if(client.mouseovertext.loc != null)
+		client.mouseovertext.moveToNullspace()
+	client.mouseovertext.screen_loc = null
 
 #define HOVER_TEXT_WIDTH 128
-#define HOVER_TEXT_HEIGHT 32
 
 /// Create a maptext over a hovered atom, at the hovered atom's position
 /atom/proc/create_over_text(client/client)
 	if(!client)
 		return
 	var/used_content = get_over_text_content(client)
-	var/used_color = hover_color
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(H.voice_color && H.name != "Unknown")
-			used_color = "#[H.voice_color]"
 	var/height = maptext_height
+	var/atom/movable/mouse_over = client.mouseovertext
 	if(ismovable(src))
 		var/atom/movable/AM = src
 		if(AM.bound_height > 32)
 			height = AM.bound_height
-	var/atom/movable/mouse_over = client.mouseovertext
-	mouse_over.abstract_move(get_turf(src))
-	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[used_color]'>[used_content]</span>")
-	mouse_over.maptext_y = height + base_pixel_x + pixel_y
+		if(AM.screen_loc)
+			mouse_over.screen_loc = AM.screen_loc
+	if(!mouse_over.screen_loc)
+		mouse_over.abstract_move(get_turf(src))
+	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
+	mouse_over.maptext_y = height + base_pixel_y + pixel_y
 	mouse_over.maptext_x = (HOVER_TEXT_WIDTH - world.icon_size) * -0.5 - base_pixel_x + pixel_x
 	WXH_TO_HEIGHT(client.MeasureText(used_content, null, HOVER_TEXT_WIDTH), mouse_over.maptext_height)
 	mouse_over.maptext_width = HOVER_TEXT_WIDTH
 	client.screen |= client.mouseovertext
 
 #undef HOVER_TEXT_WIDTH
-#undef HOVER_TEXT_HEIGHT
 
 /atom/proc/get_over_text_content(client/client)
 	return name
@@ -68,8 +66,13 @@
 	var/mob/user = client?.mob
 	if(!user)
 		return
-	if((((rotation_structure && rotation_network) || istype(src, /obj/structure/water_pipe)) || accepts_water_input) && HAS_TRAIT(user, TRAIT_ENGINEERING_GOGGLES))
+	if(HAS_TRAIT(user, TRAIT_ENGINEERING_GOGGLES) && (((rotation_structure && rotation_network) || istype(src, /obj/structure/water_pipe)) || accepts_water_input))
 		return "<span style='color:#e6b120'>[return_rotation_chat()]</span>"
+	return ..()
+
+/mob/living/carbon/human/get_over_text_content(client/client)
+	if(voice_color && name != "Unknown")
+		return "<span style='color:#[voice_color]'>[name]</span>"
 	return ..()
 
 /atom/proc/return_rotation_chat()

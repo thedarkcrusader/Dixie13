@@ -1,4 +1,3 @@
-
 /// Defers MouseEntered inputs to only apply to the most recently hovered over atom in the tick
 SUBSYSTEM_DEF(mouse_entered)
 	name = "MouseEntered"
@@ -10,9 +9,9 @@ SUBSYSTEM_DEF(mouse_entered)
 	var/list/hovers = list()
 
 /datum/controller/subsystem/mouse_entered/fire()
-	for (var/hovering_client in hovers)
+	for(var/hovering_client in hovers)
 		var/atom/hovering_atom = hovers[hovering_client]
-		if (isnull(hovering_atom))
+		if(isnull(hovering_atom))
 			continue
 
 		hovering_atom.on_mouse_enter(hovering_client)
