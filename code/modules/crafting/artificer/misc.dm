@@ -82,7 +82,7 @@
 	craftdiff = 1
 
 /datum/artificer_recipe/general/headhook
-	name = "Bronze Headhook (+Fibers x2)"
+	name = "Bronze Headhook (+2 Fibers)"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/storage/hip/headhook/bronze
 	additional_items = list(/obj/item/natural/fibers = 2)
@@ -90,7 +90,7 @@
 	craftdiff = 3
 
 /datum/artificer_recipe/gold/headhook
-	name = "Royal Headhook"
+	name = "Royal Headhook (+2 Silk)"
 	required_item = /obj/item/ingot/gold
 	created_item = /obj/item/storage/hip/headhook/royal
 	additional_items = list(/obj/item/natural/silk = 2)
@@ -126,7 +126,7 @@
 	craftdiff = 2
 
 /datum/artificer_recipe/tools/drill
-	name = "Clockwork Drill (+1 Bronze Bar) (+1 Metal Gear) (+1 Wooden Plank)"
+	name = "Clockwork Drill (+1 Bronze) (+1 Metal Gear) (+1 Wooden Plank)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/ingot/bronze = 1, /obj/item/gear/metal = 1, /obj/item/natural/wood/plank = 1)
 	created_item = /obj/item/weapon/pick/drill
@@ -139,10 +139,10 @@
 	i_type = "Weapons"
 
 /datum/artificer_recipe/weapons/crossbow
-	name = "Crossbow (+1 Steel) (+1 Fiber)"
+	name = "Crossbow (+1 Steel) (+1 Rope)"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fibers)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/rope)
 	hammers_per_item = 7
 	craftdiff = 4
 
