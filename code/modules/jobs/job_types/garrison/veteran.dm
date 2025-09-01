@@ -236,7 +236,7 @@
 	name = "Retired Mercenary"
 	tutorial = "You were a sell-sword, a warrior of coin. Your pockets were never light, you always had a warm place to stay and food in your belly, but you knew that every battle could be your last. You're the last of your unit, and you can't help but regret it. You specialize in swords and polearms, or axes and polearms."
 	outfit = /datum/outfit/job/vet/merc
-
+	allowed_races = RACES_PLAYER_GRENZ
 	category_tags = list(CTAG_VETERAN)
 
 // Normal veteran start, from the olden days
