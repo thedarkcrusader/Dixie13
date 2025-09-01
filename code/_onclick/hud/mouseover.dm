@@ -49,6 +49,8 @@
 			height = AM.bound_height
 		if(AM.screen_loc)
 			mouse_over.screen_loc = AM.screen_loc
+		else if(ismob(src) && src == client.mob) // Special little snowflake because it looks awful otherwise :(
+			mouse_over.screen_loc = "CENTER"
 	if(!mouse_over.screen_loc)
 		mouse_over.abstract_move(get_turf(src))
 	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
