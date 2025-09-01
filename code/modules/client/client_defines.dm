@@ -130,7 +130,6 @@
 	var/keysend_tripped = FALSE
 
 	var/atom/movable/screen/movable/mouseover/mouseovertext
-	var/atom/movable/screen/movable/mouseover/mouseoverbox
 	///custom movement keys for this client
 	var/list/movement_keys = list()
 

@@ -85,7 +85,7 @@
 /atom/movable/screen/movable/action_button/MouseEntered(location, control, params)
 	. = ..()
 	if(!QDELETED(src))
-		handle_mouseover(location, control, params)
+		create_over_text(location, control, params)
 
 /atom/movable/screen/movable/action_button/MouseExited(location, control, params)
 	handle_mouseexit(params)
