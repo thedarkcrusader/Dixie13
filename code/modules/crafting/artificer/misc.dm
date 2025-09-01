@@ -233,7 +233,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/arrows/pyro
-	name = "Fire Arrows 5x (+1 Iron +1 Blast Powder)"
+	name = "Fire Arrows 5x (+1 Iron, +1 Blast Powder)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
 	created_item = /obj/item/ammo_casing/caseless/arrow/pyro
@@ -242,7 +242,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/bolts/pyro
-	name = "Crossbow Fire Bolts 5x (+1 Iron +1 Blast Powder)"
+	name = "Fire Bolts 5x (+1 Iron, +1 Blast Powder)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
 	created_item = /obj/item/ammo_casing/caseless/bolt/pyro
@@ -250,7 +250,23 @@
 	craftdiff = 3
 	created_amount = 5
 
-// TODO: add Vial bolts/arrows
+/datum/artificer_recipe/ammo/arrows/water
+	name = "Water Arrows 5x (+1 Iron, +1 Waterdust)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/alch/waterdust)
+	created_item = /obj/item/ammo_casing/caseless/arrow/water
+	hammers_per_item = 6
+	craftdiff = 3
+	created_amount = 5
+
+/datum/artificer_recipe/ammo/bolts/water
+	name = "Water Bolts 5x (+1 Iron, +1 Waterdust)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/alch/waterdust)
+	created_item = /obj/item/ammo_casing/caseless/bolt/water
+	hammers_per_item = 6
+	craftdiff = 3
+	created_amount = 5
 
 // --------- WOODEN PROSTHETICS -----------
 
