@@ -1,5 +1,6 @@
 /atom/MouseEntered(location, control, params)
-	SSmouse_entered.hovers[usr.client] = src
+	if(!QDELETED(src))
+		SSmouse_entered.hovers[usr.client] = src
 
 /// Fired whenever this atom is the most recent to be hovered over in the tick.
 /// Preferred over MouseEntered if you do not need information such as the position of the mouse.
