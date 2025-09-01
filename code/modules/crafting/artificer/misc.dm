@@ -146,6 +146,14 @@
 	hammers_per_item = 7
 	craftdiff = 4
 
+/datum/artificer_recipe/weapons/airgun
+	name = "Airgun (+2 Steel) (+3 Bronze) (+4 Metal Gear)"
+	required_item = /obj/item/natural/wood/plank
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/airgun
+	additional_items = list(/obj/item/ingot/steel = 2, /obj/item/ingot/bronze = 3, /obj/item/gear/metal = 4)
+	hammers_per_item = 10
+	craftdiff = 5
+
 // --------- Contraptions -----------
 
 /datum/artificer_recipe/contraptions

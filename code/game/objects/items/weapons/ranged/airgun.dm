@@ -49,7 +49,7 @@
 		var/newtime = chargetime
 		//skill block
 		newtime = newtime + 18
-		newtime = newtime - (master.get_skill_level(/datum/skill/combat/mechanicalweapons) * 3)
+		newtime = newtime - (master.get_skill_level(/datum/skill/craft/engineering) * 3)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - (master.STAPER)
@@ -69,7 +69,7 @@
 		var/newtime = chargetime
 		//skill block
 		newtime = newtime + 18
-		newtime = newtime - (master.get_skill_level(/datum/skill/combat/mechanicalweapons) * 3)
+		newtime = newtime - (master.get_skill_level(/datum/skill/craft/engineering) * 3)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - (master.STAPER)
@@ -131,16 +131,16 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("I need to hold [src] to access the control knobs!"))
+		to_chat(user, span_warning("I need to hold [src] to access the controls!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if(user.get_skill_level(/datum/skill/combat/mechanicalweapons) <= 0)
+	if(user.get_skill_level(/datum/skill/craft/engineering) <= 1)//requires average engineering
 		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	var/choice = input(user, "An incomprehensible mass of knobs and levers", "[src]") in list("Increase Pressure", "Decrease Pressure", "Loading Chamber", "Hand Crank", "Steam Lever", "Cancel")
 	if(!choice || choice == "cancel")
 		return
 	var/use_time = 4 //how much time the player needs to crank a knob, pull a lever, etc. in seconds
-	use_time = use_time - (user.get_skill_level(/datum/skill/combat/mechanicalweapons) / 2)
+	use_time = use_time - (user.get_skill_level(/datum/skill/craft/engineering) / 2)
 	switch(choice)
 		if("Increase Pressure")
 			if(pressure_to_use < maximum_pressure)
@@ -203,7 +203,7 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(user.get_skill_level(/datum/skill/combat/mechanicalweapons) <= 0)
+	if(user.get_skill_level(/datum/skill/craft/engineering) <= 1)//requires average engineering instead of weak
 		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
 		return FALSE
 	if(user.usable_hands < 1)
@@ -240,7 +240,7 @@
 		if(user.STAPER > 10)
 			BB.accuracy += (user.STAPER - 10) * 2 //each point of perception above 10 increases standard accuracy by 2.
 			BB.bonus_accuracy += (user.STAPER - 10) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
-		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/combat/mechanicalweapons) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
+		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/craft/engineering) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
 		if(chamber_open)
 			to_chat(user, span_warningbig("THE CHAMBER WAS LEFT OPEN!!!"))
 			BB.accuracy = 0 // uh oh
@@ -250,9 +250,9 @@
 	if(.)
 		if(istype(user) && user.mind)
 			var/modifier = 1.25/(spread+1)
-			var/boon = user.get_learning_boon(/datum/skill/combat/mechanicalweapons)
+			var/boon = user.get_learning_boon(/datum/skill/craft/engineering)
 			var/amt2raise = user.STAINT/2
-			user.adjust_experience(/datum/skill/combat/mechanicalweapons, amt2raise * boon * modifier, FALSE)
+			user.adjust_experience(/datum/skill/craft/engineering, amt2raise * boon * modifier, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/update_overlays()
 	. = ..()

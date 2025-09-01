@@ -115,10 +115,3 @@
 	dreams = list(
 		"...the deadite claws on the door, another crashes through a window... in a panic, you grab a chair, and utter a prayer to Necra..."
 	)
-
-/datum/skill/combat/mechanicalweapons
-	name = "Mechanical Weaponry"
-	desc = "Mechanical Weaponry is a skill that represents your character's ability to fight with complex, steam powered weapons. The higher your skill in Mechanical Weaponry, the more accurate and deadly you'll be with steam powered weaponry."
-	dreams = list(
-		"...you turn the knobs, pull the lever, and raise the contraption to your chest... the clicking and turning of cogs in your head urge you to pull the trigger... the boiling steam engulfs them, slowly replacing their screams of anguish... your lord grins with glee at the peasants below... your chest feels hollow..."
-	)
