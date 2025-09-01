@@ -64,7 +64,7 @@
 		if((((rotation_structure && rotation_network) || istype(src, /obj/structure/water_pipe)) || accepts_water_input) && HAS_TRAIT(p, TRAIT_ENGINEERING_GOGGLES))
 			var/rotation_chat = return_rotation_chat(p.client.mouseovertext)
 			p.client.mouseovertext.maptext_width = 96
-			p.client.mouseovertext.maptext = MAPTEXT_CENTER("[rotation_chat] <span style='color:[hover_color]'>[name]</span>")
+			p.client.mouseovertext.maptext = MAPTEXT_CENTER("<span style='color:#e6b120'>[rotation_chat]</span>")
 		else
 			p.client.mouseovertext.maptext_height = 32
 			p.client.mouseovertext.maptext_width = 96
