@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun
 	name = "airgun"
-	desc = "A complex masterwork of engineering that propells projectiles via pressurized steam."
+	desc = "A complex masterwork of engineering that propells projectiles via pressurized steam. There are countless pipes, cogs, and other confusing gizmos."
 	icon = 'icons/roguetown/weapons/bows.dmi'
 	icon_state = "crossbow0"
 	//icon = 'icons/roguetown/weapons/airgun.dmi'
@@ -19,17 +19,20 @@
 	force_wielded = DAMAGE_MACE_WIELD
 	cartridge_wording = "bullet"
 	fire_sound = 'sound/combat/Ranged/firebow-shot-03.ogg'
-	load_sound = 'sound/foley/nockarrow.ogg'
+	load_sound = 'sound/foley/industrial/loadin.ogg'
 	equip_sound = 'sound/foley/gun_equip.ogg'
 	pickup_sound = 'sound/foley/gun_equip.ogg'
 	drop_sound = 'sound/foley/gun_drop.ogg'
 	dropshrink = 0.7
 	associated_skill = /datum/skill/combat/axesmaces //what is used when swinging with it
-	var/cocked = FALSE
+	var/pressure_to_use = 100
+	var/maximum_pressure = 200 //the max pressure we can set the gun to
+	var/cranked = FALSE
+	var/steam_lever = FALSE
+	var/chamber_open = FALSE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/apply_components()
-	AddComponent(/datum/component/steam_storage, 500, 0)
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+	AddComponent(/datum/component/steam_storage, 800, 0)
 
 /obj/item/ammo_box/magazine/internal/shot/airgun
 	ammo_type = /obj/item/ammo_casing/caseless/bullet
@@ -46,7 +49,7 @@
 		var/newtime = chargetime
 		//skill block
 		newtime = newtime + 18
-		newtime = newtime - (master.get_skill_level(/datum/skill/combat/crossbows) * 3)
+		newtime = newtime - (master.get_skill_level(/datum/skill/combat/mechanicalweapons) * 3)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - (master.STAPER)
@@ -66,7 +69,7 @@
 		var/newtime = chargetime
 		//skill block
 		newtime = newtime + 18
-		newtime = newtime - (master.get_skill_level(/datum/skill/combat/crossbows) * 3)
+		newtime = newtime - (master.get_skill_level(/datum/skill/combat/mechanicalweapons) * 3)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - (master.STAPER)
@@ -76,34 +79,135 @@
 			return 1
 	return chargetime
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber()
-	if(!cocked)
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber(mob/user)
+	if(!(cranked) || !(steam_lever))
+		to_chat(user, span_warning("[src] refuses to fire!"))
+		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
 		return
-	playsound(src.loc, 'sound/combat/Ranged/crossbow_medium_reload-03.ogg', 100, FALSE)
-	cocked = FALSE
-	update_appearance(UPDATE_ICON_STATE)
+	to_chat(user, span_warning("Fires a sad burst of air..."))
+	playsound(src.loc, 'sound/combat/Ranged/firebow-shot-03.ogg', 100, FALSE)
+	cranked = FALSE
+	steam_lever = FALSE
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attackby(obj/item/A, mob/user, params)
+	if(user.is_holding(src))
+		if(!(chamber_open))
+			to_chat(user, span_warning("The chamber isn't open to load [src]!"))
+			return
+		if(steam_lever)
+			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
+			return
+	. = ..()
+	playsound(src.loc, 'sound/foley/industrial/loadin.ogg', 100, FALSE)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_self(mob/living/user, params)
+	if(user.is_holding(src))
+		if(!(chamber_open))
+			to_chat(user, span_warning("The chamber isn't open to unload [src]!"))
+			return
+		if(steam_lever)
+			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
+			return
+	. = ..()
+	playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_hand(mob/user)
+	if(user.is_holding(src))
+		if(!(chamber_open))
+			to_chat(user, span_warning("The chamber isn't open to unload [src]!"))
+			return
+		if(steam_lever)
+			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
+			return
+	. = ..()
+	playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/examine(mob/user)
+	. = ..()
+	. += span_info("The ")
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_hand_secondary(mob/user, params)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("I need to hold [src] to cock it!"))
+		to_chat(user, span_warning("I need to hold [src] to access the control knobs!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if(cocked)
-		cocked = FALSE
-		to_chat(user, span_warning("I carefully de-cock [src]."))
-		playsound(src.loc, 'sound/combat/Ranged/crossbow_medium_reload-03.ogg', 100, FALSE)
-	else
-		playsound(src.loc, 'sound/combat/Ranged/crossbow_medium_reload-03.ogg', 100, FALSE)
-		to_chat(user, span_warningbig("I cock [src]!"))
-		cocked = TRUE
+	if(user.get_skill_level(/datum/skill/combat/mechanicalweapons) <= 0)
+		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	var/choice = input(user, "An incomprehensible mass of knobs and levers", "[src]") in list("Increase Pressure", "Decrease Pressure", "Loading Chamber", "Hand Crank", "Steam Lever", "Cancel")
+	if(!choice || choice == "cancel")
+		return
+	var/use_time = 4 //how much time the player needs to crank a knob, pull a lever, etc. in seconds
+	use_time = use_time - (user.get_skill_level(/datum/skill/combat/mechanicalweapons) / 2)
+	switch(choice)
+		if("Increase Pressure")
+			if(pressure_to_use < maximum_pressure)
+				to_chat(user, span_info("I begin to turn the knob clockwise..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I turn the knob clockwise, increasing the pressure for the airgun to use."))
+					pressure_to_use += 50
+					playsound(src.loc, 'sound/foley/industrial/pneumaticpress.ogg', 100, FALSE)
+			else
+				to_chat(user, span_warning("I try to turn the knob clockwise, but that's as far as it will go."))
+		if("Decrease Pressure")
+			if(pressure_to_use > maximum_pressure - 100)
+				to_chat(user, span_info("I begin to turn the knob counter-clockwise..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I turn the knob counter-clockwise, decreasing the pressure for the airgun to use."))
+					pressure_to_use -= 50
+					playsound(src.loc, 'sound/foley/industrial/pneumaticpress.ogg', 100, FALSE)
+			else
+				to_chat(user, span_warning("I try to turn the knob counter-clockwise, but that's as far as it will go."))
+		if("Loading Chamber")
+			if(chamber_open)
+				to_chat(user, span_info("I begin to close the loading chamber..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I close the loading chamber."))
+					playsound(src.loc, 'sound/foley/industrial/toggle.ogg', 100, FALSE)
+					chamber_open = FALSE
+			else
+				to_chat(user, span_info("I begin to open the loading chamber..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I open the loading chamber."))
+					playsound(src.loc, 'sound/foley/industrial/toggle.ogg', 100, FALSE)
+					chamber_open = TRUE
+		if("Hand Crank")
+			if(cranked)
+				to_chat(user, span_info("I begin to turn the hand crank counter-clockwise..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I turn the hand crank counter-clockwise."))
+					playsound(src.loc, 'sound/foley/winding.ogg', 100, FALSE)
+					cranked = FALSE
+			else
+				to_chat(user, span_info("I begin to turn the hand crank clockwise..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I turn the hand crank clockwise."))
+					playsound(src.loc, 'sound/foley/winding.ogg', 100, FALSE)
+					cranked = TRUE
+		if("Steam Lever")
+			if(steam_lever)
+				to_chat(user, span_info("I begin to pull the steam lever down..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I pull the steam lever down, disabling the flow of steam."))
+					playsound(src.loc, 'sound/foley/lock.ogg', 100, FALSE)
+					steam_lever = FALSE
+			else
+				to_chat(user, span_info("I begin to pull the steam lever up..."))
+				if(do_after(user, use_time SECONDS, src))
+					to_chat(user, span_info("I pull the steam lever up, enabling the flow of steam."))
+					playsound(src.loc, 'sound/foley/lock.ogg', 100, FALSE)
+					steam_lever = TRUE
 	update_appearance(UPDATE_ICON_STATE)
-
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(user.usable_hands < 2)
+	if(user.get_skill_level(/datum/skill/combat/mechanicalweapons) <= 0)
+		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
+		return FALSE
+	if(user.usable_hands < 1)
+		to_chat(user, span_warning("I can't fire [src] one handed, I need my other hand to be free!"))
 		return FALSE
 	if(user.get_inactive_held_item())
 		return FALSE
@@ -114,6 +218,15 @@
 			spread = 150 - (150 * (user.client.chargedprog / 100))
 	else
 		spread = 0
+	if(!(SEND_SIGNAL(src, COMSIG_ATOM_STEAM_USE, pressure_to_use)))
+		to_chat(user, span_warning("[src] lets out a weak whine, there isn't enough steam!"))
+		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
+		return FALSE
+	if(!(cranked) || !(steam_lever))
+		to_chat(user, span_warning("[src] refuses to fire!"))
+		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
+		return FALSE
+
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		if(user.client.chargedprog >= 100)
@@ -122,19 +235,24 @@
 			BB.accuracy += (user.STAPER - 8) * 4 //each point of perception above 8 increases standard accuracy by 4.
 			BB.bonus_accuracy += (user.STAPER - 8) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
 		if(user.STAPER > 10)
-			BB.damage = BB.damage * (user.STAPER / 10)
+			BB.damage = BB.damage * (user.STAPER / 10) * (pressure_to_use / 100) //normal damage at 100 pressure, double damage at 200
 
 		if(user.STAPER > 10)
 			BB.accuracy += (user.STAPER - 10) * 2 //each point of perception above 10 increases standard accuracy by 2.
 			BB.bonus_accuracy += (user.STAPER - 10) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
-		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/combat/crossbows) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
+		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/combat/mechanicalweapons) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
+		if(chamber_open)
+			to_chat(user, span_warningbig("THE CHAMBER WAS LEFT OPEN!!!"))
+			BB.accuracy = 0 // uh oh
 	. = ..()
+	cranked = FALSE
+	steam_lever = FALSE
 	if(.)
 		if(istype(user) && user.mind)
 			var/modifier = 1.25/(spread+1)
-			var/boon = user.get_learning_boon(/datum/skill/combat/crossbows)
+			var/boon = user.get_learning_boon(/datum/skill/combat/mechanicalweapons)
 			var/amt2raise = user.STAINT/2
-			user.adjust_experience(/datum/skill/combat/crossbows, amt2raise * boon * modifier, FALSE)
+			user.adjust_experience(/datum/skill/combat/mechanicalweapons, amt2raise * boon * modifier, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/update_overlays()
 	. = ..()

@@ -37,6 +37,7 @@
 	H.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/mechanicalweapons, 1, TRUE)//so they can use the airgun
 
 	head = /obj/item/clothing/head/articap
 	armor = /obj/item/clothing/armor/leather/jacket/artijacket
