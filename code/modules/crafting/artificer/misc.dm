@@ -268,6 +268,8 @@
 	craftdiff = 3
 	created_amount = 5
 
+//If anyone wants to add vial arrows/bolts, please make sure the reagents in the vial end up on the arrow/bolt
+
 // --------- WOODEN PROSTHETICS -----------
 
 /datum/artificer_recipe/prosthetics
