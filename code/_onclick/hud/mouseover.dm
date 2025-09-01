@@ -1,6 +1,5 @@
 /atom/MouseEntered(location, control, params)
-	if(!QDELETED(src))
-		SSmouse_entered.hovers[usr.client] = src
+	SSmouse_entered.hovers[usr.client] = src
 
 /// Fired whenever this atom is the most recent to be hovered over in the tick.
 /// Preferred over MouseEntered if you do not need information such as the position of the mouse.
@@ -23,13 +22,9 @@
 		SEND_SIGNAL(user, COMSIG_MOUSE_ENTERED, src)
 
 /atom/MouseExited(params)
-	if(!no_over_text)
-		handle_mouseexit()
-
-/atom/proc/handle_mouseexit()
-	var/client/client = usr?.client
-	if(!client)
+	if(no_over_text)
 		return
+	var/client/client = usr.client
 	if(client.mouseovertext.loc != null)
 		client.mouseovertext.moveToNullspace()
 	client.mouseovertext.screen_loc = null
