@@ -176,7 +176,6 @@
 	craftdiff = 0 // To train with
 
 /datum/anvil_recipe/weapons/iron/njora
-
 	name = "2x Iron Seme's"
 	recipe_name = "a Iron Seme"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -185,7 +184,6 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/weapons/iron/jile
-
 	name = "2x Iron Jile Daggers"
 	recipe_name = "a Iron Jile"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -236,7 +234,6 @@
 	created_item = /obj/item/weapon/mace
 
 /datum/anvil_recipe/weapons/iron/rungu
-
 	name = "Iron Rungu (+Stick)"
 	recipe_name = "an Iron Rungu"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -309,7 +306,6 @@
 	created_item = /obj/item/weapon/sword/rapier/ironestoc
 
 /datum/anvil_recipe/weapons/iron/kaskara
-
 	name = "Iron Kaskara"
 	recipe_name = "a Iron Kaskara"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -360,7 +356,6 @@
 ///////////////////////////////////////////////
 
 /datum/anvil_recipe/weapons/steel/assegai
-
 	name = "Steel Assegai (+ Small Log)"
 	recipe_name = "a Steel Assegai"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -375,7 +370,6 @@
 	created_item = /obj/item/weapon/axe/steel
 
 /datum/anvil_recipe/weapons/steel/nsapo/
-
 	name = "Steel Kasuyu (+Stick)"
 	recipe_name = "an Steel Kasuyu Axe"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -383,7 +377,6 @@
 	created_item = /obj/item/weapon/axe/nsapo/
 
 /datum/anvil_recipe/weapons/steel/rungu
-
 	name = "Steel Rungu (+Stick)"
 	recipe_name = "an Steel Rungu"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -399,7 +392,6 @@
 	created_item = 	/obj/item/weapon/hammer/sledgehammer/war
 
 /datum/anvil_recipe/weapons/steel/njora
-
 	name = "2x Steel Seme's"
 	recipe_name = "a Steel Seme"
 	appro_skill = /datum/skill/craft/weaponsmithing
@@ -452,7 +444,6 @@
 	created_item = /obj/item/weapon/sword/long/shotel
 
 /datum/anvil_recipe/weapons/steel/ida
-
 	name = "Steel Ida"
 	recipe_name = "a Steel Ida"
 	appro_skill = /datum/skill/craft/weaponsmithing

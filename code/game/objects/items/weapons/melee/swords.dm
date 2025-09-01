@@ -132,7 +132,6 @@
 	sellprice = 15
 
 /obj/item/weapon/sword/ida
-
 	force = DAMAGE_SHORTSWORD
 	name = "steel ida"
 	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
@@ -284,7 +283,6 @@
 	sellprice = 100
 
 /obj/item/weapon/sword/scimitar/ngombe
-
 	name = "ngombe ngulu"
 	desc = "A heavy executioner's sword originating from Lakkari. It was used by Astratans to behead Psydonites settlers responsible for the Red Dune Massacre."
 	icon = 'icons/roguetown/weapons/lakkari.dmi'

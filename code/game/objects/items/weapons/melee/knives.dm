@@ -322,7 +322,6 @@
 	wbalance = VERY_HARD_TO_DODGE
 
 /obj/item/weapon/knife/jile/steel
-
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "steel jile"
 	desc = "A curved steel dagger of Lakkarian origin. Nobles of Napatahuum were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
@@ -334,7 +333,6 @@
 	sellprice = 20
 
 /obj/item/weapon/knife/njora/steel
-
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 	name = "steel seme"
 	desc = "A broad steel dagger of ancient Lakkarian design. Popular amongst the indigenous elven tribes of western Lakkari."
