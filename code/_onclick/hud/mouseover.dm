@@ -94,4 +94,4 @@
 	icon = null
 	icon_state = null
 	animate_movement = NO_STEPS
-	//alpha = 150
+	alpha = 190
