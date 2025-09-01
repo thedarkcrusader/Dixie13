@@ -41,12 +41,12 @@
 	if(!client)
 		return
 	var/used_content = get_over_text_content(client)
-	var/height = maptext_height
+	var/y_offset = maptext_height
 	var/atom/movable/mouse_over = client.mouseovertext
 	if(ismovable(src))
 		var/atom/movable/AM = src
-		if(AM.bound_height > 32)
-			height = AM.bound_height
+		if(AM.bound_height > y_offset)
+			y_offset = AM.bound_height
 		if(AM.screen_loc)
 			mouse_over.screen_loc = AM.screen_loc
 		else if(ismob(src) && src == client.mob) // Special little snowflake because it looks awful otherwise :(
@@ -54,7 +54,7 @@
 	if(!mouse_over.screen_loc)
 		mouse_over.abstract_move(get_turf(src))
 	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
-	mouse_over.maptext_y = height + base_pixel_y + pixel_y
+	mouse_over.maptext_y = y_offset + base_pixel_y + pixel_y
 	mouse_over.maptext_x = (HOVER_TEXT_WIDTH - world.icon_size) * -0.5 - base_pixel_x + pixel_x
 	WXH_TO_HEIGHT(client.MeasureText(used_content, null, HOVER_TEXT_WIDTH), mouse_over.maptext_height)
 	mouse_over.maptext_width = HOVER_TEXT_WIDTH
