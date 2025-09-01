@@ -235,7 +235,7 @@
 			BB.accuracy += (user.STAPER - 8) * 4 //each point of perception above 8 increases standard accuracy by 4.
 			BB.bonus_accuracy += (user.STAPER - 8) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
 		if(user.STAPER > 10)
-			BB.damage = BB.damage * (user.STAPER / 10) * (pressure_to_use / 100) //normal damage at 100 pressure, double damage at 200
+			BB.damage = BB.damage * (user.STAPER / 10) * (2 / 3) * (pressure_to_use / 100) //2/3rds damage at 100 pressure, normal damage at 150, 4/3rds at 200
 
 		if(user.STAPER > 10)
 			BB.accuracy += (user.STAPER - 10) * 2 //each point of perception above 10 increases standard accuracy by 2.
