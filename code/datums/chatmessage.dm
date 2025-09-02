@@ -7,6 +7,10 @@
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z (CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
 
+#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.013 SECONDS * (EXCLAIMED_MULTIPLER - 1))
+
+#define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
+
 /**
  * # Chat Message Overlay
  *
@@ -29,6 +33,10 @@
 	var/tgt_color
 	var/list/_extra_classes
 	var/_text
+	var/list/remaining_letters
+	var/current_string = ""
+	var/premature_end = FALSE
+	var/exclaimed = FALSE
 
 /**
  * Constructs a chat message overlay
@@ -57,6 +65,11 @@
 
 	_text = text
 
+	remaining_letters = split_string_to_list(_text)
+
+	if((length(text) > 1) && ((text[length(text)] == "!") && (text[length(text) - 1] == "!")))
+		exclaimed = TRUE
+
 	// We dim italicized text to make it more distinguishable from regular text
 	tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
@@ -81,6 +94,11 @@
 
 	qdel(src)
 
+/datum/chatmessage/proc/on_parent_take_damage()
+	SIGNAL_HANDLER
+
+	premature_end_of_life()
+
 /**
  * Generates a chat message image representation
  *
@@ -97,6 +115,7 @@
 	// Register client who owns this message
 	owned_by = owner.client
 	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, PROC_REF(on_parent_qdel))
+	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMGE, PROC_REF(on_parent_take_damage))
 
 	// Clip message
 	var/maxlen = owned_by.prefs.max_chat_length
@@ -151,7 +170,7 @@
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = turn_to_maptext(text)
+	var/complete_text = turn_to_styled(text)
 
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
@@ -199,32 +218,77 @@
 
 	// Prepare for destruction
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
-	addtimer(CALLBACK(src, PROC_REF(end_of_life)), lifespan - CHAT_MESSAGE_EOL_FADE, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-	spelling_loop()
+	INVOKE_ASYNC(src, PROC_REF(spelling_loop))
 
-/datum/chatmessage/proc/turn_to_maptext(string)
-	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[_text]</span>"} //AAAAAAAAAAAAAAA
+/datum/chatmessage/proc/turn_to_styled(string)
+	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[string]</span>"} //AAAAAAAAAAAAAAA
+
+/datum/chatmessage/proc/spelling_extra_delays(character)
+	if(character in CHAT_SPELLING_EXCEPTIONS)
+		return
+
+	return CHAT_SPELLING_PUNCTUATION[character] ? CHAT_SPELLING_PUNCTUATION[character] : 0
 
 /datum/chatmessage/proc/spelling_loop()
 	if(QDELETED(src))
 		return
 
-	var/list/remaining_letters = split_string_to_list(_text)
-	var/current_string = remaining_letters[1]
-	remaining_letters -= remaining_letters[1]
-	var/state = 1
+	var/delay = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER
+	var/direction = 1
 
-	message.maptext = MAPTEXT(current_string)
+	for(var/letter as anything in remaining_letters)
+		var/extra_delay = spelling_extra_delays(letter)
+		if(isnull(extra_delay))
+			current_string += letter
+			continue
 
-	while(remaining_letters)
-		message.maptext = MAPTEXT(turn_to_maptext(current_string))
-		do_shift(state)
-		state *= -1
-		sleep(0.3 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(add_letter), letter, direction, (extra_delay ? FALSE : TRUE)), delay)
+		direction *= -1
+		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
-/datum/chatmessage/proc/do_shift(state)
-	animate(message, time = 0.2 SECONDS, pixel_w = (3 + rand(1, 3)) * pick(-1, 1), pixel_z = (3 + rand(1, 3)) * pick(-1, 1))
+	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay)
+
+/datum/chatmessage/proc/add_letter(letter, direction, audible)
+	if(QDELETED(src))
+		return
+	if(premature_end)
+		return
+
+	_add_letter(arglist(args))
+
+/datum/chatmessage/proc/_add_letter(letter, direction, audible)
+	current_string += letter
+	message.maptext = MAPTEXT(turn_to_styled(current_string))
+	if(audible)
+		play_toot()
+		do_shift(direction)
+
+/datum/chatmessage/proc/play_toot()
+	playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 100, frequency = get_rand_frequency_higher_range())
+
+/datum/chatmessage/proc/do_shift(direction)
+	var/exclaimed_multiplier = exclaimed ? 3 : 1
+	animate(
+		message,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+		pixel_w = (exclaimed_multiplier + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+		pixel_z = (1 + 1 * exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
+		easing = ELASTIC_EASING,
+		)
+
+/datum/chatmessage/proc/premature_end_of_life()
+	SIGNAL_HANDLER
+	_add_letter(pick(CHAT_GLORF_LIST))
+	premature_end = TRUE
+	animate(
+		message,
+		time = 0.1 SECONDS,
+		transform = message.transform.Turn((10 + rand(5, 30)) * pick(1, -1)),
+		color = "#ad3c23",
+		flags = ANIMATION_PARALLEL
+		)
+	end_of_life()
 
 /**
  * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
@@ -236,6 +300,7 @@
 
 	if(QDELETED(src))
 		return
+
 	QDEL_IN(src, fadetime)
 
 /**
@@ -277,3 +342,5 @@
 #undef CHAT_LAYER_MAX
 #undef CHAT_LAYER_Z_STEP
 #undef CHAT_LAYER_MAX_Z
+#undef CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER
+#undef EXCLAIMED_MULTIPLER

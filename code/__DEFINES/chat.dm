@@ -1,8 +1,28 @@
 #define CHAT_MESSAGE_SPAWN_TIME		0.2 SECONDS
 #define CHAT_MESSAGE_LIFESPAN		5 SECONDS
 #define CHAT_MESSAGE_EOL_FADE		0.7 SECONDS
+#define CHAT_SPELLING_DELAY 		0.08 SECONDS
 #define CHAT_MESSAGE_EXP_DECAY		0.7 // Messages decay at pow(factor, idx in stack)
 #define CHAT_MESSAGE_HEIGHT_DECAY	0.9 // Increase message decay based on the height of the message
 #define CHAT_MESSAGE_APPROX_LHEIGHT	11 // Approximate height in pixels of an 'average' line, used for height decay
 #define CHAT_MESSAGE_WIDTH			96 // pixels
 #define CHAT_MESSAGE_MAX_LENGTH		110 // characters
+#define CHAT_GLORF_LIST list(\
+							"-ah!!",\
+							"-GLORF!!",\
+							"-OW!!"\
+							)
+
+#define CHAT_SPELLING_PUNCTUATION list(\
+										"," = 0.3 SECONDS,\
+										"." = 0.5 SECONDS,\
+										" " = 0.12 SECONDS,\
+										"-" = 0.2 SECONDS,\
+										"!" = 0.3 SECONDS,\
+										"?" = 0.3 SECONDS,\
+										)
+
+
+#define CHAT_SPELLING_EXCEPTIONS list(\
+										"\'"\
+										)
