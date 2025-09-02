@@ -250,7 +250,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/bolts/pyro
-	name = "Fire Crossbow Bolts 5x (+1 Iron +1 Blast Powder)"
+	name = "Crossbow Bolts 5x (+1 Iron +1 Blast Powder)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
 	created_item = /obj/item/ammo_casing/caseless/bolt/pyro
