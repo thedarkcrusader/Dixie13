@@ -23,6 +23,8 @@
 	var/scheduled_destruction
 	/// Contains the approximate amount of lines for height decay
 	var/approx_lines
+	/// if we finished typing up all our letters.
+	var/finished_typing = FALSE
 
 /**
  * Constructs a chat message overlay
@@ -43,6 +45,7 @@
 		qdel(src)
 		return
 	INVOKE_ASYNC(src, PROC_REF(generate_image), text, target, owner, language, extra_classes, lifespan)
+
 
 /datum/chatmessage/Destroy()
 	if (owned_by)
@@ -147,8 +150,7 @@
 		return finish_image_generation(mheight, target, owner, complete_text, lifespan)
 	var/datum/callback/our_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, complete_text, lifespan)
 	SSrunechat.message_queue += our_callback
-
-
+	shifting_loop()
 
 /datum/chatmessage/proc/finish_image_generation(mheight, atom/target, mob/owner, complete_text, lifespan)
 	if(!owned_by || QDELETED(owned_by))
@@ -192,9 +194,15 @@
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), lifespan - CHAT_MESSAGE_EOL_FADE, TIMER_UNIQUE|TIMER_OVERRIDE)
 
+/datum/chatmessage/proc/shifting_loop()
+	if(QDELETED(src))
+		return
 
+	do_shift()
 
-
+/datum/chatmessage/proc/do_shift()
+	animate(message, time = 0.1 SECONDS, pixel_w = (3 + rand(1, 3)) * pick(-1, 1), pixel_z = (3 + rand(1, 3)) * pick(-1, 1), flags = ANIMATION_RELATIVE)
+	addtimer(CALLBACK(src, PROC_REF(shifting_loop)), 0.2 SECONDS)
 
 /**
  * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
