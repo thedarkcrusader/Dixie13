@@ -260,7 +260,7 @@
 /datum/chatmessage/proc/_add_letter(letter, direction, audible)
 	current_string += letter
 	message.maptext = MAPTEXT(turn_to_styled(current_string))
-	if(audible)
+	if(audible && !_extra_classes.Find("emote"))
 		play_toot()
 		do_shift(direction)
 

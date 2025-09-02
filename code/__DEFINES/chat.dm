@@ -16,7 +16,7 @@
 #define CHAT_SPELLING_PUNCTUATION list(\
 										"," = 0.3 SECONDS,\
 										"." = 0.5 SECONDS,\
-										" " = 0.12 SECONDS,\
+										" " = 0.08 SECONDS,\
 										"-" = 0.2 SECONDS,\
 										"!" = 0.3 SECONDS,\
 										"?" = 0.3 SECONDS,\
