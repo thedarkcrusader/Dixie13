@@ -137,6 +137,7 @@
 
 /datum/artificer_recipe/weapons
 	i_type = "Weapons"
+	category = "Weapons"
 
 /datum/artificer_recipe/weapons/crossbow
 	name = "Crossbow (+1 Steel) (+1 Fiber)"
@@ -148,9 +149,10 @@
 
 // --------- ARMOR -----------
 
-//should be armour not armor, fight me
+//should be armour not armor fight me, but most of the codebase uses american english so its armor
 /datum/artificer_recipe/armor
 	i_type = "Armor"
+	category = "Armor"
 
 /datum/artificer_recipe/armor/steam_knight_helm
 	name = "Steamknight Helmet (+3 Bronze) (+3 Metal Gear) (+1 Cloth)"
@@ -184,7 +186,7 @@
 	hammers_per_item = 4
 	craftdiff = 5
 
-/datum/artificer_recipe/contraptions/boiler
+/datum/artificer_recipe/armor/boiler
 	name = "Steamknight Boiler (+1 Backpack) (+1 Bronze) (+3 Cogs)"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/clothing/cloak/boiler
