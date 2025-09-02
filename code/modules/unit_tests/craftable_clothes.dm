@@ -11,24 +11,15 @@ abstract types are automatically excluded.
 		/obj/item/clothing/neck/portalamulet, // vampire antag item
 		/obj/item/clothing/head/peaceflower, // spawns naturally
 		/obj/item/clothing/head/corruptflower, // spawns naturally
-		/obj/item/clothing/cloak/cape/inquisitor, // inquisitor bullshit
-		/obj/item/clothing/head/leather/inqhat, // inquisitor bullshit
-		/obj/item/clothing/face/spectacles/inqglasses, // inquisitor bullshit
-		/obj/item/clothing/armor/medium/scale/inqcoat, // inquisitor bullshit
-		/obj/item/clothing/head/adeptcowl, // inquisitor bullshit
 		/obj/item/clothing/face/facemask/steel/harlequin, // antag only
 		/obj/item/clothing/shirt/robe/necromancer, // antag
 		/obj/item/clothing/shirt/robe/priest, // unattainable
 		/obj/item/clothing/head/padded/deathface, // ???
 		/obj/item/clothing/head/roguehood/priest, // unattainable
+		/obj/item/clothing/face/facemask/prisoner,
 		/obj/item/clothing/head/priestmask, // unattainable
 		/obj/item/clothing/head/priesthat, // unattainable
 		/obj/item/clothing/head/mob_holder, // change this shit to not clothing, wtf.
-		/obj/item/clothing/gloves/leather/otavan, // TODO?
-		/obj/item/clothing/gloves/leather/otavan/inqgloves,  // inquisitor bullshit
-		/obj/item/clothing/armor/amazon_chainkini, // no horni
-		/obj/item/clothing/head/helmet/leather/hood_ominous, // todo?
-		/obj/item/clothing/armor/leather/jacket/leathercoat/wretchrenegade, //same as leathercoat but diff color
 		/obj/item/clothing/head/leather/inqhat/vigilante, //Renegade Bullshit
 		/obj/item/clothing/face/phys/plaguebearer, //Plague Only
 		/obj/item/clothing/ring/gold/burden, // uncraftable
