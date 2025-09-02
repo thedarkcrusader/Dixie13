@@ -428,7 +428,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			if(CR.amount >= 10 MINUTES)
 				rotstuff = TRUE
 		var/atom/Tsec = drop_location()
-		if(head_butcher && (HAS_TRAIT(user, TRAIT_HEAD_BUTCHER) || butcher == perfect_butcher_results))
+		if(head_butcher)
 			butcher[head_butcher] = 1
 		for(var/path in butcher)
 			for(var/i in 1 to butcher[path])
