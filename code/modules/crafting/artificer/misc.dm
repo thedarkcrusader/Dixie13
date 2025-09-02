@@ -173,7 +173,7 @@
 /datum/artificer_recipe/armor/steam_knight_gloves
 	name = "Steamknight Gloves (+2 Bronze) (+2 Metal Gear) (+1 Cloth)"
 	required_item = /obj/item/ingot/steel
-	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	created_item = /obj/item/clothing/gloves/plate/steam
 	additional_items = list(/obj/item/ingot/bronze = 3, /obj/item/gear/metal = 2, /obj/item/natural/cloth = 1)
 	hammers_per_item = 4
 	craftdiff = 5
@@ -181,7 +181,7 @@
 /datum/artificer_recipe/armor/steam_knight_boots
 	name = "Steamknight Boots (+2 Bronze) (+2 Metal Gear) (+1 Cloth)"
 	required_item = /obj/item/ingot/steel
-	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	created_item = /obj/item/clothing/shoes/boots/armor/steam
 	additional_items = list(/obj/item/ingot/bronze = 3, /obj/item/gear/metal = 2, /obj/item/natural/cloth = 1)
 	hammers_per_item = 4
 	craftdiff = 5
