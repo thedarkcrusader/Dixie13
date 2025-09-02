@@ -70,6 +70,8 @@
 
 /obj/item/needle/pre_attack(atom/A, mob/living/user, params)
 	if(isitem(A) && !can_repair)
+		if(istype(A, /obj/item/storage))
+			return ..()
 		to_chat(user, span_warning("[src] cannot be used to repair [A]!"))
 		return TRUE
 	if(isitem(A) && can_repair)
