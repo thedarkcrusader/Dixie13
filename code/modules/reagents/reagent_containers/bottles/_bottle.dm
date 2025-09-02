@@ -195,8 +195,8 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	icon_state = "clear_vial1"
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
-	volume = 40
-	fill_icon_thresholds = list(0, 25, 50, 75, 100)
+	volume = 30
+	fill_icon_thresholds = list(0, 10, 25, 50, 75, 100)
 	dropshrink = 0.8
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_MOUTH
 	obj_flags = CAN_BE_HIT
