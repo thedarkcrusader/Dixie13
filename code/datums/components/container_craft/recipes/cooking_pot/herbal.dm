@@ -346,7 +346,7 @@
 		/obj/item/alch/herb/rosa = 1
 	)
 	crafting_time = 30 SECONDS
-	finished_smell = /datum/pollutant/food/strawberry_cake
+	finished_smell = /datum/pollutant/fragrance/rose
 	complete_message = "A strong, fragrant scent of rosa permeates the area."
 
 /datum/container_craft/cooking/perfume/mint
@@ -358,7 +358,7 @@
 		/obj/item/alch/herb/mentha = 1
 	)
 	crafting_time = 30 SECONDS
-	finished_smell = /datum/pollutant/food/strawberry_cake
+	finished_smell = /datum/pollutant/fragrance/mint
 	complete_message = "A strong, fragrant scent of mint permeates the area."
 
 /datum/container_craft/cooking/perfume/pear
@@ -370,7 +370,7 @@
 		/obj/item/reagent_containers/food/snacks/produce/fruit/pear = 1
 	)
 	crafting_time = 30 SECONDS
-	finished_smell = /datum/pollutant/food/strawberry_cake
+	finished_smell = /datum/pollutant/fragrance/pear
 	complete_message = "A strong, fragrant scent of pear permeates the area."
 
 /datum/container_craft/cooking/perfume/strawberry
@@ -382,5 +382,5 @@
 		/obj/item/reagent_containers/food/snacks/produce/fruit/strawberry = 1
 	)
 	crafting_time = 30 SECONDS
-	finished_smell = /datum/pollutant/food/strawberry_cake
+	finished_smell = /datum/pollutant/fragrance/strawberry
 	complete_message = "A strong, fragrant scent of strawberry permeates the area."
