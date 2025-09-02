@@ -247,7 +247,7 @@
 		direction *= -1
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
-	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay)
+	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 0.5 SECONDS)
 
 /datum/chatmessage/proc/add_letter(letter, direction, audible)
 	if(QDELETED(src))
