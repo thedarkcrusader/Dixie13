@@ -31,7 +31,7 @@
 
 /datum/skill/labor/farming
 	name = "Farming"
-	desc = "Farming is a skill that represents your character's ability to farm. The higher your skill in Farming, the more crops you can grow and the faster they will grow." //Probably not true, but placeholder.
+	desc = "Farming is a skill that represents your character's ability to farm. The higher your skill in Farming, the more you know about a seed, fertilizer, etc. by examining them."
 	dreams = list(
 		"...you plant your thumb into the dirt, before pulling it back - gently placing a seed into the crevice..."
 	)

@@ -42,6 +42,12 @@
 			title = "literature"
 		if(/datum/skill/labor/mathematics)
 			title = "mathematics"
+		if(/datum/skill/craft/engineering)
+			title = "mathematics"
+		if(/datum/skill/craft/alchemy)
+			title = "mathematics"
+		if(/datum/skill/labor/farming)
+			title = "mathematics"
 	name = "[skill_name]'s guide to [title]"
 
 /obj/item/textbook/update_desc()
