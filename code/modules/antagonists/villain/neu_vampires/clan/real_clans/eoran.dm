@@ -4,7 +4,7 @@
 		/datum/action/cooldown/spell/undirected/mansion_portal,
 		/datum/action/cooldown/spell/undirected/shapeshift/frog,
 		/datum/action/cooldown/spell/charm/vampire,
-		/datum/action/cooldown/spell/undirected/list_target/encode_thoughtsvampire
+		/datum/action/cooldown/spell/undirected/list_target/encode_thoughts/vampire
 	)
 	lord_verbs = list(
 		/mob/living/carbon/human/proc/demand_submission,
@@ -53,6 +53,7 @@
 
 /datum/clan/eoran/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
+
 
 
 
