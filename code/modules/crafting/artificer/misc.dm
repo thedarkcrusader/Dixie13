@@ -193,7 +193,7 @@
 	craftdiff = 3
 
 /datum/artificer_recipe/contraptions/coolingbackpack
-	name = "Cooling Backpack (+1 Backpack, +2 Cogs)"
+	name = "Cooling Backpack (+1 Backpack) (+2 Cogs)"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/storage/backpack/backpack/artibackpack
 	additional_items = list(/obj/item/gear/metal = 2, /obj/item/storage/backpack/backpack)
@@ -233,7 +233,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/arrows/pyro
-	name = "Fire Arrows 5x (+1 Iron, +1 Blast Powder)"
+	name = "Fire Arrows 5x (+1 Iron) (+1 Blast Powder)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
 	created_item = /obj/item/ammo_casing/caseless/arrow/pyro
@@ -242,7 +242,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/bolts/pyro
-	name = "Fire Bolts 5x (+1 Iron, +1 Blast Powder)"
+	name = "Fire Bolts 5x (+1 Iron) (+1 Blast Powder)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
 	created_item = /obj/item/ammo_casing/caseless/bolt/pyro
@@ -251,7 +251,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/arrows/water
-	name = "Water Arrows 5x (+1 Iron, +1 Waterdust)"
+	name = "Water Arrows 5x (+1 Iron) (+1 Waterdust)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/alch/waterdust)
 	created_item = /obj/item/ammo_casing/caseless/arrow/water
@@ -260,7 +260,7 @@
 	created_amount = 5
 
 /datum/artificer_recipe/ammo/bolts/water
-	name = "Water Bolts 5x (+1 Iron, +1 Waterdust)"
+	name = "Water Bolts 5x (+1 Iron) (+1 Waterdust)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron, /obj/item/alch/waterdust)
 	created_item = /obj/item/ammo_casing/caseless/bolt/water
@@ -335,7 +335,7 @@
 // --------- STEEL PROSTHETICS -----------
 
 /datum/artificer_recipe/prosthetics/steel
-	name = "Steel Left Arm (+1 Steel, +1 Cog)"
+	name = "Steel Left Arm (+1 Steel) (+1 Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/gear/metal = 1)
@@ -343,15 +343,15 @@
 	craftdiff = 4
 
 /datum/artificer_recipe/prosthetics/steel/arm_right
-	name = "Steel Right Arm (+1 Steel, +1 Cog)"
+	name = "Steel Right Arm (+1 Steel) (+1 Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/steel
 
 /datum/artificer_recipe/prosthetics/steel/leg_left
-	name = "Steel Left Leg (+1 Steel, +1 Cog)"
+	name = "Steel Left Leg (+1 Steel) (+1 Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/steel
 
 /datum/artificer_recipe/prosthetics/steel/leg_right
-	name = "Steel Right Leg (+1 Steel, +1 Cog)"
+	name = "Steel Right Leg (+1 Steel) (+1 Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/steel
 
 // --------- IRON PROSTHETICS -----------
