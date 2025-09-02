@@ -65,6 +65,84 @@
 	recipe_name = "a Statue"
 	created_item = /obj/item/statue/silver
 
+/datum/anvil_recipe/valuables/silver/volf
+	name = "Silver Volf Bust (+Silver Bar)"
+	recipe_name = "a Silver Volf Bust"
+	additional_items = list(/obj/item/ingot/silver)
+	created_item = /obj/item/statue/silver/volf
+
+/datum/anvil_recipe/valuables/silver/urn
+	name = "Silver Urn (+Silver Bar)"
+	recipe_name = "a Silver Urn"
+	additional_items = list(/obj/item/ingot/silver)
+	created_item = /obj/item/statue/silver/urn
+
+/datum/anvil_recipe/valuables/silver/vasefancy
+	name = "Fancy Silver Vase (+Silver Bar)"
+	recipe_name = "a Fancy Silver Vase"
+	additional_items = list(/obj/item/ingot/silver)
+	created_item = /obj/item/statue/silver/vasefancy
+
+/datum/anvil_recipe/valuables/silver/finger
+	name = "Silver Middle Finger (+ 2 Silver Bar)"
+	recipe_name = "a Silver Middle Finger "
+	additional_items = list(/obj/item/ingot/silver/, /obj/item/ingot/silver/)
+	created_item = /obj/item/statue/silver/finger
+
+/datum/anvil_recipe/valuables/silver/bust
+	name = "Silver Bust"
+	recipe_name = "a Silver Bust"
+	created_item = /obj/item/statue/silver/bust
+
+/datum/anvil_recipe/valuables/silver/vase
+	name = "Silver Vase"
+	recipe_name = "a Silver Vase"
+	created_item = /obj/item/statue/silver/vase
+
+/datum/anvil_recipe/valuables/silver/totem
+	name = "Silver Totem"
+	recipe_name = "a Silver Totem"
+	created_item = /obj/item/statue/silver/totem
+
+/datum/anvil_recipe/valuables/silver/teapot
+	name = "Silver Teapot"
+	recipe_name = "a Silver Teapot"
+	created_item = /obj/item/statue/silver/teapot
+
+/datum/anvil_recipe/valuables/silver/obelisk
+	name = "Silver Obelisk"
+	recipe_name = "a Silver Obelisk"
+	created_item = /obj/item/statue/silver/obelisk
+
+/datum/anvil_recipe/valuables/silver/tablet
+	name = "Silver Tablet"
+	recipe_name = "a Silver Tablet"
+	created_item = /obj/item/statue/silver/tablet
+
+/datum/anvil_recipe/valuables/silver/comb
+	name = "2x Silver Combs"
+	recipe_name = "a Two Silver Combs"
+	created_item = /obj/item/statue/silver/comb
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/silver/figurine
+	name = "2x Silver Figurines"
+	recipe_name = "a Two Silver Figurines"
+	created_item = /obj/item/statue/silver/figurine
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/silver/cameo
+	name = "2x Silver Cameo's"
+	recipe_name = "a Two Silver Cameo's"
+	created_item = /obj/item/statue/silver/cameo
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/silver/fish
+	name = "2x Silver Fish"
+	recipe_name = "a Two Silver Fish"
+	created_item = /obj/item/statue/silver/fish
+	createditem_extra = 1
+
 /datum/anvil_recipe/valuables/silver/rings
 	name = "3x Silver Rings"
 	recipe_name = "three Rings"
