@@ -142,7 +142,7 @@
 	name = "Crossbow (+1 Steel) (+2 Fibers)"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fibers)
+	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/natural/fibers = 2)
 	hammers_per_item = 7
 	craftdiff = 4
 
