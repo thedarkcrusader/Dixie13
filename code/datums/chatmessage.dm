@@ -265,7 +265,8 @@
 		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 100, frequency = get_rand_frequency_higher_range())
+	return
+	// playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
