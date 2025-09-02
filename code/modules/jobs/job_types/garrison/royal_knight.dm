@@ -104,14 +104,15 @@
 	var/grant_shield = TRUE
 	switch(choice)
 		if("Flail")
-			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 1, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 2, 4, TRUE)
 		if("Halberd")
-			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 1, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 2, 4, TRUE)
 			grant_shield = FALSE
 		if("Longsword")
 			grant_shield = FALSE
+			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 4, TRUE)
 		if("Unarmed")
-			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 3, 5, TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, 4, TRUE)
 			grant_shield = FALSE
 	if(grant_shield)
@@ -132,7 +133,8 @@
 	tutorial = "The pinnacle of Vanderlin's steam technology. \
 	Start with a set of Steam Armor that requires steam to function. \
 	The suit is powerful when powered but will slow you down when not \
-	and has the cost of reducing your space for arms."
+	learning how to use it has cost you precious time \
+	you could have spent learning to use other weapons."
 
 	outfit = /datum/outfit/job/royalknight/steam
 
@@ -149,6 +151,8 @@
 	head = /obj/item/clothing/head/helmet/heavy/steam
 
 	H.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/shields, -1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, -1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
