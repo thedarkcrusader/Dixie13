@@ -25,6 +25,10 @@
 	var/approx_lines
 	/// if we finished typing up all our letters.
 	var/finished_typing = FALSE
+	var/font_size = 8
+	var/tgt_color
+	var/list/_extra_classes
+	var/_text
 
 /**
  * Constructs a chat message overlay
@@ -44,6 +48,18 @@
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return
+
+	if(extra_classes.Find("emote"))
+		font_size = 7
+		tgt_color = "#adadad"
+
+	_extra_classes = extra_classes.Copy()
+
+	_text = text
+
+	// We dim italicized text to make it more distinguishable from regular text
+	tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
+
 	INVOKE_ASYNC(src, PROC_REF(generate_image), text, target, owner, language, extra_classes, lifespan)
 
 
@@ -129,20 +145,13 @@
 		LAZYADD(prefixes, "\icon[language_icon]")
 
 	text = "[prefixes?.Join("&nbsp;")][text]"
-	// We dim italicized text to make it more distinguishable from regular text
-	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
-
-	var/font_size = 8
-	if(extra_classes.Find("emote"))
-		font_size = 7
-		tgt_color = "#adadad"
 
 	// Approximate text height
 	// Note we have to replace HTML encoded metacharacters otherwise MeasureText will return a zero height
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [extra_classes != null ? extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[text]</span>"} //AAAAAAAAAAAAAAA
+	var/complete_text = turn_to_maptext(text)
 
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
@@ -150,7 +159,6 @@
 		return finish_image_generation(mheight, target, owner, complete_text, lifespan)
 	var/datum/callback/our_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, complete_text, lifespan)
 	SSrunechat.message_queue += our_callback
-	shifting_loop()
 
 /datum/chatmessage/proc/finish_image_generation(mheight, atom/target, mob/owner, complete_text, lifespan)
 	if(!owned_by || QDELETED(owned_by))
@@ -183,7 +191,6 @@
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight
 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
-	message.maptext = MAPTEXT(complete_text)
 
 	// View the message
 	LAZYADDASSOCLIST(owned_by.seen_messages, message_loc, src)
@@ -194,15 +201,30 @@
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), lifespan - CHAT_MESSAGE_EOL_FADE, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/datum/chatmessage/proc/shifting_loop()
+	spelling_loop()
+
+/datum/chatmessage/proc/turn_to_maptext(string)
+	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[_text]</span>"} //AAAAAAAAAAAAAAA
+
+/datum/chatmessage/proc/spelling_loop()
 	if(QDELETED(src))
 		return
 
-	do_shift()
+	var/list/remaining_letters = split_string_to_list(_text)
+	var/current_string = remaining_letters[1]
+	remaining_letters -= remaining_letters[1]
+	var/state = 1
 
-/datum/chatmessage/proc/do_shift()
-	animate(message, time = 0.1 SECONDS, pixel_w = (3 + rand(1, 3)) * pick(-1, 1), pixel_z = (3 + rand(1, 3)) * pick(-1, 1), flags = ANIMATION_RELATIVE)
-	addtimer(CALLBACK(src, PROC_REF(shifting_loop)), 0.2 SECONDS)
+	message.maptext = MAPTEXT(current_string)
+
+	while(remaining_letters)
+		message.maptext = MAPTEXT(turn_to_maptext(current_string))
+		do_shift(state)
+		state *= -1
+		sleep(0.3 SECONDS)
+
+/datum/chatmessage/proc/do_shift(state)
+	animate(message, time = 0.2 SECONDS, pixel_w = (3 + rand(1, 3)) * pick(-1, 1), pixel_z = (3 + rand(1, 3)) * pick(-1, 1))
 
 /**
  * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
@@ -210,11 +232,11 @@
 /datum/chatmessage/proc/end_of_life(fadetime = CHAT_MESSAGE_EOL_FADE)
 	if(QDELETED(src))
 		return
-//	animate(message, alpha = 0, time = fadetime, flags = ANIMATION_PARALLEL)
-//	sleep(fadetime)
-//	if(QDELETED(src))
-//		return
-	qdel(src)
+	animate(message, alpha = 0, time = fadetime, flags = ANIMATION_PARALLEL)
+
+	if(QDELETED(src))
+		return
+	QDEL_IN(src, fadetime)
 
 /**
  * Creates a message overlay at a defined location for a given speaker
