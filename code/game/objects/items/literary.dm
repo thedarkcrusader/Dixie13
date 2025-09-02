@@ -24,10 +24,14 @@
 	var/minskill
 	var/maxskill
 	var/skilltoteach
-	var/skill_name = ""
+	var/skill_name = "nobody"
 	var/static/list/teachable_skills = list(
 		"Reading" = /datum/skill/misc/reading,
-		"Mathematics" = /datum/skill/labor/mathematics)
+		"Mathematics" = /datum/skill/labor/mathematics,
+		"Engineering" = /datum/skill/craft/engineering,
+		"Alchemy" = /datum/skill/craft/alchemy,
+		"Butchering" = /datum/skill/labor/butchering,
+		)
 
 /obj/item/textbook/Initialize()
 	. = ..()
@@ -36,27 +40,34 @@
 
 /obj/item/textbook/update_name()
 	. = ..()
-	var/title = "something"
+	var/title = "nothing"
 	switch(skilltoteach)
 		if(/datum/skill/misc/reading)
 			title = "literature"
 		if(/datum/skill/labor/mathematics)
 			title = "mathematics"
 		if(/datum/skill/craft/engineering)
-			title = "mathematics"
+			title = "engineering"
 		if(/datum/skill/craft/alchemy)
-			title = "mathematics"
-		if(/datum/skill/labor/farming)
-			title = "mathematics"
+			title = "alchemy"
+		if(/datum/skill/labor/butchering)
+			title = "butchering"
 	name = "[skill_name]'s guide to [title]"
 
 /obj/item/textbook/update_desc()
 	. = ..()
 	switch(skilltoteach)
 		if(/datum/skill/misc/reading)
-			desc = "A textbook that teaches the alphabet, sentences of varying complexity, and common symbols, allowing readers to train their reading skills. The higher the complexity, the more skilled the reader must be to study it."
+			desc = "A textbook that teaches the alphabet, sentences of varying complexity, and common symbols, allowing readers to train their reading skills."
 		if(/datum/skill/labor/mathematics)
-			desc = "A textbook focused on teaching mathematic notation and the applications for arithmetic, calculus, and other areas of math. The higher the complexity, the more skilled the reader must be to study it."
+			desc = "A textbook focused on teaching mathematic notation and the applications for arithmetic, calculus, and other areas of math."
+		if(/datum/skill/craft/engineering)
+			desc = "A textbook focused on teaching about engineering, the physical laws that govern our mortal world, and their application."
+		if(/datum/skill/craft/alchemy)
+			desc = "A textbook that teaches all about alchemy. Ranging from simple differences between mentha and paris, to complex potion brewing."
+		if(/datum/skill/labor/butchering)
+			desc = "A textbook focused on teaching creacher anatomy. The book is rich in illustrations and notes on how to properly flay and butcher any manner of game and livestock."
+	desc += " The higher the complexity, the more skilled the reader must be to study it."
 
 /obj/item/textbook/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/natural/feather))
@@ -197,3 +208,63 @@
 
 /obj/item/textbook/legendary/mathematics
 	skilltoteach = /datum/skill/labor/mathematics
+
+/*.............. ENGINEERING ..............*/
+
+/obj/item/textbook/novice/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/obj/item/textbook/apprentice/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/obj/item/textbook/journeyman/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/obj/item/textbook/expert/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/obj/item/textbook/master/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/obj/item/textbook/legendary/engineering
+	skilltoteach = /datum/skill/craft/engineering
+
+/*.............. ALCHEMY ..............*/
+
+/obj/item/textbook/novice/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/obj/item/textbook/apprentice/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/obj/item/textbook/journeyman/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/obj/item/textbook/expert/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/obj/item/textbook/master/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/obj/item/textbook/legendary/alchemy
+	skilltoteach = /datum/skill/craft/alchemy
+
+/*.............. BUTCHERING ..............*/
+
+/obj/item/textbook/novice/butchering
+	skilltoteach = /datum/skill/labor/butchering
+
+/obj/item/textbook/apprentice/butchering
+	skilltoteach = /datum/skill/labor/butchering
+
+/obj/item/textbook/journeyman/butchering
+	skilltoteach = /datum/skill/labor/butchering
+
+/obj/item/textbook/expert/butchering
+	skilltoteach = /datum/skill/labor/butchering
+
+/obj/item/textbook/master/butchering
+	skilltoteach = /datum/skill/labor/butchering
+
+/obj/item/textbook/legendary/butchering
+	skilltoteach = /datum/skill/labor/butchering
