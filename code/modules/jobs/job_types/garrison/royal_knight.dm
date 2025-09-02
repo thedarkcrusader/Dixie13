@@ -148,15 +148,14 @@
 	gloves = /obj/item/clothing/gloves/plate/steam
 	head = /obj/item/clothing/head/helmet/heavy/steam
 
-	// Steam armour is complex
-	H.change_stat(STATKEY_INT, 2)
-	// Stronger armour than base RK
-	// Stat punishment for not having the armour active
-	H.change_stat(STATKEY_STR, -1)
-	H.change_stat(STATKEY_CON, -1)
-	H.change_stat(STATKEY_END, -1)
-	// Way heavier
-	H.change_stat(STATKEY_SPD, -1)
+	H.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
 
 /datum/outfit/job/royalknight/steam/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
