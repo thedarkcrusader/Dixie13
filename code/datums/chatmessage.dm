@@ -7,7 +7,7 @@
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z (CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
 
-#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.013 SECONDS * (EXCLAIMED_MULTIPLER - 1))
+#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.01 SECONDS * (EXCLAIMED_MULTIPLER - 1))
 
 #define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
 
@@ -247,7 +247,7 @@
 		direction *= -1
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
-	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 2 SECONDS)
 
 /datum/chatmessage/proc/add_letter(letter, direction, audible)
 	if(QDELETED(src))
@@ -273,8 +273,8 @@
 	animate(
 		message,
 		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
-		pixel_w = (exclaimed_multiplier + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-		pixel_z = (1 + 1 * exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
+		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
 		easing = ELASTIC_EASING,
 		)
 
