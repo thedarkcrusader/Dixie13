@@ -41,19 +41,16 @@
 	var/atom/movable/mouse_over = user.hud_used?.mouse_over_text
 	if(!mouse_over)
 		return
-	var/y_offset = maptext_height
 	if(ismovable(src))
 		var/atom/movable/AM = src
-		if(AM.bound_height > y_offset)
-			y_offset = AM.bound_height
 		if(AM.screen_loc)
 			mouse_over.screen_loc = AM.screen_loc
 	if(!mouse_over.screen_loc)
 		var/list/screen_loc_params = splittext(LAZYACCESS(modifiers, SCREEN_LOC), ",")
 		mouse_over.screen_loc = "[splittext(screen_loc_params[1], ":")[1]]:0,[splittext(screen_loc_params[2], ":")[1]]:0"
 	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
-	mouse_over.maptext_y = y_offset + -base_pixel_y + pixel_y
-	mouse_over.maptext_x = (HOVER_TEXT_WIDTH - world.icon_size) * -0.5 - base_pixel_x + pixel_x
+	mouse_over.maptext_y = maptext_height + (base_pixel_y + -pixel_y)
+	mouse_over.maptext_x = (HOVER_TEXT_WIDTH - world.icon_size) * -0.5 - (base_pixel_x + -pixel_x)
 	WXH_TO_HEIGHT(user.client.MeasureText(used_content, null, HOVER_TEXT_WIDTH), mouse_over.maptext_height)
 	mouse_over.maptext_width = HOVER_TEXT_WIDTH
 
