@@ -78,7 +78,6 @@
 	grid_width = 64
 	w_class = WEIGHT_CLASS_NORMAL
 	var/meat_to_give = /obj/item/reagent_containers/food/snacks/meat/steak
-	var/bonus_meat = null
 
 /obj/item/natural/head/MiddleClick(mob/living/user, params)
 	var/obj/item/held_item = user.get_active_held_item()
@@ -90,18 +89,9 @@
 			used_time = (used_time - 0.5 * butchering_skill) SECONDS
 			visible_message("[user] begins to butcher \the [src].")
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			var/meats = 1
-			switch(butchering_skill)
-				if(3 to 5)
-					meats = 2
-				if(6)
-					meats = 3
 			var/amt2raise = user.STAINT/4
 			if(do_after(user, used_time, src))
-				for(meats, meats>0, meats--)
-					new meat_to_give(get_turf(src))
-				if(bonus_meat)
-					new bonus_meat(get_turf(src))
+				new meat_to_give(get_turf(src))
 				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 				user.adjust_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
 				qdel(src)
@@ -168,7 +158,6 @@
 	headpricemax = 20
 	sellprice = 12
 	meat_to_give = /obj/item/reagent_containers/food/snacks/meat/strange
-	bonus_meat = /obj/item/reagent_containers/food/snacks/spiderhoney
 
 /obj/item/natural/head/bug
 	name = "bogbug head"
