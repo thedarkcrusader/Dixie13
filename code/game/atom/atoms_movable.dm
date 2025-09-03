@@ -1478,3 +1478,6 @@
 	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
+
+#undef ATTACK_ANIMATION_PIXEL_DIFF
+#undef ATTACK_ANIMATION_TIME
