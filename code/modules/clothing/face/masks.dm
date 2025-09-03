@@ -174,6 +174,7 @@
 /obj/item/clothing/face/phys/plaguebearer
 	name = "plague's mask"
 	desc = "Packed with herbs and obfuscated enough."
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT
 
 /obj/item/clothing/face/facemask/copper
 	name = "copper mask"
