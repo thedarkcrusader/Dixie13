@@ -30,6 +30,7 @@
 	if(!H.mind)
 		return
 	H.ambushable = FALSE
+	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
 
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
 	var/bounty_poster = input(H, "Who placed a bounty on you?", "Filthy Criminal") as anything in list("The Divine Pantheon", "Kingsfield Expanse")
