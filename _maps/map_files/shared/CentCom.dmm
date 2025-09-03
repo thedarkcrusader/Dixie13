@@ -5416,10 +5416,6 @@
 /obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
-"Ii" = (
-/obj/structure/window/stained/silver/alt,
-/turf/closed/basic,
-/area/rogue/indoors/vampire_manor)
 "Im" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/reagent_containers/glass/bottle/tiefling_wine,
@@ -14043,7 +14039,7 @@ jZ
 jZ
 jZ
 qb
-Ii
+ct
 dU
 cT
 cT
@@ -14693,7 +14689,7 @@ OQ
 jZ
 jZ
 HC
-Ii
+ct
 dU
 cT
 cT
