@@ -226,7 +226,7 @@
 
 /datum/chatmessage/proc/spelling_extra_delays(character)
 	if(character in CHAT_SPELLING_EXCEPTIONS)
-		//return null
+		return null
 
 	return CHAT_SPELLING_PUNCTUATION[character] ? CHAT_SPELLING_PUNCTUATION[character] : 0
 
@@ -238,6 +238,8 @@
 	var/direction = 1
 
 	for(var/letter as anything in remaining_letters)
+		if(premature_end)
+			return
 		var/extra_delay = spelling_extra_delays(letter)
 		if(isnull(extra_delay))
 			current_string += letter
