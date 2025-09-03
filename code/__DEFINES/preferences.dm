@@ -188,6 +188,7 @@
 
 DEFINE_BITFIELD(toggles_default, list(
 	"Be voice" = SCHIZO_VOICE,
+	"Enable admin sounds" = SOUND_MIDI,
 	"Enable ambience" = SOUND_AMBIENCE,
 	"Enable background music" = SOUND_SHIP_AMBIENCE,
 	//"Enable instruments" = SOUND_INSTRUMENTS,
@@ -195,7 +196,7 @@ DEFINE_BITFIELD(toggles_default, list(
 ))
 
 DEFINE_BITFIELD(toggles_maptext, list(
-	"Disable ballon alerts" = DISABLE_BALLOON_ALERTS,
+	"Disable balloon alerts" = DISABLE_BALLOON_ALERTS,
 	//"Disable hover text" = DISABLE_HOVER_TEXT,
 	"Disable runechat" = DISABLE_RUNECHAT,
 ))
