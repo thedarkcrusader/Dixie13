@@ -7,7 +7,7 @@
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z (CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
 
-#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.01 SECONDS * (EXCLAIMED_MULTIPLER - 1))
+#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.006 SECONDS * (EXCLAIMED_MULTIPLER - 1))
 
 #define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
 
@@ -280,16 +280,22 @@
 
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
-	_add_letter(pick(CHAT_GLORF_LIST))
 	premature_end = TRUE
+	_add_letter(pick(CHAT_GLORF_LIST))
+	var/delay = rand(10, 20) * 0.01 SECONDS // yes, I'm dividing by 100 and then using the SECONDS define which multiplies by 10, deal with it. ^_^
+
+	var/matrix/new_transform = matrix(message.transform)
+	new_transform.Turn((5 + rand(5, 15)) * pick(1, -1))
+	new_transform *= 1.2
 	animate(
 		message,
-		time = 0.1 SECONDS,
-		transform = message.transform.Turn((10 + rand(5, 30)) * pick(1, -1)),
+		time = delay,
+		transform = new_transform,
 		color = "#ad3c23",
 		flags = ANIMATION_PARALLEL
 		)
-	end_of_life()
+
+	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 0.1 SECONDS)
 
 /**
  * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
