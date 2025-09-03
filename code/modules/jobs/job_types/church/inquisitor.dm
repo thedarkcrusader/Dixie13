@@ -324,7 +324,19 @@
 					if(/datum/patron/inhumen/graggar)
 						held_confession.bad_type = "A FOLLOWER OF THE DARK SUN"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
-					if(/datum/patron/godless/godless || /datum/patron/godless/autotheist || /datum/patron/godless/defiant || /datum/patron/godless/dystheist || /datum/patron/godless/naivety)
+					if(/datum/patron/godless/godless)
+						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/autotheist) //need better desc
+						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/defiant) //need better desc
+						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.antag = "worshiper of nothing"
+					if( /datum/patron/godless/dystheist) //need better desc
+						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.antag = "worshiper of nothing"
+					if( /datum/patron/godless/naivety) //need better desc
 						held_confession.bad_type = "A DAMNED ANTI-THEIST"
 						held_confession.antag = "worshiper of nothing"
 					if(/datum/patron/inhumen/baotha)
