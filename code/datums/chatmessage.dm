@@ -7,7 +7,7 @@
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z (CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
 
-#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.006 SECONDS * (EXCLAIMED_MULTIPLER - 1))
+#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.0004 SECONDS * (EXCLAIMED_MULTIPLER - 1))
 
 #define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
 
@@ -243,8 +243,9 @@
 			current_string += letter
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(add_string), letter, direction, (extra_delay ? FALSE : TRUE)), delay)
+		add_string(letter, direction, (extra_delay ? FALSE : TRUE))
 		direction *= -1
+		sleep(CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay)
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 2 SECONDS)
@@ -277,6 +278,21 @@
 		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
 		easing = ELASTIC_EASING,
 		)
+
+	var/old_transform = message_loc.transform
+
+	animate(
+		message_loc,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
+		transform = message_loc.transform.Turn(rand(5, 15) * direction),
+		easing = ELASTIC_EASING,
+	)
+	animate(
+		time = 0,
+		transform = old_transform,
+	)
 
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
