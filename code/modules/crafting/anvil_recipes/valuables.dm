@@ -84,7 +84,7 @@
 	created_item = /obj/item/statue/silver/vasefancy
 
 /datum/anvil_recipe/valuables/silver/finger
-	name = "Silver Middle Finger (+ 2 Silver Bar)"
+	name = "Silver Middle Finger (+2 Silver Bar)"
 	recipe_name = "a Silver Middle Finger "
 	additional_items = list(/obj/item/ingot/silver/, /obj/item/ingot/silver/)
 	created_item = /obj/item/statue/silver/finger
@@ -203,6 +203,84 @@
 	name = "Golden Statue"
 	recipe_name = "a Statue"
 	created_item = /obj/item/statue/gold
+
+/datum/anvil_recipe/valuables/gold/bust
+	name = "Golden Bust"
+	recipe_name = "a Golden Bust"
+	created_item = /obj/item/statue/gold/bust
+
+/datum/anvil_recipe/valuables/gold/finger
+	name = "Golden Middle Finger (2+ Gold Bars)"
+	recipe_name = "a Golden Middle Finger"
+	additional_items = list(/obj/item/ingot/gold/, /obj/item/ingot/gold/)
+	created_item = /obj/item/statue/gold/finger
+
+/datum/anvil_recipe/valuables/gold/volf
+	name = "Golden Volf Bust (+ Gold Bar)"
+	recipe_name = "a Golden Volf Bust"
+	additional_items = list(/obj/item/ingot/gold/)
+	created_item = /obj/item/statue/gold/volf
+
+/datum/anvil_recipe/valuables/gold/urn
+	name = "Gold Urn (+ Gold Bar)"
+	recipe_name = "a Golden Urn"
+	additional_items = list(/obj/item/ingot/gold/)
+	created_item = /obj/item/statue/gold/urn
+
+/datum/anvil_recipe/valuables/gold/vasefancy
+	name = "Fancy Gold Vase (+ Gold Bar)"
+	recipe_name = "a Fancy Golden Vase"
+	additional_items = list(/obj/item/ingot/gold/)
+	created_item = /obj/item/statue/gold/vasefancy
+
+/datum/anvil_recipe/valuables/gold/vase
+	name = "Gold Vase"
+	recipe_name = "a Golden Vase"
+	created_item = /obj/item/statue/gold/vase
+
+/datum/anvil_recipe/valuables/gold/obelisk
+	name = "Gold Obelisk"
+	recipe_name = "a Golden Obelisk"
+	created_item = /obj/item/statue/gold/obelisk
+
+/datum/anvil_recipe/valuables/gold/totem
+	name = "Gold Totem"
+	recipe_name = "a Golden Totem"
+	created_item = /obj/item/statue/gold/totem
+
+/datum/anvil_recipe/valuables/gold/teapot
+	name = "Golden Teapot"
+	recipe_name = "a Golden Teapot"
+	created_item = /obj/item/statue/gold/teapot
+
+/datum/anvil_recipe/valuables/gold/tablet
+	name = "Golden Tablet"
+	recipe_name = "a Golden Tableet"
+	created_item = /obj/item/statue/gold/tablet
+
+/datum/anvil_recipe/valuables/gold/cameo
+	name = "2x Gold Cameo's"
+	recipe_name = "a Two Gold Cameos"
+	created_item = /obj/item/statue/gold/cameo
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/comb
+	name = "2x Gold Combs"
+	recipe_name = "a Two Gold Combs"
+	created_item = /obj/item/statue/gold/comb
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/figurine
+	name = "2x Gold Figurines"
+	recipe_name = "a Two Gold Figurines"
+	created_item = /obj/item/statue/gold/figurine
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/fish
+	name = "2x Golden Fish Figurines"
+	recipe_name = "a Two Gold Fish Figurines"
+	created_item = /obj/item/statue/gold/fish
+	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/circulet
 	name = "Golden Circlet"

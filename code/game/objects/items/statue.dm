@@ -195,7 +195,7 @@
 
 /obj/item/statue/silver/cameo
 	name = "silver cameo"
-	desc = "A cameo made out of silver depicting...someone? use your imagination for who it is."
+	desc = "A cameo made out of silver depicting...someone? Use your imagination for who it could be."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "cameo_silv"
 	smeltresult = /obj/item/ingot/silver
@@ -240,7 +240,175 @@
 /obj/item/statue/silver/teapot/Initialize()
 	. = ..()
 	icon_state = "teapot_silv"
+/*	..................   Gold   ................... */
+/obj/item/statue/gold/volf
+	name = "golden volf bust"
+	desc = "A golden bust resembling a volf's head."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "volf_gold"
+	dropshrink = 0.7
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 85
 
+/obj/item/statue/gold/volf/Initialize()
+	. = ..()
+	icon_state = "volf_gold"
+
+/obj/item/statue/gold/finger
+	name = "golden hand"
+	desc = "A golden statue of a humen hand flashing a common xylixian slight. This offensive item has a measly value."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "finger_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 1
+
+/obj/item/statue/gold/finger/Initialize()
+	. = ..()
+	icon_state = "finger_gold"
+
+/obj/item/statue/gold/urn
+	name = "gold urn"
+	desc = "A large decorative gold urn."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "urn_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 100
+
+/obj/item/statue/gold/urn/Initialize()
+	. = ..()
+	icon_state = "urn_gold"
+
+/obj/item/statue/gold/vase
+	name = "gold vase"
+	desc = "A large decorative golden vase."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "vase_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 45
+
+/obj/item/statue/gold/vase/Initialize()
+	. = ..()
+	icon_state = "vase_gold"
+
+/obj/item/statue/gold/vasefancy
+	name = "fancy gold vase"
+	desc = "A large decorative golden vase. It's quite fancy!"
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "fancyvase_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 80
+
+/obj/item/statue/gold/vasefancy/Initialize()
+	. = ..()
+	icon_state = "fancyvase_gold"
+
+/obj/item/statue/gold/bust
+	name = "gold bust"
+	desc = "A bust made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "bust_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 60
+
+/obj/item/statue/gold/bust/Initialize()
+	. = ..()
+	icon_state = "bust_gold"
+
+/obj/item/statue/gold/figurine
+	name = "golden figurine"
+	desc = "A figurine made out of gold. Popular among adults as a decoration, popular among children as a toy."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "figurine_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 30
+
+/obj/item/statue/gold/figurine/Initialize()
+	. = ..()
+	icon_state = "figurine_gold"
+
+/obj/item/statue/gold/cameo
+	name = "golden cameo"
+	desc =  "A cameo made out of gold depicting...someone? Use your imagination for who it could be."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "cameo_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 30
+
+/obj/item/statue/gold/cameo/Initialize()
+	. = ..()
+	icon_state = "cameo_gold"
+
+/obj/item/statue/gold/obelisk
+	name = "gold obelisk"
+	desc =  "An obelisk made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "obelisk_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 60
+
+/obj/item/statue/gold/obelisk/Initialize()
+	. = ..()
+	icon_state = "obelisk_gold"
+
+/obj/item/statue/gold/tablet
+	name = "gold tablet"
+	desc =  "A tablet made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "tablet_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 45
+
+/obj/item/statue/gold/tablet/Initialize()
+	. = ..()
+	icon_state = "tablet_gold"
+
+/obj/item/statue/gold/fish
+	name = "golden fish figurine"
+	desc =  "A fish figurine made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "fish_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 30
+
+/obj/item/statue/gold/fish/Initialize()
+	. = ..()
+	icon_state = "fish_gold"
+
+/obj/item/statue/gold/totem
+	name = "gold totem"
+	desc =  "An elven totem made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "elven_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 65
+
+/obj/item/statue/gold/totem/Initialize()
+	. = ..()
+	icon_state = "elven_gold"
+
+/obj/item/statue/gold/teapot
+	name = "golden teapot"
+	desc =  "A teapot made out of gold."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "teapot_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 65
+
+/obj/item/statue/gold/teapot/Initialize()
+	. = ..()
+	icon_state = "teapot_gold"
+
+/obj/item/statue/gold/comb
+	name = "golden comb "
+	desc =  "A golden comb, great for combing your hair or lack thereof."
+	icon = 'icons/roguetown/items/precious_objects.dmi'
+	icon_state = "comb_gold"
+	smeltresult = /obj/item/ingot/gold
+	sellprice = 30
+
+/obj/item/statue/gold/comb/Initialize()
+	. = ..()
+	icon_state = "comb_gold"
 
 
 
