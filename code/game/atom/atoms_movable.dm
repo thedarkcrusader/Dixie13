@@ -1099,7 +1099,7 @@
 		pixel_x = pixel_x + pixel_x_diff,
 		pixel_y = pixel_y + pixel_y_diff,
 		transform = rotated_transform,
-		time = ATTACK_ANIMATION_ATTACK_ANIMATION_TIME,
+		time = ATTACK_ANIMATION_TIME ,
 		easing = LINEAR_EASING,
 		flags = ANIMATION_PARALLEL
 		)
@@ -1107,7 +1107,7 @@
 		pixel_x = pixel_x - pixel_x_diff,
 		pixel_y = pixel_y - pixel_y_diff,
 		transform = initial_transform,
-		time = ATTACK_ANIMATION_ATTACK_ANIMATION_TIME * 2,
+		time = ATTACK_ANIMATION_TIME  * 2,
 		easing = SINE_EASING,
 		flags = ANIMATION_PARALLEL
 		)
