@@ -222,11 +222,11 @@
 	INVOKE_ASYNC(src, PROC_REF(spelling_loop))
 
 /datum/chatmessage/proc/turn_to_styled(string)
-	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[string]</span>"} //AAAAAAAAAAAAAAA
+	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='left maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[string]</span>"} //AAAAAAAAAAAAAAA
 
 /datum/chatmessage/proc/spelling_extra_delays(character)
 	if(character in CHAT_SPELLING_EXCEPTIONS)
-		return null
+		//return null
 
 	return CHAT_SPELLING_PUNCTUATION[character] ? CHAT_SPELLING_PUNCTUATION[character] : 0
 
@@ -266,31 +266,35 @@
 		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	return
-	// playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
+	playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
+	/*
 	animate(
 		message,
 		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
 		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
+		pixel_z = (exclaimed_multiplier + rand((exclaimed_multipler - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
 		easing = ELASTIC_EASING,
 		)
+	*/
 
 	var/old_transform = message_loc.transform
-
+	var/old_pixel_w = message_loc.pixel_w
+	var/old_pixel_z = message_loc.pixel_z
 	animate(
 		message_loc,
-		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
 		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
-		transform = message_loc.transform.Turn(rand(5, 15) * direction),
+		pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 5 * exclaimed_multiplier) * direction),
 		easing = ELASTIC_EASING,
 	)
 	animate(
-		time = 0,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
+		pixel_z = old_pixel_z,
+		pixel_w = old_pixel_w,
 		transform = old_transform,
 	)
 
@@ -306,6 +310,8 @@
 	animate(
 		message,
 		time = delay,
+		pixel_z = 0,
+		pixel_w = 0,
 		transform = new_transform,
 		color = "#ad3c23",
 		flags = ANIMATION_PARALLEL
