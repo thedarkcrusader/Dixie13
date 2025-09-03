@@ -222,7 +222,7 @@
 	INVOKE_ASYNC(src, PROC_REF(spelling_loop))
 
 /datum/chatmessage/proc/turn_to_styled(string)
-	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='left maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[string]</span>"} //AAAAAAAAAAAAAAA
+	return {"<span style='font-size:[font_size]pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [_extra_classes != null ? _extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[string]</span>"} //AAAAAAAAAAAAAAA
 
 /datum/chatmessage/proc/spelling_extra_delays(character)
 	if(character in CHAT_SPELLING_EXCEPTIONS)
@@ -270,15 +270,14 @@
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
-	/*
-	animate(
-		message,
-		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
-		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-		pixel_z = (exclaimed_multiplier + rand((exclaimed_multipler - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
-		easing = ELASTIC_EASING,
-		)
-	*/
+	if(exclaimed)
+		animate(
+			message,
+			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+			pixel_z = (exclaimed_multiplier + rand((exclaimed_multipler - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+			easing = ELASTIC_EASING,
+			)
 
 	var/old_transform = message_loc.transform
 	var/old_pixel_w = message_loc.pixel_w
@@ -288,7 +287,7 @@
 		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
 		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
 		pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
-		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 5 * exclaimed_multiplier) * direction),
+		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction),
 		easing = ELASTIC_EASING,
 	)
 	animate(
