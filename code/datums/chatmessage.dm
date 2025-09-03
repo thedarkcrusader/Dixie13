@@ -263,6 +263,12 @@
 		sleep(CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay)
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
+	animate(
+		message,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+		pixel_w = 0,
+		pixel_z = 0,
+	)
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 2 SECONDS)
 
 /datum/chatmessage/proc/add_string(string = "", direction = 1, audible = TRUE)
@@ -339,7 +345,7 @@
 /datum/chatmessage/proc/end_of_life(fadetime = CHAT_MESSAGE_EOL_FADE)
 	if(QDELETED(src))
 		return
-	animate(message, alpha = 0, time = fadetime, flags = ANIMATION_PARALLEL)
+	animate(message, alpha = 0, pixel_z = -8, transform = message.transform.Scale(0.3), time = fadetime, flags = ANIMATION_PARALLEL)
 
 	if(QDELETED(src))
 		return
