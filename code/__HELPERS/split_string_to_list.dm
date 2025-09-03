@@ -1,2 +1,2 @@
-/proc/split_string_to_list(string)
+/proc/string_to_chars_list(string)
 	return splittext(string, "")

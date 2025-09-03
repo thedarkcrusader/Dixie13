@@ -65,7 +65,7 @@
 
 	_text = text
 
-	remaining_letters = split_string_to_list(_text)
+	remaining_letters = string_to_chars_list(_text)
 
 	if((length(text) > 1) && ((text[length(text)] == "!") && (text[length(text) - 1] == "!")))
 		exclaimed = TRUE
@@ -226,7 +226,7 @@
 
 /datum/chatmessage/proc/spelling_extra_delays(character)
 	if(character in CHAT_SPELLING_EXCEPTIONS)
-		return
+		return null
 
 	return CHAT_SPELLING_PUNCTUATION[character] ? CHAT_SPELLING_PUNCTUATION[character] : 0
 
@@ -243,22 +243,22 @@
 			current_string += letter
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(add_letter), letter, direction, (extra_delay ? FALSE : TRUE)), delay)
+		addtimer(CALLBACK(src, PROC_REF(add_string), letter, direction, (extra_delay ? FALSE : TRUE)), delay)
 		direction *= -1
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 2 SECONDS)
 
-/datum/chatmessage/proc/add_letter(letter, direction, audible)
+/datum/chatmessage/proc/add_string(string = "", direction = 1, audible = TRUE)
 	if(QDELETED(src))
 		return
 	if(premature_end)
 		return
 
-	_add_letter(arglist(args))
+	_add_string(arglist(args))
 
-/datum/chatmessage/proc/_add_letter(letter, direction, audible)
-	current_string += letter
+/datum/chatmessage/proc/_add_string(string = "", direction = 1, audible = TRUE)
+	current_string += string
 	message.maptext = MAPTEXT(turn_to_styled(current_string))
 	if(audible && !_extra_classes.Find("emote"))
 		play_toot()
@@ -281,12 +281,12 @@
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
 	premature_end = TRUE
-	_add_letter(pick(CHAT_GLORF_LIST))
+	_add_string(pick(CHAT_GLORF_LIST))
 	var/delay = rand(10, 20) * 0.01 SECONDS // yes, I'm dividing by 100 and then using the SECONDS define which multiplies by 10, deal with it. ^_^
 
 	var/matrix/new_transform = matrix(message.transform)
 	new_transform.Turn((5 + rand(5, 15)) * pick(1, -1))
-	new_transform *= 1.2
+	new_transform.Scale(1.2)
 	animate(
 		message,
 		time = delay,
