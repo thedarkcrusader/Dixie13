@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/wretch/necromancer
 	category_tags = list(CTAG_WRETCH)
 	cmode_music = 'sound/music/cmode/antag/CombatLich.ogg'
-	maximum_possible_slots = 2
+	maximum_possible_slots = 1
 
 /datum/outfit/job/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
 	..()
