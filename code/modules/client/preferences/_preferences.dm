@@ -1034,6 +1034,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					user.cancel_looping_ambience()
 
 				user.client?.update_ambience_pref()
+
 			else if(toggle_type == "Maptext Toggles")
 				toggles_maptext = new_toggles
 
