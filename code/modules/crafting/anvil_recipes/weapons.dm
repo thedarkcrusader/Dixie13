@@ -259,6 +259,24 @@
 	recipe_name = "a Messer"
 	created_item = /obj/item/weapon/sword/scimitar/messer
 
+/datum/anvil_recipe/weapons/iron/ada
+	name = "Iron Ada"
+	recipe_name = "a Iron Ada"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/ada/iron
+
+/datum/anvil_recipe/weapons/iron/lakkarikhopesh
+	name = "Iron Khopesh"
+	recipe_name = "a Iron Khopesh"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/lakkarikhopesh/iron
+
+/datum/anvil_recipe/weapons/iron/sengese
+	name = "Iron Sengese"
+	recipe_name = "a Iron Sengese"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/sengese/iron
+
 /datum/anvil_recipe/weapons/iron/spear_iron
 	name = "2x Spears (+Small Log)"
 	recipe_name = "a couple Spears"
@@ -448,6 +466,24 @@
 	recipe_name = "a Steel Ida"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/ida
+
+/datum/anvil_recipe/weapons/steel/ada
+	name = "Steel Ada"
+	recipe_name = "a Steel Ada"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/ada
+
+/datum/anvil_recipe/weapons/steel/lakkarikhopesh
+	name = "Steel Khopesh"
+	recipe_name = "a Steel Khopesh"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/lakkarikhopesh
+
+/datum/anvil_recipe/weapons/steel/sengese
+	name = "Steel Sengese"
+	recipe_name = "a Steel Sengese"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/sengese
 
 /datum/anvil_recipe/weapons/steel/ngombe
 	name = "Ngombe Ngulu (+Steel Bar)"
@@ -692,6 +728,12 @@
 	recipe_name = "a Silver Sword"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/silver
+
+/datum/anvil_recipe/weapons/silver/sengese
+	name = "Silver Sengese"
+	recipe_name = "a Silver Sengese"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/scimitar/sengese/silver
 
 /datum/anvil_recipe/weapons/silver/rapier_silver
 	name = "Silver Rapier"
