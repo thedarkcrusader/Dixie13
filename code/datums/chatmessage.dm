@@ -266,7 +266,7 @@
 		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
+	playsound(message_loc, 'sound/effects/chat_toots/toot1.ogg', 10, frequency = get_rand_frequency_higher_range())
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
@@ -275,9 +275,9 @@
 			message,
 			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
 			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-			pixel_z = (exclaimed_multiplier + rand((exclaimed_multipler - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+			pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
 			easing = ELASTIC_EASING,
-			)
+		)
 
 	var/old_transform = message_loc.transform
 	var/old_pixel_w = message_loc.pixel_w
@@ -287,7 +287,7 @@
 		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
 		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
 		pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
-		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction),
+		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction)),
 		easing = ELASTIC_EASING,
 	)
 	animate(
