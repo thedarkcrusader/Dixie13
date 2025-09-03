@@ -243,13 +243,13 @@
 			current_string += letter
 			continue
 
-		add_string(delay, letter, direction, (extra_delay ? FALSE : TRUE))
+		addtimer(CALLBACK(src, PROC_REF(add_string), letter, direction, (extra_delay ? FALSE : TRUE)), delay)
 		direction *= -1
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
 	addtimer(CALLBACK(src, PROC_REF(end_of_life)), delay + 2 SECONDS)
 
-/datum/chatmessage/proc/add_string(delay = 0.1 SECONDS, string = "", direction = 1, audible = TRUE)
+/datum/chatmessage/proc/add_string(string = "", direction = 1, audible = TRUE)
 	if(QDELETED(src))
 		return
 	if(premature_end)
@@ -257,25 +257,26 @@
 
 	_add_string(arglist(args))
 
-/datum/chatmessage/proc/_add_string(delay = 0.1 SECONDS, string = "", direction = 1, audible = TRUE)
+/datum/chatmessage/proc/_add_string(string = "", direction = 1, audible = TRUE)
 	current_string += string
 	message.maptext = MAPTEXT(turn_to_styled(current_string))
-	var/exclaimed_multiplier = exclaimed ? 3 : 1
 	if(audible && !_extra_classes.Find("emote"))
-		//play_toot()
-		animate(
-			message,
-			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
-			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-			pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
-			maptext = MAPTEXT(turn_to_styled(current_string)),
-			easing = ELASTIC_EASING,
-			tag = "runechat_anim",
-			//command = .sound = sound('sound/effects/chat_toots/trombone_toot2.ogg', volume = 50),
-			)
+		play_toot()
+		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
+	return
+	// playsound(message_loc, 'sound/effects/chat_toots/trombone_toot2.ogg', 10, frequency = get_rand_frequency_higher_range())
+
+/datum/chatmessage/proc/do_shift(direction)
+	var/exclaimed_multiplier = exclaimed ? 3 : 1
+	animate(
+		message,
+		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
+		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+		pixel_z = (exclaimed_multiplier + rand(1 * direction, 2 * (direction ? direction : 1) * exclaimed_multiplier)),
+		easing = ELASTIC_EASING,
+		)
 
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
