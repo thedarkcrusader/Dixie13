@@ -47,7 +47,7 @@
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 	H.change_stat(STATKEY_INT, 4)
 	H.change_stat(STATKEY_END, 1)
-	H.adjust_spell_points(15)
+	H.adjust_spell_points(12)
 	H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
 	wretch_select_bounty(H)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

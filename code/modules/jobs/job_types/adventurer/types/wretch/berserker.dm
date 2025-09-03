@@ -66,7 +66,7 @@
 		return
 	switch(choice)
 		if("MY BARE HANDS!!!")
-			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 		if("Great Axe")
 			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4, TRUE)

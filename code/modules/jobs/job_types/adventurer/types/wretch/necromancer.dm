@@ -46,7 +46,7 @@
 	H.change_stat(STATKEY_STR, -1)
 	H.change_stat(STATKEY_CON, -1)
 	H.change_stat(STATKEY_INT, 4)
-	H.adjust_spell_points(10)
+	H.adjust_spell_points(7)
 	H.grant_language(/datum/language/undead)
 	H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
 	H.add_spell(/datum/action/cooldown/spell/eyebite)
