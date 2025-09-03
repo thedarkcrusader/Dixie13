@@ -227,6 +227,7 @@
 	icon_state = "aflask"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured
+	sellprice = 0 //Yeah, Let's not sell this.
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/musk/loaded
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/Initialize()
@@ -240,3 +241,6 @@
 	. = ..()
 	atom_integrity = 0
 	atom_break()
+
+	QDEL_IN(src, rand(2 SECONDS, 5 SECONDS)) //Apparently, a puffer being broken can still be shot, because that make sense. so we're qdel'ing it right after.
+	visible_message(span_warning("The puffer begins to crumble, the enchantment falls!"))

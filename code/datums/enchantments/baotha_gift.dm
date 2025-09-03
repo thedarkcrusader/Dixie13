@@ -11,6 +11,6 @@
 	if(isliving(target) && isliving(user))
 		var/mob/living/victim = target
 
-		victim.reagents.add_reagent(pick(/datum/reagent/ozium, /datum/reagent/druqks, /datum/reagent/berrypoison, /datum/reagent/stampoison, /datum/reagent/toxin/fyritiusnectar), 1)
+		victim.reagents.add_reagent(pick(/datum/reagent/ozium, /datum/reagent/druqks, /datum/reagent/berrypoison, /datum/reagent/stampoison, /datum/reagent/toxin/fyritiusnectar), 0.5)
 
 		to_chat(victim, span_warning("You feel something entering your system!"))
