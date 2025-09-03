@@ -60,7 +60,7 @@
 /datum/patron/godless/dystheist
 	name = "Dystheist"
 	domain = "Rejection of Gods"
-	desc = "You hold yourself to higher standards then others. You try your best to not judge people for their race alone. It eventually hit you, all of the gods- they're all flawed. So why do they deserve the worship of such a person?"
+	desc = "You see the gods for what they truly are: powerful, yet flawed and unworthy of worship."
 	flaws = "Cynical, Judgmental"
 	worshippers = "Skeptics, The Disillusioned"
 	sins = "Blind Faith"
@@ -68,7 +68,7 @@
 
 	confess_lines = list(
 		"THE GODS MEAN NOTHING TO ME!",
-		"THE TEN ARE FLAWED",
+		"THE TEN ARE FLAWED!",
 		"I WILL NEVER BOW DOWN TO ANY OF THOSE TYRANTS, DIVINE NOR INHUMEN!"
 	)
 
