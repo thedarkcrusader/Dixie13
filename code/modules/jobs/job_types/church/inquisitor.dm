@@ -257,6 +257,8 @@
 						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon/progressive)
 						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+					else if(victim_patron.type == /datum/patron/godless/naivety)
+						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon)
 						interrogator.add_stress(/datum/stressevent/torture_large_penalty)
 
@@ -322,7 +324,7 @@
 					if(/datum/patron/inhumen/graggar)
 						held_confession.bad_type = "A FOLLOWER OF THE DARK SUN"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
-					if(/datum/patron/godless)
+					if(/datum/patron/godless/godless || /datum/patron/godless/autotheist || /datum/patron/godless/defiant || /datum/patron/godless/dystheist) // Godless/Naivety is not included in this.
 						held_confession.bad_type = "A DAMNED ANTI-THEIST"
 						held_confession.antag = "worshiper of nothing"
 					if(/datum/patron/inhumen/baotha)
