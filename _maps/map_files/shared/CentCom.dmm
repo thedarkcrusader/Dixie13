@@ -4552,6 +4552,10 @@
 /obj/structure/mannequin/male/female,
 /turf/open/floor/wood,
 /area/rogue)
+"BD" = (
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/carpet,
+/area/rogue/indoors/vampire_manor)
 "BF" = (
 /obj/structure/table/stone_small,
 /turf/open/floor/churchrough,
@@ -8040,6 +8044,10 @@
 "Zz" = (
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
+"ZG" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/carpet,
+/area/rogue/indoors/vampire_manor)
 "ZJ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -15327,7 +15335,7 @@ bO
 bO
 bO
 nl
-bO
+BD
 bO
 bO
 bO
@@ -15587,7 +15595,7 @@ bO
 bO
 bO
 bO
-bO
+ZG
 bO
 nl
 bO
