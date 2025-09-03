@@ -1,18 +1,17 @@
 /atom/MouseEntered(location, control, params)
-	SSmouse_entered.hovers[usr.client] = list(src, params2list(params))
+	SSmouse_entered.hovers[usr.client] = src
+	if(!no_over_text)
+		INVOKE_ASYNC(src, PROC_REF(create_over_text), usr, params2list(params))
 
 /// Fired whenever this atom is the most recent to be hovered over in the tick.
 /// Preferred over MouseEntered if you do not need information such as the position of the mouse.
 /// Especially because this is deferred over a tick, do not trust that `client` is not null.
-/atom/proc/on_mouse_enter(client/client, list/modifiers)
+/atom/proc/on_mouse_enter(client/client)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/mob/user = client?.mob
 	if(!user)
 		return
-
-	if(!no_over_text)
-		INVOKE_ASYNC(src, PROC_REF(create_over_text), user, modifiers)
 
 	SEND_SIGNAL(client, COMSIG_CLIENT_HOVER_NEW, src)
 	SEND_SIGNAL(src, COMSIG_ATOM_MOUSE_ENTERED, user)
@@ -47,7 +46,9 @@
 			mouse_over.screen_loc = AM.screen_loc
 	if(!mouse_over.screen_loc)
 		var/list/screen_loc_params = splittext(LAZYACCESS(modifiers, SCREEN_LOC), ",")
-		mouse_over.screen_loc = "[splittext(screen_loc_params[1], ":")[1]]:0,[splittext(screen_loc_params[2], ":")[1]]:0"
+		var/world_x = LAZYACCESS(splittext(screen_loc_params[1], ":"), 1)
+		var/world_y = LAZYACCESS(splittext(screen_loc_params[2], ":"), 1)
+		mouse_over.screen_loc = "[world_x]:0,[world_y]:0"
 	mouse_over.maptext = MAPTEXT_CENTER("<span style='color:[hover_color]'>[used_content]</span>")
 	mouse_over.maptext_y = maptext_height
 	mouse_over.maptext_x = (HOVER_TEXT_WIDTH - world.icon_size) * -0.5 - base_pixel_x
