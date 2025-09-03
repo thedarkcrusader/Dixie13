@@ -11,6 +11,10 @@
 
 #define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
 
+#define BLIP_TONE_FEMININE list(42000, 46000)
+#define BLIP_TONE_DEFAULT list(28000, 34000)
+#define BLIP_TONE_MASCULINE list(16000, 24000)
+
 /**
  * # Chat Message Overlay
  *
@@ -37,6 +41,7 @@
 	var/current_string = ""
 	var/premature_end = FALSE
 	var/exclaimed = FALSE
+	var/list/blip_tone = BLIP_TONE_DEFAULT
 
 /**
  * Constructs a chat message overlay
@@ -60,6 +65,14 @@
 	if(extra_classes.Find("emote"))
 		font_size = 7
 		tgt_color = "#adadad"
+
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		switch(human_owner.voice_type)
+			if(VOICE_TYPE_MASC)
+				blip_tone = BLIP_TONE_MASCULINE
+			if(VOICE_TYPE_FEM)
+				blip_tone = BLIP_TONE_FEMININE
 
 	_extra_classes = extra_classes.Copy()
 
@@ -268,7 +281,7 @@
 		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	playsound(message_loc, 'sound/effects/chat_toots/toot1.ogg', 10, frequency = get_rand_frequency_higher_range())
+	playsound(message_loc, 'sound/effects/chat_toots/toot1.ogg', 10, frequency = rand(blip_tone[1], blip_tone[2]))
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
@@ -374,3 +387,6 @@
 #undef CHAT_LAYER_MAX_Z
 #undef CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER
 #undef EXCLAIMED_MULTIPLER
+#undef BLIP_TONE_DEFAULT
+#undef BLIP_TONE_FEMININE
+#undef BLIP_TONE_MASCULINE
