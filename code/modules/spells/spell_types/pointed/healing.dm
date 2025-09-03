@@ -186,7 +186,7 @@
 						situational_bonus = 25
 						break
 
-			if(/datum/patron/godless)
+			else if(istype(living_owner.patron, /datum/patron/godless))
 				cast_on.visible_message(span_info("No Gods answer these prayers."), span_notice("No Gods answer these prayers."))
 				return
 
