@@ -1,0 +1,85 @@
+/obj/item/dice_cup
+	name = "metal dice cup"
+	//in an ideal world, would make it both a reagent container and a dice cup, but I don't want to deal with issues of
+	//rolling dice with a liquid inside. Like you would probably have to make a way for the insides to spill out right?
+	desc = "An iron dice cup, used for rolling dice in secret."
+	icon = 'icons/roguetown/items/cooking.dmi'
+	icon_state = "cup_iron"
+	force = 5
+	throwforce = 10
+	dropshrink = 0.75
+	w_class = WEIGHT_CLASS_NORMAL
+	obj_flags = CAN_BE_HIT
+	grid_height = 64
+	grid_width = 32
+	sellprice = 1
+	melting_material = /datum/material/iron
+	melt_amount = 25
+	var/max_dice = 8
+	var/list/dice_list = list()
+
+/obj/item/dice_cup/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(istype(I, /obj/item/dice))
+		if(dice_list.len >= max_dice)
+			to_chat(user, span_warning("[src] can only hold [max_dice] dice."))
+			return
+		I.loc = src
+		dice_list += I
+		update_appearance(UPDATE_DESC)
+	else
+		return ..()
+
+/obj/item/dice_cup/proc/pickdice(mob/user)
+	if(!dice_list.len)
+		return
+	var/obj/item/dice/die = dice_list[dice_list.len]
+	dice_list -= die
+	die.loc = user.loc
+	update_appearance(UPDATE_DESC)
+	return die
+
+/obj/item/dice_cup/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(length(dice_list))
+		var/obj/item/dice/die = pickdice(user)
+		to_chat(user, span_notice("I remove [die] from [src]."))
+		user.put_in_active_hand(die)
+	else
+		to_chat(user, span_notice("No dice."))//heh
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/dice_cup/update_desc()
+	if(!length(contents))
+		desc = initial(desc)
+		return
+	desc = span_info("Contains [length(contents)] dice.")
+	return ..()
+
+/obj/item/dice_cup/proc/rig_dice_cup(user)
+	var/obj/item/dice/which_one = input(user, "Which die will you rig in your next roll?", "XYLIX") as null|anything in dice_list
+	INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
+
+/obj/item/dice_cup/attack_self_secondary(mob/user, params)
+	. = ..()
+	if(.)
+		return
+	if(HAS_TRAIT(user, TRAIT_BLACKLEG))
+		INVOKE_ASYNC(src, PROC_REF(rig_dice_cup), user)
+		return TRUE
+
+/obj/item/dice_cup/wooden
+	name = "wooden dice cup"
+	desc = "A wooden dice cup, used for rolling dice."
+	icon_state = "cup_wooden"
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	smeltresult = /obj/item/fertilizer/ash
+	melting_material = null
+	metalizer_result = /obj/item/dice_cup
+
+//a basic setup for liars dice, each player has 5 dice
+/obj/item/dice_cup/wooden/liars_dice
+	dice_list = list(/obj/item/dice/d6/wood, /obj/item/dice/d6/wood, /obj/item/dice/d6/wood, /obj/item/dice/d6/wood, /obj/item/dice/d6/wood)

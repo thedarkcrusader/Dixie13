@@ -114,7 +114,7 @@
 	name = "d6"
 
 /obj/item/dice/d6/wood
-	name = "wooden die"
+	name = "die"
 	desc = "A six sided die carved from wood."
 
 /obj/item/dice/d6/bone
@@ -197,13 +197,13 @@
 	return ..()
 
 /obj/item/dice/attack_self(mob/user, params)
-	diceroll(user)
+	diceroll(user, TRUE)
 
 /obj/item/dice/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	diceroll(thrownby)
+	diceroll(thrownby, TRUE)
 	. = ..()
 
-/obj/item/dice/proc/diceroll(mob/user)
+/obj/item/dice/proc/diceroll(mob/user, var/shown)
 	result = roll(sides)
 	if(rigged != DICE_NOT_RIGGED && result != rigged_value)
 		if(rigged == DICE_BASICALLY_RIGGED)
@@ -229,9 +229,12 @@
 	if(special_faces.len == sides)
 		result = special_faces[result]
 	if(user != null) //Dice was rolled by someone
-		user.visible_message(span_notice("[user] has rolled [src]. It lands on [result]. [comment]"), \
-							span_notice("I roll [src]. It lands on [result]. [comment]"), \
-							span_hear("I hear [src] rolling, it sounds like a [fake_result]."))
+		if(shown)
+			user.visible_message(span_notice("[user] has rolled [src]. It lands on [result]. [comment]"), \
+								span_notice("I roll [src]. It lands on [result]. [comment]"), \
+								span_hear("I hear [src] rolling, it sounds like a [fake_result]."))
+		else
+			to_chat(user, span_notice("I roll [src] in secret. It lands on [result]. [comment]"))
 	else if(!src.throwing) //Dice was knocked around and is coming to rest
 		visible_message(span_notice("[src] rolls to a stop, landing on [result]. [comment]"))
 
