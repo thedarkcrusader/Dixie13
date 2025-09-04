@@ -108,7 +108,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/mould/process()
-	cooling_progress += 5 * cooling_bonus
+	cooling_progress += 7.5 * cooling_bonus
 	update_appearance(UPDATE_OVERLAYS)
 	if(cooling_progress >= 100)
 		STOP_PROCESSING(SSobj, src)
