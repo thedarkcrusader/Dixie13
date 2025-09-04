@@ -85,6 +85,10 @@
 	. = ..()
 	icon_state = "volf_silv" // whoever designed this system needs to be cursed
 
+/obj/item/statue/silver/volf/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/finger
 	name = "silver hand"
 	desc = "A silver statue of a humen hand flashing a common xylixian slight. This offensive item has no value."
@@ -92,6 +96,10 @@
 	icon_state = "finger_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 0
+
+/obj/item/statue/silver/finger/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/finger/Initialize()
 	. = ..()
@@ -105,6 +113,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 50
 
+/obj/item/statue/silver/urn/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/urn/Initialize()
 	. = ..()
 	icon_state = "urn_silv"
@@ -116,6 +128,10 @@
 	icon_state = "vase_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 25
+
+/obj/item/statue/silver/vase/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/vase/Initialize()
 	. = ..()
@@ -129,6 +145,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 45
 
+/obj/item/statue/silver/vasefancy/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/vasefancy/Initialize()
 	. = ..()
 	icon_state = "fancyvase_silv"
@@ -141,6 +161,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 30
 
+/obj/item/statue/silver/bust/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/bust/Initialize()
 	. = ..()
 	icon_state = "bust_silv"
@@ -150,8 +174,11 @@
 	desc = "A figurine made out of silver. Popular among adults as a decoration, popular among children as a toy."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "figurine_silv"
-	smeltresult = /obj/item/ingot/silver
 	sellprice = 15
+
+/obj/item/statue/silver/figurine/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/figurine/Initialize()
 	. = ..()
@@ -165,6 +192,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 30
 
+/obj/item/statue/silver/obelisk/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/obelisk/Initialize()
 	. = ..()
 	icon_state = "obelisk_silv"
@@ -174,8 +205,11 @@
 	desc = "A fish figurine made out of silver."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "fish_silv"
-	smeltresult = /obj/item/ingot/silver
 	sellprice = 15
+
+/obj/item/statue/silver/fish/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/fish/Initialize()
 	. = ..()
@@ -189,6 +223,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 25
 
+/obj/item/statue/silver/tablet/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/tablet/Initialize()
 	. = ..()
 	icon_state = "tablet_silv"
@@ -198,8 +236,11 @@
 	desc = "A cameo made out of silver depicting...someone? Use your imagination for who it could be."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "cameo_silv"
-	smeltresult = /obj/item/ingot/silver
 	sellprice = 15
+
+/obj/item/statue/silver/cameo/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/cameo/Initialize()
 	. = ..()
@@ -210,8 +251,11 @@
 	desc = "A silver comb, great for combing your hair or lack thereof."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "combs_silv"
-	smeltresult = /obj/item/ingot/silver
 	sellprice = 10
+
+/obj/item/statue/silver/comb/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/comb/Initialize()
 	. = ..()
@@ -225,6 +269,10 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 35
 
+/obj/item/statue/silver/totem/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/statue/silver/totem/Initialize()
 	. = ..()
 	icon_state = "elven_silv"
@@ -236,6 +284,10 @@
 	icon_state = "teapot_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 30
+
+/obj/item/statue/silver/teapot/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/teapot/Initialize()
 	. = ..()
@@ -319,7 +371,6 @@
 	desc = "A figurine made out of gold. Popular among adults as a decoration, popular among children as a toy."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "figurine_gold"
-	smeltresult = /obj/item/ingot/gold
 	sellprice = 30
 
 /obj/item/statue/gold/figurine/Initialize()
@@ -331,7 +382,6 @@
 	desc =  "A cameo made out of gold depicting...someone? Use your imagination for who it could be."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "cameo_gold"
-	smeltresult = /obj/item/ingot/gold
 	sellprice = 30
 
 /obj/item/statue/gold/cameo/Initialize()
@@ -367,7 +417,6 @@
 	desc =  "A fish figurine made out of gold."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "fish_gold"
-	smeltresult = /obj/item/ingot/gold
 	sellprice = 30
 
 /obj/item/statue/gold/fish/Initialize()
@@ -403,7 +452,6 @@
 	desc =  "A golden comb, great for combing your hair or lack thereof."
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "comb_gold"
-	smeltresult = /obj/item/ingot/gold
 	sellprice = 30
 
 /obj/item/statue/gold/comb/Initialize()
