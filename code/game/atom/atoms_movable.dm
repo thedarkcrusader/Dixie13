@@ -1483,10 +1483,6 @@
 #define ANIMATION_W 115
 #define ANIMATION_Z 5
 
-GLOBAL_VAR_INIT(animation_x, 115)
-GLOBAL_VAR_INIT(animation_y, 5)
-GLOBAL_VAR_INIT(animation_displacement_amount, 300)
-
 /obj/effect/god_hand
 	name = "Hand of God"
 	icon = 'icons/misc/god_hand.dmi'
@@ -1547,6 +1543,10 @@ GLOBAL_VAR_INIT(animation_displacement_amount, 300)
 
 /atom/movable/proc/be_taken_with_hand_of_god()
 	new /obj/effect/god_hand (get_turf(src), src)
+
+#undef ANIMATION_Z
+#undef ANIMATION_W
+#undef DISPLACEMENT_AMOUNT
 
 #undef ATTACK_ANIMATION_PIXEL_DIFF
 #undef ATTACK_ANIMATION_TIME
