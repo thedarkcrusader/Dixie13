@@ -36,6 +36,7 @@
 	desc = "A very simple wooden gear. Used in carts and machinery."
 	icon_state = "upgrade"
 	metalizer_result = /obj/item/gear/metal
+	smeltresult = /obj/item/fertilizer/ash
 	cart_capacity = 90
 	misfire_modification = -5
 

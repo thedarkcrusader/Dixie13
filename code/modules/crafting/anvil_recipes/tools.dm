@@ -92,6 +92,14 @@
 	name = "Bronze Chisel"
 	created_item = /obj/item/weapon/chisel/bronze
 
+/datum/anvil_recipe/tools/bronze/cogbronze
+	name = "3x Bronze Cog"
+	recipe_name = "two Cogs"
+	appro_skill = /datum/skill/craft/engineering // To train engineering
+	created_item = /obj/item/gear/metal/bronze
+	craftdiff = 1
+	createditem_extra = 2
+
 // --------- IRON -----------
 
 /datum/anvil_recipe/tools/iron
@@ -150,11 +158,11 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern
 
 /datum/anvil_recipe/tools/iron/cogiron
-	name = "2x Cog"
+	name = "2x Iron Cog"
 	recipe_name = "two Cogs"
 	appro_skill = /datum/skill/craft/engineering // To train engineering
 	created_item = /obj/item/gear/metal/iron
-	craftdiff = 0
+	craftdiff = 1
 	createditem_extra = 1
 
 /datum/anvil_recipe/tools/iron/hammer
@@ -283,10 +291,11 @@
 ///////////////////////////////////////////////
 
 /datum/anvil_recipe/tools/steel/cogstee
-	name = "3x Cogs"
-	recipe_name = "two Cogs"
+	name = "3x Steel Cogs"
+	recipe_name = "three Cogs"
 	appro_skill = /datum/skill/craft/engineering // To train engineering
 	created_item = /obj/item/gear/metal/steel
+	craftdiff = 1
 	createditem_extra = 2
 
 /datum/anvil_recipe/tools/steel/scissors
