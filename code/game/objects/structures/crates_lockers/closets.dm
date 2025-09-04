@@ -40,8 +40,8 @@
 	can_add_lock = TRUE
 	lock = /datum/lock/key
 
-	var/base_icon_state
 	var/alternative_icon_handling = FALSE
+	var/list/spawn_contents
 
 /obj/structure/closet/crate/Initialize()
 	. = ..()
@@ -49,7 +49,16 @@
 		base_icon_state = initial(icon_state)
 	update_appearance(UPDATE_ICON_STATE)
 
+/obj/structure/closet/get_save_vars()
+	. = ..()
+	for(var/obj/item/item in contents)
+		LAZYADD(spawn_contents, item.type)
+	. += NAMEOF(src, spawn_contents)
+
 /obj/structure/closet/Initialize(mapload)
+	if(length(spawn_contents))
+		for(var/atom/movable/spawning_atom as anything in spawn_contents)
+			new spawning_atom(get_turf(src))
 	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
 	. = ..()
@@ -188,10 +197,10 @@
 		new material_drop(loc, material_drop_amount)
 	qdel(src)
 
-/obj/structure/closet/obj_break(damage_flag, silent)
-	if(!broken && !(flags_1 & NODECONSTRUCT_1))
+/obj/structure/closet/atom_break(damage_flag)
+	if(!obj_broken && !(flags_1 & NODECONSTRUCT_1))
 		bust_open()
-	..()
+	. = ..()
 
 /obj/structure/closet/attackby(obj/item/I, mob/user, params)
 	if(user in src)
@@ -306,7 +315,7 @@
 /obj/structure/closet/proc/bust_open()
 	welded = FALSE //applies to all lockers
 	unlock()
-	broken = TRUE //applies to secure lockers only
+	obj_broken = TRUE //applies to secure lockers only
 	open()
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)

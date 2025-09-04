@@ -1,8 +1,9 @@
 /datum/advclass/combat/paladin
 	name = "Paladin"
 	tutorial = "Paladins are former noblemen and clerics who have dedicated themselves to great combat prowess. Often, they were promised redemption for past sins if they crusaded in the name of the gods."
-	allowed_races = RACES_PLAYER_ALL
+	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	outfit = /datum/outfit/job/adventurer/paladin
+	allowed_patrons = ALL_PALADIN_PATRONS
 	maximum_possible_slots = 1
 	min_pq = 2
 	pickprob = 15
@@ -10,23 +11,16 @@
 
 /datum/outfit/job/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.dna && ((H.dna.species.id in RACES_PLAYER_HERETICAL_RACE) || (H.dna.species.id in list(SPEC_ID_HARPY, SPEC_ID_TRITON, SPEC_ID_MEDICATOR))) && !istype(H.patron, /datum/patron/inhumen))
-		var/list/inhumen = list(
-			/datum/patron/inhumen/graggar,
-			/datum/patron/inhumen/zizo,
-			/datum/patron/inhumen/matthios,
-			/datum/patron/inhumen/baotha
-		)
-		var/picked = pick(inhumen)
-		H.set_patron(picked)
-		to_chat(H, span_warning("My patron had not endorsed my practices in my younger years. I've since grown acustomed to [H.patron]."))
 	H.virginity = TRUE
-
 	switch(H.patron?.type)
 		if(/datum/patron/psydon, /datum/patron/psydon/progressive)
 			head = /obj/item/clothing/head/helmet/heavy/bucket/gold
 			wrists = /obj/item/clothing/neck/psycross/g
 			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
+			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.change_stat(STATKEY_CON, 1)
+			H.change_stat(STATKEY_PER, 1)
+			H.grant_language(/datum/language/oldpsydonic)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/helmet/heavy/necked/astrata
 			wrists = /obj/item/clothing/neck/psycross/silver/astrata
@@ -69,35 +63,6 @@
 			H.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 			H.virginity = FALSE
 			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
-		if(/datum/patron/inhumen/graggar) // Heretical Patrons
-			head = /obj/item/clothing/head/helmet/heavy/sinistar
-			H.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
-			H.change_stat(STATKEY_LCK, -2)
-			GLOB.heretical_players += H.real_name
-		if(/datum/patron/inhumen/graggar_zizo)
-			head = /obj/item/clothing/head/helmet/heavy/sinistar
-			H.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
-		if(/datum/patron/inhumen/zizo)
-			head = /obj/item/clothing/head/helmet/skullcap/cult
-			H.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
-			H.change_stat(STATKEY_LCK, -2)
-			GLOB.heretical_players += H.real_name
-		if(/datum/patron/inhumen/matthios)
-			head = /obj/item/clothing/head/helmet/heavy/rust
-			H.cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
-			H.change_stat(STATKEY_LCK, -2)
-			GLOB.heretical_players += H.real_name
-		if(/datum/patron/inhumen/baotha)
-			head = /obj/item/clothing/head/crown/circlet
-			mask = /obj/item/clothing/face/spectacles/sglasses
-			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
-			H.change_stat(STATKEY_LCK, -2)
-			GLOB.heretical_players += H.real_name
-		if(/datum/patron/godless)
-			head = /obj/item/clothing/head/roguehood/green
-			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
-			H.change_stat(STATKEY_LCK, -2)
-			GLOB.heretical_players += H.real_name
 		else // Failsafe
 			head = /obj/item/clothing/head/helmet/heavy/bucket
 			wrists = /obj/item/clothing/neck/psycross/silver
@@ -133,16 +98,17 @@
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_SPD, -2)
 		H.change_stat(STATKEY_LCK, 1)
-		if(!H.has_language(/datum/language/celestial)) // For discussing church matters with the other Clergy
+		if(!H.has_language(/datum/language/celestial) && (H.patron?.type in ALL_TEMPLE_PATRONS)) // For discussing church matters with the other Clergy, no Psydonites allowed.
 			H.grant_language(/datum/language/celestial)
 			to_chat(H, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 	if(H.dna?.species)
 		if(H.dna.species.id == SPEC_ID_HUMEN)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
-	//Paladins, while devout warriors spent WAY too much time studying the blade. No more acolyte+
-	C.grant_spells_templar(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	var/holder = H.patron?.devotion_holder
+	if(holder)
+		var/datum/devotion/devotion = new holder()
+		devotion.make_templar()
+		devotion.grant_to(H)
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

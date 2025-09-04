@@ -14,7 +14,7 @@
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.75
 	w_class = WEIGHT_CLASS_NORMAL
-	volume = 24
+	volume = 25
 	obj_flags = CAN_BE_HIT
 	sellprice = 1
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
@@ -116,8 +116,8 @@
 	playsound(location, "glassbreak", 100, TRUE)
 	new /obj/effect/decal/cleanable/debris/glass (location)
 	var/obj/item/natural/glass/shard/bottleshard = new(location)
-	bottleshard.pixel_x = rand(-6,6)
-	bottleshard.pixel_y = rand(-6,6)
+	bottleshard.pixel_x = bottleshard.base_pixel_x + rand(-6,6)
+	bottleshard.pixel_y = bottleshard.base_pixel_y + rand(-6,6)
 	// If someone got hit- wound them with the glass shard
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/victim = hit_atom

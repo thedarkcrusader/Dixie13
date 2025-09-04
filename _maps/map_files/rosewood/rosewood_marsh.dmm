@@ -582,7 +582,7 @@
 /area/rogue/indoors/cave)
 "dI" = (
 /obj/structure/table/wood/plain,
-/obj/item/kitchen/platter{
+/obj/item/plate{
 	pixel_x = 6;
 	pixel_y = 6
 	},
@@ -694,11 +694,11 @@
 /area/rogue/indoors/lich)
 "ek" = (
 /obj/structure/table/wood/plain,
-/obj/item/kitchen/platter/copper{
+/obj/item/plate/copper{
 	pixel_x = 7;
 	pixel_y = -1
 	},
-/obj/item/kitchen/platter/copper{
+/obj/item/plate/copper{
 	pixel_x = -5;
 	pixel_y = 8
 	},
@@ -1572,10 +1572,10 @@
 /area/rogue/indoors/lich)
 "iY" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/clothing/shirt/dress/silkdress/random,
-/obj/item/clothing/armor/leather/vest/random,
-/obj/item/clothing/cloak/half/random,
-/obj/item/clothing/head/roguehood/random,
+/obj/item/clothing/shirt/dress/silkdress/colored/random,
+/obj/item/clothing/armor/leather/vest/colored/random,
+/obj/item/clothing/cloak/half/colored/random,
+/obj/item/clothing/head/roguehood/colored/random,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/mountains)
 "iZ" = (
@@ -3012,10 +3012,10 @@
 /area/rogue/outdoors/bog)
 "sf" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
-/obj/item/clothing/pants/skirt/random,
-/obj/item/clothing/shirt/tunic/random,
-/obj/item/clothing/shirt/undershirt/random,
-/obj/item/clothing/shirt/dress/silkdress/random,
+/obj/item/clothing/pants/skirt/colored/random,
+/obj/item/clothing/shirt/tunic/colored/random,
+/obj/item/clothing/shirt/undershirt/colored/random,
+/obj/item/clothing/shirt/dress/silkdress/colored/random,
 /obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/lich)
@@ -5289,7 +5289,7 @@
 /area/rogue/indoors/cave)
 "Er" = (
 /obj/structure/table/wood/plain,
-/obj/item/kitchen/platter{
+/obj/item/plate{
 	pixel_x = 5;
 	pixel_y = 9
 	},
@@ -6095,9 +6095,9 @@
 /area/rogue/indoors/lich)
 "Jc" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
-/obj/item/clothing/cloak/raincloak/random,
-/obj/item/clothing/cloak/raincloak/random,
-/obj/item/clothing/cloak/raincloak/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
 /obj/item/perfume/random,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/lich)
@@ -7526,7 +7526,7 @@
 /area/rogue/indoors/lich)
 "Sd" = (
 /obj/structure/table/wood/plain,
-/obj/item/kitchen/platter/copper{
+/obj/item/plate/copper{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -8508,7 +8508,7 @@
 	dir = 1
 	},
 /obj/structure/bars/bent,
-/obj/item/kitchen/platter,
+/obj/item/plate,
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors/mountains)
 "Yd" = (
@@ -8758,9 +8758,9 @@
 /area/rogue/indoors/mountains)
 "ZN" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
-/obj/item/clothing/shirt/dress/silkdress/random,
-/obj/item/clothing/shirt/dress/silkdress/random,
-/obj/item/clothing/shirt/dress/silkdress/random,
+/obj/item/clothing/shirt/dress/silkdress/colored/random,
+/obj/item/clothing/shirt/dress/silkdress/colored/random,
+/obj/item/clothing/shirt/dress/silkdress/colored/random,
 /obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/mountains)

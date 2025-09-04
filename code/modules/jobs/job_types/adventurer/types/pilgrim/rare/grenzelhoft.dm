@@ -7,12 +7,13 @@
 	maximum_possible_slots = 1
 	pickprob = 30
 	min_pq = 0
+	is_recognized = TRUE
 
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
 /datum/outfit/job/adventurer/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft

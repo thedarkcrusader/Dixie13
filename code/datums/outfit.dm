@@ -232,8 +232,10 @@
 						if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
 							item = H.get_item_by_slot(ITEM_SLOT_BELT)
 							if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
-								new_item.forceMove(get_turf(H))
-								message_admins("[type] had backpack_contents set but no room to store:[new_item]")
+								item = H.get_item_by_slot(ITEM_SLOT_NECK)
+								if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
+									new_item.forceMove(get_turf(H))
+									message_admins("[type] had backpack_contents set but no room to store:[new_item]")
 
 
 	post_equip(H, visualsOnly)
@@ -316,7 +318,10 @@
 	.["armor"] = armor
 	.["pants"] = pants
 	.["belt"] = belt
+	.["beltl"] = beltl
+	.["beltr"] = beltr
 	.["shoes"] = shoes
+	.["scabbards"] = scabbards
 
 /// Prompt the passed in mob client to download this outfit as a json blob
 /datum/outfit/proc/save_to_file(mob/admin)
@@ -346,5 +351,13 @@
 	armor = text2path(outfit_data["armor"])
 	pants = text2path(outfit_data["pants"])
 	belt = text2path(outfit_data["belt"])
+	beltl = text2path(outfit_data["beltl"])
+	beltr = text2path(outfit_data["beltr"])
 	shoes = text2path(outfit_data["shoes"])
+	var/scabbard_data1 = outfit_data["scabbards"][1]
+	if(scabbard_data1)
+		LAZYADD(scabbards, scabbard_data1)
+	var/scabbard_data2 = outfit_data["scabbards"][2]
+	if(scabbard_data2)
+		LAZYADD(scabbards, scabbard_data2)
 	return TRUE

@@ -373,12 +373,12 @@
 /datum/status_effect/buff/trollshape
 	id = "trollshape"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/trollshape
-	effectedstats = list(STATKEY_STR = 5, STATKEY_END = 2, STATKEY_SPD = -3, STATKEY_INT = -5)
+	effectedstats = list(STATKEY_STR = 4, STATKEY_END = 2, STATKEY_SPD = -2, STATKEY_INT = -4)
 	duration = 3 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/trollshape
 	name = "Troll Shape"
-	desc = span_nicegreen("I AM STRONG! DENDORS ENEMIES WILL DIE!")
+	desc = span_nicegreen("I AM STRONG! DENDOR'S ENEMIES WILL DIE!")
 	icon_state = "trollshape"
 /datum/status_effect/buff/trollshape/on_apply()
 	. = ..()
@@ -501,8 +501,8 @@
 	var/outline_color = "#ad0202"
 	duration = 15 SECONDS
 
-/datum/status_effect/buff/bloodrage/on_creation(mob/living/new_owner, duration_override, ...)
-	var/holyskill = owner.get_skill_level(/datum/skill/magic/holy)
+/datum/status_effect/buff/bloodrage/on_creation(mob/living/carbon/new_owner, duration_override, ...)
+	var/holyskill = new_owner.get_skill_level(/datum/skill/magic/holy)
 	duration = ((15 SECONDS) * holyskill)
 	if(holyskill >= SKILL_LEVEL_APPRENTICE)
 		effectedstats = list(STATKEY_STR = 2)

@@ -21,6 +21,7 @@
 	var/modifies_speech = FALSE
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
+	abstract_type = /obj/item/clothing/face
 
 /obj/item/clothing/face/attack_self(mob/user, params)
 	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))
@@ -42,9 +43,6 @@
 	user.update_fov_angles()
 
 /obj/item/clothing/face/proc/handle_speech()
-
-/obj/item/clothing/face/worn_overlays(isinhands = FALSE)
-	. = list()
 
 /obj/item/clothing/face/update_clothes_damaged_state(damaging = TRUE)
 	..()

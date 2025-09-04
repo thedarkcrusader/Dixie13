@@ -39,6 +39,11 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 
+/atom/movable/screen/plane_master/seethrough
+	name = "Seethrough"
+	plane = SEETHROUGH_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /atom/movable/screen/plane_master/game_world
 	name = "game world plane master"
 	plane = GAME_PLANE
@@ -79,6 +84,18 @@
 	plane = POINT_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
+
+/**
+ * Plane master handling byond internal blackness
+ * vars are set as to replicate behavior when rendering to other planes
+ * do not touch this unless you know what you are doing
+ */
+/atom/movable/screen/plane_master/blackness
+	name = "darkness plane master"
+	plane = BLACKNESS_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_MULTIPLY
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
 
 /**
  * Plane master handling byond internal blackness

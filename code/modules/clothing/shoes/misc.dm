@@ -11,6 +11,10 @@
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 
+/obj/item/clothing/shoes/nobleboot/apply_components()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/boots)
+
 /obj/item/clothing/shoes/nobleboot/thighboots
 	name = "thigh boots"
 	icon_state = "thighboot"
@@ -60,16 +64,15 @@
 	color = CLOTHING_OLD_LEATHER
 	salvage_result = null
 
-/obj/item/clothing/shoes/simpleshoes/white
-	color = null
-
+/obj/item/clothing/shoes/simpleshoes/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/shoes/simpleshoes/buckle
 	name = "shoes"
 	icon_state = "buckleshoes"
 	color = null
 
-/obj/item/clothing/shoes/simpleshoes/lord
+/obj/item/clothing/shoes/simpleshoes/colored/lord
 	name = "shoes"
 	desc = "Shoes typically worn by the King himself."
 	gender = PLURAL
@@ -97,7 +100,10 @@
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 
-/obj/item/clothing/shoes/hoplite
+/obj/item/clothing/shoes/rare
+	abstract_type = /obj/item/clothing/shoes/rare
+
+/obj/item/clothing/shoes/rare/hoplite
 	name = "ancient sandals"
 	desc = "Worn sandals lined with bronze, ready to march ever onwards."
 	icon_state = "aasimarfeet"
@@ -106,7 +112,7 @@
 
 /obj/item/clothing/shoes/shalal
 	name = "babouche"
-	desc = "Leather slippers of zybantean origin."
+	desc = "Leather slippers of Zaladin origin."
 	gender = PLURAL
 	icon_state = "shalal"
 	item_state = "shalal"
@@ -130,7 +136,7 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_JINGLE_BELLS), step_delay_override = 2, falloff_exponent = 20)
 
-/obj/item/clothing/shoes/grenzelhoft
+/obj/item/clothing/shoes/rare/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"

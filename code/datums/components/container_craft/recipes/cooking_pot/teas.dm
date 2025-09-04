@@ -35,8 +35,8 @@
 	water_conversion = 0.6
 	created_reagent = /datum/reagent/consumable/tea/taraxamint
 	requirements = list(
-		/obj/item/alch/taraxacum = 1,
-		/obj/item/alch/mentha = 1
+		/obj/item/alch/herb/taraxacum = 1,
+		/obj/item/alch/herb/mentha = 1
 	)
 
 /datum/container_craft/cooking/tea/utricasalvia
@@ -44,7 +44,7 @@
 	crafting_time = 50 SECONDS
 	water_conversion = 0.6
 	created_reagent = /datum/reagent/consumable/tea/utricasalvia
-	requirements = list(/obj/item/alch/urtica = 1, /obj/item/alch/salvia = 1)
+	requirements = list(/obj/item/alch/herb/urtica = 1, /obj/item/alch/herb/salvia = 1)
 
 /datum/container_craft/cooking/tea/badidea
 	name = "westleach tar tea"
@@ -85,3 +85,19 @@
 	created_reagent = /datum/reagent/consumable/tea/tiefbloodtea
 	requirements = list(/obj/item/reagent_containers/food/snacks/tiefsugar = 1)
 	finished_smell = /datum/pollutant/food/sugar
+
+/datum/container_craft/cooking/tea/exotic
+	name = "Exotic Tea"
+	crafting_time = 30 SECONDS
+	water_conversion = 1
+	created_reagent = /datum/reagent/consumable/caffeine/tea
+	requirements = list(/obj/item/reagent_containers/food/snacks/produce/tealeaves_ground = 2)
+	finished_smell = /datum/pollutant/food/teas
+
+/datum/container_craft/cooking/tea/coffee
+	name = "Coffee"
+	crafting_time = 30 SECONDS
+	water_conversion = 1
+	created_reagent = /datum/reagent/consumable/caffeine/coffee
+	requirements = list(/obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted = 2)
+	finished_smell = /datum/pollutant/food/coffee

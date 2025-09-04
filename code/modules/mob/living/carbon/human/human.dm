@@ -54,7 +54,6 @@
 
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
-	AddComponent(/datum/component/personal_crafting)
 	AddElement(/datum/element/footstep, footstep_type, 1, -6)
 	GLOB.human_list += src
 	if(ai_controller && flee_in_pain)
@@ -115,10 +114,9 @@
 	if(!client)
 		return
 	if(mind)
-		var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
-		if(VD)
+		if(clan)
 			if(statpanel("Stats"))
-				stat("Vitae:",VD.vitae)
+				stat("Vitae:",bloodpool)
 	return
 
 /mob/living/carbon/human/show_inv(mob/user)
@@ -411,6 +409,7 @@
 					hud_used.bloods.icon_state = "dam[used]"
 				else
 					hud_used.bloods.icon_state = "damelse"
+			SEND_SIGNAL(src, COMSIG_MOB_HEALTHHUD_UPDATE, hud_used.bloods.icon_state)
 
 		if(hud_used.stamina)
 			if(stat != DEAD)
@@ -718,7 +717,7 @@
 	has_stubble = target.has_stubble
 	headshot_link = target.headshot_link
 	flavortext = target.flavortext
-	vitae_pool = target.vitae_pool
+	bloodpool = target.bloodpool
 
 	var/obj/item/bodypart/head/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(!isnull(target_head))
@@ -807,3 +806,17 @@
 		return TRUE
 
 	return FALSE
+
+/mob/living/carbon/human/Logout()
+	. = ..()
+
+	var/datum/job/role = mind?.assigned_role
+
+	if(role?.type in MESSAGE_ADMINS_ROLES)
+		addtimer(CALLBACK(src, PROC_REF(notify_admins_of_disconnect)), 30 SECONDS)
+
+/mob/living/carbon/human/proc/notify_admins_of_disconnect()
+	if(client)
+		return
+
+	message_admins("[ADMIN_LOOKUPFLW_PP(src)] is a [mind.assigned_role.get_informed_title(src)] and has been disconnected for more than 30 seconds!")

@@ -150,6 +150,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/total_transferred = 0
 	var/chem_volume = 30
 	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
+	abstract_type = /obj/item/clothing/face/cigarette
 
 /obj/item/clothing/face/cigarette/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is huffing [src] as quickly as [user.p_they()] can! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer.</span>")
@@ -295,7 +296,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		user.visible_message("<span class='notice'>[user] calmly drops and treads on \the [src], putting it out instantly.</span>")
 		new type_butt(user.loc)
-		new /obj/item/ash(user.loc)
+		new /obj/item/fertilizer/ash(user.loc)
 		qdel(src)
 	. = ..()
 
@@ -340,11 +341,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 60
 	list_reagents = null
 	muteinmouth = FALSE
+	abstract_type = /obj/item/clothing/face/cigarette/rollie
 
 /obj/item/clothing/face/cigarette/rollie/Initialize()
 	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 /obj/item/clothing/face/cigarette/rollie/nicotine
 	list_reagents = list(/datum/reagent/drug/nicotine = 60)
@@ -354,7 +356,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	starts_lit = TRUE
 
 /obj/item/clothing/face/cigarette/rollie/cannabis
-	list_reagents = list(/datum/reagent/drug/space_drugs = 60)
+	list_reagents = list(/datum/reagent/drug/space_drugs = 30)
 
 /obj/item/cigbutt
 	name = "roach"
@@ -364,8 +366,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/cigbutt/Initialize()
 	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 /obj/item/cigbutt
 	name = "cigarette butt"
@@ -498,7 +500,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!lit && smoketime > 0)
 		smoketime = 0
 		to_chat(user, "<span class='notice'>I empty [src] onto [location].</span>")
-		new /obj/item/ash(location)
+		new /obj/item/fertilizer/ash(location)
 		packeditem = 0
 		reagents.clear_reagents()
 //		name = "empty [initial(name)]"

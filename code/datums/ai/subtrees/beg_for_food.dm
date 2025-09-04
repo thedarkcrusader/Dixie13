@@ -3,7 +3,7 @@
 /datum/ai_planning_subtree/beg_human/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	if(istype(controller.pawn, /mob/living/simple_animal/hostile/retaliate))
 		var/mob/living/simple_animal/hostile/retaliate/mob = controller.pawn
-		if((mob.food >= (mob.food_max * 0.25)) && !mob.eat_forever)
+		if(SEND_SIGNAL(mob, COMSIG_MOB_RETURN_HUNGER) >= 0.25)
 			return // not hungry
 
 	if(controller.blackboard_key_exists(BB_HUMAN_BEG_TARGET))
@@ -22,6 +22,21 @@
 		return human_target
 
 	return null
+
+/datum/ai_behavior/find_and_set/human_beg/atom_allowed(atom/movable/checking, locate_path, atom/pawn)
+	if(checking == pawn)
+		return FALSE
+	if(!ishuman(checking))
+		return FALSE
+	var/mob/living/carbon/human/human_target = checking
+	if(human_target.stat != CONSCIOUS || isnull(human_target.mind))
+		return FALSE
+	var/mob/living/living_pawn = pawn
+	var/datum/ai_controller/controller = living_pawn.ai_controller
+	var/list/locate_items = controller.blackboard[BB_BASIC_FOODS]
+	if(!length(typecache_filter_list(human_target.held_items, locate_items)))
+		return FALSE
+	return TRUE
 
 /datum/ai_behavior/beacon_for_food
 	action_cooldown = 5 SECONDS

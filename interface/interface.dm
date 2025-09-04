@@ -64,6 +64,12 @@
 	else
 		to_chat(src, span_danger("You can't currently use Mentorhelp in the main menu."))
 
+/client/verb/mentor_stats()
+	set name = "Mentor Statistics"
+	set desc = ""
+	set category = "Admin"
+	check_mentor_stats_menu(src.ckey)
+
 /client/verb/reportissue()
 	set name = "Report a bug"
 	set desc = "Report a bug"
@@ -93,6 +99,8 @@
 
 	// Get a local copy of the template for modification
 	var/local_template = issue_template
+
+	local_template = replacetext(local_template, "## Map:\n", "## Map:\n[SSmapping.config.map_name]")
 
 	// Insert round
 	if(GLOB.round_id)
@@ -126,7 +134,7 @@
 		"body" = local_template,
 	)
 	var/datum/http_request/issue_report = new
-	rustg_file_write(local_template, "[GLOB.log_directory]/issue_reports/[ckey]-[world.time]-[sanitize_filename(issue_title)].txt")
+	rustg_file_write(local_template, "[GLOB.log_directory]/issue_reports/[ckey]-[world.time]-[SANITIZE_FILENAME(issue_title)].txt")
 	message_admins("BUGREPORT: Bug report filed by [ADMIN_LOOKUPFLW(src)], Title: [strip_html(issue_title)]")
 	issue_report.prepare(
 		RUSTG_HTTP_METHOD_POST,
@@ -241,6 +249,23 @@
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 70
 
+/client/verb/ui_scaling()
+	set name = "UI Scaling"
+	set category = "Options"
+	if(prefs)
+		var/current_scaling = window_scaling * 100
+		var/new_scaling = input(usr, "Enter UI Scaling (Your current scaling is [current_scaling]%). Cancel to reset to native scaling.", "New UI Scaling", window_scaling * 100) as null|num
+		if(!isnull(new_scaling))
+			prefs.toggles |= UI_SCALE
+			window_scaling = new_scaling / 100
+			prefs.ui_scale = window_scaling
+			prefs.save_preferences()
+			to_chat(src, span_notice("UI Scaling set to [window_scaling * 100]%. Changes take effect when opening new windows."))
+		else
+			prefs.toggles &= ~UI_SCALE
+			window_scaling = text2num(winget(src, null, "dpi"))
+			to_chat(src, span_notice("UI Scaling reset to native [window_scaling * 100]%. Changes take effect when opening new windows."))
+
 /client/verb/keybind_menu()
 	set category = "Options"
 	set name = "Adjust Keybinds"
@@ -273,3 +298,13 @@
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
+
+/client/verb/do_rp_prompt()
+	set name = "Lore Primer"
+	set category = "OOC"
+	var/list/dat = list()
+	dat += GLOB.roleplay_readme
+	if(dat)
+		var/datum/browser/popup = new(usr, "Primer", "VANDERLIN", 650, 900)
+		popup.set_content(dat.Join())
+		popup.open()

@@ -27,8 +27,8 @@
 		if(!(I.item_flags & ABSTRACT))
 			if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
 				return
-			I.pixel_x = round(CLAMP(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/2), world.icon_size/2)/modifier, 1)
-			I.pixel_y = round(CLAMP(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(world.icon_size/2), world.icon_size/2)/modifier, 1)
+			I.pixel_x = I.base_pixel_x + round(CLAMP(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/2), world.icon_size/2)/modifier, 1)
+			I.pixel_y = I.base_pixel_y + round(CLAMP(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(world.icon_size/2), world.icon_size/2)/modifier, 1)
 			return
 	return
 
@@ -66,9 +66,26 @@
 	var/last_charge_process
 	var/datum/patreon_data/patreon
 	var/toggled_leylines = TRUE
+	/// The DPI scale of the client. 1 is equivalent to 100% window scaling, 2 will be 200% window scaling
+	var/window_scaling
 
 /atom/movable/screen
 	blockscharging = TRUE
+
+///setter used to set our new hud
+/atom/movable/screen/proc/set_new_hud(datum/hud/hud_owner)
+	if(hud)
+		UnregisterSignal(hud, COMSIG_PARENT_QDELETING)
+	if(isnull(hud_owner))
+		hud = null
+		return
+	hud = hud_owner
+	RegisterSignal(hud, COMSIG_PARENT_QDELETING, PROC_REF(on_hud_delete))
+
+/atom/movable/screen/proc/on_hud_delete(datum/source)
+	SIGNAL_HANDLER
+
+	set_new_hud(hud_owner = null)
 
 /client/MouseDown(datum/object, location, control, params)
 	if(!control || QDELETED(object))
@@ -153,7 +170,7 @@
 		mob.cast_move = 0
 		mob.used_intent = mob.a_intent
 		if(mob.uses_intents)
-			if(mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
+			if(!ispath(mob.used_intent) && mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
 				updateprogbar()
 			else
 				mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'

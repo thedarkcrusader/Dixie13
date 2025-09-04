@@ -40,7 +40,8 @@
 		qdel(hair_extensions)
 
 	var/dynamic = FALSE
-	if(extensions[standing.icon_state+dynamic_hair_suffix])
+	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(accessory_type)
+	if(extensions[accessory.icon_state+dynamic_hair_suffix])
 		dynamic = dynamic_hair_suffix
 
 	add_gradient_overlay(standing, natural_gradient, natural_color, dynamic)
@@ -82,3 +83,10 @@
 	name = "Accessory"
 	feature_slot = BODYPART_FEATURE_ACCESSORY
 	body_zone = BODY_ZONE_HEAD
+
+/datum/bodypart_feature/vamprire_seal
+	name = "Vampiric Seal"
+	feature_slot = BODYPART_FEATURE_BRAND
+	body_zone = BODY_ZONE_CHEST
+	accessory_colors = COLOR_RED
+	accessory_type = /datum/sprite_accessory/brand/vampire_seal

@@ -3,12 +3,12 @@ GLOBAL_LIST_EMPTY(lord_decrees)
 GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 GLOBAL_LIST_EMPTY(roundstart_court_agents)
 
-#define MODE_NONE "none"
-#define MODE_MAKE_ANNOUNCEMENT "make_announcement"
-#define MODE_MAKE_LAW "make_law"
-#define MODE_MAKE_DECREE "make_decree"
-#define MODE_DECLARE_OUTLAW "declare_outlaw"
-#define MODE_PARDON_OUTLAW "pardon_outlaw"
+#define MODE_NONE "None"
+#define MODE_MAKE_ANNOUNCEMENT "Make Announcement"
+#define MODE_MAKE_LAW "Make Law"
+#define MODE_MAKE_DECREE "Make Decree"
+#define MODE_DECLARE_OUTLAW "Declare Outlaw"
+#define MODE_PARDON_OUTLAW "Pardon Outlaw"
 
 /proc/initialize_laws_of_the_land()
 	var/list/laws = strings("laws_of_the_land.json", "lawsets")
@@ -27,9 +27,9 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	density = FALSE
 	blade_dulling = DULLING_BASH
 	integrity_failure = 0.5
-	max_integrity = 0
 	anchored = TRUE
 	var/mode = MODE_NONE
+	var/datum/weakref/throne_weakref
 	var/static/list/command_list = list(
 		"Help",
 		"Summon Crown",
@@ -45,6 +45,7 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 		"Set Taxes",
 		"Change Position",
 		"Appoint Regent",
+		"SILENCE!!",
 		"Cancel",
 	)
 
@@ -52,6 +53,13 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	. = ..()
 	become_hearing_sensitive()
 	set_light(5)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/fake_machine/titan/LateInitialize()
+	. = ..()
+	var/obj/structure/throne/throne = locate(/obj/structure/throne) in loc
+	if(throne)
+		throne_weakref = WEAKREF(throne)
 
 /obj/structure/fake_machine/titan/Destroy()
 	lose_hearing_sensitivity()
@@ -124,52 +132,87 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 		return FALSE
 	if(!has_crown(checked_mob))
 		return FALSE
-	if(!is_worthy(checked_mob) && has_to_be_worthy)
+	if(has_to_be_worthy && !is_worthy(checked_mob))
 		return FALSE
 	if(!check_cooldown(checked_mob))
 		return FALSE
 	return TRUE
+
+/// Return mode to NONE
+/obj/structure/fake_machine/titan/proc/reset_mode()
+	mode = MODE_NONE
+	var/obj/structure/throne/throne = throne_weakref.resolve()
+	if(!throne)
+		return
+	throne.remove_filters_glow()
+	throne.throat_mode = mode
+
+/obj/structure/fake_machine/titan/proc/switch_mode(mode_to_switch_to)
+	mode = mode_to_switch_to
+	var/obj/structure/throne/throne = throne_weakref.resolve()
+	if(!throne)
+		return
+
+	throne.do_filters_glow()
+	throne.throat_mode = mode
 
 /obj/structure/fake_machine/titan/proc/recognize_command(mob/living/carbon/human/user, message)
 	// message is already sanitized
 	if(findtext(message, "make announcement") && perform_check(user, FALSE))
 		say("All will hear your word.")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		mode = MODE_MAKE_ANNOUNCEMENT
+		switch_mode(MODE_MAKE_ANNOUNCEMENT)
+		return
 	if(findtext(message, "make decree") && perform_check(user))
 		say("Speak and they will obey.")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		mode = MODE_MAKE_DECREE
+		switch_mode(MODE_MAKE_DECREE)
+		return
 	if(findtext(message, "make law") && perform_check(user))
 		say("Speak and they will obey.")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		mode = MODE_MAKE_LAW
+		switch_mode(MODE_MAKE_LAW)
+		return
 	if(findtext(message, "declare outlaw") && perform_check(user))
 		say("Who should be outlawed?")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		mode = MODE_DECLARE_OUTLAW
+		switch_mode(MODE_DECLARE_OUTLAW)
+		return
 	if(findtext(message, "pardon outlaw") && perform_check(user))
 		say("Who should be pardoned?")
 		playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-		mode = MODE_PARDON_OUTLAW
+		switch_mode(MODE_PARDON_OUTLAW)
+		return
 	if(findtext(message, "help") && is_valid_mob(user))
 		help()
+		return
 	if(findtext(message, "summon crown") && is_valid_mob(user))
 		summon_crown(user)
+		return
 	if(findtext(message, "summon key") && perform_check(user, FALSE))
 		summon_key(user)
+		return
 	if(findtext(message, "remove law") && perform_check(user))
 		remove_law(message)
+		return
 	if(findtext(message, "remove decree") && perform_check(user))
 		remove_decree(message)
+		return
 	if(findtext(message, "purge laws") && perform_check(user))
 		purge_laws()
+		return
 	if(findtext(message, "set taxes") && perform_check(user))
 		set_taxes(user)
+		return
 	if(findtext(message, "change position") && perform_check(user))
 		change_position(user)
+		return
 	if(findtext(message, "appoint regent") && perform_check(user))
 		appoint_regent(user)
+		return
+	if(findtext(message, "SILENCE!!") && perform_check(user))
+		silence_plebs(user)
+		return
 
 // COMMANDS BELOW
 
@@ -392,6 +435,8 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	victim.migrant_type = null
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human = victim
+		if(!HAS_TRAIT(human, TRAIT_RECRUITED) && HAS_TRAIT(human, TRAIT_FOREIGNER))
+			ADD_TRAIT(human, TRAIT_RECRUITED, TRAIT_GENERIC)
 		human.advjob = new_pos
 	if(!SScommunications.can_announce(user))
 		return
@@ -419,9 +464,17 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	priority_announce("[new_regent.real_name] has been appointed regent.", "[user.real_name], The [user.get_role_title()] Decrees", 'sound/misc/alert.ogg', "Captain")
 	SSticker.regent_mob = new_regent
 
-/// Return mode to NONE
-/obj/structure/fake_machine/titan/proc/reset_mode()
-	mode = MODE_NONE
+/obj/structure/fake_machine/titan/proc/silence_plebs(mob/living/carbon/human/user)
+	playsound(src, 'sound/magic/invoke_general.ogg', 40, TRUE)
+	for(var/mob/living/pleb in oview(10, user))
+		pleb.face_atom(user)
+		pleb.do_alert_effect()
+		if(prob(40))
+			pleb.emote("gasp")
+		else if(prob(10))
+			pleb.emote("scream")
+		pleb.set_silence(10 SECONDS)
+
 
 /obj/structure/fake_machine/titan/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), original_message)
 	. = ..()
@@ -432,7 +485,7 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	if(obj_broken)
 		return
 
-	var/sanitized_message = sanitize_hear_message(original_message)
+	var/sanitized_message = SANITIZE_HEAR_MESSAGE(original_message)
 
 	if(findtext(sanitized_message, "nevermind") || findtext(sanitized_message, "cancel"))
 		reset_mode()

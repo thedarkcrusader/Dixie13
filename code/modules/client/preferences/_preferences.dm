@@ -41,7 +41,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/buttons_locked = TRUE
 	var/hotkeys = TRUE
 
-	var/chat_on_map = TRUE
 	var/showrolls = TRUE
 	var/max_chat_length = CHAT_MESSAGE_MAX_LENGTH
 	var/see_chat_non_mob = TRUE
@@ -52,9 +51,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
 	var/windowflashing = TRUE
-	var/toggles = TOGGLES_DEFAULT
 	var/db_flags
+	var/toggles = TOGGLES_DEFAULT
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
+	var/toggles_maptext = NONE
 	var/ghost_form = "ghost"
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
@@ -194,6 +194,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// Family system
 	var/family = FAMILY_NONE
 	var/setspouse = ""
+	var/gender_choice = ANY_GENDER
 
 	var/crt = FALSE
 
@@ -215,6 +216,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	/// If the user clicked "Don't ask again" on the randomize character prompt
 	var/randomize_shutup = FALSE
+	/// Custom UI scale
+	var/ui_scale
+	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
+	var/list/culinary_preferences = list()
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -288,11 +293,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	dat += "<td style='width:33%;text-align:center'>"
 	if(SStriumphs.triumph_buys_enabled)
-		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
+		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Shop</a>"
 	dat += "</td>"
 
 	dat += "<td style='width:33%;text-align:right'>"
 	dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
+	dat += "<br><a href='?_src_=prefs;preference=toggles'>Toggles</a>"
 	dat += "</td>"
 	dat += "</tr>"
 
@@ -386,7 +392,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
 	if(family == FAMILY_FULL || family == FAMILY_NEWLYWED)
 		dat += "<b>Preferred Spouse:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
+		dat += "<b>Preferred Gender:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "Any Gender"]</a><BR>"
 	dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+	dat += "<b>Food Preferences:</b> <a href='?_src_=prefs;preference=culinary;task=menu'>Change</a><BR>"
 	dat += "</tr></table>"
 	//-----------END OF IDENT TABLE-----------//
 
@@ -414,6 +422,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<br>"
 	dat += "<b>Voice Type:</b> <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a>"
 	dat += "<br><b>Voice Color:</b> <a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+	dat += "<br>"
 	dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
 	dat += "<br>"
 	dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
@@ -440,46 +449,31 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	// well.... one empty slot here for something I suppose lol
 	dat += "<table width='100%'>"
 	dat += "<tr>"
-	dat += "<td width='33%' align='left'><a href='?_src_=prefs;preference=loreprimer'>LORE PRIMER</a></td>"
+	dat += "<td width='33%' align='left'></td>"
 	dat += "<td width='33%' align='center'>"
 	var/mob/dead/new_player/N = user
 	if(istype(N))
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "BE SPECIAL"]</b></a><BR>"
-		if(SSticker.current_state <= GAME_STATE_PREGAME)
-			switch(N.ready)
-				if(PLAYER_NOT_READY)
-					dat += "<b>UNREADY</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>READY</a>"
-				if(PLAYER_READY_TO_PLAY)
-					dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
-		else
-			if(!is_active_migrant())
-				dat += "<a href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
-			else
-				dat += "<a class='linkOff' href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
-			dat += " - <a href='?_src_=prefs;preference=migrants'>MIGRATION</a>"
-			dat += "<br><a href='?_src_=prefs;preference=manifest'>ACTORS</a>"
-	else
-		dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
-		dat += "</center>"
 
+	dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
+	dat += "</center>"
 	dat += "</td>"
-	dat += "<td width='33%' align='right'>"
-	dat += "<b>Be Voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
-	dat += "</td>"
+	dat += "<td width='33%' align='right'></td>"
 	dat += "</tr>"
 	dat += "</table>"
 
 	if(user.client.is_new_player())
 		dat = list("<center>REGISTER!</center>")
 
+	user?.client.acquire_dpi()
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
-	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>Character Sheet</div>")
-	popup.set_window_options(can_close = FALSE)
+	var/datum/browser/popup = new(user, "preferences_browser", "<div align='center'>Character Sheet</div>", 700, 600)
+	popup.set_window_options(can_close = TRUE)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 	update_preview_icon()
-	//onclose(user, "stonekeep_prefwin", src)
+	onclose(user, "stonekeep_prefwin", src)
 
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
@@ -585,7 +579,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
 			if(length(job.allowed_races) && !(user.client.prefs.pref_species.id in job.allowed_races))
-				if(!(user.client.triumph_ids.Find("race_all")))
+				if(!(user.client.has_triumph_buy(TRIUMPH_BUY_RACE_ALL)))
 					HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 					continue
 			if(length(job.allowed_patrons) && !(user.client.prefs.selected_patron.type in job.allowed_patrons))
@@ -917,6 +911,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)
 
+	else if(href_list["preference"] == "culinary")
+		show_culinary_ui(user)
+		return
+
 	else if(href_list["preference"] == "markings")
 		ShowMarkings(user)
 		return
@@ -1006,6 +1004,40 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				SetKeybinds(user)
 		return TRUE
 
+	else if(href_list["preference"] == "toggles")
+		var/list/toggles_list = list(
+			"Default Toggles" = list("toggles_default", toggles),
+			"Maptext Toggles" = list("toggles_maptext", toggles_maptext)
+		)
+		var/toggle_type = browser_input_list(user, title = "Toggle Select", items = toggles_list)
+		if(!toggle_type)
+			return
+		var/list/toggles_data = toggles_list[toggle_type]
+		var/bitfield = toggles_data[1]
+		var/prefs_variable = toggles_data[2]
+		var/new_toggles = input_bitfield(user, toggle_type, bitfield, prefs_variable, nheight = 500)
+		if(new_toggles)
+			if(toggle_type == "Default Toggles")
+				// Reset all fields we touch to 0 first because we don't use a full set to do toggles = X
+				// And don't want to override them
+				for(var/field in GLOB.bitfields[bitfield])
+					toggles &= ~GLOB.bitfields[bitfield][field]
+				toggles ^= new_toggles
+				if((prefs_variable & SOUND_LOBBY) && user.client && isnewplayer(user))
+					user.client.playtitlemusic()
+				else
+					user.stop_sound_channel(CHANNEL_LOBBYMUSIC)
+
+				if((prefs_variable & SOUND_SHIP_AMBIENCE) && user.client && !isnewplayer(user))
+					user.refresh_looping_ambience()
+				else
+					user.cancel_looping_ambience()
+
+				user.client?.update_ambience_pref()
+
+			else if(toggle_type == "Maptext Toggles")
+				toggles_maptext = new_toggles
+
 	switch(href_list["task"])
 		if("change_customizer")
 			handle_customizer_topic(user, href_list)
@@ -1020,6 +1052,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		if("change_descriptor")
 			handle_descriptors_topic(user, href_list)
 			show_descriptors_ui(user)
+			return
+		if("change_culinary_preferences")
+			handle_culinary_topic(user, href_list)
+			show_culinary_ui(user)
 			return
 		if("random")
 			switch(href_list["preference"])
@@ -1244,9 +1280,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
 		else
 			switch(href_list["preference"])
-				if("publicity")
-					if(unlock_content)
-						toggles ^= MEMBER_PUBLIC
 				if ("max_chat_length")
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
 					if (!isnull(desiredlength))
@@ -1310,6 +1343,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						setspouse = newspouse
 					else
 						setspouse = null
+				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
+				if("gender_choice")
+					// If pronouns are neutral, lock to ANY_GENDER
+					if(pronouns == THEY_THEM || pronouns == IT_ITS)
+						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
+						gender_choice = ANY_GENDER
+					else
+						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
+						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, gender_choice)
+						if(new_gender_choice)
+							gender_choice = new_gender_choice
 				if("alignment")
 					var/new_alignment = browser_input_list(user, "SELECT YOUR HERO'S MORALITY", "CUT FROM THE SAME CLOTH", ALL_ALIGNMENTS_LIST, alignment)
 					if(new_alignment)
@@ -1321,8 +1365,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					else
 						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_DISABLED]  input.text-color = #ad9eb4")
 
-				if("chat_on_map")
-					chat_on_map = !chat_on_map
 				if("see_chat_non_mob")
 					see_chat_non_mob = !see_chat_non_mob
 				if("action_buttons")
@@ -1515,8 +1557,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							save_character()
 
 				if("randomiseappearanceprefs")
-					if (!randomize_shutup)
-						var/alert_response = browser_alert(user, "Are you sure you want to randomise your appearance preferences? This will overwrite your current preferences.", "Randomise Appearance Preferences", list("Yes", "No", "Don't Ask Again This Round (Yes)"))
+					if(!randomize_shutup)
+						var/alert_response = browser_alert(user, "Are you sure you want to randomise your appearance preferences? This will overwrite your current preferences.", "Randomise Appearance Preferences", list("Yes", "No", "Don\'t Ask Again This Round (Yes)"))
 						if(alert_response != "Yes")
 							if(alert_response == "Don't Ask Again This Round (Yes)")
 								randomize_shutup = TRUE
@@ -1598,6 +1640,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	character.voice_color = voice_color
 	character.set_patron(selected_patron)
 	character.familytree_pref = family
+	character.gender_choice_pref = gender_choice
 	character.setspouse = setspouse
 
 	if(charflaw)
@@ -1612,7 +1655,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			qdel(O)
 		character.regenerate_limb(BODY_ZONE_R_ARM)
 		character.regenerate_limb(BODY_ZONE_L_ARM)
-		character.set_flaw(charflaw.type)
+		character.set_flaw(charflaw.type, FALSE)
+
+	if(culinary_preferences)
+		apply_culinary_preferences(character)
 
 	if(parent)
 		var/datum/role_bans/bans = get_role_bans_for_ckey(parent.ckey)
@@ -1731,7 +1777,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"}
 
 /datum/proc/is_valid_headshot_link(mob/user, value, silent = FALSE)
-	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com")
+	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com", "files.catbox.moe")
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif")
 
 	if(!length(value))

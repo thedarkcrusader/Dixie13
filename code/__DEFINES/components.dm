@@ -93,6 +93,7 @@
 #define COMSIG_MOB_CREATED_CALLOUT "mob_created_callout"
 
 #define COMSIG_MOB_CLICKON "mob_clickon"						//from base of mob/clickon(): (atom/A, params)
+#define COMSIG_ATOM_CLICKEDON "atom_clickedon"
 #define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"			//from base of mob/MiddleClickOn(): (atom/A)
 #define COMSIG_MOB_ALTCLICKON "mob_altclickon"				//from base of mob/AltClickOn(): (atom/A)
 	#define COMSIG_MOB_CANCEL_CLICKON 1
@@ -208,6 +209,7 @@
 #define COMSIG_HUMAN_MELEE_UNARMED_ATTACKBY "human_melee_unarmed_attackby"		//from mob/living/carbon/human/UnarmedAttack(): (mob/living/carbon/human/attacker)
 #define COMSIG_HUMAN_DISARM_HIT	"human_disarm_hit"	//Hit by successful disarm attack (mob/living/carbon/human/attacker,zone_targeted)
 #define COMSIG_JOB_RECEIVED "job_received"										//Whenever EquipRanked is called, called after job is set
+#define COMSIG_HUMAN_LIFE "human_life"
 
 // /datum/species signals
 #define COMSIG_SPECIES_GAIN "species_gain"						//from datum/species/on_species_gain(): (datum/species/new_species, datum/species/old_species)
@@ -307,7 +309,21 @@
 #define COMSIG_MOUSE_ENTERED "comsig_mouse_entered"
 /// signal sent when a mouse is hovering over us, sent by atom/proc/on_mouse_entered
 #define COMSIG_ATOM_MOUSE_ENTERED "mouse_entered"
+#define COMSIG_USER_MOUSE_ENTERED "user_mouse_entered"
 
 #define COMSIG_HABITABLE_HOME "comsig_habitable_home"
 
 #define COMSIG_COMBAT_TARGET_SET "comsig_combat_target_set"
+
+#define COMSIG_DISGUISE_STATUS "comsig_disguise_status"
+#define COMSIG_OBSERVABLE_CHANGE "comsig_observable_change"
+///sent to targets during the process_hit proc of projectiles
+#define COMSIG_PELLET_CLOUD_INIT "pellet_cloud_init"
+///called in /obj/item/gun/process_fire (user, target, params, zone_override)
+#define COMSIG_GRENADE_DETONATE "grenade_prime"
+//called from many places in grenade code (armed_by, nade, det_time, delayoverride)
+#define COMSIG_MOB_GRENADE_ARMED "grenade_mob_armed"
+///called in /obj/item/gun/process_fire (user, target, params, zone_override)
+#define COMSIG_GRENADE_ARMED "grenade_armed"
+
+#define COMSIG_MOB_HEALTHHUD_UPDATE "update_healthhud"

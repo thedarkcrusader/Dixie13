@@ -43,6 +43,10 @@
 #define STATS_STOCKPILE_EXPANSES "stockpile_expanses"
 #define STATS_STOCKPILE_REVENUE "stockpile_revenue"
 #define STATS_PEDDLER_REVENUE "peddler_revenue"
+#define STATS_MAMMONS_HELD "mammons_held"
+#define STATS_MAMMONS_DEPOSITED "mammons_deposited"
+#define STATS_MAMMONS_WITHDRAWN "mammons_withdrawn"
+#define STATS_STARTING_TREASURY "starting_treasury"
 
 // Influence related statistics
 
@@ -300,6 +304,10 @@ GLOBAL_LIST_INIT(vanderlin_round_stats, list(
 	STATS_STOCKPILE_EXPANSES = 0,
 	STATS_STOCKPILE_REVENUE = 0,
 	STATS_PEDDLER_REVENUE = 0,
+	STATS_MAMMONS_HELD = 0,
+	STATS_MAMMONS_DEPOSITED = 0,
+	STATS_MAMMONS_WITHDRAWN = 0,
+	STATS_STARTING_TREASURY = 0,
 ))
 
 GLOBAL_LIST_EMPTY(patron_follower_counts)
@@ -474,6 +482,8 @@ GLOBAL_LIST_INIT(featured_stats, list(
 ))
 
 // Chronicle statistics
+#define CHRONICLE_STATS_PSYDON_FAVOURITE "psydon_favourite"
+#define CHRONICLE_STATS_RANDOM_PASSERBY "random_passerby"
 #define CHRONICLE_STATS_MOST_SKILLS_PERSON "most_skills_person"
 #define CHRONICLE_STATS_LEAST_SKILLS_PERSON "least_skills_person"
 #define CHRONICLE_STATS_STRONGEST_PERSON "strongest_person"

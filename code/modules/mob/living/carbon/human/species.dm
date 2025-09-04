@@ -264,6 +264,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	/// Amount of times we got autocorrected?? why is this a thing?
 	var/amtfail = 0
 
+	var/punch_damage = 0
+
 ///////////
 // PROCS //
 ///////////
@@ -331,7 +333,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 				/datum/language/orcish = "Orcish",
 				/datum/language/celestial = "Celestial",
 				/datum/language/zalad = "Zalad",
-				/datum/language/deepspeak = "Deepspeak"
+				/datum/language/deepspeak = "Deepspeak",
+				/datum/language/undead = "Zizo Chant"
 			)
 
 			if (language in language_map)
@@ -835,6 +838,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 
 			if(underwear)
 				var/mutable_appearance/underwear_overlay
+				var/mutable_appearance/underwear_emissive
 				if(!hide_bottom)
 					underwear_overlay = mutable_appearance(underwear.icon, underwear.icon_state, -BODY_LAYER)
 					if(LAZYACCESS(offsets, OFFSET_UNDIES))
@@ -847,6 +851,11 @@ GLOBAL_LIST_EMPTY(patreon_races)
 							H.underwear_color = "#755f46"
 							underwear_overlay.color = "#755f46"
 					standing += underwear_overlay
+					if(!istype(H, /mob/living/carbon/human/dummy))
+						underwear_emissive = emissive_blocker(underwear.icon, underwear.icon_state, -BODY_LAYER)
+						underwear_emissive.pixel_y = underwear_overlay.pixel_y
+						underwear_emissive.pixel_x = underwear_overlay.pixel_x
+						standing += underwear_emissive
 
 				if(!hide_top && H.gender == FEMALE)
 					underwear_overlay = mutable_appearance(underwear.icon, "[underwear.icon_state]_boob", -BODY_LAYER)
@@ -860,6 +869,11 @@ GLOBAL_LIST_EMPTY(patreon_races)
 							H.underwear_color = "#755f46"
 							underwear_overlay.color = "#755f46"
 					standing += underwear_overlay
+					if(!istype(H, /mob/living/carbon/human/dummy))
+						underwear_emissive = emissive_blocker(underwear.icon, "[underwear.icon_state]_boob", -BODY_LAYER)
+						underwear_emissive.pixel_y = underwear_overlay.pixel_y
+						underwear_emissive.pixel_x = underwear_overlay.pixel_x
+						standing += underwear_emissive
 
 	if(length(standing))
 		H.overlays_standing[BODY_LAYER] = standing
@@ -1349,7 +1363,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 		target.lastattackerckey = user.ckey
 		user.dna.species.spec_unarmedattacked(user, target)
 
-		user.do_attack_animation(target, visual_effect_icon = user.used_intent.animname, atom_bounce = TRUE)
+		user.do_attack_animation(target, visual_effect_icon = user.used_intent.animname, used_item = FALSE, atom_bounce = TRUE)
 		target.next_attack_msg.Cut()
 
 		var/nodmg = FALSE
@@ -1424,7 +1438,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	if(user.loc == target.loc)
 		return FALSE
 	else
-		user.do_attack_animation(target, ATTACK_EFFECT_DISARM, atom_bounce = TRUE)
+		user.do_attack_animation(target, ATTACK_EFFECT_DISARM, used_item = FALSE, atom_bounce = TRUE)
 		playsound(target, 'sound/combat/shove.ogg', 100, TRUE, -1)
 
 		if(target.wear_pants)
@@ -1883,7 +1897,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 						else
 							H.emote("pain")
 				if(damage_amount > ((H.STACON*10) / 3) && !HAS_TRAIT(H, TRAIT_NOPAINSTUN))
-					H.Immobilize(8)
+					H.Immobilize(4)
 					shake_camera(H, 2, 2)
 					H.stuttering += 5
 				if(damage_amount > 10 && !HAS_TRAIT(H, TRAIT_NOPAINSTUN))
@@ -2077,7 +2091,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			burning_items |= leg_clothes
 
 		for(var/obj/item/I as anything in burning_items)
-			I.fire_act(((H.fire_stacks + H.divine_fire_stacks)* 50)) //damage taken is reduced to 2% of this value by fire_act()
+			I.fire_act(((H.fire_stacks + H.divine_fire_stacks) * 25)) //damage taken is reduced to 2% of this value by fire_act()
 
 		var/thermal_protection = H.get_thermal_protection()
 
@@ -2090,6 +2104,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "on_fire", /datum/mood_event/on_fire)
 
 /datum/species/proc/CanIgniteMob(mob/living/carbon/human/H)
+	if(H.status_flags & GODMODE)
+		return FALSE
 	if(H.divine_fire_stacks > 0) // tieflings can't say no to astrata
 		return TRUE
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))

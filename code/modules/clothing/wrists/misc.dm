@@ -12,8 +12,11 @@
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 
+/obj/item/clothing/wrists/bracers/rare
+	abstract_type = /obj/item/clothing/wrists/bracers/rare
+
 //Aasimar hoplite bracers
-/obj/item/clothing/wrists/bracers/hoplite
+/obj/item/clothing/wrists/bracers/rare/hoplite
 	name = "ancient bracers"
 	desc = "Stalwart bronze bracers, from an age long past."
 	icon_state = "aasimarwrist"

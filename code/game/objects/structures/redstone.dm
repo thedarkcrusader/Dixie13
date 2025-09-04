@@ -88,7 +88,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
 		if(do_after(user, used_time))
 			for(var/obj/structure/O in redstone_attached)
-				INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+				spawn(0) O.redstone_triggered(user)
+			trigger_wire_network(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -102,7 +103,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 		if(prob(L.STASTR * 4))
 			for(var/obj/structure/O in redstone_attached)
-				INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+				spawn(0) O.redstone_triggered(user)
+			trigger_wire_network(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -120,7 +122,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
 		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
 		for(var/obj/structure/O in redstone_attached)
-			INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+			spawn(0) O.redstone_triggered(user)
+		trigger_wire_network(user)
 		toggled = !toggled
 		playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
 
@@ -247,6 +250,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		if(structure.w_class >= WEIGHT_CLASS_BULKY)
 			playsound(src, 'sound/misc/pressurepad_down.ogg', 65, extrarange = 2)
 			triggerplate()
+			trigger_wire_network(AM)
 
 /obj/structure/pressure_plate/Uncrossed(atom/movable/AM)
 	. = ..()
@@ -254,6 +258,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		return
 	if(isliving(AM))
 		triggerplate()
+		trigger_wire_network(AM)
 
 /obj/structure/pressure_plate/proc/triggerplate()
 	playsound(src, 'sound/misc/pressurepad_up.ogg', 65, extrarange = 2)
@@ -308,7 +313,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	return TRUE
 
 /obj/structure/activator/attackby(obj/item/I, mob/user, params)
-	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/bomb) || istype(I, /obj/item/flint)))
+	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/explosive/bottle) || istype(I, /obj/item/flint)))
 		if(!user.transferItemToLoc(I, src))
 			return ..()
 		containment = I
@@ -326,9 +331,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/activator/redstone_triggered(mob/user)
 	if(!containment)
 		return
-	if(istype(containment, /obj/item/bomb))
-		var/obj/item/bomb/bomba = containment
-		bomba.light()
+	if(istype(containment, /obj/item/explosive/bottle))
+		var/obj/item/explosive/bottle/bomba = containment
+		bomba.arm_grenade()
 	if(istype(containment, /obj/item/flint))
 		var/datum/effect_system/spark_spread/S = new()
 		var/turf/front = get_step(src, dir)
@@ -361,15 +366,19 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	redstone_structure = TRUE
 	var/togg = FALSE
 	var/base_state = "floorhatch"
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 /*
 /obj/structure/floordoor/Initialize()
 	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 40)
 	return ..()
 */
-/obj/structure/floordoor/obj_break(damage_flag, silent)
+/obj/structure/floordoor/atom_break(damage_flag)
+	. = ..()
 	obj_flags = null
-	..()
+
+/obj/structure/floordoor/atom_fix()
+	. = ..()
+	obj_flags = initial(obj_flags)
 
 /obj/structure/floordoor/redstone_triggered(mob/user)
 	if(obj_broken)
@@ -396,7 +405,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/changing_state = FALSE
 	var/delay2open = 0
 	var/delay2close = 0
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 	nomouseover = TRUE
 	mouse_opacity = 0
 	redstone_structure = TRUE
@@ -448,7 +457,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/openn = FALSE
 	var/changing_state = FALSE
 	layer = ABOVE_OPEN_TURF_LAYER
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 
 /obj/structure/kybraxor/redstone_triggered(mob/user)
 	if(changing_state)

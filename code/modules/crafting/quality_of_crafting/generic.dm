@@ -77,3 +77,65 @@
 	crafting_message = "starts constructing a paint palette"
 	craftdiff = 0
 	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/woodthresher
+	name = "thresher"
+	output = /obj/item/weapon/thresher
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/rope = 1
+	)
+	starting_atom = /obj/item/rope
+	attacked_atom = /obj/item/grown/log/tree/small
+
+/datum/repeatable_crafting_recipe/militarythresher
+	name = "military flail"
+	output = /obj/item/weapon/thresher/military
+	requirements = list(
+		/obj/item/weapon/thresher = 1,
+		/obj/item/ingot/iron = 1
+	)
+	attacked_atom = /obj/item/weapon/thresher
+	starting_atom = /obj/item/ingot/iron
+
+
+/datum/repeatable_crafting_recipe/bee_treatment
+	name = "General Bee Treatment"
+	output = /obj/item/bee_treatment
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/alch/herb/mentha = 1
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom = /obj/item/alch/herb/mentha
+	category = "Bees"
+
+/datum/repeatable_crafting_recipe/bee_treatment/antiviral
+	name = "Antiviral Bee Treatment"
+	output = /obj/item/bee_treatment/antiviral
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/alch/herb/rosa = 1
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom = /obj/item/alch/herb/rosa
+
+/datum/repeatable_crafting_recipe/bee_treatment/miticide
+	name = "Miticide Bee Treatment"
+	output = /obj/item/bee_treatment/miticide
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/alch/herb/salvia = 1
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom = /obj/item/alch/herb/salvia
+
+/datum/repeatable_crafting_recipe/bee_treatment/insecticide
+	name = "Insecticide Bee Treatment"
+	output = /obj/item/bee_treatment/miticide
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/alch/herb/paris = 1
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom = /obj/item/alch/herb/paris

@@ -5,11 +5,11 @@
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/count
 	grant_lit_torch = TRUE
-	is_foreigner = FALSE
+	is_recognized = TRUE
 
 /datum/outfit/job/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -59,11 +59,11 @@
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/countess
 	grant_lit_torch = TRUE
-	is_foreigner = FALSE
+	is_recognized = TRUE
 
 /datum/outfit/job/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -110,7 +110,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
-	is_foreigner = FALSE
+	is_recognized = TRUE
 
 /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -133,7 +133,7 @@
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
-	pants = /obj/item/clothing/pants/tights/black
+	pants = /obj/item/clothing/pants/tights/colored/black
 	backr = /obj/item/weapon/sword/long/greatsword/flamberge
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/grenzelplate
@@ -157,7 +157,6 @@
 	greet_text = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_men_at_arms
-	is_foreigner = FALSE
 
 /datum/outfit/job/grenzelhoft_migration/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -183,7 +182,7 @@
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/mace/cudgel

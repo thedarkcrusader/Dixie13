@@ -146,5 +146,7 @@
 
 	///Which ambient sound this client is currently being provided
 	var/current_ambient_sound
-
-	var/list/triumph_ids = list() //I am not sure if i should put it here, but if it work? this check for specific triumph IDs.
+	/// Cooldowns for Real like - For Mentor
+	var/list/real_like_cooldowns  = list()
+	/// Total Real likes recieved in a round - For Mentor
+	var/real_likes_received  = 0

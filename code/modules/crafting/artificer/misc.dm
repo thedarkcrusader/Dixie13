@@ -7,6 +7,15 @@
 	i_type = "General"
 	category = "General"
 
+/datum/artificer_recipe/general/bronze_cast
+	name = "Bronze Casting"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/ingot/tin = 1)
+	created_item = /obj/item/ingot/bronze
+	hammers_per_item = 3
+	created_amount = 2
+	craftdiff = 0
+
 /datum/artificer_recipe/general/woodcog //This looks a bit silly but due to how these datums work is necessary for other things to inherit from it
 	name = "Wooden Gear"
 	required_item = /obj/item/natural/wood/plank
@@ -65,14 +74,12 @@
 	craftdiff = 1
 	created_amount = 5
 
-/datum/artificer_recipe/general/bronze_cast
-	name = "Bronze Casting"
-	required_item = /obj/item/ingot/copper
-	additional_items = list(/obj/item/ingot/tin = 1)
-	created_item = /obj/item/ingot/bronze
-	hammers_per_item = 3
-	created_amount = 2
-	craftdiff = 0
+/datum/artificer_recipe/general/bronze_chisel
+	name = "Bronze Chisel"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/weapon/chisel/bronze
+	hammers_per_item = 5
+	craftdiff = 1
 
 /datum/artificer_recipe/general/headhook
 	name = "Bronze Headhook (+Fibers x2)"
@@ -82,13 +89,13 @@
 	hammers_per_item = 6
 	craftdiff = 3
 
-///datum/artificer_recipe/gold/headhook //this ones devsprite is so ass I am just going to make it inaccasible
-	//name = "Royal Headhook"
-	//required_item = /obj/item/ingot/gold
-	//created_item = /obj/item/storage/hip/headhook/royal
-	//additional_items = list(/obj/item/ingot/silver, /obj/item/natural/silk = 2)
-	//hammers_per_item = 6
-	//craftdiff = 4
+/datum/artificer_recipe/gold/headhook
+	name = "Royal Headhook"
+	required_item = /obj/item/ingot/gold
+	created_item = /obj/item/storage/hip/headhook/royal
+	additional_items = list(/obj/item/natural/silk = 2)
+	hammers_per_item = 6
+	craftdiff = 3
 
 // --------- TOOLS -----------
 
@@ -101,7 +108,30 @@
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
 	hammers_per_item = 9
+	craftdiff = 3
+
+/datum/artificer_recipe/tools/lockpicks
+	name = "3x Lockpicks"
+	required_item = /obj/item/ingot/iron
+	created_item = /obj/item/lockpick
+	hammers_per_item = 5
+	created_amount = 3
 	craftdiff = 2
+
+/datum/artificer_recipe/tools/lockpickring
+	name = "Lockpick ring"
+	required_item = /obj/item/ingot/iron
+	created_item = /obj/item/lockpickring
+	hammers_per_item = 5
+	craftdiff = 2
+
+/datum/artificer_recipe/tools/drill
+	name = "Clockwork Drill (+1 Bronze Bar) (+1 Metal Gear) (+1 Wooden Plank)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/ingot/bronze = 1, /obj/item/gear/metal = 1, /obj/item/natural/wood/plank = 1)
+	created_item = /obj/item/weapon/pick/drill
+	hammers_per_item = 6
+	craftdiff = 4
 
 // --------- WEAPON -----------
 
@@ -170,6 +200,14 @@
 	hammers_per_item = 4
 	craftdiff = 5
 
+/datum/artificer_recipe/contraptions/boiler
+	name = "Steamknight Boiler (+1 Bar, +3 Cogs)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/clothing/cloak/boiler
+	additional_items = list(/obj/item/gear/metal/bronze = 3, /obj/item/ingot/bronze = 1)
+	hammers_per_item = 4
+	craftdiff = 5
+
 // --------- Ammo -----------
 
 /datum/artificer_recipe/ammo
@@ -177,12 +215,12 @@
 	category = "Ammo"
 
 /datum/artificer_recipe/ammo/lead_bullet
-	name = "Lead Bullets 2x"
-	hammers_per_item = 2
+	name = "Lead Bullets 4x"
+	hammers_per_item = 4
 	created_item = /obj/item/ammo_casing/caseless/bullet
-	required_item = /obj/item/ingot/iron
+	required_item = /obj/item/ingot/tin
 	craftdiff = 2
-	created_amount = 2
+	created_amount = 4
 
 /datum/artificer_recipe/ammo/bolts
 	name = "Crossbow Bolts 5x (+1 Iron)"
@@ -201,6 +239,26 @@
 	hammers_per_item = 6
 	craftdiff = 2
 	created_amount = 5
+
+/datum/artificer_recipe/ammo/arrows/pyro
+	name = "Fire Arrows 5x (+1 Iron +1 Blast Powder)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
+	created_item = /obj/item/ammo_casing/caseless/arrow/pyro
+	hammers_per_item = 6
+	craftdiff = 3
+	created_amount = 5
+
+/datum/artificer_recipe/ammo/bolts/pyro
+	name = "Crossbow Bolts 5x (+1 Iron +1 Blast Powder)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/powder/blastpowder)
+	created_item = /obj/item/ammo_casing/caseless/bolt/pyro
+	hammers_per_item = 6
+	craftdiff = 3
+	created_amount = 5
+
+// TODO: add Vial bolts/arrows
 
 // --------- WOODEN PROSTHETICS -----------
 

@@ -6,7 +6,6 @@
 	to get your brutality off the town streets where cracked skulls caused outcries, \
 	or maybe your soft-hearted lord wanted to be sure his justice was done without malice. \
 	In either case, your little world is the lowest office in the Realm; from it your guests see only hell."
-	flag = DUNGEONEER
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_DUNGEONEER
@@ -32,7 +31,7 @@
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	cloak = /obj/item/clothing/cloak/stabard/dungeon
+	cloak = /obj/item/clothing/cloak/stabard/colored/dungeon
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/storage/keyring/dungeoneer

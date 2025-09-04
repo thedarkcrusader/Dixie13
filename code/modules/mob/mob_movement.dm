@@ -78,12 +78,16 @@ w/**
 		return FALSE
 	if(!n || !direct)
 		return FALSE
-	if(mob.notransform)
+	if(HAS_TRAIT(mob, TRAIT_NO_TRANSFORM))
 		return FALSE	//This is sota the goto stop mobs from moving var
 	if(mob.control_object)
 		return Move_object(direct)
 	if(!isliving(mob))
 		return mob.Move(n, direct)
+	else
+		if (HAS_TRAIT(mob, TRAIT_IN_FRENZY) || HAS_TRAIT(mob, TRAIT_MOVEMENT_BLOCKED))
+			return FALSE
+
 	if(mob.stat == DEAD)
 #ifdef TESTSERVER
 		mob.ghostize()
@@ -636,8 +640,8 @@ w/**
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(H.get_encumbrance() >= 0.7)
-						to_chat(H, span_info("Your armor is too heavy to run in!"))
+					if(H.get_encumbrance() >= 0.5)
+						to_chat(H, span_info("You are too heavy to run!"))
 						return
 			m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)

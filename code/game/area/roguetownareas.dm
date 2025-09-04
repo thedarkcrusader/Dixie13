@@ -370,7 +370,7 @@
 	name = "Manor"
 	icon = 'icons/turf/areas_manor.dmi'
 	icon_state = "manor"
-	background_track = list('sound/music/area/manor.ogg', 'sound/music/area/manor2.ogg')
+	background_track = 'sound/music/area/manor.ogg'
 	background_track_dusk = null
 	background_track_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
@@ -910,7 +910,7 @@
 		return
 
 	var/static/list/profane_words = list("zizo","cock","dick","fuck","shit","pussy","cuck","cunt","asshole")
-	var/prayer = sanitize_hear_message(message)
+	var/prayer = SANITIZE_HEAR_MESSAGE(message)
 
 	for(var/profanity in profane_words)
 		if(findtext(prayer, profanity))
@@ -1011,3 +1011,7 @@
 /area/rogue/indoors/lich
 	name = "lair (Lich)"
 	background_track = 'sound/music/area/churchnight.ogg'
+
+/area/rogue/delver
+	delver_restrictions = TRUE
+	converted_type = /area/rogue/delver

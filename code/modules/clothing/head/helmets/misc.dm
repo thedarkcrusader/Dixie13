@@ -144,7 +144,24 @@
 //............... Battle Nun ........................... (unique kit for the role, iron coif mechanically.)
 /obj/item/clothing/head/helmet/battlenun
 	name = "veil over coif"
-	desc = "A gleaming coif of metal half-hidden by a black veil."
+	desc = "A gleaming coif of iron metal half-hidden by a black veil."
+	icon_state = "battlenun"
+	dynamic_hair_suffix = ""	// this hides all hair
+	flags_inv = HIDEEARS|HIDEHAIR
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	blocksound = CHAINHIT
+	resistance_flags = FIRE_PROOF
+
+	armor = ARMOR_MAILLE_IRON
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+	prevent_crits = ALL_EXCEPT_BLUNT
+	item_weight = 9 * IRON_MULTIPLIER
+
+/obj/item/clothing/head/helmet/battlenun/steel
+	name = "veil over coif"
+	desc = "A gleaming coif of steel metal half-hidden by a black veil."
 	icon_state = "battlenun"
 	dynamic_hair_suffix = ""	// this hides all hair
 	flags_inv = HIDEEARS|HIDEHAIR
@@ -157,7 +174,7 @@
 	armor = ARMOR_MAILLE
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 9 * STEEL_MULTIPLIER
 
 
 //................ Sallet ............... //
@@ -245,6 +262,7 @@
 	body_parts_covered = FULL_HEAD
 	max_integrity = INTEGRITY_STRONG
 	prevent_crits = ALL_CRITICAL_HITS
+	abstract_type = /obj/item/clothing/head/helmet/visored
 
 /obj/item/clothing/head/helmet/visored/AdjustClothes(mob/user)
 	if(loc == user)
@@ -315,7 +333,7 @@
 	emote_environment = 3
 	item_weight = 5.6 * STEEL_MULTIPLIER
 
-/obj/item/clothing/head/helmet/visored/knight/black
+/obj/item/clothing/head/helmet/visored/knight/blk
 	color = CLOTHING_SOOT_BLACK
 
 /obj/item/clothing/head/helmet/visored/knight/iron
@@ -399,6 +417,10 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 
+/obj/item/clothing/head/helmet/visored/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 //............... Feldshers Cage ............... //
 /obj/item/clothing/head/helmet/feld
 	name = "feldsher's cage"
@@ -413,6 +435,9 @@
 	body_parts_covered = FULL_HEAD
 	prevent_crits = BLUNT_AND_MINOR_CRITS
 	item_weight = 5.5 * STEEL_MULTIPLIER
+
+/obj/item/clothing/head/helmet/blacksteel
+	abstract_type = /obj/item/clothing/head/helmet/blacksteel
 
 /obj/item/clothing/head/helmet/blacksteel/bucket
 	name = "Blacksteel Great Helm"

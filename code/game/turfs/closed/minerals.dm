@@ -74,18 +74,16 @@
 		to_chat(user, span_warning("I don't have the dexterity to do this!"))
 		return
 	lastminer = user
-	var/olddam = turf_integrity
-	..()
-	if(turf_integrity && turf_integrity > 10)
-		if(turf_integrity < olddam)
+	var/olddam = atom_integrity
+	. = ..()
+	if(uses_integrity && atom_integrity > 10)
+		if(atom_integrity < olddam)
 			if(prob(50))
 				if(user.Adjacent(src))
 					var/obj/item/natural/stone/S = new(src)
 					S.forceMove(get_turf(user))
 
-/turf/closed/mineral/turf_destruction(damage_flag)
-	if(!(istype(src, /turf/closed)))
-		return
+/turf/closed/mineral/atom_destruction(damage_flag)
 	if(damage_flag == "blunt")
 		var/obj/item/explo_mineral = mineralType
 		var/explo_mineral_amount = mineralAmt
@@ -333,6 +331,7 @@
 	rockType = /obj/item/natural/rock/copper
 	spreadChance = 4
 	spread = 3
+	//maptext = "copper"
 
 /turf/closed/mineral/copper/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -345,6 +344,7 @@
 	rockType = /obj/item/natural/rock/tin
 	spreadChance = 15
 	spread = 5
+	//maptext = "tin"
 
 /turf/closed/mineral/tin/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -357,6 +357,7 @@
 	rockType = /obj/item/natural/rock/silver
 	spreadChance = 2
 	spread = 2
+	//maptext = "Silver"
 
 /turf/closed/mineral/silver/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -369,6 +370,7 @@
 	rockType = /obj/item/natural/rock/gold
 	spreadChance = 2
 	spread = 2
+	//maptext = "gold"
 
 /turf/closed/mineral/gold/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -381,6 +383,7 @@
 	rockType = /obj/item/natural/rock/salt
 	spreadChance = 12
 	spread = 3
+	//maptext = "salt"
 
 /turf/closed/mineral/salt/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -393,6 +396,7 @@
 	rockType = /obj/item/natural/rock/cinnabar
 	spreadChance = 23
 	spread = 5
+	//maptext = "cinnabar"
 
 /turf/closed/mineral/cinnabar/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -424,6 +428,7 @@
 	rockType = /obj/item/natural/rock/iron
 	spreadChance = 5
 	spread = 3
+	//maptext = "iron"
 
 /turf/closed/mineral/iron/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')
@@ -467,7 +472,7 @@
 	icon_state = MAP_SWITCH("mineral", "bedrock_ice")
 
 /turf/closed/mineral/bedrock/attackby(obj/item/I, mob/user, params)
-	to_chat(user, span_warning("This is far to sturdy to be destroyed!"))
+	to_chat(user, span_warning("This is far too sturdy to be destroyed!"))
 	return FALSE
 
 /turf/closed/mineral/bedrock/TerraformTurf(path, new_baseturf, flags, defer_change = FALSE, ignore_air = FALSE)

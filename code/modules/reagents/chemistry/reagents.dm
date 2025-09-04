@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(holder)
 		var/adjusted_metabolization_rate = metabolization_rate
 		if(istype(src, /datum/reagent/consumable/ethanol) && has_world_trait(/datum/world_trait/baotha_revelry))
-			adjusted_metabolization_rate = adjusted_metabolization_rate * 0.5
+			adjusted_metabolization_rate = adjusted_metabolization_rate * (is_ascendant(BAOTHA) ? 0.33 : 0.5)
 		holder.remove_reagent(type, adjusted_metabolization_rate) //By default it slowly disappears.
 		if(M.client)
 			if(!istype(src, /datum/reagent/drug) && reagent_state == LIQUID)
@@ -114,6 +114,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 // Called when this reagent first starts being metabolized by a liver
 /datum/reagent/proc/on_mob_metabolize(mob/living/L)
+	return
+
+/// Called when this liquid is aerated (sprinklers vents and pumps for now)
+/datum/reagent/proc/on_aeration(volume, turf/turf)
 	return
 
 // Called when this reagent stops being metabolized by a liver

@@ -1,4 +1,5 @@
 #define ROUND_START_MUSIC_LIST "strings/round_start_sounds.txt"
+#define SS_TICKER_TRAIT "SS_Ticker"
 
 /proc/low_memory_force_start()
 	for(var/i in GLOB.new_player_list)
@@ -171,8 +172,6 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = world.timeofday
 	return ..()
 
-#undef ROUND_START_MUSIC_LIST
-
 /datum/controller/subsystem/ticker/fire()
 	if(reboot_anyway)
 		if(world.time > reboot_anyway)
@@ -185,6 +184,7 @@ SUBSYSTEM_DEF(ticker)
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
+			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
 		if(GAME_STATE_PREGAME)
 			//lobby stats for statpanels
@@ -217,6 +217,7 @@ SUBSYSTEM_DEF(ticker)
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
 					send2chat(new /datum/tgs_message_content("New round starting on Vanderlin!"), CONFIG_GET(string/chat_announce_new_game))
+					SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 					current_state = GAME_STATE_SETTING_UP
 					Master.SetRunLevel(RUNLEVEL_SETUP)
 					if(start_immediately)
@@ -229,6 +230,7 @@ SUBSYSTEM_DEF(ticker)
 				start_at = world.time + timeDelayAdd
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
+				SEND_SIGNAL(src, COMSIG_TICKER_ERROR_SETTING_UP)
 
 		if(GAME_STATE_PLAYING)
 			check_queue()
@@ -334,10 +336,17 @@ SUBSYSTEM_DEF(ticker)
 	message_admins(span_boldnotice("Welcome to [SSmapping.config.map_name]!"))
 
 	for(var/client/C in GLOB.clients)
+		if(!C?.mob)
+			continue
 		if(C.mob == SSticker.rulermob)
 			C.mob.playsound_local(C.mob, 'sound/misc/royal_roundstart.ogg', 100, FALSE)
 		else
 			C.mob.playsound_local(C.mob, 'sound/misc/roundstart.ogg', 100, FALSE)
+
+	for(var/datum_type in SStriumphs.communal_pools)
+		var/datum/triumph_buy/communal/preround/triumph_buy_preround = locate(datum_type) in SStriumphs.triumph_buy_datums
+		if(triumph_buy_preround && istype(triumph_buy_preround))
+			triumph_buy_preround.check_refund()
 
 	current_state = GAME_STATE_PLAYING
 
@@ -433,7 +442,7 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/living = player.transfer_character()
 		if(living)
 			qdel(player)
-			living.notransform = TRUE
+			ADD_TRAIT(living, TRAIT_NO_TRANSFORM, SS_TICKER_TRAIT)
 			livings += living
 			GLOB.character_ckey_list[living.real_name] = living.ckey
 		if(ishuman(living))
@@ -444,7 +453,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/release_characters(list/livings)
 	for(var/mob/living/L as anything in livings)
-		L.notransform = FALSE
+		REMOVE_TRAIT(L, TRAIT_NO_TRANSFORM, SS_TICKER_TRAIT)
 
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
@@ -642,3 +651,6 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 
 	text2file(login_music, "data/last_round_lobby_music.txt")
+
+#undef ROUND_START_MUSIC_LIST
+#undef SS_TICKER_TRAIT

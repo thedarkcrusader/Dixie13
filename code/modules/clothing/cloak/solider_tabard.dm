@@ -102,10 +102,13 @@
 		return
 	picked = TRUE
 
-/obj/item/clothing/cloak/stabard/dungeon
+/obj/item/clothing/cloak/stabard/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
+/obj/item/clothing/cloak/stabard/colored/dungeon
 	color = CLOTHING_SOOT_BLACK
 
-/obj/item/clothing/cloak/stabard/dungeon/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/cloak/stabard/colored/dungeon/attack_hand_secondary(mob/user, params)
 	return
 
 /obj/item/clothing/cloak/stabard/mercenary
@@ -195,15 +198,20 @@
 	icon_state = "tabard_ravox"
 	item_state = "tabard_ravox"
 
+/obj/item/clothing/cloak/stabard/templar/xylix
+	name = "surcoat of the xylixian order"
+	icon_state = "tabard_xylix"
+	item_state = "tabard_xylix"
+
 //////////////////////////
 /// SURCOATS
 ////////////////////////
 
-/obj/item/clothing/cloak/stabard/surcoat
+/obj/item/clothing/cloak/stabard/jupon
 	name = "jupon"
 	icon_state = "surcoat"
 
-/obj/item/clothing/cloak/stabard/surcoat/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/cloak/stabard/jupon/attack_hand_secondary(mob/user, params)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -251,14 +259,14 @@
 		return
 	picked = TRUE
 
-/obj/item/clothing/cloak/stabard/surcoat/guard
-	desc = "A surcoat with the lord's heraldic colors."
+/obj/item/clothing/cloak/stabard/jupon/guard
+	desc = "A jupon with the lord's heraldic colors."
 	color = CLOTHING_BLOOD_RED
 	detail_tag = "_quad"
 	detail_color = CLOTHING_PLUM_PURPLE
 	uses_lord_coloring = LORD_PRIMARY | LORD_DETAIL_AND_COLOR
 
-/obj/item/clothing/cloak/stabard/surcoat/guard/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/cloak/stabard/jupon/guard/attack_hand_secondary(mob/user, params)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

@@ -4,10 +4,13 @@
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
+	var/empty_when_dropped = TRUE
 
 /obj/item/storage/belt/leather/dropped(mob/living/carbon/human/user)
 	..()
 	if(QDELETED(src))
+		return
+	if(!empty_when_dropped)
 		return
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
@@ -16,6 +19,7 @@
 			STR.remove_from_storage(I, get_turf(src))
 
 /obj/item/storage/belt/leather/assassin // Assassin's super edgy and cool belt can carry normal items (for poison vial, lockpick).
+	empty_when_dropped = FALSE
 	component_type = /datum/component/storage/concrete/grid/belt/assassin
 
 	populate_contents = list(
@@ -30,6 +34,15 @@
 	populate_contents = list(
 		/obj/item/needle/thorn,
 		/obj/item/key/bandit,
+	)
+
+
+//Garrison's belt starts with a simple needle, and a key to their hideout.
+
+/obj/item/storage/belt/leather/fgarrison
+	populate_contents = list(
+		/obj/item/needle/thorn,
+		/obj/item/key/forrestgarrison,
 	)
 
 //Bandit's belt starts with a bandage and a key to their guildhall.
@@ -69,6 +82,10 @@
 	desc = "A belt with a silver plaque on its front."
 	icon_state = "silverplaque"
 	sellprice = 30
+
+/obj/item/storage/belt/leather/plaquesilver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/storage/belt/leather/steel
 	name = "steel belt"
@@ -293,6 +310,22 @@
 	)
 	component_type = /datum/component/storage/concrete/grid/surgery_bag
 
+/obj/item/surgeontoolspawner
+	name = "set of surgery tools"
+
+/obj/item/surgeontoolspawner/OnCrafted(dirin, mob/user)
+	. = ..()
+	new /obj/item/weapon/surgery/scalpel(loc)
+	new /obj/item/weapon/surgery/saw(loc)
+	//two hemostats because one is needed to clamp bleeders, the other is needed to actually remove stuff with it
+	new /obj/item/weapon/surgery/hemostat(loc)
+	new /obj/item/weapon/surgery/hemostat(loc)
+	new /obj/item/weapon/surgery/retractor(loc)
+	new /obj/item/weapon/surgery/bonesetter(loc)
+	new /obj/item/weapon/surgery/cautery(loc)
+	new /obj/item/weapon/surgery/hammer(loc)
+	qdel(src)
+
 /obj/item/storage/backpack/satchel/surgbag/shit
 	populate_contents = list(
 		/obj/item/needle,
@@ -310,7 +343,6 @@
 	)
 
 /obj/item/storage/belt/leather/knifebelt
-
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
 	icon_state = "knife"
@@ -319,12 +351,17 @@
 	var/max_storage = 8
 	sewrepair = TRUE
 	component_type = /datum/component/storage/concrete/grid/belt/knife_belt
+	empty_when_dropped = FALSE
 
+/obj/item/storage/belt/leather/knifebelt/attack_atom(atom/attacked_atom, mob/living/user)
+	if(!isturf(attacked_atom))
+		return ..()
 
-/obj/item/storage/belt/leather/knifebelt/attack_turf(turf/T, mob/living/user)
+	. = TRUE
 	if(length(contents) >= max_storage)
 		to_chat(user, span_warning("Your [src.name] is full!"))
 		return
+	var/turf/T = attacked_atom
 	to_chat(user, span_notice("You begin to gather the ammunition..."))
 	for(var/obj/item/weapon/knife/throwingknife/knife in T.contents)
 		if(do_after(user, 5 DECISECONDS))
@@ -346,9 +383,6 @@
 	. = ..()
 
 /obj/item/storage/belt/leather/knifebelt/attack_hand_secondary(mob/user, params)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
 	if(length(contents))
 		var/list/knives = list()
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE_TYPE, /obj/item/weapon/knife/throwingknife, drop_location(), amount = 1, check_adjacent = TRUE, user = user, inserted = knives)
@@ -356,6 +390,7 @@
 			if(!user.put_in_active_hand(knife))
 				break
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	. = ..()
 
 /obj/item/storage/belt/leather/knifebelt/examine(mob/user)
 	. = ..()
@@ -430,7 +465,7 @@
 	name = "bronze head hook"
 	desc = "a bronze hook for storing 12 heads"
 	icon = 'icons/roguetown/clothing/belts.dmi'
-	//mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi'
+	//mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi' // TODO
 	icon_state = "bronzeheadhook"
 	item_state = "bronzeheadhook"
 	slot_flags = ITEM_SLOT_HIP
@@ -452,19 +487,19 @@
 	if(length(contents))
 		. += span_notice("[length(contents)] thing[length(contents) > 1 ? "s" : ""] in [src].")
 
-///obj/item/storage/hip/headhook/royal //N/A uncomment this whole thing when this actually has sprites to use, everything else about it works fine
-	//name = "royal head hook"
-	//desc = "a golden hook for storing 16 heads, befitting of any king's hunt"
-	//icon = 'icons/roguetown/clothing/belts.dmi' //N/A uncomment when a mob_overlay icon is made and added
-	//mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi'
-	//icon_state = "knife"
-	//item_state = "knife"
-	//slot_flags = ITEM_SLOT_HIP
-	//w_class = WEIGHT_CLASS_NORMAL
-	//max_integrity = 400
-	//equip_sound = 'sound/blank.ogg'
-	//sellprice = 250
-	//bloody_icon_state = "bodyblood"
-	//anvilrepair = /datum/skill/craft/blacksmithing
-	//smeltresult = /obj/item/ingot/gold
-	//component_type = /datum/component/storage/concrete/grid/headhook/bronze
+/obj/item/storage/hip/headhook/royal
+	name = "royal head hook"
+	desc = "a golden hook for storing 16 heads, befitting of any king's hunt"
+	icon = 'icons/roguetown/clothing/belts.dmi'
+	//mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi' // TODO
+	icon_state = "goldheadhook" // coder sprite  , if you can improve it would be nice
+	item_state = "goldheadhook"
+	slot_flags = ITEM_SLOT_HIP
+	w_class = WEIGHT_CLASS_NORMAL
+	max_integrity = 400
+	equip_sound = 'sound/blank.ogg'
+	sellprice = 160
+	bloody_icon_state = "bodyblood"
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/gold
+	component_type = /datum/component/storage/concrete/grid/headhook/bronze

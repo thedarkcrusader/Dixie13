@@ -1,5 +1,6 @@
 /datum/objective/hoard_mammons
 	name = "Hoard Mammons"
+	triumph_count = 2
 	var/target_mammons = 400
 	var/current_amount = 0
 	var/check_cooldown = 20 SECONDS
@@ -31,21 +32,9 @@
 		to_chat(user, span_greentext("You have accumulated [mammon_count] mammons, completing Matthios' objective!"))
 		user.adjust_triumphs(triumph_count)
 		completed = TRUE
-		adjust_storyteller_influence("Matthios", 15)
+		adjust_storyteller_influence(MATTHIOS, 15)
 		escalate_objective()
 		STOP_PROCESSING(SSprocessing, src)
 
 /datum/objective/hoard_mammons/update_explanation_text()
 	explanation_text = "Accumulate at least [target_mammons] mammons in your possession to demonstrate your greediness to Matthios."
-
-/obj/item/stack/currency/mammon/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
-	. = ..()
-	if(proximity_flag && istype(user))
-		user.check_mammon_objectives()
-
-/mob/living/proc/check_mammon_objectives()
-	if(!mind)
-		return
-
-	for(var/datum/objective/hoard_mammons/H in mind.get_all_objectives())
-		H.check_mammons()

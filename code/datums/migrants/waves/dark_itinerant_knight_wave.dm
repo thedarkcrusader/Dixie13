@@ -15,6 +15,7 @@
 	shirt = /obj/item/clothing/shirt/shadowshirt
 	armor = /obj/item/clothing/armor/plate/full/zizo
 	shoes = /obj/item/clothing/shoes/boots/armor/zizo
+	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/satchel
@@ -40,10 +41,15 @@
 		H.change_stat(STATKEY_CON, 2)
 		H.change_stat(STATKEY_END, 2)
 		H.change_stat(STATKEY_SPD, -1)
+		H.grant_language(/datum/language/undead)
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Zizo Knight"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
@@ -58,12 +64,12 @@
 
 /datum/outfit/job/dark_itinerant_squire/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/shirt/dress/gen/black
-	pants = /obj/item/clothing/pants/chainlegs/iron
+	shirt = /obj/item/clothing/shirt/dress/gen/colored/black
+	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/ammo_holder/quiver/bolts
-	armor = /obj/item/clothing/armor/chainmail
+	armor = /obj/item/clothing/armor/leather/splint
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	gloves = /obj/item/clothing/gloves/leather
 	wrists = /obj/item/clothing/wrists/bracers/leather
@@ -87,6 +93,7 @@
 		H.change_stat(STATKEY_CON, 2)
 		H.change_stat(STATKEY_INT, -1)
 		H.change_stat(STATKEY_SPD, 2)
+		H.grant_language(/datum/language/undead)
 	if(H.gender == MALE && H.dna?.species)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/squire()
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

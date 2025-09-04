@@ -17,7 +17,7 @@
 	possible_item_intents = list(/datum/intent/hit)
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
-	metalizer_result = /obj/structure/bars/pipe
+	metalizer_result = /obj/item/rotation_contraption/water_pipe
 	var/quality = SMELTERY_LEVEL_NORMAL // For it not to ruin recipes that need it
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
 	var/lumber_alt
@@ -101,8 +101,9 @@
 		return ..()
 	qdel(src)
 
-/obj/item/grown/log/tree/obj_destruction(damage_flag)
-	obj_destroyed = TRUE
+/obj/item/grown/log/tree/atom_destruction(damage_flag)
+	SHOULD_CALL_PARENT(FALSE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DESTRUCTION, damage_flag)
 	if(damage_flag == "acid")
 		acid_melt()
 	else if(damage_flag == "fire")
@@ -124,7 +125,7 @@
 	experimental_inhand = FALSE
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
-	static_debris = list(/obj/item/grown/log/tree/stick = 3)
+	static_debris = list(/obj/item/grown/log/tree/stick = 2)
 	firefuel = 20 MINUTES
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
@@ -244,7 +245,7 @@
 	experimental_inhand = FALSE
 	firefuel = 5 MINUTES
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	bundletype = /obj/item/natural/bundle/plank
 
 /obj/item/natural/bundle/plank
@@ -269,7 +270,7 @@
 	icon1step = 5
 	icon2 = "planks2"
 	icon2step = 10
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 
 /obj/item/grown/log/tree/essence
 	name = "essence of lumber"

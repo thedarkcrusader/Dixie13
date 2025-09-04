@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	ambushable = FALSE
 	base_intents = list(INTENT_STEAL, INTENT_HELP, INTENT_DISARM, /datum/intent/unarmed/claw, /datum/intent/simple/bite, /datum/intent/jump)
 	possible_rmb_intents = list()
-	vitae_pool = 200
+	bloodpool = 200
 
 /mob/living/carbon/human/species/rousman/Initialize()
 	. = ..()
@@ -126,6 +126,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	. = ..()
 	icon_state = "rousman_skel_head"
 	headprice = 2
+	sellprice = 2
 
 
 /datum/species/rousman
@@ -148,7 +149,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 
 /datum/species/rousman/regenerate_icons(mob/living/carbon/human/H)
 	H.icon_state = ""
-	if(H.notransform)
+	if(HAS_TRAIT(H, TRAIT_NO_TRANSFORM))
 		return 1
 	H.update_inv_hands()
 	H.update_inv_handcuffed()
@@ -211,6 +212,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 			headdy.icon = 'icons/roguetown/mob/monster/rousman.dmi'
 			headdy.icon_state = "[src.dna.species.id]_head"
 			headdy.headprice = rand(7,20)
+			headdy.sellprice = rand(7,20)
 	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.Remove(src,1)
@@ -236,7 +238,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	last_process = world.time
 	amount += amt2add
 	if(has_world_trait(/datum/world_trait/pestra_mercy))
-		amount -= 5 * time_elapsed
+		amount -= (is_ascendant(PESTRA) ? 2.5 : 5) * time_elapsed
 
 	var/mob/living/carbon/C = parent
 	if(!C)
@@ -282,6 +284,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	H.base_constitution = rand(4, 8)
 	H.base_endurance = rand(7, 10)
 	H.base_speed = rand(10, 15)
+	H.recalculate_stats(FALSE)
 
 	var/loadout = rand(1,4)
 	switch(loadout)
