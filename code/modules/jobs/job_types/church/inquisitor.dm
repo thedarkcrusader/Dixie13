@@ -327,17 +327,17 @@
 					if(/datum/patron/godless/godless)
 						held_confession.bad_type = "A DAMNED ANTI-THEIST"
 						held_confession.antag = "worshiper of nothing"
-					if(/datum/patron/godless/autotheist) //need better desc
-						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+					if(/datum/patron/godless/autotheist)
+						held_confession.bad_type = "A DELUSIONAL SELF-PROCLAIMED GOD"
 						held_confession.antag = "worshiper of nothing"
 					if(/datum/patron/godless/defiant) //need better desc
-						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.bad_type = "A DAMNED CHAINBREAKER"
 						held_confession.antag = "worshiper of nothing"
 					if( /datum/patron/godless/dystheist) //need better desc
-						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.bad_type = "A SPURNER OF THE DIVINE"
 						held_confession.antag = "worshiper of nothing"
-					if( /datum/patron/godless/naivety) //need better desc
-						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+					if( /datum/patron/godless/naivety)
+						held_confession.bad_type = "A IGNORANT FOOL"
 						held_confession.antag = "worshiper of nothing"
 					if(/datum/patron/inhumen/baotha)
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
