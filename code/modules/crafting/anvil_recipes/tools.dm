@@ -150,11 +150,12 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern
 
 /datum/anvil_recipe/tools/iron/cogiron
-	name = "Cog"
-	recipe_name = "a Cog"
+	name = "2x Cog"
+	recipe_name = "two Cogs"
 	appro_skill = /datum/skill/craft/engineering // To train engineering
 	created_item = /obj/item/gear/metal/iron
 	craftdiff = 0
+	createditem_extra = 1
 
 /datum/anvil_recipe/tools/iron/hammer
 	name = "Hammer (+Stick)"
@@ -282,11 +283,11 @@
 ///////////////////////////////////////////////
 
 /datum/anvil_recipe/tools/steel/cogstee
-	name = "2x Cogs"
+	name = "3x Cogs"
 	recipe_name = "two Cogs"
 	appro_skill = /datum/skill/craft/engineering // To train engineering
 	created_item = /obj/item/gear/metal/steel
-	createditem_extra = 1
+	createditem_extra = 2
 
 /datum/anvil_recipe/tools/steel/scissors
 	name = "Steel Scissors"

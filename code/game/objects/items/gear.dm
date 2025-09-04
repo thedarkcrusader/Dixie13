@@ -19,7 +19,7 @@
 
 /obj/item/gear/metal/iron
 	melting_material = /datum/material/iron
-	melt_amount = 75
+	melt_amount = 35
 
 /obj/item/gear/metal/steel
 	melting_material = /datum/material/steel

@@ -201,6 +201,11 @@
 	screen_max_columns = 3
 	max_w_class = WEIGHT_CLASS_HUGE
 	not_while_equipped = TRUE
+	click_gather = TRUE
+	collection_mode = COLLECT_EVERYTHING
+	dump_time = 0
+	allow_quick_gather = TRUE
+	allow_quick_empty = TRUE
 
 /datum/component/storage/concrete/grid/crucible/can_be_inserted(obj/item/storing, stop_messages, mob/user, worn_check, params, storage_click)
 	if(!storing.melting_material)
