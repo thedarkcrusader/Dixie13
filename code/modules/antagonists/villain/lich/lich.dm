@@ -142,7 +142,7 @@
 	H.change_stat(STATKEY_END, -1)
 	H.change_stat(STATKEY_SPD, -1)
 	H.adjust_spell_points(17) //Same as CM - Until they receive their spellbook.
-
+	H.grant_language(/datum/language/undead)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/lich()
 	H.ambushable = FALSE
@@ -253,5 +253,5 @@
 
 /obj/item/phylactery/proc/start_shaking()
 	var/offset = prob(50) ? -2 : 2
-	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = -1) //start shaking
+	animate(src, pixel_x = offset, time = 0.2 DECISECONDS, loop = -1, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL) //start shaking
 	visible_message(span_warning("[src] begins to glow and shake violently!"))

@@ -62,9 +62,6 @@
 	///overlays managed by update_overlays() to prevent removing overlays that weren't added by the same proc
 	var/list/managed_overlays
 
-	///Used for changing icon states for different base sprites.
-	var/base_icon_state
-
 	///Cooldown tick timer for buckle messages
 	var/buckle_message_cooldown = 0
 	///Last fingerprints to touch this atom
@@ -91,6 +88,13 @@
 
 	///AI controller that controls this atom. type on init, then turned into an instance during runtime
 	var/datum/ai_controller/ai_controller
+
+	///Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	///Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
+	///Used for changing icon states for different base sprites.
+	var/base_icon_state
 
 	///The config type to use for greyscaled sprites. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config
@@ -133,6 +137,27 @@
 	var/datum/component/orbiter/orbiters
 
 	var/blockscharging = FALSE
+
+	/// Any atom that uses integrity and can be damaged must set this to true, otherwise the integrity procs will throw an error
+	var/uses_integrity = FALSE
+	///Armor datum used by the atom
+	var/datum/armor/armor
+	///Current integrity, defaults to max_integrity on init
+	VAR_PRIVATE/atom_integrity
+	///Maximum integrity
+	var/max_integrity = 500
+	///Integrity level when this atom will "break" (whatever that means) 0 if we have no special broken behavior, otherwise is a percentage of at what point the atom breaks. 0.5 being 50%
+	var/integrity_failure = 0
+	///Damage under this value will be completely ignored
+	var/damage_deflection = 0
+	/// Determines the damage calculation from an item attacking this atom
+	var/blade_dulling
+
+	var/break_sound
+	var/break_message
+	var/attacked_sound
+
+	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -217,7 +242,12 @@
 
 	SETUP_SMOOTHING()
 
-	InitializeAIController()
+	if(uses_integrity)
+		atom_integrity = max_integrity
+	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
+
+	if(ispath(ai_controller))
+		ai_controller = new ai_controller(src)
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -477,25 +507,19 @@
 				if(user.can_see_reagents()) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
-						if(R.volume / 3 < 1)
-							. += "less than 1 oz of <font color=[R.color]>[R.name]</font>"
-						else
-							. += "[round(R.volume / 3)] oz of <font color=[R.color]>[R.name]</font>"
+						. += "[(R.volume)] [(UNIT_FORM_STRING(R.volume))] of <font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
 					reagent_color = mix_color_from_reagents(reagents.reagent_list)
-					if(total_volume / 3 < 1)
-						. += "It contains less than 1 oz of <font color=[reagent_color]>something.</font>"
-					else
-						. += "It contains [round(total_volume / 3)] oz of <font color=[reagent_color]>something.</font>"
+					. += "It contains [(total_volume)] [(UNIT_FORM_STRING(total_volume))] of <font color=[reagent_color]>something.</font>"
 			else
 				. += "It's empty."
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [round(reagents.total_volume / 3, 0.1)] oz left.</span>"
+				. += "<span class='notice'>It has [round(reagents.total_volume, 0.1)] [(UNIT_FORM_STRING(round(reagents.total_volume, 0.1)))] left.</span>"
 			else
 				. += "<span class='danger'>It's empty.</span>"
 		//SNIFFING
@@ -1353,15 +1377,6 @@
 	// it'd be trivial to readd if you needed it, though
 	return SSmapping.gravity_by_z_level["[gravity_turf.z]"] || turf_area.has_gravity
 
-/**
-* Instantiates the AI controller of this atom. Override this if you want to assign variables first.
-*
-* This will work fine without manually passing arguments.
-+*/
-/atom/proc/InitializeAIController()
-	if(ai_controller)
-		ai_controller = new ai_controller(src)
-
 /obj/proc/propagate_temp_change(value, weight, falloff = 0.5, max_depth = 3)
 	var/key = REF(src)
 	temperature_affected_turfs = list()
@@ -1396,6 +1411,22 @@
 			if(!start.CanAtmosPass(adj))
 				continue
 			_propagate_turf_heat(source, adj, key, next_value, next_weight, falloff, max_depth, depth + 1, seen)
+
+///Setter for the `base_pixel_x` variable to append behavior related to its changing.
+/atom/proc/set_base_pixel_x(new_value)
+	if(base_pixel_x == new_value)
+		return
+	. = base_pixel_x
+	base_pixel_x = new_value
+	pixel_x = pixel_x + base_pixel_x - .
+
+///Setter for the `base_pixel_y` variable to append behavior related to its changing.
+/atom/proc/set_base_pixel_y(new_value)
+	if(base_pixel_y == new_value)
+		return
+	. = base_pixel_y
+	base_pixel_y = new_value
+	pixel_y = pixel_y + base_pixel_y - .
 
 /// Returns the indice in filters of the given filter name.
 /// If it is not found, returns null.

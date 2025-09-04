@@ -74,8 +74,8 @@
 	imagery.sweet_spot = rand(1,179)
 	imagery.clicker = src
 	imagery.difficulty = difficulty
-	imagery.maptext += "<br><div align='center'><font color='#f0dd5f'> [shown_d] LOCK<br></div>"
-	imagery.maptext += "<br><div align='center'><font color='#f0dd5f'>       \[R Click) Exit\]</font></div><br>"
+	imagery.maptext += MAPTEXT("<br><div align='center'><font color='#f0dd5f'> [shown_d] LOCK<br></div>")
+	imagery.maptext += MAPTEXT("<br><div align='center'><font color='#f0dd5f'>       \[R Click) Exit\]</font></div><br>")
 	imagery.maptext_width = 100
 	imagery.maptext_x = 253
 	imagery.maptext_y = 150
@@ -177,7 +177,7 @@
 	linked_pick.icon_state = "pick"
 	linked_pick.plane = FLOAT_PLANE + 1
 	linked_pick.layer = 3
-	linked_pick.pixel_y = 6
+	linked_pick.pixel_y = linked_pick.base_pixel_y + 6
 	linked_pick.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_contents += linked_pick
 
