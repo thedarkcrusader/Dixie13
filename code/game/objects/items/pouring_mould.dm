@@ -1,5 +1,6 @@
 /obj/item/mould
 	name = "mould"
+	desc = "You shouldn't be seeing this one."
 
 	icon = 'icons/roguetown/weapons/crucible.dmi'
 	icon_state = "flat-mold"
@@ -13,6 +14,7 @@
 
 	var/cooling = FALSE
 	var/cooling_progress = 0
+	var/cooling_bonus = 1
 
 /obj/item/mould/Initialize()
 	. = ..()
@@ -106,7 +108,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/mould/process()
-	cooling_progress += 2.5
+	cooling_progress += 5 * cooling_bonus
 	update_appearance(UPDATE_OVERLAYS)
 	if(cooling_progress >= 100)
 		STOP_PROCESSING(SSobj, src)
@@ -124,6 +126,7 @@
 
 /obj/item/mould/ingot
 	name = "ingot mold"
+	desc = "A clay mold for making metal ingots."
 
 	icon_state = "ingot-mold"
 	filling_icon_state = "ingot-mold-color"
@@ -142,4 +145,10 @@
 	fufilled_metal = 0
 	filling_metal = null
 	cooling = FALSE
+	cooling_progress = 0
 	update_appearance(UPDATE_OVERLAYS)
+
+/obj/item/mould/ingot/advanced
+	name = "advanced ingot mold"
+	desc = "An ingot mold that utilizes water for faster cooling."
+	cooling_bonus = 2
