@@ -3,8 +3,8 @@
 	//in an ideal world, would make it both a reagent container and a dice cup, but I don't want to deal with issues of
 	//rolling dice with a liquid inside. Like you would probably have to make a way for the insides to spill out right?
 	desc = "An iron dice cup, used for rolling dice in secret."
-	icon = 'icons/roguetown/items/cooking.dmi'
-	icon_state = "cup_iron"
+	icon = 'icons/obj/dice.dmi'
+	icon_state = "iron_cup"
 	force = 5
 	throwforce = 10
 	dropshrink = 0.75
@@ -89,11 +89,25 @@
 	if(!length(contents))
 		desc = initial(desc)
 		return
-	desc = span_info("Contains [length(contents)] dice.")
+	desc = initial(desc)
+	desc += span_info("Contains [length(contents)] dice.")
 	return ..()
 
 /obj/item/dice_cup/proc/rig_dice_cup(user)
 	var/obj/item/dice/which_one = browser_input_list(user, "Which die will you rig in your next roll?", "XYLIX", dice_list)
+	/*idk how to do it at the moment
+	basically, radial menu
+	var/datum/radial_menu_choice/choice = new()
+	choice = show_radial_menu(user, user, dice_list, choice.image = image())
+	var/obj/item/dice/which_one = choice
+	var/list/options = list()
+	for(var/obj/item/dice/dice in dice_list)
+    	var/datum/radial_menu_choice/option = new()
+    	option.image = mutable_appearance(dice)
+    	options += option
+	var/datum/radial_menu_choice/choice = new()
+	choice = show_radial_menu(user, user, option)
+	*/
 	if(which_one != null)
 		INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
 
@@ -108,7 +122,7 @@
 /obj/item/dice_cup/wooden
 	name = "wooden dice cup"
 	desc = "A wooden dice cup, used for rolling dice."
-	icon_state = "cup_wooden"
+	icon_state = "wood_cup"
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/fertilizer/ash

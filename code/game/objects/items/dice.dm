@@ -119,6 +119,7 @@
 
 /obj/item/dice/d6/bone
 	name = "bone die"
+	icon_state = "bone_d6"
 	desc = "A six sided die carved from bone."
 
 /obj/item/dice/d6/ebony
