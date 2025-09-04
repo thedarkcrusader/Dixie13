@@ -12,29 +12,6 @@
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 
-/obj/item/clothing/wrists/bracelet/silver
-	name = "silver bracelets"
-	desc = "An assortment of silver bracelets."
-	slot_flags = ITEM_SLOT_WRISTS
-	icon_state = "bracelets_s"
-	item_state = "bracelets"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
-	sellprice = 30
-
-/obj/item/clothing/wrists/bracelet/silver/Initialize(mapload)
-	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/clothing/wrists/bracelet/gold
-	name = "gold bracelets"
-	desc = "An assortment of gold bracelets."
-	slot_flags = ITEM_SLOT_WRISTS
-	icon_state = "bracelets_g"
-	item_state = "braceletg"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
-	sellprice = 60
-
-
 //Aasimar hoplite bracers
 /obj/item/clothing/wrists/bracers/rare/hoplite
 	name = "ancient bracers"
