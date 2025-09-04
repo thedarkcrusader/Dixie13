@@ -15,6 +15,8 @@
 #define BLIP_TONE_DEFAULT list(28000, 34000)
 #define BLIP_TONE_MASCULINE list(16000, 24000)
 
+#define TOOT_COOLDOWN 1.5 SECONDS
+
 /**
  * # Chat Message Overlay
  *
@@ -42,6 +44,8 @@
 	var/premature_end = FALSE
 	var/exclaimed = FALSE
 	var/list/blip_tone = BLIP_TONE_DEFAULT
+	var/source_shake = FALSE
+	var/last_toot_time
 
 /**
  * Constructs a chat message overlay
@@ -199,6 +203,10 @@
 		return qdel(src)
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
 	message_loc = isturf(target) ? target : get_atom_on_turf(target)
+
+	if(HAS_TRAIT(message_loc, TRAIT_SHAKY_SPEECH))
+		source_shake = TRUE
+
 	// Translate any existing messages upwards, apply exponential decay factors to timers
 	if (owned_by.seen_messages)
 //		var/idx = 1
@@ -283,40 +291,49 @@
 	current_string += string
 	message.maptext = MAPTEXT(turn_to_styled(current_string))
 	if(audible && !_extra_classes.Find("emote"))
+		/*
 		play_toot()
+		*/ // it's kinda dogshit rn
 		do_shift(direction)
 
 /datum/chatmessage/proc/play_toot()
-	playsound(message_loc, 'sound/effects/chat_toots/toot1.ogg', 10, frequency = rand(blip_tone[1], blip_tone[2]))
+	if(world.time < last_toot_time + TOOT_COOLDOWN)
+		return
+
+	last_toot_time = world.time
+
+	playsound(message_loc, 'sound/effects/chat_toots/toot1.ogg', 30, frequency = rand(blip_tone[1], blip_tone[2]))
 
 /datum/chatmessage/proc/do_shift(direction)
 	var/exclaimed_multiplier = exclaimed ? 3 : 1
-	if(exclaimed)
+
+	if(!_extra_classes.Find("emote"))
 		animate(
 			message,
 			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
-			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-			pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+			pixel_w = ((exclaimed_multiplier - 1) + rand(0, (exclaimed_multiplier - 1))) * pick(-1, 1),
+			pixel_z = ((exclaimed_multiplier - 1) + rand((exclaimed_multiplier - 1) * direction, (exclaimed_multiplier - 1) * (direction ? direction : 1) * (exclaimed_multiplier - 1))),
 			easing = ELASTIC_EASING,
 		)
 
-	var/old_transform = message_loc.transform
-	var/old_pixel_w = message_loc.pixel_w
-	var/old_pixel_z = message_loc.pixel_z
-	animate(
-		message_loc,
-		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
-		pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-		pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
-		transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction)),
-		easing = ELASTIC_EASING,
-	)
-	animate(
-		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER / 2,
-		pixel_z = old_pixel_z,
-		pixel_w = old_pixel_w,
-		transform = old_transform,
-	)
+	if(source_shake)
+		var/old_transform = message_loc.transform
+		var/old_pixel_w = message_loc.pixel_w
+		var/old_pixel_z = message_loc.pixel_z
+		animate(
+			message_loc,
+			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + 0.1,
+			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
+			pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+			transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction)),
+			easing = ELASTIC_EASING,
+		)
+		animate(
+			time = 0,
+			pixel_z = old_pixel_z,
+			pixel_w = old_pixel_w,
+			transform = old_transform,
+		)
 
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
