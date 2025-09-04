@@ -162,7 +162,9 @@
 		else //Why are you going faithless
 			wrists = /obj/item/clothing/neck/psycross/silver
 			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
-
+	if(!H.has_language(/datum/language/celestial) && (H.patron?.type in ALL_TEMPLE_PATRONS))
+		H.grant_language(/datum/language/celestial)
+		to_chat(H, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 	var/holder = H.patron?.devotion_holder
 	if(holder)
 		var/datum/devotion/devotion = new holder()

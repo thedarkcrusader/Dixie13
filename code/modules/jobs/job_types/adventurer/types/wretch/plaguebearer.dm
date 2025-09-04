@@ -44,6 +44,7 @@
 	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/bombs, 3, TRUE) //to craft smoke bombs.
 	ADD_TRAIT(H, TRAIT_LEGENDARY_ALCHEMIST, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)

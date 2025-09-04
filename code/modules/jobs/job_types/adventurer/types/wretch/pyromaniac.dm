@@ -43,6 +43,7 @@
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE) //...Apparently to craft pyro ammos?
 	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/bombs, 4, TRUE) //To craft bombs.
 	H.change_stat(STATKEY_END, 3)
 	H.change_stat(STATKEY_CON, 3)
 	H.change_stat(STATKEY_INT, 3)
