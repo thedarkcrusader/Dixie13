@@ -18,19 +18,35 @@
 	var/max_dice = 8
 	var/list/dice_list = list()
 
+//done so we can have pre-filled dice cups
+/obj/item/dice_cup/Initialize()
+	. = ..()
+	if(dice_list.len)
+		for(var/X in dice_list)
+			add_dice(new X())
+			dice_list -= X
+
 /obj/item/dice_cup/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/dice))
 		if(dice_list.len >= max_dice)
 			to_chat(user, span_warning("[src] can only hold [max_dice] dice."))
 			return
-		I.loc = src
-		dice_list += I
+		to_chat(user, span_notice("You put [I] into [src]."))
+		user.dropItemToGround(I)
+		add_dice(I)
 		update_appearance(UPDATE_DESC)
 	else
 		return ..()
 
-/obj/item/dice_cup/proc/pickdice(mob/user)
+/obj/item/dice_cup/proc/add_dice(obj/item/I)
+	if(!I || !istype(I))
+		return 0
+	I.loc = src
+	dice_list += I
+	update_appearance(UPDATE_ICON_STATE | UPDATE_DESC)
+
+/obj/item/dice_cup/proc/pick_dice(mob/user)
 	if(!dice_list.len)
 		return
 	var/obj/item/dice/die = dice_list[dice_list.len]
@@ -44,12 +60,30 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(length(dice_list))
-		var/obj/item/dice/die = pickdice(user)
-		to_chat(user, span_notice("I remove [die] from [src]."))
+		var/obj/item/dice/die = pick_dice(user)
+		to_chat(user, span_notice("I remove \a [die] from [src]."))
 		user.put_in_active_hand(die)
 	else
 		to_chat(user, span_notice("No dice."))//heh
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/dice_cup/attack_self(mob/user, params)
+	var/public_roll = input(user, "Do you wish to roll the die for all to see?", "XYLIX") in list("YES", "NO")
+	if(public_roll == null)
+		return
+	switch(public_roll)
+		if("YES")
+			public_roll = TRUE
+		if("NO")
+			public_roll = FALSE
+	if(!(dice_list.len))
+		to_chat(user, span_warning("There are no dice to roll!"))
+		return
+	else
+		for(var/obj/item/dice/die in dice_list)
+			die.diceroll(user, public_roll)
+	if(!public_roll)
+		user.visible_message(span_notice("[user] rolls dice in secret using [src]."), span_notice("I roll dice in secret using [src]."))
 
 /obj/item/dice_cup/update_desc()
 	if(!length(contents))
@@ -59,8 +93,9 @@
 	return ..()
 
 /obj/item/dice_cup/proc/rig_dice_cup(user)
-	var/obj/item/dice/which_one = input(user, "Which die will you rig in your next roll?", "XYLIX") as null|anything in dice_list
-	INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
+	var/obj/item/dice/which_one = browser_input_list(user, "Which die will you rig in your next roll?", "XYLIX", dice_list)
+	if(which_one != null)
+		INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
 
 /obj/item/dice_cup/attack_self_secondary(mob/user, params)
 	. = ..()
