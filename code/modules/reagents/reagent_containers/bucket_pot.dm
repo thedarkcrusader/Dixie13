@@ -13,7 +13,6 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10)
 	volume = 100
-	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR
 	obj_flags = CAN_BE_HIT
 	resistance_flags = NONE
