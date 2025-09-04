@@ -342,7 +342,7 @@ And it also helps for the character set panel
 	H.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	H.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5, TRUE)
 	H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 4, 4, TRUE)
-	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_STR, pick(1,2))
 	H.change_stat(STATKEY_SPD, 1)
 	if(H.age == AGE_CHILD)
 		H.change_stat(STATKEY_STR, 1)
