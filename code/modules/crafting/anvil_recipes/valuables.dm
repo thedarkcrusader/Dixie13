@@ -125,6 +125,12 @@
 	created_item = /obj/item/statue/silver/comb
 	createditem_extra = 1
 
+/datum/anvil_recipe/valuables/silver/bracelet
+	name = "2x Silver Bracelets"
+	recipe_name = "a Two Silver Bracelets"
+	created_item =  /obj/item/clothing/wrists/bracelet/silver
+	createditem_extra = 1
+
 /datum/anvil_recipe/valuables/silver/figurine
 	name = "2x Silver Figurines"
 	recipe_name = "a Two Silver Figurines"
@@ -255,7 +261,7 @@
 
 /datum/anvil_recipe/valuables/gold/tablet
 	name = "Golden Tablet"
-	recipe_name = "a Golden Tableet"
+	recipe_name = "a Golden Tablet"
 	created_item = /obj/item/statue/gold/tablet
 
 /datum/anvil_recipe/valuables/gold/cameo
@@ -263,6 +269,13 @@
 	recipe_name = "a Two Gold Cameos"
 	created_item = /obj/item/statue/gold/cameo
 	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/bracelet
+	name = "2x Gold Bracelets"
+	recipe_name = "a Two Gold Bracelets"
+	created_item = /obj/item/clothing/wrists/bracelet/gold
+	createditem_extra = 1
+
 
 /datum/anvil_recipe/valuables/gold/comb
 	name = "2x Gold Combs"
