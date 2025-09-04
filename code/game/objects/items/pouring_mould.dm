@@ -125,8 +125,8 @@
 
 
 /obj/item/mould/ingot
-	name = "ingot mold"
-	desc = "A clay mold for making metal ingots."
+	name = "ingot mould"
+	desc = "A clay mould for making metal ingots."
 
 	icon_state = "ingot-mold"
 	filling_icon_state = "ingot-mold-color"
@@ -149,6 +149,6 @@
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/mould/ingot/advanced
-	name = "advanced ingot mold"
-	desc = "An ingot mold that utilizes water for faster cooling."
+	name = "advanced ingot mould"
+	desc = "An ingot mould that utilizes water for faster cooling."
 	cooling_bonus = 2
