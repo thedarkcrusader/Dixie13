@@ -6,6 +6,7 @@
 	sellprice = 0
 	force = 0
 	throwforce = 0
+	faretype = FARE_POOR
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
@@ -58,8 +59,8 @@
 	. = ..()
 	if(!tastes)
 		tastes = list("[name]" = 1)
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 /obj/item/reagent_containers/food/snacks/produce/Crossed(mob/living/carbon/human/H)
 	..()
@@ -228,7 +229,7 @@
 	icon_state = "berriesc0"
 	seed = /obj/item/neuFarm/seed/berry
 	tastes = list("berry" = 1)
-	faretype = FARE_NEUTRAL
+	faretype = FARE_POOR
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
 	dropshrink = 0.75

@@ -125,6 +125,12 @@
 	created_item = /obj/item/statue/silver/comb
 	createditem_extra = 1
 
+/datum/anvil_recipe/valuables/silver/bracelet
+	name = "2x Silver Bracelets"
+	recipe_name = "a Two Silver Bracelets"
+	created_item =  /obj/item/clothing/wrists/bracelet/silver
+	createditem_extra = 1
+
 /datum/anvil_recipe/valuables/silver/figurine
 	name = "2x Silver Figurines"
 	recipe_name = "a Two Silver Figurines"
@@ -191,6 +197,12 @@
 	created_item = /obj/item/clothing/ring/silver/rontz
 	craftdiff = 4
 
+/datum/anvil_recipe/valuables/silver/maker_ring
+	name = "Maker's guild ring"
+	recipe_name = "a silver maker's guild ring"
+	created_item = /obj/item/clothing/ring/silver/makers_guild
+	craftdiff = 6
+
 // --------- GOLD -----------
 
 /datum/anvil_recipe/valuables/gold
@@ -255,7 +267,7 @@
 
 /datum/anvil_recipe/valuables/gold/tablet
 	name = "Golden Tablet"
-	recipe_name = "a Golden Tableet"
+	recipe_name = "a Golden Tablet"
 	created_item = /obj/item/statue/gold/tablet
 
 /datum/anvil_recipe/valuables/gold/cameo
@@ -263,6 +275,13 @@
 	recipe_name = "a Two Gold Cameos"
 	created_item = /obj/item/statue/gold/cameo
 	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/bracelet
+	name = "2x Gold Bracelets"
+	recipe_name = "a Two Gold Bracelets"
+	created_item = /obj/item/clothing/wrists/bracelet/gold
+	createditem_extra = 1
+
 
 /datum/anvil_recipe/valuables/gold/comb
 	name = "2x Gold Combs"
@@ -334,3 +353,15 @@
 	additional_items = list(/obj/item/gem/red)
 	created_item = /obj/item/clothing/ring/gold/rontz
 	craftdiff = 5
+
+/datum/anvil_recipe/valuables/gold/mercator_ring
+	name = "Golden Mercator Ring"
+	recipe_name = "a Golden Mercator Ring"
+	created_item = /obj/item/clothing/ring/gold/guild_mercator
+	craftdiff = 6
+
+/datum/anvil_recipe/valuables/gold/sparrow_crown
+	name = "Champion's circlet"
+	recipe_name = "worthy of a champion"
+	created_item = /obj/item/clothing/head/crown/sparrowcrown
+	craftdiff = 6
