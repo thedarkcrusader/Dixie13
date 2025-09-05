@@ -1,6 +1,6 @@
 /obj/machinery/essence/harvester
 	name = "essence harvester"
-	desc = "A mechanical solution to the problem of trying to harvest essence on a large scale. Allows you to leech alchemical essence where the land is weak.
+	desc = "A mechanical solution to the problem of trying to harvest essence on a large scale. Allows you to leech alchemical essence where the land is weak."
 	icon = 'icons/roguetown/misc/splitter.dmi'
 	icon_state = "splitter"
 	density = TRUE
