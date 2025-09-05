@@ -262,7 +262,7 @@
 	var/client/client = mymob.client
 	if(!client)
 		return
-	if(client.holder && client.toggled_leylines)
+	if(!isliving(mymob) && client.toggled_leylines)
 		alpha = 255
 	else if(HAS_TRAIT(mymob, TRAIT_SEE_LEYLINES))
 		alpha = 255
