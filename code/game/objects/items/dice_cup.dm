@@ -17,6 +17,7 @@
 	melt_amount = 25
 	var/max_dice = 8
 	var/list/dice_list = list()
+	var/list/last_roll = list()
 
 //done so we can have pre-filled dice cups
 /obj/item/dice_cup/Initialize()
@@ -44,7 +45,7 @@
 		return 0
 	I.loc = src
 	dice_list += I
-	update_appearance(UPDATE_ICON_STATE | UPDATE_DESC)
+	update_appearance(UPDATE_DESC)
 
 /obj/item/dice_cup/proc/pick_dice(mob/user)
 	if(!dice_list.len)
@@ -63,6 +64,9 @@
 		var/obj/item/dice/die = pick_dice(user)
 		to_chat(user, span_notice("I remove \a [die] from [src]."))
 		user.put_in_active_hand(die)
+		if(!length(dice_list))
+			last_roll.Cut()
+			update_appearance(UPDATE_DESC)
 	else
 		to_chat(user, span_notice("No dice."))//heh
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -80,8 +84,11 @@
 		to_chat(user, span_warning("There are no dice to roll!"))
 		return
 	else
+		last_roll.Cut()
 		for(var/obj/item/dice/die in dice_list)
 			die.diceroll(user, public_roll)
+			last_roll += die.result
+		update_appearance(UPDATE_DESC)
 	if(!public_roll)
 		user.visible_message(span_notice("[user] rolls dice in secret using [src]."), span_notice("I roll dice in secret using [src]."))
 
@@ -90,7 +97,9 @@
 		desc = initial(desc)
 		return
 	desc = initial(desc)
-	desc += span_info("Contains [length(contents)] dice.")
+	desc += "\n" + ("Contains [length(contents)] dice.")
+	if(last_roll.len)
+		desc += "\n" + ("Last rolls were: [last_roll.Join(", ")]")
 	return ..()
 
 /obj/item/dice_cup/proc/rig_dice_cup(user)
