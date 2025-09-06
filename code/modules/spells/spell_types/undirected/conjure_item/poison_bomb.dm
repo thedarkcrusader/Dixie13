@@ -11,3 +11,5 @@
 	item_duration = null
 	item_outline ="#0e5c21"
 	delete_old = FALSE
+	spell_type = SPELL_STAMINA
+	spell_cost = 30
