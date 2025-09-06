@@ -122,7 +122,7 @@
 	if(user.mind && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/userskill = H.get_skill_level(skilltoteach)
-		var/intbonus = H.STAINT - 10
+		var/intbonus = H.STAINT / 2
 		var/true_experience = exppercycle + intbonus
 		if(true_experience <= INTneeded)
 			to_chat(user, span_warning("I can't understand anything from this theory! Practice should do me better."))
@@ -177,7 +177,7 @@
 	exppercycle = 40
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "expert"
-	INTneeded = 14
+	INTneeded = 13
 
 /obj/item/textbook/master
 	icon_state = "book5_1"
@@ -186,7 +186,7 @@
 	exppercycle = 55
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "master"
-	INTneeded = 14
+	INTneeded = 15
 
 /obj/item/textbook/legendary //uncraftable
 	icon_state = "book6_1"
