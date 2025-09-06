@@ -2,12 +2,13 @@
 	name = "Sellsword"
 	tutorial = "A hardened fighter for hire, you have wandered from place to place, selling your sword to the highest bidder. Your skills are many, but your loyalties lie only with coin."
 	allowed_races = RACES_PLAYER_ALL
+	outfit = /datum/outfit/job/mercenary/sellsword
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
-/datum/outfit/job/adventurer/sellsword
+/datum/outfit/job/mercenary/sellsword
 	head = /obj/item/clothing/head/helmet/heavy/ironplate
 	armor = /obj/item/clothing/armor/cuirass
 	neck = /obj/item/clothing/neck/gorget
@@ -22,11 +23,11 @@
 	backr = /obj/item/weapon/shield/tower/buckleriron
 	backl = /obj/item/storage/backpack/satchel
 	scabbards = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/scabbard/knife)
-	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor, /obj/item/weapon/knife/dagger)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor)
 
 
 // Just a better adventurer warrior
-/datum/outfit/job/adventurer/sellsword/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/mercenary/sellsword/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
