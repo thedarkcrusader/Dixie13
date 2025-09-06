@@ -105,6 +105,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 			dreamer.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			dreamer.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			dreamer.remove_stat_modifier("innate_age")
 			phy.bleed_mod *= 0.5
 			for(var/datum/status_effect/effect in dreamer.status_effects) //necessary to prevent exploits
 				dreamer.remove_status_effect(effect)

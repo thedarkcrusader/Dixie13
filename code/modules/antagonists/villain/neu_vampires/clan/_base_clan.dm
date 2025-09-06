@@ -344,10 +344,7 @@ And it also helps for the character set panel
 	H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 4, 4, TRUE)
 	H.change_stat(STATKEY_STR, pick(1,2))
 	H.change_stat(STATKEY_SPD, 1)
-	if(H.age == AGE_CHILD)
-		H.change_stat(STATKEY_STR, 1)
-	if(H.age == AGE_OLD)
-		H.change_stat(STATKEY_STR, 1)
+	H.remove_stat_modifier("innate_age")
 	if(H.dna.species.id == "halforc") // lets not get 17 STR barbarians
 		H.change_stat(STATKEY_STR, -1)
 	var/datum/action/cooldown/spell/undirected/transfix/transfix = new(H.mind)
