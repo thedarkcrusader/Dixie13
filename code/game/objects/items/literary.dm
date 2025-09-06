@@ -21,6 +21,7 @@
 	obj_flags = CAN_BE_HIT
 
 	var/exppercycle = 0
+	var/INTneeded = 0
 	var/minskill
 	var/maxskill
 	var/skilltoteach
@@ -30,7 +31,7 @@
 		"Mathematics" = /datum/skill/labor/mathematics,
 		"Engineering" = /datum/skill/craft/engineering,
 		"Alchemy" = /datum/skill/craft/alchemy,
-		"Butchering" = /datum/skill/labor/butchering,
+		"Medicine" = /datum/skill/misc/medicine,
 		)
 
 /obj/item/textbook/Initialize()
@@ -50,8 +51,8 @@
 			title = "engineering"
 		if(/datum/skill/craft/alchemy)
 			title = "alchemy"
-		if(/datum/skill/labor/butchering)
-			title = "butchering"
+		if(/datum/skill/misc/medicine)
+			title = "medicine"
 	name = "[skill_name]'s guide to [title]"
 
 /obj/item/textbook/update_desc()
@@ -65,8 +66,8 @@
 			desc = "A textbook focused on teaching about engineering, the physical laws that govern our mortal world, and their application."
 		if(/datum/skill/craft/alchemy)
 			desc = "A textbook that teaches all about alchemy. Ranging from simple differences between mentha and paris, to complex potion brewing."
-		if(/datum/skill/labor/butchering)
-			desc = "A textbook focused on teaching creacher anatomy. The book is rich in illustrations and notes on how to properly flay and butcher any manner of game and livestock."
+		if(/datum/skill/misc/medicine)
+			desc = "A textbook that teaches medicine. The book is rich in illustrations and notes on how the body functions and how to treat various illnesses and wounds."
 	desc += " The higher the complexity, the more skilled the reader must be to study it."
 
 /obj/item/textbook/attacked_by(obj/item/I, mob/living/user)
@@ -123,8 +124,9 @@
 		var/userskill = H.get_skill_level(skilltoteach)
 		var/intbonus = H.STAINT - 10
 		var/true_experience = exppercycle + intbonus
-		if(true_experience <= 0)
-			to_chat(user, span_warning("Your intellect is too low to understand anything from this!"))
+		if(true_experience <= INTneeded)
+			to_chat(user, span_warning("I can't understand anything from this theory! Practice should do me better."))
+			return
 		if(userskill < minskill)
 			to_chat(user, span_warning("This textbook is too advanced for me to study!"))
 			return
@@ -148,6 +150,7 @@
 	exppercycle = 5
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "novice"
+	INTneeded = 2
 
 /obj/item/textbook/apprentice
 	icon_state = "book2_1"
@@ -156,6 +159,7 @@
 	exppercycle = 10
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "apprentice"
+	INTneeded = 5
 
 /obj/item/textbook/journeyman
 	icon_state = "book3_1"
@@ -164,6 +168,7 @@
 	exppercycle = 25
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "journeyman"
+	INTneeded = 10
 
 /obj/item/textbook/expert
 	icon_state = "book4_1"
@@ -172,6 +177,7 @@
 	exppercycle = 40
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "expert"
+	INTneeded = 14
 
 /obj/item/textbook/master
 	icon_state = "book5_1"
@@ -180,6 +186,7 @@
 	exppercycle = 55
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "master"
+	INTneeded = 14
 
 /obj/item/textbook/legendary //uncraftable
 	icon_state = "book6_1"
@@ -188,6 +195,7 @@
 	exppercycle = 70
 	skilltoteach = /datum/skill/misc/reading
 	skill_name = "legend"
+	INTneeded = 18
 
 /*.............. MATHEMATICS ..............*/
 
@@ -249,22 +257,22 @@
 /obj/item/textbook/legendary/alchemy
 	skilltoteach = /datum/skill/craft/alchemy
 
-/*.............. BUTCHERING ..............*/
+/*.............. MEDICINE ..............*/
 
-/obj/item/textbook/novice/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/novice/medicine
+	skilltoteach = /datum/skill/misc/medicine
 
-/obj/item/textbook/apprentice/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/apprentice/medicine
+	skilltoteach = /datum/skill/misc/medicine
 
-/obj/item/textbook/journeyman/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/journeyman/medicine
+	skilltoteach = /datum/skill/misc/medicine
 
-/obj/item/textbook/expert/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/expert/medicine
+	skilltoteach = /datum/skill/misc/medicine
 
-/obj/item/textbook/master/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/master/medicine
+	skilltoteach = /datum/skill/misc/medicine
 
-/obj/item/textbook/legendary/butchering
-	skilltoteach = /datum/skill/labor/butchering
+/obj/item/textbook/legendary/medicine
+	skilltoteach = /datum/skill/misc/medicine
