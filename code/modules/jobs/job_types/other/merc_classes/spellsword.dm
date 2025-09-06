@@ -9,13 +9,13 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 
 /datum/outfit/job/mercenary/spellsword
-    allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 	armor = /obj/item/clothing/armor/cuirass
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shirt = /obj/item/clothing/shirt/robe/colored/courtmage
 	gloves = /obj/item/clothing/gloves/leather
-    pants = /obj/item/clothing/pants/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/mercenary
 	beltr = /obj/item/weapon/sword/iron
@@ -26,11 +26,11 @@
 
 
 // Just a better adventurer warrior
-/datum/outfit/job/mercenary/sellsword/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/mercenary/spellsword/pre_equip(mob/living/carbon/human/H)
 	..()
-    H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
+	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	if(H.mind)
-        H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -48,7 +48,7 @@
 		H.change_stat(STATKEY_STR, 2)
 		H.change_stat(STATKEY_INT, 2)
 		H.change_stat(STATKEY_SPD, -1)
-        H.adjust_spell_points(5)
-        H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
+		H.adjust_spell_points(5)
+		H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

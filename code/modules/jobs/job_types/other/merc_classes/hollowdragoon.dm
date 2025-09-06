@@ -48,8 +48,8 @@
 
 		H.change_stat(STATKEY_STR, 2)
 		H.change_stat(STATKEY_END, 2)
-		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_SPD, -1)
+		H.change_stat(STATKEY_INT, -1)
 
 		new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(H))
 
