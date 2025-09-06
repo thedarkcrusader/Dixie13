@@ -15,14 +15,14 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shirt = /obj/item/clothing/armor/gambeson/light
 	gloves = /obj/item/clothing/gloves/chain/iron
-	pants = /obj/item/clothing/pants/chainlegs/kilt
+	pants = /obj/item/clothing/pants/chainlegs/iron
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/mercenary
 	beltr = /obj/item/weapon/sword/iron
 	beltl = /obj/item/weapon/knife/dagger
 	backr = /obj/item/weapon/shield/tower/buckleriron
 	backl = /obj/item/storage/backpack/satchel
-	scabbards = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/scabbard/knife)
+	scabbards = list(/obj/item/weapon/scabbard/knife)
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor)
 
 
@@ -47,6 +47,7 @@
 		H.adjust_blindness(-3)
 		var/weapons = list("Spear", "Sword", "Axe", "Mace", "Flail")
 		var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Spear")
 				backr = /obj/item/weapon/polearm/spear
@@ -58,12 +59,11 @@
 				beltr = /obj/item/weapon/axe/iron
 				H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 			if("Mace")
-				beltr = /obj/item/weapon/mace/cudgel
+				beltr = /obj/item/weapon/mace
 				H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 			if("Flail")
 				beltr = /obj/item/weapon/flail
 				H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-		H.set_blindness(0)
 
 		H.merctype = 9
 

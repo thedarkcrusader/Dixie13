@@ -59,6 +59,8 @@
 
 		H.adjust_blindness(0)
 
+		H.merctype = 9
+
 		H.change_stat(STATKEY_PER, 2)
 		H.change_stat(STATKEY_SPD, 2)
 		H.change_stat(STATKEY_END, -1)
