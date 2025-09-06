@@ -10,7 +10,7 @@
 
 /datum/outfit/job/mercenary/sellsword
 	head = /obj/item/clothing/head/helmet/heavy/ironplate
-	armor = /obj/item/clothing/armor/cuirass
+	armor = /obj/item/clothing/armor/cuirass/iron
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shirt = /obj/item/clothing/armor/gambeson/light
