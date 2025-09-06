@@ -570,7 +570,7 @@
 /obj/item/weapon/polearm/spear/hoplite/abyssal
 	name = "Abyssal spear"
 	desc = "A spear with a toothed end, inspired after the teeth of an abyssal monstrosity"
-	icon_state = "bronzespear_winged"
+	icon_state = "ancient_spear"
 	wdefense = ULTMATE_PARRY
 	sellprice = 40
 

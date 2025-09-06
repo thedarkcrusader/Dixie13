@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/abyssal
 	name = "Abyssal Guard"
-	tutorial = "NA"
+	tutorial = "Amphibious warriors from the depths, the Abyss Guard is a legion of triton mercenaries forged in the seas, the males are trained in the arcyne whilst the females take the vanguard with their imposing physique."
 	allowed_races = list(SPEC_ID_TRITON)
 	outfit = /datum/outfit/job/mercenary/abyssal
 	category_tags = list(CTAG_MERCENARY)
@@ -31,18 +31,19 @@
 
 		if(H.gender == FEMALE) //Slow tank with a spear
 
-			backr = /obj/item/weapon/polearm/spear/hoplite/abyssal //hoplite spear but with another description, this does look like a spear with a tooth at its tip.
-
+			backr = /obj/item/weapon/polearm/spear/hoplite/abyssal
+			beltr = /obj/item/weapon/shield/tower/buckleriron
 			H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
-			H.change_stat(STATKEY_STR, 2)
+			H.change_stat(STATKEY_STR, 1)
 			H.change_stat(STATKEY_CON, 2)
-
+			H.change_stat(STATKEY_INT, -1)
+			H.change_stat(STATKEY_PER, 2)
 		if(H.gender == MALE) //Arcyne gifted trident wielder
 
-			H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident/arcane, /datum/action/cooldown/spell/pressure)
+			H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident/arcane)
 			H.add_spell(/datum/action/cooldown/spell/pressure)
 			H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 			H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)

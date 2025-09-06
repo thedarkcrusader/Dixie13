@@ -159,4 +159,3 @@
 	delete_old = TRUE
 	item_type = /obj/item/fishingrod/abyssor_trident
 	item_duration = 0
-
