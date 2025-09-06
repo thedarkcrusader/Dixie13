@@ -16,6 +16,8 @@
 	armor = /obj/item/clothing/armor/medium/scale
 	head = /obj/item/clothing/head/helmet/winged
 	neck = /obj/item/clothing/neck/chaincoif/iron
+	beltl = /obj/item/weapon/sword/sabre/cutlass
+	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/pouch/coins/poor, /obj/item/reagent_containers/food/snacks/fish/swordfish) //soul
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -26,6 +28,7 @@
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -47,7 +50,6 @@
 			H.add_spell(/datum/action/cooldown/spell/pressure)
 			H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 			H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
