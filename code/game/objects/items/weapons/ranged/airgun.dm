@@ -113,10 +113,6 @@
 	. = ..()
 	playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/examine(mob/user)
-	. = ..()
-	. += span_info("The ")
-
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_hand_secondary(mob/user, params)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
