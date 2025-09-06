@@ -1302,7 +1302,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(!LAZYLEN(selection_list))
 		return
 	var/to_send = user_client ? user_client : src
-	var/choice = browser_input_list(to_send, message, title, selection_list, timeout = time_limit)
+	var/choice
+	while(!choice && src)
+		choice = browser_input_list(to_send, message, title, selection_list, timeout = time_limit)
 	if(!choice)
 		choice = pick(selection_list)
 	var/spawn_item = LAZYACCESS(selection_list, choice)
