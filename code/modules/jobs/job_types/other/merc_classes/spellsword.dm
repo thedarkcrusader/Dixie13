@@ -13,7 +13,7 @@
 	armor = /obj/item/clothing/armor/cuirass
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	shirt = /obj/item/clothing/shirt/robe/colored/courtmage
+	shirt = /obj/item/clothing/shirt/tunic
 	gloves = /obj/item/clothing/gloves/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
