@@ -135,9 +135,8 @@
 			shoes = /obj/item/clothing/shoes/boots/armor/zizo
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 			H.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
-			if(!H.has_language(/datum/language/undead))
-				H.grant_language(/datum/language/undead)
-				to_chat(H, "<span class='info'>I can speak in zizo chant with ,w before my speech.</span>")
+			H.grant_language(/datum/language/undead)
+			to_chat(H, "<span class='info'>I can speak in zizo chant with ,w before my speech.</span>")
 		if(/datum/patron/inhumen/matthios)
 			head = /obj/item/clothing/head/helmet/heavy/matthios
 			armor = /obj/item/clothing/armor/plate/full/matthios
@@ -162,9 +161,8 @@
 			wrists = /obj/item/clothing/neck/psycross/g
 			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-			if(!H.has_language(/datum/language/oldpsydonic))
-				H.grant_language(/datum/language/oldpsydonic)
-				to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
+			H.grant_language(/datum/language/oldpsydonic)
+			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
 		else //Why are you going faithless
 			wrists = /obj/item/clothing/neck/psycross/silver
 			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
@@ -223,7 +221,7 @@
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/inhumen/zizo)
 			var/obj/item/weapon/sword/long/greatsword/zizo/P = new(get_turf(src))
-			H.equip_to_appropriate_slot(P)
+			H.put_in_hands(P, forced = TRUE)
 		if(/datum/patron/inhumen/matthios)
 			var/obj/item/weapon/flail/peasantwarflail/matthios/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
