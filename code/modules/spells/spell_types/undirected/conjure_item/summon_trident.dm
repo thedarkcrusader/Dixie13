@@ -4,6 +4,22 @@
 	button_icon_state = "lightning"
 	sound = 'sound/foley/jumpland/waterland.ogg'
 
+	invocation = "Let Abyssor's wrath be known!"
+	invocation_type = INVOCATION_SHOUT
+
+	cooldown_time = 1 MINUTES
+	spell_cost = 45
+
+	delete_old = TRUE
+	item_type = /obj/item/fishingrod/abyssor_trident
+	item_duration = 0
+
+/datum/action/cooldown/spell/undirected/conjure_item/summon_trident/miracle
+	name = "Summon Trident"
+	desc = "Summon a trident from Abyssor's domain."
+	button_icon_state = "lightning"
+	sound = 'sound/foley/jumpland/waterland.ogg'
+
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
@@ -124,4 +140,23 @@
 					/obj/item/reagent_containers/food/snacks/fish/shrimp = 1)
 	deeplist = list(/obj/item/reagent_containers/food/snacks/fish/angler = 1,
 					/obj/item/reagent_containers/food/snacks/fish/clownfish = 1)
+
+/datum/action/cooldown/spell/undirected/conjure_item/summon_trident/arcane
+	name = "Summon Trident"
+	desc = "Summon a trident with magic"
+	button_icon_state = "lightning"
+	sound = 'sound/foley/jumpland/waterland.ogg'
+
+	associated_skill = /datum/skill/magic/arcane
+
+	invocation = "Innkalle trefork"
+	invocation_type = INVOCATION_SHOUT
+	charge_time = 2 SECONDS
+	charge_slowdown = 0.3
+	cooldown_time = 1 MINUTES
+	spell_cost = 20
+
+	delete_old = TRUE
+	item_type = /obj/item/fishingrod/abyssor_trident
+	item_duration = 0
 
