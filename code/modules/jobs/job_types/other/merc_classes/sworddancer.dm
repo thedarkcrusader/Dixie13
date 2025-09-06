@@ -16,7 +16,7 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	belt = /obj/item/storage/belt/leather
 	armor = /obj/item/clothing/armor/leather/jacket
-	cloak = /obj/item/clothing/cloak/cape/merc
+	cloak = /obj/item/clothing/cloak/cape
 	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/knife/dagger/steel/special
 	beltl = /obj/item/weapon/sword/rapier
@@ -67,5 +67,11 @@
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)
+
+/datum/outfit/job/mercenary/sworddancer/post_equip(mob/living/carbon/human/H)
+	..()
+	var/obj/item/clothing/cloak/cape/C = H.get_item_by_slot(ITEM_SLOT_CLOAK)
+	if(C)
+		C.color = CLOTHING_MUSTARD_YELLOW
 
 

@@ -18,7 +18,6 @@
 	pants = /obj/item/clothing/pants/chainlegs/iron
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/mercenary
-	beltr = /obj/item/weapon/sword/iron
 	beltl = /obj/item/weapon/knife/dagger
 	backr = /obj/item/weapon/shield/tower/buckleriron
 	backl = /obj/item/storage/backpack/satchel
@@ -51,6 +50,7 @@
 		switch(weapon_choice)
 			if("Spear")
 				backr = /obj/item/weapon/polearm/spear
+				beltr = /obj/item/weapon/shield/tower/buckleriron
 				H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 			if("Sword")
 				beltr = /obj/item/weapon/sword/iron
