@@ -10,7 +10,7 @@
 
 /datum/outfit/job/mercenary/spellsword
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
-	armor = /obj/item/clothing/armor/cuirass
+	armor = /obj/item/clothing/armor/cuirass/iron
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shirt = /obj/item/clothing/shirt/tunic
