@@ -5,7 +5,8 @@
 	icon_state = "crossbow0"
 	//icon = 'icons/roguetown/weapons/airgun.dmi'
 	//icon_state = "airgun"
-	possible_item_intents = list(/datum/intent/shoot/airgun, /datum/intent/arc/airgun, /datum/intent/mace/smash/heavy)
+	possible_item_intents = list(/datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/shoot/airgun, /datum/intent/arc/airgun)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/airgun
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
@@ -33,6 +34,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/apply_components()
 	AddComponent(/datum/component/steam_storage, 800, 0)
+	AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = force_wielded, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
 
 /obj/item/ammo_box/magazine/internal/shot/airgun
 	ammo_type = /obj/item/ammo_casing/caseless/bullet
@@ -80,11 +82,7 @@
 	return chargetime
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber(mob/user)
-	if(!(cranked) || !(steam_lever))
-		to_chat(user, span_warning("[src] refuses to fire!"))
-		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
-		return
-	to_chat(user, span_warning("Fires a sad burst of air..."))
+	to_chat(user, span_warning("Fires a sad gust of air..."))
 	playsound(src.loc, 'sound/combat/Ranged/firebow-shot-03.ogg', 100, FALSE)
 	cranked = FALSE
 	steam_lever = FALSE
@@ -101,15 +99,8 @@
 	playsound(src.loc, 'sound/foley/industrial/loadin.ogg', 100, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_self(mob/living/user, params)
-	if(user.is_holding(src))
-		if(!(chamber_open))
-			to_chat(user, span_warning("The chamber isn't open to unload [src]!"))
-			return
-		if(steam_lever)
-			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
-			return
-	. = ..()
-	playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_hand(mob/user)
 	if(user.is_holding(src))
