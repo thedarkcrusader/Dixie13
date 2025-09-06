@@ -33,6 +33,7 @@
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/taming, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
