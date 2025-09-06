@@ -20,6 +20,9 @@
 	color = CLOTHING_BLOOD_RED
 	uses_lord_coloring = LORD_PRIMARY
 
+/obj/item/clothing/cloak/cape/merc
+	color = CLOTHING_MUSTARD_YELLOW
+
 /obj/item/clothing/cloak/captain
 	name = "captain's cape"
 	desc = "A cape with a gold embroided heraldry of Vanderlin."
