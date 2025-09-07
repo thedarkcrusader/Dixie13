@@ -1,10 +1,8 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun
 	name = "airgun"
 	desc = "A complex masterwork of engineering that propells projectiles via pressurized steam. There are countless pipes, cogs, and other confusing gizmos."
-	icon = 'icons/roguetown/weapons/bows.dmi'
-	icon_state = "crossbow0"
-	//icon = 'icons/roguetown/weapons/airgun.dmi'
-	//icon_state = "airgun"
+	icon = 'icons/roguetown/weapons/airgun.dmi'
+	icon_state = "airgun"
 	possible_item_intents = list(/datum/intent/mace/smash)
 	gripped_intents = list(/datum/intent/shoot/airgun, /datum/intent/arc/airgun)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/airgun
