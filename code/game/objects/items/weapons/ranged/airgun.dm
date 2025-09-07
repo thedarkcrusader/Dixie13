@@ -17,7 +17,7 @@
 	force = DAMAGE_MACE - 5
 	force_wielded = DAMAGE_MACE_WIELD
 	cartridge_wording = "bullet"
-	fire_sound = 'sound/combat/Ranged/firebow-shot-03.ogg'
+	fire_sound = 'sound/foley/industrial/pneumaticpop.ogg'
 	load_sound = 'sound/foley/industrial/loadin.ogg'
 	equip_sound = 'sound/foley/gun_equip.ogg'
 	pickup_sound = 'sound/foley/gun_equip.ogg'
@@ -80,13 +80,15 @@
 	return chargetime
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber(mob/user)
-	to_chat(user, span_warning("Fires a sad gust of air..."))
-	playsound(src.loc, 'sound/combat/Ranged/firebow-shot-03.ogg', 100, FALSE)
-	cranked = FALSE
-	steam_lever = FALSE
+	if(steam_lever)
+		to_chat(user, span_warning("Fires a sad gust of air..."))
+		playsound(src.loc, 'sound/foley/industrial/pneumaticpop.ogg', 100, FALSE)
+	else
+		to_chat(user, span_warning("[src] refuses to fire!"))
+		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attackby(obj/item/A, mob/user, params)
-	if(user.is_holding(src))
+	if(user.is_holding(src) && (istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing)))
 		if(!(chamber_open))
 			to_chat(user, span_warning("The chamber isn't open to load [src]!"))
 			return
@@ -94,7 +96,6 @@
 			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
 			return
 	. = ..()
-	playsound(src.loc, 'sound/foley/industrial/loadin.ogg', 100, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_self(mob/living/user, params)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
@@ -108,8 +109,19 @@
 		if(steam_lever)
 			to_chat(user, span_warning("I almost scald myself with the boiling hot steam!"))
 			return
+		var/num_unloaded = 0
+		for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
+			CB.forceMove(drop_location())
+			CB.bounce_away(FALSE, NONE)
+			num_unloaded++
+		if(num_unloaded)
+			to_chat(user, span_notice("I remove [(num_unloaded == 1) ? "the" : "[num_unloaded]"] [cartridge_wording]\s from [src]."))
+			playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
+			update_appearance(UPDATE_ICON)
+		else
+			to_chat(user, span_warning("[src] is empty!"))
+		return
 	. = ..()
-	playsound(src.loc, 'sound/foley/industrial/loadout.ogg', 100, FALSE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attack_hand_secondary(mob/user, params)
 	. = ..()
@@ -188,14 +200,6 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(user.get_skill_level(/datum/skill/craft/engineering) <= 1)//requires average engineering instead of weak
-		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
-		return FALSE
-	if(user.usable_hands < 1)
-		to_chat(user, span_warning("I can't fire [src] one handed, I need my other hand to be free!"))
-		return FALSE
-	if(user.get_inactive_held_item())
-		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -203,15 +207,10 @@
 			spread = 150 - (150 * (user.client.chargedprog / 100))
 	else
 		spread = 0
-	if(!(SEND_SIGNAL(src, COMSIG_ATOM_STEAM_USE, pressure_to_use)))
-		to_chat(user, span_warning("[src] lets out a weak whine, there isn't enough steam!"))
-		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
-		return FALSE
-	if(!(cranked) || !(steam_lever))
+	if(!(cranked) || !(steam_lever) || (chamber_open))
 		to_chat(user, span_warning("[src] refuses to fire!"))
 		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
 		return FALSE
-
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		if(user.client.chargedprog >= 100)
@@ -226,9 +225,6 @@
 			BB.accuracy += (user.STAPER - 10) * 2 //each point of perception above 10 increases standard accuracy by 2.
 			BB.bonus_accuracy += (user.STAPER - 10) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
 		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/craft/engineering) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
-		if(chamber_open)
-			to_chat(user, span_warningbig("THE CHAMBER WAS LEFT OPEN!!!"))
-			BB.accuracy = 0 // uh oh
 	. = ..()
 	cranked = FALSE
 	steam_lever = FALSE
