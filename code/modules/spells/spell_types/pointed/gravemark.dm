@@ -5,6 +5,7 @@
 	cooldown_time = 25 SECONDS
 	spell_cost = 25
 	cast_range = 4
+	charge_required = FALSE
 
 /datum/action/cooldown/spell/gravemark/is_valid_target(atom/cast_on)
 	. = ..()
