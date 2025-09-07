@@ -180,6 +180,7 @@
 
 /datum/status_effect/buff/weed/on_apply()
 	. = ..()
+	owner.add_stress(/datum/stressevent/weed)
 	if(owner?.client)
 		if(owner.client.screen && owner.client.screen.len)
 			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in owner.client.screen
@@ -188,11 +189,8 @@
 			PM.backdrop(owner)
 			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
 			PM.backdrop(owner)
-			var/mob/living/carbon/C = owner
-			C.add_stress(/datum/stressevent/weed)
 
 /datum/status_effect/buff/weed/on_remove()
-	. = ..()
 	if(owner?.client)
 		if(owner.client.screen && owner.client.screen.len)
 			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in owner.client.screen
@@ -201,8 +199,8 @@
 			PM.backdrop(owner)
 			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
 			PM.backdrop(owner)
-			var/mob/living/carbon/C = owner
-			C.remove_stress(/datum/stressevent/weed)
+
+	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/weed
 	name = "Dazed"
