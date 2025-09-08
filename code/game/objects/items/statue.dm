@@ -85,7 +85,7 @@
 	. = ..()
 	icon_state = "volf_silv" // whoever designed this system needs to be cursed
 
-/obj/item/statue/silver/volf/Initialize(mapload)
+/obj/item/statue/silver/volf/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -97,7 +97,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 0
 
-/obj/item/statue/silver/finger/Initialize(mapload)
+/obj/item/statue/silver/finger/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -113,7 +113,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 50
 
-/obj/item/statue/silver/urn/Initialize(mapload)
+/obj/item/statue/silver/urn/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -129,7 +129,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 25
 
-/obj/item/statue/silver/vase/Initialize(mapload)
+/obj/item/statue/silver/vase/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -145,7 +145,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 45
 
-/obj/item/statue/silver/vasefancy/Initialize(mapload)
+/obj/item/statue/silver/vasefancy/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -161,7 +161,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 30
 
-/obj/item/statue/silver/bust/Initialize(mapload)
+/obj/item/statue/silver/bust/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -176,7 +176,7 @@
 	icon_state = "figurine_silv"
 	sellprice = 15
 
-/obj/item/statue/silver/figurine/Initialize(mapload)
+/obj/item/statue/silver/figurine/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -192,7 +192,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 30
 
-/obj/item/statue/silver/obelisk/Initialize(mapload)
+/obj/item/statue/silver/obelisk/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -207,7 +207,7 @@
 	icon_state = "fish_silv"
 	sellprice = 15
 
-/obj/item/statue/silver/fish/Initialize(mapload)
+/obj/item/statue/silver/fish/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -223,7 +223,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 25
 
-/obj/item/statue/silver/tablet/Initialize(mapload)
+/obj/item/statue/silver/tablet/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -238,7 +238,7 @@
 	icon_state = "cameo_silv"
 	sellprice = 15
 
-/obj/item/statue/silver/cameo/Initialize(mapload)
+/obj/item/statue/silver/cameo/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -253,7 +253,7 @@
 	icon_state = "combs_silv"
 	sellprice = 10
 
-/obj/item/statue/silver/comb/Initialize(mapload)
+/obj/item/statue/silver/comb/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -269,7 +269,7 @@
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 35
 
-/obj/item/statue/silver/totem/Initialize(mapload)
+/obj/item/statue/silver/totem/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
@@ -277,21 +277,6 @@
 	. = ..()
 	icon_state = "elven_silv"
 
-/obj/item/statue/silver/teapot
-	name = "silver teapot"
-	desc = "A teapot made out of silver."
-	icon = 'icons/roguetown/items/precious_objects.dmi'
-	icon_state = "teapot_silv"
-	smeltresult = /obj/item/ingot/silver
-	sellprice = 30
-
-/obj/item/statue/silver/teapot/Initialize(mapload)
-	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/teapot/Initialize()
-	. = ..()
-	icon_state = "teapot_silv"
 /*	..................   Gold   ................... */
 /obj/item/statue/gold/volf
 	name = "golden volf bust"
@@ -434,18 +419,6 @@
 /obj/item/statue/gold/totem/Initialize()
 	. = ..()
 	icon_state = "elven_gold"
-
-/obj/item/statue/gold/teapot
-	name = "golden teapot"
-	desc =  "A teapot made out of gold."
-	icon = 'icons/roguetown/items/precious_objects.dmi'
-	icon_state = "teapot_gold"
-	smeltresult = /obj/item/ingot/gold
-	sellprice = 65
-
-/obj/item/statue/gold/teapot/Initialize()
-	. = ..()
-	icon_state = "teapot_gold"
 
 /obj/item/statue/gold/comb
 	name = "golden comb "
