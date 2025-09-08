@@ -32,7 +32,7 @@
 
 	head = /obj/item/clothing/head/wizhat/random
 	armor = /obj/item/clothing/shirt/robe/colored/mage
-	shirt = /obj/item/clothing/armor/chainmail/iron
+	shirt = /obj/item/clothing/armor/chainmail/iron //intended, iron chainmail underneath the robe to stop knives
 	ring = /obj/item/clothing/ring/silver
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary
