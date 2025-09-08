@@ -141,6 +141,12 @@
 	deeplist = list(/obj/item/reagent_containers/food/snacks/fish/angler = 1,
 					/obj/item/reagent_containers/food/snacks/fish/clownfish = 1)
 
+/obj/item/fishingrod/abyssor_trident/arcane
+	name = "Arcane Trident"
+	desc = "A conjured trident, it resonates with arcyne energy."
+	icon_state = "tridentblue"
+
+
 /datum/action/cooldown/spell/undirected/conjure_item/summon_trident/arcane
 	name = "Summon Trident"
 	desc = "Summon a trident with magic"
@@ -157,5 +163,5 @@
 	spell_cost = 20
 
 	delete_old = TRUE
-	item_type = /obj/item/fishingrod/abyssor_trident
+	item_type = /obj/item/fishingrod/abyssor_trident/arcane
 	item_duration = 0
