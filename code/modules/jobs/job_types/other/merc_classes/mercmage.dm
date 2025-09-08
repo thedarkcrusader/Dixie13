@@ -11,12 +11,12 @@
 	\n\n\ \
 	Yet after all this, you still think to yourself, that this work is beneath you, as your sense of pride protests every morning. \
 	But it all goes away whenever a zenarii filled pouch is thrown your way, for a while atleast."
-	//debating if this should be RACES_PLAYER_NONDISCRIMINATED instead and just remove the warning
+	//not RACES_PLAYER_NONDISCRIMINATED becauses they are a FOREIGN noble
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
 	outfit = /datum/outfit/job/mercenary/sellmage
 	category_tags = list(CTAG_MERCENARY)
 	maximum_possible_slots = 2 //balance slop
-	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)//they were a mage, or learnt magic, before becoming a mercenary
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 
 /datum/outfit/job/mercenary/sellmage
