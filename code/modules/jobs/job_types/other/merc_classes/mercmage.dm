@@ -37,11 +37,11 @@
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary
 	beltr = /obj/item/storage/magebag/poor
-	beltl = /obj/item/weapon/knife/dagger/steel/special
+	beltl = /obj/item/weapon/knife/dagger/steel/special //remnant from when they were a noble
 	shoes = /obj/item/clothing/shoes/nobleboot
 	neck = /obj/item/storage/belt/pouch/coins/poor //broke
 	backr = /obj/item/storage/backpack/satchel
-	backl = /obj/item/weapon/polearm/woodstaff/quarterstaff/steel
+	backl = /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 	backpack_contents = list(/obj/item/book/granter/spellbook/adept = 1, /obj/item/chalk = 1, /obj/item/reagent_containers/glass/bottle/manapot = 1)
 	if(H.gender == FEMALE)
 		head = /obj/item/clothing/head/wizhat/witch
@@ -51,7 +51,7 @@
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 
 	//athleticism and movement
 	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
