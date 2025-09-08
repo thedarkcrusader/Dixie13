@@ -63,7 +63,7 @@
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 
-	//increased endurance than common mages due to them being a merc
+	//increased endurance more than common mages due to them being a merc
 	H.change_stat(STATKEY_END, 1)
 	H.change_stat(STATKEY_INT, 5)
 	H.change_stat(STATKEY_CON, -1)
