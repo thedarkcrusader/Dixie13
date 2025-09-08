@@ -39,13 +39,13 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 
 	H.merctype = 9
 
 	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_SPD, -1)
 	H.adjust_spell_points(5)
 	H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
