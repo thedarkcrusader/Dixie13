@@ -30,6 +30,8 @@
 		H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 
+		H.merctype = 10
+
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if(H.gender == FEMALE) //Slow tank with a spear

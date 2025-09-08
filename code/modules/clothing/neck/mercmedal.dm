@@ -48,3 +48,8 @@
 	name = "valorian blade pendant"
 	desc = "A silver pendant shaped as a rapier lined with gems, Worn by Valorian Duelists to honor their mastery of the blade and unyielding pursuit of glory in combat."
 	icon_state = "duelistcharm"
+
+/obj/item/clothing/neck/mercmedal/abyssal
+	name = "sea-tooth amulet"
+	desc = "A tooth left by a horrible sea-beast, In the abyss, hubris is not a light but a lure it is a reminder of the sea's wrath"
+	icon_state = "seatooth"
