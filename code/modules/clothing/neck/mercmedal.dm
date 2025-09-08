@@ -51,5 +51,5 @@
 
 /obj/item/clothing/neck/mercmedal/abyssal
 	name = "sea-tooth amulet"
-	desc = "A tooth left by a horrible sea-beast, In the abyss, hubris is not a light but a lure it is a reminder of the sea's wrath"
+	desc = "A tooth left by a horrible sea-beast, In the abyss, hubris is not a light but a lure, it is a reminder of the sea's wrath"
 	icon_state = "seatooth"
