@@ -52,7 +52,6 @@
 	H.add_spell(/datum/action/cooldown/spell/eyebite)
 	H.add_spell(/datum/action/cooldown/spell/projectile/sickness)
 	H.add_spell(/datum/action/cooldown/spell/conjure/raise_lesser_undead/necromancer)
-	H.add_spell(/datum/action/cooldown/spell/strengthen_undead)
 	H.add_spell(/datum/action/cooldown/spell/gravemark)
 	ADD_TRAIT(H, TRAIT_CABAL, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INHUMENCAMP, TRAIT_GENERIC)
