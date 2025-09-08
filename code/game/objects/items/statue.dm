@@ -86,10 +86,6 @@
 	. = ..()
 	icon_state = "volf_silv" // whoever designed this system needs to be cursed
 
-/obj/item/statue/silver/volf/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
-
 /obj/item/statue/silver/finger
 	name = "silver hand"
 	desc = "A silver statue of a humen hand flashing a common xylixian slight. This offensive item has no value."
@@ -97,10 +93,6 @@
 	icon_state = "finger_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 0
-
-/obj/item/statue/silver/finger/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/finger/Initialize()
 	. = ..()
@@ -116,10 +108,6 @@
 
 /obj/item/statue/silver/urn/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/urn/Initialize()
-	. = ..()
 	icon_state = "urn_silv"
 
 /obj/item/statue/silver/vase
@@ -129,10 +117,6 @@
 	icon_state = "vase_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 25
-
-/obj/item/statue/silver/vase/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/vase/Initialize()
 	. = ..()
@@ -148,10 +132,6 @@
 
 /obj/item/statue/silver/vasefancy/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/vasefancy/Initialize()
-	. = ..()
 	icon_state = "fancyvase_silv"
 
 /obj/item/statue/silver/bust
@@ -164,10 +144,6 @@
 
 /obj/item/statue/silver/bust/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/bust/Initialize()
-	. = ..()
 	icon_state = "bust_silv"
 
 /obj/item/statue/silver/figurine
@@ -176,10 +152,6 @@
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "figurine_silv"
 	sellprice = 15
-
-/obj/item/statue/silver/figurine/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/figurine/Initialize()
 	. = ..()
@@ -195,10 +167,6 @@
 
 /obj/item/statue/silver/obelisk/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/obelisk/Initialize()
-	. = ..()
 	icon_state = "obelisk_silv"
 
 /obj/item/statue/silver/fish
@@ -207,10 +175,6 @@
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "fish_silv"
 	sellprice = 15
-
-/obj/item/statue/silver/fish/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/fish/Initialize()
 	. = ..()
@@ -226,10 +190,6 @@
 
 /obj/item/statue/silver/tablet/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/tablet/Initialize()
-	. = ..()
 	icon_state = "tablet_silv"
 
 /obj/item/statue/silver/cameo
@@ -238,10 +198,6 @@
 	icon = 'icons/roguetown/items/precious_objects.dmi'
 	icon_state = "cameo_silv"
 	sellprice = 15
-
-/obj/item/statue/silver/cameo/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/cameo/Initialize()
 	. = ..()
@@ -256,10 +212,6 @@
 
 /obj/item/statue/silver/comb/Initialize()
 	. = ..()
-	enchant(/datum/enchantment/silver)
-
-/obj/item/statue/silver/comb/Initialize()
-	. = ..()
 	icon_state = "comb_silv"
 
 /obj/item/statue/silver/totem
@@ -269,10 +221,6 @@
 	icon_state = "elven_silv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 35
-
-/obj/item/statue/silver/totem/Initialize()
-	. = ..()
-	enchant(/datum/enchantment/silver)
 
 /obj/item/statue/silver/totem/Initialize()
 	. = ..()
