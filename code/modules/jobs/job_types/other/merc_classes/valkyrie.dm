@@ -21,32 +21,32 @@
 	gloves = /obj/item/clothing/gloves/leather
 	cloak = /obj/item/clothing/cloak/raincloak/colored/red
 	belt = /obj/item/storage/belt/leather/mercenary
-	beltr = /obj/item/weapon/sword/iron
+	beltr = /obj/item/weapon/sword
 	beltl = /obj/item/reagent_containers/glass/bottle/stronghealthpot
 
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid, /obj/item/reagent_containers/glass/bottle/healthpot = 3, /obj/item/weapon/knife/hunting)
 
 /datum/outfit/job/mercenary/valkyrie/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,3), TRUE)
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
-		H.merctype = 9
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,3), TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
-		H.change_stat(STATKEY_STR, 2)
-		H.change_stat(STATKEY_SPD, 3) // It's the only thing they've got
+	H.merctype = 9
+
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_SPD, 3) // It's the only thing they've got
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)

@@ -23,7 +23,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor/light/rust
 	belt = /obj/item/storage/belt/leather/mercenary
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	beltl = /obj/item/weapon/sword/iron
+	beltl = /obj/item/weapon/sword
 	backl = /obj/item/storage/backpack/satchel
 	backr = /obj/item/weapon/polearm/spear
 	scabbards = list(/obj/item/weapon/scabbard/sword)

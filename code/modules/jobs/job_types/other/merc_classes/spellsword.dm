@@ -18,7 +18,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/mercenary
-	beltr = /obj/item/weapon/sword/iron
+	beltr = /obj/item/weapon/sword
 	beltl = /obj/item/storage/magebag/poor
 	backl = /obj/item/storage/backpack/satchel
 	scabbards = list(/obj/item/weapon/scabbard/sword)

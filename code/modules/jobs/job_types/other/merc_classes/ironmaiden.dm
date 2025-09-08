@@ -11,16 +11,18 @@
 
 /datum/outfit/job/mercenary/ironmaiden
 	head = /obj/item/clothing/head/helmet/sallet
-	mask = /obj/item/clothing/face/facemask
-	armor = /obj/item/clothing/armor/plate/full/iron
-	shirt = /obj/item/clothing/armor/chainmail/iron
-	gloves = /obj/item/clothing/gloves/plate/iron
+	mask = /obj/item/clothing/face/facemask/steel
+	neck = /obj/item/clothing/neck/gorget
+	wrists = /obj/item/clothing/wrists/bracers
+	armor = /obj/item/clothing/armor/plate/full
+	shirt = /obj/item/clothing/armor/chainmail
+	gloves = /obj/item/clothing/gloves/plate
 	belt = /obj/item/storage/belt/leather/mercenary
 	backl = /obj/item/storage/backpack/satchel/surgbag
 	backr = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/knife/dagger/steel
 	beltl = /obj/item/weapon/knife/cleaver
-	pants = /obj/item/clothing/pants/platelegs/iron
+	pants = /obj/item/clothing/pants/platelegs
 	shoes = /obj/item/clothing/shoes/boots/armor
 	backpack_contents = list(
 		/obj/item/storage/belt/pouch/coins/poor
