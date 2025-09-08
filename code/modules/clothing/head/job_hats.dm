@@ -92,10 +92,12 @@
 	AddComponent(/datum/component/storage/concrete/grid/kobold_storage)
 
 //random wizhat
+/obj/item/clothing/head/wizhat/random
+	misc_flags = CRAFTING_TEST_EXCLUDE //meant to not be craftable, its a random wizhat for adventurers and mages
+
 /obj/item/clothing/head/wizhat/random/Initialize()
 	. = ..()
 	icon_state = pick("wizardhat", "wizardhatred", "wizardhatgreen", "wizardhatblack", "wizardhatyellow")
-	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/head/wizhat/witch
 	name = "witch hat"
