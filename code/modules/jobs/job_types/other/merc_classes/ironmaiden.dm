@@ -1,7 +1,7 @@
 /datum/advclass/mercenary/ironmaiden
 	name = "Iron Maiden"
 	tutorial = "You're a battlefield medic and have forsaken the blade for the scalpel. \
-	Your vile apperance has been hidden under layers of iron, allowing you to ply your trade to all those who have the coin."
+	Your vile apperance has been hidden under layers of steel, allowing you to ply your trade to all those who have the coin."
 	allowed_races = list(SPEC_ID_MEDICATOR)
 	outfit = /datum/outfit/job/mercenary/ironmaiden
 	category_tags = list(CTAG_MERCENARY)
@@ -18,8 +18,8 @@
 	shirt = /obj/item/clothing/armor/chainmail
 	gloves = /obj/item/clothing/gloves/plate
 	belt = /obj/item/storage/belt/leather/mercenary
-	backl = /obj/item/storage/backpack/satchel/surgbag
-	backr = /obj/item/storage/backpack/satchel
+	backl = /obj/item/storage/backpack/satchel
+	backr = /obj/item/storage/backpack/satchel/surgbag
 	beltr = /obj/item/weapon/knife/dagger/steel
 	beltl = /obj/item/weapon/knife/cleaver
 	pants = /obj/item/clothing/pants/platelegs
