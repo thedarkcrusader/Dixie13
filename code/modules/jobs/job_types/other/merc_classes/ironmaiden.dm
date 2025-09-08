@@ -28,22 +28,21 @@
 
 /datum/outfit/job/mercenary/ironmaiden/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 
-		H.merctype = 9
+	H.merctype = 9
 
-		H.change_stat(STATKEY_STR, 2)
-		H.change_stat(STATKEY_END, 2)
-		H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_END, 2)
+	H.change_stat(STATKEY_INT, 2)
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
