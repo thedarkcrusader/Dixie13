@@ -78,6 +78,22 @@
 	grid_width = 64
 	w_class = WEIGHT_CLASS_NORMAL
 	var/meat_to_give = /obj/item/reagent_containers/food/snacks/meat/steak
+	var/rotten = FALSE
+
+//quality from butchering, 0 is bad, 1 is normal, 2 is good, -1 means its rotten and useless
+/obj/item/natural/head/proc/ButcheringResults(butchering_quality)
+	switch(butchering_quality)
+		if(0)
+			sellprice = floor(sellprice * 0.75)
+		if(1)
+			//nothing
+		if(2)
+			sellprice = floor(sellprice * 1.25)
+		if(-1)
+			sellprice = floor(sellprice * 0.25)
+			var/initial_name = name
+			name = "rotten [initial_name]"
+			rotten = TRUE
 
 /obj/item/natural/head/MiddleClick(mob/living/user, params)
 	var/obj/item/held_item = user.get_active_held_item()
@@ -91,7 +107,10 @@
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 			var/amt2raise = user.STAINT/4
 			if(do_after(user, used_time, src))
-				new meat_to_give(get_turf(src))
+				var/obj/item/I = new meat_to_give(get_turf(src))
+				if(rotten && istype(I,/obj/item/reagent_containers/food/snacks))
+					var/obj/item/reagent_containers/food/snacks/F = I
+					F.become_rotten()
 				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 				user.adjust_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
 				qdel(src)
