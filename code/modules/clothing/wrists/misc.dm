@@ -18,7 +18,7 @@
 	icon_state = "bracelets"
 	sellprice = 30
 
-/obj/item/clothing/wrists/bracelet/silver/Initialize(mapload)
+/obj/item/clothing/wrists/bracelet/silver/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 

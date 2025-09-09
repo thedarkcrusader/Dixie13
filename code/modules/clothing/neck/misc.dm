@@ -24,7 +24,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 35
 
-/obj/item/clothing/neck/amulet/silver/Initialize(mapload)
+/obj/item/clothing/neck/amulet/silver/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
