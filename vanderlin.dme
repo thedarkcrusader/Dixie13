@@ -2420,6 +2420,7 @@
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\rare\zalad.dm"
 #include "code\modules\jobs\job_types\adventurer\types\special\crusader.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\berserker.dm"
+#include "code\modules\jobs\job_types\adventurer\types\wretch\bloodsucker.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\deserter.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\hedgemage.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\heretic.dm"
