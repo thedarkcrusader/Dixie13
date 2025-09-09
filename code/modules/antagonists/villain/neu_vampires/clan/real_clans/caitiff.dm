@@ -7,6 +7,6 @@
 		/datum/coven/auspex,
 		/datum/coven/bloodheal
     )
-	var/force_VL_if_clan_is_empty = TRUE
+	force_VL_if_clan_is_empty = TRUE
 /datum/clan/caitiff/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
