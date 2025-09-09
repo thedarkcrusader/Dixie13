@@ -236,7 +236,7 @@
 /datum/anvil_recipe/valuables/gold/vasefancy
 	name = "Fancy Gold Vase (+ Gold Bar)"
 	recipe_name = "a Fancy Golden Vase"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/vasefancy
 
 /datum/anvil_recipe/valuables/gold/vase
