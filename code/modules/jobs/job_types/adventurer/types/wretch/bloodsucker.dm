@@ -3,8 +3,8 @@
 	tutorial = "You have recently been embraced as a vampire, yet you do not know whom your maker is. By fear of your nature getting revealed you have run from home, will you be able to keep your true nature hidden?"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
-	category_tags = list(CTAG_WRETCH)
 	outfit = /datum/outfit/job/wretch/bloodsucker
+	category_tags = list(CTAG_WRETCH)
 	maximum_possible_slots = 1
 
 /datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)

@@ -7,5 +7,6 @@
 		/datum/coven/bloodheal
     )
 	force_VL_if_clan_is_empty = FALSE
+	selectable_by_vampires = FALSE
 /datum/clan/caitiff/apply_clan_components(mob/living/carbon/human/H)
 	H.AddComponent(/datum/component/vampire_disguise)
