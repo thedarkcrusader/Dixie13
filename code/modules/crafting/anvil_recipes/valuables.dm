@@ -224,7 +224,7 @@
 /datum/anvil_recipe/valuables/gold/volf
 	name = "Golden Volf Bust (+ Gold Bar)"
 	recipe_name = "a Golden Volf Bust"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/volf
 
 /datum/anvil_recipe/valuables/gold/urn
