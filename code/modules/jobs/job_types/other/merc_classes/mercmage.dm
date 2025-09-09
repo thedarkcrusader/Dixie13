@@ -63,14 +63,18 @@
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 
+	if(H.age == AGE_OLD)
+		H.change_stat(STATKEY_END, 1)//to counteract the innate endurance loss
+		H.change_stat(STATKEY_PER, -1)//instead they lose some perception
+
 	//increased endurance more than common mages due to them being a merc
 	H.change_stat(STATKEY_END, 1)
-	H.change_stat(STATKEY_INT, 5)
+	H.change_stat(STATKEY_INT, 4)
 	H.change_stat(STATKEY_CON, -1)
 	H.change_stat(STATKEY_PER, -1)
 	H.change_stat(STATKEY_STR, -1)
 
-	H.adjust_spell_points(10)//less than courtmagician, more than an a adventurer wizard
+	H.adjust_spell_points(8)//less than courtmagician, more than an a adventurer wizard
 
 	H.merctype = 9
 
