@@ -168,7 +168,7 @@ And it also helps for the character set panel
 
 /datum/clan/proc/handle_member_joining(mob/living/carbon/human/H, is_vampire = TRUE)
 	// If no clan leader exists, make this person the leader (vampires only)
-	if(!clan_leader && is_vampire && !(H.not_clan_leader))
+	if(!clan_leader && is_vampire && force_VL_if_clan_is_empty)
 		hierarchy_root.assign_member(H)
 		if(ispath(leader))
 			var/datum/clan_leader/new_leader = new leader()
@@ -363,7 +363,7 @@ And it also helps for the character set panel
 
 /datum/clan/proc/post_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
-	if(!clan_leader && ispath(leader) && !(H.not_clan_leader))
+	if(!clan_leader && ispath(leader) && force_VL_if_clan_is_empty)
 		var/datum/clan_leader/new_leader = new leader()
 		leader = new_leader
 		leader.lord_title = leader_title
