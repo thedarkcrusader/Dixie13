@@ -12,11 +12,9 @@
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/none, TRUE)
+		var/datum/antagonist/vampire/new_antag = new (incoming_clan = /datum/clan/caitiff)
 		H.mind.add_antag_datum(new_antag)
 		H.set_patron(/datum/patron/godless, TRUE)
-		if(H.clan)
-			H.not_clan_leader = TRUE
 	//Small health vial
 	var/classes = list("The Noble", "The Count")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
