@@ -3,7 +3,6 @@
 	desc = "The clanless"
 	blood_preference = BLOOD_PREFERENCE_ALL
 	clane_covens = list(
-		/datum/coven/obfuscate,
 		/datum/coven/auspex,
 		/datum/coven/bloodheal
     )
