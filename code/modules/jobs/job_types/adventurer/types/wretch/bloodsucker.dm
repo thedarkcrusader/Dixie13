@@ -4,18 +4,29 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	category_tags = list(CTAG_WRETCH)
+	outfit = /datum/outfit/job/wretch/bloodsucker
 	maximum_possible_slots = 2
 
+/datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.mind)
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire
+		H.mind.add_antag_datum(new_antag)
+		H.set_patron(/datum/patron/godless, TRUE)
+		if(H.clan)
+			H.not_clan_leader = TRUE
+	//Small health vial
 	var/classes = list("The Noble", "The Count")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 		if("The Noble")
-			grenzel_equip(H)
-		if("The Count")
 			noble_equip(H)
+		if("The Count")
+			grenzel_equip(H)
 
-/datum/outfit/job/wretch/bloodsucker/noble/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/job/wretch/bloodsucker/proc/noble_equip(mob/living/carbon/human/H)
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Lord"
@@ -23,7 +34,6 @@
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
-
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -63,8 +73,7 @@
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
-/datum/outfit/job/wretch/bloodsucker/grenzel/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/job/wretch/bloodsucker/proc/grenzel_equip(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft

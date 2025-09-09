@@ -19,6 +19,7 @@
 	var/bloodpool = 1000
 	var/maxbloodpool = 3000
 	var/masquerade = 5
+	var/not_clan_leader = FALSE
 
 	var/last_masquerade_violation = 0
 	var/resistant_to_covens = FALSE

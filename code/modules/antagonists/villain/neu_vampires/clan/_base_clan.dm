@@ -43,7 +43,6 @@ And it also helps for the character set panel
 	var/non_vampire_title = "Slave"
 	var/datum/clan_hierarchy_node/hierarchy_root
 	var/list/datum/clan_hierarchy_node/all_positions = list()
-
 	var/curse = "None."
 
 	var/clane_curse //There should be a reference here.
@@ -168,7 +167,7 @@ And it also helps for the character set panel
 
 /datum/clan/proc/handle_member_joining(mob/living/carbon/human/H, is_vampire = TRUE)
 	// If no clan leader exists, make this person the leader (vampires only)
-	if(!clan_leader && is_vampire)
+	if(!clan_leader && is_vampire && H.not_clan_leader)
 		hierarchy_root.assign_member(H)
 		if(ispath(leader))
 			var/datum/clan_leader/new_leader = new leader()
