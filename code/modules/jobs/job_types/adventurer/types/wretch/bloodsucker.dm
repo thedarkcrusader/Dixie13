@@ -5,24 +5,26 @@
 	allowed_races = RACES_PLAYER_ALL
 	category_tags = list(CTAG_WRETCH)
 	outfit = /datum/outfit/job/wretch/bloodsucker
-	maximum_possible_slots = 2
+	maximum_possible_slots = 1
 
 /datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
 		H.mind.add_antag_datum(new_antag)
-		H.set_patron(/datum/patron/godless, TRUE)
+		H.set_patron(/datum/patron/godless/autotheist)
 	//Small health vial
-	var/classes = list("The Noble", "The Count")
+	var/classes = list("The Noble", "The Count", "The Bum")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 		if("The Noble")
 			noble_equip(H)
 		if("The Count")
 			grenzel_equip(H)
+		if("The Bum")
+			bum_equip(H)
 
 /datum/outfit/job/wretch/bloodsucker/proc/noble_equip(mob/living/carbon/human/H)
 	var/prev_real_name = H.real_name
@@ -40,27 +42,27 @@
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_INT, 3) // smart vampire
+	H.change_stat(STATKEY_SPD, 1)
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/satchel
-	neck = /obj/item/storage/belt/pouch/coins/mid
+	neck = /obj/item/clothing/neck/gorget
 	belt = /obj/item/storage/belt/leather
 
 	if(H.gender == FEMALE)
-		H.change_stat(STATKEY_SPD, 1)
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
 		head = /obj/item/clothing/head/hatfur
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-		beltr = /obj/item/weapon/knife/dagger/steel/special
+		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1)
 	if(H.gender == MALE)
-		H.change_stat(STATKEY_CON, 1)
-		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		pants = /obj/item/clothing/pants/tights/colored/black
 		shirt = /obj/item/clothing/shirt/tunic/colored/random
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
@@ -68,7 +70,7 @@
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/belt/pouch/coins/mid)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/bloodsucker/proc/grenzel_equip(mob/living/carbon/human/H)
@@ -83,9 +85,7 @@
 	pants = /obj/item/clothing/pants/grenzelpants
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid)
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/armor/gambeson/heavy/dress/alt
-		beltl = /obj/item/weapon/sword/rapier/dec
+
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -110,8 +110,22 @@
 		if(!H.has_language(/datum/language/oldpsydonic))
 			H.grant_language(/datum/language/oldpsydonic)
 			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
-		H.change_stat(STATKEY_INT, 1)
+		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_END, 2)
+		H.change_stat(STATKEY_STR, 1)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+
+/datum/outfit/job/wretch/bloodsucker/proc/bum_equip(mob/living/carbon/human/H)
+	cloak = /obj/item/clothing/cloak/tribal // yes, just a cloak
+	H.adjust_skillrank(/datum/skill/misc/sneaking, pick(3,4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/lockpicking, pick (1,2,3,4,5), TRUE) // thug lyfe
+	H.adjust_skillrank(/datum/skill/misc/climbing, pick(2,3,4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,2,3,4,5), TRUE) // Street-fu
+	H.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2,3,4,5,6), TRUE)
+	H.base_fortune = rand(1, 20)
+	H.change_stat(STATKEY_STR, pick(-1,1,2,3))
+	H.change_stat(STATKEY_INT, pick(-2,-1,1,2))
+	H.change_stat(STATKEY_SPD, pick(-2,-1,1,2))

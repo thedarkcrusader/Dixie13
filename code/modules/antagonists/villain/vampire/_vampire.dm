@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	. = ..()
 	if(forced_clan)
 		forced = forced_clan
-		forcing_clan = incoming_clan
+		forcing_clan = new incoming_clan
 	else
 		default_clan = incoming_clan
 
