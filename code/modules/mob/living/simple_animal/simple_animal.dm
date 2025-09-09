@@ -432,9 +432,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/amount = butcher_results[path]
 		if(!do_after(user, time_per_cut, target = src))
 			if(botch_count || normal_count || perfect_count || bonus_count)
-				to_chat(user, "<span class='notice'>I stop butchering: [butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)].</span>")
+				to_chat(user, span_notice("I stop butchering: [butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)]."))
 			else
-				to_chat(user, "<span class='notice'>I stop butchering for now.</span>")
+				to_chat(user, span_notice("I stop butchering for now."))
 			break
 		// Check for botch first
 		if(prob(botch_chance))
@@ -450,41 +450,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		else
 			normal_count++
 
-<<<<<<< HEAD
-		var/rotstuff = FALSE
-		var/datum/component/rot/simple/CR = GetComponent(/datum/component/rot/simple)
-		if(CR)
-			if(CR.amount >= 10 MINUTES)
-				rotstuff = TRUE
-		var/atom/Tsec = drop_location()
-		if(head_butcher)
-			butcher[head_butcher] = 1
-		for(var/path in butcher)
-			for(var/i in 1 to butcher[path])
-				var/obj/item/I = new path(Tsec)
-				I.add_mob_blood(src)
-				if(istype(I,/obj/item/natural/head))
-					var/obj/item/natural/head/head = I
-					if(prob(user.STALUC))
-						head.ButcheringResults(2)
-					else
-						if(prob(20 - user.STALUC))
-							head.ButcheringResults(0)
-						else
-							head.ButcheringResults(1)
-					if(user.get_skill_level(/datum/skill/labor/butchering) <= 1)
-						head.ButcheringResults(0)
-					if(user.get_skill_level(/datum/skill/labor/butchering) >= 5)
-						head.ButcheringResults(2)
-					if(rotstuff)
-						head.ButcheringResults(-1)
-
-				if(rotstuff && istype(I,/obj/item/reagent_containers/food/snacks))
-					var/obj/item/reagent_containers/food/snacks/F = I
-					F.become_rotten()
-	SEND_SIGNAL(user, COMSIG_MOB_BUTCHERED, src)
-	gib()
-=======
 		// Apply happiness bonus to yield (only if not botched)
 		var/bonus_amount = 0
 		if(amount > 0 && happiness_bonus > 0)
@@ -508,11 +473,27 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(user.mind)
 			user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 0.5)
 		playsound(src, 'sound/foley/gross.ogg', 70, FALSE)
+	if(head_butcher)
+		var/obj/item/natural/head/head = new head_butcher(Tsec)
+		switch(butchery_skill_level)
+			if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE)
+				head.ButcheringResults(0)
+			if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_EXPERT)
+				head.ButcheringResults(1)
+				if(prob(20 - user.STALUC))
+					head.ButcheringResults(0)
+				else
+					if(prob(user.STALUC))
+						head.ButcheringResults(2)
+			if(SKILL_LEVEL_MASTER to INFINITY)
+				head.ButcheringResults(2)
+		if(rotstuff)
+			head.ButcheringResults(-1)
 	if(isemptylist(butcher_results))
 		var/final_message = "I finish butchering: [butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)]"
 		if(happiness_message)
 			final_message += " [happiness_message]"
-		to_chat(user, "<span class='notice'>[final_message].</span>")
+		to_chat(user, span_notice("[final_message]"))
 		gib()
 
 /mob/living/proc/butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)
@@ -570,7 +551,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return "The happy animal provides generous portions."
 		if(0.4 to INFINITY)
 			return "The blissful animal rewards your care with abundant meat."
->>>>>>> upstream/main
 
 /mob/living/simple_animal/spawn_dust(just_ash = FALSE)
 	if(just_ash || !remains_type)
