@@ -86,7 +86,7 @@
 /datum/anvil_recipe/valuables/silver/finger
 	name = "Silver Middle Finger (+2 Silver Bar)"
 	recipe_name = "a Silver Middle Finger "
-	additional_items = list(/obj/item/ingot/silver/, /obj/item/ingot/silver/)
+	additional_items = list(/obj/item/ingot/silver/, /obj/item/ingot/silver)
 	created_item = /obj/item/statue/silver/finger
 
 /datum/anvil_recipe/valuables/silver/bust
@@ -121,25 +121,25 @@
 
 /datum/anvil_recipe/valuables/silver/comb
 	name = "2x Silver Combs"
-	recipe_name = "a Two Silver Combs"
+	recipe_name = "two Silver Combs"
 	created_item = /obj/item/statue/silver/comb
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/silver/figurine
 	name = "2x Silver Figurines"
-	recipe_name = "a Two Silver Figurines"
+	recipe_name = "two Silver Figurines"
 	created_item = /obj/item/statue/silver/figurine
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/silver/cameo
 	name = "2x Silver Cameo's"
-	recipe_name = "a Two Silver Cameo's"
+	recipe_name = "two Silver Cameo's"
 	created_item = /obj/item/statue/silver/cameo
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/silver/fish
 	name = "2x Silver Fish"
-	recipe_name = "a Two Silver Fish"
+	recipe_name = "two Silver Fish"
 	created_item = /obj/item/statue/silver/fish
 	createditem_extra = 1
 
@@ -218,25 +218,25 @@
 /datum/anvil_recipe/valuables/gold/finger
 	name = "Golden Middle Finger (2+ Gold Bars)"
 	recipe_name = "a Golden Middle Finger"
-	additional_items = list(/obj/item/ingot/gold/, /obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold/, /obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/finger
 
 /datum/anvil_recipe/valuables/gold/volf
 	name = "Golden Volf Bust (+ Gold Bar)"
 	recipe_name = "a Golden Volf Bust"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/volf
 
 /datum/anvil_recipe/valuables/gold/urn
 	name = "Gold Urn (+ Gold Bar)"
 	recipe_name = "a Golden Urn"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/urn
 
 /datum/anvil_recipe/valuables/gold/vasefancy
 	name = "Fancy Gold Vase (+ Gold Bar)"
 	recipe_name = "a Fancy Golden Vase"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/vasefancy
 
 /datum/anvil_recipe/valuables/gold/vase
@@ -266,25 +266,25 @@
 
 /datum/anvil_recipe/valuables/gold/cameo
 	name = "2x Gold Cameo's"
-	recipe_name = "a Two Gold Cameos"
+	recipe_name = "two Gold Cameos"
 	created_item = /obj/item/statue/gold/cameo
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/comb
 	name = "2x Gold Combs"
-	recipe_name = "a Two Gold Combs"
+	recipe_name = "two Gold Combs"
 	created_item = /obj/item/statue/gold/comb
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/figurine
 	name = "2x Gold Figurines"
-	recipe_name = "a Two Gold Figurines"
+	recipe_name = "two Gold Figurines"
 	created_item = /obj/item/statue/gold/figurine
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/fish
 	name = "2x Golden Fish Figurines"
-	recipe_name = "a Two Gold Fish Figurines"
+	recipe_name = "two Gold Fish Figurines"
 	created_item = /obj/item/statue/gold/fish
 	createditem_extra = 1
 
