@@ -230,7 +230,7 @@
 /datum/anvil_recipe/valuables/gold/urn
 	name = "Gold Urn (+ Gold Bar)"
 	recipe_name = "a Golden Urn"
-	additional_items = list(/obj/item/ingot/gold/)
+	additional_items = list(/obj/item/ingot/gold)
 	created_item = /obj/item/statue/gold/urn
 
 /datum/anvil_recipe/valuables/gold/vasefancy
