@@ -152,13 +152,13 @@
 /datum/anvil_recipe/valuables/silver/bracelet
 	name = "2x Silver Bracelets"
 	recipe_name = "two Silver Bracelets"
-	created_item = /obj/item/clothing/wrists/bracelet/silver
+	created_item = /obj/item/clothing/wrists/silverbracelet
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/silver/amulet
 	name = "2x Silver Amulets"
 	recipe_name = "two Silver Amulets"
-	created_item = /obj/item/clothing/neck/amulet/silver
+	created_item = /obj/item/clothing/neck/silveramulet
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/silver/dorpels
@@ -303,7 +303,7 @@
 /datum/anvil_recipe/valuables/gold/amulet
 	name = "2x Gold Amulets"
 	recipe_name = "two Gold Amulets"
-	created_item = /obj/item/clothing/neck/amulet/gold
+	created_item = /obj/item/clothing/neck/goldamulet
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/fish

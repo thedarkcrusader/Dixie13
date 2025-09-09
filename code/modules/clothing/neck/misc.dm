@@ -4,7 +4,7 @@
 |  Light Armor	 |
 |			 	 |
 \---------------*/
-/obj/item/clothing/neck/amulet/gold
+/obj/item/clothing/neck/goldamulet
 	name = "gold amulet"
 	icon_state = "amuletg"
 	slot_flags = ITEM_SLOT_NECK
@@ -14,7 +14,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 60
 
-/obj/item/clothing/neck/amulet/silver
+/obj/item/clothing/neck/silveramulet
 	name = "silver amulet"
 	icon_state = "amulets"
 	slot_flags = ITEM_SLOT_NECK
@@ -24,7 +24,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 35
 
-/obj/item/clothing/neck/amulet/silver/Initialize()
+/obj/item/clothing/neck/silveramulet/Initialize()
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
