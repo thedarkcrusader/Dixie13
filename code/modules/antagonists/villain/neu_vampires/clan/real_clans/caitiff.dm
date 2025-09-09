@@ -4,6 +4,7 @@
 	blood_preference = BLOOD_PREFERENCE_ALL
 	clane_covens = list(
 		/datum/coven/auspex,
+		/datum/coven/obfuscate,
 		/datum/coven/bloodheal
     )
 	force_VL_if_clan_is_empty = FALSE

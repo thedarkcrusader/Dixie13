@@ -1,6 +1,6 @@
 /datum/advclass/wretch/bloodsucker
 	name = "Bloodsucker"
-	tutorial = "You have recently been embraced as a vampire, yet you do not know whom your maker is. By fear of your nature getting revealed you have run from home, will you be able to keep your tru"
+	tutorial = "You have recently been embraced as a vampire. You do not know whom your sire is, strange urges, unnatural strength, a thirst you can barely control. You were outed as a monster and are now on the run"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	category_tags = list(CTAG_WRETCH)
@@ -45,6 +45,7 @@
 	belt = /obj/item/storage/belt/leather
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+	wretch_select_bounty(H)
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
@@ -116,6 +117,7 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+		wretch_select_bounty(H)
 		if(H.mind)
 			if(H.mind.has_antag_datum(/datum/antagonist))
 				return
@@ -136,7 +138,7 @@
 	H.change_stat(STATKEY_INT, pick(-2,-1,1,2))
 	H.change_stat(STATKEY_SPD, pick(-2,-1,1,2))
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
-
+	wretch_select_bounty(H)
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
