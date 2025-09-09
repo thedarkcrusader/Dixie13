@@ -12,7 +12,7 @@
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/none, TRUE)
 		H.mind.add_antag_datum(new_antag)
 		H.set_patron(/datum/patron/godless, TRUE)
 		if(H.clan)
