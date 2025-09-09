@@ -297,7 +297,7 @@
 /datum/anvil_recipe/valuables/gold/bracelet
 	name = "2x Gold Bracelets"
 	recipe_name = "two Gold Bracelets"
-	created_item = /obj/item/clothing/wrists/bracelet/gold
+	created_item = /obj/item/clothing/wrists/goldbracelet
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/amulet
