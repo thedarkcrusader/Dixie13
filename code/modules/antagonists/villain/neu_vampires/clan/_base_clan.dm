@@ -417,7 +417,6 @@ And it also helps for the character set panel
 	var/datum/clan/previous_clan = clan
 	previous_clan?.on_lose(src)
 	clan = new_clan
-	message_admins("CLAN [clan], NEW CLAN [new_clan]")
 	if (!new_clan)
 		return
 	clan.on_gain(src)
