@@ -1,20 +1,14 @@
 /datum/advclass/wretch/bloodsucker
 	name = "Bloodsucker"
-	tutorial = "You have recently been embraced as a vampire, yet you do not know whom your maker is. By fear of your nature getting revealed you have run from home, will you be able to keep your true nature hidden?"
+	tutorial = "You have recently been embraced as a vampire, yet you do not know whom your maker is. By fear of your nature getting revealed you have run from home, will you be able to keep your tru"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/wretch/bloodsucker
 	category_tags = list(CTAG_WRETCH)
+	outfit = /datum/outfit/job/wretch/bloodsucker
 	maximum_possible_slots = 1
 
 /datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)
-	..()
-	if(H.mind)
-		if(H.mind.has_antag_datum(/datum/antagonist))
-			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
-		H.mind.add_antag_datum(new_antag)
-		H.set_patron(/datum/patron/godless/autotheist)
+	H.set_patron(/datum/patron/godless/autotheist)
 
 	var/classes = list("The Noble", "The Count", "The Bum")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
@@ -51,6 +45,12 @@
 	belt = /obj/item/storage/belt/leather
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+	if(H.mind)
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+		H.mind.add_antag_datum(new_antag)
+		H.set_patron(/datum/patron/godless/autotheist)
 	if(H.gender == FEMALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
@@ -72,7 +72,6 @@
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special)
-
 
 /datum/outfit/job/wretch/bloodsucker/proc/grenzel_equip(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
@@ -117,6 +116,12 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+		if(H.mind)
+			if(H.mind.has_antag_datum(/datum/antagonist))
+				return
+			var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+			H.mind.add_antag_datum(new_antag)
+			H.set_patron(/datum/patron/godless/autotheist)
 
 /datum/outfit/job/wretch/bloodsucker/proc/bum_equip(mob/living/carbon/human/H)
 	cloak = /obj/item/clothing/cloak/tribal // yes, just a cloak
@@ -131,3 +136,10 @@
 	H.change_stat(STATKEY_INT, pick(-2,-1,1,2))
 	H.change_stat(STATKEY_SPD, pick(-2,-1,1,2))
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
+
+	if(H.mind)
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+		H.mind.add_antag_datum(new_antag)
+		H.set_patron(/datum/patron/godless/autotheist)
