@@ -149,6 +149,18 @@
 	created_item = /obj/item/clothing/ring/silver
 	createditem_extra = 2
 
+/datum/anvil_recipe/valuables/silver/bracelet
+	name = "2x Silver Bracelets"
+	recipe_name = "two Silver Bracelets"
+	created_item = /obj/item/clothing/wrists/bracelet/silver
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/silver/amulet
+	name = "2x Silver Amulets"
+	recipe_name = "two Silver Amulets"
+	created_item = /obj/item/clothing/neck/amulet/silver
+	createditem_extra = 1
+
 /datum/anvil_recipe/valuables/silver/dorpels
 	name = "Silver Dorpel Ring"
 	recipe_name = "a Silver Dorpel Ring"
@@ -280,6 +292,18 @@
 	name = "2x Gold Figurines"
 	recipe_name = "two Gold Figurines"
 	created_item = /obj/item/statue/gold/figurine
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/bracelet
+	name = "2x Gold Bracelets"
+	recipe_name = "two Gold Bracelets"
+	created_item = /obj/item/clothing/wrists/bracelet/gold
+	createditem_extra = 1
+
+/datum/anvil_recipe/valuables/gold/amulet
+	name = "2x Gold Amulets"
+	recipe_name = "two Gold Amulets"
+	created_item = /obj/item/clothing/neck/amulet/gold
 	createditem_extra = 1
 
 /datum/anvil_recipe/valuables/gold/fish

@@ -12,6 +12,22 @@
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 
+/obj/item/clothing/wrists/bracelet/silver
+	name = "silver bracelets"
+	slot_flags = ITEM_SLOT_WRISTS
+	icon_state = "bracelets"
+	sellprice = 30
+
+/obj/item/clothing/wrists/bracelet/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
+/obj/item/clothing/wrists/bracelet/gold
+	name = "gold bracelets"
+	slot_flags = ITEM_SLOT_WRISTS
+	icon_state = "braceletg"
+	sellprice = 65
+
 /obj/item/clothing/wrists/bracers/rare
 	abstract_type = /obj/item/clothing/wrists/bracers/rare
 
