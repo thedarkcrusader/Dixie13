@@ -94,7 +94,7 @@
 
 /datum/anvil_recipe/tools/bronze/cogbronze
 	name = "3x Bronze Cog"
-	recipe_name = "two Cogs"
+	recipe_name = "three Cogs"
 	appro_skill = /datum/skill/craft/engineering // To train engineering
 	created_item = /obj/item/gear/metal/bronze
 	craftdiff = 1
