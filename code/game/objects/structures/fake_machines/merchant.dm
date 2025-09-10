@@ -258,7 +258,7 @@
 			contents += "</tr>"
 		contents += "</table>"
 	else
-		contents += "<center>[html_encode(current_cat)]<BR></center>"
+		contents += "<center>[current_cat]<BR></center>"
 		contents += "<center><a href='?src=[REF(src)];changecat=0'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
