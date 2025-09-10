@@ -104,19 +104,6 @@
 
 /obj/item/dice_cup/proc/rig_dice_cup(user)
 	var/obj/item/dice/which_one = browser_input_list(user, "Which die will you rig in your next roll?", "XYLIX", dice_list)
-	/*idk how to do it at the moment
-	basically, radial menu
-	var/datum/radial_menu_choice/choice = new()
-	choice = show_radial_menu(user, user, dice_list, choice.image = image())
-	var/obj/item/dice/which_one = choice
-	var/list/options = list()
-	for(var/obj/item/dice/dice in dice_list)
-    	var/datum/radial_menu_choice/option = new()
-    	option.image = mutable_appearance(dice)
-    	options += option
-	var/datum/radial_menu_choice/choice = new()
-	choice = show_radial_menu(user, user, option)
-	*/
 	if(which_one != null)
 		INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
 
