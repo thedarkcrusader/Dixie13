@@ -61,7 +61,7 @@
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/weapon/knife/dagger/steel/special)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/weapon/knife/dagger/steel/special, /obj/item/clothing/face/shepherd/rag)
 	if(H.gender == MALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
@@ -72,7 +72,7 @@
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special, /obj/item/clothing/face/shepherd/rag)
 
 /datum/outfit/job/wretch/bloodsucker/proc/grenzel_equip(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
@@ -85,7 +85,7 @@
 	shirt = /obj/item/clothing/shirt/grenzelhoft
 	pants = /obj/item/clothing/pants/grenzelpants
 	neck = /obj/item/clothing/neck/gorget
-	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special, /obj/item/clothing/face/shepherd/rag)
 
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
