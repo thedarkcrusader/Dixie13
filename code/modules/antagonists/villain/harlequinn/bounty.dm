@@ -89,7 +89,7 @@
 	var/contraband_options = ""
 	var/contract_types = ""
 
-	for(var/obj/effect/landmark/bounty_location/loc in GLOB.bounty_locations)
+	for(var/obj/effect/landmark/bounty_location/loc as anything in GLOB.bounty_locations)
 		location_options += "<option value=\"[loc.location_name]\">[loc.location_name]</option>"
 
 	for(var/pack_name in GLOB.contraband_packs)
@@ -1090,7 +1090,7 @@
 
 		var/valid_location = FALSE
 
-		for(var/obj/effect/landmark/bounty_location/loc in GLOB.bounty_locations)
+		for(var/obj/effect/landmark/bounty_location/loc as anything in GLOB.bounty_locations)
 			if(loc.location_name == delivery_location)
 				valid_location = TRUE
 				break
@@ -1367,7 +1367,7 @@
 
 	// Choose a random spawn location (excluding the delivery location)
 	var/list/available_locations = list()
-	for(var/obj/effect/landmark/bounty_location/loc in GLOB.bounty_locations)
+	for(var/obj/effect/landmark/bounty_location/loc as anything in GLOB.bounty_locations)
 		if(loc.location_name != contract.delivery_location)
 			available_locations += loc
 
