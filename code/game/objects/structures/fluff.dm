@@ -31,6 +31,7 @@
 	flags_1 = ON_BORDER_1
 	climbable = TRUE
 	layer = ABOVE_MOB_LAYER
+	pass_flags_self = PASSSTRUCTURE|LETPASSCLICKS
 
 	/// Living mobs can lay down to go past
 	var/pass_crawl = TRUE
