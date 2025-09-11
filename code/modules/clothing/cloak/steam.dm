@@ -49,7 +49,7 @@
 			clothing:power_off(user)
 		return
 
-	if(user.get_skill_level(/datum/skill/craft/engineering) <= 3)
+	if(user.get_skill_level(/datum/skill/craft/engineering) <= 2)
 		to_chat(user, span_warning("I don't know how to operate [src]!"))
 		power_off(user)
 		remove_status_effect(user)
