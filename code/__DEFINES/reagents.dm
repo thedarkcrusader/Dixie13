@@ -1,3 +1,6 @@
+/// Format amount and ligula or ligulae correctly based on volume "30 ligulae"
+#define UNIT_FORM_STRING(amount) ("[amount] [amount == 1 ? "ligula" : "ligulae"]")
+
 #define SOLID 			1
 #define LIQUID			2
 #define GAS				3
