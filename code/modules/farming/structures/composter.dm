@@ -50,7 +50,7 @@
 /obj/structure/composter/proc/get_total_compost()
 	return unflipped_compost + flipped_compost + ready_compost
 
-/obj/structure/composter/proc/try_handle_flipping_compost(obj/item/attacking_item, mob/user, params)
+/obj/structure/composter/proc/try_handle_flipping_compost(obj/item/attacking_item, mob/user)
 	var/using_tool = FALSE
 	if(attacking_item)
 		if(istype(attacking_item, /obj/item/weapon/pitchfork) || istype(attacking_item, /obj/item/weapon/shovel))
@@ -124,7 +124,7 @@
 	. = new /obj/item/fertilizer/compost(get_turf(src))
 	update_appearance(UPDATE_OVERLAYS)
 
-/obj/structure/composter/attackby(obj/item/attacking_item, mob/user, params)
+/obj/structure/composter/attackby(obj/item/attacking_item, mob/user, list/modifiers)
 	user.changeNext_move(CLICK_CD_FAST)
 	if(istype(attacking_item,/obj/item/storage/sack) && attacking_item.contents.len)
 		if(get_total_compost() >= MAXIMUM_TOTAL_COMPOST)
@@ -152,20 +152,20 @@
 		return
 	. = ..()
 
-/obj/structure/composter/attack_hand_secondary(mob/user, params)
+/obj/structure/composter/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	user.changeNext_move(CLICK_CD_FAST)
-	if(try_handle_flipping_compost(null, user, params))
+	if(try_handle_flipping_compost(null, user))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/structure/composter/attackby_secondary(obj/item/weapon, mob/user, params)
+/obj/structure/composter/attackby_secondary(obj/item/weapon, mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	user.changeNext_move(CLICK_CD_FAST)
-	if(try_handle_flipping_compost(weapon, user, params))
+	if(try_handle_flipping_compost(weapon, user))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/composter/update_overlays()

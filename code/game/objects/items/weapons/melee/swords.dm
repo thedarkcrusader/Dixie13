@@ -1136,7 +1136,7 @@
 	icon_state = "terminusest"
 	name = "Terminus Est"
 
-/obj/item/weapon/sword/long/exe/cloth/attack_self_secondary(mob/user, params)
+/obj/item/weapon/sword/long/exe/cloth/attack_self_secondary(mob/user, list/modifiers)
 	// . = ..()
 	// if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 	// 	return

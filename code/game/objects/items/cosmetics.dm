@@ -55,7 +55,7 @@
 		colored_overlay.color = colour
 		. += colored_overlay
 
-/obj/item/lipstick/attack_self(mob/user, params)
+/obj/item/lipstick/attack_self(mob/user, list/modifiers)
 	to_chat(user, "<span class='notice'>I twist \the [src] [open ? "closed" : "open"].</span>")
 	open = !open
 	update_appearance(UPDATE_ICON)

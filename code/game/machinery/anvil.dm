@@ -20,7 +20,7 @@
 	if(hingot && hott)
 		. += "<span class='warning'>[hingot] is too hot to touch.</span>"
 
-/obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
+/obj/machinery/anvil/attackby(obj/item/W, mob/living/user, list/modifiers)
 	if(istype(W, /obj/item/weapon/tongs))
 		var/obj/item/weapon/tongs/T = W
 		if(hingot)
@@ -180,7 +180,7 @@
 
 	return FALSE
 
-/obj/machinery/anvil/attack_hand(mob/user, params)
+/obj/machinery/anvil/attack_hand(mob/user, list/modifiers)
 	if(hingot)
 		if(hott)
 			to_chat(user, "<span class='warning'>It's too hot to handle with your hands.</span>")

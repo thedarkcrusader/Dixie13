@@ -94,7 +94,7 @@
 	var/activate_sound
 	abstract_type = /obj/item/clothing/ring/active
 
-/obj/item/clothing/ring/active/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/ring/active/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

@@ -363,10 +363,12 @@
 	key_third_person = "faints"
 	message = "faints."
 	emote_type = EMOTE_VISIBLE
+
 /mob/living/carbon/human/verb/emote_faint()
 	set name = "Faint"
 	set category = "Emotes"
 	emote("faint", intentional = TRUE)
+
 /datum/emote/living/faint/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && iscarbon(user))

@@ -190,7 +190,7 @@
 	releasedrain = 0
 	blade_class = BCLASS_PUNCH
 
-/obj/item/weapon/knife/scissors/pre_attack(atom/A, mob/living/user, params)
+/obj/item/weapon/knife/scissors/pre_attack(atom/A, mob/living/user, list/modifiers)
 	if(user.used_intent.type == /datum/intent/snip && isitem(A))
 		var/obj/item/item = A
 		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!

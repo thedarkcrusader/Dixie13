@@ -54,7 +54,7 @@
 		update_appearance(UPDATE_ICON_STATE)
 
 //Bows are subtype of grenadelauncher and use BOLT_TYPE_NO_BOLT code
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow/attack_self(mob/living/user, params)
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/attack_self(mob/living/user, list/modifiers)
 	chambered = null
 	var/num_unloaded = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(TRUE, TRUE))

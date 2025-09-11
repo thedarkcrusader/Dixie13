@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		return
 	use(user)
 
-/obj/structure/dungeon_entry/attackby(obj/item/W, mob/user, params)
+/obj/structure/dungeon_entry/attackby(obj/item/W, mob/user, list/modifiers)
 	return use(user)
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		return
 	use(user)
 
-/obj/structure/dungeon_exit/attackby(obj/item/W, mob/user, params)
+/obj/structure/dungeon_exit/attackby(obj/item/W, mob/user, list/modifiers)
 	return use(user)
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE

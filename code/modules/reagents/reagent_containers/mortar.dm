@@ -24,7 +24,7 @@
 	grid_width = 64
 	dropshrink = 0.9
 
-/obj/item/reagent_containers/glass/mortar/attack_hand_secondary(mob/user, params)
+/obj/item/reagent_containers/glass/mortar/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -38,7 +38,7 @@
 	to_chat(user, span_notice("It's empty."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/reagent_containers/glass/mortar/attackby_secondary(obj/item/weapon, mob/user, params)
+/obj/item/reagent_containers/glass/mortar/attackby_secondary(obj/item/weapon, mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

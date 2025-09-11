@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(mana_fountains)
 	. = ..()
 	caster = summoner
 
-/obj/structure/door/arcyne/bolt/caster/attack_hand_secondary(mob/user, params)
+/obj/structure/door/arcyne/bolt/caster/attack_hand_secondary(mob/user, list/modifiers)
 	if(user != caster)
 		to_chat(user, span_warning("A magical force prevents me from interacting with [src]!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(mana_fountains)
 		return
 	..()
 
-/obj/structure/well/fountain/mana/attackby(obj/item/I, mob/user, params)
+/obj/structure/well/fountain/mana/attackby(obj/item/I, mob/user, list/modifiers)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/W = I
 		if(W.reagents.holder_full())

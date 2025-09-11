@@ -231,7 +231,7 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
 
-/obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/attackby(obj/item/A, mob/user, list/modifiers)
 	. = ..()
 	if (.)
 		return
@@ -250,7 +250,7 @@
 			if (chambered && !chambered.BB)
 				chambered.forceMove(drop_location())
 				chambered = null
-			var/num_loaded = magazine.attackby(A, user, params, TRUE)
+			var/num_loaded = magazine.attackby(A, user, modifiers, TRUE)
 			if (num_loaded)
 				to_chat(user, "<span class='notice'>I [verbage] \a [cartridge_wording]\s on \the [src].</span>")
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
@@ -298,7 +298,7 @@
 		return
 	return ..()
 
-/obj/item/gun/ballistic/attack_self(mob/living/user, params)
+/obj/item/gun/ballistic/attack_self(mob/living/user, list/modifiers)
 	if(!internal_magazine && magazine)
 		if(!magazine.ammo_count())
 			eject_magazine(user)

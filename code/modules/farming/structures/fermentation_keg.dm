@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(master?.glows)
 		. += emissive_appearance(icon, "filling", alpha = used_alpha)
 
-/obj/structure/fermentation_keg/attack_hand_secondary(mob/user, params)
+/obj/structure/fermentation_keg/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

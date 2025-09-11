@@ -359,7 +359,7 @@
 	if(owner.mind)
 		owner.remove_stress(/datum/stressevent/majesty_compelled)
 
-/datum/status_effect/majesty_compulsion/proc/on_pre_attack(obj/item/source, atom/target, mob/user, params)
+/datum/status_effect/majesty_compulsion/proc/on_pre_attack(obj/item/source, atom/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
 
 	if(target != majesty_user || user != owner)
@@ -369,7 +369,7 @@
 		to_chat(user, "<span class='warning'>You cannot bring yourself to attack [majesty_user]! Their presence is too overwhelming!</span>")
 		return COMPONENT_NO_ATTACK
 
-/datum/status_effect/majesty_compulsion/proc/on_pre_attack_secondary(obj/item/source, atom/target, mob/user, params)
+/datum/status_effect/majesty_compulsion/proc/on_pre_attack_secondary(obj/item/source, atom/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
 
 	if(target != majesty_user || user != owner)

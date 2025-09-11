@@ -134,7 +134,7 @@
 		return
 	return ..()
 
-/obj/machinery/essence/harvester/attack_hand(mob/user, params)
+/obj/machinery/essence/harvester/attack_hand(mob/user, list/modifiers)
 	var/choice = input(user, "Harvester Control", "Essence Harvester") in list("Help", "View Node Status", "Cancel")
 
 	switch(choice)

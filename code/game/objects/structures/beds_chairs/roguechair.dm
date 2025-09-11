@@ -355,7 +355,7 @@
 	grid_width = 96
 	var/bed_path = /obj/structure/bed/sleepingbag
 
-/obj/item/sleepingbag/attack_self(mob/user, params)
+/obj/item/sleepingbag/attack_self(mob/user, list/modifiers)
 	..()
 	var/turf/T = get_turf(loc)
 	if(!isfloorturf(T))

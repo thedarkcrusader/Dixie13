@@ -16,7 +16,7 @@
 	grid_width = 32
 	grid_height = 32
 
-/obj/item/plate/attackby(obj/item/I, mob/user, params)
+/obj/item/plate/attackby(obj/item/I, mob/user, list/modifiers)
 	if(item_flags & IN_STORAGE)
 		to_chat(user, span_warning("I cannot reach [src]."))
 		return
@@ -26,7 +26,6 @@
 	if(contents.len >= max_items)
 		to_chat(user, span_notice("[src] can't fit more items!"))
 		return
-	var/list/modifiers = params2list(params)
 	//Center the icon where the user clicked.
 	if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
 		return
@@ -38,7 +37,7 @@
 	else
 		return ..()
 
-/obj/item/plate/pre_attack(atom/A, mob/living/user, params)
+/obj/item/plate/pre_attack(atom/A, mob/living/user, list/modifiers)
 	if(!iscarbon(A))
 		return
 	if(!contents.len)
@@ -102,7 +101,7 @@
 		scattered_item.pixel_y = scattered_item.base_pixel_y + scatter_vector[2]
 		scattered_item.throw_impact(hit_atom, throwingdatum)
 
-/obj/item/plate/attack_self(mob/user, params)
+/obj/item/plate/attack_self(mob/user, list/modifiers)
 	. = ..()
 	if(contents.len) // If the tray isn't empty
 		for(var/obj/item/scattered_item as anything in contents)

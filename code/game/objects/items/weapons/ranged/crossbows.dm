@@ -121,7 +121,7 @@
 		cocked = FALSE
 		update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attack_self(mob/living/user, params)
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attack_self(mob/living/user, list/modifiers)
 	if(chambered)
 		return ..()
 	if(!cocked)
@@ -134,7 +134,7 @@
 		cocked = FALSE
 	update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attackby(obj/item/A, mob/user, list/modifiers)
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		if(cocked)
 			return ..()

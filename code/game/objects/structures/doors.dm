@@ -186,7 +186,7 @@
 		return (..() || attack_hand(user))
 	return ..()
 
-/obj/structure/door/attack_hand_secondary(mob/user, params)
+/obj/structure/door/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

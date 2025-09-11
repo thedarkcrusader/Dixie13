@@ -201,12 +201,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	return ..()
 
-/mob/living/simple_animal/attackby(obj/item/O, mob/user, params)
+/mob/living/simple_animal/attackby(obj/item/O, mob/user, list/modifiers)
 	if(!is_type_in_list(O, food_type))
 		return ..()
 	else
 		if(try_tame(O, user))
-			SEND_SIGNAL(src, COMSIG_ATOM_ATTACKBY, O, user, params) // for udder functionality
+			SEND_SIGNAL(src, COMSIG_ATOM_ATTACKBY, O, user, modifiers) // for udder functionality
 			return TRUE
 	. = ..()
 
@@ -788,7 +788,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/hostile
 	var/do_footstep = FALSE
 
-/mob/living/simple_animal/hostile/RangedAttack(atom/A, params) //Player firing
+/mob/living/simple_animal/hostile/RangedAttack(atom/A, list/modifiers) //Player firing
 	if(!ai_controller && ranged && ranged_cooldown <= world.time)
 		target = A
 		OpenFire(A)

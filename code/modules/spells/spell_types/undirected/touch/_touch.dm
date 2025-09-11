@@ -332,5 +332,5 @@
 	holder.temporarilyRemoveItemFromInventory(src, force = TRUE)
 	qdel(src)
 
-/obj/item/melee/touch_attack/attack_self(mob/user, params)
+/obj/item/melee/touch_attack/attack_self(mob/user, list/modifiers)
 	qdel(src)

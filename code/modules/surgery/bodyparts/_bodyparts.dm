@@ -210,7 +210,7 @@
 				return
 	return ..()
 
-/obj/item/bodypart/head/attackby(obj/item/I, mob/user, params)
+/obj/item/bodypart/head/attackby(obj/item/I, mob/user, list/modifiers)
 	if(length(contents) && I.get_sharpness() && !user.cmode)
 		add_fingerprint(user)
 		playsound(loc, 'sound/combat/hits/bladed/genstab (1).ogg', 60, vary = FALSE)

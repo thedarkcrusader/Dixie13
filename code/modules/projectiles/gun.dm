@@ -150,7 +150,7 @@
 	return TRUE
 
 
-/obj/item/gun/attackby(obj/item/I, mob/user, params)
+/obj/item/gun/attackby(obj/item/I, mob/user, list/modifiers)
 	if(!user.used_intent.tranged)
 		return ..()
 	else

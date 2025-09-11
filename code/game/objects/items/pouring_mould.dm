@@ -36,7 +36,7 @@
 	else
 		. += "[src] requires [required_metal] [UNIT_FORM_STRING(fufilled_metal)] of Molten Metal to form.</font>"
 
-/obj/item/mould/attackby(obj/item/I, mob/living/user, params)
+/obj/item/mould/attackby(obj/item/I, mob/living/user, list/modifiers)
 	. = ..()
 	if(!istype(I, /obj/item/storage/crucible))
 		return

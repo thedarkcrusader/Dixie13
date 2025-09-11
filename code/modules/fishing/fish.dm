@@ -134,7 +134,7 @@
 
 /*	.................   Chocolate Fish   ................... */
 
-/obj/item/reagent_containers/food/snacks/fryfish/carp/attackby(obj/item/I, mob/living/user, params)
+/obj/item/reagent_containers/food/snacks/fryfish/carp/attackby(obj/item/I, mob/living/user, list/modifiers)
 	..()
 	if(user.mind)
 		short_cooktime = (50 - ((user.get_skill_level(/datum/skill/craft/cooking))*8))

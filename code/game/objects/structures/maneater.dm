@@ -165,7 +165,7 @@
 				qdel(AM)
 				return
 
-/obj/structure/flora/grass/maneater/real/attackby(obj/item/W, mob/user, params)
+/obj/structure/flora/grass/maneater/real/attackby(obj/item/W, mob/user, list/modifiers)
 	. = ..()
 	if(!aggroed)
 		update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)

@@ -11,7 +11,7 @@
 	throw_range = 3
 	var/old_render = TRUE
 
-/obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
+/obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, list/modifiers)
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
 			to_chat(user, "<span class='warning'>Open me.</span>")
@@ -34,7 +34,7 @@
 				if("onbelt")
 					return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/paper/scroll/attack_self(mob/user, params)
+/obj/item/paper/scroll/attack_self(mob/user, list/modifiers)
 	if(mailer)
 		user.visible_message("<span class='notice'>[user] opens the missive from [mailer].</span>")
 		mailer = null
@@ -42,7 +42,7 @@
 		update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
 		return
 	if(!open)
-		attack_hand_secondary(user, params)
+		attack_hand_secondary(user, modifiers)
 		return
 	..()
 	user.update_inv_hands()
@@ -78,10 +78,10 @@
 	. = ..()
 	update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
 
-/obj/item/paper/scroll/attack_self_secondary(mob/user, params)
-	attack_hand_secondary(user, params)
+/obj/item/paper/scroll/attack_self_secondary(mob/user, list/modifiers)
+	attack_hand_secondary(user, modifiers)
 
-/obj/item/paper/scroll/attack_hand_secondary(mob/user, params)
+/obj/item/paper/scroll/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -165,7 +165,7 @@
 	else
 		name = initial(name)
 
-/obj/item/paper/scroll/cargo/attackby(obj/item/P, mob/living/carbon/human/user, params)
+/obj/item/paper/scroll/cargo/attackby(obj/item/P, mob/living/carbon/human/user, list/modifiers)
 	if(istype(P, /obj/item/natural/feather))
 		if(user.is_literate() && open)
 			if(signedname)
@@ -223,7 +223,7 @@
 	. = ..()
 	. += span_info("Left click with a feather to sign, right click to change confession type.")
 
-/obj/item/paper/confession/attackby(atom/A, mob/living/user, params)
+/obj/item/paper/confession/attackby(atom/A, mob/living/user, list/modifiers)
 	if(signed)
 		return
 	if(istype(A, /obj/item/natural/feather))
@@ -314,10 +314,10 @@
 	else
 		return "<span class='warning'>I'm too far away to read it.</span>"
 
-/obj/item/paper/confession/attack_self_secondary(mob/user, params)
+/obj/item/paper/confession/attack_self_secondary(mob/user, list/modifiers)
 	return SECONDARY_ATTACK_CALL_NORMAL
 
-/obj/item/paper/confession/attack_hand_secondary(mob/user, params)
+/obj/item/paper/confession/attack_hand_secondary(mob/user, list/modifiers)
 	return SECONDARY_ATTACK_CALL_NORMAL
 
 /obj/item/merctoken
@@ -341,7 +341,7 @@
 	else
 		. += span_info("SIGNEE: [signee], [signeejob] of Vanderlin.")
 
-/obj/item/merctoken/attackby(obj/item/P, mob/living/carbon/human/user, params)
+/obj/item/merctoken/attackby(obj/item/P, mob/living/carbon/human/user, list/modifiers)
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!user.can_read(src))
 			to_chat(user, span_warning("Even a reader would find these verba incomprehensible."))
@@ -404,7 +404,7 @@
 	rebuild_info()
 
 
-/obj/item/paper/scroll/frumentarii/attackby(obj/item/P, mob/living/carbon/human/user, params)
+/obj/item/paper/scroll/frumentarii/attackby(obj/item/P, mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		var/remove = input(user,"Who are we removing from the fingers","Binding Contract",null) as null|anything in real_names

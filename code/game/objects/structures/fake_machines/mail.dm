@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			show_inquisitor_shop(user)
 			return
 
-/obj/structure/fake_machine/mail/attack_hand_secondary(mob/user, params)
+/obj/structure/fake_machine/mail/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		coin_loaded = FALSE
 		update_appearance(UPDATE_OVERLAYS)
 
-/obj/structure/fake_machine/mail/attackby(obj/item/P, mob/user, params)
+/obj/structure/fake_machine/mail/attackby(obj/item/P, mob/user, list/modifiers)
 	if(istype(P, /obj/item/merctoken))
 		if(!ishuman(user))
 			to_chat(user, span_warning("I do not know what this is, and I do not particularly care."))
@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	. = ..()
 	icon_state = "mailspecial[new_mail ? "-get" : ""]"
 
-/obj/item/fake_machine/mastermail/attackby(obj/item/P, mob/user, params)
+/obj/item/fake_machine/mastermail/attackby(obj/item/P, mob/user, list/modifiers)
 	if(istype(P, /obj/item/paper))
 		var/obj/item/paper/PA = P
 		if(!PA.mailer && !PA.mailedto && PA.cached_mailer && PA.cached_mailedto)

@@ -55,7 +55,7 @@
 /obj/item/needle/attack(mob/living/M, mob/user)
 	sew(M, user)
 
-/obj/item/needle/attackby(obj/item/I, mob/user, params)
+/obj/item/needle/attackby(obj/item/I, mob/user, list/modifiers)
 	if(istype(I, /obj/item/natural/fibers))
 		if(maxstring - stringamt < 5)
 			to_chat(user, span_warning("Not enough room for more thread!"))
@@ -70,7 +70,7 @@
 			return
 	return ..()
 
-/obj/item/needle/pre_attack(atom/A, mob/living/user, params)
+/obj/item/needle/pre_attack(atom/A, mob/living/user, list/modifiers)
 	if(isitem(A) && !can_repair)
 		if(istype(A, /obj/item/storage))
 			return ..()
