@@ -23,14 +23,6 @@
 	. = ..()
 	peopleknowme = list()
 
-/datum/job/orphan/after_spawn(mob/living/spawned, client/player_client)
-	..()
-	if(ishuman(spawned))
-		var/mob/living/carbon/human/stinky_boy = spawned
-		stinky_boy.set_hygiene(HYGIENE_LEVEL_DIRTY)
-		if(prob(25))
-			stinky_boy.set_hygiene(HYGIENE_LEVEL_DISGUSTING)
-
 /datum/outfit/job/orphan/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/orphanage_renovated = FALSE

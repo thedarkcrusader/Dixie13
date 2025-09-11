@@ -32,7 +32,7 @@
 	soundpack_f = /datum/voicepack/female
 
 	//related to preening emote - lets preening be used roundstart
-	var/time_to_next_preen = 0 SECONDS
+	COOLDOWN_DECLARE(time_to_next_preen)
 
 	offset_features_m = list(
 		OFFSET_RING = list(0,1),\
