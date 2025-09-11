@@ -514,4 +514,5 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 
 #define MESSAGE_ADMINS_ROLES list(/datum/job/lord, /datum/job/priest)
 
-GLOBAL_LIST_EMPTY(frenzy_list)
+#define FORWARD 1
+#define BACKWARD -1
