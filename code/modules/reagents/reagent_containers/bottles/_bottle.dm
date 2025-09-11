@@ -6,7 +6,6 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "clear_bottle1"
 	amount_per_transfer_from_this = 5
-	has_variable_transfer_amount = FALSE // Unfortunately cannot think of a better solution
 	possible_transfer_amounts = list(5,10)
 	volume = 70
 	fill_icon_thresholds = list(0, 10, 25, 50, 75, 100)
