@@ -513,6 +513,3 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define IGNORE_USER_DOING (1<<6)
 
 #define MESSAGE_ADMINS_ROLES list(/datum/job/lord, /datum/job/priest)
-
-#define FORWARD 1
-#define BACKWARD -1
