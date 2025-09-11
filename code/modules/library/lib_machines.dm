@@ -219,7 +219,7 @@
 		var/filename = SANITIZE_FILENAME(href_list["filename"])
 
 		if(!SSlibrarian.player_book_exists(filename))
-			to_chat(usr, span_notice("This book doesn't exists."))
+			to_chat(usr, span_notice("This book doesn't exist."))
 			return
 
 		start_printing(usr, "archive", filename)
