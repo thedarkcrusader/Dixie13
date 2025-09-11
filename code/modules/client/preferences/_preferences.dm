@@ -41,7 +41,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/buttons_locked = TRUE
 	var/hotkeys = TRUE
 
-	var/chat_on_map = TRUE
 	var/showrolls = TRUE
 	var/max_chat_length = CHAT_MESSAGE_MAX_LENGTH
 	var/see_chat_non_mob = TRUE
@@ -52,9 +51,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
 	var/windowflashing = TRUE
-	var/toggles = TOGGLES_DEFAULT
 	var/db_flags
+	var/toggles = TOGGLES_DEFAULT
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
+	var/toggles_maptext = NONE
 	var/ghost_form = "ghost"
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/flavortext
 
 	/// The species this character is.
-	var/datum/species/pref_species = new /datum/species/human/northern()	//Mutant race
+	var/datum/species/pref_species = new /datum/species/human/northern() //Mutant race
 	/// The patron/god/diety this character worships
 	var/datum/patron/selected_patron
 	/// The default patron to use if none is selected
@@ -213,6 +213,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/selected_accent = ACCENT_DEFAULT
 	/// If our owner has patreon access
 	var/patreon = FALSE
+	/// If our owner is from a race that has more than one accent
+	var/change_accent = FALSE
 
 	/// If the user clicked "Don't ask again" on the randomize character prompt
 	var/randomize_shutup = FALSE
@@ -298,6 +300,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	dat += "<td style='width:33%;text-align:right'>"
 	dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
+	dat += "<br><a href='?_src_=prefs;preference=toggles'>Toggles</a>"
 	dat += "</td>"
 	dat += "</tr>"
 
@@ -456,11 +459,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
 	dat += "</center>"
-
 	dat += "</td>"
-	dat += "<td width='33%' align='right'>"
-	dat += "<b>Be Voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
-	dat += "</td>"
+	dat += "<td width='33%' align='right'></td>"
 	dat += "</tr>"
 	dat += "</table>"
 
@@ -1006,6 +1006,40 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				SetKeybinds(user)
 		return TRUE
 
+	else if(href_list["preference"] == "toggles")
+		var/list/toggles_list = list(
+			"Default Toggles" = list("toggles_default", toggles),
+			"Maptext Toggles" = list("toggles_maptext", toggles_maptext)
+		)
+		var/toggle_type = browser_input_list(user, title = "Toggle Select", items = toggles_list)
+		if(!toggle_type)
+			return
+		var/list/toggles_data = toggles_list[toggle_type]
+		var/bitfield = toggles_data[1]
+		var/prefs_variable = toggles_data[2]
+		var/new_toggles = input_bitfield(user, toggle_type, bitfield, prefs_variable, nheight = 500)
+		if(!isnull(new_toggles))
+			if(toggle_type == "Default Toggles")
+				// Reset all fields we touch to 0 first because we don't use a full set to do toggles = X
+				// And don't want to override them
+				for(var/field in GLOB.bitfields[bitfield])
+					toggles &= ~GLOB.bitfields[bitfield][field]
+				toggles ^= new_toggles
+				if((prefs_variable & SOUND_LOBBY) && user.client && isnewplayer(user))
+					user.client.playtitlemusic()
+				else
+					user.stop_sound_channel(CHANNEL_LOBBYMUSIC)
+
+				if((prefs_variable & SOUND_SHIP_AMBIENCE) && user.client && !isnewplayer(user))
+					user.refresh_looping_ambience()
+				else
+					user.cancel_looping_ambience()
+
+				user.client?.update_ambience_pref()
+
+			else if(toggle_type == "Maptext Toggles")
+				toggles_maptext = new_toggles
+
 	switch(href_list["task"])
 		if("change_customizer")
 			handle_customizer_topic(user, href_list)
@@ -1160,8 +1194,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("species")
+					selected_accent = ACCENT_DEFAULT
 					var/list/selectable = get_selectable_species(patreon)
-
 					var/result = browser_input_list(user, "SELECT YOUR HERO'S PEOPLE:", "VANDERLIN FAUNA", selectable, pref_species)
 
 					if(result)
@@ -1219,13 +1253,23 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						skin_tone = listy[new_s_tone]
 
 				if("selected_accent")
-					if(!patreon)
-						to_chat(user, "Sorry this is a patreon exclusive feature.")
+					if(length(pref_species.multiple_accents))
+						change_accent = TRUE
+					else
+						change_accent = FALSE
+					if(!patreon && !change_accent)
+						to_chat(user, "Sorry, this option is Patreon-exclusive or unavailable to your race.")
+						selected_accent = ACCENT_DEFAULT
 						return
-					var/accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, selected_accent)
-					if(accent)
-						selected_accent = accent
-
+					var/accent
+					if(patreon)
+						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, selected_accent)
+						if(accent)
+							selected_accent = accent
+					else if(change_accent)
+						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", pref_species.multiple_accents, selected_accent)
+						if(accent)
+							selected_accent = pref_species.multiple_accents[accent]
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
@@ -1248,9 +1292,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
 		else
 			switch(href_list["preference"])
-				if("publicity")
-					if(unlock_content)
-						toggles ^= MEMBER_PUBLIC
 				if ("max_chat_length")
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
 					if (!isnull(desiredlength))
@@ -1336,8 +1377,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					else
 						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_DISABLED]  input.text-color = #ad9eb4")
 
-				if("chat_on_map")
-					chat_on_map = !chat_on_map
 				if("see_chat_non_mob")
 					see_chat_non_mob = !see_chat_non_mob
 				if("action_buttons")
@@ -1511,6 +1550,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					load_character()
 
 				if("changeslot")
+					selected_accent = ACCENT_DEFAULT
 					var/list/choices = list()
 					if(path)
 						var/savefile/S = new /savefile(path)
@@ -1649,8 +1689,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		if(is_misc_banned(parent.ckey, BAN_MISC_PUNISHMENT_CURSE))
 			ADD_TRAIT(character, TRAIT_PUNISHMENT_CURSE, TRAIT_BAN_PUNISHMENT)
 
-		if(patreon)
-			character.accent = selected_accent
+	if(pref_species.multiple_accents && length(pref_species.multiple_accents))
+		change_accent = TRUE
+	else
+		change_accent = FALSE
+
+	if(patreon)
+		character.accent = selected_accent
+	if(change_accent && !patreon)
+		character.accent = selected_accent
+		change_accent = FALSE
 
 	/* :V */
 
@@ -1750,7 +1798,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"}
 
 /datum/proc/is_valid_headshot_link(mob/user, value, silent = FALSE)
-	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com")
+	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com", "files.catbox.moe")
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif")
 
 	if(!length(value))
