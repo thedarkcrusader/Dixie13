@@ -713,3 +713,10 @@
 	ADD_TRAIT(character, TRAIT_STINKY, TRAIT_GENERIC)
 	ADD_TRAIT(character, TRAIT_DEADNOSE, TRAIT_GENERIC)
 
+/datum/special_trait/keenears
+	name = "Keen Ears"
+	greet_text = span_notice("People always did get mad at me for accidentally eavesdropping.")
+	weight = 50
+
+/datum/special_trait/keenears/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_KEENEARS, "[type]")
