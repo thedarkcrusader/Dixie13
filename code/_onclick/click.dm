@@ -111,8 +111,8 @@
 			AltRightClickOn(clicked_atom, modifiers)
 			return
 	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
-		if(atkswinging == "middle" && mmb_intent?.get_chargetime())
-			if(mmb_intent.no_early_release && client?.chargedprog <= 100)
+		if(atkswinging == MIDDLE_CLICK && mmb_intent?.get_chargetime())
+			if(mmb_intent.no_early_release && client?.chargedprog < 100)
 				changeNext_move(mmb_intent.clickcd)
 		else
 			MiddleClickOn(clicked_atom, modifiers)
@@ -149,9 +149,14 @@
 		return
 
 	var/obj/item/held_item = get_active_held_item()
-	if(LAZYACCESS(modifiers, LEFT_CLICK) && !(held_item == clicked_atom))
-		if(atkswinging != "left")
+	if(held_item == clicked_atom)
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+			held_item.attack_self_secondary(src, modifiers)
+			update_inv_hands()
 			return
+		held_item.attack_self(src, modifiers)
+		update_inv_hands()
+	else if(LAZYACCESS(modifiers, LEFT_CLICK) && atkswinging == LEFT_CLICK)
 		if(active_hand_index == 1)
 			used_hand = 1
 			if(next_lmove > world.time)
@@ -162,23 +167,14 @@
 				return
 		if(uses_intents)
 			if(!ispath(used_intent) && used_intent?.get_chargetime())
-				if(used_intent.no_early_release && client?.chargedprog <= 100)
+				if(used_intent.no_early_release && client?.chargedprog < 100)
 					var/adf = used_intent.clickcd
 					if(istype(rmb_intent, /datum/rmb_intent/aimed))
 						adf = round(adf * 1.4)
 					if(istype(rmb_intent, /datum/rmb_intent/swift))
 						adf = round(adf * 0.6)
-					changeNext_move(adf,used_hand)
+					changeNext_move(adf, used_hand)
 					return
-
-	if(held_item == clicked_atom)
-		if(LAZYACCESS(modifiers, RIGHT_CLICK))
-			held_item.attack_self_secondary(src, modifiers)
-			update_inv_hands()
-			return
-		held_item.attack_self(src, modifiers)
-		update_inv_hands()
-		return
 
 	// operate three levels deep here (item in backpack in src; item in box in backpack in src, not any deeper)
 	if(!isturf(clicked_atom) && clicked_atom == loc || (clicked_atom in contents) || (clicked_atom.loc in contents) || (clicked_atom.loc && (clicked_atom.loc.loc in contents)))
