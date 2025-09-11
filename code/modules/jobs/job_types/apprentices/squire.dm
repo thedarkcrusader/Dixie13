@@ -14,7 +14,7 @@
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 	//adults are allowed to be squires, but they are going to be slightly weaker than actual adult combat roles
-	//in game reasoning would be that, they may be adults but they are still young, building up muscle, learning how to fight, etc.
+	//in game reasoning would be that, they may be "adults" (teenagers more likely, say 17 year olds) but they are still young, building up muscle, learning how to fight, etc.
 	//ooc reason; balance
 
 	outfit = /datum/outfit/job/squire
