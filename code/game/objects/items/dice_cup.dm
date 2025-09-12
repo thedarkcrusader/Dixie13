@@ -48,7 +48,7 @@
 	update_appearance(UPDATE_DESC)
 
 /obj/item/dice_cup/proc/pick_dice(mob/user)
-	if(!dice_list.len)
+	if(!length(dice_list))
 		return
 	var/obj/item/dice/die = pick(dice_list)
 	dice_list -= die
