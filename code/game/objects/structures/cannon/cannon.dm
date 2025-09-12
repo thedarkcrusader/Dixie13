@@ -260,6 +260,7 @@
 /obj/item/fuse/proc/lit()
 	icon_state = icon_state + "_lit"
 	lit = TRUE
+	cannon?.balloon_alert_to_viewers("lit!")
 	addtimer(CALLBACK(src, PROC_REF(reached_end)), 5 SECONDS)
 	playsound(cannon.loc, 'sound/items/fuse.ogg', 100)
 	SEND_SIGNAL(src, COMSIG_FUSE_LIT)
