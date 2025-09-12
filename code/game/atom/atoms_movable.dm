@@ -1483,9 +1483,6 @@
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
 
-#undef ATTACK_ANIMATION_PIXEL_DIFF
-#undef ATTACK_ANIMATION_TIME
-
 /atom/movable/proc/pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
 	if(!Move(new_loc, dir_pusher_to_pushed, glize_size))
 		return FALSE
@@ -1498,3 +1495,6 @@
 /atom/movable/proc/after_pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
 	if(pusher_dir)
 		setDir(dir_pusher_to_pushed)
+
+#undef ATTACK_ANIMATION_PIXEL_DIFF
+#undef ATTACK_ANIMATION_TIME
