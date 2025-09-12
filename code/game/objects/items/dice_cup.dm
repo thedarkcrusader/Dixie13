@@ -72,23 +72,20 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/dice_cup/attack_self(mob/user, params)
-	var/public_roll = input(user, "Do you wish to roll the die for all to see?", "XYLIX") in list("YES", "NO")
-	if(public_roll == null)
-		return
-	switch(public_roll)
-		if("YES")
-			public_roll = TRUE
-		if("NO")
-			public_roll = FALSE
-	if(!(dice_list.len))
+	if(!length(dice_list))
 		to_chat(user, span_warning("There are no dice to roll!"))
 		return
-	else
-		last_roll.Cut()
-		for(var/obj/item/dice/die in dice_list)
-			die.diceroll(user, public_roll)
-			last_roll += die.result
-		update_appearance(UPDATE_DESC)
+	var/option = browser_input_list(user, "Do you wish to roll the die for all to see?", "XYLIX", DEFAULT_INPUT_CHOICES)
+	if(!option)
+		return
+	var/public_roll = TRUE
+	if(option == CHOICE_YES)
+		public_roll = FALSE
+	last_roll.Cut()
+	for(var/obj/item/dice/die in dice_list)
+		die.diceroll(user, public_roll)
+		last_roll += die.result
+	update_appearance(UPDATE_DESC)
 	if(!public_roll)
 		user.visible_message(span_notice("[user] rolls dice in secret using [src]."), span_notice("I roll dice in secret using [src]."))
 
