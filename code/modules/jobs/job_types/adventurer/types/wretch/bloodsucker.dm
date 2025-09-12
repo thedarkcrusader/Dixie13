@@ -37,9 +37,11 @@
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_INT, 3) // quick smart vampire
 	H.change_stat(STATKEY_SPD, 2)
+	H.change_stat(STATKEY_PER, 2) // has a bow
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/clothing/neck/gorget
@@ -111,7 +113,7 @@
 		if(!H.has_language(/datum/language/oldpsydonic))
 			H.grant_language(/datum/language/oldpsydonic)
 			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
-		H.change_stat(STATKEY_CON, 1)
+		H.change_stat(STATKEY_CON, 2)
 		H.change_stat(STATKEY_END, 2)
 		H.change_stat(STATKEY_STR, 2) // more of a brute type
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
