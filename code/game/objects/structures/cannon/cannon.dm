@@ -19,6 +19,7 @@
 /obj/structure/cannon/Initialize()
 	. = ..()
 	reagents = new()
+	reagents.flags = TRANSPARENT
 	AddComponent(/datum/component/storage/concrete/grid/cannon)
 
 /obj/structure/cannon/after_being_moved_by_pull(atom/movable/puller)
@@ -116,7 +117,7 @@
 		var/obj/item/reagent_containers/reagent_container = I
 		if(do_after(user, 1 SECONDS, src))
 			if(reagent_container.reagents.trans_to(reagents, 10, transfered_by = user))
-				user.visible_message(span_notice("[user] fills the [src] with \the [I]", "I fill the [src] with \the [I]"))
+				user.visible_message(span_notice("[user] fills the [src] with \the [I]"), span_notice("I fill the [src] with \the [I]"))
 				playsound(src, 'sound/foley/gunpowder_fill.ogg', 100, FALSE)
 				balloon_alert(user, "added!")
 			else
@@ -126,7 +127,7 @@
 	if(isfuse(I))
 		var/obj/item/fuse/fuse = I
 		if(fuse.add_to_cannon(src, user))
-			user.visible_message(span_notice("[user] adds \the [fuse] to \the [src]", "I add \the [fuse] to \the [src]"))
+			user.visible_message(span_notice("[user] adds \the [fuse] to \the [src]"), span_notice("I add \the [fuse] to \the [src]"))
 			balloon_alert_to_viewers("attached!")
 		return TRUE
 
