@@ -72,6 +72,7 @@
 	icon_state = "istatue1"
 	smeltresult = /obj/item/ore/iron
 	sellprice = 10
+
 /*	..................   Silver  ................... */
 /obj/item/statue/silver/volf
 	name = "silver volf bust"
