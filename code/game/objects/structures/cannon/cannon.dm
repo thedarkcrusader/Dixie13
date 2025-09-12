@@ -236,7 +236,7 @@
 /obj/item/fuse/proc/remove_from_cannon()
 	UnregisterSignal(cannon, COMSIG_PARENT_PREQDELETED)
 	loc = get_turf(cannon)
-	cannon.inserted_fuse = null
+	cannon?.inserted_fuse = null
 	cannon = null
 
 /obj/item/fuse/Destroy()
