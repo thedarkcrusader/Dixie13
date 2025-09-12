@@ -1573,8 +1573,7 @@
 			to_chat(M, "*--------*")
 			if(!length(M.stressors))
 				to_chat(M, span_info("I'm not feeling much of anything right now."))
-			for(var/stress_type in M.stressors)
-				var/datum/stress_event/stress_event = M.stressors[stress_type]
+			for(var/datum/stress_event/stress_event in M.stressors)
 				if(!stress_event.can_show())
 					continue
 				var/count = stress_event.stacks
