@@ -48,7 +48,7 @@
 			H.change_stat(STATKEY_PER, 2)
 		if(H.gender == MALE) //Arcyne gifted trident wielder
 
-			H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident/arcane)
+			H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident)
 			H.add_spell(/datum/action/cooldown/spell/pressure)
 			H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 			H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
