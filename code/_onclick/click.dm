@@ -130,10 +130,12 @@
 	if(incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB))
 		return
 
-	if(!atkswinging)
-		face_atom(clicked_atom)
+	if(next_move > world.time) // in the year 2000...
+		return
 
-	if(!modifiers["catcher"] && clicked_atom.IsObscured())
+	face_atom(clicked_atom)
+
+	if(!LAZYACCESS(modifiers, CLICK_CATCHER) && clicked_atom.IsObscured())
 		return
 
 	if(dir == get_dir(clicked_atom, src)) //they are behind us and we are not facing them
