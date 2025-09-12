@@ -417,3 +417,86 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 		var/mob/living/carbon/human/H = AM
 		if(H.ambushable == TRUE && hole.already_ambushed == FALSE)
 			hole.ambush(H)
+
+////////////////////////////////
+////////////////////////////////
+////// Admin only rousmen //////
+////////////////////////////////
+////////////////////////////////
+
+/mob/living/carbon/human/species/rousman/assassin
+	ai_controller = /datum/ai_controller/human_npc
+
+/mob/living/carbon/human/species/rousman/assassin/after_creation()
+	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
+	job = "Assassin Rousman"
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	equipOutfit(new /datum/outfit/job/npc/rousman/assassin)
+	dodgetime = 13
+	canparry = TRUE
+	flee_in_pain = TRUE
+	wander = TRUE
+
+/datum/outfit/job/npc/rousman/assassin/pre_equip(mob/living/carbon/human/H)
+	..()
+
+	H.base_strength = rand(6, 10)
+	H.base_perception = rand(6, 10)
+	H.base_intelligence = rand(2, 5)
+	H.base_constitution = rand(4, 8)
+	H.base_endurance = rand(7, 10)
+	H.base_speed = rand(15, 20)
+	H.recalculate_stats(FALSE)
+
+	armor = /obj/item/clothing/armor/leather/advanced/rousman
+	head = /obj/item/clothing/head/roguehood/rousman
+
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+
+	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
+
+/mob/living/carbon/human/species/rousman/seer
+	ai_controller = /datum/ai_controller/human_npc
+
+/mob/living/carbon/human/species/rousman/seer/after_creation()
+	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
+	job = "Seer Rousman"
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	equipOutfit(new /datum/outfit/job/npc/rousman/seer)
+	dodgetime = 13
+	canparry = TRUE
+	flee_in_pain = TRUE
+	wander = TRUE
+
+/datum/outfit/job/npc/rousman/seer/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.base_strength = rand(4, 8)
+	H.base_perception = rand(6, 10)
+	H.base_intelligence = rand(7, 12)
+	H.base_constitution = rand(4, 8)
+	H.base_endurance = rand(7, 10)
+	H.base_speed = rand(10, 15)
+	H.recalculate_stats(FALSE)
+
+	armor = /obj/item/clothing/armor/leather/rousseer
+	shirt = /obj/item/clothing/shirt/robe/rousseer
+
+	var/spells = list(
+		/datum/action/cooldown/spell/projectile/fireball/greater,
+		/datum/action/cooldown/spell/projectile/lightning,
+		/datum/action/cooldown/spell/projectile/fetch,
+		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
+	)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
+	H.generate_random_attunements(rand(4,6))
+	H.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
+	H.mana_pool.adjust_mana(100)
+	for(var/spell in spells)
+		H.add_spell(spell)

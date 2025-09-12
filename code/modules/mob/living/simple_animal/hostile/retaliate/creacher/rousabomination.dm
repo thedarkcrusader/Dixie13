@@ -16,6 +16,8 @@
 
 	base_intents = list(/datum/intent/unarmed/claw, /datum/intent/simple/bigbite)
 
+	faction = list(FACTION_RATS)
+
 	var/knockpack_prob = 30
 	var/rous_children = 3
 

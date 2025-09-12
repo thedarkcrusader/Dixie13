@@ -33,3 +33,37 @@
 	body_parts_covered = CHEST|GROIN
 	sellprice = 0
 	smeltresult = /obj/item/fertilizer/ash
+
+/obj/item/clothing/armor/leather/advanced/rousman
+	name = "rous assassin armor"
+	icon_state = "assassin_armour_item"
+	item_state = "assassin_armour"
+	icon = 'icons/roguetown/mob/monster/rousman.dmi'
+	allowed_race = list(SPEC_ID_ROUSMAN)
+	sellprice = 0
+
+/obj/item/clothing/head/roguehood/rousman
+	name = "rous assassin mask"
+	icon_state = "assassin_mask_item"
+	item_state = "assassin_mask"
+	icon = 'icons/roguetown/mob/monster/rousman.dmi'
+	allowed_race = list(SPEC_ID_ROUSMAN)
+	adjustable = CAN_CADJUST
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "piercing" = 20, "fire" = 0, "acid" = 0)
+	sellprice = 0
+
+/obj/item/clothing/shirt/robe/rousseer
+	name = "rousman seer robe"
+	icon_state = "robe_item"
+	item_state = "robe"
+	icon = 'icons/roguetown/mob/monster/rousman.dmi'
+	slot_flags = ITEM_SLOT_SHIRT
+	allowed_race = list(SPEC_ID_ROUSMAN)
+
+/obj/item/clothing/armor/leather/rousseer
+	name = "rousman seer armor"
+	icon_state = "seer_armour_item"
+	item_state = "seer_armour"
+	icon = 'icons/roguetown/mob/monster/rousman.dmi'
+	allowed_race = list(SPEC_ID_ROUSMAN)
