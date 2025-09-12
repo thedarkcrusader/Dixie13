@@ -161,7 +161,7 @@
 	qdel(src)
 
 /obj/effect/fuse/proc/be_cut()
-	fuse.remove_from_cannon(cannon)
+	fuse?.remove_from_cannon(cannon)
 	qdel(src)
 
 /obj/effect/fuse/attackby(obj/item/I, mob/living/user, params)
