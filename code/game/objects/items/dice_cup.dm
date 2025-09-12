@@ -104,7 +104,7 @@
 
 /obj/item/dice_cup/proc/rig_dice_cup(user)
 	var/obj/item/dice/which_one = browser_input_list(user, "Which die will you rig in your next roll?", "XYLIX", dice_list)
-	if(which_one != null)
+	if(which_one)
 		INVOKE_ASYNC(which_one, TYPE_PROC_REF(/obj/item/dice, rig_dice), user)
 
 /obj/item/dice_cup/attack_self_secondary(mob/user, params)
