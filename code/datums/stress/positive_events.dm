@@ -298,14 +298,6 @@
 	desc = "<span class='nicegreen'>My family heirloom is safe with me.</span>\n"
 	stress_change = 1
 
-/datum/stress_event/fan_clown_pin
-	desc = "<span class='nicegreen'>I love showing off my clown pin!</span>\n"
-	stress_change = 1
-
-/datum/stress_event/fan_mime_pin
-	desc = "<span class='nicegreen'>I love showing off my mime pin!</span>\n"
-	stress_change = 1
-
 /datum/stress_event/goodmusic
 	desc = "<span class='nicegreen'>There is something soothing about this music.</span>\n"
 	stress_change = 3
@@ -330,10 +322,6 @@
 	stress_change = 3
 	timer = 5 MINUTES
 
-/datum/stress_event/clownshoes
-	desc = "<span class='nicegreen'>The shoes are a clown's legacy, I never want to take them off!</span>\n"
-	stress_change = 5
-
 /datum/stress_event/sacrifice_good
 	desc ="<span class='nicegreen'>The gods are pleased with this offering!</span>\n"
 	stress_change = 5
@@ -354,19 +342,10 @@
 	stress_change = 6
 	timer = 5 MINUTES
 
-/datum/stress_event/pet_borg
-	desc = "<span class='nicegreen'>I just love my robotical friends!</span>\n"
-	stress_change = 3
-	timer = 5 MINUTES
-
 /datum/stress_event/bottle_flip
 	desc = "<span class='nicegreen'>The bottle landing like that was satisfying.</span>\n"
 	stress_change = 2
 	timer = 3 MINUTES
-
-/datum/stress_event/hope_lavaland
-	desc = "<span class='nicegreen'>What a peculiar emblem.  It makes me feel hopeful for my future.</span>\n"
-	stress_change = 5
 
 /datum/stress_event/nanite_happiness
 	desc = "<span class='nicegreen robot'>+++++++HAPPINESS ENHANCEMENT+++++++</span>\n"

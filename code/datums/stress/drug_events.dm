@@ -7,41 +7,21 @@
 	stress_change = 2
 	timer = 6 MINUTES
 
-/datum/stress_event/wrong_brand
-	desc = "<span class='warning'>I hate that brand of cigarettes.</span>\n"
-	stress_change = -2
-	timer = 6 MINUTES
-
 /datum/stress_event/overdose
 	stress_change = -8
 	timer = 5 MINUTES
 
-/datum/stress_event/overdose/add_effects(drug_name)
-	desc = "<span class='warning'>I think I took a bit too much of that [drug_name]</span>\n"
-
 /datum/stress_event/withdrawal_light
 	stress_change = -2
-
-/datum/stress_event/withdrawal_light/add_effects(drug_name)
-	desc = "<span class='warning'>I could use some [drug_name]</span>\n"
 
 /datum/stress_event/withdrawal_medium
 	stress_change = -5
 
-/datum/stress_event/withdrawal_medium/add_effects(drug_name)
-	desc = "<span class='warning'>I really need [drug_name]</span>\n"
-
 /datum/stress_event/withdrawal_severe
 	stress_change = -8
 
-/datum/stress_event/withdrawal_severe/add_effects(drug_name)
-	desc = "<span class='boldwarning'>Oh god I need some [drug_name]</span>\n"
-
 /datum/stress_event/withdrawal_critical
 	stress_change = -10
-
-/datum/stress_event/withdrawal_critical/add_effects(drug_name)
-	desc = "<span class='boldwarning'>[drug_name]! [drug_name]! [drug_name]!</span>\n"
 
 /datum/stress_event/happiness_drug
 	desc = "<span class='nicegreen'>I can't feel anything and I never want this to end.</span>\n"

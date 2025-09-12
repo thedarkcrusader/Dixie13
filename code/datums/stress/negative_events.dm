@@ -471,11 +471,6 @@
 	stress_change = -4
 	timer = 3 MINUTES
 
-/datum/stress_event/delam //SM delamination
-	desc = "<span class='boldwarning'>Those God damn engineers can't do anything right...</span>\n"
-	stress_change = -2
-	timer = 4 MINUTES
-
 /datum/stress_event/depression
 	desc = "<span class='warning'>I feel sad for no particular reason.</span>\n"
 	stress_change = -12
@@ -490,11 +485,6 @@
 	desc = "<span class='boldwarning'>AHH! I WAS USING THAT LIMB!</span>\n"
 	stress_change = -10
 	timer = 8 MINUTES
-
-/datum/stress_event/tased
-	desc = "<span class='warning'>There's no \"z\" in \"taser\". It's in the zap.</span>\n"
-	stress_change = -3
-	timer = 2 MINUTES
 
 /datum/stress_event/embedded
 	desc = "<span class='boldwarning'>Pull it out!</span>\n"

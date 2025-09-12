@@ -19,19 +19,6 @@
 	desc = "<span class='boldwarning'>I'm starving!</span>\n"
 	stress_change = -10
 
-//charge
-/datum/stress_event/charged
-	desc = "<span class='nicegreen'>I feel the power in my veins!</span>\n"
-	stress_change = 6
-
-/datum/stress_event/lowpower
-	desc = "<span class='warning'>My power is running low, I should go charge up somewhere.</span>\n"
-	stress_change = -6
-
-/datum/stress_event/decharged
-	desc = "<span class='boldwarning'>I'm in desperate need of some electricity!</span>\n"
-	stress_change = -10
-
 //Disgust
 /datum/stress_event/gross
 	desc = "<span class='warning'>I saw something gross.</span>\n"
