@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/conjure/rous
 	name = "Call Rous"
 	desc = "Calls for your brethren to aid you in battle."
-	button_icon_state = "zad"
+	button_icon_state = "tamebeast"
 	self_cast_possible = FALSE
 
 	sound = 'sound/items/dig_shovel.ogg'
