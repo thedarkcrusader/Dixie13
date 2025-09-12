@@ -10,52 +10,19 @@
 	climb_offset = 16
 
 	resistance_flags = FIRE_PROOF
-	drag_slowdown = 2.5
+	drag_slowdown = 3
 
 	SET_BASE_PIXEL(-16, -16)
 
 	var/obj/item/fuse/inserted_fuse
-	var/obj/item/reagent_containers/internal_reagent_container
 
 /obj/structure/cannon/Initialize()
 	. = ..()
-	internal_reagent_container = new()
-	calculate_blockers()
+	reagents = new()
 	AddComponent(/datum/component/storage/concrete/grid/cannon)
-
-/obj/structure/cannon/Destroy()
-	. = ..()
-	qdel(internal_reagent_container)
-
-/obj/structure/cannon/Move()
-	. = ..()
-	calculate_blockers()
 
 /obj/structure/cannon/after_being_moved_by_pull(atom/movable/puller)
 	setDir(REVERSE_DIR(puller.dir))
-
-/obj/structure/cannon/proc/calculate_blockers()
-	/*
-	switch(dir)
-		if(WEST)
-			bound_width = 64
-			bound_height = 32
-		if(EAST)
-			bound_width = -64
-			bound_height = 32
-		if(NORTH)
-			bound_width = 32
-			bound_height = 64
-		if(SOUTH)
-			bound_width = 32
-			bound_height = -64
-	*/
-
-/obj/structure/cannon/attackby(obj/item/I, mob/user, params)
-	. = ..()
-	//try_interact_thing(I, user)
-
-/obj/structure/cannon/proc/try_interact_thing(obj/inserted, mob/user)
 
 /obj/structure/cannon/fire_act(added, maxstacks)
 	. = ..()
@@ -69,27 +36,53 @@
 	if(get_dir(user, src) != dir)
 		return FALSE
 
-/obj/structure/cannon/fire_act(added, maxstacks)
-	. = ..()
-	try_light_fuse()
-
 /obj/structure/cannon/proc/fire()
-	playsound(get_turf(src), 'sound/foley/tinnitus.ogg', 60, FALSE, -6)
-	playsound(get_turf(src), 'sound/combat/Ranged/muskshoot.ogg', 60, FALSE, SOUND_EXTRA_RANGE_CANNON)
-	new /obj/effect/particle_effect/smoke/chem/transparent(get_turf(src))
+
+	var/blastpowder_amount = reagents.get_reagent_amount(/datum/reagent/blastpowder)
+	reagents.clear_reagents()
+	if(!blastpowder_amount)
+		balloon_alert_to_viewers("sizzles out!")
+		return FALSE
+
+	var/blast_range = round(blastpowder_amount / 1.5)
+
+	var/devastation_explosion_range = round(blastpowder_amount / 100)
+	var/heavy_explosion_range = round(blastpowder_amount / 35)
+	var/light_explosion_range = round(blastpowder_amount / 20)
+	var/flame_range = round(blastpowder_amount / 10)
+
 	var/turf/turf_in_front = get_step(src, dir)
 	var/turf/turf_to_shoot_from = turf_in_front
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage) // don't @ me
+
 	if(!isopenturf(turf_to_shoot_from))
 		turf_to_shoot_from = get_turf(src)
 
-	for(var/mob/living/seer in view(4, src))
-		shake_camera(seer, 2, 3)
-		seer.apply_effect(8, EFFECT_EYE_BLUR)
+	playsound(get_turf(src), 'sound/foley/tinnitus.ogg', 60, FALSE, -6)
+	playsound(get_turf(src), 'sound/combat/Ranged/muskshoot.ogg', 60, FALSE, SOUND_EXTRA_RANGE_CANNON)
+	new /obj/effect/particle_effect/smoke/chem/transparent(get_turf(src))
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage) // don't @ me
+
+	for(var/mob/living/seer in view(7, src))
+		shake_camera(seer, max(1, round(blastpowder_amount / 20), max(1, round(blastpowder_amount / 10))))
+		seer.apply_effect(max(5, round(blastpowder_amount / 3)), EFFECT_EYE_BLUR)
+	for(var/mob/living/seer in view(1, src))
+		seer.apply_effect(15, EFFECT_KNOCKDOWN)
+		var/target_turf = get_turf(seer)
+		if(get_turf(seer) == get_turf(src))
+			for(var/i in 1 to pick(3, 7))
+				target_turf = get_step(target_turf, pick(ALL_CARDINALS))
+		else
+			for(var/i in 1 to pick(1, 2))
+				target_turf = get_step(target_turf, pick(ALL_CARDINALS))
+
+		seer.throw_at(target_turf)
 
 	for(var/atom/movable/loaded_thing as anything in contents)
-		var/target = get_edge_target_turf(src, dir)
+		STR.remove_from_storage(loaded_thing, turf_to_shoot_from)
+		var/target = get_ranged_target_turf(src, dir, blast_range)
 		if(isammo(loaded_thing))
+			if(blastpowder_amount < 15)
+				continue
 			var/obj/item/ammo_casing/loaded_ammo = loaded_thing
 			loaded_ammo.forceMove(turf_to_shoot_from)
 			loaded_ammo.fire_casing(target)
@@ -99,23 +92,38 @@
 				loaded_thing = curler.held_mob
 				qdel(curler)
 
-			STR.remove_from_storage(loaded_thing, turf_to_shoot_from)
-			loaded_thing.throw_at(target, 30, 3, force = MOVE_FORCE_OVERPOWERING)
+			loaded_thing.throw_at(target, blast_range, 3, force = MOVE_FORCE_OVERPOWERING)
 			if(isliving(loaded_thing))
 				var/mob/living/loaded_living = loaded_thing
 				loaded_living.reset_offsets("structure_climb")
 
-	explosion(turf_in_front, heavy_impact_range = 1, light_impact_range = 2, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+	explosion(
+		turf_to_shoot_from,
+		devastation_range = devastation_explosion_range,
+		heavy_impact_range = heavy_explosion_range,
+		light_impact_range = light_explosion_range,
+		flame_range = flame_range,
+		smoke = TRUE,
+		soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg')
+		)
+
+
 	throw_at(get_step(src, REVERSE_DIR(dir)), 1, 3, spin = FALSE)
 
 /obj/structure/cannon/attackby(obj/item/I, mob/user, params)
-	if(isfuse(I))
-		var/obj/item/fuse/fuse = I
-		fuse.add_to_cannon(src, user)
-		return TRUE
-
 	if(isreagentcontainer(I))
 		var/obj/item/reagent_containers/reagent_container = I
+		if(do_after(user, 1 SECONDS, src))
+			reagent_container.reagents.trans_to(reagents, 10, transfered_by = user)
+			user.visible_message("[user] fills the [src] with \the [I]", "I fill the [src] with \the [I]")
+			playsound(src, 'sound/foley/gunpowder_fill.ogg', 100, FALSE)
+		return TRUE
+
+	if(isfuse(I))
+		var/obj/item/fuse/fuse = I
+		if(fuse.add_to_cannon(src, user))
+			user.visible_message("[user] adds \the [fuse] to \the [src]", "I add \the [fuse] to \the [src]")
+		return TRUE
 
 	. = ..()
 

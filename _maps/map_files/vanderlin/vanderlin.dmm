@@ -11574,6 +11574,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/merc_guild)
+"gJd" = (
+/obj/projectile/bullet/reusable/cannonball,
+/turf/open/floor/blocks/stonered,
+/area/rogue/under/town/basement)
 "gJA" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -29146,6 +29150,17 @@
 "rSN" = (
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors/town/manor/halls/s)
+"rSO" = (
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/turf/open/floor/blocks/stonered,
+/area/rogue/under/town/basement)
 "rSP" = (
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
@@ -29526,7 +29541,9 @@
 /turf/open/floor/grass/eora,
 /area/rogue/outdoors/eora)
 "shR" = (
-/obj/structure/mannequin/male/decorative,
+/obj/item/reagent_containers/glass/bottle/aflask,
+/obj/item/reagent_containers/glass/bottle/aflask,
+/obj/item/reagent_containers/glass/bottle/aflask,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/under/town/basement)
 "shZ" = (
@@ -31753,7 +31770,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/magician)
 "tum" = (
-/obj/structure/mannequin/male/female,
+/obj/structure/cannon,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/under/town/basement)
 "tup" = (
@@ -64505,7 +64522,7 @@ tHe
 jYU
 hWm
 sCQ
-sCQ
+gJd
 awC
 tHe
 bET
@@ -64707,7 +64724,7 @@ tHe
 jYU
 nCG
 sCQ
-sCQ
+rSO
 awC
 tHe
 bYk

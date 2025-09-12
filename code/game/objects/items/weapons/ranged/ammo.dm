@@ -509,32 +509,33 @@
 /obj/projectile/bullet/reusable/cannonball
 	name = "large lead ball"
 	desc = "A round lead ball. Complex and still spherical."
-	damage = 300
+	damage = 9999
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "cannonball"
 	ammo_type = /obj/item/ammo_casing/caseless/cball
-	range = 999
+	range = 50
 	jitter = 5
 	stun = 1
 	hitsound = 'sound/combat/hits/hi_bolt (2).ogg'
 	embedchance = 0
-	dismemberment = 300
+	dismemberment = 500
 	spread = 0
 	woundclass = BCLASS_SMASH
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 	flag =  "piercing"
 	hitscan = FALSE
 	armor_penetration = BULLET_PENETRATION
-	speed = 0.8
+	speed = 2
+	resistance_flags = EVERYTHING_PROOF
 
-/obj/projectile/bullet/reusable/cannonball/on_hit(atom/target,blocked = FALSE)
+/obj/projectile/bullet/reusable/cannonball/on_hit(atom/target, blocked = FALSE)
+	var/turf/explosion_place = get_turf(target)
+	explosion(explosion_place, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		M.visible_message("<span class='danger'>[M] explodes into a shower of gibs!</span>")
 		M.gib()
-	explosion(get_turf(target), heavy_impact_range = 2, light_impact_range = 4, flame_range = 0, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
-	..(target, blocked)
 
 //................ Grapeshot ............... //
 /obj/item/ammo_casing/caseless/cball
@@ -553,6 +554,7 @@
 	grid_width = 96
 	grid_height = 96
 	w_class = WEIGHT_CLASS_HUGE
+	resistance_flags = EVERYTHING_PROOF
 
 /obj/item/ammo_casing/caseless/cball/grapeshot
 	name = "berryshot"

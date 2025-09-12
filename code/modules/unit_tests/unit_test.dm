@@ -147,6 +147,8 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		/obj/merge_conflict_marker,
 		///this object exists purely to create a template spawning it in is nah
 		/obj/effect/landmark/house_spot,
+		// sets everything in initialize
+		/obj/effect/fuse,
 	)
 	//these are VERY situational and need info passed
 	ignore += typesof(/obj/effect/abstract)
