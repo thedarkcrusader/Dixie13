@@ -17,7 +17,7 @@
 	armor = /obj/item/clothing/armor/leather/advanced
 	shoes = /obj/item/clothing/shoes/nobleboot
 	belt = /obj/item/storage/belt/leather
-	neck = /obj/item/key/manor
+	ring = /obj/item/key/manor
 	beltr = /obj/item/weapon/sword
 	beltl = /obj/item/ammo_holder/quiver/bolts
 	neck = /obj/item/storage/belt/pouch/coins/rich
@@ -25,7 +25,6 @@
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	pants = /obj/item/clothing/pants/trou/leather/advanced
 	backpack_contents = list(
-		/obj/item/storage/belt/pouch/coins/rich = 1,
 		/obj/item/reagent_containers/glass/cup/golden = 3,
 		/obj/item/reagent_containers/glass/bottle/killersice = 1,
 	)
