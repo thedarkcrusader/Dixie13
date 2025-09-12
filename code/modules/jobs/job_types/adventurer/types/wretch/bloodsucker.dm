@@ -11,7 +11,7 @@
 	H.set_patron(/datum/patron/godless/autotheist)
 
 	var/classes = list("The Noble", "The Count", "The Bum")
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	var/classchoice = browser_input_list("Choose your archetypes", "Available archetypes", classes)
 	switch(classchoice)
 		if("The Noble")
 			noble_equip(H)
@@ -37,8 +37,8 @@
 	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_INT, 3) // smart vampire
-	H.change_stat(STATKEY_SPD, 1)
+	H.change_stat(STATKEY_INT, 3) // quickfooted smart vampire
+	H.change_stat(STATKEY_SPD, 2)
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/clothing/neck/gorget
@@ -113,7 +113,7 @@
 			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
 		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_END, 2)
-		H.change_stat(STATKEY_STR, 1)
+		H.change_stat(STATKEY_STR, 2) // powerful vampire, more of a brute compared to the noble
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
