@@ -26,7 +26,7 @@
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
 	pants = /obj/item/clothing/pants/trou/leather
 	wrists = /obj/item/rope/chain
-	shoes = /obj/item/clothing/shoes/boots
+	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
 	gloves = /obj/item/clothing/gloves/leather
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
@@ -57,7 +57,7 @@
 	backr = /obj/item/weapon/shield/heater
 	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/sword/short
-	beltl = /obj/item/weapon/mace/cudgel
+	beltl = /obj/item/weapon/mace
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
