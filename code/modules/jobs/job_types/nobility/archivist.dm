@@ -57,7 +57,7 @@
 	H.grant_language(/datum/language/oldpsydonic)
 	H.grant_language(/datum/language/orcish)
 	H.grant_language(/datum/language/deepspeak)
-	if(H.patron.type == /datum/patron/inhumen/zizo)
+	if(istype(H.patron, /datum/patron/inhumen/zizo))
 		H.grant_language(/datum/language/undead)
 	H.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
