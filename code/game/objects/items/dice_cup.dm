@@ -52,7 +52,8 @@
 		return
 	var/obj/item/dice/die = pick(dice_list)
 	dice_list -= die
-	die.loc = user.loc
+	die.forceMove(user.loc)
+	user.put_in_hands(die)
 	update_appearance(UPDATE_DESC)
 	return die
 
