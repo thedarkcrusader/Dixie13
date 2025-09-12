@@ -65,7 +65,7 @@
 		playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
 		update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire(atom/target, mob/living/user, message = TRUE, list/modifiers, zone_override, bonus_spread = 0)
 	if(user.usable_hands < 2)
 		return FALSE
 	if(user.get_inactive_held_item())

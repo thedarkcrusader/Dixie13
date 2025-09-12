@@ -482,7 +482,7 @@
 	on = FALSE
 	crossfire = FALSE
 
-/obj/machinery/light/fueled/hearth/mobilestove/MiddleClick(mob/user, params)
+/obj/machinery/light/fueled/hearth/mobilestove/MiddleClick(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

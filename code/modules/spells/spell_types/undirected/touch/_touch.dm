@@ -154,14 +154,13 @@
  *
  * When our hand hits an atom, we can cast do_hand_hit() on them.
  */
-/datum/action/cooldown/spell/undirected/touch/proc/on_hand_hit(datum/source, atom/victim, mob/caster, proximity_flag, click_parameters)
+/datum/action/cooldown/spell/undirected/touch/proc/on_hand_hit(datum/source, atom/victim, mob/caster, proximity_flag, list/modifiers)
 	SIGNAL_HANDLER
 	SHOULD_NOT_OVERRIDE(TRUE) // DEFINITELY don't put effects here, put them in cast_on_hand_hit
 
 	if(!proximity_flag || !can_hit_with_hand(victim, caster))
 		return
 
-	var/list/modifiers = params2list(click_parameters)
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		INVOKE_ASYNC(src, PROC_REF(do_secondary_hand_hit), source, victim, caster, modifiers)
 	else

@@ -119,9 +119,7 @@
 	bloodied = TRUE
 	update_animation_effect()
 
-/obj/structure/orphan_smasher/MiddleClick(mob/user, params)
-	if(!user.Adjacent(src))
-		return
+/obj/structure/orphan_smasher/MiddleClick(mob/user, list/modifiers)
 	try_step(STEP_LEVER, user)
 	return TRUE
 

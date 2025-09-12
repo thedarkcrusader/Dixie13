@@ -216,12 +216,12 @@
 			mind.attackedme[user.real_name] = world.time
 		log_combat(user, src, "bit")
 
-/mob/living/MiddleClickOn(atom/A, params)
+/mob/living/MiddleClickOn(atom/A, list/modifiers)
 	..()
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
 			return
-		A.MiddleClick(src, params)
+		A.MiddleClick(src, modifiers)
 	else
 		switch(mmb_intent.type)
 			if(INTENT_KICK)

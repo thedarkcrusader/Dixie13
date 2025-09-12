@@ -161,7 +161,7 @@
 		return
 	return ..()
 
-/obj/item/bodypart/MiddleClick(mob/living/user, params)
+/obj/item/bodypart/MiddleClick(mob/living/user, list/modifiers)
 	var/obj/item/held_item = user.get_active_held_item()
 	var/datum/species/S = original_owner.dna.species
 	if(held_item)

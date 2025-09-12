@@ -140,7 +140,7 @@
 			return ..()
 		to_chat(user, "<span class='warning'>I need to cock the crossbow first.</span>")
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, list/modifiers, zone_override, bonus_spread = 0)
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0

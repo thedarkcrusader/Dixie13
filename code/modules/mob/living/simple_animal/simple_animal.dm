@@ -373,7 +373,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/proc/handle_temperature_damage()
 	return
 
-/mob/living/simple_animal/MiddleClick(mob/living/user, params)
+/mob/living/simple_animal/MiddleClick(mob/living/user, list/modifiers)
 	if(stat == DEAD)
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item)

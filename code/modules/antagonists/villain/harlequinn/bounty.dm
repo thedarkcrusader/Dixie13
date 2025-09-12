@@ -1810,7 +1810,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 		marked_targets = list()
 		return
 
-/obj/item/bounty_marker/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/bounty_marker/afterattack(atom/target, mob/user, proximity_flag, list/modifiers)
 	. = ..()
 	if(!proximity_flag && get_dist(user, target) > 7)
 		return

@@ -376,7 +376,7 @@
 	var/list/removed_names = list()
 	var/names = 12
 
-/obj/item/paper/scroll/frumentarii/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/paper/scroll/frumentarii/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	. = ..()
 	if(length(real_names) + length(removed_names) >= names)
 		to_chat(user, span_notice("The scroll is full"))

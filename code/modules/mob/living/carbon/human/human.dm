@@ -1,5 +1,5 @@
-/mob/living/carbon/human/MiddleClick(mob/user, params)
-	..()
+/mob/living/carbon/human/MiddleClick(mob/user, list/modifiers)
+	. = ..()
 	if(!user)
 		return
 	var/obj/item/held_item = user.get_active_held_item()
@@ -16,7 +16,7 @@
 					has_stubble = FALSE
 					update_body()
 				else
-					held_item.melee_attack_chain(user, src, params)
+					held_item.melee_attack_chain(user, src, modifiers)
 			else if(facial?.accessory_type != /datum/sprite_accessory/hair/facial/none)
 				playsound(src, 'sound/foley/shaving.ogg', 100, TRUE, -1)
 				if(user == src)
@@ -32,7 +32,7 @@
 							var/mob/living/carbon/V = src
 							V.add_stress(/datum/stressevent/dwarfshaved)
 				else
-					held_item.melee_attack_chain(user, src, params)
+					held_item.melee_attack_chain(user, src, modifiers)
 
 /mob/living/carbon/human/Initialize()
 	// verbs += /mob/living/proc/mob_sleep

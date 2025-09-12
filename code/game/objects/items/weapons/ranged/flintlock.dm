@@ -91,7 +91,7 @@
 		wound = TRUE
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/MiddleClick(mob/user, params)
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/MiddleClick(mob/user, list/modifiers)
 	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -110,7 +110,7 @@
 			playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 		update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/process_fire(atom/target, mob/living/user, message = TRUE, list/modifiers, zone_override, bonus_spread = 0)
 	if(!cocked)
 		return
 	if(!rammed)
@@ -237,7 +237,7 @@
 	powdered = TRUE
 	wound = TRUE
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/conjured/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	. = ..()
 	atom_integrity = 0
 	atom_break()

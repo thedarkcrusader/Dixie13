@@ -158,7 +158,7 @@
 	label_container(user, label_name, label_desc)
 	qdel(I)
 
-/obj/item/reagent_containers/MiddleClick(mob/user, params)
+/obj/item/reagent_containers/MiddleClick(mob/user, list/modifiers)
 	. = ..()
 	remove_label(user)
 

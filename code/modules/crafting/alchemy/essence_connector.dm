@@ -8,7 +8,7 @@
 	var/connecting = FALSE
 	slot_flags = ITEM_SLOT_HIP
 
-/obj/item/essence_connector/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/essence_connector/afterattack(atom/target, mob/user, proximity_flag, list/modifiers)
 	if(!proximity_flag)
 		. = ..()
 		return

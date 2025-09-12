@@ -96,7 +96,7 @@
  * Arguments:
  * * atom/A - The atom about to be hit
  * * mob/living/user - The mob doing the htting
- * * params - click params such as alt/shift etc
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  *
  * See: [/obj/item/proc/melee_attack_chain]
  */
@@ -111,7 +111,7 @@
  * Arguments:
  * * atom/target - The atom about to be hit
  * * mob/living/user - The mob doing the htting
- * * params - click params such as alt/shift etc
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  *
  * See: [/obj/item/proc/melee_attack_chain]
  */
@@ -132,7 +132,7 @@
  * Arguments:
  * * obj/item/attacking_item - The item hitting this atom
  * * mob/user - The wielder of this item
- * * params - click params such as alt/shift etc
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  *
  * See: [/obj/item/proc/melee_attack_chain]
  */
@@ -150,7 +150,7 @@
  * Arguments:
  * * obj/item/weapon - The item hitting this atom
  * * mob/user - The wielder of this item
- * * params - click params such as alt/shift etc
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  *
  * See: [/obj/item/proc/melee_attack_chain]
  */
@@ -258,7 +258,7 @@
  * Arguments:
  * * mob/living/M - The mob being hit by this item
  * * mob/living/user - The mob hitting with this item
- * * params - Click params of this attack
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  */
 /obj/item/proc/attack(mob/living/M, mob/living/user, list/modifiers)
 	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user, modifiers) || SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK, M, src)
@@ -645,12 +645,12 @@
  * * atom/target - The thing that was hit
  * * mob/user - The mob doing the hitting
  * * proximity_flag - is 1 if this afterattack was called on something adjacent, in your square, or on your person.
- * * click_parameters - is the params string from byond [/atom/proc/Click] code, see that documentation.
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  */
-/obj/item/proc/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
+	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, modifiers)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, modifiers)
 	if(force && !user.used_intent.tranged && !user.used_intent.tshield)
 		if(proximity_flag && isopenturf(target) && !user.used_intent?.noaa)
 			var/adf = user.used_intent.clickcd
@@ -677,10 +677,10 @@
  * * atom/target - The thing that was hit
  * * mob/user - The mob doing the hitting
  * * proximity_flag - is 1 if this afterattack was called on something adjacent, in your square, or on your person.
- * * click_parameters - is the params string from byond [/atom/proc/Click] code, see that documentation.
+ * * list/modifers - is the params string from byond [/atom/proc/Click] code turned into a list, see that documentation.
  */
-/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
-	var/signal_result = SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK_SECONDARY, target, user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, list/modifiers)
+	var/signal_result = SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK_SECONDARY, target, user, proximity_flag, modifiers)
 
 	if(signal_result & COMPONENT_SECONDARY_CANCEL_ATTACK_CHAIN)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -692,9 +692,9 @@
 	return SECONDARY_ATTACK_CALL_NORMAL
 
 // Called if the target gets deleted by our attack
-/obj/item/proc/attack_qdeleted(atom/target, mob/user, proximity_flag, click_parameters)
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_QDELETED, target, user, proximity_flag, click_parameters)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_QDELETED, target, user, proximity_flag, click_parameters)
+/obj/item/proc/attack_qdeleted(atom/target, mob/user, proximity_flag, list/modifiers)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_QDELETED, target, user, proximity_flag, modifiers)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_QDELETED, target, user, proximity_flag, modifiers)
 
 /obj/item/proc/get_clamped_volume()
 	if(w_class)

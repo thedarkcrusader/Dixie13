@@ -286,7 +286,7 @@
 			bolt_locked = TRUE
 			update_appearance(UPDATE_ICON)
 
-/obj/item/gun/ballistic/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/gun/ballistic/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	prefire_empty_checks()
 	. = ..() //The gun actually firing
 	postfire_empty_checks(.)

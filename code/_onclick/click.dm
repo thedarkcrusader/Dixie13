@@ -438,7 +438,7 @@
 	user.UnarmedAttack(AE, 1, modifiers)
 
 /mob/proc/ShiftMiddleClickOn(atom/clicked_atom, list/modifiers)
-	if(SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, clicked_atom) & COMSIG_MOB_CANCEL_CLICKON)
+	if(SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, clicked_atom, modifiers) & COMSIG_MOB_CANCEL_CLICKON)
 		return
 
 /*

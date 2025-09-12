@@ -205,7 +205,7 @@
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
 			S.repeat_message(input_text)
 
-/obj/item/scomstone/MiddleClick(mob/user)
+/obj/item/scomstone/MiddleClick(mob/user, list/modifiers)
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)

@@ -49,7 +49,7 @@
 	RegisterSignal(enchanter, COMSIG_ITEM_HIT_RESPONSE, PROC_REF(on_hit_response))
 	return TRUE
 
-/datum/enchantment/proc/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
+/datum/enchantment/proc/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, list/modifiers)
 
 /datum/enchantment/proc/on_equip(obj/item/i, mob/living/user)
 

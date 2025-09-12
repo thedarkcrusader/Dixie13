@@ -64,7 +64,7 @@
 		force_wielded = 23
 	return ..()
 
-/obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	if(!ishuman(target))
 		return
 	if(check_zone(user.zone_selected) != BODY_ZONE_CHEST)
@@ -125,7 +125,7 @@
 		return
 	return ..()
 
-/obj/item/weapon/polearm/neant/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/weapon/polearm/neant/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_CABAL))
 		return

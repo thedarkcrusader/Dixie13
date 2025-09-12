@@ -195,7 +195,7 @@
 		playsound(loc, 'sound/items/book_page.ogg', 100, TRUE, -1)
 		read(usr)
 
-/obj/item/book/attack_hand_secondary(mob/user, params)
+/obj/item/book/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

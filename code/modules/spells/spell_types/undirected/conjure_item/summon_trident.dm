@@ -98,7 +98,7 @@
 /obj/item/fishingrod/abyssor_trident/attack_hand_secondary(mob/user, list/modifiers)
 	return SECONDARY_ATTACK_CALL_NORMAL
 
-/obj/item/fishingrod/abyssor_trident/afterattack(obj/target, mob/user, proximity, params)
+/obj/item/fishingrod/abyssor_trident/afterattack(obj/target, mob/user, proximity_flag, list/modifiers)
 	. = ..()
 	baited = new /obj/item/fishing/bait/no_bait(src)
 

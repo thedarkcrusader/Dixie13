@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		else
 			shopping_run(user)
 
-/obj/structure/fermentation_keg/MiddleClick(mob/user, params)
+/obj/structure/fermentation_keg/MiddleClick(mob/user, list/modifiers)
 	. = ..()
 	if(!Adjacent(user))
 		return
