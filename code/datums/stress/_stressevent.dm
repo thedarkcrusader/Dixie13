@@ -20,11 +20,14 @@
 /datum/stress_event/proc/on_apply(mob/living/user)
 	return TRUE
 
-/datum/stress_event/proc/on_remove()
+/datum/stress_event/proc/on_remove(mob/living/user)
 	return TRUE
 
-/datum/stress_event/proc/can_show()
+/datum/stress_event/proc/can_show(mob/living/user)
 	return !hidden
+
+/datum/stress_event/proc/get_desc(mob/living/user)
+	return desc
 
 /datum/stress_event/proc/get_stress(mob/living/user)
 	return stress_change + ((stacks - 1) * stress_change_per_extra_stack)
