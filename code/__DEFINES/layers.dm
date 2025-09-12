@@ -62,10 +62,12 @@
 #define ABOVE_ALL_MOB_LAYER 4.5
 
 #define SPACEVINE_LAYER 4.8
+#define FLORA_LAYER 4.81
 #define SPACEVINE_MOB_LAYER 4.9
 //#define FLY_LAYER 5 //For easy recordkeeping; this is a byond define
 #define GASFIRE_LAYER 5.05
 #define RIPPLE_LAYER 5.1
+#define GOD_HAND_LAYER 10
 #define AREA_LAYER	12
 
 #define OPENSPACE_LAYER 600 //! Openspace layer over all
@@ -173,6 +175,9 @@
 
 // Floating chat messages
 #define RUNECHAT_PLANE 250
+
+/// Plane for balloon text (text that fades up)
+#define BALLOON_CHAT_PLANE 251
 
 ///--------------- FULLSCREEN IMAGES ------------
 #define FULLSCREEN_PLANE 500

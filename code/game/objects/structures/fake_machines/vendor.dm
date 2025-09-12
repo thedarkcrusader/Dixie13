@@ -6,7 +6,6 @@
 	density = TRUE
 	blade_dulling = DULLING_BASH
 	integrity_failure = 0.1
-	max_integrity = 0
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	rattle_sound = 'sound/misc/machineno.ogg'
@@ -17,15 +16,22 @@
 	var/budget = 0
 	var/wgain = 0
 	/// Max amount of items we can sell
-	var/max_merchanise = 15
+	var/max_merchandise = 15
 	/// Overlay used when theres items inside and we are locked
 	var/filled_overlay = "vendor-gen"
 	/// Light color used when theres items inside and we are locked
 	var/lighting_color = "#cf7214"
+	/// Tracking the hawking
+	var/next_hawk = 0
 
 /obj/structure/fake_machine/vendor/Initialize()
 	. = ..()
 	update_appearance(UPDATE_ICON_STATE)
+	START_PROCESSING(SSroguemachine, src)
+
+/obj/structure/fake_machine/vendor/Destroy(force)
+	STOP_PROCESSING(SSroguemachine, src)
+	return ..()
 
 /obj/structure/fake_machine/vendor/on_lock_add()
 	update_appearance(UPDATE_ICON_STATE)
@@ -38,12 +44,16 @@
 	. = ..()
 	update_appearance(UPDATE_ICON)
 
-/obj/structure/fake_machine/vendor/obj_break(damage_flag, silent)
+/obj/structure/fake_machine/vendor/atom_break(damage_flag)
 	. = ..()
 	for(var/obj/item/I as anything in held_items)
 		I.forceMove(loc)
 		held_items -= I
 	budget2change(budget)
+	update_appearance(UPDATE_ICON)
+
+/obj/structure/fake_machine/vendor/atom_fix()
+	. = ..()
 	update_appearance(UPDATE_ICON)
 
 /obj/structure/fake_machine/vendor/Destroy()
@@ -101,7 +111,7 @@
 	if(I.w_class > WEIGHT_CLASS_BULKY)
 		to_chat(user, span_info("[I] is too big for \the [src]!"))
 		return
-	if(length(held_items) > max_merchanise)
+	if(length(held_items) > max_merchandise)
 		to_chat(user, span_info("\The [src] is full!"))
 		return
 	held_items[I] = list()
@@ -234,6 +244,16 @@
 	popup.set_content(contents)
 	popup.open()
 
+/obj/structure/fake_machine/vendor/process()
+	if(obj_broken)
+		return
+	if(world.time > next_hawk)
+		next_hawk = world.time + rand(1 MINUTES, 2 MINUTES)
+		if(length(held_items))
+			var/item = pick(held_items)
+			var/price = LAZYACCESSASSOC(held_items, item, "PRICE")
+			say("[item] for sale! [price] mammons!")
+
 /obj/structure/fake_machine/vendor/nolock
 	lock = null
 	can_add_lock = TRUE
@@ -299,7 +319,6 @@
 	name = "LANDLORD"
 	desc = "Give this thing money, and you will immediately buy a neat property in the capital."
 	icon_state = "streetvendor1"
-	max_integrity = 0
 	var/list/cachey = list()
 
 /obj/structure/fake_machine/vendor/centcom/attack_hand(mob/living/user)

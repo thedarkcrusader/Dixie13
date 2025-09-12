@@ -50,7 +50,7 @@
 			cast_on.adjust_divine_fire_stacks(1)
 			cast_on.IgniteMob()
 			return
-		if(cast_on.real_name in GLOB.excommunicated_players)
+		if(cast_on.real_name in GLOB.excommunicated_players && !HAS_TRAIT(cast_on, TRAIT_FANATICAL))
 			cast_on.visible_message(
 				span_warning("The angry Ten the flesh of [cast_on]! a foolish blasphemer and heretic!"),
 				span_notice("I am despised by the Ten, rejected, and they remind me just how unlovable I am with a wave of pain!"),
@@ -86,7 +86,7 @@
 				// the more natural stuff around US, the more we heal
 				for(var/obj/O in oview(5, owner))
 					if(is_type_in_typecache(O, natural_stuff))
-						situational_bonus = min(situational_bonus + 1, 25)
+						situational_bonus = min(situational_bonus + 0.5, 25)
 				if(situational_bonus > 0)
 					conditional_buff = TRUE
 
@@ -186,11 +186,10 @@
 						situational_bonus = 25
 						break
 
-			if(/datum/patron/godless)
-				cast_on.visible_message(span_info("No Gods answer these prayers."), span_notice("No Gods answer these prayers."))
-				return
-
 			else
+				if(istype(living_owner.patron, /datum/patron/godless))
+					cast_on.visible_message(span_info("No Gods answer these prayers."), span_notice("No Gods answer these prayers."))
+					return
 				cast_on.visible_message(span_info("A choral sound comes from above and [cast_on] is healed!"), span_notice("I am bathed in healing choral hymns!"))
 
 	if(conditional_buff)

@@ -201,17 +201,17 @@
 
 	if(I)
 		if(istype(I, /obj/item/grabbing))
-			var/obj/item/grabbing/G = I
 			if(pulling && pulling != src)
 				if(isliving(pulling))
 					var/mob/living/throwable_mob = pulling
 					if(!throwable_mob.buckled)
 						var/obj/item/grabbing/other_grab = offhand ? get_active_held_item() : get_inactive_held_item()
-						stop_pulling()
-						if(G.grab_state < GRAB_AGGRESSIVE)
+						if(grab_state < GRAB_AGGRESSIVE)
+							stop_pulling()
 							return
+						stop_pulling()
 						if(HAS_TRAIT(src, TRAIT_PACIFISM))
-							to_chat(src, "<span class='notice'>I gently let go of [throwable_mob].</span>")
+							to_chat(src, span_notice("I gently let go of [throwable_mob]."))
 							return
 						thrown_thing = throwable_mob
 						thrown_speed = 1
@@ -1355,7 +1355,7 @@
 /mob/living/carbon/encumbrance_to_speed()
 	var/exponential = (2.71 ** -(get_encumbrance() - 0.6)) * 10
 	var/speed_factor = 1 / (1 + exponential)
-	var/precentage =  CLAMP(speed_factor * (1 - (STASTR / 20)), 0, 1)
+	var/precentage =  CLAMP(speed_factor, 0, 1)
 
 	add_movespeed_modifier("encumbrance", override = TRUE, multiplicative_slowdown = 5 * precentage)
 

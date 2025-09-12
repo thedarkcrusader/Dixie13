@@ -4,7 +4,7 @@
 	Stitched the sores of blades, sealed honey over the bubous of plague. \
 	A thousand deaths stolen from the Carriagemen, yet these people will still call you a charlatan. \
 	At least the Apothecary understands you."
-	department_flag = NOBLEMEN
+	department_flag = SERFS
 	display_order = JDO_FELDSHER
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -24,7 +24,7 @@
 	)
 
 /datum/outfit/job/feldsher
-	job_bitflag = BITFLAG_ROYALTY
+	job_bitflag = BITFLAG_CONSTRUCTOR
 
 /datum/outfit/job/feldsher/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -40,15 +40,16 @@
 	neck = /obj/item/clothing/neck/feld
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/feldsher
+	beltr = /obj/item/storage/belt/pouch
 
+	H.adjust_skillrank(/datum/skill/combat/wrestling, pick(2,2,3), TRUE)//so he can hold down unruly patients
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.change_stat(STATKEY_STR, -1)

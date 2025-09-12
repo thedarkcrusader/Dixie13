@@ -106,10 +106,10 @@
 
 //................ Wizard Robes ............... //
 /obj/item/clothing/shirt/robe/colored/courtmage
-	color = CLOTHING_ASH_GREY
+	color = CLOTHING_CHALK_WHITE
 
 /obj/item/clothing/shirt/robe/colored/mage/Initialize()
-	color = pick( CLOTHING_PEASANT_BROWN, CLOTHING_SPRING_GREEN, CLOTHING_CHESTNUT, CLOTHING_YELLOW_OCHRE)
+	color = pick(CLOTHING_BERRY_BLUE, CLOTHING_SPRING_GREEN, CLOTHING_TARAXACUM_YELLOW, CLOTHING_WINESTAIN_RED)
 	. = ..()
 
 /obj/item/clothing/shirt/robe/wizard
@@ -126,7 +126,7 @@
 	icon_state = "warlock"
 	allowed_sex = list(MALE)
 	allowed_race = SPECIES_BASE_BODY
-	sellprice = 150
+	sellprice = 70
 
 	armor = list("blunt" = 40, "slash" = 40, "stab" = 40,  "piercing" = 15, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_TWIST)

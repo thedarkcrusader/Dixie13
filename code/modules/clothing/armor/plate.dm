@@ -16,6 +16,7 @@
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS //Has shoulder guards, and nothing else to suggest leg protection
 	prevent_crits = ALL_EXCEPT_BLUNT
 	max_integrity = INTEGRITY_STRONGEST
+	stand_speed_reduction = 0.8
 
 /obj/item/clothing/armor/plate/Initialize()
 	. = ..()
@@ -144,3 +145,7 @@
 	smeltresult = /obj/item/ingot/silver
 	item_weight = 12 * SILVER_MULTIPLIER
 	sellprice = VALUE_SILVER_ITEM * 3
+
+/obj/item/clothing/armor/plate/full/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
