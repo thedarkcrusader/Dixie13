@@ -47,10 +47,12 @@
 
 	var/blast_range = round(blastpowder_amount / 1.5)
 
+	/*
 	var/devastation_explosion_range = round(blastpowder_amount / 100)
 	var/heavy_explosion_range = round(blastpowder_amount / 35)
 	var/light_explosion_range = round(blastpowder_amount / 20)
 	var/flame_range = round(blastpowder_amount / 10)
+	*/
 
 	var/turf/turf_in_front = get_step(src, dir)
 	var/turf/turf_to_shoot_from = turf_in_front
