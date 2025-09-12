@@ -43,7 +43,7 @@
 /obj/item/dice_cup/proc/add_dice(obj/item/I)
 	if(!I || !istype(I))
 		return 0
-	I.loc = src
+	I.forceMove(src)
 	dice_list += I
 	update_appearance(UPDATE_DESC)
 
