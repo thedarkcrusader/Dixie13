@@ -29,6 +29,7 @@
 	H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/taming, 4, TRUE)
 	H.change_stat(STATKEY_STR, 3)
