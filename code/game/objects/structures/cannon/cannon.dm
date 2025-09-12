@@ -83,8 +83,7 @@
 			if(blastpowder_amount < 15)
 				continue
 			var/obj/item/ammo_casing/loaded_ammo = loaded_thing
-			loaded_ammo.forceMove(turf_to_shoot_from)
-			loaded_ammo.fire_casing(target, fired_from = src)
+			loaded_ammo.fire_casing(target, fired_from = turf_to_shoot_from)
 		else
 			if(ismobholder(loaded_thing))
 				var/obj/item/clothing/head/mob_holder/curler = loaded_thing
