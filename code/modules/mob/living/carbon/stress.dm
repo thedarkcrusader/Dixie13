@@ -50,9 +50,9 @@
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))
 		stress = 0
 	for(var/stress_type in stressors)
-		var/datum/stressevent/stress_event = stressors[stress_type]
+		var/datum/stress_event/stress_event = stressors[stress_type]
 		if(stress_event.timer)
-			if(world.time > (stress_event.time_added + stress_event.timer))
+			if(world.time >= stress_event.timer)
 				remove_stress(stress_type)
 
 	if(stress != oldstress)
@@ -120,35 +120,35 @@
 /mob/living/carbon/get_positive_stressors()
 	. = list()
 	for(var/stress_type in stressors)
-		var/datum/stressevent/event = stressors[stress_type]
+		var/datum/stress_event/event = stressors[stress_type]
 		if(event.get_stress(src) < 0)
 			. += event
 
 /mob/living/carbon/get_neutral_stressors()
 	. = list()
 	for(var/stress_type in stressors)
-		var/datum/stressevent/event = stressors[stress_type]
+		var/datum/stress_event/event = stressors[stress_type]
 		if(event.get_stress(src) > 0)
 			. += event
 
 /mob/living/carbon/get_negative_stressors()
 	. = list()
 	for(var/stress_type in stressors)
-		var/datum/stressevent/event = stressors[stress_type]
+		var/datum/stress_event/event = stressors[stress_type]
 		if(event.get_stress(src) == 0)
 			. += event
 
 /mob/living/carbon/add_stress(event_type)
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))
 		return FALSE
-	var/datum/stressevent/new_event = new event_type()
+	var/datum/stress_event/new_event = new event_type()
 	if(!new_event.can_apply(src))
 		return FALSE
 
 	. = TRUE
-	var/datum/stressevent/existing_event = has_stress_type(event_type)
+	var/datum/stress_event/existing_event = has_stress_type(event_type)
 	if(existing_event)
-		existing_event.time_added = world.time
+		existing_event.timer += world.time
 		if(existing_event.stacks >= existing_event.max_stacks)
 			return
 		var/pre_stack = existing_event.get_stress()
@@ -157,7 +157,7 @@
 		adjust_stress(post_stack-pre_stack)
 		existing_event.on_apply(src)
 	else
-		new_event.time_added = world.time
+		new_event.timer += world.time
 		stressors[event_type] = new_event
 		adjust_stress(new_event.get_stress())
 		new_event.on_apply(src)
@@ -168,7 +168,7 @@
 	// 	return FALSE
 	var/list/events_to_remove = islist(event_to_remove) ? event_to_remove : list(event_to_remove)
 	for(var/stress_type in events_to_remove)
-		var/datum/stressevent/stress_event = has_stress_type(stress_type)
+		var/datum/stress_event/stress_event = has_stress_type(stress_type)
 		if(stress_event)
 			adjust_stress(-1 * stress_event.get_stress())
 			stressors -= stress_type
@@ -183,13 +183,13 @@
 	set category = "DEBUGTEST"
 	set name = "stressBad"
 	if(mob)
-		mob.add_stress(/datum/stressevent/test)
+		mob.add_stress(/datum/stress_event/test)
 
 /client/verb/remove_stress()
 	set category = "DEBUGTEST"
 	set name = "stressGood"
 	if(mob)
-		mob.add_stress(/datum/stressevent/testr)
+		mob.add_stress(/datum/stress_event/testr)
 
 /client/verb/filter1()
 	set category = "DEBUGTEST"
