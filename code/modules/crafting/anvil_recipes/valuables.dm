@@ -277,7 +277,7 @@
 	created_item = /obj/item/statue/gold/tablet
 
 /datum/anvil_recipe/valuables/gold/cameo
-	name = "2x Gold Cameo's"
+	name = "2x Golden Cameos"
 	recipe_name = "two Gold Cameos"
 	created_item = /obj/item/statue/gold/cameo
 	createditem_extra = 1
