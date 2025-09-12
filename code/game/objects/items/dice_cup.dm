@@ -28,17 +28,16 @@
 			dice_list -= X
 
 /obj/item/dice_cup/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(istype(I, /obj/item/dice))
-		if(dice_list.len >= max_dice)
-			to_chat(user, span_warning("[src] can only hold [max_dice] dice."))
-			return
-		to_chat(user, span_notice("You put [I] into [src]."))
-		user.dropItemToGround(I)
-		add_dice(I)
-		update_appearance(UPDATE_DESC)
-	else
+	if(!istype(I, /obj/item/dice))
 		return ..()
+	if(length(dice_list) >= max_dice)
+		to_chat(user, span_warning("\The [src] is full."))
+		return
+	to_chat(user, span_notice("I put [I] into \the [src]."))
+	if(!user.temporarilyRemoveItemFromInventory(I))
+		return
+	add_dice(I)
+	update_appearance(UPDATE_DESC)
 
 /obj/item/dice_cup/proc/add_dice(obj/item/I)
 	if(!I || !istype(I))
