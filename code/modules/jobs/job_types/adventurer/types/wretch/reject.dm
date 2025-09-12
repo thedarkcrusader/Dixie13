@@ -10,14 +10,6 @@
 	outfit = /datum/outfit/job/wretch/reject
 	category_tags = list(CTAG_WRETCH)
 
-/datum/job/prince/after_spawn(mob/living/carbon/spawned, client/player_client)
-	. = ..()
-	var/mob/living/carbon/human/H = spawned
-	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 5 SECONDS)
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
-
 /datum/outfit/job/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak
@@ -26,11 +18,11 @@
 	shoes = /obj/item/clothing/shoes/nobleboot
 	belt = /obj/item/storage/belt/leather
 	neck = /obj/item/key/manor
-	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	beltr = /obj/item/weapon/sword
 	beltl = /obj/item/ammo_holder/quiver/bolts
 	neck = /obj/item/storage/belt/pouch/coins/rich
 	backr = /obj/item/storage/backpack/satchel
-	backl = /obj/item/weapon/sword
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	pants = /obj/item/clothing/pants/trou/leather/advanced
 	backpack_contents = list(
 		/obj/item/storage/belt/pouch/coins/rich = 1,
@@ -40,6 +32,11 @@
 
 /datum/outfit/job/wretch/reject/pre_equip(mob/living/carbon/human/H)
 	..()
+	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 5 SECONDS)
+	if(GLOB.keep_doors.len > 0)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
+	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
+
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
 	if(H.gender == FEMALE)
