@@ -531,6 +531,8 @@
 
 /obj/projectile/bullet/reusable/cannonball/on_hit(atom/target, blocked = FALSE)
 	var/turf/explosion_place = get_turf(target)
+	if(isindestructiblewall(target))
+		explosion_place = get_step(target, get_dir(target, fired_from))
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
