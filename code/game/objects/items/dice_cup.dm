@@ -22,10 +22,13 @@
 //done so we can have pre-filled dice cups
 /obj/item/dice_cup/Initialize()
 	. = ..()
-	if(dice_list.len)
-		for(var/X in dice_list)
-			add_dice(new X())
-			dice_list -= X
+	var/length = length(dice_list)
+	if(length)
+		if(length >= max_dice)
+			stack_trace("[type] has more dice in its starter list than the allowed max dice.")
+		for(var/obj/item/dice as anything in dice_list)
+			add_dice(new dice())
+		dice_list = null
 
 /obj/item/dice_cup/attackby(obj/item/I, mob/living/user, params)
 	if(!istype(I, /obj/item/dice))
