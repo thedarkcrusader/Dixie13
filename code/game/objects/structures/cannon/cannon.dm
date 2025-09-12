@@ -115,15 +115,19 @@
 	if(isreagentcontainer(I))
 		var/obj/item/reagent_containers/reagent_container = I
 		if(do_after(user, 1 SECONDS, src))
-			reagent_container.reagents.trans_to(reagents, 10, transfered_by = user)
-			user.visible_message("[user] fills the [src] with \the [I]", "I fill the [src] with \the [I]")
-			playsound(src, 'sound/foley/gunpowder_fill.ogg', 100, FALSE)
+			if(reagent_container.reagents.trans_to(reagents, 10, transfered_by = user))
+				user.visible_message(span_notice("[user] fills the [src] with \the [I]", "I fill the [src] with \the [I]"))
+				playsound(src, 'sound/foley/gunpowder_fill.ogg', 100, FALSE)
+				balloon_alert(user, "added!")
+			else
+				balloon_alert(user, "none left!")
 		return TRUE
 
 	if(isfuse(I))
 		var/obj/item/fuse/fuse = I
 		if(fuse.add_to_cannon(src, user))
-			user.visible_message("[user] adds \the [fuse] to \the [src]", "I add \the [fuse] to \the [src]")
+			user.visible_message(span_notice("[user] adds \the [fuse] to \the [src]", "I add \the [fuse] to \the [src]"))
+			balloon_alert_to_viewers("attached!")
 		return TRUE
 
 	. = ..()
@@ -168,6 +172,7 @@
 /obj/effect/fuse/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(I.sharpness == IS_SHARP)
+		balloon_alert_to_viewers("cut!")
 		be_cut()
 
 /obj/effect/fuse/fire_act(added, maxstacks)
