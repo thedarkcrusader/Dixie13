@@ -10,7 +10,7 @@
 /datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)
 
 	var/classes = list("The Noble", "The Count", "The Bum")
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	var/classchoice = browser_input_list(H, "Choose your archetypes", "Available archetypes", classes)
 	switch(classchoice)
 		if("The Noble")
 			noble_equip(H)
