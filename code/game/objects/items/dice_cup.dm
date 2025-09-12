@@ -50,7 +50,7 @@
 /obj/item/dice_cup/proc/pick_dice(mob/user)
 	if(!dice_list.len)
 		return
-	var/obj/item/dice/die = dice_list[dice_list.len]
+	var/obj/item/dice/die = pick(dice_list)
 	dice_list -= die
 	die.loc = user.loc
 	update_appearance(UPDATE_DESC)
