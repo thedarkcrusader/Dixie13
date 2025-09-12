@@ -531,11 +531,11 @@
 
 /obj/projectile/bullet/reusable/cannonball/on_hit(atom/target, blocked = FALSE)
 	var/turf/explosion_place = get_turf(target)
-	explosion(explosion_place, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.gib()
+	explosion(explosion_place, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 12, flame_range = 7, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 
 //................ Grapeshot ............... //
 /obj/item/ammo_casing/caseless/cball

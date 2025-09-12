@@ -78,25 +78,25 @@
 		seer.throw_at(target_turf)
 
 	for(var/atom/movable/loaded_thing as anything in contents)
-		STR.remove_from_storage(loaded_thing, turf_to_shoot_from)
 		var/target = get_ranged_target_turf(src, dir, blast_range)
 		if(isammo(loaded_thing))
 			if(blastpowder_amount < 15)
 				continue
 			var/obj/item/ammo_casing/loaded_ammo = loaded_thing
 			loaded_ammo.forceMove(turf_to_shoot_from)
-			loaded_ammo.fire_casing(target)
+			loaded_ammo.fire_casing(target, fired_from = src)
 		else
 			if(ismobholder(loaded_thing))
 				var/obj/item/clothing/head/mob_holder/curler = loaded_thing
 				loaded_thing = curler.held_mob
 				qdel(curler)
-
+			STR.remove_from_storage(loaded_thing, turf_to_shoot_from)
 			loaded_thing.throw_at(target, blast_range, 3, force = MOVE_FORCE_OVERPOWERING)
 			if(isliving(loaded_thing))
 				var/mob/living/loaded_living = loaded_thing
 				loaded_living.reset_offsets("structure_climb")
 
+	/*
 	explosion(
 		turf_to_shoot_from,
 		devastation_range = devastation_explosion_range,
@@ -106,6 +106,7 @@
 		smoke = TRUE,
 		soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg')
 		)
+	*/
 
 
 	throw_at(get_step(src, REVERSE_DIR(dir)), 1, 3, spin = FALSE)
