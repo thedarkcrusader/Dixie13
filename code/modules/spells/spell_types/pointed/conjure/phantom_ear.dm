@@ -6,8 +6,7 @@
 
 	point_cost = 2
 
-	sound = 'sound/magic/whiteflame.ogg'
-
+	has_visual_effects = FALSE
 	charge_required = FALSE
 	cooldown_time = 2 MINUTES
 	spell_cost = 60

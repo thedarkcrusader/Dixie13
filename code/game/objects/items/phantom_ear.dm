@@ -2,7 +2,7 @@
 	name = "Phantom Ear"
 	desc = "A spectral fascimile of an ear."
 	var/chat_icon = 'icons/Phantom_Ear_Icon.dmi'
-	chat_icon_state = "sparkly_ear_icon"
+	var/chat_icon_state = "sparkly_ear_icon"
 	icon = 'icons/roguetown/misc/phantomear.dmi'
 	icon_state = "ear_ring"
 	invisibility = INVISIBILITY_LEYLINES
