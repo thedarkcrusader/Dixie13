@@ -7,7 +7,7 @@
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z (CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
 
-#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.0004 SECONDS * (EXCLAIMED_MULTIPLER - 1))
+#define CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER (CHAT_SPELLING_DELAY - 0.0003 SECONDS * (EXCLAIMED_MULTIPLER - 1))
 
 #define EXCLAIMED_MULTIPLER (exclaimed ? 3 : 1)
 
@@ -258,11 +258,19 @@
 	var/delay = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER
 	var/direction = 1
 
+	var/skip_spelling = FALSE
+	if(isliving(message_loc))
+		var/mobs_around = 0
+		for(var/mob/living/seer in oview(message_loc))
+			if(seer.client)
+				mobs_around++
+		if(mobs_around > 4)
+			skip_spelling = TRUE
 	for(var/letter as anything in remaining_letters)
 		if(premature_end)
 			return
 		var/extra_delay = spelling_extra_delays(letter)
-		if(isnull(extra_delay))
+		if(skip_spelling || isnull(extra_delay))
 			current_string += letter
 			continue
 
