@@ -61,6 +61,7 @@
 	bird.source_spell = src
 	bird.bird_owner = owner
 	owned_bird = bird
+	playsound(bird, 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
 	return bird
 
 /obj/item/reagent_containers/food/snacks/messenger_bird
@@ -122,16 +123,8 @@
 	if(dead)
 		..()
 	else
-		if(isliving(user))
-			var/mob/living/L = user
-			if(prob(L.STASPD * 2) || bird_owner == L)
-				..()
-			else
-				if(isturf(loc))
-					to_chat(user, "<span class='warning'>I fail to snatch [src]!</span>")
-					fly_away()
-					return
-	..()
+		fly_away()
+		return
 
 /obj/item/reagent_containers/food/snacks/messenger_bird/atom_destruction(damage_flag)
 	if(!dead)
@@ -167,8 +160,9 @@
 							return
 
 						to_chat(user, span_notice("You tell the bird to go to [source_spell.destinations[dest]]"))
-						var/strip_info = STRIP_HTML_FULL(P.info, MAX_MESSAGE_LEN)
-						message_admins("[noble_info] [ADMIN_BIRD_LETTER(user)] [ADMIN_FLW(user)] writes to [source_spell.destinations[dest]]: [strip_info]")
+						var/strip_info = STRIP_HTML_FULL(replacetext(P.info, "<br>", "\n"), MAX_MESSAGE_LEN)
+						strip_info = replacetext(strip_info, "\n", "<br>")
+						message_admins("[noble_info] [ADMIN_BIRD_LETTER(user)] [ADMIN_FLW(user)] writes to [source_spell.destinations[dest]]: <br>[strip_info]")
 						user.log_message("Sent a message with a bird to [source_spell.destinations[dest]]: [strip_info]", LOG_GAME)
 						fly_away()
 						qdel(P)

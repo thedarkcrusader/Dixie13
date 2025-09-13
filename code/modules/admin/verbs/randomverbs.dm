@@ -972,7 +972,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/obj/item/paper/letter = new /obj/item/paper()
-	letter.info = "<span class='featherwriting'>[replacetext(html_encode(msg), "\n", "<br>")]</span>"
+	letter.clearpaper()
+	var/penned_msg = letter.parsepencode(msg, new /obj/item/natural/feather())
+	letter.info = penned_msg
 	letter.updateinfolinks()
 	letter.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
 
