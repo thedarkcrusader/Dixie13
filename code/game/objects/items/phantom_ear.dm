@@ -59,18 +59,6 @@
 		to_chat(linked_living.resolve(), span_boldwarning("I feel a splitting pain in the side of my head, my phantom ear has been crushed!"))
 	qdel(src)
 
-/obj/item/phantom_ear/dropped(mob/user, silent, drop_source)
-	if(QDELETED(src))
-		return
-	..()
-	if(drop_source == "dropped")
-		src.visible_message(span_warning("[user] drops the [src], and it shatters!"))
-		playsound(src, 'sound/magic/glass.ogg', 100, FALSE, -1)
-		if(linked_living)
-			hurt_caster()
-			to_chat(linked_living.resolve(), span_boldwarning("I feel a hundred needles pierce the side of my head, my phantom ear has been shattered!"))
-		qdel(src)
-
 /obj/item/phantom_ear/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
 	src.visible_message(span_warning("The [src] shatters against the [hit_atom]!"))
