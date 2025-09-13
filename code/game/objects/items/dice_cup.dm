@@ -109,7 +109,7 @@
 
 /obj/item/dice_cup/attack_self_secondary(mob/user, params)
 	. = ..()
-	if(.)
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(HAS_TRAIT(user, TRAIT_BLACKLEG))
 		INVOKE_ASYNC(src, PROC_REF(rig_dice_cup), user)
