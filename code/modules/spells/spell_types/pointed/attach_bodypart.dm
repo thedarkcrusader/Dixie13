@@ -29,7 +29,6 @@
 		limb.heal_damage(limb.brute_dam, limb.burn_dam)//heals the limb by the amount of burn and brute damage it has
 		for(var/datum/wound/limb_wounds as anything in limb.wounds)
 			qdel(limb_wounds)
-		for()
 		cast_on.visible_message(
 			span_info("\The [limb] attaches itself to [cast_on]!"),
 			span_notice("\The [limb] attaches itself to me!")
