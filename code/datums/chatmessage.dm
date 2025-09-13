@@ -354,13 +354,11 @@
 
 	var/matrix/new_transform = matrix(message.transform)
 	new_transform.Turn((5 + rand(5, 15)) * pick(1, -1))
-	new_transform.Scale(1.2)
 	animate(
 		message,
 		time = delay,
 		pixel_z = 0,
 		pixel_w = 0,
-		transform = new_transform,
 		color = "#ad3c23",
 		flags = ANIMATION_PARALLEL
 		)
@@ -373,7 +371,7 @@
 /datum/chatmessage/proc/end_of_life(fadetime = CHAT_MESSAGE_EOL_FADE)
 	if(QDELETED(src))
 		return
-	animate(message, alpha = 0, pixel_z = -8, transform = message.transform.Scale(0.3), time = fadetime, flags = ANIMATION_PARALLEL)
+	animate(message, alpha = 0, pixel_z = -14, alpha = 0, time = fadetime, flags = ANIMATION_PARALLEL)
 
 	if(QDELETED(src))
 		return
