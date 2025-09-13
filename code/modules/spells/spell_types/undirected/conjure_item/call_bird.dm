@@ -38,6 +38,12 @@
 		"Cancel" = "cancel",
 	)
 
+/datum/action/cooldown/spell/undirected/conjure_item/call_bird/zalad
+	destinations = list(
+		"The Mercator Guild" = "the Mercator Guild",
+		"Cancel" = "cancel",
+	)
+
 
 /datum/action/cooldown/spell/undirected/conjure_item/call_bird/cast(atom/cast_on)
 	if(isliving(owner))
