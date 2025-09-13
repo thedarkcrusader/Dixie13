@@ -144,13 +144,13 @@ SUBSYSTEM_DEF(vote)
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
 			if("endround")
+				if(SSgamemode.roundvoteend)
+					log_game("LOG VOTE: MULTIPLE ROUND END VOTES")
+					return
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
 					GLOB.round_timer = GLOB.round_timer + (32 MINUTES)
 				else
-					if(SSgamemode.roundvoteend)
-						log_game("LOG VOTE: MULTIPLE ROUND END VOTES")
-						return
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
 					log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
 					to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL]</font>")
