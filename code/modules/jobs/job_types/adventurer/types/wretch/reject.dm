@@ -27,6 +27,8 @@
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/cup/golden = 3,
 		/obj/item/reagent_containers/glass/bottle/killersice = 1,
+		/obj/item/weapon/knife/dagger/steel/special = 1,
+		/obj/item/lockpickring/mundane = 1,
 	)
 
 /datum/outfit/job/wretch/reject/pre_equip(mob/living/carbon/human/H)
@@ -47,7 +49,7 @@
 	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
