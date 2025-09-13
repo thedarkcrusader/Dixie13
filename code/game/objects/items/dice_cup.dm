@@ -26,9 +26,9 @@
 	if(length)
 		if(length >= max_dice)
 			stack_trace("[type] has more dice in its starter list than the allowed max dice.")
-		for(var/obj/item/dice as anything in dice_list)
+		for(var/obj/item/dice/dice as anything in dice_list)
+			dice_list -= dice
 			add_dice(new dice())
-		dice_list = null
 
 /obj/item/dice_cup/attackby(obj/item/I, mob/living/user, params)
 	if(!istype(I, /obj/item/dice))
@@ -74,7 +74,7 @@
 	if(!length(dice_list))
 		to_chat(user, span_warning("There are no dice to roll!"))
 		return
-	var/option = browser_input_list(user, "Do you wish to roll the die for all to see?", "XYLIX", DEFAULT_INPUT_CHOICES)
+	var/option = browser_input_list(user, "Do you wish to roll the die in secret?", "XYLIX", DEFAULT_INPUT_CHOICES)
 	if(!option)
 		return
 	var/public_roll = TRUE
