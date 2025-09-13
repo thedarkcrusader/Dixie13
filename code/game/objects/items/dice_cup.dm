@@ -40,14 +40,12 @@
 	if(!user.temporarilyRemoveItemFromInventory(I))
 		return
 	add_dice(I)
-	update_appearance(UPDATE_DESC)
 
 /obj/item/dice_cup/proc/add_dice(obj/item/I)
 	if(!I || !istype(I))
 		return
 	I.forceMove(src)
 	dice_list += I
-	update_appearance(UPDATE_DESC)
 
 /obj/item/dice_cup/proc/pick_dice(mob/user)
 	if(!length(dice_list))
@@ -56,7 +54,6 @@
 	dice_list -= die
 	die.forceMove(user.loc)
 	user.put_in_hands(die)
-	update_appearance(UPDATE_DESC)
 	return die
 
 /obj/item/dice_cup/attack_hand_secondary(mob/user, params)
@@ -69,7 +66,6 @@
 		user.put_in_active_hand(die)
 		if(!length(dice_list))
 			last_roll.Cut()
-			update_appearance(UPDATE_DESC)
 	else
 		to_chat(user, span_notice("No dice."))//heh
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -88,11 +84,11 @@
 	for(var/obj/item/dice/die in dice_list)
 		die.diceroll(user, public_roll)
 		last_roll += die.result
-	update_appearance(UPDATE_DESC)
 	if(!public_roll)
 		user.visible_message(span_notice("[user] rolls dice in secret using [src]."), span_notice("I roll dice in secret using [src]."))
 
-/obj/item/dice_cup/update_desc()
+/obj/item/dice_cup/examine(mob/user)
+	. = ..()
 	if(!length(contents))
 		desc = initial(desc)
 		return
