@@ -2,6 +2,7 @@
 	name = "Phantom Ear"
 	desc = "A spectral fascimile of an ear."
 	var/chat_icon = 'icons/Phantom_Ear_Icon.dmi'
+	chat_icon_state = "sparkly_ear_icon"
 	icon = 'icons/roguetown/misc/phantomear.dmi'
 	icon_state = "ear_ring"
 	invisibility = INVISIBILITY_LEYLINES
@@ -90,8 +91,7 @@
 	if(QDELETED(owner))
 		qdel(src)
 		return
-	var/icon_html = icon2html(chat_icon, world, "sparkly_ear_icon")
-	to_chat(owner, "[icon_html] [message]")
+	to_chat(owner, "<img src='\ref[chat_icon]?state=[chat_icon_state]'/>" + " [message]")
 	if(!isliving(speaker))
 		return
 	var/mob/living/living_speaker = speaker
