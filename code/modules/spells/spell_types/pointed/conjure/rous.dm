@@ -9,6 +9,7 @@
 	antimagic_flags = NONE
 	associated_stat = STATKEY_CON
 	spell_type = SPELL_STAMINA
+	has_visual_effects = FALSE
 	charge_time = 2 SECONDS
 	charge_drain = 1
 	charge_slowdown = 1.3
