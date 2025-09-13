@@ -14,15 +14,14 @@
 	invocation = "Lend me thine ear."
 	invocation_type = INVOCATION_WHISPER
 
-	var/obj/item/phantom_ear/current_ear
-
 	summon_type = list(/obj/item/phantom_ear)
 	summon_radius = 0
-	summon_lifespan = 0
+	
+	var/obj/item/phantom_ear/current_ear
 
-/datum/action/cooldown/spell/conjure/phantom_ear/Destroy()
-	. = ..()
+/datum/action/cooldown/spell/conjure/phantom_ear/Destroy(force)
 	QDEL_NULL(current_ear)
+	return ..()
 
 /datum/action/cooldown/spell/conjure/phantom_ear/post_summon(obj/item/phantom_ear/summoned_object)
 	if(current_ear)
@@ -32,4 +31,3 @@
 		to_chat(owner, span_notice("You've conjured a phantom ear. You can hear through it as if you were there."))
 	current_ear = summoned_object
 	current_ear.setup(owner)
-	return
