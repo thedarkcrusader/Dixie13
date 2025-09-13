@@ -160,7 +160,7 @@
 	cannon = null
 	fuse = null
 	UnregisterSignal(cannon, COMSIG_PARENT_QDELETING)
-	UnregisterSignal(cannon, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(cannon, COMSIG_ATOM_DIR_CHANGE)
 	UnregisterSignal(fuse, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(fuse, COMSIG_FUSE_LIT)
 	UnregisterSignal(fuse, COMSIG_FUSE_EXTINGUISHED)
@@ -187,12 +187,17 @@
 	calculate_offsets()
 
 /obj/effect/fuse/proc/sync_with_fuse()
+	if(QDELETED(fuse))
+		return
 	appearance = fuse.appearance
 	add_filter("fuse_outline", 1, outline_filter(color = "#FFFF00"))
 	transform = matrix()
 
 /obj/effect/fuse/proc/calculate_offsets(datum/parent, current_dir, new_dir)
 	SIGNAL_HANDLER
+	if(QDELETED(cannon))
+		return
+
 	if(loc != cannon.loc)
 		forceMove(get_turf(cannon))
 
