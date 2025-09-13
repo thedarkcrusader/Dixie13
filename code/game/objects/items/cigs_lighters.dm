@@ -242,32 +242,28 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_hands()
 
 /obj/item/clothing/face/cigarette/proc/handle_reagents()
-	if(reagents.total_volume)
-		if(iscarbon(loc))
-			var/mob/living/carbon/C = loc
-			if (src == C.mouth) // if it's in the human/monkey mouth, transfer reagents to the mob
-				/*
-				 * Ingest reagents from the cig/pipe based on each of their metabolism rate, with the result being that
-				 * you slowly increase the amount of the reagents in your system until the end of the cig or pipe
-				 */
-				// If you're at the end of the cig/pipe, make sure the rest of the chems are gone (helps with any fractional leftovers at the end of smoketime)
-				if(smoketime <= 1)
-					reagents.trans_to(C, reagents.total_volume)
-					reagents.remove_any(reagents.total_volume)
+	if(!reagents.total_volume)
+		return
+	reagents.expose_temperature(heat, 0.05)
+	if(!reagents.total_volume) //may have reacted and gone to 0 after expose_temperature
+		return
+	var/mob/living/carbon/smoker = loc
+	// These checks are a bit messy but at least they're fairly readable
+	// Check if the smoker is a carbon mob, since it needs to have wear_mask
+	if(!istype(smoker))
+		smoker = smoker.loc
+		// If it is, check if that mask is on a carbon mob
+		if(!istype(smoker) || smoker.get_item_by_slot(ITEM_SLOT_MOUTH) != loc)
+			reagents.remove_all(REAGENTS_METABOLISM)
+			return
+	else
+		if(src != smoker.mouth)
+			reagents.remove_all(REAGENTS_METABOLISM)
+			return
 
-				// For each reagent, calculate the transfer rate
-				for(var/datum/reagent/R in reagents.reagent_list)
-					// Rounded up, important to avoid issues
-					var/transfer_rate = CEILING((R.metabolization_rate * smoke_multiplier), 0.1)
-					reagents.remove_reagent(R.type, transfer_rate)
-					C.reagents.add_reagent(R.type, transfer_rate)
-					total_transferred = transfer_rate + total_transferred
-				//Ensure INGEST reactions based on what was transferred
-				reagents.reaction(C, INGEST, total_transferred)
-				return
-		// Burn reagents even if it's not in your mouth
-		for(var/datum/reagent/R in reagents.reagent_list)
-			reagents.remove_reagent(R.type, R.metabolization_rate * smoke_multiplier)
+	reagents.reaction(smoker, INGEST, min(REAGENTS_METABOLISM / reagents.total_volume, 1))
+	if(!reagents.trans_to(smoker, REAGENTS_METABOLISM, method = INGEST))
+		reagents.remove_all(REAGENTS_METABOLISM)
 
 /obj/item/clothing/face/cigarette/process()
 	var/turf/location = get_turf(src)
