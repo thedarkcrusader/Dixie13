@@ -113,7 +113,7 @@
 		return
 	if(HAS_TRAIT(user, TRAIT_BLACKLEG))
 		INVOKE_ASYNC(src, PROC_REF(rig_dice_cup), user)
-		return TRUE
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/dice_cup/wooden
 	name = "wooden dice cup"
