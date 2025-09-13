@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(vote)
 				SSmapping.map_voted = TRUE
 			if("endround")
 				if(SSgamemode.roundvoteend)
-					log_game("LOG VOTE: MULTIPLE ROUND END VOTES")
+					log_game("LOG VOTE: ROUNDVOTEEND TRIGGERED MULTIPLE TIMES")
 					return
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
