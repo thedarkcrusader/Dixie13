@@ -32,7 +32,7 @@
 
 	if(fufilled_metal)
 		var/reagent_color = initial(filling_metal.color)
-		. += "[src] has [UNIT_FORM_STRING(fufilled_metal)] of <font color=[reagent_color]> Molten [initial(filling_metal.name)]</font> out of [round(required_metal / 3, 1)] oz.</font>"
+		. += "[src] has [UNIT_FORM_STRING(fufilled_metal)] of <font color=[reagent_color]> Molten [initial(filling_metal.name)]</font> out of [UNIT_FORM_STRING(required_metal)].</font>"
 	else
 		. += "[src] requires [UNIT_FORM_STRING(fufilled_metal)] of Molten Metal to form.</font>"
 
