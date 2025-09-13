@@ -279,6 +279,9 @@
 		sleep(CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay)
 		delay += CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + extra_delay
 
+	if(skip_spelling)
+		add_string()
+
 	animate(
 		message,
 		time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER,
