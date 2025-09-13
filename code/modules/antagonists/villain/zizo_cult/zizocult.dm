@@ -1,8 +1,9 @@
 GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 
 /proc/build_zizo_rituals()
+	. = list()
 	for(var/datum/ritual/ritual as anything in subtypesof(/datum/ritual))
-		GLOB.ritualslist[ritual.type] = new ritual
+		.[ritual.name] = new ritual
 
 /datum/antagonist/zizocultist
 	name = "Zizoid Lackey"
@@ -237,9 +238,9 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(!sigil_type)
 		return
 
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		if(human_user.patron.type == /datum/patron/inhumen/zizo)
+	if(isliving(user))
+		var/mob/living/living_user = user
+		if(istype(living_user, /datum/patron/inhumen/zizo))
 			to_chat(user, "It is of the [sigil_type] circle.")
 
 /obj/effect/decal/cleanable/sigil/proc/consume_ingredients(datum/ritual/R)
@@ -359,14 +360,14 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(cardinal_success != TRUE)
 		if(badritualpunishment)
 			return
-		to_chat(user.mind, span_danger("\"That's not how you do it, fool.\""))
+		to_chat(user, span_danger("That's not how you do it, fool."))
 		user.electrocute_act(10, src)
 		return
 
 	if(center_success != TRUE)
 		if(badritualpunishment)
 			return
-		to_chat(user.mind, span_danger("\"That's not how you do it, fool.\""))
+		to_chat(user, span_danger("That's not how you do it, fool."))
 		user.electrocute_act(10, src)
 		return
 

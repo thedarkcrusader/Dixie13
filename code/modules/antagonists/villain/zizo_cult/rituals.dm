@@ -144,6 +144,8 @@
 		to_chat(user, span_warning("The fruits of her work prevent me from changing my appearance..."))
 		return
 	target.randomize_human_appearance(include_patreon = FALSE)
+	target.regenerate_clothes()
+	target.update_body()
 
 /datum/ritual/servantry/heartache
 	name = "Heartaches"
@@ -195,18 +197,18 @@
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
 	var/mob/living/carbon/human/target
-	var/mob/living/carbon/human/assassin
+	var/assassin_found = FALSE
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		if(HL.real_name == paper_name)
 			target = HL
-		else if(HAS_TRAIT(HL, TRAIT_ASSASSIN) && !(HL.stat == DEAD)) //Check if they are an assassin and alive
-			assassin = HL
-	if(!target || !assassin)
+		if(HAS_TRAIT(HL, TRAIT_ASSASSIN) && HL.stat != DEAD) //Check if they are an assassin and alive
+			assassin_found = TRUE
+			var/obj/item/weapon/knife/dagger/steel/profane/dagger = locate() in HL.get_all_gear()
+			if(dagger)
+				to_chat(HL, "profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [target.real_name]!\"</span>")
+	if(!target || !assassin_found)
 		to_chat(user, span_warning("There has been no answer to your call to the Dark Sun. It seems his servants are far from here..."))
 		return
-	for(var/obj/item/I in assassin.get_all_gear()) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
-		if(istype(I, /obj/item/weapon/knife/dagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
-			to_chat(assassin, "profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [target.real_name]!\"</span>")
 	ADD_TRAIT(target, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
 	log_hunted("[key_name(target)] playing as [target] had the hunted flaw by Zizoid curse.")
 	to_chat(target, span_danger("My hair stands on end. Has someone just said my name? I should watch my back."))
