@@ -40,6 +40,14 @@
 		return
 	invisibility = initial(invisibility)
 
+/obj/item/phantom_ear/proc/timed_delete()
+	if(QDELETED(src))
+		return
+	src.visible_message(span_warning("The [src] escapes this worlds grasp!"))
+	if(linked_living)
+		to_chat(linked_living.resolve(), span_warning("I feel a tension release, my phantom ear has safely escaped!"))
+	qdel(src)
+
 /obj/item/phantom_ear/attack_hand(mob/user)
 	. = ..()
 	user.visible_message(span_warning("[user] thrusts [user.p_their()] hand into the air and clenches tightly, as a pale ear materializes in its grasp!"))
@@ -51,6 +59,7 @@
 	invisibility = NONE
 	if(linked_living)
 		to_chat(linked_living.resolve(), span_warning("I feel a strange tightness in the side of my head."))
+	addtimer(CALLBACK(src, PROC_REF(timed_delete)), 15 SECONDS)
 
 /obj/item/phantom_ear/attack_self(mob/user, params)
 	user.visible_message(span_boldwarning("[user] crushed the [src] in [user.p_their()] hand!"))
