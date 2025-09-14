@@ -608,9 +608,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(jitteriness)
 		do_jitter_animation(jitteriness)
 		jitteriness = max(jitteriness - restingpwr, 0)
-		src.add_stress(/datum/stress_event/jittery)
+		add_stress(/datum/stress_event/jittery)
 	else
-		src.remove_stress(/datum/stress_event/jittery)
+		remove_stress(/datum/stress_event/jittery)
 
 	if(stuttering)
 		stuttering = max(stuttering-1, 0)

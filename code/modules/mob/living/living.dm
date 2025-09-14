@@ -1907,7 +1907,7 @@
 		for(var/obj/effect/dummy/lighting_obj/moblight/fire/F in src)
 			qdel(F)
 		clear_alert("fire")
-		src.remove_stress(/datum/stress_event/on_fire)
+		remove_stress(/datum/stress_event/on_fire)
 		SEND_SIGNAL(src, COMSIG_LIVING_EXTINGUISHED, src)
 		update_fire()
 	for(var/obj/item/I in (get_equipped_items() + held_items))

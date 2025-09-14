@@ -576,7 +576,7 @@
 			if(message)
 				visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
 								"<span class='danger'>I puke all over myself!</span>")
-				src.add_stress(/datum/stress_event/vomitself)
+				add_stress(/datum/stress_event/vomitself)
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stress_event/vomitself)
@@ -584,7 +584,7 @@
 		else
 			if(message)
 				visible_message("<span class='danger'>[src] pukes!</span>", "<span class='danger'>I puke!</span>")
-				src.add_stress(/datum/stress_event/vomit)
+				add_stress(/datum/stress_event/vomit)
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stress_event/vomit)
@@ -978,10 +978,10 @@
 	if(handcuffed)
 		stop_pulling()
 		throw_alert("handcuffed", /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
-		src.add_stress(/datum/stress_event/handcuffed)
+		add_stress(/datum/stress_event/handcuffed)
 	else
 		clear_alert("handcuffed")
-		src.remove_stress(/datum/stress_event/handcuffed)
+		remove_stress(/datum/stress_event/handcuffed)
 	update_mob_action_buttons()
 	update_inv_handcuffed()
 	update_hud_handcuffed()

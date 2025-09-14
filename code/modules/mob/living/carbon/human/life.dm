@@ -121,9 +121,9 @@
 
 /mob/living/carbon/human/handle_traits()
 	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 60)
-		src.add_stress(/datum/stress_event/brain_damage)
+		add_stress(/datum/stress_event/brain_damage)
 	else
-		src.remove_stress(/datum/stress_event/brain_damage)
+		remove_stress(/datum/stress_event/brain_damage)
 	return ..()
 
 /mob/living/proc/handle_environment()

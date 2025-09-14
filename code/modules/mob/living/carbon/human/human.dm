@@ -306,7 +306,7 @@
 			return
 
 		src.visible_message("<span class='notice'>[src] performs CPR on [C.name]!</span>", "<span class='notice'>I perform CPR on [C.name].</span>")
-		src.add_stress(/datum/stress_event/perform_cpr)
+		add_stress(/datum/stress_event/perform_cpr)
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
 

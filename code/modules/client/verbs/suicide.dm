@@ -33,7 +33,7 @@
 			if(damagetype)
 				if(damagetype & SHAME)
 					set_suicide(FALSE)
-					src.add_stress(/datum/stress_event/shameful_suicide)
+					add_stress(/datum/stress_event/shameful_suicide)
 					return
 
 				if(damagetype & MANUAL_SUICIDE_NONLETHAL) //Make sure to call the necessary procs if it does kill later
