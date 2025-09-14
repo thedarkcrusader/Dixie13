@@ -85,12 +85,18 @@
 	switch(butchering_quality)
 		if(0)
 			sellprice = floor(sellprice * 0.75)
+			headpricemin = floor(headpricemin * 0.75)
+			headpricemax = floor(headpricemax * 0.75)
 		if(1)
 			//nothing
 		if(2)
 			sellprice = floor(sellprice * 1.25)
+			headpricemin = floor(headpricemin * 1.25)
+			headpricemax = floor(headpricemax * 1.25)
 		if(-1)
-			sellprice = floor(sellprice * 0.25)
+			sellprice = floor(sellprice * 0.1)
+			headpricemin = floor(headpricemin * 0.1)
+			headpricemax = floor(headpricemax * 0.1)
 			var/initial_name = name
 			name = "rotten [initial_name]"
 			rotten = TRUE
