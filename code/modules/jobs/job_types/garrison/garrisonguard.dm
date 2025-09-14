@@ -1,6 +1,6 @@
 /datum/job/guardsman
 	title = "City Watchmen"
-	tutorial = "You are a member of the City Watch. \
+	tutorial = "You are a member of the City Watch. Originally an untrained peasant; \
 	You've proven yourself worthy to the Captain and now you've got yourself a salary... \
 	as long as you keep the peace that is."
 	department_flag = GARRISON
@@ -23,14 +23,19 @@
 //................. City Watchmen Base .............. //
 /datum/outfit/job/guardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
+	head = pick(/obj/item/clothing/head/helmet/townwatch, /obj/item/clothing/head/helmet/townwatch/alt)
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
-	pants = /obj/item/clothing/pants/trou/leather
-	wrists = /obj/item/rope/chain
+	shirt = /obj/item/clothing/armor/gambeson/heavy
+	pants = /obj/item/clothing/pants/chainlegs
+	wrists = pick(/obj/item/rope/chain, /obj/item/rope)
 	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
-	gloves = /obj/item/clothing/gloves/leather
+	gloves = /obj/item/clothing/gloves/leather/advanced
+	beltl = /obj/item/weapon/mace/cudgel
+	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel)
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
-		mask = /obj/item/clothing/face/shepherd
+		mask = /obj/item/clothing/face/shepherd/clothmask
 
 /datum/outfit/job/guardsman/post_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -39,28 +44,24 @@
 			H.cloak.name = "[H.cloak.name]"+" "+"([H.real_name])"
 
 // EVERY TOWN GUARD SHOULD HAVE AT LEAST THREE CLUB SKILL
+// REMINDER THAT THE SLOTS beltl AND backl ARE OCCUPIED BY THE CUDGEL AND SATCHEL RESPECTIVELY
+// KEEP THIS IN MIND WHEN MAKING A NEW CLASS
 
-//................. Axes, Maces, Swords, Shields .............. //
+//................. Footman .............. //
 /datum/advclass/garrison/footman
 	name = "City Watch Footman"
-	tutorial = "You are a member of the City Watch. \
+	tutorial = "You are a footman of the City Watch. \
 	You are well versed in holding the line with a shield while wielding a trusty sword, axe, or mace in the other hand."
 	outfit = /datum/outfit/job/guardsman/footman
 	category_tags = list(CTAG_GARRISON)
 
 /datum/outfit/job/guardsman/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/townwatch
+	armor = /obj/item/clothing/armor/chainmail/hauberk
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/armor/chainmail
-	shirt = /obj/item/clothing/armor/gambeson
 	backr = /obj/item/weapon/shield/heater
-	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/sword/short
-	beltl = /obj/item/weapon/mace/cudgel
 	scabbards = list(/obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
-
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
 	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
@@ -68,99 +69,176 @@
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) // Guards should be going for less than lethal in reality. Unarmed would be a primary thing.
-	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_END, 2)
-	H.change_stat(STATKEY_CON, 1)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
+	//movement and stamina
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Wrestling is cardio intensive, and guards wrestle with the populace a lot.
+
+	//misc skills
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+
+	//stats
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_END, 2)
+	H.change_stat(STATKEY_CON, 1)
+
+	//traits
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+
 	H.verbs |= /mob/proc/haltyell
 
 //................. Archer .............. //
 /datum/advclass/garrison/archer
 	name = "City Watch Archer"
-	tutorial = "You are a member of the City Watch. Your training with bows makes you a formidable threat when perched atop the walls or rooftops, raining arrows down upon foes with impunity."
+	tutorial = "You are an archer of the City Watch. \
+	Your training with bows makes you a formidable threat when perched atop the walls or rooftops, \
+	raining arrows down upon foes with impunity."
 	outfit = /datum/outfit/job/guardsman/archer
 	category_tags = list(CTAG_GARRISON)
 
 /datum/outfit/job/guardsman/archer/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/townwatch/alt
+	armor = /obj/item/clothing/armor/leather/advanced
 	neck = /obj/item/clothing/neck/chaincoif
-	armor = /obj/item/clothing/armor/gambeson/heavy
-	shirt = pick(/obj/item/clothing/shirt/undershirt/colored/guard, /obj/item/clothing/shirt/undershirt/colored/guardsecond)
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/ammo_holder/quiver/arrows
-	beltl = /obj/item/weapon/mace/cudgel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
-		H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // You don't even have access to crossbows
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Backup
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.change_stat(STATKEY_PER, 2)
-		H.change_stat(STATKEY_END, 1)
-		H.change_stat(STATKEY_SPD, 2)
-		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE) // Getting up onto vantage points is common for archers.
-		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
-		H.verbs |= /mob/proc/haltyell
 
+	//instead of chain so they can dodge
+	pants = /obj/item/clothing/pants/trou/leather
+
+	//combat
+	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // You don't even have access to crossbows
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Backup
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+
+	//movement and stamina
+	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE) // Getting up onto vantage points is common for archers.
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+
+	//misc skills
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+
+	//stats
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_END, 1)
+	H.change_stat(STATKEY_SPD, 2)
+
+	//traits
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+
+	H.verbs |= /mob/proc/haltyell
+
+//................. Pikeman .............. //
 /datum/advclass/garrison/pikeman
 	name = "City Watch Pikeman"
-	tutorial = "You are a pikeman in the City Watch. You are less fleet of foot compared to the rest, but you are burly and well practiced with spears, pikes, billhooks - all the various polearms for striking enemies from a distance."
+	tutorial = "You are a pikeman in the City Watch. \
+	You are faster than the rest of the garrison, \
+	and specialize in spears and other polearms. \
+	Ideal for striking enemies from a short distance."
 	outfit = /datum/outfit/job/guardsman/pikeman
 
 	category_tags = list(CTAG_GARRISON)
 
 /datum/outfit/job/guardsman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/townwatch
-	armor = /obj/item/clothing/armor/chainmail
-	shirt = /obj/item/clothing/armor/gambeson
+	armor = /obj/item/clothing/armor/chainmail/hauberk
 	neck = /obj/item/clothing/neck/gorget
-	backl = /obj/item/storage/backpack/satchel
 	backr = /obj/item/weapon/polearm/spear
-	beltl = /obj/item/weapon/sword/short
-	beltr = /obj/item/weapon/mace/cudgel
-	scabbards = list(/obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
+	beltr = /obj/item/weapon/shield/tower/buckleriron
 
-	//Stats for class
+	//combat
 	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) //needed to use buckler
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+
+	//movement and stamina
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Polearms use a lot of stamina. They'd be enduring.
+
+	//misc
 	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat(STATKEY_STR, 2)
+
+	//stats
+	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_END, 1)
-	H.change_stat(STATKEY_CON, 2)
-	H.change_stat(STATKEY_SPD, -1) // Stronk and gets training in hard hitting polearms, but slower
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_SPD, 1)//gets extra speed to help keep distance but gets less end than footman
+
+	//traits
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell
 
+//................. Flails .............. //
+/datum/advclass/garrison/flailman
+	name = "City Watch Flailman"
+	tutorial = "You are a flailman of the City Watch. \
+	You are trained to use flails. \
+	Although great against armour, they are terrible to parry with and as such, you rely on your wooden shield for defense."
+	outfit = /datum/outfit/job/guardsman/flailman
+	category_tags = list(CTAG_GARRISON)
 
+/datum/outfit/job/guardsman/flailman/pre_equip(mob/living/carbon/human/H)
+	..()
+	armor = /obj/item/clothing/armor/chainmail/hauberk
+	neck = /obj/item/clothing/neck/gorget
+	backr = /obj/item/weapon/shield/wood
+	beltr = pick(/obj/item/weapon/flail/militia, /obj/item/weapon/flail)
+	//both are the same stat wise
+
+	//skills and stats are basically copied from footman but slightly changed
+
+	//combat
+	H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE) // Main weapon
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Rlies on shield for defense
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Backup
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+
+	//movement and stamina
+	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+
+	//misc skills
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+
+	//stats
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_END, 2)
+	H.change_stat(STATKEY_CON, 1)
+
+	//traits
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+
+	H.verbs |= /mob/proc/haltyell
+
+//................. HALT! .............. //
+
+//Stop! You have violated the law. Pay the court a fine or serve your sentence. Your stolen goods are now forfeit.
+//>Resist Arrest.
+//Then pay with your blood!
 /mob/proc/haltyell()
 	set name = "HALT!"
 	set category = "Noises"
