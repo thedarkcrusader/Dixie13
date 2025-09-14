@@ -59,7 +59,7 @@
 	invisibility = NONE
 	if(linked_living)
 		to_chat(linked_living.resolve(), span_warning("I feel a strange tightness in the side of my head."))
-	addtimer(CALLBACK(src, PROC_REF(timed_delete)), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(timed_delete)), 2 MINUTES)
 
 /obj/item/phantom_ear/attack_self(mob/user, params)
 	user.visible_message(span_boldwarning("[user] crushed the [src] in [user.p_their()] hand!"))
