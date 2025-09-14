@@ -31,5 +31,4 @@
 	else
 		to_chat(owner, span_notice("You've conjured a phantom ear. You can hear through it as if you were there. Speak \"deafen\" to close this ear to the world, and \"listen\" to re-open it."))
 	current_ear = WEAKREF(summoned_object)
-	var/obj/item/phantom_ear/new_current = current_ear?.resolve()
-	new_current.setup(owner)
+	summoned_object.setup(owner)
