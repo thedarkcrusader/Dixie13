@@ -62,11 +62,14 @@
 	addtimer(CALLBACK(src, PROC_REF(timed_delete)), 2 MINUTES)
 
 /obj/item/phantom_ear/attack_self(mob/user, params)
-	user.visible_message(span_boldwarning("[user] crushed the [src] in [user.p_their()] hand!"))
-	playsound(src, 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)
-	if(linked_living)
-		hurt_caster()
-		to_chat(linked_living.resolve(), span_boldwarning("I feel a splitting pain in the side of my head, my phantom ear has been crushed!"))
+	if(user != linked_living?.resolve())
+		user.visible_message(span_boldwarning("[user] crushed the [src] in [user.p_their()] hand!"))
+		playsound(src, 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)
+		if(linked_living)
+			hurt_caster()
+			to_chat(linked_living.resolve(), span_boldwarning("I feel a splitting pain in the side of my head, my phantom ear has been crushed!"))
+	else
+		to_chat(user, span_warning("I discretely palm the ear and dispel it."))
 	qdel(src)
 
 /obj/item/phantom_ear/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
