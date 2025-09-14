@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 /// The name of the test that is currently focused.
 /// Use the PERFORM_ALL_TESTS macro instead.
 GLOBAL_VAR_INIT(focused_test, focused_test())
+/// Global assoc list of required mapping items, [item typepath] to [required item datum].
+GLOBAL_LIST_EMPTY(required_map_items)
 
 /proc/focused_test()
 	for(var/datum/unit_test/unit_test as anything in subtypesof(/datum/unit_test))
@@ -149,7 +151,11 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		/obj/effect/landmark/house_spot,
 		/// stuff in this sets everyting in initialize args
 		/obj/effect/fuse,
+		///shit that calls explosion() should probably not be called in empty space
+		/obj/effect/temp_visual/target/meteor
 	)
+	///this does some wonky things that we don't want in a test area
+	ignore += typesof(/obj/structure/stockpile_storage,)
 	//these are VERY situational and need info passed
 	ignore += typesof(/obj/effect/abstract)
 	//needs a lich passed
