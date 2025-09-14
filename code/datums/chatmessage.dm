@@ -38,8 +38,8 @@
 	var/font_size = 8
 	var/tgt_color
 	var/list/_extra_classes
-	var/_text
-	var/list/remaining_letters
+	var/text
+	var/list/remaining_strings
 	var/current_string = ""
 	var/premature_end = FALSE
 	var/exclaimed = FALSE
@@ -80,9 +80,9 @@
 
 	_extra_classes = extra_classes.Copy()
 
-	_text = text
+	src.text = text
 
-	remaining_letters = split_text_preserving_html(_text)
+	remaining_strings = split_text_preserving_html(src.text)
 
 	if((length(text) > 1) && ((text[length(text)] == "!") && (text[length(text) - 1] == "!")))
 		exclaimed = TRUE
@@ -180,14 +180,15 @@
 			LAZYSET(language_icons, language, language_icon)
 		LAZYADD(prefixes, "\icon[language_icon]")
 
-	text = "[prefixes?.Join("&nbsp;")][text]"
+	src.text = "[prefixes?.Join("&nbsp;")][text]"
+	remaining_strings = list(prefixes?.Join("&nbsp;")) + remaining_strings
 
 	// Approximate text height
 	// Note we have to replace HTML encoded metacharacters otherwise MeasureText will return a zero height
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = turn_to_styled(text)
+	var/complete_text = turn_to_styled(src.text)
 
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
@@ -288,7 +289,7 @@
 				mobs_around++
 		if(mobs_around > 4)
 			skip_spelling = TRUE
-	for(var/letter as anything in remaining_letters)
+	for(var/letter as anything in remaining_strings)
 		if(premature_end)
 			return
 		var/extra_delay = spelling_extra_delays(letter)
