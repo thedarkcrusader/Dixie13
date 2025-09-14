@@ -69,15 +69,24 @@
 	qdel(src)
 
 /obj/item/phantom_ear/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
+	var/mob/owner = linked_living?.resolve()
+	if(QDELETED(owner))
+		qdel(src)
+		return
+	if(speaker == owner)
+		if(findtext(raw_message, "deafen") && hear_radius != -2)
+			to_chat(owner, span_notice("The voices in your head subside."))
+			hear_radius = -2
+			return
+		else if(findtext(raw_message, "listen") && hear_radius == -2)
+			to_chat(owner, span_notice("You are bombarded again with the voices of the world."))
+			hear_radius = 2
+			return
 	if(speaker == src)
 		return
 	if(get_dist(speaker.loc, loc) > hear_radius)
 		return
 	if(!message || !linked_living)
-		return
-	var/mob/owner = linked_living?.resolve()
-	if(QDELETED(owner))
-		qdel(src)
 		return
 	to_chat(owner, "<img src='\ref[chat_icon]?state=[chat_icon_state]'/>" + " [message]")
 	if(!isliving(speaker))
