@@ -261,6 +261,14 @@
 				result += entity
 				current_pos = entity_end + 1
 				continue
+		else if(copytext(text, current_pos, current_pos + 1) == "<")
+			var/entity_end = findtext(text, ">", current_pos)
+			if(entity_end)
+				// Found a complete entity, add it as one unit
+				var/entity = copytext(text, current_pos, entity_end + 1)
+				result += entity
+				current_pos = entity_end + 1
+				continue
 
 		// Not an entity, add single character
 		result += copytext(text, current_pos, current_pos + 1)
