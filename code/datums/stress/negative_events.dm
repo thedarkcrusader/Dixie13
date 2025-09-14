@@ -18,13 +18,6 @@
 	stressadd = 6
 	desc = list("<span class='red'>If I don't sate my desire soon, I am going to kill myself..</span>","<span class='red'>I need it. I need it. I need it.</span>")
 
-/*
-/datum/stressevent/failcraft
-	timer = 15 SECONDS
-	stressadd = 1
-	max_stacks = 10
-	desc = "<span class='red'>I've failed to craft something.</span>"
-*/
 /datum/stressevent/miasmagas
 	timer = 10 SECONDS
 	stressadd = 2
@@ -426,3 +419,13 @@
 	timer = INFINITY
 	stressadd = 3
 	desc = span_red("I've been taken hostage!")
+
+/datum/stressevent/startled
+	desc = span_warning("Hearing that word made me think about something scary.")
+	stressadd = 1
+	timer = 1 MINUTES
+
+/datum/stressevent/phobia
+	desc = span_red("I saw something very frightening.")
+	stressadd = 4
+	timer = 4 MINUTES
