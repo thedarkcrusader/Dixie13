@@ -71,17 +71,33 @@
 	salvage_amount = 1
 	item_weight = 3
 
+//THE ARMOUR VALUES OF ADVANCED AND MASTERWORK BOOTS ARE INTENDED
+//KEEP THIS IN MIND
+
 /obj/item/clothing/shoes/boots/leather/advanced
 	name = "hardened leather boots"
 	desc = "Sturdy, durable, flexible. A marvel of the dark ages that exists solely to protect your toes."
-	max_integrity = 200
+	max_integrity = INTEGRITY_STANDARD + 50
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/shoes/boots/leather/advanced/watch
+	name = "watch boots"
+	color = "#d5c2aa"
+	desc = "These boots are reinforced with iron padding, designed not just for protection but for presence, announcing the approach of the city watch long before they're seen."
+	gender = PLURAL
+	icon_state = "nobleboots"
+	item_state = "nobleboots"
+
+/obj/item/clothing/shoes/boots/leather/advanced/watch/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_WATCH_BOOT_STEP))
+
 
 /obj/item/clothing/shoes/boots/leather/masterwork
 	name = "masterwork leather boots"
 	desc = "These boots are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
-	max_integrity = 300
+	max_integrity = INTEGRITY_STANDARD + 100
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "piercing" = 0,"fire" = 0, "acid" = 0)
 
@@ -168,15 +184,3 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/evilarmor.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/evilarmor.dmi'
 	sellprice = 0 // See above comment
-
-/obj/item/clothing/shoes/boots/leather/advanced/watch
-	name = "watch boots"
-	color = "#d5c2aa"
-	desc = "These boots are reinforced with iron padding, designed not just for protection but for presence, announcing the approach of the city watch long before they're seen."
-	gender = PLURAL
-	icon_state = "nobleboots"
-	item_state = "nobleboots"
-
-/obj/item/clothing/shoes/boots/leather/advanced/watch/Initialize()
-	. = ..()
-	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_WATCH_BOOT_STEP))

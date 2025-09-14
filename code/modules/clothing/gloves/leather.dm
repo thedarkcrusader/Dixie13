@@ -18,6 +18,9 @@
 	color = CLOTHING_SOOT_BLACK
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
+//THE ARMOUR VALUES OF ADVANCED AND MASTERWORK GLOVES ARE INTENDED
+//KEEP THIS IN MIND
+
 /obj/item/clothing/gloves/leather/advanced
 	name = "hardened leather gloves"
 	desc = "Sturdy, durable, flexible. A marvel of the dark ages that exists solely to protect your fingers."
