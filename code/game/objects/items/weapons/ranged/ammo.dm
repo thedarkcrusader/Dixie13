@@ -557,6 +557,7 @@
 	grid_height = 96
 	w_class = WEIGHT_CLASS_HUGE
 	resistance_flags = EVERYTHING_PROOF | EXPLOSION_MOVE_PROOF
+	throw_range = 1
 
 /obj/item/ammo_casing/caseless/cball/grapeshot
 	name = "berryshot"

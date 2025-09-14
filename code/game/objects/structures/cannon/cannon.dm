@@ -1,3 +1,5 @@
+#define SOUND_EXTRA_RANGE_CANNON 30
+
 /obj/structure/cannon
 	name = "cannon"
 	icon = 'icons/roguetown/misc/cannon.dmi'
@@ -42,17 +44,10 @@
 	var/blastpowder_amount = reagents.get_reagent_amount(/datum/reagent/blastpowder)
 	reagents.clear_reagents()
 	if(!blastpowder_amount)
-		balloon_alert_to_viewers("sizzles out!")
+		balloon_alert_to_viewers("Sizzles out!")
 		return FALSE
 
 	var/blast_range = round(blastpowder_amount / 1.5)
-
-	/*
-	var/devastation_explosion_range = round(blastpowder_amount / 100)
-	var/heavy_explosion_range = round(blastpowder_amount / 35)
-	var/light_explosion_range = round(blastpowder_amount / 20)
-	var/flame_range = round(blastpowder_amount / 10)
-	*/
 
 	var/turf/turf_in_front = get_step(src, dir)
 	var/turf/turf_to_shoot_from = turf_in_front
@@ -99,19 +94,6 @@
 				var/mob/living/loaded_living = loaded_thing
 				loaded_living.reset_offsets("structure_climb")
 
-	/*
-	explosion(
-		turf_to_shoot_from,
-		devastation_range = devastation_explosion_range,
-		heavy_impact_range = heavy_explosion_range,
-		light_impact_range = light_explosion_range,
-		flame_range = flame_range,
-		smoke = TRUE,
-		soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg')
-		)
-	*/
-
-
 	throw_at(get_step(src, REVERSE_DIR(dir)), 1, 3, spin = FALSE)
 
 /obj/structure/cannon/attackby(obj/item/I, mob/user, params)
@@ -121,16 +103,16 @@
 			if(reagent_container.reagents.trans_to(reagents, 10, transfered_by = user))
 				user.visible_message(span_notice("[user] fills the [src] with \the [I]"), span_notice("I fill the [src] with \the [I]"))
 				playsound(src, 'sound/foley/gunpowder_fill.ogg', 100, FALSE)
-				balloon_alert(user, "added!")
+				balloon_alert(user, "Added!")
 			else
-				balloon_alert(user, "none left!")
+				balloon_alert(user, "None Left!")
 		return TRUE
 
 	if(isfuse(I))
 		var/obj/item/fuse/fuse = I
 		if(fuse.add_to_cannon(src, user))
 			user.visible_message(span_notice("[user] adds \the [fuse] to \the [src]"), span_notice("I add \the [fuse] to \the [src]"))
-			balloon_alert_to_viewers("attached!")
+			balloon_alert_to_viewers("Attached!")
 		return TRUE
 
 	. = ..()
@@ -146,6 +128,10 @@
 	. = ..()
 	cannon = passed_cannon
 	fuse = passed_fuse
+	if(!cannon || !fuse)
+		stack_trace("[src] wasn't given a fuse or cannon")
+		return INITIALIZE_HINT_QDEL
+
 	sync_with_fuse()
 	calculate_offsets()
 	RegisterSignal(cannon, COMSIG_PARENT_QDELETING, PROC_REF(on_deletion))
@@ -175,7 +161,7 @@
 /obj/effect/fuse/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(I.sharpness == IS_SHARP)
-		balloon_alert_to_viewers("cut!")
+		balloon_alert_to_viewers("Cut!")
 		be_cut()
 
 /obj/effect/fuse/fire_act(added, maxstacks)
@@ -267,7 +253,7 @@
 /obj/item/fuse/proc/lit()
 	icon_state = icon_state + "_lit"
 	lit = TRUE
-	cannon?.balloon_alert_to_viewers("lit!")
+	cannon?.balloon_alert_to_viewers("Lit!")
 	addtimer(CALLBACK(src, PROC_REF(reached_end)), 5 SECONDS)
 	playsound(cannon.loc, 'sound/items/fuse.ogg', 100)
 	SEND_SIGNAL(src, COMSIG_FUSE_LIT)
@@ -280,6 +266,7 @@
 /obj/item/fuse/proc/reached_end()
 	if(!lit)
 		extinguished()
+		return
 
 	cannon.fire()
 
@@ -297,3 +284,5 @@
 /atom/proc/debug_turn()
 	var/enter = input(usr, "How much", "Meow", 180)
 	transform = transform.Turn(enter)
+
+#undef SOUND_EXTRA_RANGE_CANNON
