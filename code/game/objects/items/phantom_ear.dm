@@ -8,6 +8,7 @@
 	invisibility = INVISIBILITY_LEYLINES
 	w_class = WEIGHT_CLASS_TINY
 	var/hear_radius = 2
+	var/muted = FALSE
 	var/datum/weakref/linked_living
 
 /obj/item/phantom_ear/Initialize()
@@ -60,7 +61,7 @@
 	qdel(src)
 
 /obj/item/phantom_ear/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
+	. = ..()
 	src.visible_message(span_warning("The [src] shatters against the [hit_atom]!"))
 	playsound(src, 'sound/magic/glass.ogg', 100, FALSE, -1)
 	if(linked_living)
@@ -74,17 +75,19 @@
 		qdel(src)
 		return
 	if(speaker == owner)
-		if(findtext(raw_message, "deafen") && hear_radius != -2)
+		if(findtext(raw_message, "deafen") && !muted)
 			to_chat(owner, span_notice("The voices in your head subside."))
-			hear_radius = -2
+			muted = TRUE
 			return
-		else if(findtext(raw_message, "listen") && hear_radius == -2)
+		else if(findtext(raw_message, "listen") && muted)
 			to_chat(owner, span_notice("You are bombarded again with the voices of the world."))
-			hear_radius = 2
+			muted = FALSE
 			return
 	if(speaker == src)
 		return
 	if(get_dist(speaker.loc, loc) > hear_radius)
+		return
+	if(muted)
 		return
 	if(!message || !linked_living)
 		return

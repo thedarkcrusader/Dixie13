@@ -17,17 +17,19 @@
 	summon_type = list(/obj/item/phantom_ear)
 	summon_radius = 0
 
-	var/obj/item/phantom_ear/current_ear
+	var/datum/weakref/current_ear
 
 /datum/action/cooldown/spell/conjure/phantom_ear/Destroy(force)
 	QDEL_NULL(current_ear)
 	return ..()
 
 /datum/action/cooldown/spell/conjure/phantom_ear/post_summon(obj/item/phantom_ear/summoned_object)
-	if(current_ear)
+	var/obj/item/phantom_ear/current = current_ear?.resolve()
+	if(current)
 		to_chat(owner, span_notice("You close one ear to open another."))
-		qdel(current_ear)
+		qdel(current)
 	else
 		to_chat(owner, span_notice("You've conjured a phantom ear. You can hear through it as if you were there. Speak \"deafen\" to close this ear to the world, and \"listen\" to re-open it."))
-	current_ear = summoned_object
-	current_ear.setup(owner)
+	current_ear = WEAKREF(summoned_object)
+	var/obj/item/phantom_ear/new_current = current_ear?.resolve()
+	new_current.setup(owner)
