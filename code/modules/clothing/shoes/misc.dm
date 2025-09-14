@@ -100,6 +100,9 @@
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 
+/obj/item/clothing/shoes/rare
+	abstract_type = /obj/item/clothing/shoes/rare
+
 /obj/item/clothing/shoes/rare/hoplite
 	name = "ancient sandals"
 	desc = "Worn sandals lined with bronze, ready to march ever onwards."
@@ -133,7 +136,7 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_JINGLE_BELLS), step_delay_override = 2, falloff_exponent = 20)
 
-/obj/item/clothing/shoes/grenzelhoft
+/obj/item/clothing/shoes/rare/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"

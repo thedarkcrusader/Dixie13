@@ -41,7 +41,7 @@
 
 	/* admin stuff */
 	var/follower_ident = "[follower.key]/([follower.real_name]) (follower of [patron])"
-	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(prayer)]")
+	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(html_encode(prayer))]")
 	user.log_message("(follower of [patron]) prays: [prayer]", LOG_GAME)
 
 	follower.whisper(prayer)
@@ -594,6 +594,31 @@
 		if(user.mind)
 			SEND_SIGNAL(user, COMSIG_MOB_HUGGED, H)
 			record_round_statistic(STATS_HUGS_MADE)
+
+/datum/emote/living/headpat
+	key = "headpat"
+	key_third_person = "pats"
+	message = ""
+	message_param = "pats %t on the head."
+	emote_type = EMOTE_VISIBLE
+	restraint_check = TRUE
+
+/mob/living/carbon/human/verb/emote_headpat()
+	set name = "Headpat"
+	set category = "Emotes"
+	emote("headpat", intentional = TRUE, targetted = TRUE)
+
+/datum/emote/living/headpat/adjacentaction(mob/user, mob/target)
+	. = ..()
+	if(!user || !target)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		playsound(target.loc, pick('sound/vo/hug.ogg'), 100, FALSE, -1)
+		if(israkshari(H))
+			if(prob(10))
+				H.emote("purr")
+
 
 // ............... I ..................
 /datum/emote/living/idle

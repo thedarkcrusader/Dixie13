@@ -38,7 +38,8 @@
 		if (usr.client)
 			if(usr.client.holder)
 				SEND_SOUND(usr.client, 'sound/misc/yeoldebwoink.ogg')
-				to_chat(M, "<i>I hear a voice in my head... <b>[msg]</i></b>")
+				M.playsound_local(soundin = 'sound/misc/yeoldebwoink.ogg', vol = 100)
+				to_chat(M, span_big("[span_abductor("I hear a voice in my head...")] [span_mind_control(msg)]"))
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
@@ -717,6 +718,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_NECKSNAP,
 		ADMIN_PUNISHMENT_HUNTED,
 		ADMIN_PUNISHMENT_MEATPIE,
+		ADMIN_PUNISHMENT_GODHAND,
 	)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in sortList(punishment_list)
@@ -811,6 +813,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			ADD_TRAIT(target, TRAIT_NO_TRANSFORM, ADMIN_PUNISHMENT_MEATPIE)
 			target.transformation_animation(meatpie_appearance, 5 SECONDS, transform_scanline.appearance)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pieify), target), 5 SECONDS)
+		if(ADMIN_PUNISHMENT_GODHAND)
+			var/list/hands = list(
+				"Astrata" = /obj/effect/god_hand,
+				"Photorealistic" = /obj/effect/god_hand/photorealistic,
+			)
+			var/typepath_choice = browser_input_list(src, "Hand of God", "Which hand?", hands)
+			if(!typepath_choice)
+				return
+			target.be_taken_with_hand_of_god(hands[typepath_choice])
+
 	punish_log(target, punishment)
 
 /client/proc/punish_log(whom, punishment)

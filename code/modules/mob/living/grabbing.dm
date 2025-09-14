@@ -722,7 +722,6 @@
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
-		limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
 			//TODO: Werewolf Signal
@@ -791,9 +790,11 @@
 		return
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(istype(H.wear_neck, /obj/item/clothing/neck/psycross/silver))
-			to_chat(user, span_userdanger("SILVER! HISSS!!!"))
-			return
+		for(var/I in C.contents)
+			if(SSenchantment.has_enchantment(I, /datum/enchantment/silver))
+				to_chat(user, span_userdanger("THEY ARE WEARING MY BANE! HISSS!!!"))
+				user.Paralyze(1)
+				return
 		// Add bite animation to the victim
 		H.add_bite_animation()
 

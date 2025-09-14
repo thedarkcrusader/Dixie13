@@ -182,7 +182,7 @@
 	var/icon_full = "genslot"
 	/// The overlay when hovering over with an item in your hand
 	plane = HUD_PLANE
-	nomouseover = FALSE
+	no_over_text = FALSE
 
 
 /atom/movable/screen/inventory/Click(location, control, params)
@@ -262,7 +262,7 @@
 
 
 /atom/movable/screen/inventory/hand
-	nomouseover =  TRUE
+	no_over_text =  TRUE
 	var/mutable_appearance/handcuff_overlay
 	var/static/mutable_appearance/blocked_overlay = mutable_appearance('icons/mob/screen_gen.dmi', "blocked")
 	var/static/mutable_appearance/fingerless_overlay = mutable_appearance('icons/mob/screen_gen.dmi', "fingerless")
@@ -350,30 +350,8 @@
 /atom/movable/screen/act_intent/Click(location, control, params)
 	usr.a_intent_change(INTENT_HOTKEY_RIGHT)
 
-/atom/movable/screen/act_intent/segmented/Click(location, control, params)
-	if(usr.client.prefs.toggles & INTENT_STYLE)
-		var/list/modifiers = params2list(params)
-		var/_x = text2num(LAZYACCESS(modifiers, ICON_X))
-		var/_y = text2num(LAZYACCESS(modifiers, ICON_Y))
-
-		if(_x<=16 && _y<=16)
-			usr.a_intent_change(INTENT_HARM)
-
-		else if(_x<=16 && _y>=17)
-			usr.a_intent_change(INTENT_HELP)
-
-		else if(_x>=17 && _y<=16)
-			usr.a_intent_change(INTENT_GRAB)
-
-		else if(_x>=17 && _y>=17)
-			usr.a_intent_change(INTENT_DISARM)
-	else
-		return ..()
-
 /atom/movable/screen/act_intent/proc/switch_intent(index as num)
 	return
-
-
 
 /atom/movable/screen/act_intent/rogintent
 	name = ""
@@ -464,17 +442,16 @@
 
 	user.playsound_local(user, 'sound/misc/click.ogg', 100)
 
-	if(usr.client.prefs.toggles & INTENT_STYLE)
-		var/_x = text2num(LAZYACCESS(modifiers, ICON_X))
-		var/_y = text2num(LAZYACCESS(modifiers, ICON_Y))
-		var/clicked = get_index_at_loc(_x, _y)
-		if(!clicked)
+	var/_x = text2num(LAZYACCESS(modifiers, ICON_X))
+	var/_y = text2num(LAZYACCESS(modifiers, ICON_Y))
+	var/clicked = get_index_at_loc(_x, _y)
+	if(!clicked)
+		return
+	if(LAZYACCESS(modifiers, LEFT_CLICK))
+		if(LAZYACCESS(modifiers, SHIFT_CLICKED))
+			user.examine_intent(clicked, FALSE)
 			return
-		if(LAZYACCESS(modifiers, LEFT_CLICK))
-			if(LAZYACCESS(modifiers, SHIFT_CLICKED))
-				user.examine_intent(clicked, FALSE)
-				return
-		user.rog_intent_change(clicked)
+	user.rog_intent_change(clicked)
 
 /atom/movable/screen/act_intent/rogintent/proc/get_index_at_loc(xl, yl)
 /*	if(xl<=64)
@@ -1529,30 +1506,6 @@
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "aimbg"
 	plane = HUD_PLANE
-
-/atom/movable/screen/aim/boxaim
-	name = "tile selection indicator"
-	icon_state = "boxoff"
-
-/atom/movable/screen/aim/boxaim/Click()
-	if(ismob(usr))
-		var/mob/M = usr
-		if(M.boxaim == TRUE)
-			M.boxaim = FALSE
-			if(M.client)
-				M.client.mouseoverbox.screen_loc = null
-		else
-			M.boxaim = TRUE
-		update_appearance(UPDATE_ICON_STATE)
-
-/atom/movable/screen/aim/boxaim/update_icon_state()
-	. = ..()
-	if(ismob(usr))
-		var/mob/living/M = usr
-		if(M.boxaim == TRUE)
-			icon_state = "boxon"
-		else
-			icon_state = "boxoff"
 
 /atom/movable/screen/stress
 	name = "sanity"
