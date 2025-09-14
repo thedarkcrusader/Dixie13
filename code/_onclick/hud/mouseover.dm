@@ -34,8 +34,6 @@
 /atom/proc/create_over_text(mob/user, list/modifiers)
 	if(!user)
 		return
-	if(
-		return
 	var/used_content = get_over_text_content(user)
 	if(!length(used_content))
 		return
