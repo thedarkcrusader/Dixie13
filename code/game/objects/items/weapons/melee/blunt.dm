@@ -377,6 +377,16 @@
 			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -3,"sy" = -4,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 70,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
 
+
+//................ Watch Cudgel ............... //
+/obj/item/weapon/mace/cudgel/watch
+	force = DAMAGE_CLUB + 3 //more than club less than mace
+	force_wielded = DAMAGE_CLUB_WIELD + 3
+	name = "watch cudgel"
+	desc = "A cudgel modified to be sturdier and stronger, ideal for beating thieves and peasants bloody."
+	max_integrity = INTEGRITY_STANDARD + 50
+
+
 //................ Alt cudgel ............... //
 /obj/item/weapon/mace/cudgel/carpenter
 	name = "peasant cudgel"
