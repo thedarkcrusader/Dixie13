@@ -223,6 +223,13 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/knife/cleaver
 
+/datum/anvil_recipe/weapons/iron/cudgel
+	name = "2x Cudgels"
+	recipe_name = "two cudgels"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/mace/cudgel
+	createditem_extra = 1
+
 /datum/anvil_recipe/weapons/iron/flail_iron
 	name = "Militia flail (+Chain, +Stick)"
 	recipe_name = "a militia flail"

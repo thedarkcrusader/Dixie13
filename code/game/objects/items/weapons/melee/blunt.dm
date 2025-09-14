@@ -351,7 +351,7 @@
 //................ Cudgel ............... //
 /obj/item/weapon/mace/cudgel
 	force = DAMAGE_CLUB + 2
-	force_wielded = DAMAGE_CLUB_WIELD + 2
+	force_wielded = DAMAGE_CLUB_WIELD + 1
 	name = "cudgel"
 	icon_state = "cudgel"
 	desc = "A stubby little club favored for thwacking thieves and smart-mouthed peasant folk."

@@ -26,7 +26,6 @@
 	head = pick(/obj/item/clothing/head/helmet/townwatch, /obj/item/clothing/head/helmet/townwatch/alt)
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
 	shirt = /obj/item/clothing/armor/gambeson/heavy
-	pants = /obj/item/clothing/pants/chainlegs
 	wrists = pick(/obj/item/rope/chain, /obj/item/rope)
 	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
@@ -58,6 +57,7 @@
 /datum/outfit/job/guardsman/footman/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/chainmail/hauberk
+	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/shield/heater
 	beltr = /obj/item/weapon/sword/short
@@ -103,12 +103,10 @@
 /datum/outfit/job/guardsman/archer/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/leather/advanced
+	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/chaincoif
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	beltr = /obj/item/ammo_holder/quiver/arrows
-
-	//instead of chain so they can dodge
-	pants = /obj/item/clothing/pants/trou/leather
 
 	//combat
 	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
@@ -154,6 +152,7 @@
 /datum/outfit/job/guardsman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/chainmail/hauberk
+	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/polearm/spear
 	beltr = /obj/item/weapon/shield/tower/buckleriron
@@ -198,10 +197,11 @@
 /datum/outfit/job/guardsman/flailman/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/chainmail/hauberk
+	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/shield/wood
 	beltr = pick(/obj/item/weapon/flail/militia, /obj/item/weapon/flail)
-	//both are the same stat wise
+	//both the militia and normal flail are the same stat wise
 
 	//skills and stats are basically copied from footman but slightly changed
 

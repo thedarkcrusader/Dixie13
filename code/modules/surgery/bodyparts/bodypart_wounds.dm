@@ -418,6 +418,8 @@
 	var/damage_dividend = (get_damage() / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/list/attempted_wounds
+
+	var/list/knockout_weapons = list(/obj/item/weapon/mace/bludgeon, /obj/item/weapon/mace/woodclub, /obj/item/weapon/mace/cudgel, /obj/item/weapon/mace/church, /obj/item/weapon/mace/bludgeon/copper)
 	switch(pick(crit_classes))
 		if("dislocation")
 			if(damage_dividend >= 1)
@@ -437,14 +439,18 @@
 			used = round(damage_dividend * 20 + (dam / 6), 1)
 			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
 				used -= 10
-			if(!owner.stat && (zone_precise in knockout_zones) && !(bclass in GLOB.no_knockout_bclasses) && prob(used))
-				owner.next_attack_msg += " [span_crit("<b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!")]"
-				owner.flash_fullscreen("whiteflash3")
-				owner.Unconscious(15 SECONDS + (from_behind * 15 SECONDS))
-				if(owner.client)
-					winset(owner.client, "outputwindow.output", "max-lines=1")
-					winset(owner.client, "outputwindow.output", "max-lines=100")
-				return
+			if(!owner.stat && (zone_precise in knockout_zones) && !(bclass in GLOB.no_knockout_bclasses))
+				if((user.get_active_held_item()) in knockout_weapons)
+					//adds flat 20% chance
+					used += 20
+				if(prob(used))
+					owner.next_attack_msg += " [span_crit("<b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!")]"
+					owner.flash_fullscreen("whiteflash3")
+					owner.Unconscious(15 SECONDS + (from_behind * 15 SECONDS))
+					if(owner.client)
+						winset(owner.client, "outputwindow.output", "max-lines=1")
+						winset(owner.client, "outputwindow.output", "max-lines=100")
+					return
 			var/dislocation_type
 			var/fracture_type = /datum/wound/fracture/head
 			var/necessary_damage = 0.95
