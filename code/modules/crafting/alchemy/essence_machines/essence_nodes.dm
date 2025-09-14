@@ -1,6 +1,6 @@
 /obj/structure/essence_node
 	name = "essence node"
-	desc = "A weakened point in the enviorment that allows access to alchemical essence. It pulses with inner energy."
+	desc = "A weakened point in the environment that allows access to alchemical essence. It pulses with inner energy."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "node"
 	density = FALSE
