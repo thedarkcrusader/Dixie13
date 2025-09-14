@@ -10,6 +10,7 @@
 	sellprice = 10
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
+	max_integrity = INTEGRITY_STANDARD
 
 /obj/item/clothing/shoes/boots/armor
 	name = "plated boots"
@@ -21,7 +22,7 @@
 	color = null
 	blocksound = PLATEHIT
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 100,  "piercing" = 80, "fire" = 0, "acid" = 0)
-	max_integrity = 500
+	max_integrity = INTEGRITY_STRONGEST
 	armor_class = AC_HEAVY
 	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -39,7 +40,7 @@
 	item_state = "soldierboots"
 	desc = "Lightly armored boots made from iron offering protection against both melee and ranged attacks."
 	armor = list("blunt" = 80, "slash" = 80, "stab" = 80,  "piercing" = 60, "fire" = 0, "acid" = 0)
-	max_integrity = 250
+	max_integrity = INTEGRITY_STANDARD + 50
 	armor_class = AC_MEDIUM
 	sellprice = 20
 	item_weight = 7 * IRON_MULTIPLIER
@@ -70,6 +71,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 	item_weight = 3
+	max_integrity = INTEGRITY_STANDARD
 
 //THE ARMOUR VALUES OF ADVANCED AND MASTERWORK BOOTS ARE INTENDED
 //KEEP THIS IN MIND
