@@ -423,9 +423,13 @@
 /datum/stressevent/startled
 	desc = span_warning("Hearing that word made me think about something scary.")
 	stressadd = 1
+	max_stacks = 2
+	stressadd_per_extra_stack = 1
 	timer = 1 MINUTES
 
 /datum/stressevent/phobia
 	desc = span_red("I saw something very frightening.")
 	stressadd = 4
+	max_stacks = 2
+	stressadd_per_extra_stack = 2
 	timer = 4 MINUTES

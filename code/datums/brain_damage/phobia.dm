@@ -133,6 +133,8 @@
 		return
 
 	COOLDOWN_START(src, scare_cooldown, 12 SECONDS)
+	if(stress_event_type)
+		owner.add_stress(stress_event_type)
 
 	if(reason)
 		to_chat(owner, span_userdanger("Seeing [span_phobia(reason.name)] [message]!"))
