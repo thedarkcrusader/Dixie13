@@ -103,7 +103,7 @@
 	desc = "A simple, emblazoned round wooden shield with leather padding. \nCan exceptionally block attacks, but is more brittle than metal ones."
 	icon_state = "woodsh"
 	dropshrink = 0.8
-	coverage = 50
+	coverage = 60
 	max_integrity = INTEGRITY_STANDARD - 25
 
 /obj/item/weapon/shield/wood/choose_design(proc_value, mob/user)
@@ -176,7 +176,6 @@
 	name = "spider shield"
 	desc = "A bulky shield of spike-like lengths molten together. The motifs evoke anything but safety and protection."
 	icon_state = "spidershield"
-	coverage = 55
 
 /obj/item/weapon/shield/tower/getonmobprop(tag)
 	. = ..()
