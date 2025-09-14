@@ -2142,7 +2142,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			H.add_stress(/datum/stress_event/hot_severe)
 
 /datum/species/proc/remove_cold_stress(mob/living/carbon/human/H)
-		H.remove_stress(list(
+	H.remove_stress(list(
 		/datum/stress_event/cold_mild,
 		/datum/stress_event/cold_moderate,
 		/datum/stress_event/cold_severe,
