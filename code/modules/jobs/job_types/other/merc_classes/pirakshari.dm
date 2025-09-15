@@ -1,9 +1,9 @@
-/datum/advclass/mercenary/desert_pirate
-	name = "Desert Rider"
+/datum/job/advclass/mercenary/desert_pirate
+	title = "Desert Rider"
 	tutorial = "A pirate of rakshari origin, hailing from the wast dune-sea of Zaladin. Well trained riders and expirienced archers, these nomads live the life of marauders and raiders, taking what belongs to weaker settlements and caravans."
 	allowed_races = list(SPEC_ID_RAKSHARI)
 	outfit = /datum/outfit/job/mercenary/desert_pirate
-	maximum_possible_slots = 3
+	total_positions = 3
 	min_pq = 0
 	category_tags = list(CTAG_MERCENARY)
 

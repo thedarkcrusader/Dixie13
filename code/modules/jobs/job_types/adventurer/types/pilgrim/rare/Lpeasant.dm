@@ -1,14 +1,14 @@
 //master farmer
 
-/datum/advclass/pilgrim/rare/farmermaster
-	name = "Master Farmer"
+/datum/job/advclass/pilgrim/rare/farmermaster
+	title = "Master Farmer"
 	tutorial = "A veteran among the serfs that tend to cattle and fields of produce, \
 	able to handle almost every single task there is to do on a fief."
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/adventurer/farmermaster
-	maximum_possible_slots = 1
-	pickprob = 15
+	total_positions = 1
+	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	apprentice_name = "Handyman"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'

@@ -1,12 +1,12 @@
-/datum/advclass/pilgrim/noble
-	name = "Noble"
+/datum/job/advclass/pilgrim/noble
+	title = "Noble"
 	tutorial = "The blood of a noble family runs through your veins. Perhaps you are visiting from some place far away, \
 	looking to enjoy the hospitality of the ruler. You have many mammons to your name, but with wealth comes \
 	danger, so keep your wits and tread lightly..."
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
 	outfit = /datum/outfit/job/adventurer/noble
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 2
+	total_positions = 2
 	apprentice_name = "Servant"
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 

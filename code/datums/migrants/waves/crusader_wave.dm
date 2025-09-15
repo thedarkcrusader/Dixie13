@@ -6,7 +6,7 @@
 	allowed_races = list(SPEC_ID_HUMEN)
 	is_recognized = TRUE
 
-/datum/outfit/job/specialinquisitor/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/specialinquisitor/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	wrists = /obj/item/clothing/neck/psycross/silver
 	neck = /obj/item/clothing/neck/bevor

@@ -37,8 +37,8 @@
 /datum/job/squire/after_spawn(mob/living/carbon/spawned, client/player_client)
 	. = ..()
 
-/datum/advclass/squire/lancer
-	name = "Pikeman Squire"
+/datum/job/advclass/squire/lancer
+	title = "Pikeman Squire"
 	tutorial = "History with riding, and a bit of practice with a spear have landed you in a promising mounted position."
 	outfit = /datum/outfit/job/squire/lancer
 
@@ -73,8 +73,8 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/squire()
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/advclass/squire/footman
-	name = "Footman Squire"
+/datum/job/advclass/squire/footman
+	title = "Footman Squire"
 	tutorial = "Years of hitting dummies with a sword and chasing your friends around have finally paid off."
 	outfit = /datum/outfit/job/squire/footman
 
@@ -108,8 +108,8 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/squire()
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/advclass/squire/skirmisher
-	name = "Bowman Squire"
+/datum/job/advclass/squire/skirmisher
+	title = "Bowman Squire"
 	tutorial = "Coming from a background of hunters, your practice with a bow has proven useful for the keep."
 	outfit = /datum/outfit/job/squire/skirmisher
 

@@ -1,11 +1,11 @@
-/datum/advclass/combat/dredge
-	name = "Dredge"
+/datum/job/advclass/combat/dredge
+	title = "Dredge"
 	tutorial = "Peasants and nobles. Saints, sinners, madmen and thieves - who you once were is now irrelevant. \
 	Cast from your home for what is undoubtedly a heinous act of violence, your travels have washed you up upon this \
 	shiteheap. All you have are your possessions from your former life. Make some coin for yourself, lest you end up dead and gone."
 	outfit = /datum/outfit/job/adventurer/dredge
 	category_tags = list(CTAG_ADVENTURER)
-	maximum_possible_slots = 7
+	total_positions = 7
 	min_pq = 0
 
 /datum/outfit/job/adventurer/dredge/pre_equip(mob/living/carbon/human/H)

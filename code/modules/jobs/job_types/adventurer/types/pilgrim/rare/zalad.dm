@@ -1,11 +1,11 @@
-/datum/advclass/pilgrim/rare/zaladin
-	name = "Zaladin Emir"
+/datum/job/advclass/pilgrim/rare/zaladin
+	title = "Zaladin Emir"
 	tutorial = "An Emir hailing from Deshret, here on business for the Mercator's Guild."
 	allowed_races = RACES_PLAYER_ZALADIN
 	outfit = /datum/outfit/job/adventurer/zalad
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 1
-	pickprob = 30
+	total_positions = 1
+	roll_chance = 30
 	min_pq = 0
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'

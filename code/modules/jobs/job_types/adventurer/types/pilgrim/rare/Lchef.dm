@@ -1,7 +1,7 @@
 //master chef
 
-/datum/advclass/pilgrim/rare/masterchef
-	name = "Master Chef"
+/datum/job/advclass/pilgrim/rare/masterchef
+	title = "Master Chef"
 	tutorial = "A master chef is one of the best cooks to ever live. \
 	You received an early education from the guild of culinary arts and have traveled across Psydonia, cooking exotic masterpieces for wealthy merchants and nobility alike. \
 	Now you find yourself approaching Vanderlin... perhaps this will be a perfect location to prepare your next great feast?"
@@ -9,8 +9,8 @@
 
 	outfit = /datum/outfit/job/adventurer/masterchef
 
-	maximum_possible_slots = 1
-	pickprob = 15
+	total_positions = 1
+	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	apprentice_name = "Chef Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'

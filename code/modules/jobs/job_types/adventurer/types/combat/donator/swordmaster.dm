@@ -1,16 +1,15 @@
-/datum/advclass/combat/swordmaster
-	name = "Hedge Knight"
+/datum/job/advclass/combat/swordmaster
+	title = "Hedge Knight"
 	tutorial = "You spent years serving the eastern Grenzelhoftian lords, and now you spend your days as a travelling hedge knight. Upon this island, you like to increase the fame of your sword skills, as well as your honor."
 	allowed_sexes = list(MALE)
 	allowed_races = list(SPEC_ID_HUMEN, SPEC_ID_AASIMAR) // not RACES_PLAYER_GRENZ because dwarves don't have a sprite for this armor
 	outfit = /datum/outfit/job/adventurer/swordmaster
-	maximum_possible_slots = 1
+	total_positions = 1
 	min_pq = 2
-	pickprob = 15
+	roll_chance = 15
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 	is_recognized = TRUE
-
 
 /datum/outfit/job/adventurer/swordmaster/pre_equip(mob/living/carbon/human/H)
 	..()

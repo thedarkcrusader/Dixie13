@@ -38,15 +38,8 @@
 		if(!findtext(H.wear_armor.name,"([H.real_name])"))
 			H.wear_armor.name = "[H.wear_armor.name]"+" "+"([H.real_name])"
 
-/datum/job/gatemaster/after_spawn(mob/living/spawned, client/player_client)
-	..()
-	var/mob/living/carbon/human/H = spawned
-	H.advsetup = TRUE
-	H.invisibility = INVISIBILITY_MAXIMUM
-	H.become_blind("advsetup")
-
-/datum/advclass/gatemaster/gatemaster_whip
-	name = "Chainguard Gatemaster"
+/datum/job/advclass/gatemaster/gatemaster_whip
+	title = "Chainguard Gatemaster"
 	tutorial = "Metal chimes in your hands, their skin rough from those heavy chains you pull. \
 	Day by day, chains pass through your palms. \
 	Day by day, the chains' coldness feels more familar. \
@@ -84,8 +77,8 @@
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
-/datum/advclass/gatemaster/gatemaster_mace
-	name = "Bruiser Gatemaster"
+/datum/job/advclass/gatemaster/gatemaster_mace
+	title = "Bruiser Gatemaster"
 	tutorial = "Years of work let your body grow acustome to the job. Growing large, fitting to your chair. \
 	Even if you may be slower, but you dont need to be fast. \
 	They are the ones that need to get past you after all. \
@@ -120,8 +113,8 @@
 		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 		H.verbs |= /mob/proc/haltyell
 
-/datum/advclass/gatemaster/gatemaster_bow
-	name = "Archer Gatemaster"
+/datum/job/advclass/gatemaster/gatemaster_bow
+	title = "Archer Gatemaster"
 	tutorial = "Many may try to sneak past your post, thinking you wont see them. \
 	But the years made your senses grow sharp, and your arrows sharper. \
 	There is yet to be an arrow fired from you, that did not put the fear of the ten into their eyes."

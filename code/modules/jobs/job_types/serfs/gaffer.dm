@@ -27,7 +27,7 @@
 
 	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/mercenary)
 
-/datum/outfit/job/gaffer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/gaffer/pre_equip(mob/living/carbon/human/H, visuals_only)
 	..()
 
 
@@ -40,7 +40,7 @@
 	shirt = /obj/item/clothing/shirt/tunic/colored/black
 	wrists = /obj/item/clothing/wrists/bracers/leather/advanced
 	armor = /obj/item/clothing/armor/leather/hide
-	if(!visualsOnly)
+	if(!visuals_only)
 		ring = /obj/item/clothing/ring/gold/burden
 	else
 		ring = /obj/item/clothing/ring/gold

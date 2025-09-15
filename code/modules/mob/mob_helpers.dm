@@ -1002,8 +1002,6 @@
 	if(migrant_type)
 		var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
 		used_title = migrant.name
-	else if(advjob)
-		used_title = advjob
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
 		if(!J)

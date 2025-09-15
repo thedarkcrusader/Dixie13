@@ -49,8 +49,8 @@
 	..()
 
 // Ravager, whips, flails, axes and swords and shields.
-/datum/advclass/forestguard/infantry
-	name = "Forest Ravager"
+/datum/job/advclass/forestguard/infantry
+	title = "Forest Ravager"
 	tutorial = "In the goblin wars- you alone were deployed to the front lines, caving skulls and chopping legs - saving your family-at-arms through your reckless diversions. \ With your bloodied axe and flail, every swing and crack was another hatch on your tally. Now that the War's over, even with your indomitable spirit and tireless zeal - let's see if that still rings true."
 	outfit = /datum/outfit/job/forestguard/infantry
 	category_tags = list(CTAG_FORGARRISON)
@@ -95,8 +95,8 @@
 	ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 
 // Ranger, bows and knives
-/datum/advclass/forestguard/ranger
-	name = "Forest Ranger"
+/datum/job/advclass/forestguard/ranger
+	title = "Forest Ranger"
 	tutorial = "In the Wars you were always one of the fastest, aswell as one of the frailest in the platoon. \ Your trusty bow has served you well- of course, none you've set your sights on have found the tongue to disagree."
 	outfit = /datum/outfit/job/forestguard/ranger
 	category_tags = list(CTAG_FORGARRISON)
@@ -137,8 +137,8 @@
 		ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 
 // Reaver, Axes and Maces
-/datum/advclass/forestguard/reaver
-	name = "Forest Reaver"
+/datum/job/advclass/forestguard/reaver
+	title = "Forest Reaver"
 	tutorial = "In the Wars you took an oath to never shy from a hit. Axe in hand, thirsting for blood, you simply enjoy the <i>chaos of battle...</i>"
 	outfit = /datum/outfit/job/forestguard/reaver
 	category_tags = list(CTAG_FORGARRISON)
@@ -180,8 +180,8 @@
 		ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 
 // Ruffian, knives, bows and a lot of cooking.
-/datum/advclass/forestguard/ruffian
-	name = "Forest Ruffian"
+/datum/job/advclass/forestguard/ruffian
+	title = "Forest Ruffian"
 	tutorial = "For your terrible orphan pranks and antics in the city, you were rounded up by the city's Watch and put to work in the infamous forest garrison. \n\n A ruffian by circumstance, a proven listener of war stories - you might just become more than a troublemaker."
 	outfit = /datum/outfit/job/forestguard/ruffian
 	category_tags = list(CTAG_FORGARRISON)

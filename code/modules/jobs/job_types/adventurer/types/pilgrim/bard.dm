@@ -1,6 +1,6 @@
 
-/datum/advclass/pilgrim/bard
-	name = "Bard"
+/datum/job/advclass/pilgrim/bard
+	title = "Bard"
 	tutorial = "Bards make up one of the largest populations of \
 	registered adventurers in Vanderlin, mostly because they are \
 	the last ones in a party to die. Their wish is to experience \

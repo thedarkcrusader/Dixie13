@@ -63,8 +63,8 @@
 	outfit = /datum/outfit/job/rockhill/knight
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
 	is_recognized = TRUE
+
 /datum/outfit/job/rockhill/knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet
@@ -133,7 +133,6 @@
 	greet_text = "The Mayor of Rockhill has conscripted you and your mens to go see the rulers of Vanderlin."
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
 	outfit = /datum/outfit/job/rockhill/serjeant_at_arms
 
 /datum/outfit/job/rockhill/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
@@ -185,7 +184,6 @@
 	outfit = /datum/outfit/job/footman_bannerman
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
 
 /datum/migrant_wave/rockhill_wave
 	name = "The Mayor's Visit"

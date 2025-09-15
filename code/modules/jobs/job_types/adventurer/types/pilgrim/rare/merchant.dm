@@ -1,12 +1,12 @@
-/datum/advclass/pilgrim/rare/merchant
-	name = "Travelling Merchant"
+/datum/job/advclass/pilgrim/rare/merchant
+	title = "Travelling Merchant"
 	tutorial = "You are a travelling merchant from far away lands. \
 	You've picked up many wears on your various adventures, now it's time to peddle them to these locals."
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/adventurer/merchant
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 2
-	pickprob = 30
+	total_positions = 2
+	roll_chance = 30
 	min_pq = 0
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE

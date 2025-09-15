@@ -1,9 +1,8 @@
-/datum/advclass/pilgrim/woodcutter
-	name = "Woodcutter"
+/datum/job/advclass/pilgrim/woodcutter
+	title = "Woodcutter"
 	allowed_races = RACES_PLAYER_NONEXOTIC
 
 	outfit = /datum/outfit/job/adventurer/woodcutter
-	category_tags = list(CTAG_DISABLED)
 	apprentice_name = "Woodcutter"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 

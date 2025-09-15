@@ -1,5 +1,5 @@
-/datum/advclass/combat/ranger
-	name = "Ranger"
+/datum/job/advclass/combat/ranger
+	title = "Ranger"
 	tutorial = "Humen and elf rangers often live among each other, as these bow-wielding \
 	adventurers are often scouting the lands for the same purpose."
 	allowed_races = list(\

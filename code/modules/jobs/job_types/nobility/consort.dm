@@ -45,11 +45,11 @@
 - Courtesan: Ex-classy or not-so-classy prostitute. Concerningly good with that knife and sneaking around. A little dumb.
 - Lowborn: A good wholesome peasant spouse. Can cook and swing a pitchfork good. Not so smart or perceptive.
 */
-/datum/advclass/consort
-	displays_adv_job = FALSE
+/datum/job/advclass/consort
+	inherit_parent_title= TRUE
 
-/datum/advclass/consort/highborn
-	name = "Highborn Consort"
+/datum/job/advclass/consort/highborn
+	title = "Highborn Consort"
 	tutorial = "Of a minor noble house, yours is a rather typical tale; you were trained in manners, literature, and intrigue, all to be married off to the next ruler of this damned peninsula."
 	outfit = /datum/outfit/job/consort/highborn
 
@@ -92,8 +92,8 @@
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 
-/datum/advclass/consort/courtesan
-	name = "Courtesan Consort"
+/datum/job/advclass/consort/courtesan
+	title = "Courtesan Consort"
 	tutorial = "Though initially none envied your lot in life, it's certain that your midnight talents haven't gone to waste. Your honeyed words and charm have brought you right to being a ruler's beloved consort."
 	outfit = /datum/outfit/job/consort/courtesan
 
@@ -136,8 +136,8 @@
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 
-/datum/advclass/consort/lowborn
-	name = "Lowborn Consort"
+/datum/job/advclass/consort/lowborn
+	title = "Lowborn Consort"
 	tutorial = "You never could have dreamed your life would be like this. Though your origins are humble, something special about you - whether it was your good looks, your kind heart, or your bravery - has brought you into Vanderlin Keep."
 	outfit = /datum/outfit/job/consort/lowborn
 
@@ -179,8 +179,8 @@
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 
-/datum/advclass/consort/courtesan/night_spy
-	name = "Night-Mother's Spy Consort"
+/datum/job/advclass/consort/courtesan/night_spy
+	title = "Night-Mother's Spy Consort"
 	tutorial = "Raised by the guild to report on all the Monarch's action. Using your honeyed words and charm have brought you right to being a ruler's beloved consort."
 	outfit = /datum/outfit/job/consort/courtesan/spy
 

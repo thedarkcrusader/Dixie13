@@ -1,10 +1,10 @@
-/datum/advclass/mercenary/blackoak
-	name = "Black Oak's Guardian"
+/datum/job/advclass/mercenary/blackoak
+	title = "Black Oak's Guardian"
 	tutorial = "A shady guardian of the Black Oaks, a mercenary band in all but offical name. Commonly taking caravan contracts through the thickest of forests."
 	allowed_races = RACES_PLAYER_ELF
 	outfit = /datum/outfit/job/mercenary/blackoak
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
 /datum/outfit/job/mercenary/blackoak/pre_equip(mob/living/carbon/human/H)
 	..()

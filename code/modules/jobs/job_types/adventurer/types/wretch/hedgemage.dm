@@ -1,5 +1,5 @@
-/datum/advclass/wretch/hedgemage
-	name = "Hedge Mage"
+/datum/job/advclass/wretch/hedgemage
+	title = "Hedge Mage"
 	tutorial = "They reject your genius, they cast you out, they call you unethical. They do not understand the SACRIFICES you must make. But it does not matter anymore, your power eclipse any of those fools, save for the Court Magos themselves. Show them true magic."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_WRETCH)
 
 	cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
-	maximum_possible_slots = 2
+	total_positions = 2
 
 /datum/outfit/job/wretch/hedgemage
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)

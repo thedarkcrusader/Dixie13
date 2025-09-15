@@ -1,14 +1,13 @@
-/datum/advclass/combat/heartfeltlord
-	name = "Lord of Heartfelt"
+/datum/job/advclass/combat/heartfeltlord
+	title = "Lord of Heartfelt"
 	tutorial = "You are the proud lord of Heartfelt, \
 	but why have you come to Vanderlin?"
 	allowed_sexes = list(MALE)
 	allowed_races = list(SPEC_ID_HUMEN)
 	outfit = /datum/outfit/job/adventurer/heartfeltlord
 	min_pq = 2
-	maximum_possible_slots = 1
-	pickprob = 50
-	category_tags = list(CTAG_DISABLED)
+	total_positions = 1
+	roll_chance = 50
 
 /datum/outfit/job/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
 	..()

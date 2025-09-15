@@ -1,13 +1,13 @@
-/datum/advclass/combat/assassin
-	name = "Assassin"
+/datum/job/advclass/combat/assassin
+	title = "Assassin"
 	tutorial = "From a young age you have been drawn to blood, to hurting others. Eventually you found others like you, and a god who would bless your actions. Your cursed dagger has never led you astray, and with every stab you feel a little less empty."
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/adventurer/assassin
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 2
-	pickprob = 100
-	displays_adv_job = FALSE //this prevents advjob from being set back to "Assassin" in equipme
+	total_positions = 2
+	roll_chance = 100
+	inherit_parent_title= TRUE //this prevents advjob from being set back to "Assassin" in equipme
 	min_pq = 6
 
 /datum/outfit/job/adventurer/assassin/pre_equip(mob/living/carbon/human/H)
@@ -35,13 +35,12 @@
 		H.mind.add_antag_datum(new_antag)
 
 	H.become_blind("TRAIT_GENERIC")
-	H.advjob = "Assassin"
 	// Assassin now spawns disguised as one of the non-combat drifters. You never know who will stab you in the back.
 	var/disguises = list("Bard", "Beggar", "Fisher", "Hunter", "Miner", "Noble", "Peasant", "Carpenter", "Thief", "Ranger", "Servant", "Faceless One")
 	var/disguisechoice = input("Choose your cover", "Available disguises") as anything in disguises
 
 	if(disguisechoice)
-		H.advjob = disguisechoice
+		H.job = disguisechoice
 
 	switch(disguisechoice)
 		if("Bard")

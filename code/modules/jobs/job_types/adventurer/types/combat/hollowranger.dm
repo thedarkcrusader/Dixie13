@@ -1,5 +1,5 @@
-/datum/advclass/combat/hollowranger
-	name = "Hollow Ranger"
+/datum/job/advclass/combat/hollowranger
+	title = "Hollow Ranger"
 	tutorial = "While Rangers are seen often amongst Humen and Elves, Amber Hollow's Rangers are hardly seen at all. \
 	Acting mostly as scouts for groups of 'supply liberation' militia around their home, \
 	stealth is a virtue for a Hollow Ranger."

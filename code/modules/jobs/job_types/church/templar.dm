@@ -138,7 +138,7 @@
 		if(H.dna.species.id == SPEC_ID_HUMEN)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-/datum/outfit/job/templar/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/templar/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	switch(H.patron?.type) //this is a ridiculous way of doing it and it is annoying.
 		if(/datum/patron/divine/astrata)

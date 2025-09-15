@@ -49,10 +49,8 @@
 			to_chat(H, span_notice(name))
 		H.mind.cached_frumentarii |= GLOB.roundstart_court_agents
 
-
-
-/datum/advclass/hand/hand
-	name = "Hand"
+/datum/job/advclass/hand/hand
+	title = "Hand"
 	tutorial = " You have played blademaster and strategist to the Noble-Family for so long that you are a master tactician, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with swords than any spymaster could ever claim to."
 	outfit = /datum/outfit/job/hand/handclassic
 
@@ -87,8 +85,8 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 
-/datum/advclass/hand/spymaster
-	name = "Spymaster"
+/datum/job/advclass/hand/spymaster
+	title = "Spymaster"
 	tutorial = " You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
 	outfit = /datum/outfit/job/hand/spymaster
 
@@ -135,8 +133,8 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 
-/datum/advclass/hand/advisor
-	name = "Advisor"
+/datum/job/advclass/hand/advisor
+	title = "Advisor"
 	tutorial = " You have played researcher and confidant to the Noble-Family for so long that you are a vault of knowledge, \
 	something you exploit with potent conviction. Let no man ever forget the knowledge you wield. \
 	You've read more books than any blademaster or spymaster could ever claim to."

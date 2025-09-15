@@ -1,5 +1,5 @@
-/datum/advclass/carpenter
-	name = "Carpenter"
+/datum/job/advclass/carpenter
+	title = "Carpenter"
 	tutorial = "As a woodsmen or women, you have dedicated your life to both felling \
 	trees and bending wood to your will. With enough practice, your only limit is your imagination."
 	allowed_sexes = list(MALE, FEMALE)

@@ -1,11 +1,11 @@
-/datum/advclass/combat/mage
-	name = "Mage"
+/datum/job/advclass/combat/mage
+	title = "Mage"
 	tutorial = "A wandering graduate of the many colleges of magick across Psydonia, you search for a job to put your degree to use. And they say school was hard..."
 
 	outfit = /datum/outfit/job/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 0
-	maximum_possible_slots = 4
+	total_positions = 4
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 
 /datum/outfit/job/adventurer/mage

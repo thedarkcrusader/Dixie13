@@ -1,5 +1,5 @@
-/datum/advclass/combat/dranger
-	name = "Ranger"
+/datum/job/advclass/combat/dranger
+	title = "Ranger"
 	tutorial = "Dwarfish rangers, much like their humen counterparts, \
 	live outside of society and explore the far corners of the creation. They \
 	protect dwarfish settlements from wild beasts and sell their notes to the cartographers."

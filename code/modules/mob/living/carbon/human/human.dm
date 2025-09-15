@@ -711,7 +711,6 @@
 	undershirt = target.undershirt
 	shavelevel = target.shavelevel
 	socks = target.socks
-	advjob = target.advjob
 	spouse_mob = target.spouse_mob
 	spouse_indicator = target.spouse_indicator
 	has_stubble = target.has_stubble

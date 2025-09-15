@@ -1,5 +1,5 @@
-/datum/advclass/mercenary/kern
-	name = "Kern"
+/datum/job/advclass/mercenary/kern
+	title = "Kern"
 	tutorial = "A mercanary hailing from Kaledon, you fight under your Gallowglass or for your own coin, you fled with your fellow countrymen to escape the Grenzelhoftian Occupation of your homeland."
 	allowed_races = list(\
 		SPEC_ID_HUMEN,\
@@ -9,7 +9,7 @@
 	)
 	outfit = /datum/outfit/job/mercenary/kern
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 4
+	total_positions = 4
 
 	cmode_music = 'sound/music/cmode/Combat_Dwarf.ogg'
 

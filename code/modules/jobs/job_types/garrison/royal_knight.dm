@@ -21,8 +21,8 @@
 	give_bank_account = 60
 	cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 
-/datum/advclass/royalknight/knight
-	name = "Royal Knight"
+/datum/job/advclass/royalknight/knight
+	title = "Royal Knight"
 	tutorial = "The classic Knight in shining armor. Slightly more skilled then their Steam counterpart but has worse armor."
 
 	outfit = /datum/outfit/job/royalknight/knight
@@ -77,7 +77,7 @@
 	if(H.dna?.species?.id == SPEC_ID_HUMEN)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-/datum/outfit/job/royalknight/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/royalknight/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	if(H.cloak)
 		if(!findtext(H.cloak.name,"([H.real_name])"))
@@ -128,8 +128,8 @@
 	gloves = /obj/item/clothing/gloves/plate
 	shoes = /obj/item/clothing/shoes/boots/armor
 
-/datum/advclass/royalknight/steam
-	name = "Steam Knight"
+/datum/job/advclass/royalknight/steam
+	title = "Steam Knight"
 	tutorial = "The pinnacle of Vanderlin's steam technology. \
 	Start with a set of Steam Armor that requires steam to function. \
 	The suit is powerful when powered but will slow you down when not \
@@ -160,7 +160,7 @@
 	H.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)//replaces the int buff
 
-/datum/outfit/job/royalknight/steam/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/royalknight/steam/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	if(H.backr && istype(H.backr, /obj/item/clothing/cloak/boiler))
 		var/obj/item/clothing/cloak/boiler/B = H.backr

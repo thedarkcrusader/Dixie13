@@ -1,5 +1,5 @@
-/datum/advclass/pilgrim/cheesemaker
-	name = "Cheesemaker"
+/datum/job/advclass/pilgrim/cheesemaker
+	title = "Cheesemaker"
 	tutorial = "Some say Dendor brings bountiful harvests - this much is true, but rot brings forth life. \
 	From life brings decay, and from decay brings life. Like your parents before you, you let milk rot into cheese. \
 	This is your duty, this is your call."
@@ -11,11 +11,11 @@
 	apprentice_name = "Cheesemaker Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-/datum/advclass/pilgrim/cheesemaker/post_equip(mob/living/carbon/human/H)
+/datum/job/advclass/pilgrim/cheesemaker/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	var/animal_path = pick(/mob/living/simple_animal/hostile/retaliate/goat, /mob/living/simple_animal/hostile/retaliate/cow)
-	var/mob/living/simple_animal/animal = new animal_path(get_turf(H))
-	animal.tamed(H)
+	var/mob/living/simple_animal/animal = new animal_path(get_turf(spawned))
+	animal.tamed(spawned)
 
 /datum/outfit/job/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()

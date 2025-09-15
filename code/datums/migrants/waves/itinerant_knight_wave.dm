@@ -4,7 +4,7 @@
 	outfit = /datum/outfit/job/itinerant_knight
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+
 /datum/outfit/job/itinerant_knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/visored/sallet
@@ -26,31 +26,33 @@
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
 
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-		H.change_stat(STATKEY_STR, 3)
-		H.change_stat(STATKEY_PER, 2)
-		H.change_stat(STATKEY_INT, 3)
-		H.change_stat(STATKEY_CON, 4)
-		H.change_stat(STATKEY_END, 3)
-		H.change_stat(STATKEY_SPD, -2)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.change_stat(STATKEY_STR, 3)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_INT, 3)
+	H.change_stat(STATKEY_CON, 4)
+	H.change_stat(STATKEY_END, 3)
+	H.change_stat(STATKEY_SPD, -2)
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+
 	H.cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 
 /datum/migrant_role/itinerant_squire
@@ -60,7 +62,6 @@
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
 
 /datum/outfit/job/itinerant_squire/pre_equip(mob/living/carbon/human/H)
 	..()

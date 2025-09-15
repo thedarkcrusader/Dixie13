@@ -1,7 +1,7 @@
 //master smith
 
-/datum/advclass/pilgrim/rare/masterblacksmith
-	name = "Master Blacksmith"
+/datum/job/advclass/pilgrim/rare/masterblacksmith
+	title = "Master Blacksmith"
 	tutorial = "Dwarves, and humen who trained extensively under them in the art of smithing, \
 	become the most legendary smiths at their craft, gaining reputation beyond compare."
 	allowed_races = list(\
@@ -9,8 +9,8 @@
 		SPEC_ID_DWARF,\
 	)
 	outfit = /datum/outfit/job/adventurer/masterblacksmith
-	maximum_possible_slots = 1
-	pickprob = 15
+	total_positions = 1
+	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM)
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE

@@ -1,14 +1,13 @@
-/datum/advclass/combat/bladesinger
-	name = "Bladesinger"
+/datum/job/advclass/combat/bladesinger
+	title = "Bladesinger"
 	tutorial = "Your vigil over the elven cities has long since ended. Though dutiful, the inevitable happened and now you hope these lands have use for your talents."
 	allowed_races = list(SPEC_ID_ELF)
-	maximum_possible_slots = 1
-	pickprob = 15
+	total_positions = 1
+	roll_chance = 15
 	outfit = /datum/outfit/job/adventurer/bladesinger
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 2
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
-
 
 /datum/outfit/job/adventurer/bladesinger/pre_equip(mob/living/carbon/human/H)
 	..()

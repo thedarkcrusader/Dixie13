@@ -1,6 +1,6 @@
 
-/datum/advclass/mercenary/gallowglass
-	name = "Gallowglass"
+/datum/job/advclass/mercenary/gallowglass
+	title = "Gallowglass"
 	tutorial = "A claymore wielding mercanary hailing from the land of Kaledon, you are a fighter for coin, having fled the Grenzelhoftian occupation of your homeland. Your Kerns fight under you."
 	allowed_races = list(\
 		SPEC_ID_HUMEN,\
@@ -10,7 +10,7 @@
 	)
 	outfit = /datum/outfit/job/mercenary/gallowglass
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 2
+	total_positions = 2
 
 	cmode_music = 'sound/music/cmode/Combat_Dwarf.ogg'
 

@@ -1,6 +1,6 @@
 //dagger and huntknife
-/datum/advclass/combat/gravedigger
-	name = "Treasure Hunter"
+/datum/job/advclass/combat/gravedigger
+	title = "Treasure Hunter"
 	tutorial = "Grave robbers sell themselves as treasure hunters, but be sure to wipe that \
 	necrotic flesh off of that trinket you found."
 	allowed_sexes = list(MALE, FEMALE)

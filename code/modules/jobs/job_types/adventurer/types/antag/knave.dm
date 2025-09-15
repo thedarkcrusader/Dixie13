@@ -1,5 +1,5 @@
-/datum/advclass/knave //sneaky bastards - ranged classes of two flavors archers and rogues
-	name = "Knave"
+/datum/job/advclass/knave //sneaky bastards - ranged classes of two flavors archers and rogues
+	title = "Knave"
 	tutorial = "Not all followers of Matthios take by force. Thieves, poachers, and ne'er-do-wells of all forms steal from others from the shadows, long gone before their marks realize their misfortune."
 	outfit = /datum/outfit/job/bandit/knave
 	category_tags = list(CTAG_BANDIT)

@@ -1,14 +1,13 @@
 //shield
-/datum/advclass/combat/inhumencleric
-	name = "Inhumen Cleric"
+/datum/job/advclass/combat/inhumencleric
+	title = "Inhumen Cleric"
 	tutorial = "Clerics are wandering warriors of the Inhumen Gods, zealots whom demonstrated martial talent.\
 	Protected by stolen armor and unholy zeal, they are a force to be reckoned with."
 	allowed_races = RACES_PLAYER_ALL
-	vampcompat = FALSE
 	outfit = /datum/outfit/job/adventurer/inhumencleric
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 0
-	maximum_possible_slots = 4
+	total_positions = 4
 	allowed_patrons = ALL_PROFANE_PATRONS
 
 /datum/outfit/job/adventurer/inhumencleric

@@ -36,8 +36,8 @@
 		S.name = "veteran cloak ([index])"
 	ADD_TRAIT(spawned, TRAIT_OLDPARTY, TRAIT_GENERIC)
 
-/datum/advclass/veteran/battlemaster
-	name = "Veteran Battlemaster"
+/datum/job/advclass/veteran/battlemaster
+	title = "Veteran Battlemaster"
 	tutorial = "You have served under a hundred masters, some good, some bad. You were a general once. A marshal, a captain. To some a hero, others a monster. Something of the sorts. You made strategies, tactics, new innovations of war. A thousand new ways for one man to kill another. It still keeps you up at night."
 	outfit = /datum/outfit/job/vet/battlemaster
 
@@ -95,8 +95,8 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
-/datum/advclass/veteran/footman
-	name = "Retired Footman"
+/datum/job/advclass/veteran/footman
+	title = "Retired Footman"
 	tutorial = "You served on the fields of battle as no heroic knight steadfast in shining armor, but a mere mortal clad in whatever cheap armor coin could buy. You fought in formation as a member of a unit, and through discipline, have won numerous battles. Maybe one day you even served as the captain of your unit. You specialize in polearms and bows."
 	outfit = /datum/outfit/job/vet/footman
 
@@ -153,8 +153,8 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
-/datum/advclass/veteran/calvaryman
-	name = "Tarnished Knight"
+/datum/job/advclass/veteran/calvaryman
+	title = "Tarnished Knight"
 	tutorial = "You were once a member of a knightly calvary regiment, a prestigious title. You were ontop of the world, the townspeople rejoiced when you rode through their streets. Now, all you can hear is the screams of your brothers-in-arms as they fell. You specialize in mounted warfare."
 	outfit = /datum/outfit/job/vet/calvaryman
 
@@ -232,8 +232,8 @@
 			r_hand = /obj/item/weapon/polearm/spear
 			backl = /obj/item/weapon/shield/tower/metal
 
-/datum/advclass/veteran/merc
-	name = "Retired Mercenary"
+/datum/job/advclass/veteran/merc
+	title = "Retired Mercenary"
 	tutorial = "You were a sell-sword, a warrior of coin. Your pockets were never light, you always had a warm place to stay and food in your belly, but you knew that every battle could be your last. You're the last of your unit, and you can't help but regret it. You specialize in swords and polearms, or axes and polearms."
 	outfit = /datum/outfit/job/vet/merc
 	allowed_races = RACES_PLAYER_GRENZ

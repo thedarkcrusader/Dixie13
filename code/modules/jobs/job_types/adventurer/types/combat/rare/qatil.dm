@@ -1,5 +1,5 @@
-/datum/advclass/adventurer/qatil
-	name = "Qatil"
+/datum/job/advclass/adventurer/qatil
+	title = "Qatil"
 	tutorial = "Hailing from Zalad lands, you are a killer for hire that is trained both in murdering unseen and seen with your trusty knife."
 	allowed_races = list(\
 		SPEC_ID_HUMEN,\
@@ -11,9 +11,9 @@
 		SPEC_ID_HALF_DROW,\
 	)
 	outfit = /datum/outfit/job/adventurer/qatil
-	maximum_possible_slots = 1
+	total_positions = 1
 	min_pq = 0
-	pickprob = 25
+	roll_chance = 25
 	category_tags = list(CTAG_ADVENTURER)
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'

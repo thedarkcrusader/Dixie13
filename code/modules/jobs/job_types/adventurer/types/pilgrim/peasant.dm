@@ -1,5 +1,5 @@
-/datum/advclass/pilgrim/peasant
-	name = "Peasant"
+/datum/job/advclass/pilgrim/peasant
+	title = "Peasant"
 	tutorial = "A serf with no particular proficiency of their own, born poor \
 				and more likely to die poor. Farm workers, carriers, handymen."
 	allowed_sexes = list(MALE, FEMALE)

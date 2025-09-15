@@ -1,5 +1,5 @@
-/datum/advclass/mercenary/underdweller
-	name = "Underdweller"
+/datum/job/advclass/mercenary/underdweller
+	title = "Underdweller"
 	tutorial = "A member of the Underdwellers, you've taken many of the deadliest contracts known to man in literal underground circles. Drow or Dwarf, you've put your differences aside for coin and adventure."
 	allowed_races = list(\
 		SPEC_ID_DWARF,\
@@ -9,7 +9,7 @@
 	)
 	outfit = /datum/outfit/job/mercenary/underdweller
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
 /datum/outfit/job/mercenary/underdweller/pre_equip(mob/living/carbon/human/H)
 	..()

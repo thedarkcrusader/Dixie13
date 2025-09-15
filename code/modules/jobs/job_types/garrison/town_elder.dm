@@ -51,7 +51,7 @@
 	ADD_TRAIT(H, TRAIT_OLDPARTY, TRAIT_GENERIC)
 	H.verbs |= /mob/living/carbon/human/proc/townannouncement
 
-/datum/outfit/job/town_elder/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/town_elder/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	. = ..()
 	H.advsetup = 1
 	H.invisibility = INVISIBILITY_MAXIMUM
@@ -76,8 +76,8 @@
 	var/atom/movable/screen/advsetup/GET_IT_OUT = locate() in H.hud_used?.static_inventory
 	qdel(GET_IT_OUT)
 
-/datum/advclass/town_elder/mayor
-	name = "Mayor"
+/datum/job/advclass/town_elder/mayor
+	title = "Mayor"
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED // Due to the inherent nobility coming from being a mayor, non-humen species are barred.
 	tutorial = "Before politics, you were a bard, your voice stirred hearts, your tales traveled farther than your feet ever could. You carved your name in history not with steel, but with stories that moved kings and commoners alike. In time, your charisma became counsel, your songs gave way to speeches. Decades later, your skill in diplomacy and trade earned you nobility, and with it, the title of Mayor. Now, you lead not from a stage, but from the heart of the people you once sang for."
 	outfit = /datum/outfit/job/town_elder/mayor
@@ -139,8 +139,8 @@
 
 
 
-/datum/advclass/town_elder/master_of_crafts_and_labor
-	name = "Master of Crafts and Labor"
+/datum/job/advclass/town_elder/master_of_crafts_and_labor
+	title = "Master of Crafts and Labor"
 
 	tutorial = "You were one of the hardest-working individuals in the city, there isn’t a single job you haven’t done. From farming and butchery to alchemy, blacksmithing, cooking, and even medicine, your vast knowledge made you a guiding light for the people. Yet amid your labors, it was your songs that bound the workers together: rhythmic chants in the forge, lullabies in the sick wards, ballads hummed in the fields. Your voice became a beacon of focus and unity. Recognizing both your wisdom and your spirit, the townsfolk turned to you for guidance. Now, as the Master of Crafts and Labor, you oversee and uplift all who contribute to the city’s survival. Lead them well."
 	outfit = /datum/outfit/job/town_elder/master_of_crafts_and_labor
@@ -228,8 +228,8 @@
 		ADD_TRAIT(H, TRAIT_MALUMFIRE, TRAIT_GENERIC)
 
 
-/datum/advclass/town_elder/hearth_acolyte
-	name = "Hearth Acolyte"
+/datum/job/advclass/town_elder/hearth_acolyte
+	title = "Hearth Acolyte"
 
 	tutorial = "As an Acolyte, you dedicated your life to faith and service, expecting nothing in return. When you saved a noble, they repaid you with a home and gold, but you accepted it as the will of the Ten. Though you stepped away from the Church, you found a new purpose, not in grand temples, but in the rhythm of the streets. Your voice, once raised in hymns and prayers, now carries through alleyways and taverns, offering solace in melody and verse. Whether through healing, wisdom, or song, your faith endures. Only now, your congregation is the town itself."
 	outfit = /datum/outfit/job/town_elder/hearth_acolyte
@@ -358,8 +358,8 @@
 		devotion.make_acolyte()
 		devotion.grant_to(H)
 
-/datum/advclass/town_elder/lorekeeper
-	name = "Lorekeeper"
+/datum/job/advclass/town_elder/lorekeeper
+	title = "Lorekeeper"
 
 	tutorial = "Your tales once lit up taverns, your ballads echoed through cities, and your curiosity led you across kingdoms. But the stage grows quiet, and your thirst for stories has shifted. Now, you collect history instead of applause, recording the town’s past, preserving its legends, and guiding the present with the wisdom of ages. In a world where memory is power, you are its guardian."
 	outfit = /datum/outfit/job/town_elder/lorekeeper
@@ -412,8 +412,8 @@
 	H.add_spell(/datum/action/cooldown/spell/vicious_mockery)
 
 
-/datum/advclass/town_elder/dreamwatcher
-	name = "Dreamwatcher"
+/datum/job/advclass/town_elder/dreamwatcher
+	title = "Dreamwatcher"
 
 	tutorial = "Your dreams have always been vivid, filled with colors, voices, and shadows that seemed to watch. As a child, you feared them. As an adult, you began to listen. The Church speaks of Noc as the keeper of magic, but to you, he is something deeper: a silent guide whose truths are not written in scripture, but in sleep. Over time, you learned to echo those truths in your own way, through murmured lullabies, whispered verses, and songs shaped from silence. Now, as Elder of this town, you offer more than leadership. You help others find clarity in the quiet spaces of their hearts, through signs, symbols, and melodies only the soul remembers. Some call it intuition. Others call it wisdom. You know it simply as listening.(Not all your dreams are true, some may lie)"
 	outfit = /datum/outfit/job/town_elder/dreamwatcher

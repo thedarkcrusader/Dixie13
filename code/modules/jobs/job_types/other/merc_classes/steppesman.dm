@@ -1,5 +1,5 @@
-/datum/advclass/mercenary/steppesman
-	name = "Steppesman"
+/datum/job/advclass/mercenary/steppesman
+	title = "Steppesman"
 	tutorial = "A mercenary from hailing from the wild frontier steppes. There are three things you value most; saigas, freedom, and coin."
 	allowed_races = list(\
 		SPEC_ID_HUMEN,\
@@ -9,7 +9,7 @@
 	)
 	outfit = /datum/outfit/job/mercenary/steppesman
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 

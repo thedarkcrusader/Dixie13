@@ -6,9 +6,6 @@
 	/// When joining the round, this text will be shown to the player.
 	var/tutorial = null
 
-	/// Tells the given channels that the given mob is the new department head. See communications.dm for valid channels.
-	var/list/head_announce = null
-
 	//Bitflags for the job
 	var/flag = NONE
 	var/department_flag = NONE
@@ -61,10 +58,7 @@
 	var/display_order = JDO_DEFAULT
 
 	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK)
-	var/job_flags = NONE
-
-	///Levels unlocked at roundstart in physiology
-	var/list/roundstart_experience
+	var/job_flags = JOB_SHOW_IN_ACTOR_LIST
 
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE,FEMALE)
@@ -72,7 +66,12 @@
 	var/list/allowed_patrons
 	var/list/allowed_ages = ALL_AGES_LIST
 
-	/// Innate skill levels unlocked at roundstart. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
+	/// Stats given to the job in the form of list(STA_X = value)
+	var/list/jobstats
+	/// Female stats only used if a value is given
+	var/list/jobstats_f
+
+	/// Innate skill levels unlocked at roundstart. Format is list(/datum/skill/foo = value) with value as an integer or as per code/_DEFINES/skills.dm
 	var/list/skills
 
 	/// Innate spells that get removed when the job is removed
@@ -86,9 +85,6 @@
 
 	/// Lower number of attunemnets to grant
 	var/attunements_min
-
-	var/list/jobstats
-	var/list/jobstats_f
 
 	var/whitelist_req = FALSE //!
 
@@ -118,11 +114,11 @@
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
 
-/*
-	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
-	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
-	You will still need to contact the subsystem though
-*/
+	/**
+	 *	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
+	 *	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
+	 *	You will still need to contact the subsystem though
+	 */
 	var/list/advclass_cat_rolls
 
 	var/is_foreigner = FALSE
@@ -133,18 +129,20 @@
 
 	var/shows_in_list = TRUE
 
-	///can we have apprentices?
+	/// can we have apprentices?
 	var/can_have_apprentices = TRUE
-	///the skills and % of xp they should transfer over to apprentices as they are trained.
+	/// the skills and % of xp they should transfer over to apprentices as they are trained.
 	var/list/trainable_skills = list()
-	///the maximum amount of apprentices that the owner can have
+	/// the maximum amount of apprentices that the owner can have
 	var/max_apprentices = 1
-	///if this is set its the name bestowed to the new apprentice otherwise its just name the [job_name] apprentice.
+	/// if this is set its the name bestowed to the new apprentice otherwise its just name the [job_name] apprentice.
 	var/apprentice_name
-	///do we magic?
+	/// do we magic?
 	var/magic_user = FALSE
-	///Do we get passive income every day from our noble estates?
+	/// Do we get passive income every day from our noble estates?
 	var/noble_income = FALSE
+
+	/// Blacklisted from the actor
 
 	var/static/list/actors_list_blacklist = list(
 		/datum/job/adventurer,
@@ -188,28 +186,18 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 
+	if(!ishuman(spawned))
+		return
+
 	if(magic_user)
 		spawned.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 
 	for(var/trait in mind_traits)
 		ADD_TRAIT(spawned.mind, trait, JOB_TRAIT)
 
-	if(!ishuman(spawned))
-		return
-
-	var/list/roundstart_experience
-
-	roundstart_experience = skills
-
-	if(roundstart_experience)
-		var/mob/living/carbon/human/experiencer = spawned
-		for(var/i in roundstart_experience)
-			experiencer.adjust_experience(i, roundstart_experience[i], TRUE)
-
-	/* V: PAST THIS POINT */
-
 	if(is_foreigner)
 		ADD_TRAIT(spawned, TRAIT_FOREIGNER, TRAIT_GENERIC)
+
 	if(is_recognized)
 		ADD_TRAIT(spawned, TRAIT_RECOGNIZED, TRAIT_GENERIC)
 
@@ -224,17 +212,21 @@
 
 	var/list/used_stats = ((spawned.gender == FEMALE) && jobstats_f) ? jobstats_f : jobstats
 	for(var/stat_key in used_stats)
-		spawned.change_stat(stat_key, used_stats[stat_key])
+		spawned.set_stat_modifier("job_stats", stat_key, used_stats[stat_key])
+
+	for(var/datum/skill/skill as anything in skills)
+		spawned.adjust_skillrank(skill, skills[skill], TRUE)
 
 	for(var/X in peopleknowme)
 		for(var/datum/mind/MF in get_minds(X))
 			spawned.mind.person_knows_me(MF)
+
 	for(var/X in peopleiknow)
 		for(var/datum/mind/MF in get_minds(X))
 			spawned.mind.i_know_person(MF)
 
+	var/used_title = get_informed_title(spawned)
 	if(spawned.islatejoin && (job_flags & JOB_ANNOUNCE_ARRIVAL)) //to be moved somewhere more appropriate
-		var/used_title = get_informed_title(spawned)
 		scom_announce("[spawned.real_name] the [used_title] arrives from [SSmapping.config.immigrant_origin].")
 
 	if(give_bank_account)
@@ -253,27 +245,24 @@
 		spawned.cmode_music = cmode_music
 
 	if(!(type in actors_list_blacklist)) //don't show these.
-		GLOB.actors_list[spawned.mobid] = "[spawned.real_name] as [spawned.mind.assigned_role.get_informed_title(spawned)]<BR>"
+		GLOB.actors_list[spawned.mobid] = "[spawned.real_name] as [used_title]<BR>"
 
-	var/mob/living/carbon/human/humanguy = spawned
+	if(forced_flaw)
+		spawned.set_flaw(forced_flaw)
 
-	var/datum/job/target_job = humanguy?.mind?.assigned_role
-	if(target_job?.forced_flaw)
-		humanguy.set_flaw(target_job.forced_flaw.type)
-
-	if(humanguy.charflaw)
-		humanguy.charflaw.after_spawn(humanguy)
+	if(spawned.charflaw)
+		spawned.charflaw.after_spawn(spawned)
 
 	if(length(advclass_cat_rolls))
-		humanguy.advsetup = TRUE
-		humanguy.invisibility = INVISIBILITY_MAXIMUM
-		humanguy.become_blind("advsetup")
+		spawned.advsetup = TRUE
+		spawned.invisibility = INVISIBILITY_MAXIMUM
+		spawned.density = FALSE
+		spawned.become_blind("advsetup")
 
-	var/list/owned_triumph_buys = SStriumphs.triumph_buy_owners[player_client.ckey]
-	if(length(owned_triumph_buys))
-		for(var/datum/triumph_buy/T in owned_triumph_buys)
-			if(!T.activated)
-				T.on_after_spawn(humanguy)
+	var/list/owned_triumph_buys = LAZYACCESS(SStriumphs.triumph_buy_owners, player_client?.ckey)
+	for(var/datum/triumph_buy/T in owned_triumph_buys)
+		if(!T.activated)
+			T.on_after_spawn(spawned)
 
 /// When our guy is OLD do we do anything extra
 /datum/job/proc/old_age_effects()
@@ -292,11 +281,6 @@
 	return
 
 /mob/living/carbon/human/on_job_equipping(datum/job/equipping)
-	//could be a deprecated system? it was here before the refactor too, so
-	var/datum/bank_account/bank_account = new(real_name, equipping)
-	bank_account.payday(STARTING_PAYCHECKS, TRUE)
-	account_id = bank_account.account_id
-
 	dress_up_as_job(equipping)
 
 /mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
@@ -312,7 +296,6 @@
 	if(available_in_days(C) == 0)
 		return TRUE	//Available in 0 days = available right now = player is old enough to play.
 	return FALSE
-
 
 /datum/job/proc/available_in_days(client/C)
 	if(!C)
@@ -341,56 +324,37 @@
 	///this is our bitflag
 	var/job_bitflag = NONE
 
-/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/pre_equip(mob/living/carbon/human/equipped_human, visuals_only = FALSE)
 	. = ..()
-	var/datum/patron/old_patron = H.patron // Store the initial patron selected before spawning on this var
-	if(length(allowed_patrons) && (!old_patron || !(old_patron.type in allowed_patrons)))
-		var/list/datum/patron/possiblegods = list()
-		var/list/datum/patron/godlist = list()
-		for(var/god in GLOB.patronlist)
-			if(!(god in allowed_patrons))
-				continue
-			possiblegods |= god
-			var/datum/patron/P = GLOB.patronlist[god]
-			if(P.associated_faith == old_patron.associated_faith) //Prioritize choosing a possible patron within our pantheon
-				godlist |= god
-		if(length(godlist))
-			H.set_patron(default_patron || pick(godlist), TRUE)
-		else
-			H.set_patron(default_patron || pick(possiblegods), TRUE)
-		if(old_patron != H.patron) // If the patron we selected first does not match the patron we end up with, display the message.
-			to_chat(H, "<span class='warning'>I've followed the word of [old_patron.display_name ? old_patron.display_name : old_patron] in my younger years, but the path I tread todae has accustomed me to [H.patron.display_name? H.patron.display_name : H.patron].")
+	if(!length(allowed_patrons))
+		return
+	var/datum/patron/old_patron = equipped_human.patron
+	if(old_patron?.type in allowed_patrons)
+		return
+	var/list/datum/patron/all_gods = list()
+	var/list/datum/patron/pantheon_gods = list()
+	for(var/god in GLOB.patronlist)
+		if(!(god in allowed_patrons))
+			continue
+		all_gods |= god
+		var/datum/patron/P = GLOB.patronlist[god]
+		if(P.associated_faith == old_patron.associated_faith) //Prioritize choosing a possible patron within our pantheon
+			pantheon_gods |= god
+	if(length(pantheon_gods))
+		equipped_human.set_patron(default_patron || pick(pantheon_gods), TRUE)
+	else
+		equipped_human.set_patron(default_patron || pick(all_gods), TRUE)
+	if(old_patron != equipped_human.patron) // If the patron we selected first does not match the patron we end up with, display the message.
+		to_chat(equipped_human, "<span class='warning'>I've followed the word of [old_patron.display_name ? old_patron.display_name : old_patron] in my younger years, but the path I tread todae has accustomed me to [equipped_human.patron.display_name? equipped_human.patron.display_name : equipped_human.patron].")
 
-	if(H.mind)
-		if(H.dna)
-			H.dna.species.random_underwear(H.gender)
-
-		if(ishumanspecies(H))
-			H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		else if(isdwarf(H))
-			H.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
-		else if(isharpy(H))
-			H.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
-	H.underwear_color = null
-	H.update_body()
-
-/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	if(visualsOnly)
+/datum/outfit/job/post_equip(mob/living/carbon/human/equipped_human, visuals_only = FALSE)
+	if(visuals_only || !equipped_human.mind)
 		return
 
-	var/datum/job/J = SSjob.GetJobType(jobtype)
-	if(!J)
-		J = SSjob.GetJob(H.job)
+	equipped_human.mind?.job_bitflag = job_bitflag
 
-	if(H.mind)
-		H.mind?.job_bitflag = job_bitflag
-		if(H.familytree_pref != FAMILY_NONE && !visualsOnly && !H.family_datum)
-			SSfamilytree.AddLocal(H, H.familytree_pref)
-			H.ShowFamilyUI(TRUE)
-		if(H.ckey)
-			if(check_crownlist(H.ckey))
-				H.mind.special_items["Champion Circlet"] = /obj/item/clothing/head/crown/sparrowcrown
-			give_special_items(H)
+	if(equipped_human.familytree_pref != FAMILY_NONE && !equipped_human.family_datum)
+		SSfamilytree.AddLocal(equipped_human, equipped_human.familytree_pref)
 
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
@@ -440,9 +404,9 @@
 		return // Disconnected while checking for the appearance ban.
 	return spawn_instance
 
-
 /// Applies the preference options to the spawning mob, taking the job into account. Assumes the client has the proper mind.
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
+	return
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = is_banned_from(player_client.ckey, "Appearance")
@@ -459,8 +423,6 @@
 			player_client.prefs.real_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
 	dna.update_dna_identity()
 
-/* ROGUETOWN */
-
 /datum/job/proc/adjust_current_positions(offset)
 	if((current_positions + offset) < 0)
 		message_admins("Something was about to set current_positions for [title] to less than zero! Please send the stack trace to a developer")
@@ -468,12 +430,12 @@
 
 	current_positions = max(current_positions + offset, 0)
 
-/datum/job/proc/add_spells(mob/living/H)
+/datum/job/proc/add_spells(mob/living/equipped_human)
 	for(var/datum/action/cooldown/spell/spell as anything in spells)
-		H.add_spell(spell, source = src)
+		equipped_human.add_spell(spell, source = src)
 
-/datum/job/proc/remove_spells(mob/living/H)
-	H.remove_spells(source = src)
+/datum/job/proc/remove_spells(mob/living/equipped_human)
+	equipped_human.remove_spells(source = src)
 
 /datum/job/proc/get_informed_title(mob/mob)
 	if(mob.gender == FEMALE && f_title)

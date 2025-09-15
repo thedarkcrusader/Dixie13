@@ -1,5 +1,5 @@
-/datum/advclass/roguemage //mage class - like the adventurer mage, but more evil.
-	name = "Rogue Mage"
+/datum/job/advclass/roguemage //mage class - like the adventurer mage, but more evil.
+	title = "Rogue Mage"
 	tutorial = "Those fools at the academy laughed at you and cast you from the ivory tower of higher learning and magickal practice. \
 	No matter - you will ascend to great power one day, but first you need wealth - vast amounts of it. \
 	Show those fools in the town what REAL magic looks like."

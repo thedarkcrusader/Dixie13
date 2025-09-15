@@ -8,15 +8,11 @@
 	total_positions = 3
 	spawn_positions = 3
 	min_pq = 10
-	antag_job = TRUE
-
-	outfit = null
-	outfit_female = null
 
 	advclass_cat_rolls = list(CTAG_WRETCH = 20)
 
 	is_foreigner = TRUE
-	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so
+	job_reopens_slots_on_death = FALSE
 	same_job_respawn_delay = 30 MINUTES
 
 	can_have_apprentices = FALSE
@@ -32,8 +28,8 @@
 	H.ambushable = FALSE
 	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
 
-/proc/wretch_select_bounty(mob/living/carbon/human/H)
-	var/bounty_poster = input(H, "Who placed a bounty on you?", "Filthy Criminal") as anything in list("The Divine Pantheon", "Kingsfield Expanse")
+/datum/outfit/job/wretch/proc/wretch_select_bounty(mob/living/carbon/human/H)
+	var/bounty_poster = browser_input_list(H, "Who placed a bounty on you?", "Filthy Criminal", list("The Divine Pantheon", "Kingsfield Expanse"))
 	if(bounty_poster == "Kingsfield Expanse")
 		GLOB.outlawed_players += H.real_name
 	else

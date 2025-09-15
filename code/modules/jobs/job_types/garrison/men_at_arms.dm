@@ -44,8 +44,8 @@
 /datum/job/men_at_arms/after_spawn(mob/living/carbon/spawned, client/player_client)
 	..()
 
-/datum/advclass/menatarms/watchman_pikeman
-	name = "Pikeman Men-At-Arms"
+/datum/job/advclass/menatarms/watchman_pikeman
+	title = "Pikeman Men-At-Arms"
 	tutorial = "You once warded the town, beating the poor and killing the senseless. \
 	Now you get to stare at them in the eyes, watching as they bleed, \
 	exanguinated personally by one of the Monarch's best. \
@@ -86,8 +86,8 @@
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/advclass/menatarms/watchman_swordsmen
-	name = "Fencer Men-At-Arms"
+/datum/job/advclass/menatarms/watchman_swordsmen
+	title = "Fencer Men-At-Arms"
 	tutorial = "You once warded the town, beating the poor and killing the senseless. \
 	You were quite a good dancer, you've blended that skill with your blade- \
 	exanguinated personally by one of the Monarch's best. \
@@ -123,8 +123,8 @@
 		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 		H.verbs |= /mob/proc/haltyell
 
-/datum/advclass/menatarms/watchman_ranger
-	name = "Archer Men-At-Arms"
+/datum/job/advclass/menatarms/watchman_ranger
+	title = "Archer Men-At-Arms"
 	tutorial = "You once warded the town, beating the poor and killing the senseless. \
 	Now you stare at them from above, raining hell down upon the knaves and the curs that see you a traitor. \
 	You are poor, and your belly is yet full."

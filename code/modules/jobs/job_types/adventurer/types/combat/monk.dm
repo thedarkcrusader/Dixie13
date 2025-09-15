@@ -1,15 +1,14 @@
-/datum/advclass/combat/monk
-	name = "Monk"
+/datum/job/advclass/combat/monk
+	title = "Monk"
 	allowed_races = RACES_PLAYER_NONHERETICAL
 	allowed_patrons = ALL_TEMPLE_PATRONS
 	tutorial = "A traveling monk of the Ten, unmatched in the unarmed arts, with an unwavering devotion to their patron God's Justice."
-	maximum_possible_slots = 4
+	total_positions = 4
 
 	outfit = /datum/outfit/job/adventurer/monk
 	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
-	vampcompat = FALSE
 
 /datum/outfit/job/adventurer/monk
 	allowed_patrons = ALL_TEMPLE_PATRONS  //randomize patron if not in ten

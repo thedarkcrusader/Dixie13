@@ -170,7 +170,7 @@
 
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
 			if(H.real_name == inputty)
-				if(H.advjob == "Faceless One")
+				if(H.job == "Faceless One")
 					to_chat(src, span_danger("I wasn't able to do that!"))
 					return FALSE
 				H.cleric?.excommunicate()
@@ -200,7 +200,7 @@
 			return FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H.real_name == inputty)
-				if(H.advjob == "Faceless One")
+				if(H.job == "Faceless One")
 					to_chat(src, span_danger("I wasn't able to do that!"))
 					return FALSE
 				H.add_stress(/datum/stressevent/psycurse)

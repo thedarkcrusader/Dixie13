@@ -21,7 +21,6 @@
 	/// Whether to show them as foreigners
 	var/is_foreigner = TRUE // Hide their title, show them as a foreigner
 	var/is_recognized = FALSE // Show their title even as a foreigner.
-	var/advjob_examine = TRUE
 	var/banned_leprosy = TRUE
 	var/banned_lunatic = TRUE
 

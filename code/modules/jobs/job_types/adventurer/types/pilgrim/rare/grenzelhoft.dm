@@ -1,11 +1,11 @@
-/datum/advclass/pilgrim/rare/grenzelhoft
-	name = "Grenzelhoft Count"
+/datum/job/advclass/pilgrim/rare/grenzelhoft
+	title = "Grenzelhoft Count"
 	tutorial = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin."
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/adventurer/grenzelhoft
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 1
-	pickprob = 30
+	total_positions = 1
+	roll_chance = 30
 	min_pq = 0
 	is_recognized = TRUE
 

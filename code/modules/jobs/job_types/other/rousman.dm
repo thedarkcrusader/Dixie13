@@ -11,11 +11,11 @@
 	outfit = /datum/outfit/job/rousman
 	give_bank_account = FALSE
 
-/datum/outfit/job/rousman/equip(mob/living/carbon/human/H, visualsOnly, announce, latejoin, datum/outfit/outfit_override, client/preference_source)
+/datum/outfit/job/rousman/equip(mob/living/carbon/human/H, visuals_only, announce, latejoin, datum/outfit/outfit_override, client/preference_source)
 	. = ..()
 	return  H.change_mob_type(/mob/living/carbon/human/species/rousman, delete_old_mob = TRUE)
 
-/datum/outfit/job/rousman/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/rousman/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	H.set_species(/datum/species/rousman)
 	var/loadout = rand(1,4)

@@ -1,11 +1,11 @@
-/datum/advclass/mercenary/corsair
-	name = "Corsair"
+/datum/job/advclass/mercenary/corsair
+	title = "Corsair"
 	tutorial = "Banished from polite society, you once found kin with privateers, working adjacent to a royal navy. After the Red Flag battered itself in the wind one last time, your purse was still not satisfied... And yet he complained that his belly was not full."
 	allowed_races = list(SPEC_ID_TIEFLING)
 	outfit = /datum/outfit/job/adventurer/corsair
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
-	maximum_possible_slots = 5
+	total_positions = 5
 
 /datum/outfit/job/adventurer/corsair
 	head = /obj/item/clothing/head/helmet/leather/headscarf

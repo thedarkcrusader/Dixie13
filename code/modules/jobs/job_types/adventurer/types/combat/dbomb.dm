@@ -1,5 +1,5 @@
-/datum/advclass/combat/dbomb
-	name = "Dwarven Bombardier"
+/datum/job/advclass/combat/dbomb
+	title = "Dwarven Bombardier"
 	tutorial = "Tinkering Dwarves that like to blow things up."
 	allowed_races = list(SPEC_ID_DWARF)
 	outfit = /datum/outfit/job/adventurer/dbomb

@@ -1,5 +1,5 @@
-/datum/advclass/pilgrim/rare/crusader
-	name = "Totod Order Emissary"
+/datum/job/advclass/pilgrim/rare/crusader
+	title = "Totod Order Emissary"
 	tutorial = "The Crusaders are knights who have pledged their wealth and lands to the Church, \
 	taking up the banner of the Totod Order dedicated to retaking Valoria. \
 	Three cults provide knights for the Order: Astrata, Necra and Psydon. \
@@ -8,8 +8,8 @@
 	allowed_patrons = list(/datum/patron/divine/astrata, /datum/patron/divine/necra, /datum/patron/psydon)
 	outfit = /datum/outfit/job/adventurer/crusader
 	category_tags = list(CTAG_ADVENTURER)
-	maximum_possible_slots = 1
-	pickprob = 30
+	total_positions = 1
+	roll_chance = 30
 	min_pq = 0
 	is_recognized = TRUE
 

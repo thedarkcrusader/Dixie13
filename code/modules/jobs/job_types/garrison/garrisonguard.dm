@@ -41,8 +41,8 @@
 // EVERY TOWN GUARD SHOULD HAVE AT LEAST THREE CLUB SKILL
 
 //................. Axes, Maces, Swords, Shields .............. //
-/datum/advclass/garrison/footman
-	name = "City Watch Footman"
+/datum/job/advclass/garrison/footman
+	title = "City Watch Footman"
 	tutorial = "You are a member of the City Watch. \
 	You are well versed in holding the line with a shield while wielding a trusty sword, axe, or mace in the other hand."
 	outfit = /datum/outfit/job/guardsman/footman
@@ -82,8 +82,8 @@
 	H.verbs |= /mob/proc/haltyell
 
 //................. Archer .............. //
-/datum/advclass/garrison/archer
-	name = "City Watch Archer"
+/datum/job/advclass/garrison/archer
+	title = "City Watch Archer"
 	tutorial = "You are a member of the City Watch. Your training with bows makes you a formidable threat when perched atop the walls or rooftops, raining arrows down upon foes with impunity."
 	outfit = /datum/outfit/job/guardsman/archer
 	category_tags = list(CTAG_GARRISON)
@@ -120,8 +120,8 @@
 		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 		H.verbs |= /mob/proc/haltyell
 
-/datum/advclass/garrison/pikeman
-	name = "City Watch Pikeman"
+/datum/job/advclass/garrison/pikeman
+	title = "City Watch Pikeman"
 	tutorial = "You are a pikeman in the City Watch. You are less fleet of foot compared to the rest, but you are burly and well practiced with spears, pikes, billhooks - all the various polearms for striking enemies from a distance."
 	outfit = /datum/outfit/job/guardsman/pikeman
 

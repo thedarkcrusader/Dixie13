@@ -1,12 +1,12 @@
-/datum/advclass/wretch/necromancer
-	name = "Necromancer"
+/datum/job/advclass/wretch/necromancer
+	title = "Necromancer"
 	tutorial = "You have been ostracized and hunted by society for your dark magics and perversion of life."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/wretch/necromancer
 	category_tags = list(CTAG_WRETCH)
 	cmode_music = 'sound/music/cmode/antag/CombatLich.ogg'
-	maximum_possible_slots = 1
+	total_positions = 1
 
 /datum/outfit/job/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
 	..()

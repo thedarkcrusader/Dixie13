@@ -1,5 +1,5 @@
-/datum/advclass/pilgrim/hunter
-	name = "Hunter"
+/datum/job/advclass/pilgrim/hunter
+	title = "Hunter"
 	tutorial = "Peasants that thrive on the woods, hunting creechers for pelt and hide, \
 				or the boons of Dendor for their meat to sell, or consume."
 	allowed_sexes = list(MALE)
@@ -52,8 +52,8 @@
 			H.change_stat(STATKEY_PER, 3)
 // Female variant below
 
-/datum/advclass/pilgrim/huntress
-	name = "Huntress"
+/datum/job/advclass/pilgrim/huntress
+	title = "Huntress"
 	tutorial = "Women that thrive on the woods, hunting creechers for pelt and hide, \
 				or the boons of Dendor for their meat to sell, or consume."
 	allowed_sexes = list(FEMALE)

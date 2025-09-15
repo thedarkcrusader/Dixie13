@@ -1,7 +1,7 @@
 //dwarf, master mason
 
-/datum/advclass/pilgrim/mason
-	name = "Mason"
+/datum/job/advclass/pilgrim/mason
+	title = "Mason"
 	tutorial = "Despite the lack of a formal guild in Vanderlin, you've traveled there to hone your stonemasonry. \
 	You've known your entire life there are ancient secrets within stone, and now you must prove their value to others."
 	allowed_races = RACES_PLAYER_ALL

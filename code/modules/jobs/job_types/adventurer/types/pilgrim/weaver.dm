@@ -1,9 +1,8 @@
-/datum/advclass/pilgrim/weaver
-	name = "Weaver"
+/datum/job/advclass/pilgrim/weaver
+	title = "Weaver"
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/adventurer/seamstress
-	category_tags = list(CTAG_DISABLED)
 	apprentice_name = "Weaver"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
