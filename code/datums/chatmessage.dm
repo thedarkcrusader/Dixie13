@@ -113,6 +113,8 @@
 
 /datum/chatmessage/proc/on_parent_take_damage(datum/source, damage, damagetype, def_zone)
 	SIGNAL_HANDLER
+	if(QDELETED(source))
+		return
 
 	if(damage < 4)
 		return
@@ -385,6 +387,9 @@
 
 /datum/chatmessage/proc/premature_end_of_life()
 	SIGNAL_HANDLER
+	if(QDELETED(message))
+		return
+
 	premature_end = TRUE
 	_add_string(pick(CHAT_GLORF_LIST))
 	var/delay = rand(10, 20) * 0.01 SECONDS // yes, I'm dividing by 100 and then using the SECONDS define which multiplies by 10, deal with it. ^_^
