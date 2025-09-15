@@ -2,14 +2,15 @@
 /datum/ritual
 	abstract_type = /datum/ritual
 	var/name = "DVRK AND EVIL RITVAL"
-	var/center_requirement = /obj/item
+	var/center_requirement
 	// This is absolutely fucking terrible. I tried to do it with lists but it just didn't work and
 	//kept runtiming. Something something, can't access list inside a datum.
 	//I couldn't find a more efficient solution to do this, I'm sorry. -7
-	var/n_req = null
-	var/e_req = null
-	var/s_req = null
-	var/w_req = null
+	var/n_req
+	var/e_req
+	var/s_req
+	var/w_req
+	/// If zizo followers can't perform this
 	var/is_cultist_ritual = FALSE
 
 /datum/ritual/proc/invoke(mob/living/user, turf/center)
@@ -36,11 +37,10 @@
 	if(!target.client)
 		return
 	if(istype(target.wear_neck, /obj/item/clothing/neck/psycross/silver) || istype(target.wear_wrists, /obj/item/clothing/neck/psycross/silver) )
-		to_chat(user.mind, span_danger("\"They are wearing silver, it resists the dark magick!\""))
+		to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
 		return
 	if(length(SSmapping.retainer.cultists) >= 8)
-		to_chat(user.mind, span_danger("\"The veil is too strong to support more than seven lackeys.\""))
-		to_chat(user.mind, "<span class='danger'>\"The veil is too strong to support more than seven lackeys.\"</span>")
+		to_chat(user, span_danger("The veil is too strong to support more than seven lackeys."))
 		return
 	var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
 	var/alert = browser_alert(target, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "???", list("Yield", "Resist"))
@@ -90,7 +90,7 @@
 	e_req = /obj/item/bodypart/r_leg
 
 /datum/ritual/servantry/thecall/invoke(mob/living/user, turf/center)
-	var/obj/item/paper/P = locate() in center.contents
+	var/obj/item/paper/P = locate() in center
 	if(!P)
 		to_chat(user, span_warning("The ritual requires a parchment with a name."))
 		return
@@ -99,23 +99,24 @@
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
-		if(HL.real_name == paper_name)
-			if(HL.has_status_effect(/datum/status_effect/debuff/sleepytime))
-				if(HL.mind.assigned_role.title in GLOB.church_positions)
-					to_chat(HL, span_warning("I sense an unholy presence loom near my soul."))
-					to_chat(user, span_danger("They are protected..."))
-					return
-				if(HL == SSticker.rulermob)
-					return
-				if(istype(HL.wear_neck, /obj/item/clothing/neck/psycross/silver) || istype(HL.wear_wrists, /obj/item/clothing/neck/psycross/silver))
-					to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
-					return
-				if(HAS_TRAIT(HL, TRAIT_NOSTAMINA))
-					return
-				to_chat(HL, span_warning("I'm so sleepy..."))
-				HL.SetSleeping(30)
-				addtimer(CALLBACK(src, PROC_REF(kidnap)), HL, center)
-				qdel(P)
+		if(HL.real_name != paper_name)
+			continue
+		if(HL.mind.assigned_role.title in GLOB.church_positions)
+			to_chat(HL, span_warning("I sense an unholy presence loom near my soul."))
+			to_chat(user, span_danger("They are protected..."))
+			break
+		if(HL == SSticker.rulermob)
+			break
+		if(istype(HL.wear_neck, /obj/item/clothing/neck/psycross/silver) || istype(HL.wear_wrists, /obj/item/clothing/neck/psycross/silver))
+			to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
+			break
+		if(HAS_TRAIT(HL, TRAIT_NOSLEEP))
+			break
+		to_chat(HL, span_userdanger("I'm so sleepy..."))
+		HL.SetSleeping(5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(kidnap), HL, center), 3 SECONDS)
+		qdel(P)
+		break
 
 /datum/ritual/servantry/thecall/proc/kidnap(mob/living/victim, turf/to_go)
 	if(QDELETED(victim))
@@ -163,21 +164,23 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "heart-on"
 
-/obj/item/corruptedheart/attack(mob/living/M, mob/living/user, params)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(user.patron.type == /datum/patron/inhumen/zizo)
-			H.blood_volume = BLOOD_VOLUME_MAXIMUM
-			to_chat(H, span_notice("My elixir of life is stagnant once again."))
-			qdel(src)
-		else
-			if(!do_after(user, 2 SECONDS, H))
-				return
-			if(M.cmode)
-				user.electrocute_act(30)
-			H.Stun(10 SECONDS)
-			H.silent += 30
-			qdel(src)
+/obj/item/corruptedheart/attack(mob/living/target, mob/living/user, params)
+	if(!istype(user.patron, /datum/patron/inhumen/zizo))
+		return
+	if(istype(target.patron, /datum/patron/inhumen/zizo))
+		target.blood_volume = BLOOD_VOLUME_MAXIMUM
+		to_chat(target, span_notice("My elixir of life is stagnant once again."))
+		qdel(src)
+		return
+	if(!do_after(user, 2 SECONDS, target))
+		return
+	if(target.cmode)
+		user.electrocute_act(30)
+	target.Stun(10 SECONDS)
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.silent += 30
+	qdel(src)
 
 /datum/ritual/servantry/darksunmark
 	name = "Dark Sun's Mark"
@@ -199,9 +202,11 @@
 	var/mob/living/carbon/human/target
 	var/assassin_found = FALSE
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
+		if(HL.stat != DEAD)
+			continue
 		if(HL.real_name == paper_name)
 			target = HL
-		if(HAS_TRAIT(HL, TRAIT_ASSASSIN) && HL.stat != DEAD) //Check if they are an assassin and alive
+		else if(HAS_TRAIT(HL, TRAIT_ASSASSIN))
 			assassin_found = TRUE
 			var/obj/item/weapon/knife/dagger/steel/profane/dagger = locate() in HL.get_all_gear()
 			if(dagger)
