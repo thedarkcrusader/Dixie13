@@ -114,7 +114,7 @@
 /datum/chatmessage/proc/on_parent_take_damage(datum/source, damage, damagetype, def_zone)
 	SIGNAL_HANDLER
 
-	if(damage < 10)
+	if(damage < 4)
 		return
 
 	premature_end_of_life()
