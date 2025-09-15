@@ -622,9 +622,7 @@
 					add_splatter_floor(location)
 					if(get_dist(user, src) <= 1)	//people with TK won't get smeared with blood
 						user.add_mob_blood(src)
-						if(ishuman(user))
-							var/mob/living/carbon/human/dirtyboy = user
-							dirtyboy.adjust_hygiene(-10)
+						user.adjust_hygiene(-10)
 			if(newforce > 15)
 				if(haha == BCLASS_BLUNT)
 					I.add_mob_blood(src)
@@ -632,9 +630,7 @@
 					add_splatter_floor(location)
 					if(get_dist(user, src) <= 1)	//people with TK won't get smeared with blood
 						user.add_mob_blood(src)
-						if(ishuman(user))
-							var/mob/living/carbon/human/dirtyboy = user
-							dirtyboy.adjust_hygiene(-10)
+						user.adjust_hygiene(-10)
 	send_item_attack_message(I, user, hitlim)
 	if(I.force)
 		return TRUE

@@ -1312,9 +1312,6 @@ GLOBAL_LIST_EMPTY(patreon_races)
 		return
 	if(HAS_TRAIT(H, TRAIT_NOHYGIENE))
 		return
-	if (H.hygiene > 0)
-		var/hygiene_rate = (HYGIENE_FACTOR * hygiene_mod)
-		H.adjust_hygiene(-hygiene_rate)
 	switch(H.hygiene)
 		if(HYGIENE_LEVEL_CLEAN to HYGIENE_LEVEL_CLEAN)
 			if(HAS_TRAIT(H, TRAIT_STINKY))

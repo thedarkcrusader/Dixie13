@@ -60,9 +60,9 @@
 	my_turf.pollute_turf(fragrance_type, 20)
 	user.changeNext_move(CLICK_CD_RANGE * 2)
 	playsound(user.loc, 'sound/items/perfume.ogg', 100, TRUE)
-	if(ishuman(target))
-		var/mob/living/carbon/human/dirtyboy = target
-		dirtyboy.adjust_hygiene(10)
+	if(ismob(target))
+		var/mob/living/hygiene_target = target
+		hygiene_target.adjust_hygiene(10)
 	target.AddComponent(/datum/component/temporary_pollution_emission, fragrance_type, 5, 10 MINUTES)
 
 /obj/item/perfume/random

@@ -413,14 +413,14 @@
 			playsound(user, pick(wash), 100, FALSE)
 
 			//handle hygiene
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				var/list/equipped_items = H.get_equipped_items()
+			if(isliving(user))
+				var/mob/living/hygiene_target = user
+				var/list/equipped_items = hygiene_target.get_equipped_items()
 				if(length(equipped_items) > 0)
-					to_chat(user, "<span class='notice'>I could probably get cleaner if I weren't wearing clothes...</span>")
-					H.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
+					to_chat(user, span_notice("I could probably clean myself faster if I weren't wearing clothes..."))
+					hygiene_target.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
 				else
-					H.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
+					hygiene_target.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /turf/open/water/attackby_secondary(obj/item/item2wash, mob/user, params)
