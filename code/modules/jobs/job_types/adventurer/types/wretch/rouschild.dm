@@ -1,12 +1,12 @@
-/datum/advclass/wretch/rouschild
-	name = "Rouschild"
+/datum/job/advclass/wretch/rouschild
+	title = "Rouschild"
 	tutorial = "A child of the sewers, abandoned at birth, you were taken in by a colony of rous and raised as one of their own."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/wretch/rouschild
 	category_tags = list(CTAG_WRETCH)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
-	maximum_possible_slots = 2
+	total_positions = 2
 
 /datum/outfit/job/wretch/rouschild
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
