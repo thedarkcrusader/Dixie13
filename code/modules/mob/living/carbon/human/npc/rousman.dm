@@ -291,16 +291,16 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 		if(1) //Grats, you got all the good armor
 			armor = /obj/item/clothing/armor/cuirass/iron/rousman
 			head = /obj/item/clothing/head/helmet/rousman
-			ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 		if(2) //Plate armor with chance of getting a helm
 			armor = /obj/item/clothing/armor/cuirass/iron/rousman
-			ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			if(prob(50))
 				head = /obj/item/clothing/head/helmet/rousman
 		if(3) //Helm with chance of getting plate armor
 			if(prob(50))
 				armor = /obj/item/clothing/armor/cuirass/iron/rousman
-				ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			else
 				armor = /obj/item/clothing/armor/leather/hide/rousman
 			head = /obj/item/clothing/head/helmet/rousman
@@ -485,8 +485,9 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	H.base_speed = rand(10, 15)
 	H.recalculate_stats(FALSE)
 
-	armor = /obj/item/clothing/armor/leather/rousseer
-	shirt = /obj/item/clothing/shirt/robe/rousseer
+	armor = /obj/item/clothing/shirt/robe/rousseer
+	cloak = /obj/item/clothing/cloak/rousseer
+	head = /obj/item/clothing/head/roguehood/rousman/rousseer
 
 	var/spells = list(
 		/datum/action/cooldown/spell/projectile/fireball/greater,

@@ -36,7 +36,7 @@
 
 /obj/item/clothing/armor/leather/advanced/rousman
 	name = "rous assassin armor"
-	icon_state = "assassin_armour_item"
+	icon_state = "assassin_armour"
 	item_state = "assassin_armour"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/head/roguehood/rousman
 	name = "rous assassin mask"
-	icon_state = "assassin_mask_item"
+	icon_state = "assassin_mask"
 	item_state = "assassin_mask"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
@@ -58,12 +58,21 @@
 	icon_state = "robe_item"
 	item_state = "robe"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
-	slot_flags = ITEM_SLOT_SHIRT
 	allowed_race = list(SPEC_ID_ROUSMAN)
 
-/obj/item/clothing/armor/leather/rousseer
+/obj/item/clothing/cloak/rousseer
 	name = "rousman seer armor"
-	icon_state = "seer_armour_item"
+	icon_state = "seer_armour"
 	item_state = "seer_armour"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
+	mob_overlay_icon = 'icons/roguetown/mob/monster/rousman.dmi'
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/head/roguehood/rousman/rousseer
+	name = "rousman seer hood"
+	icon_state = "seer_hood"
+	item_state = "seer_hood"
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)
