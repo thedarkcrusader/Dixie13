@@ -56,7 +56,7 @@
 
 /datum/outfit/job/guardsman/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail/hauberk
+	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/shield/heater
@@ -151,7 +151,7 @@
 
 /datum/outfit/job/guardsman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail/hauberk
+	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/polearm/spear
@@ -196,7 +196,7 @@
 
 /datum/outfit/job/guardsman/flailman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail/hauberk
+	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
 	neck = /obj/item/clothing/neck/gorget
 	backr = /obj/item/weapon/shield/wood
