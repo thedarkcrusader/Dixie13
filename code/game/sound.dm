@@ -278,6 +278,9 @@
 /proc/get_rand_frequency()
 	return rand(43100, 45100) //Frequency stuff only works with 45kbps oggs.
 
+/proc/get_rand_frequency_higher_range()
+	return rand(40000, 48100)
+
 /proc/get_sfx(soundin)
 	if(islist(soundin))
 		soundin = pick(soundin)
@@ -397,6 +400,13 @@
 				soundin = pick('sound/foley/footsteps/armor/powerarmor (1).ogg',\
 							'sound/foley/footsteps/armor/powerarmor (2).ogg',\
 							'sound/foley/footsteps/armor/powerarmor (3).ogg',\
+							)
+			if(SFX_WATCH_BOOT_STEP)
+				soundin = pick('sound/foley/footsteps/armor/heavy-footstep (1).ogg',\
+							'sound/foley/footsteps/armor/heavy-footstep (2).ogg',\
+							'sound/foley/footsteps/armor/heavy-footstep (3).ogg',\
+							'sound/foley/footsteps/armor/heavy-footstep (4).ogg',\
+							'sound/foley/footsteps/armor/heavy-footstep (5).ogg'\
 							)
 			if(SFX_CAT_MEOW)
 				soundin = pickweight(list(
