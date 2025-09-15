@@ -372,9 +372,9 @@
 		var/old_pixel_z = message_loc.pixel_z
 		animate(
 			message_loc,
-			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + 0.1,
-			pixel_w = ((exclaimed_multiplier - 1) + rand(0, exclaimed_multiplier)) * pick(-1, 1),
-			pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
+			time = CHAT_SPELLING_DELAY_WITH_EXCLAIMED_MULTIPLIER + 0.3 - (exclaimed ? 0 : 0.1),
+			pixel_w = ((exclaimed_multiplier - 1) + rand(exclaimed_multiplier - 1, exclaimed_multiplier + (exclaimed ? 0 : 3))) * pick(-1, 1),
+			pixel_z = (exclaimed_multiplier + rand((exclaimed_multiplier - 1 + (exclaimed ? 0 : 3)) * direction, 1 * (direction ? direction : 1) * exclaimed_multiplier)),
 			transform = message_loc.transform.Turn(rand(2 * exclaimed_multiplier, 6 * (exclaimed_multiplier - 0.5) * direction)),
 			easing = ELASTIC_EASING,
 		)
