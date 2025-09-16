@@ -109,7 +109,6 @@
 		"Knight Helmet"	= /obj/item/clothing/head/helmet/visored/knight,
 		"Decorated Knight Helmet" = /obj/item/clothing/head/helmet/heavy/decorated/knight,
 		"Visored Sallet" = /obj/item/clothing/head/helmet/visored/sallet,
-		"Spangenhelm" = /obj/item/clothing/head/helmet/heavy/viking,
 		"Decored Golden Helmet" = /obj/item/clothing/head/helmet/heavy/decorated/golden,
 		"None" = /obj/item/clothing/head/roguehood/colored/uncolored,
 	)
