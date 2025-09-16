@@ -58,7 +58,7 @@
 	..()
 	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/gorget
+	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
 	backr = /obj/item/weapon/shield/heater
 	beltr = /obj/item/weapon/sword/short
 	scabbards = list(/obj/item/weapon/scabbard/sword)
@@ -104,7 +104,7 @@
 	..()
 	armor = /obj/item/clothing/armor/leather/advanced
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/chaincoif
+	neck = /obj/item/clothing/neck/coif/cloth //cloth instead of leather, again, a weakpoint
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	beltr = /obj/item/ammo_holder/quiver/arrows
 
@@ -153,7 +153,7 @@
 	..()
 	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/gorget
+	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
 	backr = /obj/item/weapon/polearm/spear
 	beltr = /obj/item/weapon/shield/tower/buckleriron
 
@@ -198,7 +198,7 @@
 	..()
 	armor = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/gorget
+	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
 	backr = /obj/item/weapon/shield/wood
 	beltr = pick(/obj/item/weapon/flail/militia, /obj/item/weapon/flail)
 	//both the militia and normal flail are the same stat wise
