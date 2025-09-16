@@ -26,21 +26,22 @@
 
 /obj/item/storage/crucible/examine(mob/user)
 	. = ..()
-	var/datum/reagent/molten_metal/metal = reagents.get_reagent(/datum/reagent/molten_metal)
-	if(metal)
-		for(var/datum/material/material in metal.data)
-			var/tag = "Molten"
-			if(reagents.chem_temp < material.melting_point)
-				tag = "Hardened"
-			var/total_volume = metal.data[material]
-			var/reagent_color = initial(material.color)
-			. += "It contains [total_volume] [UNIT_FORM_STRING(total_volume)] of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
-		if(crucible_temperature)
-			. += "The crucible is around [crucible_temperature - 271.3]C"
+	if(crucible_temperature)
+		. += "The crucible is around [crucible_temperature - 271.3]C"
 	if(length(melting_pot))
 		for(var/obj/item/atom in melting_pot)
 			var/datum/material/material = atom.melting_material
 			. += "<font color=[initial(material.color)]> [atom.name] </font> - [FLOOR((melting_pot[atom] / atom.melt_amount) * 100, 1)]% Melted"
+	var/datum/reagent/molten_metal/metal = reagents.get_reagent(/datum/reagent/molten_metal)
+	if(!metal)
+		return
+	for(var/datum/material/material in metal.data)
+		var/tag = "Molten"
+		if(reagents.chem_temp < material.melting_point)
+			tag = "Hardened"
+		var/total_volume = metal.data[material]
+		var/reagent_color = initial(material.color)
+		. += "It contains [total_volume] [UNIT_FORM_STRING(total_volume)] of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
 
 /obj/item/storage/crucible/process()
 	var/obj/machinery/light/fueled/smelter/smelter = loc
