@@ -6,6 +6,7 @@
 	category_tags = list(CTAG_WRETCH) // Due to vampire status: skilled weapon skill, no armor besides a gorget.
 	outfit = /datum/outfit/job/wretch/bloodsucker
 	maximum_possible_slots = 1
+	pickprob = 25
 
 /datum/outfit/job/wretch/bloodsucker/pre_equip(mob/living/carbon/human/H)
 
