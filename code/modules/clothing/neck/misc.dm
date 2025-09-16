@@ -322,6 +322,7 @@
 	name = "iron high collier"
 	desc = "A thicker piece of chain neck protection made from iron, though, this one only covers the neck and mouth when pulled up."
 	icon_state = "ihigh_collier"
+	body_parts_covered = NECK|MOUTH
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STRONG
 	smeltresult = /obj/item/ingot/iron
@@ -331,7 +332,7 @@
 /obj/item/clothing/neck/highcollier/iron/renegadecollar
 	icon_state = "renegadecollar"
 	name = "black collar"
-	desc = "A tough leather collar concealing iron chain mail, meant to be paired with its jacket."
+	desc = "A tough leather collar concealing iron chain mail, meant to be paired with its jacket. This one also covers not only the neck and mouth, but also the nose and ears."
 	body_parts_covered = NECK|EARS|MOUTH|NOSE
 
 //........................................................................................
