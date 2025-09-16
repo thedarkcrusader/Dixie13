@@ -20,6 +20,9 @@
 	set name = "Journey to the Underworld"
 	set category = "Spirit"
 
+	if(!mob)
+		return
+
 	switch(alert("Begin the long walk in the Underworld to your judgement?",,"Yes","No"))
 		if("No")
 			to_chat(usr, span_warning("You have second thoughts."))
