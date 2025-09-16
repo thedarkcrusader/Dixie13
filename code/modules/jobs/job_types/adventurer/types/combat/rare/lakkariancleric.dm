@@ -43,6 +43,7 @@
 	if(H.patron != /datum/patron/divine/astrata)
 		H.set_patron(/datum/patron/divine/astrata)
 
+		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_END, 2)
 		H.change_stat (STATKEY_INT, 1)
 		H.change_stat(STATKEY_SPD, 2) // haha elves go nyoom
