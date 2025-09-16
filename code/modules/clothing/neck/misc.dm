@@ -47,6 +47,7 @@
 	resistance_flags = FLAMMABLE // Made of leather
 	smeltresult = /obj/item/fertilizer/ash
 
+	armor_class = AC_LIGHT
 	armor = ARMOR_LEATHER
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	max_integrity = INTEGRITY_POOR
@@ -85,6 +86,7 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 
+	armor_class = AC_LIGHT
 	armor = ARMOR_PADDED
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	prevent_crits = MINOR_CRITICALS
@@ -150,8 +152,11 @@
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
 	smeltresult = null
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	clothing_flags = CANT_SLEEP_IN
 
+	armor_class = AC_MEDIUM
 	armor = ARMOR_MAILLE
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	max_integrity = INTEGRITY_STRONGEST
@@ -186,7 +191,7 @@
 	name = "iron chain coif"
 	desc = "A chain coif made of interwoven iron rings. Affordable protection against arrows and blades, \
 			but should be used as padding rather than relied upon as armor."
-	smeltresult = null
+	melting_material = /datum/material/iron
 
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STRONG
@@ -197,6 +202,7 @@
 	desc = "An antique and simple protection for the neck, used more as an accessory by the common folk. But poor protection is still better than nothing."
 	smeltresult = /obj/item/ingot/copper
 
+	armor_class = AC_MEDIUM
 	armor = ARMOR_LEATHER_GOOD
 	max_integrity = INTEGRITY_POOR
 
@@ -321,6 +327,14 @@
 	body_parts_covered = NECK|EARS|MOUTH|NOSE
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STRONG
+
+//........................................................................................
+/*---------------\
+|				|
+|	Misc?		|
+|				|
+\---------------*/
+
 
 /obj/item/clothing/neck/talkstone
 	name = "talkstone"
