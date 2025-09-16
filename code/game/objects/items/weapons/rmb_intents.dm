@@ -58,19 +58,19 @@
 
 /datum/rmb_intent/aimed
 	name = "aimed"
-	desc = "Your attacks are more precise but have a longer recovery time. Higher critrate with precise attacks."
+	desc = "Your attacks are more precise but have a longer recovery time. Higher chance for certain critical hits. Reduced dodge bonus."
 	icon_state = "rmbaimed"
 	def_bonus = -20
 
 /datum/rmb_intent/strong
 	name = "strong"
-	desc = "Your attacks have +1 strength but use more stamina. Higher critrate with brutal attacks. Intentionally fails surgery steps."
+	desc = "Your attacks have increased strength and have increased force but use more stamina. Higher chance for certain critical hits. Intentionally fails surgery steps. Reduced dodge bonus."
 	icon_state = "rmbstrong"
 	def_bonus = -20
 
 /datum/rmb_intent/swift
 	name = "swift"
-	desc = "Your attacks have less recovery time but are less accurate."
+	desc = "Your attacks have less recovery time but are less accurate and have reduced strength."
 	icon_state = "rmbswift"
 
 /datum/rmb_intent/special
