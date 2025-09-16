@@ -7,10 +7,8 @@
 	*/
 	title = "City Watch Lieutenant"
 	tutorial = "You are a lieutenant of the City Watch. \
-	You have been chosen by the Captain to be his right hand; \
-	To lead the City Watch in his absence, and to ensure the streets are kept safe... \
-	Quite the daunting task however, given that you're barely better equipped than your fellow watchmen. \
-	Either way; Failure is not an option."
+	You have been chosen by the Captain to lead the Watch in his absence; \
+	Failure is not an option."
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_CITYWATCHMEN
@@ -43,7 +41,7 @@
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/mace/cudgel
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel)
+	backpack_contents = list(/obj/item/storage/keyring/lieutenant, /obj/item/weapon/knife/dagger/steel)
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
 		mask = /obj/item/clothing/face/shepherd/clothmask
 
@@ -102,7 +100,7 @@
 		if("Sword")
 			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 3, TRUE)
 	if(grant_shield)
-		H.clamped_adjust_skillrank(/datum/skill/combat/shields, 2, 3, TRUE)
+		H.clamped_adjust_skillrank(/datum/skill/combat/shields, 3, 3, TRUE)
 		var/shield = new /obj/item/weapon/shield/heater()
 		if(!H.equip_to_appropriate_slot(shield))
 			qdel(shield)
