@@ -122,6 +122,10 @@
 	sellprice = 50
 	icon_state = "nscabbard"
 
+/obj/item/weapon/scabbard/sword/noble/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/weapon/scabbard/sword/royal
 	name = "gold decorated scabbard"
 	desc = "A scabbard designed to hold a sword. This one is lined with golden fittings, fit for a royal."

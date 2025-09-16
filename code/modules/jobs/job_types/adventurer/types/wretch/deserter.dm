@@ -52,6 +52,8 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_RECOGNIZED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INHUMENCAMP, TRAIT_GENERIC)
+	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
+		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/disgraced/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

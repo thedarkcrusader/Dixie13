@@ -5,10 +5,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ROYALTY
 	maximum_possible_slots = 1
-	allowed_ages = list(AGE_ADULT, AGE_CHILD)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 	outfit = /datum/outfit/job/wretch/reject
 	category_tags = list(CTAG_WRETCH)
+	displays_adv_job = FALSE
 
 /datum/outfit/job/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
@@ -40,8 +40,10 @@
 
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
+		H.advjob = "Disowned Prince"
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/princess
+		H.advjob = "Disowned Princess"
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
@@ -71,6 +73,8 @@
 	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
+	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
+		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
