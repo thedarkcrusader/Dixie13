@@ -132,6 +132,7 @@
 	icon_state = "lakkaricap"
 	item_state = "lakkaricap"
 	sellprice = 50
+	flags_inv = null
 	armor = ARMOR_SCALE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	body_parts_covered = COVERAGE_HEAD
