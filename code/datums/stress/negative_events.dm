@@ -431,10 +431,6 @@
 	desc = "<span class='warning'>I guess my antics have finally caught up with me.</span>\n"
 	stress_change = -1
 
-/datum/stress_event/broken_vow //Used for when mimes break their vow of silence
-	desc = "<span class='boldwarning'>I have brought shame upon my name, and betrayed my fellow mimes by breaking our sacred vow...</span>\n"
-	stress_change = -8
-
 /datum/stress_event/on_fire
 	desc = "<span class='boldwarning'>I'M ON FIRE!!!</span>\n"
 	stress_change = -12
@@ -581,6 +577,11 @@
 	timer = 1200
 
 /datum/stress_event/graverobbing
-	desc ="<span class='boldwarning'>I just desecrated someone's grave... I can't believe I did that...</span>\n"
+	desc = "<span class='boldwarning'>I just desecrated someone's grave... I can't believe I did that...</span>\n"
 	stress_change = -8
 	timer = 3 MINUTES
+
+/datum/stress_event/ear_crushed
+	desc = span_red("My phantom ear was destroyed!")
+	stress_change = 1
+	timer = 2 MINUTES
