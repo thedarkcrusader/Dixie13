@@ -18621,6 +18621,10 @@
 /obj/structure/toilet,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor/dungeoneer)
+"lha" = (
+/mob/living/simple_animal/hostile/retaliate/bigrat,
+/turf/open/floor/metal/barograte,
+/area/rogue/indoors/town/cell)
 "lhg" = (
 /turf/open/floor/twig,
 /area/rogue/under/town/basement)
@@ -21658,7 +21662,6 @@
 "nfB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/bed/shit,
-/mob/living/simple_animal/hostile/retaliate/bigrat,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/cell)
 "nfJ" = (
@@ -143762,7 +143765,7 @@ rdA
 gnN
 ltu
 cMK
-bIY
+lha
 nfB
 lBA
 uVx
