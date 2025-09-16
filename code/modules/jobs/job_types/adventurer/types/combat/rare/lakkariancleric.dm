@@ -37,6 +37,9 @@
 		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
 
+	if(!H.has_language(/datum/language/celestial))
+		H.grant_language(/datum/language/celestial)
+
 	if(H.patron != /datum/patron/divine/astrata)
 		H.set_patron(/datum/patron/divine/astrata)
 
