@@ -137,6 +137,7 @@
 
 /datum/artificer_recipe/weapons
 	i_type = "Weapons"
+	category = "Weapons"
 
 /datum/artificer_recipe/weapons/crossbow
 	name = "Crossbow (+1 Steel) (+2 Fibers)"
@@ -153,6 +154,53 @@
 	additional_items = list(/obj/item/rope/chain = 1, /obj/item/gear/metal = 2, /obj/item/ingot/bronze = 2)
 	hammers_per_item = 7
 	craftdiff = 4
+
+// --------- ARMOR -----------
+
+//should be armour not armor fight me, but most of the codebase uses american english so its armor
+/datum/artificer_recipe/armor
+	i_type = "Armor"
+	category = "Armor"
+
+/datum/artificer_recipe/armor/steam_knight_helm
+	name = "Steamknight Helmet (+3 Bronze) (+3 Metal Gear) (+1 Cloth)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/helmet/heavy/steam
+	additional_items = list(/obj/item/ingot/bronze = 3, /obj/item/gear/metal = 3, /obj/item/natural/cloth = 1)
+	hammers_per_item = 4
+	craftdiff = 5
+
+/datum/artificer_recipe/armor/steam_knight_plate
+	name = "Steamknight Plate (+5 Bronze) (+3 Metal Gear) (+2 Cloth)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/armor/steam
+	additional_items = list(/obj/item/ingot/bronze = 5, /obj/item/gear/metal = 3, /obj/item/natural/cloth = 2)
+	hammers_per_item = 6
+	craftdiff = 5
+
+/datum/artificer_recipe/armor/steam_knight_gloves
+	name = "Steamknight Gloves (+2 Bronze) (+2 Metal Gear) (+1 Cloth)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/gloves/plate/steam
+	additional_items = list(/obj/item/ingot/bronze = 3, /obj/item/gear/metal = 2, /obj/item/natural/cloth = 1)
+	hammers_per_item = 4
+	craftdiff = 5
+
+/datum/artificer_recipe/armor/steam_knight_boots
+	name = "Steamknight Boots (+2 Bronze) (+2 Metal Gear) (+1 Cloth)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/shoes/boots/armor/steam
+	additional_items = list(/obj/item/ingot/bronze = 3, /obj/item/gear/metal = 2, /obj/item/natural/cloth = 1)
+	hammers_per_item = 4
+	craftdiff = 5
+
+/datum/artificer_recipe/armor/boiler
+	name = "Steamknight Boiler (+1 Backpack) (+1 Bronze) (+3 Cogs)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/clothing/cloak/boiler
+	additional_items = list(/obj/item/gear/metal/bronze = 3, /obj/item/ingot/bronze = 1, /obj/item/storage/backpack/backpack = 1)
+	hammers_per_item = 5
+	craftdiff = 5
 
 // --------- Contraptions -----------
 
@@ -208,19 +256,19 @@
 	hammers_per_item = 4
 	craftdiff = 5
 
-/datum/artificer_recipe/contraptions/boiler
-	name = "Steamknight Boiler (+1 Bar, +3 Cogs)"
-	required_item = /obj/item/ingot/bronze
-	created_item = /obj/item/clothing/cloak/boiler
-	additional_items = list(/obj/item/gear/metal/bronze = 3, /obj/item/ingot/bronze = 1)
-	hammers_per_item = 4
-	craftdiff = 5
-
 // --------- Ammo -----------
 
 /datum/artificer_recipe/ammo
 	i_type = "Ammo"
 	category = "Ammo"
+
+/datum/artificer_recipe/ammo/cannon_ball
+	name = "Lead Cannonball (+3 Iron)"
+	created_item = /obj/item/ammo_casing/caseless/cball
+	required_item = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	hammers_per_item = 6
+	craftdiff = 5
 
 /datum/artificer_recipe/ammo/lead_bullet
 	name = "Lead Bullets 4x"

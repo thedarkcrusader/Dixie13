@@ -30,9 +30,17 @@
 	deconstructible = FALSE
 	flags_1 = ON_BORDER_1
 	climbable = TRUE
-	pass_flags_self = LETPASSTHROW|PASSSTRUCTURE
-	var/passcrawl = TRUE
 	layer = ABOVE_MOB_LAYER
+	pass_flags_self = PASSSTRUCTURE|LETPASSCLICKS
+
+	/// Living mobs can lay down to go past
+	var/pass_crawl = TRUE
+	/// Projectiles can go past
+	var/pass_projectile = TRUE
+	/// Throwing atoms can go past
+	var/pass_throwing = TRUE
+	/// Throwing/Flying non mobs can always exit the turf regardless of other flags
+	var/allow_flying_outwards = TRUE
 
 /obj/structure/fluff/railing/Initialize()
 	. = ..()
@@ -59,47 +67,64 @@
 
 /obj/structure/fluff/railing/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(get_dir(loc, target) == dir)
-		if(passcrawl && isliving(mover))
-			var/mob/living/M = mover
-			if(M.body_position == LYING_DOWN)
-				return TRUE
-		return . || mover.throwing || (mover.movement_type & (FLOATING|FLYING))
-	return TRUE
+	if(get_dir(loc, target) != dir)
+		return TRUE
+	if(pass_crawl && isliving(mover))
+		var/mob/living/M = mover
+		if(M.body_position == LYING_DOWN)
+			return TRUE
+	if(mover.movement_type & (FLOATING|FLYING))
+		if(istype(mover, /obj/projectile) && !pass_projectile)
+			return FALSE
+		return TRUE
+	if(pass_throwing && mover.throwing)
+		return TRUE
 
 /obj/structure/fluff/railing/CanAStarPass(ID, to_dir, requester)
 	if(dir in CORNERDIRS)
 		return TRUE
+	if(ismovable(requester))
+		var/atom/movable/mover = requester
+		if(mover.movement_type & (FLOATING|FLYING))
+			return TRUE
 	if(to_dir == dir)
 		return FALSE
 	return TRUE
 
 /obj/structure/fluff/railing/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
+
 	if(dir in CORNERDIRS)
 		return
-	if(istype(leaving, /obj/projectile))
-		return
-	if(leaving.throwing)
-		return
+
 	if(isobserver(leaving))
 		return
-	if(leaving.movement_type & FLYING)
+
+	if(get_dir(leaving.loc, new_location) != dir)
 		return
-	if(passcrawl && isliving(leaving))
+
+	if(leaving.movement_type & (FLOATING|FLYING))
+		if(istype(leaving, /obj/projectile) && (pass_projectile || allow_flying_outwards))
+			return
+
+	if(leaving.throwing)
+		if(pass_throwing || (allow_flying_outwards && !ismob(leaving)))
+			return
+
+	if(pass_crawl && isliving(leaving))
 		var/mob/living/M = leaving
 		if(M.body_position == LYING_DOWN)
 			return
-	if(get_dir(leaving.loc, new_location) == dir)
-		leaving.Bump(src)
-		return COMPONENT_ATOM_BLOCK_EXIT
+
+	leaving.Bump(src)
+	return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/fluff/railing/OnCrafted(dirin, mob/user)
 	dir = dirin
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
-	. = ..()
+	return ..()
 
 /obj/structure/fluff/railing/corner
 	icon_state = "railing_corner"
@@ -121,48 +146,25 @@
 	name = "border"
 	desc = ""
 	icon_state = "border"
-	passcrawl = FALSE
+	pass_crawl = FALSE
 
-/obj/structure/fluff/railing/fence
-	name = "palisade"
-	desc = "A sturdy fence of wooden stakes."
-	icon_state = "fence"
-	density = TRUE
-	opacity = TRUE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
-	max_integrity = 400
-	pass_flags_self = PASSSTRUCTURE
-	passcrawl = FALSE
-	climb_offset = 6
-
-/obj/structure/fluff/railing/fence/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(get_dir(loc, target) == dir)
-		return FALSE
-	return TRUE
-
-/obj/structure/fluff/railing/woodfence
+/obj/structure/fluff/railing/tall
 	name = "wooden fence"
 	desc = "A sturdy fence of wooden planks."
 	icon = 'icons/roguetown/misc/tallwoodenrailing.dmi'
 	icon_state = "tallwoodenrailing"
-	density = TRUE
-	opacity = FALSE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
 	max_integrity = 500
-	passcrawl = FALSE
-	climb_offset = 6
-	pass_flags_self = PASSSTRUCTURE
+	pass_crawl = FALSE
+	pass_throwing = FALSE
+	pass_projectile = TRUE
 
-/obj/structure/fluff/railing/woodfence/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(get_dir(loc, target) == dir)
-		return FALSE
-	return TRUE
+/obj/structure/fluff/railing/tall/palisade
+	name = "palisade"
+	desc = "A sturdy fence of wooden stakes."
+	icon_state = "fence"
+	opacity = TRUE
+	climb_offset = 6
+	pass_projectile = FALSE
 
 /obj/structure/bars
 	name = "bars"
@@ -1111,7 +1113,7 @@
 
 	var/is_priest = is_priest_job(user.mind.assigned_role)
 	var/is_eoran_acolyte = is_monk_job(user.mind.assigned_role) && (user.patron.type == /datum/patron/divine/eora)
-	if(!is_priest && !is_eoran_acolyte)
+	if(!is_priest && !is_eoran_acolyte && !HAS_TRAIT(user, TRAIT_SECRET_OFFICIANT))
 		return ..()
 
 	if(!istype(W, /obj/item/reagent_containers/food/snacks/produce/fruit/apple))
@@ -1183,28 +1185,55 @@
 		to_chat(user, span_warning("[bride.real_name] is already married!"))
 		return FALSE
 
-	var/surname
-	var/name_index = findtext(groom.real_name, " ")
-	var/bride_first_name = bride.real_name
-
 	groom.original_name = groom.real_name
 	bride.original_name = bride.real_name
 
-	if(!name_index)
-		surname = groom.dna.species.random_surname()
+	var/surname
+	var/groom_name_index = findlasttext(groom.real_name, " ")
+
+	if(!groom_name_index)
+		surname = " " + groom.dna.species.random_surname()
 	else
-		if(findtext(groom.real_name, " of ") || findtext(groom.real_name, " the "))
-			surname = groom.dna.species.random_surname()
-			groom.change_name(copytext(groom.real_name, 1, name_index))
+		var/last_word = copytext(groom.real_name, groom_name_index + 1)
+		var/second_last_index = findlasttext(groom.real_name, " ", 1, groom_name_index - 1)
+
+		var/is_title = FALSE
+		if(second_last_index)
+			var/second_last_word = copytext(groom.real_name, second_last_index + 1, groom_name_index)
+			if((lowertext(second_last_word) == "the" || lowertext(second_last_word) == "of") && last_word)
+				is_title = TRUE
+
+		if(is_title)
+			var/surname_index = findlasttext(groom.real_name, " ", 1, second_last_index - 1)
+			if(!surname_index)
+				surname = " " + copytext(groom.real_name, 1, second_last_index)
+				groom.change_name("")
+			else
+				surname = copytext(groom.real_name, surname_index, second_last_index)
+				groom.change_name(copytext(groom.real_name, 1, surname_index))
+		else if(findtext(groom.real_name, " the ") || findtext(groom.real_name, " of "))
+			surname = " " + groom.dna.species.random_surname()
 		else
-			surname = copytext(groom.real_name, name_index)
-			groom.change_name(copytext(groom.real_name, 1, name_index))
+			surname = copytext(groom.real_name, groom_name_index)
+			groom.change_name(copytext(groom.real_name, 1, groom_name_index))
 
-	name_index = findtext(bride.real_name, " ")
-	if(name_index)
-		bride.change_name(copytext(bride.real_name, 1, name_index))
+	var/bride_name_index = findlasttext(bride.real_name, " ")
+	var/bride_first_name = bride.real_name
 
-	bride_first_name = bride.real_name
+	if(bride_name_index)
+		var/last_word_bride = copytext(bride.real_name, bride_name_index + 1)
+		var/second_last_index_bride = findlasttext(bride.real_name, " ", 1, bride_name_index - 1)
+
+		var/is_title_bride = FALSE
+		if(second_last_index_bride)
+			var/second_last_word_bride = copytext(bride.real_name, second_last_index_bride + 1, bride_name_index)
+			if((lowertext(second_last_word_bride) == "the" || lowertext(second_last_word_bride) == "of") && last_word_bride)
+				is_title_bride = TRUE
+
+		if(!is_title_bride && !findtext(bride.real_name, " the ") && !findtext(bride.real_name, " of "))
+			bride.change_name(copytext(bride.real_name, 1, bride_name_index))
+
+		bride_first_name = bride.real_name
 
 	groom.change_name(groom.real_name + surname)
 	bride.change_name(bride.real_name + surname)
