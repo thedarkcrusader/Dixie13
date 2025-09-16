@@ -138,7 +138,7 @@
 
 	var/added_wound
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
-		if(BCLASS_SMASH, BCLASS_BLUNT)
+		if(BCLASS_SMASH, BCLASS_BLUNT, BCLASS_PUNCH)
 			switch(dam)
 				if(30 to INFINITY)
 					added_wound = /datum/wound/bruise/large
@@ -175,15 +175,28 @@
 					added_wound = /datum/wound/lashing/small
 
 		if(BCLASS_BITE)
-			do_crit = FALSE
+			// Change crit handling becase biting is so free
 			switch(dam)
 				if(20 to INFINITY)
 					added_wound = /datum/wound/bite/large
-					do_crit = TRUE
 				if(10 to 20)
 					added_wound = /datum/wound/bite
+					// Areas that don't really make sense to be vulnerable to regular biting
+					var/static/list/bite_crit_hard = list(
+						BODY_ZONE_L_ARM,
+						BODY_ZONE_R_ARM,
+						BODY_ZONE_L_LEG,
+						BODY_ZONE_R_LEG,
+						BODY_ZONE_CHEST,
+						BODY_ZONE_HEAD,
+						BODY_ZONE_PRECISE_SKULL,
+					)
+					// So you can bite exposed parts of the head, hands, feet, neck, and groin which are typically easier to bite and fleshy
+					if(!HAS_TRAIT(user, TRAIT_STRONGBITE) && (zone_precise in bite_crit_hard))
+						do_crit = FALSE
 				if(1 to 10)
 					added_wound = /datum/wound/bite/small
+					do_crit = FALSE // This is like leaving a mark on your skin or getting bit by a cat
 
 	if(!added_wound)
 		return
