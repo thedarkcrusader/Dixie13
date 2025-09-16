@@ -101,7 +101,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/feintcd
 	name = "Feint Cooldown"
-	desc = span_warning("I have feinted recently, my opponents will be wary.")"\n"
+	desc = span_warning("I have feinted recently, my opponents will be wary.") + "\n"
 
 /datum/status_effect/debuff/riposted
 	id = "riposted"
