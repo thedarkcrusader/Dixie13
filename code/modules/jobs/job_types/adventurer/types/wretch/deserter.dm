@@ -107,7 +107,7 @@
 		"Bastion Helmet" = /obj/item/clothing/head/helmet/heavy/necked,
 		"Royal Knight Helmet" = /obj/item/clothing/head/helmet/visored/royalknight,
 		"Knight Helmet"	= /obj/item/clothing/head/helmet/visored/knight,
-		"Decoared Knight Helmet" = /obj/item/clothing/head/helmet/heavy/decorated/knight,
+		"Decorated Knight Helmet" = /obj/item/clothing/head/helmet/heavy/decorated/knight,
 		"Visored Sallet" = /obj/item/clothing/head/helmet/visored/sallet,
 		"Spangenhelm" = /obj/item/clothing/head/helmet/heavy/viking,
 		"Decored Golden Helmet" = /obj/item/clothing/head/helmet/heavy/decorated/golden,
