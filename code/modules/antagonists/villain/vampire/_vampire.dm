@@ -24,7 +24,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(forced_clan)
 		forced = forced_clan
 		forcing_clan = incoming_clan
-		forcing_clan = new /datum/clan/caitiff
 	else
 		default_clan = incoming_clan
 

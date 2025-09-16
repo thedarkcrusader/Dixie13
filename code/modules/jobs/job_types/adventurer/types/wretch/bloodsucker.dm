@@ -52,7 +52,7 @@
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
 		H.mind.add_antag_datum(new_antag)
 	if(H.gender == FEMALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -126,7 +126,7 @@
 		if(H.mind)
 			if(H.mind.has_antag_datum(/datum/antagonist))
 				return
-			var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+			var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
 			H.mind.add_antag_datum(new_antag)
 
 /datum/outfit/job/wretch/bloodsucker/proc/bum_equip(mob/living/carbon/human/H)
@@ -147,5 +147,5 @@
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
 		H.mind.add_antag_datum(new_antag)
