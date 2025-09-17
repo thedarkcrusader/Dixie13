@@ -72,15 +72,26 @@
 	return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/_adjust_biomass(tier, amount)
+	var/end_amount
 	switch(tier)
 		if(1)
-			tier_1_biomass_amount = clamp(tier_1_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			end_amount = clamp(tier_1_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			tier_1_biomass_amount = end_amount
 		if(2)
-			tier_1_biomass_amount = clamp(tier_2_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			end_amount = clamp(tier_2_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			tier_2_biomass_amount = end_amount
 		if(3)
-			tier_1_biomass_amount = clamp(tier_3_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			end_amount = clamp(tier_3_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
+			tier_3_biomass_amount = end_amount
 
-	SEND_SIGNAL(src, COMSIG_BROODMOTHER_BIOMASS_CHANGE, amount, tier)
+	SEND_SIGNAL(src, COMSIG_BROODMOTHER_BIOMASS_CHANGE, end_amount, tier)
+
+/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/get_biomass_amounts()
+	return list(
+		1 = tier_1_biomass_amount,
+		2 = tier_2_biomass_amount,
+		3 = tier_3_biomass_amount,
+		)
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/attempt_lay_egg(tier)
 	if(!tier)

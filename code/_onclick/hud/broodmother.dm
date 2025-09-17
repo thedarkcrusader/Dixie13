@@ -32,12 +32,12 @@
 	add_filter("alpha_mask_filter", 10, alpha_mask_filter(icon = icon('icons/mob/broodmother_hud/4x128.dmi', icon_state = "mask"), y = current_alpha_mask_filter_offset, flags = MASK_INVERSE))
 	RegisterSignal(hud.mymob, COMSIG_BROODMOTHER_BIOMASS_CHANGE, PROC_REF(on_biomass_change))
 
-/atom/movable/screen/broodmother/bar/proc/on_biomass_change(datum/source, amount, _tier)
+/atom/movable/screen/broodmother/bar/proc/on_biomass_change(datum/source, current_biomass, _tier)
 	SIGNAL_HANDLER
 	if(tier != _tier)
 		return
 
-	adjust_alpha_offset(128 / 100 * amount)
+	set_alpha_offset(128 / 100 * current_biomass)
 
 /atom/movable/screen/broodmother/bar/proc/adjust_alpha_offset(amount)
 	current_alpha_mask_filter_offset = clamp(current_alpha_mask_filter_offset + amount, 0, 128)
