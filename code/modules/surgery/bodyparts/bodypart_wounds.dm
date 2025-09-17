@@ -185,9 +185,6 @@
 				if(1 to 10)
 					added_wound = /datum/wound/bite/small
 
-	if(!added_wound)
-		return
-
 	if(do_crit)
 		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message)
 		if(crit_attempt)
