@@ -19,9 +19,9 @@
 	SET_BASE_PIXEL(-40, -8)
 	hud_type = /datum/hud/broodmother
 
-	var/tier_1_biomass_amount = 100
-	var/tier_2_biomass_amount = 100
-	var/tier_3_biomass_amount = 100
+	var/tier_1_biomass_amount = 20
+	var/tier_2_biomass_amount = 10
+	var/tier_3_biomass_amount = 5
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/Initialize()
 	. = ..()
@@ -80,6 +80,8 @@
 		if(3)
 			tier_1_biomass_amount = clamp(tier_3_biomass_amount + amount, BIOMASS_MIN_AMOUNT, BIOMASS_MAX_AMOUNT)
 
+	SEND_SIGNAL(src, COMSIG_BROODMOTHER_BIOMASS_CHANGE, amount, tier)
+
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/attempt_lay_egg(tier)
 	if(!tier)
 		stack_trace("didn't pass tier for egg")
@@ -92,13 +94,17 @@
 	return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/lay_egg(tier)
+	var/egg_to_lay
 	switch(tier)
 		if(1)
-			new /obj/structure/broodmother_egg/goblin_egg(get_turf(src))
+			egg_to_lay = /obj/structure/broodmother_egg/goblin_egg
 		if(2)
-			new /obj/structure/broodmother_egg/orc(get_turf(src))
+			egg_to_lay = /obj/structure/broodmother_egg/orc
 		if(3)
-			new /obj/structure/broodmother_egg/troll(get_turf(src))
+			egg_to_lay = /obj/structure/broodmother_egg/troll
+
+	var/obj/made_egg = new egg_to_lay(get_turf(src))
+	to_chat(src, span_notice("you lay \a [made_egg]."))
 
 /obj/structure/broodmother_egg
 	name = "egg"
