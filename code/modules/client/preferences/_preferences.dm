@@ -205,6 +205,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 
+	var/datum/loadout_item/loadout1
+	var/datum/loadout_item/loadout2
+	var/datum/loadout_item/loadout3
+
 	var/list/preference_message_list = list()
 
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
@@ -436,6 +440,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
 	dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
 	dat += "<br></td>"
+
+	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'>[loadout1 ? loadout1.name : "None"]</a>"
+
+	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
+
+	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
 
 	dat += "</tr></table>"
 	//-----------END OF BODY TABLE-----------//
@@ -1192,6 +1202,21 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
+				if("loadout_item")
+					var/list/loadouts_available = list("None")
+					loadouts_available += GLOB.loadouts_available
+
+					var/loadout_input = browser_input_list(
+						user,
+						"Choose your character's loadout item. RMB a tree, statue or clock to collect.",
+						"Loadout",
+						loadouts_available,
+						)
+
+					var/loadout_number = href_list["loadout_number"]
+
+					set_loadout(loadout_number, loadout_input)
+
 				if("species")
 					selected_accent = ACCENT_DEFAULT
 					var/list/selectable = get_selectable_species(patreon)
@@ -1791,7 +1816,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			</html>
 			"}
 
-/datum/proc/is_valid_headshot_link(mob/user, value, silent = FALSE)
+/datum/preferences/proc/is_valid_headshot_link(mob/user, value, silent = FALSE)
 	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com", "files.catbox.moe")
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif")
 
@@ -1833,3 +1858,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	return TRUE
 
+
+/datum/preferences/set_loadout(loadout_number, loadout_input)
+	if(!loadout_input)
+		return
+
+	if(loadout_input == "None")
+		vars["loadout[loadout_number]"] = null
+		to_chat(user, span_notice("Who needs stuff anyway?"))
+	else
+		vars["loadout[loadout_number]"] = loadouts_available[loadout_input]
+		to_chat(user, span_notice("[loadout.name]"))
+		if(loadout.desc)
+			to_chat(user, "[loadout.desc]")
