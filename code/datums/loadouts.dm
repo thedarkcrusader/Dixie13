@@ -11,14 +11,6 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 	name = "Card Deck"
 	path = /obj/item/toy/cards/deck
 
-/datum/loadout_item/farkle_dice
-	name = "Farkle Dice Container"
-	path = /obj/item/storage/pill_bottle/dice/farkle
-
-/datum/loadout_item/tarot_deck
-	name = "Tarot Deck"
-	path = /obj/item/toy/cards/deck/tarot
-
 //HATS
 /datum/loadout_item/zalad
 	name = "Keffiyeh"
@@ -30,7 +22,7 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 
 /datum/loadout_item/witchhat
 	name = "Witch Hat"
-	path = /obj/item/clothing/head/witchhat
+	path = /obj/item/clothing/head/wizhat/witch
 
 /datum/loadout_item/bardhat
 	name = "Bard Hat"
@@ -44,9 +36,6 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 	name = "Fur Hat"
 	path = /obj/item/clothing/head/hatfur
 
-/datum/loadout_item/smokingcap
-	name = "Smoking Cap"
-	path = /obj/item/clothing/head/smokingcap
 
 /datum/loadout_item/headband
 	name = "Headband"
@@ -71,7 +60,7 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 
 /datum/loadout_item/jupon
 	name = "Jupon"
-	path = /obj/item/clothing/cloak/stabard/surcoat
+	path = /obj/item/clothing/cloak/stabard/jupon
 
 /datum/loadout_item/cape
 	name = "Cape"
@@ -80,10 +69,6 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 /datum/loadout_item/halfcloak
 	name = "Halfcloak"
 	path = /obj/item/clothing/cloak/half
-
-/datum/loadout_item/ridercloak
-	name = "Rider Cloak"
-	path = /obj/item/clothing/cloak/half/rider
 
 /datum/loadout_item/volfmantle
 	name = "Volf Mantle"
@@ -111,8 +96,7 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 
 /datum/loadout_item/robe
 	name = "Robe"
-	path = /obj/item/clothing/suit/shirt/robe
-
+	path = /obj/item/clothing/shirt/robe
 
 /datum/loadout_item/longshirt
 	name = "Shirt"
@@ -149,7 +133,7 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 //PANTS
 /datum/loadout_item/tights
 	name = "Cloth Tights"
-	path = /obj/item/clothing/under/tights/black
+	path = /obj/item/clothing/pants/tights
 
 /datum/loadout_item/sailorpants
 	name = "Seafaring Pants"
@@ -179,11 +163,11 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 
 /datum/loadout_item/collar
 	name = "Collar"
-	path = /obj/item/clothing/neck/collar
+	path = /obj/item/clothing/neck/leathercollar
 
 /datum/loadout_item/bell_collar
 	name = "Bell Collar"
-	path = /obj/item/clothing/neck/collar/bell_collar
+	path = /obj/item/clothing/neck/bellcollar
 
 /datum/loadout_item/chaperon
     name = "Chaperon (Normal)"

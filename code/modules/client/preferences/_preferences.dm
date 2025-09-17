@@ -439,13 +439,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(headshot_link != null)
 		dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
 	dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
-	dat += "<br></td>"
 
 	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'>[loadout1 ? loadout1.name : "None"]</a>"
 
-	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
-
-	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
+	if(patreon)
+		dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
+		dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
+		dat += "<br></td>"
 
 	dat += "</tr></table>"
 	//-----------END OF BODY TABLE-----------//
@@ -1203,8 +1203,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("loadout_item")
-					var/list/loadouts_available = list("None")
-					loadouts_available += GLOB.loadouts_available
+					var/list/loadouts_available = list("None" = null)
+					for(var/datum/loadout_item/item as anything in GLOB.loadout_items)
+						loadouts_available[item.name] += item
 
 					var/loadout_input = browser_input_list(
 						user,
@@ -1215,7 +1216,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 					var/loadout_number = href_list["loadout_number"]
 
-					set_loadout(loadout_number, loadout_input)
+					set_loadout(user, loadout_number, loadouts_available[loadout_input])
 
 				if("species")
 					selected_accent = ACCENT_DEFAULT
@@ -1859,15 +1860,20 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	return TRUE
 
 
-/datum/preferences/set_loadout(loadout_number, loadout_input)
-	if(!loadout_input)
+/datum/preferences/proc/set_loadout(mob/user, loadout_number, datum/loadout_item/loadout)
+	if(!loadout)
 		return
+	if(!patreon)
+		to_chat(user, span_danger("This is a patreon feature!"))
+		return FALSE
 
-	if(loadout_input == "None")
-		vars["loadout[loadout_number]"] = null
+	if(loadout == "None")
+		vars["loadout[loadout]"] = null
 		to_chat(user, span_notice("Who needs stuff anyway?"))
 	else
-		vars["loadout[loadout_number]"] = loadouts_available[loadout_input]
+		if(!(loadout in GLOB.loadout_items))
+			return
+		vars["loadout[loadout_number]"] = loadout
 		to_chat(user, span_notice("[loadout.name]"))
 		if(loadout.desc)
 			to_chat(user, "[loadout.desc]")
