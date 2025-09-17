@@ -8,6 +8,11 @@
 	if(!ismob(key_holder) && !ismind(key_holder) && !isclient(key_holder))
 		return
 	var/key = key_holder:key
+
+	// patreon triumph increase
+	if(key_is_donator(key))
+		amount *= 1.5
+
 	var/ckey = ckey(key)
 	if(!key)
 		return
