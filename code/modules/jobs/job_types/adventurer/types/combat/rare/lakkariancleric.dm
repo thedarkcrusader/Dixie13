@@ -6,7 +6,7 @@
 	vampcompat = FALSE
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 0
-	pickprob = 20
+	pickprob = 25
 	maximum_possible_slots = 2
 
 /datum/outfit/job/adventurer/lakkariancleric/pre_equip(mob/living/carbon/human/H)
