@@ -145,6 +145,14 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 
 //ACCESSORIES
 
+/datum/loadout_item/elf_ear_necklace
+	name = "Elf Ear Necklace"
+	path = /obj/item/clothing/neck/elfears
+
+/datum/loadout_item/men_ear_necklace
+	name = "Men Ear Necklace"
+	path = /obj/item/clothing/neck/menears
+
 /datum/loadout_item/wrappings
 	name = "Handwraps"
 	path = /obj/item/clothing/wrists/wrappings
