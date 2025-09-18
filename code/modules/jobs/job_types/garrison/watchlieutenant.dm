@@ -22,7 +22,6 @@
 	allowed_races = RACES_PLAYER_GUARD
 
 	outfit = /datum/outfit/job/lieutenant	//Default outfit.
-	advclass_cat_rolls = list(CTAG_GARRISON = 20)	//Handles class selection.
 	give_bank_account = 50
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
@@ -34,8 +33,8 @@
 	wrists = pick(/obj/item/rope/chain, /obj/item/rope)
 	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
-	shirt = /obj/item/clothing/armor/gambeson/heavy
-	armor = /obj/item/clothing/armor/cuirass/iron
+	shirt = /obj/item/clothing/armor/chainmail
+	armor = /obj/item/clothing/armor/cuirass
 	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/chain
 	neck = /obj/item/clothing/neck/chaincoif
