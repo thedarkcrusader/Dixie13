@@ -1,4 +1,4 @@
-/obj/item/roguemachine/merchant
+/obj/item/fake_machine/merchant
 	name = "SKY HANDLER"
 	desc = "A machine that attracts the attention of trading balloons."
 	icon = 'icons/roguetown/misc/machines.dmi'
@@ -6,7 +6,6 @@
 	density = TRUE
 	blade_dulling = DULLING_BASH
 	var/next_airlift
-	max_integrity = 0
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_GIGANTIC
 
@@ -19,7 +18,7 @@
 	layer = BELOW_OBJ_LAYER
 	anchored = TRUE
 
-/obj/item/roguemachine/merchant/attack_hand(mob/living/user)
+/obj/item/fake_machine/merchant/attack_hand(mob/living/user)
 	if(!anchored)
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -37,7 +36,7 @@
 	popup.set_content(contents)
 	popup.open()
 
-/obj/item/roguemachine/merchant/Initialize()
+/obj/item/fake_machine/merchant/Initialize()
 	. = ..()
 	if(anchored)
 		START_PROCESSING(SSroguemachine, src)
@@ -48,12 +47,12 @@
 			continue
 		new /obj/structure/fake_machine/balloon_pad(T)
 
-/obj/item/roguemachine/merchant/Destroy()
+/obj/item/fake_machine/merchant/Destroy()
 	STOP_PROCESSING(SSroguemachine, src)
 	set_light(0)
 	return ..()
 
-/obj/item/roguemachine/merchant/process()
+/obj/item/fake_machine/merchant/process()
 	if(world.time > next_airlift)
 		next_airlift = world.time + rand(2 MINUTES, 3 MINUTES)
 #ifdef TESTSERVER
@@ -102,7 +101,6 @@
 	icon_state = "goldvendor"
 	density = TRUE
 	blade_dulling = DULLING_BASH
-	max_integrity = 0
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	rattle_sound = 'sound/misc/machineno.ogg'
@@ -112,7 +110,7 @@
 	var/list/held_items = list()
 	var/budget = 200
 	var/upgrade_flags
-	var/current_cat = "1"
+	var/current_cat
 	var/base_price = 0
 	var/final_price = 0
 	var/taxes = 0
@@ -124,10 +122,14 @@
 	. = ..()
 	set_light(1, 1, 1, l_color =  "#1b7bf1")
 
-/obj/structure/fake_machine/merchantvend/obj_break(damage_flag, silent)
+/obj/structure/fake_machine/merchantvend/atom_break(damage_flag)
 	. = ..()
 	budget2change(budget)
 	set_light(0)
+
+/obj/structure/fake_machine/merchantvend/atom_fix()
+	. = ..()
+	set_light(1, 1, 1, l_color =  "#1b7bf1")
 
 /obj/structure/fake_machine/merchantvend/Destroy()
 	. = ..()
@@ -187,7 +189,12 @@
 			budget2change(budget, usr)
 			budget = 0
 	if(href_list["changecat"])
-		current_cat = href_list["changecat"]
+		var/selected_category = href_list["changecat"]
+
+		if (selected_category in unlocked_cats)
+			current_cat = selected_category
+		else
+			current_cat = null
 	if(href_list["secrets"])
 		var/list/options = list()
 		if(upgrade_flags & UPGRADE_NOTAX)
@@ -235,7 +242,7 @@
 
 	var/split = ceil(unlocked_cats.len / 2)
 
-	if(current_cat == "1")
+	if(isnull(current_cat))
 		contents += "<table style='width: 100%' line-height: 20px;'>"
 		for(var/i = 1 to split)
 			contents += "<tr>"
@@ -252,7 +259,7 @@
 		contents += "</table>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center><a href='?src=[REF(src)];changecat=0'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/picked_pack = SSmerchant.supply_packs[pack]

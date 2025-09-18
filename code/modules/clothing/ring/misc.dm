@@ -4,6 +4,10 @@
 	icon_state = "ring_s"
 	sellprice = 33
 
+/obj/item/clothing/ring/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/clothing/ring/silver/makers_guild
 	name = "makers' ring"
 	desc = "The wearer is a proud member of the Makers' guild."
@@ -88,6 +92,7 @@
 	var/cdtime
 	var/activetime
 	var/activate_sound
+	abstract_type = /obj/item/clothing/ring/active
 
 /obj/item/clothing/ring/active/attack_hand_secondary(mob/user, params)
 	. = ..()
@@ -264,7 +269,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_BURDEN))
 		. += "An ancient ring made of pyrite amalgam, an engraved quote is hidden in the inner bridge; \"Heavy is the head that bows\""
-		user.add_stress(/datum/stressevent/ring_madness)
+		user.add_stress(/datum/stress_event/ring_madness)
 	else
 		. += "A very old golden ring appointing its wearer as the Mercenary guild master, its strangely missing the crown for the centre stone"
 

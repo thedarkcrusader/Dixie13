@@ -30,6 +30,7 @@
 
 
 /datum/reagent/blood/on_merge(list/mix_data)
+	. = ..()
 	if(data && mix_data)
 		if(data["blood_DNA"] != mix_data["blood_DNA"])
 			data["cloneable"] = 0 //On mix, consider the genetic sampling unviable for pod cloning if the DNA sample doesn't match.
@@ -294,7 +295,7 @@
 /datum/reagent/soap/on_mob_life(mob/living/carbon/M)
 	..()
 	if(ishuman(M))
-		M.add_stress(/datum/stressevent/mouthsoap)
+		M.add_stress(/datum/stress_event/mouthsoap)
 
 /datum/reagent/soap/add_to_member(obj/effect/abstract/liquid_turf/adder)
 	. = ..()

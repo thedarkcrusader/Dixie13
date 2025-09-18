@@ -44,10 +44,9 @@
 	/// Are ghosts prevented from passing through
 	var/ghostproof = FALSE
 
-	var/repairable = TRUE
-	var/repair_state = 0
-	var/obj/item/repair_cost_first = /obj/item/grown/log/tree/small
-	var/obj/item/repair_cost_second = /obj/item/grown/log/tree/small
+	// See repairable component in repairable.dm for what these variables do
+	var/list/repair_thresholds = list(/obj/item/grown/log/tree/small = 1)
+	var/obj/item/broken_repair = /obj/item/grown/log/tree/small
 	var/repair_skill = /datum/skill/craft/carpentry
 	metalizer_result = /obj/structure/door/iron
 	/// Handle bolting on right click
@@ -69,6 +68,9 @@
 		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+
+	if(repair_thresholds || broken_repair)
+		AddComponent(/datum/component/repairable, repair_thresholds, broken_repair, 'sound/misc/wood_saw.ogg', repair_skill)
 
 /obj/structure/door/Destroy()
 	. = ..()
@@ -104,15 +106,6 @@
 		. += span_info("It's lock is a deadbolt.")
 	if(lock?.uses_key)
 		. += span_info("There is a keyhole below the handle.")
-	if(!repairable)
-		return
-	if(!repair_cost_first || !repair_cost_second)
-		return
-	if(obj_integrity < max_integrity)
-		if(repair_state == 0)
-			. += span_notice("A [repair_cost_first.name] can be used to repair it.")
-		if(obj_broken || repair_state == 1)
-			. += span_notice("An additional [repair_cost_second.name] is needed to finish repairs.")
 
 /obj/structure/door/onkick(mob/user)
 	if(obj_broken || switching_states)
@@ -163,7 +156,7 @@
 		to_chat(user, span_warning("I claw at [src]"))
 		take_damage(40, BRUTE, BCLASS_CUT, TRUE)
 		return
-	if(isliving(user) && world.time > last_bump + 20)
+	if(isliving(user) && world.time > last_bump + 1 SECONDS)
 		last_bump = world.time
 		var/mob/living/L = user
 		if(L.m_intent == MOVE_INTENT_SNEAK)
@@ -183,16 +176,14 @@
 	if(switching_states)
 		return FALSE
 	if(door_opened)
-		to_chat(user, span_notice("I cannot lock \the [src] while it is open."))
 		return FALSE
 	return ..()
 
 /obj/structure/door/attackby(obj/item/I, mob/user)
 	if(switching_states)
 		return
-	if(repairable && (user.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
-		repairdoor(I, user)
-		return
+	if(I.has_access())
+		return (..() || attack_hand(user))
 	return ..()
 
 /obj/structure/door/attack_hand_secondary(mob/user, params)
@@ -231,7 +222,7 @@
 	. = ..()
 	if(obj_broken || switching_states)
 		return
-	if(world.time < last_bump + 20)
+	if(world.time < last_bump + 1 SECONDS)
 		return
 	last_bump = world.time
 	if(ismob(AM))
@@ -286,10 +277,14 @@
 	. = ..()
 	set_opacity(anchored ? !door_opened : FALSE)
 
-/obj/structure/door/obj_break(damage_flag, silent)
+/obj/structure/door/atom_break(damage_flag, silent)
 	. = ..()
 	unlock()
 	force_open()
+
+/obj/structure/door/atom_fix()
+	. = ..()
+	force_closed()
 
 /obj/structure/door/OnCrafted(dirin, user)
 	. = ..()
@@ -406,43 +401,6 @@
 	set_opacity(TRUE)
 	playsound(src, 'sound/foley/doors/windowup.ogg', 100)
 
-/obj/structure/door/proc/repairdoor(obj/item/I, mob/user)
-	if(!obj_broken)
-		if(obj_integrity < max_integrity)
-			user.visible_message(span_notice("[user] starts repairing [src]."), span_notice("I start repairing [src]."))
-			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-			if(do_after(user, (30 SECONDS / user.get_skill_level(repair_skill)), src))
-				qdel(I)
-				playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-				obj_integrity = clamp(obj_integrity + max_integrity * integrity_failure, 0, max_integrity)
-				user.visible_message(span_notice("[user] finishes repairing [src]."), span_notice("I finished repairing [src]."))
-			return
-	switch(repair_state)
-		if(0)
-			if(!istype(I, repair_cost_first))
-				return
-			user.visible_message(span_notice("[user] starts repairing [src]."), span_notice("I start repairing [src]."))
-			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-			if(!do_after(user, (30 SECONDS / user.get_skill_level(repair_skill)), src)) // 1 skill = 30 secs, 2 skill = 15 secs etc.
-				return
-			repair_state = 1
-			qdel(I)
-			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-		if(1)
-			if(!istype(I, repair_cost_second))
-				return
-			user.visible_message(span_notice("[user] starts repairing [src]."), span_notice("I start repairing [src]."))
-			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-			if(!do_after(user, (30 SECONDS / user.get_skill_level(repair_skill)), src)) // 1 skill = 30 secs, 2 skill = 15 secs etc.
-				return
-			qdel(I)
-			playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
-			force_closed()
-			obj_broken = FALSE
-			obj_integrity = max_integrity
-			repair_state = 0
-			user.visible_message(span_notice("[user] finishes repairing [src]."), span_notice("I finished repairing [src]."))
-
 /obj/structure/door/green
 	icon_state = "wcg"
 
@@ -468,7 +426,7 @@
 	unlock_sound = 'sound/foley/lockmetal.ogg'
 	rattle_sound = 'sound/foley/lockrattlemetal.ogg'
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
-	repair_cost_second = /obj/item/ingot/iron
+	broken_repair = /obj/item/ingot/iron
 	metalizer_result = null
 
 /obj/structure/door/swing
@@ -521,8 +479,8 @@
 	unlock_sound = 'sound/foley/lockmetal.ogg'
 	rattle_sound = 'sound/foley/lockrattlemetal.ogg'
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
-	repair_cost_first = /obj/item/ingot/iron
-	repair_cost_second = /obj/item/ingot/iron
+	repair_thresholds = list(/obj/item/ingot/iron = 1)
+	broken_repair = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/blacksmithing
 	metalizer_result = null
 
@@ -547,8 +505,8 @@
 	armor = list("blunt" = 15, "slash" = 30, "stab" = 30,  "piercing" = 0, "fire" = 50, "acid" = 50)
 	open_sound = 'sound/foley/doors/stoneopen.ogg'
 	close_sound = 'sound/foley/doors/stoneclose.ogg'
-	repair_cost_first = /obj/item/natural/stone
-	repair_cost_second = /obj/item/natural/stone
+	repair_thresholds = list(/obj/item/natural/stone = 1)
+	broken_repair = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 	smeltresult = null
 	metalizer_result = null
@@ -567,8 +525,8 @@
 	armor = list("blunt" = 15, "slash" = 30, "stab" = 30,  "piercing" = 0, "fire" = 50, "acid" = 50)
 	open_sound = 'sound/foley/doors/stoneopen.ogg'
 	close_sound = 'sound/foley/doors/stoneclose.ogg'
-	repair_cost_first = /obj/item/natural/stone
-	repair_cost_second = /obj/item/natural/stone
+	repair_thresholds = list(/obj/item/natural/stone = 1)
+	broken_repair = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 	smeltresult = null
 	metalizer_result = null

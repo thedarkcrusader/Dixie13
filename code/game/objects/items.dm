@@ -60,10 +60,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	var/obj/item/master = null
 
-	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
-	var/cold_protection = 0 //flags which determine which body parts are protected from cold. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
-	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags
-	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags
+	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN Celcius) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags
+	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN Celcius) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags
 
 	// List of /datum/action's that this item has.
 	var/list/datum/action/actions
@@ -276,6 +274,42 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	/// angle of the icon, these are used for attack animations
 	var/icon_angle = 50 // most of our icons are angled
+	///the processing quality we have
+	var/recipe_quality = 1
+
+
+/obj/item/proc/set_quality(quality)
+	recipe_quality = clamp(quality, 0, 4)
+	update_appearance(UPDATE_OVERLAYS)
+	if(recipe_quality >= 3) // gold tier and above
+		AddComponent(/datum/component/particle_spewer/sparkle)
+	else
+		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
+		if(particle_spewer)
+			particle_spewer.RemoveComponent()
+
+/obj/item/update_overlays()
+	. = ..()
+	// Add quality overlay to the food item
+	if(recipe_quality <= 0 || !ismob(loc))
+		return
+	var/list/quality_icons = list(
+		null, // Regular has no overlay
+		// "bronze",
+		"silver",
+		"gold",
+		"diamond",
+	)
+	if(recipe_quality <= length(quality_icons) && quality_icons[recipe_quality])
+		. += mutable_appearance('icons/effects/crop_quality.dmi', quality_icons[recipe_quality])
+
+/obj/item/dropped(mob/user, silent)
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/item/equipped(mob/user, slot, initial)
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
 
 /**
  * Handles adding components to the item. Added in Initialize()
@@ -342,7 +376,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				B.generate_appearance()
 				B.apply()
 
-/obj/item/Initialize(mapload, freshly_made = FALSE)
+/obj/item/Initialize(mapload)
 	if (attack_verb)
 		attack_verb = typelist("attack_verb", attack_verb)
 
@@ -410,9 +444,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(max_blade_int && !blade_int) //set blade integrity to randomized 60% to 100% if not already set
 		blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
-
-		if(!freshly_made)
-			obj_integrity = max_integrity + rand(-(max_integrity * 0.2), 0)
 
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
@@ -546,7 +577,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/simpleton_price = FALSE
 
 /obj/item/get_inspect_button()
-	if(has_inspect_verb || (obj_integrity < max_integrity))
+	if(has_inspect_verb || (atom_integrity < max_integrity))
 		return " <span class='info'><a href='byond://?src=[REF(src)];inspect=1'>{?}</a></span>"
 	return ..()
 
@@ -589,9 +620,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		inspect_list += "[meme]%"
 
 //**** General durability
-	if(max_integrity)
+	if(uses_integrity)
 		inspect_list += "\n<b>DURABILITY:</b> "
-		var/meme = round(((obj_integrity / max_integrity) * 100), 1)
+		var/meme = round(((atom_integrity / max_integrity) * 100), 1)
 		inspect_list += "[meme]%"
 
 	return inspect_list
@@ -924,7 +955,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	else
 		M.take_bodypart_damage(7)
 
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "eye_stab", /datum/mood_event/eye_stab)
+	M.add_stress(/datum/stress_event/eye_stab)
 
 	log_combat(user, M, "attacked", "[src.name]", "(INTENT: [uppertext(user.used_intent)])")
 
@@ -1266,7 +1297,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			dropped(M, TRUE)
 	return ..()
 
-/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, datum/callback/callback, gentle = FALSE)
+/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, datum/callback/callback, force, gentle = FALSE)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
 		return
 	return ..()

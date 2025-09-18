@@ -401,7 +401,7 @@
 			SEND_SIGNAL(old_pulling, COMSIG_ATOM_NO_LONGER_PULLED, src)
 	setGrabState(GRAB_PASSIVE)
 
-/atom/movable/proc/Move_Pulled(atom/A)
+/atom/movable/proc/Move_Pulled(atom/movable/A)
 	if(!pulling)
 		return FALSE
 	if(pulling.anchored || pulling.move_resist > move_force || !pulling.Adjacent(src))
@@ -427,7 +427,10 @@
 			source.update_vision_cone()
 	return TRUE
 
-/mob/living/Move_Pulled(atom/A)
+/atom/movable/proc/after_being_moved_by_pull(atom/movable/puller)
+	return
+
+/mob/living/Move_Pulled(atom/movable/A)
 	. = ..()
 	if(!. || !isliving(A))
 		return
@@ -530,64 +533,57 @@
 			lastcardinal = direct
 			. = ..()
 		else //Diagonal move, split it into cardinal moves
+			moving_diagonally = FIRST_DIAG_STEP
+			var/first_step_dir
+			// The `&& moving_diagonally` checks are so that a forceMove taking
+			// place due to a Crossed, Bumped, etc. call will interrupt
+			// the second half of the diagonal movement, or the second attempt
+			// at a first half if step() fails because we hit something.
 			if (direct & NORTH)
 				if (direct & EAST)
-					if(lastcardinal == NORTH)
-						direction_to_move = EAST
-						if(!step(src, EAST))
-							direction_to_move = NORTH
-							. = step(src, NORTH)
-					else if(lastcardinal == EAST)
-						direction_to_move = NORTH
-						if(!step(src, NORTH))
-							direction_to_move = EAST
-							. = step(src, EAST)
-					else
-						direction_to_move = pick(NORTH,EAST)
-						. = step(src, direction_to_move)
+					if (step(src, NORTH) && moving_diagonally)
+						first_step_dir = NORTH
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, EAST)
+					else if (moving_diagonally && step(src, EAST))
+						first_step_dir = EAST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, NORTH)
 				else if (direct & WEST)
-					if(lastcardinal == NORTH)
-						direction_to_move = WEST
-						if(!step(src, WEST))
-							direction_to_move = NORTH
-							. = step(src, NORTH)
-					else if(lastcardinal == WEST)
-						direction_to_move = NORTH
-						if(!step(src, NORTH))
-							direction_to_move = WEST
-							. = step(src, WEST)
-					else
-						direction_to_move = pick(NORTH,WEST)
-						. = step(src, direction_to_move)
+					if (step(src, NORTH) && moving_diagonally)
+						first_step_dir = NORTH
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, WEST)
+					else if (moving_diagonally && step(src, WEST))
+						first_step_dir = WEST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, NORTH)
 			else if (direct & SOUTH)
 				if (direct & EAST)
-					if(lastcardinal == SOUTH)
-						direction_to_move = EAST
-						if(!step(src, EAST))
-							direction_to_move = SOUTH
-							. = step(src, SOUTH)
-					else if(lastcardinal == EAST)
-						direction_to_move = SOUTH
-						if(!step(src, SOUTH))
-							direction_to_move = EAST
-							. = step(src, EAST)
-					else
-						direction_to_move = pick(SOUTH,EAST)
-						. = step(src, direction_to_move)
+					if (step(src, SOUTH) && moving_diagonally)
+						first_step_dir = SOUTH
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, EAST)
+					else if (moving_diagonally && step(src, EAST))
+						first_step_dir = EAST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, SOUTH)
 				else if (direct & WEST)
-					if(lastcardinal == SOUTH)
-						direction_to_move = WEST
-						if(!step(src, WEST))
-							direction_to_move = SOUTH
-							. = step(src, SOUTH)
-					else if(lastcardinal == WEST)
-						direction_to_move = SOUTH
-						if(!step(src, SOUTH))
-							direction_to_move = WEST
-							. = step(src, WEST)
-					else
-						direction_to_move = pick(SOUTH,WEST)
-						. = step(src, direction_to_move)
+					if (step(src, SOUTH) && moving_diagonally)
+						first_step_dir = SOUTH
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, WEST)
+					else if (moving_diagonally && step(src, WEST))
+						first_step_dir = WEST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, SOUTH)
+			if(moving_diagonally == SECOND_DIAG_STEP)
+				if(!. && update_dir)
+					setDir(first_step_dir)
+				else if(!inertia_moving)
+					newtonian_move(dir2angle(direct))
+			moving_diagonally = 0
+			return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move = 0
@@ -609,6 +605,7 @@
 						pulling_update_dir = FALSE
 						break
 				pulling.Move(T, get_dir(pulling, T), glide_size, pulling_update_dir) //the pullee tries to reach our previous position
+				pulling.after_being_moved_by_pull(src)
 				pulling.moving_from_pull = null
 			check_pulling()
 
@@ -1052,9 +1049,20 @@
 /mob
 	no_bump_effect = FALSE
 
-GLOBAL_VAR_INIT(pixel_diff, 12)
-GLOBAL_VAR_INIT(pixel_diff_time, 1)
+#define ATTACK_ANIMATION_PIXEL_DIFF 12
+#define ATTACK_ANIMATION_TIME 1
 
+/**
+ * Does an attack animation on the target that either uses the used_item icon or an effect from 'icons/effects/effects.dmi'
+ *
+ * @param {atom} attacked_atom - The thing getting attacked
+ * @param visual_effect_icon - The effect drawn on top of attacked_atom
+ * @param used_item - The item used to draw the swing animation
+ * @param {bool} no_effect - if TRUE, prevents any attack animation on the target
+ * @param item_animation_override - String to determine animation_type of swing animation. Overrides used_intent
+ * @param {datum} used_intent - Intent used to determine animation_type of swing animation
+ * @param {bool} atom_bounce - Whether the src bounces when doing an attack animation
+ */
 /atom/movable/proc/do_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item, no_effect, item_animation_override = null, datum/intent/used_intent, atom_bounce)
 	if(!no_effect && (visual_effect_icon || used_item))
 		var/animation_type = item_animation_override || used_intent?.get_attack_animation_type()
@@ -1069,22 +1077,37 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 
 	var/direction = get_dir(src, attacked_atom)
 	if(direction & NORTH)
-		pixel_y_diff = GLOB.pixel_diff
+		pixel_y_diff = ATTACK_ANIMATION_PIXEL_DIFF
 		turn_dir = prob(50) ? -1 : 1
 	else if(direction & SOUTH)
-		pixel_y_diff = -GLOB.pixel_diff
+		pixel_y_diff = -ATTACK_ANIMATION_PIXEL_DIFF
 		turn_dir = prob(50) ? -1 : 1
 
 	if(direction & EAST)
-		pixel_x_diff = GLOB.pixel_diff
+		pixel_x_diff = 12
 	else if(direction & WEST)
-		pixel_x_diff = -GLOB.pixel_diff
+		pixel_x_diff = -ATTACK_ANIMATION_PIXEL_DIFF
 		turn_dir = -1
 
 	var/matrix/initial_transform = matrix(transform)
 	var/matrix/rotated_transform = transform.Turn(15 * turn_dir)
-	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, transform=rotated_transform, time = GLOB.pixel_diff_time, easing=LINEAR_EASING, flags = ANIMATION_PARALLEL)
-	animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, transform=initial_transform, time = GLOB.pixel_diff_time * 2, easing=SINE_EASING, flags = ANIMATION_PARALLEL)
+	animate(
+		src,
+		pixel_x = pixel_x + pixel_x_diff,
+		pixel_y = pixel_y + pixel_y_diff,
+		transform = rotated_transform,
+		time = ATTACK_ANIMATION_TIME,
+		easing = LINEAR_EASING,
+		flags = ANIMATION_PARALLEL
+		)
+	animate(
+		pixel_x = pixel_x - pixel_x_diff,
+		pixel_y = pixel_y - pixel_y_diff,
+		transform = initial_transform,
+		time = ATTACK_ANIMATION_TIME  * 2,
+		easing = SINE_EASING,
+		flags = ANIMATION_PARALLEL
+		)
 
 
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item, animation_type = ATTACK_ANIMATION_SWIPE)
@@ -1096,11 +1119,22 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 		// The icon should not rotate.
 		attack_image.appearance_flags = APPEARANCE_UI
 		var/atom/movable/flick_visual/attack = attacked_atom.flick_overlay_view(attack_image, 1 SECONDS)
+		var/matrix/copy_transform = new(initial(transform))
 		attack.dir = get_dir(src, attacked_atom)
-		var/matrix/copy_transform = new(transform)
-		animate(attack, alpha = 175, transform = copy_transform.Scale(0.75), time = 0.3 SECONDS)
-		animate(time = 0.1 SECONDS)
-		animate(alpha = 0, time = 0.3 SECONDS, easing = BACK_EASING|EASE_OUT)
+		animate(
+			attack,
+			alpha = 175,
+			transform = copy_transform.Scale(0.75),
+			time = 0.3 SECONDS
+		)
+		animate(
+			time = 0.1 SECONDS
+			)
+		animate(
+			alpha = 0,
+			time = 0.3 SECONDS,
+			easing = BACK_EASING|EASE_OUT
+			)
 
 	if (!used_item)
 		return
@@ -1142,9 +1176,22 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 		if (ATTACK_ANIMATION_BONK)
 			attack.pixel_x = attack.base_pixel_x + 14 * x_sign
 			attack.pixel_y = attack.base_pixel_y + 12 * y_sign
-			animate(attack, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 4 * x_sign, pixel_y = 3 * y_sign, time = 0.2 SECONDS)
-			animate(time = 0.1 SECONDS)
-			animate(alpha = 0, time = 0.1 SECONDS, easing = BACK_EASING|EASE_OUT)
+			animate(
+				attack,
+				alpha = 175,
+				transform = copy_transform.Scale(0.75),
+				pixel_x = 4 * x_sign,
+				pixel_y = 3 * y_sign,
+				time = 0.2 SECONDS
+				)
+			animate(
+				time = 0.1 SECONDS
+				)
+			animate(
+				alpha = 0,
+				time = 0.1 SECONDS,
+				easing = BACK_EASING|EASE_OUT
+				)
 
 		if (ATTACK_ANIMATION_THRUST)
 			var/attack_angle = dir2angle(direction) + rand(-7, 7)
@@ -1428,3 +1475,19 @@ GLOBAL_VAR_INIT(pixel_diff_time, 1)
 	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
+
+/atom/movable/proc/pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
+	if(!Move(new_loc, dir_pusher_to_pushed, glize_size))
+		return FALSE
+
+	after_pushed(arglist(args))
+
+	return TRUE
+
+/// called after this atom has been successfully pushed
+/atom/movable/proc/after_pushed(new_loc, dir_pusher_to_pushed, glize_size, pusher_dir)
+	if(pusher_dir)
+		setDir(dir_pusher_to_pushed)
+
+#undef ATTACK_ANIMATION_PIXEL_DIFF
+#undef ATTACK_ANIMATION_TIME

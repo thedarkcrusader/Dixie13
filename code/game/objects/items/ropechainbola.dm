@@ -146,6 +146,8 @@
 	breakouttime = 30 SECONDS
 	slipouttime = 1 MINUTES
 	possible_item_intents = list(/datum/intent/tie, /datum/intent/whip)
+	melting_material = /datum/material/iron
+	melt_amount = 40
 	firefuel = null
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 
@@ -170,7 +172,7 @@
 	gender = NEUTER
 	var/knockdown = 0
 
-/obj/item/net/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, gentle = FALSE)
+/obj/item/net/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE)
 	if(!..())
 		return
 	playsound(src.loc,'sound/blank.ogg', 75, TRUE)

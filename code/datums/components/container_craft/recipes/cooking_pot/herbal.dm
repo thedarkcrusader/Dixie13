@@ -4,7 +4,7 @@
 	crafting_time = 8 SECONDS
 	water_conversion = 1
 	reagent_requirements = list(
-		/datum/reagent/water = 27
+		/datum/reagent/water = 20
 	)
 	craft_verb = "brewing "
 	required_chem_temp = 350 // Lower temp for gentle herbal brewing
@@ -54,7 +54,7 @@
 	crafting_time = 15 SECONDS
 	water_conversion = 1
 	reagent_requirements = list(
-		/datum/reagent/consumable/ethanol = 21
+		/datum/reagent/consumable/ethanol = 20
 	)
 	subtype_reagents_allowed = TRUE
 	craft_verb = "preparing "
@@ -135,7 +135,7 @@
 
 // Mild Poison Recipes
 /datum/container_craft/cooking/herbal_tea/weak_atropa
-	name = "Dilute Atropa Extract"
+	name = "Diluted Atropa Extract"
 	created_reagent = /datum/reagent/poison/herbal/weak_atropa
 	requirements = list(
 		/obj/item/alch/herb/atropa = 1
@@ -230,8 +230,11 @@
 	name = "Witch's Bane"
 	created_reagent = /datum/reagent/medicine/herbal/witches_bane
 	requirements = list(
-		/obj/item/alch/herb/rosa = 2,
+		/obj/item/alch/herb/rosa = 1,
 		/obj/item/alch/herb/hypericum = 1
+	)
+	reagent_requirements = list(
+		/datum/reagent/medicine/herbal/simple_rosa = 20,
 	)
 	optional_requirements = list(
 		/obj/item/alch/silverdust = 1 // Silver purifies
@@ -245,9 +248,10 @@
 	name = "Scholar's Focus Tea"
 	created_reagent = /datum/reagent/buff/herbal/scholar_focus
 	requirements = list(
-		/obj/item/alch/herb/mentha = 1,
 		/obj/item/alch/herb/euphrasia = 1,
-		/obj/item/alch/herb/salvia = 1
+	)
+	reagent_requirements = list(
+		/datum/reagent/buff/herbal/alchemist_insight = 20
 	)
 	crafting_time = 12 SECONDS
 	finished_smell = /datum/pollutant/food/mint

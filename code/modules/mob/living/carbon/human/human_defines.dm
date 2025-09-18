@@ -133,6 +133,9 @@
 	blocks_emissive = NONE
 	var/datum/charflaw/charflaw
 
+	/// Assoc list of culinary preferences of the mob
+	var/list/culinary_preferences = list()
+
 	/// List of curses on this mob
 	var/list/curses = list()
 
@@ -142,6 +145,8 @@
 	var/mob/stored_mob = null // werewolf bullshit
 
 	var/datum/family_member/family_member_datum
+
+	var/temp_debuff_level = null
 
 	fovangle = FOV_DEFAULT // our fov
 

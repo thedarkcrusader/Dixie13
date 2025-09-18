@@ -366,15 +366,19 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	redstone_structure = TRUE
 	var/togg = FALSE
 	var/base_state = "floorhatch"
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 /*
 /obj/structure/floordoor/Initialize()
 	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 40)
 	return ..()
 */
-/obj/structure/floordoor/obj_break(damage_flag, silent)
+/obj/structure/floordoor/atom_break(damage_flag)
+	. = ..()
 	obj_flags = null
-	..()
+
+/obj/structure/floordoor/atom_fix()
+	. = ..()
+	obj_flags = initial(obj_flags)
 
 /obj/structure/floordoor/redstone_triggered(mob/user)
 	if(obj_broken)
@@ -401,8 +405,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/changing_state = FALSE
 	var/delay2open = 0
 	var/delay2close = 0
-	max_integrity = 0
-	nomouseover = TRUE
+	resistance_flags = INDESTRUCTIBLE
+	no_over_text = TRUE
 	mouse_opacity = 0
 	redstone_structure = TRUE
 
@@ -446,14 +450,14 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	name = "Kybraxor the Devourer"
 	desc = "The old mad duke's hungriest pet."
 	density = FALSE
-	nomouseover = TRUE
+	no_over_text = TRUE
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "kybraxor1"
 	redstone_id = "gatelava"
 	var/openn = FALSE
 	var/changing_state = FALSE
 	layer = ABOVE_OPEN_TURF_LAYER
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 
 /obj/structure/kybraxor/redstone_triggered(mob/user)
 	if(changing_state)

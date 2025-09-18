@@ -255,7 +255,12 @@
 		deltimer(timing_id)
 		timing_id = null
 
-/obj/item/mimictrinket/attack_obj(obj/target, mob/living/user)
+/obj/item/mimictrinket/attack_atom(atom/attacked_atom, mob/living/user)
+	if(!isobj(attacked_atom))
+		return ..()
+
+	var/obj/target = attacked_atom
+	. = TRUE
 	if(ready)
 		to_chat(user,span_notice("[src] takes the form of [target]!"))
 		oldicon = icon
@@ -655,19 +660,16 @@
 /obj/structure/soul
 	name = "soul"
 	desc = "The soul of the dead"
-
 	icon = 'icons/roguetown/misc/mana.dmi'
 	icon_state = "soul"
-
 	plane = LEYLINE_PLANE
 	invisibility = INVISIBILITY_LEYLINES
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	no_over_text = TRUE
 
-	var/mana_amount = 75
-
+	var/mana_amount = 7
 	var/datum/weakref/drainer
-
 	var/qdel_timer
 
 /obj/structure/soul/Initialize(mapload)

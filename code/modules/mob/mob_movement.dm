@@ -168,7 +168,7 @@ w/**
 	. = ..()
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-		add_delay *= 2
+		add_delay *= sqrt(2)
 
 	var/after_glide = 0
 	if(visual_delay)
@@ -640,8 +640,8 @@ w/**
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(H.get_encumbrance() >= 0.7)
-						to_chat(H, span_info("Your armor is too heavy to run in!"))
+					if(H.get_encumbrance() >= 0.5)
+						to_chat(H, span_info("You are too heavy to run!"))
 						return
 			m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)

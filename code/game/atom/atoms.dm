@@ -125,7 +125,7 @@
 	var/xyoverride = FALSE //so we can 'face' a click catcher even though it doesn't have an x or a y
 
 	/// This means that the mouse over text will not be displayed when the mouse is over this atom
-	var/nomouseover = FALSE
+	var/no_over_text = FALSE
 	var/hover_color = "#a1bac4"
 
 	///this is the path to the enchantment not the actual enchantment
@@ -137,6 +137,27 @@
 	var/datum/component/orbiter/orbiters
 
 	var/blockscharging = FALSE
+
+	/// Any atom that uses integrity and can be damaged must set this to true, otherwise the integrity procs will throw an error
+	var/uses_integrity = FALSE
+	///Armor datum used by the atom
+	var/datum/armor/armor
+	///Current integrity, defaults to max_integrity on init
+	VAR_PRIVATE/atom_integrity
+	///Maximum integrity
+	var/max_integrity = 500
+	///Integrity level when this atom will "break" (whatever that means) 0 if we have no special broken behavior, otherwise is a percentage of at what point the atom breaks. 0.5 being 50%
+	var/integrity_failure = 0
+	///Damage under this value will be completely ignored
+	var/damage_deflection = 0
+	/// Determines the damage calculation from an item attacking this atom
+	var/blade_dulling
+
+	var/break_sound
+	var/break_message
+	var/attacked_sound
+
+	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -221,7 +242,12 @@
 
 	SETUP_SMOOTHING()
 
-	InitializeAIController()
+	if(uses_integrity)
+		atom_integrity = max_integrity
+	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
+
+	if(ispath(ai_controller))
+		ai_controller = new ai_controller(src)
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -481,25 +507,19 @@
 				if(user.can_see_reagents()) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
-						if(R.volume / 3 < 1)
-							. += "less than 1 oz of <font color=[R.color]>[R.name]</font>"
-						else
-							. += "[round(R.volume / 3)] oz of <font color=[R.color]>[R.name]</font>"
+						. += "[(UNIT_FORM_STRING(R.volume))] of <font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
 					reagent_color = mix_color_from_reagents(reagents.reagent_list)
-					if(total_volume / 3 < 1)
-						. += "It contains less than 1 oz of <font color=[reagent_color]>something.</font>"
-					else
-						. += "It contains [round(total_volume / 3)] oz of <font color=[reagent_color]>something.</font>"
+					. += "It contains [(UNIT_FORM_STRING(total_volume))] of <font color=[reagent_color]>something.</font>"
 			else
 				. += "It's empty."
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [round(reagents.total_volume / 3, 0.1)] oz left.</span>"
+				. += "<span class='notice'>It has [(UNIT_FORM_STRING(round(reagents.total_volume, 0.1)))] left.</span>"
 			else
 				. += "<span class='danger'>It's empty.</span>"
 		//SNIFFING
@@ -1357,15 +1377,6 @@
 	// it'd be trivial to readd if you needed it, though
 	return SSmapping.gravity_by_z_level["[gravity_turf.z]"] || turf_area.has_gravity
 
-/**
-* Instantiates the AI controller of this atom. Override this if you want to assign variables first.
-*
-* This will work fine without manually passing arguments.
-+*/
-/atom/proc/InitializeAIController()
-	if(ai_controller)
-		ai_controller = new ai_controller(src)
-
 /obj/proc/propagate_temp_change(value, weight, falloff = 0.5, max_depth = 3)
 	var/key = REF(src)
 	temperature_affected_turfs = list()
@@ -1421,3 +1432,18 @@
 /// If it is not found, returns null.
 /atom/proc/get_filter_index(name)
 	return filter_data?.Find(name)
+
+/atom/proc/do_alert_effect()
+	var/mutable_appearance/alert = mutable_appearance('icons/effects/32x48.dmi', "alert_effect")
+	var/atom/movable/flick_visual/exclamation = flick_overlay_view(alert, 1 SECONDS)
+	exclamation.plane = src.plane
+	exclamation.alpha = 0
+	exclamation.pixel_x = -pixel_x
+	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
+
+	// Intentionally less time then the flick so we don't get weird shit
+	addtimer(CALLBACK(src, PROC_REF(forget_alert), exclamation), 0.8 SECONDS, TIMER_CLIENT_TIME)
+
+/atom/proc/forget_alert(atom/movable/flick_visual/alert)
+	animate(alert, time = 0.5 SECONDS, alpha = 0)
+	QDEL_IN(alert, 0.5 SECONDS)

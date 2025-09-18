@@ -14,12 +14,16 @@
 	possible_transfer_amounts = list(6)
 	dropshrink = 0.75
 	w_class = WEIGHT_CLASS_NORMAL
-	volume = 24
+	volume = 25
 	obj_flags = CAN_BE_HIT
 	sellprice = 1
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	gripped_intents = list(INTENT_POUR)
+
+/obj/item/reagent_containers/glass/cup/Initialize(mapload, vol)
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/cup)
 
 /obj/item/reagent_containers/glass/cup/wooden
 	name = "wooden cup"

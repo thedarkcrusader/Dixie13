@@ -178,9 +178,7 @@
 	var/obj/effect/temp_visual/drain_swirl/effect = new(T)
 	effect.appearance = drain_effect
 
-/obj/structure/fluid_drain/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
-	mouseover.maptext_height = 128
-
+/obj/structure/fluid_drain/return_rotation_chat()
 	var/primary_fluid = "None"
 	var/primary_volume = 0
 	for(var/datum/reagent/R in collected_fluids.reagent_list)
@@ -190,11 +188,10 @@
 
 	var/status = active ? "Active" : "Inactive"
 
-	return {"<span style='font-size:8pt;font-family:"Pterra";color:#0080ff;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;' class='center maptext '>
-			Status: [status]<br>
-			Storage: [collected_fluids.total_volume]/[max_storage]<br>
-			Primary: [primary_fluid] ([primary_volume])<br>
-			Pressure: [providing_pressure]</span>"}
+	return "Status: [status]\n\
+			Storage: [collected_fluids.total_volume]/[max_storage]\n\
+			Primary: [primary_fluid] ([primary_volume])\n\
+			Pressure: [providing_pressure]"
 
 /obj/structure/fluid_drain/examine(mob/user)
 	. = ..()

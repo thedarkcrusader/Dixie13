@@ -30,9 +30,17 @@
 	deconstructible = FALSE
 	flags_1 = ON_BORDER_1
 	climbable = TRUE
-	pass_flags_self = LETPASSTHROW|PASSSTRUCTURE
-	var/passcrawl = TRUE
 	layer = ABOVE_MOB_LAYER
+	pass_flags_self = PASSSTRUCTURE|LETPASSCLICKS
+
+	/// Living mobs can lay down to go past
+	var/pass_crawl = TRUE
+	/// Projectiles can go past
+	var/pass_projectile = TRUE
+	/// Throwing atoms can go past
+	var/pass_throwing = TRUE
+	/// Throwing/Flying non mobs can always exit the turf regardless of other flags
+	var/allow_flying_outwards = TRUE
 
 /obj/structure/fluff/railing/Initialize()
 	. = ..()
@@ -59,47 +67,64 @@
 
 /obj/structure/fluff/railing/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(get_dir(loc, target) == dir)
-		if(passcrawl && isliving(mover))
-			var/mob/living/M = mover
-			if(M.body_position == LYING_DOWN)
-				return TRUE
-		return . || mover.throwing || (mover.movement_type & (FLOATING|FLYING))
-	return TRUE
+	if(get_dir(loc, target) != dir)
+		return TRUE
+	if(pass_crawl && isliving(mover))
+		var/mob/living/M = mover
+		if(M.body_position == LYING_DOWN)
+			return TRUE
+	if(mover.movement_type & (FLOATING|FLYING))
+		if(istype(mover, /obj/projectile) && !pass_projectile)
+			return FALSE
+		return TRUE
+	if(pass_throwing && mover.throwing)
+		return TRUE
 
 /obj/structure/fluff/railing/CanAStarPass(ID, to_dir, requester)
 	if(dir in CORNERDIRS)
 		return TRUE
+	if(ismovable(requester))
+		var/atom/movable/mover = requester
+		if(mover.movement_type & (FLOATING|FLYING))
+			return TRUE
 	if(to_dir == dir)
 		return FALSE
 	return TRUE
 
 /obj/structure/fluff/railing/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
+
 	if(dir in CORNERDIRS)
 		return
-	if(istype(leaving, /obj/projectile))
-		return
-	if(leaving.throwing)
-		return
+
 	if(isobserver(leaving))
 		return
-	if(leaving.movement_type & FLYING)
+
+	if(get_dir(leaving.loc, new_location) != dir)
 		return
-	if(passcrawl && isliving(leaving))
+
+	if(leaving.movement_type & (FLOATING|FLYING))
+		if(istype(leaving, /obj/projectile) && (pass_projectile || allow_flying_outwards))
+			return
+
+	if(leaving.throwing)
+		if(pass_throwing || (allow_flying_outwards && !ismob(leaving)))
+			return
+
+	if(pass_crawl && isliving(leaving))
 		var/mob/living/M = leaving
 		if(M.body_position == LYING_DOWN)
 			return
-	if(get_dir(leaving.loc, new_location) == dir)
-		leaving.Bump(src)
-		return COMPONENT_ATOM_BLOCK_EXIT
+
+	leaving.Bump(src)
+	return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/fluff/railing/OnCrafted(dirin, mob/user)
 	dir = dirin
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
-	. = ..()
+	return ..()
 
 /obj/structure/fluff/railing/corner
 	icon_state = "railing_corner"
@@ -121,48 +146,26 @@
 	name = "border"
 	desc = ""
 	icon_state = "border"
-	passcrawl = FALSE
+	pass_crawl = FALSE
 
-/obj/structure/fluff/railing/fence
-	name = "palisade"
-	desc = "A sturdy fence of wooden stakes."
-	icon_state = "fence"
-	density = TRUE
-	opacity = TRUE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
-	max_integrity = 400
-	pass_flags_self = PASSSTRUCTURE
-	passcrawl = FALSE
-	climb_offset = 6
-
-/obj/structure/fluff/railing/fence/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(get_dir(loc, target) == dir)
-		return FALSE
-	return TRUE
-
-/obj/structure/fluff/railing/woodfence
+/obj/structure/fluff/railing/tall
 	name = "wooden fence"
 	desc = "A sturdy fence of wooden planks."
 	icon = 'icons/roguetown/misc/tallwoodenrailing.dmi'
 	icon_state = "tallwoodenrailing"
-	density = TRUE
-	opacity = FALSE
-	anchored = TRUE
-	layer = 2.91
-	climbable = FALSE
 	max_integrity = 500
-	passcrawl = FALSE
-	climb_offset = 6
-	pass_flags_self = PASSSTRUCTURE
+	pass_crawl = FALSE
+	pass_throwing = FALSE
+	pass_projectile = TRUE
 
-/obj/structure/fluff/railing/woodfence/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(get_dir(loc, target) == dir)
-		return FALSE
-	return TRUE
+/obj/structure/fluff/railing/tall/palisade
+	name = "palisade"
+	desc = "A sturdy fence of wooden stakes."
+	icon = 'icons/roguetown/misc/railing.dmi'
+	icon_state = "fence"
+	opacity = TRUE
+	climb_offset = 6
+	pass_projectile = FALSE
 
 /obj/structure/bars
 	name = "bars"
@@ -201,10 +204,15 @@
 	plane = GAME_PLANE
 	layer = WALL_OBJ_LAYER+0.05
 
-/obj/structure/bars/obj_break(damage_flag, silent)
+/obj/structure/bars/atom_break(damage_flag)
+	. = ..()
 	icon_state = "[initial(icon_state)]b"
 	density = FALSE
-	..()
+
+/obj/structure/bars/atom_fix()
+	. = ..()
+	density = initial(density)
+	icon_state = initial(icon_state)
 
 /obj/structure/bars/cemetery
 	icon_state = "cemetery"
@@ -267,9 +275,9 @@
 	dir = pick(GLOB.cardinals)
 	return ..()
 
-/obj/structure/bars/grille/obj_break(damage_flag, silent)
+/obj/structure/bars/grille/atom_break(damage_flag)
+	. = ..()
 	obj_flags = CAN_BE_HIT
-	..()
 
 /obj/structure/bars/grille/redstone_triggered(mob/user)
 	if(obj_broken)
@@ -327,7 +335,6 @@
 	break_sound = "glassbreak"
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
-	var/broke = FALSE
 	var/datum/looping_sound/clockloop/soundloop
 	drag_slowdown = 3
 	metalizer_result = /obj/item/gear/metal/bronze
@@ -344,14 +351,18 @@
 		QDEL_NULL(soundloop)
 	return ..()
 
-/obj/structure/fluff/clock/obj_break(damage_flag, silent)
-	if(!broke)
-		broke = TRUE
-		icon_state = "b[initial(icon_state)]"
-		if(soundloop)
-			soundloop.stop()
-		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-	..()
+/obj/structure/fluff/clock/atom_break(damage_flag)
+	. = ..()
+	icon_state = "b[initial(icon_state)]"
+	if(soundloop)
+		soundloop.stop()
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/obj/structure/fluff/clock/atom_fix()
+	. = ..()
+	icon_state = initial(icon_state)
+	soundloop.start()
+	attacked_sound = initial(attacked_sound)
 
 /obj/structure/fluff/clock/attack_hand_secondary(mob/user, params)
 	. = ..()
@@ -371,7 +382,7 @@
 
 /obj/structure/fluff/clock/examine(mob/user)
 	. = ..()
-	if(!broke)
+	if(!obj_broken)
 		var/day = "... actually, WHAT dae is it?"
 		switch(GLOB.dayspassed)
 			if(1)
@@ -426,7 +437,6 @@
 	break_sound = "glassbreak"
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
-	var/broke = FALSE
 	SET_BASE_PIXEL(0, 32)
 	metalizer_result = /obj/item/gear/metal/bronze
 
@@ -437,7 +447,7 @@
 
 /obj/structure/fluff/wallclock/examine(mob/user)
 	. = ..()
-	if(!broke)
+	if(!obj_broken)
 		var/day = "... actually, WHAT dae is it?"
 		switch(GLOB.dayspassed)
 			if(1)
@@ -462,14 +472,18 @@
 	soundloop.start()
 	. = ..()
 
-/obj/structure/fluff/wallclock/obj_break(damage_flag, silent)
-	if(!broke)
-		broke = TRUE
-		icon_state = "b[initial(icon_state)]"
-		if(soundloop)
-			soundloop.stop()
-		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-	..()
+/obj/structure/fluff/wallclock/atom_break(damage_flag)
+	. = ..()
+	icon_state = "b[initial(icon_state)]"
+	if(soundloop)
+		soundloop.stop()
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/obj/structure/fluff/wallclock/atom_fix()
+	. = ..()
+	icon_state = initial(icon_state)
+	soundloop.start()
+	attacked_sound = initial(attacked_sound)
 
 /obj/structure/fluff/wallclock/l
 	SET_BASE_PIXEL(-32, 0)
@@ -1100,7 +1114,7 @@
 
 	var/is_priest = is_priest_job(user.mind.assigned_role)
 	var/is_eoran_acolyte = is_monk_job(user.mind.assigned_role) && (user.patron.type == /datum/patron/divine/eora)
-	if(!is_priest && !is_eoran_acolyte)
+	if(!is_priest && !is_eoran_acolyte && !HAS_TRAIT(user, TRAIT_SECRET_OFFICIANT))
 		return ..()
 
 	if(!istype(W, /obj/item/reagent_containers/food/snacks/produce/fruit/apple))
@@ -1172,28 +1186,55 @@
 		to_chat(user, span_warning("[bride.real_name] is already married!"))
 		return FALSE
 
-	var/surname
-	var/name_index = findtext(groom.real_name, " ")
-	var/bride_first_name = bride.real_name
-
 	groom.original_name = groom.real_name
 	bride.original_name = bride.real_name
 
-	if(!name_index)
-		surname = groom.dna.species.random_surname()
+	var/surname
+	var/groom_name_index = findlasttext(groom.real_name, " ")
+
+	if(!groom_name_index)
+		surname = " " + groom.dna.species.random_surname()
 	else
-		if(findtext(groom.real_name, " of ") || findtext(groom.real_name, " the "))
-			surname = groom.dna.species.random_surname()
-			groom.change_name(copytext(groom.real_name, 1, name_index))
+		var/last_word = copytext(groom.real_name, groom_name_index + 1)
+		var/second_last_index = findlasttext(groom.real_name, " ", 1, groom_name_index - 1)
+
+		var/is_title = FALSE
+		if(second_last_index)
+			var/second_last_word = copytext(groom.real_name, second_last_index + 1, groom_name_index)
+			if((lowertext(second_last_word) == "the" || lowertext(second_last_word) == "of") && last_word)
+				is_title = TRUE
+
+		if(is_title)
+			var/surname_index = findlasttext(groom.real_name, " ", 1, second_last_index - 1)
+			if(!surname_index)
+				surname = " " + copytext(groom.real_name, 1, second_last_index)
+				groom.change_name("")
+			else
+				surname = copytext(groom.real_name, surname_index, second_last_index)
+				groom.change_name(copytext(groom.real_name, 1, surname_index))
+		else if(findtext(groom.real_name, " the ") || findtext(groom.real_name, " of "))
+			surname = " " + groom.dna.species.random_surname()
 		else
-			surname = copytext(groom.real_name, name_index)
-			groom.change_name(copytext(groom.real_name, 1, name_index))
+			surname = copytext(groom.real_name, groom_name_index)
+			groom.change_name(copytext(groom.real_name, 1, groom_name_index))
 
-	name_index = findtext(bride.real_name, " ")
-	if(name_index)
-		bride.change_name(copytext(bride.real_name, 1, name_index))
+	var/bride_name_index = findlasttext(bride.real_name, " ")
+	var/bride_first_name = bride.real_name
 
-	bride_first_name = bride.real_name
+	if(bride_name_index)
+		var/last_word_bride = copytext(bride.real_name, bride_name_index + 1)
+		var/second_last_index_bride = findlasttext(bride.real_name, " ", 1, bride_name_index - 1)
+
+		var/is_title_bride = FALSE
+		if(second_last_index_bride)
+			var/second_last_word_bride = copytext(bride.real_name, second_last_index_bride + 1, bride_name_index)
+			if((lowertext(second_last_word_bride) == "the" || lowertext(second_last_word_bride) == "of") && last_word_bride)
+				is_title_bride = TRUE
+
+		if(!is_title_bride && !findtext(bride.real_name, " the ") && !findtext(bride.real_name, " of "))
+			bride.change_name(copytext(bride.real_name, 1, bride_name_index))
+
+		bride_first_name = bride.real_name
 
 	groom.change_name(groom.real_name + surname)
 	bride.change_name(bride.real_name + surname)
@@ -1206,8 +1247,8 @@
 		var/announcement_message = "Eora [groom.gender == bride.gender ? "begrudgingly accepts" : "proudly embraces"] the marriage between [groom.real_name] and [bride_first_name]!"
 		priority_announce(announcement_message, title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 
-	groom.remove_stress(/datum/stressevent/eora_matchmaking)
-	bride.remove_stress(/datum/stressevent/eora_matchmaking)
+	groom.remove_stress(/datum/stress_event/eora_matchmaking)
+	bride.remove_stress(/datum/stress_event/eora_matchmaking)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MARRIAGE, groom, bride)
 	record_round_statistic(STATS_MARRIAGES)
 	qdel(apple)
@@ -1293,7 +1334,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_BURDEN))
 		. += "slumped and tortured, broken body pertrified and in pain, its chest rose and fell in synch with mine banishing any doubt left, it is me! my own visage glares back at me!"
-		user.add_stress(/datum/stressevent/ring_madness)
+		user.add_stress(/datum/stress_event/ring_madness)
 		return
 	if(ring_destroyed == TRUE)
 		. += "a statue depicting a decapitated man writhing in chains on the ground, it holds its hands out, pleading, in its palms is a glowing ring..."

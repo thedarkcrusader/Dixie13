@@ -61,7 +61,7 @@
 	extra_range = 8
 	falloff_exponent = 0
 	persistent_loop = TRUE
-	var/stress2give = /datum/stressevent/music
+	var/stress2give = /datum/stress_event/music
 	channel = CHANNEL_JUKEBOX
 
 /datum/looping_sound/musloop/on_hear_sound(mob/M)
@@ -78,7 +78,7 @@
 	icon_state = "music0"
 	density = TRUE
 	anchored = TRUE
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 	rattle_sound = 'sound/misc/machineno.ogg'
 	unlock_sound = 'sound/misc/beep.ogg'
 	lock_sound = 'sound/misc/beep.ogg'

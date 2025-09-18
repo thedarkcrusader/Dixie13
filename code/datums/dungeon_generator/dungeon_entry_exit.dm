@@ -18,11 +18,10 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	density = TRUE
 	anchored = TRUE
 	SET_BASE_PIXEL(-48, 0)
-	max_integrity = 0
 	bound_width = 128
 	appearance_flags = NONE
 	opacity = TRUE
-	obj_flags = INDESTRUCTIBLE
+	resistance_flags = INDESTRUCTIBLE
 
 	var/dungeon_id
 	var/list/dungeon_exits = list()
@@ -162,6 +161,9 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		break
 
 /obj/structure/dungeon_exit/Destroy()
+	for(var/obj/structure/dungeon_entry/listed as anything in GLOB.dungeon_entries)
+		listed.dungeon_exits -= src
+
 	entry = null
 	GLOB.dungeon_exits -= src
 	return ..()

@@ -84,11 +84,9 @@
 		pipe.propagate_change(check_id, null, 0, null, null)
 		pipe.providers = list()
 
-/obj/structure/water_pipe/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
-	mouseover.maptext_height = 96
-	return {"<span style='font-size:8pt;font-family:"Pterra";color:#808000;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
-			Pressure: [water_pressure]
-			Fluid: [carrying_reagent ? initial(carrying_reagent.name) : "Nothing"]</span>"}
+/obj/structure/water_pipe/return_rotation_chat()
+	return "Pressure: [water_pressure]\n\
+			Fluid: [carrying_reagent ? initial(carrying_reagent.name) : "Nothing"]"
 
 /obj/structure/water_pipe/proc/make_provider(datum/reagent/reagent, pressure, obj/structure/giver)
 	check_id++
@@ -205,7 +203,3 @@
 		if("24")
 			for(var/obj/particle_emitter/stored in particle_emitters)
 				RemoveEmitter(stored)
-
-// /obj/structure/water_pipe/process()
-// 	if(!input)
-// 		return

@@ -49,7 +49,10 @@
 	return ..()
 
 /obj/structure/sprinkler/process()
-	if(!connected_pipe)
+	if(!connected_pipe || QDELETED(connected_pipe))
+		active = FALSE
+		current_reagent = null
+		water_pressure = 0
 		return
 
 	current_reagent = connected_pipe.carrying_reagent
@@ -120,15 +123,14 @@
 
 	return TRUE
 
-/obj/structure/sprinkler/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
-	mouseover.maptext_height = 128
+/obj/structure/sprinkler/return_rotation_chat()
 	var/status = active ? "Active" : "Inactive"
 	var/reagent_name = current_reagent ? initial(current_reagent.name) : "None"
-	return {"<span style='font-size:8pt;font-family:"Pterra";color:#0080ff;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;' class='center maptext '>
-			Status: [status]<br>
-			Pressure: [water_pressure]<br>
-			Fluid: [reagent_name]<br>
-			Range: [spray_range] tiles</span>"}
+
+	return "Status: [status]\n\
+			Pressure: [water_pressure]\n\
+			Fluid: [reagent_name]\n\
+			Range: [spray_range] tiles"
 
 /obj/structure/sprinkler/examine(mob/user)
 	. = ..()

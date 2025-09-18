@@ -2,11 +2,15 @@
 	name = "nasal helmet"
 	desc = "A steel nasal helmet, usually worn by the guards of any respectable fief."
 	icon_state = "nasal"
-	sellprice = VALUE_CHEAP_IRON_HELMET
+	sellprice = VALUE_STEEL_SMALL_ITEM
+	smeltresult = /obj/item/fertilizer/ash
+	melting_material = /datum/material/steel
+	melt_amount = 75
+
 
 	body_parts_covered = COVERAGE_NASAL
 	max_integrity = INTEGRITY_STANDARD
-	item_weight = 5.5 * IRON_MULTIPLIER
+	item_weight = 5.5 * STEEL_MULTIPLIER
 
 //................ Skull Cap ............... //
 /obj/item/clothing/head/helmet/skullcap
@@ -14,6 +18,9 @@
 	desc = "A humble iron helmet. The most standard and antiquated protection for one's head from harm."
 	icon_state = "skullcap"
 	sellprice = VALUE_CHEAP_IRON_HELMET
+	smeltresult = /obj/item/fertilizer/ash
+	melting_material = /datum/material/iron
+	melt_amount = 75
 
 	max_integrity = INTEGRITY_POOR
 	item_weight = 5.5 * IRON_MULTIPLIER
@@ -83,6 +90,9 @@
 	flags_inv = HIDEEARS
 	sellprice = VALUE_CHEAP_STEEL_HELMET
 	max_integrity = INTEGRITY_STANDARD
+	smeltresult = /obj/item/fertilizer/ash
+	melting_material = /datum/material/steel
+	melt_amount = 75
 
 	body_parts_covered = COVERAGE_HEAD
 	item_weight = 5.5 * STEEL_MULTIPLIER
@@ -96,6 +106,8 @@
 	armor = ARMOR_SCALE
 	max_integrity = INTEGRITY_POOR
 	item_weight = 5.5 * IRON_MULTIPLIER
+	melting_material = /datum/material/iron
+	melt_amount = 75
 
 //................ Kettle Helmet (Slitted)............... //
 /obj/item/clothing/head/helmet/kettle/slit
@@ -114,6 +126,7 @@
 	armor = ARMOR_SCALE
 	max_integrity = INTEGRITY_POOR
 	item_weight = 5.5 * IRON_MULTIPLIER
+
 //................ Iron Pot Helmet ............... //
 /obj/item/clothing/head/helmet/ironpot
 	name = "pot helmet"
@@ -125,6 +138,18 @@
 	body_parts_covered = COVERAGE_HEAD_NOSE
 	item_weight = 5.5 * IRON_MULTIPLIER
 
+/obj/item/clothing/head/helmet/ironpot/lakkariancap
+	name = "lakkarian crowned cap"
+	desc = "a crimson red iron cap decorated with gold trims and embellishments. The design of this Lakkarian helmet hasn't changed in centuries."
+	icon_state = "lakkaricap"
+	item_state = "lakkaricap"
+	sellprice = 50
+	flags_inv = null
+	armor = ARMOR_SCALE
+	anvilrepair = /datum/skill/craft/armorsmithing
+	body_parts_covered = COVERAGE_HEAD
+	max_integrity = INTEGRITY_STANDARD
+	item_weight = 5.5 * IRON_MULTIPLIER
 
 //................ Copper Lamellar Cap ............... //
 /obj/item/clothing/head/helmet/coppercap
@@ -144,7 +169,24 @@
 //............... Battle Nun ........................... (unique kit for the role, iron coif mechanically.)
 /obj/item/clothing/head/helmet/battlenun
 	name = "veil over coif"
-	desc = "A gleaming coif of metal half-hidden by a black veil."
+	desc = "A gleaming coif of iron metal half-hidden by a black veil."
+	icon_state = "battlenun"
+	dynamic_hair_suffix = ""	// this hides all hair
+	flags_inv = HIDEEARS|HIDEHAIR
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	blocksound = CHAINHIT
+	resistance_flags = FIRE_PROOF
+
+	armor = ARMOR_MAILLE_IRON
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+	prevent_crits = ALL_EXCEPT_BLUNT
+	item_weight = 9 * IRON_MULTIPLIER
+
+/obj/item/clothing/head/helmet/battlenun/steel
+	name = "veil over coif"
+	desc = "A gleaming coif of steel metal half-hidden by a black veil."
 	icon_state = "battlenun"
 	dynamic_hair_suffix = ""	// this hides all hair
 	flags_inv = HIDEEARS|HIDEHAIR
@@ -157,7 +199,7 @@
 	armor = ARMOR_MAILLE
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 9 * STEEL_MULTIPLIER
 
 
 //................ Sallet ............... //
@@ -187,7 +229,7 @@
 	item_weight = 9 * IRON_MULTIPLIER
 
 //................ Elf Sallet ............... //
-/obj/item/clothing/head/helmet/sallet/rare/elven	// blackoak merc helmet
+/obj/item/clothing/head/helmet/sallet/elven	// blackoak merc helmet
 	desc = "A steel helmet with a thin gold plating designed for Elven woodland guardians."
 	icon_state = "bascinet_novisor"
 	color = COLOR_ASSEMBLY_GOLD
@@ -316,7 +358,7 @@
 	emote_environment = 3
 	item_weight = 5.6 * STEEL_MULTIPLIER
 
-/obj/item/clothing/head/helmet/visored/knight/black
+/obj/item/clothing/head/helmet/visored/knight/blk
 	color = CLOTHING_SOOT_BLACK
 
 /obj/item/clothing/head/helmet/visored/knight/iron
@@ -399,6 +441,10 @@
 	item_weight = 6 * SILVER_MULTIPLIER
 	worn_x_dimension = 64
 	worn_y_dimension = 64
+
+/obj/item/clothing/head/helmet/visored/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 //............... Feldshers Cage ............... //
 /obj/item/clothing/head/helmet/feld
