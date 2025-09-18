@@ -46,19 +46,19 @@
 
 		switch(descriptor)
 			if(SCENT_DESC_FRAGRANCE)
-				if(H.has_stress_type(/datum/stressevent/perfume) || H.has_stress_type(/datum/stressevent/perfume_hater))
+				if(H.has_stress_type(/datum/stress_event/perfume) || H.has_stress_type(/datum/stress_event/perfume_hater))
 					continue
 				if(HAS_TRAIT(H, TRAIT_STINKY))
-					H.add_stress(/datum/stressevent/perfume_hater)
+					H.add_stress(/datum/stress_event/perfume_hater)
 				else
-					H.add_stress(/datum/stressevent/perfume)
+					H.add_stress(/datum/stress_event/perfume)
 			if(SCENT_DESC_ODOR)
-				if(H.has_stress_type(/datum/stressevent/odor_lover) || H.has_stress_type(/datum/stressevent/odor))
+				if(H.has_stress_type(/datum/stress_event/odor_lover) || H.has_stress_type(/datum/stress_event/odor))
 					continue
 				if(HAS_TRAIT(H, TRAIT_STINKY))
-					H.add_stress(/datum/stressevent/odor_lover)
+					H.add_stress(/datum/stress_event/odor_lover)
 				else
-					H.add_stress(/datum/stressevent/odor)
+					H.add_stress(/datum/stress_event/odor)
 
 		if(prob(2))
 			H.visible_message(span_green("The [descriptor] of [scent] bombards my nostrils."))
