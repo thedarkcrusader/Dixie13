@@ -11,10 +11,34 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 	name = "Card Deck"
 	path = /obj/item/toy/cards/deck
 
+/datum/loadout_item/rosa_bouquet
+	name = "Rosa Bouquet"
+	path = /obj/item/bouquet/rosa
+
+/datum/loadout_item/salvia_bouquet
+	name = "Salvia Bouquet"
+	path = /obj/item/bouquet/salvia
+
+/datum/loadout_item/matricaria_bouquet
+	name = "Matricaria Bouquet"
+	path = /obj/item/bouquet/matricaria
+
+/datum/loadout_item/calendula_bouquet
+	name = "Calendula Bouquet"
+	path = /obj/item/bouquet/calendula
+
 //HATS
 /datum/loadout_item/zalad
 	name = "Keffiyeh"
 	path = /obj/item/clothing/neck/keffiyeh
+
+/datum/loadout_item/rosa_flower_crown
+	name = "Rosa Flower Crown"
+	path = /obj/item/clothing/head/flowercrown/rosa
+
+/datum/loadout_item/salvia_flower_crown
+	name = "Salvia Flower Crown"
+	path = /obj/item/clothing/head/flowercrown/salvia
 
 /datum/loadout_item/strawhat
 	name = "Straw Hat"
