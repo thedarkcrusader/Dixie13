@@ -206,6 +206,7 @@
 #include "code\__DEFINES\dcs\signals\signals_tram.dm"
 #include "code\__DEFINES\dcs\signals\signals_turf.dm"
 #include "code\__DEFINES\dcs\signals\signals_twohand.dm"
+#include "code\__DEFINES\dcs\signals\signals_mob\signals_broodmother.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_carbon.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_living.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mind.dm"
