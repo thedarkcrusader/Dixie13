@@ -82,24 +82,28 @@
 
 	var/static/list/selectable = list( \
 		"Flail" = /obj/item/weapon/flail, \
-		"Billhook" = /obj/item/weapon/polearm/spear/billhook, \
-		"Sword" = /obj/item/weapon/sword/arming, \
+		"Spear" = /obj/item/weapon/polearm/spear, \
+		"Sword" = /obj/item/weapon/sword/iron, \
 		)
-	var/choice = H.select_equippable(H, selectable, message = "Choose Your Specialisation", title = "LIEUTENANT")
+	var/choice = H.select_equippable(H, selectable, time_limit = 1 MINUTES, message = "Choose your secondary weapon", title = "LIEUTENANT")
 	if(!choice)
 		return
 	//yeah this is copied from how royal knights do it
-	var/grant_shield = TRUE
+	var/shield_type = null
 	switch(choice)
 		if("Flail")
 			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 2, 3, TRUE)
-		if("Billhook")
+			shield_type = new /obj/item/weapon/shield/wood()
+		if("Spear")
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 2, 3, TRUE)
-			grant_shield = FALSE
+			shield_type = new /obj/item/weapon/shield/tower/buckleriron()
 		if("Sword")
 			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 3, TRUE)
-	if(grant_shield)
+			shield_type = new /obj/item/weapon/shield/heater()
+			var/scabbard = new /obj/item/weapon/scabbard/sword()
+			if(!H.equip_to_appropriate_slot(scabbard))
+				qdel(scabbard)
+	if(shield_type)//just incase
 		H.clamped_adjust_skillrank(/datum/skill/combat/shields, 3, 3, TRUE)
-		var/shield = new /obj/item/weapon/shield/heater()
-		if(!H.equip_to_appropriate_slot(shield))
-			qdel(shield)
+		if(!H.equip_to_appropriate_slot(shield_type))
+			qdel(shield_type)
