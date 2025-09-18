@@ -47,15 +47,15 @@
 		return
 
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
+	var/list/main_dat = list()
 
 	if(SSmigrants.admin_disabled)
-		dat += "<center> <h1> <b style='color:red;'> Migration has been disabled by an admin! </b>  </h1> </center>"
-		return dat
+		main_dat += "<center> <h1> <b style='color:red;'> Migration has been disabled by an admin! </b>  </h1> </center>"
+		return main_dat
 
 	var/player_triumph = SStriumphs.get_triumphs(client.ckey)
 
 	// Build main content (left side)
-	var/list/main_dat = list()
 	main_dat += "<div style='padding: 10px;'>"
 	main_dat += "<div style='text-align: center; font-weight: bold; margin-bottom: 10px;'>WAVE: \Roman[SSmigrants.wave_number] | TRIUMPH: [player_triumph]</div>"
 	main_dat += "<div style='text-align: center; margin-bottom: 10px;'><b>BE A MIGRANT: <a href='byond://?src=[REF(src)];task=toggle_active'>[active ? "YES" : "NO"]</a></b></div>"
