@@ -113,7 +113,7 @@
 
 /datum/stress_event/filth_lover
 	timer = 10 MINUTES
-	stressadd = -1
+	stress_change = -1
 	desc = span_green("I smell horrid.")
 
 //Music
@@ -199,12 +199,12 @@
 	timer = 10 MINUTES
 
 /datum/stress_event/odor_lover
-	stressadd = -1
+	stress_change = -1
 	desc = span_green("This pungent odor is wonderful!")
 	timer = 10 MINUTES
 
 /datum/stress_event/divine_beauty
-	stressadd = -2
+	stress_change = -2
 	desc = span_green("I feel touched by a divine beauty.")
 	timer = 5 MINUTES
 
