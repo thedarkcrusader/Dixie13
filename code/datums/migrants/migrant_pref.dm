@@ -42,6 +42,9 @@
 	hide_ui()
 
 /datum/migrant_pref/proc/build_html_data()
+	var/client/client = prefs.parent
+	if(!client)
+		return
 
 	var/current_migrants = SSmigrants.get_active_migrant_amount()
 
