@@ -283,8 +283,6 @@
 		/obj/item/natural/worms,
 		/obj/item/natural/bundle/worms,
 		/obj/item/fishing/bait,
-		/obj/item/natural/cloth,
-		/obj/item/natural/bundle/cloth,
 		/obj/item/grown/log/tree/stick,
 		/obj/item/natural/bundle/stick,
 		/obj/item/weapon/knife,//wouldn't it be cool to smuggle a knife somewhere via a bucket?
