@@ -457,7 +457,6 @@
 	desc = ""
 	icon_state = "sunflower"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
-	seed = /obj/item/neuFarm/seed/sunflower
 	slot_flags = ITEM_SLOT_HEAD
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -467,13 +466,12 @@
 	dropshrink = 0.8
 	rotprocess = null
 
-
+/*	..................   Sugarcane   ................... */
 /obj/item/reagent_containers/food/snacks/produce/sugarcane
 	seed = /obj/item/neuFarm/seed/sugarcane
 	name = "sugarcane"
 	desc = ""
 	icon_state = "sugarcane"
-	seed = /obj/item/neuFarm/seed/sugarcane
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
