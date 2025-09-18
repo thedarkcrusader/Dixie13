@@ -146,7 +146,7 @@
 			if(current_shock < 160) // Only add stress if not in shock-induced numbness
 				// High endurance characters are less stressed by pain
 				if(prob(max(20, 100 - (STAEND * 2)))) // 2% less likely per endurance point (40% at 20 )
-					add_stress(/datum/stressevent/painmax)
+					add_stress(/datum/stress_event/painmax)
 
 /mob/living/carbon/proc/handle_roguebreath()
 	return
@@ -207,7 +207,7 @@
 		if(istype(loc, /turf/open/water/bath))
 			if(!wear_armor && !wear_shirt && !wear_pants)
 				var/mob/living/carbon/V = src
-				V.add_stress(/datum/stressevent/bathwater)
+				V.add_stress(/datum/stress_event/bathwater)
 
 /mob/living/carbon/proc/get_complex_pain()
 	var/total_pain = 0
@@ -467,27 +467,36 @@
 /mob/living/carbon/handle_breathing(times_fired)
 	var/breath_effect_prob = 0
 	var/turf/turf = get_turf(src)
-	var/turf_temp = turf.temperature
+	var/turf_temp = turf ? turf.return_temperature() : BODYTEMP_NORMAL
 
-	if(turf_temp <= T0C - 50)
-		breath_effect_prob = 100
-	else if(turf_temp <= T0C - 25)
-		breath_effect_prob = 50
-	else if(turf_temp <= T0C - 10)
-		breath_effect_prob = 25
-	else if(turf_temp <= T0C)
-		breath_effect_prob = 15
+	// Breath visibility based on ambient temperature
+	// Only visible when it's actually cold enough for condensation
+	if(turf_temp <= -10)
+		breath_effect_prob = 100    // Always visible in extreme cold
+	else if(turf_temp <= -5)
+		breath_effect_prob = 90     // Very likely in freezing temps
+	else if(turf_temp <= 0)
+		breath_effect_prob = 40     // Common at freezing point
+	else if(turf_temp <= 5)
+		breath_effect_prob = 15     // Sometimes visible in cold
 
+	// Body temperature effects
+	if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
+		var/cold_severity = (BODYTEMP_COLD_DAMAGE_LIMIT - bodytemperature)
+		breath_effect_prob += min(cold_severity * 15, 40)
+
+	// Environmental modifiers
 	var/turf/snow_turf = get_turf(src)
-	if(snow_shiver > world.time)
-		breath_effect_prob += 50
-	else if(snow_turf.snow)
-		breath_effect_prob += 50
+	if(snow_shiver > world.time || snow_turf?.snow)
+		breath_effect_prob = min(breath_effect_prob + 30, 100)
 
-	if(prob(breath_effect_prob))
-		// Breathing into your mask, no particle. We can add fogged up glasses later
-		if(is_mouth_covered())
-			return
+	// Heavy breathing from exertion or cold body
+	if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT - 3)
+		breath_effect_prob = min(breath_effect_prob + 50, 100)
+		if(prob(15) && !is_mouth_covered())
+			visible_message(span_notice("[src]'s breath comes out in heavy puffs of vapor."))
+
+	if(prob(breath_effect_prob) && !is_mouth_covered())
 		emit_breath_particle(/particles/fog/breath)
 
 	return
@@ -598,9 +607,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(jitteriness)
 		do_jitter_animation(jitteriness)
 		jitteriness = max(jitteriness - restingpwr, 0)
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "jittery", /datum/mood_event/jittery)
+		add_stress(/datum/stress_event/jittery)
 	else
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "jittery")
+		remove_stress(/datum/stress_event/jittery)
 
 	if(stuttering)
 		stuttering = max(stuttering-1, 0)
@@ -628,7 +637,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			jitteriness = max(jitteriness - 3, 0)
 			apply_status_effect(/datum/status_effect/buff/drunk)
 		else
-			remove_stress(/datum/stressevent/drunk)
+			remove_stress(/datum/stress_event/drunk)
 		if(drunkenness >= 11 && slurring < 5)
 			slurring += 1.2
 		if(drunkenness >= 41)

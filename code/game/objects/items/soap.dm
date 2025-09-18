@@ -195,4 +195,4 @@
 			//btw, the buff applies the clean_plus stressevent, keep that in mind
 			target.apply_status_effect(/datum/status_effect/buff/clean_plus)
 		else
-			user.add_stress(/datum/stressevent/clean_plus)
+			user.add_stress(/datum/stress_event/clean_plus)

@@ -41,7 +41,7 @@
 
 	/* admin stuff */
 	var/follower_ident = "[follower.key]/([follower.real_name]) (follower of [patron])"
-	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(prayer)]")
+	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(html_encode(prayer))]")
 	user.log_message("(follower of [patron]) prays: [prayer]", LOG_GAME)
 
 	follower.whisper(prayer)
@@ -588,7 +588,7 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/H = target
-		H.add_stress(/datum/stressevent/hug)
+		H.add_stress(/datum/stress_event/hug)
 		playsound(target.loc, pick('sound/vo/hug.ogg'), 100, FALSE, -1)
 
 		if(user.mind)

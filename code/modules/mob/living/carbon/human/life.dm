@@ -122,9 +122,9 @@
 
 /mob/living/carbon/human/handle_traits()
 	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 60)
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "brain_damage", /datum/mood_event/brain_damage)
+		add_stress(/datum/stress_event/brain_damage)
 	else
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "brain_damage")
+		remove_stress(/datum/stress_event/brain_damage)
 	return ..()
 
 /mob/living/proc/handle_environment()
@@ -245,7 +245,7 @@
 	if(locations & HEAD)
 		if(!coverhead)
 			var/mob/living/carbon/V = src
-			V.add_stress(/datum/stressevent/coldhead)
+			V.add_stress(/datum/stress_event/coldhead)
 //END FIRE CODE
 
 
@@ -255,22 +255,22 @@
 	//Handle normal clothing
 	if(head)
 		if(head.max_heat_protection_temperature && head.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= head.heat_protection
+			thermal_protection_flags |= head.body_parts_covered
 	if(wear_armor)
 		if(wear_armor.max_heat_protection_temperature && wear_armor.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= wear_armor.heat_protection
+			thermal_protection_flags |= wear_armor.body_parts_covered
 	if(wear_pants)
 		if(wear_pants.max_heat_protection_temperature && wear_pants.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= wear_pants.heat_protection
+			thermal_protection_flags |= wear_pants.body_parts_covered
 	if(shoes)
 		if(shoes.max_heat_protection_temperature && shoes.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= shoes.heat_protection
+			thermal_protection_flags |= shoes.body_parts_covered
 	if(gloves)
 		if(gloves.max_heat_protection_temperature && gloves.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= gloves.heat_protection
+			thermal_protection_flags |= gloves.body_parts_covered
 	if(wear_mask)
 		if(wear_mask.max_heat_protection_temperature && wear_mask.max_heat_protection_temperature >= temperature)
-			thermal_protection_flags |= wear_mask.heat_protection
+			thermal_protection_flags |= wear_mask.body_parts_covered
 
 	return thermal_protection_flags
 
@@ -312,22 +312,22 @@
 
 	if(head)
 		if(head.min_cold_protection_temperature && head.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= head.cold_protection
+			thermal_protection_flags |= head.body_parts_covered
 	if(wear_armor)
 		if(wear_armor.min_cold_protection_temperature && wear_armor.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= wear_armor.cold_protection
+			thermal_protection_flags |= wear_armor.body_parts_covered
 	if(wear_pants)
 		if(wear_pants.min_cold_protection_temperature && wear_pants.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= wear_pants.cold_protection
+			thermal_protection_flags |= wear_pants.body_parts_covered
 	if(shoes)
 		if(shoes.min_cold_protection_temperature && shoes.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= shoes.cold_protection
+			thermal_protection_flags |= shoes.body_parts_covered
 	if(gloves)
 		if(gloves.min_cold_protection_temperature && gloves.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= gloves.cold_protection
+			thermal_protection_flags |= gloves.body_parts_covered
 	if(wear_mask)
 		if(wear_mask.min_cold_protection_temperature && wear_mask.min_cold_protection_temperature <= temperature)
-			thermal_protection_flags |= wear_mask.cold_protection
+			thermal_protection_flags |= wear_mask.body_parts_covered
 
 	return thermal_protection_flags
 
