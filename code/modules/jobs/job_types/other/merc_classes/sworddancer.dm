@@ -37,6 +37,7 @@
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+	H.add_spell(/datum/action/cooldown/spell/vicious_mockery)
 
 	H.adjust_blindness(-3)
 	var/instruments = list(
