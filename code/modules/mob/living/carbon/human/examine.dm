@@ -551,7 +551,7 @@
 				if(15 to INFINITY)
 					. += span_warning("<B>[t_He] look[p_s()] very vigorous.</B>")
 				if(10 to 15)
-					. += span_warning("[t_He] look[p_s()] rather healthy.")
+					. += span_warning("[t_He] look[p_s()] vigorous.")
 				if(5 to 10)
 					. += span_warning("[t_He] look[p_s()] sickly.")
 				if(-INFINITY to 5)
