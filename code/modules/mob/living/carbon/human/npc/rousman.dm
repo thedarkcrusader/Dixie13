@@ -452,6 +452,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 
 	armor = /obj/item/clothing/armor/leather/advanced/rousman
 	head = /obj/item/clothing/head/roguehood/rousman
+	belt = /obj/item/storage/belt/leather/knifebelt/black/rous
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
@@ -488,6 +489,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	armor = /obj/item/clothing/shirt/robe/rousseer
 	cloak = /obj/item/clothing/cloak/rousseer
 	head = /obj/item/clothing/head/roguehood/rousman/rousseer
+	backl = /obj/item/weapon/polearm/woodstaff/seer
 
 	var/spells = list(
 		/datum/action/cooldown/spell/projectile/fireball/greater,

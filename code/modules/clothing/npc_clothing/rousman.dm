@@ -53,9 +53,23 @@
 	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "piercing" = 20, "fire" = 0, "acid" = 0)
 	sellprice = 0
 
+/obj/item/clothing/head/roguehood/rousman/AdjustClothes(mob/living/carbon/user)
+	. = ..()
+	item_state = icon_state
+	if(ishuman(user))
+		var/mob/living/carbon/H = user
+		H.update_inv_head()
+
+/obj/item/clothing/head/roguehood/rousman/ResetAdjust(mob/user)
+	. = ..()
+	item_state = icon_state
+	if(ishuman(user))
+		var/mob/living/carbon/H = user
+		H.update_inv_head()
+
 /obj/item/clothing/shirt/robe/rousseer
 	name = "rousman seer robe"
-	icon_state = "robe_item"
+	icon_state = "robe"
 	item_state = "robe"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
@@ -75,4 +89,5 @@
 	name = "rousman seer hood"
 	icon_state = "seer_hood"
 	item_state = "seer_hood"
+	mob_overlay_icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)

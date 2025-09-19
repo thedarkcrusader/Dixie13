@@ -649,7 +649,7 @@
 /obj/item/weapon/knife/throwingknife/rous
 	name = "rous kunai"
 	desc = "A typical knife used by rous assassins. Quite effective when thrown."
-	item_state = "rouskunai"
+	icon_state = "rouskunai"
 	throw_speed = 4
 	max_integrity = INTEGRITY_STANDARD
 	wdefense = MEDIOCRE_PARRY
