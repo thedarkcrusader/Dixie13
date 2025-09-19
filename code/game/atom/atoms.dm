@@ -125,7 +125,7 @@
 	var/xyoverride = FALSE //so we can 'face' a click catcher even though it doesn't have an x or a y
 
 	/// This means that the mouse over text will not be displayed when the mouse is over this atom
-	var/nomouseover = FALSE
+	var/no_over_text = FALSE
 	var/hover_color = "#a1bac4"
 
 	///this is the path to the enchantment not the actual enchantment
@@ -507,19 +507,19 @@
 				if(user.can_see_reagents()) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[(R.volume)] [(UNIT_FORM_STRING(R.volume))] of <font color=[R.color]>[R.name]</font>"
+						. += "[(UNIT_FORM_STRING(R.volume))] of <font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
 					reagent_color = mix_color_from_reagents(reagents.reagent_list)
-					. += "It contains [(total_volume)] [(UNIT_FORM_STRING(total_volume))] of <font color=[reagent_color]>something.</font>"
+					. += "It contains [(UNIT_FORM_STRING(total_volume))] of <font color=[reagent_color]>something.</font>"
 			else
 				. += "It's empty."
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [round(reagents.total_volume, 0.1)] [(UNIT_FORM_STRING(round(reagents.total_volume, 0.1)))] left.</span>"
+				. += "<span class='notice'>It has [(UNIT_FORM_STRING(round(reagents.total_volume, 0.1)))] left.</span>"
 			else
 				. += "<span class='danger'>It's empty.</span>"
 		//SNIFFING
@@ -1432,3 +1432,18 @@
 /// If it is not found, returns null.
 /atom/proc/get_filter_index(name)
 	return filter_data?.Find(name)
+
+/atom/proc/do_alert_effect()
+	var/mutable_appearance/alert = mutable_appearance('icons/effects/32x48.dmi', "alert_effect")
+	var/atom/movable/flick_visual/exclamation = flick_overlay_view(alert, 1 SECONDS)
+	exclamation.plane = src.plane
+	exclamation.alpha = 0
+	exclamation.pixel_x = -pixel_x
+	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
+
+	// Intentionally less time then the flick so we don't get weird shit
+	addtimer(CALLBACK(src, PROC_REF(forget_alert), exclamation), 0.8 SECONDS, TIMER_CLIENT_TIME)
+
+/atom/proc/forget_alert(atom/movable/flick_visual/alert)
+	animate(alert, time = 0.5 SECONDS, alpha = 0)
+	QDEL_IN(alert, 0.5 SECONDS)

@@ -83,9 +83,10 @@
 	html += {"
 		</div>
 		<div>
-			<h2>Requires 30 ligulae of Water</h2>
+			<h2>Requires [UNIT_FORM_STRING(30)] of Water</h2>
 			<h2>Creates</h2>
 	"}
+	//regarding the above, the amount of water needed can be found in the cauldron.dm file
 
 	// Add output reagents
 	if(length(output_reagents))
@@ -93,7 +94,7 @@
 		for(var/reagent_type in output_reagents)
 			var/reagent_amount = output_reagents[reagent_type]
 			var/datum/reagent/R = new reagent_type
-			html += "[CEILING(reagent_amount, 1)] [UNIT_FORM_STRING(CEILING(reagent_amount, 1))] of [initial(R.name)]<br>"
+			html += "[UNIT_FORM_STRING(CEILING(reagent_amount, 1))] of [initial(R.name)]<br>"
 			qdel(R)
 
 	// Add output items
@@ -231,7 +232,7 @@
 	)
 
 /datum/alch_cauldron_recipe/mana_potion
-	recipe_name = "Arcane Elixir"
+	recipe_name = "Arcyne Elixir"
 	smells_like = "power"
 	output_reagents = list(/datum/reagent/medicine/manapot = 18)
 	required_essences = list(
@@ -240,7 +241,7 @@
 	)
 
 /datum/alch_cauldron_recipe/big_mana_potion
-	recipe_name = "Powerful Arcane Elixir"
+	recipe_name = "Powerful Arcyne Elixir"
 	smells_like = "fear"
 	output_reagents = list(/datum/reagent/medicine/manapot = 18, /datum/reagent/additive = 18)
 	required_essences = list(

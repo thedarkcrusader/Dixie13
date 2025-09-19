@@ -160,6 +160,14 @@
 				/obj/item/natural/fibers = 1)
 	category = "Pants"
 
+/datum/repeatable_crafting_recipe/sewing/lakkarikilt
+	name = "padded kilt"
+	output = /obj/item/clothing/pants/trou/leather/quiltedkilt
+	requirements = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2)
+	category = "Pants"
+	craftdiff = 3
+
 /datum/repeatable_crafting_recipe/sewing/headband
 	name = "headband"
 	output = /obj/item/clothing/head/headband
@@ -413,7 +421,7 @@
 	craftdiff = 2
 	category = "Cloak"
 
-/datum/repeatable_crafting_recipe/sewing/tabard
+/datum/repeatable_crafting_recipe/sewing/tabard/crusader
 	name = "tabard (crusader)"
 	output = /obj/item/clothing/cloak/tabard/crusader
 	requirements = list(/obj/item/natural/cloth = 3,
@@ -602,6 +610,14 @@
 /datum/repeatable_crafting_recipe/sewing/cape
 	name = "cape"
 	output = /obj/item/clothing/cloak/cape
+	requirements = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+	category = "Cloak"
+
+/datum/repeatable_crafting_recipe/sewing/cape/shredded
+	name = "shredded cloak"
+	output = /obj/item/clothing/cloak/shredded
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
@@ -983,6 +999,15 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 	category = "Cloak"
+
+/datum/repeatable_crafting_recipe/sewing/lakkarijupon
+	name = "lakkarian jupon"
+	output = /obj/item/clothing/armor/gambeson/lakkarijupon
+	requirements = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/ingot/iron = 1)
+	craftdiff = 4
+	category = "Armor"
 
 /*.............. recipes requiring skill 5 ..............*/
 

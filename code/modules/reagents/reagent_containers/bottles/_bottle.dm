@@ -5,8 +5,8 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	desc = "A bottle with a cork."
 	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "clear_bottle1"
-	amount_per_transfer_from_this = 6
-	possible_transfer_amounts = list(6)
+	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5,10)
 	volume = 70
 	fill_icon_thresholds = list(0, 10, 25, 50, 75, 100)
 	dropshrink = 0.8
@@ -19,7 +19,6 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
 	experimental_onhip = TRUE
-
 	can_label_container = TRUE
 	label_prefix = "bottle of "
 	var/closed = TRUE
@@ -89,7 +88,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(closed)
 		reagent_flags &= ~TRANSFERABLE
 		reagents.flags = reagent_flags
-		to_chat(user, span_notice("You carefully press the cork back into the mouth of [src]."))
+		balloon_alert(user, "I press the cork back in.")
 		spillable = FALSE
 		GLOB.weather_act_upon_list -= src
 		if(!fancy)
@@ -98,7 +97,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags |= TRANSFERABLE
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
-		to_chat(user, span_notice("You thumb off the cork from [src]."))
+		balloon_alert(user, "I thumb off the cork.")
 		spillable = TRUE
 		GLOB.weather_act_upon_list |= src
 		if(!fancy)
@@ -193,8 +192,8 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	desc = "A vial with a cork."
 	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "clear_vial1"
-	amount_per_transfer_from_this = 6
-	possible_transfer_amounts = list(6)
+	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5)
 	volume = 30
 	fill_icon_thresholds = list(0, 10, 25, 50, 75, 100)
 	dropshrink = 0.8
@@ -204,6 +203,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	closed = TRUE
 	reagent_flags = TRANSPARENT
 	w_class = WEIGHT_CLASS_SMALL
+	grid_width = 32
 	grid_height = 32
 	drinksounds = list('sound/items/drink_bottle (1).ogg','sound/items/drink_bottle (2).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
@@ -222,12 +222,12 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags &= ~TRANSFERABLE
 		reagents.flags = reagent_flags
 		desc = "A vial with a cork."
-		to_chat(user, span_notice("You carefully press the cork back into the mouth of [src]."))
+		balloon_alert(user, "I press the cork back in.")
 		spillable = FALSE
 	else
 		reagent_flags |= TRANSFERABLE
 		reagents.flags = reagent_flags
-		to_chat(user, span_notice("You thumb off the cork from [src]."))
+		balloon_alert(user, "I thumb off the cork.")
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open vial, easy to drink quickly."
 		spillable = TRUE
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 
 	icon = 'icons/obj/handmade/teapot.dmi'
 	icon_state = "world"
-	volume = 99
+	volume = 100
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	dropshrink = 1
@@ -271,9 +271,6 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 /obj/item/reagent_containers/glass/bottle/teapot/Initialize()
 	. = ..()
 	icon_state = "world"
-
-/obj/item/reagent_containers/glass/bottle/teapot/Initialize()
-	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/teapot)
 	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/cooking/tea), TRUE)
 
@@ -299,7 +296,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	name = "fancy teapot"
 	desc = "A fancy tea pot made out of ceramic. Used to hold tea."
 	icon_state = "teapot_fancy"
-	volume = 99
+	volume = 100
 	dropshrink = 0.7
 	can_label_container = FALSE
 

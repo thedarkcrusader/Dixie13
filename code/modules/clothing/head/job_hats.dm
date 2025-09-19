@@ -5,6 +5,7 @@
 			no creecher shall dare make a sound on thy presence. \
 			Thou wilt be alone on these barren lands."
 	icon_state = "fisherhat"
+	max_heat_protection_temperature = 60
 
 /obj/item/clothing/head/stewardtophat
 	name = "top hat"
@@ -93,7 +94,7 @@
 
 /obj/item/clothing/head/wizhat/witch
 	name = "witch hat"
-	desc = ""
+	desc = "While offically, Witches heretical to Astrata and risk harrassment by the faithkeepers, quite a few mages and pestrans wear such hats anyways as a fashion statement."
 	icon_state = "witchhat"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_SOOT_BLACK
@@ -110,6 +111,9 @@
 	icon_state = "inqhat"
 	item_state = "inqhat"
 	sewrepair = TRUE
+
+/obj/item/clothing/head/leather/inqhat/vigilante
+	name = "fancy hat"
 
 /obj/item/clothing/head/physhat
 	name = "court physician's hat"
