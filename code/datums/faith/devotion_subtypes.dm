@@ -37,12 +37,11 @@
 
 /datum/devotion/divine/abyssor
 	miracles = list(
-		CLERIC_T0 = /datum/action/cooldown/spell/healing,
+		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/undirected/conjure_item/summon_leech),
 		CLERIC_T1 = /datum/action/cooldown/spell/projectile/swordfish,
 		CLERIC_T2 = /datum/action/cooldown/spell/undirected/conjure_item/summon_trident,
 		CLERIC_T3 = /datum/action/cooldown/spell/ocean_embrace,
 	)
-	miracles_extra = list(/datum/action/cooldown/spell/undirected/conjure_item/summon_leech)
 
 /datum/devotion/divine/necra
 	miracles = list(
@@ -83,12 +82,11 @@
 
 /datum/devotion/divine/pestra
 	miracles = list(
-		CLERIC_T0 = /datum/action/cooldown/spell/diagnose/holy,
-		CLERIC_T1 = /datum/action/cooldown/spell/healing,
+		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/undirected/conjure_item/summon_leech/pestra),
+		CLERIC_T1 = /datum/action/cooldown/spell/diagnose/holy,
 		CLERIC_T2 = /datum/action/cooldown/spell/attach_bodypart,
 		CLERIC_T3 = /datum/action/cooldown/spell/cure_rot,
 	)
-	miracles_extra = list(/datum/action/cooldown/spell/undirected/conjure_item/summon_leech/pestra)
 
 /datum/devotion/divine/malum
 	miracles = list(
