@@ -2,7 +2,8 @@
 	name = "Wretch"
 	roundend_category = "wretches"
 	antagpanel_category = "Wretches"
-	show_name_in_check_antagonists = FALSE
+	show_name_in_check_antagonists = TRUE
+	antag_flags = FLAG_ANTAG_CAP_IGNORE
 
 /datum/antagonist/wretch/on_gain()
 	. = ..()
