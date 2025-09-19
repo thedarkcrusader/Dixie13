@@ -427,6 +427,12 @@
 	tastes = list("crispy butterdough" = 1)
 	rotprocess = SHELFLIFE_EXTREME
 
+/*	.................   Pastry Loaf's   ................... */
+/obj/item/reagent_containers/food/snack/pastryloaf
+	name = "pastry loaf"
+	desc = "a plain loaf of pastry bread."
+	icon = 'icons/roguetown/items/pastryloaf.dmi'
+	icon_state = "pastryloaf"
 
 /*	.................   Raisin Biscuit   ................... */
 /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw

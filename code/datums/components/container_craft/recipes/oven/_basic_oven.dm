@@ -80,6 +80,12 @@
 	output = /obj/item/reagent_containers/food/snacks/pastry
 	cooked_smell = /datum/pollutant/food/pastry
 
+/datum/container_craft/oven/pastryloaf
+	name = "Pastry Loaf"
+	requirements = list(/obj/item/reagent_containers/food/snacks/butterdough = 1)
+	output = /obj/item/reagent_containers/food/snacks/pastryloaf
+	cooked_smell = /datum/pollutant/food/pastry
+
 /datum/container_craft/oven/pie
 	abstract_type = /datum/container_craft/oven/pie
 	category = "Pies"
