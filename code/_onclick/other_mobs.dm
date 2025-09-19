@@ -398,7 +398,9 @@
 		var/exp_to_gain = U.STAINT * 1.5
 		var/list/stealablezones = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_NECK, BODY_ZONE_PRECISE_GROIN, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND)
 		var/list/stealpos = list()
-		if(stealroll => target_perception)
+		if(client?.prefs.showrolls)
+			to_chat(U, span_info("Your stealing skill roll of [thiefskill]d6 is [stealroll]..."))
+		if(stealroll >= target_perception)
 			if(U.get_active_held_item())
 				to_chat(U, span_warning("I can't pickpocket while my hand is full!"))
 				return
