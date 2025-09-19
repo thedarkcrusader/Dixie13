@@ -24,3 +24,7 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 	carry_multiplier = 0.75
+
+/obj/item/storage/backpack/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
