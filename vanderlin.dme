@@ -1804,6 +1804,7 @@
 #include "code\modules\antagonists\roleobjs\prisoner.dm"
 #include "code\modules\antagonists\roleobjs\purishep.dm"
 #include "code\modules\antagonists\roleobjs\skeleton.dm"
+#include "code\modules\antagonists\roleobjs\wretch.dm"
 #include "code\modules\antagonists\villain\aspirant.dm"
 #include "code\modules\antagonists\villain\assassin.dm"
 #include "code\modules\antagonists\villain\bandit.dm"
