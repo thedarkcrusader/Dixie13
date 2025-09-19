@@ -1715,10 +1715,6 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/recipe_book/alchemy{
-	pixel_x = -9;
-	pixel_y = -8
-	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor/phys)
 "aVg" = (
@@ -14390,11 +14386,6 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "ium" = (
-/obj/machinery/light/fueled/hearth,
-/obj/item/reagent_containers/glass/bucket/pot/copper{
-	pixel_x = -3;
-	pixel_y = 9
-	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor/phys)
 "iun" = (
@@ -137720,7 +137711,7 @@ rJL
 rJL
 agc
 agc
-rJL
+diR
 mMx
 qdU
 iBK
@@ -137922,7 +137913,7 @@ diR
 uUd
 jzi
 jMR
-hmQ
+diR
 psd
 psd
 iBK
