@@ -91,3 +91,13 @@
 	max_integrity = INTEGRITY_POOR
 	item_weight = 5.5 * COPPER_MULTIPLIER
 
+/obj/item/clothing/armor/cuirass/vampire
+	name = "ancient plate"
+	desc = "A ornate, ceremonial plate cuirass of considerable age."
+	icon_state = "vplate"
+
+	armor_class = AC_MEDIUM
+	armor = ARMOR_PLATE_GOOD
+	body_parts_covered = COVERAGE_TORSO
+	prevent_crits = ALL_CRITICAL_HITS_VAMP
+	item_weight = 5.5 * IRON_MULTIPLIER
