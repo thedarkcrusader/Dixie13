@@ -39,13 +39,13 @@
 
 	pants = /obj/item/clothing/pants/tights/colored/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/boots/rare/zybanplate
-	gloves = /obj/item/clothing/gloves/rare/zybanplate
+	shoes = /obj/item/clothing/shoes/boots/rare/zaladplate
+	gloves = /obj/item/clothing/gloves/rare/zaladplate
 	belt = /obj/item/storage/belt/leather
 	shirt = /obj/item/clothing/shirt/undershirt/colored/random
-	armor = /obj/item/clothing/armor/rare/zybanplate
+	armor = /obj/item/clothing/armor/rare/zaladplate
 	backl = /obj/item/storage/backpack/satchel
-	head = /obj/item/clothing/head/rare/zybanplate
+	head = /obj/item/clothing/head/rare/zaladplate
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 	if(!H.has_language(/datum/language/zalad))
@@ -53,3 +53,7 @@
 		to_chat(H, "<span class='info'>I can speak Zalad with ,z before my speech.</span>")
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)

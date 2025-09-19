@@ -16,7 +16,7 @@
 	desc = "Necra's guides.\
 	\n\n\
 	Elves, created by Necra to guide humenity, are characterized by lengthened age, \
-	low fertility, and a magical aptitude originating from a vast array of tribal cultures and sub-races. \
+	low fertility, and a magical aptitude originating from a vast array of tribal cultures. \
 	With the ascension of Zizo, the entire culture of snow-elves was all but destroyed, \
 	leading the remaining tribes to live in fear and paranoia of suffering the same fate. \
 	Many elves sought safety through mixing culture, \
@@ -183,5 +183,5 @@
 	var/static/list/last_names = world.file2list('strings/rt/names/elf/elfwlast.txt')
 	return last_names
 
-/datum/species/elf/snow/get_accent_list()
-	return strings("accents/russian_replacement.json", "russian")
+/datum/species/elf/snow/after_creation(mob/living/carbon/C)
+	C.dna.species.accent_language = C.dna.species.get_accent(C.dna.species.native_language, 1)

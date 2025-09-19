@@ -106,10 +106,10 @@
 
 //................ Wizard Robes ............... //
 /obj/item/clothing/shirt/robe/colored/courtmage
-	color = CLOTHING_ASH_GREY
+	color = CLOTHING_CHALK_WHITE
 
 /obj/item/clothing/shirt/robe/colored/mage/Initialize()
-	color = pick( CLOTHING_PEASANT_BROWN, CLOTHING_SPRING_GREEN, CLOTHING_CHESTNUT, CLOTHING_YELLOW_OCHRE)
+	color = pick(CLOTHING_BERRY_BLUE, CLOTHING_SPRING_GREEN, CLOTHING_TARAXACUM_YELLOW, CLOTHING_WINESTAIN_RED)
 	. = ..()
 
 /obj/item/clothing/shirt/robe/wizard
@@ -261,7 +261,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/adept
 	name = "adept robe"
-	desc = "Standard robes for an arcane adept."
+	desc = "Standard robes for an arcyne adept."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "adept-red"
 	item_state = "adept-red"
@@ -299,7 +299,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/sorcerer
 	name = "sorcerer robe"
-	desc = "Standard robes for an arcane sorcerer."
+	desc = "Standard robes for an arcyne sorcerer."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "sorcerer-red"
 	item_state = "sorcerer-red"
@@ -336,7 +336,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/warlock
 	name = "warlock robe"
-	desc = "Standard robes for an arcane sorcerer."
+	desc = "Standard robes for an arcyne sorcerer."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "vizier-red"
 	item_state = "vizier-red"
