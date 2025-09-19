@@ -495,7 +495,7 @@
 	priority_announce("The sky blackens, a dark day for Psydonia.", "Ascension", 'sound/misc/gods/astrata_scream.ogg')
 	for(var/mob/living/carbon/human/V in GLOB.human_list)
 		if(V.mind in SSmapping.retainer.cultists)
-			V.add_stress(/datum/stressevent/lovezizo)
+			V.add_stress(/datum/stress_event/lovezizo)
 		else
-			V.add_stress(/datum/stressevent/hatezizo)
+			V.add_stress(/datum/stress_event/hatezizo)
 	SSgamemode.roundvoteend = TRUE
