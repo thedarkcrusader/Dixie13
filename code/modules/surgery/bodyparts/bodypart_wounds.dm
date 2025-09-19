@@ -525,7 +525,7 @@
 
 /// Embeds an object in this bodypart
 /obj/item/bodypart/proc/add_embedded_object(obj/item/embedder, silent = FALSE, crit_message = FALSE)
-	if(!embedder || !can_embed(embedder))
+	if(!embedder || !embedder.can_embed())
 		return FALSE
 	if(owner && ((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE)))
 		return FALSE

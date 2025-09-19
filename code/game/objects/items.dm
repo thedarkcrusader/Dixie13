@@ -1471,3 +1471,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	return new_item
 
+/obj/item/proc/can_embed()
+	if(HAS_TRAIT(src, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NOEMBED))
+		return FALSE
+	if(!embedding?.embed_chance)
+		return FALSE
+	return TRUE

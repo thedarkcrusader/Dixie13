@@ -204,7 +204,7 @@
 		blocked = TRUE
 	else if(I)
 		if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
-			if(can_embed(I) && prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
+			if(I.can_embed() && prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 				//throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)
 				var/obj/item/bodypart/L = pick(bodyparts)
 				L.add_embedded_object(I, silent = FALSE, crit_message = TRUE)
