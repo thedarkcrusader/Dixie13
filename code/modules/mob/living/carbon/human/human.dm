@@ -30,7 +30,7 @@
 					if(dna?.species)
 						if(dna.species.id == SPEC_ID_DWARF)
 							var/mob/living/carbon/V = src
-							V.add_stress(/datum/stressevent/dwarfshaved)
+							V.add_stress(/datum/stress_event/dwarfshaved)
 				else
 					held_item.melee_attack_chain(user, src, params)
 
@@ -52,8 +52,6 @@
 
 	. = ..()
 
-	if(!CONFIG_GET(flag/disable_human_mood))
-		AddComponent(/datum/component/mood)
 	AddElement(/datum/element/footstep, footstep_type, 1, -6)
 	GLOB.human_list += src
 	if(ai_controller && flee_in_pain)
@@ -68,7 +66,7 @@
 	var/mob/living/carbon/V = src
 	var/obj/item/bodypart/affecting
 	var/dam = levels * rand(10,50)
-	V.add_stress(/datum/stressevent/felldown)
+	V.add_stress(/datum/stress_event/felldown)
 	record_round_statistic(STATS_MOAT_FALLERS, -1) // If you get your ankles broken you fall. This makes sure only those that DIDN'T get damage get counted.
 	record_round_statistic(STATS_ANKLES_BROKEN)
 	var/chat_message
@@ -308,7 +306,7 @@
 			return
 
 		src.visible_message("<span class='notice'>[src] performs CPR on [C.name]!</span>", "<span class='notice'>I perform CPR on [C.name].</span>")
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "perform_cpr", /datum/mood_event/perform_cpr)
+		add_stress(/datum/stress_event/perform_cpr)
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
 
@@ -729,6 +727,16 @@
 	else
 		REMOVE_TRAIT(src, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
+	if(HAS_TRAIT(target, TRAIT_RECOGNIZED))
+		ADD_TRAIT(src, TRAIT_RECOGNIZED, TRAIT_GENERIC)
+	else
+		REMOVE_TRAIT(src, TRAIT_RECOGNIZED, TRAIT_GENERIC)
+
+	if(HAS_TRAIT(target, TRAIT_RECRUITED))
+		ADD_TRAIT(src, TRAIT_RECRUITED, TRAIT_GENERIC)
+	else
+		REMOVE_TRAIT(src, TRAIT_RECRUITED, TRAIT_GENERIC)
+
 	if(HAS_TRAIT(target, TRAIT_FACELESS))
 		ADD_TRAIT(src, TRAIT_FACELESS, TRAIT_GENERIC)
 	else
@@ -738,10 +746,43 @@
 
 
 /mob/living/carbon/human/proc/copy_bodyparts(mob/living/carbon/human/target)
-	bodyparts = target.bodyparts
+	var/mob/living/carbon/human/self = src
+	var/list/target_missing = target.get_missing_limbs()
+	var/list/my_missing = self.get_missing_limbs()
+
+	// Store references to bodyparts
+	var/list/original_parts = list()
+	var/list/target_parts = list()
+
+	var/list/full = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG,
+	)
+
+	for(var/zone in full)
+		original_parts[zone] = self.get_bodypart(zone)
+		target_parts[zone] = target.get_bodypart(zone)
+
 	bodyparts = list()
-	for(var/obj/item/bodypart/part in target.bodyparts)
-		bodyparts += part.type
+
+	// Rebuild bodyparts list with typepaths
+	for(var/zone_2 in full)
+		var/obj/item/bodypart/target_part = target_parts[zone_2]
+		var/obj/item/bodypart/my_part = original_parts[zone_2]
+
+		if(zone_2 in my_missing)
+			continue
+		else if(zone_2 in target_missing)
+			if(my_part)
+				bodyparts += my_part.type
+		else
+			if(target_part)
+				bodyparts += target_part.type
+
 	create_bodyparts()
 
 /mob/living/carbon/human/species

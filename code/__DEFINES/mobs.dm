@@ -22,7 +22,6 @@
 //Ready states at roundstart for mob/dead/new_player
 #define PLAYER_NOT_READY 0
 #define PLAYER_READY_TO_PLAY 1
-#define PLAYER_READY_TO_OBSERVE 2
 
 //movement intent defines for the m_intent var
 #define MOVE_INTENT_WALK "walk"
@@ -98,13 +97,14 @@
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSmobs.wait/30)
 
-#define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
-#define HEAT_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 400K point
-#define HEAT_DAMAGE_LEVEL_3 1 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
+#define HEAT_DAMAGE_LEVEL_1 0 //Amount of damage applied when your body temperature just passes the 360.15k safety point
+#define HEAT_DAMAGE_LEVEL_2 0.1 //Amount of damage applied when your body temperature passes the 400K point
+#define HEAT_DAMAGE_LEVEL_3 0.2 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
 
-#define COLD_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 200K point
-#define COLD_DAMAGE_LEVEL_3 1 //Amount of damage applied when your body temperature passes the 120K point
+#define COLD_DAMAGE_LEVEL_1 0 //Amount of damage applied when your body temperature just passes the 260.15k safety point
+#define COLD_DAMAGE_LEVEL_2 0.1 //Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_3 0.2 //Amount of damage applied when your body temperature passes the 120K point
+
 
 //Note that gas heat damage is only applied once every FOUR ticks.
 #define HEAT_GAS_DAMAGE_LEVEL_1 1 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point

@@ -2,7 +2,7 @@
 	name = "Zalad Emir"
 	greet_text = "An Emir hailing from the Deshret, here on business for the Mercator's Guild."
 	allowed_sexes = list(MALE)
-	allowed_races = RACES_PLAYER_ZYBANTINE
+	allowed_races = RACES_PLAYER_ZALADIN
 	outfit = /datum/outfit/job/zalad_migration/emir
 	grant_lit_torch = TRUE
 	is_recognized = TRUE
@@ -55,13 +55,20 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
-
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+		if(H.dna.species.id == SPEC_ID_HALF_ELF)
+			if(H.dna.species.native_language == "Imperial")
+				H.dna.species.native_language = "Zalad"
+				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/zalad/amirah
 	name = "Zalad Amirah"
-	greet_text = "An Amirah hailing from Deshret, here on business for the Mercator's Guild to the Isle of the Enigma."
+	greet_text = "An Amirah hailing from Deshret, here on business for the Mercator's Guild."
 	allowed_sexes = list(FEMALE)
-	allowed_races = RACES_PLAYER_ZYBANTINE
+	allowed_races = RACES_PLAYER_ZALADIN
 	outfit = /datum/outfit/job/zalad_migration/amirah
 	grant_lit_torch = TRUE
 	is_recognized = TRUE
@@ -110,12 +117,19 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
-
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+		if(H.dna.species.id == SPEC_ID_HALF_ELF)
+			if(H.dna.species.native_language == "Imperial")
+				H.dna.species.native_language = "Zalad"
+				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 /datum/migrant_role/zalad/furusiyya
 	name = "Furusiyya"
 	greet_text = "You are a furusiyya, pledged to the Emir and the Amirah. Make sure they come out alive of that place."
 	allowed_sexes = list(MALE)
-	allowed_races = RACES_PLAYER_ZYBANTINE
+	allowed_races = RACES_PLAYER_ZALADIN
 	outfit = /datum/outfit/job/zalad_migration/furusiyya
 	grant_lit_torch = TRUE
 	is_recognized = TRUE
@@ -155,13 +169,13 @@
 
 	pants = /obj/item/clothing/pants/tights/colored/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/boots/rare/zybanplate
-	gloves = /obj/item/clothing/gloves/rare/zybanplate
+	shoes = /obj/item/clothing/shoes/boots/rare/zaladplate
+	gloves = /obj/item/clothing/gloves/rare/zaladplate
 	belt = /obj/item/storage/belt/leather/shalal
 	shirt = /obj/item/clothing/shirt/undershirt/colored/random
-	armor = /obj/item/clothing/armor/rare/zybanplate
+	armor = /obj/item/clothing/armor/rare/zaladplate
 	backl = /obj/item/storage/backpack/satchel
-	head = /obj/item/clothing/head/rare/zybanplate
+	head = /obj/item/clothing/head/rare/zaladplate
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 	if(!H.has_language(/datum/language/zalad))
@@ -173,6 +187,14 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+		if(H.dna.species.id == SPEC_ID_HALF_ELF)
+			if(H.dna.species.native_language == "Imperial")
+				H.dna.species.native_language = "Zalad"
+				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/zalad_guard
 	name = "Zalad Soldier"
@@ -219,6 +241,14 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+		if((H.dna.species.id == SPEC_ID_HALF_ELF) || (H.dna.species.id == SPEC_ID_HALF_DROW))
+			if(H.dna.species.native_language == "Imperial")
+				H.dna.species.native_language = "Zalad"
+				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/qatil
 	name = "Qatil"
@@ -272,7 +302,14 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
-
+	if(H.dna?.species)
+		if(H.dna.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Zalad"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+		if((H.dna.species.id == SPEC_ID_HALF_ELF) || (H.dna.species.id == SPEC_ID_HALF_DROW))
+			if(H.dna.species.native_language == "Imperial")
+				H.dna.species.native_language = "Zalad"
+				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 /datum/migrant_wave/zalad_wave
 	name = "The Deshret Expedition"
 	max_spawns = 1
@@ -286,7 +323,7 @@
 		/datum/migrant_role/qatil = 1,
 		/datum/migrant_role/zalad_guard = 2
 	)
-	greet_text = "The Mercator Guild sent you, respected Zybantinian to seek favorable business proposal within the Kingdom of Vanderlin."
+	greet_text = "The Mercator Guild sent you, respected Zaladians, to seek favorable business proposal within the Kingdom of Vanderlin."
 
 /datum/migrant_wave/zalad_wave_down
 	name = "The Deshret Expedition"
@@ -299,4 +336,4 @@
 		/datum/migrant_role/zalad/furusiyya = 1,
 		/datum/migrant_role/qatil = 1
 	)
-	greet_text = "The Mercator Guild sent you, respected Zybantinian to seek favorable business proposal within the Kingdom of Vanderlin. Unfortunately most of your guards died on the way here."
+	greet_text = "The Mercator Guild sent you, respected Zaladians, to seek favorable business proposal within the Kingdom of Vanderlin. Unfortunately most of your guards died on the way here."
