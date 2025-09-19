@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/undirected/conjure_item/summon_leech
 	name = "Summon Leech"
 	desc = "Summon a leech from Abyssor's domain."
-	button_icon_state = "zad"
+	button_icon_state = "curse2"
 	sound = 'sound/foley/jumpland/waterland.ogg'
 
 	spell_type = SPELL_MIRACLE
@@ -22,6 +22,7 @@
 /datum/action/cooldown/spell/undirected/conjure_item/summon_leech/pestra
 	name = "Summon Leech"
 	desc = "Summon a leech by Pestra's will."
+	button_icon_state = "diagnose"
 
 	required_items = list(/obj/item/clothing/neck/psycross/silver/pestra)
 
