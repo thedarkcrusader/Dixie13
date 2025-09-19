@@ -101,6 +101,9 @@
 		-You've also been gaven 10 favors to use at the mail machines, you can get more favor by sending signed confessions to The Holy Bishop. Spend your favors wisely.")
 		)
 	H.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
@@ -132,7 +135,7 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
-	if(H.add_stress(/datum/stressevent/tortured))
+	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/torture_lines = list(
 			"CONFESS YOUR WRONGDOINGS!",
@@ -176,7 +179,7 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
-	if(H.add_stress(/datum/stressevent/tortured))
+	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/faith_lines = list(
 			"DO YOU DENY PSYDON AND THE TEN?",
@@ -254,13 +257,13 @@
 			switch(interrogator_patron.associated_faith.type)
 				if(/datum/faith/psydon)
 					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra) //lore
-						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon/progressive)
-						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/godless/naivety)
-						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon)
-						interrogator.add_stress(/datum/stressevent/torture_large_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_large_penalty)
 
 		if(length(confessions))
 			if(torture) // Only scream your confession if it's due to torture.
