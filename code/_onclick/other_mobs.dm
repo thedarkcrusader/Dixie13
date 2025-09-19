@@ -394,7 +394,6 @@
 			thiefskill += 1
 		var/stealroll = roll("[thiefskill]d6")
 		var/target_perception = V.STAPER
-		var/user_perception = U.STAPER
 		var/target_skill = V.get_skill_level(/datum/skill/misc/stealing)
 		var/exp_to_gain = U.STAINT * 1.5
 		var/list/stealablezones = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_NECK, BODY_ZONE_PRECISE_GROIN, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND)
