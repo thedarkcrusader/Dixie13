@@ -275,5 +275,290 @@
                 "spellcheck": "corrected the two instances of max_merchanise in the file to be max_merchandise"
             }
         ]
+    },
+    "2025-09-11": {
+        "Wouju": [
+            {
+                "rscadd": "Added a new peasant dye. Taraxacum Yellow"
+            },
+            {
+                "rscadd": "You can now write textbooks on alchemy, engineering and medicine"
+            },
+            {
+                "rscadd": "textbooks now have an INT requirement, they also give bonus XP based on half your INT"
+            },
+            {
+                "qol": "Some skill descriptions should be more accurate now"
+            }
+        ],
+        "tired-wired": [
+            {
+                "bugfix": "fixes ravox's objective for sacrifice"
+            }
+        ],
+        "wgtjunior743": [
+            {
+                "rscadd": "Half-Elves and Half-Drows can pick their accent between humen and their respective elf half."
+            },
+            {
+                "rscadd": "Half-Elves and Half-Drows that play zalad roles and have their accent set to humen will have zalad as their native tongue."
+            },
+            {
+                "rscadd": "Grenzel and Zaladins foreigners now have their respective accents"
+            },
+            {
+                "code_imp": "Changed how some of the accent code works"
+            },
+            {
+                "rscadd": "Half-Drow can also play adventurer Qatil"
+            },
+            {
+                "rscadd": "Zombie and Skeleton Native Languages are Zizo Chant"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed ultimate sacrifice buttons"
+            }
+        ]
+    },
+    "2025-09-12": {
+        "Wouju": [
+            {
+                "rscadd": "Blacksmiths can craft bronze gears"
+            },
+            {
+                "rscadd": "Crafting iron gears gives 2 gears now"
+            }
+        ],
+        "snowyseshi": [
+            {
+                "balance": "Minor vampire buff"
+            }
+        ],
+        "flleeppyy": [
+            {
+                "server": "SSplexora now actually sends the serverstart request, roundnotify should work now"
+            }
+        ]
+    },
+    "2025-09-13": {
+        "Wouju": [
+            {
+                "rscadd": "Archivists can now be Zizo worshippers."
+            },
+            {
+                "rscadd": "Gave zizo chant to zizo mages, court mages, rogue mages (whom are basically already zizoites) and archivists"
+            },
+            {
+                "balance": "making stuff from clay requires crafting now instead of masonry"
+            },
+            {
+                "rscadd": "Steamknight armour is now craftable"
+            },
+            {
+                "balance": "Steamknight armour now requires skilled in engineering to be properly utilized"
+            },
+            {
+                "rscadd": "Adults can now be squires. You should probably roleplay them as more like young adults/teenagers however, because they get a bit less stats than normal adults for reasons."
+            },
+            {
+                "balance": "steam knight no longer gets a stat malus, instead they get a skill malus"
+            }
+        ],
+        "7erracotta": [
+            {
+                "rscadd": "Added new valuable items and smithing recipes."
+            }
+        ],
+        "leaKsi": [
+            {
+                "bugfix": "Smuggling contracts now work!"
+            }
+        ],
+        "wgtjunior743": [
+            {
+                "bugfix": "Aspirant that picks the gun option now has gun skills ammo and gunpowder."
+            },
+            {
+                "bugfix": "Aspirant that picks the bomb option can make bombs."
+            },
+            {
+                "admin": "New Admin verb to disable Triumph Buys"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed cooking stews in pots"
+            }
+        ]
+    },
+    "2025-09-14": {
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed new wooden fence and pallisade passing."
+            },
+            {
+                "bugfix": "Fixed harpies sometimes not having wings or the correct tail"
+            },
+            {
+                "bugfix": "Fixed punches being unable to do critical hits or wounds"
+            },
+            {
+                "bugfix": "Round end vote passing stops futher votes from happening."
+            }
+        ],
+        "grungussuss": [
+            {
+                "admin": "subtle messages are more visible to the player"
+            }
+        ]
+    },
+    "2025-09-15": {
+        "grungussuss": [
+            {
+                "rscadd": "Added a cannon"
+            }
+        ],
+        "Wouju": [
+            {
+                "rscadd": "Buckets can hold fish and fishing related bait, cups can hold tiny items"
+            },
+            {
+                "rscadd": "Buckets transfer 10 units instead of 9"
+            },
+            {
+                "rscadd": "angler and clownfish taste improved, they are still quite crap for nobles (except clownfish, they are fine)"
+            },
+            {
+                "rscadd": "Added craftable dice cups and dice"
+            }
+        ],
+        "Bloo4420": [
+            {
+                "rscadd": "Craftable wicker handbaskets with unique content sprites"
+            },
+            {
+                "code_imp": "changed 3 instances of (things.len) in bags.dm to instead be (length(things)) to be in line with other code."
+            }
+        ],
+        "DrSirKnight": [
+            {
+                "rscadd": "Two new wretch subclasses, Rouschild and Rejected Royal"
+            }
+        ],
+        "Just-Sim": [
+            {
+                "rscadd": "A headshot miniature, if you possess one."
+            }
+        ],
+        "dwasint": [
+            {
+                "rscadd": "composters can now be clicked on with a shovel to bulk remove compost"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed biting applying limb damage twice."
+            },
+            {
+                "balance": "You can bite head sub zones except cranium, hands, feet and groin to do biting crits or have strong bite. Assuming your bite does more than 10 damage."
+            }
+        ],
+        "snowyseshi": [
+            {
+                "rscadd": "watch boots with a special footstep noise + change footman cudgel to iron mace"
+            },
+            {
+                "sound": "added heavy footstep sound"
+            }
+        ]
+    },
+    "2025-09-16": {
+        "grungussuss": [
+            {
+                "bugfix": "fixed runechat being cancelled on minor damage"
+            }
+        ],
+        "KittyNoodle": [
+            {
+                "code_imp": "Removes some very unintentional (hopefully) stuff added to the codebase. Move along citizen."
+            }
+        ],
+        "Arkatos": [
+            {
+                "bugfix": "Secret officiant now works correctly for non clergy also, and triumph buy cost was decreased by 1."
+            },
+            {
+                "bugfix": "Marriages should now give proper surnames, accounting for various titles."
+            }
+        ]
+    },
+    "2025-09-17": {
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed zigs not getting you high"
+            },
+            {
+                "bugfix": "Fixed zig butts having no icon"
+            }
+        ],
+        "Ambrose997": [
+            {
+                "code_imp": "changed allowed_races to grenz-affiliated ones only for lore accuracy."
+            }
+        ],
+        "ProperPickle": [
+            {
+                "rscadd": "Added a spell for eavesdropping/planting bugs."
+            },
+            {
+                "image": "added phantom ear sprites for spellbook icon, obj icons, and in-text icon. Sprite help from Krayon."
+            },
+            {
+                "code_imp": "added a drop_source parameter which keeps track of whether a drop proc was called by a throw or a drop to prevent qdel double counting."
+            }
+        ]
+    },
+    "2025-09-18": {
+        "snowyseshi": [
+            {
+                "rscadd": "Bloodsucker wretch"
+            },
+            {
+                "rscadd": "Caitiff clan"
+            },
+            {
+                "code_imp": "added new variables for VL assignement."
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed certain herbal brews, vampire spells and some other stuff I don't even know not effecting your mood when they are supposed to."
+            },
+            {
+                "bugfix": "Fixed twist not causing dislocations or fractures"
+            }
+        ]
+    },
+    "2025-09-19": {
+        "grungussuss": [
+            {
+                "qol": "tweaked animated runechat"
+            },
+            {
+                "rscadd": "You can now move diagonally"
+            }
+        ],
+        "7erracotta": [
+            {
+                "rscadd": "Added a new class alongside some sprites"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fix infinite stress events"
+            }
+        ]
     }
 }
