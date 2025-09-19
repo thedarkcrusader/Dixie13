@@ -8,7 +8,7 @@
 	. = ..()
 	owner.emote("scream")
 	owner.Jitter(6)
-	owner.add_stress(/datum/stressevent/startled)
+	owner.add_stress(/datum/stress_event/startled)
 
 /// Stacking severity of phobic reaction
 /// The more stacks you are the more scared you are

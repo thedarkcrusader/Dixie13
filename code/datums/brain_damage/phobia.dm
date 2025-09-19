@@ -10,7 +10,7 @@
 	/// Cooldown for freakouts to prevent permastunning.
 	COOLDOWN_DECLARE(scare_cooldown)
 
-	var/datum/stressevent/stress_event_type = /datum/stressevent/phobia
+	var/datum/stress_event/stress_event_type = /datum/stress_event/phobia
 
 	var/regex/trigger_regex
 	//instead of cycling every atom, only cycle the relevant types
