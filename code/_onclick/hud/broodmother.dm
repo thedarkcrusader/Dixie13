@@ -30,7 +30,6 @@
 /atom/movable/screen/broodmother/bar/New(loc, ...)
 	. = ..()
 	add_filter("alpha_mask_filter", 10, alpha_mask_filter(icon = icon('icons/mob/broodmother_hud/4x128.dmi', icon_state = "mask"), y = current_alpha_mask_filter_offset, flags = MASK_INVERSE))
-	RegisterSignal(hud.mymob, COMSIG_BROODMOTHER_BIOMASS_CHANGE, PROC_REF(on_biomass_change))
 
 /atom/movable/screen/broodmother/bar/proc/on_biomass_change(datum/source, current_biomass, _tier)
 	SIGNAL_HANDLER
@@ -49,6 +48,21 @@
 /atom/movable/screen/broodmother/bar/proc/set_alpha_offset(amount)
 	animate(get_filter("alpha_mask_filter"), time = 0.5 SECONDS, y = amount, easing = CIRCULAR_EASING)
 
+/atom/movable/screen/broodmother/bar/set_new_hud(datum/hud/hud_owner)
+	. = ..()
+	if(isnull(tier))
+		stack_trace("tier was null")
+
+	RegisterSignal(hud.mymob, COMSIG_BROODMOTHER_BIOMASS_CHANGE, PROC_REF(on_biomass_change))
+
+	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/mother = hud.mymob
+	current_alpha_mask_filter_offset = 128/100 * mother.vars["tier_[tier]_biomass_amount"]
+	update_mask_offset()
+
+/atom/movable/screen/broodmother/bar/Destroy()
+	. = ..()
+	UnregisterSignal(hud.mymob, COMSIG_BROODMOTHER_BIOMASS_CHANGE)
+
 /atom/movable/screen/broodmother/button
 	icon = 'icons/mob/broodmother_hud/8x8.dmi'
 	var/tier
@@ -65,12 +79,7 @@
 	name = "Tier 1 Biomass"
 	icon_state = "t1_biomass"
 	screen_loc = "WEST:-80,TOP:-4"
-
-/atom/movable/screen/broodmother/bar/tier_1_biomass_bar/New(loc, ...)
-	. = ..()
-	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/mother = hud.mymob
-	current_alpha_mask_filter_offset = 128/100 * mother.tier_1_biomass_amount
-	update_mask_offset()
+	tier = 1
 
 /atom/movable/screen/broodmother/button/tier_1_biomass_lay
 	name = "Lay a tier 1 egg"
@@ -82,12 +91,7 @@
 	name = "Tier 2 Biomass"
 	icon_state = "t2_biomass"
 	screen_loc = "WEST:-70,TOP:-4"
-
-/atom/movable/screen/broodmother/bar/tier_2_biomass_bar/New(loc, ...)
-	. = ..()
-	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/mother = hud.mymob
-	current_alpha_mask_filter_offset = 128/100 * mother.tier_2_biomass_amount
-	update_mask_offset()
+	tier = 2
 
 /atom/movable/screen/broodmother/button/tier_2_biomass_lay
 	name = "Lay a tier 2 egg"
@@ -99,12 +103,7 @@
 	name = "Tier 3 Biomass"
 	icon_state = "t3_biomass"
 	screen_loc = "WEST:-60,TOP:-4"
-
-/atom/movable/screen/broodmother/bar/tier_3_biomass_bar/New(loc, ...)
-	. = ..()
-	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/mother = hud.mymob
-	current_alpha_mask_filter_offset = 128/100 * mother.tier_3_biomass_amount
-	update_mask_offset()
+	tier = 3
 
 /atom/movable/screen/broodmother/button/tier_3_biomass_lay
 	name = "Lay a tier 3 egg"
@@ -116,34 +115,13 @@
 	..()
 	var/atom/movable/screen/using
 
-	if(!GLOB.admin_datums[owner.ckey]) // If you are adminned, you will not get the dead hud obstruction.
-		using =  new /atom/movable/screen/backhudl/ghost()
-		using.hud = src
-		static_inventory += using
-
 	scannies = new /atom/movable/screen/scannies
-	scannies.hud = src
+	scannies.set_new_hud(src)
 	static_inventory += scannies
 	if(owner.client?.prefs?.crt == TRUE)
 		scannies.alpha = 70
 
 	for(var/element as anything in BROODMOTHER_HUD_ELEMENTS)
 		using = new element()
-		using.hud = src
+		using.set_new_hud(src)
 		static_inventory += using
-
-/datum/hud/broodmother/show_hud(version = 0, mob/viewmob)
-	// don't show this HUD if observing; show the HUD of the observee
-	var/mob/dead/observer/O = mymob
-	if (istype(O) && O.observetarget)
-		plane_masters_update()
-		return FALSE
-
-	. = ..()
-	if(!.)
-		return
-	var/mob/screenmob = viewmob || mymob
-	if(!screenmob.client.prefs.ghost_hud)
-		screenmob.client.screen -= static_inventory
-	else
-		screenmob.client.screen += static_inventory

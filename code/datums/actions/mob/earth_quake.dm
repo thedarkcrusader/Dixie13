@@ -3,10 +3,11 @@
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "explosion"
 	desc = "Quake the earth beneath you, throwing others away."
-	cooldown_time = 5 SECONDS
+	cooldown_time = 30 SECONDS
 	check_flags = null
 
 /datum/action/cooldown/mob_cooldown/earth_quake/Activate(atom/target)
+	. ..()
 	var/turf/origin = get_turf(owner)
 	var/range = 3
 	var/delay = 0.3
