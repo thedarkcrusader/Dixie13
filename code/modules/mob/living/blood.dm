@@ -164,37 +164,50 @@
 		bleed_rate += bodypart.get_bleed_rate()
 	return bleed_rate
 
-//Makes a blood drop, leaking amt units of blood from the mob
+/// Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/proc/bleed(amt)
-	if(!iscarbon(src))
-		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-			return
-	if(blood_volume)
-		blood_volume = max(blood_volume - amt, 0)
-		if(src.client)
-			record_featured_stat(FEATURED_STATS_BLEEDERS, src)
-		record_round_statistic(STATS_BLOOD_SPILT, amt / 100)
-		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
-			add_drip_floor(get_turf(src), amt)
-		var/vol2use
-		if(amt > 1)
-			vol2use = 'sound/misc/bleed (1).ogg'
-		if(amt > 2)
-			vol2use = 'sound/misc/bleed (2).ogg'
-		if(amt > 3)
-			vol2use = 'sound/misc/bleed (3).ogg'
-		if(body_position == LYING_DOWN || stat)
-			vol2use = null
-		if(vol2use)
-			playsound(get_turf(src), vol2use, 100, FALSE)
+	if(!iscarbon(src) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+		return
+	if(blood_volume <= 0)
+		return
+
+	// For each CON above 10, we bleed slower.
+	// Consequently, for each CON under 10 we bleed faster.
+	var/con_modifier = 1
+	if(STACON >= CONSTITUTION_BLEEDRATE_CAP)
+		con_modifier = CONSTITUTION_BLEEDRATE_CAP - 10
+	else if(STACON != 10)
+		con_modifier = STACON - 10
+
+	amt -= amt * con_modifier * CONSTITUTION_BLEEDRATE_MOD
+
+	if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+		amt /= 2
+	if(HAS_TRAIT(src, TRAIT_CRITICAL_WEAKNESS))
+		amt *= 2
+
+	blood_volume = max(blood_volume - amt, 0)
+
+	if(client)
+		record_featured_stat(FEATURED_STATS_BLEEDERS, src)
+	record_round_statistic(STATS_BLOOD_SPILT, amt / 100)
+
+	if(isturf(loc)) // Blood loss still happens in locker, floor stays clean
+		add_drip_floor(get_turf(src), amt)
+
+	if(body_position != LYING_DOWN && !stat)
+		playsound(get_turf(src), pick('sound/misc/bleed (1).ogg', 'sound/misc/bleed (2).ogg', 'sound/misc/bleed (3).ogg'), 100, FALSE)
 
 	updatehealth()
 
+	return TRUE
+
 /mob/living/carbon/human/bleed(amt)
+	if(NOBLOOD in dna?.species?.species_traits)
+		return FALSE
 	if(physiology)
 		amt *= physiology.bleed_mod
-	if(!(NOBLOOD in dna?.species?.species_traits))
-		return ..()
+	return ..()
 
 /mob/living/proc/restore_blood()
 	blood_volume = initial(blood_volume)

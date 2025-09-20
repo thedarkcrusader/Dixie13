@@ -95,3 +95,10 @@
 #define WOUND_SEVERITY_FATAL 5
 /// This wound has werewolf infection
 #define WOUND_SEVERITY_BIOHAZARD 6
+
+/// This is used as a reference point for dynamic wounds, so it's better off as a define.
+#define ARTERY_LIMB_BLEEDRATE 20
+/// How much slower we'll be bleeding for every CON point. 0.1 = 10% slower.
+#define CONSTITUTION_BLEEDRATE_MOD 0.1
+/// The CON value up to which we get a bleedrate reduction.
+#define CONSTITUTION_BLEEDRATE_CAP 15
