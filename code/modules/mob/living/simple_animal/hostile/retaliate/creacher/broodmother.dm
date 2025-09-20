@@ -34,6 +34,10 @@
 
 	var/frenzy_ready = TRUE
 
+/mob/living/simple_animal/hostile/retaliate/troll/broodmother/death(gibbed)
+	. = ..()
+	new /obj/item/reagent_containers/lux/pragmas (get_turf(src))
+
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/Initialize()
 	. = ..()
 	var/datum/action/cooldown/mob_cooldown/earth_quake/quake_ability = new
