@@ -7,7 +7,7 @@
 	check_flags = null
 
 /datum/action/cooldown/mob_cooldown/earth_quake/Activate(atom/target)
-	. ..()
+	. = ..()
 	var/turf/origin = get_turf(owner)
 	var/range = 3
 	var/delay = 0.3

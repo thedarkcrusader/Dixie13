@@ -22,9 +22,13 @@
 	SET_BASE_PIXEL(-36, -8)
 	hud_type = /datum/hud/broodmother
 
-	var/tier_1_biomass_amount = 100
-	var/tier_2_biomass_amount = 100
-	var/tier_3_biomass_amount = 100
+	var/tier_1_biomass_amount = 25
+	var/tier_2_biomass_amount = 10
+	var/tier_3_biomass_amount = 5
+
+	var/tier_1_biomass_cost = BIOMASS_TIER_1_COST
+	var/tier_2_biomass_cost = BIOMASS_TIER_2_COST
+	var/tier_3_biomass_cost = BIOMASS_TIER_3_COST
 
 	var/frenzy_ready = TRUE
 
@@ -40,6 +44,27 @@
 	grant_language(/datum/language/common)
 	grant_language(/datum/language/orcish)
 
+/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/help_blurb()
+	to_chat(
+		src,
+		span_notice("\
+			earth quake flings enemies around you away\
+			\n\n\
+			frenzy makes you faster on a cooldown\
+			\n\n\
+			rock throw throws an explosive rock\
+			\n\n\
+			middle click to butcher corpses and eat food.\
+			\n\n\
+			top left is your biomass, with this you can lay eggs, click the bars to see more info.\
+			\n\n\
+			you can command your children with generic commands like: \"follow\", \"attack\", \"halt\"\
+			\n\n\
+			good luck!\
+			"\
+		)
+	)
+
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/death(gibbed)
 	icon_state = initial(icon_state)
 	. = ..()
@@ -47,14 +72,15 @@
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/frenzy_on()
 	if(!frenzy_ready)
 		to_chat(src, span_danger("Not ready!"))
+		return FALSE
 
 	frenzy_ready = FALSE
 	icon_state = "broodmother_frenzy"
 	add_filter("frenzy_rays", 20, rays_filter(size = 80, color = "#c21a03"))
 	playsound(src, 'sound/misc/gods/astrata_scream.ogg', 80, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, frequency = 32000)
-	animate(src, time = 0.15 SECONDS, pixel_w = rand(10, 15) * pick(1, -1), pixel_z = rand(10, 20) * pick(1, -1), transform = owner.transform.Turn(rand(10, 20)), easing = BOUNCE_EASING)
-	animate(time = 0.15 SECONDS, pixel_w = -rand(10, 20) * pick(1, -1), pixel_z = rand(10, 20) * pick(1, -1), transform = initial(owner.transform):Turn(-rand(10, 20)), easing = BOUNCE_EASING)
-	animate(time = 0.2 SECONDS, pixel_w = 0, pixel_z = 0, transform = initial(owner.transform), easing = BOUNCE_EASING)
+	animate(src, time = 0.15 SECONDS, pixel_w = rand(10, 15) * pick(1, -1), pixel_z = rand(10, 20) * pick(1, -1), transform = src.transform.Turn(rand(10, 20)), easing = BOUNCE_EASING)
+	animate(time = 0.15 SECONDS, pixel_w = -rand(10, 20) * pick(1, -1), pixel_z = rand(10, 20) * pick(1, -1), transform = initial(src.transform):Turn(-rand(10, 20)), easing = BOUNCE_EASING)
+	animate(time = 0.2 SECONDS, pixel_w = 0, pixel_z = 0, transform = initial(src.transform), easing = BOUNCE_EASING)
 	add_movespeed_modifier("frenzy", priority = 1, override = TRUE, multiplicative_slowdown = -2)
 	update_vision_cone()
 	addtimer(CALLBACK(src, PROC_REF(frenzy_off)), FRENZY_DURATION)
@@ -128,11 +154,11 @@
 	var/check = tier
 	switch(tier)
 		if(1)
-			check = BIOMASS_TIER_1_COST
+			check = tier_1_biomass_cost
 		if(2)
-			check = BIOMASS_TIER_2_COST
+			check = tier_2_biomass_cost
 		if(3)
-			check = BIOMASS_TIER_3_COST
+			check = tier_3_biomass_cost
 
 	return (vars["tier_[tier]_biomass_amount"] >= check) ? TRUE : FALSE // gaming
 
@@ -141,13 +167,13 @@
 	switch(tier)
 		if(1)
 			egg_to_lay = /obj/structure/broodmother_egg/goblin
-			adjust_biomass(tier, -BIOMASS_TIER_1_COST)
+			adjust_biomass(tier, -tier_1_biomass_cost)
 		if(2)
 			egg_to_lay = /obj/structure/broodmother_egg/orc
-			adjust_biomass(tier, -BIOMASS_TIER_2_COST)
+			adjust_biomass(tier, -tier_2_biomass_cost)
 		if(3)
 			egg_to_lay = /obj/structure/broodmother_egg/troll
-			adjust_biomass(tier, -BIOMASS_TIER_3_COST)
+			adjust_biomass(tier, -tier_3_biomass_cost)
 
 	var/obj/structure/broodmother_egg/made_egg = new egg_to_lay(get_turf(src))
 	made_egg.mother_weak_ref = WEAKREF(src)

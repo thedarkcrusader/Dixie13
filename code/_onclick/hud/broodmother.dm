@@ -12,6 +12,13 @@
 /atom/movable/screen/broodmother
 	plane = ABOVE_HUD_PLANE
 
+/atom/movable/screen/broodmother/Click(location, control, params)
+	. = ..()
+	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/broodmother = usr
+	info_blurb(broodmother)
+
+/atom/movable/screen/broodmother/proc/info_blurb(mob/living/simple_animal/hostile/retaliate/troll/broodmother/broodmother)
+
 /atom/movable/screen/broodmother/cover
 	icon = 'icons/mob/broodmother_hud/cover.dmi'
 	icon_state = "cover"
@@ -26,6 +33,10 @@
 	icon = 'icons/mob/broodmother_hud/4x128.dmi'
 	var/current_alpha_mask_filter_offset = 0
 	var/tier
+
+/atom/movable/screen/broodmother/bar/info_blurb(mob/living/simple_animal/hostile/retaliate/troll/broodmother/broodmother)
+	to_chat(broodmother, span_info("Current biomass amount - [broodmother.vars["tier_[tier]_biomass_amount"]]"))
+	to_chat(broodmother, span_info("Amount needed for laying egg - [broodmother.vars["tier_[tier]_biomass_cost"]]"))
 
 /atom/movable/screen/broodmother/bar/New(loc, ...)
 	. = ..()
