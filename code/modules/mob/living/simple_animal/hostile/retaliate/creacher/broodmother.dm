@@ -21,6 +21,8 @@
 	icon_state = "broodmother"
 	SET_BASE_PIXEL(-36, -8)
 	hud_type = /datum/hud/broodmother
+	icon_dead = "broodmother_dead"
+	icon_living = "broodmother"
 
 	var/tier_1_biomass_amount = 25
 	var/tier_2_biomass_amount = 10

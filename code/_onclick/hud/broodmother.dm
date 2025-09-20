@@ -136,3 +136,6 @@
 		using = new element()
 		using.set_new_hud(src)
 		static_inventory += using
+
+#undef RENDER_TARGET_BAR_MASK
+#undef BROODMOTHER_HUD_ELEMENTS
