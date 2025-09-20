@@ -42,6 +42,8 @@
 	frenzy_toggle.Grant(src)
 	var/datum/action/cooldown/spell/stone_throw/throwing_stone = new
 	throwing_stone.Grant(src)
+	var/datum/action/cooldown/spell/projectile/acid_splash_broodmother/acid_splash = new
+	acid_splash.Grant(src)
 
 	grant_language(/datum/language/common)
 	grant_language(/datum/language/orcish)
@@ -106,6 +108,17 @@
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/mother = owner
 	mother.frenzy_on()
+
+/datum/action/cooldown/spell/projectile/acid_splash_broodmother
+	name = "Acid Vomit"
+	desc = "A slow-moving glob of acid that sprays over an area upon impact."
+	button_icon_state = "acidsplash"
+	sound = 'sound/magic/whiteflame.ogg'
+
+	charge_time = 3 SECONDS
+	charge_slowdown = 0.7
+	cooldown_time = 30 SECONDS
+	projectile_type = /obj/projectile/magic/acidsplash
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/adjust_biomass(tier, amount)
 	switch(tier)
