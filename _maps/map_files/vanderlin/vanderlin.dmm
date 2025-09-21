@@ -38977,15 +38977,6 @@
 /area/rogue/indoors/town/church)
 "xUs" = (
 /obj/structure/rack,
-/obj/item/clothing/shoes/boots/leather/advanced/watch{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/clothing/shoes/boots/leather/advanced/watch{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
 /obj/item/clothing/cloak/half/guard,
 /obj/item/clothing/cloak/half/guard{
 	pixel_x = 7;
