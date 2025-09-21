@@ -30,17 +30,17 @@
 	. = ..()
 	head = pick(/obj/item/clothing/head/helmet/townwatch, /obj/item/clothing/head/helmet/townwatch/alt)
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
-	wrists = pick(/obj/item/rope/chain, /obj/item/rope)
-	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
+	wrists = /obj/item/clothing/wrists/bracers/jackchain
+	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather
-	shirt = /obj/item/clothing/armor/chainmail
-	armor = /obj/item/clothing/armor/cuirass
-	pants = /obj/item/clothing/pants/chainlegs
-	gloves = /obj/item/clothing/gloves/chain
-	neck = /obj/item/clothing/neck/chaincoif
-	beltl = /obj/item/weapon/mace/cudgel
+	shirt = /obj/item/clothing/armor/chainmail/iron
+	armor = /obj/item/clothing/armor/cuirass/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
+	gloves = /obj/item/clothing/gloves/chain/iron
+	neck = /obj/item/clothing/neck/chaincoif/iron
+	beltl = /obj/item/weapon/mace/bludgeon
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/storage/keyring/lieutenant, /obj/item/weapon/knife/dagger/steel)
+	backpack_contents = list(/obj/item/storage/keyring/lieutenant, /obj/item/weapon/knife/dagger/steel, /obj/item/rope/chain)
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
 		mask = /obj/item/clothing/face/shepherd/clothmask
 
