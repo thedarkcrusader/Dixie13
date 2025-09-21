@@ -6,7 +6,7 @@
 	icon_state = "bracers"
 	item_state = "bracers"
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = ALL_EXCEPT_BLUNT_AND_STAB
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -33,7 +33,7 @@
 	item_state = "jackchain"
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STANDARD - 25
-	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT)
+	prevent_crits = CUT_AND_MINOR_CRITS
 	armor_class = AC_LIGHT
 	melt_amount = 35
 	melting_material = /datum/material/iron
@@ -57,7 +57,7 @@
 	item_state = "lbracers"
 	armor = ARMOR_LEATHER_BAD
 	armor_class = AC_LIGHT
-	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT)
+	prevent_crits = CUT_AND_MINOR_CRITS
 	resistance_flags = null
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -81,7 +81,7 @@
 	name = "masterwork leather bracers"
 	desc = "These bracers are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "piercing" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT, BCLASS_CHOP)  //We're getting chop here
+	prevent_crits = ALL_EXCEPT_BLUNT_AND_STAB
 	max_integrity = INTEGRITY_STANDARD + 100
 
 /obj/item/clothing/wrists/bracers/leather/masterwork/Initialize()
