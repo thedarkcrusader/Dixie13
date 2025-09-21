@@ -33,7 +33,7 @@
 	item_state = "jackchain"
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STANDARD - 25
-	prevent_crits = CUT_AND_MINOR_CRITS
+	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT)
 	armor_class = AC_LIGHT
 	melt_amount = 35
 	melting_material = /datum/material/iron
