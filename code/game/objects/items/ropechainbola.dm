@@ -210,7 +210,7 @@
 	name = "noose"
 	desc = "Abandon all hope."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
-	SET_BASE_PIXEL(0, 10)
+	SET_BASE_PIXEL(0, 0)
 	icon_state = "noose"
 	can_buckle = 1
 	layer = 4.26
@@ -295,7 +295,7 @@
 /obj/structure/noose/post_buckle_mob(mob/living/M)
 	if(has_buckled_mobs())
 		START_PROCESSING(SSobj, src)
-		M.set_mob_offsets("bed_buckle", _x = 0, _y = 10)
+		M.set_mob_offsets("bed_buckle", _x = 0, _y = 0)
 
 /obj/structure/noose/gallows/post_buckle_mob(mob/living/M)
 	if(has_buckled_mobs())
