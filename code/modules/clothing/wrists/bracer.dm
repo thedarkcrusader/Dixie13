@@ -98,5 +98,6 @@
 	icon_state = "aasimarwrist"
 	item_state = "aasimarwrist"
 	armor = ARMOR_PLATE_BAD
+	armor_class = AC_LIGHT
 	melt_amount = 75
 	melting_material = /datum/material/bronze
