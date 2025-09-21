@@ -61,18 +61,18 @@
 	created_item = /obj/item/clothing/armor/leather/splint
 
 /datum/anvil_recipe/armor/iron/cuirass
-	name = "Iron Cuirass"
-	recipe_name = "an iron cuirass"
+	name = "Iron Breastplate"
+	recipe_name = "an Iron Breastplate"
 	created_item = /obj/item/clothing/armor/cuirass/iron
 
 /datum/anvil_recipe/armor/iron/chausses
 	name = "Iron Plate Chausses"
-	recipe_name = "a pair of iron Plate Chausses"
+	recipe_name = "a pair of Iron Plate Chausses"
 	created_item = /obj/item/clothing/pants/platelegs/iron
 
 /datum/anvil_recipe/armor/iron/platemask
 	name = "2x Iron Face Masks"
-	recipe_name = "a Face Mask"
+	recipe_name = "two iron Face Masks"
 	created_item = /obj/item/clothing/face/facemask
 	createditem_extra = 1
 	craftdiff = 0

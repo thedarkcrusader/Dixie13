@@ -14,6 +14,7 @@
 	smeltresult = null
 	melt_amount = 75
 	max_integrity = INTEGRITY_STRONG
+	armor_class = AC_MEDIUM
 	melting_material = /datum/material/steel
 
 /obj/item/clothing/wrists/bracers/iron
@@ -33,6 +34,7 @@
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STANDARD - 25
 	prevent_crits = CUT_AND_MINOR_CRITS
+	armor_class = AC_LIGHT
 	melt_amount = 35
 	melting_material = /datum/material/iron
 
@@ -43,8 +45,9 @@
 	item_state = "copperarm"
 	armor = ARMOR_MAILLE_IRON //worse than iron bracers
 	max_integrity = INTEGRITY_POOR //worse than jackchains in terms of integrity
-	anvilrepair = /datum/skill/craft/armorsmithing
+	//however they protect better than the jackchains
 	melt_amount = 75
+	armor_class = AC_LIGHT
 	melting_material = /datum/material/copper
 
 /obj/item/clothing/wrists/bracers/leather
@@ -53,6 +56,7 @@
 	icon_state = "lbracers"
 	item_state = "lbracers"
 	armor = ARMOR_LEATHER_BAD
+	armor_class = AC_LIGHT
 	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_CUT)
 	resistance_flags = null
 	blocksound = SOFTHIT
@@ -71,7 +75,7 @@
 	name = "hardened leather bracers"
 	desc = "Hardened leather braces that will keep your wrists safe from bludgeoning."
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST) //We're losing stab here
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_BLUNT) //We're losing stab here
 	max_integrity = INTEGRITY_STANDARD + 50
 
 /obj/item/clothing/wrists/bracers/leather/masterwork
