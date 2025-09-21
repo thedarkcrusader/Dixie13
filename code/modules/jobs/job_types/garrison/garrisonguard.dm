@@ -20,19 +20,27 @@
 	give_bank_account = 30
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
+//watchmen should NOT start with steel gear. Same with adventurers
+//>but the adventurers
+//you can ask the steward/king/captain/etc. for better gear, or pay for it out of your own pocket
+//>but the steward/king/captain didnt pay me
+//so bloody protest, complain to them, or desert until you get paid
+//watchmen and adventurers shouldn't be starting with steel gear, period.
+//Otherwise we end up with a fucked up arms war of one class getting steel, another getting steel, and so on
+//until everyone has steel and no one has iron
+
 //................. City Watchmen Base .............. //
 /datum/outfit/job/guardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	head = pick(/obj/item/clothing/head/helmet/townwatch, /obj/item/clothing/head/helmet/townwatch/alt)
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
-	shirt = /obj/item/clothing/armor/gambeson/heavy
+	shirt = /obj/item/clothing/armor/gambeson
 	wrists = pick(/obj/item/rope/chain, /obj/item/rope)
 	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
-	gloves = /obj/item/clothing/gloves/leather/advanced
-	beltl = /obj/item/weapon/mace/cudgel
+	gloves = /obj/item/clothing/gloves/leather
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel)
+	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger)
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
 		mask = /obj/item/clothing/face/shepherd/clothmask
 
@@ -43,8 +51,7 @@
 			H.cloak.name = "[H.cloak.name]"+" "+"([H.real_name])"
 
 // EVERY TOWN GUARD SHOULD HAVE AT LEAST THREE CLUB SKILL
-// REMINDER THAT THE SLOTS beltl AND backl ARE OCCUPIED BY THE CUDGEL AND SATCHEL RESPECTIVELY
-// KEEP THIS IN MIND WHEN MAKING A NEW CLASS
+// REMINDER THAT backl IS OCCUPIED BY THE SATCHEL
 
 //................. Footman .............. //
 /datum/advclass/garrison/footman
@@ -56,16 +63,17 @@
 
 /datum/outfit/job/guardsman/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail
-	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
+	armor = /obj/item/clothing/armor/chainmail/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
+	neck = /obj/item/clothing/neck/chaincoif/iron
 	backr = /obj/item/weapon/shield/heater
 	beltr = /obj/item/weapon/sword/short
+	beltl = /obj/item/weapon/mace/bludgeon
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE) // Backup
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE) // Backup, lethal option
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) // Guards should be going for less than lethal in reality. Unarmed would be a primary thing.
@@ -102,11 +110,12 @@
 
 /datum/outfit/job/guardsman/archer/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/leather/advanced
+	armor = /obj/item/clothing/armor/leather
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/coif/cloth //cloth instead of leather, again, a weakpoint
+	neck = /obj/item/clothing/neck/coif/cloth //cloth instead of leather
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	beltr = /obj/item/ammo_holder/quiver/arrows
+	beltl = /obj/item/weapon/mace/cudgel
 
 	//combat
 	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
@@ -151,9 +160,9 @@
 
 /datum/outfit/job/guardsman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail
-	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
+	armor = /obj/item/clothing/armor/chainmail/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
+	neck = /obj/item/clothing/neck/chaincoif/iron
 	backr = /obj/item/weapon/polearm/spear
 	beltr = /obj/item/weapon/shield/tower/buckleriron
 
@@ -196,9 +205,9 @@
 
 /datum/outfit/job/guardsman/flailman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/chainmail
-	pants = /obj/item/clothing/pants/chainlegs
-	neck = /obj/item/clothing/neck/chaincoif/iron //they get steel mostly, lets make a weakpoint
+	armor = /obj/item/clothing/armor/chainmail/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
+	neck = /obj/item/clothing/neck/chaincoif/iron
 	backr = /obj/item/weapon/shield/wood
 	beltr = pick(/obj/item/weapon/flail/militia, /obj/item/weapon/flail)
 	//both the militia and normal flail are the same stat wise
@@ -207,7 +216,7 @@
 
 	//combat
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE) // Main weapon
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Rlies on shield for defense
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Relies on shield for defense
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Backup
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
