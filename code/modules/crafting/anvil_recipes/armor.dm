@@ -149,7 +149,7 @@
 
 /datum/anvil_recipe/armor/iron/ibracers
 	name = "Iron Plate Vambraces"
-	recipe_name = "a pair of Plate Vambraces"
+	recipe_name = "a pair of Iron Plate Vambraces"
 	created_item = /obj/item/clothing/wrists/bracers/iron
 
 /datum/anvil_recipe/armor/iron/chainmail
@@ -738,7 +738,7 @@
 
 /datum/anvil_recipe/armor/steel/platebracer
 	name = "Plate Vambraces"
-	recipe_name = "Plate Vambraces"
+	recipe_name = "a pair of Plate Vambraces"
 	created_item = /obj/item/clothing/wrists/bracers
 	craftdiff = 4
 
