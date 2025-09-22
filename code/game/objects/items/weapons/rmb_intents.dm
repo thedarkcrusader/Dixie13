@@ -27,10 +27,10 @@
 				I = L.get_active_held_item()
 				if(I?.associated_skill)
 					theirskill = L.get_skill_level(I.associated_skill)
-		perc += (ourskill - theirskill)*15 	//skill is of the essence
-		perc += (user.STAINT - L.STAINT)*10	//but it's also mostly a mindgame
-		perc += (user.STASPD - L.STASPD)*5 	//yet a speedy feint is hard to counter
-		perc += (user.STAPER - L.STAPER)*5 	//a good eye helps
+		perc += (ourskill - theirskill) * 15 	//skill is of the essence
+		perc += (user.STAINT - L.STAINT) * 10	//but it's also mostly a mindgame
+		perc += (user.STASPD - L.STASPD) * 5 	//yet a speedy feint is hard to counter
+		perc += (user.STAPER - L.STAPER) * 5 	//a good eye helps
 	if(!user.cmode)
 		perc = 0
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
