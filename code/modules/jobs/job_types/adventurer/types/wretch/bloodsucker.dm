@@ -44,7 +44,11 @@
 	beltr = /obj/item/weapon/sword/rapier/dec
 	scabbards = list(/obj/item/weapon/scabbard/sword)//not a noble scabbard because of silver
 	beltl = /obj/item/ammo_holder/quiver/arrows
-	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger/steel/special, /obj/item/clothing/face/shepherd/rag)
+	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1,
+	/obj/item/reagent_containers/glass/cup/golden = 1,
+	/obj/item/storage/belt/pouch/coins/mid = 1,
+	/obj/item/weapon/knife/dagger/steel/special = 1,
+	/obj/item/clothing/face/shepherd/rag = 1)
 
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
