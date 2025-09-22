@@ -27,6 +27,7 @@
 	//foraging skills basically
 	H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 
 	//very athletic, rats can swim well, climbing because... well they live in sewers
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
@@ -35,7 +36,7 @@
 
 	//misc, very high taming so they can reliably tame rous and perhaps other creachers too
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/taming, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/taming, 4, TRUE)
 
 	//stats
 	H.change_stat(STATKEY_STR, 3)
