@@ -1,6 +1,8 @@
 /datum/job/wretch
 	title = "Wretch"
-	tutorial = "Somewhere in your lyfe, you fell to the wrong side of civilization. Hounded by the consequences of your actions, you now threaten the peace of those who still heed the authority that condemned you."
+	tutorial = "Somewhere in your lyfe, you fell to the wrong side of civilization. \
+	Hounded by the consequences of your actions, you now threaten the peace of those who still \
+	heed the authority that condemned you."
 	department_flag = OUTSIDERS
 	job_flags = (JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_SHOW_IN_CREDITS)
 	display_order = JDO_WRETCH
@@ -30,7 +32,10 @@
 	if(!H.mind)
 		return
 	H.ambushable = FALSE
-	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
+	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, \
+	it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, \
+	or to follow a path of redemption, as your role exists to add flavor the round."))
+	to_chat(H, span_boldwarning("In the same manner, you are NOT an adventurer, you are meant to be a 'soft antag'."))
 
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
 	var/bounty_poster = input(H, "Who placed a bounty on you?", "Filthy Criminal") as anything in list("The Divine Pantheon", "Kingsfield Expanse")

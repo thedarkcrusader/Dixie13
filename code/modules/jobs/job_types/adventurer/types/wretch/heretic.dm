@@ -5,7 +5,8 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/wretch/heretic
 	category_tags = list(CTAG_WRETCH)
-	maximum_possible_slots = 2
+	maximum_possible_slots = 1
+	pickprob = 25
 
 /datum/outfit/job/wretch/heretic/pre_equip(mob/living/carbon/human/H)
 	..()

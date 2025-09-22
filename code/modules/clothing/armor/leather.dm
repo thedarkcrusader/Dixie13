@@ -54,7 +54,7 @@
 //................ Splint Mail ............... //
 /obj/item/clothing/armor/leather/splint
 	name = "splint armor"
-	desc = "The smell of a leather coat, with pieces of recycled metal from old breastplates or cooking utensils riveted to the inside."
+	desc = "A leather coat, with pieces of recycled metal from old breastplates or cooking utensils riveted to the inside."
 	icon_state = "splint"
 	sellprice = VALUE_LEATHER_ARMOR_PLUS
 

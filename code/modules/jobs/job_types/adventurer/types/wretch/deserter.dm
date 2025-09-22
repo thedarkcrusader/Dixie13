@@ -1,11 +1,13 @@
 /datum/advclass/wretch/disgraced //Deserted, just without the MAA and the orders.
 	name = "Disgraced Knight"
-	tutorial = "You were once a venerated and revered knight - now, a traitor who abandoned your liege. You lyve the lyfe of an outlaw, shunned and looked down upon by society."
+	tutorial = "You were once a venerated and revered knight - now, a traitor who abandoned your liege. \
+	You live the life of an outlaw, shunned and looked down upon by society."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED //Royal Knight
 	outfit = /datum/outfit/job/wretch/disgraced
 	category_tags = list(CTAG_WRETCH)
 	maximum_possible_slots = 1
+	pickprob = 20
 
 /datum/outfit/job/wretch/disgraced/pre_equip(mob/living/carbon/human/H)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

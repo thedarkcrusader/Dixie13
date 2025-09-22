@@ -26,7 +26,7 @@
 	name = "iron mask"
 	icon_state = "imask"
 	desc = "A heavy iron mask that both conceals and protects the face."
-	max_integrity = 100
+	max_integrity = INTEGRITY_WORST
 	blocksound = PLATEHIT
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -74,7 +74,7 @@
 	icon_state = "smask"
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 100,  "piercing" = 80, "fire" = 0, "acid" = 0)
 	desc = "A knightly steel mask that both conceals and protects the face. Usually paired with a bascinet."
-	max_integrity = 300
+	max_integrity = INTEGRITY_STRONG
 
 /obj/item/clothing/face/facemask/silver
 	name = "silver mask"
@@ -83,7 +83,7 @@
 	icon_state = "silvermask"
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 100,  "piercing" = 85, "fire" = 0, "acid" = 0)
 	desc = "A custom made silver penance mask, created especially for the Adepts of the Inquisitorial Lodge."
-	max_integrity = 300
+	max_integrity = INTEGRITY_STRONG
 
 /obj/item/clothing/face/facemask/silver/Initialize(mapload)
 	. = ..()
