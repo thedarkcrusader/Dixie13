@@ -20,15 +20,17 @@
 	give_bank_account = 30
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-//watchmen should NOT start with steel gear. Same with adventurers
-//>but the adventurers
-//you can ask the steward/king/captain/etc. for better gear, or pay for it out of your own pocket
-//>but the steward/king/captain didnt pay me
-//so bloody protest, complain to them, or desert until you get paid
-//watchmen and adventurers shouldn't be starting with steel gear, period.
-//Otherwise we end up with a fucked up arms war of one class getting steel, another getting steel, and so on
-//until everyone has steel and no one has iron, and then it goes from steel to blacksteel
-//and that's outright madness. There needs to be a line drawn
+/*
+watchmen should NOT start with steel gear. Same with adventurers
+>but the adventurers
+you can ask the steward/king/captain/etc. for better gear, or pay for it out of your own pocket
+>but the steward/king/captain didnt pay me
+so bloody protest, complain to them, or desert until you get paid
+watchmen and adventurers shouldn't be starting with steel gear, period.
+Otherwise we end up with a fucked up arms war of one class getting steel, another getting steel, and so on
+until everyone has steel and no one has iron, and then it goes from steel to blacksteel
+and that's outright madness. There needs to be a line drawn
+*/
 
 //................. City Watchmen Base .............. //
 /datum/outfit/job/guardsman/pre_equip(mob/living/carbon/human/H)
