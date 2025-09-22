@@ -77,7 +77,7 @@
 
 	//stats
 	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_INT, 3) // quick smart vampire
+	H.change_stat(STATKEY_INT, 2) // quick smart vampire
 	H.change_stat(STATKEY_SPD, 2)
 	H.change_stat(STATKEY_PER, 2) // has a bow
 
