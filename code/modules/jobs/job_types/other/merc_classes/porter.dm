@@ -4,7 +4,7 @@
 	allowed_races = list(SPEC_ID_KOBOLD)
 	outfit = /datum/outfit/job/mercenary/porter
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 3
+	maximum_possible_slots = 2
 	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
 
 
@@ -45,11 +45,9 @@
 		H.adjust_skillrank(/datum/skill/craft/bombs, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
 		H.merctype = 9
-		H.change_stat(STATKEY_END, 2)
 		H.change_stat(STATKEY_STR, 4) //Basically remove their STR malus, think of it as them carrying their burdens
 		H.change_stat(STATKEY_INT, 4) //Unique specimen, They learned many things, trust.
 		H.change_stat(STATKEY_SPD, 2) //Gee, Why do this kobold get more stats than everyone else? the answer is because they have to at the very least escape from being killed and looted.
