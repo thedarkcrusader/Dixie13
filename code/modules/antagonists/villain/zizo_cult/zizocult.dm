@@ -1,10 +1,3 @@
-GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
-
-/proc/build_zizo_rituals()
-	. = list()
-	for(var/datum/ritual/ritual as anything in subtypesof(/datum/ritual))
-		.[ritual.name] = new ritual
-
 /datum/antagonist/zizocultist
 	name = "Zizoid Lackey"
 	roundend_category = "zizoid cultists"

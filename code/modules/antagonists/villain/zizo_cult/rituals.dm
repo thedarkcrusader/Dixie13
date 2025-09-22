@@ -1,3 +1,12 @@
+GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
+
+/proc/build_zizo_rituals()
+	. = list()
+	for(var/datum/ritual/ritual as anything in subtypesof(/datum/ritual))
+		if(is_abstract(ritual))
+			continue
+		.[ritual.name] = new ritual
+
 // RITUAL DATUMS
 /datum/ritual
 	abstract_type = /datum/ritual
