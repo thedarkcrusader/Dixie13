@@ -177,7 +177,7 @@
 		to_chat(user, "drawing mana....")
 		mana_pool.transfer_specific_mana(user.mana_pool, drawn_mana, decrement_budget = TRUE)
 
-/obj/item/mana_battery/mana_crystal/small/focus //really only exists for debug.
+/obj/item/mana_battery/mana_crystal/small/focus
 	name = "focused small primordial quartz crystal"
 	desc = "A Primordial Quartz Crystal entwined in gold and arcyne meld. You can draw mana from this while casting."
 	icon_state = "foci"

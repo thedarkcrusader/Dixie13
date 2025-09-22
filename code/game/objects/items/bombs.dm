@@ -1,6 +1,6 @@
 /obj/item/smokebomb
 	name = "smoke bomb"
-	desc = "A soft sphere with an alchemical mixture and a dispersion mechanism hidden inside. Any pressure will detonate it."
+	desc = "A bottle filled with... something. Will shatter on impact."
 	icon = 'icons/obj/bombs.dmi'
 	icon_state = "smokebomb"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -10,10 +10,7 @@
 	throw_speed = 0.75
 	grid_width = 32
 	grid_height = 64
-
-/obj/item/smokebomb/attack_self(mob/user, params)
-	..()
-	explode()
+	var/datum_to_spread = /datum/effect_system/smoke_spread
 
 /obj/item/smokebomb/ex_act()
 	if(!QDELETED(src))
@@ -24,6 +21,10 @@
 	. = ..()
 	explode()
 
+/obj/item/smokebomb/attack(mob/living/M, mob/living/user, params)
+	. = ..()
+	explode()
+
 /obj/item/smokebomb/proc/explode()
 	STOP_PROCESSING(SSfastprocess, src)
 	var/turf/T = get_turf(src)
@@ -31,12 +32,18 @@
 		return
 	playsound(src.loc, 'sound/items/smokebomb.ogg' , 50)
 	var/radius = 3
-	var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread
+	var/datum/effect_system/smoke_spread/S = new datum_to_spread
 	S.set_up(radius, T)
 	S.start()
 	if(prob(25))
 		new /obj/item/fertilizer/ash(T)
 	qdel(src)
+
+
+/obj/item/smokebomb/poison_bomb
+	name = "poison bomb"
+	datum_to_spread = /datum/effect_system/smoke_spread/poison
+
 
 /obj/item/holy_grenade
 	name = "\improper The Holy Hand Grenade of Antioch"

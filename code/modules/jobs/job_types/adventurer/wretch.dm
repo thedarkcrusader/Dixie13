@@ -1,14 +1,14 @@
 /datum/job/wretch
 	title = "Wretch"
-	tutorial = "Somewhere in your lyfe, you fell to the wrong side of civilization. \
+	tutorial = "Somewhere in your life, you fell to the wrong side of civilization. \
 	Hounded by the consequences of your actions, you now threaten the peace of those who still \
 	heed the authority that condemned you."
 	department_flag = OUTSIDERS
 	job_flags = (JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_SHOW_IN_CREDITS)
 	display_order = JDO_WRETCH
 	faction = FACTION_TOWN
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	min_pq = 10
 	antag_job = TRUE
 
@@ -18,7 +18,7 @@
 	advclass_cat_rolls = list(CTAG_WRETCH = 20)
 
 	is_foreigner = TRUE
-	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so
+	job_reopens_slots_on_death = FALSE //no endless stream, unless the migration waves deem it so
 	same_job_respawn_delay = 30 MINUTES
 
 	can_have_apprentices = FALSE
@@ -35,7 +35,7 @@
 	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, \
 	it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, \
 	or to follow a path of redemption, as your role exists to add flavor the round."))
-	to_chat(H, span_boldwarning("In the same manner, you are NOT an adventurer, you are meant to be a minor antagonist, akin to the bandits."))
+	to_chat(H, span_boldwarning("In the same manner, you are NOT an adventurer."))
 
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
 	var/bounty_poster = input(H, "Who placed a bounty on you?", "Filthy Criminal") as anything in list("The Divine Pantheon", "Kingsfield Expanse")
