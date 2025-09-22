@@ -173,12 +173,12 @@
 	H.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2,3,4,5,6), TRUE)
 
 	//athletics and movement
-	H.adjust_skillrank(/datum/skill/misc/climbing, pick(4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, pick(2,2,3,4), TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, pick(2,2,3,4), TRUE)
 
 	//misc
-	H.adjust_skillrank(/datum/skill/misc/sneaking, pick(4,5), TRUE)
-	H.adjust_skillrank(/datum/skill/misc/stealing, pick(4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,2,3,4,5), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4,5), TRUE)
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, pick (1,2,3,4,5), TRUE) // thug lyfe
 
 	//same with stats
