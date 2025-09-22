@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/wretch/heretic
 	category_tags = list(CTAG_WRETCH)
 	maximum_possible_slots = 1
-	pickprob = 25
+	pickprob = 20
 
 /datum/outfit/job/wretch/heretic/pre_equip(mob/living/carbon/human/H)
 	..()
