@@ -59,13 +59,6 @@
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_INT, 2)
 
-	//old people get a bit less con and endurance
-	//ooc reason, balance
-	//ic reason, they were working with explosives and fumes and some such that it took a toll on their health even more so
-	if(H.age == AGE_OLD)
-		H.change_stat(STATKEY_CON, -1)
-		H.change_stat(STATKEY_END, -1)
-
 	//traits
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
