@@ -44,9 +44,11 @@
 	H.change_stat(STATKEY_PER, -2)//lived in the dark all their life possibly
 	H.change_stat(STATKEY_INT, -3)
 
+	//spells
 	H.add_spell(/datum/action/cooldown/spell/conjure/rous)
 	H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/rat)
 
+	//traits
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
