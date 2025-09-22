@@ -100,7 +100,7 @@
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	belt = /obj/item/storage/belt/leather/plaquegold
 	beltl = /obj/item/weapon/sword/sabre/dec
-	scabbards = list(/obj/item/weapon/scabbard/sword)//not noble because... you know why
+	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backr = /obj/item/storage/backpack/satchel
 	ring = /obj/item/clothing/ring/gold
 	shirt = /obj/item/clothing/shirt/grenzelhoft
