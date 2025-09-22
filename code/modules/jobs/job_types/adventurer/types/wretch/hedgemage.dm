@@ -48,8 +48,8 @@
 	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
 	//misc
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 
 	//stats
 	H.change_stat(STATKEY_INT, 4)
