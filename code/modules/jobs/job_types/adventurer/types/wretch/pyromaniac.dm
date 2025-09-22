@@ -42,9 +42,6 @@
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 
-	//skill needed for foraging
-	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-
 	//crafting skills, average bombs is required to craft bombs
 	//skilled engineering is needed to make blastpowder and pyro arrows/bolts
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
