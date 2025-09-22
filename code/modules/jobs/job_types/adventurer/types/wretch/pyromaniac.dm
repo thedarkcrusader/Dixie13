@@ -37,10 +37,10 @@
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 
-	//athletics and such. High climbing so they can climb up walls and buildings to fire from above and generally be a menace
+	//athletics and such. Climbing so they can climb up walls and buildings to fire from above and generally be a menace
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 
 	//skill needed for foraging
 	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
