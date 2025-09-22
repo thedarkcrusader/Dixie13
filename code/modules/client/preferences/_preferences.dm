@@ -1190,9 +1190,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(!patreon)
 						to_chat(user, "This is a patreon exclusive feature, your headshot link will be applied but others will only be able to view it if you are a patreon supporter.")
 
-					to_chat(user, "<span class='notice'>Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Keep in mind that the photo will be downsized to 325x325 pixels, so the more square the photo, the better it will look.</span>")
+					to_chat(user, span_notice("Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]"))
+					to_chat(user, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+					to_chat(user, span_notice("Keep in mind that the photo will be downsized to 325x325 pixels, so the more square the photo, the better it will look."))
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
 					if(!new_headshot_link)
 						return
@@ -1201,7 +1201,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						to_chat(user, span_notice("Failed to update headshot"))
 						return
 					headshot_link = new_headshot_link
-					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
+					to_chat(user, span_notice("Successfully updated headshot picture"))
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 				if("formathelp")
 					var/list/dat = list()
@@ -1262,7 +1262,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
 
 				if("flavortext")
-					to_chat(user, "<span class='notice'>["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts. NSFW descriptions are prohibited.</span>"]</span>")
+					to_chat(user, span_notice("["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts. NSFW descriptions are prohibited.</span>"]"))
 					var/new_flavortext = input(user, "Input your character description", "DESCRIBE YOURSELF", flavortext) as message|null // browser_input_text sanitizes in the box itself, which makes it look kind of ugly when editing A LOT of FTs
 					if(new_flavortext == null)
 						return
@@ -1276,10 +1276,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					ft = html_encode(ft)
 					ft = replacetext(parsemarkdown_basic(ft), "\n", "<BR>")
 					flavortext_display = ft
-					to_chat(user, "<span class='notice'>Successfully updated flavortext</span>")
+					to_chat(user, span_notice("Successfully updated flavortext"))
 					log_game("[user] has set their flavortext'.")
 				if("ooc_notes")
-					to_chat(user, "<span class='notice'>["<span class='bold'>Do not put anything NSFW here. This feature is for stuff that wouldn't fit in the flavortext.</span>"]</span>")
+					to_chat(user, span_notice("["<span class='bold'>Do not put anything NSFW here. This feature is for stuff that wouldn't fit in the flavortext.</span>"]"))
 					var/new_ooc_notes = input(user, "Input your OOC preferences:", "OOC notes", ooc_notes) as message|null
 					if(new_ooc_notes == null)
 						return
@@ -1294,7 +1294,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					ooc = html_encode(ooc)
 					ooc = replacetext(parsemarkdown_basic(ooc), "\n", "<BR>")
 					ooc_notes_display = ooc
-					to_chat(user, "<span class='notice'>Successfully updated OOC notes.</span>")
+					to_chat(user, span_notice("Successfully updated OOC notes."))
 					log_game("[user] has set their OOC notes'.")
 				if("ooc_preview")
 					var/list/dat = list()
@@ -1315,9 +1315,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(!patreon)
 						to_chat(user, "This is a patreon exclusive feature, your OOC Extra link will be applied but others will only be able to view it if you are a patreon supporter.")
 
-					to_chat(user, "<span class='notice'>Add a link from a suitable host (catbox, etc) to an mp3, mp4, or jpg / png file to have it embed at the bottom of your OOC notes.</span>")
-					to_chat(user, "<span class='notice'>If the link doesn't show up properly in-game, ensure that it's a direct link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Videos will be shrunk to a ~300x300 square. Keep this in mind.</span>")
+					to_chat(user, span_notice("Add a link from a suitable host (catbox, etc) to an mp3, mp4, or jpg / png file to have it embed at the bottom of your OOC notes."))
+					to_chat(user, span_notice("If the link doesn't show up properly in-game, ensure that it's a direct link that opens properly in a browser."))
+					to_chat(user, span_notice("Videos will be shrunk to a ~300x300 square. Keep this in mind."))
 					to_chat(user, "<font color = '#d6d6d6'>Leave a single space to delete it from your OOC notes.</font>")
 					to_chat(user, "<font color ='red'>Abuse of this will get you banned.</font>")
 					var/new_extra_link = input(user, "Input the accessory link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "OOC Extra", ooc_extra_link) as text|null
@@ -1330,7 +1330,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(new_extra_link == " ")	//Single space to delete
 						ooc_extra_link = null
 						ooc_extra = null
-						to_chat(user, "<span class='notice'>Successfully deleted OOC Extra.</span>")
+						to_chat(user, span_notice("Successfully deleted OOC Extra."))
 					var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif", "mp4", "mp3")
 					if(!is_valid_headshot_link(user, new_extra_link, FALSE, valid_extensions))
 						new_extra_link = null
@@ -1342,7 +1342,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					// extension will always be the last entry
 					var/extension = value_split[length(value_split)]
 					var/info
-					if((extension in valid_extensions))
+					if(extension in valid_extensions)
 						ooc_extra_link = new_extra_link
 						ooc_extra = null
 						ooc_extra = "<div align ='center'><center>"
@@ -1366,7 +1366,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 									ooc_extra += "</audio>"
 									info = "embedded audio."
 						ooc_extra += "</center></div>"
-						to_chat(user, "<span class='notice'>Successfully updated OOC Extra with [info]</span>")
+						to_chat(user, span_notice("Successfully updated OOC Extra with [info]"))
 						log_game("[user] has set their OOC Extra to '[ooc_extra_link]'.")
 				if("s_tone")
 					var/listy = pref_species.get_skin_list()
