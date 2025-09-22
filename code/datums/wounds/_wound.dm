@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/is_maxed = FALSE
 	/// Has reached the maximum level clamped by armor
 	var/is_armor_maxed = FALSE
-	/// Assoc list, name to severity ie ("lethal" = WOUND_SEVERITY_FATAL)
+	/// Assoc list, name to severity ie ("lethal" = 15) by default uses bleed rate but can be overriden
 	var/list/severity_names = list()
 
 	// Upgrade vars
@@ -402,17 +402,18 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Multiplier that bleeding is increased by possibly clamped by bleed_clamp and bleed_clamp_armor
 	var/upgrade_bleed_rate = 0
 	/// Bleeding clamp upgrade per level
-	var/upgrade_bleed_clamp
-	/// Bleeding clamp when armored
-	var/upgrade_bleed_clam_armor
-	/// Multiplier that is increased by
+	var/upgrade_bleed_clamp = null
+	/// Bleeding clamp when armored per level
+	var/upgrade_bleed_clam_armor = null
+	/// Full clamp to bleed when effective armour is on the wounded limb
+	var/protected_bleed_clamp = null
+
+	/// Multiplier that whp increased by
 	var/upgrade_whp = 0
-	/// Multiplier that threshold is increased by
+	/// Multiplier that sew threshold is increased by
 	var/upgrade_sew_threshold = 0
 	/// Multiplier that wound pain is increased by
 	var/upgrade_pain = 0
-	/// Full clamp to bleed when effective armour is on the wounded limb
-	var/protected_bleed_clamp = 0
 
 /datum/wound/dynamic/sew_wound()
 	if(!can_sew)
@@ -430,33 +431,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			prefix = sevname
 	name = "[prefix ? "[prefix] " : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
 
-/datum/wound/dynamic/proc/armor_check(armor, cap)
-	if(!armor)
-		return
-	if(bleed_rate < cap)
-		return
-	bleed_rate = cap
-	if(is_armor_maxed)
-		return
-	//playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
-	owner.visible_message(
-		span_crit("The wound tears open from [bodypart_owner.owner]'s \
-		<b>[bodypart_owner]</b>, but [bodypart_owner.p_their()] armor won't let it go any further!")
-	)
-	is_armor_maxed = TRUE
 
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
 #define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.
-#define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
-#define CLOT_THRESHOLD_ARTERY 2
 
 /// Upgrades a wound's stats based on damage dealt.
-/// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/proc/upgrade(damage)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(is_maxed)
-		return
+		return FALSE
 
 	var/upper_clamp = ARTERY_LIMB_BLEEDRATE
 	if(upgrade_bleed_clamp)
@@ -468,21 +452,50 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	update_name()
 
-	if(bleed_rate >= ARTERY_LIMB_BLEEDRATE)
-		bleed_rate = ARTERY_LIMB_BLEEDRATE
-		clotting_rate = CLOT_RATE_ARTERY
-		clotting_threshold = CLOT_THRESHOLD_ARTERY
-		//playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
-		owner.visible_message(
-			span_crit("The wound gushes open from [bodypart_owner.owner]'s \
-			<b>[bodypart_owner]</b>, nicking an artery!")
-		)
+	if(maxed_check())
 		is_maxed = TRUE
-		return
-	clotting_rate = max(0.01, (clotting_rate - CLOT_DECREASE_PER_HIT))
-	clotting_threshold += CLOT_THRESHOLD_INCREASE_PER_HIT
+		return TRUE
+	if(clotting_rate)
+		clotting_rate = max(0.01, (clotting_rate - CLOT_DECREASE_PER_HIT))
+	if(clotting_threshold)
+		clotting_threshold += CLOT_THRESHOLD_INCREASE_PER_HIT
+	return TRUE
 
 #undef CLOT_THRESHOLD_INCREASE_PER_HIT
 #undef CLOT_DECREASE_PER_HIT
+
+#define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
+#define CLOT_THRESHOLD_ARTERY 2
+
+/// Check if the wound is maxed out, by default uses bleeding rate but something like a hemotoma might want to change that
+/datum/wound/dynamic/proc/maxed_check()
+	if(bleed_rate < ARTERY_LIMB_BLEEDRATE)
+		return FALSE
+	bleed_rate = ARTERY_LIMB_BLEEDRATE
+	clotting_rate = CLOT_RATE_ARTERY
+	clotting_threshold = CLOT_THRESHOLD_ARTERY
+	playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
+	owner.visible_message(
+		span_crit("The wound gushes open from [bodypart_owner.owner]'s \
+		<b>[bodypart_owner]</b>, nicking an artery!")
+	)
+	return TRUE
+
 #undef CLOT_RATE_ARTERY
 #undef CLOT_THRESHOLD_ARTERY
+
+/datum/wound/dynamic/proc/armor_check(armor)
+	if(!armor || isnull(protected_bleed_clamp))
+		is_armor_maxed = FALSE
+		return
+	if(bleed_rate < protected_bleed_clamp)
+		return
+	bleed_rate = protected_bleed_clamp
+	if(is_armor_maxed)
+		return
+	playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
+	owner.visible_message(
+		span_crit("The wound tears open from [bodypart_owner.owner]'s \
+		<b>[bodypart_owner]</b>, but [bodypart_owner.p_their()] armor won't let it go any further!")
+	)
+	is_armor_maxed = TRUE
