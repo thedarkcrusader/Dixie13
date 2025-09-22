@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(ambience)
 	if(!used && music_enabled)
 		used = my_area?.get_current_buzz(has_light_nearby())
 	if(cmode && cmode_music)
-		used = cmode_music
+		used = (client?.prefs.combat_music == "default") ? cmode_music : client.prefs.combat_music
 		vol *= 1.2
 	else if(music_enabled && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE))
 		used = 'sound/music/dreamer_is_still_asleep.ogg'
