@@ -278,6 +278,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!(vars["loadout[i]"] in GLOB.loadout_items)) // bite me
 			vars["loadout[i]"] = null
 
+/datum/preferences/proc/_load_combat_music(S)
+	S["combat_music"] >> combat_music
+
 /datum/preferences/proc/_load_culinary_preferences(S)
 	var/list/loaded_culinary_preferences
 	S["culinary_preferences"] >> loaded_culinary_preferences
@@ -338,6 +341,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_flaw(S)
 
 	_load_loadouts(S)
+
+	_load_combat_music(S)
 
 	_load_culinary_preferences(S)
 
@@ -460,6 +465,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["loadout1"]		, loadout1)
 	WRITE_FILE(S["loadout2"]		, loadout2)
 	WRITE_FILE(S["loadout3"]		, loadout3)
+	WRITE_FILE(S["combat_music"]	, combat_music)
 	WRITE_FILE(S["culinary_preferences"], culinary_preferences)
 	WRITE_FILE(S["family"]			, 	family)
 	WRITE_FILE(S["gender_choice"]			, 	gender_choice)

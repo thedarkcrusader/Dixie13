@@ -9,7 +9,8 @@
 	var/ckey
 
 	if(!ismob(key_holder) && !ismind(key_holder) && !isclient(key_holder))
-		if(!(key_holder as anything in GLOB.keys_by_ckey))
+		var/possible_ckey = key_holder
+		if(!(possible_ckey in GLOB.keys_by_ckey))
 			return
 		else
 			ckey = key_holder // in the case that a ckey is passed (ie in triumphs refund)

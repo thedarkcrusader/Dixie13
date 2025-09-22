@@ -209,6 +209,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/datum/loadout_item/loadout2
 	var/datum/loadout_item/loadout3
 
+	var/combat_music = "default"
+
 	var/list/preference_message_list = list()
 
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
@@ -443,6 +445,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'>[loadout1 ? loadout1.name : "None"]</a>"
 	dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
 	dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
+
+	dat += "<br><b>Combat Music:</b> <a href='?_src_=prefs;preference=combat_music;task=input'>[combat_music]</a>"
 
 	dat += "<br></td>"
 
@@ -1217,6 +1221,20 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 					set_loadout(user, loadout_number, loadouts_available[loadout_input])
 
+				if("combat_music")
+					var/list/music_sounds = list("default")
+					for(var/music_path as anything in SSsounds.all_combat_music_sounds)
+						music_sounds += music_path
+
+					var/picked_music = browser_input_list(
+						user,
+						"Choose your character's combat music sound.",
+						"music",
+						music_sounds,
+						)
+
+					set_combat_music(user, picked_music)
+
 				if("species")
 					selected_accent = ACCENT_DEFAULT
 					var/list/selectable = get_selectable_species(patreon)
@@ -1341,14 +1359,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						print_special_text(user, next_special_trait)
 						return
 					to_chat(user, span_boldwarning("You will become special for one round, this could be something negative, positive or neutral and could have a high impact on your character and your experience. You cannot back out from or reroll this, and it will not carry over to other rounds."))
-					to_chat(user, span_boldwarning("THIS COSTS 1 TRIUMPH"))
-					if(user.get_triumphs() < 1)
-						to_chat(user, span_bignotice("YOU DON'T HAVE ENOUGH TRIUMPHS."))
-						return
+					if(!patreon)
+						to_chat(user, span_boldwarning("THIS COSTS 1 TRIUMPH"))
+						if(user.get_triumphs() < 1)
+							to_chat(user, span_bignotice("YOU DON'T HAVE ENOUGH TRIUMPHS."))
+							return
 					var/result = alert(user, "You'll receive a unique trait for one round\n You cannot back out from or reroll this\nDo you really want to spend 1 triumph for it?", "Be Special", "Yes", "No")
 					if(result != "Yes")
 						return
-					user.adjust_triumphs(-1)
+					if(!patreon)
+						user.adjust_triumphs(-1)
 					if(next_special_trait)
 						return
 					next_special_trait = roll_random_special(user.client)
@@ -1876,3 +1896,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		to_chat(user, span_notice("[loadout.name]"))
 		if(loadout.description)
 			to_chat(user, "[loadout.description]")
+
+
+/datum/preferences/proc/set_combat_music(mob/user, picked_music)
+	if(!picked_music)
+		return
+
+	if(!patreon)
+		to_chat(user, span_danger("This is a patreon feature!"))
+		return FALSE
+
+	if(!(picked_music in SSsounds.all_combat_music_sounds))
+		return
+
+	combat_music = picked_music

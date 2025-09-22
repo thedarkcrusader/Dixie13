@@ -27,6 +27,8 @@ SUBSYSTEM_DEF(sounds)
 	var/list/all_sounds = list()
 	/// all music files
 	var/list/all_music_sounds = list()
+	/// all combat music files
+	var/list/all_combat_music_sounds = list()
 
 	// || Sound caching ||
 	/// k:v list of file_path : length
@@ -226,11 +228,11 @@ SUBSYSTEM_DEF(sounds)
 		".wma",
 		".aiff",
 	)
-
 	all_sounds = pathwalk("sound/", valid_file_extensions)
 
 	all_music_sounds = pathwalk("sound/ambience/", valid_file_extensions)
 	all_music_sounds += pathwalk("sounds/music/", valid_file_extensions)
+	all_combat_music_sounds += pathwalk("sound/music/cmode/", valid_file_extensions)
 
 /datum/controller/subsystem/sounds/proc/preload_music_for_clients()
 	for(var/client/player as anything in GLOB.clients)
