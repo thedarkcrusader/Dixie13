@@ -53,9 +53,9 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
 
-	//rather weak physically, meant to be more of a ranged class
+	//rather weak in terms of strength
 	H.change_stat(STATKEY_STR, -1)
-	H.change_stat(STATKEY_CON, -1)
+	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_INT, 2)
 
