@@ -1874,5 +1874,5 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			return
 		vars["loadout[loadout_number]"] = loadout
 		to_chat(user, span_notice("[loadout.name]"))
-		if(loadout.desc)
-			to_chat(user, "[loadout.desc]")
+		if(loadout.description)
+			to_chat(user, "[loadout.description]")

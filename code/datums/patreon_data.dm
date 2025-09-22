@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(contributors, load_contributors())
 GLOBAL_LIST_EMPTY(donator_data_by_key)
+GLOBAL_LIST_EMPTY(donator_data_by_ckey)
 
 /proc/load_contributors()
 	var/contribs = file("data/contributors.json")
@@ -32,7 +33,8 @@ GLOBAL_LIST_EMPTY(donator_data_by_key)
 	add_to_global_list()
 
 /datum/patreon_data/proc/add_to_global_list()
-	GLOB.donator_data_by_key[client_key] = access_rank
+	GLOB.donator_data_by_key[owner.key] = access_rank
+	GLOB.donator_data_by_ckey[owner.ckey] = access_rank
 
 /datum/patreon_data/proc/fetch_key_and_rank()
 	if(!SSdbcore.IsConnectedCross())
@@ -79,3 +81,9 @@ GLOBAL_LIST_EMPTY(donator_data_by_key)
 	if(GLOB.donator_data_by_key[key])
 		return TRUE
 	return FALSE
+
+/proc/ckey_is_donator(ckey)
+	if(GLOB.donator_data_by_ckey[ckey])
+		return TRUE
+	return FALSE
+
