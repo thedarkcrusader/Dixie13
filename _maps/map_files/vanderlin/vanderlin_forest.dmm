@@ -2000,6 +2000,10 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
+"JA" = (
+/obj/structure/table/wood/plain,
+/turf/open/floor/blocks,
+/area/rogue/indoors)
 "JC" = (
 /obj/structure/bed/hay,
 /obj/structure/spider/stickyweb,
@@ -2027,26 +2031,6 @@
 /obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
-"Kc" = (
-/obj/structure/stairs/stone,
-/turf/open/floor/blocks,
-/area/rogue/indoors)
-"Kg" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
-"Kc" = (
-/obj/structure/stairs/stone,
-/turf/open/floor/blocks,
-/area/rogue/indoors)
-"Kg" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
 "JV" = (
 /obj/structure/window/solid,
 /turf/open/floor/ruinedwood/darker,
@@ -2055,6 +2039,16 @@
 /obj/structure/door,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors)
+"Kc" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/blocks,
+/area/rogue/indoors)
+"Kg" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "Km" = (
 /obj/structure/rack,
 /obj/item/clothing/shoes/boots/armor/light/rust,
@@ -19798,11 +19792,11 @@ wV
 wV
 UR
 fV
-nd
+EU
 JE
 fV
 ZR
-Vu
+EU
 fV
 UR
 sX
@@ -20408,7 +20402,7 @@ vh
 EU
 JW
 oo
-Vp
+EU
 JV
 UR
 UR
@@ -39675,7 +39669,7 @@ aE
 aP
 aP
 aP
-nc
+jR
 Gh
 Gh
 Mc
@@ -41086,7 +41080,7 @@ wV
 aP
 aP
 EZ
-Vh
+JA
 VE
 Gx
 jR
