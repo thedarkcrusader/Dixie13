@@ -48,10 +48,6 @@
 	sellprice = 30
 	last_used = 0
 
-/obj/item/reagent_containers/glass/cup/silver/Initialize(mapload, vol)
-	. = ..()
-	enchant(/datum/enchantment/silver)
-
 /obj/item/reagent_containers/glass/cup/golden
 	name = "golden goblet"
 	desc = "A golden gilded goblet which gleams pathetically despite it's illustrious metal."
