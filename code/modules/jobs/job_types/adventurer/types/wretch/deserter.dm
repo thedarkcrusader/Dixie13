@@ -44,7 +44,7 @@
 	//athletics and movement
 	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 
 	//misc
 	//they are given cooking and crafting since we can assume they had to do these to survive after deserting
