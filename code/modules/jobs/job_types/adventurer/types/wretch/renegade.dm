@@ -8,7 +8,7 @@
 	outfit = /datum/outfit/job/wretch/renegade
 	category_tags = list(CTAG_WRETCH)
 	maximum_possible_slots = 1
-	pickprob = 100
+	pickprob = 25
 
 //basically adept turned back into a bandit, stole gear from the inquisition
 /datum/outfit/job/wretch/renegade/pre_equip(mob/living/carbon/human/H)
