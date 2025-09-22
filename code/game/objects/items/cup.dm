@@ -42,11 +42,15 @@
 
 /obj/item/reagent_containers/glass/cup/silver
 	name = "silver goblet"
-	desc = "A silver goblet, its surface adorned with intricate carvings and runes."
+	desc = "A silver goblet, its surface adorned with intricate carvings and runes." //silver enchancement removed because people were killing vampires with silver goblets.
 	icon_state = "cup_silver"
 	dropshrink = 0.65
 	sellprice = 30
 	last_used = 0
+
+/obj/item/reagent_containers/glass/cup/silver/Initialize(mapload, vol)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/reagent_containers/glass/cup/golden
 	name = "golden goblet"
