@@ -1,0 +1,53 @@
+/datum/job/stonemason_p
+	title = "Stonemason"
+	tutorial = "Placeholder description"
+	department_flag = PEASANTS
+	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
+	faction = FACTION_TOWN
+	total_positions = 8
+	spawn_positions = 8
+	allowed_races = list(ALL_RACES_LIST)
+	outfit = /datum/outfit/job/stonemason_p
+	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
+
+/datum/outfit/job/stonemason_p/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(prob(50))
+		cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
+	//general skills
+	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+
+	//job specific skills
+	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)//climbing skill so they can climb whatever they built
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
+
+	//stats
+	H.change_stat(STATKEY_STR, pick(0,1))
+	H.change_stat(STATKEY_CON, pick(0,1))
+	H.change_stat(STATKEY_END, pick(0,1))
+
+	//traits
+
+	//gear
+	head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu, /obj/item/clothing/head/brimmed)
+	armor = pick(/obj/item/clothing/armor/leather/vest, /obj/item/clothing/armor/gambeson/light/striped)
+	shirt = /obj/item/clothing/shirt/undershirt/colored/random
+	pants = pick(/obj/item/clothing/pants/trou, /obj/item/clothing/pants/tights/colored/random)
+	shoes = /obj/item/clothing/shoes/boots/leather
+
+	neck = /obj/item/storage/belt/pouch/coins/poor
+	belt = pick(/obj/item/storage/belt/leather, /obj/item/storage/belt/leather/rope)
+	belt = /obj/item/storage/belt/leather
+
+	beltl = /obj/item/weapon/hammer/iron
+	beltr = /obj/item/weapon/pick
+	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/recipe_book/masonry= 1, /obj/item/weapon/knife/villager = 1, /obj/item/weapon/chisel/iron = 1)
