@@ -4,6 +4,13 @@
 	abstract_type = /obj/item/clothing/head/padded
 
 //................ Simple Hats ............... //
+/obj/item/clothing/head/dungeoneer
+	name = "sack hood"
+	desc = "A crude way to conceal one's identity, these are usually worn by local brigands to not get recognised."
+	icon_state = "dungeoneer"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	fiber_salvage = FALSE
+
 /obj/item/clothing/head/menacing
 	name = "sack hood"
 	desc = "A crude way to conceal one's identity, these are usually worn by local brigands to not get recognised."
@@ -15,6 +22,7 @@
 	name = "knit cap"
 	desc = "A crude peasant cap worn by about every serf under Astrata's radiance."
 	icon_state = "knitcap"
+	min_cold_protection_temperature = -5
 
 /obj/item/clothing/head/headband
 	name = "headband"
@@ -47,10 +55,12 @@
 	name = "fur hat"
 	desc = "A hat made of fur typically worn by guildsmen."
 	icon_state = "hatfur"
+	min_cold_protection_temperature = -20
 
 /obj/item/clothing/head/hatblu
 	name = "fur hat"
 	icon_state = "hatblu"
+	min_cold_protection_temperature = -20
 
 /obj/item/clothing/head/papakha
 	name = "papakha"
@@ -58,6 +68,7 @@
 	icon_state = "papakha"
 	sellprice = VALUE_FINE_CLOTHING
 	max_integrity = INTEGRITY_POOR
+	min_cold_protection_temperature = -20
 
 //................ Fancy Hats ............... //
 
@@ -80,6 +91,7 @@
 	blocksound = SOFTHIT
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+	min_cold_protection_temperature = -1
 
 /obj/item/clothing/head/helmet/leather/saiga
 	name = "saiga skull"
@@ -93,6 +105,7 @@
 	flags_inv = HIDEEARS|HIDEFACE
 	flags_cover = HEADCOVERSEYES
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
+	min_cold_protection_temperature = -1
 
 
 //................ Briar Thorns ............... //	- Dendor Briar
