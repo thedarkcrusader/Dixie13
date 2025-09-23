@@ -44,14 +44,15 @@
 	H.adjust_skillrank(/datum/skill/craft/bombs, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
 	H.merctype = 9
 	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_END, 3)
-	H.change_stat(STATKEY_INT, 4) //Unique specimen, They learned many things, trust.
+	H.change_stat(STATKEY_INT, 4) //Unique specimen, They learned many things, it basically nullify and give a bonus of +2 to their INT.
 	H.change_stat(STATKEY_SPD, 2) //Gee, Why do this kobold get more stats than everyone else? the answer is because they have to at the very least escape from being killed and looted.
-	H.change_stat(STATKEY_PER, -2) //-4 PER hit hard
+	H.change_stat(STATKEY_PER, -2) //-4 PER with a chance of it being a -5 hit hard
 	ADD_TRAIT(H, TRAIT_AMAZING_BACK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MIRACULOUS_FORAGING, TRAIT_GENERIC)
