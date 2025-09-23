@@ -42,7 +42,6 @@
 	pants = pick(/obj/item/clothing/pants/trou, /obj/item/clothing/pants/tights/colored/random)
 	shoes = /obj/item/clothing/shoes/boots/leather
 
-	neck = /obj/item/storage/belt/pouch/coins/poor
 	belt = pick(/obj/item/storage/belt/leather, /obj/item/storage/belt/leather/rope)
 
 	beltl = /obj/item/weapon/axe/iron

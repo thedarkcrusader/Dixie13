@@ -56,4 +56,4 @@
 	beltl = /obj/item/weapon/sword/short
 	backr = /obj/item/weapon/shield/heater
 	backl = /obj/item/weapon/shield/wood
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/villager = 1, /obj/item/storage/belt/pouch/coins/poor = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/villager = 1)
