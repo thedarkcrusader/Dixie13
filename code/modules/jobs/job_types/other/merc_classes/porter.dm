@@ -4,9 +4,8 @@
 	allowed_races = list(SPEC_ID_KOBOLD)
 	outfit = /datum/outfit/job/mercenary/porter
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 2
+	maximum_possible_slots = 1
 	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
-
 
 /datum/outfit/job/mercenary/porter/pre_equip(mob/living/carbon/human/H)
 	..()
