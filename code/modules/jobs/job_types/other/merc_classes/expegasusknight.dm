@@ -34,7 +34,7 @@
 	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
-	H.merctype = 10
+	H.merctype = 11
 
 	H.change_stat(STATKEY_END, 2)
 	H.change_stat(STATKEY_STR, 1)
