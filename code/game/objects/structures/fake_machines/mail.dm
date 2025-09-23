@@ -167,6 +167,8 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			if(9)
 				new /obj/item/clothing/neck/mercmedal(drop_location)
 			if(10)
+				new /obj/item/clothing/neck/mercmedal/abyssal(drop_location)
+			if(11)
 				new /obj/item/clothing/neck/mercmedal/goldfeather(drop_location)
 
 	if(istype(P, /obj/item/paper/confession))
