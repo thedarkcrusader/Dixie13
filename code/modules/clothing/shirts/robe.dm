@@ -65,6 +65,8 @@
 	desc = "Eerie black garb of death."
 	icon_state = "warlock"
 	sleeved = null
+	//there are sprites in cult.dm in the topadd folder
+	//I hate spriting so much I gave up trying to do it
 
 /obj/item/clothing/shirt/robe/dendor
 	name = "briar robe"
