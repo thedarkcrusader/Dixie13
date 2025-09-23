@@ -13,7 +13,7 @@
 /datum/outfit/job/farmer_p/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(50))
-		cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
+		H.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	//general skills
 	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -54,5 +54,5 @@
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/villager = 1, /obj/item/recipe_book/agriculture = 1)
 
-	rhand = /obj/item/weapon/thresher
-	lhand = /obj/item/weapon/pitchfork
+	r_hand = /obj/item/weapon/thresher
+	l_hand = /obj/item/weapon/pitchfork

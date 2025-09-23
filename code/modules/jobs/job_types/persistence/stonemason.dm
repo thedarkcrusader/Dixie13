@@ -13,7 +13,7 @@
 /datum/outfit/job/stonemason_p/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(50))
-		cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
+		H.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	//general skills
 	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
