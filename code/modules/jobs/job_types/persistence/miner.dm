@@ -1,6 +1,6 @@
 /datum/job/miner_p
 	title = "Miner"
-	tutorial = "Placeholder description"
+	tutorial = "You're a miner, ensure the settlement has stone and ores."
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -46,5 +46,6 @@
 	belt = pick(/obj/item/storage/belt/leather, /obj/item/storage/belt/leather/rope)
 
 	beltl = /obj/item/weapon/pick
+	backr = /obj/item/weapon/shovel
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/villager = 1)

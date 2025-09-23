@@ -1,6 +1,6 @@
 /datum/job/caravanguard_p
 	title = "Caravan Guard"
-	tutorial = "Placeholder description"
+	tutorial = "You're a caravan guard, ensure the settlers aren't killed and maimed by whatever lurks in here."
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -44,10 +44,16 @@
 	//gear
 	head = /obj/item/clothing/head/helmet/ironpot
 	armor = /obj/item/clothing/armor/cuirass/iron
-	shirt = pick(/obj/item/clothing/armor/gambeson/heavy, /obj/item/clothing/armor/gambeson, /obj/item/clothing/armor/gambeson/light)
+	shirt = /obj/item/clothing/armor/gambeson
 	pants = pick(/obj/item/clothing/pants/trou, /obj/item/clothing/pants/tights/colored/random)
 	shoes = /obj/item/clothing/shoes/boots/leather
 
-	neck = /obj/item/storage/belt/pouch/coins/poor
+	neck = /obj/item/clothing/neck/coif/cloth
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	belt = pick(/obj/item/storage/belt/leather, /obj/item/storage/belt/leather/rope)
+
+	beltr = /obj/item/weapon/mace/cudgel
+	beltl = /obj/item/weapon/sword/short
+	backr = /obj/item/weapon/shield/heater
+	backl = /obj/item/weapon/shield/wood
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/villager = 1, /obj/item/storage/belt/pouch/coins/poor = 1)

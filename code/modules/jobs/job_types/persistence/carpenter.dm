@@ -1,6 +1,6 @@
 /datum/job/carpenter_p
 	title = "Carpenter"
-	tutorial = "Placeholder description"
+	tutorial = "You're a carpenter, ensure the settlement isn't a bunch of tents."
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -50,4 +50,3 @@
 	beltr = /obj/item/weapon/axe/iron
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/recipe_book/carpentry = 1, /obj/item/weapon/knife/villager = 1)
-

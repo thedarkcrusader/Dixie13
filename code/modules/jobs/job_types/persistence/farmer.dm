@@ -1,6 +1,6 @@
 /datum/job/farmer_p
 	title = "Farmer"
-	tutorial = "Placeholder description"
+	tutorial = "You're a farmer, ensure the settlers don't starve."
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -52,5 +52,8 @@
 	beltl = /obj/item/weapon/sickle
 	beltr = /obj/item/weapon/shovel/small
 	backr = /obj/item/weapon/hoe
-	backl = /obj/item/weapon/thresher
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/villager = 1, /obj/item/recipe_book/agriculture = 1)
+
+	rhand = /obj/item/weapon/thresher
+	lhand = /obj/item/weapon/pitchfork
