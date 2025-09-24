@@ -73,9 +73,9 @@
 	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
-	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
-		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
+	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
+		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 	wretch_select_bounty(H)

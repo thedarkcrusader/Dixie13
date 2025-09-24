@@ -52,8 +52,6 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_RECOGNIZED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INHUMENCAMP, TRAIT_GENERIC)
-	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
-		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/disgraced/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
@@ -64,7 +62,8 @@
 		honorary = "Dame"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
-
+	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
+		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 	var/static/list/selectableweapon = list( \
 		"Flail" = /obj/item/weapon/flail/sflail, \
 		"Halberd" = /obj/item/weapon/polearm/halberd, \
