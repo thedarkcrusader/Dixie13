@@ -1,7 +1,4 @@
-/datum/job/woodsman_p
-	enabled = FALSE
-	persistent_job = TRUE
-	always_show_on_latechoices = TRUE
+/datum/job/persistence/woodsman
 	title = "Woodsman"
 	tutorial = "You're a woodsman, ensure the settlement has wood."
 	department_flag = PEASANTS

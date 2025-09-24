@@ -1,16 +1,11 @@
-/datum/job/miner_p
-	enabled = FALSE
-	persistent_job = TRUE
-	always_show_on_latechoices = TRUE
+/datum/job/persistence/miner
 	title = "Miner"
 	tutorial = "You're a miner, ensure the settlement has stone and ores."
-	department_flag = PEASANTS
+	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
 	total_positions = 8
 	spawn_positions = 8
-	allowed_races = RACES_PLAYER_ALL
-	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/miner_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 

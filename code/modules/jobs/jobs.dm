@@ -103,12 +103,12 @@ GLOBAL_LIST_INIT(allmig_positions, list(
 	))
 
 GLOBAL_LIST_INIT(persistence_positions, list(
-	/datum/job/caravanguard_p::title,
-	/datum/job/farmer_p::title,
-	/datum/job/woodsman_p::title,
-	/datum/job/miner_p::title,
-	/datum/job/stonemason_p::title,
-	/datum/job/carpenter_p::title,
+	/datum/job/persistence/caravanguard,
+	/datum/job/persistence/carpenter,
+	/datum/job/persistence/stonemason,
+	/datum/job/persistence/woodsman,
+	/datum/job/persistence/miner,
+	/datum/job/persistence/farmer,
 	))
 
 GLOBAL_LIST_INIT(roguewar_positions, list(

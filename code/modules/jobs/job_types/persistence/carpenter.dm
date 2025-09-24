@@ -1,7 +1,4 @@
-/datum/job/carpenter_p
-	enabled = FALSE
-	persistent_job = TRUE
-	always_show_on_latechoices = TRUE
+/datum/job/persistence/carpenter
 	title = "Carpenter"
 	tutorial = "You're a carpenter, ensure the settlement isn't a bunch of tents."
 	department_flag = SERFS
@@ -9,8 +6,6 @@
 	faction = FACTION_TOWN
 	total_positions = 8
 	spawn_positions = 8
-	allowed_races = RACES_PLAYER_ALL
-	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/carpenter_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
