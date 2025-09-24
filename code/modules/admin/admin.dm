@@ -1092,16 +1092,17 @@
 
 	var/list/options = list("Adjust Experience Modifier", "Sleep Experience Modifier", "Both")
 
-	var/type = browser_input_list(usr, "Change which modifier? \n The current value of adjust_experience_modifier is [GLOB.adjust_experience_modifier] \n The current value of sleep_experience_modifier is [GLOB.sleep_experience_modifier].", "Change Skill Experience Gain", options)
+	var/type = browser_input_list(usr, "Change which modifier? \n The current value of adjust_experience_modifier is [GLOB.adjust_experience_modifier] \n The current value of sleep_experience_modifier is [GLOB.sleep_experience_modifier].", "Change Skill Experience Gain", options, "Both")
 	var/modifier = input(usr, "Enter what the modifier should be, default is 1", "Change Skill Experience Gain", 1) as num
 	switch(type)
 		if("Adjust Experience Modifier")
 			GLOB.adjust_experience_modifier = modifier
-			message_admins("The value of adjust_experience_modifier is now [modifier].")
+			message_admins("[key_name_admin(usr)] set the value of adjust_experience_modifier to [modifier].")
 		if("Sleep Experience Modifier")
 			GLOB.sleep_experience_modifier = modifier
-			message_admins("The value of sleep_experience_modifier is now [modifier].")
+			message_admins("[key_name_admin(usr)] set the value of sleep_experience_modifier to [modifier].")
 		if("Both")
 			GLOB.adjust_experience_modifier = modifier
 			GLOB.sleep_experience_modifier = modifier
-			message_admins("The value of both adjust_experience_modifier and sleep_experience_modifier is now [modifier].")
+			message_admins("[key_name_admin(usr)] set the value of both adjust_experience_modifier and sleep_experience_modifier to [modifier].")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Change Skill Experience Gain")
