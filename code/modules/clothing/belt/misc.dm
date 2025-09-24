@@ -45,7 +45,7 @@
 		/obj/item/key/forrestgarrison,
 	)
 
-//Bandit's belt starts with a bandage and a key to their guildhall.
+//Mercenary's belt starts with a bandage and a key to their guildhall.
 /obj/item/storage/belt/leather/mercenary
 	populate_contents = list(
 		/obj/item/natural/cloth,
@@ -82,6 +82,10 @@
 	desc = "A belt with a silver plaque on its front."
 	icon_state = "silverplaque"
 	sellprice = 30
+
+/obj/item/storage/belt/leather/plaquesilver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /obj/item/storage/belt/leather/steel
 	name = "steel belt"
@@ -285,6 +289,7 @@
 	item_state = "artibackpack"
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+	//for those curious, yes the artibackpack preserves organs and food. Check _organ.dm and snacks.dm
 
 /obj/item/storage/backpack/satchel/surgbag
 	name = "surgery bag"
@@ -313,6 +318,8 @@
 	. = ..()
 	new /obj/item/weapon/surgery/scalpel(loc)
 	new /obj/item/weapon/surgery/saw(loc)
+	//two hemostats because one is needed to clamp bleeders, the other is needed to actually remove stuff with it
+	new /obj/item/weapon/surgery/hemostat(loc)
 	new /obj/item/weapon/surgery/hemostat(loc)
 	new /obj/item/weapon/surgery/retractor(loc)
 	new /obj/item/weapon/surgery/bonesetter(loc)
@@ -337,7 +344,6 @@
 	)
 
 /obj/item/storage/belt/leather/knifebelt
-
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
 	icon_state = "knife"

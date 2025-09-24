@@ -92,7 +92,7 @@
 
 	ADD_TRAIT(src, TRAIT_WEBWALK, TRAIT_GENERIC)
 
-/mob/living/simple_animal/hostile/retaliate/spider/UnarmedAttack(atom/A)
+/mob/living/simple_animal/hostile/retaliate/spider/UnarmedAttack(atom/A, proximity_flag, params, atom/source)
 	if(!..())
 		return
 	production += rand(30, 50)
@@ -104,11 +104,11 @@
 		if(L.reagents)
 			L.reagents.add_reagent(/datum/reagent/toxin/venom, 1)
 
-/mob/living/simple_animal/hostile/retaliate/spider/try_tame(obj/item/O, mob/user)
+/mob/living/simple_animal/hostile/retaliate/spider/try_tame(obj/item/O, mob/living/carbon/human/user)
 	if(!stat)
 		user.visible_message("<span class='info'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>I hand-feed [O] to [src].</span>")
 		playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
-		SEND_SIGNAL(src, COMSIG_MOB_FEED, O, 30)
+		SEND_SIGNAL(src, COMSIG_MOB_FEED, O, 30, user)
 		SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHANGE, user, 10)
 		qdel(O)
 		if(tame && owner == user)
@@ -121,6 +121,8 @@
 				realchance += (user.get_skill_level(/datum/skill/labor/taming) * 20)
 			if(prob(realchance))
 				tamed(user)
+				var/boon = user.get_learning_boon(/datum/skill/labor/taming)
+				user.adjust_experience(/datum/skill/labor/taming, (user.STAINT*10) * boon)
 			else
 				tame_chance += bonus_tame_chance
 		return TRUE

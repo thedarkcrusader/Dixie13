@@ -117,6 +117,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
 	experimental_inhand = FALSE
 	dropshrink = 0.7
+	var/how_many_lockpicks = 9
 
 /obj/item/lockpickring/Initialize()
 	. = ..()
@@ -172,7 +173,7 @@
 
 /obj/item/lockpickring/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/lockpick))
-		if(picks.len >= 3)
+		if(picks.len >= how_many_lockpicks)
 			to_chat(user, span_warning("Too many lockpicks."))
 			return
 		user.dropItemToGround(I)
@@ -238,6 +239,9 @@
 
 /obj/item/storage/keyring/inquisitor
 	keys = list(/obj/item/key/inquisition, /obj/item/key/church)
+
+/obj/item/storage/keyring/adept
+	keys = list(/obj/item/key/inquisition)
 
 /obj/item/storage/keyring/apothecary
 	keys = list(/obj/item/key/apothecary, /obj/item/key/bathhouse, /obj/item/key/clinic)

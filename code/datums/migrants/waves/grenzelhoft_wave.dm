@@ -9,7 +9,7 @@
 
 /datum/outfit/job/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -51,10 +51,13 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		H.cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/grenzelhoft/countess
 	name = "Grenzelhoft Countess"
-	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
+	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin alongside her beloved convoy and husband."
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/countess
@@ -63,7 +66,7 @@
 
 /datum/outfit/job/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -103,10 +106,13 @@
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		H.cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_knight
 	name = "Grenzelhoft Knight"
-	greet_text = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
+	greet_text = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
@@ -151,10 +157,13 @@
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms
 	name = "Grenzelhoft Men-at-Arms"
-	greet_text = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
+	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
 	allowed_races = RACES_PLAYER_GRENZ
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_men_at_arms
 
@@ -182,7 +191,7 @@
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
-	shoes = /obj/item/clothing/shoes/grenzelhoft
+	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/mace/cudgel
@@ -199,6 +208,9 @@
 	H.change_stat(STATKEY_CON, 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/migrant_wave/grenzelhoft_visit
 	name = "The Grenzelhoft visit"

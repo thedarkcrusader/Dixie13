@@ -74,7 +74,7 @@
 
 /obj/item/clothing/shoes/simpleshoes/colored/lord
 	name = "shoes"
-	desc = "Shoes typically worn by the King himself."
+	desc = "Shoes typically worn by the Monarch themselves."
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
@@ -100,6 +100,9 @@
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 
+/obj/item/clothing/shoes/rare
+	abstract_type = /obj/item/clothing/shoes/rare
+
 /obj/item/clothing/shoes/rare/hoplite
 	name = "ancient sandals"
 	desc = "Worn sandals lined with bronze, ready to march ever onwards."
@@ -109,15 +112,15 @@
 
 /obj/item/clothing/shoes/shalal
 	name = "babouche"
-	desc = "Leather slippers of zybantean origin."
+	desc = "Leather slippers of Zaladian origin."
 	gender = PLURAL
 	icon_state = "shalal"
 	item_state = "shalal"
 	sellprice = 15
 
 /obj/item/clothing/shoes/tribal
-	name = "tribal shoes"
-	desc = "Haphazardly-made slippers of creecher leather worn by primitives, or those who don't care about fashion and just want to protect their feet."
+	name = "primative shoes"
+	desc = "Haphazardly-made slippers of creecher leather worn by those with nothing better, or those who don't care about fashion and just want to protect their feet."
 	icon_state = "tribalshoes"
 	item_state = "tribalshoes"
 	sellprice = 3
@@ -133,7 +136,7 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_JINGLE_BELLS), step_delay_override = 2, falloff_exponent = 20)
 
-/obj/item/clothing/shoes/grenzelhoft
+/obj/item/clothing/shoes/rare/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"

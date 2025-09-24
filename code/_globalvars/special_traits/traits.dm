@@ -207,7 +207,7 @@
 
 /datum/special_trait/tolerant
 	name = "Tolerant"
-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
+	greet_text = span_notice("I dream of an ideal future, one with peace between all species")
 	weight = 100
 
 /datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
@@ -703,3 +703,11 @@
 	catte.desc = "This cat seems a little.. strange..."
 	catte.ckey = character.ckey
 	qdel(character)
+
+/datum/special_trait/keenears
+	name = "Keen Ears"
+	greet_text = span_notice("People always did get mad at me for accidentally eavesdropping.")
+	weight = 50
+
+/datum/special_trait/keenears/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_KEENEARS, "[type]")

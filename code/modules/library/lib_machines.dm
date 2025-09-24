@@ -5,7 +5,7 @@
 	name = "printing press"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "Ppress_Clean"
-	desc = "The Archivist's wonder. Gears, ink, and wood b locks can turn the written word to the printed word."
+	desc = "The Archivist's wonder. Gears, ink, and wood blocks can turn the written word to the printed word."
 	density = TRUE
 	var/cooldown = 0
 	var/printing = FALSE
@@ -216,7 +216,12 @@
 	if(printing)
 		return
 	if("print" in href_list)
-		var/filename = href_list["filename"]
+		var/filename = SANITIZE_FILENAME(href_list["filename"])
+
+		if(!SSlibrarian.player_book_exists(filename))
+			to_chat(usr, span_notice("This book doesn't exist."))
+			return
+
 		start_printing(usr, "archive", filename)
 
 #undef PRINTER_COOLDOWN

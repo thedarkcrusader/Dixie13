@@ -16,6 +16,7 @@
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	prevent_crits = ALL_EXCEPT_BLUNT
 	max_integrity = INTEGRITY_STRONGEST
+	abstract_type = /obj/item/clothing/armor/rare
 
 /obj/item/clothing/armor/rare/Initialize()
 	. = ..()
@@ -58,7 +59,7 @@
 	item_weight = 12 * STEEL_MULTIPLIER
 	stand_speed_reduction = 1.2
 
-/obj/item/clothing/armor/rare/zybanplate
+/obj/item/clothing/armor/rare/zaladplate
 	name = "kataphractoe scaleskin"
 	desc = "Steel scales woven into armor with miniscule threads of adamantine, \
 			ensuring the wearer optimal defence with forgiving breathability. \
