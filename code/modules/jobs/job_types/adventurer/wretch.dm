@@ -31,8 +31,6 @@
 		return
 	H.ambushable = FALSE
 	to_chat(H, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
-	if(H.mind.has_antag_datum(/datum/antagonist))
-		return
 	var/datum/antagonist/new_antag = new /datum/antagonist/wretch()
 	H.mind.add_antag_datum(new_antag)
 
