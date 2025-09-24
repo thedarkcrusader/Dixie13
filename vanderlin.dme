@@ -1238,6 +1238,7 @@
 #include "code\datums\runeword\word_combos\flamebrand.dm"
 #include "code\datums\runeword\word_combos\scattershot.dm"
 #include "code\datums\skills\_skill.dm"
+#include "code\datums\skills\_skill_global_vars.dm"
 #include "code\datums\skills\combat.dm"
 #include "code\datums\skills\craft.dm"
 #include "code\datums\skills\labor.dm"

@@ -102,6 +102,15 @@ GLOBAL_LIST_INIT(allmig_positions, list(
 	/datum/job/wretch::title,
 	))
 
+GLOBAL_LIST_INIT(persistence_positions, list(
+	/datum/job/caravanguard_p::title,
+	/datum/job/farmer_p::title,
+	/datum/job/woodsman_p::title,
+	/datum/job/miner_p::title,
+	/datum/job/stonemason_p::title,
+	/datum/job/carpenter_p::title,
+	))
+
 GLOBAL_LIST_INIT(roguewar_positions, list(
 	"Adventurer",
 	))
