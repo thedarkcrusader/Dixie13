@@ -13,7 +13,7 @@
 			return
 		if("DISABLE ALL JOBS, ENABLE PERSISTENT JOBS")
 			for(var/datum/job/job_to_toggle in SSjob.joinable_occupations)
-				if(job_to_toggle in subtypesof(/datum/job/persistence))
+				if(istype(job_to_toggle, /datum/job/persistence))
 					job_to_toggle.enabled = TRUE
 					job_to_toggle.total_positions = 8
 				else
@@ -22,7 +22,7 @@
 			message_admins("[key_name_admin(usr)] disabled all jobs and enabled all persistent jobs.")
 		if("ENABLE ALL JOBS, DISABLE PERSISTENT JOBS")
 			for(var/datum/job/job_to_toggle in SSjob.joinable_occupations)
-				if(job_to_toggle in subtypesof(/datum/job/persistence))
+				if(istype(job_to_toggle, /datum/job/persistence))
 					job_to_toggle.enabled = FALSE
 					job_to_toggle.total_positions = 0
 				else
