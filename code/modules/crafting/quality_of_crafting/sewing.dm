@@ -269,6 +269,13 @@
 	craftdiff = 1
 	category = "Hat"
 
+/datum/repeatable_crafting_recipe/sewing/sack
+	name = "dark sack hood"
+	output = /obj/item/clothing/head/dungeoneer
+	requirements = list(/obj/item/natural/cloth = 3)
+	craftdiff = 1
+	category = "Hat"
+
 /datum/repeatable_crafting_recipe/sewing/clothknapsack
 	name = "cloth knapsack"
 	output = /obj/item/storage/backpack/satchel/cloth
@@ -1002,7 +1009,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/lakkarijupon
 	name = "lakkarian jupon"
-	output = /obj/item/clothing/armor/gambeson/lakkarijupon
+	output = /obj/item/clothing/armor/gambeson/heavy/lakkarijupon
 	requirements = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
