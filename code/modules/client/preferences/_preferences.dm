@@ -216,8 +216,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// If our owner is from a race that has more than one accent
 	var/change_accent = FALSE
 
-	/// If the user clicked "Don't ask again" on the randomize character prompt
-	var/randomize_shutup = FALSE
 	/// Custom UI scale
 	var/ui_scale
 	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
@@ -300,7 +298,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	dat += "<td style='width:33%;text-align:right'>"
 	dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
-	dat += "<br><a href='?_src_=prefs;preference=toggles'>Toggles</a>"
 	dat += "</td>"
 	dat += "</tr>"
 
@@ -315,7 +312,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "</td>"
 
 	dat += "<td style='width:33%;text-align:right'>"
-
+	dat += "<a href='?_src_=prefs;preference=toggles'>Toggles</a>"
 	dat += "</td>"
 	dat += "</tr>"
 
@@ -732,6 +729,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	job_preferences = list()
 	if(!silent)
 		to_chat(user, "<font color='red'>Classes reset.</font>")
+
+/datum/preferences/proc/ResetPatron(mob/user, silent = FALSE)
+	selected_patron = default_patron
+	if(!silent)
+		to_chat(user, "<font color='red'>Patron reset.</font>")
 
 /datum/preferences/proc/ResetLastClass(mob/user)
 	if(user.client?.prefs)
@@ -1153,6 +1155,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						var/datum/patron/patron = GLOB.preference_patrons[path]
 						if(!patron.name)
 							continue
+						if(patron.allowed_races)
+							if(!(user.client.prefs.pref_species.id in patron.allowed_races))
+								continue
 						var/pref_name = patron.display_name ? patron.display_name : patron.name
 						patrons_named[pref_name] = patron
 					var/datum/faith/current_faith = GLOB.faithlist[selected_patron?.associated_faith] || GLOB.faithlist[initial(default_patron.associated_faith)]
@@ -1216,6 +1221,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
 						real_name = pref_species.random_name(gender,1)
 						ResetJobs(user)
+						ResetPatron(user)
 						randomise_appearance_prefs(~(RANDOMIZE_SPECIES))
 						customizer_entries = list()
 						validate_customizer_entries()
@@ -1565,13 +1571,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							save_character()
 
 				if("randomiseappearanceprefs")
-					if(!randomize_shutup)
-						var/alert_response = browser_alert(user, "Are you sure you want to randomise your appearance preferences? This will overwrite your current preferences.", "Randomise Appearance Preferences", list("Yes", "No", "Don\'t Ask Again This Round (Yes)"))
-						if(alert_response != "Yes")
-							if(alert_response == "Don't Ask Again This Round (Yes)")
-								randomize_shutup = TRUE
-							else
-								return
 					randomise_appearance_prefs(include_patreon = patreon)
 					customizer_entries = list()
 					validate_customizer_entries()
