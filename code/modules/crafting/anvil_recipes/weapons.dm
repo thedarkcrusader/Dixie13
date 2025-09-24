@@ -299,7 +299,7 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/steel
 
-/datum/anvil_recipe/weapons/steel/get_area_instance_from_text(areatext)
+/datum/anvil_recipe/weapons/steel/sgreataxe
 	name = "Steel Great Axe (+Bar, +Small Log)"
 	recipe_name = "A Large Steel Axe"
 	appro_skill = /datum/skill/craft/weaponsmithing
