@@ -2,6 +2,10 @@
 "a" = (
 /turf/closed/basic,
 /area/rogue)
+"c" = (
+/obj/structure/stockpile_storage/metal,
+/turf/open/floor/cobblerock,
+/area/rogue)
 "d" = (
 /obj/machinery/light/fueled/torchholder/hotspring{
 	pixel_y = -12;
@@ -13,11 +17,24 @@
 /obj/effect/landmark/start,
 /turf/open/floor/cobblerock,
 /area/rogue)
+"g" = (
+/obj/structure/stockpile_storage,
+/turf/open/floor/cobblerock,
+/area/rogue)
 "k" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/cobblerock,
 /area/rogue)
+"t" = (
+/obj/structure/fake_machine/titan,
+/obj/structure/throne,
+/turf/open/floor/cobblerock,
+/area/rogue)
 "u" = (
+/turf/open/floor/cobblerock,
+/area/rogue)
+"x" = (
+/obj/structure/stockpile_storage/food,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "G" = (
@@ -454,7 +471,7 @@ a
 a
 u
 u
-u
+t
 u
 u
 u
@@ -676,15 +693,15 @@ a
 a
 u
 u
+g
 u
 u
 u
+x
 u
 u
 u
-u
-u
-u
+c
 u
 u
 a
