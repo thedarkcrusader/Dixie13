@@ -3,11 +3,7 @@ SUBSYSTEM_DEF(lighting)
 	wait = 0
 
 	init_order = INIT_ORDER_LIGHTING
-	#ifdef ABSOLUTE_MINIMUM_MODE
-	flags = SS_NO_FIRE
-	#else
 	flags = SS_TICKER
-	#endif
 	priority = FIRE_PRIORITY_DEFAULT
 	var/static/list/sources_queue = list() // List of lighting sources queued for update.
 	var/static/list/corners_queue = list() // List of lighting corners queued for update.
