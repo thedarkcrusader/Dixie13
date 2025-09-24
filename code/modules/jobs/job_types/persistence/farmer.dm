@@ -35,7 +35,6 @@
 	H.change_stat(STATKEY_END, pick(0,1))
 
 	//traits
-	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 
 	//gear
