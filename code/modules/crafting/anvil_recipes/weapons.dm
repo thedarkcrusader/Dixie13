@@ -130,6 +130,13 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/iron
 
+/datum/anvil_recipe/weapons/iron/igreataxe
+	name = "Iron Great Axe (+Bar, +Small Log)"
+	recipe_name = "A Large Iron Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/iron,/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/greataxe
+
 /datum/anvil_recipe/weapons/iron/nsapo
 	name = "Iron Kasuyu (+Stick)"
 	recipe_name = "an Iron Kasuyu Axe"
@@ -411,6 +418,13 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/steel,/obj/item/grown/log/tree/small)
 	created_item = /obj/item/weapon/greataxe/steel
+
+/datum/anvil_recipe/weapons/steel/doubleaxe
+	name = "Double Headed Great Axe (+Bar x2, +Small Log)"
+	recipe_name = "A Double Headed Great Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel,/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/greataxe/steel/doublehead
 
 /datum/anvil_recipe/weapons/steel/nsapo/
 	name = "Steel Kasuyu (+Stick)"
