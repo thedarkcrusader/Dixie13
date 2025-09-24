@@ -405,6 +405,13 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/steel
 
+/datum/anvil_recipe/weapons/steel/sgreataxe
+	name = "Steel Great Axe (+Bar, +Small Log)"
+	recipe_name = "A Large Steel Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel,/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/greataxe/steel
+
 /datum/anvil_recipe/weapons/steel/nsapo/
 	name = "Steel Kasuyu (+Stick)"
 	recipe_name = "an Steel Kasuyu Axe"
