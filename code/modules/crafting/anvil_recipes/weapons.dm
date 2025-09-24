@@ -299,6 +299,13 @@
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/weapon/axe/steel
 
+/datum/anvil_recipe/weapons/steel/get_area_instance_from_text(areatext)
+	name = "Steel Great Axe (+Bar, +Small Log)"
+	recipe_name = "A Large Steel Axe"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel,/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/greataxe/steel
+
 /datum/anvil_recipe/weapons/steel/sledgehammer
 	name = "Steel Sledgehammer (+Small Log)"
 	recipe_name = "a big Sledgehammer"
