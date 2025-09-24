@@ -1,4 +1,8 @@
 /datum/job
+	/// If people can spawn as the job or not. Toggled via admin procs. Default is TRUE.
+	var/enabled = TRUE
+	/// If its a job for the persistent server, default is FALSE
+	var/persistent_job = FALSE
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 	/// The title of this job given to female mobs. Fluff, not as important as [var/title].

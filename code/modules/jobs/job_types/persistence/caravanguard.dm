@@ -1,12 +1,16 @@
 /datum/job/caravanguard_p
+	enabled = FALSE
+	persistent_job = TRUE
+	always_show_on_latechoices = TRUE
 	title = "Caravan Guard"
 	tutorial = "You're a caravan guard, ensure the settlers aren't killed and maimed by whatever lurks in here."
-	department_flag = PEASANTS
+	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
 	total_positions = 8
 	spawn_positions = 8
-	allowed_races = list(ALL_RACES_LIST)
+	allowed_races = RACES_PLAYER_ALL
+	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/caravanguard_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 

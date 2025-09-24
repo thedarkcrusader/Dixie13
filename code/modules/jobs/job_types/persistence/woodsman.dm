@@ -1,4 +1,7 @@
 /datum/job/woodsman_p
+	enabled = FALSE
+	persistent_job = TRUE
+	always_show_on_latechoices = TRUE
 	title = "Woodsman"
 	tutorial = "You're a woodsman, ensure the settlement has wood."
 	department_flag = PEASANTS
@@ -6,7 +9,8 @@
 	faction = FACTION_TOWN
 	total_positions = 8
 	spawn_positions = 8
-	allowed_races = list(ALL_RACES_LIST)
+	allowed_races = RACES_PLAYER_ALL
+	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/woodsman_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
