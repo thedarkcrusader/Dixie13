@@ -39,6 +39,8 @@
 		return
 	if(!istype(source, /obj/item/weapon))
 		return
+	if(istype(source, /obj/item/weapon/scabbard))
+		return
 	var/affected = affected_by_bane(target)
 	var/datum/antagonist/vampire/vamp_datum = target.mind?.has_antag_datum(/datum/antagonist/vampire)
 	var/datum/antagonist/werewolf/wolf_datum = target.mind?.has_antag_datum(/datum/antagonist/werewolf)
