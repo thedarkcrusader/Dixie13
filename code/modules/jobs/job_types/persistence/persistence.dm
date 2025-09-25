@@ -4,3 +4,5 @@
 	always_show_on_latechoices = TRUE
 	allowed_races = RACES_PLAYER_ALL
 	allowed_ages = ALL_AGES_LIST
+	total_positions = 0
+	spawn_positions = 0

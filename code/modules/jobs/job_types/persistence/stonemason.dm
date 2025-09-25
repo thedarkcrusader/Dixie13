@@ -4,8 +4,6 @@
 	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
-	total_positions = 8
-	spawn_positions = 8
 	outfit = /datum/outfit/job/stonemason_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 

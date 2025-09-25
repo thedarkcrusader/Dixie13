@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	/datum/job/town_elder::title,
 	/datum/job/forestwarden::title,
 	/datum/job/forestguard::title,
+	/datum/job/persistence/caravanguard::title,
 	))
 GLOBAL_PROTECT(garrison_positions)
 
@@ -50,6 +51,8 @@ GLOBAL_LIST_INIT(serf_positions, list(
 	/datum/job/scribe::title,
 	/datum/job/gaffer::title,
 	/datum/job/butler::title,
+	/datum/job/persistence/carpenter::title,
+	/datum/job/persistence/stonemason::title,
 	))
 GLOBAL_PROTECT(serf_positions)
 
@@ -65,6 +68,9 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	/datum/job/bard::title,
 	/datum/job/prisoner::title,
 	/datum/job/vagrant::title,
+	/datum/job/persistence/woodsman::title,
+	/datum/job/persistence/miner::title,
+	/datum/job/persistence/farmer::title,
 ))
 GLOBAL_PROTECT(peasant_positions)
 
@@ -102,15 +108,6 @@ GLOBAL_LIST_INIT(allmig_positions, list(
 	/datum/job/wretch::title,
 	))
 
-GLOBAL_LIST_INIT(persistence_positions, list(
-	/datum/job/persistence/caravanguard,
-	/datum/job/persistence/carpenter,
-	/datum/job/persistence/stonemason,
-	/datum/job/persistence/woodsman,
-	/datum/job/persistence/miner,
-	/datum/job/persistence/farmer,
-	))
-
 GLOBAL_LIST_INIT(roguewar_positions, list(
 	"Adventurer",
 	))
@@ -135,7 +132,7 @@ GLOBAL_LIST_EMPTY(job_assignment_order)
 	return sorting_order
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
-	EXP_TYPE_TOWNER = list("titles" = peasant_positions | apprentices_positions | youngfolk_positions | serf_positions | company_positions),
+	EXP_TYPE_TOWNER = list("titles" = peasant_positions | apprentices_positions | youngfolk_positions | serf_positions | company_positions ),
 	EXP_TYPE_NOBLE = list("titles" = noble_positions),
 	EXP_TYPE_CHURCH = list("titles" = church_positions),
 	EXP_TYPE_GUARDS = list("titles" = garrison_positions),
