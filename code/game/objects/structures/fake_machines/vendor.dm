@@ -264,11 +264,10 @@
 
 /obj/structure/fake_machine/vendor/inn/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/key/medroomi)) ///these were the thatchwood keys for some reason. reduced to one key.
-		var/obj/I = new X(src)
-		held_items[I] = list()
-		held_items[I]["NAME"] = I.name
-		held_items[I]["PRICE"] = 20
+	var/obj/I = new /obj/item/key/medroomi(src)
+	held_items[I] = list()
+	held_items[I]["NAME"] = I.name
+	held_items[I]["PRICE"] = 20
 
 /obj/structure/fake_machine/vendor/steward
 	lockids = list(ACCESS_STEWARD)
@@ -277,7 +276,10 @@
 
 /obj/structure/fake_machine/vendor/steward/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/key/shops/shop4)) ///previously contained keys for shops 1-3 but those no longer exist. increased the price.
+	var/obj/I = new /obj/item/key/shops/shop4(src)
+	held_items[I] = list()
+	held_items[I]["NAME"] = I.name
+	held_items[I]["PRICE"] = 20
 		var/obj/I = new X(src)
 		held_items[I] = list()
 		held_items[I]["NAME"] = I.name
