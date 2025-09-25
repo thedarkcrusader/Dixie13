@@ -368,12 +368,14 @@
 	default = FALSE
 
 /datum/config_entry/number/starvation_damage_per_tick
-	config_entry_value = 1
-	min_val = 1
+	config_entry_value = 0.1
+	min_val = 0.1
+	integer = FALSE
 
 /datum/config_entry/flag/dehydration_death
 	default = FALSE
 
 /datum/config_entry/number/dehydration_damage_per_tick
-	config_entry_value = 1
-	min_val = 1
+	config_entry_value = 0.1
+	min_val = 0.1
+	integer = FALSE

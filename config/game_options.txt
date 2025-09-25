@@ -578,10 +578,10 @@ ECONOMY
 #STARVATION_DEATH
 
 ## Damage per tick for starving to death
-STARVATION_DAMAGE_PER_TICK 1
+STARVATION_DAMAGE_PER_TICK 0.1
 
 ## Enable death by dehydration
 #DEHYDRATION_DEATH
 
 ## Damage per tick for dying of dehydration
-DEHYDRATION_DAMAGE_PER_TICK 1
+DEHYDRATION_DAMAGE_PER_TICK 0.1
