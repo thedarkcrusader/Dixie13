@@ -575,13 +575,13 @@ MONKEYCAP 64
 ECONOMY
 
 ## Enable death by starvation
-STARVATION_DEATH
+#STARVATION_DEATH
 
 ## Damage per tick for starving to death
-STARVATION_DAMAGE_PER_TICK 0.5
+STARVATION_DAMAGE_PER_TICK 1
 
 ## Enable death by dehydration
-DEHYDRATION_DEATH
+#DEHYDRATION_DEATH
 
 ## Damage per tick for dying of dehydration
-DEHYDRATION_DAMAGE_PER_TICK 0.5
+DEHYDRATION_DAMAGE_PER_TICK 1
