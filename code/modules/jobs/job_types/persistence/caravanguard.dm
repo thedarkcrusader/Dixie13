@@ -46,7 +46,7 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 
 	neck = /obj/item/clothing/neck/coif/cloth
-	wrists = /obj/item/clothing/wrists/bracers/leather
+	gloves = /obj/item/clothing/gloves/leather
 	belt = pick(/obj/item/storage/belt/leather, /obj/item/storage/belt/leather/rope)
 
 	beltr = /obj/item/weapon/mace/cudgel

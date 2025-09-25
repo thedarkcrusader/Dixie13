@@ -8,11 +8,11 @@
 	var/list/options = list("DISABLE ALL JOBS, ENABLE PERSISTENT JOBS", "ENABLE ALL JOBS, DISABLE PERSISTENT JOBS", "DO NOTHING")
 
 	var/toggle_jobs = browser_input_list(usr, "Which choice?", "Toggle all jobs for persistent", options, "DO NOTHING")
-	var/slots_amount = input(usr, "How many slots for each job should be open? Default is 8", "Toggle all jobs for persistent", 8) as num
 	switch(toggle_jobs)
 		if("DO NOTHING")
 			return
 		if("DISABLE ALL JOBS, ENABLE PERSISTENT JOBS")
+			var/slots_amount = input(usr, "How many slots for each job should be open? Default is 8", "Toggle all jobs for persistent", 8) as num
 			for(var/datum/job/job_to_toggle in SSjob.joinable_occupations)
 				if(istype(job_to_toggle, /datum/job/persistence))
 					job_to_toggle.enabled = TRUE
