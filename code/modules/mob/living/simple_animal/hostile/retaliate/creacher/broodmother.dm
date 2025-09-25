@@ -40,14 +40,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/Initialize()
 	. = ..()
-	var/datum/action/cooldown/mob_cooldown/earth_quake/quake_ability = new
-	quake_ability.Grant(src)
-	var/datum/action/toggle_frenzy/frenzy_toggle = new
-	frenzy_toggle.Grant(src)
-	var/datum/action/cooldown/spell/stone_throw/throwing_stone = new
-	throwing_stone.Grant(src)
-	var/datum/action/cooldown/spell/projectile/acid_splash_broodmother/acid_splash = new
-	acid_splash.Grant(src)
+
+	add_spell(/datum/action/cooldown/spell/projectile/acid_splash_broodmother)
+	add_spell(/datum/action/cooldown/spell/stone_throw)
+	add_spell(/datum/action/cooldown/mob_cooldown/earth_quake)
 
 	grant_language(/datum/language/common)
 	grant_language(/datum/language/orcish)
