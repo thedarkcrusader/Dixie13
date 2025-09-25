@@ -1274,6 +1274,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			H.apply_status_effect(/datum/status_effect/debuff/hungryt3)
 			H.remove_status_effect(/datum/status_effect/debuff/hungryt1)
 			H.remove_status_effect(/datum/status_effect/debuff/hungryt2)
+			if(CONFIG_GET(flag/starvation_death))
+				H.adjustOxyLoss(CONFIG_GET(number/starvation_damage_per_tick))
 			if(prob(3))
 				playsound(get_turf(H), pick('sound/vo/hungry1.ogg','sound/vo/hungry2.ogg','sound/vo/hungry3.ogg'), 100, TRUE, -1)
 
@@ -1292,6 +1294,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			H.apply_status_effect(/datum/status_effect/debuff/thirstyt3)
 			H.remove_status_effect(/datum/status_effect/debuff/thirstyt1)
 			H.remove_status_effect(/datum/status_effect/debuff/thirstyt2)
+			if(CONFIG_GET(flag/dehydration_death))
+				H.adjustOxyLoss(CONFIG_GET(number/dehydration_damage_per_tick))
 
 
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
