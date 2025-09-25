@@ -51,7 +51,7 @@
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 	wretch_select_bounty(H)
 	if(H.mind)
-		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
+		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(/datum/clan/caitiff, TRUE)
 		H.mind.add_antag_datum(new_antag)
 	if(H.gender == FEMALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
