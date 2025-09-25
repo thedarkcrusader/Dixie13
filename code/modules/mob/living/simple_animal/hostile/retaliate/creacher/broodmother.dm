@@ -19,7 +19,8 @@
 			Instead, Graggar created this."
 	icon = 'icons/mob/creacher/trolls/broodmother.dmi'
 	icon_state = "broodmother"
-	SET_BASE_PIXEL(-36, -8)
+	gender = FEMALE
+	SET_BASE_PIXEL(-38, -8)
 	hud_type = /datum/hud/broodmother
 	icon_dead = "broodmother_dead"
 	icon_living = "broodmother"
@@ -35,6 +36,7 @@
 	var/frenzy_ready = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/death(gibbed)
+	frenzy_off()
 	. = ..()
 	new /obj/item/reagent_containers/lux/pragmas (get_turf(src))
 
@@ -94,7 +96,6 @@
 	frenzy_ready = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/frenzy_off()
-	icon_state = "broodmother"
 	remove_filter("frenzy_rays")
 	remove_movespeed_modifier("frenzy")
 	update_vision_cone()
@@ -200,9 +201,9 @@
 		return
 
 	var/nutriments = .
-	adjust_biomass(1, round(nutriments / 40))
-	adjust_biomass(2, round(nutriments / 200))
-	adjust_biomass(3, round(nutriments / 600))
+	adjust_biomass(1, round(nutriments / 50, 0.1))
+	adjust_biomass(2, round(nutriments / 150, 0.1))
+	adjust_biomass(3, round(nutriments / 500, 0.1))
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/MiddleClickOn(atom/A, params) // it's so bad :sob: I'm so sorry
 	. = ..()
