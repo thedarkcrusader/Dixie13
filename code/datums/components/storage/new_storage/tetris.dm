@@ -231,12 +231,12 @@
 												silent = FALSE,
 												force = FALSE,
 												worn_check = FALSE,
-												modifiers)
+												list/modifiers)
 	if((!force && !can_be_inserted(storing, TRUE, user, worn_check, modifiers = modifiers)) || (storing == parent))
 		return FALSE
 	return handle_item_insertion(storing, silent, user, modifiers = modifiers, storage_click = FALSE)
 
-/datum/component/storage/can_be_inserted(obj/item/storing, stop_messages, mob/user, worn_check = FALSE, modifiers, storage_click = FALSE)
+/datum/component/storage/can_be_inserted(obj/item/storing, stop_messages, mob/user, worn_check = FALSE, list/modifiers, storage_click = FALSE)
 	if(!istype(storing) || (storing.item_flags & ABSTRACT))
 		return FALSE //Not an item
 	if(storing == parent)
@@ -320,7 +320,7 @@
 		return FALSE
 	return master.slave_can_insert_object(src, storing, stop_messages, user, modifiers = modifiers, storage_click = storage_click)
 
-/datum/component/storage/handle_item_insertion(obj/item/storing, prevent_warning = FALSE, mob/user, datum/component/storage/remote, modifiers, storage_click = FALSE)
+/datum/component/storage/handle_item_insertion(obj/item/storing, prevent_warning = FALSE, mob/user, datum/component/storage/remote, list/modifiers, storage_click = FALSE)
 	var/atom/parent = src.parent
 	var/datum/component/storage/concrete/master = master()
 	if(!istype(master))
@@ -688,7 +688,7 @@
 	return TRUE
 
 //Remote is null or the slave datum
-/datum/component/storage/concrete/handle_item_insertion(obj/item/storing, prevent_warning = FALSE, mob/user, datum/component/storage/remote, modifiers, storage_click = FALSE)
+/datum/component/storage/concrete/handle_item_insertion(obj/item/storing, prevent_warning = FALSE, mob/user, datum/component/storage/remote, list/modifiers, storage_click = FALSE)
 	var/datum/component/storage/concrete/master = master()
 	var/atom/parent = src.parent
 	var/moved = FALSE
@@ -946,7 +946,7 @@
 
 	usr.client.screen |= hovering
 
-/atom/movable/screen/storage/proc/update_hovering(location, control, params)
+/atom/movable/screen/storage/proc/update_hovering(location, control, list/modifiers)
 	if(!usr.client)
 		return
 	usr.client.screen -= hovering
@@ -959,7 +959,6 @@
 	storage_master = storage_master.master()
 	if(!storage_master.grid)
 		return
-	var/list/modifiers = params2list(params)
 	var/screen_loc = LAZYACCESS(modifiers, SCREEN_LOC)
 	var/coordinates = storage_master.screen_loc_to_grid_coordinates(screen_loc)
 	if(!coordinates)

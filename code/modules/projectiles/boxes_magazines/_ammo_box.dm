@@ -73,7 +73,7 @@
 /obj/item/ammo_box/proc/can_load(mob/user)
 	return TRUE
 
-/obj/item/ammo_box/attackby(obj/item/A, mob/user, params, silent = FALSE, replace_spent = 0)
+/obj/item/ammo_box/attackby(obj/item/A, mob/user, list/modifiers, silent = FALSE, replace_spent = 0)
 	var/num_loaded = 0
 	if(!can_load(user))
 		return
