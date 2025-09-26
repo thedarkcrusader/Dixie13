@@ -1,5 +1,5 @@
-/datum/job/advclass/pilgrim/rare/zaladin
-	title = "Zaladin Emir"
+/datum/advclass/pilgrim/rare/zaladin
+	name = "Zaladin Emir"
 	tutorial = "An Emir hailing from Deshret, here on business for the Mercator's Guild."
 	allowed_races = RACES_PLAYER_ZALADIN
 	outfit = /datum/outfit/job/adventurer/zalad

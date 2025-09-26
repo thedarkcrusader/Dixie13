@@ -72,12 +72,12 @@
 
 /datum/migrant_role/grenzelhoft/countess
 	name = "Grenzelhoft Countess"
-	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
+	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin alongside her beloved convoy and husband."
 	migrant_job = /datum/job/migrant/grenzelhoft_countess
 
 /datum/job/migrant/grenzelhoft_countess
 	title = "Grenzelhoft Countess"
-	tutorial = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
+	tutorial = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin alongside her beloved convoy and husband."
 	outfit = /datum/outfit/job/grenzelhoft_countess
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_GRENZ
@@ -143,12 +143,12 @@
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_knight
 	name = "Grenzelhoft Knight"
-	greet_text = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
+	greet_text = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
 	migrant_job = /datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
 
 /datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
 	title = "Grenzelhoft Knight"
-	tutorial = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
+	tutorial = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
@@ -210,12 +210,12 @@
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms
 	name = "Grenzelhoft Men-at-Arms"
-	greet_text = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
+	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
 	migrant_job = /datum/job/migrant/grenzelhoft_men_at_arms
 
 /datum/job/migrant/grenzelhoft_men_at_arms
 	title = "Grenzelhoft Men-at-Arms"
-	tutorial = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
+	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
 	outfit = /datum/outfit/job/grenzelhoft_men_at_arms
 	allowed_races = RACES_PLAYER_GRENZ
 
