@@ -53,10 +53,10 @@
 			STATS_ILLITERATES = list("name" = "Number of illiterates:", "points" = -2.75, "capacity" = -50),
 		),
 		"Set 4" = list(
-			STATS_SKILLS_DREAMED = list("name" = "Skills dreamed:", "points" = 0.285, "capacity" = 90),
+			STATS_SKILLS_DREAMED = list("name" = "Skills dreamed:", "points" = 0.285, "capacity" = 80),
 		),
 		"Set 5" = list(
-			STATS_MANA_SPENT = list("name" = "Mana spent:", "points" = 0.0125, "capacity" = 90),
+			STATS_MANA_SPENT = list("name" = "Mana spent:", "points" = 0.0115, "capacity" = 90),
 		)
 	)
 
