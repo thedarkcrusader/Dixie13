@@ -121,6 +121,14 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 #define isweapon(A) (istype(A, /obj/item/weapon))
 
+#define isammo(A) (istype(A, /obj/item/ammo_casing))
+
+#define isreagentcontainer(A) (istype(A, /obj/item/reagent_containers))
+
+#define ismobholder(A) (istype(A, /obj/item/clothing/head/mob_holder))
+
+#define isfuse(A) (istype(A, /obj/item/fuse))
+
 #define isscabbard(A) (istype(A, /obj/item/weapon/scabbard))
 
 #define isstructure(A) (istype(A, /obj/structure))
@@ -186,6 +194,9 @@ GLOBAL_LIST_INIT(RATS_DONT_EAT, typecacheof(list(
 		#define is_skeleton_knight_job(job_type) (istype(job_type, /datum/job/skeleton/knight))
 	#define is_rousman_job(job_type) (istype(job_type, /datum/job/rousman))
 	#define is_goblin_job(job_type) (istype(job_type, /datum/job/goblin))
+
+	#define is_zizolackey(mind) (mind.has_antag_datum(/datum/antagonist/zizocultist))
+	#define is_zizocultist(mind) (mind.has_antag_datum(/datum/antagonist/zizocultist/leader))
 
 // seemingly deprecated:
 //"Preacher" //as a job, there is an equivalent class

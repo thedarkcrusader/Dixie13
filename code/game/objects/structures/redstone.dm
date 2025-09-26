@@ -406,7 +406,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/delay2open = 0
 	var/delay2close = 0
 	resistance_flags = INDESTRUCTIBLE
-	nomouseover = TRUE
+	no_over_text = TRUE
 	mouse_opacity = 0
 	redstone_structure = TRUE
 
@@ -448,9 +448,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 
 /obj/structure/kybraxor
 	name = "Kybraxor the Devourer"
-	desc = "The old mad duke's hungriest pet."
+	desc = "Two massive slabs of metal flooring which threaten to swallow you whole. Watch out!"
 	density = FALSE
-	nomouseover = TRUE
+	no_over_text = TRUE
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "kybraxor1"
 	redstone_id = "gatelava"

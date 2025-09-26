@@ -27,7 +27,7 @@
 		H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) // Used for leaving notes after your evil work.
 		var/datum/antagonist/new_antag = new /datum/antagonist/assassin() // Adds the assassin antag label.
@@ -280,7 +280,7 @@
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ASSASSIN, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VILLAIN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)

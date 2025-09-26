@@ -182,7 +182,7 @@
 	var/icon_full = "genslot"
 	/// The overlay when hovering over with an item in your hand
 	plane = HUD_PLANE
-	nomouseover = FALSE
+	no_over_text = FALSE
 
 
 /atom/movable/screen/inventory/Click(location, control, params)
@@ -262,7 +262,7 @@
 
 
 /atom/movable/screen/inventory/hand
-	nomouseover =  TRUE
+	no_over_text =  TRUE
 	var/mutable_appearance/handcuff_overlay
 	var/static/mutable_appearance/blocked_overlay = mutable_appearance('icons/mob/screen_gen.dmi', "blocked")
 	var/static/mutable_appearance/fingerless_overlay = mutable_appearance('icons/mob/screen_gen.dmi', "fingerless")
@@ -1507,30 +1507,6 @@
 	icon_state = "aimbg"
 	plane = HUD_PLANE
 
-/atom/movable/screen/aim/boxaim
-	name = "tile selection indicator"
-	icon_state = "boxoff"
-
-/atom/movable/screen/aim/boxaim/Click()
-	if(ismob(usr))
-		var/mob/M = usr
-		if(M.boxaim == TRUE)
-			M.boxaim = FALSE
-			if(M.client)
-				M.client.mouseoverbox.screen_loc = null
-		else
-			M.boxaim = TRUE
-		update_appearance(UPDATE_ICON_STATE)
-
-/atom/movable/screen/aim/boxaim/update_icon_state()
-	. = ..()
-	if(ismob(usr))
-		var/mob/living/M = usr
-		if(M.boxaim == TRUE)
-			icon_state = "boxon"
-		else
-			icon_state = "boxoff"
-
 /atom/movable/screen/stress
 	name = "sanity"
 	icon = 'icons/mob/roguehud.dmi'
@@ -1573,8 +1549,9 @@
 			to_chat(M, "*--------*")
 			if(!length(M.stressors))
 				to_chat(M, span_info("I'm not feeling much of anything right now."))
-			for(var/stress_type in M.stressors)
-				var/datum/stressevent/stress_event = M.stressors[stress_type]
+			for(var/datum/stress_event/stress_event in M.stressors)
+				if(!stress_event.can_show())
+					continue
 				var/count = stress_event.stacks
 				var/ddesc = islist(stress_event.desc) ? pick(stress_event.desc) : stress_event.desc
 				if(count > 1)
@@ -1587,8 +1564,7 @@
 				to_chat(M, "<span class='warning'>I haven't TRIUMPHED.</span>")
 				return
 			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
-				var/mob/living/carbon/V = M
-				if(V.add_stress(/datum/stressevent/triumph))
+				if(M.add_stress(/datum/stress_event/triumph))
 					M.adjust_triumphs(-1)
 					M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
 
