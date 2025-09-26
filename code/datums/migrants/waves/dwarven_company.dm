@@ -1,9 +1,9 @@
 /datum/migrant_role/dwarven_company/captain
 	name = "Captain"
-	description = "You are the captain of a dwarven's expedition, following the tracks of Matthios's influence you shall lead your party in Malum's name."
-	migrant_job = /datum/job/dwarven_company/captain
+	greet_text = "You are the captain of a dwarven's expedition, following the tracks of Matthios's influence you shall lead your party in Malum's name."
+	migrant_job = /datum/job/migrant/dwarven_company/captain
 
-/datum/job/dwarven_company/captain
+/datum/job/migrant/dwarven_company/captain
 	title = "Captain"
 	tutorial = "You are the captain of a dwarven's expedition, following the tracks of Matthios's influence you shall lead your party in Malum's name."
 	outfit = /datum/outfit/job/dwarven_company/captain
@@ -61,10 +61,10 @@
 
 /datum/migrant_role/dwarven_company/weaponsmith
 	name = "Weapon Smith"
-	description = " You are the weaponsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	migrant_job = /datum/job/dwarven_company/weaponsmith
+	greet_text = " You are the weaponsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
+	migrant_job = /datum/job/migrant/dwarven_company/weaponsmith
 
-/datum/job/dwarven_company/weaponsmith
+/datum/job/migrant/dwarven_company/weaponsmith
 	title = "Weapon Smith"
 	tutorial = " You are the weaponsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
 	outfit = /datum/outfit/job/dwarven_company/weaponsmith
@@ -96,7 +96,7 @@
 		TRAIT_MEDIUMARMOR,
 	)
 
-/datum/job/dwarven_company/weaponsmith/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/dwarven_company/weaponsmith/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(skills, /datum/skill/craft/blacksmithing, pick(1, 2))
@@ -131,10 +131,10 @@
 
 /datum/migrant_role/dwarven_company/armorsmith
 	name = "Armor Smith"
-	description = " You are the armorsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	migrant_job = /datum/job/dwarven_company/armorsmith
+	greet_text = " You are the armorsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
+	migrant_job = /datum/job/migrant/dwarven_company/armorsmith
 
-/datum/job/dwarven_company/armorsmith
+/datum/job/migrant/dwarven_company/armorsmith
 	title = "Armor Smith"
 	tutorial = " You are the armorsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
 	outfit = /datum/outfit/job/dwarven_company/armorsmith
@@ -166,7 +166,7 @@
 		TRAIT_MEDIUMARMOR,
 	)
 
-/datum/job/dwarven_company/armorsmith/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/dwarven_company/armorsmith/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(skills, /datum/skill/craft/blacksmithing, pick(1, 2))

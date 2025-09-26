@@ -1,9 +1,9 @@
 /datum/migrant_role/daywalker
 	name = "Daywalker"
-	description = "Some knaves are always trying to wade upstream. You witnessed your entire village be consumed by a subservient vampiric horde - the local Priest grabbed you, and brought you to a remote Monastery; ever since then you've sworn revenge against the restless dead. The Templars showed you everything you needed to know. You walk in the day, so that the undead may only walk in the night."
-	migrant_job = /datum/job/daywalker
+	greet_text = "Some knaves are always trying to wade upstream. You witnessed your entire village be consumed by a subservient vampiric horde - the local Priest grabbed you, and brought you to a remote Monastery; ever since then you've sworn revenge against the restless dead. The Templars showed you everything you needed to know. You walk in the day, so that the undead may only walk in the night."
+	migrant_job = /datum/job/migrant/daywalker
 
-/datum/job/daywalker
+/datum/job/migrant/daywalker
 	title = "Daywalker"
 	tutorial = "Some knaves are always trying to wade upstream. You witnessed your entire village be consumed by a subservient vampiric horde - the local Priest grabbed you, and brought you to a remote Monastery; ever since then you've sworn revenge against the restless dead. The Templars showed you everything you needed to know. You walk in the day, so that the undead may only walk in the night."
 	outfit = /datum/outfit/job/daywalker

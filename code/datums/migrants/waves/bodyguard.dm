@@ -1,12 +1,12 @@
 /datum/migrant_role/bodyguard
 	name = "Bodyguard"
-	description = "Many adventurers decide to strike it rich by raiding tombs, others band together to form mercenary companies. \
+	greet_text = "Many adventurers decide to strike it rich by raiding tombs, others band together to form mercenary companies. \
 	You, however, have had the misfortune of slipping through many cracks. Instead of tainting your eternal soul by means of \
 	murder, you've elected to taint it in self-defense. Find an employer, and make a use for yourself. Cut the middleman, \
 	avoid working with any guilds."
-	migrant_job = /datum/job/bodyguard
+	migrant_job = /datum/job/migrant/bodyguard
 
-/datum/job/bodyguard
+/datum/job/migrant/bodyguard
 	title = "Bodyguard"
 	tutorial = "Many adventurers decide to strike it rich by raiding tombs, others band together to form mercenary companies. \
 	You, however, have had the misfortune of slipping through many cracks. Instead of tainting your eternal soul by means of \

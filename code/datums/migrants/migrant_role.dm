@@ -2,10 +2,12 @@
 	abstract_type = /datum/migrant_role
 	/// Name of the role
 	var/name = "MIGRANT ROLE"
-	/// Description for the role and greet text
-	var/description = "You are a migrant"
+	/// greet_text for the role
+	var/greet_text = "You are a migrant"
 	/// Reference to a job to apply to the migrant role, vars for this are used to determine if selectable.
-	var/datum/job/migrant_job
+	var/datum/job/migrant/migrant_job
+	/// Antagonist datum to apply with the migrant be mindful of the job if any.
+	var/datum/antagonist/antag_datum
 
 /// Migrant role for advclass rollers like pilgrim
 /// Can be supplied a job if the advclass is split up

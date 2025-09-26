@@ -310,6 +310,7 @@
 			if(H.dna.species.native_language == "Imperial")
 				H.dna.species.native_language = "Zalad"
 				H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+
 /datum/migrant_wave/zalad_wave
 	name = "The Deshret Expedition"
 	max_spawns = 1

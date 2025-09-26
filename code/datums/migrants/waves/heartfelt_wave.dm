@@ -1,9 +1,9 @@
 /datum/migrant_role/heartfelt_lord
 	name = "Lord of Heartfelt"
-	description = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Vanderlin, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
-	migrant_job = /datum/job/heartfelt_lord
+	greet_text = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Vanderlin, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
+	migrant_job = /datum/job/migrant/heartfelt_lord
 
-/datum/job/heartfelt_lord
+/datum/job/migrant/heartfelt_lord
 	title = "Lord of Heartfelt"
 	tutorial = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Vanderlin, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	outfit = /datum/outfit/job/heartfelt_lord
@@ -63,10 +63,10 @@
 
 /datum/migrant_role/heartfelt_lady
 	name = "Lady of Heartfelt"
-	description = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Vanderlin, hoping to find new purpose or refuge amidst the chaos."
-	migrant_job = /datum/job/heartfelt_lady
+	greet_text = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Vanderlin, hoping to find new purpose or refuge amidst the chaos."
+	migrant_job = /datum/job/migrant/heartfelt_lady
 
-/datum/job/heartfelt_lady
+/datum/job/migrant/heartfelt_lady
 	title = "Lady of Heartfelt"
 	tutorial = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Vanderlin, hoping to find new purpose or refuge amidst the chaos."
 	outfit = /datum/outfit/job/heartfelt_lady
@@ -129,10 +129,10 @@
 
 /datum/migrant_role/heartfelt_hand
 	name = "Hand of Heartfelt"
-	description = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Vanderlin, determined to fulfill your duties."
-	migrant_job = /datum/job/heartfelt_hand
+	greet_text = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Vanderlin, determined to fulfill your duties."
+	migrant_job = /datum/job/migrant/heartfelt_hand
 
-/datum/job/heartfelt_hand
+/datum/job/migrant/heartfelt_hand
 	title = "Hand of Heartfelt"
 	tutorial = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Vanderlin, determined to fulfill your duties."
 	outfit = /datum/outfit/job/heartfelt_hand
@@ -182,10 +182,10 @@
 
 /datum/migrant_role/heartfelt_knight
 	name = "Knight of Heartfelt"
-	description = "You are a Knight of Heartfelt, once part of a brotherhood in service to your Lord. Now, alone and committed to safeguarding what remains of your court, you ride to Vanderlin, resolved to ensure their safe arrival."
-	migrant_job = /datum/job/heartfelt_knight
+	greet_text = "You are a Knight of Heartfelt, once part of a brotherhood in service to your Lord. Now, alone and committed to safeguarding what remains of your court, you ride to Vanderlin, resolved to ensure their safe arrival."
+	migrant_job = /datum/job/migrant/heartfelt_knight
 
-/datum/job/heartfelt_knight
+/datum/job/migrant/heartfelt_knight
 	title = "Knight of Heartfelt"
 	tutorial = "You are a Knight of Heartfelt, once part of a brotherhood in service to your Lord. Now, alone and committed to safeguarding what remains of your court, you ride to Vanderlin, resolved to ensure their safe arrival."
 	outfit = /datum/outfit/heartfelt_knight
@@ -228,7 +228,7 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 	voicepack_m = /datum/voicepack/male/knight
 
-/datum/job/heartfelt_knight/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/heartfelt_knight/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	if(istype(spawned.cloak, /obj/item/clothing/cloak/tabard/knight/guard))
@@ -278,10 +278,10 @@
 
 /datum/migrant_role/heartfelt_magos
 	name = "Magos of Heartfelt"
-	description = "You are the Magos of Heartfelt, renowned for your arcane knowledge yet unable to foresee the tragedy that befell your home. Drawn by a guiding star to Vanderlin, you seek answers and perhaps a new purpose in the wake of destruction."
-	migrant_job = /datum/job/heartfelt_magos
+	greet_text = "You are the Magos of Heartfelt, renowned for your arcane knowledge yet unable to foresee the tragedy that befell your home. Drawn by a guiding star to Vanderlin, you seek answers and perhaps a new purpose in the wake of destruction."
+	migrant_job = /datum/job/migrant/heartfelt_magos
 
-/datum/job/heartfelt_magos
+/datum/job/migrant/heartfelt_magos
 	title = "Magos of Heartfelt"
 	tutorial = "You are the Magos of Heartfelt, renowned for your arcane knowledge yet unable to foresee the tragedy that befell your home. Drawn by a guiding star to Vanderlin, you seek answers and perhaps a new purpose in the wake of destruction."
 	outfit = /datum/outfit/job/heartfelt_magos
@@ -323,13 +323,13 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	voicepack_m = /datum/voicepack/male/wizard
 
-/datum/job/heartfelt_magos/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/heartfelt_magos/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(jobstats, STATKEY_SPD, -1)
 		LAZYADDASSOC(jobstats, STATKEY_PER, 1)
 
-/datum/job/heartfelt_magos/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/heartfelt_magos/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 
@@ -352,10 +352,10 @@
 
 /datum/migrant_role/heartfelt_prior
 	name = "Heartfelt Prior"
-	description = "You are a Prior of Heartfelt, a spiritual leader whose faith was tested when your home fell into ruin. Now journeying to Vanderlin, you seek to rebuild not just structures, but the souls of those who follow you."
-	migrant_job = /datum/job/heartfelt_prior
+	greet_text = "You are a Prior of Heartfelt, a spiritual leader whose faith was tested when your home fell into ruin. Now journeying to Vanderlin, you seek to rebuild not just structures, but the souls of those who follow you."
+	migrant_job = /datum/job/migrant/heartfelt_prior
 
-/datum/job/heartfelt_prior
+/datum/job/migrant/heartfelt_prior
 	title = "Heartfelt Prior"
 	tutorial = "You are a Prior of Heartfelt, a spiritual leader whose faith was tested when your home fell into ruin. Now journeying to Vanderlin, you seek to rebuild not just structures, but the souls of those who follow you."
 	outfit = /datum/outfit/job/heartfelt_prior
@@ -383,7 +383,7 @@
 
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
-/datum/job/heartfelt_prior/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/heartfelt_prior/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.virginity = TRUE
 
@@ -393,7 +393,7 @@
 		devotion.make_priest()
 		devotion.grant_to(spawned)
 
-/datum/job/heartfelt_prior/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/heartfelt_prior/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(skills, /datum/skill/magic/holy, 1)
@@ -415,10 +415,10 @@
 
 /datum/migrant_role/heartfelt_artificer
 	name = "Supreme Artificer"
-	description = "You are the Supreme Artificer, the foremost expert on anything brass and steam. Your knowledge helped advance your kingdom, before ultimately leading it to ruin..."
-	migrant_job = /datum/job/heartfelt_artificer
+	greet_text = "You are the Supreme Artificer, the foremost expert on anything brass and steam. Your knowledge helped advance your kingdom, before ultimately leading it to ruin..."
+	migrant_job = /datum/job/migrant/heartfelt_artificer
 
-/datum/job/heartfelt_artificer
+/datum/job/migrant/heartfelt_artificer
 	title = "Supreme Artificer"
 	tutorial = "You are the Supreme Artificer, the foremost expert on anything brass and steam. Your knowledge helped advance your kingdom, before ultimately leading it to ruin..."
 	outfit = /datum/outfit/job/heartfelt_artificer

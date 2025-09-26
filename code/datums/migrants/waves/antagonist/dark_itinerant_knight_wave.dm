@@ -1,9 +1,9 @@
 /datum/migrant_role/dark_itinerant_knight
 	name = "Drow Knight"
-	description = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
-	migrant_job = /datum/job/dark_itinerant_knight
+	greet_text = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
+	migrant_job = /datum/job/migrant/dark_itinerant_knight
 
-/datum/job/dark_itinerant_knight
+/datum/job/migrant/dark_itinerant_knight
 	title = "Drow Knight"
 	tutorial = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
 	outfit = /datum/outfit/job/dark_itinerant_knight
@@ -55,10 +55,10 @@
 
 /datum/migrant_role/dark_itinerant_squire
 	name = "Underling Squire"
-	description = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
-	migrant_job = /datum/job/dark_itinerant_squire
+	greet_text = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
+	migrant_job = /datum/job/migrant/dark_itinerant_squire
 
-/datum/job/dark_itinerant_squire
+/datum/job/migrant/dark_itinerant_squire
 	title = "Underling Squire"
 	tutorial = "You are the squire of an evil knight, they have taken you under their custody as you were the only one who didn't object to their dubious ethics."
 	outfit = /datum/outfit/job/dark_itinerant_squire

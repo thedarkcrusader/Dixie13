@@ -1,9 +1,9 @@
 /datum/migrant_role/grenzelhoft/count
 	name = "Grenzelhoft Count"
-	description = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to the Peninsula of Vanderlin alongside his beloved convoy and spouse."
-	migrant_job = /datum/job/grenzelhoft_count
+	greet_text = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to the Peninsula of Vanderlin alongside his beloved convoy and spouse."
+	migrant_job = /datum/job/migrant/grenzelhoft_count
 
-/datum/job/grenzelhoft_count
+/datum/job/migrant/grenzelhoft_count
 	title = "Grenzelhoft Count"
 	tutorial = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to the Peninsula of Vanderlin alongside his beloved convoy and spouse."
 	outfit = /datum/outfit/job/grenzelhoft_count
@@ -72,10 +72,10 @@
 
 /datum/migrant_role/grenzelhoft/countess
 	name = "Grenzelhoft Countess"
-	description = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
-	migrant_job = /datum/job/grenzelhoft_countess
+	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
+	migrant_job = /datum/job/migrant/grenzelhoft_countess
 
-/datum/job/grenzelhoft_countess
+/datum/job/migrant/grenzelhoft_countess
 	title = "Grenzelhoft Countess"
 	tutorial = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to the Isle of the Enigma alongside her beloved convoy and husband."
 	outfit = /datum/outfit/job/grenzelhoft_countess
@@ -143,10 +143,10 @@
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_knight
 	name = "Grenzelhoft Knight"
-	description = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
-	migrant_job = /datum/job/grenzelhoft_migration/grenzelhoft_knight
+	greet_text = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
+	migrant_job = /datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
 
-/datum/job/grenzelhoft_migration/grenzelhoft_knight
+/datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
 	title = "Grenzelhoft Knight"
 	tutorial = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
 	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
@@ -210,10 +210,10 @@
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms
 	name = "Grenzelhoft Men-at-Arms"
-	description = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
-	migrant_job = /datum/job/grenzelhoft_men_at_arms
+	greet_text = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
+	migrant_job = /datum/job/migrant/grenzelhoft_men_at_arms
 
-/datum/job/grenzelhoft_men_at_arms
+/datum/job/migrant/grenzelhoft_men_at_arms
 	title = "Grenzelhoft Men-at-Arms"
 	tutorial = "You and your fellows are men at arms from Grenzelhoft, except your local liege has been sent to the Isle of Enigma, obey the Ritter and make sure the nobles goes home."
 	outfit = /datum/outfit/job/grenzelhoft_men_at_arms
@@ -241,7 +241,7 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/job/grenzelhoft_men_at_arms/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/grenzelhoft_men_at_arms/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	skills += list(
 		/datum/skill/combat/whipsflails = pick(1, 1, 2),

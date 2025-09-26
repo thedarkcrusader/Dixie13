@@ -1,7 +1,7 @@
 /datum/migrant_role/acolytes
 	name = "Acolytes"
-	description = "The word of the Ten is everything to you and and your pilgrimage has brought to you seek the local church."
-	migrant_job = /datum/job/monk
+	greet_text = "The word of the Ten is everything to you and and your pilgrimage has brought to you seek the local church."
+	migrant_job = /datum/job/migrant/monk
 
 /datum/migrant_wave/acolytes
 	name = "The Holy Voyage"

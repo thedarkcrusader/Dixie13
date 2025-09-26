@@ -1,14 +1,14 @@
 /datum/migrant_role/escprisoner
 	name = "Escaped Prisoner"
-	description = "You've been rotting for years in your rotted garbs, your atrophied body wasted on the cold, moist floors of \
+	greet_text = "You've been rotting for years in your rotted garbs, your atrophied body wasted on the cold, moist floors of \
 	an oubliette. The years of abuse made you forget who you were, or what you did to deserve this punishment - but you were of \
 	blue-blood, this is for certain. When your use faded, and when they brought you to the hangman to usher you to your final \
 	destination, your last bit of strengh surged, and the man met his end with a cracked skull on your mask. The restraints, \
 	too rusted to stay together, broke as you jumped into the river. The tiny voice you forgot you had echoed in the back of \
 	your mind. 'I'm not going back.'"
-	migrant_job = /datum/job/escprisoner
+	migrant_job = /datum/job/migrant/escprisoner
 
-/datum/job/escprisoner
+/datum/job/migrant/escprisoner
 	title = "Escaped Prisoner"
 	tutorial = "You've been rotting for years in your rotted garbs, your atrophied body wasted on the cold, moist floors of \
 	an oubliette. The years of abuse made you forget who you were, or what you did to deserve this punishment - but you were of \
