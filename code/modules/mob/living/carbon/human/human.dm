@@ -693,7 +693,6 @@
 	updateappearance(mutcolor_update = TRUE)
 
 	job = target.job // NOT assigned_role
-	migrant_type = target.migrant_type
 	faction = target.faction
 	deathsound = target.deathsound
 	gender = target.gender

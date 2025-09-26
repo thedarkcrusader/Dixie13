@@ -35,7 +35,11 @@
 		/datum/skill/craft/alchemy = 1,
 	)
 
-	traits = list(TRAIT_EMPATH, TRAIT_NOSTINK)
+	traits = list(
+		TRAIT_EMPATH,
+		TRAIT_DEADNOSE,
+	)
+
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 /datum/outfit/job/chirurgeon

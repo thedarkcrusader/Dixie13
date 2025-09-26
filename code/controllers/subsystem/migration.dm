@@ -299,8 +299,6 @@ SUBSYSTEM_DEF(migrants)
 
 	/// And back to non copy pasta code
 
-	character.migrant_type
-
 	to_chat(character, span_alertsyndie("I am a [role_instance.name]!"))
 	to_chat(character, span_notice(wave.greet_text))
 	to_chat(character, span_notice(role_instance.greet_text))
