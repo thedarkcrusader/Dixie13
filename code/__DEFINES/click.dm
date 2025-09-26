@@ -53,3 +53,6 @@
 		/// If the mouse is over a maptext link, OR if the mouse action is related to clicking a link.
 		/// Used as `params[OVER_LINK] == TRUE|FALSE`
 		#define OVER_LINK "link"
+
+/* Custom Params */
+#define CLICK_CATCHER "catcher"

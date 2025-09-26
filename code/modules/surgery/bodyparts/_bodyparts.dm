@@ -161,7 +161,7 @@
 		return
 	return ..()
 
-/obj/item/bodypart/MiddleClick(mob/living/user, params)
+/obj/item/bodypart/MiddleClick(mob/living/user, list/modifiers)
 	var/obj/item/held_item = user.get_active_held_item()
 	var/datum/species/S = original_owner.dna.species
 	if(held_item)
@@ -210,7 +210,7 @@
 				return
 	return ..()
 
-/obj/item/bodypart/head/attackby(obj/item/I, mob/user, params)
+/obj/item/bodypart/head/attackby(obj/item/I, mob/user, list/modifiers)
 	if(length(contents) && I.get_sharpness() && !user.cmode)
 		add_fingerprint(user)
 		playsound(loc, 'sound/combat/hits/bladed/genstab (1).ogg', 60, vary = FALSE)

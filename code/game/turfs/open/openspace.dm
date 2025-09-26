@@ -153,7 +153,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	to_chat(user, "<span class='warning'>I glide down.</span>")
 	. = ..()
 
-/turf/open/transparent/openspace/attackby(obj/item/C, mob/user, params)
+/turf/open/transparent/openspace/attackby(obj/item/C, mob/user, list/modifiers)
 	..()
 	if(!CanBuildHere())
 		return

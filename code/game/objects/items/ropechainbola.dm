@@ -245,7 +245,7 @@
 				buckled_mob.Knockdown(60)
 	return ..()
 
-/obj/structure/noose/attackby(obj/item/W, mob/user, params)
+/obj/structure/noose/attackby(obj/item/W, mob/user, list/modifiers)
 	if (W.get_sharpness())
 		if(do_after(user, 1 SECONDS, src))
 			new /obj/item/rope(loc)

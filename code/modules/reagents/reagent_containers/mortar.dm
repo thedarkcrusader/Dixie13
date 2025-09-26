@@ -30,7 +30,7 @@
 	to_grind = null
 	return ..()
 
-/obj/item/reagent_containers/glass/mortar/attack_hand_secondary(mob/user, params)
+/obj/item/reagent_containers/glass/mortar/attack_hand_secondary(mob/user, list/modifiers)
 	if(!to_grind)
 		return ..()
 
@@ -42,7 +42,7 @@
 	balloon_alert(user, "I remove \an [to_grind].")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/reagent_containers/glass/mortar/attackby_secondary(obj/item/weapon, mob/user, params)
+/obj/item/reagent_containers/glass/mortar/attackby_secondary(obj/item/weapon, mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

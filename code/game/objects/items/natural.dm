@@ -27,7 +27,7 @@
 			return
 	return ..()
 
-/obj/item/natural/pre_attack_secondary(atom/A, mob/living/user, params)
+/obj/item/natural/pre_attack_secondary(atom/A, mob/living/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -106,7 +106,7 @@
 		return
 	return ..()
 
-/obj/item/natural/bundle/attack_hand_secondary(mob/user, params)
+/obj/item/natural/bundle/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -147,7 +147,7 @@
 	. = ..()
 	. += span_notice("There are [amount] [stackname] in this bundle.")
 
-/obj/item/natural/bundle/pre_attack_secondary(atom/A, mob/living/user, params)
+/obj/item/natural/bundle/pre_attack_secondary(atom/A, mob/living/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

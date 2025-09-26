@@ -131,18 +131,13 @@
 		else
 			. += span_notice("Both its sleeves have been torn!")
 
-/obj/item/clothing/MiddleClick(mob/user, params)
+/obj/item/clothing/MiddleClick(mob/living/user, list/modifiers)
 	..()
-	var/mob/living/L = user
-	var/altheld //Is the user pressing alt?
-	var/list/modifiers = params2list(params)
-	if(LAZYACCESS(modifiers, ALT_CLICKED))
-		altheld = TRUE
-	if(!isliving(user))
+	if(!istype(user))
 		return
 	if(nodismemsleeves)
 		return
-	if(altheld)
+	if(LAZYACCESS(modifiers, ALT_CLICKED))
 		if(user.zone_selected == l_sleeve_zone)
 			if(l_sleeve_status == SLEEVE_ROLLED)
 				l_sleeve_status = SLEEVE_NORMAL
@@ -180,7 +175,7 @@
 				return
 			if(!do_after(user, 2 SECONDS, user))
 				return
-			if(prob(L.STASTR * 8))
+			if(prob(user.STASTR * 8))
 				torn_sleeve_number += 1
 				r_sleeve_status = SLEEVE_TORN
 				user.visible_message(span_notice("[user] tears [src]."))
@@ -207,7 +202,7 @@
 				return
 			if(!do_after(user, 2 SECONDS, user))
 				return
-			if(prob(L.STASTR * 8))
+			if(prob(user.STASTR * 8))
 				torn_sleeve_number += 1
 				l_sleeve_status = SLEEVE_TORN
 				user.visible_message(span_notice("[user] tears [src]."))
@@ -226,9 +221,8 @@
 			else
 				user.visible_message(span_warning("[user] tries to tear [src]."))
 				return
-	if(loc == L)
-		L.regenerate_clothes()
-
+	if(loc == user)
+		user.regenerate_clothes()
 
 /obj/item/clothing/mob_can_equip(mob/M, mob/equipper, slot, disable_warning = 0)
 	if(!..())
@@ -442,7 +436,7 @@ BLIND     // can't see anything
 		W.connectedc = src
 		hood = W
 
-/obj/item/clothing/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/attack_hand_secondary(mob/user, list/modifiers)
 	if(hoodtype && (loc == user))
 		ToggleHood()
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

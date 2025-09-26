@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "heart-on"
 
-/obj/item/corruptedheart/attack(mob/living/target, mob/living/user, params)
+/obj/item/corruptedheart/attack(mob/living/target, mob/living/user, list/modifiers)
 	if(!istype(user.patron, /datum/patron/inhumen/zizo))
 		return
 	if(istype(target.patron, /datum/patron/inhumen/zizo))

@@ -227,7 +227,7 @@
 		. += filling
 		. += mutable_appearance(icon, "steam")
 
-/obj/item/reagent_containers/glass/bowl/attackby(obj/item/I, mob/user, params) // lets you eat with a spoon from a bowl
+/obj/item/reagent_containers/glass/bowl/attackby(obj/item/I, mob/user, list/modifiers) // lets you eat with a spoon from a bowl
 	if(!istype(I, /obj/item/kitchen/spoon))
 		return ..()
 	if(!reagents || !reagents.total_volume)
@@ -439,7 +439,7 @@
 	..()
 	qdel(src)
 
-/obj/item/reagent_containers/powder/flour/attackby(obj/item/I, mob/living/user, params)
+/obj/item/reagent_containers/powder/flour/attackby(obj/item/I, mob/living/user, list/modifiers)
 	. = ..()
 	var/found_table = locate(/obj/structure/table) in (loc)
 	var/obj/item/reagent_containers/glass/R = I

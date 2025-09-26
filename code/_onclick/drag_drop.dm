@@ -175,11 +175,6 @@
 			else
 				mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
 
-/mob
-	var/obj/effect/spell_rune/spell_rune
-	var/datum/intent/curplaying
-	var/accent = ACCENT_DEFAULT
-
 /client/MouseUp(object, location, control, params)
 	if(!control)
 		return

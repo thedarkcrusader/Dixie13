@@ -67,7 +67,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 45,"sturn" = 45,"wturn" = 45,"eturn" = 45,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/flashlight/flare/torch/lantern/psycenser/attack_self(mob/user)
+/obj/item/flashlight/flare/torch/lantern/psycenser/attack_self(mob/user, list/modifiers)
 	if(fuel > 0)
 		if(on)
 			turn_off()

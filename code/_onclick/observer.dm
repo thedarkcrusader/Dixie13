@@ -1,64 +1,65 @@
-/mob/dead/observer/DblClickOn(atom/A, params)
-	if(check_click_intercept(params, A))
+/mob/dead/observer/DblClickOn(atom/clicked_atom, params)
+	if(check_click_intercept(params2list(params), clicked_atom))
 		return
 
 	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
+		if(clicked_atom == mind.current || (mind.current in clicked_atom)) // double click your corpse or whatever holds it
 			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
 			return									// seems legit.
 
 	// Things you might plausibly want to follow
-	if(ismovableatom(A))
-		ManualFollow(A)
+	if(ismovableatom(clicked_atom))
+		ManualFollow(clicked_atom)
 
 	// Otherwise jump
-	else if(A.loc)
-		forceMove(get_turf(A))
+	else if(clicked_atom.loc)
+		forceMove(get_turf(clicked_atom))
 
-/mob/dead/observer/profane/DblClickOn(atom/A, params) // Souls trapped by the dagger should not be jumping around.
+/mob/dead/observer/profane/DblClickOn(atom/clicked_atom, params) // Souls trapped by the dagger should not be jumping around.
 	return
 
-/mob/dead/observer/rogue/DblClickOn(atom/A, params)
-	if(check_click_intercept(params, A))
+/mob/dead/observer/rogue/DblClickOn(atom/clicked_atom, params)
+	if(check_click_intercept(params2list(params), clicked_atom))
 		return
 
 	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A))
+		if(clicked_atom == mind.current || (mind.current in clicked_atom))
 			reenter_corpse()
 			return
 
-/mob/dead/observer/ClickOn(atom/A, params)
-	if(check_click_intercept(params,A))
-		return
-
-	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CANCEL_CLICKON)
-		return
-
+/mob/dead/observer/ClickOn(atom/clicked_atom, params)
 	var/list/modifiers = params2list(params)
+
+	if(check_click_intercept(modifiers, clicked_atom))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, clicked_atom, modifiers) & COMSIG_MOB_CANCEL_CLICKON)
+		return
+
 	if(LAZYACCESS(modifiers, SHIFT_CLICKED) && LAZYACCESS(modifiers, MIDDLE_CLICK))
-		ShiftMiddleClickOn(A)
+		ShiftMiddleClickOn(clicked_atom)
 		return
 	if(LAZYACCESS(modifiers, SHIFT_CLICKED) && LAZYACCESS(modifiers, CTRL_CLICKED))
-		CtrlShiftClickOn(A)
+		CtrlShiftClickOn(clicked_atom)
 		return
 	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
-		MiddleClickOn(A)
+		MiddleClickOn(clicked_atom)
 		return
 	if(LAZYACCESS(modifiers, SHIFT_CLICKED))
-		ShiftClickOn(A)
+		ShiftClickOn(clicked_atom)
 		return
 	if(LAZYACCESS(modifiers, ALT_CLICKED))
-		AltClickNoInteract(src, A)
+		AltClickNoInteract(src, clicked_atom)
 		return
 	if(LAZYACCESS(modifiers, CTRL_CLICKED))
-		CtrlClickOn(A)
+		CtrlClickOn(clicked_atom)
 		return
 
 	if(world.time <= next_move)
 		return
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below
-	A.attack_ghost(src)
+	clicked_atom.attack_ghost(src)
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/dead/observer/user)

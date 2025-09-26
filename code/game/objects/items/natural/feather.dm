@@ -16,7 +16,7 @@
 	spitoutmouth = FALSE
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/natural/feather/pre_attack_secondary(atom/A, mob/living/carbon/human/user, params)
+/obj/item/natural/feather/pre_attack_secondary(atom/A, mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

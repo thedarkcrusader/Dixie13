@@ -223,7 +223,7 @@
 	if(!spillable)
 		return
 
-/obj/item/reagent_containers/glass/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/glass/attackby(obj/item/I, mob/user, list/modifiers)
 	var/hotness = I.get_temperature()
 	if(hotness && reagents)
 		reagents.expose_temperature(hotness)

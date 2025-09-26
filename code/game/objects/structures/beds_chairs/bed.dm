@@ -36,7 +36,7 @@
 /obj/structure/bed/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/structure/bed/attackby(obj/item/W, mob/user, params)
+/obj/structure/bed/attackby(obj/item/W, mob/user, list/modifiers)
 	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1))
 		W.play_tool_sound(src)
 		deconstruct(TRUE)

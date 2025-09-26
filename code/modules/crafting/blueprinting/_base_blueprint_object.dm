@@ -32,7 +32,7 @@
 	clear_all_viewers()
 	return ..()
 
-/obj/structure/blueprint/attackby(obj/item/I, mob/user, params)
+/obj/structure/blueprint/attackby(obj/item/I, mob/user, list/modifiers)
 	if(!istype(I, recipe.construct_tool))
 		return
 	try_construct(user, I)

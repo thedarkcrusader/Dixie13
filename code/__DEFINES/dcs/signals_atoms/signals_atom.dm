@@ -12,9 +12,9 @@
 
 #define COMSIG_ATOM_STEAM_INCREASE "steam_increase"
 
-///from base of atom/attackby(): (/obj/item, /mob/living, params)
+///from base of atom/attackby(): (/obj/item, /mob/living, list/modifiers)
 #define COMSIG_ATOM_ATTACKBY "atom_attackby"
-/// From base of [atom/proc/attacby_secondary()]: (/obj/item/weapon, /mob/user, params)
+/// From base of [atom/proc/attacby_secondary()]: (/obj/item/weapon, /mob/user, list/modifiers)
 #define COMSIG_ATOM_ATTACKBY_SECONDARY "atom_attackby_secondary"
 	/// Return this in response if you don't want afterattack to be called
 	#define COMPONENT_NO_AFTERATTACK 1

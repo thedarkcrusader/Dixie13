@@ -79,13 +79,13 @@
 	icon_state = "auto"
 	no_attack = TRUE
 
-/obj/item/fishingrod/attack_self(mob/user, params)
+/obj/item/fishingrod/attack_self(mob/user, list/modifiers)
 	if(user.doing())
 		user.stop_all_doing()
 	else
 		..()
 
-/obj/item/fishingrod/attackby(obj/item/I, mob/user, params)
+/obj/item/fishingrod/attackby(obj/item/I, mob/user, list/modifiers)
 	if(baited && reel && hook && line)
 		return ..()
 
@@ -135,7 +135,7 @@
 					to_chat(user, "<span class='notice'>I add [I] to [src]...</span>")
 	update_appearance(UPDATE_OVERLAYS)
 
-/obj/item/fishingrod/attack_hand_secondary(mob/user, params)
+/obj/item/fishingrod/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -273,7 +273,7 @@
 	currentstate = null
 	currentlyfishing = FALSE
 
-/obj/item/fishingrod/afterattack(obj/target, mob/user, proximity, params)
+/obj/item/fishingrod/afterattack(obj/target, mob/user, proximity_flag, list/modifiers)
 	if(!check_allowed_items(target,target_self=1) \
 	|| (user.used_intent.type != ROD_CAST && user.used_intent.type != ROD_AUTO) \
 	|| user.doing() \
@@ -543,7 +543,7 @@
 									baited = null
 						else
 							to_chat(user, "<span class='warning'>Not even a nibble...</span>")
-							afterattack(target, user, proximity, params) //this may work?
+							afterattack(target, user, proximity_flag, modifiers) //this may work?
 							return
 					else
 						to_chat(user, "<span class='warning'>This seems pointless without a bait.</span>")

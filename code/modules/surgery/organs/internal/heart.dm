@@ -87,7 +87,7 @@
 	if(!owner)
 		Stop()
 
-/obj/item/organ/heart/attack_self(mob/user, params)
+/obj/item/organ/heart/attack_self(mob/user, list/modifiers)
 	..()
 	if(!beating)
 		user.visible_message("<span class='notice'>[user] squeezes [src] to \

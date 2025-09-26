@@ -280,3 +280,11 @@
 
 	/// A ref of the area we're taking our ambient loop from.
 	var/area/ambience_tracked_area
+
+	var/obj/effect/spell_rune/spell_rune
+	var/datum/intent/curplaying
+	var/accent = ACCENT_DEFAULT
+
+	var/last_aimhchange = 0
+	var/aimheight = 11
+	var/cmode_music = 'sound/music/cmode/combat.ogg'

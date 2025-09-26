@@ -159,10 +159,10 @@
 			return TRUE
 	return ..()
 
-/obj/item/natural/cloth/attack_self(mob/user, params)
+/obj/item/natural/cloth/attack_self(mob/user, list/modifiers)
 	wring_cloth(user.loc, user)
 
-/obj/item/natural/cloth/attack_hand_secondary(mob/user, params)
+/obj/item/natural/cloth/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -277,7 +277,7 @@
 	embedding = list("embedded_unsafe_removal_time" = 20, "embedded_pain_chance" = 10, "embedded_pain_multiplier" = 1, "embed_chance" = 35, "embedded_fall_chance" = 0)
 	resistance_flags = FLAMMABLE
 	max_integrity = 20
-/obj/item/natural/thorn/attack_self(mob/living/user, params)
+/obj/item/natural/thorn/attack_self(mob/living/user, list/modifiers)
 	user.visible_message("<span class='warning'>[user] snaps [src].</span>")
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)

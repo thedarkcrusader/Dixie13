@@ -13,7 +13,7 @@
 	if(material)
 		. += span_warning("There's a [initial(material.name)] ready to be worked.")
 
-/obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, params)
+/obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, list/modifiers)
 	if(istype(I, /obj/item/natural/wood/plank) || istype(I, /obj/item/ingot))
 		if(!material)
 			I.forceMove(src)
@@ -101,7 +101,7 @@
 
 	return FALSE
 
-/obj/machinery/artificer_table/attack_hand(mob/user, params)
+/obj/machinery/artificer_table/attack_hand(mob/user, list/modifiers)
 	if(!material)
 		return
 	var/obj/item/I = material

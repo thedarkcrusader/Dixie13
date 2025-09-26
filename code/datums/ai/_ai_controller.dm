@@ -168,7 +168,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	return !QDELETED(pawn)
 
 ///Interact with objects
-/datum/ai_controller/proc/ai_interact(target, combat_mode, list/modifiers, nextmove = FALSE)
+/datum/ai_controller/proc/ai_interact(target, combat_mode, nextmove = FALSE, list/modifiers)
 	if(!ai_can_interact())
 		return FALSE
 

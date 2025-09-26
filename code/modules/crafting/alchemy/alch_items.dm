@@ -22,7 +22,7 @@
 	experimental_onhip = TRUE
 	sellprice = 1
 
-/obj/item/reagent_containers/glass/alchemical/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/glass/alchemical/attackby(obj/item/I, mob/user, list/modifiers)
 	if(reagents.total_volume)
 		return
 	if(closed)
@@ -35,7 +35,7 @@
 	if(closed)
 		. += mutable_appearance(icon, "vial_cork")
 
-/obj/item/reagent_containers/glass/alchemical/attack_self_secondary(mob/user, params)
+/obj/item/reagent_containers/glass/alchemical/attack_self_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

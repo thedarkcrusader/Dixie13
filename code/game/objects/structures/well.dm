@@ -54,7 +54,7 @@
 		return
 	..()
 
-/obj/structure/well/attackby(obj/item/I, mob/user, params)
+/obj/structure/well/attackby(obj/item/I, mob/user, list/modifiers)
 	if(istype(I, /obj/item/reagent_containers/glass/bucket))
 		var/obj/item/reagent_containers/glass/bucket/W = I
 		if(W.reagents.holder_full())

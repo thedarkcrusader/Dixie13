@@ -132,8 +132,8 @@
 			return
 	. = ..()
 
-/mob/camera/strategy_controller/UnarmedAttack(atom/A, proximity_flag, params, atom/source)
-	if(!LAZYACCESS(params2list(params), RIGHT_CLICK))
+/mob/camera/strategy_controller/UnarmedAttack(atom/A, proximity_flag, list/modifiers, atom/source)
+	if(!LAZYACCESS(modifiers, RIGHT_CLICK))
 		return
 	var/allow_break = FALSE
 	for(var/obj/structure/structure in A.contents)
