@@ -324,7 +324,7 @@
 		/datum/migrant_role/qatil = 1,
 		/datum/migrant_role/zalad_guard = 2
 	)
-	greet_text = "The Mercator Guild sent you, respected Zaladians, to seek favorable business proposal within the Kingdom of Vanderlin."
+	greet_text = "The Mercator Guild sent you, respected Zaladins, to seek favorable business proposal within the Kingdom of Vanderlin."
 
 /datum/migrant_wave/zalad_wave_down
 	name = "The Deshret Expedition"
@@ -337,4 +337,4 @@
 		/datum/migrant_role/zalad/furusiyya = 1,
 		/datum/migrant_role/qatil = 1
 	)
-	greet_text = "The Mercator Guild sent you, respected Zaladians, to seek favorable business proposal within the Kingdom of Vanderlin. Unfortunately most of your guards died on the way here."
+	greet_text = "The Mercator Guild sent you, respected Zaladins, to seek favorable business proposal within the Kingdom of Vanderlin. Unfortunately most of your guards died on the way here."

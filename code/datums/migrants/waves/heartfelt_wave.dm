@@ -251,7 +251,6 @@
 	var/obj/item/clothing/cloak/boiler/boiler = locate() in spawned.get_all_gear()
 	if(boiler)
 		SEND_SIGNAL(boiler, COMSIG_ATOM_STEAM_INCREASE, rand(500, 900))
-		boiler.update_armor()
 
 /datum/outfit/heartfelt_knight
 	backl = /obj/item/clothing/cloak/boiler
