@@ -231,9 +231,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
 	set category = "Fun"
-	set name = "Select equipment"
+	set name = "Select Outfit"
+
 	if(!(ishuman(M) || isobserver(M)))
-		alert("Invalid mob")
 		return
 
 	var/dresscode = robust_dress_shop()
@@ -248,19 +248,18 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		H = M
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Equipment") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Outfit") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 	for (var/obj/item/I in H.get_equipped_items(delete_pocket))
 		qdel(I)
+
 	if(dresscode != "Naked")
 		H.equipOutfit(dresscode)
 
-	H.regenerate_icons()
-
-	log_admin("[key_name(usr)] changed the equipment of [key_name(H)] to [dresscode].")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(H)] to [dresscode].</span>")
+	log_admin("[key_name(usr)] changed the outfit of [key_name(H)] to [dresscode].")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the outfit of [ADMIN_LOOKUPFLW(H)] to [dresscode].</span>")
 
 /client/proc/robust_dress_shop()
-
 	var/list/baseoutfits = list("Naked","Custom", "As Roguetown Job...")
 	var/list/outfits = list()
 	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job)  - typesof(/datum/outfit/job)
@@ -297,7 +296,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		dresscode = roguejob_outfits[dresscode]
 		if(isnull(dresscode))
 			return
-
 
 	return dresscode
 

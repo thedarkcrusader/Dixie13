@@ -360,7 +360,7 @@ SUBSYSTEM_DEF(migrants)
 	if(!role || is_migrant_banned(player.ckey, role.name))
 		return FALSE
 
-	var/datum/job/migrant_job = role?.migrant_job
+	var/datum/job/migrant_job = SSjob.GetJobType(role.migrant_job)
 	if(!migrant_job)
 		return FALSE
 	if(migrant_job.banned_leprosy && is_misc_banned(player.ckey, BAN_MISC_LEPROSY))
@@ -373,14 +373,14 @@ SUBSYSTEM_DEF(migrants)
 		return FALSE
 
 	var/can_join = TRUE
-	if(migrant_job.allowed_races && !(prefs.pref_species.id in migrant_job.allowed_races))
+	if(length(migrant_job.allowed_races) && !(prefs.pref_species.id in migrant_job.allowed_races))
 		if(!(player.has_triumph_buy(TRIUMPH_BUY_RACE_ALL)))
 			to_chat(player, span_warning("Wrong species. Your prioritized role only allows [migrant_job.allowed_races.Join(", ")]."))
 			can_join = FALSE
-	if(migrant_job.allowed_sexes && !(prefs.gender in migrant_job.allowed_sexes))
+	if(length(migrant_job.allowed_sexes) && !(prefs.gender in migrant_job.allowed_sexes))
 		to_chat(player, span_warning("Wrong gender. Your prioritized role only allows [migrant_job.allowed_sexes.Join(", ")]."))
 		can_join = FALSE
-	if(migrant_job.allowed_ages && !(prefs.age in migrant_job.allowed_ages))
+	if(length(migrant_job.allowed_ages) && !(prefs.age in migrant_job.allowed_ages))
 		to_chat(player, span_warning("Wrong age. Your prioritized role only allows [migrant_job.allowed_ages.Join(", ")]."))
 		can_join = FALSE
 
