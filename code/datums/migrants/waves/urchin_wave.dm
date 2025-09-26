@@ -3,7 +3,7 @@
 	greet_text = "Without you, your friends would be dead in a ditch. You're the boss, that's why you've got a nice hat. \
 	Preform stick-ups, lurk in the alleys, and make sure your siblings don't invoke the ire of the Matron. She doesn't \
 	deserve the headache you give her."
-	migrant_job = /datum/job/urchinbrain
+	migrant_job = /datum/job/migrant/urchinbrain
 
 /datum/job/migrant/urchinbrain
 	title = "Urchin Leader"

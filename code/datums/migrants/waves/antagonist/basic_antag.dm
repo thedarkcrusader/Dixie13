@@ -2,7 +2,7 @@
 	name = "Lich"
 	antag_datum = /datum/antagonist/lich
 
-/datum/migrant_role/antagonist/harlequinn
+/datum/migrant_role/harlequinn
 	name = "Harlequinn"
 	antag_datum = /datum/antagonist/harlequinn
 
