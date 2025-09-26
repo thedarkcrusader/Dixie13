@@ -1,10 +1,10 @@
-/datum/advclass/mercenary/spellsword
-	name = "Spellsword"
+/datum/job/advclass/mercenary/spellsword
+	title = "Spellsword"
 	tutorial = "A warrior who has dabbled in the arts of magic, you blend swordplay and spellcraft to earn your keep."
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/mercenary/spellsword
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 

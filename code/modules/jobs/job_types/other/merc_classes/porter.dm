@@ -1,10 +1,10 @@
-/datum/advclass/mercenary/porter
-	name = "Porter"
+/datum/job/advclass/mercenary/porter
+	title = "Porter"
 	tutorial = "You are a jack-of-all-trades from the dank depth of subterra, You've survived by being useful. Whether it's carrying someone's burdens, mending their gears, stitching wounds, or even cooking a surprisingly edible meal, For a price, of course."
 	allowed_races = list(SPEC_ID_KOBOLD)
 	outfit = /datum/outfit/job/mercenary/porter
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 1
+	total_positions = 1
 	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
 
 /datum/outfit/job/mercenary/porter/pre_equip(mob/living/carbon/human/H)

@@ -1,12 +1,12 @@
-/datum/advclass/mercenary/valkyrie
-	name = "Valkyrie"
+/datum/job/advclass/mercenary/valkyrie
+	title = "Valkyrie"
 	tutorial = "You've seen countless battles and earned your fair share of riches from them. \
 	Flying above the battlefield, you seek those who are injured and come to their aid, for a price."
 	allowed_races = list(SPEC_ID_HARPY)
 
 	outfit = /datum/outfit/job/mercenary/valkyrie
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 2
+	total_positions = 2
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 

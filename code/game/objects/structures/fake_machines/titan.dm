@@ -433,7 +433,6 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 		return
 
 	victim.job = new_pos
-	victim.migrant_type = null
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human = victim
 		if(!HAS_TRAIT(human, TRAIT_RECRUITED) && HAS_TRAIT(human, TRAIT_FOREIGNER))

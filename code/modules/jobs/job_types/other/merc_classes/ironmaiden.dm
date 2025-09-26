@@ -1,11 +1,11 @@
-/datum/advclass/mercenary/ironmaiden
-	name = "Iron Maiden"
+/datum/job/advclass/mercenary/ironmaiden
+	title = "Iron Maiden"
 	tutorial = "You're a battlefield medic and have forsaken the blade for the scalpel. \
 	Your vile apperance has been hidden under layers of steel, allowing you to ply your trade to all those who have the coin."
 	allowed_races = list(SPEC_ID_MEDICATOR)
 	outfit = /datum/outfit/job/mercenary/ironmaiden
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
 

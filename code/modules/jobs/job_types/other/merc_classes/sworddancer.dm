@@ -1,12 +1,12 @@
-/datum/advclass/mercenary/sworddancer
-	name = "Sword Dancer"
+/datum/job/advclass/mercenary/sworddancer
+	title = "Sword Dancer"
 	tutorial = "You were a former bard, but when times got tough you picked up a blade to defend yourself. \
 	Now you travel the lands of Psydonia, selling your sword and your songs to the highest bidder."
 	allowed_races = list(SPEC_ID_TIEFLING)
 	outfit = /datum/outfit/job/mercenary/sworddancer
 	category_tags = list(CTAG_MERCENARY)
 
-	maximum_possible_slots = 2
+	total_positions = 2
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg' // Not a noble, but it fits really well
 
 /datum/outfit/job/mercenary/sworddancer

@@ -1,6 +1,6 @@
-/datum/advclass/mercenary/sellmage
+/datum/job/advclass/mercenary/sellmage
 	//a mage noble selling his services.
-	name = "Sellmage"
+	title = "Sellmage"
 	tutorial = "( DUE TO BEING A NOBLE, THIS CLASS WILL BE DIFFICULT FOR INHUMEN. YOU HAVE BEEN WARNED. )\
 	\n\n\ \
 	You're a noble, but in name only. You were taught in magic from an early age, but it wasn't enough. \
@@ -15,7 +15,7 @@
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
 	outfit = /datum/outfit/job/mercenary/sellmage
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 2 //balance slop
+	total_positions = 2 //balance slop
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)//they were a mage, or learnt magic, before becoming a mercenary
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 

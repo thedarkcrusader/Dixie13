@@ -1,5 +1,5 @@
-/datum/advclass/mercenary/hollowdragoon
-	name = "Hollow Dragoon"
+/datum/job/advclass/mercenary/hollowdragoon
+	title = "Hollow Dragoon"
 	tutorial = "You rode out from Amber Hollow on your loyal steed, seeking coin from the wider reaches of Psydonia. \
 	With armour salvaged from fallen knights and a spear in hand, you will fight for anyone, for a price."
 	allowed_races = list(\
@@ -9,7 +9,7 @@
 	outfit = /datum/outfit/job/mercenary/dragoon
 	category_tags = list(CTAG_MERCENARY)
 
-	maximum_possible_slots = 5
+	total_positions = 5
 	cmode_music = 'sound/music/cmode/Combat_Dwarf.ogg'
 
 /datum/outfit/job/mercenary/dragoon

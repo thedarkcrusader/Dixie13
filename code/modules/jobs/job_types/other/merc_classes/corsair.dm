@@ -1,5 +1,5 @@
-/datum/advclass/mercenary/corsair
-	name = "Corsair"
+/datum/job/advclass/mercenary/corsair
+	title = "Corsair"
 	tutorial = "Driven away from a typical life, you once found kin with privateers, working adjacent to a royal navy. After the Red Flag battered itself in the wind one last time, your purse was still not satisfied... And yet he complained that his belly was not full."
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/adventurer/corsair
