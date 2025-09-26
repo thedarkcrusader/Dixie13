@@ -194,25 +194,6 @@
 	if(!H.job)
 		return
 
-	// supposed to check for adventurer but this would break behaviour
-	// if(H.job == "Drifter" && !showing_combat_classes)
-	// 	for(var/datum/job/advclass/datums in rolled_classes)
-	// 		if(!(CTAG_ADVENTURER in datums.category_tags))
-	// 			continue
-	// 		if((CTAG_BANDIT in datums.category_tags) && HAS_TRAIT(H, TRAIT_VILLAIN))
-	// 			continue
-	// 		var/plus_str = ""
-	// 		data += {"
-	// 		<div class='class_bar_div'>
-	// 			<a class='vagrant' href='byond://?src=\ref[src];class_selected=1;selected_class=\ref[datums];'>
-	// 				<img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>
-	// 				[datums.title]
-	// 				<span id='green_plussa'>[plus_str]</span>
-	// 				<img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>
-	// 			</a>
-	// 		</div>
-	// "}
-
 	if(!showing_combat_classes)
 		for(var/datum/job/advclass/datums in rolled_classes)
 			var/plus_str = ""
