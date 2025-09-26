@@ -9,7 +9,7 @@
 	display_order = JDO_SHEPHERD
 	faction = FACTION_TOWN
 	total_positions = 3
-	spawn_positions = 2
+	spawn_positions = 3
 	min_pq = 5
 	bypass_lastclass = TRUE
 
@@ -28,13 +28,13 @@
 
 /datum/outfit/job/adept // Base outfit for Adepts, before loadouts
 	shoes = /obj/item/clothing/shoes/boots
+	mask = /obj/item/clothing/face/facemask
 	beltr = /obj/item/storage/belt/pouch/coins/poor
-	mask = /obj/item/clothing/face/facemask/silver
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/armor/gambeson/light/colored/black
 	wrists = /obj/item/clothing/neck/psycross/silver
 
-// Brutal Zealot, a class balanced to town guard, with 1 more strength but less intelligence and perception. Axe/Mace and shield focus.
+// Brutal Zealot, a class balanced to town guard, with noticeably more strength but less intelligence and perception. Axe/Mace and shield focus.
 /datum/advclass/adept/bzealot
 	name = "Brutal Zealot"
 	tutorial = "You are a former thug who has been given a chance to redeem yourself by the Inquisitor. You serve him and Psydon with your physical strength and zeal."
@@ -42,7 +42,7 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
-	maximum_possible_slots = 1
+	maximum_possible_slots = 2
 
 /datum/outfit/job/adept/bzealot/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -69,8 +69,9 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_STR, 3)
 	H.change_stat(STATKEY_INT, -2)
+	H.change_stat(STATKEY_PER, -2)
 	H.change_stat(STATKEY_END, 1)
 	H.change_stat(STATKEY_CON, 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -80,7 +81,7 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior() // Lunkhead.
 
 
-// Reformed Thief, a class balanced to rogue. Axe and crossbow focus.
+// Reformed Thief, a class balanced to rogue. Bow and cudgel focus.
 /datum/advclass/adept/rthief
 	name = "Reformed Thief"
 	tutorial = "You are a former thief who has been given a chance to redeem yourself by the Inquisitor. You serve him and Psydon with your stealth and cunning."
@@ -88,7 +89,7 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/adventurer/CombatRogue.ogg'
-	maximum_possible_slots = 1
+	maximum_possible_slots = 2
 
 /datum/outfit/job/adept/rthief/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -128,9 +129,7 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 	H.grant_language(/datum/language/thievescant)
-	to_chat(H, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
-
-
+	to_chat(H, span_info("I can gesture in thieves' cant with ,t before my speech."))
 
 // Vile Highwayman. Your run of the mill swordsman, albeit fancy, smarter than the other two so he has some non combat related skills.
 /datum/advclass/adept/highwayman
@@ -140,7 +139,7 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
-	maximum_possible_slots = 1
+	maximum_possible_slots = 2
 
 /datum/outfit/job/adept/highwayman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -164,14 +163,13 @@
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE) // I don't know what they would build with this but it felt right.
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) // Try to stablize more heretics for questioning.
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 2, TRUE) // Smart... For a knave.
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_SPD, 1)
@@ -195,7 +193,7 @@
 		H.verbs |= /mob/living/carbon/human/proc/faith_test
 		if(!H.has_language(/datum/language/oldpsydonic))
 			H.grant_language(/datum/language/oldpsydonic)
-			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
+			to_chat(H, span_info("I can speak Old Psydonic with ,m before my speech."))
 		H.mind.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
 
 /datum/job/adept/after_spawn(mob/living/carbon/spawned, client/player_client)
