@@ -53,7 +53,14 @@
 	var/paycheck = PAYCHECK_MINIMAL
 	var/paycheck_department = ACCOUNT_CIV
 
-	var/list/mind_traits // Traits added to the mind of the mob assigned this job
+	/// Traits added to the mind of the mob assigned this job
+	var/list/mind_traits
+
+	/// Traits added to the mob assigned to this job
+	var/list/traits
+
+	/// Languages granted to the mob assigned to this job
+	var/list/languages
 
 	var/display_order = JDO_DEFAULT
 
@@ -71,7 +78,15 @@
 	/// Female stats only used if a value is given
 	var/list/jobstats_f
 
-	/// Innate skill levels unlocked at roundstart. Format is list(/datum/skill/foo = value) with value as an integer or as per code/_DEFINES/skills.dm
+	/// Voicepack to grant to males
+	var/datum/voicepack/voicepack_m
+	/// Voicepack to grant to females
+	var/datum/voicepack/voicepack_f
+
+	/// Skill levels granted at roundstart.
+	/// Possibly modified by species.
+	/// Basic format is list(/datum/skill/foo = value).
+	/// Supports (/datum/skill/bar = list(value, clamp)).
 	var/list/skills
 
 	/// Innate spells that get removed when the job is removed
@@ -142,6 +157,9 @@
 	/// Do we get passive income every day from our noble estates?
 	var/noble_income = FALSE
 
+	/// Antagonist role to grant with this job
+	var/datum/antagonist/antag_role
+
 	/// Blacklisted from the actor
 
 	var/static/list/actors_list_blacklist = list(
@@ -189,11 +207,19 @@
 	if(!ishuman(spawned))
 		return
 
+	adjust_values(spawned)
+
 	if(magic_user)
 		spawned.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 
 	for(var/trait in mind_traits)
 		ADD_TRAIT(spawned.mind, trait, JOB_TRAIT)
+
+	for(var/trait in traits)
+		ADD_TRAIT(spawned, trait, JOB_TRAIT)
+
+	for(var/datum/language/to_learn as anything in languages)
+		spawned.grant_language(to_learn)
 
 	if(is_foreigner)
 		ADD_TRAIT(spawned, TRAIT_FOREIGNER, TRAIT_GENERIC)
@@ -215,7 +241,11 @@
 		spawned.set_stat_modifier("job_stats", stat_key, used_stats[stat_key])
 
 	for(var/datum/skill/skill as anything in skills)
-		spawned.adjust_skillrank(skill, skills[skill], TRUE)
+		var/amount_or_list = skills[skill]
+		if(islist(amount_or_list))
+			spawned.clamped_adjust_skillrank(skill, amount_or_list[1], amount_or_list[2], TRUE)
+		else
+			spawned.adjust_skillrank(skill, amount_or_list, TRUE)
 
 	for(var/X in peopleknowme)
 		for(var/datum/mind/MF in get_minds(X))
@@ -253,6 +283,15 @@
 	if(spawned.charflaw)
 		spawned.charflaw.after_spawn(spawned)
 
+	if(antag_role && spawned.mind)
+		spawned.mind.add_antag_datum(antag_role)
+
+	if(voicepack_m)
+		spawned.dna?.species.soundpack_m = new voicepack_m()
+
+	if(voicepack_f)
+		spawned.dna?.species.soundpack_f = new voicepack_f()
+
 	if(length(advclass_cat_rolls))
 		spawned.advsetup = TRUE
 		spawned.invisibility = INVISIBILITY_MAXIMUM
@@ -264,8 +303,9 @@
 		if(!T.activated)
 			T.on_after_spawn(spawned)
 
-/// When our guy is OLD do we do anything extra
-/datum/job/proc/old_age_effects()
+/// Called by [after_spawn] and run before anything else.
+/// Change your stat values and such here, not in outfits.
+/datum/job/proc/adjust_values(mob/living/carbon/human/spawned)
 	return
 
 //Used for a special check of whether to allow a client to latejoin as this job.
