@@ -37,7 +37,7 @@
 	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/job/advclass/heir
-	inherit_parent_title= TRUE
+	inherit_parent_title = TRUE
 
 /datum/job/advclass/heir/daring
 	title = "Daring Twit"

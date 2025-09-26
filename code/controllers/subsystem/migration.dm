@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(migrants)
 	var/current_wave = null
 	/// Time until the next wave
 	var/time_until_next_wave = 2 MINUTES
+	/// Current wave timer
 	var/wave_timer = 0
 
 	/// Time between successful waves

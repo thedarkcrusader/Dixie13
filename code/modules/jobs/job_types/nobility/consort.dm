@@ -46,7 +46,7 @@
 - Lowborn: A good wholesome peasant spouse. Can cook and swing a pitchfork good. Not so smart or perceptive.
 */
 /datum/job/advclass/consort
-	inherit_parent_title= TRUE
+	inherit_parent_title = TRUE
 
 /datum/job/advclass/consort/highborn
 	title = "Highborn Consort"
