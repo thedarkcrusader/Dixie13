@@ -22,16 +22,7 @@
 	restricted_roles = list(
 		"Monarch",
 		"Consort",
-		"Hand",
-		"Captain",
-		"Prince",
 		"Priest",
-		"Merchant",
-		"Forest Warden",
-		"Inquisitor",
-		"Adept",
-		"Royal Knight",
-		"Templar",
 	)
 
 /datum/round_event/antagonist/solo/vampires_and_werewolves
