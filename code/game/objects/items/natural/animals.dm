@@ -101,7 +101,7 @@
 			name = "rotten [initial_name]"
 			rotten = TRUE
 
-/obj/item/natural/head/MiddleClick(mob/living/user, params)
+/obj/item/natural/head/MiddleClick(mob/living/user, list/modifiers)
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item)
 		var/path_to_check = ispath(held_item) ? held_item : held_item.type

@@ -314,7 +314,7 @@
 	. = ..()
 	UnregisterSignal(owner, list(COMSIG_ATOM_ATTACKBY))
 
-/datum/status_effect/majesty_active/proc/on_attackby(atom/source, obj/item/attacking_item, mob/living/user, params)
+/datum/status_effect/majesty_active/proc/on_attackby(atom/source, obj/item/attacking_item, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
 
 	if(!user || user == source)

@@ -106,7 +106,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/composter/proc/try_handle_removing_compost(obj/item/attacking_item, mob/living/user, params)
+/obj/structure/composter/proc/try_handle_removing_compost(obj/item/attacking_item, mob/living/user)
 	if(ready_compost < COMPOST_PER_PRODUCED_ITEM)
 		to_chat(user, span_warning("There's not enough processed compost!"))
 		return TRUE
@@ -124,9 +124,9 @@
 	. = new /obj/item/fertilizer/compost(get_turf(src))
 	update_appearance(UPDATE_OVERLAYS)
 
-/obj/structure/composter/attackby(obj/item/attacking_item, mob/user, list/modifiers)
+/obj/structure/composter/attackby(obj/item/attacking_item, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(attacking_item,/obj/item/storage/sack) && attacking_item.contents.len)
+	if(istype(attacking_item,/obj/item/storage/sack) && length(attacking_item.contents))
 		if(get_total_compost() >= MAXIMUM_TOTAL_COMPOST)
 			to_chat(user, span_warning("There's too much compost!"))
 			return
@@ -145,11 +145,11 @@
 	if(try_handle_adding_compost(attacking_item, user))
 		return TRUE
 	if(istype(attacking_item, /obj/item/weapon/shovel))
-		if(try_handle_bulk_compost_removal(attacking_item, user, params))
+		if(try_handle_bulk_compost_removal(attacking_item, user))
 			return TRUE
 	. = ..()
 
-/obj/structure/composter/proc/try_handle_bulk_compost_removal(obj/item/attacking_item, mob/living/user, params)
+/obj/structure/composter/proc/try_handle_bulk_compost_removal(obj/item/attacking_item, mob/living/user)
 	if(ready_compost < COMPOST_PER_PRODUCED_ITEM)
 		to_chat(user, span_warning("There's not enough processed compost!"))
 		return FALSE

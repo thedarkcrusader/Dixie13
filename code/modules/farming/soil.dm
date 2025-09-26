@@ -232,7 +232,7 @@
 	adjust_potassium(fert.potassium_content)
 	return TRUE
 
-/obj/structure/soil/proc/try_handle_deweed(obj/item/attacking_item, mob/living/user, params)
+/obj/structure/soil/proc/try_handle_deweed(obj/item/attacking_item, mob/living/user)
 	if(weeds < MAX_PLANT_WEEDS * 0.3)
 		return FALSE
 	if(attacking_item == null)
@@ -251,7 +251,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/soil/proc/try_handle_flatten(obj/item/attacking_item, mob/user, params)
+/obj/structure/soil/proc/try_handle_flatten(obj/item/attacking_item, mob/user)
 	if(plant)
 		return FALSE
 	if(istype(attacking_item, /obj/item/weapon/shovel))

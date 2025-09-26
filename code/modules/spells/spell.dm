@@ -1051,12 +1051,11 @@
 	// At this point we DO care about the _target value
 	if(isnull(location) || istype(_target, /atom/movable/screen)) //Clicking on a screen object.
 		_target = parse_caught_click_modifiers(modifiers, get_turf(source.eye), source)
-		params = list2params(modifiers)
 		if(!_target)
 			CRASH("Failed to get the turf under clickcatcher")
 
 	// Call this directly to do all the relevant checks and aim assist
-	InterceptClickOn(owner, params, _target)
+	InterceptClickOn(owner, modifiers, _target)
 	owner.client?.click_intercept_time = 0
 
 /datum/action/cooldown/spell/proc/signal_cancel()

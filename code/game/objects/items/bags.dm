@@ -186,7 +186,7 @@
 			return
 	. += mutable_appearance(icon, "handbasket_generic")
 
-/obj/item/storage/handbasket/attack_hand_secondary(mob/user, params)
+/obj/item/storage/handbasket/attack_hand_secondary(mob/user, list/modifiers)
 	if(user.get_active_held_item())
 		return ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
