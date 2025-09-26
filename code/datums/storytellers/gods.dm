@@ -544,7 +544,7 @@
 			STATS_KLEPTOMANIACS = list("name" = "Number of kleptomaniacs:", "points" = 12, "capacity" = 70),
 		),
 		"Set 4" = list(
-			STATS_DODGES = list("name" = "Dodges made:", "points" = 0.0865, "capacity" = 100),
+			STATS_DODGES = list("name" = "Dodges made:", "points" = 0.086, "capacity" = 100),
 		),
 		"Set 5" = list(
 			STATS_LOCKS_PICKED = list("name" = "Locks picked:", "points" = 4.25, "capacity" = 80),
