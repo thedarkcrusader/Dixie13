@@ -1298,10 +1298,8 @@
 	..()
 	if(user == /mob/living/carbon/human)
 		var/mob/living/carbon/human/H = user
-	else
-		return
-	if(H.patron.type == /datum/patron/psydon)
-		H.add_stress(/datum/stress_event/painful_reminder)
+		if(H.patron.type == /datum/patron/psydon)
+			H.add_stress(/datum/stress_event/painful_reminder)
 
 /obj/structure/fluff/statue/shisha
 	name = "shisha pipe"
