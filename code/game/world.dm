@@ -403,7 +403,7 @@ GLOBAL_PROTECT(tracy_init_reason)
 	var/server_subtitle = CONFIG_GET(string/serversubtitle)
 	var/hosted_by = CONFIG_GET(string/hostedby)
 
-	s += "<center><big><b>[server_name ? server_name : "Noctra (Dev)"]"
+	s += "<center><big><b>[server_name ? server_name : "Vanderlin (Dev)"]"
 	if (hosted_by)
 		s += " (Hosted by [hosted_by])"
 	s += "</b></big><br>"
