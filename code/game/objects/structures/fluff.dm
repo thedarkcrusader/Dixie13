@@ -1028,6 +1028,7 @@
 	dir = NORTH
 	buckle_requires_restraints = 1
 	buckle_prevents_pull = 1
+	var/divine = TRUE
 
 /obj/structure/fluff/psycross/Initialize()
 	. = ..()
@@ -1071,6 +1072,7 @@
 	desc = "An unholy symbol. Blasphemy for most, reverence for few."
 	icon_state = "zizoinvertedcross"
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+	divine = FALSE
 
 /obj/structure/fluff/psycross/crafted
 	name = "wooden pantheon cross"
@@ -1275,14 +1277,21 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]",LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, "<span class='danger'>[src] emits a blinding light!</span>")
+		to_chat(M, span_danger("[src] emits a blinding light!"))
 	if(M.flash_act())
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
 
 /obj/structure/fluff/psycross/psydon_wood
+	name = "psydonian cross"
+	desc = "A wooden monument to Psydon. Let His name be naught but forgot'n."
+	icon_state = "psydon_wooden_cross"
+	icon = 'icons/roguetown/misc/psydon_cross.dmi'
 
 /obj/structure/fluff/psycross/psydon_wood/abandoned
+	name = "overgrown psydonian cross"
+	desc = "A decrepit monument to a dead god. Looking at it fills you with profound sadness."
+	icon_state = "psydon_abandoned_cross"
 
 /obj/structure/fluff/statue/shisha
 	name = "shisha pipe"

@@ -142,6 +142,15 @@
 	)
 	craftdiff = 1
 
+/datum/blueprint_recipe/carpentry/psydon_wooden_cross
+	name = "wooden psycross"
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/grown/log/tree/stake = 3
+	)
+	result_type = /obj/structure/fluff/psycross/psydon_wood
+	craftdiff = 1
+
 /datum/blueprint_recipe/carpentry/wooden_stairs_down
 	name = "wooden stairs (down)"
 	desc = "Wooden stairs leading downward."
