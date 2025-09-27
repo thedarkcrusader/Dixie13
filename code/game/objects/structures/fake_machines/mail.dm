@@ -507,6 +507,11 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			cost = 2,
 			max_purchases = 4
 		),
+		"Vial Of Lifeblood (3)" = list(
+			list(type = /obj/item/reagent_containers/glass/bottle/vial/healthpot, count = 1),
+			cost = 3,
+			max_purchases = 3
+		),
 		// Clothing
 		"Silver Psycross (2)" = list(
 			list(type = /obj/item/clothing/neck/psycross/silver, count = 1),
