@@ -1296,10 +1296,12 @@
 
 /obj/structure/fluff/psycross/psydon_wood/abandoned/examine(mob/user)
 	. = ..()
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.patron.type == /datum/patron/psydon)
-			H.add_stress(/datum/stress_event/painful_reminder)
+	if(!isliving(user))
+		return
+	var/mob/living/living_user = user
+	if(istype(living_user.patron, /datum/patron/psydon))
+		living_user.add_stress(/datum/stress_event/painful_reminder)
+		. += " Never forget those we have lost."
 
 /obj/structure/fluff/statue/shisha
 	name = "shisha pipe"
