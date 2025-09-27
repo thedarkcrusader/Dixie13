@@ -129,9 +129,6 @@
 
 		playsound(src, 'sound/misc/guillotine.ogg', 100, TRUE)
 
-		// The delay is to making large crowds have a longer laster applause
-		var/delay_offset = 0
-
 		if(blade_sharpness >= GUILLOTINE_DECAP_MIN_SHARP || head.brute_dam >= 100)
 			if(head.dismemberable)
 				head.dismember()
