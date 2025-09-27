@@ -7529,6 +7529,7 @@
 /area/rogue/outdoors/mountains)
 "etk" = (
 /obj/structure/chair/stool/crafted,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/garrison)
 "ett" = (
@@ -19173,6 +19174,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/fake_machine/scomm,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
 "lDu" = (
@@ -28720,6 +28722,12 @@
 	},
 /turf/closed/wall/mineral/decorstone,
 /area/rogue/indoors/town/manor/lord_appt)
+"rDv" = (
+/obj/machinery/light/fueled/torchholder{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors/town/garrison)
 "rDw" = (
 /obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
@@ -38475,6 +38483,12 @@
 	},
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
+"xEp" = (
+/obj/machinery/light/fueled/torchholder{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors/town/garrison/lieutenant)
 "xEN" = (
 /obj/effect/landmark/start/armorsmith,
 /obj/structure/bed/wool,
@@ -144436,7 +144450,7 @@ lqr
 hAQ
 cUD
 gnN
-ltu
+rDv
 iWK
 lBA
 bkg
@@ -146048,7 +146062,7 @@ vgJ
 vgJ
 lEc
 dlr
-xSr
+xEp
 lEc
 lmU
 tCY
