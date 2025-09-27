@@ -842,7 +842,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			var/obj/created_collar = new typepath (get_turf(target))
 			H.equip_to_slot(created_collar, ITEM_SLOT_NECK)
 			ADD_TRAIT(created_collar, TRAIT_NODROP, "adminabuse")
-			to_chat(target.mind, "<span class='danger'>A ring of darkness restrains my neck, and a collar is made manifest!</span>")
+			to_chat(target, span_userdanger("A ring of darkness restrains my neck, and a collar is made manifest!")
 			H.add_stress(/datum/stress_event/collarcurse)
 
 	punish_log(target, punishment)
