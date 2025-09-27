@@ -60,10 +60,12 @@
 	icon_state = "nocrobe"
 	sleeved = null
 
+//someone should make sure the necromancer robe gets dwarf and child sprites
 /obj/item/clothing/shirt/robe/necromancer
 	name = "necromancer robes"
 	desc = "Eerie black garb of death."
 	icon_state = "warlock"
+	allowed_ages = ALL_AGES_LIST
 	allowed_race = SPECIES_BASE_BODY
 	sleeved = null
 
