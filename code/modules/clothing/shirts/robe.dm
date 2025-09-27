@@ -116,8 +116,6 @@
 	name = "wizard's robe"
 	desc = "What wizard's ensemble would be complete without robes?"
 	icon_state = "wizardrobes"
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	sellprice = 100
 
 /obj/item/clothing/shirt/robe/magus
