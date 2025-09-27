@@ -860,9 +860,10 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/leather/standalone/boots/menace
+//originally watch boots, renamed to menace
+/datum/repeatable_crafting_recipe/leather/standalone/boots/watch
 	name = "menace boots"
-	output = /obj/item/clothing/shoes/boots/leather/advanced/menace
+	output = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	requirements = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1, /obj/item/ingot/iron)
 	craftdiff = 4

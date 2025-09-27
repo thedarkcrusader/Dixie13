@@ -202,7 +202,7 @@
 
 //WATCH BOOTS... aka menace boots
 
-/obj/item/clothing/shoes/boots/leather/advanced/menace
+/obj/item/clothing/shoes/boots/leather/advanced/watch
 	name = "menace boots"
 	color = "#d5c2aa"
 	desc = "These boots are reinforced with iron padding, designed not just for protection but to announce the presence of the wearer."
@@ -210,6 +210,6 @@
 	icon_state = "nobleboots"
 	item_state = "nobleboots"
 
-/obj/item/clothing/shoes/boots/leather/advanced/menace/Initialize()
+/obj/item/clothing/shoes/boots/leather/advanced/watch/Initialize()
 	. = ..()
 	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_WATCH_BOOT_STEP))
