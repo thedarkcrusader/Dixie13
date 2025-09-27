@@ -827,7 +827,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(!ishuman(target))
 				to_chat(usr, span_warning("Target must be human!"))
 				return
-			var/list/collar = list(
+			var/static/list/collar = list(
 				"Bell Collar" = /obj/item/clothing/neck/bellcollar,
 				"Leather Collar" = /obj/item/clothing/neck/leathercollar,
 			)
