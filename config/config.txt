@@ -22,7 +22,7 @@ SERVERNAME Vanderlin
 SERVERSUBTITLE Dark Medieval Fantasy Roleplay
 
 ## Hosted By: Shows below
-HOSTEDBY Noctra
+HOSTEDBY Vanderlin
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
