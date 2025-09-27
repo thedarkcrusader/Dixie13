@@ -1021,7 +1021,6 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 100
 	sellprice = 40
-	var/chance2hear = 30
 	buckleverb = "crucifie"
 	can_buckle = 1
 	buckle_lying = 0
@@ -1029,7 +1028,6 @@
 	dir = NORTH
 	buckle_requires_restraints = 1
 	buckle_prevents_pull = 1
-	var/divine = TRUE
 
 /obj/structure/fluff/psycross/Initialize()
 	. = ..()
@@ -1067,19 +1065,16 @@
 	icon_state = "psycrosschurch"
 	break_sound = null
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
-	chance2hear = 66
 
 /obj/structure/fluff/psycross/zizocross
 	name = "inverted cross"
 	desc = "An unholy symbol. Blasphemy for most, reverence for few."
 	icon_state = "zizoinvertedcross"
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
-	divine = FALSE
 
 /obj/structure/fluff/psycross/crafted
 	name = "wooden pantheon cross"
 	icon_state = "psycrosscrafted"
-	chance2hear = 10
 
 /obj/structure/fluff/psycross/crafted/shrine
 	plane = GAME_PLANE_UPPER
@@ -1284,6 +1279,10 @@
 	if(M.flash_act())
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
+
+/obj/structure/fluff/psycross/psydon_wood
+
+/obj/structure/fluff/psycross/psydon_wood/abandoned
 
 /obj/structure/fluff/statue/shisha
 	name = "shisha pipe"
