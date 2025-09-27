@@ -1287,6 +1287,7 @@
 	desc = "A wooden monument to Psydon. Let His name be naught but forgot'n."
 	icon_state = "psydon_wooden_cross"
 	icon = 'icons/roguetown/misc/psydon_cross.dmi'
+	divine = FALSE //this variable to my understanding is only used to prevent zizo prayers. He's dead, so he can't do anything.
 
 /obj/structure/fluff/psycross/psydon_wood/abandoned
 	name = "overgrown psydonian cross"
