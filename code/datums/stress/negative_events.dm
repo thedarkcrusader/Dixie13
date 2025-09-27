@@ -289,7 +289,7 @@
 	stress_change = 4
 	max_stacks = 1
 	desc = span_dead("Melancholy fills my heart.")
-	timer = 15 MINUTES
+	timer = 1 MINUTES
 
 /datum/stress_event/maniac
 	stress_change = 4

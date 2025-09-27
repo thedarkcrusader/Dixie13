@@ -1295,8 +1295,8 @@
 	icon_state = "psydon_abandoned_cross"
 
 /obj/structure/fluff/psycross/psydon_wood/abandoned/examine(mob/user)
-	..()
-	if(user == /mob/living/carbon/human)
+	. = ..()
+	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.patron.type == /datum/patron/psydon)
 			H.add_stress(/datum/stress_event/painful_reminder)
