@@ -3269,9 +3269,6 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/villagegarrison)
-"bRy" = (
-/turf/open/floor/churchrough,
-/area/rogue/indoors/town/church/inquisition)
 "bRC" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -25781,6 +25778,10 @@
 /obj/item/natural/stone,
 /turf/open/floor/blocks,
 /area/rogue/under/dungeon)
+"pOc" = (
+/obj/effect/decal/cleanable/dirt/cobweb,
+/turf/open/floor/twig,
+/area/rogue/indoors/town/church/inquisition)
 "pOs" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/dirt,
@@ -26641,12 +26642,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-"qnQ" = (
-/obj/machinery/light/fueled/firebowl/standing/blue{
-	pixel_y = 7
-	},
-/turf/open/floor/blocks,
-/area/rogue/indoors/town/church/inquisition)
 "qok" = (
 /obj/structure/bookcase/random/archive,
 /turf/open/floor/metal/alt,
@@ -38328,6 +38323,11 @@
 /obj/item/coin/copper/pile,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
+"xIw" = (
+/obj/structure/door/stone,
+/obj/effect/mapping_helpers/access/keyset/church/inquisition,
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/church/inquisition)
 "xID" = (
 /obj/structure/chair/wood/alt/chair3{
 	dir = 1
@@ -112343,7 +112343,7 @@ fgn
 fgn
 fgn
 fgn
-wBJ
+pOc
 wBJ
 mCo
 fgn
@@ -112545,7 +112545,7 @@ fgn
 tfB
 tfB
 wZr
-wBJ
+dwl
 wBJ
 wBJ
 pjt
@@ -113355,7 +113355,7 @@ wBJ
 wBJ
 wBJ
 wBJ
-wBJ
+avx
 fgn
 fgn
 fgn
@@ -113557,7 +113557,7 @@ wBJ
 wBJ
 wBJ
 wBJ
-wBJ
+avx
 fgn
 fgn
 fgn
@@ -113756,8 +113756,8 @@ bbk
 dhF
 fgn
 fgn
-bRy
-wBJ
+jkV
+jkV
 wBJ
 wBJ
 qib
@@ -114163,7 +114163,7 @@ gwe
 awR
 mFy
 wBJ
-wBJ
+avx
 fgn
 bWk
 aye
@@ -114567,7 +114567,7 @@ vDe
 awR
 flF
 wBJ
-fgn
+avx
 fgn
 dEi
 rgU
@@ -114967,9 +114967,9 @@ iBZ
 mog
 dhF
 dhF
-bRy
 wBJ
-bRy
+wBJ
+wBJ
 fgn
 fgn
 fgn
@@ -115170,7 +115170,7 @@ qMe
 fgn
 fgn
 fgn
-wBJ
+xIw
 fgn
 fgn
 fgn
@@ -115979,7 +115979,7 @@ fgn
 wBJ
 wBJ
 wBJ
-qnQ
+wBJ
 fgn
 vgJ
 vgJ
