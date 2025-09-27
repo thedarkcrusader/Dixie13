@@ -16422,10 +16422,6 @@
 	dir = 1
 	},
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/item/ammo_holder/quiver/bolts,
-/obj/item/ammo_holder/quiver/bolts,
 /obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church/inquisition)
@@ -31368,8 +31364,6 @@
 /area/rogue/indoors/town/manor/feast)
 "tdl" = (
 /obj/structure/rack/shelf/biggest,
-/obj/item/weapon/knife/dagger/silver/psydon,
-/obj/item/weapon/knife/dagger/silver/psydon,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church/inquisition)
 "tdv" = (
