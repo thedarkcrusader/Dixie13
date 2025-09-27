@@ -860,6 +860,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/repeatable_crafting_recipe/leather/standalone/boots/menace
+	name = "menace boots"
+	output = /obj/item/clothing/shoes/boots/leather/advanced/menace
+	requirements = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1, /obj/item/ingot/iron)
+	craftdiff = 4
+
 /// MASTERWORK
 
 /datum/repeatable_crafting_recipe/leather/standalone/boots/masterwork

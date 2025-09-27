@@ -168,3 +168,17 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/evilarmor.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/evilarmor.dmi'
 	sellprice = 0 // See above comment
+
+//WATCH BOOTS... aka menace boots
+
+/obj/item/clothing/shoes/boots/leather/advanced/menace
+	name = "menace boots"
+	color = "#d5c2aa"
+	desc = "These boots are reinforced with iron padding, designed not just for protection but to announce the presence of the wearer."
+	gender = PLURAL
+	icon_state = "nobleboots"
+	item_state = "nobleboots"
+
+/obj/item/clothing/shoes/boots/leather/advanced/menace/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, custom_sounds = list(SFX_WATCH_BOOT_STEP))
