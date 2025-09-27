@@ -2340,10 +2340,6 @@
 	},
 /turf/open/floor/grass,
 /area/rogue/outdoors)
-"lE" = (
-/turf/open/floor/dirt,
-/turf/open/floor/naturalstone,
-/area/rogue/outdoors)
 "lF" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/water/marsh,
@@ -302524,7 +302520,7 @@ os
 os
 os
 tw
-lE
+xr
 xr
 xr
 xr
