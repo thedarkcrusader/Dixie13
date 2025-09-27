@@ -64,6 +64,7 @@
 	name = "necromancer robes"
 	desc = "Eerie black garb of death."
 	icon_state = "warlock"
+	allowed_race = SPECIES_BASE_BODY
 	sleeved = null
 
 /obj/item/clothing/shirt/robe/dendor
