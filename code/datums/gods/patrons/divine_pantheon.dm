@@ -1,8 +1,9 @@
 /datum/patron/divine
 	name = null
 	associated_faith = /datum/faith/divine_pantheon
+	var/associated_psycross = /obj/item/clothing/neck/psycross
 
-/datum/patron/divine/can_pray(mob/living/follower)
+/datum/patron/divine/can_pray(mob/living/carbon/human/follower)
 	//you can pray anywhere inside a church
 	if(istype(get_area(follower), /area/rogue/indoors/town/church))
 		return TRUE
@@ -11,7 +12,11 @@
 		if(!cross.obj_broken)
 			return TRUE
 
-	to_chat(follower, span_danger("I need a nearby Pantheon Cross for my prayers to be heard..."))
+	if(istype(follower.wear_wrists, associated_psycross) || istype(follower.wear_neck, associated_psycross) || istype(follower.get_active_held_item(), associated_psycross))
+		return TRUE
+
+
+	to_chat(follower, span_danger("I need an amulet of my patron, or a nearby Pantheon Cross, for my prayers to be heard..."))
 	return FALSE
 
 /* ----------------- */
@@ -32,6 +37,7 @@
 		"I SERVE THE GLORY OF THE SUN!",
 	)
 	storyteller = /datum/storyteller/astrata
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/astrata
 
 /datum/patron/divine/noc
 	name = NOC
@@ -49,6 +55,7 @@
 		"I SEEK THE MYSTERIES OF THE MOON!",
 	)
 	storyteller = /datum/storyteller/noc
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/noc
 
 /datum/patron/divine/dendor
 	name = DENDOR
@@ -66,6 +73,7 @@
 		"I ANSWER THE CALL OF THE WILD!",
 	)
 	storyteller = /datum/storyteller/dendor
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/dendor
 
 /datum/patron/divine/abyssor
 	name = ABYSSOR
@@ -83,6 +91,7 @@
 		"I AM DRAWN BY THE PULL OF THE TIDE!",
 	)
 	storyteller = /datum/storyteller/abyssor
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/abyssor
 
 /datum/patron/divine/necra
 	name = NECRA
@@ -100,6 +109,7 @@
 		"I FEAR NOT DEATH, MY LADY AWAITS ME!",
 	)
 	storyteller = /datum/storyteller/necra
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/necra
 
 /datum/patron/divine/ravox
 	name = RAVOX
@@ -117,6 +127,7 @@
 		"THE DRUMS OF WAR BEAT IN MY CHEST!",
 	)
 	storyteller = /datum/storyteller/ravox
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/ravox
 
 /datum/patron/divine/xylix
 	name = XYLIX
@@ -141,6 +152,7 @@
 		"EORA BRINGS US TOGETHER!",
 	)
 	storyteller = /datum/storyteller/xylix
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/ravox
 
 /datum/patron/divine/pestra
 	name = PESTRA
@@ -158,6 +170,7 @@
 		"MY AFFLICTION IS MY TESTAMENT!",
 	)
 	storyteller = /datum/storyteller/pestra
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/pestra
 
 /datum/patron/divine/malum
 	name = MALUM
@@ -175,6 +188,7 @@
 		"I AM AN INSTRUMENT OF CREATION!",
 	)
 	storyteller = /datum/storyteller/malum
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/malum
 
 /datum/patron/divine/eora
 	name = EORA
@@ -192,3 +206,4 @@
 		"I LOVE YOU, EVEN AS YOU TRESPASS AGAINST ME!",
 	)
 	storyteller = /datum/storyteller/eora
+	associated_psycross = /obj/item/clothing/neck/psycross/silver/eora
