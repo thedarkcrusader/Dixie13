@@ -4,7 +4,7 @@
 	you live in this shitpit. Regrettably, the universe sought to make your life a divine comedy. Instead of begging for \
 	coin, the nobility sought it grand to give you a royal title - Ratcatcher. Please, for the love of Necra, just LET IT END!"
 
-/datum/job/ratcatcher
+/datum/job/migrant/ratcatcher
 	title = "Ratcatcher"
 	tutorial = "You've been on the street for as long as you can remember. Still are, and you still will be so long as \
 	you live in this shitpit. Regrettably, the universe sought to make your life a divine comedy. Instead of begging for \

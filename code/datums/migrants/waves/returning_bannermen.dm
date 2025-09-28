@@ -1,9 +1,9 @@
 /datum/migrant_role/sergeant_at_arms
 	name = "Serjeant-At-Arms"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and those under your command have returned upon fullfiling your task."
-	migrant_job = /datum/job/serjeant_at_arms
+	migrant_job = /datum/job/migrant/serjeant_at_arms
 
-/datum/job/serjeant_at_arms
+/datum/job/migrant/serjeant_at_arms
 	title = "Serjeant-At-Arms"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and those under your command have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/serjeant_at_arms
@@ -42,11 +42,11 @@
 
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-/datum/job/serjeant_at_arms/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/serjeant_at_arms/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 
-/datum/job/serjeant_at_arms/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/serjeant_at_arms/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(jobstats, STATKEY_STR, 3)
@@ -75,9 +75,9 @@
 /datum/migrant_role/archer_bannerman
 	name = "Bannermen Archer"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	migrant_job = /datum/job/archer_bannerman
+	migrant_job = /datum/job/migrant/archer_bannerman
 
-/datum/job/archer_bannerman
+/datum/job/migrant/archer_bannerman
 	title = "Bannermen Archer"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/archer_bannerman
@@ -138,9 +138,9 @@
 /datum/migrant_role/crossbow_bannerman
 	name = "Bannermen Crossbowman"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	migrant_job = /datum/job/crossbow_bannerman
+	migrant_job = /datum/job/migrant/crossbow_bannerman
 
-/datum/job/crossbow_bannerman
+/datum/job/migrant/crossbow_bannerman
 	title = "Bannermen Crossbowman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/crossbow_bannerman
@@ -201,9 +201,9 @@
 /datum/migrant_role/footman_bannerman
 	name = "Bannermen Footman"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	migrant_job = /datum/job/footman_bannerman
+	migrant_job = /datum/job/migrant/footman_bannerman
 
-/datum/job/footman_bannerman
+/datum/job/migrant/footman_bannerman
 	title = "Bannermen Footman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/footman_bannerman
@@ -235,7 +235,7 @@
 	)
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-/datum/job/footman_bannerman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/footman_bannerman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 
@@ -255,9 +255,9 @@
 /datum/migrant_role/pikeman_bannerman
 	name = "Bannermen Pikeman"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	migrant_job = /datum/job/pikeman_bannerman
+	migrant_job = /datum/job/migrant/pikeman_bannerman
 
-/datum/job/pikeman_bannerman
+/datum/job/migrant/pikeman_bannerman
 	title = "Bannermen Pikeman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/pikeman_bannerman
@@ -288,7 +288,7 @@
 		TRAIT_KNOWBANDITS,
 	)
 
-/datum/job/pikeman_bannerman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/pikeman_bannerman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 

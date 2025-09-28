@@ -1,9 +1,9 @@
 /datum/migrant_role/zalad/emir
 	name = "Zalad Emir"
 	greet_text = "An Emir hailing from the Deshret, here on business for the Mercator's Guild."
-	migrant_job = /datum/job/zalad_migration/emir
+	migrant_job = /datum/job/migrant/zalad_migration/emir
 
-/datum/job/zalad_migration/emir
+/datum/job/migrant/zalad_migration/emir
 	title = "Zalad Emir"
 	tutorial = "An Emir hailing from the Deshret, here on business for the Mercator's Guild."
 	outfit = /datum/outfit/job/zalad_migration/emir
@@ -40,7 +40,7 @@
 	languages = list(/datum/language/zalad)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
-/datum/job/zalad_migration/emir/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/zalad_migration/emir/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
@@ -81,9 +81,9 @@
 /datum/migrant_role/zalad/amirah
 	name = "Zalad Amirah"
 	greet_text = "An Amirah hailing from Deshret, here on business for the Mercator's Guild to the Isle of the Enigma."
-	migrant_job = /datum/job/zalad_migration/amirah
+	migrant_job = /datum/job/migrant/zalad_migration/amirah
 
-/datum/job/zalad_migration/amirah
+/datum/job/migrant/zalad_migration/amirah
 	title = "Zalad Amirah"
 	tutorial = "An Amirah hailing from Deshret, here on business for the Mercator's Guild to the Isle of the Enigma."
 	outfit = /datum/outfit/job/zalad_migration/amirah
@@ -120,7 +120,7 @@
 	languages = list(/datum/language/zalad)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
-/datum/job/zalad_migration/amirah/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/zalad_migration/amirah/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
@@ -158,9 +158,9 @@
 /datum/migrant_role/zalad/furusiyya
 	name = "Furusiyya"
 	greet_text = "You are a furusiyya, pledged to the Emir and the Amirah. Make sure they come out alive of that place."
-	migrant_job = /datum/job/zalad_migration/furusiyya
+	migrant_job = /datum/job/migrant/zalad_migration/furusiyya
 
-/datum/job/zalad_migration/furusiyya
+/datum/job/migrant/zalad_migration/furusiyya
 	title = "Furusiyya"
 	tutorial = "You are a furusiyya, pledged to the Emir and the Amirah. Make sure they come out alive of that place."
 	outfit = /datum/outfit/job/zalad_migration/furusiyya
@@ -203,7 +203,7 @@
 	languages = list(/datum/language/zalad)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
-/datum/job/zalad_migration/furusiyya/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/zalad_migration/furusiyya/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	if(spawned.dna?.species)
@@ -242,9 +242,9 @@
 /datum/migrant_role/zalad_guard
 	name = "Zalad Soldier"
 	greet_text = "You are a slave soldier from Deshret, sent as an escort to the emirs on a foreign land, do not fail them."
-	migrant_job = /datum/job/zalad_migration/zalad_guard
+	migrant_job = /datum/job/migrant/zalad_migration/zalad_guard
 
-/datum/job/zalad_migration/zalad_guard
+/datum/job/migrant/zalad_migration/zalad_guard
 	title = "Zalad Soldier"
 	tutorial = "You are a slave soldier from Deshret, sent as an escort to the emirs on a foreign land, do not fail them."
 	outfit = /datum/outfit/job/zalad_migration/zalad_guard
@@ -279,7 +279,7 @@
 	languages = list(/datum/language/zalad)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
-/datum/job/zalad_migration/zalad_guard/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/zalad_migration/zalad_guard/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	if(spawned.dna?.species)
@@ -290,7 +290,7 @@
 			spawned.dna.species.native_language = "Zalad"
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
-/datum/job/zalad_migration/zalad_guard/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/zalad_migration/zalad_guard/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	LAZYADDASSOC(skills, /datum/skill/combat/shields, pick(0,1,1))
 
@@ -311,9 +311,9 @@
 /datum/migrant_role/qatil
 	name = "Qatil"
 	greet_text = "You are the Amirah's confident and most loyal protector, you shan't let them die in these wretched lands."
-	migrant_job = /datum/job/zalad_migration/qatil
+	migrant_job = /datum/job/migrant/zalad_migration/qatil
 
-/datum/job/zalad_migration/qatil
+/datum/job/migrant/zalad_migration/qatil
 	title = "Qatil"
 	tutorial = "You are the Amirah's confident and most loyal protector, you shan't let them die in these wretched lands."
 	outfit = /datum/outfit/job/zalad_migration/qatil
@@ -357,7 +357,7 @@
 	languages = list(/datum/language/zalad)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
-/datum/job/zalad_migration/qatil/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/zalad_migration/qatil/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	if(spawned.dna?.species)

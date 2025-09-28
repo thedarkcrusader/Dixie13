@@ -1,9 +1,9 @@
 /datum/migrant_role/rockhill/mayor
 	name = "Mayor of Rockhill"
 	greet_text = "You are the mayor of Rockhill, you've come to Vanderlin to discuss important matters with their Monarch."
-	migrant_job = /datum/job/rockhill/mayor
+	migrant_job = /datum/job/migrant/rockhill/mayor
 
-/datum/job/rockhill/mayor
+/datum/job/migrant/rockhill/mayor
 	title = "Mayor of Rockhill"
 	tutorial = "You are the mayor of Rockhill, you've come to Vanderlin to discuss important matters with their Monarch."
 	outfit = /datum/outfit/job/rockhill/mayor
@@ -79,9 +79,9 @@
 /datum/migrant_role/rockhill_knight
 	name = "Knight of Rockhill"
 	greet_text = "You are a Knight of Rockhill, the notable of said town has taken the journey to your liege, you are to ensure their safety."
-	migrant_job = /datum/job/rockhill/knight
+	migrant_job = /datum/job/migrant/rockhill/knight
 
-/datum/job/rockhill/knight
+/datum/job/migrant/rockhill/knight
 	title = "Knight of Rockhill"
 	tutorial = "You are a Knight of Rockhill, the notable of said town has taken the journey to your liege, you are to ensure their safety."
 	outfit = /datum/outfit/job/rockhill/knight
@@ -122,7 +122,7 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 	voicepack_m = /datum/voicepack/male/knight
 
-/datum/job/rockhill/knight/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/rockhill/knight/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	if(istype(spawned.cloak, /obj/item/clothing/cloak/tabard/knight/guard))
@@ -167,9 +167,9 @@
 /datum/migrant_role/rockhill/sergeant_at_arms
 	name = "Rockhill Serjeant"
 	greet_text = "The Mayor of Rockhill has conscripted you and your mens to go see the rulers of Vanderlin."
-	migrant_job = /datum/job/rockhill/serjeant_at_arms
+	migrant_job = /datum/job/migrant/rockhill/serjeant_at_arms
 
-/datum/job/rockhill/serjeant_at_arms
+/datum/job/migrant/rockhill/serjeant_at_arms
 	title = "Rockhill Serjeant"
 	tutorial = "The Mayor of Rockhill has conscripted you and your mens to go see the rulers of Vanderlin."
 	outfit = /datum/outfit/job/rockhill/serjeant_at_arms
@@ -206,7 +206,7 @@
 
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-/datum/job/rockhill/serjeant_at_arms/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/rockhill/serjeant_at_arms/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(jobstats, STATKEY_STR, 3)
@@ -234,9 +234,9 @@
 /datum/migrant_role/footman_guard
 	name = "Guardsmen of Rockhill"
 	greet_text = "Your Serjeant has been ordered by the mayor of rockhill to guard them as they visit the rulers of Vanderlin. Ensure they live."
-	migrant_job = /datum/job/footman_bannerman/rockhill
+	migrant_job = /datum/job/migrant/footman_bannerman/rockhill
 
-/datum/job/footman_bannerman/rockhill
+/datum/job/migrant/footman_bannerman/rockhill
 	title = "Guardsmen of Rockhill"
 	tutorial = "Your Serjeant has been ordered by the mayor of rockhill to guard them as they visit the rulers of Vanderlin. Ensure they live."
 	is_foreigner = TRUE

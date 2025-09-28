@@ -124,6 +124,7 @@ SUBSYSTEM_DEF(role_class_handler)
 		var/datum/job/old = SSjob.GetJob(H.job)
 		if(old)
 			picked_class.title = old.title
+	SSjob.AssignRole(H, picked_class, TRUE)
 	SSjob.EquipRank(H, picked_class, H.client)
 	H.density = TRUE
 	H.invisibility = initial(H.invisibility)
@@ -141,15 +142,16 @@ SUBSYSTEM_DEF(role_class_handler)
 
 // A dum helper to adjust the class amount, we could do it elsewhere but this will also inform any relevant class handlers open.
 /datum/controller/subsystem/role_class_handler/proc/adjust_class_amount(datum/job/advclass/target_datum, amount)
-	target_datum.current_positions += amount
+	if(target_datum.total_positions == -1) // Is the class not set to infinite?
+		return
+	if(target_datum.current_positions < target_datum.total_positions)
+		return
+	// We just hit a cap, iterate all the class handlers and inform them.
+	for(var/HANDLER in class_select_handlers)
+		var/datum/class_select_handler/found_menu = class_select_handlers[HANDLER]
 
-	if(!(target_datum.total_positions == -1)) // Is the class not set to infinite?
-		if((target_datum.current_positions >= target_datum.total_positions)) // We just hit a cap, iterate all the class handlers and inform them.
-			for(var/HANDLER in class_select_handlers)
-				var/datum/class_select_handler/found_menu = class_select_handlers[HANDLER]
-
-				if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
-					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
+		if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
+			found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
 
 /datum/controller/subsystem/role_class_handler/proc/cancel_class_handler(mob/living/carbon/human/H)
 	H.advsetup = FALSE

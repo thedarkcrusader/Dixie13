@@ -57,9 +57,9 @@
 	greet_text = "Life in the orphanage is detestable, nobody ever brought you into a family. A child denied love will burn \
 	down his village for warmth - that's what's happening. Listen to your boss, and stack coin; be the little shit this town \
 	deserves... Don't overdo it, though - lest the Matron put an end to this scheme you lot have going."
-	migrant_job = /datum/job/urchinbrawn
+	migrant_job = /datum/job/migrant/urchinbrawn
 
-/datum/job/urchinbrawn
+/datum/job/migrant/urchinbrawn
 	title = "Urchin"
 	tutorial = "Life in the orphanage is detestable, nobody ever brought you into a family. A child denied love will burn \
 	down his village for warmth - that's what's happening. Listen to your boss, and stack coin; be the little shit this town \
@@ -85,7 +85,7 @@
 	traits = list(TRAIT_ORPHAN)
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'
 
-/datum/job/urchinbrawn/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/urchinbrawn/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
 	LAZYADDASSOC(skills, /datum/skill/combat/unarmed, pick(1,2))
 

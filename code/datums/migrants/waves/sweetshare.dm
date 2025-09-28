@@ -3,9 +3,9 @@
 	greet_text = "Who can take a rainbow, wrap it in a sigh. Soak it in the sun, and make a groovy pie? The Candy Man can. \
 	Sell your product to those who should imbibe - the poor, the downtrodden, the youth. Get them hooked; stay off of your \
 	own supply. You are Baotha's strongest spice-addict."
-	migrant_job = /datum/job/sweetshare
+	migrant_job = /datum/job/migrant/sweetshare
 
-/datum/job/sweetshare
+/datum/job/migrant/sweetshare
 	title = "Candyman"
 	tutorial = "Who can take a rainbow, wrap it in a sigh. Soak it in the sun, and make a groovy pie? The Candy Man can. \
 	Sell your product to those who should imbibe - the poor, the downtrodden, the youth. Get them hooked; stay off of your \
@@ -35,7 +35,7 @@
 	traits = list(TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
 
-/datum/job/sweetshare/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/sweetshare/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	var/prev_real_name = spawned.real_name
