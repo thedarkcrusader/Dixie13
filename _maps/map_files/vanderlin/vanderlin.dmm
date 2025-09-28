@@ -20950,9 +20950,7 @@
 /area/rogue/indoors/town/cell)
 "mCQ" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/structure/fluff/psycross/psydon_wood{
-	pixel_y = 12
-	},
+/obj/structure/fluff/psycross/psydon/metal,
 /turf/open/floor/twig,
 /area/rogue/indoors/town/church/inquisition)
 "mCU" = (
@@ -36222,8 +36220,8 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "vXR" = (
-/obj/structure/fluff/psycross/psydon_wood/abandoned,
 /obj/structure/flora/grass,
+/obj/structure/fluff/psycross/psydon/abandoned,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains)
 "vYi" = (

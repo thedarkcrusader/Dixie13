@@ -1282,19 +1282,24 @@
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
 
-/obj/structure/fluff/psycross/psydon_wood
+/obj/structure/fluff/psycross/psydon
 	name = "psydonian cross"
 	desc = "A wooden monument to Psydon. Let His name be naught but forgot'n."
 	icon_state = "psydon_wooden_cross"
 	icon = 'icons/roguetown/misc/psydon_cross.dmi'
 	divine = FALSE //this variable to my understanding is only used to prevent zizo prayers. He's dead, so he can't do anything.
 
-/obj/structure/fluff/psycross/psydon_wood/abandoned
+/obj/structure/fluff/psycross/psydon/metal
+	desc = "A metal monument to Psydon. Let His name be naught but forgot'n."
+	icon_state = "psydon_metal_cross"
+
+//this one is meant to be uncraftable
+/obj/structure/fluff/psycross/psydon/abandoned
 	name = "overgrown psydonian cross"
 	desc = "A decrepit monument to a dead god. Looking at it fills you with profound sadness."
 	icon_state = "psydon_abandoned_cross"
 
-/obj/structure/fluff/psycross/psydon_wood/abandoned/examine(mob/user)
+/obj/structure/fluff/psycross/psydon/abandoned/examine(mob/user)
 	. = ..()
 	if(!isliving(user))
 		return
