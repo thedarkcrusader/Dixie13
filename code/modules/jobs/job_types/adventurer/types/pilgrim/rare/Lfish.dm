@@ -6,7 +6,7 @@
 	no matter the body of water. They have learned to thrive off the gifts of Abyssor, not simply survive."
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/fishermaster
+	outfit = /datum/outfit/adventurer/fishermaster
 
 	total_positions = 1
 	roll_chance = 15
@@ -15,7 +15,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou

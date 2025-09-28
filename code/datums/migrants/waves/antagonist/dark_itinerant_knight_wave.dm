@@ -6,7 +6,7 @@
 /datum/job/migrant/dark_itinerant_knight
 	title = "Drow Knight"
 	tutorial = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
-	outfit = /datum/outfit/job/dark_itinerant_knight
+	outfit = /datum/outfit/dark_itinerant_knight
 	antag_role = /datum/antagonist/zizocultist/zizo_knight
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(SPEC_ID_DROW)
@@ -40,7 +40,7 @@
 	languages = list(/datum/language/undead)
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-/datum/outfit/job/dark_itinerant_knight
+/datum/outfit/dark_itinerant_knight
 	head = /obj/item/clothing/head/helmet/heavy/zizo
 	gloves = /obj/item/clothing/gloves/plate/zizo
 	pants = /obj/item/clothing/pants/platelegs/zizo
@@ -61,7 +61,7 @@
 /datum/job/migrant/dark_itinerant_squire
 	title = "Underling Squire"
 	tutorial = "You are the squire of an evil knight, they have taken you under their custody as you were the only one who didn't object to their dubious ethics."
-	outfit = /datum/outfit/job/dark_itinerant_squire
+	outfit = /datum/outfit/dark_itinerant_squire
 	antag_role = /datum/antagonist/zizocultist/zizo_knight
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(SPEC_ID_DROW, SPEC_ID_HALF_DROW)
@@ -93,7 +93,7 @@
 	languages = list(/datum/language/undead)
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-/datum/outfit/job/dark_itinerant_squire
+/datum/outfit/dark_itinerant_squire
 	shirt = /obj/item/clothing/shirt/dress/gen/colored/black
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots

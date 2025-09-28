@@ -4,7 +4,7 @@
 	the clothes on your back and the faith in your heart. \n\
 	Sway these nonbelievers to the right path!"
 	allowed_races = RACES_PLAYER_GRENZ
-	outfit = /datum/outfit/job/adventurer/preacher
+	outfit = /datum/outfit/adventurer/preacher
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 1
 	roll_chance = 30
@@ -12,7 +12,7 @@
 
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
-/datum/outfit/job/adventurer/preacher/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/preacher/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shortboots
 	belt = /obj/item/storage/belt/leather/rope

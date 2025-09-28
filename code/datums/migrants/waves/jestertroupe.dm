@@ -6,7 +6,7 @@
 /datum/job/migrant/jestertroupe
 	title = "Buffoon"
 	tutorial =  "You were once part of a glorious circus from Heartfelt. Long gone are the days of mirth. The tent having been set ablaze so many years ago, you and your lot have been wandering. Here is the perfect town to start the next act. The circus is in town!"
-	outfit = /datum/outfit/job/jestertroupe
+	outfit = /datum/outfit/jestertroupe
 	allowed_races = RACES_PLAYER_ALL
 
 	jobstats = list(
@@ -43,7 +43,7 @@
 	)
 	spawned.verbs |= /mob/living/carbon/human/proc/ventriloquate
 
-/datum/outfit/job/jestertroupe
+/datum/outfit/jestertroupe
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights
 	armor = /obj/item/clothing/shirt/jester

@@ -2,7 +2,7 @@
 	title = "Grenzelhoft Count"
 	tutorial = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin."
 	allowed_races = RACES_PLAYER_GRENZ
-	outfit = /datum/outfit/job/adventurer/grenzelhoft
+	outfit = /datum/outfit/adventurer/grenzelhoft
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 1
 	roll_chance = 30
@@ -11,7 +11,7 @@
 
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/job/adventurer/grenzelhoft/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel

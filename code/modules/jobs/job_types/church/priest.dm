@@ -18,14 +18,14 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
-	outfit = /datum/outfit/job/priest
+	outfit = /datum/outfit/priest
 	spells = list(
 		/datum/action/cooldown/spell/undirected/list_target/convert_role/templar,
 		/datum/action/cooldown/spell/undirected/list_target/convert_role/acolyte,
 		/datum/action/cooldown/spell/undirected/list_target/convert_role/churchling,
 	)
 
-/datum/outfit/job/priest/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/priest/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
 	H.verbs |= /mob/living/carbon/human/proc/coronate_lord

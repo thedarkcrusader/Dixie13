@@ -10,7 +10,7 @@
 	tutorial = "Among the lofty spires of Kingsfield’s arcane academies, one school conceived a daring idea: a grand overland expedition, on foot, through untamed lands. \
 	As fortune (or folly) would have it, you have been chosen as the guiding hand and watchful protector of your eager pupils. \
 	Your task is to lead them safely across the wilds, through hardship and wonder alike, until at last the halls of learning they seek rise before you."
-	outfit = /datum/outfit/job/magic_teacher
+	outfit = /datum/outfit/magic_teacher
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	allowed_races = RACES_PLAYER_NONEXOTIC
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -45,7 +45,7 @@
 	if(prob(5)) //extremely rare
 		cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
-/datum/outfit/job/magic_teacher
+/datum/outfit/magic_teacher
 	head = /obj/item/clothing/head/wizhat
 	backr = /obj/item/storage/backpack/satchel
 	armor = /obj/item/clothing/shirt/robe/colored/black
@@ -69,7 +69,7 @@
 	title = "Magic School Student"
 	tutorial = "When the call went out for daring pupils to join a great overland trek from Kingsfield, you eagerly volunteered, visions of adventure, discovery, and excitement dancing in your mind. \
 	Of course, the creatures that lurk along the road seem just as eager... though perhaps for very different reasons."
-	outfit = /datum/outfit/job/magic_student
+	outfit = /datum/outfit/magic_student
 	allowed_ages = list(AGE_CHILD)
 	allowed_races = RACES_PLAYER_NONEXOTIC
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -103,7 +103,7 @@
 	if(prob(5)) //extremely rare
 		cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
-/datum/outfit/job/magic_student
+/datum/outfit/magic_student
 	neck = /obj/item/clothing/neck/mana_star
 	belt  =	/obj/item/storage/belt/leather
 	beltl = /obj/item/book/granter/spellbook/adept
@@ -117,7 +117,7 @@
 		/obj/item/chalk = 1,
 	)
 
-/datum/outfit/job/magic_student/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/magic_student/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == MALE)

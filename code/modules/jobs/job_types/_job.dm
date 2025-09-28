@@ -69,11 +69,19 @@
 	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK)
 	var/job_flags = JOB_SHOW_IN_ACTOR_LIST
 
-	//allowed sex/race for picking
+	// Pevent picking
+	/// Sexes allowed to be this job
 	var/list/allowed_sexes = list(MALE, FEMALE)
+	/// Species allowed to be this job
 	var/list/allowed_races = RACES_PLAYER_ALL
-	var/list/allowed_patrons
+	/// Ages allowed to be this job
 	var/list/allowed_ages = ALL_AGES_LIST_CHILD
+
+	// Change values
+	/// Patrons allowed for this job, sets to a random one in this list if list has values
+	var/list/allowed_patrons
+	/// Default patron in case the patron is not allowed
+	var/datum/patron/default_patron
 
 	/// Stats given to the job in the form of list(STA_X = value)
 	var/list/jobstats
@@ -162,6 +170,9 @@
 	/// Antagonist role to grant with this job
 	var/datum/antagonist/antag_role
 
+	/// Job bitflag for storyteller
+	var/job_bitflag = NONE
+
 	/// Blacklisted from the actor
 
 	var/static/list/actors_list_blacklist = list(
@@ -210,6 +221,7 @@
 		return
 
 	adjust_values(spawned)
+	adjust_patron(spawned)
 
 	if(magic_user)
 		spawned.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
@@ -300,6 +312,10 @@
 		spawned.density = FALSE
 		spawned.become_blind("advsetup")
 
+	/// WHY WAS THIS ON OUTFIT??? It shouldn't be HERE either
+	if(spawned.familytree_pref != FAMILY_NONE && !spawned.family_datum)
+		SSfamilytree.AddLocal(spawned, spawned.familytree_pref)
+
 	var/list/owned_triumph_buys = LAZYACCESS(SStriumphs.triumph_buy_owners, player_client?.ckey)
 	for(var/datum/triumph_buy/T in owned_triumph_buys)
 		if(!T.activated)
@@ -309,6 +325,34 @@
 /// Change your stat values and such here, not in outfits.
 /datum/job/proc/adjust_values(mob/living/carbon/human/spawned)
 	return
+
+/datum/job/proc/adjust_patron(mob/living/carbon/human/spawned)
+	if(!length(allowed_patrons))
+		return
+
+	var/datum/patron/old_patron = spawned.patron
+	if(old_patron?.type in allowed_patrons)
+		return
+
+	var/list/datum/patron/all_gods = list()
+	var/list/datum/patron/pantheon_gods = list()
+	for(var/god in GLOB.patronlist)
+		if(!(god in allowed_patrons))
+			continue
+		all_gods |= god
+		var/datum/patron/P = GLOB.patronlist[god]
+		if(P.associated_faith == old_patron.associated_faith) //Prioritize choosing a possible patron within our pantheon
+			pantheon_gods |= god
+
+	if(length(pantheon_gods))
+		spawned.set_patron(default_patron || pick(pantheon_gods), TRUE)
+	else
+		spawned.set_patron(default_patron || pick(all_gods), TRUE)
+
+	var/datum/patron/new_patron = spawned.patron
+	if(old_patron != new_patron) // If the patron we selected first does not match the patron we end up with, display the message.
+		to_chat(spawned, span_warning("I've followed the word of [old_patron.display_name ? old_patron.display_name : old_patron] in my younger years, \
+		but the path I tread todae has accustomed me to [new_patron.display_name ? new_patron.display_name : new_patron]."))
 
 //Used for a special check of whether to allow a client to latejoin as this job.
 /datum/job/proc/special_check_latejoin(client/C)
@@ -354,49 +398,6 @@
 //Unused as of now
 /datum/job/proc/config_check()
 	return TRUE
-
-/datum/outfit/job
-	name = "Standard Gear"
-	var/jobtype = null
-
-	/// List of patrons we are allowed to use
-	var/list/allowed_patrons
-	/// Default patron in case the patron is not allowed
-	var/datum/patron/default_patron
-	///this is our bitflag
-	var/job_bitflag = NONE
-
-/datum/outfit/job/pre_equip(mob/living/carbon/human/equipped_human, visuals_only = FALSE)
-	. = ..()
-	if(!length(allowed_patrons))
-		return
-	var/datum/patron/old_patron = equipped_human.patron
-	if(old_patron?.type in allowed_patrons)
-		return
-	var/list/datum/patron/all_gods = list()
-	var/list/datum/patron/pantheon_gods = list()
-	for(var/god in GLOB.patronlist)
-		if(!(god in allowed_patrons))
-			continue
-		all_gods |= god
-		var/datum/patron/P = GLOB.patronlist[god]
-		if(P.associated_faith == old_patron.associated_faith) //Prioritize choosing a possible patron within our pantheon
-			pantheon_gods |= god
-	if(length(pantheon_gods))
-		equipped_human.set_patron(default_patron || pick(pantheon_gods), TRUE)
-	else
-		equipped_human.set_patron(default_patron || pick(all_gods), TRUE)
-	if(old_patron != equipped_human.patron) // If the patron we selected first does not match the patron we end up with, display the message.
-		to_chat(equipped_human, "<span class='warning'>I've followed the word of [old_patron.display_name ? old_patron.display_name : old_patron] in my younger years, but the path I tread todae has accustomed me to [equipped_human.patron.display_name? equipped_human.patron.display_name : equipped_human.patron].")
-
-/datum/outfit/job/post_equip(mob/living/carbon/human/equipped_human, visuals_only = FALSE)
-	if(visuals_only || !equipped_human.mind)
-		return
-
-	equipped_human.mind?.job_bitflag = job_bitflag
-
-	if(equipped_human.familytree_pref != FAMILY_NONE && !equipped_human.family_datum)
-		SSfamilytree.AddLocal(equipped_human, equipped_human.familytree_pref)
 
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()

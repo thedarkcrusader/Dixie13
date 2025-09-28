@@ -3,7 +3,7 @@
 	title = "Witch Hunter"
 	tutorial = "Witch Hunters dedicate their lives to the eradication of the varied evils infesting Psydonia. They know the vile sorcery of the necromancer, the insidious nature of the cultist and monstrousness of vampires and werevolfs. They also know how best to end them."
 	allowed_races = RACES_PLAYER_NONEXOTIC
-	outfit = /datum/outfit/job/adventurer/puritan
+	outfit = /datum/outfit/adventurer/puritan
 	total_positions = 1
 	roll_chance = 15
 	category_tags = list(CTAG_ADVENTURER)
@@ -11,7 +11,7 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/leather

@@ -8,13 +8,13 @@
 		SPEC_ID_HALF_ELF,\
 		SPEC_ID_DWARF,\
 	)
-	outfit = /datum/outfit/job/mercenary/gallowglass
+	outfit = /datum/outfit/mercenary/gallowglass
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 2
 
 	cmode_music = 'sound/music/cmode/Combat_Dwarf.ogg'
 
-/datum/outfit/job/mercenary/gallowglass/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/gallowglass/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/helmet/nasal

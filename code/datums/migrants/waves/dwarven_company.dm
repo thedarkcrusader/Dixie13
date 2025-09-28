@@ -6,7 +6,7 @@
 /datum/job/migrant/dwarven_company/captain
 	title = "Captain"
 	tutorial = "You are the captain of a dwarven's expedition, following the tracks of Matthios's influence you shall lead your party in Malum's name."
-	outfit = /datum/outfit/job/dwarven_company/captain
+	outfit = /datum/outfit/dwarven_company/captain
 	allowed_races = list(SPEC_ID_DWARF)
 
 	jobstats = list(
@@ -44,7 +44,7 @@
 		TRAIT_MEDIUMARMOR,
 	)
 
-/datum/outfit/job/dwarven_company/captain
+/datum/outfit/dwarven_company/captain
 	armor = /obj/item/clothing/armor/cuirass
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	shirt = /obj/item/clothing/armor/chainmail
@@ -67,7 +67,7 @@
 /datum/job/migrant/dwarven_company/weaponsmith
 	title = "Weapon Smith"
 	tutorial = " You are the weaponsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	outfit = /datum/outfit/job/dwarven_company/weaponsmith
+	outfit = /datum/outfit/dwarven_company/weaponsmith
 	allowed_races = list(SPEC_ID_DWARF)
 
 	jobstats = list(
@@ -102,7 +102,7 @@
 		LAZYADDASSOC(skills, /datum/skill/craft/blacksmithing, pick(1, 2))
 		LAZYADDASSOC(skills, /datum/skill/craft/weaponsmithing, pick(1, 2))
 
-/datum/outfit/job/dwarven_company/weaponsmith
+/datum/outfit/dwarven_company/weaponsmith
 	ring = /obj/item/clothing/ring/silver/makers_guild
 	head = /obj/item/clothing/head/hatfur
 	cloak = /obj/item/clothing/cloak/apron/brown
@@ -112,7 +112,7 @@
 	pants = /obj/item/clothing/pants/trou
 	backr = /obj/item/weapon/axe/steel
 
-/datum/outfit/job/dwarven_company/weaponsmith/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/dwarven_company/weaponsmith/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(50))
@@ -137,7 +137,7 @@
 /datum/job/migrant/dwarven_company/armorsmith
 	title = "Armor Smith"
 	tutorial = " You are the armorsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	outfit = /datum/outfit/job/dwarven_company/armorsmith
+	outfit = /datum/outfit/dwarven_company/armorsmith
 	allowed_races = list(SPEC_ID_DWARF)
 
 	jobstats = list(
@@ -172,7 +172,7 @@
 		LAZYADDASSOC(skills, /datum/skill/craft/blacksmithing, pick(1, 2))
 		LAZYADDASSOC(skills, /datum/skill/craft/armorsmithing, pick(1, 2))
 
-/datum/outfit/job/dwarven_company/armorsmith
+/datum/outfit/dwarven_company/armorsmith
 	ring = /obj/item/clothing/ring/silver/makers_guild
 	head = /obj/item/clothing/head/hatfur
 	pants = /obj/item/clothing/pants/trou
@@ -182,7 +182,7 @@
 	armor = /obj/item/clothing/armor/chainmail
 	backr = /obj/item/weapon/axe/steel
 
-/datum/outfit/job/dwarven_company/armorsmith/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/dwarven_company/armorsmith/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(50))

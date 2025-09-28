@@ -2,13 +2,13 @@
 	title = "Anthrax"
 	tutorial = "With the brutal dismantlement of drow society, the talents of the redeemed Anthraxi were no longer needed. Yet where one door closes, another opens - the decadent mortals of the overworld clamber over each other to bid for your blade. Show them your craft."
 	allowed_races = list(SPEC_ID_DROW)
-	outfit = /datum/outfit/job/mercenary/anthrax
+	outfit = /datum/outfit/mercenary/anthrax
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
-/datum/outfit/job/mercenary/anthrax/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/anthrax/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/black

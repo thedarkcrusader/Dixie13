@@ -4,12 +4,12 @@
 	but why have you come to Vanderlin?"
 	allowed_sexes = list(MALE)
 	allowed_races = list(SPEC_ID_HUMEN)
-	outfit = /datum/outfit/job/adventurer/heartfeltlord
+	outfit = /datum/outfit/adventurer/heartfeltlord
 	min_pq = 2
 	total_positions = 1
 	roll_chance = 50
 
-/datum/outfit/job/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black

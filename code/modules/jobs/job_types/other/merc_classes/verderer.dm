@@ -6,12 +6,12 @@
 		"Hollow-Kin",
 		"Humen"
 	)
-	outfit = /datum/outfit/job/mercenary/verderer
+	outfit = /datum/outfit/mercenary/verderer
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
 
-/datum/outfit/job/mercenary/verderer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/verderer/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/armor/light/rust
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown

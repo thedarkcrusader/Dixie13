@@ -6,7 +6,7 @@
 /datum/job/migrant/heartfelt_lord
 	title = "Lord of Heartfelt"
 	tutorial = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Vanderlin, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
-	outfit = /datum/outfit/job/heartfelt_lord
+	outfit = /datum/outfit/heartfelt_lord
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
@@ -45,7 +45,7 @@
 
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
-/datum/outfit/job/heartfelt_lord
+/datum/outfit/heartfelt_lord
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black
 	neck = /obj/item/clothing/neck/gorget
@@ -69,7 +69,7 @@
 /datum/job/migrant/heartfelt_lady
 	title = "Lady of Heartfelt"
 	tutorial = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Vanderlin, hoping to find new purpose or refuge amidst the chaos."
-	outfit = /datum/outfit/job/heartfelt_lady
+	outfit = /datum/outfit/heartfelt_lady
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
@@ -104,7 +104,7 @@
 
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
-/datum/outfit/job/heartfelt_lady
+/datum/outfit/heartfelt_lady
 	head = /obj/item/clothing/head/hennin
 	neck = /obj/item/storage/belt/pouch/coins/rich
 	cloak = /obj/item/clothing/cloak/heartfelt
@@ -117,7 +117,7 @@
 	shoes = /obj/item/clothing/shoes/shortboots
 	pants = /obj/item/clothing/pants/tights/colored/random
 
-/datum/outfit/job/heartfelt_lady/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/heartfelt_lady/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(isdwarf(equipped_human))
@@ -135,7 +135,7 @@
 /datum/job/migrant/heartfelt_hand
 	title = "Hand of Heartfelt"
 	tutorial = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Vanderlin, determined to fulfill your duties."
-	outfit = /datum/outfit/job/heartfelt_hand
+	outfit = /datum/outfit/heartfelt_hand
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
 
@@ -166,7 +166,7 @@
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
-/datum/outfit/job/heartfelt_hand
+/datum/outfit/heartfelt_hand
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black
 	shoes = /obj/item/clothing/shoes/nobleboot
@@ -267,7 +267,7 @@
 	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/satchel/black
 
-/datum/outfit/job/heartfelt_knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/heartfelt_knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(50))
@@ -283,7 +283,7 @@
 /datum/job/migrant/heartfelt_magos
 	title = "Magos of Heartfelt"
 	tutorial = "You are the Magos of Heartfelt, renowned for your arcane knowledge yet unable to foresee the tragedy that befell your home. Drawn by a guiding star to Vanderlin, you seek answers and perhaps a new purpose in the wake of destruction."
-	outfit = /datum/outfit/job/heartfelt_magos
+	outfit = /datum/outfit/heartfelt_magos
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	allowed_patrons = list(/datum/patron/divine/noc)
 	is_recognized = TRUE
@@ -332,7 +332,7 @@
 	. = ..()
 	spawned.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 
-/datum/outfit/job/heartfelt_magos
+/datum/outfit/heartfelt_magos
 	neck = /obj/item/clothing/neck/talkstone
 	cloak = /obj/item/clothing/cloak/black_cloak
 	armor = /obj/item/clothing/shirt/robe/colored/black
@@ -357,7 +357,7 @@
 /datum/job/migrant/heartfelt_prior
 	title = "Heartfelt Prior"
 	tutorial = "You are a Prior of Heartfelt, a spiritual leader whose faith was tested when your home fell into ruin. Now journeying to Vanderlin, you seek to rebuild not just structures, but the souls of those who follow you."
-	outfit = /datum/outfit/job/heartfelt_prior
+	outfit = /datum/outfit/heartfelt_prior
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	allowed_patrons = list(/datum/patron/divine/astrata)
 
@@ -397,7 +397,7 @@
 	if(spawned.age == AGE_OLD)
 		LAZYADDASSOC(skills, /datum/skill/magic/holy, 1)
 
-/datum/outfit/job/heartfelt_prior
+/datum/outfit/heartfelt_prior
 	neck = /obj/item/clothing/neck/psycross/silver
 	shirt = /obj/item/clothing/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/colored/black
@@ -420,7 +420,7 @@
 /datum/job/migrant/heartfelt_artificer
 	title = "Supreme Artificer"
 	tutorial = "You are the Supreme Artificer, the foremost expert on anything brass and steam. Your knowledge helped advance your kingdom, before ultimately leading it to ruin..."
-	outfit = /datum/outfit/job/heartfelt_artificer
+	outfit = /datum/outfit/heartfelt_artificer
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
 
@@ -452,7 +452,7 @@
 	traits = list(TRAIT_SEEPRICES)
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-/datum/outfit/job/heartfelt_artificer
+/datum/outfit/heartfelt_artificer
 	head = /obj/item/clothing/head/articap
 	armor = /obj/item/clothing/armor/leather/jacket/artijacket
 	pants = /obj/item/clothing/pants/trou/artipants

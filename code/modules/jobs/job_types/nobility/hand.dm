@@ -20,13 +20,13 @@
 
 	allowed_races = RACES_PLAYER_ROYALTY
 
-	outfit = /datum/outfit/job/hand
+	outfit = /datum/outfit/hand
 	advclass_cat_rolls = list(CTAG_HAND = 20)
 	give_bank_account = 120
 	noble_income = 22
-
-/datum/outfit/job/hand
 	job_bitflag = BITFLAG_ROYALTY
+
+/datum/outfit/hand
 	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
 	belt = /obj/item/storage/belt/leather/steel
 
@@ -52,13 +52,13 @@
 /datum/job/advclass/hand/hand
 	title = "Hand"
 	tutorial = " You have played blademaster and strategist to the Noble-Family for so long that you are a master tactician, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with swords than any spymaster could ever claim to."
-	outfit = /datum/outfit/job/hand/handclassic
+	outfit = /datum/outfit/hand/handclassic
 
 	category_tags = list(CTAG_HAND)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 //Classical hand start - same as before, nothing changed.
-/datum/outfit/job/hand/handclassic/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/hand/handclassic/pre_equip(mob/living/carbon/human/H)
 	shirt = /obj/item/clothing/shirt/undershirt/fancy
 	backr = /obj/item/storage/backpack/satchel/black
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/storage/keyring/hand = 1, /obj/item/paper/scroll/frumentarii/roundstart = 1)
@@ -88,13 +88,13 @@
 /datum/job/advclass/hand/spymaster
 	title = "Spymaster"
 	tutorial = " You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
-	outfit = /datum/outfit/job/hand/spymaster
+	outfit = /datum/outfit/hand/spymaster
 
 	category_tags = list(CTAG_HAND)
 	cmode_music = 'sound/music/cmode/nobility/CombatSpymaster.ogg'
 
 //Spymaster start. More similar to the rogue adventurer - loses heavy armor and sword skills for more sneaky stuff.
-/datum/outfit/job/hand/spymaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/hand/spymaster/pre_equip(mob/living/carbon/human/H)
 	backr = /obj/item/storage/backpack/satchel/black
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/storage/keyring/hand = 1, /obj/item/lockpickring/mundane = 1, /obj/item/paper/scroll/frumentarii/roundstart = 1)
 	if(!istype(H.dna.species, /datum/species/dwarf))
@@ -138,13 +138,13 @@
 	tutorial = " You have played researcher and confidant to the Noble-Family for so long that you are a vault of knowledge, \
 	something you exploit with potent conviction. Let no man ever forget the knowledge you wield. \
 	You've read more books than any blademaster or spymaster could ever claim to."
-	outfit = /datum/outfit/job/hand/advisor
+	outfit = /datum/outfit/hand/advisor
 
 	category_tags = list(CTAG_HAND)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 //Advisor start. Trades combat skills for more knowledge and skills - for older hands, hands that don't do combat - people who wanna play wizened old advisors.
-/datum/outfit/job/hand/advisor/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/hand/advisor/pre_equip(mob/living/carbon/human/H)
 	shirt = /obj/item/clothing/shirt/undershirt/fancy
 	backr = /obj/item/storage/backpack/satchel/black
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/storage/keyring/hand = 1, /obj/item/reagent_containers/glass/bottle/poison = 1, /obj/item/paper/scroll/frumentarii/roundstart = 1) //starts with a vial of poison, like all wizened evil advisors do!

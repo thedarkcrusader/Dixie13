@@ -6,7 +6,7 @@
 /datum/job/migrant/daywalker
 	title = "Daywalker"
 	tutorial = "Some knaves are always trying to wade upstream. You witnessed your entire village be consumed by a subservient vampiric horde - the local Priest grabbed you, and brought you to a remote Monastery; ever since then you've sworn revenge against the restless dead. The Templars showed you everything you needed to know. You walk in the day, so that the undead may only walk in the night."
-	outfit = /datum/outfit/job/daywalker
+	outfit = /datum/outfit/daywalker
 	allowed_races = list(SPEC_ID_HUMEN)
 
 	jobstats = list(
@@ -34,7 +34,7 @@
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-/datum/outfit/job/daywalker
+/datum/outfit/daywalker
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	gloves = /obj/item/clothing/gloves/fingerless/shadowgloves
@@ -49,7 +49,7 @@
 	backr = /obj/item/storage/backpack/satchel
 	ring = /obj/item/clothing/ring/silver
 
-/datum/outfit/job/daywalker/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/daywalker/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.virginity = TRUE
 	H.set_patron(/datum/patron/divine/astrata)

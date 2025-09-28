@@ -6,7 +6,7 @@
 /datum/job/migrant/rockhill/mayor
 	title = "Mayor of Rockhill"
 	tutorial = "You are the mayor of Rockhill, you've come to Vanderlin to discuss important matters with their Monarch."
-	outfit = /datum/outfit/job/rockhill/mayor
+	outfit = /datum/outfit/rockhill/mayor
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
@@ -43,7 +43,7 @@
 
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
-/datum/outfit/job/rockhill/mayor
+/datum/outfit/rockhill/mayor
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black
 	neck = /obj/item/clothing/neck/gorget
@@ -56,7 +56,7 @@
 	gloves = /obj/item/clothing/gloves/leather/black
 	beltl = /obj/item/weapon/sword/long
 
-/datum/outfit/job/rockhill/mayor/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/rockhill/mayor/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == FEMALE)
@@ -84,7 +84,7 @@
 /datum/job/migrant/rockhill/knight
 	title = "Knight of Rockhill"
 	tutorial = "You are a Knight of Rockhill, the notable of said town has taken the journey to your liege, you are to ensure their safety."
-	outfit = /datum/outfit/job/rockhill/knight
+	outfit = /datum/outfit/rockhill/knight
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
 
@@ -142,7 +142,7 @@
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/rockhill/knight
+/datum/outfit/rockhill/knight
 	head = /obj/item/clothing/head/helmet
 	gloves = /obj/item/clothing/gloves/plate
 	pants = /obj/item/clothing/pants/platelegs
@@ -156,7 +156,7 @@
 	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/satchel/black
 
-/datum/outfit/job/rockhill/knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/rockhill/knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(50))
@@ -172,7 +172,7 @@
 /datum/job/migrant/rockhill/serjeant_at_arms
 	title = "Rockhill Serjeant"
 	tutorial = "The Mayor of Rockhill has conscripted you and your mens to go see the rulers of Vanderlin."
-	outfit = /datum/outfit/job/rockhill/serjeant_at_arms
+	outfit = /datum/outfit/rockhill/serjeant_at_arms
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
 	jobstats = list(
@@ -215,7 +215,7 @@
 		LAZYADDASSOC(jobstats, STATKEY_PER, 1)
 		LAZYADDASSOC(jobstats, STATKEY_SPD, 1)
 
-/datum/outfit/job/rockhill/serjeant_at_arms
+/datum/outfit/rockhill/serjeant_at_arms
 	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet

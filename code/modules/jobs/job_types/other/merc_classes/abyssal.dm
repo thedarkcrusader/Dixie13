@@ -2,13 +2,13 @@
 	title = "Abyssal Guard"
 	tutorial = "Amphibious warriors from the depths, the Abyss Guard is a legion of triton mercenaries forged in the seas, the males are trained in the arcyne whilst the females take the vanguard with their imposing physique."
 	allowed_races = list(SPEC_ID_TRITON)
-	outfit = /datum/outfit/job/mercenary/abyssal
+	outfit = /datum/outfit/mercenary/abyssal
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 2
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
-/datum/outfit/job/mercenary/abyssal/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/abyssal/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/sandals
 	belt = /obj/item/storage/belt/leather/mercenary

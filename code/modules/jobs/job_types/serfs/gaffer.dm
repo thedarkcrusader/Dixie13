@@ -19,7 +19,7 @@
 
 	display_order = JDO_GAFFER
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
-	outfit = /datum/outfit/job/gaffer
+	outfit = /datum/outfit/gaffer
 	give_bank_account = 20
 	min_pq = 8
 	bypass_lastclass = TRUE
@@ -27,7 +27,7 @@
 
 	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/mercenary)
 
-/datum/outfit/job/gaffer/pre_equip(mob/living/carbon/human/H, visuals_only)
+/datum/outfit/gaffer/pre_equip(mob/living/carbon/human/H, visuals_only)
 	..()
 
 

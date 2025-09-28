@@ -2,11 +2,11 @@
 	title = "Dwarven Bombardier"
 	tutorial = "Tinkering Dwarves that like to blow things up."
 	allowed_races = list(SPEC_ID_DWARF)
-	outfit = /datum/outfit/job/adventurer/dbomb
+	outfit = /datum/outfit/adventurer/dbomb
 	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
 
-/datum/outfit/job/adventurer/dbomb/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/dbomb/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/horned
 	pants = /obj/item/clothing/pants/trou

@@ -3,11 +3,11 @@
 	tutorial = "A disgraced physician forced into exile and years of hardship, you have turned to a private practice surrounding the only things you've ever known - poisons and plague. Revel in the spreading of blight, and unleash craven pestilence."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/wretch/plaguebearer
+	outfit = /datum/outfit/wretch/plaguebearer
 	category_tags = list(CTAG_WRETCH)
 	total_positions = 2
 
-/datum/outfit/job/wretch/plaguebearer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/wretch/plaguebearer/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/face/phys/plaguebearer
 	head = /obj/item/clothing/head/roguehood/phys

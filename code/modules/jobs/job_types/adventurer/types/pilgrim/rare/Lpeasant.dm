@@ -6,7 +6,7 @@
 	able to handle almost every single task there is to do on a fief."
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/farmermaster
+	outfit = /datum/outfit/adventurer/farmermaster
 	total_positions = 1
 	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
@@ -14,7 +14,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/farmermaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/farmermaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

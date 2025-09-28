@@ -2,11 +2,11 @@
 	title = "Ex-Pegasus Knight"
 	tutorial = "A former pegasus knight hailing from the southern Elven nation of Lakkari. Once a graceful warrior that ruled the skies, now a traveling sellsword that rules the streets, doing Faience's dirtiest work."
 	allowed_races = RACES_PLAYER_ELF
-	outfit = /datum/outfit/job/mercenary/expegasusknight
+	outfit = /datum/outfit/mercenary/expegasusknight
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
-/datum/outfit/job/mercenary/expegasusknight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/expegasusknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/ridingboots
 	cloak = /obj/item/clothing/cloak/pegasusknight

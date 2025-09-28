@@ -6,7 +6,7 @@
 /datum/job/migrant/serjeant_at_arms
 	title = "Serjeant-At-Arms"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and those under your command have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/serjeant_at_arms
+	outfit = /datum/outfit/serjeant_at_arms
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_foreigner = FALSE
 
@@ -55,7 +55,7 @@
 		LAZYADDASSOC(jobstats, STATKEY_PER, 1)
 		LAZYADDASSOC(jobstats, STATKEY_SPD, 1)
 
-/datum/outfit/job/serjeant_at_arms
+/datum/outfit/serjeant_at_arms
 	head = /obj/item/clothing/head/helmet/sargebarbute
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
@@ -80,7 +80,7 @@
 /datum/job/migrant/archer_bannerman
 	title = "Bannermen Archer"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/archer_bannerman
+	outfit = /datum/outfit/archer_bannerman
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_foreigner = FALSE
 
@@ -114,7 +114,7 @@
 
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-/datum/outfit/job/archer_bannerman
+/datum/outfit/archer_bannerman
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
@@ -127,7 +127,7 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 
-/datum/outfit/job/archer_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/archer_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(30))
@@ -143,7 +143,7 @@
 /datum/job/migrant/crossbow_bannerman
 	title = "Bannermen Crossbowman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/crossbow_bannerman
+	outfit = /datum/outfit/crossbow_bannerman
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_foreigner = FALSE
 
@@ -177,7 +177,7 @@
 
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
-/datum/outfit/job/crossbow_bannerman
+/datum/outfit/crossbow_bannerman
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
@@ -190,7 +190,7 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 
-/datum/outfit/job/crossbow_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/crossbow_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(prob(30))
@@ -206,7 +206,7 @@
 /datum/job/migrant/footman_bannerman
 	title = "Bannermen Footman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/footman_bannerman
+	outfit = /datum/outfit/footman_bannerman
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_foreigner = FALSE
 
@@ -239,7 +239,7 @@
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 
-/datum/outfit/job/footman_bannerman
+/datum/outfit/footman_bannerman
 	armor = /obj/item/clothing/armor/cuirass/iron
 	shirt = /obj/item/clothing/armor/chainmail/iron
 	neck = /obj/item/clothing/neck/gorget
@@ -260,7 +260,7 @@
 /datum/job/migrant/pikeman_bannerman
 	title = "Bannermen Pikeman"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/pikeman_bannerman
+	outfit = /datum/outfit/pikeman_bannerman
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_foreigner = FALSE
 
@@ -292,7 +292,7 @@
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 
-/datum/outfit/job/pikeman_bannerman
+/datum/outfit/pikeman_bannerman
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
@@ -303,7 +303,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather
 
-/datum/outfit/job/pikeman_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/pikeman_bannerman/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 	var/weapontype = pickweight(list("Spear" = 6, "Bardiche" = 4))
 	switch(weapontype)

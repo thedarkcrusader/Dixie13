@@ -7,7 +7,7 @@
 	Now you find yourself approaching Vanderlin... perhaps this will be a perfect location to prepare your next great feast?"
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/masterchef
+	outfit = /datum/outfit/adventurer/masterchef
 
 	total_positions = 1
 	roll_chance = 15
@@ -16,7 +16,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/masterchef/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/masterchef/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)

@@ -3,7 +3,7 @@
 	tutorial = "You are a travelling merchant from far away lands. \
 	You've picked up many wears on your various adventures, now it's time to peddle them to these locals."
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/adventurer/merchant
+	outfit = /datum/outfit/adventurer/merchant
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 2
 	roll_chance = 30
@@ -12,7 +12,7 @@
 	is_recognized = TRUE
 
 
-/datum/outfit/job/adventurer/merchant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

@@ -6,7 +6,7 @@
 /datum/job/migrant/grenzelhoft_count
 	title = "Grenzelhoft Count"
 	tutorial = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to the Peninsula of Vanderlin alongside his beloved convoy and spouse."
-	outfit = /datum/outfit/job/grenzelhoft_count
+	outfit = /datum/outfit/grenzelhoft_count
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	is_recognized = TRUE
@@ -36,7 +36,7 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/job/grenzelhoft_count
+/datum/outfit/grenzelhoft_count
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
@@ -52,7 +52,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
 
-/datum/outfit/job/grenzelhoft_count/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/grenzelhoft_count/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(visuals_only)
@@ -78,7 +78,7 @@
 /datum/job/migrant/grenzelhoft_countess
 	title = "Grenzelhoft Countess"
 	tutorial = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin alongside her beloved convoy and husband."
-	outfit = /datum/outfit/job/grenzelhoft_countess
+	outfit = /datum/outfit/grenzelhoft_countess
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	is_recognized = TRUE
@@ -107,7 +107,7 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
-/datum/outfit/job/grenzelhoft_countess
+/datum/outfit/grenzelhoft_countess
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
@@ -123,7 +123,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
 
-/datum/outfit/job/grenzelhoft_countess/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/grenzelhoft_countess/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(visuals_only)
@@ -149,7 +149,7 @@
 /datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
 	title = "Grenzelhoft Knight"
 	tutorial = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
-	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
+	outfit = /datum/outfit/grenzelhoft_migration/grenzelhoft_knight
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	is_recognized = TRUE
@@ -174,7 +174,7 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
+/datum/outfit/grenzelhoft_migration/grenzelhoft_knight
 	pants = /obj/item/clothing/pants/tights/colored/black
 	backr = /obj/item/weapon/sword/long/greatsword/flamberge
 	beltl = /obj/item/storage/belt/pouch/coins/mid
@@ -188,7 +188,7 @@
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 
-/datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(visuals_only)
@@ -216,7 +216,7 @@
 /datum/job/migrant/grenzelhoft_men_at_arms
 	title = "Grenzelhoft Men-at-Arms"
 	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
-	outfit = /datum/outfit/job/grenzelhoft_men_at_arms
+	outfit = /datum/outfit/grenzelhoft_men_at_arms
 	allowed_races = RACES_PLAYER_GRENZ
 
 	jobstats = list(
@@ -249,7 +249,7 @@
 		/datum/skill/combat/shields = pick(0, 0, 1),
 	)
 
-/datum/outfit/job/grenzelhoft_men_at_arms
+/datum/outfit/grenzelhoft_men_at_arms
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
@@ -263,7 +263,7 @@
 	backl = /obj/item/storage/backpack/satchel
 	backr = /obj/item/weapon/sword/long/greatsword/zwei
 
-/datum/outfit/job/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == FEMALE)

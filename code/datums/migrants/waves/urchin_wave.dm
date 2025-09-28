@@ -10,7 +10,7 @@
 	tutorial = "Without you, your friends would be dead in a ditch. You're the boss, that's why you've got a nice hat. \
 	Preform stick-ups, lurk in the alleys, and make sure your siblings don't invoke the ire of the Matron. She doesn't \
 	deserve the headache you give her."
-	outfit = /datum/outfit/job/urchinbrain
+	outfit = /datum/outfit/urchinbrain
 	allowed_ages = list(AGE_CHILD)
 	is_foreigner = FALSE
 
@@ -40,7 +40,7 @@
 	. = ..()
 	LAZYADDASSOC(skills, /datum/skill/combat/wrestling, rand(3))
 
-/datum/outfit/job/urchinbrain
+/datum/outfit/urchinbrain
 	name = "Urchin Leader"
 	head = /obj/item/clothing/head/fancyhat
 	shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
@@ -64,7 +64,7 @@
 	tutorial = "Life in the orphanage is detestable, nobody ever brought you into a family. A child denied love will burn \
 	down his village for warmth - that's what's happening. Listen to your boss, and stack coin; be the little shit this town \
 	deserves... Don't overdo it, though - lest the Matron put an end to this scheme you lot have going."
-	outfit = /datum/outfit/job/urchinbrawn
+	outfit = /datum/outfit/urchinbrawn
 
 	jobstats = list(
 		STATKEY_STR = 1,
@@ -89,7 +89,7 @@
 	. = ..()
 	LAZYADDASSOC(skills, /datum/skill/combat/unarmed, pick(1,2))
 
-/datum/outfit/job/urchinbrawn
+/datum/outfit/urchinbrawn
 	name = "Urchin"
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant

@@ -3,7 +3,7 @@
 	title = "Vaquero"
 	tutorial = "You have been taming beasts of burden all your life, and riding since you were old enough to walk. Perhaps these lands will have use for your skills?"
 	allowed_races = list(SPEC_ID_TIEFLING)
-	outfit = /datum/outfit/job/adventurer/vaquero
+	outfit = /datum/outfit/adventurer/vaquero
 	cmode_music = 'sound/music/cmode/adventurer/combat_vaquero.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 1
@@ -14,7 +14,7 @@
 	. = ..()
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 
-/datum/outfit/job/adventurer/vaquero/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/vaquero/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

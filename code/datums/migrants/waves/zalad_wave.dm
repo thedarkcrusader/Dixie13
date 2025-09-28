@@ -6,7 +6,7 @@
 /datum/job/migrant/zalad_migration/emir
 	title = "Zalad Emir"
 	tutorial = "An Emir hailing from the Deshret, here on business for the Mercator's Guild."
-	outfit = /datum/outfit/job/zalad_migration/emir
+	outfit = /datum/outfit/zalad_migration/emir
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_ZALADIN
 	is_recognized = TRUE
@@ -55,7 +55,7 @@
 			spawned.dna.species.native_language = "Zalad"
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
-/datum/outfit/job/zalad_migration/emir
+/datum/outfit/zalad_migration/emir
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/circlet
@@ -71,7 +71,7 @@
 	neck = /obj/item/clothing/neck/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
 
-/datum/outfit/job/zalad_migration/emir/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/zalad_migration/emir/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == FEMALE)
@@ -86,7 +86,7 @@
 /datum/job/migrant/zalad_migration/amirah
 	title = "Zalad Amirah"
 	tutorial = "An Amirah hailing from Deshret, here on business for the Mercator's Guild to the Isle of the Enigma."
-	outfit = /datum/outfit/job/zalad_migration/amirah
+	outfit = /datum/outfit/zalad_migration/amirah
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_ZALADIN
 	is_recognized = TRUE
@@ -136,7 +136,7 @@
 			spawned.dna.species.native_language = "Zalad"
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
-/datum/outfit/job/zalad_migration/amirah
+/datum/outfit/zalad_migration/amirah
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/nyle
@@ -163,7 +163,7 @@
 /datum/job/migrant/zalad_migration/furusiyya
 	title = "Furusiyya"
 	tutorial = "You are a furusiyya, pledged to the Emir and the Amirah. Make sure they come out alive of that place."
-	outfit = /datum/outfit/job/zalad_migration/furusiyya
+	outfit = /datum/outfit/zalad_migration/furusiyya
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_ZALADIN
 	is_recognized = TRUE
@@ -214,7 +214,7 @@
 			spawned.dna.species.native_language = "Zalad"
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
-/datum/outfit/job/zalad_migration/furusiyya
+/datum/outfit/zalad_migration/furusiyya
 	pants = /obj/item/clothing/pants/tights/colored/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/zaladplate
@@ -227,7 +227,7 @@
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 
-/datum/outfit/job/zalad_migration/furusiyya/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/zalad_migration/furusiyya/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	var/randy = rand(1,5)
@@ -247,7 +247,7 @@
 /datum/job/migrant/zalad_migration/zalad_guard
 	title = "Zalad Soldier"
 	tutorial = "You are a slave soldier from Deshret, sent as an escort to the emirs on a foreign land, do not fail them."
-	outfit = /datum/outfit/job/zalad_migration/zalad_guard
+	outfit = /datum/outfit/zalad_migration/zalad_guard
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 
@@ -294,7 +294,7 @@
 	. = ..()
 	LAZYADDASSOC(skills, /datum/skill/combat/shields, pick(0,1,1))
 
-/datum/outfit/job/zalad_migration/zalad_guard
+/datum/outfit/zalad_migration/zalad_guard
 	shoes = /obj/item/clothing/shoes/shalal
 	head = /obj/item/clothing/head/helmet/sallet/zalad
 	gloves = /obj/item/clothing/gloves/angle
@@ -316,7 +316,7 @@
 /datum/job/migrant/zalad_migration/qatil
 	title = "Qatil"
 	tutorial = "You are the Amirah's confident and most loyal protector, you shan't let them die in these wretched lands."
-	outfit = /datum/outfit/job/zalad_migration/qatil
+	outfit = /datum/outfit/zalad_migration/qatil
 	allowed_races = list(
 		SPEC_ID_HUMEN,
 		SPEC_ID_ELF,
@@ -368,7 +368,7 @@
 			spawned.dna.species.native_language = "Zalad"
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
-/datum/outfit/job/zalad_migration/qatil
+/datum/outfit/zalad_migration/qatil
 	pants = /obj/item/clothing/pants/trou/leather
 	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/shalal

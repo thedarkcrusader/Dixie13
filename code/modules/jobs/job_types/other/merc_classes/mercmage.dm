@@ -13,16 +13,15 @@
 	But it all goes away whenever a zenarii filled pouch is thrown your way, for a while atleast."
 	//not RACES_PLAYER_NONDISCRIMINATED becauses they are a FOREIGN noble
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
-	outfit = /datum/outfit/job/mercenary/sellmage
+	outfit = /datum/outfit/mercenary/sellmage
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 2 //balance slop
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)//they were a mage, or learnt magic, before becoming a mercenary
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 
-/datum/outfit/job/mercenary/sellmage
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)//only noc or zizo worshippers can be mages
 
-/datum/outfit/job/mercenary/sellmage/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/sellmage/pre_equip(mob/living/carbon/human/H)
 	..()
 
 	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
@@ -76,7 +75,7 @@
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
-/datum/outfit/job/mercenary/sellmage/post_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/sellmage/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/static/list/selectablehat = list(
 		"Witch hat" = /obj/item/clothing/head/wizhat/witch,

@@ -7,13 +7,13 @@
 		SPEC_ID_HALF_ELF,\
 		SPEC_ID_AASIMAR,\
 	)
-	outfit = /datum/outfit/job/mercenary/steppesman
+	outfit = /datum/outfit/mercenary/steppesman
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 
-/datum/outfit/job/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/papakha

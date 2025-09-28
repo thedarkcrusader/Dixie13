@@ -6,7 +6,7 @@
 /datum/job/migrant/specialinquisitor
 	title = "Episcopal Inquisitor"
 	tutorial = "These lands have forfeited Psydon and the Ten. You have come to restore the True faith to these people and tear out the rot festering within."
-	outfit = /datum/outfit/job/specialinquisitor
+	outfit = /datum/outfit/specialinquisitor
 	antag_role = /datum/antagonist/purishep
 	allowed_races = list(SPEC_ID_HUMEN)
 	is_recognized = TRUE
@@ -59,7 +59,7 @@
 	species.native_language = "Old Psydonic"
 	species.accent_language = species.get_accent(species.native_language)
 
-/datum/outfit/job/specialinquisitor
+/datum/outfit/specialinquisitor
 	wrists = /obj/item/clothing/neck/psycross/silver
 	neck = /obj/item/clothing/neck/bevor
 	shirt = /obj/item/clothing/shirt/undershirt/fancy
@@ -140,7 +140,7 @@
 		LAZYADDASSOC(skills, /datum/skill/combat/swords, 2)
 		LAZYADDASSOC(skills, /datum/skill/combat/shields, 1)
 
-/datum/outfit/job/inquisition_crusader
+/datum/outfit/inquisition_crusader
 	name = "Episcopal Crusader"
 	head = /obj/item/clothing/head/helmet/heavy/crusader
 	neck = /obj/item/clothing/neck/coif/cloth
@@ -157,7 +157,7 @@
 	cloak = /obj/item/clothing/cloak/stabard/crusader
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1)
 
-/datum/outfit/job/inquisition_crusader/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/inquisition_crusader/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == FEMALE)

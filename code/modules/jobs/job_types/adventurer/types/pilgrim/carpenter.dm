@@ -4,13 +4,13 @@
 	trees and bending wood to your will. With enough practice, your only limit is your imagination."
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/carpenter
+	outfit = /datum/outfit/adventurer/carpenter
 
 	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Carpenter Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-/datum/outfit/job/adventurer/carpenter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/carpenter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

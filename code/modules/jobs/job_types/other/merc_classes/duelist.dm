@@ -10,12 +10,12 @@
 		SPEC_ID_AASIMAR,\
 		SPEC_ID_HALF_ORC,\
 	) //Yes, Horcs get to be Duelists, Not Drows though.
-	outfit = /datum/outfit/job/mercenary/duelist
+	outfit = /datum/outfit/mercenary/duelist
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg' //Placeholder music since apparently i can't use one from the internet...
 	total_positions = 5
 
-/datum/outfit/job/mercenary/duelist
+/datum/outfit/mercenary/duelist
 	head = /obj/item/clothing/head/leather/duelhat
 	cloak = /obj/item/clothing/cloak/half/duelcape
 	armor = /obj/item/clothing/armor/leather/jacket/leathercoat/duelcoat
@@ -27,7 +27,7 @@
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid)
 
-/datum/outfit/job/mercenary/duelist/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/duelist/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

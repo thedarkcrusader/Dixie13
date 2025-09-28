@@ -255,7 +255,7 @@
 	return success
 
 /client/proc/test_spawn_outfits()
-	for(var/path in subtypesof(/datum/outfit/job))
+	for(var/path in subtypesof(/datum/outfit))
 		var/mob/living/carbon/human/new_human = new(mob.loc)
 		var/datum/outfit/new_outfit = new path()
 		new_outfit.equip(new_human)

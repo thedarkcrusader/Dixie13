@@ -5,7 +5,7 @@
 	This is your duty, this is your call."
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/cheesemaker
+	outfit = /datum/outfit/adventurer/cheesemaker
 
 	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Cheesemaker Apprentice"
@@ -17,7 +17,7 @@
 	var/mob/living/simple_animal/animal = new animal_path(get_turf(spawned))
 	animal.tamed(spawned)
 
-/datum/outfit/job/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)

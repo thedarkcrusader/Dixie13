@@ -4,12 +4,12 @@
 	allowed_races = list(SPEC_ID_ELF)
 	total_positions = 1
 	roll_chance = 15
-	outfit = /datum/outfit/job/adventurer/bladesinger
+	outfit = /datum/outfit/adventurer/bladesinger
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 2
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
-/datum/outfit/job/adventurer/bladesinger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/bladesinger/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

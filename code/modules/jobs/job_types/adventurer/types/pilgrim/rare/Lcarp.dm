@@ -7,7 +7,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/mastercarpenter
+	outfit = /datum/outfit/adventurer/mastercarpenter
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	total_positions = 1
 	roll_chance = 15
@@ -15,7 +15,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/mastercarpenter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/mastercarpenter/pre_equip(mob/living/carbon/human/H)
 	..()
 
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)

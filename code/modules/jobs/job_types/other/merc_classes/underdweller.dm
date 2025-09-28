@@ -7,11 +7,11 @@
 		SPEC_ID_HALF_DROW,\
 		SPEC_ID_KOBOLD,\
 	)
-	outfit = /datum/outfit/job/mercenary/underdweller
+	outfit = /datum/outfit/mercenary/underdweller
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
-/datum/outfit/job/mercenary/underdweller/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/underdweller/pre_equip(mob/living/carbon/human/H)
 	..()
 
 	var/shirt_type = pickweight(list(

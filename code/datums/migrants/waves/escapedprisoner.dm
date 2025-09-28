@@ -16,7 +16,7 @@
 	destination, your last bit of strengh surged, and the man met his end with a cracked skull on your mask. The restraints, \
 	too rusted to stay together, broke as you jumped into the river. The tiny voice you forgot you had echoed in the back of \
 	your mind. 'I'm not going back.'"
-	outfit = /datum/outfit/job/escprisoner
+	outfit = /datum/outfit/escprisoner
 
 	jobstats = list(
 		STATKEY_CON = -2,
@@ -45,14 +45,14 @@
 	traits = list(TRAIT_NOBLE, TRAIT_CRITICAL_RESISTANCE)
 	cmode_music = 'sound/music/cmode/towner/CombatPrisoner.ogg'
 
-/datum/outfit/job/escprisoner
+/datum/outfit/escprisoner
 	pants = /obj/item/clothing/pants/loincloth/colored/brown
 	mask = /obj/item/clothing/face/facemask/prisoner
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/weapon/knife/villager
 
-/datum/outfit/job/escprisoner/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/escprisoner/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 	if(visuals_only)
 		return

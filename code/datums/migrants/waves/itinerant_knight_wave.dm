@@ -6,7 +6,7 @@
 /datum/job/migrant/itinerant_knight
 	title = "Itinerant Knight"
 	tutorial = "You are an itinerant Knight, you have embarked alongside your squire on a voyage to fullfil your knightly vows."
-	outfit = /datum/outfit/job/itinerant_knight
+	outfit = /datum/outfit/itinerant_knight
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
 	jobstats = list(
@@ -51,7 +51,7 @@
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/itinerant_knight
+/datum/outfit/itinerant_knight
 	head = /obj/item/clothing/head/helmet/visored/sallet
 	wrists = /obj/item/clothing/wrists/bracers
 	gloves = /obj/item/clothing/gloves/plate
@@ -78,7 +78,7 @@
 /datum/job/migrant/itinerant_squire
 	title = "Itinerant Squire"
 	tutorial = "You are the squire of an itinerant knight, they have taken you under their custody as you have shown great talents, if you keep it on, you might become a knight yourself."
-	outfit = /datum/outfit/job/itinerant_squire
+	outfit = /datum/outfit/itinerant_squire
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 
@@ -109,7 +109,7 @@
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	voicepack_m = /datum/voicepack/male/squire
 
-/datum/outfit/job/itinerant_squire
+/datum/outfit/itinerant_squire
 	shirt = /obj/item/clothing/shirt/dress/gen/colored/black
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots

@@ -2,12 +2,12 @@
 	title = "Boltslinger"
 	tutorial = "A cutthroat and a soldier of fortune, your mastery of the crossbow has brought you to many battlefields, all in pursuit of mammon."
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/mercenary/boltslinger
+	outfit = /datum/outfit/mercenary/boltslinger
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
 
-/datum/outfit/job/mercenary/boltslinger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/boltslinger/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half

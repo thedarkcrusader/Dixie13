@@ -2,13 +2,13 @@
 	title = "Grenzelhoft Mercenary"
 	tutorial = "A mercenary from the Grenzelhoft Empire's Mercenary Guild. Their only care is coin, and the procurement of coin."
 	allowed_races = RACES_PLAYER_GRENZ
-	outfit = /datum/outfit/job/mercenary/grenzelhoft
+	outfit = /datum/outfit/mercenary/grenzelhoft
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/job/mercenary/grenzelhoft/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

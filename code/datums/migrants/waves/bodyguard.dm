@@ -12,7 +12,7 @@
 	You, however, have had the misfortune of slipping through many cracks. Instead of tainting your eternal soul by means of \
 	murder, you've elected to taint it in self-defense. Find an employer, and make a use for yourself. Cut the middleman, \
 	avoid working with any guilds."
-	outfit = /datum/outfit/job/bodyguard
+	outfit = /datum/outfit/bodyguard
 
 	jobstats = list(
 		STATKEY_STR = 1,
@@ -34,7 +34,7 @@
 	traits = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
-/datum/outfit/job/bodyguard
+/datum/outfit/bodyguard
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	neck = /obj/item/clothing/neck/coif
 	gloves = /obj/item/clothing/gloves/angle

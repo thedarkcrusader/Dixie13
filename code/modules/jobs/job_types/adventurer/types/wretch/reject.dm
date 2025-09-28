@@ -6,10 +6,10 @@
 	allowed_ages = list(AGE_ADULT, AGE_CHILD)
 	total_positions = 1
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-	outfit = /datum/outfit/job/wretch/reject
+	outfit = /datum/outfit/wretch/reject
 	category_tags = list(CTAG_WRETCH)
 
-/datum/outfit/job/wretch/reject
+/datum/outfit/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak
 	mask = /obj/item/clothing/face/shepherd/rag
@@ -30,7 +30,7 @@
 		/obj/item/lockpickring/mundane = 1,
 	)
 
-/datum/outfit/job/wretch/reject/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/wretch/reject/pre_equip(mob/living/carbon/human/H)
 	..()
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 5 SECONDS)
 	if(GLOB.keep_doors.len > 0)
@@ -71,6 +71,6 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
 
-/datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	wretch_select_bounty(H)

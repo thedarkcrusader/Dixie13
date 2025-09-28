@@ -12,13 +12,13 @@
 		SPEC_ID_HALF_ORC,\
 		SPEC_ID_RAKSHARI,\
 	)
-	outfit = /datum/outfit/job/adventurer/swashbuckler
+	outfit = /datum/outfit/adventurer/swashbuckler
 	total_positions = 1
 	min_pq = 0
 	roll_chance = 30
 	category_tags = list(CTAG_ADVENTURER)
 
-/datum/outfit/job/adventurer/swashbuckler
+/datum/outfit/adventurer/swashbuckler
 	head = /obj/item/clothing/head/helmet/leather/headscarf
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/leather
@@ -31,7 +31,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	neck = /obj/item/clothing/neck/psycross/silver/abyssor
 
-/datum/outfit/job/adventurer/swashbuckler/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/swashbuckler/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		if(H.patron != /datum/patron/divine/abyssor)

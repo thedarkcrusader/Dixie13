@@ -6,7 +6,7 @@
 /datum/job/migrant/gaoler
 	title = "Gaoler"
 	tutorial = "The lords of Vanderlins sent you to Heartfelt to rappatriate some prisoners that were in their prison, you are now on your way back."
-	outfit = /datum/outfit/job/gaoler
+	outfit = /datum/outfit/gaoler
 	allowed_races = list(
 		SPEC_ID_HUMEN,
 		SPEC_ID_ELF,
@@ -49,7 +49,7 @@
 	. = ..()
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 
-/datum/outfit/job/gaoler
+/datum/outfit/gaoler
 	head = /obj/item/clothing/head/menacing
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	pants = /obj/item/clothing/pants/trou
@@ -73,7 +73,7 @@
 /datum/job/migrant/mig_prisoner
 	title = "Prisoner"
 	tutorial = "You had fled Vanderlin, took refuge in Heartfelt yet the lords over there caught you and thus handed you over to those who seeked you before."
-	outfit = /datum/outfit/job/mig_prisoner
+	outfit = /datum/outfit/mig_prisoner
 
 	jobstats = list(
 		STATKEY_STR = -1,
@@ -100,7 +100,7 @@
 
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-/datum/outfit/job/mig_prisoner
+/datum/outfit/mig_prisoner
 	pants = /obj/item/clothing/pants/loincloth/colored/brown
 	mask = /obj/item/clothing/face/facemask/prisoner
 
@@ -112,7 +112,7 @@
 /datum/job/migrant/mig_guard
 	title = "Convoy Guard"
 	tutorial = "You are apart of a convoy returning prisoners to Vanderlin. Obey the gaoler and ensure the prisoners get back to the dungeons."
-	outfit = /datum/outfit/job/mig_guard
+	outfit = /datum/outfit/mig_guard
 	allowed_races = list(
 		SPEC_ID_HUMEN,
 		SPEC_ID_ELF,
@@ -155,7 +155,7 @@
 	. = ..()
 	spawned.verbs |= /mob/proc/haltyell
 
-/datum/outfit/job/mig_guard
+/datum/outfit/mig_guard
 	armor = /obj/item/clothing/armor/cuirass
 	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/gorget

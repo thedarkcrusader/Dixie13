@@ -4,8 +4,8 @@
 	title = "Sentinel"
 	tutorial = "Your overseers have sent you to this distant land as a scout. Your trusted steed, longbow, and spear will allow you to overcome any challenges on the road ahead."
 	allowed_races = RACES_PLAYER_ELF_ALL
-	outfit = /datum/outfit/job/adventurer/sentinel
-	outfit = /datum/outfit/job/adventurer/sentinel
+	outfit = /datum/outfit/adventurer/sentinel
+	outfit = /datum/outfit/adventurer/sentinel
 	total_positions = 1
 	min_pq = 0
 	roll_chance = 30
@@ -16,7 +16,7 @@
 	. = ..()
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 
-/datum/outfit/job/adventurer/sentinel/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/sentinel/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

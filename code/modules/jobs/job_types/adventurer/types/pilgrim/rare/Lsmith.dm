@@ -8,14 +8,14 @@
 		SPEC_ID_HUMEN,\
 		SPEC_ID_DWARF,\
 	)
-	outfit = /datum/outfit/job/adventurer/masterblacksmith
+	outfit = /datum/outfit/adventurer/masterblacksmith
 	total_positions = 1
 	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM)
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	beltr = /obj/item/weapon/hammer/iron
 	backl = /obj/item/storage/backpack/backpack

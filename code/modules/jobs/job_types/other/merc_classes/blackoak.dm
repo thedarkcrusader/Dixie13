@@ -2,11 +2,11 @@
 	title = "Black Oak's Guardian"
 	tutorial = "A shady guardian of the Black Oaks, a mercenary band in all but offical name. Commonly taking caravan contracts through the thickest of forests."
 	allowed_races = RACES_PLAYER_ELF
-	outfit = /datum/outfit/job/mercenary/blackoak
+	outfit = /datum/outfit/mercenary/blackoak
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
-/datum/outfit/job/mercenary/blackoak/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/blackoak/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half/colored/red

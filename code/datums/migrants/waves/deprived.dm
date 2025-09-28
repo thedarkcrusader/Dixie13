@@ -6,7 +6,7 @@
 /datum/job/migrant/deprived
 	title = "Deprived"
 	tutorial = "You were once a highwayman, a monster of the road - but you have since ditched your sinful ways, leaving society behind in wake of your regrets. Nothing erases the past, and you can find absolution only in the catharsis of death. Let the wildlife shepherd your soul to Necra."
-	outfit = /datum/outfit/job/deprived
+	outfit = /datum/outfit/deprived
 
 	jobstats = list(
 		STATKEY_SPD = -2,
@@ -32,7 +32,7 @@
 	traits = list(TRAIT_CRITICAL_RESISTANCE)
 	cmode_music = 'sound/music/cmode/towner/CombatPrisoner.ogg'
 
-/datum/outfit/job/deprived
+/datum/outfit/deprived
 	head = /obj/item/clothing/head/menacing
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/simpleshoes

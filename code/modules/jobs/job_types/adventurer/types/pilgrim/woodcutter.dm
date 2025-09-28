@@ -2,11 +2,11 @@
 	title = "Woodcutter"
 	allowed_races = RACES_PLAYER_NONEXOTIC
 
-	outfit = /datum/outfit/job/adventurer/woodcutter
+	outfit = /datum/outfit/adventurer/woodcutter
 	apprentice_name = "Woodcutter"
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-/datum/outfit/job/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

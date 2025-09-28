@@ -15,18 +15,15 @@
 
 	allowed_races = RACES_PLAYER_ALL
 
-	outfit = /datum/outfit/job/adept
+	outfit = /datum/outfit/adept
 	advclass_cat_rolls = list(CTAG_ADEPT = 20)
 	can_have_apprentices = FALSE
 	is_foreigner = TRUE
 
-/datum/outfit/job/adept
-	name = "Adept"
-	jobtype = /datum/job/adept
-	allowed_patrons = list(/datum/patron/psydon)
 	job_bitflag = BITFLAG_CHURCH
 
-/datum/outfit/job/adept // Base outfit for Adepts, before loadouts
+/datum/outfit/adept // Base outfit for Adepts, before loadouts
+	name = "Adept"
 	shoes = /obj/item/clothing/shoes/boots
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	mask = /obj/item/clothing/face/facemask/silver
@@ -38,13 +35,13 @@
 /datum/job/advclass/adept/bzealot
 	title = "Brutal Zealot"
 	tutorial = "You are a former thug who has been given a chance to redeem yourself by the Inquisitor. You serve him and Psydon with your physical strength and zeal."
-	outfit = /datum/outfit/job/adept/bzealot
+	outfit = /datum/outfit/adept/bzealot
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	total_positions = 1
 
-/datum/outfit/job/adept/bzealot/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adept/bzealot/pre_equip(mob/living/carbon/human/H)
 	..()
 	//Armor for class
 	belt = /obj/item/storage/belt/leather
@@ -84,13 +81,13 @@
 /datum/job/advclass/adept/rthief
 	title = "Reformed Thief"
 	tutorial = "You are a former thief who has been given a chance to redeem yourself by the Inquisitor. You serve him and Psydon with your stealth and cunning."
-	outfit = /datum/outfit/job/adept/rthief
+	outfit = /datum/outfit/adept/rthief
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/adventurer/CombatRogue.ogg'
 	total_positions = 1
 
-/datum/outfit/job/adept/rthief/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adept/rthief/pre_equip(mob/living/carbon/human/H)
 	..()
 	//Armor for class
 	belt = /obj/item/storage/belt/leather
@@ -136,13 +133,13 @@
 /datum/job/advclass/adept/highwayman
 	title = "Vile Renegade"
 	tutorial = "You were a former outlaw who has been given a chance to redeem yourself by the Inquisitor. You serve him and Psydon with your survival skills."
-	outfit = /datum/outfit/job/adept/highwayman
+	outfit = /datum/outfit/adept/highwayman
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
 	total_positions = 1
 
-/datum/outfit/job/adept/highwayman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adept/highwayman/pre_equip(mob/living/carbon/human/H)
 	..()
 	//Armor for class
 	belt = /obj/item/storage/belt/leather
@@ -183,7 +180,7 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/knight() // We're going with gentleman-thief here.
 
 
-/datum/outfit/job/adept/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adept/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		if(H.mind.has_antag_datum(/datum/antagonist))

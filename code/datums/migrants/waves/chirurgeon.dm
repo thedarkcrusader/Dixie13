@@ -14,7 +14,7 @@
 	there is one truth - your hands are indeed as steady as you claim them to be. Ensure you find an employer that won't stab \
 	you in the back, and wait for an opportune moment to stab them in theirs. Make a fine practice far away from the eyes of \
 	your competition, lest you find yourself dead and floating downstream."
-	outfit = /datum/outfit/job/chirurgeon
+	outfit = /datum/outfit/chirurgeon
 
 	jobstats = list(
 		STATKEY_INT = 3,
@@ -42,7 +42,7 @@
 
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-/datum/outfit/job/chirurgeon
+/datum/outfit/chirurgeon
 	mask = /obj/item/clothing/face/shepherd/clothmask
 	head = /obj/item/clothing/head/brimmed
 	cloak = /obj/item/clothing/cloak/apron/cook

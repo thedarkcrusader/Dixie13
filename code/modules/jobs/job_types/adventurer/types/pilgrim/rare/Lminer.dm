@@ -5,7 +5,7 @@
 	tutorial = "Hardy dwarves who dedicated their entire life to a singular purpose: \
 	the acquisition of ore, precious stones, and anything deep below the mines."
 	allowed_races = list(SPEC_ID_DWARF)
-	outfit = /datum/outfit/job/adventurer/minermaster
+	outfit = /datum/outfit/adventurer/minermaster
 	total_positions = 1
 	roll_chance = 15
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
@@ -13,7 +13,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE
 
-/datum/outfit/job/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/leather/minershelm
 	pants = /obj/item/clothing/pants/trou

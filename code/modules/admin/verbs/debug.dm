@@ -262,7 +262,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/robust_dress_shop()
 	var/list/baseoutfits = list("Naked","Custom", "As Roguetown Job...")
 	var/list/outfits = list()
-	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job)  - typesof(/datum/outfit/job)
+	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit)  - typesof(/datum/outfit)
 
 	for(var/datum/outfit/O as anything in paths) //not much to initalize here but whatever
 		if(initial(O.can_be_admin_equipped))
@@ -285,7 +285,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			return
 
 	if (dresscode == "As Roguetown Job...")
-		var/list/roguejob_paths = subtypesof(/datum/outfit/job)
+		var/list/roguejob_paths = subtypesof(/datum/outfit)
 		var/list/roguejob_outfits = list()
 		for(var/datum/outfit/O as anything in roguejob_paths)
 			//roguetown coders are morons and didn't give ANY outfits proper fucking names

@@ -2,14 +2,14 @@
 	title = "Immortal Bulwark"
 	tutorial = "You have marched and fought in formations since the ancient war that nearly destroyed Psydonia. There are few in the world who can match your expertise in a shield wall, but all you have ever known is battle and obedience..."
 	allowed_races = list(SPEC_ID_AASIMAR)
-	outfit = /datum/outfit/job/adventurer/hoplite
+	outfit = /datum/outfit/adventurer/hoplite
 	total_positions = 1
 	roll_chance = 15 // Same as the other very rare classes
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 2 // Same as Bladesinger
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 
-/datum/outfit/job/adventurer/hoplite/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/hoplite/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
