@@ -143,7 +143,7 @@
 #endif
 #endif
 
-#define KALYPSO_PROJECT
+//#define KALYPSO_PROJECT
 #if defined(KALYPSO_PROJECT)
 #define NO_DUNGEON
 #define FORCE_MAP "_maps/projectkalypso.json"
