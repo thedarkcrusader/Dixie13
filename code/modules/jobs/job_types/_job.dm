@@ -70,10 +70,10 @@
 	var/job_flags = JOB_SHOW_IN_ACTOR_LIST
 
 	//allowed sex/race for picking
-	var/list/allowed_sexes = list(MALE,FEMALE)
-	var/list/allowed_races
+	var/list/allowed_sexes = list(MALE, FEMALE)
+	var/list/allowed_races = RACES_PLAYER_ALL
 	var/list/allowed_patrons
-	var/list/allowed_ages = ALL_AGES_LIST
+	var/list/allowed_ages = ALL_AGES_LIST_CHILD
 
 	/// Stats given to the job in the form of list(STA_X = value)
 	var/list/jobstats
