@@ -514,7 +514,7 @@
 	created_item = /obj/item/clothing/neck/psycross/silver/pestra
 
 /datum/artificer_recipe/psycross/malum_silver
-	name = "Malum Silver Psycross"
+	name = "Malum Psycross"
 	required_item = /obj/item/ingot/silver
 	created_item = /obj/item/clothing/neck/psycross/silver/malum
 
@@ -523,7 +523,6 @@
 	required_item = /obj/item/ingot/silver
 	created_item = /obj/item/clothing/neck/psycross/silver/malum/steel
 	additional_items = list(/obj/item/ingot/steel = 1)
-	hammers_per_item = 7
 	craftdiff = 3
 
 // --------- Misc -----------

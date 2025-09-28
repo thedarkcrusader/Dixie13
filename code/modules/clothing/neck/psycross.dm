@@ -30,7 +30,6 @@
 	icon_state = "astrata"
 	resistance_flags = FIRE_PROOF
 
-// Not silver because in old lore, Noc liked vamps. He does not here! TODO: Needs to change!
 /obj/item/clothing/neck/psycross/silver/noc
 	name = "amulet of Noc"
 	desc = "Diligence, study, pursuit of truth and wisdom. Let nothing deter you from it."
