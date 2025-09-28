@@ -38,6 +38,8 @@
 
 /datum/job/advclass/heir
 	inherit_parent_title = TRUE
+	allowed_ages = list(AGE_ADULT, AGE_CHILD)
+	allowed_races = RACES_PLAYER_ROYALTY
 
 /datum/job/advclass/heir/daring
 	title = "Daring Twit"

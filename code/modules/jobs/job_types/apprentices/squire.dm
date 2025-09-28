@@ -34,8 +34,9 @@
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/manorguard
 
-/datum/job/squire/after_spawn(mob/living/carbon/spawned, client/player_client)
-	. = ..()
+/datum/job/advclass/squire
+	allowed_ages = list(AGE_CHILD, AGE_ADULT)
+	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
 /datum/job/advclass/squire/lancer
 	title = "Pikeman Squire"
