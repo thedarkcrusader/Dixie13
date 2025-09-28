@@ -1932,6 +1932,9 @@
 	dir = 4
 	},
 /obj/structure/fluff/walldeco/church/line,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 8
+	},
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
 "bcl" = (
@@ -15726,6 +15729,7 @@
 	dir = 4
 	},
 /obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
 "jfg" = (
@@ -17576,6 +17580,12 @@
 /obj/structure/toilet,
 /turf/open/floor/blocks/paving,
 /area/rogue/under/town/basement)
+"klA" = (
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 8
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors/town/church/inquisition)
 "klB" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -20137,6 +20147,11 @@
 	pixel_y = 14
 	},
 /turf/open/floor/church/purple,
+/area/rogue/outdoors/mountains)
+"lYV" = (
+/turf/open/floor/twig{
+	dir = 4
+	},
 /area/rogue/outdoors/mountains)
 "lZa" = (
 /turf/closed/wall/mineral/decorstone,
@@ -23359,6 +23374,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
 "nSQ" = (
@@ -29236,6 +29252,10 @@
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/structure/fluff/walldeco/church/line,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 4;
+	pixel_x = 16
+	},
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
 "rDr" = (
@@ -29631,6 +29651,9 @@
 /obj/structure/fluff/walldeco/church/line,
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 4
 	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/inquisition)
@@ -32349,6 +32372,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 1
+	},
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
 "tsd" = (
@@ -33188,6 +33214,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "tPx" = (
+/obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/town/church/inquisition)
 "tPF" = (
@@ -34560,6 +34587,13 @@
 /obj/structure/bars,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church)
+"uMc" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 4
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors/town/church/inquisition)
 "uMe" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 4
@@ -74718,7 +74752,7 @@ fEA
 fKT
 dHC
 oZr
-oZr
+uMc
 fZq
 vgJ
 vgJ
@@ -75724,7 +75758,7 @@ vgJ
 fgn
 oZr
 nCW
-fPN
+klA
 fZq
 vgJ
 vgJ
@@ -235914,8 +235948,8 @@ uVx
 uVx
 uVx
 eyH
-jaS
-jaS
+lYV
+lYV
 uVx
 uVx
 uVx
@@ -236116,7 +236150,7 @@ uVx
 uVx
 uVx
 eyH
-jaS
+lYV
 uVx
 uVx
 uVx
