@@ -34053,7 +34053,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
-/turf/open/floor/church,
+/turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/inquisition)
 "uyO" = (
 /obj/structure/bed/wool,
