@@ -80,33 +80,34 @@ SUBSYSTEM_DEF(role_class_handler)
 		H.client.activate_triumph_buy(TRIUMPH_BUY_ANY_CLASS)
 
 	// insure they somehow aren't closing the datum they got and opening a new one w rolls
-	var/datum/class_select_handler/GOT_IT = class_select_handlers[H.client.ckey]
-	if(GOT_IT)
-		if(!GOT_IT.linked_client) // this ref will disappear if they disconnect neways probably, as its a client
-			GOT_IT.linked_client = H.client // Thus we just give it back to them
-		GOT_IT.second_step() // And give them a second dose of something they already dosed on
-		return
+	var/datum/class_select_handler/class_select = class_select_handlers[H.client.ckey]
+	if(class_select)
+		if(!class_select.linked_client) // this ref will disappear if they disconnect neways probably, as its a client
+			class_select.linked_client = H.client // Thus we just give it back to them
+		class_select.second_step() // And give them a second dose of something they already dosed on
+	else
+		class_select = new()
+	class_select.linked_client = H.client
 
-	var/datum/class_select_handler/XTRA_MEATY = new()
-	XTRA_MEATY.linked_client = H.client
+	var/used_key = class_select.linked_client.ckey
 
 		// Hack for Migrants
 	if(advclass_rolls_override)
-		XTRA_MEATY.class_cat_alloc_attempts = advclass_rolls_override
+		class_select.class_cat_alloc_attempts = advclass_rolls_override
 	else
-		var/datum/job/RT_JOB = SSjob.GetJob(H.job)
-		if(length(RT_JOB.advclass_cat_rolls))
-			XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.advclass_cat_rolls
+		var/datum/job/job_datum = SSjob.GetJob(H.job)
+		if(length(job_datum.advclass_cat_rolls))
+			class_select.class_cat_alloc_attempts = job_datum.advclass_cat_rolls
 
-	if(H.client.ckey in special_session_queue)
-		XTRA_MEATY.special_session_queue = list()
-		for(var/funny_key in special_session_queue[H.client.ckey])
-			var/datum/job/advclass/XTRA_SPECIAL = special_session_queue[H.client.ckey][funny_key]
-			if(XTRA_SPECIAL.total_positions > XTRA_SPECIAL.current_positions)
-				XTRA_MEATY.special_session_queue += XTRA_SPECIAL
+	if(used_key in special_session_queue)
+		class_select.special_session_queue = list()
+		for(var/funny_key in special_session_queue[used_key])
+			var/datum/job/advclass/special_class = special_session_queue[used_key][funny_key]
+			if(special_class.total_positions > special_class.current_positions)
+				class_select.special_session_queue += special_class
 
-	XTRA_MEATY.initial_setup()
-	class_select_handlers[H.client.ckey] = XTRA_MEATY
+	class_select.initial_setup()
+	class_select_handlers[used_key] = class_select
 
 /*
 	Attempt to finish the class handling ordeal, aka they picked something

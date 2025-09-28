@@ -74,7 +74,7 @@
 
 // I hope to god you have a client before you call this, cause the checks on the SS
 /datum/class_select_handler/proc/assemble_the_CLASSES()
-	var/mob/living/carbon/human/H = linked_client.mob
+	var/mob/living/carbon/human/human_mob = linked_client.mob
 
 	// Time to sort and find our viable classes depending on what conditions we gotta deal w
 	if(length(class_cat_alloc_attempts))
@@ -85,9 +85,9 @@
 			for(var/datum/job/advclass/CUR_AZZ in subsystem_ctag_list)
 				if(rolled_classes[CUR_AZZ])
 					continue
-				if(is_advclass_banned(H.ckey, CUR_AZZ.title))
+				if(is_advclass_banned(human_mob.ckey, CUR_AZZ.title))
 					continue
-				if(class_cat_alloc_bypass_reqs || CUR_AZZ.check_requirements(H))
+				if(class_cat_alloc_bypass_reqs || CUR_AZZ.check_requirements(human_mob))
 					local_insert_sortlist += CUR_AZZ
 
 			// Time to do some picking, make sure we got things in the list we dealin with
@@ -111,10 +111,10 @@
 	// If we got forced class additions
 	if(length(forced_class_additions))
 		for(var/uninstanced_azz_types in forced_class_additions)
-			var/datum/job/advclass/forced_class = new uninstanced_azz_types
+			var/datum/job/advclass/forced_class = SSjob.GetJobType(uninstanced_azz_types)
 			if(rolled_classes[forced_class])
 				continue
-			if(class_cat_alloc_bypass_reqs || forced_class.check_requirements(H))
+			if(class_cat_alloc_bypass_reqs || forced_class.check_requirements(human_mob))
 				rolled_classes[forced_class] = 0
 
 		if(forced_class_plusboost)
