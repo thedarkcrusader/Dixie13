@@ -56,7 +56,7 @@
 		LAZYADDASSOC(jobstats, STATKEY_SPD, 1)
 
 /datum/outfit/job/serjeant_at_arms
-	head = /obj/item/clothing/head/helmet/leather
+	head = /obj/item/clothing/head/helmet/sargebarbute
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/shirt/undershirt/colored/guardsecond
@@ -131,7 +131,7 @@
 	. = ..()
 
 	if(prob(30))
-		head = /obj/item/clothing/head/helmet/kettle
+		head = /obj/item/clothing/head/helmet/townbarbute
 	else
 		head = pick(/obj/item/clothing/head/roguehood/colored/guard, /obj/item/clothing/head/roguehood/colored/guardsecond)
 
@@ -194,7 +194,7 @@
 	. = ..()
 
 	if(prob(30))
-		head = /obj/item/clothing/head/helmet/kettle
+		head = /obj/item/clothing/head/helmet/townbarbute
 	else
 		head = pick(/obj/item/clothing/head/roguehood/colored/guard, /obj/item/clothing/head/roguehood/colored/guardsecond)
 
@@ -240,10 +240,10 @@
 	spawned.verbs |= /mob/proc/haltyell
 
 /datum/outfit/job/footman_bannerman
-	armor = /obj/item/clothing/armor/cuirass
-	shirt = /obj/item/clothing/armor/chainmail
+	armor = /obj/item/clothing/armor/cuirass/iron
+	shirt = /obj/item/clothing/armor/chainmail/iron
 	neck = /obj/item/clothing/neck/gorget
-	head = /obj/item/clothing/head/helmet/nasal
+	head = /obj/item/clothing/head/helmet/townbarbute
 	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	beltl = /obj/item/weapon/mace
@@ -293,10 +293,10 @@
 	spawned.verbs |= /mob/proc/haltyell
 
 /datum/outfit/job/pikeman_bannerman
-	armor = /obj/item/clothing/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
-	head = /obj/item/clothing/head/helmet/kettle
+	head = /obj/item/clothing/head/helmet/townbarbute
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard
