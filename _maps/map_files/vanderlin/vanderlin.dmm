@@ -10251,6 +10251,13 @@
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
+"fQX" = (
+/obj/structure/fluff/walldeco/church/line,
+/obj/structure/fake_machine/scomm{
+	pixel_y = -32
+	},
+/turf/open/floor/churchrough/purple,
+/area/rogue/indoors/town/church/inquisition)
 "fRk" = (
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 8
@@ -74102,7 +74109,7 @@ vGC
 jPP
 vFE
 lYd
-fKT
+fQX
 fgn
 vgJ
 vgJ
