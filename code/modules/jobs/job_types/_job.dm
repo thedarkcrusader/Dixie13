@@ -211,6 +211,14 @@
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 
+// I hate this codebase. Required due to patron handling needing patron to be set before outfits.
+// If that stops being the case put this back in after_spawn()
+/// Things that must be done before outfit is equipped in EquipRank()
+/datum/job/proc/pre_outfit_equip(mob/living/carbon/human/spawned, client/player_client)
+	SHOULD_CALL_PARENT(TRUE)
+
+	adjust_patron(spawned)
+
 /// Executes after the mob has been spawned in the map.
 /// Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/carbon/human/spawned, client/player_client)
@@ -221,7 +229,6 @@
 		return
 
 	adjust_values(spawned)
-	adjust_patron(spawned)
 
 	if(magic_user)
 		spawned.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
