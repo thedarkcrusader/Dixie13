@@ -244,7 +244,7 @@
 	name = "Uniglot"
 	greet_text = span_notice("I could never pick up on languages easily, \
 	even those that most people speak... What even is that Imperial nonsense?")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/uniglot/on_apply(mob/living/carbon/human/character, silent)
 	character.remove_language(/datum/language/common)
