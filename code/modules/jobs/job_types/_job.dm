@@ -259,7 +259,7 @@
 
 	var/list/used_stats = ((spawned.gender == FEMALE) && jobstats_f) ? jobstats_f : jobstats
 	for(var/stat_key in used_stats)
-		spawned.set_stat_modifier("job_stats", stat_key, used_stats[stat_key])
+		spawned.adjust_stat_modifier("job_stats", stat_key, used_stats[stat_key])
 
 	for(var/datum/skill/skill as anything in skills)
 		var/amount_or_list = skills[skill]
