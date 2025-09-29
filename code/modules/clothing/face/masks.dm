@@ -76,12 +76,10 @@
 	desc = "A knightly steel mask that both conceals and protects the face. Usually paired with a bascinet."
 	max_integrity = 300
 
-/obj/item/clothing/face/facemask/psydonic
+/obj/item/clothing/face/facemask/steel/psydonic
 	name = "psydonic death mask"
 	icon_state = "smask_psydonic"
 	desc = "A menacing steel mask with a tarnished brass psycross imprint. The very sight of it fills old elves with dread."
-	armor = list("blunt" = 100, "slash" = 100, "stab" = 100, "piercing" =80, "fire" = 0, "acid" = 0)
-	max_integrity = 300
 
 /obj/item/clothing/face/facemask/silver
 	name = "silver mask"
