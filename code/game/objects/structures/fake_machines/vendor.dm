@@ -276,10 +276,7 @@
 
 /obj/structure/fake_machine/vendor/steward/Initialize()
 	. = ..()
-	var/obj/I = new /obj/item/key/shops/shop4(src)
-	held_items[I] = list()
-	held_items[I]["NAME"] = I.name
-	held_items[I]["PRICE"] = 20
+	for(var/X in list(/obj/item/key/shops/shop4))
 		var/obj/I = new X(src)
 		held_items[I] = list()
 		held_items[I]["NAME"] = I.name
