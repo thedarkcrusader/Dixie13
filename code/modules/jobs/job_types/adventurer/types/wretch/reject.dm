@@ -1,9 +1,9 @@
 /datum/advclass/wretch/reject
 	name = "Rejected Royal"
-	tutorial = "You were once a member of the royal family, but due to your actions, or the circumstance of your birth, you have been cast out to roam the wilds. \
+	tutorial = "You were once a member of the royal family, but due to your actions, or the circumstances of your birth, you have been cast out to roam the wilds. \
 	Now, you return, seeking redemption or perhaps... revenge."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = allowed_races = list(\
+	allowed_races = list(\
 		SPEC_ID_HUMEN,\
 		SPEC_ID_HALF_ELF,\
 		SPEC_ID_HALF_DROW,\
