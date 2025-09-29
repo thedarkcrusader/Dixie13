@@ -240,6 +240,48 @@
 	character.grant_language(/datum/language/zalad)
 	character.grant_language(/datum/language/thievescant)
 
+/datum/special_trait/uniglot
+	name = "Uniglot"
+	greet_text = span_notice("I could never pick up on languages easily, \
+	even those that most people speak... What even is that Imperial nonsense?")
+	weight = 50
+
+/datum/special_trait/uniglot/on_apply(mob/living/carbon/human/character, silent)
+	character.remove_language(/datum/language/common)
+	switch(rand(1,7))
+		if(1)
+			character.grant_language(/datum/language/elvish)
+		if(2)
+			character.grant_language(/datum/language/deepspeak)
+		if(3)
+			character.grant_language(/datum/language/dwarvish)
+		if(4)
+			character.grant_language(/datum/language/zalad)
+		if(5)
+			character.grant_language(/datum/language/oldpsydonic)
+		if(6)
+			character.grant_language(/datum/language/hellspeak)
+		if(7)
+			character.grant_language(/datum/language/orcish)
+
+/datum/special_trait/languageidiot
+	name = "Somewhat Polyglot"
+	greet_text = span_notice("I have always picked up on languages easily, \
+	even those that are forbidden to mortals... except that accursed Imperial chatter. What even is that nonsense?")
+	weight = 50
+
+/datum/special_trait/languageidiot/on_apply(mob/living/carbon/human/character, silent)
+	character.remove_language(/datum/language/common)
+	character.grant_language(/datum/language/dwarvish)
+	character.grant_language(/datum/language/elvish)
+	character.grant_language(/datum/language/hellspeak)
+	character.grant_language(/datum/language/celestial)
+	character.grant_language(/datum/language/orcish)
+	character.grant_language(/datum/language/deepspeak)
+	character.grant_language(/datum/language/oldpsydonic)
+	character.grant_language(/datum/language/zalad)
+	character.grant_language(/datum/language/thievescant)
+
 /datum/special_trait/tavernbrawler
 	name = "Tavern Brawler"
 	greet_text = span_notice("I love a good pub fight!")
@@ -382,7 +424,7 @@
 /datum/special_trait/unlucky
 	name = "Unlucky"
 	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 100
+	weight = 50
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(1, 10)
@@ -407,6 +449,13 @@
 	character.reagents.add_reagent(pick(/datum/reagent/ozium, /datum/reagent/moondust, /datum/reagent/druqks), 15)
 	character.reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, 72)
 	grant_lit_torch(character)
+
+/datum/special_trait/bald
+	name = "Bald"
+	greet_text = span_boldwarning("MY HAIIIR!! WHERE IS IT!! WHERE IS MY HAIR!!")
+	weight = 100
+/datum/special_trait/bald/on_apply(mob/living/carbon/human/character)
+	character.set_hair_style(/datum/sprite_accessory/hair/head/bald, FALSE)
 
 /datum/special_trait/atrophy
 	name = "Atrophy"
@@ -711,3 +760,17 @@
 
 /datum/special_trait/keenears/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_KEENEARS, "[type]")
+
+/datum/special_trait/bestial
+	name = "Bestial"
+	greet_text = span_notice("I am blessed by Dendor I feel closer to beasts than men, I can whisper in their tongue.")
+	weight = 50
+	req_text = "Worship Dendor and be an acolyte"
+	allowed_jobs = list(/datum/job/monk)
+	allowed_patrons = list(/datum/patron/divine/dendor)
+
+/datum/special_trait/bestial/on_apply(mob/living/carbon/human/character, silent)
+	character.grant_language(/datum/language/beast)
+	character.add_spell(/datum/action/cooldown/spell/undirected/howl/call_of_the_moon, silent = TRUE)
+	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]") // eat the raw meat
+
