@@ -733,3 +733,144 @@
 	subtypes_allowed = TRUE // so you can use any subtype of knife
 	output_amount = 1
 	craftdiff = 3
+
+// -------------------------- Gems ------------------------------ //
+
+// jade //
+
+/datum/repeatable_crafting_recipe/crafting/cutjade
+	name = "cut joapstone"
+	output = /obj/item/carvedgem/jade/cutgem
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/jadefork
+	name = "joapstone fork"
+	output = /obj/item/carvedgem/jade/fork
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/jadespoon
+	name = "joapstone spoon"
+	output = /obj/item/carvedgem/jade/spoon
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/jadecameo
+	name = "joapstone cameo"
+	output = /obj/item/carvedgem/jade/cameo
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/jadebowl
+	name = "joapstone bowl"
+	output = /obj/item/reagent_containers/glass/bowl/jade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+// shell //
+
+/datum/repeatable_crafting_recipe/crafting/openclam
+	name = "opened clam"
+	output = list(
+		/obj/item/carvedgem/shell/openoyster,
+		/obj/item/carvedgem/rose/rawrose
+	)
+
+	requirements = list(
+		/obj/item/gem/oyster = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to pry open the clam shell", "pry open the clam shell")
+	)
+	attacked_atom = /obj/item/gem/oyster
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rawshell
+
+	name = "2x clam shells "
+	output = /obj/item/carvedgem/shell/rawshell
+	requirements = list(
+		/obj/item/carvedgem/shell/openoyster = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to pull apart the clam shell", "pull apart the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/openoyster
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 2
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/cutshell
+
+	name = "polished clam shell"
+	output = /obj/item/carvedgem/shell/cutgem
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to polish the clam shell", "start to polish the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+
+// rose //
+
+/datum/repeatable_crafting_recipe/crafting/cutrose
+	name = "rosellusk pearl"
+	output = /obj/item/carvedgem/rose/cutgem
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("refines the rosellusk pearl", "refine the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
