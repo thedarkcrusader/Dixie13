@@ -439,7 +439,7 @@
 	created_item = /obj/item/clothing/face/facemask/steel
 
 /datum/anvil_recipe/armor/steel/psydonic
-	name = "Psydonic War Mask (+Bronze Bar)"
+	name = "Psydonic Death Mask (+Bronze Bar)"
 	recipe_name = "a steel Psydonic mask"
 	created_item = /obj/item/clothing/face/facemask/steel/psydonic
 	additional_items = list(/obj/item/ingot/bronze)
