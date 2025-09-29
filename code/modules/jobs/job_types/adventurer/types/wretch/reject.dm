@@ -76,10 +76,11 @@
 	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_SPD, 2)
 	H.change_stat(STATKEY_LCK, 1)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
+	if(H.dna.species.id != SPEC_ID_TIEFLING)
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 /datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
