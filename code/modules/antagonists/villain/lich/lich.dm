@@ -17,6 +17,7 @@
 	innate_traits = list(
 		TRAIT_NOSTAMINA,
 		TRAIT_NOHUNGER,
+		TRAIT_NOHYGIENE,
 		TRAIT_NOBREATH,
 		TRAIT_NOPAIN,
 		TRAIT_TOXIMMUNE,
@@ -161,7 +162,7 @@
 		H.equip_to_slot_if_possible(new_phylactery,ITEM_SLOT_BACKPACK, TRUE)
 
 /// called via COMSIG_LIVING_DEATH
-/datum/antagonist/lich/proc/on_death(/datum/source)
+/datum/antagonist/lich/proc/on_death(datum/source)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(attempt_resurrection)) // this proc sleeps
 
