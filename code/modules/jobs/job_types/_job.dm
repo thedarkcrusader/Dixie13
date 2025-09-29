@@ -258,8 +258,8 @@
 	spawned.generate_random_attunements(rand(attunements_min, attunements_max))
 
 	var/list/used_stats = ((spawned.gender == FEMALE) && jobstats_f) ? jobstats_f : jobstats
-	for(var/stat_key in used_stats)
-		spawned.adjust_stat_modifier("job_stats", stat_key, used_stats[stat_key])
+	spawned.remove_stat_modifier("job_stats") // Reset so no inf stat
+	spawned.adjust_stat_modifier_list("job_stats", used_stats)
 
 	for(var/datum/skill/skill as anything in skills)
 		var/amount_or_list = skills[skill]

@@ -231,69 +231,97 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
 	set category = "Fun"
-	set name = "Select Outfit"
+	set name = "Admin Dress"
 
 	if(!(ishuman(M) || isobserver(M)))
 		return
 
+	var/answer = browser_alert(src, "Apply an outfit or a full job? (Does not consume slots)", "Admin Dress", list("Outfit", "Job", "Cancel"))
+	if(!answer || QDELETED(src))
+		return
+	switch(answer)
+		if("Job")
+			job_selector(M)
+		if("Outfit")
+			outfit_selector(M)
+		if("Cancel")
+			return
+
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Dress") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/outfit_selector(mob/to_dress)
 	var/dresscode = robust_dress_shop()
 
 	if(!dresscode)
 		return
 
-	var/delete_pocket
 	var/mob/living/carbon/human/H
-	if(isobserver(M))
-		H = M.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
+	if(!ishuman(to_dress))
+		H = to_dress.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
 	else
-		H = M
+		H = to_dress
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Outfit") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	for (var/obj/item/I in H.get_equipped_items(delete_pocket))
+	for(var/obj/item/I in H.get_all_gear())
 		qdel(I)
 
 	if(dresscode != "Naked")
 		H.equipOutfit(dresscode)
 
 	log_admin("[key_name(usr)] changed the outfit of [key_name(H)] to [dresscode].")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the outfit of [ADMIN_LOOKUPFLW(H)] to [dresscode].</span>")
+	message_admins(span_adminnotice("[key_name_admin(usr)] changed the outfit of [ADMIN_LOOKUPFLW(H)] to [dresscode]."))
 
-/client/proc/robust_dress_shop()
-	var/list/baseoutfits = list("Naked","Custom", "As Roguetown Job...")
-	var/list/outfits = list()
-	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit)  - typesof(/datum/outfit)
+/client/proc/job_selector(mob/to_dress)
+	var/mob/living/carbon/human/dressed_human
+	if(!ishuman(to_dress))
+		dressed_human = to_dress.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
+	else
+		dressed_human = to_dress
 
-	for(var/datum/outfit/O as anything in paths) //not much to initalize here but whatever
-		if(initial(O.can_be_admin_equipped))
-			outfits[initial(O.name)] = O
+	var/list/jobs = subtypesof(/datum/job)
+	var/list/selection = list()
+	for(var/datum/job/job as anything in jobs)
+		if(is_abstract(job))
+			continue
+		selection[job.title] = job
 
-	var/dresscode = browser_input_list(src, "Select outfit", "Robust quick dress shop", baseoutfits + sortList(outfits))
-	if (isnull(dresscode))
+	var/datum/job/selected = browser_input_list(src, "Select Job", "Job selection", selection)
+	if(!selected || QDELETED(src))
+		return
+	selected = SSjob.GetJobType(selected)
+	if(!istype(selected))
 		return
 
-	if (outfits[dresscode])
+	for(var/obj/item/I in dressed_human.get_all_gear())
+		qdel(I)
+	SSjob.EquipRank(dressed_human, selected, dressed_human.client)
+
+	log_admin("[key_name(src)] changed the job of [key_name(dressed_human)] to [selection].")
+	message_admins(span_adminnotice("[key_name_admin(src)] changed the job of [ADMIN_LOOKUPFLW(dressed_human)] to [selection]."))
+
+/client/proc/robust_dress_shop()
+	var/list/baseoutfits = list("Naked", "Custom")
+	var/list/outfits = list()
+	var/list/paths = subtypesof(/datum/outfit)
+
+	for(var/datum/outfit/O as anything in paths) //not much to initalize here but whatever
+		if(is_abstract(O))
+			continue
+		if(initial(O.can_be_admin_equipped))
+			outfits += O
+
+	var/dresscode = browser_input_list(src, "Select outfit", "Robust quick dress shop", baseoutfits + sortList(outfits))
+	if(isnull(dresscode))
+		return
+
+	if(outfits[dresscode])
 		dresscode = outfits[dresscode]
 
-	if (dresscode == "Custom")
+	if(dresscode == "Custom")
 		var/list/custom_names = list()
 		for(var/datum/outfit/D in GLOB.custom_outfits)
 			custom_names[D.name] = D
 		var/selected_name = browser_input_list(src, "Select outfit", "Robust quick dress shop", sortList(custom_names))
 		dresscode = custom_names[selected_name]
-		if(isnull(dresscode))
-			return
-
-	if (dresscode == "As Roguetown Job...")
-		var/list/roguejob_paths = subtypesof(/datum/outfit)
-		var/list/roguejob_outfits = list()
-		for(var/datum/outfit/O as anything in roguejob_paths)
-			//roguetown coders are morons and didn't give ANY outfits proper fucking names
-			if(initial(O.can_be_admin_equipped))
-				roguejob_outfits["[O]"] = O
-
-		dresscode = browser_input_list(src, "Select job equipment", "Robust quick dress shop", sortList(roguejob_outfits))
-		dresscode = roguejob_outfits[dresscode]
 		if(isnull(dresscode))
 			return
 
