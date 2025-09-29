@@ -5,7 +5,6 @@
 	icon = 'icons/roguetown/items/gems.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_MOUTH
-	dropshrink = 0.4
 	drop_sound = 'sound/items/gem.ogg'
 	///I am leaving this here as a note. If you leave the price null on subtypes, you're eating the infinite recursion pill.
 	///I dont care if its negative just DONT LEAVE IT 0
@@ -166,6 +165,7 @@
 	//color = "#15af158c"
 	icon_state = "emerald_cut"
 	sellprice = 44
+	dropshrink = 0.4
 	attuned = /datum/attunement/earth
 	effect_template = /datum/gem_effect/gemerald
 
@@ -175,6 +175,7 @@
 	//color = "#1ca5aa8c"
 	icon_state = "quartz_cut"
 	sellprice = 88
+	dropshrink = 0.4
 	attuned = /datum/attunement/ice
 	effect_template = /datum/gem_effect/blortz
 
@@ -184,6 +185,7 @@
 	//color = "#e6a0088c"
 	icon_state = "topaz_cut"
 	sellprice = 25
+	dropshrink = 0.4
 	attuned = /datum/attunement/electric
 	effect_template = /datum/gem_effect/toper
 
@@ -193,6 +195,7 @@
 	//color = "#1733b38c"
 	icon_state = "sapphire_cut"
 	sellprice = 56
+	dropshrink = 0.4
 	attuned = /datum/attunement/arcyne
 	effect_template = /datum/gem_effect/saffira
 
@@ -202,6 +205,7 @@
 	//color = "#ffffff8c"
 	icon_state = "diamond_cut"
 	sellprice = 121
+	dropshrink = 0.4
 	attuned = /datum/attunement/light
 	effect_template = /datum/gem_effect/dorpel
 
@@ -214,14 +218,19 @@
 	attuned = /datum/attunement/fire
 	effect_template = /datum/gem_effect/rubor
 
-/obj/item/gem/black
-	name = "onyxa"
-	desc = "Dark as nite."
-	color = "#200013dd"
-	sellprice = 76
-	dropshrink = 0.7
-	attuned = /datum/attunement/dark
-	effect_template = /datum/gem_effect/onyxa
+/obj/item/gem/onyxa
+	name = "raw onyxa"
+	desc = "Fossilized spider honey that glimmers in the dark. It was once prized by the drow, but it's significance to their culture has long been replaced by the more common saffira."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "raw_onyxa"
+	sellprice = 30
+
+/obj/item/gem/jade
+	name = "raw joapstone"
+	desc = "A dull green gem. It is valued in multiple humen cultures and is believed to bring good fortune."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "raw_jade"
+	sellprice = 50
 
 /// riddle
 
