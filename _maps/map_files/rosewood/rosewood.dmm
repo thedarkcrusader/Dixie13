@@ -16703,7 +16703,6 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/magician)
 "iMF" = (
-/obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -16713,7 +16712,7 @@
 /obj/effect/decal/shadow_floor{
 	dir = 4
 	},
-/turf/open/floor/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
 "iMP" = (
 /obj/structure/table/church{
@@ -44486,7 +44485,6 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/theatre)
 "wYy" = (
-/obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -44496,7 +44494,7 @@
 /obj/effect/decal/shadow_floor{
 	dir = 8
 	},
-/turf/open/floor/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
 "wYG" = (
 /obj/structure/table/wood/plain,
@@ -60415,7 +60413,7 @@ kOi
 qOw
 jvz
 jvz
-uMv
+wYy
 ewT
 fYr
 fGJ
@@ -60616,8 +60614,8 @@ wDN
 jJP
 jvz
 czC
-jvz
-wYy
+uMv
+raf
 xcO
 hkm
 moA
@@ -62030,8 +62028,8 @@ rbI
 lJy
 khk
 jvz
-jvz
-iMF
+uMv
+raf
 wZC
 ezU
 oOm
@@ -62233,7 +62231,7 @@ rbI
 lJy
 nDi
 jvz
-uMv
+iMF
 ewT
 kHO
 vRO
@@ -98387,8 +98385,8 @@ rmZ
 jKl
 hcq
 pmI
-jnM
-yal
+omp
+uNm
 yal
 qJl
 qJl
@@ -98590,8 +98588,8 @@ tth
 jFN
 pmI
 omp
-jnM
-yal
+omp
+uNm
 qJl
 qJl
 aML
@@ -98793,7 +98791,7 @@ jnM
 cwC
 pmI
 pmI
-uNm
+omp
 yal
 yal
 aML
