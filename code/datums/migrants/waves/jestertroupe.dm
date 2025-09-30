@@ -30,15 +30,15 @@
 
 /datum/job/migrant/jestertroupe/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	LAZYACCESSASSOC(skills, /datum/skill/combat/knives, pick(2,3))
-	LAZYACCESSASSOC(skills, /datum/skill/combat/swords, pick(1,2))
-	LAZYACCESSASSOC(skills, /datum/skill/misc/music, pick(4,5,5,6))
-	LAZYACCESSASSOC(skills, /datum/skill/combat/wrestling, pick(1,2,2,2,3))
-	LAZYACCESSASSOC(skills, /datum/skill/combat/unarmed, pick(1,2,2,2,3))
-	LAZYACCESSASSOC(skills, /datum/skill/misc/sneaking, pick(2,3,4,5))
-	LAZYACCESSASSOC(skills, /datum/skill/misc/stealing, pick(3,4))
-	LAZYACCESSASSOC(skills, /datum/skill/misc/lockpicking, pick(2,2,3,3,4,))
-	LAZYACCESSASSOC(skills, /datum/skill/misc/climbing, pick(4,4,4,4,5))
+	LAZYADDASSOC(skills, /datum/skill/combat/knives, pick(2,3))
+	LAZYADDASSOC(skills, /datum/skill/combat/swords, pick(1,2))
+	LAZYADDASSOC(skills, /datum/skill/misc/music, pick(4,5,5,6))
+	LAZYADDASSOC(skills, /datum/skill/combat/wrestling, pick(1,2,2,2,3))
+	LAZYADDASSOC(skills, /datum/skill/combat/unarmed, pick(1,2,2,2,3))
+	LAZYADDASSOC(skills, /datum/skill/misc/sneaking, pick(2,3,4,5))
+	LAZYADDASSOC(skills, /datum/skill/misc/stealing, pick(3,4))
+	LAZYADDASSOC(skills, /datum/skill/misc/lockpicking, pick(2,2,3,3,4))
+	LAZYADDASSOC(skills, /datum/skill/misc/climbing, pick(4,4,4,4,5))
 	spawned.verbs |= /mob/living/carbon/human/proc/ventriloquate
 
 /datum/outfit/jestertroupe

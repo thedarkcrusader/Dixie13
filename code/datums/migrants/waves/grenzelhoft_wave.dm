@@ -1,4 +1,4 @@
-/datum/migrant_role/grenzelhoft/count
+/datum/migrant_role/grenzelhoft_count
 	name = "Grenzelhoft Count"
 	greet_text = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to the Peninsula of Vanderlin alongside his beloved convoy and spouse."
 	migrant_job = /datum/job/migrant/grenzelhoft_count
@@ -67,7 +67,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
 
-/datum/migrant_role/grenzelhoft/countess
+/datum/migrant_role/grenzelhoft_countess
 	name = "Grenzelhoft Countess"
 	greet_text = "A Countess hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin alongside her beloved convoy and husband."
 	migrant_job = /datum/job/migrant/grenzelhoft_countess
@@ -199,15 +199,15 @@
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 
-/datum/migrant_role/grenzelhoft_men_at_arms
+/datum/migrant_role/grenzelhoft_man_at_arms
 	name = "Grenzelhoft Man-at-Arms"
 	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
-	migrant_job = /datum/job/migrant/grenzelhoft_men_at_arms
+	migrant_job = /datum/job/migrant/grenzelhoft_man_at_arms
 
-/datum/job/migrant/grenzelhoft_men_at_arms
+/datum/job/migrant/grenzelhoft_man_at_arms
 	title = "Grenzelhoft Man-at-Arms"
 	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
-	outfit = /datum/outfit/grenzelhoft_men_at_arms
+	outfit = /datum/outfit/grenzelhoft_man_at_arms
 	allowed_races = RACES_PLAYER_GRENZ
 
 	jobstats = list(
@@ -232,7 +232,7 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/job/migrant/grenzelhoft_men_at_arms/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/migrant/grenzelhoft_man_at_arms/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(!spawned.dna?.species)
 		return
@@ -240,13 +240,13 @@
 	species.native_language = "Old Psydonic"
 	species.accent_language = species.get_accent(species.native_language)
 
-/datum/job/migrant/grenzelhoft_men_at_arms/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/migrant/grenzelhoft_man_at_arms/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
-	LAZYACCESSASSOC(skills, /datum/skill/combat/whipsflails, pick(1, 1, 2))
-	LAZYACCESSASSOC(skills, /datum/skill/combat/axesmaces, pick(2, 3))
-	LAZYACCESSASSOC(skills, /datum/skill/combat/shields, pick(0, 0, 1))
+	LAZYADDASSOC(skills, /datum/skill/combat/whipsflails, pick(1, 1, 2))
+	LAZYADDASSOC(skills, /datum/skill/combat/axesmaces, pick(2, 3))
+	LAZYADDASSOC(skills, /datum/skill/combat/shields, pick(0, 0, 1))
 
-/datum/outfit/grenzelhoft_men_at_arms
+/datum/outfit/grenzelhoft_man_at_arms
 	name = "Grenzelhoft Man-at-Arms"
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
@@ -261,7 +261,7 @@
 	backl = /obj/item/storage/backpack/satchel
 	backr = /obj/item/weapon/sword/long/greatsword/zwei
 
-/datum/outfit/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+/datum/outfit/grenzelhoft_man_at_arms/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 
 	if(equipped_human.gender == FEMALE)
@@ -275,10 +275,10 @@
 	weight = 25
 	downgrade_wave = /datum/migrant_wave/grenzelhoft_visit_down
 	roles = list(
-		/datum/migrant_role/grenzelhoft/count = 1,
-		/datum/migrant_role/grenzelhoft/countess = 1,
-		/datum/migrant_role/grenzelhoft/grenzelhoft_knight = 1,
-		/datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms = 2)
+		/datum/migrant_role/grenzelhoft_count = 1,
+		/datum/migrant_role/grenzelhoft_countess = 1,
+		/datum/migrant_role/grenzelhoft_knight = 1,
+		/datum/migrant_role/grenzelhoft_man_at_arms = 2)
 	greet_text = "The Kaiser of the Grenzelhoft Imperiate has sent a diplomatic envoy to engage into diplomacy within the Kingdom of Vanderlin."
 
 /datum/migrant_wave/grenzelhoft_visit_down
@@ -287,7 +287,7 @@
 	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zalad_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/grenzelhoft/count = 1,
-		/datum/migrant_role/grenzelhoft/countess = 1,
-		/datum/migrant_role/grenzelhoft/grenzelhoft_knight = 1)
+		/datum/migrant_role/grenzelhoft_count = 1,
+		/datum/migrant_role/grenzelhoft_countess = 1,
+		/datum/migrant_role/grenzelhoft_knight = 1)
 	greet_text = "The Kaiser of the Grenzelhoft Imperiate has sent a diplomatic envoy to engage into diplomacy within the Kingdom of Vanderlin."
