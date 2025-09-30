@@ -90,3 +90,110 @@
 	grid_width = 1
 	sellprice = 55
 
+/obj/item/carvedgem/jade/figurine
+	name = "joapstone figurine"
+	desc = "A small figurine carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "figurine_jade"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/jade/fish
+	name = "joapstone figurine"
+	desc = "A small fish figurine carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "fish_jade"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/jade/tablet
+	name = "joapstone tablet"
+	desc = "A tablet carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "tablet_jade"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/jade/vase
+	name = "joapstone vase"
+	desc = "A vase carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "vase_jade"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/jade/bust
+	name = "joapstone bust"
+	desc = "A bust carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "bust_jade"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 65
+
+/obj/item/carvedgem/jade/fancyvase
+	name = "fancy joapstone vase"
+	desc = "A fancy vase carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "fancyvase_jade"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/jade/comb
+	name = "joapstone comb"
+	desc = "A luxurious comb carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "comb_jade"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/jade/duck
+	name = "joapstone duck"
+	desc = "An adorable little duck carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "duck_jade"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/jade/urn
+	name = "joapstone urn"
+	desc = "A large decorative urn carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "urn_jade"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 70
+
+/obj/item/carvedgem/jade/statue
+	name = "joapstone statue"
+	desc = "A statue carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "statue_jade"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/jade/obelisk
+	name = "joapstone obelisk"
+	desc = "An obelisk carved out of joapstone."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "obelisk_jade"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/jade/wyrm
+	name = "joapstone wyrm"
+	desc = "A large sculpture of a wyrm made out of joapstone. Few wyrms remain in Faience, but their legacies continue to live on in the art of humens."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "dragon_jade"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 75

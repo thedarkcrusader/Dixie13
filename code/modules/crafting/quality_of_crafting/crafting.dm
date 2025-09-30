@@ -808,10 +808,303 @@
 	output_amount = 1
 	craftdiff = 1
 
+/datum/repeatable_crafting_recipe/crafting/jadecup
+	name = "joapstone cup"
+	output = /obj/item/reagent_containers/glass/cup/jade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/jadeplatter
+	name = "joapstone platter"
+	output = /obj/item/plate/jade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadering
+	name = "joapstone ring"
+	output = /obj/item/clothing/ring/jade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadeamulet
+	name = "joapstone amulet"
+	output = /obj/item/clothing/neck/jadeamulet
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadevase
+	name = "joapstone vase"
+	output = /obj/item/carvedgem/jade/vase
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadefigurine
+	name = "joapstone figurine"
+	output = /obj/item/carvedgem/jade/figurine
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadefish
+	name = "joapstone fish figurine"
+	output = /obj/item/carvedgem/jade/fish
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadetablet
+	name = "joapstone tablet"
+	output = /obj/item/carvedgem/jade/tablet
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadeteapot
+	name = "joapstone teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotjade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/jadebust
+	name = "joapstone bust"
+	output = /obj/item/carvedgem/jade/bust
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+/datum/repeatable_crafting_recipe/crafting/fancyvase
+	name = "fancy joapstone vase"
+	output = /obj/item/carvedgem/jade/fancyvase
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/jadecomb
+	name = "joapstone comb"
+	output = /obj/item/carvedgem/jade/comb
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/jadeduck
+	name = "joapstone duck"
+	output = /obj/item/carvedgem/jade/duck
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/jadebracelet
+	name = "joapstone bracelet"
+	output = /obj/item/clothing/wrists/gem/jadebracelet
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/jadefancycup
+	name = "fancy joapstone cup"
+	output = /obj/item/reagent_containers/glass/cup/jadefancy
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/jademask
+	name = "joapstone mask"
+	output = /obj/item/clothing/face/jademask
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/jadeurn
+	name = "joapstone urn"
+	output = /obj/item/carvedgem/jade/urn
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+/datum/repeatable_crafting_recipe/crafting/jadestatue
+	name = "joapstone statue"
+	output = /obj/item/carvedgem/jade/statue
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/jadeobelisk
+	name = "joapstone obelisk"
+	output = /obj/item/carvedgem/jade/obelisk
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/jadewyrm
+	name = "joapstone wyrm"
+	output = /obj/item/carvedgem/jade/wyrm
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+
+/datum/repeatable_crafting_recipe/crafting/jadekukri
+	name = "joapstone kukri"
+	output = /obj/item/weapon/knife/stone/kukri
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
 // shell //
 
 /datum/repeatable_crafting_recipe/crafting/openclam
-	name = "opened clam"
+	name = "opened clam (+ rosellusk pearl)"
 	output = list(
 		/obj/item/carvedgem/shell/openoyster,
 		/obj/item/carvedgem/rose/rawrose

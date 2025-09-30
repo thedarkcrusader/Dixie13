@@ -581,6 +581,16 @@
 	melting_material = null
 	sellprice = 5
 
+/obj/item/weapon/knife/stone/kukri
+	name = "joapstone kukri"
+	desc = "A kukri made out of joapstone. Its more of a ceremonial piece than it is an implement of war, its somewhat fragile. Be gentle with it"
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "kukri_jade"
+	max_integrity = INTEGRITY_POOR - 100
+	max_blade_int = 35
+	wdefense = AVERAGE_PARRY
+	resistance_flags = null //rock isnt flammable
+	sellprice = 75
 
 //................ Villager Knife ............... //
 /obj/item/weapon/knife/villager

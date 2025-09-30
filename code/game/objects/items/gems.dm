@@ -220,7 +220,7 @@
 
 /obj/item/gem/onyxa
 	name = "raw onyxa"
-	desc = "Fossilized spider honey that glimmers in the dark. It was once prized by the drow, but it's significance to their culture has long been replaced by the more common saffira."
+	desc = "A piece of fossilized spider honey that glimmers in the dark. It was once prized by the Drow, but it's significance to their culture has long been replaced by the more common saffira."
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
 	icon_state = "raw_onyxa"
 	sellprice = 30
@@ -240,6 +240,34 @@
 	grid_height = 3
 	grid_width = 3
 	sellprice = 5
+
+/obj/item/gem/coral
+	name = "raw aoetal"
+	desc = "Jagged like a hounds tooth. Aoetal is speculated to be the crystalized blood of fallen sailors. It is sacred to Abyssorians and is used in numerous Abyssorian rituals."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "raw_coral"
+	sellprice = 60
+
+/obj/item/gem/turq
+	name = "raw ceruleabaster"
+	desc = "A beautiful teal gem that is easily carved. It is prized by the Elves of Lakkari and is heavily associated with Necra. Ceruleabaster carvings often decorate Lakkarian tombs."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "raw_turq"
+	sellprice = 75
+
+/obj/item/gem/amber
+	name = "raw petriamber"
+	desc = "A chunk of fossilized mushroom that shines radiantly in sunlight. It's prized amongst Astratans."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "raw_amber"
+	sellprice = 50
+
+/obj/item/gem/opal
+	name = "raw opaloise"
+	desc = "A dazzling gem that is remarkably valuable. Opaloise is widely speculated to be the crystallized essence left behind by rainbows, and is greatly prized by aboriginal Crimson Elves."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "raw_opal"
+	sellprice = 80
 
 /// riddle
 

@@ -68,7 +68,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 70
 
-/obj/item/clothing/neck/petriamberamulet
+/obj/item/clothing/neck/amberamulet
 	name = "petriamber amulet"
 	icon_state = "amulet_amber"
 	slot_flags = ITEM_SLOT_NECK
