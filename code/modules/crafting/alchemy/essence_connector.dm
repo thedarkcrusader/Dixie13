@@ -1,5 +1,5 @@
 /obj/item/essence_connector
-	name = "Pestran Connector"
+	name = "pestran connector"
 	desc = "A oddly shaped object used to create connections between alchemical apparatus. Something under the metal squirms... Click and drag between devices to establish connections, or right-click to remove connections."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "connector"

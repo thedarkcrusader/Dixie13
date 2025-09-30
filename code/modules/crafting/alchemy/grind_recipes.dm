@@ -37,6 +37,12 @@
 	valid_outputs = list(/obj/item/alch/waterdust = 2) // makes fish worth buying , fisher/apothecary combo
 	bonus_chance_outputs = list(/obj/item/alch/waterdust = 25 ,/obj/item/fertilizer/bone_meal = 33)
 
+/datum/alch_grind_recipe/leech
+	picky = FALSE
+	valid_input = /obj/item/natural/worms/leech
+	valid_outputs = list(/obj/item/alch/waterdust = 1) //easy source of waterdust
+	bonus_chance_outputs = list(/obj/item/alch/waterdust = 10 , /obj/item/alch/earthdust = 10)
+
 /datum/alch_grind_recipe/swampweed
 	valid_input = /obj/item/reagent_containers/food/snacks/produce/swampweed
 	valid_outputs = list(/obj/item/alch/swampdust = 1)

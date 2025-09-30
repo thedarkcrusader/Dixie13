@@ -1,19 +1,23 @@
 /datum/job/apothecary
 	title = "Apothecary"
 	tutorial = "You know every plant growing on these grounds and in the woods like the back of your hand. \
-	You are tasked with mixing tinctures and supplying the town and Feldsher with medicine for pain... or pleasure. \
-	For a price, of course. \
-	You have been known to kill men who cross you or your work-partner."
+	You are tasked with mixing tinctures and supplying the town and Feldsher with medicine. \
+	Some seek you out for your expertise in poisons or hedonistic pleasure. \
+	Others may look down upon you, but your clients never complain."
 	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_APOTHECARY
 	faction = FACTION_TOWN
-	total_positions = 2
-	spawn_positions = 2
-	min_pq = 1
-	bypass_lastclass = TRUE
+	total_positions = 1
+	spawn_positions = 1
+	min_pq = 2
 
-	allowed_races = RACES_PLAYER_NONEXOTIC
+	trainable_skills = list(/datum/skill/craft/alchemy)
+	max_apprentices = 2
+	apprentice_name = "Apothecary-in-training"
+
+	allowed_races = RACES_PLAYER_ALL
+
 	outfit = /datum/outfit/job/apothecary
 	give_bank_account = 100
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'

@@ -8,12 +8,15 @@
 	display_order = JDO_FELDSHER
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	min_pq = 2
 
-	//Reason all species allowed is you are basically a very talented court physician; even 'lower species' would find this to be one of the only ways to obtain a sort of nobility.
-	allowed_races = RACES_PLAYER_NONEXOTIC
+	trainable_skills = list(/datum/skill/misc/medicine)
+	max_apprentices = 2
+	apprentice_name = "Feldsher-in-training"
+
+	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/job/feldsher
 	give_bank_account = 100
