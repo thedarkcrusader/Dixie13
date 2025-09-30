@@ -436,6 +436,16 @@
 	character.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)
 	character.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 
+/datum/special_trait/sadistic
+	name = "Sadistic"
+	greet_text = span_boldwarning("You are addicted to seeing limbs fly, to hurting others. You learned the arts of torture to follow your wicked hobby. You have hidden some chains.")
+	weight = 25
+
+/datum/special_trait/sadistic/on_apply(mob/living/carbon/human/character, silent)
+	character.set_flaw(/datum/charflaw/addiction/maniac)
+	character.verbs |= /mob/living/carbon/human/proc/torture_victim
+	character.mind.special_items["Chains"] = /obj/item/rope/chain
+
 //negative
 /datum/special_trait/nimrod
 	name = "Nimrod"
