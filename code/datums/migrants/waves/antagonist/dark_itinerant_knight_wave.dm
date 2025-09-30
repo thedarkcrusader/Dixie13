@@ -41,6 +41,7 @@
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
 /datum/outfit/dark_itinerant_knight
+	name = "Drow Knight"
 	head = /obj/item/clothing/head/helmet/heavy/zizo
 	gloves = /obj/item/clothing/gloves/plate/zizo
 	pants = /obj/item/clothing/pants/platelegs/zizo
@@ -55,7 +56,7 @@
 
 /datum/migrant_role/dark_itinerant_squire
 	name = "Underling Squire"
-	greet_text = "You are an evil itinerant Knight, you have embarked alongside your squire on a voyage to engulf chaos within these lands."
+	greet_text = "You are the squire of an evil knight, they have taken you under their custody as you were the only one who didn't object to their dubious ethics."
 	migrant_job = /datum/job/migrant/dark_itinerant_squire
 
 /datum/job/migrant/dark_itinerant_squire
@@ -94,6 +95,7 @@
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
 /datum/outfit/dark_itinerant_squire
+	name = "Underling Squire"
 	shirt = /obj/item/clothing/shirt/dress/gen/colored/black
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots

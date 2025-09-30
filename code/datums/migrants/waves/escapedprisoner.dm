@@ -42,21 +42,24 @@
 		/datum/skill/craft/tanning = 3,
 	)
 
-	traits = list(TRAIT_NOBLE, TRAIT_CRITICAL_RESISTANCE)
+	traits = list(
+		TRAIT_NOBLE,
+		TRAIT_CRITICAL_RESISTANCE,
+	)
+
 	cmode_music = 'sound/music/cmode/towner/CombatPrisoner.ogg'
 
+/datum/job/migrant/escprisoner/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	GLOB.outlawed_players |= spawned.real_name
+
 /datum/outfit/escprisoner
+	name = "Escaped Prisoner"
 	pants = /obj/item/clothing/pants/loincloth/colored/brown
 	mask = /obj/item/clothing/face/facemask/prisoner
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/weapon/knife/villager
-
-/datum/outfit/escprisoner/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
-	. = ..()
-	if(visuals_only)
-		return
-	GLOB.outlawed_players |= equipped_human.real_name
 
 /datum/migrant_wave/escprisoner
 	name = "Escaped Prisoner"

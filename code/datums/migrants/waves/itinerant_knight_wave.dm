@@ -52,6 +52,7 @@
 	spawned.name = "[honorary] [prev_name]"
 
 /datum/outfit/itinerant_knight
+	name = "Itinerant Knight"
 	head = /obj/item/clothing/head/helmet/visored/sallet
 	wrists = /obj/item/clothing/wrists/bracers
 	gloves = /obj/item/clothing/gloves/plate
@@ -110,6 +111,7 @@
 	voicepack_m = /datum/voicepack/male/squire
 
 /datum/outfit/itinerant_squire
+	name = "Itinerant Squire"
 	shirt = /obj/item/clothing/shirt/dress/gen/colored/black
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots

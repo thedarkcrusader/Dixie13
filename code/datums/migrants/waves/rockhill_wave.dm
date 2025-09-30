@@ -44,6 +44,7 @@
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 /datum/outfit/rockhill/mayor
+	name = "Mayor of Rockhill"
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black
 	neck = /obj/item/clothing/neck/gorget
@@ -143,6 +144,7 @@
 	spawned.name = "[honorary] [prev_name]"
 
 /datum/outfit/rockhill/knight
+	name = "Knight of Rockhill"
 	head = /obj/item/clothing/head/helmet
 	gloves = /obj/item/clothing/gloves/plate
 	pants = /obj/item/clothing/pants/platelegs
@@ -216,6 +218,7 @@
 		LAZYADDASSOC(jobstats, STATKEY_SPD, 1)
 
 /datum/outfit/rockhill/serjeant_at_arms
+	name = "Rockhill Serjeant"
 	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet

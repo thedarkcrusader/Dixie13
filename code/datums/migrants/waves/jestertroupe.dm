@@ -30,20 +30,19 @@
 
 /datum/job/migrant/jestertroupe/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	skills += list(
-		/datum/skill/combat/knives = pick(2,3),
-		/datum/skill/combat/swords = pick(1,2),
-		/datum/skill/misc/music = pick(4,5,5,6),
-		/datum/skill/combat/wrestling = pick(1,2,2,2,3),
-		/datum/skill/combat/unarmed = pick(1,2,2,2,3),
-		/datum/skill/misc/sneaking = pick(2,3,4,5),
-		/datum/skill/misc/stealing = pick(3,4),
-		/datum/skill/misc/lockpicking = pick(2,2,3,3,4,),
-		/datum/skill/misc/climbing = pick(4,4,4,4,5),
-	)
+	LAZYACCESSASSOC(skills, /datum/skill/combat/knives, pick(2,3))
+	LAZYACCESSASSOC(skills, /datum/skill/combat/swords, pick(1,2))
+	LAZYACCESSASSOC(skills, /datum/skill/misc/music, pick(4,5,5,6))
+	LAZYACCESSASSOC(skills, /datum/skill/combat/wrestling, pick(1,2,2,2,3))
+	LAZYACCESSASSOC(skills, /datum/skill/combat/unarmed, pick(1,2,2,2,3))
+	LAZYACCESSASSOC(skills, /datum/skill/misc/sneaking, pick(2,3,4,5))
+	LAZYACCESSASSOC(skills, /datum/skill/misc/stealing, pick(3,4))
+	LAZYACCESSASSOC(skills, /datum/skill/misc/lockpicking, pick(2,2,3,3,4,))
+	LAZYACCESSASSOC(skills, /datum/skill/misc/climbing, pick(4,4,4,4,5))
 	spawned.verbs |= /mob/living/carbon/human/proc/ventriloquate
 
 /datum/outfit/jestertroupe
+	name = "Buffoon"
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights
 	armor = /obj/item/clothing/shirt/jester

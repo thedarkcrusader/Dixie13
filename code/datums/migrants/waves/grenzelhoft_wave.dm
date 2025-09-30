@@ -36,7 +36,22 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
+/datum/job/migrant/grenzelhoft_count/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/prev_real_name = spawned.real_name
+	var/prev_name = spawned.name
+	var/honorary = "Count"
+	spawned.real_name = "[honorary] [prev_real_name]"
+	spawned.name = "[honorary] [prev_name]"
+
+	if(!spawned.dna?.species)
+		return
+	var/datum/species/species = spawned.dna.species
+	species.native_language = "Old Psydonic"
+	species.accent_language = species.get_accent(species.native_language)
+
 /datum/outfit/grenzelhoft_count
+	name = "Grenzelhoft Count"
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
@@ -51,24 +66,6 @@
 	pants = /obj/item/clothing/pants/grenzelpants
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
-
-/datum/outfit/grenzelhoft_count/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
-	. = ..()
-
-	if(visuals_only)
-		return
-
-	var/prev_real_name = equipped_human.real_name
-	var/prev_name = equipped_human.name
-	var/honorary = "Count"
-	equipped_human.real_name = "[honorary] [prev_real_name]"
-	equipped_human.name = "[honorary] [prev_name]"
-
-	if(!equipped_human.dna?.species)
-		return
-	var/datum/species/species = equipped_human.dna.species
-	species.native_language = "Old Psydonic"
-	species.accent_language = species.get_accent(species.native_language)
 
 /datum/migrant_role/grenzelhoft/countess
 	name = "Grenzelhoft Countess"
@@ -107,7 +104,22 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
+/datum/job/migrant/grenzelhoft_countess/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/prev_real_name = spawned.real_name
+	var/prev_name = spawned.name
+	var/honorary = "Countess"
+	spawned.real_name = "[honorary] [prev_real_name]"
+	spawned.name = "[honorary] [prev_name]"
+
+	if(!spawned.dna?.species)
+		return
+	var/datum/species/species = spawned.dna.species
+	species.native_language = "Old Psydonic"
+	species.accent_language = species.get_accent(species.native_language)
+
 /datum/outfit/grenzelhoft_countess
+	name = "Grenzelhoft Countess"
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
@@ -123,33 +135,15 @@
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
 
-/datum/outfit/grenzelhoft_countess/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
-	. = ..()
-
-	if(visuals_only)
-		return
-
-	var/prev_real_name = equipped_human.real_name
-	var/prev_name = equipped_human.name
-	var/honorary = "Countess"
-	equipped_human.real_name = "[honorary] [prev_real_name]"
-	equipped_human.name = "[honorary] [prev_name]"
-
-	if(!equipped_human.dna?.species)
-		return
-	var/datum/species/species = equipped_human.dna.species
-	species.native_language = "Old Psydonic"
-	species.accent_language = species.get_accent(species.native_language)
-
-/datum/migrant_role/grenzelhoft/grenzelhoft_knight
+/datum/migrant_role/grenzelhoft_knight
 	name = "Grenzelhoft Knight"
 	greet_text = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
-	migrant_job = /datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
+	migrant_job = /datum/job/migrant/grenzelhoft_knight
 
-/datum/job/migrant/grenzelhoft_migration/grenzelhoft_knight
+/datum/job/migrant/grenzelhoft_knight
 	title = "Grenzelhoft Knight"
 	tutorial = "Your liege, the count and the countess have both took the duty given by the Kaiser himself to voyage to Vanderlin, ensure their survival and obey their orders."
-	outfit = /datum/outfit/grenzelhoft_migration/grenzelhoft_knight
+	outfit = /datum/outfit/grenzelhoft_knight
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_PLAYER_GRENZ
 	is_recognized = TRUE
@@ -174,7 +168,24 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/grenzelhoft_migration/grenzelhoft_knight
+/datum/job/migrant/grenzelhoft_knight/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/prev_real_name = spawned.real_name
+	var/prev_name = spawned.name
+	var/honorary = "Ritter"
+	if(spawned.gender == FEMALE)
+		honorary = "Ritterin"
+	spawned.real_name = "[honorary] [prev_real_name]"
+	spawned.name = "[honorary] [prev_name]"
+
+	if(!spawned.dna?.species)
+		return
+	var/datum/species/species = spawned.dna.species
+	species.native_language = "Old Psydonic"
+	species.accent_language = species.get_accent(species.native_language)
+
+/datum/outfit/grenzelhoft_knight
+	name = "Grenzelhoft Knight"
 	pants = /obj/item/clothing/pants/tights/colored/black
 	backr = /obj/item/weapon/sword/long/greatsword/flamberge
 	beltl = /obj/item/storage/belt/pouch/coins/mid
@@ -188,33 +199,13 @@
 	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 
-/datum/outfit/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
-	. = ..()
-
-	if(visuals_only)
-		return
-
-	var/prev_real_name = equipped_human.real_name
-	var/prev_name = equipped_human.name
-	var/honorary = "Ritter"
-	if(equipped_human.gender == FEMALE)
-		honorary = "Ritterin"
-	equipped_human.real_name = "[honorary] [prev_real_name]"
-	equipped_human.name = "[honorary] [prev_name]"
-
-	if(!equipped_human.dna?.species)
-		return
-	var/datum/species/species = equipped_human.dna.species
-	species.native_language = "Old Psydonic"
-	species.accent_language = species.get_accent(species.native_language)
-
-/datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms
-	name = "Grenzelhoft Men-at-Arms"
+/datum/migrant_role/grenzelhoft_men_at_arms
+	name = "Grenzelhoft Man-at-Arms"
 	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
 	migrant_job = /datum/job/migrant/grenzelhoft_men_at_arms
 
 /datum/job/migrant/grenzelhoft_men_at_arms
-	title = "Grenzelhoft Men-at-Arms"
+	title = "Grenzelhoft Man-at-Arms"
 	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
 	outfit = /datum/outfit/grenzelhoft_men_at_arms
 	allowed_races = RACES_PLAYER_GRENZ
@@ -241,15 +232,22 @@
 	languages = list(/datum/language/oldpsydonic)
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
+/datum/job/migrant/grenzelhoft_men_at_arms/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	if(!spawned.dna?.species)
+		return
+	var/datum/species/species = spawned.dna.species
+	species.native_language = "Old Psydonic"
+	species.accent_language = species.get_accent(species.native_language)
+
 /datum/job/migrant/grenzelhoft_men_at_arms/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
-	skills += list(
-		/datum/skill/combat/whipsflails = pick(1, 1, 2),
-		/datum/skill/combat/axesmaces = pick(2, 3),
-		/datum/skill/combat/shields = pick(0, 0, 1),
-	)
+	LAZYACCESSASSOC(skills, /datum/skill/combat/whipsflails, pick(1, 1, 2))
+	LAZYACCESSASSOC(skills, /datum/skill/combat/axesmaces, pick(2, 3))
+	LAZYACCESSASSOC(skills, /datum/skill/combat/shields, pick(0, 0, 1))
 
 /datum/outfit/grenzelhoft_men_at_arms
+	name = "Grenzelhoft Man-at-Arms"
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
@@ -269,16 +267,6 @@
 	if(equipped_human.gender == FEMALE)
 		equipped_human.underwear = "Femleotard"
 		equipped_human.underwear_color = CLOTHING_SOOT_BLACK
-		equipped_human.update_body()
-
-	if(visuals_only)
-		return
-
-	if(!equipped_human.dna?.species)
-		return
-	var/datum/species/species = equipped_human.dna.species
-	species.native_language = "Old Psydonic"
-	species.accent_language = species.get_accent(species.native_language)
 
 /datum/migrant_wave/grenzelhoft_visit
 	name = "The Grenzelhoft visit"

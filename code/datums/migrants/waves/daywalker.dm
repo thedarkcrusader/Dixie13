@@ -33,8 +33,16 @@
 
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
+	voicepack_m = /datum/voicepack/male/knight
+
+/datum/job/migrant/daywalker/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	spawned.virginity = TRUE
+	spawned.set_patron(/datum/patron/divine/astrata)
+	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 
 /datum/outfit/daywalker
+	name = "Daywalker"
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	gloves = /obj/item/clothing/gloves/fingerless/shadowgloves
@@ -48,13 +56,6 @@
 	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/satchel
 	ring = /obj/item/clothing/ring/silver
-
-/datum/outfit/daywalker/pre_equip(mob/living/carbon/human/H)
-	. = ..()
-	H.virginity = TRUE
-	H.set_patron(/datum/patron/divine/astrata)
-	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 
 /datum/migrant_wave/daywalker
 	name = "Astrata's Daywalker"

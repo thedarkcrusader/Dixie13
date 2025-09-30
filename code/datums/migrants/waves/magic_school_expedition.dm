@@ -46,6 +46,7 @@
 		cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 /datum/outfit/magic_teacher
+	name = "Magic School Teacher"
 	head = /obj/item/clothing/head/wizhat
 	backr = /obj/item/storage/backpack/satchel
 	armor = /obj/item/clothing/shirt/robe/colored/black
@@ -104,6 +105,7 @@
 		cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 /datum/outfit/magic_student
+	name = "Magic School Student"
 	neck = /obj/item/clothing/neck/mana_star
 	belt  =	/obj/item/storage/belt/leather
 	beltl = /obj/item/book/granter/spellbook/adept

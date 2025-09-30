@@ -1,10 +1,10 @@
 /datum/migrant_role/sergeant_at_arms
-	name = "Serjeant-At-Arms"
+	name = "Serjeant-at-Arms"
 	greet_text = "You were apart of an expedition sent by the Monarch to Kingsfield, you and those under your command have returned upon fullfiling your task."
 	migrant_job = /datum/job/migrant/serjeant_at_arms
 
 /datum/job/migrant/serjeant_at_arms
-	title = "Serjeant-At-Arms"
+	title = "Serjeant-at-Arms"
 	tutorial = "You were apart of an expedition sent by the Monarch to Kingsfield, you and those under your command have returned upon fullfiling your task."
 	outfit = /datum/outfit/serjeant_at_arms
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
@@ -56,6 +56,7 @@
 		LAZYADDASSOC(jobstats, STATKEY_SPD, 1)
 
 /datum/outfit/serjeant_at_arms
+	name = "Serjeant-at-Arms"
 	head = /obj/item/clothing/head/helmet/sargebarbute
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
@@ -115,6 +116,7 @@
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/outfit/archer_bannerman
+	name = "Bannermen Archer"
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
@@ -178,6 +180,7 @@
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/outfit/crossbow_bannerman
+	name = "Bannermen Crossbowman"
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
@@ -240,6 +243,7 @@
 	spawned.verbs |= /mob/proc/haltyell
 
 /datum/outfit/footman_bannerman
+	name = "Bannermen Footman"
 	armor = /obj/item/clothing/armor/cuirass/iron
 	shirt = /obj/item/clothing/armor/chainmail/iron
 	neck = /obj/item/clothing/neck/gorget
@@ -293,6 +297,7 @@
 	spawned.verbs |= /mob/proc/haltyell
 
 /datum/outfit/pikeman_bannerman
+	name = "Bannermen Pikeman"
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget

@@ -35,6 +35,7 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 /datum/outfit/bodyguard
+	name = "Bodyguard"
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	neck = /obj/item/clothing/neck/coif
 	gloves = /obj/item/clothing/gloves/angle

@@ -60,6 +60,7 @@
 	species.accent_language = species.get_accent(species.native_language)
 
 /datum/outfit/specialinquisitor
+	name = "Episcopal Inquisitor"
 	wrists = /obj/item/clothing/neck/psycross/silver
 	neck = /obj/item/clothing/neck/bevor
 	shirt = /obj/item/clothing/shirt/undershirt/fancy

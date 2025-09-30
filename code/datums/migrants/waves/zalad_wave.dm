@@ -56,6 +56,7 @@
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
 /datum/outfit/zalad_migration/emir
+	name = "Zalad Emir"
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/circlet
@@ -137,6 +138,7 @@
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
 /datum/outfit/zalad_migration/amirah
+	name = "Zalad Amirah"
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/nyle
@@ -215,6 +217,7 @@
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
 /datum/outfit/zalad_migration/furusiyya
+	name = "Furusiyya"
 	pants = /obj/item/clothing/pants/tights/colored/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/zaladplate
@@ -295,6 +298,7 @@
 	LAZYADDASSOC(skills, /datum/skill/combat/shields, pick(0,1,1))
 
 /datum/outfit/zalad_migration/zalad_guard
+	name = "Zalad Soldier"
 	shoes = /obj/item/clothing/shoes/shalal
 	head = /obj/item/clothing/head/helmet/sallet/zalad
 	gloves = /obj/item/clothing/gloves/angle
@@ -369,6 +373,7 @@
 			spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
 
 /datum/outfit/zalad_migration/qatil
+	name = "Qatil"
 	pants = /obj/item/clothing/pants/trou/leather
 	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/shalal

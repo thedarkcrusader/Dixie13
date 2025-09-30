@@ -43,6 +43,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 /datum/outfit/chirurgeon
+	name = "Chirurgeon"
 	mask = /obj/item/clothing/face/shepherd/clothmask
 	head = /obj/item/clothing/head/brimmed
 	cloak = /obj/item/clothing/cloak/apron/cook

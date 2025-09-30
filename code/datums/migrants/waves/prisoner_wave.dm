@@ -50,6 +50,7 @@
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 
 /datum/outfit/gaoler
+	name = "Gaoler"
 	head = /obj/item/clothing/head/menacing
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	pants = /obj/item/clothing/pants/trou
@@ -101,6 +102,7 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
 /datum/outfit/mig_prisoner
+	name = "Convoy Prisoner"
 	pants = /obj/item/clothing/pants/loincloth/colored/brown
 	mask = /obj/item/clothing/face/facemask/prisoner
 
@@ -156,6 +158,7 @@
 	spawned.verbs |= /mob/proc/haltyell
 
 /datum/outfit/mig_guard
+	name = "Convoy Guard"
 	armor = /obj/item/clothing/armor/cuirass
 	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/gorget
