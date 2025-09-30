@@ -236,7 +236,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!(ishuman(M) || isobserver(M)))
 		return
 
-	var/answer = browser_alert(src, "Apply an outfit or a full job? (Does not consume slots)", "Admin Dress", list("Outfit", "Job", "Cancel"))
+	var/answer = browser_alert(src, "Apply an outfit or a full job? (Does not consume slots or change job)", "Admin Dress", list("Outfit", "Job", "Cancel"))
 	if(!answer || QDELETED(src))
 		return
 	switch(answer)
@@ -271,12 +271,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_admins(span_adminnotice("[key_name_admin(usr)] changed the outfit of [ADMIN_LOOKUPFLW(H)] to [dresscode]."))
 
 /client/proc/job_selector(mob/to_dress)
-	var/mob/living/carbon/human/dressed_human
-	if(!ishuman(to_dress))
-		dressed_human = to_dress.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
-	else
-		dressed_human = to_dress
-
 	var/list/jobs = subtypesof(/datum/job)
 	var/list/selection = list()
 	for(var/datum/job/job as anything in jobs)
@@ -290,6 +284,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	selected = SSjob.GetJobType(selected)
 	if(!istype(selected))
 		return
+
+	var/mob/living/carbon/human/dressed_human
+	if(!ishuman(to_dress))
+		dressed_human = to_dress.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
+	else
+		dressed_human = to_dress
 
 	for(var/obj/item/I in dressed_human.get_all_gear())
 		qdel(I)

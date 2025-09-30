@@ -75,7 +75,7 @@
 	/// Species allowed to be this job
 	var/list/allowed_races = RACES_PLAYER_ALL
 	/// Ages allowed to be this job
-	var/list/allowed_ages = ALL_AGES_LIST_CHILD
+	var/list/allowed_ages = ALL_AGES_LIST
 
 	// Change values
 	/// Patrons allowed for this job, sets to a random one in this list if list has values
