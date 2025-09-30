@@ -78,9 +78,11 @@
 	ADD_TRAIT(character, TRAIT_NOSTINK, "[type]")
 
 /datum/special_trait/latentmagic
-	name = "Latent Magic"
-	greet_text = span_notice("I have innate magical potential.")
+	name = "Magic apprentice"
+	greet_text = span_notice("I have learned basic arcyne but my skills are far from good.")
 	weight = 25
+	req_text = "Have Noc or Zizo as your Patron"
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 
 /datum/special_trait/latentmagic/on_apply(mob/living/carbon/human/character, silent)
 	character.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
@@ -155,14 +157,15 @@
 	character.change_stat(STATKEY_INT, -2)
 
 /datum/special_trait/too_smart
-	name = "Corn Fed"
-	greet_text = span_notice("My diet was quite rich in corn.")
-	weight = 100
+	name = "Too smart"
+	greet_text = span_notice("I am too smart for my own good.")
+	weight = 50
+	req_text = "Choose the paranoid flaw"
+	allowed_flaw = /datum/charflaw/paranoid
 
-/datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat(STATKEY_CON, 2)
-	character.change_stat(STATKEY_INT, -2)
-
+/datum/special_trait/too_smart/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat(STATKEY_INT, 5)
+	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
 
 /datum/special_trait/bookworm
 	name = "Bookworm"
@@ -232,6 +235,7 @@
 	character.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 	character.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 	character.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	character.grant_language(/datum/language/thievescant)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
@@ -333,6 +337,20 @@
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
 	character.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
+/datum/special_trait/dilligent
+	name = "Dilligent"
+	greet_text = span_notice("I work dae and nite in Malum's name, nothing shall stop my toil!")
+	weight = 50
+	allowed_patrons = list(/datum/patron/divine/malum)
+
+/datum/special_trait/dilligent/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_MALUMFIRE, "[type]")
+	character.change_stat(STATKEY_END, 2)
+	character.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
 	greet_text = span_notice("I've recently found a pouch filled with mammons, probably belonging to some noble.")
@@ -388,6 +406,36 @@
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
 
+/datum/special_trait/little
+	name = "Clever little guy"
+	greet_text = span_notice("I am a clever little guy, nyehehehehe!")
+	req_text = "Not a kobold or dwarf"
+	restricted_races = list(SPEC_ID_DWARF, SPEC_ID_KOBOLD)
+	weight = 50
+
+/datum/special_trait/little/on_apply(mob/living/carbon/human/character)
+	character.change_stat(STATKEY_STR, -2)
+	character.change_stat(STATKEY_CON, -2)
+	character.change_stat(STATKEY_SPD, 2)
+	character.change_stat(STATKEY_INT, 2)
+	character.transform = character.transform.Scale(0.90, 0.90)
+	character.update_transform()
+
+/datum/special_trait/war_veteran
+	name = "War Veteran"
+	greet_text = span_boldwarning("I have fought in the goblin wars.. albeit at a cost.")
+	weight = 25
+	req_text = "Be middle aged or old"
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+
+/datum/special_trait/war_veteran/on_apply(mob/living/carbon/human/character, silent)
+	character.set_flaw(/datum/charflaw/limbloss/arm_l)
+	character.set_flaw(/datum/charflaw/noeyel)
+	character.set_flaw(/datum/charflaw/old_war_wound)
+	character.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
+	character.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)
+	character.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+
 //negative
 /datum/special_trait/nimrod
 	name = "Nimrod"
@@ -395,13 +443,21 @@
 	weight = 100
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat(STATKEY_SPD, -2)
 	character.change_stat(STATKEY_INT, -4)
+
+/datum/special_trait/ugly
+	name = "Ugly"
+	greet_text = span_notice("People find me repulsive.")
+	weight = 100
+
+/datum/special_trait/ugly/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_UGLY, "[type]")
+	REMOVE_TRAIT(character, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 
 /datum/special_trait/nopouch
 	name = "No Pouch"
 	greet_text = span_boldwarning("I lost my pouch recently, I'm without a zenny..")
-	weight = 200
+	weight = 100
 
 /datum/special_trait/nopouch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/pouch = locate(/obj/item/storage/belt/pouch) in character
@@ -451,7 +507,7 @@
 /datum/special_trait/wild_night
 	name = "Wild Night"
 	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
-	weight = 200
+	weight = 100
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
 	var/turf/location = get_spawn_turf_for_job("Pilgrim")
