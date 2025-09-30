@@ -3,7 +3,8 @@
 	tutorial = "You have seen countless wounds over your time. \
 	Stitched the sores of blades, sealed honey over the bubous of plague. \
 	A thousand deaths stolen from the Carriagemen, yet these people will still call you a charlatan. \
-	At least the Apothecary understands you."
+	Atleast your fellow coworker understands you. \
+	You have combined ownership of the Apothecarian Workshop and the Clinic with the Apothecary."
 	department_flag = SERFS
 	display_order = JDO_FELDSHER
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
