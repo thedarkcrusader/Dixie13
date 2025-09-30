@@ -154,6 +154,16 @@
 	character.change_stat(STATKEY_CON, 2)
 	character.change_stat(STATKEY_INT, -2)
 
+/datum/special_trait/too_smart
+	name = "Corn Fed"
+	greet_text = span_notice("My diet was quite rich in corn.")
+	weight = 100
+
+/datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat(STATKEY_CON, 2)
+	character.change_stat(STATKEY_INT, -2)
+
+
 /datum/special_trait/bookworm
 	name = "Bookworm"
 	greet_text = span_notice("I'm a fan of books and I enjoy reading them regularly.")
