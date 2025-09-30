@@ -45,6 +45,12 @@
 			json[initialized_storyteller.name] = 0
 			initialized_storyteller.ascendant = TRUE
 			adjust_storyteller_influence(initialized_storyteller.name, 500)
+
+			for(var/client/C in GLOB.clients)
+				if(!C?.mob)
+					continue
+				C.mob.playsound_local(C.mob, GLOB.patron_sound_themes[initialized_storyteller.name], initialized_storyteller.name == RAVOX ? 70 : 100)
+
 			to_chat(world, "<br>")
 			to_chat(world, "<span style='font-size: 180%; color: [initialized_storyteller.color_theme]'>[initialized_storyteller.name] is ascendant!</span>")
 			to_chat(world, "<br>")
