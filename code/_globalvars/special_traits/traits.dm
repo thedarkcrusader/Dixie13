@@ -156,16 +156,29 @@
 	character.change_stat(STATKEY_CON, 2)
 	character.change_stat(STATKEY_INT, -2)
 
+/datum/special_trait/darkmagic
+	name = "Practitioner of forbidden magic"
+	greet_text = span_notice("Noc's path is weak, I have seen the light and practiced magic these fools call forbidden.")
+	weight = 25
+	req_text = "Worship zizo and roll court magician or magician apprentice."
+	allowed_patrons = list(/datum/patron/inhumen/zizo)
+	allowed_jobs = list(/datum/job/magician, /datum/job/mageapprentice)
+
+/datum/special_trait/darkmagic/on_apply(mob/living/carbon/human/character, silent)
+	character.add_spell(/datum/action/cooldown/spell/eyebite, silent = TRUE)
+	character.add_spell(/datum/action/cooldown/spell/projectile/sickness, silent = TRUE)
+	character.add_spell(/datum/action/cooldown/spell/conjure/raise_lesser_undead/necromancer, silent = TRUE)
+	character.add_spell(/datum/action/cooldown/spell/gravemark, silent = TRUE)
+
 /datum/special_trait/too_smart
 	name = "Too smart"
 	greet_text = span_notice("I am too smart for my own good.")
 	weight = 50
-	req_text = "Choose the paranoid flaw"
-	allowed_flaw = /datum/charflaw/paranoid
 
 /datum/special_trait/too_smart/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat(STATKEY_INT, 5)
 	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
+	character.set_flaw(/datum/charflaw/paranoid)
 
 /datum/special_trait/bookworm
 	name = "Bookworm"
