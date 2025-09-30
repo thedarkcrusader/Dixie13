@@ -4,8 +4,7 @@
 	You are tasked with mixing tinctures and supplying the town and Feldsher with medicine. \
 	Some seek you out for your expertise in poisons or hedonistic pleasure. \
 	Others may look down upon you for your work, but your clients never complain. \
-	You have combined ownership of the Apothecarian Workshop and the Clinic with the Feldsher. \
-	Rather obviously however, you try not to interfere with your specializations."
+	You have combined ownership of the Apothecarian Workshop and the Clinic with the Feldsher."
 	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_APOTHECARY

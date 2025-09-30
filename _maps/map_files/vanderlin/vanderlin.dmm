@@ -16779,7 +16779,14 @@
 /obj/item/natural/feather,
 /obj/item/natural/feather,
 /obj/machinery/light/fueled/wallfire/candle,
-/obj/item/reagent_containers/glass/carafe/silver,
+/obj/item/reagent_containers/glass/carafe/redwine{
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/cup/steel{
+	pixel_x = 12;
+	pixel_y = 4
+	},
 /turf/open/floor/tile,
 /area/rogue/indoors/town/clinic_large/feldsher)
 "jVb" = (
