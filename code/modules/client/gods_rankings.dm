@@ -27,6 +27,9 @@
 			initialized_storyteller.influence_modifier = 1.025
 
 /proc/handle_god_ascensions()
+	if(length(GLOB.clients) < 50)
+		return
+
 	var/json_file = file("data/gods_rankings.json")
 	if(!fexists(json_file))
 		return
@@ -45,6 +48,9 @@
 			json[initialized_storyteller.name] = 0
 			initialized_storyteller.ascendant = TRUE
 			adjust_storyteller_influence(initialized_storyteller.name, 500)
+
+			for(var/datum/round_event_control/listed as anything in SSgamemode.control)
+				listed.occurrences = 0
 
 			for(var/client/C in GLOB.clients)
 				if(!C?.mob)
