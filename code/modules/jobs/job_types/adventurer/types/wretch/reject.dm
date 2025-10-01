@@ -1,16 +1,15 @@
-/datum/advclass/wretch/reject
-	name = "Rejected Royal"
+/datum/job/advclass/wretch/reject
+	title = "Rejected Royal"
 	tutorial = "You were once a member of the royal family, but due to your actions, you have been cast out to roam the wilds. \
 	Now, you return, seeking redemption or perhaps... revenge."
-	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ROYALTY
-	maximum_possible_slots = 1
+	allowed_ages = list(AGE_ADULT, AGE_CHILD)
+	total_positions = 1
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-	outfit = /datum/outfit/job/wretch/reject
+	outfit = /datum/outfit/wretch/reject
 	category_tags = list(CTAG_WRETCH)
-	displays_adv_job = FALSE
 
-/datum/outfit/job/wretch/reject
+/datum/outfit/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak
 	mask = /obj/item/clothing/face/shepherd/rag
@@ -31,7 +30,7 @@
 		/obj/item/lockpickring/mundane = 1,
 	)
 
-/datum/outfit/job/wretch/reject/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/wretch/reject/pre_equip(mob/living/carbon/human/H)
 	..()
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 5 SECONDS)
 	if(GLOB.keep_doors.len > 0)
@@ -40,10 +39,10 @@
 
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
-		H.advjob = "Disowned Prince"
+		H.job = "Disowned Prince"
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/princess
-		H.advjob = "Disowned Princess"
+		H.job = "Disowned Princess"
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
@@ -74,7 +73,7 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
 
-/datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(alert("Do you wish to be recognized as a non-foreigner?", "", "Yes", "No") == "Yes")
 		REMOVE_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
