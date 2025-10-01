@@ -1003,6 +1003,20 @@
 	output_amount = 1
 	craftdiff = 3
 
+/datum/repeatable_crafting_recipe/crafting/jadecirclet
+	name = "joapstone circlet"
+	output = /obj/item/clothing/head/crown/circlet/jade
+	requirements = list(
+		/obj/item/gem/jade = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve out the raw joapstone", "start to carve the raw joapstone")
+	)
+	attacked_atom = /obj/item/gem/jade
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
 /datum/repeatable_crafting_recipe/crafting/jadefancycup
 	name = "fancy joapstone cup"
 	output = /obj/item/reagent_containers/glass/cup/jadefancy
@@ -1104,10 +1118,10 @@
 // shell //
 
 /datum/repeatable_crafting_recipe/crafting/openclam
-	name = "opened clam (+ rosellusk pearl)"
-	output = list(
+	name = "opened clam"
+	output = list (
 		/obj/item/carvedgem/shell/openoyster,
-		/obj/item/carvedgem/rose/rawrose
+		/obj.item/carvedgem/rose/rawrose
 	)
 
 	requirements = list(
@@ -1151,6 +1165,378 @@
 	output_amount = 1
 	craftdiff = 1
 
+/datum/repeatable_crafting_recipe/crafting/shellfork
+
+	name = "shell fork"
+	output = /obj/item/carvedgem/shell/fork
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/shellspoon
+
+	name = "shell spoon"
+	output = /obj/item/carvedgem/shell/spoon
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/shellcameo
+
+	name = "shell cameo"
+	output = /obj/item/carvedgem/shell/cameo
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/shellbowl
+
+	name = "shell bowl"
+	output = /obj/item/reagent_containers/glass/bowl/shell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/shellcup
+
+	name = "shell cup"
+	output = /obj/item/reagent_containers/glass/cup/shell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/shellplatter
+
+	name = "shell platter"
+	output = /obj/item/plate/shell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellring
+
+	name = "shell ring"
+	output = /obj/item/clothing/ring/shell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellteapot
+
+	name = "shell teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotshell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellamulet
+
+	name = "shell amulet"
+	output = /obj/item/clothing/neck/shellamulet
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellfigurine
+
+	name = "shell figurine"
+	output = /obj/item/carvedgem/shell/figurine
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+
+/datum/repeatable_crafting_recipe/crafting/shelltablet
+
+	name = "shell tablet"
+	output = /obj/item/carvedgem/shell/tablet
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellfish
+
+	name = "shell fish figurine"
+	output = /obj/item/carvedgem/shell/fish
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellvase
+
+	name = "shell vases"
+	output = /obj/item/carvedgem/shell/vase
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/shellbust
+
+	name = "shell bust"
+	output = /obj/item/carvedgem/shell/bust
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellcirclet
+
+	name = "shell circlet"
+	output = /obj/item/clothing/head/crown/circlet/shell
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellbracelet
+
+	name = "shell bracelet"
+	output = /obj/item/clothing/wrists/gem/shellbracelet
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellfancycup
+
+	name = "fancy shell cup"
+	output = /obj/item/reagent_containers/glass/cup/shellfancy
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellfancyvase
+
+	name = "fancy shell vase"
+	output = /obj/item/carvedgem/shell/fancyvase
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellcomb
+
+	name = "shell comb"
+	output = /obj/item/carvedgem/shell/comb
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellduck
+
+	name = "shell duck"
+	output = /obj/item/carvedgem/shell/duck
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/shellmask
+
+	name = "shell mask"
+	output = /obj/item/clothing/face/shellmask
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/shellurn
+
+	name = "shell urn"
+	output = /obj/item/carvedgem/shell/urn
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/shellstatue
+
+	name = "shell statue"
+	output = /obj/item/carvedgem/shell/statue
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/shellobelisk
+
+	name = "shell obelisk"
+	output = /obj/item/carvedgem/shell/obelisk
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/shellturtle
+
+	name = "turtle carving"
+	output = /obj/item/carvedgem/shell/turtle
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/shellrungu
+
+	name = "shell rungu"
+	output = /obj/item/weapon/mace/cudgel/shellrungu
+	requirements = list(
+		/obj/item/carvedgem/shell/rawshell = 1
+	)
+	tool_usage = list(		/obj/item/weapon/knife = list("starts to carve the clam shell", "start to carve the clam shell")
+	)
+	attacked_atom = /obj/item/carvedgem/shell/rawshell
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
 
 // rose //
 

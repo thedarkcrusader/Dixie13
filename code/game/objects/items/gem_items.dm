@@ -10,8 +10,8 @@
 //.....................Shell......................//
 
 /obj/item/carvedgem/shell/openoyster
-	name = "opened fossilized clam"
-	desc = "A clam shell that has recently been opened. You could seperate the shell in two with a knife."
+	name = "open fossilized clam"
+	desc = "A clam shell that has recently been opened. You could split the shell in two with a knife."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "oyster_open"
 	grid_height = 3
@@ -36,6 +36,141 @@
 	grid_width = 1
 	sellprice = 15
 
+/obj/item/carvedgem/shell/fork
+	name = "shell fork"
+	desc = "A fork carved out of shell, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "fork_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 15
+
+/obj/item/carvedgem/shell/spoon
+	name = "shell spoon"
+	desc = "A spoon carved out of shell, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "spoon_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 15
+
+/obj/item/carvedgem/shell/cameo
+	name = "shell cameo"
+	desc = "A cameo carved out of joapstone depicting...someone? Use your imagination on who it could be."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "cameo_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 15
+
+/obj/item/carvedgem/shell/figurine
+	name = "shell figurine"
+	desc = "A small figurine carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "figurine_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/shell/fish
+	name = "shell fish figurine"
+	desc = "A small fish figurine carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "fish_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/shell/vase
+	name = "shell vase"
+	desc = "A vase carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "vase_shell"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/shell/tablet
+	name = "shell tablet"
+	desc = "A tablet carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "tablet_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/shell/bust
+	name = "shell bust"
+	desc = "A bust carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "bust_shell"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 25
+
+/obj/item/carvedgem/shell/fancyvase
+	name = "fancy shell vase"
+	desc = "A fancy vase carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "fancyvase_shell"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/shell/comb
+	name = "shell comb"
+	desc = "A luxurious comb carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "comb_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/shell/duck
+	name = "shell comb"
+	desc = "An adorable little duck carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "duck_shell"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/shell/urn
+	name = "shell comb"
+	desc = "A large decorative urn carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "urn_shell"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 30
+
+/obj/item/carvedgem/shell/statue
+	name = "shell statue"
+	desc = "A statue carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "statue_shell"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 30
+
+
+/obj/item/carvedgem/shell/obelisk
+	name = "shell statue"
+	desc = "An obelisk carved out of shell."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "obelisk_shell"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 30
+
+/obj/item/carvedgem/shell/turtle
+	name = "turtle carving"
+	desc = "A medium sized carving of a sea turtle made out of clam shell. Sea turtle eggs have unfortunately become a delicacy for Grenzelhoftians, causing their population to rapidly decline."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "turtle_shell"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 35
 //.....................Rose......................//
 
 /obj/item/carvedgem/rose/rawrose
@@ -100,7 +235,7 @@
 	sellprice = 60
 
 /obj/item/carvedgem/jade/fish
-	name = "joapstone figurine"
+	name = "joapstone fish figurine"
 	desc = "A small fish figurine carved out of joapstone."
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "fish_jade"

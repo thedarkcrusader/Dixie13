@@ -589,7 +589,7 @@
 	max_integrity = INTEGRITY_POOR - 100
 	max_blade_int = 35
 	wdefense = AVERAGE_PARRY
-	resistance_flags = null //rock isnt flammable
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	sellprice = 75
 
 //................ Villager Knife ............... //
