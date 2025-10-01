@@ -324,7 +324,7 @@
 	sellprice = 40
 
 /obj/item/carvedgem/rose/carp
-	name = "rosellusk carp"
+	name = "rosellusk carp statue"
 	desc = "A medium sized carving of a carp made out of rosellusk. The fish have been selectively bred by Eorans to bring out beautiful patterns in their scales, but have become invasive in some regions due to carelessness."
 	icon = 'icons/roguetown/gems/gem_rose.dmi'
 	icon_state = "carp_rose"
@@ -487,3 +487,303 @@
 	grid_height = 1
 	grid_width = 1
 	sellprice = 35
+
+/obj/item/carvedgem/onyxa/fork
+	name = "onyxa fork"
+	desc = "a fork carved out of onyxa, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "fork_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 35
+
+/obj/item/carvedgem/onyxa/spoon
+	name = "onyxa spoon"
+	desc = "a spoon carved out of onyxa, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "spoon_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 35
+
+/obj/item/carvedgem/onyxa/cameo
+	name = "onyxa cameo"
+	desc = "A cameo carved out of onyxa depicting...someone? Use your imagination on who it could be."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "cameo_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 35
+
+/obj/item/carvedgem/onyxa/figurine
+	name = "onyxa figurine"
+	desc = "A small figurine carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "figurine_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 40
+
+/obj/item/carvedgem/onyxa/fish
+	name = "onyxa fish figurine"
+	desc = "A small fish figurine carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "fish_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 40
+
+/obj/item/carvedgem/onyxa/vase
+	name = "onyxa vase"
+	desc = "A vase carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "vase_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 40
+
+/obj/item/carvedgem/onyxa/tablet
+	name = "onyxa tablet"
+	desc = "A tablet carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "tablet_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 40
+
+/obj/item/carvedgem/onyxa/bust
+	name = "onyxa tablet"
+	desc = "A bust carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "figurine_onyxa"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 45
+
+/obj/item/carvedgem/onyxa/fancyvase
+	name = "fancy onyxa vase"
+	desc = "A fancy vase carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "fancyvase_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 45
+
+/obj/item/carvedgem/onyxa/comb
+	name = "onyxa comb"
+	desc = "A luxurious comb carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "comb_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 45
+
+/obj/item/carvedgem/onyxa/duck
+	name = "onyxa comb"
+	desc = "An adorable little duck carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "duck_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 45
+
+/obj/item/carvedgem/onyxa/urn
+	name = "onyxa urn"
+	desc = "A large decorative urn carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "urn_onyxa"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 50
+
+/obj/item/carvedgem/onyxa/statue
+	name = "onyxa statue"
+	desc = "A statue carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "statue_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 50
+
+/obj/item/carvedgem/onyxa/obelisk
+	name = "onyxa obelisk"
+	desc = "An obelisk carved out of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "obelisk_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 50
+
+/obj/item/carvedgem/onyxa/snake
+	name = "onyxa snake statue"
+	desc = "A flying horned snake carved out of onyxa. Once considered a sacred animal of Subterra, now considered vermin."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "snake_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 55
+
+/obj/item/carvedgem/onyxa/spider
+	name = "onyxa spider statue"
+	desc = " A spider carved out of onyxa. Their webs once inspired the patterns the Drow had painted on themselves long ago."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "spider_onyxa"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 55
+
+//.....................Ceruleabaster......................//
+
+/obj/item/carvedgem/turq/cutgem
+	name = "cut ceruleabaster"
+	desc = "A cut and polished piece of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "cutgem_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/turq/fork
+	name = "ceruleabaster fork"
+	desc = "A fork carved out of ceruleabaster, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "fork_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/turq/spoon
+	name = "ceruleabaster spoon"
+	desc = "A spoon carved out of ceruleabaster, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "spoon_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/turq/cameo
+	name = "ceruleabaster cameo"
+	desc = "A cameo carved out of ceruleabaster depicting...someone? Use your imagination on who it could be."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "cameo_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/turq/figurine
+	name = "ceruleabaster figurine"
+	desc = "A small figurine carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "figurine_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/turq/fish
+	name = "ceruleabaster fish figurine"
+	desc = "A small fish figurine carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "fish_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/turq/vase
+	name = "ceruleabaster vase"
+	desc = "A vase carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "vase_turq"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/turq/tablet
+	name = "ceruleabaster tablet"
+	desc = "A tablet carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "figurine_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/turq/bust
+	name = "ceruleabaster bust"
+	desc = "A bust carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "bust_turq"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 90
+
+/obj/item/carvedgem/turq/fancyvase
+	name = "fancy ceruleabaster vase"
+	desc = "A fancy vase carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "fancyvase_turq"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/turq/comb
+	name = "ceruleabaster comb"
+	desc = "A luxurious comb carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "comb_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/turq/duck
+	name = "ceruleabaster duck"
+	desc = "An adorable little duck carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "duck_turq"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/turq/urn
+	name = "ceruleabaster urn"
+	desc = "A large decorative urn carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "urn_turq"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 95
+
+/obj/item/carvedgem/turq/statue
+	name = "ceruleabaster statue"
+	desc = "A statue carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "statue_turq"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 95
+
+/obj/item/carvedgem/turq/obelisk
+	name = "ceruleabaster obelisk"
+	desc = "An obelisk carved out of ceruleabaster."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "obelisk_turq"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 95
+
+/obj/item/carvedgem/turq/ka
+	name = "ceruleabaster ka statue"
+	desc = "A large carving of a ka spirit from Lakkarian myth. Believed to help guide the recently parted to Necras domain."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "ka_turq"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 100
+
+/obj/item/carvedgem/turq/scarab
+	name = "ceruleabaster scarab"
+	desc = "A large carving of a scarab made out of ceruleabaster. An insect sacred to lakkarian astratans. Scarabs are commonly seen at lakkarian temples and mastabas."
+	icon = 'icons/roguetown/gems/gem_turq.dmi'
+	icon_state = "scarab_turq"
+	dropshrink = 0.8
+	grid_height = 2
+	grid_width = 2
+	sellprice = 100

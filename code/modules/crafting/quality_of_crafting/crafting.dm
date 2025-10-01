@@ -739,7 +739,7 @@
 // jade //
 
 /datum/repeatable_crafting_recipe/crafting/cutjade
-	name = "cut joapstone"
+	name = "cut joapstone gem"
 	output = /obj/item/carvedgem/jade/cutgem
 	requirements = list(
 		/obj/item/gem/jade = 1,
@@ -990,7 +990,7 @@
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/crafting/jadebracelet
-	name = "joapstone bracelet"
+	name = "joapstone bracelets"
 	output = /obj/item/clothing/wrists/gem/jadebracelet
 	requirements = list(
 		/obj/item/gem/jade = 1,
@@ -1386,7 +1386,7 @@
 
 /datum/repeatable_crafting_recipe/crafting/shellbracelet
 
-	name = "shell bracelet"
+	name = "shell bracelets"
 	output = /obj/item/clothing/wrists/gem/shellbracelet
 	requirements = list(
 		/obj/item/carvedgem/shell/rawshell = 1
@@ -1793,7 +1793,7 @@
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/crafting/rosebracelet
-	name = "rosellusk bracelet"
+	name = "rosellusk bracelets"
 	output = /obj/item/clothing/wrists/gem/rosebracelet
 	requirements = list(
 		/obj/item/carvedgem/rose/rawrose = 1,
@@ -1905,7 +1905,7 @@
 	craftdiff = 5
 
 /datum/repeatable_crafting_recipe/crafting/rosecarp
-	name = "rosellusk carp"
+	name = "rosellusk carp statue"
 	output = /obj/item/carvedgem/rose/carp
 	requirements = list(
 		/obj/item/carvedgem/rose/rawrose = 1,
@@ -1921,7 +1921,7 @@
 // onyxa //
 
 /datum/repeatable_crafting_recipe/crafting/cutonyxa
-	name = "cut onyxa"
+	name = "cut onyxa gem"
 	output = /obj/item/carvedgem/onyxa/cutgem
 	requirements = list(
 		/obj/item/gem/onyxa = 1,
@@ -1929,7 +1929,740 @@
 	tool_usage = list(
 		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
 	)
-	attacked_atom = /obj/item/gem/onyxa = 1
+	attacked_atom = /obj/item/gem/onyxa
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/onyxafork
+	name = "onyxa fork"
+	output = /obj/item/carvedgem/onyxa/fork
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/onyxaspoon
+	name = "onyxa spoon"
+	output = /obj/item/carvedgem/onyxa/spoon
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/onyxacameo
+	name = "onyxa cameo"
+	output = /obj/item/carvedgem/onyxa/cameo
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/onyxacup
+	name = "onyxa cup"
+	output = /obj/item/reagent_containers/glass/cup/opal
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/onyxabowl
+	name = "onyxa bowl"
+	output = /obj/item/reagent_containers/glass/bowl/onyxa
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+
+/datum/repeatable_crafting_recipe/crafting/onyxafigurine
+	name = "onyxa figurine"
+	output = /obj/item/carvedgem/onyxa/figurine
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+
+/datum/repeatable_crafting_recipe/crafting/onyxafish
+	name = "onyxa fish figurine"
+	output = /obj/item/carvedgem/onyxa/fish
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxavase
+	name = "onyxa vase"
+	output = /obj/item/carvedgem/onyxa/vase
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxatablet
+	name = "onyxa tablet"
+	output = /obj/item/carvedgem/onyxa/tablet
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxateapot
+	name = "onyxa teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotonyxa
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxaring
+	name = "onyxa ring"
+	output = /obj/item/clothing/ring/onyxa
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxaamulet
+	name = "onyxa amulet"
+	output = /obj/item/clothing/neck/onyxaamulet
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxaplatter
+	name = "onyxa platter"
+	output = /obj/item/plate/onyxa
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/onyxabust
+	name = "onyxa bust"
+	output = /obj/item/carvedgem/onyxa/bust
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxafancyvase
+	name = "fancy onyxa vase"
+	output = /obj/item/carvedgem/onyxa/fancyvase
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxacomb
+	name = "onyxa comb"
+	output = /obj/item/carvedgem/onyxa/comb
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxaduck
+	name = "onyxa duck"
+	output = /obj/item/carvedgem/onyxa/duck
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxafancycup
+	name = "fancy onyxa cup"
+	output = /obj/item/reagent_containers/glass/cup/onyxafancy
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxabracelet
+	name = "onyxa bracelets"
+	output = /obj/item/clothing/wrists/gem/onyxabracelet
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxacirclet
+	name = "onyxa circlet"
+	output = /obj/item/clothing/head/crown/circlet/onyxa
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/onyxamask
+	name = "onyxa mask"
+	output = /obj/item/clothing/face/onyxamask
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/onyxaurn
+	name = "onyxa urn"
+	output = /obj/item/carvedgem/onyxa/urn
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/onyxastatue
+	name = "onyxa statue"
+	output = /obj/item/carvedgem/onyxa/statue
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/onyxaobelisk
+	name = "onyxa obelisk"
+	output = /obj/item/carvedgem/onyxa/obelisk
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/onyxaurn
+	name = "onyxa urn"
+	output = /obj/item/carvedgem/onyxa/urn
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/onyxaspider
+	name = "onyxa spider statue"
+	output = /obj/item/carvedgem/onyxa/spider
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/onyxasnake
+	name = "onyxa snake statue"
+	output = /obj/item/carvedgem/onyxa/snake
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+// ceruleabaster //
+
+/datum/repeatable_crafting_recipe/crafting/cutturq
+	name = "cut ceruleabaster gem"
+	output = /obj/item/carvedgem/turq/cutgem
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqfork
+	name = "ceruleabaster fork"
+	output = /obj/item/carvedgem/turq/fork
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqspoon
+	name = "ceruleabaster spoon"
+	output = /obj/item/carvedgem/turq/spoon
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqcameo
+	name = "ceruleabaster cameo"
+	output = /obj/item/carvedgem/turq/cameo
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqbowl
+	name = "ceruleabaster bowl"
+	output = /obj/item/reagent_containers/glass/bowl/turq
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqcup
+	name = "ceruleabaster cup"
+	output = /obj/item/reagent_containers/glass/cup/turq
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/turqfigurine
+	name = "ceruleabaster figurine"
+	output = /obj/item/carvedgem/turq/figurine
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/turqfish
+	name = "ceruleabaster fish figurine"
+	output = /obj/item/carvedgem/turq/fish
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/turqvase
+	name = "ceruleabaster vase"
+	output = /obj/item/carvedgem/turq/vase
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/turqamulet
+	name = "ceruleabaster amulet"
+	output = /obj/item/clothing/neck/turqamulet
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/turqring
+	name = "ceruleabaster ring"
+	output = /obj/item/clothing/ring/turq
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/turqplatter
+	name = "ceruleabaster platter"
+	output = /obj/item/plate/turq
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+/datum/repeatable_crafting_recipe/crafting/turqbracelet
+	name = "ceruleabaster bracelets"
+	output = /obj/item/clothing/wrists/gem/turqbracelet
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqcirclet
+	name = "ceruleabaster circlet"
+	output = /obj/item/clothing/head/crown/circlet/turq
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqfancycup
+	name = "fancy ceruleabaster cup"
+	output = /obj/item/reagent_containers/glass/cup/turqfancy
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqfancyvase
+	name = "fancy ceruleabaster vase"
+	output = /obj/item/carvedgem/turq/fancyvase
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqbust
+	name = "ceruleabaster bust"
+	output = /obj/item/carvedgem/turq/bust
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqcomb
+	name = "ceruleabaster comb"
+	output = /obj/item/carvedgem/turq/comb
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqduck
+	name = "ceruleabaster duck"
+	output = /obj/item/carvedgem/turq/duck
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/turqurn
+	name = "ceruleabaster urn"
+	output = /obj/item/carvedgem/turq/urn
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/turqstatue
+	name = "ceruleabaster statue"
+	output = /obj/item/carvedgem/turq/statue
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/turqobelisk
+	name = "ceruleabaster obelisk"
+	output = /obj/item/carvedgem/turq/obelisk
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/turqmask
+	name = "ceruleabaster urn"
+	output = /obj/item/clothing/face/turqmask
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/turqka
+	name = "ceruleabaster ka statue"
+	output = /obj/item/carvedgem/turq/ka
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/turqscarab
+	name = "ceruleabaster scarab"
+	output = /obj/item/carvedgem/turq/scarab
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+// aoetal //
