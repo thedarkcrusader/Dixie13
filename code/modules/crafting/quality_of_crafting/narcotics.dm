@@ -64,12 +64,12 @@
 	)
 	craftdiff = 3
 
+//expensive and difficult to produce, however it sells for really well
 /datum/repeatable_crafting_recipe/narcotics/moondustpurify
 	name = "Purify Moondust"
 	output = /obj/item/reagent_containers/powder/moondust_purest
 	requirements = list(
 		/obj/item/alch/silverdust = 1,
-		/obj/item/reagent_containers/powder/moondust = 2
+		/obj/item/reagent_containers/powder/moondust = 1
 	)
 	craftdiff = 5
-	output_amount = 2

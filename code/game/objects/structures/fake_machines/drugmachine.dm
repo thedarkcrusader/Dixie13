@@ -78,7 +78,7 @@
 					continue
 				if(!(I.type in accepted_items))
 					continue
-				var/prize = I.get_real_price() * 0.6 //60% of sellprice
+				var/prize = I.get_real_price() * 0.5 //50% of sellprice
 				if(prize >= 1)
 					play_sound=TRUE
 					budgie += prize
