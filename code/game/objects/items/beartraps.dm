@@ -132,14 +132,14 @@
 				update_appearance(UPDATE_ICON_STATE)
 				src.alpha = 80 // Set lower visibility for everyone
 				L.adjust_experience(/datum/skill/craft/traps, L.STAINT * boon, FALSE) // We learn how to set them better, little by little.
-				to_chat(user, "<span class='notice'>I arm \the [src].</span>")
+				to_chat(user, span_notice("I arm \the [src]."))
 			else
 				if(old)
-					user.visible_message("<span class='warning'>The old [src.name] breaks under stress!</span>")
+					user.visible_message(span_warning("The old [src.name] breaks under stress!"))
 					playsound(src.loc, 'sound/foley/breaksound.ogg', 100, TRUE, -1)
 					qdel(src)
 				else
-					user.visible_message("<span class='warning'>Curses! I couldn't keep [src.name] open tight enough!</span>")
+					user.visible_message(span_warning("Curses! I couldn't keep [src.name] open tight enough!"))
 					playsound(src.loc, 'sound/items/beartrap.ogg', 300, TRUE, -1)
 					return
 
@@ -181,8 +181,8 @@
 					snap = FALSE
 			if(snap)
 				close_trap(L)
-				L.visible_message("<span class='danger'>[L] triggers \the [src].</span>", \
-						"<span class='danger'>I trigger \the [src]!</span>")
+				L.visible_message(span_danger("[L] triggers \the [src]."), \
+						span_danger("I trigger \the [src]!"))
 				if(L.apply_damage(trap_damage, BRUTE, def_zone, L.run_armor_check(def_zone, "stab", damage = trap_damage)))
 					L.Stun(80)
 				L.consider_ambush()
