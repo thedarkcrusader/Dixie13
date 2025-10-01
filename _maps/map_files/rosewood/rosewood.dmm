@@ -34449,21 +34449,6 @@
 /obj/structure/bars/cemetery,
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/town)
-"rPY" = (
-/obj/structure/chair/stool{
-	pixel_y = 0;
-	pixel_x = -8
-	},
-/obj/structure/chair/stool{
-	pixel_y = 0;
-	pixel_x = 8
-	},
-/obj/structure/chair/stool{
-	pixel_y = 13;
-	pixel_x = -1
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/town)
 "rPZ" = (
 /obj/machinery/light/fueled/wallfire{
 	pixel_x = 32
@@ -138828,7 +138813,7 @@ vbM
 aML
 dvK
 qsj
-rPY
+ePQ
 aML
 qJl
 qJl
@@ -139231,7 +139216,7 @@ dif
 dif
 aML
 aoj
-bFq
+ePQ
 qsj
 aML
 qJl
