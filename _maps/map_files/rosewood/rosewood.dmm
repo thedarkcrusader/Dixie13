@@ -1306,7 +1306,7 @@
 /obj/structure/door/weak/bolt{
 	dir = 1
 	},
-/turf/closed/basic,
+/turf/open/floor/blocks/paving,
 /area/rogue/under/town/sewer)
 "aIs" = (
 /obj/effect/decal/cobbleedge{
@@ -3329,7 +3329,7 @@
 "bLY" = (
 /obj/structure/bars/alt,
 /obj/structure/window/solid,
-/turf/closed/wall/mineral/craftstone,
+/turf/open/floor/herringbone,
 /area/rogue/indoors/town)
 "bMs" = (
 /obj/structure/table/wood/reinforced_alt{
@@ -9754,13 +9754,6 @@
 /obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/carpet/lord/left,
 /area/rogue/indoors/town/manor)
-"fcE" = (
-/obj/machinery/light/fueled/wallfire/candle,
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town)
 "fcH" = (
 /obj/structure/flora/newtree/snow,
 /turf/open/floor/snow/patchy,
@@ -29549,12 +29542,6 @@
 	},
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/rtfield)
-"pkr" = (
-/obj/structure/window/stained/silver/alt,
-/obj/structure/window/stained/silver/alt,
-/obj/structure/fluff/walldeco/vinez/blue,
-/turf/open/floor/church,
-/area/rogue/indoors/town/clinic_large)
 "pkY" = (
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/wood,
@@ -34463,21 +34450,17 @@
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/town)
 "rPY" = (
-/obj/structure/chair/stool/crafted{
-	pixel_y = -3;
-	pixel_x = -7
+/obj/structure/chair/stool{
+	pixel_y = 0;
+	pixel_x = -8
 	},
-/obj/structure/chair/stool/crafted{
-	pixel_y = 8;
-	pixel_x = 1
+/obj/structure/chair/stool{
+	pixel_y = 0;
+	pixel_x = 8
 	},
-/obj/structure/chair/stool/crafted{
-	pixel_y = -3;
-	pixel_x = 9
-	},
-/obj/structure/chair/stool/crafted{
-	pixel_y = 8;
-	pixel_x = 1
+/obj/structure/chair/stool{
+	pixel_y = 13;
+	pixel_x = -1
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -37462,7 +37445,9 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/tavern)
 "toR" = (
-/obj/structure/easel,
+/obj/structure/easel{
+	pixel_y = 0
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
@@ -141047,7 +141032,7 @@ xTW
 xTW
 wjY
 wjY
-pkr
+nHy
 grI
 grI
 grI
@@ -181463,7 +181448,7 @@ lvO
 ehP
 edX
 xOh
-fcE
+vlQ
 uQm
 vKU
 qAS
