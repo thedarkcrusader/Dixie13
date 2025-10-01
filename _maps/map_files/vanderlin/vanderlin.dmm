@@ -8362,7 +8362,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
 	},
-/obj/machinery/light/fueled/firebowl/standing/blue,
+/obj/item/bin/water,
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "eQe" = (
@@ -12760,6 +12760,13 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
+"hrN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 8
+	},
+/turf/open/floor/blocks/paving,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "hsj" = (
 /obj/effect/landmark/start/beastmonger,
 /turf/open/floor/wood,
@@ -22862,6 +22869,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
+/obj/item/natural/cloth,
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "nLc" = (
@@ -26473,6 +26481,12 @@
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
+"qbF" = (
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 1
+	},
+/turf/open/floor/blocks,
+/area/rogue/under/town/sewer)
 "qbQ" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/rags,
@@ -27934,6 +27948,13 @@
 /obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/clinic_large/apothecary)
+"rbw" = (
+/obj/structure/flora/grass/water,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 4
+	},
+/turf/open/floor/greenstone,
+/area/rogue/under/town/sewer)
 "rbP" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
@@ -31150,7 +31171,9 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/tavern)
 "sVP" = (
-/obj/structure/table/wood/plain_alt,
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town)
 "sVT" = (
@@ -56832,7 +56855,7 @@ poL
 rsU
 eEs
 oGi
-ekO
+rbw
 lfU
 lfU
 cDP
@@ -57029,7 +57052,7 @@ nYn
 nYn
 nYn
 wpM
-rsU
+qbF
 rsU
 icm
 vqq
@@ -95823,7 +95846,7 @@ elp
 akL
 soo
 hIQ
-irT
+hrN
 uho
 pkY
 ehF
