@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	for(var/i in 1 to 3)
 		if(isnull(player.prefs.vars["loadout[i]"]))
 			continue
-		character.mind.special_items["[player.prefs.vars["loadout[i]"]:path:name]"] = player.prefs.vars["loadout[i]"]:path
+		character.mind.special_items["[player.prefs.vars["loadout[i]"]:item_path:name]"] = player.prefs.vars["loadout[i]"]:item_path
 
 /proc/apply_special_trait_if_able(mob/living/carbon/human/character, client/player, trait_type)
 	if(!charactet_eligible_for_trait(character, player, trait_type))
