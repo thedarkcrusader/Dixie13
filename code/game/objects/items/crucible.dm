@@ -58,6 +58,7 @@
 		crucible_temperature = max(300, crucible_temperature - 10)
 
 	reagents.expose_temperature(crucible_temperature, 1)
+
 	for(var/obj/item/item in contents)
 		var/datum/material/material = item.melting_material
 		if(crucible_temperature < initial(material.melting_point))
@@ -67,7 +68,9 @@
 		melting_pot[item] += 5
 		if(melting_pot[item] >= item.melt_amount)
 			melt_item(item)
-	update_appearance(UPDATE_OVERLAYS)
+
+	if(reagents?.total_volume)
+		update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/storage/crucible/get_temperature()
 	return crucible_temperature
