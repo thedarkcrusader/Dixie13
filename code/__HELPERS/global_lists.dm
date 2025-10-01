@@ -44,8 +44,6 @@
 
 	init_subtypes(/datum/alch_grind_recipe, GLOB.alch_grind_recipes)
 
-	init_subtypes(/datum/alch_cauldron_recipe,GLOB.alch_cauldron_recipes)
-
 	// Faiths
 	for(var/path in subtypesof(/datum/faith))
 		var/datum/faith/faith = new path()

@@ -115,8 +115,8 @@
 	var/final_price = 0
 	var/taxes = 0
 	// this is the list of supply groups that you can purchase with this machine
-	var/list/unlocked_cats = list("Apparel","Storage","Armor(Light)","Armor(Steel)","Food","drinks","Jewelry","Luxury","Tools","Seeds","Shields","Medicine","Raw Materials",
-								"Weapons (Iron)","Weapons (Steel)","Weapons (Ranged)","Ammunition")
+	var/list/unlocked_cats = list("Apparel","Storage","Armor(Light)","Armor(Steel)","Food","Drinks","Jewelry","Luxury","Tools","Seeds","Shields","Medicine","Raw Materials",
+								"Weapons (Iron)","Weapons (Steel)","Weapons (Ranged)","Ammunition", "Narcotics", "Instruments")
 
 /obj/structure/fake_machine/merchantvend/Initialize()
 	. = ..()

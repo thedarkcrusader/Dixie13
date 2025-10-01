@@ -1,6 +1,6 @@
 /obj/item/fake_machine/drugtrade
 	name = "NARCOS"
-	desc = "A machine that exports drugs throughout a network of pneumatic pipes."
+	desc = "A machine that uses pneumatic pipes to discreetly send drugs to a smuggler near the coast."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "ballooner"
 	density = TRUE
