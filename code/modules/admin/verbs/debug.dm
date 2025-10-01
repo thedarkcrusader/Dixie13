@@ -293,6 +293,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	for(var/obj/item/I in dressed_human.get_all_gear())
 		qdel(I)
+
 	SSjob.EquipRank(dressed_human, selected, dressed_human.client)
 
 	log_admin("[key_name(src)] changed the job of [key_name(dressed_human)] to [selection].")
