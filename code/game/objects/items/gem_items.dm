@@ -185,8 +185,152 @@
 	desc = "A rosellusk pearl that came out of a fossilized clam."
 	icon = 'icons/roguetown/gems/gem_rose.dmi'
 	icon_state = "cutgem_rose"
-	sellprice = 15
+	sellprice = 20
 
+/obj/item/carvedgem/rose/fork
+	name = "rosellusk fork"
+	desc = "A fork carved out of rosellusk, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "fork_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/rose/spoon
+	name = "rosellusk fork"
+	desc = "A spoon carved out of rosellusk, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "spoon_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/rose/cameo
+	name = "rosellusk fork"
+	desc = "A cameo carved out of rosellusk depicting...someone? Use your imagination on who it could be."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "cameo_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 20
+
+/obj/item/carvedgem/rose/figurine
+	name = "rosellusk figurine"
+	desc = "A small figurine carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "figurine_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/rose/fish
+	name = "rosellusk fish figurine"
+	desc = "A small fish figurine carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "fish_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/rose/vase
+	name = "rosellusk vase"
+	desc = "A vase carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "vase_rose"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/rose/tablet
+	name = "rosellusk tablet"
+	desc = "A tablet carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "tablet_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 25
+
+/obj/item/carvedgem/rose/bust
+	name = "rosellusk bust"
+	desc = "A bust carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "bust_rose"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 30
+
+/obj/item/carvedgem/rose/fancyvase
+	name = "fancy rosellusk vase"
+	desc = "A fancy vase carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "fancyvase_rose"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 30
+
+/obj/item/carvedgem/rose/comb
+	name = "rosellusk comb"
+	desc = "A luxurious comb carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "comb_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 30
+
+/obj/item/carvedgem/rose/duck
+	name = "rosellusk duck"
+	desc = "An adorable little duck carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "duck_rose"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 30
+
+/obj/item/carvedgem/rose/urn
+	name = "rosellusk urn"
+	desc = "A large decorative urn carve out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "urn_rose"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 35
+
+/obj/item/carvedgem/rose/statue
+	name = "rosellusk urn"
+	desc = "A statue carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "statue_rose"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 35
+
+/obj/item/carvedgem/rose/obelisk
+	name = "rosellusk obelisk"
+	desc = "An obelisk carved out of rosellusk."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "obelisk_rose"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 35
+
+/obj/item/carvedgem/rose/flower
+	name = "rosellusk flower carving"
+	desc = " A carving of a beautiful flower made out of rosellusk. Eora would be proud of such artistry."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "flower_rose"
+	dropshrink = 0.8
+	grid_height = 2
+	grid_width = 2
+	sellprice = 40
+
+/obj/item/carvedgem/rose/carp
+	name = "rosellusk carp"
+	desc = "A medium sized carving of a carp made out of rosellusk. The fish have been selectively bred by Eorans to bring out beautiful patterns in their scales, but have become invasive in some regions due to carelessness."
+	icon = 'icons/roguetown/gems/gem_rose.dmi'
+	icon_state = "carp_rose"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 40
 //.....................Joapstone......................//
 
 /obj/item/carvedgem/jade/cutgem
@@ -332,3 +476,14 @@
 	grid_height = 2
 	grid_width = 1
 	sellprice = 75
+
+//.....................Onyxa......................//
+
+/obj/item/carvedgem/onyxa/cutgem
+	name = "polished onyxa"
+	desc = "a polished and carved piece of onyxa."
+	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
+	icon_state = "cutgem_onyxa"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 35

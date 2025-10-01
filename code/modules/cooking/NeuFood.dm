@@ -202,7 +202,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 35
 
-/obj/item/reagent_containers/glass/bowl/rosellusk
+/obj/item/reagent_containers/glass/bowl/rose
 	name = "rosellusk bowl"
 	desc = "A bowl carved out of rosellusk."
 	icon_state = "bowl_rose"
@@ -210,7 +210,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 20
 
-/obj/item/reagent_containers/glass/bowl/petriamber
+/obj/item/reagent_containers/glass/bowl/amber
 	name = "petriamber bowl"
 	desc = "A bowl carved out of petriamber."
 	icon_state = "bowl_amber"

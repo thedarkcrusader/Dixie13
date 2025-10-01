@@ -1553,3 +1553,383 @@
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosespoon
+	name = "rosellusk spoon"
+	output = /obj/item/carvedgem/rose/spoon
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosefork
+	name = "rosellusk fork"
+	output = /obj/item/carvedgem/rose/fork
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosecup
+	name = "rosellusk cup"
+	output = /obj/item/reagent_containers/glass/cup/rose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosebowl
+	name = "rosellusk bowl"
+	output = /obj/item/reagent_containers/glass/bowl/rose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosecameo
+	name = "rosellusk cameo"
+	output = /obj/item/carvedgem/rose/cameo
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/rosefigurine
+	name = "rosellusk figurine"
+	output = /obj/item/carvedgem/rose/figurine
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/rosefish
+	name = "rosellusk fish figurine"
+	output = /obj/item/carvedgem/rose/fish
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/rosevase
+	name = "rosellusk vase"
+	output = /obj/item/carvedgem/rose/vase
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/rosetablet
+	name = "rosellusk tablet"
+	output = /obj/item/carvedgem/rose/tablet
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/roseteapot
+	name = "rosellusk teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotrose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/rosering
+	name = "rosellusk ring"
+	output = /obj/item/clothing/ring/rose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/roseamulet
+	name = "rosellusk amuelt"
+	output = /obj/item/clothing/neck/roseamulet
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/roseplatter
+	name = "rosellusk platter"
+	output = /obj/item/plate/rose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/rosebust
+	name = "rosellusk bust"
+	output = /obj/item/carvedgem/rose/bust
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/rosefancyvase
+	name = "fancy rosellusk vase"
+	output = /obj/item/carvedgem/rose/fancyvase
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/rosecomb
+	name = "rosellusk comb"
+	output = /obj/item/carvedgem/rose/comb
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/roseduck
+	name = "rosellusk duck"
+	output = /obj/item/carvedgem/rose/duck
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/rosebracelet
+	name = "rosellusk bracelet"
+	output = /obj/item/clothing/wrists/gem/rosebracelet
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/rosecirclet
+	name = "rosellusk circlet"
+	output = /obj/item/clothing/head/crown/circlet/rose
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/rosefancycup
+	name = "fancy rosellusk cup"
+	output = /obj/item/reagent_containers/glass/cup/rosefancy
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/roseurn
+	name = "rosellusk urn"
+	output = /obj/item/carvedgem/rose/urn
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/rosestatue
+	name = "rosellusk statue"
+	output = /obj/item/carvedgem/rose/statue
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/roseobelisk
+	name = "rosellusk obelisk"
+	output = /obj/item/carvedgem/rose/obelisk
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/rosemask
+	name = "rosellusk mask"
+	output = /obj/item/carvedgem/rose/urn
+	requirements = list(
+		/obj/item/clothing/face/rosemask
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/roseflower
+	name = "rosellusk flower carving"
+	output = /obj/item/carvedgem/rose/flower
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/rosecarp
+	name = "rosellusk carp"
+	output = /obj/item/carvedgem/rose/carp
+	requirements = list(
+		/obj/item/carvedgem/rose/rawrose = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
+	)
+	attacked_atom = /obj/item/carvedgem/rose/rawrose
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+// onyxa //
+
+/datum/repeatable_crafting_recipe/crafting/cutonyxa
+	name = "cut onyxa"
+	output = /obj/item/carvedgem/onyxa/cutgem
+	requirements = list(
+		/obj/item/gem/onyxa = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw onyxa", "carve the raw onyxa")
+	)
+	attacked_atom = /obj/item/gem/onyxa = 1
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1

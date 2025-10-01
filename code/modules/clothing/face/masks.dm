@@ -71,7 +71,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	armor = list("blunt" = 80, "slash" = 80, "stab" = 80,  "piercing" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_TWIST, BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_STAB)
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE | HIDEFACIALHAIR | HIDEHAIR
 	body_parts_covered = FACE
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
