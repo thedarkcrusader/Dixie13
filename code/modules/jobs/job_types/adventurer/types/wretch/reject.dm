@@ -1,9 +1,8 @@
-/datum/advclass/wretch/reject
-	name = "Rejected Royal"
+/datum/job/advclass/wretch/reject
+	title = "Rejected Royal"
 	tutorial = "You were once a member of the royal family, but due to your actions, or the circumstances of your birth, you have been cast out to roam the wilds. \
 	Now, you return, seeking redemption or perhaps... revenge."
-	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(\
+  allowed_races = list(\
 		SPEC_ID_HUMEN,\
 		SPEC_ID_HALF_ELF,\
 		SPEC_ID_HALF_DROW,\
@@ -13,13 +12,13 @@
 		SPEC_ID_HALF_ORC,\
 		SPEC_ID_TIEFLING,\
 )
-	maximum_possible_slots = 1
 	allowed_ages = list(AGE_ADULT, AGE_CHILD)
+	total_positions = 1
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-	outfit = /datum/outfit/job/wretch/reject
+	outfit = /datum/outfit/wretch/reject
 	category_tags = list(CTAG_WRETCH)
 
-/datum/outfit/job/wretch/reject
+/datum/outfit/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak
 	mask = /obj/item/clothing/face/shepherd/rag
@@ -40,7 +39,7 @@
 		/obj/item/lockpickring/mundane = 1,
 	)
 
-/datum/outfit/job/wretch/reject/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/wretch/reject/pre_equip(mob/living/carbon/human/H)
 	..()
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 5 SECONDS)
 	if(GLOB.keep_doors.len > 0)
@@ -82,6 +81,6 @@
 	if(H.dna.species.id != SPEC_ID_TIEFLING)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
-/datum/outfit/job/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/wretch/reject/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	wretch_select_bounty(H)
