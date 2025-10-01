@@ -62,7 +62,7 @@
 /datum/status_effect/buff/druqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list(STATKEY_INT = 4, STATKEY_SPD = 2, STATKEY_LCK = -5)
+	effectedstats = list(STATKEY_INT = 4, STATKEY_SPD = 2, STATKEY_STR = -5)
 	duration = 2 MINUTES
 
 /datum/status_effect/buff/druqks/on_apply()
@@ -97,7 +97,7 @@
 /datum/status_effect/buff/ozium
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list(STATKEY_SPD = -4, STATKEY_PER = 2)
+	effectedstats = list(STATKEY_SPD = -2, STATKEY_PER = 2)
 	duration = 2 MINUTES
 
 /datum/status_effect/buff/ozium/on_apply()
@@ -138,7 +138,7 @@
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list(STATKEY_SPD = 4, STATKEY_END = 4, STATKEY_INT = -2)
+	effectedstats = list(STATKEY_SPD = 4, STATKEY_END = 4, STATKEY_STR = 2, STATKEY_INT = -10)
 	duration = 2 MINUTES
 
 /datum/status_effect/buff/moondust_purest/nextmove_modifier()

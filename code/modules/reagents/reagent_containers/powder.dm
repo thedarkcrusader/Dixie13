@@ -73,12 +73,13 @@
 
 /obj/item/reagent_containers/powder/spice
 	name = "spice"
-	desc = "A potent powder that opens the mind to previously unseen possibilities..."
+	desc = "A potent powder known to grow from decaying bone matter, rumored to be spores of a fungi. \
+	Its apparently mind opening properties have ensured it remains popular amongst the mages and other intellectuals."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spice"
 	item_state = "spice"
-	list_reagents = list(/datum/reagent/druqks = 15)
-	sellprice = 16
+	list_reagents = list(/datum/reagent/druqks = 25)
+	sellprice = 35
 
 /datum/reagent/druqks
 	name = "Drukqs"
@@ -93,7 +94,6 @@
 	plane = FLOOR_PLANE
 	layer = ABOVE_OPEN_TURF_LAYER
 	blend_mode = 0
-	show_when_dead = FALSE
 
 /datum/reagent/druqks/on_mob_life(mob/living/carbon/M)
 	M.set_drugginess(30)
@@ -132,11 +132,12 @@
 
 /obj/item/reagent_containers/powder/ozium
 	name = "ozium"
-	desc = "A potent drug that causes a state of euphoria, but can also arrest breathing."
+	desc = "A potent drug that causes a state of euphoria, but can also arrest breathing. \
+	Its pain numbing properties are why it remains popular amongst Feldshers and Physickers."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "ozium"
-	list_reagents = list(/datum/reagent/ozium = 15)
-	sellprice = 8
+	list_reagents = list(/datum/reagent/ozium = 25)
+	sellprice = 15
 
 /datum/reagent/ozium
 	name = "Ozium"
@@ -149,26 +150,29 @@
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	if(prob(5))
-		M.flash_fullscreen("whiteflash")
 	M.apply_status_effect(/datum/status_effect/buff/ozium)
 	..()
 
 /datum/reagent/ozium/overdose_process(mob/living/M)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustOxyLoss(0.25*REM, 0)
 	. = ..()
 
 /datum/reagent/ozium/overdose_start(mob/living/M)
-	M.playsound_local(get_turf(M), 'sound/misc/heroin_rush.ogg', 100, FALSE)
-	M.visible_message(span_warning("Blood runs from [M]'s nose."))
+	M.emote(pick("gasp","gag"))
 
 /obj/item/reagent_containers/powder/moondust
 	name = "moondust"
-	desc = "Derived from the skins of certain pallid goblins. Makes folk quick to act and anger."
+	desc = "Known to occur naturally in the skin of certain pallid goblins, \
+	this drug is infamous for it's potency, both in pleasure and addiction. \
+	As such many kingdoms, including Kingsfield, declared this drug illegal."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "moondust"
-	list_reagents = list(/datum/reagent/moondust = 15)
-	sellprice = 16
+	list_reagents = list(/datum/reagent/moondust = 25)
+	sellprice = 50
+
+/obj/item/reagent_containers/powder/moondust/impure
+	list_reagents = list(/datum/reagent/moondust = 10, /datum/reagent/berrypoison = 10, /datum/reagent/soap = 5)
+	sellprice = 15
 
 /datum/reagent/moondust
 	name = "Moondust"
@@ -192,8 +196,6 @@
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
-	if(prob(2))
-		M.flash_fullscreen("whiteflash")
 	..()
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
@@ -206,11 +208,15 @@
 
 /obj/item/reagent_containers/powder/moondust_purest
 	name = "pure moondust"
-	desc = "This moondust glitters even in the dark. It seems to have certain pure properties."
+	desc = "Purified moondust, deemed to be Baothan heresy due to the mind numbing pleasure and severe addiction it can cause."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "moondust_purest"
-	list_reagents = list(/datum/reagent/moondust_purest = 15)
-	sellprice = 20
+	list_reagents = list(/datum/reagent/moondust_purest = 25)
+	sellprice = 100
+
+/obj/item/reagent_containers/powder/moondust_purest/impure
+	list_reagents = list(/datum/reagent/moondust = 5, /datum/reagent/soap = 5, /datum/reagent/berrypoison = 15, /datum/reagent/water/gross = 10)
+	sellprice = 10
 
 /datum/reagent/moondust_purest
 	name = "Purest Moondust"
@@ -221,14 +227,13 @@
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/on_mob_metabolize(mob/living/M)
-	M.playsound_local(M, 'sound/ravein/small/hello_my_friend.ogg', 100, FALSE)
-	M.overlay_fullscreen("purest_kaif", /atom/movable/screen/fullscreen/purest)
+	M.overlay_fullscreen("druqks", /atom/movable/screen/fullscreen/druqks)
 	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 
 /datum/reagent/moondust_purest/on_mob_end_metabolize(mob/living/M)
 	animate(M.client)
-	M.clear_fullscreen("purest_kaif")
+	M.clear_fullscreen("druqks")
 	M.remove_status_effect(/datum/status_effect/buff/moondust_purest)
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
@@ -237,12 +242,10 @@
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)
-	if(prob(20))
-		M.flash_fullscreen("whiteflash")
 	..()
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
-	M.adjustToxLoss(0.25*REM, 0)
+	M.adjustToxLoss(0.5*REM, 0)
 	. = ..()
 
 /datum/reagent/moondust_purest/overdose_start(mob/living/M)
