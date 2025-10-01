@@ -24,6 +24,7 @@
 	var/armed = FALSE // Is it armed?
 	var/trap_damage = 90 // How much brute damage the trap will do to its victim
 	var/used_time = 12 SECONDS // How many seconds it takes to disarm the trap
+	var/makeshift_prob = 0
 	max_integrity = 100
 	grid_width = 64
 	grid_height = 64
@@ -123,7 +124,7 @@
 	if(ishuman(user) && !user.stat && !HAS_TRAIT(src, TRAIT_RESTRAINED))
 		var/mob/living/L = user
 		if(do_after(user, (5 SECONDS) - (L.STASTR*2), user))
-			if(prob(50 + (L.get_skill_level(/datum/skill/craft/traps) * 10))) // 100% chance to set traps properly at Master trapping
+			if(prob(50 - makeshift_prob + (L.get_skill_level(/datum/skill/craft/traps) * 10))) // 100% chance to set traps properly at Master trapping, assuming the trap isn't makeshift
 				armed = TRUE // Impossible to use in hand if it's armed
 				L.log_message("has armed the [src]!", LOG_ATTACK)
 				L.dropItemToGround(src) // We drop it instantly on the floor beneath us
@@ -193,3 +194,9 @@
 	desc = "Curious is the trapmaker's art. Their efficacy unwitnessed by their own eyes."
 	melting_material = /datum/material/iron
 	melt_amount = 75
+
+/obj/item/restraints/legcuffs/beartrap/crafted/makeshift
+	makeshift_prob = 15 //50 - 15 = 35% chance to set up instead of flat 50%
+	trap_damage = 80 //10 less damage than the actual metal beartrap
+	name = "makeshift mantrap"
+	melting_material = null
