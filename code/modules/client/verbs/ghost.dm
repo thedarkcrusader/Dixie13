@@ -20,14 +20,14 @@
 	set name = "Journey to the Underworld"
 	set category = "Spirit"
 
-	var/answer = alert(src, "Begin the long walk in the Underworld to your judgement?", "JUDGEMENT", CHOICE_YES, CHOICE_NO)
+	var/answer = browser_alert(src, "Begin the long walk in the Underworld to your judgement?", "JUDGEMENT", DEFAULT_INPUT_CHOICES)
 	if(!answer || QDELETED(src) || QDELETED(mob))
 		return
 	if(answer == CHOICE_NO)
 		to_chat(src, span_warning("You have second thoughts."))
 		return
 	if((mob.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(mob, TRAIT_ZIZOID_HUNTED)) && !MOBTIMER_FINISHED(mob, MT_LASTDIED, 60 SECONDS))
-		to_chat(mob, span_warning("Graggar's influence is currently preventing me from fleeing to the Underworld!"))
+		to_chat(src, span_warning("Graggar's influence is currently preventing me from fleeing to the Underworld!"))
 		return
 	var/datum/mind/mind = mob.mind
 	// Check if the player's job is hiv+
@@ -44,7 +44,7 @@
 			mob.returntolobby()
 			return
 	if(!length(GLOB.underworldspiritspawns)) //That cant be good.
-		to_chat(usr, span_danger("You are dead. Blood is fuel. Hell is somehow full. Alert an admin, as something is very wrong!"))
+		to_chat(src, span_danger("You are dead. Blood is fuel. Hell is somehow full. Alert an admin, as something is very wrong!"))
 		return
 	var/turf/spawn_loc = pick(GLOB.underworldspiritspawns)
 	var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(spawn_loc)
@@ -56,7 +56,7 @@
 
 	if(HAS_TRAIT(mind?.current, TRAIT_BURIED_COIN_GIVEN))
 		O.paid = TRUE
-		to_chat(O, span_biginfo("Necra has guaranteed your passage to the next life. Your toll has been already paid."))
+		to_chat(src, span_biginfo("Necra has guaranteed your passage to the next life. Your toll has been already paid."))
 
 	var/area/rogue/underworld/underworld = get_area(spawn_loc)
 	underworld.Entered(O, null)
