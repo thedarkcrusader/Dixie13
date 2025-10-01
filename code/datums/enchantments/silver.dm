@@ -37,11 +37,10 @@
 		return
 	if(world.time < (src.last_used[source] + (1 MINUTES + 40 SECONDS))) //thanks borbop
 		return
-	if(!istype(source, /obj/item/weapon))
+	if(!istype(source, /obj/item/weapon) || stype(source, /obj/item/weapon/scabbard))
 		return
-	if(istype(source, /obj/item/weapon/scabbard))
 		return
-	var/affected = affected_by_bane(target)
+
 	var/datum/antagonist/vampire/vamp_datum = target.mind?.has_antag_datum(/datum/antagonist/vampire)
 	var/datum/antagonist/werewolf/wolf_datum = target.mind?.has_antag_datum(/datum/antagonist/werewolf)
 
