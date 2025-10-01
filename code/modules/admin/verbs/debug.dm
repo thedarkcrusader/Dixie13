@@ -281,7 +281,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/datum/job/selected = browser_input_list(src, "Select Job", "Job selection", selection)
 	if(!selected || QDELETED(src))
 		return
-	selected = SSjob.GetJobType(selected)
+	selected = SSjob.GetJobType(selection[selected])
 	if(!istype(selected))
 		return
 
