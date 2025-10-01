@@ -16,8 +16,34 @@
 	trainable_skills = list(/datum/skill/misc/medicine)
 	max_apprentices = 2
 	apprentice_name = "Feldsher-in-training"
+	can_have_apprentices = TRUE
 
-	allowed_races = RACES_PLAYER_ALL
+	allowed_races = RACES_PLAYER_NONEXOTIC
+
+	jobstats = list(
+		STATKEY_STR = -1,
+		STATKEY_INT = 4,
+		STATKEY_CON = - 1,
+	)
+
+	skills = list(
+		/datum/skill/combat/wrestling = 2,
+		/datum/skill/craft/crafting = 2,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/misc/reading = 5,
+		/datum/skill/misc/mathematics = 3,
+		/datum/skill/misc/sewing = 3,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/medicine = 5,
+		/datum/skill/craft/alchemy = 3,
+		/datum/skill/labor/farming = 3,
+	)
+
+	traits = list(
+		TRAIT_EMPATH,
+		TRAIT_STEELHEARTED,
+		TRAIT_DEADNOSE,
+	)
 
 	outfit = /datum/outfit/feldsher
 	give_bank_account = 100
@@ -29,8 +55,13 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-/datum/outfit/feldsher/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/job/apothecary/adjust_values(mob/living/carbon/human/spawned)
+	. = ..()
+	LAZYADDASSOC(skills, /datum/skill/combat/wrestling, pick(0,0,1))
+	if(spawned.age == AGE_OLD)
+		LAZYADDASSOC(skills, /datum/skill/misc/medicine, 1)
+
+/datum/outfit/feldsher
 	shoes = /obj/item/clothing/shoes/shortboots
 	shirt = /obj/item/clothing/shirt/undershirt/colored/red
 	backr = /obj/item/storage/backpack/satchel
@@ -43,21 +74,4 @@
 	neck = /obj/item/clothing/neck/feld
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/feldsher
-	beltr = /obj/item/storage/belt/pouch
-
-	H.adjust_skillrank(/datum/skill/combat/wrestling, pick(2,2,3), TRUE)//so he can hold down unruly patients
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat(STATKEY_STR, -1)
-	H.change_stat(STATKEY_INT, 4)
-	H.change_stat(STATKEY_CON, -1)
-	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
+	beltr = /obj/item/storage/belt/pouch/coins/poor
