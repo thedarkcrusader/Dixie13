@@ -24,7 +24,7 @@
 	output = /obj/item/essence_node_jar
 	requirements = list(
 		/obj/item/ingot/thaumic = 1,
-		/obj/item/natural/glass = 3,
+		/obj/item/natural/glass = 2,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to carve out a rune", "start to carve a rune")
@@ -40,7 +40,7 @@
 	requirements = list(
 		/obj/item/ingot/thaumic = 3,
 		/obj/item/natural/glass = 4,
-		/obj/item/mana_battery/mana_crystal = 2,
+		/obj/item/mana_battery/mana_crystal = 1,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to carve out a rune", "start to carve a rune")

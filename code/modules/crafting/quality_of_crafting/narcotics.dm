@@ -1,4 +1,3 @@
-
 /datum/repeatable_crafting_recipe/narcotics
 	abstract_type = /datum/repeatable_crafting_recipe/narcotics
 	tool_usage = list(
