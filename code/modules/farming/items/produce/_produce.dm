@@ -9,6 +9,7 @@
 	faretype = FARE_POOR
 	var/list/pipe_reagents = list()
 	var/seed
+	var/inoculate
 	var/bitesize_mod = 0
 	var/datum/plant_genetics/source_genetics
 
@@ -61,6 +62,26 @@
 		else
 			return ..()
 	..()
+
+/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/grown/log/tree/stick, mob/user, params)
+	if(stick && isturf(loc))
+		var/turf/location = get_turf(src)
+		if(inoculate && (user.used_intent) && (!user.used_intent.noaa))
+			if(prob(5))
+				user.visible_message("<span class= 'info'>[user] fails to extract any spores.</span>")
+				qdel(src)
+				return
+			user.visible_message("<span class='info>[user] extracts some spores.</span>")
+			new inoculate(location, source_genetics)
+			if(prob(90))
+				new inoculate(location, source_genetics)
+			if(prob(23))
+				new inoculate(location, source_genetics)
+			if(prob(6))
+				new inoculate(location, source_genetics)
+			qdel(src)
+			qdel(stick)
+			return
 
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat
 	seed = /obj/item/neuFarm/seed/wheat
@@ -530,7 +551,8 @@
 	name = "coprinus"
 	desc = "An inedible mushroom cultivated for the fibres it produces when dried."
 	icon_state = "coprinus"
-	seed = /obj/item/neuFarm/seed/coprinus
+	// seed = /obj/item/neuFarm/seed/coprinus
+	inoculate = /obj/item/neuFarm/seed/inoculate/coprinus
 	throwforce = 0
 	tastes = list("bitter" = 1,"fibrous" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -542,9 +564,10 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
 	name = "reishi"
-	desc = "A mushroom prized for its medicinal properties. Typically dried then used in tea. (HEY CHANGE THIS LATER!!)"
+	desc = "A mushroom prized for its medicinal properties. Typically dried then used in tea. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "reishi"
-	seed = /obj/item/neuFarm/seed/reishi
+	// seed = /obj/item/neuFarm/seed/reishi
+	inoculate = /obj/item/neuFarm/seed/inoculate/reishi
 	throwforce = 0
 	tastes = list("woody" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -556,9 +579,10 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/morel
 	name = "morel"
-	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "morel"
-	seed = /obj/item/neuFarm/seed/morel
+	// seed = /obj/item/neuFarm/seed/morel
+	inoculate = /obj/item/neuFarm/seed/inoculate/morel
 	throwforce = 0
 	tastes = list("umami" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -570,9 +594,10 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/oyster
 	name = "oyster"
-	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "oyster"
-	seed = /obj/item/neuFarm/seed/oyster
+	// seed = /obj/item/neuFarm/seed/oyster
+	inoculate = /obj/item/neuFarm/seed/inoculate/oyster
 	throwforce = 0
 	tastes = list("sweet" = 1,"briny" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -584,9 +609,10 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
 	name = "porcini"
-	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste. (HEY CHANGE THIS LATER!!)"
+	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "porcini"
-	seed = /obj/item/neuFarm/seed/porcini
+	// seed = /obj/item/neuFarm/seed/porcini
+	inoculate = /obj/item/neuFarm/seed/inoculate/porcini
 	throwforce = 0
 	tastes = list("earthy" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -598,9 +624,10 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/chanterelle
 	name = "chanterelle"
-	desc = "A rare mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	desc = "A rare mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "chanterelle"
-	seed = /obj/item/neuFarm/seed/chanterelle
+	// seed = /obj/item/neuFarm/seed/chanterelle
+	inoculate = /obj/item/neuFarm/seed/inoculate/chanterelle
 	throwforce = 0
 	tastes = list("fruity" = 1,"earthy" = 1)
 	w_class = WEIGHT_CLASS_TINY

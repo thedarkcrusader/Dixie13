@@ -16,7 +16,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
-	seed_identity = "coprinus seeds"
+	inoculate_identity = "coprinus inoculate"
 
 /datum/plant_def/coprinus/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
@@ -41,6 +41,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
+	inoculate_identity = "reishi inoculate"
 
 /datum/plant_def/reishi/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
@@ -65,6 +66,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
+	inoculate_identity = "morel inoculate"
 
 /datum/plant_def/morel/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
@@ -89,6 +91,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
+	inoculate_identity = "oyster inoculate"
 
 /datum/plant_def/oyster/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
@@ -113,6 +116,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
+	inoculate_identity = "porcini inoculate"
 
 /datum/plant_def/porcini/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
@@ -137,6 +141,7 @@
 	nitrogen_production = 0
 	phosphorus_production = 0
 	potassium_production = 0
+	inoculate_identity = "chanterelle inoculate"
 
 /datum/plant_def/chanterelle/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
