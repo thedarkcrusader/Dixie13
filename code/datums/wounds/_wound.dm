@@ -495,6 +495,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	// BUT only effects value reduction not sewing progress
 	var/healing_multipler = clamp(1 / get_relevant_increase(), 0.5, 1.5)
 	// Reduces the upgrade values by this percentage, can never fully deplete the said values
+	// Base value of 2.5% absolute max of 36% likely to be around 8-11%
 	var/healing_power = 0.02 * healing_multipler * ((doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 1.5) // Vibe numbers...
 
 	whp -= whp * healing_power
