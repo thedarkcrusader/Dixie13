@@ -56,6 +56,7 @@
 		LAZYADDASSOC(skills, /datum/skill/craft/alchemy, 1)
 
 /datum/outfit/apothecary
+	head = /obj/item/clothing/head/roguehood/colored/green
 	armor = /obj/item/clothing/armor/gambeson/apothecary
 	shoes = /obj/item/clothing/shoes/apothboots
 	shirt = /obj/item/clothing/shirt/apothshirt

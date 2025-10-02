@@ -4875,6 +4875,12 @@
 /obj/effect/mapping_helpers/access/keyset/town/artificer,
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/dwarfin)
+"cPI" = (
+/obj/structure/door,
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/clinic,
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "cPN" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -9684,6 +9690,8 @@
 /obj/item/reagent_containers/glass/bottle/vial/spdpot,
 /obj/item/reagent_containers/glass/bottle/vial/strpot,
 /obj/item/reagent_containers/glass/bottle/vial/lucpot,
+/obj/effect/mapping_helpers/access/keyset/town/apothecary,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "fBG" = (
@@ -16675,10 +16683,6 @@
 /obj/structure/pillory,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
-"jPc" = (
-/obj/structure/fluff/walldeco/sign/apothecarysign/left,
-/turf/open/floor/cobble,
-/area/rogue/outdoors/town)
 "jPd" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -17813,6 +17817,12 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
+"kxC" = (
+/obj/structure/fluff/walldeco/sign/apothecarysign/left{
+	pixel_y = 0
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors/town)
 "kxD" = (
 /obj/structure/chair/wood/alt/fancy{
 	dir = 1
@@ -39134,7 +39144,7 @@
 	name = "Clinic"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/town/apothecary,
+/obj/effect/mapping_helpers/access/keyset/town/clinic,
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "xTL" = (
@@ -97066,7 +97076,7 @@ uho
 vhV
 obS
 cDb
-xjx
+cPI
 cDb
 cDb
 egO
@@ -99283,7 +99293,7 @@ tJI
 elp
 xhN
 iSk
-nMb
+akL
 nnq
 nnq
 nnq
@@ -99485,8 +99495,8 @@ tJI
 lsl
 eCc
 wjh
-lIF
-elp
+kxC
+lsl
 elp
 elp
 xOb
@@ -99687,7 +99697,7 @@ elp
 elp
 elp
 elp
-jPc
+elp
 lsl
 lsl
 lsl
@@ -100094,7 +100104,7 @@ elp
 elp
 elp
 elp
-elp
+lsl
 elp
 elp
 lsl

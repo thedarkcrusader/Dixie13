@@ -246,9 +246,6 @@
 /obj/item/storage/keyring/adept
 	keys = list(/obj/item/key/inquisition)
 
-/obj/item/storage/keyring/apothecary
-	keys = list(/obj/item/key/apothecary, /obj/item/key/bathhouse, /obj/item/key/clinic, /obj/item/key/feldsher)
-
 /obj/item/storage/keyring/gravetender
 	keys = list(/obj/item/key/church, /obj/item/key/graveyard)
 
@@ -275,6 +272,12 @@
 
 /obj/item/storage/keyring/feldsher
 	keys = list(/obj/item/key/feldsher, /obj/item/key/clinic, /obj/item/key/bathhouse, /obj/item/key/apothecary)
+
+/obj/item/storage/keyring/apothecary
+	keys = list(/obj/item/key/apothecary, /obj/item/key/bathhouse, /obj/item/key/clinic, /obj/item/key/feldsher)
+
+/obj/item/storage/keyring/clinic_apprentice
+	keys = list(/obj/item/key/bathhouse, /obj/item/key/clinic)
 
 /obj/item/storage/keyring/artificer
 	keys = list(/obj/item/key/artificer, /obj/item/key/blacksmith, /obj/item/key/miner)
