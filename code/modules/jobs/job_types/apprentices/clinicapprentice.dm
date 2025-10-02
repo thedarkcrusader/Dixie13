@@ -2,8 +2,9 @@
 	title = "Clinic Apprentice"
 	tutorial = "You've been taken under as an apprentice by the Feldsher and Apothecary. \
 	You're both an assistant and student, helping the two of them in the more menial tasks. \
-	You hope to one day open a Clinic of your own, perhaps you might even venture to Kingsfield to further your studies. \
-	Though most likely you will end up one of the many countless Physickers roaming Faience."
+	You hope to one day open a Clinic of your own. \
+	Perhaps you might even venture out to Kingsfield to further your studies in their fabled universities. \
+	Though most likely you will end up as one of the many countless Physickers roaming Faience."
 	department_flag = APPRENTICES
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -53,6 +54,9 @@
 		LAZYADDASSOC(skills, /datum/skill/combat/unarmed, 1)
 		LAZYADDASSOC(skills, /datum/skill/misc/athletics, 1)
 		LAZYADDASSOC(skills, /datum/skill/combat/wrestling, 1)
+		//they get a chance to get average again, perhaps even skilled with enough luck
+		LAZYADDASSOC(skills, /datum/skill/craft/alchemy, pick(0,0,1))
+		LAZYADDASSOC(skills, /datum/skill/misc/medicine, pick(0,0,1))
 
 /datum/outfit/clinicapprentice
 	head = /obj/item/clothing/head/roguehood/colored/random
