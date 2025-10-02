@@ -488,28 +488,25 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	return ..()
 
 /datum/wound/dynamic/sewing_step_complete(mob/living/doctor)
-	. = ..()
-	if(!doctor || .) // Wound sewn
+	if(!doctor)
 		return
 
-	var/relevant_increase = get_relevant_increase()
 	// Inverse, bigger wound = less heal
 	// BUT only effects value reduction not sewing progress
-	var/healing_multipler = clamp(1 / relevant_increase, 0.5, 1.5)
-	// Reduce values by this amount of the value
+	var/healing_multipler = clamp(1 / get_relevant_increase(), 0.5, 1.5)
+	// Reduces the upgrade values by this percentage, can never fully deplete the said values
 	var/healing_power = 0.02 * healing_multipler * ((doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 1.5) // Vibe numbers...
 
-	sew_threshold -= sew_threshold * healing_power
-
-	if(sew_progress >= sew_threshold)
-		sew_wound()
-		return
-
 	whp -= whp * healing_power
+
+	if(can_sew && sew_threshold > 0)
+		sew_threshold -= sew_threshold * healing_power
 	if(woundpain > 0)
 		woundpain -= woundpain * healing_power
 	if(bleed_rate > 0)
 		bleed_rate -= bleed_rate * healing_power
+
+	return ..()
 
 /// Get the increase multipler of the relevant upgrade value (bleed_rate by default)
 /datum/wound/dynamic/proc/get_relevant_increase()
