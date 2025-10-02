@@ -127,7 +127,7 @@
 	sellprice = 25
 
 /obj/item/carvedgem/shell/duck
-	name = "shell comb"
+	name = "shell duck"
 	desc = "An adorable little duck carved out of shell."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "duck_shell"
@@ -136,7 +136,7 @@
 	sellprice = 25
 
 /obj/item/carvedgem/shell/urn
-	name = "shell comb"
+	name = "shell urn"
 	desc = "A large decorative urn carved out of shell."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "urn_shell"
@@ -197,7 +197,7 @@
 	sellprice = 20
 
 /obj/item/carvedgem/rose/spoon
-	name = "rosellusk fork"
+	name = "rosellusk spoon"
 	desc = "A spoon carved out of rosellusk, far too delicate to eat with."
 	icon = 'icons/roguetown/gems/gem_rose.dmi'
 	icon_state = "spoon_rose"
@@ -206,7 +206,7 @@
 	sellprice = 20
 
 /obj/item/carvedgem/rose/cameo
-	name = "rosellusk fork"
+	name = "rosellusk cameo"
 	desc = "A cameo carved out of rosellusk depicting...someone? Use your imagination on who it could be."
 	icon = 'icons/roguetown/gems/gem_rose.dmi'
 	icon_state = "cameo_rose"
@@ -480,8 +480,8 @@
 //.....................Onyxa......................//
 
 /obj/item/carvedgem/onyxa/cutgem
-	name = "polished onyxa"
-	desc = "a polished and carved piece of onyxa."
+	name = "polished onyxa gem"
+	desc = "a cut and polished piece of onyxa."
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
 	icon_state = "cutgem_onyxa"
 	grid_height = 1
@@ -552,10 +552,10 @@
 	sellprice = 40
 
 /obj/item/carvedgem/onyxa/bust
-	name = "onyxa tablet"
+	name = "onyxa bust"
 	desc = "A bust carved out of onyxa."
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
-	icon_state = "figurine_onyxa"
+	icon_state = "bust_onyxa"
 	grid_height = 2
 	grid_width = 2
 	sellprice = 45
@@ -579,7 +579,7 @@
 	sellprice = 45
 
 /obj/item/carvedgem/onyxa/duck
-	name = "onyxa comb"
+	name = "onyxa duck"
 	desc = "An adorable little duck carved out of onyxa."
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
 	icon_state = "duck_onyxa"
@@ -701,7 +701,7 @@
 	name = "ceruleabaster tablet"
 	desc = "A tablet carved out of ceruleabaster."
 	icon = 'icons/roguetown/gems/gem_turq.dmi'
-	icon_state = "figurine_turq"
+	icon_state = "tablet_turq"
 	grid_height = 1
 	grid_width = 1
 	sellprice = 85
@@ -787,3 +787,158 @@
 	grid_height = 2
 	grid_width = 2
 	sellprice = 100
+
+// aoetal //
+
+/obj/item/carvedgem/coral/cutgem
+	name = "cut aoetal gem"
+	desc = "A cut and carved piece of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "cutgem_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/coral/fork
+	name = "aoetal fork"
+	desc = "A fork carved out of aoetal, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "fork_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/coral/spoon
+	name = "aoetal spoon"
+	desc = "A spoon carved out of aoetal, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "spoon_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/coral/cameo
+	name = "aoetal cameo"
+	desc = "A cameo carved out of aoetal depicting...someone? Use your imagination on who it could be.."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "cameo_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/coral/figurine
+	name = "aoetal figurine"
+	desc = "A small figurine carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "figurine_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/coral/fish
+	name = "aoetal fish figurine"
+	desc = "A small fish figurine carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "fish_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/coral/vase
+	name = "aoetal vase"
+	desc = "A vase carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "vase_coral"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/coral/tablet
+	name = "aoetal tablet"
+	desc = "A tablet carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "tablet_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/coral/bust
+	name = "aoetal bust"
+	desc = "A bust carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "bust_coral"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 75
+
+/obj/item/carvedgem/coral/fancyvase
+	name = "fancy aoetal vase"
+	desc = "A fancy vase carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "fancyvase_coral"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 75
+
+/obj/item/carvedgem/coral/comb
+	name = "aoetal comb"
+	desc = "A luxurious comb carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "comb_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 75
+
+/obj/item/carvedgem/coral/duck
+	name = "aoetal duck"
+	desc = "An adorable little duck carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "duck_coral"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 75
+
+/obj/item/carvedgem/coral/urn
+	name = "aoetal urn"
+	desc = "A large decorative urn carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "urn_coral"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 80
+
+/obj/item/carvedgem/coral/statue
+	name = "aoetal statue"
+	desc = "A statue carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "statue_coral"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/coral/obelisk
+	name = "aoetal obelisk"
+	desc = "An obelisk carved out of aoetal."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "obelisk_coral"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 80
+
+/obj/item/carvedgem/coral/jaw
+	name = "shark jaw statue"
+	desc = "A statue of a shark's jaw carved out of aoetal. Its probably best if you don't touch the teeth."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "jaw_coral"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 85
+
+/obj/item/carvedgem/coral/shark
+	name = "aoetal shark statue"
+	desc = "A statue of a shark carved out of aoetal. Some sailors believe them to be agents of Abyssor."
+	icon = 'icons/roguetown/gems/gem_coral.dmi'
+	icon_state = "shark_coral"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 85

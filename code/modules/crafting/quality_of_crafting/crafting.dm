@@ -2456,6 +2456,20 @@
 	output_amount = 1
 	craftdiff = 2
 
+/datum/repeatable_crafting_recipe/crafting/turqtablet
+	name = "ceruleabaster tablet"
+	output = /obj/item/carvedgem/turq/tablet
+	requirements = list(
+		/obj/item/gem/turq = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw ceruleabaster", "carve the raw ceruleabaster")
+	)
+	attacked_atom = /obj/item/gem/turq
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
 /datum/repeatable_crafting_recipe/crafting/turqring
 	name = "ceruleabaster ring"
 	output = /obj/item/clothing/ring/turq
@@ -2483,6 +2497,7 @@
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 2
+
 /datum/repeatable_crafting_recipe/crafting/turqbracelet
 	name = "ceruleabaster bracelets"
 	output = /obj/item/clothing/wrists/gem/turqbracelet
@@ -2666,3 +2681,395 @@
 	craftdiff = 5
 
 // aoetal //
+
+/datum/repeatable_crafting_recipe/crafting/cutcoral
+	name = "cut aoetal gem"
+	output = /obj/item/carvedgem/coral/cutgem
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralfork
+	name = "aoetal fork"
+	output = /obj/item/carvedgem/coral/fork
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralspoon
+	name = "aoetal spoon"
+	output = /obj/item/carvedgem/coral/spoon
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralcameo
+	name = "aoetal cameo"
+	output = /obj/item/carvedgem/coral/cameo
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralcup
+	name = "aoetal cup"
+	output = /obj/item/reagent_containers/glass/cup/coral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralbowl
+	name = "aoetal bowl"
+	output = /obj/item/reagent_containers/glass/bowl/coral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/coralfigurine
+	name = "aoetal figurine"
+	output = /obj/item/carvedgem/coral/figurine
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralfish
+	name = "aoetal fish figurine"
+	output = /obj/item/carvedgem/coral/fish
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralvase
+	name = "aoetal vase"
+	output = /obj/item/carvedgem/coral/vase
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coraltablet
+	name = "aoetal tablet"
+	output = /obj/item/carvedgem/coral/tablet
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralteapot
+	name = "aoetal teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotcoral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralplatter
+	name = "aoetal platter"
+	output = /obj/item/plate/coral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralamulet
+	name = "aoetal amulet"
+	output = /obj/item/clothing/neck/coralamulet
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralring
+	name = "aoetal ring"
+	output = /obj/item/clothing/ring/coral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/coralbust
+	name = "aoetal bust"
+	output = /obj/item/carvedgem/coral/bust
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralfancyvase
+	name = "fancy aoetal vase"
+	output = /obj/item/carvedgem/coral/fancyvase
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralcomb
+	name = "aoetal comb"
+	output = /obj/item/carvedgem/coral/comb
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralduck
+	name = "aoetal duck"
+	output = /obj/item/carvedgem/coral/duck
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralfancycup
+	name = "fancy aoetal cup"
+	output = /obj/item/reagent_containers/glass/cup/coralfancy
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralcirclet
+	name = "aoetal circlet"
+	output = /obj/item/clothing/head/crown/circlet/coral
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralbracelet
+	name = "aoetal bracelets"
+	output = /obj/item/clothing/wrists/gem/coralbracelet
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/coralmask
+	name = "aoetal mask"
+	output = /obj/item/clothing/face/coralmask
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/coralstatue
+	name = "aoetal statue"
+	output = /obj/item/carvedgem/coral/statue
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/coralstatue
+	name = "aoetal statue"
+	output = /obj/item/carvedgem/coral/statue
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/coralurn
+	name = "aoetal urn"
+	output = /obj/item/carvedgem/coral/urn
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/coralobelisk
+	name = "aoetal obelisk"
+	output = /obj/item/carvedgem/coral/obelisk
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/coraljaw
+	name = "shark jaw statue"
+	output = /obj/item/carvedgem/coral/jaw
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/coralshark
+	name = "aoetal shark statue"
+	output = /obj/item/carvedgem/coral/shark
+	requirements = list(
+		/obj/item/gem/coral = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
+	)
+	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5

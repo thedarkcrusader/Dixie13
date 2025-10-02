@@ -227,7 +227,7 @@
 
 /obj/item/gem/jade
 	name = "raw joapstone"
-	desc = "A dull green gem. It is valued in multiple humen cultures and is believed to bring good fortune."
+	desc = "A dull green gem. Joapstone is valued in multiple humen cultures and is believed to bring good fortune."
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "raw_jade"
 	sellprice = 50
