@@ -41,14 +41,14 @@
 /datum/supply_pack/instruments/hurdygurdy
 	name = "Hurdy-Gurdy"
 	cost = 25
-	contains = list(/obj/item/instrument/hurdygurdy)
+	contains = /obj/item/instrument/hurdygurdy
 
 /datum/supply_pack/instruments/viola
 	name = "Viola"
 	cost = 30
-	contains = list(/obj/item/instrument/viola)
+	contains = /obj/item/instrument/viola
 
 /datum/supply_pack/instruments/vocals
 	name = "Vocalist's Talisman"
 	cost = 35
-	contains = list(/obj/item/instrument/vocals)
+	contains = /obj/item/instrument/vocals

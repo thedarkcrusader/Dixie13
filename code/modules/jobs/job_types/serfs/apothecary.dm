@@ -26,7 +26,7 @@
 	skills = list(
 		/datum/skill/combat/wrestling = 2,
 		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 1,
+		/datum/skill/craft/crafting = 2,//they need this to craft bottles
 		/datum/skill/misc/athletics = 2,
 		/datum/skill/misc/reading = 3,
 		/datum/skill/misc/sneaking = 3,

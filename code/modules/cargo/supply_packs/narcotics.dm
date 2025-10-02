@@ -21,17 +21,17 @@
 
 /datum/supply_pack/narcotics/spice
 	name = "Spice"
-	cost = 25
+	cost = 40
 	contains = /obj/item/reagent_containers/powder/spice
 
 /datum/supply_pack/narcotics/ozium
 	name = "Ozium"
-	cost = 12
+	cost = 20
 	contains = /obj/item/reagent_containers/powder/ozium
 
 /datum/supply_pack/narcotics/moondust
 	name = "Moon Dust"
-	cost = 25
+	cost = 75
 	contains = /obj/item/reagent_containers/powder/moondust
 
 /datum/supply_pack/narcotics/soap
@@ -40,7 +40,7 @@
 	contains = /obj/item/soap/bath
 
 /datum/supply_pack/narcotics/perfume
-	name = "Perfume"
+	name = "Random Perfume"
 	cost = 25
 	contains = list(/obj/item/perfume/random)
 

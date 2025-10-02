@@ -8,7 +8,7 @@
 	name = "Space drugs"
 	description = "An illegal chemical compound used as drug."
 	color = "#60A584" // rgb: 96, 165, 132
-	overdose_threshold = 30
+	overdose_threshold = 45
 
 /datum/reagent/drug/space_drugs/on_mob_life(mob/living/carbon/M)
 	M.set_drugginess(30)

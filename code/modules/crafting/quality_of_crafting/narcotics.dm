@@ -15,16 +15,6 @@
 	craft_time = 3 SECONDS
 	category = "Narcotics"
 
-/datum/repeatable_crafting_recipe/narcotics/spice
-	name = "Spice"
-	output = /obj/item/reagent_containers/powder/spice
-	requirements = list(
-		/obj/item/alch/tobaccodust = 1,
-		/obj/item/fertilizer/bone_meal = 1,
-		/obj/item/alch/viscera = 1
-	)
-	craftdiff = 2
-
 //And let me tell you something else. This ain't alchemy.
 //Okay. This is art. Cooking is art. And the shit I cook is the bomb.
 //No. No. Chili's P is my signature.
@@ -39,7 +29,7 @@
 		/obj/item/soap = 1,
 		/obj/item/reagent_containers/food/snacks/badrecipe = 1
 	)
-	craftdiff = 2
+	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/narcotics/moondust_impure_impurify
 	name = "Impurify Impure Moondust"//yes thats the joke
@@ -52,7 +42,19 @@
 	reagent_requirements = list(
 		/datum/reagent/water/gross = 20,
 	)
-	craftdiff = 3
+	craftdiff = 2
+
+//drugs proper
+
+/datum/repeatable_crafting_recipe/narcotics/spice
+	name = "Spice"
+	output = /obj/item/reagent_containers/powder/spice
+	requirements = list(
+		/obj/item/alch/tobaccodust = 1,
+		/obj/item/fertilizer/bone_meal = 2,
+		/obj/item/alch/viscera = 1
+	)
+	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/narcotics/moondust
 	name = "Moondust"

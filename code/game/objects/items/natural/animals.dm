@@ -11,6 +11,7 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 5
+
 /obj/item/natural/hide/cured
 	name = "cured leather"
 	icon_state = "leather"
