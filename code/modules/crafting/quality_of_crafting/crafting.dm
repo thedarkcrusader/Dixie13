@@ -726,14 +726,14 @@
 	name = "Flute"
 	output = /obj/item/instrument/flute
 	requirements = list(
-		/obj/item/natural/stick = 3,
+		/obj/item/grown/log/tree/stick = 3,
 		/obj/item/natural/fibers = 2
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list(span_notice("starts to whittle"), span_notice("start to whittle"), 'sound/items/wood_sharpen.ogg'),
 	)
 
-	attacked_atom = /obj/item/natural/stick
+	attacked_atom = /obj/item/grown/log/tree/stick
 	starting_atom = /obj/item/weapon/knife
 
 /datum/repeatable_crafting_recipe/crafting/instrument_harp
@@ -755,7 +755,7 @@
 	output = /obj/item/instrument/lute
 	requirements = list(
 		/obj/item/grown/log/tree/small = 1,
-		/obj/item/natural/stick = 1,
+		/obj/item/grown/log/tree/stick = 1,
 		/obj/item/natural/fibers = 5
 	)
 	tool_usage = list(
@@ -819,7 +819,7 @@
 		/obj/item/weapon/knife = list(span_notice("starts to whittle"), span_notice("start to whittle"), 'sound/items/wood_sharpen.ogg'),
 	)
 
-	attacked_atom = /obj/item/natural/stick
+	attacked_atom = /obj/item/grown/log/tree/stick
 	starting_atom = /obj/item/weapon/knife
 
 /datum/repeatable_crafting_recipe/crafting/instrument_viola
@@ -827,7 +827,7 @@
 	output = /obj/item/instrument/viola
 	requirements = list(
 		/obj/item/grown/log/tree/small = 1,
-		/obj/item/natural/stick = 2,
+		/obj/item/grown/log/tree/stick = 2,
 		/obj/item/natural/fibers = 4
 	)
 	tool_usage = list(
