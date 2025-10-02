@@ -1,6 +1,7 @@
 /datum/objective/personal/embrace_death
 	name = "Embrace Death"
-	triumph_count = 4
+	category = "Necra's Chosen"
+	triumph_count = 3
 
 /datum/objective/personal/embrace_death/on_creation()
 	. = ..()
