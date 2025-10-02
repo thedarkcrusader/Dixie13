@@ -184,7 +184,7 @@
 	outfit = /datum/outfit/forestguard/ruffian
 	category_tags = list(CTAG_FORGARRISON)
 	allowed_ages = list(AGE_CHILD)
-    maximum_possible_slots = 1
+
 
 /datum/outfit/forestguard/ruffian/pre_equip(mob/living/carbon/human/H)
 	..()
