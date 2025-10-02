@@ -33,31 +33,32 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	/// How many "health points" this wound has, AKA how hard it is to heal
 	var/whp = 60
-	/// How many "health points" this wound gets after being sewn
-	var/sewn_whp = 30
 	/// How much this wound bleeds
-	var/bleed_rate
-	/// Bleed rate when sewn
-	var/sewn_bleed_rate = 0.01
+	var/bleed_rate = 0
 	/// Some wounds clot over time, reducing bleeding - This is the rate at which they do so
 	var/clotting_rate = 0.01
-	/// Clotting rate when sewn
-	var/sewn_clotting_rate = 0.02
 	/// Clotting will not go below this amount of bleed_rate
-	var/clotting_threshold
-	/// Clotting will not go below this amount of bleed_rate when sewn
-	var/sewn_clotting_threshold = 0
+	var/clotting_threshold = null
 	/// How much pain this wound causes while on a mob
 	var/woundpain = 0
-	/// Pain this wound causes after being sewn
-	var/sewn_woundpain = 0
+
+	/// If TRUE, this wound can be sewn
+	var/can_sew = FALSE
 	/// Sewing progress, because sewing wounds is snowflakey
 	var/sew_progress = 0
 	/// When sew_progress reaches this, the wound is sewn
 	var/sew_threshold = 100
+	/// How many "health points" this wound gets after being sewn
+	var/sewn_whp = 30
+	/// Bleed rate when sewn
+	var/sewn_bleed_rate = 0.01
+	/// Clotting rate when sewn
+	var/sewn_clotting_rate = 0.02
+	/// Clotting will not go below this amount of bleed_rate when sewn
+	var/sewn_clotting_threshold = 0
+	/// Pain this wound causes after being sewn
+	var/sewn_woundpain = 0
 
-	/// If TRUE, this wound can be sewn
-	var/can_sew = FALSE
 	/// If TRUE, this wound can be cauterized
 	var/can_cauterize = FALSE
 	/// If TRUE, this disables limbs
@@ -82,10 +83,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Time taken until werewolf infection comes in
 	var/werewolf_infection_time = 2 MINUTES
 	/// Actual infection timer
-	var/werewolf_infection_timer
+	var/werewolf_infection_timer = null
 
 	/// Ingores "bloody wound" checks for wound applications
-	var/ignore_bloody
+	var/ignore_bloody = FALSE
 
 	/// Whether miracles heal it.
 	var/healable_by_miracles = TRUE
@@ -185,7 +186,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			playsound(affected.owner, sounding, 100, vary = FALSE)
 	return TRUE
 
-
 /// Effects when a wound is gained on a bodypart
 /datum/wound/proc/on_bodypart_gain(obj/item/bodypart/affected)
 	if(bleed_rate && affected.bandage)
@@ -272,18 +272,21 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(!isnull(clotting_threshold) && clotting_rate && (bleed_rate > clotting_threshold))
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
 	if(passive_healing)
-		heal_wound(passive_healing)
+		passive_heal()
 	return TRUE
 
 /// Called on handle_wounds(), on the life() proc
 /datum/wound/proc/on_death()
 	return
 
+/datum/wound/proc/passive_heal()
+	heal_wound(passive_healing)
+
 /// Heals this wound by the given amount, and deletes it if it's healed completely
 /datum/wound/proc/heal_wound(heal_amount)
 	// Wound cannot be healed normally, whp is null
-	if(isnull(whp))
-		return 0
+	if(isnull(whp) || !heal_amount)
+		return FALSE
 	var/amount_healed = min(whp, round(heal_amount, DAMAGE_PRECISION))
 	whp -= amount_healed
 	if(whp <= 0)
@@ -294,7 +297,66 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				remove_from_mob(src)
 			else
 				qdel(src)
+
 	return amount_healed
+
+// Kinda icky
+/// Repeatable step that heals the wound, on the wound for overrides
+/datum/wound/proc/do_sewing_step(mob/living/doctor, obj/item/needle/sewing)
+	if(!doctor || !sewing || QDELETED(src))
+		return FALSE
+
+	while(sew_progress < sew_threshold)
+		if(sewing?.stringamt < 1 || QDELETED(src) || QDELETED(doctor) || QDELETED(sewing))
+			return FALSE
+
+		playsound(owner.loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
+
+		if(!do_after(doctor, 5 SECONDS, owner))
+			return FALSE
+
+		sewing_step_complete(doctor, owner)
+
+		sewing?.use(1)
+
+		log_combat(doctor, owner, "sew wound", src)
+
+	return TRUE
+
+/datum/wound/proc/sewing_step_complete(mob/living/doctor)
+	if(!doctor)
+		return FALSE
+
+	var/healing_power = (doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 12.5
+	var/was_completed = FALSE
+
+	var/mob/living/patient = owner
+	var/obj/item/bodypart/affecting = bodypart_owner
+
+	sew_progress = clamp(round(sew_progress + healing_power), 0, sew_threshold)
+
+	if(sew_progress == sew_threshold)
+		sew_wound()
+		was_completed = TRUE
+
+	var/modifier = was_completed ? 1.5 : 0.3
+	var/amt2raise = doctor.STAINT * modifier
+	doctor.adjust_experience(/datum/skill/misc/medicine, amt2raise * doctor.get_learning_boon(/datum/skill/misc/medicine))
+
+	var/extra_text
+
+	if(was_completed)
+		extra_text = " Closing it."
+
+	if(patient == doctor)
+		doctor.visible_message(span_notice("[doctor] sews \a [name] on [doctor.p_them()]self.[extra_text]"), span_notice("I stitch \a [name] on [affecting ? "my [affecting]" : "myself"]."[extra_text]))
+	else
+		if(affecting)
+			doctor.visible_message(span_notice("[doctor] sews \a [name] on [patient]'s [affecting].[extra_text]"), span_notice("I stitch \a [name] on [patient]'s [affecting].[extra_text]"))
+		else
+			doctor.visible_message(span_notice("[doctor] sews \a [name] on [patient].[extra_text]"), span_notice("I stitch \a [name] on [patient].[extra_text]"))
+
+	return was_completed
 
 /// Sews the wound up, changing its properties to the sewn ones
 /datum/wound/proc/sew_wound()
@@ -417,11 +479,43 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /datum/wound/dynamic/sew_wound()
 	if(!can_sew)
+		return FALSE
+	sewn_bleed_rate = bleed_rate * 0.1
+	sewn_whp = whp * 0.7
+	sewn_clotting_rate = clotting_rate * 1.2
+	sewn_clotting_threshold = clotting_threshold * 0.6
+	sewn_whp = woundpain * 0.5
+	return ..()
+
+/datum/wound/dynamic/sewing_step_complete(mob/living/doctor)
+	. = ..()
+	if(!doctor || .) // Wound sewn
 		return
-	// Wound has not upgraded at all
-	if(severity == initial(severity))
-		return ..()
-	heal_wound(whp)
+
+	var/relevant_increase = get_relevant_increase()
+	// Inverse, bigger wound = less heal
+	// BUT only effects value reduction not sewing progress
+	var/healing_multipler = clamp(1 / relevant_increase, 0.5, 1.5)
+	// Reduce values by this amount of the value
+	var/healing_power = 0.02 * healing_multipler * ((doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 1.5) // Vibe numbers...
+
+	sew_threshold -= sew_threshold * healing_power
+
+	if(sew_progress >= sew_threshold)
+		sew_wound()
+		return
+
+	whp -= whp * healing_power
+	if(woundpain > 0)
+		woundpain -= woundpain * healing_power
+	if(bleed_rate > 0)
+		bleed_rate -= bleed_rate * healing_power
+
+/// Get the increase multipler of the relevant upgrade value (bleed_rate by default)
+/datum/wound/dynamic/proc/get_relevant_increase()
+	if(!bleed_rate || !initial(bleed_rate))
+		return 1
+	return bleed_rate / initial(bleed_rate)
 
 /// Update name based on severity
 /datum/wound/dynamic/proc/update_name()
@@ -430,7 +524,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		if(severity_names[sevname] <= bleed_rate)
 			prefix = sevname
 	name = "[prefix ? "[prefix] " : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
-
 
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
 #define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.

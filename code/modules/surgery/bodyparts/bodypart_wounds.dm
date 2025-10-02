@@ -45,6 +45,19 @@
 			continue
 		return wound
 
+/// Like [has_wound] but returns all wounds
+/obj/item/bodypart/proc/get_all_wounds_type(path, specific = FALSE)
+	if(!path)
+		return
+	var/list/returned_wounds = list()
+	for(var/datum/wound/wound as anything in wounds)
+		if(specific && wound.type != path)
+			continue
+		else if(istype(wound, path))
+			returned_wounds += wound
+
+	return returned_wounds
+
 /// Heals wounds on this bodypart by the specified amount
 /obj/item/bodypart/proc/heal_wounds(heal_amount)
 	if(!length(wounds))
@@ -149,6 +162,7 @@
 /// Add or upgrade a dynamic wound, returns the wound if added or upgraded
 /obj/item/bodypart/proc/manage_dynamic_wound(bclass, damage)
 	var/datum/wound/wound_type
+
 	for(var/type in GLOB.primordial_wounds)
 		// :(
 		if(!ispath(type, /datum/wound/dynamic))
@@ -159,14 +173,23 @@
 		if(bclass in dynwound.associated_bclasses)
 			wound_type = dynwound.type
 			break
+
 	if(!wound_type)
 		return
-	var/datum/wound/dynamic/dynwound = has_wound(wound_type)
-	// Yes we upgrade when adding as well
-	dynwound?.upgrade(damage)
-	if(!dynwound)
+
+	var/datum/wound/dynamic/changed_wound
+	// We do this to get the first unsewn dynamic wound
+	for(var/datum/wound/wound as anything in get_all_wounds_type(wound_type))
+		if(wound.is_sewn()) // Sewn dynamic wounds are DONE because im LAZY no wound re-opening
+			continue
+		changed_wound = wound
+
+	changed_wound?.upgrade(damage)
+
+	if(!changed_wound)
 		return add_wound(wound_type)
-	return dynwound
+
+	return changed_wound
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
