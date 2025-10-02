@@ -1,6 +1,8 @@
 /datum/objective/personal/punch_women
 	name = "Punch Women"
+	category = "Graggar's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Graggar grows stronger")
 	var/punches_done = 0
 	var/punches_required = 3
 

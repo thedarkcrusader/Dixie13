@@ -1,6 +1,8 @@
 /datum/objective/personal/baptism
 	name = "Receive Baptism"
+	category = "Noc's Chosen"
 	triumph_count = 3
+	rewards = list("3 Triumphs", "Noc grows stronger")
 
 /datum/objective/personal/baptism/on_creation()
 	. = ..()

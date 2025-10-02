@@ -1,6 +1,9 @@
 /datum/objective/personal/adopt_orphan
 	name = "Adopt Orphan"
+	category = "Eora's Chosen"
 	triumph_count = 3
+	immediate_effects = list("Gained an ability to adopt children")
+	rewards = list("3 Triumphs", "Eora grows stronger")
 
 /datum/objective/personal/adopt_orphan/on_creation()
 	. = ..()

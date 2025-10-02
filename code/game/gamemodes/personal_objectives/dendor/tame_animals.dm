@@ -1,6 +1,8 @@
 /datum/objective/personal/tame_animal
 	name = "Tame an Animal"
+	category = "Dendor's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Dendor grows stronger")
 	var/tamed_count = 0
 	var/required_tames = 1
 

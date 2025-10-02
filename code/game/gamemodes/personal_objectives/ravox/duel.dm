@@ -1,6 +1,9 @@
 /datum/objective/personal/ravox_duel
 	name = "Honor Duels"
-	triumph_count = 2
+	category = "Ravox's Chosen"
+	triumph_count = 3
+	immediate_effects = list("Gained an ability to challenge others")
+	rewards = list("3 Triumphs", "Ravox grows stronger")
 	var/duels_won = 0
 	var/duels_required = 1
 

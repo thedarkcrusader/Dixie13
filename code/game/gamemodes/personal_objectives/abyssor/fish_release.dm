@@ -1,6 +1,8 @@
 /datum/objective/personal/release_fish
 	name = "Release Rare Fish"
+	category = "Abyssor's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Abyssor grows stronger")
 	var/released_count = 0
 	var/required_count = 1
 	var/required_rarity_rank = 1

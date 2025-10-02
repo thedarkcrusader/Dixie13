@@ -1,6 +1,8 @@
 /datum/objective/personal/improve_craft
 	name = "Improve Craft Skills"
+	category = "Malum's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Malum grows stronger")
 	var/levels_gained = 0
 	var/required_levels = 2
 

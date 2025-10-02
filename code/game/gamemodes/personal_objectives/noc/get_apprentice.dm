@@ -1,6 +1,8 @@
 /datum/objective/personal/get_apprentice
 	name = "Get Apprentice"
+	category = "Noc's Chosen"
 	triumph_count = 3
+	rewards = list("3 Triumphs", "Noc grows stronger")
 
 /datum/objective/personal/get_apprentice/on_creation()
 	. = ..()

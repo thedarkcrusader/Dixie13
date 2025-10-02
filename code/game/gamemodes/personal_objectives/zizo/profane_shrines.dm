@@ -1,6 +1,9 @@
 /datum/objective/personal/build_zizo_shrine
 	name = "Construct Profane Shrines"
+	category = "Zizo's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained an ability to construct profane shrines")
+	rewards = list("2 Triumphs", "Zizo grows stronger")
 	var/target_type = /obj/structure/fluff/psycross/zizocross
 	var/target_count = 2
 	var/current_count = 0

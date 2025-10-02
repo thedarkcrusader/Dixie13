@@ -1,6 +1,8 @@
 /datum/objective/personal/sniff_drugs
 	name = "Sniff Drugs"
+	category = "Baotha's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Baotha grows stronger")
 	var/sniff_count = 0
 	var/required_count = 2
 

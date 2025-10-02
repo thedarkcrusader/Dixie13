@@ -1,6 +1,8 @@
 /datum/objective/personal/butcher_animals
 	name = "Butcher Animals"
+	category = "Dendor's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Dendor grows stronger")
 	var/animals_butchered = 0
 	var/animals_required = 2
 

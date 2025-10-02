@@ -1,6 +1,9 @@
 /datum/objective/personal/ultimate_sacrifice
 	name = "Ultimate Sacrifice"
+	category = "Ravox's Chosen"
 	triumph_count = 3
+	immediate_effects = list("Gained an ability to give up your life to save another")
+	rewards = list("3 Triumphs", "Ravox grows stronger")
 
 /datum/objective/personal/ultimate_sacrifice/on_creation()
 	. = ..()

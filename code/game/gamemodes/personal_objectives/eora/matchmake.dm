@@ -1,6 +1,9 @@
 /datum/objective/personal/marriage_broker
 	name = "Arrange Marriage"
+	category = "Eora's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained an ability to conduct secret marriage ceremonies")
+	rewards = list("2 Triumphs", "Eora grows stronger")
 
 /datum/objective/personal/marriage_broker/on_creation()
 	. = ..()

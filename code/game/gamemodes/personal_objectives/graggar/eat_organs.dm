@@ -1,6 +1,9 @@
 /datum/objective/personal/consume_organs
 	name = "Consume Organs"
+	category = "Graggar's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained an ability to rip hearts out of corpses")
+	rewards = list("2 Triumphs", "Graggar grows stronger")
 	var/organs_consumed = 0
 	var/hearts_consumed = 0
 	var/organs_required = 3

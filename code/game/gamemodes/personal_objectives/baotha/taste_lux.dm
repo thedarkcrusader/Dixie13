@@ -1,6 +1,8 @@
 /datum/objective/personal/taste_lux
 	name = "Taste Divine Essence"
+	category = "Baotha's Chosen"
 	triumph_count = 3
+	rewards = list("3 Triumphs", "Baotha grows stronger")
 
 /datum/objective/personal/taste_lux/on_creation()
 	. = ..()

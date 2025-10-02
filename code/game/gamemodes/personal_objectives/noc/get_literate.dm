@@ -1,6 +1,8 @@
 /datum/objective/personal/literacy
 	name = "Get Literate"
+	category = "Noc's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Noc grows stronger")
 
 /datum/objective/personal/literacy/on_creation()
 	. = ..()

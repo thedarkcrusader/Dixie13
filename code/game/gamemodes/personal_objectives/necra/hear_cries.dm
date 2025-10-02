@@ -1,6 +1,9 @@
 /datum/objective/personal/listen_whispers
 	name = "Listen to Dead's Whispers"
+	category = "Necra's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained a temporary ability to listen to the cries of the dead")
+	rewards = list("2 Triumphs", "Necra grows stronger")
 	var/time_required = 3 MINUTES
 	var/time_spent = 0
 	var/last_check = 0

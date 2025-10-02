@@ -1,6 +1,8 @@
 /datum/objective/personal/kick_groin
 	name = "Kick Groin"
+	category = "Zizo's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Zizo grows stronger")
 
 /datum/objective/personal/kick_groin/on_creation()
 	. = ..()

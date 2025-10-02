@@ -1,6 +1,8 @@
 /datum/objective/personal/steal_items
 	name = "Steal Items"
+	category = "Matthios' Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Matthios grows stronger")
 	var/stolen_count = 0
 	var/required_count = 3
 

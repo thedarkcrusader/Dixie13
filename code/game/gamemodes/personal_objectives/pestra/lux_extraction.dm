@@ -1,6 +1,8 @@
 /datum/objective/personal/lux_extraction
 	name = "Extract Lux"
+	category = "Pestra's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Pestra grows stronger")
 
 /datum/objective/personal/lux_extraction/on_creation()
 	. = ..()

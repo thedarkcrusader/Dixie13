@@ -1,6 +1,8 @@
 /datum/objective/personal/mock
 	name = "Mock"
+	category = "Xylix's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Xylix grows stronger")
 
 /datum/objective/personal/mock/on_creation()
 	. = ..()
@@ -20,6 +22,7 @@
 /// Monarch variant
 /datum/objective/personal/mock/monarch
 	name = "Mock Monarch"
+	immediate_effects = list("Gained an ability to viciously mock others")
 
 /datum/objective/personal/mock/monarch/on_mock_used(datum/source, mob/living/victim)
 	. = ..()

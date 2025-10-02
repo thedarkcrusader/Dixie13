@@ -1,6 +1,9 @@
 /datum/objective/personal/wise_trees
 	name = "Create Wise Trees"
+	category = "Dendor's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained an ability to make wise trees")
+	rewards = list("2 Triumphs", "Dendor grows stronger")
 	var/trees_transformed = 0
 	var/trees_required = 3
 

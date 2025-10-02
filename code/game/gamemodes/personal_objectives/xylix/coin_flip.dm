@@ -1,6 +1,8 @@
 /datum/objective/personal/coin_flip
 	name = "Flip Coin"
+	category = "Xylix's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Xylix grows stronger")
 	var/obj/item/coin/required_coin_type = /obj/item/coin/gold
 	var/winning_side
 

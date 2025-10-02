@@ -1,6 +1,8 @@
 /datum/objective/personal/rotten_feast
 	name = "Rotten Feast"
+	category = "Pestra's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Pestra grows stronger")
 	var/meals_eaten = 0
 	var/meals_required = 2
 

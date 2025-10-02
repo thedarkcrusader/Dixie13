@@ -1,6 +1,8 @@
 /datum/objective/personal/hug_beggar
 	name = "Hug a Beggar"
+	category = "Eora's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Eora grows stronger")
 
 /datum/objective/personal/hug_beggar/on_creation()
 	. = ..()

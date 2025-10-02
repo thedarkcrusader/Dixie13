@@ -1,6 +1,9 @@
 /datum/objective/personal/take_pain
 	name = "Take Pain"
+	category = "Pestra's Chosen"
 	triumph_count = 3
+	immediate_effects = list("Gained an ability to take pain of others upon yourself")
+	rewards = list("3 Triumphs", "Pestra grows stronger")
 	var/total_pain_taken = 0
 	var/target_pain = 750
 

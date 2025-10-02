@@ -1,6 +1,9 @@
 /datum/objective/personal/create_abyssoids
 	name = "Create Abyssoids"
+	category = "Abyssor's Chosen"
 	triumph_count = 2
+	immediate_effects = list("Gained an ability to create abyssoid leeches")
+	rewards = list("2 Triumphs", "Abyssor grows stronger")
 	var/abyssoids_created = 0
 	var/abyssoids_required = 5
 

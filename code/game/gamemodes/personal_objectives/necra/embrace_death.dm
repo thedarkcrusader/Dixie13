@@ -2,6 +2,8 @@
 	name = "Embrace Death"
 	category = "Necra's Chosen"
 	triumph_count = 3
+	immediate_effects = list("Gained an ability to pass on peacefully")
+	rewards = list("3 Triumphs", "Necra grows stronger", "Eternal Rest")
 
 /datum/objective/personal/embrace_death/on_creation()
 	. = ..()

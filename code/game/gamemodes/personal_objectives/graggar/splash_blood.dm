@@ -1,6 +1,8 @@
 /datum/objective/personal/blood_splash
 	name = "Splash Blood"
+	category = "Graggar's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Graggar grows stronger")
 
 /datum/objective/personal/blood_splash/on_creation()
 	. = ..()

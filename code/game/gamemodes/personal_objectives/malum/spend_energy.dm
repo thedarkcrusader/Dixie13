@@ -1,6 +1,8 @@
 /datum/objective/personal/energy_expenditure
 	name = "Spend Energy"
+	category = "Malum's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Malum grows stronger")
 	var/energy_spent = 0
 	var/energy_required = 1000
 

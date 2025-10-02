@@ -1,6 +1,8 @@
 /datum/objective/personal/abyssor_bath
 	name = "Take Bath"
+	category = "Abyssor's Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Abyssor grows stronger")
 
 /datum/objective/personal/abyssor_bath/on_creation()
 	. = ..()

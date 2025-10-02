@@ -1,6 +1,9 @@
 /datum/objective/personal/torture
 	name = "Extract Truth Through Pain"
+	category = "Zizo's Chosen"
 	triumph_count = 3
+	immediate_effects = list("Gained an ability to torture others for information")
+	rewards = list("3 Triumphs", "Zizo grows stronger")
 	var/torture_count = 0
 	var/required_count = 1
 

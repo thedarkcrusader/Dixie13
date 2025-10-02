@@ -1,6 +1,8 @@
 /datum/objective/personal/grave_robbery
 	name = "Rob Graves"
+	category = "Matthios' Chosen"
 	triumph_count = 2
+	rewards = list("2 Triumphs", "Matthios grows stronger")
 	var/graves_robbed = 0
 	var/graves_required = 2
 
