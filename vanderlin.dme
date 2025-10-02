@@ -349,6 +349,7 @@
 #include "code\_onclick\hud\new_player.dm"
 #include "code\_onclick\hud\plane_master.dm"
 #include "code\_onclick\hud\plane_master_controller.dm"
+#include "code\_onclick\hud\purpose.dm"
 #include "code\_onclick\hud\radial.dm"
 #include "code\_onclick\hud\radial_persistent.dm"
 #include "code\_onclick\hud\screen_objects.dm"

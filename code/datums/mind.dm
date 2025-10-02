@@ -787,6 +787,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/add_personal_objective(datum/objective/O)
 	if(!istype(O))
 		return FALSE
+	if(current)
+		current.apply_status_effect(/datum/status_effect/purpose)
 	personal_objectives += O
 	O.owner = src
 	return TRUE
