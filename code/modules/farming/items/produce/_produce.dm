@@ -21,6 +21,9 @@
 /obj/item/reagent_containers/food/snacks/produce/grain
 	name = "grain"
 
+/obj/item/reagent_containers/food/snacks/produce/mushroom
+	name = "mushroom"
+
 /obj/item/reagent_containers/food/snacks/produce/Initialize(mapload)
 	. = ..()
 	if(!tastes)
@@ -521,6 +524,22 @@
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	body_parts_covered = NONE
 	alternate_worn_layer  = 8.9
+
+/* .......... Mushrooms ........ */
+/obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus
+	name = "coprinus"
+	desc = "An inedible mushroom cultivated for the fibres it produces when dried."
+	icon_state = "coprinus"
+	seed = /obj/item/neuFarm/seed/coprinus
+	throwforce = 0
+	tastes = list("bitter" = 1,"fibrous" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 0, /datum/reagent/berrypoison = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_EXTREME
+
 /*
 /obj/item/reagent_containers/food/snacks/produce/garlic
 	name = "garlic"

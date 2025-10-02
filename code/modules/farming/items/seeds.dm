@@ -233,3 +233,6 @@
 
 /obj/item/neuFarm/seed/tea
 	plant_def_type = /datum/plant_def/tea
+
+/obj/item/neuFarm/seed/coprinus
+	plant_def_type = /datum/plant_def/coprinus

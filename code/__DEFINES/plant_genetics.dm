@@ -49,3 +49,4 @@
 #define FAMILY_ROOT 9          // Root vegetables
 #define FAMILY_RUBIACEAE  10   // Coffee
 #define FAMILY_THEACEAE  11    // Tea
+#define FAMILY_DIKARYA 12      // Mushrooms

@@ -206,3 +206,7 @@
 /obj/structure/wild_plant/nospread/fyritiusflower
 	icon_state = "fyritius2"
 	plant_type = /datum/plant_def/fyritiusflower
+
+/obj/structure/wild_plant/nospread/coprinus
+	icon_state = "coprinus2"
+	plant_type = /datum/plant_def/coprinus

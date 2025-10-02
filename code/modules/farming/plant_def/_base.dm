@@ -219,5 +219,7 @@
 			return "Madder"
 		if(FAMILY_THEACEAE)
 			return "Theaceae"
+		if(FAMILY_DIKARYA)
+			return "Dikarya"
 		else
 			return "Unknown"
