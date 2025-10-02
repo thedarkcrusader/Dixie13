@@ -1,0 +1,61 @@
+{
+    "2025-10-01": {
+        "mumblemancer": [
+            {
+                "code_imp": "changed SPACEBAR to \\\" \\\""
+            }
+        ],
+        "Wouju": [
+            {
+                "rscdel": "Guillotine no longert forces you to clap"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "refactor": "Refactored advclass to be a subtype of job and migrant_role to reference a job. report any role weirdness."
+            },
+            {
+                "admin": "Select Equipment renamed to Admin Dress, can now equip jobs and outfits are listed immediately."
+            }
+        ]
+    },
+    "2025-10-02": {
+        "wgtjunior743": [
+            {
+                "admin": "New Admin verb at the VV dropdown to coronate someone."
+            },
+            {
+                "rscadd": "Migrant Waves got their description at the menu."
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed locks being able to unlock things :D"
+            }
+        ],
+        "flleeppyy": [
+            {
+                "server": "Changes made to main config, `SERVERNAME`, `SERVERSUBTITLE` and `HOSTEDBY` namely."
+            }
+        ],
+        "grungussuss": [
+            {
+                "rscadd": "donators get 1.5x triumph gain"
+            },
+            {
+                "rscadd": "donators can take up to 3 cosmetic items with them into the game"
+            },
+            {
+                "rscdel": "hollowkin and kobolds are no longer patreon exclusive"
+            },
+            {
+                "rscadd": "The broodmother"
+            }
+        ],
+        "snowyseshi": [
+            {
+                "rscadd": "Added a pouch with mammons to the VL"
+            }
+        ]
+    }
+}

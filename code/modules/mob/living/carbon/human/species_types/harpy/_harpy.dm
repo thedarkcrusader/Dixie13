@@ -20,6 +20,10 @@
 	default_color = "FFFFFF"
 
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
+	inherent_traits = list(TRAIT_NOMOBSWAP)
+	inherent_skills = list(
+		/datum/skill/misc/music = 1,
+	)
 
 	use_skintones = TRUE
 	possible_ages = NORMAL_AGES_LIST_CHILD
@@ -30,6 +34,9 @@
 
 	soundpack_m = /datum/voicepack/male
 	soundpack_f = /datum/voicepack/female
+
+	//related to preening emote - lets preening be used roundstart
+	COOLDOWN_DECLARE(time_to_next_preen)
 
 	offset_features_m = list(
 		OFFSET_RING = list(0,1),\

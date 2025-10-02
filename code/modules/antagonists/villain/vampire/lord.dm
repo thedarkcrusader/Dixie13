@@ -37,7 +37,7 @@
 		owner.person_knows_me(MF)
 
 	var/mob/living/carbon/human/H = owner.current
-	H.equipOutfit(/datum/outfit/job/vamplord)
+	H.equipOutfit(/datum/outfit/vamplord)
 	H.set_patron(/datum/patron/godless/autotheist)
 
 	return TRUE
@@ -45,7 +45,7 @@
 /datum/antagonist/vampire/lord/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
 
-/datum/outfit/job/vamplord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/magic/blood, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
@@ -61,6 +61,7 @@
 	belt = /obj/item/storage/belt/leather/plaquegold
 	head  = /obj/item/clothing/head/vampire
 	beltl = /obj/item/key/vampire
+	beltr = /obj/item/storage/belt/pouch/coins/veryrich
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/satchel/black
