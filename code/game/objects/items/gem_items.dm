@@ -56,7 +56,7 @@
 
 /obj/item/carvedgem/shell/cameo
 	name = "shell cameo"
-	desc = "A cameo carved out of joapstone depicting...someone? Use your imagination on who it could be."
+	desc = "A cameo carved out of shell depicting...someone? Use your imagination on who it could be."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "cameo_shell"
 	grid_height = 1
@@ -942,3 +942,304 @@
 	grid_height = 2
 	grid_width = 2
 	sellprice = 85
+
+// petriamber //
+
+/obj/item/carvedgem/amber/cutgem
+	name = "cut petriamber gem"
+	desc = "a cut and polished piece of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "cutgem_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 55
+
+/obj/item/carvedgem/amber/fork
+	name = "petriamber fork"
+	desc = "A fork carved out of petriamber, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "fork_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 55
+
+/obj/item/carvedgem/amber/spoon
+	name = "petriamber spoon"
+	desc = "A spoon carved out of petriamber, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state= "spoon_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 55
+
+/obj/item/carvedgem/amber/cameo
+	name = "petriamber cameo"
+	desc = "A cameo carved out of petriamber depicting...someone? Use your imagination on who it could be.."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "cameo_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 55
+
+/obj/item/carvedgem/amber/figurine
+	name = "petriamber figurine"
+	desc = "A small figurine carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "figurine_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/amber/fish
+	name = "petriamber fish figurine"
+	desc = "A small fish figurine carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "fish_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/amber/tablet
+	name = "petriamber tablet"
+	desc = "A tablet carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "tablet_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/amber/vase
+	name = "petriamber vase"
+	desc = "A vase carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "vase_amber"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 60
+
+/obj/item/carvedgem/amber/bust
+	name = "petriamber bust"
+	desc = "A bust carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "bust_amber"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 65
+
+/obj/item/carvedgem/amber/fancyvase
+	name = "fancy petriamber vase"
+	desc = "A fancy vase carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state= "fancyvase_amber"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/amber/comb
+	name = "petriamber comb"
+	desc = "A luxurious comb carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "comb_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/amber/duck
+	name = "petriamber duck"
+	desc = "An adorable little duck carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "duck_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 65
+
+/obj/item/carvedgem/amber/urn
+	name = "petriamber urn"
+	desc = "A large decorative urn carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "urn_amber"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 70
+
+/obj/item/carvedgem/amber/statue
+	name = "petriamber statue"
+	desc = "A statue carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "statue_amber"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/amber/obelisk
+	name = "petriamber obelisk"
+	desc = "An obelisk carved out of petriamber."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "obelisk_amber"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 70
+
+/obj/item/carvedgem/amber/beaver
+	name = "petriamber beaver statue"
+	desc = "A medium sized carving of a beaver made out of petriamber. Beavers known to build dams and congregate around shipwrecks. Some sailors consider them to be a bad omen."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "beaver_amber"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 75
+
+/obj/item/carvedgem/amber/sun
+	name = "petriamber sun carving"
+	desc = "A shining sun carved out of petriamber. This would look nice on a church altar."
+	icon = 'icons/roguetown/gems/gem_amber.dmi'
+	icon_state = "sun_amber"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 75
+
+// opaloise
+
+/obj/item/carvedgem/opal/cutgem
+	name = "cut opaloise gem"
+	desc = "A piece of opaloise that has been cut and polished."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "cutgem_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/opal/fork
+	name = "opaloise fork"
+	desc = "A fork carved out of opaloise, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "fork_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/opal/spoon
+	name = "opaloise spoon"
+	desc = "A spoon carved out of opaloise, far too delicate to eat with."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "spoon_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/opal/cameo
+	name = "opaloise spoon"
+	desc = "A cameo carved out of shell depicting...someone? Use your imagination on who it could be."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "cameo_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 85
+
+/obj/item/carvedgem/opal/figurine
+	name = "opaloise figurine"
+	desc = "A small figurine carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "figurine_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/opal/fish
+	name = "opaloise fish figurine"
+	desc = "A small fish figurine carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "fish_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/opal/vase
+	name = "opaloise vase"
+	desc = "A vase carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "vase_opal"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/opal/tablet
+	name = "opaloise tablet"
+	desc = "A tablet carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "tablet_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 90
+
+/obj/item/carvedgem/opal/fancyvase
+	name = "fancy opaloise vase"
+	desc = "A fancy vase carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "fancyvase_opal"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 95
+
+/obj/item/carvedgem/opal/bust
+	name = "opaloise bust"
+	desc = "A bust carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "bust_opal"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 95
+
+/obj/item/carvedgem/opal/comb
+	name = "opaloise comb"
+	desc = "A luxurious comb carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "comb_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 95
+
+/obj/item/carvedgem/opal/duck
+	name = "opaloise duck"
+	desc = "An adorable little duck carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "duck_opal"
+	grid_height = 1
+	grid_width = 1
+	sellprice = 95
+
+/obj/item/carvedgem/opal/obelisk
+	name = "opaloise obelisk"
+	desc = "An obelisk carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "obelisk_opal"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 100
+
+/obj/item/carvedgem/opal/statue
+	name = "opaloise statue"
+	desc = "A statue  carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "statue_opal"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 100
+
+/obj/item/carvedgem/opal/urn
+	name = "opaloise urn"
+	desc = "A large decorative urn carved out of opaloise."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "urn_opal"
+	grid_height = 2
+	grid_width = 1
+	sellprice = 100
+
+/obj/item/carvedgem/opal/crab
+	name = "opaloise crab sculpture"
+	desc = "A large sculpture of a crab carved out of opaloise. Don't stick your fingers in its pincers, thats a terrible idea."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "crab_opal"
+	grid_height = 2
+	grid_width = 2
+	sellprice = 105

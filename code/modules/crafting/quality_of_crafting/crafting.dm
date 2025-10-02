@@ -1878,9 +1878,9 @@
 
 /datum/repeatable_crafting_recipe/crafting/rosemask
 	name = "rosellusk mask"
-	output = /obj/item/carvedgem/rose/urn
+	output = /obj/item/clothing/face/rosemask
 	requirements = list(
-		/obj/item/clothing/face/rosemask
+		/obj/item/carvedgem/rose/rawrose
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("carves the rosellusk pearl", "carve the rosellusk pearl")
@@ -3070,6 +3070,804 @@
 		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
 	)
 	attacked_atom = /obj/item/gem/coral
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+// petriamber //
+
+/datum/repeatable_crafting_recipe/crafting/ambercutgem
+	name = "cut petriamber gem"
+	output = /obj/item/carvedgem/amber/cutgem
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/amberspoon
+	name = "petriamber spoon"
+	output = /obj/item/carvedgem/amber/spoon
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/amberfork
+	name = "petriamber fork"
+	output = /obj/item/carvedgem/amber/fork
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/ambercameo
+	name = "petriamber cameo"
+	output = /obj/item/carvedgem/amber/cameo
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/amberbowl
+	name = "petriamber bowl"
+	output = /obj/item/reagent_containers/glass/bowl/amber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/ambercup
+	name = "petriamber cup"
+	output = /obj/item/reagent_containers/glass/cup/amber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/amberfigurine
+	name = "petriamber figurine"
+	output = /obj/item/carvedgem/amber/figurine
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberfish
+	name = "petriamber fish figurine"
+	output = /obj/item/carvedgem/amber/fish
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/ambertablet
+	name = "petriamber tablet"
+	output = /obj/item/carvedgem/amber/tablet
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/ambervase
+	name = "petriamber vase"
+	output = /obj/item/carvedgem/amber/vase
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberteapot
+	name = "petriamber teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotamber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberplatter
+	name = "petriamber platter"
+	output = /obj/item/plate/amber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberring
+	name = "petriamber ring"
+	output = /obj/item/clothing/ring/amber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberamulet
+	name = "petriamber amulet"
+	output = /obj/item/clothing/neck/amberamulet
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/amberbracelet
+	name = "petriamber bracelets"
+	output = /obj/item/clothing/wrists/gem/amberbracelet
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/ambercirclet
+	name = "petriamber circlet"
+	output = /obj/item/clothing/head/crown/circlet/amber
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/amberfancycup
+	name = "fancy petriamber cup"
+	output = /obj/item/reagent_containers/glass/cup/amberfancy
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/amberfancyvase
+	name = "fancy petriamber vase"
+	output = /obj/item/carvedgem/amber/fancyvase
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/amberbust
+	name = "petriamber bust"
+	output = /obj/item/carvedgem/amber/bust
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/ambercomb
+	name = "petriamber comb"
+	output = /obj/item/carvedgem/amber/comb
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/amberduck
+	name = "petriamber duck"
+	output = /obj/item/carvedgem/amber/duck
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/ambermask
+	name = "petriamber mask"
+	output = /obj/item/clothing/face/ambermask
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/amberobelisk
+	name = "petriamber obelisk"
+	output = /obj/item/carvedgem/amber/obelisk
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/amberurn
+	name = "petriamber urn"
+	output = /obj/item/carvedgem/amber/urn
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/amberstatue
+	name = "petriamber statue"
+	output = /obj/item/carvedgem/amber/statue
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/amberbeaver
+	name = "petriamber beaver statue"
+	output = /obj/item/carvedgem/amber/beaver
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/ambersun
+	name = "petriamber sun carving"
+	output = /obj/item/carvedgem/amber/sun
+
+	requirements = list(
+		/obj/item/gem/amber = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw petriamber", "carve the raw petriamber")
+	)
+	attacked_atom = /obj/item/gem/amber
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+// opaloise //
+
+/datum/repeatable_crafting_recipe/crafting/opalcutgem
+	name = "cut opaloise gem"
+	output = /obj/item/carvedgem/opal/cutgem
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalspoon
+	name = "opaloise spoon"
+	output = /obj/item/carvedgem/opal/spoon
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalfork
+	name = "opaloise fork"
+	output = /obj/item/carvedgem/opal/fork
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalcameo
+	name = "opaloise cameo"
+	output = /obj/item/carvedgem/opal/cameo
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalbowl
+	name = "opaloise bowl"
+	output = /obj/item/reagent_containers/glass/bowl/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalcup
+	name = "opaloise cup"
+	output = /obj/item/reagent_containers/glass/cup/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/opalteapot
+	name = "opaloise teapot"
+	output = /obj/item/reagent_containers/glass/carafe/teapotopal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalplatter
+	name = "opaloise platter"
+	output = /obj/item/plate/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalring
+	name = "opaloise ring"
+	output = /obj/item/clothing/ring/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalamulet
+	name = "opaloise amulet"
+	output = /obj/item/clothing/neck/opalamulet
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalfigurine
+	name = "opaloise figurine"
+	output = /obj/item/carvedgem/opal/figurine
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalfish
+	name = "opaloise fish figurine"
+	output = /obj/item/carvedgem/opal/fish
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalvase
+	name = "opaloise vase"
+	output = /obj/item/carvedgem/opal/vase
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opaltablet
+	name = "opaloise tablet"
+	output = /obj/item/carvedgem/opal/tablet
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/crafting/opalbracelet
+	name = "opaloise bracelets"
+	output = /obj/item/clothing/wrists/gem/opalbracelet
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalcirclet
+	name = "opaloise circlet"
+	output = /obj/item/clothing/head/crown/circlet/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalfancycup
+	name = "fancy opaloise cup"
+	output = /obj/item/reagent_containers/glass/cup/opalfancy
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalbust
+	name = "opaloise bust"
+	output = /obj/item/carvedgem/opal/bust
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalfancyvase
+	name = "fancy opaloise vase"
+	output = /obj/item/carvedgem/opal/fancyvase
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalcomb
+	name = "opaloise comb"
+	output = /obj/item/carvedgem/opal/comb
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalduck
+	name = "opaloise duck"
+	output = /obj/item/carvedgem/opal/duck
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/crafting/opalmask
+	name = "opaloise mask"
+	output = /obj/item/clothing/face/opalmask
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/opalobelisk
+	name = "opaloise obelisk"
+	output = /obj/item/carvedgem/opal/obelisk
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/opalurn
+	name = "opaloise urn"
+	output = /obj/item/carvedgem/opal/urn
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/opalstatue
+	name = "opaloise statue"
+	output = /obj/item/carvedgem/opal/statue
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/crafting/opalcrab
+	name = "opaloise crab sculpture"
+	output = /obj/item/carvedgem/opal/crab
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
+	starting_atom = /obj/item/weapon/knife
+	output_amount = 1
+	craftdiff = 5
+
+/datum/repeatable_crafting_recipe/crafting/opalknife
+	name = "opaloise knife"
+	output = /obj/item/weapon/knife/stone/opal
+
+	requirements = list(
+		/obj/item/gem/opal = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("carves the raw opaloise", "carve the raw opaloise")
+	)
+	attacked_atom = /obj/item/gem/opal
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 5
