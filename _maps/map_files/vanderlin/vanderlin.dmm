@@ -2402,6 +2402,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt/cobweb,
+/obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "bpM" = (
@@ -22566,6 +22567,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
 	},
+/obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "nDP" = (
