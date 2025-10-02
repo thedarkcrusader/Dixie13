@@ -8,7 +8,7 @@
 
 	charge_required = FALSE
 	spell_type = NONE
-	cooldown_time = 45 SECONDS
+	cooldown_time = 1 MINUTES
 	invocation_type = INVOCATION_SHOUT
 
 /datum/action/cooldown/spell/bardic_inspiration/is_valid_target(atom/cast_on)
