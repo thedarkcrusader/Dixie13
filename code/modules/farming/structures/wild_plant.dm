@@ -210,3 +210,25 @@
 /obj/structure/wild_plant/nospread/coprinus
 	icon_state = "coprinus2"
 	plant_type = /datum/plant_def/coprinus
+
+/obj/structure/wild_plant/nospread/reishi
+	icon_state = "reishi2"
+	plant_type = /datum/plant_def/reishi
+
+/obj/structure/wild_plant/nospread/morel
+	icon_state = "morel2"
+	plant_type = /datum/plant_def/morel
+
+/obj/structure/wild_plant/nospread/oyster
+	icon_state = "oyster2"
+	plant_type = /datum/plant_def/oyster
+
+/obj/structure/wild_plant/nospread/porcini
+	icon_state = "porcini2"
+	plant_type = /datum/plant_def/porcini
+
+/obj/structure/wild_plant/nospread/chanterelle
+	icon_state = "chanterelle2"
+	plant_type = /datum/plant_def/chanterelle
+
+

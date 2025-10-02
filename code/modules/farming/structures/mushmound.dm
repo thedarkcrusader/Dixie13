@@ -7,3 +7,5 @@
 	anchored = TRUE
 	climbable = FALSE
 	max_integrity = 200
+
+/obj/structure/mushmound/initialize

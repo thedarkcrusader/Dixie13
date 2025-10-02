@@ -236,3 +236,18 @@
 
 /obj/item/neuFarm/seed/coprinus
 	plant_def_type = /datum/plant_def/coprinus
+
+/obj/item/neuFarm/seed/reishi
+	plant_def_type = /datum/plant_def/reishi
+
+/obj/item/neuFarm/seed/morel
+	plant_def_type = /datum/plant_def/morel
+
+/obj/item/neuFarm/seed/oyster
+	plant_def_type = /datum/plant_def/oyster
+
+/obj/item/neuFarm/seed/porcini
+	plant_def_type = /datum/plant_def/porcini
+
+/obj/item/neuFarm/seed/chanterelle
+	plant_def_type = /datum/plant_def/chanterelle

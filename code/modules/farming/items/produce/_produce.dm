@@ -540,6 +540,76 @@
 	dropshrink = 0.75
 	rotprocess = SHELFLIFE_EXTREME
 
+/obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
+	name = "reishi"
+	desc = "A mushroom prized for its medicinal properties. Typically dried then used in tea. (HEY CHANGE THIS LATER!!)"
+	icon_state = "reishi"
+	seed = /obj/item/neuFarm/seed/reishi
+	throwforce = 0
+	tastes = list("woody" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/produce/mushroom/morel
+	name = "morel"
+	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	icon_state = "morel"
+	seed = /obj/item/neuFarm/seed/morel
+	throwforce = 0
+	tastes = list("umami" = 1,"nutty" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/produce/mushroom/oyster
+	name = "oyster"
+	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	icon_state = "oyster"
+	seed = /obj/item/neuFarm/seed/oyster
+	throwforce = 0
+	tastes = list("sweet" = 1,"briny" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
+	name = "porcini"
+	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste. (HEY CHANGE THIS LATER!!)"
+	icon_state = "porcini"
+	seed = /obj/item/neuFarm/seed/porcini
+	throwforce = 0
+	tastes = list("earthy" = 1,"nutty" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/produce/mushroom/chanterelle
+	name = "chanterelle"
+	desc = "A rare mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER!!)"
+	icon_state = "chanterelle"
+	seed = /obj/item/neuFarm/seed/chanterelle
+	throwforce = 0
+	tastes = list("fruity" = 1,"earthy" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	dropshrink = 0.75
+	rotprocess = SHELFLIFE_DECENT
+
 /*
 /obj/item/reagent_containers/food/snacks/produce/garlic
 	name = "garlic"
