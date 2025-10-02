@@ -28,7 +28,7 @@ abstract types are automatically excluded.
 		/obj/item/clothing/head/helmet/skullcap/cult, // cultist item
 		/obj/item/clothing/head/helmet/leather/saiga, // idk what kind of recipe to make this
 		/obj/item/clothing/neck/mana_star, // todo?
-		/obj/item/clothing/wrists/gem // this is not supposed to be craftable as it is a base for other items
+		/obj/item/clothing/wrists/gem, // this is not supposed to be craftable as it is a base for other items
 		/obj/item/storage/backpack/backpack/artibackpack/porter, //Unique to Kobl
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.

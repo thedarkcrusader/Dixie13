@@ -26,9 +26,10 @@
 	name = "gem bracelet base"
 	desc = "timbers trunk, this isnt supposed to show up! report this immediately, TOODLES!"
 	slot_flags = ITEM_SLOT_WRISTS
+	nodismemsleeves = TRUE
 	icon = 'icons/roguetown/clothing/wrists.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gembracelet.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/gembracelet.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_gembracelet.dmi'
 
 /obj/item/clothing/wrists/gem/jadebracelet
 	name = "joapstone bracelets"
