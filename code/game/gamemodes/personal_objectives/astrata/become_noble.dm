@@ -1,7 +1,8 @@
 /datum/objective/personal/nobility
 	name = "Become Noble"
+	category = "Astrata's Chosen"
 	triumph_count = 3
-	rewards = list("3 triumphs", "Astrata grows stronger")
+	rewards = list("3 Triumphs", "Astrata grows stronger")
 
 /datum/objective/personal/nobility/on_creation()
 	. = ..()

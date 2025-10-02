@@ -47,7 +47,7 @@
 			STATS_BOOKS_PRINTED = list("name" = "Books printed:", "points" = 4, "capacity" = 40),
 		),
 		"Set 2" = list(
-			STATS_LITERACY_TAUGHT = list("name" = "Literacy taught:", "points" = 12.5, "capacity" = 70),
+			STATS_LITERACY_TAUGHT = list("name" = "Literacy taught:", "points" = 10, "capacity" = 65),
 		),
 		"Set 3" = list(
 			STATS_ILLITERATES = list("name" = "Number of illiterates:", "points" = -3, "capacity" = -50),
@@ -115,7 +115,7 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_FISH_CAUGHT = list("name" = "Fish caught:", "points" = 1.75, "capacity" = 85),
+			STATS_FISH_CAUGHT = list("name" = "Fish caught:", "points" = 1.7, "capacity" = 80),
 		),
 		"Set 2" = list(
 			STATS_WATER_CONSUMED = list("name" = "Water consumed:", "points" = 0.014, "capacity" = 90),

@@ -1,8 +1,9 @@
 /datum/objective/personal/retainer
 	name = "Recruit Retainer"
+	category = "Astrata's Chosen"
 	triumph_count = 2
 	immediate_effects = list("Gained an ability to recruit retainers")
-	rewards = list("2 triumphs", "Astrata grows stronger")
+	rewards = list("2 Triumphs", "Astrata grows stronger")
 	var/retainers_recruited = 0
 
 /datum/objective/personal/retainer/on_creation()

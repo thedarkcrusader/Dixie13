@@ -1,7 +1,8 @@
 /datum/objective/personal/inhumen_scorn
 	name = "Scorn Inhumen"
+	category = "Astrata's Chosen"
 	triumph_count = 2
-	rewards = list("2 triumphs", "Astrata grows stronger")
+	rewards = list("2 Triumphs", "Astrata grows stronger")
 	var/spits_done = 0
 	var/spits_required = 2
 
