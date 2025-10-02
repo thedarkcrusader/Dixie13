@@ -1,4 +1,4 @@
-/datum/objective/consume_organs
+/datum/objective/personal/consume_organs
 	name = "Consume Organs"
 	triumph_count = 2
 	var/organs_consumed = 0
@@ -6,18 +6,18 @@
 	var/organs_required = 3
 	var/hearts_required = 1
 
-/datum/objective/consume_organs/on_creation()
+/datum/objective/personal/consume_organs/on_creation()
 	. = ..()
 	if(owner?.current)
 		RegisterSignal(owner.current, COMSIG_ORGAN_CONSUMED, PROC_REF(on_organ_consumed))
 	update_explanation_text()
 
-/datum/objective/consume_organs/Destroy()
+/datum/objective/personal/consume_organs/Destroy()
 	if(owner?.current)
 		UnregisterSignal(owner.current, COMSIG_ORGAN_CONSUMED)
 	return ..()
 
-/datum/objective/consume_organs/proc/on_organ_consumed(datum/source, organ_type)
+/datum/objective/personal/consume_organs/proc/on_organ_consumed(datum/source, organ_type)
 	SIGNAL_HANDLER
 	if(completed)
 		return
@@ -33,7 +33,7 @@
 	if(organs_consumed >= organs_required && hearts_consumed >= hearts_required)
 		complete_objective()
 
-/datum/objective/consume_organs/proc/complete_objective()
+/datum/objective/personal/consume_organs/proc/complete_objective()
 	to_chat(owner.current, span_greentext("You have consumed enough organs and hearts to satisfy Graggar!"))
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
@@ -41,5 +41,5 @@
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_ORGAN_CONSUMED)
 
-/datum/objective/consume_organs/update_explanation_text()
+/datum/objective/personal/consume_organs/update_explanation_text()
 	explanation_text = "Consume [organs_required] organ\s, including [hearts_required] heart\s, to appease Graggar!"

@@ -1,14 +1,14 @@
-/datum/objective/embrace_death
+/datum/objective/personal/embrace_death
 	name = "Embrace Death"
 	triumph_count = 4
 
-/datum/objective/embrace_death/on_creation()
+/datum/objective/personal/embrace_death/on_creation()
 	. = ..()
 	var/datum/action/innate/embrace_death/action = new(src)
 	action.Grant(owner.current)
 	update_explanation_text()
 
-/datum/objective/embrace_death/update_explanation_text()
+/datum/objective/personal/embrace_death/update_explanation_text()
 	explanation_text = "Your time has come. Embrace death through Necra's gift to achieve final rest and secure your soul."
 
 /datum/action/innate/embrace_death
@@ -44,7 +44,7 @@
 	ADD_TRAIT(owner, TRAIT_BURIED_COIN_GIVEN, "necra_ritual")
 	owner.death()
 
-	var/datum/objective/embrace_death/objective = target
+	var/datum/objective/personal/embrace_death/objective = target
 	if(!QDELETED(objective) && !objective.completed)
 		objective.completed = TRUE
 		owner.adjust_triumphs(objective.triumph_count)

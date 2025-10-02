@@ -1,19 +1,19 @@
-/datum/objective/lux_extraction
+/datum/objective/personal/lux_extraction
 	name = "Extract Lux"
 	triumph_count = 2
 
-/datum/objective/lux_extraction/on_creation()
+/datum/objective/personal/lux_extraction/on_creation()
 	. = ..()
 	if(owner?.current)
 		RegisterSignal(owner.current, COMSIG_LUX_EXTRACTED, PROC_REF(on_lux_extracted))
 	update_explanation_text()
 
-/datum/objective/lux_extraction/Destroy()
+/datum/objective/personal/lux_extraction/Destroy()
 	if(owner?.current)
 		UnregisterSignal(owner.current, COMSIG_LUX_EXTRACTED)
 	return ..()
 
-/datum/objective/lux_extraction/proc/on_lux_extracted(datum/source, mob/living/target)
+/datum/objective/personal/lux_extraction/proc/on_lux_extracted(datum/source, mob/living/target)
 	SIGNAL_HANDLER
 	if(completed)
 		return
@@ -25,5 +25,5 @@
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_LUX_EXTRACTED)
 
-/datum/objective/lux_extraction/update_explanation_text()
+/datum/objective/personal/lux_extraction/update_explanation_text()
 	explanation_text = "Extract lux from a living being to sate Pestra's curiosity!"

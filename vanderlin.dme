@@ -1343,6 +1343,7 @@
 #include "code\game\gamemodes\objective.dm"
 #include "code\game\gamemodes\objective_items.dm"
 #include "code\game\gamemodes\objectives_rogue.dm"
+#include "code\game\gamemodes\personal_objectives\_personal.dm"
 #include "code\game\gamemodes\personal_objectives\abyssor\abyssoid_creation.dm"
 #include "code\game\gamemodes\personal_objectives\abyssor\fish_release.dm"
 #include "code\game\gamemodes\personal_objectives\abyssor\splash_water.dm"

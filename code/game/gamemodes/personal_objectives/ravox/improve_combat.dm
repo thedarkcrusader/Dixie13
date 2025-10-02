@@ -1,21 +1,21 @@
-/datum/objective/improve_combat
+/datum/objective/personal/improve_combat
 	name = "Improve Combat Skills"
 	triumph_count = 2
 	var/levels_gained = 0
 	var/required_levels = 2
 
-/datum/objective/improve_combat/on_creation()
+/datum/objective/personal/improve_combat/on_creation()
 	. = ..()
 	if(owner?.current)
 		RegisterSignal(owner.current, COMSIG_SKILL_RANK_INCREASED, PROC_REF(on_skill_improved))
 	update_explanation_text()
 
-/datum/objective/improve_combat/Destroy()
+/datum/objective/personal/improve_combat/Destroy()
 	if(owner?.current)
 		UnregisterSignal(owner.current, COMSIG_SKILL_RANK_INCREASED)
 	return ..()
 
-/datum/objective/improve_combat/proc/on_skill_improved(datum/source, datum/skill/skill_ref, new_level, old_level)
+/datum/objective/personal/improve_combat/proc/on_skill_improved(datum/source, datum/skill/skill_ref, new_level, old_level)
 	SIGNAL_HANDLER
 	if(completed)
 		return
@@ -42,5 +42,5 @@
 		var/remaining = required_levels - levels_gained
 		to_chat(owner.current, span_notice("Combat skill improved! [remaining] more level[remaining == 1 ? "" : "s"] needed to fulfill Ravox's task!"))
 
-/datum/objective/improve_combat/update_explanation_text()
+/datum/objective/personal/improve_combat/update_explanation_text()
 	explanation_text = "Improve your combat skills by gaining [required_levels] new skill levels through practice or dreams. For Ravox!"

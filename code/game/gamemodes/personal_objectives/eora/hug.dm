@@ -1,18 +1,18 @@
-/datum/objective/hug_beggar
+/datum/objective/personal/hug_beggar
 	name = "Hug a Beggar"
 	triumph_count = 2
 
-/datum/objective/hug_beggar/on_creation()
+/datum/objective/personal/hug_beggar/on_creation()
 	. = ..()
 	if(owner?.current)
 		RegisterSignal(owner.current, COMSIG_MOB_HUGGED, PROC_REF(on_hug))
 	update_explanation_text()
 
-/datum/objective/hug_beggar/Destroy()
+/datum/objective/personal/hug_beggar/Destroy()
 	UnregisterSignal(owner.current, COMSIG_MOB_HUGGED)
 	return ..()
 
-/datum/objective/hug_beggar/proc/on_hug(datum/source, mob/living/target)
+/datum/objective/personal/hug_beggar/proc/on_hug(datum/source, mob/living/target)
 	SIGNAL_HANDLER
 	if(completed)
 		return
@@ -25,5 +25,5 @@
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_MOB_HUGGED)
 
-/datum/objective/hug_beggar/update_explanation_text()
+/datum/objective/personal/hug_beggar/update_explanation_text()
 	explanation_text = "Everyone deserves love! Hug a beggar to please Eora!"

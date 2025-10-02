@@ -1,21 +1,21 @@
-/datum/objective/inhumen_scorn
+/datum/objective/personal/inhumen_scorn
 	name = "Scorn Inhumen"
 	triumph_count = 2
 	var/spits_done = 0
 	var/spits_required = 2
 
-/datum/objective/inhumen_scorn/on_creation()
+/datum/objective/personal/inhumen_scorn/on_creation()
 	. = ..()
 	if(owner?.current)
 		RegisterSignal(owner.current, COMSIG_SPAT_ON, PROC_REF(on_spit))
 	update_explanation_text()
 
-/datum/objective/inhumen_scorn/Destroy()
+/datum/objective/personal/inhumen_scorn/Destroy()
 	if(owner?.current)
 		UnregisterSignal(owner.current, COMSIG_SPAT_ON)
 	return ..()
 
-/datum/objective/inhumen_scorn/proc/on_spit(datum/source, mob/living/carbon/human/target)
+/datum/objective/personal/inhumen_scorn/proc/on_spit(datum/source, mob/living/carbon/human/target)
 	SIGNAL_HANDLER
 	if(completed || !istype(target) || target.stat == DEAD || (target.dna?.species.id in RACES_PLAYER_NONHERETICAL))
 		return
@@ -33,5 +33,5 @@
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_SPAT_ON)
 
-/datum/objective/inhumen_scorn/update_explanation_text()
+/datum/objective/personal/inhumen_scorn/update_explanation_text()
 	explanation_text = "Spit on [spits_required] inhumen to gain Astrata's approval!"

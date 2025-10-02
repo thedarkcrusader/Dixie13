@@ -1,8 +1,9 @@
-/datum/objective/nobility
+/datum/objective/personal/nobility
 	name = "Become Noble"
 	triumph_count = 3
+	rewards = list("3 triumphs", "Astrata grows stronger")
 
-/datum/objective/nobility/on_creation()
+/datum/objective/personal/nobility/on_creation()
 	. = ..()
 	if(owner?.current)
 		if(HAS_TRAIT(owner.current, TRAIT_NOBLE))
@@ -11,12 +12,12 @@
 			RegisterSignal(owner.current, SIGNAL_ADDTRAIT(TRAIT_NOBLE), PROC_REF(on_nobility_granted))
 	update_explanation_text()
 
-/datum/objective/nobility/Destroy()
+/datum/objective/personal/nobility/Destroy()
 	if(owner?.current)
 		UnregisterSignal(owner.current, SIGNAL_ADDTRAIT(TRAIT_NOBLE))
 	return ..()
 
-/datum/objective/nobility/proc/on_nobility_granted()
+/datum/objective/personal/nobility/proc/on_nobility_granted()
 	SIGNAL_HANDLER
 	if(completed)
 		return
@@ -28,5 +29,5 @@
 	escalate_objective()
 	UnregisterSignal(owner.current, SIGNAL_ADDTRAIT(TRAIT_NOBLE))
 
-/datum/objective/nobility/update_explanation_text()
+/datum/objective/personal/nobility/update_explanation_text()
 	explanation_text = "Become part of the nobility by any means to gain Astrata's approval!"
