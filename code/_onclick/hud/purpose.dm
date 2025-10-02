@@ -18,7 +18,7 @@
 		var/list/data = list()
 		data += "<B>Personal Objectives:</B>"
 		var/personal_count = 1
-		for(var/datum/objective/objective in user.mind.personal_objectives)
+		for(var/datum/objective/personal/objective in user.mind.personal_objectives)
 			data += "<br><B>Personal Goal #[personal_count]</B>: [objective.explanation_text][objective.completed ? " (COMPLETED)" : ""]"
 			personal_count++
 		data += "<br>"
