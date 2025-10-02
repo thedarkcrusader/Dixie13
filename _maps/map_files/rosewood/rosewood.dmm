@@ -126,10 +126,9 @@
 /turf/open/floor/greenstone/glyph1,
 /area/rogue/indoors/town/vault)
 "aeg" = (
-/obj/structure/fake_machine/scomm{
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/wooddark,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/tavern)
 "aeh" = (
 /obj/structure/meathook,
@@ -104082,7 +104081,7 @@ scp
 auc
 pfl
 nyl
-nyl
+aeg
 kLm
 szV
 lEQ
@@ -104284,7 +104283,7 @@ puW
 yfA
 pfl
 lZM
-aeg
+wZA
 guZ
 lKY
 lKY
