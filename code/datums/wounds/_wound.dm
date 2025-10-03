@@ -490,11 +490,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/dynamic/sew_wound()
 	if(!can_sew)
 		return FALSE
-	sewn_bleed_rate = bleed_rate * 0.1
-	sewn_whp = whp * 0.7
+	sewn_bleed_rate = bleed_rate * 0.05
+	sewn_whp = whp * 0.6
 	sewn_clotting_rate = clotting_rate * 1.2
-	sewn_clotting_threshold = clotting_threshold * 0.6
-	sewn_woundpain = woundpain * 0.5
+	sewn_clotting_threshold = clotting_threshold * 0.45
+	sewn_woundpain = woundpain * 0.4
 	return ..()
 
 /datum/wound/dynamic/sewing_step_complete(mob/living/doctor)
