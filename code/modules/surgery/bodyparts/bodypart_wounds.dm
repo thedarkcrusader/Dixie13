@@ -139,6 +139,9 @@
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 
+	if(dam < 5)
+		return
+
 	var/do_crit = TRUE
 
 	if(ishuman(owner))
