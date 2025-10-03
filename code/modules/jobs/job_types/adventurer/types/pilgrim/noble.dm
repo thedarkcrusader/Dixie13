@@ -9,6 +9,9 @@
 	total_positions = 2
 	apprentice_name = "Servant"
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
+	spells = list(
+		/datum/action/cooldown/spell/undirected/call_bird = 1,
+	)
 
 
 /datum/outfit/adventurer/noble/pre_equip(mob/living/carbon/human/H)
@@ -57,5 +60,4 @@
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
-	H.add_spell(/datum/action/cooldown/spell/undirected/call_bird)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

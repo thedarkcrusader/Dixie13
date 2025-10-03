@@ -33,7 +33,7 @@
 	)
 
 	spells = list(
-		/datum/action/cooldown/spell/undirected/conjure_item/call_bird/zalad
+		/datum/action/cooldown/spell/undirected/call_bird/zalad
 	)
 
 	traits = list(
@@ -118,7 +118,7 @@
 	)
 
 	spells = list(
-		/datum/action/cooldown/spell/undirected/conjure_item/call_bird/zalad
+		/datum/action/cooldown/spell/undirected/call_bird/zalad
 	)
 
 	traits = list(

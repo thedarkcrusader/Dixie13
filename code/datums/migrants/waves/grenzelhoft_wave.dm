@@ -33,7 +33,7 @@
 	)
 
 	spells = list(
-		/datum/action/cooldown/spell/undirected/conjure_item/call_bird/grenzel
+		/datum/action/cooldown/spell/undirected/call_bird/grenzel
 	)
 
 	traits = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR, TRAIT_NOBLE)
@@ -105,7 +105,7 @@
 	)
 
 	spells = list(
-		/datum/action/cooldown/spell/undirected/conjure_item/call_bird/grenzel
+		/datum/action/cooldown/spell/undirected/call_bird/grenzel
 	)
 
 	traits = list(TRAIT_MEDIUMARMOR, TRAIT_NOBLE)
