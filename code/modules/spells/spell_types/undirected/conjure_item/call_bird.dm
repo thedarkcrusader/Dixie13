@@ -42,7 +42,7 @@
 	)
 
 /datum/action/cooldown/spell/undirected/call_bird/Destroy(force)
-	owned_bird.source_spell = null
+	owned_bird?.source_spell = null
 	owned_bird = null
 	return ..()
 
