@@ -46,6 +46,7 @@
 	return !victim.mind && (victim.mob_biotypes & MOB_UNDEAD)
 
 /datum/action/cooldown/spell/control_undead/cast(mob/living/cast_on, atom/caster)
+	. = ..()
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
 	cast_on.ai_controller.can_idle = FALSE
 	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)
