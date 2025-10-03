@@ -6259,11 +6259,6 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor/captain)
-"dJT" = (
-/obj/machinery/essence/combiner,
-/obj/machinery/light/fueled/wallfire/candle/blue,
-/turf/open/floor/blocks/stonered/tiny,
-/area/rogue/indoors/town/clinic_large/apothecary)
 "dKk" = (
 /obj/structure/door{
 	lockid = "roomhunt";
@@ -6424,7 +6419,9 @@
 /area/rogue/indoors/town/garrison)
 "dPs" = (
 /obj/structure/table/wood/plain_alt,
-/obj/machinery/essence/harvester,
+/obj/machinery/essence/infuser{
+	pixel_y = -3
+	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "dPH" = (
@@ -14361,10 +14358,10 @@
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town/bath)
 "isF" = (
-/obj/machinery/essence/infuser{
-	pixel_y = -5
-	},
 /obj/structure/table/wood/plain_alt,
+/obj/machinery/essence/harvester{
+	pixel_y = -3
+	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "isL" = (
@@ -15375,10 +15372,6 @@
 	},
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
-"iZq" = (
-/obj/machinery/light/fueled/firebowl/standing/blue,
-/turf/open/floor/blocks/stonered/tiny,
-/area/rogue/indoors/town/clinic_large/apothecary)
 "iZG" = (
 /obj/structure/rousman_hole,
 /turf/open/floor/cobble/alt,
@@ -16883,6 +16876,10 @@
 /obj/structure/ladder,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
+"jWS" = (
+/obj/machinery/essence/combiner,
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "jXx" = (
 /turf/closed/mineral,
 /area/rogue/indoors/town)
@@ -20059,6 +20056,13 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
+"mhh" = (
+/obj/machinery/essence/enchantment_altar{
+	pixel_x = -1;
+	pixel_y = -4
+	},
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "mhr" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/fluff/walldeco/church/line,
@@ -39100,10 +39104,6 @@
 /obj/structure/trap/wall_projectile,
 /turf/open/floor/churchrough,
 /area/rogue/under/town/sewer)
-"xUx" = (
-/obj/machinery/essence/enchantment_altar,
-/turf/open/floor/blocks/stonered/tiny,
-/area/rogue/indoors/town/clinic_large/apothecary)
 "xUO" = (
 /obj/effect/decal/cobblerockedge/alt{
 	dir = 6
@@ -96759,7 +96759,7 @@ uho
 igY
 cDb
 obS
-xUx
+mwv
 fCu
 cDb
 obS
@@ -96961,9 +96961,9 @@ xRv
 vJg
 cDb
 obS
-oYd
+mhh
 xBW
-iZq
+oYd
 obS
 cDb
 tSO
@@ -97363,11 +97363,11 @@ uho
 uho
 uho
 akL
-dJT
+jxD
 obS
 isF
 jsC
-mwv
+jWS
 obS
 boB
 fCu
