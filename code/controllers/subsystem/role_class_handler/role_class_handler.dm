@@ -134,6 +134,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	qdel(related_handler)
 
 	if(picked_class.inherit_parent_title)
+		// At this point the job is the job of the previous advclass "parent" or null
 		var/datum/job/old = SSjob.GetJob(H.job)
 		if(old)
 			picked_class.title_override = old.title
