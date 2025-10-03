@@ -30,7 +30,7 @@
 						L.OffBalance(10 SECONDS) //Kick them, Matron, Kick them.
 						to_chat(L, span_warning("You instinctively recoil from the strike, staggering and losing your footing!"))
 						to_chat(user, span_warning("[L] lost their footing when recoiling away from your strike!"))
-					if(3)
+					if(3) //Rolled the worst one.
 						L.Paralyze(20 SECONDS)
 						L.Knockdown(20 SECONDS)
 						L.confused += 20 SECONDS
