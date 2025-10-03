@@ -21,8 +21,6 @@
 
 /datum/job/wretch/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	..()
-	if(advclass_cat_rolls)
-		hugboxify_for_class_selection(spawned)
 	if(!spawned.mind)
 		return
 	to_chat(spawned, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
