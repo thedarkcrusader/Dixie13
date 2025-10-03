@@ -34,16 +34,17 @@
 		/datum/pet_command/calm,
 	)
 
-/datum/action/cooldown/spell/control_undead/cast(atom/cast_on)
-	if(!z_check)
+/datum/action/cooldown/spell/control_undead/is_valid_target(atom/cast_on)
+	if(cast_on.mob_biotypes != MOB_UNDEAD)
 		return
+
+/datum/action/cooldown/spell/control_undead/cast(atom/cast_on, atom/caster)
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
 	cast_on.ai_controller.can_idle = FALSE
 	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)
 	cast_on.ai_controller.CancelActions()
 	cast_on.ai_controller.set_blackboard_key(BB_PET_TARGETING_DATUM, new /datum/targetting_datum/basic/not_friends())
-	cast_on.befriend(owner)
-	cast_on.pet_passive = TRUE
+	cast_on.faction |= FACTION_CABAL
 
 	owner.visible_message(
 		span_greentext("[owner] soothes \the [cast_on] with zizo's blessing."),
