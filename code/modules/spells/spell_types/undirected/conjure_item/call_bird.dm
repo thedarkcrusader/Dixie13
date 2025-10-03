@@ -7,6 +7,7 @@
 	cooldown_time = 30 SECONDS
 
 	has_visual_effects = FALSE
+	charge_required = FALSE
 	experience_modifer = 0
 
 	attunements = list(
