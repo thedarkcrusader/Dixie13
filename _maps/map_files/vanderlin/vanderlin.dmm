@@ -16352,6 +16352,7 @@
 /area/rogue/indoors/town/orphanage)
 "jBz" = (
 /obj/structure/stairs,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/wood,
 /area/rogue/under/town/basement)
 "jBF" = (
@@ -20210,11 +20211,6 @@
 /obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/church)
-"mkE" = (
-/obj/structure/chair/stool,
-/obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/wood,
-/area/rogue/under/town/basement)
 "mkP" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -25277,11 +25273,6 @@
 	},
 /turf/open/floor/church,
 /area/rogue/under/town/basement)
-"pmt" = (
-/obj/structure/chair/stool,
-/obj/machinery/light/fueled/wallfire/candle/r,
-/turf/open/floor/wood,
-/area/rogue/under/town/basement)
 "pnb" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
@@ -27916,10 +27907,6 @@
 /obj/item/ore/iron,
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
-"qXA" = (
-/obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
 "qXY" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /obj/structure/bookcase/random/apocrypha,
@@ -37158,7 +37145,6 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/church)
 "wDu" = (
-/obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/bookcase/random/eoratica{
 	name = "bookcase (The Dangers of Holding Hands)"
 	},
@@ -37710,6 +37696,11 @@
 	dir = 1
 	},
 /area/rogue/under/town/sewer)
+"wWT" = (
+/obj/structure/stairs,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/wood,
+/area/rogue/under/town/basement)
 "wXy" = (
 /obj/structure/roguerock{
 	icon_state = "rock2"
@@ -60214,9 +60205,9 @@ cDP
 oGi
 bUM
 ojh
-qXA
+ojh
 jBz
-mkE
+jVV
 nss
 mUW
 nZs
@@ -60619,8 +60610,8 @@ oGi
 bUM
 ojh
 ojh
-jBz
-pmt
+wWT
+jVV
 jVV
 vMC
 nZs
