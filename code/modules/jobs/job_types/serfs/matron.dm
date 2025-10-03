@@ -24,6 +24,7 @@
 	spells = list(
 		/datum/action/cooldown/spell/undirected/hag_call,
 		/datum/action/cooldown/spell/undirected/seek_orphan,
+		/datum/action/cooldown/spell/undirected/matronwrath,
 	)
 
 /datum/outfit/matron/pre_equip(mob/living/carbon/human/H)
@@ -39,12 +40,14 @@
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	if(H.age == AGE_OLD) // So that the role isn't roadkill
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
@@ -70,6 +73,7 @@
 		beltl = /obj/item/storage/belt/pouch/coins/rich
 	else
 		beltl = /obj/item/storage/belt/pouch/coins/mid
+	beltr = /obj/item/weapon/mace/cudgel/matron
 	backr = /obj/item/storage/backpack/satchel
 	cloak = /obj/item/clothing/cloak/matron
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/key/matron = 1)

@@ -277,6 +277,9 @@
 	if(client && used_intent && client.charging && used_intent.tranged && !used_intent.tshield)
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_ORPHAN) && HAS_TRAIT(user, TRAIT_MATRON))
+		return FALSE
+
 	var/prob2defend = user.defprob
 	if(src && user)
 		prob2defend = 0

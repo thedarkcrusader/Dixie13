@@ -539,3 +539,21 @@
 	. = ..()
 	var/datum/component/stinky_component = GetComponent(/datum/component/rot/stinky_person)
 	stinky_component?.RemoveComponent()
+
+/datum/status_effect/debuff/marked_orphan
+	id = "marked_orphan"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/marked_orphan
+	effectedstats = list(STATKEY_CON = -4, STATKEY_END = -4, STATKEY_STR = -4, STATKEY_SPD = 2)
+	duration = 1 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/marked_orphan
+	name = "FAILURE"
+	desc = span_danger("No! Not again!- Matron is angry! I should get away!")
+
+/datum/status_effect/debuff/marked_orphan/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_PACIFISM, "[type]") //Once again, if you received this debuff, this problably mean that you're in trouble from the Matron.
+
+/datum/status_effect/debuff/marked_orphan/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "[type]")

@@ -858,3 +858,38 @@
 	name = "Invigorated"
 	desc = "I have supped on the finest of delicacies: life!"
 
+/datum/status_effect/buff/matronwrath
+	id = "matronwrath"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/matronwrath
+	duration = 3 MINUTES
+	var/old_eye_color
+
+/atom/movable/screen/alert/status_effect/buff/matronwrath
+	name = "FAILURE"
+	desc = span_bloody("They've failed me, a punishment is in order.")
+	icon_state = "buff"
+
+/datum/status_effect/buff/matronwrath/on_apply()
+	. = ..()
+	/* This doesn't work, and i don't understand why, i'll try to get back to it but we'll
+	var/mob/living/carbon/human/H = owner
+	if(H)
+		old_eye_color = H.get_eye_color()
+		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+		eyes.eye_color = "#FF0000"
+		H.updateappearance(mutcolor_update = TRUE)
+	*/
+	ADD_TRAIT(owner, TRAIT_MATRON, TRAIT_GENERIC)
+
+/datum/status_effect/buff/matronwrath/on_remove()
+	. = ..()
+	/*
+	var/mob/living/carbon/human/H = owner
+	if(H)
+		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+		eyes.eye_color = old_eye_color
+		H.updateappearance(mutcolor_update = TRUE)
+	*/
+	owner.visible_message(span_warning("[owner]'s rage simmers down."))
+	REMOVE_TRAIT(owner, TRAIT_MATRON, TRAIT_GENERIC)
+

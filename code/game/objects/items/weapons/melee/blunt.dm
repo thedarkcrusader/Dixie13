@@ -378,6 +378,15 @@
 			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -3,"sy" = -4,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 70,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
 
+/obj/item/weapon/mace/cudgel/matron
+	name = "punisher"
+	desc = "A stubby little club favored for thwacking lil' ingrats."
+
+/obj/item/weapon/mace/cudgel/matron/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/orphan_bane)
+
+
 //................ Alt cudgel ............... //
 /obj/item/weapon/mace/cudgel/carpenter
 	name = "peasant cudgel"
