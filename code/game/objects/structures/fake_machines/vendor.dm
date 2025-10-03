@@ -36,11 +36,11 @@
 /obj/structure/fake_machine/vendor/on_lock_add()
 	update_appearance(UPDATE_ICON_STATE)
 
-/obj/structure/fake_machine/vendor/on_lock(mob/user, silent)
+/obj/structure/fake_machine/vendor/on_lock(mob/living/user, silent)
 	. = ..()
 	update_appearance(UPDATE_ICON)
 
-/obj/structure/fake_machine/vendor/on_unlock(mob/user, silent)
+/obj/structure/fake_machine/vendor/on_unlock(mob/living/user, silent)
 	. = ..()
 	update_appearance(UPDATE_ICON)
 
@@ -177,7 +177,7 @@
 			var/prename
 			if(held_items[O]["NAME"])
 				prename = held_items[O]["NAME"]
-			var/newname = input(usr, "SET A NEW NAME FOR THIS PRODUCT", src, prename)
+			var/newname = browser_input_text(usr, "SET A NEW NAME FOR THIS PRODUCT", src, prename, max_length = MAX_NAME_LEN)
 			if(newname)
 				held_items[O]["NAME"] = newname
 	if(href_list["setprice"])

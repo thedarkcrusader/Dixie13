@@ -17,6 +17,9 @@
 
 	sellprice = 1
 
+	min_cold_protection_temperature = 5 //this basically covers you to when it starts doing stuff ie snow or cold nights
+	max_heat_protection_temperature = 25
+
 	var/colorgrenz = FALSE
 	var/damaged_clothes = 0 //similar to machine's BROKEN stat and structure's broken var
 	///What level of bright light protection item has.
@@ -83,6 +86,8 @@
 			lordcolor()
 		else
 			RegisterSignal(SSdcs, COMSIG_LORD_COLORS_SET, TYPE_PROC_REF(/obj/item/clothing, lordcolor))
+	else if(get_detail_color()) // Lord color does this
+		update_appearance(UPDATE_OVERLAYS)
 
 	if(hoodtype)
 		MakeHood()

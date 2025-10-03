@@ -262,6 +262,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
 
+/datum/preferences/proc/_load_loadouts(S)
+	for(var/i in 1 to 3)
+		S["loadout[i]"]	>> vars["loadout[i]"]
+	validate_loadouts()
+
+/datum/preferences/proc/validate_loadouts()
+	if(!parent.patreon.has_access(ACCESS_ASSISTANT_RANK))
+		loadout1 = null
+		loadout2 = null
+		loadout3 = null
+		return FALSE
+
+	for(var/i in 1 to 3)
+		if(!(vars["loadout[i]"] in GLOB.loadout_items)) // bite me
+			vars["loadout[i]"] = null
+
 /datum/preferences/proc/_load_culinary_preferences(S)
 	var/list/loaded_culinary_preferences
 	S["culinary_preferences"] >> loaded_culinary_preferences
@@ -321,6 +337,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	_load_flaw(S)
 
+	_load_loadouts(S)
+
 	_load_culinary_preferences(S)
 
 	//Character
@@ -354,6 +372,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Load flavor text
 	S["flavortext"] >> flavortext
+	S["flavortext_display"]	>> flavortext_display
+	S["ooc_notes"]			>> ooc_notes
+	S["ooc_notes_display"]	>> ooc_notes_display
+	S["ooc_extra"]			>> ooc_extra
+	S["ooc_extra_link"]		>> ooc_extra_link
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -439,6 +462,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["voice_type"]		, voice_type)
 	WRITE_FILE(S["species"]			, pref_species.name)
 	WRITE_FILE(S["charflaw"]			, charflaw.type)
+	WRITE_FILE(S["loadout1"]		, loadout1)
+	WRITE_FILE(S["loadout2"]		, loadout2)
+	WRITE_FILE(S["loadout3"]		, loadout3)
 	WRITE_FILE(S["culinary_preferences"], culinary_preferences)
 	WRITE_FILE(S["family"]			, 	family)
 	WRITE_FILE(S["gender_choice"]			, 	gender_choice)
@@ -466,7 +492,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// headshot link
 	WRITE_FILE(S["headshot_link"] , headshot_link)
 	// flavor text
-	WRITE_FILE(S["flavortext"] , flavortext)
+	WRITE_FILE(S["flavortext"] , html_decode(flavortext))
+	WRITE_FILE(S["flavortext_display"], flavortext_display)
+	WRITE_FILE(S["ooc_notes"] , html_decode(ooc_notes))
+	WRITE_FILE(S["ooc_notes_display"], ooc_notes_display)
+	WRITE_FILE(S["ooc_extra"],	ooc_extra)
+	WRITE_FILE(S["ooc_extra_link"],	ooc_extra_link)
 	// Descriptor entries
 	WRITE_FILE(S["descriptor_entries"] , descriptor_entries)
 	WRITE_FILE(S["custom_descriptors"] , custom_descriptors)

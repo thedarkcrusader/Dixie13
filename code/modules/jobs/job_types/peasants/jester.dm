@@ -16,7 +16,7 @@
 	allowed_races = RACES_PLAYER_ALL
 
 
-	outfit = /datum/outfit/job/jester
+	outfit = /datum/outfit/jester
 	spells = list(
 		/datum/action/cooldown/spell/undirected/joke,
 		/datum/action/cooldown/spell/undirected/tragedy,
@@ -25,7 +25,7 @@
 	)
 	give_bank_account = TRUE
 
-/datum/outfit/job/jester/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/jester/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights
@@ -71,6 +71,7 @@
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SHAKY_SPEECH, TRAIT_GENERIC)
 
 //Ventriloquism! Make things speak!
 

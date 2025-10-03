@@ -397,7 +397,7 @@
 			if(length(GLOB.prayers))
 				for(var/entry in GLOB.prayers)
 					data += "<div style='color: #dbd9d9; margin: 0 0 12px 0px; padding: 8px; background: rgba(230, 179, 39, 0.08); border-left: 3px solid #e6b327; border-radius: 0 3px 3px 0;'>"
-					data += "[entry]"
+					data += "[strip_html(entry)]"
 					data += "</div>"
 			else
 				data += "<div style='color: #aaaaaa; font-style: italic; text-align: center; padding: 20px 0;'>No prayers made</div>"
@@ -875,7 +875,7 @@
 			if(GLOB.patron_follower_counts[patron] >= psydon_followers)
 				largest_religion = FALSE
 				break
-	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] || 0
+	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] + GLOB.patron_follower_counts["Autotheist"] + GLOB.patron_follower_counts["Defiant"] + GLOB.patron_follower_counts["Dystheist"] + GLOB.patron_follower_counts["Naivety"]|| 0
 	var/psydonite_monarch = GLOB.vanderlin_round_stats[STATS_MONARCH_PATRON] == "Psydon" ? TRUE : FALSE
 	var/psydon_influence = (psydon_followers * 20) + (GLOB.confessors.len * 20) + (GLOB.vanderlin_round_stats[STATS_HUMEN_DEATHS] * -10) + (GLOB.vanderlin_round_stats[STATS_ALIVE_TIEFLINGS] * -20) + (psydonite_monarch ? (psydonite_monarch * 500) : -250) + (largest_religion? (largest_religion * 500) : -250) + (GLOB.vanderlin_round_stats[STATS_PSYCROSS_USERS] * 10) + (apostasy_followers * -20) + (GLOB.vanderlin_round_stats[STATS_LUX_HARVESTED] * -50) + (psydonite_user ? 10000 : -10000)
 

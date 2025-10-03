@@ -49,8 +49,9 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 		"Cancel",
 	)
 
-/obj/structure/fake_machine/titan/Initialize()
+/obj/structure/fake_machine/titan/Initialize(mapload)
 	. = ..()
+	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
 	become_hearing_sensitive()
 	set_light(5)
 	return INITIALIZE_HINT_LATELOAD
@@ -352,7 +353,7 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	for(var/mob/living/carbon/human/to_be_outlawed in GLOB.player_list)
 		if(to_be_outlawed.real_name == message)
 			found = TRUE
-		if(to_be_outlawed.advjob == "Faceless One")
+		if(to_be_outlawed.job == "Faceless One")
 			say("Who? That person doesn't exist!")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			reset_mode()
@@ -432,12 +433,11 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 		return
 
 	victim.job = new_pos
-	victim.migrant_type = null
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human = victim
 		if(!HAS_TRAIT(human, TRAIT_RECRUITED) && HAS_TRAIT(human, TRAIT_FOREIGNER))
 			ADD_TRAIT(human, TRAIT_RECRUITED, TRAIT_GENERIC)
-		human.advjob = new_pos
+
 	if(!SScommunications.can_announce(user))
 		return
 

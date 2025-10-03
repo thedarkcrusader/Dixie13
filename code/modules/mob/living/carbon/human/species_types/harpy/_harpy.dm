@@ -20,6 +20,10 @@
 	default_color = "FFFFFF"
 
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
+	inherent_traits = list(TRAIT_NOMOBSWAP)
+	inherent_skills = list(
+		/datum/skill/misc/music = 1,
+	)
 
 	use_skintones = TRUE
 	possible_ages = NORMAL_AGES_LIST_CHILD
@@ -30,6 +34,9 @@
 
 	soundpack_m = /datum/voicepack/male
 	soundpack_f = /datum/voicepack/female
+
+	//related to preening emote - lets preening be used roundstart
+	COOLDOWN_DECLARE(time_to_next_preen)
 
 	offset_features_m = list(
 		OFFSET_RING = list(0,1),\
@@ -87,7 +94,8 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_VOICE = /obj/item/organ/vocal_cords/harpy,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail,
+		ORGAN_SLOT_TAIL = /obj/item/organ/tail/harpy,
+		ORGAN_SLOT_WINGS = /obj/item/organ/wings/flight/harpy,
 	)
 
 	meat = /obj/item/reagent_containers/food/snacks/meat/poultry/cutlet
@@ -134,6 +142,8 @@
 	"red - cardinal" = "822b2b",
 
 	"grey - osprey" = "7c828a",
+
+	"orange - oriole" = "d55f2a",
 
 	"white - swan" = "d3d9e3",
 	"white - egret" = "dee9ed",

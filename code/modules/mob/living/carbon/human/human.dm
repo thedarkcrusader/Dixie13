@@ -30,7 +30,7 @@
 					if(dna?.species)
 						if(dna.species.id == SPEC_ID_DWARF)
 							var/mob/living/carbon/V = src
-							V.add_stress(/datum/stressevent/dwarfshaved)
+							V.add_stress(/datum/stress_event/dwarfshaved)
 				else
 					held_item.melee_attack_chain(user, src, params)
 
@@ -52,8 +52,6 @@
 
 	. = ..()
 
-	if(!CONFIG_GET(flag/disable_human_mood))
-		AddComponent(/datum/component/mood)
 	AddElement(/datum/element/footstep, footstep_type, 1, -6)
 	GLOB.human_list += src
 	if(ai_controller && flee_in_pain)
@@ -68,7 +66,7 @@
 	var/mob/living/carbon/V = src
 	var/obj/item/bodypart/affecting
 	var/dam = levels * rand(10,50)
-	V.add_stress(/datum/stressevent/felldown)
+	V.add_stress(/datum/stress_event/felldown)
 	record_round_statistic(STATS_MOAT_FALLERS, -1) // If you get your ankles broken you fall. This makes sure only those that DIDN'T get damage get counted.
 	record_round_statistic(STATS_ANKLES_BROKEN)
 	var/chat_message
@@ -308,7 +306,7 @@
 			return
 
 		src.visible_message("<span class='notice'>[src] performs CPR on [C.name]!</span>", "<span class='notice'>I perform CPR on [C.name].</span>")
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "perform_cpr", /datum/mood_event/perform_cpr)
+		add_stress(/datum/stress_event/perform_cpr)
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
 
@@ -474,6 +472,7 @@
 	spill_embedded_objects()
 	set_heartattack(FALSE)
 	drunkenness = 0
+	set_hygiene(HYGIENE_LEVEL_NORMAL)
 	..()
 
 /mob/living/carbon/human/check_weakness(obj/item/weapon, mob/living/attacker)
@@ -507,6 +506,7 @@
 	VV_DROPDOWN_OPTION("", "---------")
 	VV_DROPDOWN_OPTION(VV_HK_COPY_OUTFIT, "Copy Outfit")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
+	VV_DROPDOWN_OPTION(VV_HK_CORONATE, "Coronate")
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -522,6 +522,42 @@
 			var/newtype = GLOB.species_list[result]
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
 			set_species(newtype)
+	if(href_list[VV_HK_CORONATE])
+		if(!src.mind)
+			return
+		if(is_lord_job(mind.assigned_role))
+			return
+
+		var/appointment_type = browser_alert(usr, "Are you sure you want to coronate [src.real_name] as the new Monarch?", "Confirmation", DEFAULT_INPUT_CHOICES)
+		if(appointment_type == CHOICE_NO)
+			return
+
+		var/mob/living/carbon/coronated
+		coronated = src
+
+		var/datum/job/lord_job = SSjob.GetJobType(/datum/job/lord)
+		var/datum/job/consort_job = SSjob.GetJobType(/datum/job/consort)
+		for(var/mob/living/carbon/human/HL in GLOB.human_list)
+			//this sucks ass. refactor to locate the current ruler/consort
+			if(HL.mind)
+				if(is_lord_job(HL.mind.assigned_role) || is_consort_job(HL.mind.assigned_role))
+					HL.mind.set_assigned_role(SSjob.GetJobType(/datum/job/villager))
+			//would be better to change their title directly, but that's not possible since the title comes from the job datum
+			if(HL.job == "Monarch")
+				HL.job = "Ex-Monarch"
+				lord_job?.remove_spells(HL)
+			if(HL.job == "Consort")
+				HL.job = "Ex-Consort"
+				consort_job?.remove_spells(HL)
+
+		coronated.mind.set_assigned_role(/datum/job/lord)
+		coronated.job = "Monarch" //Monarch is used when checking if the ruler is alive, not "King" or "Queen". Can also pass it on and have the title change properly later.
+		lord_job?.add_spells(coronated)
+		SSticker.rulermob = coronated
+		GLOB.badomens -= OMEN_NOLORD
+		priority_announce("The Ten have named [coronated.real_name] the inheritor of [SSmapping.config.map_name]!", \
+		title = "Long Live [lord_job.get_informed_title(coronated)] [coronated.real_name]!", sound = 'sound/misc/bell.ogg')
+
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
 	if(pulling == target && stat == CONSCIOUS)
@@ -694,7 +730,6 @@
 	updateappearance(mutcolor_update = TRUE)
 
 	job = target.job // NOT assigned_role
-	migrant_type = target.migrant_type
 	faction = target.faction
 	deathsound = target.deathsound
 	gender = target.gender
@@ -711,13 +746,12 @@
 	undershirt = target.undershirt
 	shavelevel = target.shavelevel
 	socks = target.socks
-	advjob = target.advjob
 	spouse_mob = target.spouse_mob
 	spouse_indicator = target.spouse_indicator
 	has_stubble = target.has_stubble
 	headshot_link = target.headshot_link
 	flavortext = target.flavortext
-	bloodpool = target.bloodpool
+	set_bloodpool(target.bloodpool)
 
 	var/obj/item/bodypart/head/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(!isnull(target_head))
@@ -729,6 +763,16 @@
 	else
 		REMOVE_TRAIT(src, TRAIT_FOREIGNER, TRAIT_GENERIC)
 
+	if(HAS_TRAIT(target, TRAIT_RECOGNIZED))
+		ADD_TRAIT(src, TRAIT_RECOGNIZED, TRAIT_GENERIC)
+	else
+		REMOVE_TRAIT(src, TRAIT_RECOGNIZED, TRAIT_GENERIC)
+
+	if(HAS_TRAIT(target, TRAIT_RECRUITED))
+		ADD_TRAIT(src, TRAIT_RECRUITED, TRAIT_GENERIC)
+	else
+		REMOVE_TRAIT(src, TRAIT_RECRUITED, TRAIT_GENERIC)
+
 	if(HAS_TRAIT(target, TRAIT_FACELESS))
 		ADD_TRAIT(src, TRAIT_FACELESS, TRAIT_GENERIC)
 	else
@@ -738,10 +782,43 @@
 
 
 /mob/living/carbon/human/proc/copy_bodyparts(mob/living/carbon/human/target)
-	bodyparts = target.bodyparts
+	var/mob/living/carbon/human/self = src
+	var/list/target_missing = target.get_missing_limbs()
+	var/list/my_missing = self.get_missing_limbs()
+
+	// Store references to bodyparts
+	var/list/original_parts = list()
+	var/list/target_parts = list()
+
+	var/list/full = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG,
+	)
+
+	for(var/zone in full)
+		original_parts[zone] = self.get_bodypart(zone)
+		target_parts[zone] = target.get_bodypart(zone)
+
 	bodyparts = list()
-	for(var/obj/item/bodypart/part in target.bodyparts)
-		bodyparts += part.type
+
+	// Rebuild bodyparts list with typepaths
+	for(var/zone_2 in full)
+		var/obj/item/bodypart/target_part = target_parts[zone_2]
+		var/obj/item/bodypart/my_part = original_parts[zone_2]
+
+		if(zone_2 in my_missing)
+			continue
+		else if(zone_2 in target_missing)
+			if(my_part)
+				bodyparts += my_part.type
+		else
+			if(target_part)
+				bodyparts += target_part.type
+
 	create_bodyparts()
 
 /mob/living/carbon/human/species
