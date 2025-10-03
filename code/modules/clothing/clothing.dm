@@ -86,8 +86,7 @@
 			lordcolor()
 		else
 			RegisterSignal(SSdcs, COMSIG_LORD_COLORS_SET, TYPE_PROC_REF(/obj/item/clothing, lordcolor))
-
-	if(get_detail_color())
+	else if(get_detail_color()) // Lord color does this
 		update_appearance(UPDATE_OVERLAYS)
 
 	if(hoodtype)
