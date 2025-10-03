@@ -552,7 +552,7 @@
 
 /datum/status_effect/debuff/marked_orphan/on_apply()
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_PACIFISM, "[type]") //Once again, if you received this debuff, this problably mean that you're in trouble from the Matron.
+	ADD_TRAIT(owner, TRAIT_PACIFISM, "[type]") //Once again, if you received this debuff, this problably mean that you're in trouble from the Matron, so just run away.
 
 /datum/status_effect/debuff/marked_orphan/on_remove()
 	. = ..()
