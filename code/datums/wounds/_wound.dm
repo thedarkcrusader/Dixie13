@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		return FALSE
 
 	while(sew_progress < sew_threshold)
-		if(sewing?.stringamt < 1 || QDELETED(src) || QDELETED(doctor) || QDELETED(sewing))
+		if(sewing?.stringamt < 1 || QDELETED(src) || QDELETED(owner) || QDELETED(doctor) || QDELETED(sewing))
 			return FALSE
 
 		playsound(owner.loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		extra_text = " Closing it."
 
 	if(patient == doctor)
-		doctor.visible_message(span_notice("[doctor] sews \a [name] on [doctor.p_them()]self.[extra_text]"), span_notice("I stitch \a [name] on [affecting ? "my [affecting]" : "myself"]."[extra_text]))
+		doctor.visible_message(span_notice("[doctor] sews \a [name] on [doctor.p_them()]self.[extra_text]"), span_notice("I stitch \a [name] on [affecting ? "my [affecting]" : "myself"].[extra_text]"))
 	else
 		if(affecting)
 			doctor.visible_message(span_notice("[doctor] sews \a [name] on [patient]'s [affecting].[extra_text]"), span_notice("I stitch \a [name] on [patient]'s [affecting].[extra_text]"))
