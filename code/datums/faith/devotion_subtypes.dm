@@ -1,15 +1,15 @@
 // Divine
-/datum/devotion/divine/make_templar()
-	. = ..()
-	miracles_extra += list(
-		/datum/action/cooldown/spell/aoe/abrogation,
-	)
+// /datum/devotion/divine/make_templar()
+//	. = ..()
+//	miracles_extra += list(
+//		/datum/action/cooldown/spell/aoe/abrogation,
+//	)
 
-/datum/devotion/divine/make_cleric()
-	. = ..()
-	miracles_extra += list(
-		/datum/action/cooldown/spell/aoe/abrogation,
-	)
+// /datum/devotion/divine/make_cleric()
+//	. = ..()
+//	miracles_extra += list(
+//		/datum/action/cooldown/spell/aoe/abrogation,
+//	)
 
 /datum/devotion/divine/astrata
 	miracles = list(
@@ -55,15 +55,17 @@
 /datum/devotion/divine/necra/make_acolyte()
 	. = ..()
 	miracles_extra += /datum/action/cooldown/spell/avert
+	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
 
 /datum/devotion/divine/necra/make_cleric()
 	. = ..()
 	miracles_extra += /datum/action/cooldown/spell/avert
+	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
 
 /datum/devotion/divine/necra/make_templar()
 	. = ..()
-	miracles_extra -= /datum/action/cooldown/spell/aoe/abrogation
-	miracles_extra += list(/datum/action/cooldown/spell/aoe/churn_undead, /datum/action/cooldown/spell/avert)
+	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
+	miracles_extra += /datum/action/cooldown/spell/avert
 
 /datum/devotion/divine/ravox
 	miracles = list(
