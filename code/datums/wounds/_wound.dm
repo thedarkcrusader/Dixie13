@@ -88,9 +88,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Ingores "bloody wound" checks for wound applications
 	var/ignore_bloody = FALSE
 
-	/// Whether miracles heal it.
-	var/healable_by_miracles = TRUE
-
 	/// List of associated bclasses for this wound
 	/// Primary use is for wound application
 	var/list/associated_bclasses = list()
@@ -272,15 +269,12 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(!isnull(clotting_threshold) && clotting_rate && (bleed_rate > clotting_threshold))
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
 	if(passive_healing)
-		passive_heal()
+		heal_wound(passive_healing)
 	return TRUE
 
 /// Called on handle_wounds(), on the life() proc
 /datum/wound/proc/on_death()
 	return
-
-/datum/wound/proc/passive_heal()
-	heal_wound(passive_healing)
 
 /// Heals this wound by the given amount, and deletes it if it's healed completely
 /datum/wound/proc/heal_wound(heal_amount)
@@ -466,7 +460,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Bleeding clamp upgrade per level
 	var/upgrade_bleed_clamp = null
 	/// Bleeding clamp when armored per level
-	var/upgrade_bleed_clam_armor = null
+	var/upgrade_bleed_clamp_armor = null
 	/// Full clamp to bleed when effective armour is on the wounded limb
 	var/protected_bleed_clamp = null
 
@@ -476,6 +470,15 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/upgrade_sew_threshold = 0
 	/// Multiplier that wound pain is increased by
 	var/upgrade_pain = 0
+
+/datum/wound/dynamic/heal_wound(heal_amount)
+	. = ..()
+	if(!. || QDELETED(src))
+		return
+	var/healing_multiplier = clamp(1 / get_relevant_increase(), 0.5, 1.5)
+	var/healing_amount = round(heal_amount, DAMAGE_PRECISION) * 0.01 * healing_multiplier
+
+	downgrade(healing_amount)
 
 /datum/wound/dynamic/sew_wound()
 	if(!can_sew)
@@ -493,23 +496,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	// Inverse, bigger wound = less heal
 	// BUT only effects value reduction not sewing progress
-	var/healing_multipler = clamp(1 / get_relevant_increase(), 0.5, 1.5)
+	var/healing_multiplier = clamp(1 / get_relevant_increase(), 0.5, 1.5)
 	// Reduces the upgrade values by this percentage, can never fully deplete the said values
 	// Base value of 2.5% absolute max of 36% likely to be around 8-11%
-	var/healing_power = 0.02 * healing_multipler * ((doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 1.5) // Vibe numbers...
+	var/healing_power = 0.02 * healing_multiplier * ((doctor.get_skill_level(/datum/skill/misc/medicine) + 1) * 1.5) // Vibe numbers...
 
-	whp -= whp * healing_power
-
-	if(sew_threshold > 0)
-		sew_threshold -= sew_threshold * healing_power
-	if(woundpain > 0)
-		woundpain -= woundpain * healing_power
-	if(bleed_rate > 0)
-		bleed_rate -= bleed_rate * healing_power
+	downgrade(healing_power)
 
 	return ..()
 
-/// Get the increase multipler of the relevant upgrade value (bleed_rate by default)
+/// Get the increase multiplier of the relevant upgrade value (bleed_rate by default)
 /datum/wound/dynamic/proc/get_relevant_increase()
 	if(!bleed_rate || !initial(bleed_rate))
 		return 1
@@ -530,21 +526,26 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/dynamic/proc/upgrade(bclass, damage)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if(is_maxed)
+	if(is_maxed || is_sewn())
 		return FALSE
 
+	var/obj/item/clothing/armor
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		armor = human_owner.check_crit_armor(src, bclass)
+
 	var/upper_clamp = ARTERY_LIMB_BLEEDRATE
-	if(upgrade_bleed_clamp)
+	if(armor && upgrade_bleed_clamp_armor)
+		upper_clamp = upgrade_bleed_clamp_armor
+	else if(upgrade_bleed_clamp)
 		upper_clamp = upgrade_bleed_clamp
 	bleed_rate += clamp(damage * upgrade_bleed_rate, 0.1, upper_clamp)
 	whp += damage * upgrade_whp
 	sew_threshold += damage * upgrade_sew_threshold
 	woundpain += damage * upgrade_pain
 
-	if(ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		if(armor_check(human_owner.check_crit_armor(src, bclass)))
-			return FALSE
+	if(armor_check(armor))
+		return FALSE
 
 	if(maxed_check())
 		is_maxed = TRUE
@@ -562,6 +563,17 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 #undef CLOT_THRESHOLD_INCREASE_PER_HIT
 #undef CLOT_DECREASE_PER_HIT
 
+/// Like upgrade() but takes a multipler as percentage to decrease values by instead
+/datum/wound/dynamic/proc/downgrade(multiplier)
+	whp = max(whp - (whp * multiplier), initial(whp))
+
+	if(sew_threshold > 0)
+		sew_threshold = max(sew_threshold - (sew_threshold * multiplier), initial(sew_threshold))
+	if(woundpain > 0)
+		woundpain = max(woundpain - (woundpain * multiplier), initial(woundpain))
+	if(bleed_rate > 0)
+		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), initial(bleed_rate))
+
 #define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
 #define CLOT_THRESHOLD_ARTERY 2
 
@@ -577,6 +589,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		span_crit("The wound gushes open from [bodypart_owner.owner]'s \
 		<b>[bodypart_owner]</b>, nicking an artery!")
 	)
+	update_name()
 	return TRUE
 
 #undef CLOT_RATE_ARTERY
@@ -597,4 +610,5 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		<b>[bodypart_owner]</b>, but [bodypart_owner.p_their()] [armor] won't let it go any further!")
 	)
 	is_armor_maxed = TRUE
+	update_name()
 	return TRUE

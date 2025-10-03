@@ -97,7 +97,7 @@
 	bleed_rate += 1.2
 	return TRUE
 
-/datum/wound/dynamic/bruise/upgrade(damage)
+/datum/wound/dynamic/bruise/upgrade(bclass, damage)
 	. = ..()
 	if(!.)
 		return
@@ -112,3 +112,6 @@
 		clotting_threshold = 0.3
 
 	return TRUE
+
+/datum/wound/dynamic/bruise/downgrade(multiplier)
+	return // Already self heal and aren't as dangerous

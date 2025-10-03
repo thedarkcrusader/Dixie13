@@ -75,7 +75,7 @@
 	)
 	upgrade_bleed_rate = 0.12
 	upgrade_bleed_clamp = 2.2
-	upgrade_bleed_clam_armor = 1
+	upgrade_bleed_clamp_armor = 1
 	upgrade_whp = 0.6
 	upgrade_sew_threshold = 1.5
 	upgrade_pain = 0.25
@@ -228,7 +228,7 @@
 
 	upgrade_bleed_rate = 0.1
 	upgrade_bleed_clamp = 3.5
-	upgrade_bleed_clam_armor = 0.2
+	upgrade_bleed_clamp_armor = 0.2
 	upgrade_whp = 1
 	upgrade_sew_threshold = 1.8
 	upgrade_pain = 0.5
