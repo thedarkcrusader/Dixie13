@@ -646,18 +646,17 @@
 	melting_material = /datum/material/silver
 	melt_amount = 50
 
+/obj/item/weapon/knife/throwingknife/psydon/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
+
 /obj/item/weapon/knife/throwingknife/rous
 	name = "rous kunai"
 	desc = "A typical knife used by rous assassins. Quite effective when thrown."
 	icon_state = "rouskunai"
 	throw_speed = 4
-	max_integrity = INTEGRITY_STANDARD
-	wdefense = MEDIOCRE_PARRY
-	icon_state = "throw_knifes"
-	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
-	sellprice = 30
+	wdefense = 3
+	max_integrity = INTEGRITY_POOR
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
+	sellprice = 5
 	melt_amount = 50
-
-/obj/item/weapon/knife/throwingknife/psydon/Initialize(mapload)
-	. = ..()
-	enchant(/datum/enchantment/silver)

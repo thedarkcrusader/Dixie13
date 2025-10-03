@@ -68,22 +68,15 @@
 		H.update_inv_head()
 
 /obj/item/clothing/shirt/robe/rousseer
-	name = "rousman seer robe"
-	icon_state = "robe"
-	item_state = "robe"
-	icon = 'icons/roguetown/mob/monster/rousman.dmi'
-	allowed_race = list(SPEC_ID_ROUSMAN)
-
-/obj/item/clothing/cloak/rousseer
-	name = "rousman seer armor"
+	name = "rousman seer armour"
 	icon_state = "seer_armour"
 	item_state = "seer_armour"
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
-	allowed_race = list(SPEC_ID_ROUSMAN)
-	mob_overlay_icon = 'icons/roguetown/mob/monster/rousman.dmi'
-	body_parts_covered = CHEST|GROIN|VITALS|LEGS
+	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)
+	allowed_race = list(SPEC_ID_ROUSMAN)
 
 /obj/item/clothing/head/roguehood/rousman/rousseer
 	name = "rousman seer hood"
