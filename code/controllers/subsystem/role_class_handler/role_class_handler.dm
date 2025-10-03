@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	if(picked_class.inherit_parent_title)
 		var/datum/job/old = SSjob.GetJob(H.job)
 		if(old)
-			picked_class.title = old.title
+			picked_class.title_override = old.title
 
 	SSjob.EquipRank(H, picked_class, H.client)
 
