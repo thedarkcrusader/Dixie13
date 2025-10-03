@@ -12,6 +12,9 @@
 	invocation_type = INVOCATION_SHOUT
 
 /datum/action/cooldown/spell/bardic_inspiration/is_valid_target(atom/cast_on)
+	. = ..()
+	if(!.)
+		return FALSE
 	return isliving(cast_on)
 
 /datum/action/cooldown/spell/bardic_inspiration/before_cast(mob/living/cast_on)
