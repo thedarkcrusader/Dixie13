@@ -279,7 +279,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOENERGY = span_info("I don't need rest; I won't ever feel fatigue."),
 	TRAIT_KEENEARS = span_info("I've a good pair of ears, and can tell who is speaking, even when they're out of sight. I can also hear whispers from further away."),
 	TRAIT_POISON_RESILIENCE	= span_info("I'm more resilient to poisons."),
-	TRAIT_FORAGER	= span_info("I can tell which jackberries are poisonous."),
+	TRAIT_FORAGER = span_info("I can tell which jackberries are poisonous."),
 ))
 
 /// value -> trait name, generated on use from trait_by_type global
