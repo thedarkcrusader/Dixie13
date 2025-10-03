@@ -57,6 +57,7 @@
 	for(var/datum/action/spell as anything in spells)
 		owner.current.add_spell(spell, source = src)
 	owner.special_role = name
+	owner.remove_stat_modifier("innate_age")
 	move_to_spawnpoint()
 	remove_job()
 	owner.current?.roll_mob_stats()
