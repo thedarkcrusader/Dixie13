@@ -2,7 +2,7 @@
 	title = "Clinic Apprentice"
 	tutorial = "You've been taken under as an apprentice by the Feldsher and Apothecary. \
 	You're both an assistant and student, helping the two of them in the more menial tasks. \
-	You hope to one day open a Clinic of your own. \
+	You hope to one dae open a Clinic of your own. \
 	Perhaps you might even venture out to Kingsfield to further your studies in their fabled universities. \
 	Though most likely you will end up as one of the many countless Physickers roaming Faience."
 	department_flag = APPRENTICES
