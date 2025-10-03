@@ -32,13 +32,17 @@
 		/datum/skill/misc/athletics = 1,
 		/datum/skill/craft/crafting = 2,
 		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/alchemy = 1,
-		/datum/skill/misc/medicine = 1,
+		/datum/skill/craft/alchemy = 2,
+		/datum/skill/misc/medicine = 2,
+	)
+
+	jobstats = list(
+		STATKEY_INT = 1,
 	)
 
 	traits = list(
 		TRAIT_FORAGER,
-		TRAIT_EMPATH
+		TRAIT_EMPATH,
 	)
 
 	outfit = /datum/outfit/clinicapprentice
@@ -47,18 +51,13 @@
 
 /datum/job/clinicapprentice/adjust_values(mob/living/carbon/human/spawned)
 	. = ..()
-	LAZYADDASSOC(skills, /datum/skill/craft/alchemy, pick(0,0,1))
-	LAZYADDASSOC(skills, /datum/skill/misc/medicine, pick(0,0,1))
 	if(spawned.age != AGE_CHILD)
 		LAZYADDASSOC(skills, /datum/skill/combat/unarmed, 1)
 		LAZYADDASSOC(skills, /datum/skill/misc/athletics, 1)
 		LAZYADDASSOC(skills, /datum/skill/combat/wrestling, 1)
-		//they get a chance to get average again, perhaps even skilled with enough luck
-		LAZYADDASSOC(skills, /datum/skill/craft/alchemy, pick(0,0,1))
-		LAZYADDASSOC(skills, /datum/skill/misc/medicine, pick(0,0,1))
 
 /datum/outfit/clinicapprentice
-	head = /obj/item/clothing/head/roguehood/colored/random
+	head = /obj/item/clothing/head/roguehood/colored/black
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	shirt = /obj/item/clothing/shirt/undershirt/colored/random
 	pants = /obj/item/clothing/pants/tights/colored/random
