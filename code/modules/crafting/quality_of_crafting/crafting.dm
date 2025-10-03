@@ -14,7 +14,7 @@
 	)
 	attacked_atom = /obj/item/grown/log/tree/stake
 	starting_atom  = /obj/item/rope
-	output = /obj/item/restraints/legcuffs/beartrap
+	output = /obj/item/restraints/legcuffs/beartrap/crafted/makeshift
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/crafting/mantrap/create_blacklisted_paths()
@@ -135,7 +135,7 @@
 		/obj/item/natural/fibers = 7,
 		/obj/item/reagent_containers/food/snacks/fat = 1,
 	)
-	attacked_atom = /obj/item/grown/log/tree/small
+	attacked_atom = /obj/item/natural/wood/plank
 	starting_atom  = /obj/item/natural/fibers
 	allow_inverse_start = FALSE
 	output = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long
@@ -648,7 +648,7 @@
 	allow_inverse_start = FALSE
 	output = /obj/item/gear/wood/basic
 	craftdiff = 3
-	skillcraft = /datum/skill/labor/lumberjacking
+	skillcraft = /datum/skill/craft/carpentry
 
 /datum/repeatable_crafting_recipe/crafting/wheatlbait
 	name = "bait (wheat)"

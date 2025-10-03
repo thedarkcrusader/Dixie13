@@ -160,6 +160,14 @@
 				/obj/item/natural/fibers = 1)
 	category = "Pants"
 
+/datum/repeatable_crafting_recipe/sewing/lakkarikilt
+	name = "padded kilt"
+	output = /obj/item/clothing/pants/trou/leather/quiltedkilt
+	requirements = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2)
+	category = "Pants"
+	craftdiff = 3
+
 /datum/repeatable_crafting_recipe/sewing/headband
 	name = "headband"
 	output = /obj/item/clothing/head/headband
@@ -257,6 +265,13 @@
 /datum/repeatable_crafting_recipe/sewing/sack
 	name = "sack hood"
 	output = /obj/item/clothing/head/menacing
+	requirements = list(/obj/item/natural/cloth = 3)
+	craftdiff = 1
+	category = "Hat"
+
+/datum/repeatable_crafting_recipe/sewing/sack
+	name = "dark sack hood"
+	output = /obj/item/clothing/head/dungeoneer
 	requirements = list(/obj/item/natural/cloth = 3)
 	craftdiff = 1
 	category = "Hat"
@@ -374,13 +389,13 @@
 
 /datum/repeatable_crafting_recipe/sewing/flowercrown
 	abstract_type = /datum/repeatable_crafting_recipe/sewing/flowercrown
-	attacked_atom = /obj/item/rope
+	attacked_atom = /obj/item/natural/fibers
 	craftdiff = 1
 	category = "Hat"
 
 /datum/repeatable_crafting_recipe/sewing/flowercrown/rosa
 	name = "rosa crown"
-	requirements = list(/obj/item/rope = 1,\
+	requirements = list(/obj/item/natural/fibers = 1,\
 					/obj/item/alch/herb/rosa = 2)
 	output = /obj/item/clothing/head/flowercrown/rosa
 
@@ -389,12 +404,9 @@
 
 /datum/repeatable_crafting_recipe/sewing/flowercrown/salvia
 	name = "salvia crown"
-	requirements = list(/obj/item/rope = 1,\
+	requirements = list(/obj/item/natural/fibers = 1,\
 					/obj/item/alch/herb/salvia = 2)
 	output = /obj/item/clothing/head/flowercrown/salvia
-
-/datum/repeatable_crafting_recipe/sewing/flowercrown/salvia/create_blacklisted_paths()
-	blacklisted_paths = subtypesof(/obj/item/rope)
 
 /*.............. recipes requiring skill 2 ..............*/
 /datum/repeatable_crafting_recipe/sewing/gambeson
@@ -410,6 +422,15 @@
 	output = /obj/item/clothing/cloak/tabard
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
+	craftdiff = 2
+	category = "Cloak"
+
+/datum/repeatable_crafting_recipe/sewing/pegasusknight
+	name = "pegasus knight tabard"
+	output = /obj/item/clothing/cloak/pegasusknight
+	requirements = list(
+		/obj/item/natural/cloth = 2,
+		/obj/item/natural/fibers = 1,)
 	craftdiff = 2
 	category = "Cloak"
 
@@ -991,6 +1012,15 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 	category = "Cloak"
+
+/datum/repeatable_crafting_recipe/sewing/lakkarijupon
+	name = "lakkarian jupon"
+	output = /obj/item/clothing/armor/gambeson/heavy/lakkarijupon
+	requirements = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/ingot/iron = 1)
+	craftdiff = 4
+	category = "Armor"
 
 /*.............. recipes requiring skill 5 ..............*/
 

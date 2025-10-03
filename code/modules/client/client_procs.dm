@@ -420,6 +420,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		return null
 
 	GLOB.clients += src
+	GLOB.keys_by_ckey[ckey] += key
 	GLOB.directory[ckey] = src
 
 	chatOutput = new /datum/chatOutput(src)
@@ -753,7 +754,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
 
-	if(credits)
+	if(length(credits))
 		QDEL_LIST(credits)
 
 	if(player_details)
