@@ -75,7 +75,7 @@
 		var/datum/devotion/devotion = new holder()
 		devotion.make_priest()
 		devotion.grant_to(H)
-	H.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/call_bird/priest)
+	H.add_spell(/datum/action/cooldown/spell/undirected/call_bird/priest)
 	H.update_icons()
 
 /datum/job/priest/demoted //just used to change the priest title

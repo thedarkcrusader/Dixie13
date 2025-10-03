@@ -1,15 +1,11 @@
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird
+/datum/action/cooldown/spell/undirected/call_bird
 	name = "Call Messenger Bird"
 	desc = "Calls for your messenger bird."
 	button_icon_state = "zad"
 	sound = null
 
 	cooldown_time = 30 SECONDS
-	spell_cost = 0
 
-	invocation_type = INVOCATION_NONE
-	item_type = /obj/item/reagent_containers/food/snacks/messenger_bird
-	item_duration = null
 	has_visual_effects = FALSE
 	experience_modifer = 0
 
@@ -25,50 +21,58 @@
 		"Cancel" = "cancel",
 	)
 
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird/grenzel
+/datum/action/cooldown/spell/undirected/call_bird/grenzel
 	destinations = list(
 		"My family" = "their family",
 		"Grenzelhoft Imperiate" = "the Grenzelhoft Imperiate",
 		"Cancel" = "cancel",
 	)
 
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird/priest
+/datum/action/cooldown/spell/undirected/call_bird/priest
 	destinations = list(
 		"The Archbishop" = "the Archbishop",
 		"Cancel" = "cancel",
 	)
 
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird/zalad
+/datum/action/cooldown/spell/undirected/call_bird/zalad
 	destinations = list(
 		"The Mercator Guild" = "the Mercator Guild",
 		"Cancel" = "cancel",
 	)
 
+/datum/action/cooldown/spell/undirected/call_bird/Destroy(force)
+	owned_bird.source_spell = null
+	owned_bird = null
+	return ..()
 
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird/cast(atom/cast_on)
-	if(isliving(owner))
-		var/mob/living/L = owner
-		L.emote("attnwhistle", forced = TRUE)
-		var/turf/T = L.loc
-		if(!T.can_see_sky())
-			to_chat(L, span_warning("You whistle, but feel like a fool as nothing happens..."))
-			return
-		if(bird_called && QDELETED(owned_bird) || owned_bird && owned_bird.dead) // Bird is dead
-			to_chat(L, span_warning("You whistle, but nothing happens..."))
-			L.add_stress(/datum/stress_event/dead_bird)
-			return
-		if(bird_called && owned_bird) // Calling back our bird
-			owned_bird.fly_away()
-	..()
+/datum/action/cooldown/spell/undirected/call_bird/can_cast_spell(feedback)
+	. = ..()
+	if(!.)
+		return FALSE
+	return isliving(owner)
 
-/datum/action/cooldown/spell/undirected/conjure_item/call_bird/make_item()
-	var/obj/item/reagent_containers/food/snacks/messenger_bird/bird = ..()
-	bird_called = TRUE
-	bird.source_spell = src
-	bird.bird_owner = owner
-	owned_bird = bird
-	playsound(bird, 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
-	return bird
+/datum/action/cooldown/spell/undirected/call_bird/cast(mob/living/cast_on)
+	. = ..()
+	cast_on.emote("attnwhistle", forced = TRUE)
+	var/turf/location = owner.loc
+	if(!istype(location) || !location.can_see_sky())
+		to_chat(owner, span_warning("You whistle, but feel like a fool as nothing happens..."))
+		return
+	if(!bird_called)
+		bird_called = TRUE
+		playsound(get_turf(cast_on), 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
+		owned_bird = new(get_turf(cast_on))
+		owned_bird.source_spell = WEAKREF(src)
+		cast_on.put_in_hands(owned_bird)
+		return
+	if(QDELETED(owned_bird) || owned_bird.dead)
+		to_chat(owner, span_warning("You whistle, but nothing happens..."))
+		owner.add_stress(/datum/stressevent/dead_bird)
+		return
+	bird_called = FALSE
+	playsound(get_turf(owned_bird), 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
+	owned_bird.visible_message(span_notice("The messenger bird flies away!"))
+	owned_bird = null
 
 /obj/item/reagent_containers/food/snacks/messenger_bird
 	name = "messenger bird"
@@ -87,8 +91,7 @@
 	blade_dulling = DULLING_CUT
 	rotprocess = null
 	static_debris = list(/obj/item/natural/feather=1)
-	var/datum/action/cooldown/spell/undirected/conjure_item/call_bird/source_spell
-	var/mob/living/bird_owner
+	var/datum/weakref/source_spell
 
 /obj/item/reagent_containers/food/snacks/friedmessenger
 	name = "fried messenger"
@@ -120,6 +123,10 @@
 	if(dead)
 		icon_state = "[icon_state]l"
 
+/obj/item/reagent_containers/food/snacks/messenger_bird/Destroy()
+    source_spell = null
+    return ..()
+
 /obj/item/reagent_containers/food/snacks/messenger_bird/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
@@ -145,7 +152,9 @@
 	if(!dead)
 		playsound(src, 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
 		visible_message(span_notice("The messenger bird flies away!"))
-		source_spell.bird_called = FALSE
+		var/datum/action/cooldown/spell/undirected/call_bird/spell = source_spell.resolve()
+		if(spell)
+			spell.bird_called = FALSE
 		qdel(src)
 
 
@@ -153,23 +162,24 @@
 	if(!dead)
 		if(isliving(user))
 			var/mob/living/L = user
-			if(prob(L.STASPD * 2) || bird_owner == user)
-				if(istype(I, /obj/item/paper) && bird_owner == user)
+			var/datum/action/cooldown/spell/undirected/call_bird/spell = source_spell.resolve()
+			if(prob(L.STASPD * 2) || spell.owner == user)
+				if(istype(I, /obj/item/paper) && spell.owner == user)
 					var/obj/item/paper/P = I
 					if(length(P.info) > 0)
 						to_chat(user, span_notice("You attach your note to the messenger bird."))
 						var/noble_info = "[user.key]/([user.real_name]) ([user.job])"
-						var/dest = input(user, "Where would you like the bird to go?", "Destination")  as anything in source_spell.destinations
+						var/dest = input(user, "Where would you like the bird to go?", "Destination")  as anything in spell.destinations
 
 						if(dest == "Cancel")
 							to_chat(user, span_notice("You decide not to send the bird anywhere."))
 							return
 
-						to_chat(user, span_notice("You tell the bird to go to [source_spell.destinations[dest]]"))
+						to_chat(user, span_notice("You tell the bird to go to [spell.destinations[dest]]"))
 						var/strip_info = STRIP_HTML_FULL(replacetext(P.info, "<br>", "\n"), MAX_MESSAGE_LEN)
 						strip_info = replacetext(strip_info, "\n", "<br>")
-						message_admins("[noble_info] [ADMIN_BIRD_LETTER(user)] [ADMIN_FLW(user)] writes to [source_spell.destinations[dest]]: <br>[strip_info]")
-						user.log_message("Sent a message with a bird to [source_spell.destinations[dest]]: [strip_info]", LOG_GAME)
+						message_admins("[noble_info] [ADMIN_BIRD_LETTER(user)] [ADMIN_FLW(user)] writes to [spell.destinations[dest]]: <br>[strip_info]")
+						user.log_message("Sent a message with a bird to [spell.destinations[dest]]: [strip_info]", LOG_GAME)
 						fly_away()
 						qdel(P)
 
