@@ -38,7 +38,7 @@
 	if(cast_on.mob_biotypes != MOB_UNDEAD)
 		return
 
-/datum/action/cooldown/spell/control_undead/cast(mob/living/carbon/cast_on, atom/caster)
+/datum/action/cooldown/spell/control_undead/cast(mob/living/carbon/cast_on)
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
 	cast_on.ai_controller.can_idle = FALSE
 	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)
