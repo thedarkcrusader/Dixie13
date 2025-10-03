@@ -17,7 +17,7 @@
 
 /datum/action/cooldown/spell/undirected/matronwrath/cast(mob/living/cast_on)
 	. = ..()
-	for(var/mob/living/carbon/target in viewers(10, get_turf(owner)))
+	for(var/mob/living/carbon/target in viewers(7, get_turf(owner)))
 		if(HAS_TRAIT(target, TRAIT_ORPHAN))
 			to_chat(target, span_danger("You feel a sense of dread."))
 			target.apply_status_effect(/datum/status_effect/debuff/markedorphan)
