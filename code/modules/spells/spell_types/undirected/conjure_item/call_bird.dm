@@ -67,7 +67,7 @@
 		return
 	if(QDELETED(owned_bird) || owned_bird.dead)
 		to_chat(owner, span_warning("You whistle, but nothing happens..."))
-		owner.add_stress(/datum/stressevent/dead_bird)
+		owner.add_stress(/datum/stress_event/dead_bird)
 		return
 	bird_called = FALSE
 	playsound(get_turf(owned_bird), 'sound/vo/mobs/bird/birdfly.ogg', 100, TRUE, -1)
