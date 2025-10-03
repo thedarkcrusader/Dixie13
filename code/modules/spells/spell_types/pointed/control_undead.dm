@@ -35,8 +35,15 @@
 	)
 
 /datum/action/cooldown/spell/control_undead/is_valid_target(mob/living/carbon/cast_on)
-	if(cast_on.mob_biotypes != MOB_UNDEAD)
+	. = ..()
+	if(!.)
 		return
+	if(!isliving(cast_on))
+		return FALSE
+	var/mob/living/victim = cast_on
+	if(victim.stat == DEAD)
+		return
+	return !victim.mind && (victim.mob_biotypes & MOB_UNDEAD)
 
 /datum/action/cooldown/spell/control_undead/cast(mob/living/carbon/cast_on, atom/caster)
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
