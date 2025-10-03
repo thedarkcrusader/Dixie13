@@ -123,8 +123,6 @@
 			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 		wretch_select_bounty(H)
 		if(H.mind)
-			if(H.mind.has_antag_datum(/datum/antagonist))
-				return
 			var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
 			H.mind.add_antag_datum(new_antag)
 
@@ -144,7 +142,5 @@
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 	wretch_select_bounty(H)
 	if(H.mind)
-		if(H.mind.has_antag_datum(/datum/antagonist))
-			return
 		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(new /datum/clan/caitiff, TRUE)
 		H.mind.add_antag_datum(new_antag)

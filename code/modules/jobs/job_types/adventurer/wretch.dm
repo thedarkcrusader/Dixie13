@@ -17,6 +17,7 @@
 
 	can_have_apprentices = FALSE
 	traits = list(TRAIT_NOAMBUSH)
+	antag_role = /datum/antagonist/wretch
 	cmode_music = 'sound/music/cmode/antag/combat_bandit2.ogg'
 
 /datum/job/wretch/after_spawn(mob/living/carbon/human/spawned, client/player_client)
@@ -25,8 +26,6 @@
 		return
 	to_chat(spawned, span_boldwarning("You are not an antagonist in the sense you kill everyone you're near, it is up to you to pave your own story. It is your choice if you want to take the roll of a highwayman or robber, or to follow a path of redemption, as your role exists to add flavor the round."))
 	to_chat(spawned, span_boldwarning("In the same manner, you are NOT an adventurer."))
-	var/datum/antagonist/new_antag = new /datum/antagonist/wretch()
-	spawned.mind.add_antag_datum(new_antag)
 
 
 /datum/outfit/wretch/proc/wretch_select_bounty(mob/living/carbon/human/H)
