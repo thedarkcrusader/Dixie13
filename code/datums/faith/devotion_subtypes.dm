@@ -1,16 +1,3 @@
-// Divine
-// /datum/devotion/divine/make_templar()
-//	. = ..()
-//	miracles_extra += list(
-//		/datum/action/cooldown/spell/aoe/abrogation,
-//	)
-
-// /datum/devotion/divine/make_cleric()
-//	. = ..()
-//	miracles_extra += list(
-//		/datum/action/cooldown/spell/aoe/abrogation,
-//	)
-
 /datum/devotion/divine/astrata
 	miracles = list(
 		CLERIC_T0 = /datum/action/cooldown/spell/healing,
