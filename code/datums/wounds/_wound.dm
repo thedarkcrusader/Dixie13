@@ -487,7 +487,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	sewn_whp = whp * 0.7
 	sewn_clotting_rate = clotting_rate * 1.2
 	sewn_clotting_threshold = clotting_threshold * 0.6
-	sewn_whp = woundpain * 0.5
+	sewn_woundpain = woundpain * 0.5
 	return ..()
 
 /datum/wound/dynamic/sewing_step_complete(mob/living/doctor)
