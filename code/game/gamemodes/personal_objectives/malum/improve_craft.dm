@@ -2,7 +2,7 @@
 	name = "Improve Craft Skills"
 	category = "Malum's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Malum grows stronger")
+	rewards = list("2 Triumphs", "Malum grows stronger", "Malum blesses you (+1 Intelligence)")
 	var/levels_gained = 0
 	var/required_levels = 2
 
@@ -38,6 +38,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(MALUM, 20)
+		owner.current.set_stat_modifier("malum_blessing", STATKEY_INT, 1)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_SKILL_RANK_INCREASED)
 	else

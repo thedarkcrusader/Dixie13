@@ -2,7 +2,7 @@
 	name = "Become Noble"
 	category = "Astrata's Chosen"
 	triumph_count = 3
-	rewards = list("3 Triumphs", "Astrata grows stronger")
+	rewards = list("3 Triumphs", "Astrata grows stronger", "Astrata blesses you (+1 Fortune)")
 
 /datum/objective/personal/nobility/on_creation()
 	. = ..()
@@ -27,6 +27,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(ASTRATA, 20)
+	owner.current.set_stat_modifier("astrata_blessing", STATKEY_LCK, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, SIGNAL_ADDTRAIT(TRAIT_NOBLE))
 

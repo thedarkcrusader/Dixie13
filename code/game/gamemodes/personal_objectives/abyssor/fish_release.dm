@@ -2,7 +2,7 @@
 	name = "Release Rare Fish"
 	category = "Abyssor's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Abyssor grows stronger")
+	rewards = list("2 Triumphs", "Abyssor grows stronger", "Fishing knowledge")
 	var/released_count = 0
 	var/required_count = 1
 	var/required_rarity_rank = 1
@@ -33,6 +33,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(ABYSSOR, 20)
+	owner.current.adjust_skillrank(/datum/skill/labor/fishing, 1)
 	escalate_objective()
 	UnregisterSignal(SSdcs, COMSIG_GLOBAL_FISH_RELEASED)
 

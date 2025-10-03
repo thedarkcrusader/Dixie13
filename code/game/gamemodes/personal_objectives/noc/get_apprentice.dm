@@ -2,7 +2,7 @@
 	name = "Get Apprentice"
 	category = "Noc's Chosen"
 	triumph_count = 3
-	rewards = list("3 Triumphs", "Noc grows stronger")
+	rewards = list("3 Triumphs", "Noc grows stronger", "Noc blesses you (+1 Intelligence)")
 
 /datum/objective/personal/get_apprentice/on_creation()
 	. = ..()
@@ -23,6 +23,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(NOC, 20)
+	owner.current.set_stat_modifier("noc_blessing", STATKEY_INT, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_APPRENTICE_MADE)
 

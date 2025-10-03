@@ -2,7 +2,7 @@
 	name = "Get Literate"
 	category = "Noc's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Noc grows stronger")
+	rewards = list("2 Triumphs", "Noc grows stronger", "Mathematics knowledge")
 
 /datum/objective/personal/literacy/on_creation()
 	. = ..()
@@ -24,6 +24,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(NOC, 20)
+		owner.current.adjust_skillrank(/datum/skill/labor/mathematics, 1)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_SKILL_RANK_INCREASED)
 

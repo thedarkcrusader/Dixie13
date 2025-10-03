@@ -2,7 +2,7 @@
 	name = "Improve Combat Skills"
 	category = "Ravox's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Ravox grows stronger")
+	rewards = list("2 Triumphs", "Ravox grows stronger", "Ravox blesses you (+1 Strength)")
 	var/levels_gained = 0
 	var/required_levels = 2
 
@@ -38,6 +38,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(RAVOX, 20)
+		owner.current.set_stat_modifier("ravox_blessing", STATKEY_STR, 1)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_SKILL_RANK_INCREASED)
 	else

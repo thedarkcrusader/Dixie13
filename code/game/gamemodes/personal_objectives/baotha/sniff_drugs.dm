@@ -2,7 +2,7 @@
 	name = "Sniff Drugs"
 	category = "Baotha's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Baotha grows stronger")
+	rewards = list("2 Triumphs", "Baotha grows stronger", "Ability to recognize alcoholics and junkies on examine")
 	var/sniff_count = 0
 	var/required_count = 2
 
@@ -28,6 +28,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(BAOTHA, 20)
+		ADD_TRAIT(owner.current, TRAIT_RECOGNIZE_ADDICTS, TRAIT_GENERIC)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_DRUG_SNIFFED)
 	else

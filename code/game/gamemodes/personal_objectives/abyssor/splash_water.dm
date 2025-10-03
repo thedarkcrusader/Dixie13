@@ -2,7 +2,7 @@
 	name = "Splash Water"
 	category = "Abyssor's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Abyssor grows stronger")
+	rewards = list("2 Triumphs", "Abyssor grows stronger", "Abyssor blesses you (+1 Constitution)")
 
 /datum/objective/personal/abyssor_splash/on_creation()
 	. = ..()
@@ -33,6 +33,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(ABYSSOR, 20)
+	owner.current.set_stat_modifier("abyssor_blessing", STATKEY_CON, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_SPLASHED_MOB)
 

@@ -2,7 +2,7 @@
 	name = "Rob Graves"
 	category = "Matthios' Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Matthios grows stronger")
+	rewards = list("2 Triumphs", "Matthios grows stronger", "Ability to rob graves without being cursed")
 	var/graves_robbed = 0
 	var/graves_required = 2
 
@@ -33,6 +33,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(MATTHIOS, 20)
+	ADD_TRAIT(owner.current, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_GRAVE_ROBBED)
 

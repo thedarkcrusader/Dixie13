@@ -2,7 +2,7 @@
 	name = "Tame an Animal"
 	category = "Dendor's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Dendor grows stronger")
+	rewards = list("2 Triumphs", "Dendor grows stronger", "Taming knowledge")
 	var/tamed_count = 0
 	var/required_tames = 1
 
@@ -31,6 +31,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(DENDOR, 20)
+	owner.current.adjust_skillrank(/datum/skill/labor/taming, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_ANIMAL_TAMED)
 

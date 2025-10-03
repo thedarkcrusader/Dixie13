@@ -2,7 +2,7 @@
 	name = "Extract Lux"
 	category = "Pestra's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Pestra grows stronger")
+	rewards = list("2 Triumphs", "Pestra grows stronger", "Medicine knowledge")
 
 /datum/objective/personal/lux_extraction/on_creation()
 	. = ..()
@@ -24,6 +24,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(PESTRA, 20)
+	owner.current.adjust_skillrank(/datum/skill/misc/medicine, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_LUX_EXTRACTED)
 

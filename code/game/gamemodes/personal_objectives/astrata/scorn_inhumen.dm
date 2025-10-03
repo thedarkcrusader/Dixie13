@@ -2,7 +2,7 @@
 	name = "Scorn Inhumen"
 	category = "Astrata's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Astrata grows stronger")
+	rewards = list("2 Triumphs", "Astrata grows stronger", "Ability to silence inhumen")
 	var/spits_done = 0
 	var/spits_required = 2
 
@@ -32,6 +32,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(ASTRATA, 20)
+		owner.current.add_spell(/datum/action/cooldown/spell/silence_inhumen, source = src)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_SPAT_ON)
 

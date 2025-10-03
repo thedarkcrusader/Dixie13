@@ -2,7 +2,7 @@
 	name = "Rotten Feast"
 	category = "Pestra's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Pestra grows stronger")
+	rewards = list("2 Triumphs", "Pestra grows stronger", "Pestra blesses you (+1 Constitution)")
 	var/meals_eaten = 0
 	var/meals_required = 2
 
@@ -28,6 +28,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(PESTRA, 20)
+		owner.current.set_stat_modifier("pestra_blessing", STATKEY_CON, 1)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_ROTTEN_FOOD_EATEN)
 	else

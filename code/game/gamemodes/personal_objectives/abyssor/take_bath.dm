@@ -2,7 +2,7 @@
 	name = "Take Bath"
 	category = "Abyssor's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Abyssor grows stronger")
+	rewards = list("2 Triumphs", "Abyssor grows stronger", "Permanent Serenity (-1 Stress)")
 
 /datum/objective/personal/abyssor_bath/on_creation()
 	. = ..()
@@ -37,6 +37,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(ABYSSOR, 20)
+	owner.current.add_stress(/datum/stress_event/abyssor_serenity)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_BATH_TAKEN)
 

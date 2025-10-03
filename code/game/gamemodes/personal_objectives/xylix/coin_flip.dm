@@ -2,7 +2,7 @@
 	name = "Flip Coin"
 	category = "Xylix's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Xylix grows stronger")
+	rewards = list("2 Triumphs", "Xylix grows stronger", "Xylix blesses you (+1 Fortune)")
 	var/obj/item/coin/required_coin_type = /obj/item/coin/gold
 	var/winning_side
 
@@ -51,6 +51,7 @@
 		return
 
 	completed = TRUE
+	owner.current.set_stat_modifier("xylix_blessing", STATKEY_LCK, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_COIN_FLIPPED)
 

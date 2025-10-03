@@ -2,7 +2,7 @@
 	name = "Butcher Animals"
 	category = "Dendor's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Dendor grows stronger")
+	rewards = list("2 Triumphs", "Dendor grows stronger", "Butchering knowledge")
 	var/animals_butchered = 0
 	var/animals_required = 2
 
@@ -33,6 +33,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(DENDOR, 20)
+	owner.current.adjust_skillrank(/datum/skill/labor/butchering, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_MOB_BUTCHERED)
 

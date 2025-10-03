@@ -2,7 +2,7 @@
 	name = "Hoard Mammons"
 	category = "Matthios' Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Matthios grows stronger")
+	rewards = list("2 Triumphs", "Matthios grows stronger", "Ability to see item's value on examine")
 	var/target_mammons = 400
 	var/current_amount = 0
 	var/check_cooldown = 20 SECONDS
@@ -35,6 +35,7 @@
 		user.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(MATTHIOS, 20)
+		ADD_TRAIT(user, TRAIT_SEEPRICES, TRAIT_GENERIC)
 		escalate_objective()
 		STOP_PROCESSING(SSprocessing, src)
 

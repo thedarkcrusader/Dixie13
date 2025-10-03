@@ -2,7 +2,7 @@
 	name = "Consecrate Graves"
 	category = "Necra's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Necra grows stronger")
+	rewards = list("2 Triumphs", "Necra grows stronger", "You won't get sick from unpleasant smells anymore")
 	var/burials_completed = 0
 	var/required_burials = 1
 
@@ -35,6 +35,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(NECRA, 20)
+	ADD_TRAIT(owner.current, TRAIT_DEADNOSE, TRAIT_GENERIC)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_GRAVE_CONSECRATED)
 

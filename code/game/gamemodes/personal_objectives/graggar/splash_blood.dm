@@ -2,7 +2,7 @@
 	name = "Splash Blood"
 	category = "Graggar's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Graggar grows stronger")
+	rewards = list("2 Triumphs", "Graggar grows stronger", "Graggar blesses you (+1 Strength)")
 
 /datum/objective/personal/blood_splash/on_creation()
 	. = ..()
@@ -33,6 +33,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(GRAGGAR, 20)
+	owner.current.set_stat_modifier("graggar_blessing", STATKEY_STR, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_SPLASHED_MOB)
 

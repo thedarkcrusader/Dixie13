@@ -2,7 +2,7 @@
 	name = "Taste Divine Essence"
 	category = "Baotha's Chosen"
 	triumph_count = 3
-	rewards = list("3 Triumphs", "Baotha grows stronger")
+	rewards = list("3 Triumphs", "Baotha grows stronger", "Baotha blesses you (+1 Fortune)")
 
 /datum/objective/personal/taste_lux/on_creation()
 	. = ..()
@@ -21,6 +21,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(BAOTHA, 20)
+	owner.current.set_stat_modifier("baotha_blessing", STATKEY_LCK, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_LUX_TASTED)
 

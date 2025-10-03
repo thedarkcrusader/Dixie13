@@ -2,7 +2,7 @@
 	name = "Hug a Beggar"
 	category = "Eora's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Eora grows stronger")
+	rewards = list("2 Triumphs", "Eora grows stronger", "Become more empathetic")
 
 /datum/objective/personal/hug_beggar/on_creation()
 	. = ..()
@@ -24,6 +24,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(EORA, 20)
+		ADD_TRAIT(owner.current, TRAIT_EMPATH, TRAIT_GENERIC)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_MOB_HUGGED)
 

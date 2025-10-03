@@ -2,7 +2,7 @@
 	name = "Kick Groin"
 	category = "Zizo's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Zizo grows stronger")
+	rewards = list("2 Triumphs", "Zizo grows stronger", "Your nutcracks will be stronger")
 
 /datum/objective/personal/kick_groin/on_creation()
 	. = ..()
@@ -30,6 +30,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(ZIZO, 20)
+	ADD_TRAIT(owner.current, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_MOB_KICK)
 

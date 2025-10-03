@@ -2,7 +2,7 @@
 	name = "Steal Items"
 	category = "Matthios' Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Matthios grows stronger")
+	rewards = list("2 Triumphs", "Matthios grows stronger", "Pickpocketing knowledge")
 	var/stolen_count = 0
 	var/required_count = 3
 
@@ -28,6 +28,7 @@
 		owner.current.adjust_triumphs(triumph_count)
 		completed = TRUE
 		adjust_storyteller_influence(MATTHIOS, 20)
+		owner.current.adjust_skillrank(/datum/skill/misc/stealing, 1)
 		escalate_objective()
 		UnregisterSignal(owner.current, COMSIG_ITEM_STOLEN)
 	else

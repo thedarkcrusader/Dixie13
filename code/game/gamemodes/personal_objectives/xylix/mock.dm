@@ -41,6 +41,7 @@
 /// Noble variant
 /datum/objective/personal/mock/noble
 	name = "Mock Nobles"
+	rewards = list("2 Triumphs", "Xylix grows stronger", "Xylix blesses you (+1 Fortune)")
 	var/mocked_targets = 0
 	var/required_count = 2
 
@@ -61,6 +62,7 @@
 			owner.current.adjust_triumphs(triumph_count)
 			completed = TRUE
 			adjust_storyteller_influence(XYLIX, 20)
+			owner.current.set_stat_modifier("xylix_blessing", STATKEY_LCK, 1)
 			escalate_objective()
 			UnregisterSignal(owner.current, COMSIG_VICIOUSLY_MOCKED)
 		else

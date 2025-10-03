@@ -2,7 +2,7 @@
 	name = "Build Shrines"
 	category = "Malum's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Malum grows stronger")
+	rewards = list("2 Triumphs", "Malum grows stronger", "Crafting knowledge")
 	var/target_type = /obj/structure/fluff/psycross/crafted
 	var/target_count = 2
 	var/current_count = 0
@@ -39,6 +39,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(MALUM, 20)
+	owner.current.adjust_skillrank(/datum/skill/craft/crafting, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_ITEM_CRAFTED)
 

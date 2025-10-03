@@ -2,7 +2,7 @@
 	name = "Spend Energy"
 	category = "Malum's Chosen"
 	triumph_count = 2
-	rewards = list("2 Triumphs", "Malum grows stronger")
+	rewards = list("2 Triumphs", "Malum grows stronger", "Malum blesses you (+1 Endurance)")
 	var/energy_spent = 0
 	var/energy_required = 1000
 
@@ -31,6 +31,7 @@
 	owner.current.adjust_triumphs(triumph_count)
 	completed = TRUE
 	adjust_storyteller_influence(MALUM, 20)
+	owner.current.set_stat_modifier("malum_blessing", STATKEY_END, 1)
 	escalate_objective()
 	UnregisterSignal(owner.current, COMSIG_MOB_ENERGY_SPENT)
 
