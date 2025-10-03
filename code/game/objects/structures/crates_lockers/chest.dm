@@ -118,3 +118,34 @@
 
 /obj/structure/closet/crate/crafted_closet/crafted
 	sellprice = 6
+
+//a chest with a corpse in it
+/obj/structure/closet/crate/chest/neu_iron/corpse/Initialize()
+	var/mob_species = pick(
+		/datum/species/dwarf/mountain,
+		/datum/species/elf/snow,
+		/datum/species/elf/dark,
+		/datum/species/human/northern,
+		/datum/species/harpy,
+		/datum/species/halforc,
+		/datum/species/aasimar,
+		/datum/species/human/halfelf,
+		/datum/species/human/halfdrow,
+		/datum/species/tieberian,
+		/datum/species/rakshari,
+		/datum/species/triton,
+		/datum/species/medicator,
+		)
+	var/mob_gender = pick(MALE, FEMALE)
+	var/mob/living/carbon/human/H = new /mob/living/carbon/human(get_turf(src))
+	H.gender = mob_gender
+	H.set_species(mob_species)
+	H.cure_husk()
+	H.underwear = "Nude"
+	H.undershirt = "Nude"
+	H.socks = "Nude"
+	H.update_body()
+	H.update_body_parts()
+	H.death(TRUE) //Kills the new mob
+	H.forceMove(src)
+	. = ..()

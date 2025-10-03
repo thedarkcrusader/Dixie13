@@ -67,6 +67,10 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
+"acz" = (
+/obj/structure/fake_machine/scomm,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "acF" = (
 /obj/structure/table/wood/plain_alt,
 /obj/machinery/light/fueled/wallfire/candle/r,
@@ -660,6 +664,17 @@
 "asn" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 3;
+	pixel_y = 7
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 3
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 3;
+	pixel_y = -7
+	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "aso" = (
@@ -4871,6 +4886,7 @@
 /area/rogue/indoors/town/dwarfin)
 "cPp" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/closet/crate/chest/neu,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "cPN" = (
@@ -5112,10 +5128,6 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
-"cXz" = (
-/obj/machinery/light/fueled/wallfire/candle,
-/turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
 "cXB" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -5879,6 +5891,13 @@
 	},
 /turf/open/floor/carpet/lord/left,
 /area/rogue/indoors/town/manor/halls/w)
+"dwZ" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/obj/machinery/light/fueled/wallfire/candle,
+/turf/open/floor/cobblerock,
+/area/rogue/under/town/basement)
 "dxb" = (
 /obj/structure/closet/crate/crafted_closet/inn,
 /turf/open/floor/carpet/green,
@@ -12717,6 +12736,9 @@
 /area/rogue/indoors/town/shop)
 "hqv" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/stairs/stone/church{
+	dir = 1
+	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "hqF" = (
@@ -14238,7 +14260,7 @@
 /area/rogue/indoors/town/steward)
 "ika" = (
 /obj/structure/door/stone{
-	name = "Clinic"
+	name = "Operating Theatre"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/clinic,
 /obj/effect/mapping_helpers/access/locker,
@@ -16351,8 +16373,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/orphanage)
 "jBz" = (
-/obj/structure/stairs,
 /obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/stairs,
 /turf/open/floor/wood,
 /area/rogue/under/town/basement)
 "jBF" = (
@@ -19319,13 +19341,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "lDC" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 4
-	},
-/turf/open/transparent/openspace,
+/turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "lDH" = (
 /obj/structure/bookcase/random/eoratica{
@@ -25958,7 +25974,8 @@
 /area/rogue/outdoors/river)
 "pJr" = (
 /obj/structure/table/optable,
-/turf/open/floor/cobblerock,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "pJw" = (
 /turf/open/floor/ruinedwood/spiral,
@@ -26512,10 +26529,10 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor/throne)
 "qaW" = (
+/obj/structure/chair/stool,
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/chair/stool,
 /turf/open/floor/wood,
 /area/rogue/under/town/basement)
 "qba" = (
@@ -27870,12 +27887,6 @@
 	},
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cavewet)
-"qWC" = (
-/obj/structure/stairs/stone/church{
-	dir = 1
-	},
-/turf/open/floor/churchrough,
-/area/rogue/indoors/town/clinic_large)
 "qWK" = (
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town)
@@ -29789,6 +29800,22 @@
 "siz" = (
 /obj/structure/table/wood/plain_alt,
 /obj/machinery/light/fueled/wallfire/candle/l,
+/obj/item/needle{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/needle{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/needle{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/needle{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "siD" = (
@@ -31220,6 +31247,15 @@
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/wood,
 /area/rogue/indoors/butchershop)
+"sVB" = (
+/obj/structure/door/viewport{
+	dir = 4;
+	name = "Operating Theatre"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/doctor,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "sVF" = (
 /obj/structure/fluff/walldeco/stone{
 	icon_state = "walldec6"
@@ -31546,8 +31582,10 @@
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
 "thS" = (
-/obj/structure/closet/crate/chest/neu_iron,
-/turf/open/floor/cobblerock,
+/obj/structure/closet/crate/chest/neu_iron/corpse,
+/obj/effect/mapping_helpers/access/keyset/town/doctor,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "tif" = (
 /obj/structure/closet/crate/drawer,
@@ -35865,8 +35903,10 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
 "vSJ" = (
-/obj/structure/closet/crate/chest/neu,
-/turf/open/floor/churchrough,
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/transparent/openspace,
 /area/rogue/indoors/town/clinic_large)
 "vSM" = (
 /obj/structure/fluff/railing/border{
@@ -37151,7 +37191,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 8
 	},
-/turf/open/floor/cobblerock,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "wDy" = (
 /obj/structure/fluff/railing/border{
@@ -37697,9 +37737,9 @@
 	},
 /area/rogue/under/town/sewer)
 "wWT" = (
-/obj/structure/stairs,
 /obj/machinery/light/fueled/wallfire/candle/r,
-/turf/open/floor/wood,
+/obj/structure/table/wood/plain_alt,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "wXy" = (
 /obj/structure/roguerock{
@@ -38391,14 +38431,6 @@
 "xtX" = (
 /turf/open/floor/dirt,
 /area/rogue/under/town/basement)
-"xuv" = (
-/obj/structure/door/viewport{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/access/keyset/town/doctor,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
 "xuT" = (
 /obj/structure/window/openclose{
 	dir = 1
@@ -38550,7 +38582,7 @@
 /area/rogue/outdoors/town/roofs)
 "xzS" = (
 /obj/structure/bookcase/random/thesis,
-/turf/open/floor/cobblerock,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "xzU" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/innie{
@@ -57979,7 +58011,7 @@ oGi
 oGi
 cDP
 cDP
-cDP
+kqi
 oGi
 lfU
 nZs
@@ -58181,7 +58213,7 @@ lfU
 oGi
 cDP
 cDP
-kqi
+oGi
 oGi
 gxZ
 nZs
@@ -58384,10 +58416,10 @@ oGi
 cDP
 cDP
 oGi
-oGi
-gxZ
-nZs
-nZs
+rsP
+rsP
+rsP
+rsP
 lwb
 cDP
 nVk
@@ -58586,10 +58618,10 @@ cDP
 cDP
 oLM
 oGi
-rsP
-rsP
-rsP
-rsP
+bUM
+wJP
+wVc
+bUM
 lwb
 nVk
 nVk
@@ -58789,9 +58821,9 @@ cDP
 cDP
 oGi
 bUM
-wJP
-wVc
 bUM
+dwZ
+rsP
 lwb
 nVk
 oGi
@@ -58990,10 +59022,10 @@ oGi
 cDP
 cDP
 oGi
-bUM
+oGi
 bUM
 ojh
-rsP
+bUM
 lwb
 nVk
 cDP
@@ -59194,7 +59226,7 @@ cDP
 kqi
 oGi
 rsP
-xVy
+ojh
 rsP
 lwb
 nVk
@@ -59598,7 +59630,7 @@ dSp
 dSp
 lfU
 bUM
-ojh
+xVy
 bUM
 lwb
 lwb
@@ -59800,7 +59832,7 @@ cDP
 cDP
 oGi
 bUM
-xuv
+ojh
 bUM
 lfU
 lwb
@@ -60002,7 +60034,7 @@ dSp
 dSp
 lfU
 bUM
-ojh
+sVB
 bUM
 bUM
 bUM
@@ -60204,8 +60236,8 @@ cDP
 cDP
 oGi
 bUM
-ojh
-ojh
+iRT
+iRT
 jBz
 jVV
 nss
@@ -60406,7 +60438,7 @@ cDP
 cDP
 oGi
 bUM
-cXz
+xsL
 pJr
 thS
 qaW
@@ -60608,10 +60640,10 @@ cDP
 cDP
 oGi
 bUM
-ojh
-ojh
+acz
+iRT
 wWT
-jVV
+qaW
 jVV
 vMC
 nZs
@@ -99189,7 +99221,7 @@ pyl
 pyl
 kfw
 ika
-qWC
+lDC
 lDC
 foL
 mog
