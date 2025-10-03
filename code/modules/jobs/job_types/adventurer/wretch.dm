@@ -21,8 +21,6 @@
 
 /datum/job/wretch/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	..()
-	if(advclass_cat_rolls)
-		hugboxify_for_class_selection(spawned)
 	if(!spawned.mind)
 		return
 	spawned.ambushable = FALSE
