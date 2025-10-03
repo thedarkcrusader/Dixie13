@@ -34,11 +34,18 @@
 		/datum/pet_command/calm,
 	)
 
-/datum/action/cooldown/spell/control_undead/is_valid_target(mob/living/carbon/cast_on)
-	if(cast_on.mob_biotypes != MOB_UNDEAD)
+/datum/action/cooldown/spell/control_undead/is_valid_target(mob/living/cast_on)
+	. = ..()
+	if(!.)
 		return
+	if(!isliving(cast_on))
+		return FALSE
+	var/mob/living/victim = cast_on
+	if(victim.stat == DEAD)
+		return
+	return !victim.mind && (victim.mob_biotypes & MOB_UNDEAD)
 
-/datum/action/cooldown/spell/control_undead/cast(mob/living/carbon/cast_on)
+/datum/action/cooldown/spell/control_undead/cast(mob/living/cast_on, atom/caster)
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
 	cast_on.ai_controller.can_idle = FALSE
 	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)

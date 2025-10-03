@@ -163,7 +163,7 @@
 
 /obj/item/bodypart/MiddleClick(mob/living/user, params)
 	var/obj/item/held_item = user.get_active_held_item()
-	var/datum/species/S = original_owner.dna.species
+	var/datum/species/S = original_owner?.dna?.species
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(!skeletonized)
@@ -183,8 +183,9 @@
 				var/amt2raise = user.STAINT/3
 				if(do_after(user, used_time, src))
 					var/obj/item/reagent_containers/food/snacks/meat/steak/steak
+					var/steak_type = S?.meat || /obj/item/reagent_containers/food/snacks/meat/steak
 					for(steaks, steaks>0, steaks--)
-						steak = new S.meat(get_turf(src))	//Meat depends on species.
+						steak = new steak_type(get_turf(src))	//Meat depends on species.
 						if(rotted)
 							steak.become_rotten()
 					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
@@ -192,6 +193,20 @@
 					qdel(src)
 			else
 				to_chat(user, span_warning("[src] has no meat to butcher."))
+	else if(isanimal(user))
+		if(!skeletonized)
+			visible_message("[user] begins to eat \the [src].")
+			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+			if(do_after(user, 3 SECONDS, src))
+				var/obj/item/reagent_containers/food/snacks/meat/steak/steak
+				var/steak_type = S?.meat || /obj/item/reagent_containers/food/snacks/meat/steak
+				steak = new steak_type(get_turf(src))	//Meat depends on species.
+				if(rotted)
+					steak.become_rotten()
+				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+				qdel(src)
+		else
+			to_chat(user, span_warning("[src] has no meat to eat."))
 	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
@@ -270,7 +285,7 @@
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
 //Cannot apply negative damage
-/obj/item/bodypart/proc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_status = null)
+/obj/item/bodypart/proc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_status = null, flashes = TRUE)
 	update_HP()
 	var/hit_percent = (100-blocked)/100
 	if((!brute && !burn) || hit_percent <= 0)
@@ -300,7 +315,7 @@
 	else
 		set_burn_dam(burn_dam + burn)
 
-	if(owner)
+	if(owner && flashes)
 		if((brute + burn) < 10)
 			owner.flash_fullscreen("redflash1")
 		else if((brute + burn) < 20)

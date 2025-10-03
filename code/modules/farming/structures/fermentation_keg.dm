@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 
 		//How many are brewed
 		if(selected_recipe.brewed_amount)
-			message += "Produces [FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount) , 1)] [UNIT_FORM_STRING(FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount) , 1))] for each cycle.\n"
+			message += "Produces [UNIT_FORM_STRING(FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount), 1))] for each cycle.\n"
 
 		if(selected_recipe.brewed_item && selected_recipe.brewed_item_count)
 			message += "Produces [selected_recipe.brewed_item_count] [name_to_use] for each cycle.\n"
@@ -724,8 +724,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	var/turf/north_turf = get_step(src, NORTH)
 	input = locate(/obj/structure/water_pipe) in north_turf
 
-/obj/structure/fermentation_keg/distiller/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
-	mouseover.maptext_height = 96
+/obj/structure/fermentation_keg/distiller/return_rotation_chat()
 	if(!input)
 		return "NO INPUT"
 

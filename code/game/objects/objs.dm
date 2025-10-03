@@ -42,7 +42,17 @@
 
 	var/component_block = FALSE
 
+	/// Uses colours defined by the monarch roundstart see [lordcolor.dm]
+	var/uses_lord_coloring = FALSE
+
+	///this is a whole number converted into a multiplier
+	var/rarity_mod = 0
+
+	vis_flags = VIS_INHERIT_PLANE
+	uses_integrity = TRUE
+
 	// See /code/datums/locks
+	// Additional vars may be found in items.dm for things solely related to lock access
 
 	/**
 	 * A list of lockids for keys and locks
@@ -62,15 +72,6 @@
 	var/rattle_sound = 'sound/foley/lockrattle.ogg'
 	/// If this is currently being lockpicked
 	var/being_picked = FALSE
-
-	/// Uses colours defined by the monarch roundstart see [lordcolor.dm]
-	var/uses_lord_coloring = FALSE
-
-	///this is a whole number converted into a multiplier
-	var/rarity_mod = 0
-
-	vis_flags = VIS_INHERIT_PLANE
-	uses_integrity = TRUE
 
 /obj/vv_edit_var(vname, vval)
 	switch(vname)
@@ -125,7 +126,7 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_SETANCHORED, anchorvalue)
 	anchored = anchorvalue
 
-/obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE)
+/obj/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE)
 	..()
 	if(obj_flags & FROZEN)
 		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")

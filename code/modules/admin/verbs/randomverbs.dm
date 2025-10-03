@@ -38,7 +38,8 @@
 		if (usr.client)
 			if(usr.client.holder)
 				SEND_SOUND(usr.client, 'sound/misc/yeoldebwoink.ogg')
-				to_chat(M, "<i>I hear a voice in my head... <b>[msg]</i></b>")
+				M.playsound_local(soundin = 'sound/misc/yeoldebwoink.ogg', vol = 100)
+				to_chat(M, span_big("[span_abductor("I hear a voice in my head...")] [span_mind_control(msg)]"))
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
@@ -718,6 +719,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_HUNTED,
 		ADMIN_PUNISHMENT_MEATPIE,
 		ADMIN_PUNISHMENT_GODHAND,
+		ADMIN_PUNISHMENT_FORCECOLLAR,
 	)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in sortList(punishment_list)
@@ -821,6 +823,27 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(!typepath_choice)
 				return
 			target.be_taken_with_hand_of_god(hands[typepath_choice])
+		if(ADMIN_PUNISHMENT_FORCECOLLAR)
+			if(!ishuman(target))
+				to_chat(usr, span_warning("Target must be human!"))
+				return
+			var/static/list/collar = list(
+				"Bell Collar" = /obj/item/clothing/neck/bellcollar,
+				"Leather Collar" = /obj/item/clothing/neck/leathercollar,
+			)
+			var/typepath_choice = browser_input_list(src, "Inflict Suffering", "What kind?", collar) // Hopefully just copying and pasting actual code works <3
+			if(!typepath_choice)
+				return
+			var/mob/living/carbon/human/H = target
+			if(H.wear_neck)
+				var/obj/I = H.wear_neck
+				target.dropItemToGround(I, TRUE)
+			var/typepath = collar[typepath_choice]
+			var/obj/created_collar = new typepath (get_turf(target))
+			H.equip_to_slot(created_collar, ITEM_SLOT_NECK)
+			ADD_TRAIT(created_collar, TRAIT_NODROP, "adminabuse")
+			to_chat(target, span_userdanger("A ring of darkness restrains my neck, and a collar is made manifest!"))
+			H.add_stress(/datum/stress_event/collarcurse)
 
 	punish_log(target, punishment)
 

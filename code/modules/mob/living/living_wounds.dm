@@ -112,7 +112,7 @@
 
 	var/added_wound
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
-		if(BCLASS_SMASH, BCLASS_BLUNT)
+		if(BCLASS_SMASH, BCLASS_BLUNT, BCLASS_PUNCH)
 			switch(dam)
 				if(20 to INFINITY)
 					added_wound = /datum/wound/bruise/large
@@ -249,7 +249,4 @@
 			embedder.forceMove(drop_location)
 		else
 			qdel(embedder)
-	if(!has_embedded_objects())
-		clear_alert("embeddedobject")
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "embedded")
 	return TRUE

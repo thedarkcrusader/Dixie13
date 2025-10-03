@@ -14,17 +14,17 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
-	outfit = /datum/outfit/job/archivist
+	outfit = /datum/outfit/archivist
 	spells = list(
 		/datum/action/cooldown/spell/undirected/learn,
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
 	)
 	give_bank_account = 100
 
-/datum/outfit/job/archivist
 	job_bitflag = BITFLAG_ROYALTY
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 
-/datum/outfit/job/archivist/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	if(H.dna.species.id == SPEC_ID_DWARF)
@@ -48,9 +48,6 @@
 	neck = /obj/item/clothing/neck/psycross/noc
 	backpack_contents = list(/obj/item/textbook = 1, /obj/item/natural/feather)
 
-	if(H.patron != /datum/patron/divine/noc)
-		H.set_patron(/datum/patron/divine/noc)
-
 	H.grant_language(/datum/language/elvish)
 	H.grant_language(/datum/language/dwarvish)
 	H.grant_language(/datum/language/zalad)
@@ -59,6 +56,8 @@
 	H.grant_language(/datum/language/oldpsydonic)
 	H.grant_language(/datum/language/orcish)
 	H.grant_language(/datum/language/deepspeak)
+	if(istype(H.patron, /datum/patron/inhumen/zizo))
+		H.grant_language(/datum/language/undead)
 	H.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)

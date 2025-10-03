@@ -42,10 +42,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	SSmapping.retainer.vampires |= owner
 	move_to_spawnpoint()
 	owner.special_role = name
+	owner.current.adjust_bloodpool()
 
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/vampdude = owner.current
 		vampdude.adv_hugboxing_cancel()
+		vampdude.hud_used?.shutdown_bloodpool()
+		vampdude.hud_used?.initialize_bloodpool()
+		vampdude.hud_used?.bloodpool.set_fill_color("#510000")
 
 		if(!forced)
 			// Show clan selection interface
@@ -94,7 +98,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/proc/create_custom_clan(mob/living/carbon/human/vampdude)
 	// Get custom clan name
-	custom_clan_name = input(vampdude, "Enter your custom clan name:", "Custom Clan", "Custom Clan") as text|null
+	custom_clan_name = browser_input_text(vampdude, "Enter your custom clan name", max_length = MAX_NAME_LEN)
 	if(!custom_clan_name)
 		custom_clan_name = "Custom Clan"
 
