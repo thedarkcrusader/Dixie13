@@ -143,7 +143,7 @@
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
-		if(human_owner.checkcritarmor(zone_precise, bclass))
+		if(human_owner.check_crit_armor(zone_precise, bclass))
 			do_crit = FALSE
 
 	if(user)
@@ -184,10 +184,10 @@
 			continue
 		changed_wound = wound
 
-	changed_wound?.upgrade(damage)
-
 	if(!changed_wound)
-		return add_wound(wound_type)
+		changed_wound = add_wound(wound_type)
+
+	changed_wound?.upgrade(bclass, damage)
 
 	return changed_wound
 

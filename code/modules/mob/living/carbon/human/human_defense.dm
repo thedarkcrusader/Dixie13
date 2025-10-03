@@ -66,7 +66,7 @@
 	return protection
 
 /// Return the armor that blocks the crit
-/mob/living/carbon/human/proc/checkcritarmor(def_zone, d_type)
+/mob/living/carbon/human/proc/check_crit_armor(def_zone, d_type)
 	if(!d_type)
 		return FALSE
 	var/obj/item/clothing/best_armor

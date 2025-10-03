@@ -500,7 +500,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	whp -= whp * healing_power
 
-	if(can_sew && sew_threshold > 0)
+	if(sew_threshold > 0)
 		sew_threshold -= sew_threshold * healing_power
 	if(woundpain > 0)
 		woundpain -= woundpain * healing_power
@@ -527,7 +527,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 #define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.
 
 /// Upgrades a wound's stats based on damage dealt.
-/datum/wound/dynamic/proc/upgrade(damage)
+/datum/wound/dynamic/proc/upgrade(bclass, damage)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(is_maxed)
@@ -541,15 +541,22 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	sew_threshold += damage * upgrade_sew_threshold
 	woundpain += damage * upgrade_pain
 
-	update_name()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		if(armor_check(human_owner.check_crit_armor(src, bclass)))
+			return FALSE
 
 	if(maxed_check())
 		is_maxed = TRUE
 		return TRUE
+
+	update_name()
+
 	if(clotting_rate)
 		clotting_rate = max(0.01, (clotting_rate - CLOT_DECREASE_PER_HIT))
 	if(clotting_threshold)
 		clotting_threshold += CLOT_THRESHOLD_INCREASE_PER_HIT
+
 	return TRUE
 
 #undef CLOT_THRESHOLD_INCREASE_PER_HIT
@@ -575,18 +582,19 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 #undef CLOT_RATE_ARTERY
 #undef CLOT_THRESHOLD_ARTERY
 
-/datum/wound/dynamic/proc/armor_check(armor)
+/datum/wound/dynamic/proc/armor_check(obj/item/clothing/armor)
 	if(!armor || isnull(protected_bleed_clamp))
 		is_armor_maxed = FALSE
-		return
+		return FALSE
 	if(bleed_rate < protected_bleed_clamp)
-		return
+		return FALSE
 	bleed_rate = protected_bleed_clamp
 	if(is_armor_maxed)
-		return
+		return TRUE
 	playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
 	owner.visible_message(
 		span_crit("The wound tears open from [bodypart_owner.owner]'s \
-		<b>[bodypart_owner]</b>, but [bodypart_owner.p_their()] armor won't let it go any further!")
+		<b>[bodypart_owner]</b>, but [bodypart_owner.p_their()] [armor] won't let it go any further!")
 	)
 	is_armor_maxed = TRUE
+	return TRUE
