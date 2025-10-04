@@ -86,6 +86,7 @@
 	sleep_healing = passive_healing
 	passive_healing = 0
 	bleed_rate += 1.2
+	update_name()
 	return TRUE
 
 /datum/wound/dynamic/bruise/upgrade(bclass, damage)

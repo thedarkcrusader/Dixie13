@@ -587,6 +587,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			clamp = clotting_threshold
 		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), clamp)
 
+	update_name()
+
 #define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
 #define CLOT_THRESHOLD_ARTERY 2
 
