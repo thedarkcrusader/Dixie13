@@ -3,7 +3,6 @@
 	desc = "Attempt to make a undead your ally."
 	button_icon_state = "raiseskele"
 	sound = 'sound/vo/smokedrag.ogg'
-	charge_sound = 'sound/magic/antimagic.ogg'
 	self_cast_possible = FALSE
 
 	cast_range = 5
