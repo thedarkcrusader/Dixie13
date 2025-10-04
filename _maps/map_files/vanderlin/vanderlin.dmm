@@ -4439,7 +4439,7 @@
 	redstone_id = "nite_shutter"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/blocks/stonered,
+/turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "cBu" = (
 /obj/machinery/light/fueled/wallfire/candle,
@@ -4886,7 +4886,8 @@
 /area/rogue/indoors/town/dwarfin)
 "cPp" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
-/obj/structure/closet/crate/chest/neu,
+/obj/structure/table/wood/plain_alt,
+/obj/item/natural/cloth,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "cPN" = (
@@ -6520,6 +6521,10 @@
 /obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
+"dQv" = (
+/obj/structure/ladder,
+/turf/open/floor/cobblerock,
+/area/rogue/under/town/basement)
 "dQT" = (
 /obj/structure/fermentation_keg/random,
 /turf/open/floor/blocks,
@@ -10121,13 +10126,6 @@
 "fNY" = (
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/roofs)
-"fOd" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/machinery/light/fueled/wallfire/candle/blue,
-/turf/open/floor/blocks/stonered,
-/area/rogue/indoors/town/clinic_large/apothecary)
 "fOt" = (
 /obj/structure/chair/wood/alt{
 	dir = 8
@@ -10735,7 +10733,8 @@
 "ghj" = (
 /obj/structure/rack/shelf/biggest,
 /obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
-/turf/open/floor/blocks/stonered,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "ghH" = (
 /obj/structure/table/wood/plain,
@@ -12736,9 +12735,7 @@
 /area/rogue/indoors/town/shop)
 "hqv" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
-/obj/structure/stairs/stone/church{
-	dir = 1
-	},
+/obj/structure/closet/crate/chest/neu,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "hqF" = (
@@ -13875,8 +13872,7 @@
 /turf/open/floor/twig,
 /area/rogue/indoors/town/manor/dungeoneer)
 "hZc" = (
-/obj/structure/table/wood/plain_alt,
-/obj/item/natural/cloth,
+/obj/structure/ladder,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "hZe" = (
@@ -16621,6 +16617,12 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/soilsons)
+"jLP" = (
+/obj/structure/ladder,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "jLZ" = (
 /obj/structure/ladder,
 /turf/open/floor/blocks,
@@ -27327,13 +27329,7 @@
 /area/rogue/outdoors/river)
 "qAP" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
-/obj/structure/fluff/railing/wood{
-	pixel_y = -3
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 8
-	},
-/turf/open/transparent/openspace,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "qBl" = (
 /obj/structure/stairs/stone/church{
@@ -31878,9 +31874,7 @@
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/manor/heir/heir2)
 "tqE" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/ladder,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "tqW" = (
@@ -35382,18 +35376,10 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
 "vCh" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid"
-	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
 /obj/structure/bars/passage/shutter/open{
 	redstone_id = "nite_shutter"
 	},
-/turf/open/floor/blocks/stonered,
+/turf/closed/wall/mineral/stone/window/moss,
 /area/rogue/indoors/town/clinic_large/apothecary)
 "vCn" = (
 /obj/structure/fluff/walldeco/wantedposter/r,
@@ -35903,10 +35889,8 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
 "vSJ" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4
-	},
-/turf/open/transparent/openspace,
+/obj/structure/closet/crate/chest/neu,
+/turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "vSM" = (
 /obj/structure/fluff/railing/border{
@@ -37390,12 +37374,6 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/dwarfin)
-"wJP" = (
-/obj/structure/stairs/stone/church{
-	dir = 1
-	},
-/turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
 "wKt" = (
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/ruinedwood/spiral,
@@ -58011,7 +57989,7 @@ oGi
 oGi
 cDP
 cDP
-kqi
+cDP
 oGi
 lfU
 nZs
@@ -58213,7 +58191,7 @@ lfU
 oGi
 cDP
 cDP
-oGi
+kqi
 oGi
 gxZ
 nZs
@@ -58415,11 +58393,11 @@ oGi
 oGi
 cDP
 cDP
+kqi
 oGi
-rsP
-rsP
-rsP
-rsP
+gxZ
+nZs
+nZs
 lwb
 cDP
 nVk
@@ -58617,11 +58595,11 @@ cDP
 cDP
 cDP
 oLM
+cDP
 oGi
-bUM
-wJP
-wVc
-bUM
+gxZ
+nZs
+nZs
 lwb
 nVk
 nVk
@@ -58819,10 +58797,10 @@ cDP
 cDP
 cDP
 cDP
-oGi
+cDP
+rsP
+rsP
 bUM
-bUM
-dwZ
 rsP
 lwb
 nVk
@@ -59021,10 +58999,10 @@ nhr
 oGi
 cDP
 cDP
-oGi
-oGi
+cDP
 bUM
-ojh
+dQv
+wVc
 bUM
 lwb
 nVk
@@ -59223,10 +59201,10 @@ lfU
 oGi
 cDP
 cDP
-kqi
-oGi
+cDP
+bUM
 rsP
-ojh
+dwZ
 rsP
 lwb
 nVk
@@ -98801,9 +98779,9 @@ vCh
 ghj
 nmd
 nmd
+nmd
+nmd
 cDb
-nmd
-nmd
 wfO
 fFQ
 wLR
@@ -98999,13 +98977,13 @@ vDD
 ofd
 uho
 akL
-uho
-nMb
-fOd
+isB
+jLP
+nmd
+nmd
+nmd
 nmd
 cDb
-nmd
-nmd
 wfO
 fFQ
 wLR
@@ -99203,8 +99181,8 @@ xhN
 iSk
 akL
 cBs
-nmd
-nmd
+cDb
+cDb
 sAy
 jNz
 sbR
