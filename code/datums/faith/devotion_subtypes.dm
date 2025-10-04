@@ -32,27 +32,12 @@
 
 /datum/devotion/divine/necra
 	miracles = list(
-		CLERIC_T0 = /datum/action/cooldown/spell/healing,
+		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/avert),
 		CLERIC_T1 = /datum/action/cooldown/spell/burial_rites,
 		CLERIC_T2 = /datum/action/cooldown/spell/undirected/soul_speak,
-		CLERIC_T3 = /datum/action/cooldown/spell/aoe/churn_undead,
+		CLERIC_T3 = list(/datum/action/cooldown/spell/aoe/churn_undead, /datum/action/cooldown/spell/aoe/abrogation),
 	)
 	traits = list(TRAIT_DEATHSIGHT)
-
-/datum/devotion/divine/necra/make_acolyte()
-	. = ..()
-	miracles_extra += /datum/action/cooldown/spell/avert
-	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
-
-/datum/devotion/divine/necra/make_cleric()
-	. = ..()
-	miracles_extra += /datum/action/cooldown/spell/avert
-	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
-
-/datum/devotion/divine/necra/make_templar()
-	. = ..()
-	miracles_extra += /datum/action/cooldown/spell/aoe/abrogation
-	miracles_extra += /datum/action/cooldown/spell/avert
 
 /datum/devotion/divine/ravox
 	miracles = list(
