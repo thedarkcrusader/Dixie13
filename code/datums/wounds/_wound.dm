@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		woundpain = max(woundpain - (woundpain * multiplier), initial(woundpain))
 	if(bleed_rate > 0)
 		var/clamp = initial(bleed_rate)
-		if(clotting_threshold && clotting_threshold < clamp)
+		if(!isnull(clotting_threshold) && clotting_threshold < clamp)
 			clamp = clotting_threshold
 		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), clamp)
 
