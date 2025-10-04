@@ -491,7 +491,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(!can_sew)
 		return FALSE
 	sewn_bleed_rate = round(bleed_rate * 0.05, DAMAGE_PRECISION)
-	sewn_whp = round(whp * 0.6, DAMAGE_PRECISION)
+	sewn_whp = round(whp * 0.45, DAMAGE_PRECISION)
 	sewn_clotting_rate = round(clotting_rate * 1.2, DAMAGE_PRECISION)
 	sewn_clotting_threshold = round(clotting_threshold * 0.45, DAMAGE_PRECISION)
 	sewn_woundpain = round(woundpain * 0.4, DAMAGE_PRECISION)
