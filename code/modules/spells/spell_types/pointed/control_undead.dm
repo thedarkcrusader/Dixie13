@@ -6,7 +6,7 @@
 	self_cast_possible = FALSE
 
 	cast_range = 5
-	spell_type = SPELL_RITUOS
+	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE_UNHOLY
 	associated_skill = /datum/skill/magic/holy
 	attunements = list(
