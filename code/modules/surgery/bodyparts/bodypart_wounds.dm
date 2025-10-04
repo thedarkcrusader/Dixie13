@@ -578,7 +578,7 @@
 	for(var/datum/wound/wound as anything in wounds)
 		if(wound.bleed_rate < highest_bleed_rate)
 			continue
-		if(wound.is_sewn)
+		if(wound.is_sewn())
 			continue
 		highest_bleed_rate = wound.bleed_rate
 	for(var/obj/item/embedded as anything in embedded_objects)
