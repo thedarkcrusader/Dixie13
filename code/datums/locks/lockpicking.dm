@@ -33,18 +33,19 @@
 /obj/proc/picked(mob/living/user, obj/lockpick_used, skill_level, difficulty)
 	finish_lockpicking(user)
 
-	if(prob(60 - (skill_level * 10)))
+	//difficulty goes from 1 to 6, hence 6 - difficulty
+	if(prob(60 - (skill_level * 10) + (6 - difficulty * 10)))
 		to_chat(user, span_notice("My \the [lockpick_used] broke!"))
-		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
+		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level) + (10 * 5 - difficulty), extrarange = SILENCED_SOUND_EXTRARANGE)
 		qdel(lockpick_used)
 
 	if(lock)
 		lock.locked = FALSE
 		lock.tampered = TRUE
 
-	playsound(loc, 'sound/items/LPWin.ogg', 150 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
+	playsound(loc, 'sound/items/LPWin.ogg', 100 - (15 * skill_level) + (10 * 5 - difficulty), extrarange = SILENCED_SOUND_EXTRARANGE)
 
-	var/amt2raise = user.STAINT + (50 / difficulty)
+	var/amt2raise = (user.STAINT / 2) * (50 / difficulty)
 	var/boon = user.get_learning_boon(/datum/skill/misc/lockpicking)
 	user.adjust_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
 	return TRUE
@@ -84,7 +85,7 @@
 	imagery.skill_level = skill_level
 	lock.being_picked = TRUE
 
-	playsound(user, 'sound/items/LPstart.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
+	playsound(user, 'sound/items/LPstart.ogg', 100 - (15 * skill_level) + (10 * 5 - difficulty), extrarange = SILENCED_SOUND_EXTRARANGE)
 
 	screen += imagery
 	imagery.autofire_on(imagery.clicker)
@@ -304,14 +305,15 @@
 	var/pick_y = 6 + cos(lock_angle)*6 - 6
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			if(prob(10 - skill_level))
+			if(prob(10 - skill_level + (6 - difficulty) * 2))
 				to_chat(picker, span_notice("My \the [the_lockpick] broke!"))
-				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
+				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level) + (10 * 5 - difficulty), extrarange = SILENCED_SOUND_EXTRARANGE)
 				qdel(the_lockpick)
-			break_checking_cooldown = world.time + 7 SECONDS
+			break_checking_cooldown = world.time + 9 - (7 - difficulty) SECONDS
+			//break check cooldown at highest difficulty is 3 seconds, at lowest its 8
 
 		lock_angle -= 20
-		playsound(picker.loc, pick('sound/items/LPtry.ogg', 'sound/items/LPtry2.ogg'), 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
+		playsound(picker.loc, pick('sound/items/LPtry.ogg', 'sound/items/LPtry2.ogg'), 100 - (15 * skill_level) + (10 * 5 - difficulty), extrarange = SILENCED_SOUND_EXTRARANGE)
 	if(lock_angle >= 1 && !failing && !playing_lock_sound)
 		play_turn_sound()
 		playing_lock_sound = TRUE
