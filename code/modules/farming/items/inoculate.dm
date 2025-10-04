@@ -1,6 +1,6 @@
 /obj/item/neuFarm/seed/inoculate
 	name = "mushroom inoculate"
-	desc = "I dunno right now"
+	desc = "A cloth covered in mushroom spores, used to inoculate mushroom mounds for cultivation."
 	icon_state = "inoculate"
 	icon = 'icons/roguetown/items/produce.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -27,7 +27,7 @@
 		visible_message(span_warning("[L] crushes [src] underfoot."))
 		qdel(src)
 
-/* /obj/item/neuFarm/seed/examine(mob/user)
+/obj/item/neuFarm/seed/inoculate/examine(mob/user)
 	. = ..()
 	var/show_real_identity = FALSE
 	if(isliving(user))
@@ -43,21 +43,24 @@
 	if(show_real_identity)
 		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]
 		if(plant_def_instance)
-			var/examine_name = "[plant_def_instance.seed_identity]"
-			var/datum/plant_genetics/seed_genetics_instance = seed_genetics
-			if(seed_genetics_instance.seed_identity_modifier)
-				examine_name = "[seed_genetics_instance.seed_identity_modifier] " + examine_name
-			. += span_notice("I can tell this is some [examine_name].")
-			. += plant_def_instance.get_examine_details()
-	*/
+			var/examine_name = "[plant_def_instance.inoculate_identity]"
+			var/datum/plant_genetics/inoculate_genetics_instance = seed_genetics
+			if(inoculate_genetics_instance.inoculate_identity_modifier)
+				examine_name = "[inoculate_genetics_instance.inoculate_identity_modifier] " + examine_name
+			. += span_notice("I can tell this is a [examine_name].")
+			. += plant_def_instance.get_examine_details()4
+
 /obj/item/neuFarm/seed/inoculate/attack_atom(atom/attacked_atom, mob/living/user)
 	if(!isturf(attacked_atom))
 		return ..()
 
 	var/obj/structure/soil/soil
+	var/obj/structure/soil/mushmound/mushmound
 	if(soil)
 		to_chat(user, span_notice("I can't plant this in the bare soil, I need a mushroom mound!"))
 		return
+	if(mushmound)
+		try
 
 /obj/item/neuFarm/seed/inoculate/proc/try_plant_inoculate(mob/living/user, obj/structure/soil/mushmound/mushmound)
 	if(mushmound.plant)

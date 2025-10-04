@@ -39,3 +39,13 @@
 			inoculate.try_plant_inoculate(user, src)
 		return TRUE
 	return FALSE
+
+/obj/structure/soil/mushmound/proc/try_handle_inoculate_planting(obj/item/attacking_item, mob/user, params)
+	var/obj/item/old_item
+	if(istype(attacking_item, /obj/item/storage/sack))
+		var/list/inoculates= list()
+		for(var/obj/item/neuFarm/seed/inoculate/inoculate in attacking_item.contents)
+			inoculates |= inoculate
+		old_item = attacking_item
+		if(LAZYLEN(inoculates))
+			attacking_item = pick(inoculates)
