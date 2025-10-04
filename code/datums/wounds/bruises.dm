@@ -68,6 +68,8 @@
 	upgrade_whp = 1
 	upgrade_pain = 1
 
+	var/upgrade_heal = 0.4
+
 // :(
 /datum/wound/dynamic/bruise/update_name()
 	var/prefix
@@ -91,7 +93,7 @@
 	if(!.)
 		return
 
-	passive_healing = max(passive_healing + 0.4, 8)
+	passive_healing = max(passive_healing + upgrade_heal, 8)
 
 	// Enable bleeds
 	if(!upgrade_bleed_rate && woundpain >= 55)
