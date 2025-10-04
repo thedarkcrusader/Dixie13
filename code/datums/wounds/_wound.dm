@@ -581,7 +581,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(woundpain > 0)
 		woundpain = max(woundpain - (woundpain * multiplier), was_sewn ? sewn_woundpain : initial(woundpain))
 	if(bleed_rate > 0)
-		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), was_sewn ? sewn_bleed_rate : initial(bleed_rate)
+		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), was_sewn ? sewn_bleed_rate : initial(bleed_rate))
 
 #define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
 #define CLOT_THRESHOLD_ARTERY 2
