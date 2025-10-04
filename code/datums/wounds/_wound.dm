@@ -490,11 +490,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/dynamic/sew_wound()
 	if(!can_sew)
 		return FALSE
-	sewn_bleed_rate = bleed_rate * 0.05
-	sewn_whp = whp * 0.6
-	sewn_clotting_rate = clotting_rate * 1.2
-	sewn_clotting_threshold = clotting_threshold * 0.45
-	sewn_woundpain = woundpain * 0.4
+	sewn_bleed_rate = round(bleed_rate * 0.05, DAMAGE_PRECISION)
+	sewn_whp = round(whp * 0.6, DAMAGE_PRECISION)
+	sewn_clotting_rate = round(clotting_rate * 1.2, DAMAGE_PRECISION)
+	sewn_clotting_threshold = round(clotting_threshold * 0.45, DAMAGE_PRECISION)
+	sewn_woundpain = round(woundpain * 0.4, DAMAGE_PRECISION)
 	return ..()
 
 /datum/wound/dynamic/sewing_step_complete(mob/living/doctor)
@@ -572,14 +572,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /// Like upgrade() but takes a multipler as percentage to decrease values by instead
 /datum/wound/dynamic/proc/downgrade(multiplier)
-	whp = max(whp - (whp * multiplier), initial(whp))
+	var/was_sewn = is_sewn()
+
+	whp = max(whp - (whp * multiplier), was_sewn ? sewn_whp : initial(whp))
 
 	if(sew_threshold > 0)
 		sew_threshold = max(sew_threshold - (sew_threshold * multiplier), initial(sew_threshold))
 	if(woundpain > 0)
-		woundpain = max(woundpain - (woundpain * multiplier), initial(woundpain))
+		woundpain = max(woundpain - (woundpain * multiplier), was_sewn ? sewn_woundpain : initial(woundpain))
 	if(bleed_rate > 0)
-		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), initial(bleed_rate))
+		bleed_rate = max(bleed_rate - (bleed_rate * multiplier), was_sewn ? sewn_bleed_rate : initial(bleed_rate)
 
 #define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
 #define CLOT_THRESHOLD_ARTERY 2
