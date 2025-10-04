@@ -29293,7 +29293,7 @@
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/manor/vault,
 /turf/open/floor/tile,
-/area/rogue/under/town/basement)
+/area/rogue/indoors/town/vault)
 "rWI" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/dirt,
@@ -61901,8 +61901,8 @@ fkZ
 vgJ
 tHe
 tHe
-tHe
-tHe
+mcU
+mcU
 mcU
 mRh
 gye
@@ -62103,7 +62103,7 @@ fkZ
 vgJ
 vgJ
 vgJ
-tHe
+mcU
 rWp
 gVa
 qny
@@ -62305,8 +62305,8 @@ fkZ
 vgJ
 vgJ
 vgJ
-tHe
-tHe
+mcU
+mcU
 mcU
 pLX
 ozc
