@@ -7,7 +7,7 @@
 	self_cast_possible = FALSE
 
 	cast_range = 5
-	spell_type = SPELL_MIRACLE
+	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
 	attunements = list(
@@ -52,7 +52,8 @@
 	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)
 	cast_on.ai_controller.CancelActions()
 	cast_on.ai_controller.set_blackboard_key(BB_PET_TARGETING_DATUM, new /datum/targetting_datum/basic/not_friends())
-	cast_on.faction |= FACTION_CABAL
+	cast_on.befriend(caster)
+	cast_on.pet_passive = TRUE
 
 	owner.visible_message(
 		span_greentext("[owner] soothes \the [cast_on] with zizo's blessing."),
