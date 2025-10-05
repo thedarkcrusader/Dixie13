@@ -39,6 +39,19 @@
 	)
 	traits = list(TRAIT_DEATHSIGHT)
 
+<<<<<<< HEAD
+=======
+/datum/devotion/divine/necra/make_cleric()
+	. = ..()
+	miracles_extra += /datum/action/cooldown/spell/avert
+	traits = list(TRAIT_DEATHSIGHT)
+
+/datum/devotion/divine/necra/make_templar()
+	. = ..()
+	miracles_extra -= /datum/action/cooldown/spell/aoe/abrogation
+	miracles_extra += list(/datum/action/cooldown/spell/aoe/churn_undead, /datum/action/cooldown/spell/avert)
+
+>>>>>>> f8f81d3f9 (Gives necran cleric veiled whispers)
 /datum/devotion/divine/ravox
 	miracles = list(
 		CLERIC_T0 = /datum/action/cooldown/spell/healing,
