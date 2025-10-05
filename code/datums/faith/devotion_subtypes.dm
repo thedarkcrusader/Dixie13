@@ -38,13 +38,19 @@
 		CLERIC_T3 = /datum/action/cooldown/spell/aoe/churn_undead,
 	)
 	traits = list(TRAIT_DEATHSIGHT)
+<<<<<<< HEAD
+=======
+
+/datum/devotion/divine/necra/make_acolyte()
+	. = ..()
+	miracles_extra += /datum/action/cooldown/spell/avert
+>>>>>>> b4f109b79 (Gives templars back veiled whispers)
 
 <<<<<<< HEAD
 =======
 /datum/devotion/divine/necra/make_cleric()
 	. = ..()
 	miracles_extra += /datum/action/cooldown/spell/avert
-	traits = list(TRAIT_DEATHSIGHT)
 
 /datum/devotion/divine/necra/make_templar()
 	. = ..()
