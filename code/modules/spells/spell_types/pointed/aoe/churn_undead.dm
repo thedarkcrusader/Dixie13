@@ -14,8 +14,8 @@
 	invocation_type = INVOCATION_SHOUT
 
 	click_to_activate = FALSE
-	charge_time = 3 SECONDS
-	charge_slowdown = 0.3
+	charge_time = 5 SECONDS
+	charge_slowdown = 0.5
 	cooldown_time = 60 SECONDS
 	spell_cost = 100
 
