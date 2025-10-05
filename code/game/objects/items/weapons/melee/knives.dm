@@ -7,7 +7,7 @@
 	throwforce = DAMAGE_KNIFE
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/knives.dmi'
 	icon_state = "huntingknife"
 	gripsprite = FALSE
 	dropshrink = 0.8
@@ -170,11 +170,12 @@
 		wdefense = 2
 
 /obj/item/weapon/knife/scissors
-	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
-	max_integrity = INTEGRITY_WORST
 	name = "iron scissors"
 	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
+	icon = 'icons/roguetown/weapons/tools.dmi'
 	icon_state = "iscissors"
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
+	max_integrity = INTEGRITY_WORST
 	melting_material = /datum/material/iron
 	melt_amount = 75
 
@@ -295,7 +296,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "iron jile"
 	desc = "A curved iron dagger of Lakkarian origin. Nobles of Napatahuum were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "jile_iron"
 	melting_material = null
 	sellprice = 12
@@ -305,7 +306,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 	name = "iron seme"
 	desc = "A broad iron dagger of ancient Lakkarian design. Popular amongst the indigenous jungle elf tribes of the Lakkarian Rainforests."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "njora_iron"
 	melting_material = null
 	sellprice = 12
@@ -325,7 +326,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "steel jile"
 	desc = "A curved steel dagger of Lakkarian origin. Nobles of Napatahuum were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "jile_steel"
 	melting_material = null
 	wdefense = AVERAGE_PARRY
@@ -336,7 +337,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 	name = "steel seme"
 	desc = "A broad steel dagger of ancient Lakkarian design. Popular amongst the indigenous jungle elf tribes of the Lakkarian Rainforests."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "njora_steel"
 	melting_material = null
 	wdefense = AVERAGE_PARRY
@@ -351,20 +352,22 @@
 /obj/item/weapon/knife/dagger/steel/pestrasickle
 	name ="plaguebringer sickle"
 	desc = "A wicked edge brings feculent delights."
+	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "pestrasickle"
 	max_integrity = INTEGRITY_STANDARD
 	wdefense = GOOD_PARRY //They use a dagger, but it should be fine for them to also parry with it.
+
 //................ Fanged dagger ............... //
 /obj/item/weapon/knife/dagger/steel/dirk
 	name = "fanged dagger"
 	desc = "A dagger modeled after the fang of an anthrax spider."
+	icon = 'icons/roguetown/weapons/32/elven.dmi'
 	icon_state = "spiderdagger"
 	melting_material = null
 
 /obj/item/weapon/knife/dagger/steel/dirk/baotha //this is a placeholder weapon until they actually receive a proper baothan weapon
 	name = "laced dagger"
 	desc = "Whispers of bliss seep deeper than the blade."
-	icon_state = "spiderdagger"
 	melting_material = null
 	color = "#f78ccc"
 	max_integrity = 200
@@ -394,6 +397,7 @@
 /obj/item/weapon/knife/dagger/silver/psydon
 	name = "psydonian dagger"
 	desc = "A silver dagger favored by close range fighters of the inquisition."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psydagger"
 	sellprice = 60
 

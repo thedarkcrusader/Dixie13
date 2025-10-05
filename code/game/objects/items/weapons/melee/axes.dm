@@ -2,6 +2,7 @@
 ==========================================================*/
 
 /obj/item/weapon/axe
+	icon = 'icons/roguetown/weapons/32/axes_picks.dmi'
 	item_state = "axe"
 	parrysound = "parrywood"
 	swingsound = BLADEWOOSH_MED
@@ -223,7 +224,7 @@
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	name = "iron kasuyu"
 	desc = "An iron axe hailing from the nation of Lakkari. Great for felling trees and foes alike."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "nsapo_iron"
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STANDARD
@@ -265,6 +266,7 @@
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	name = "psydonian axe"
 	desc = "An axe forged of silver with a small psycross attached, Dendor and his foul beastmen be damned."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psyaxe"
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STANDARD
@@ -301,7 +303,7 @@
 	force_wielded = DAMAGE_AXE_WIELD
 	name = "pickaxe"
 	desc = "An odd mix of a pickaxe front and a hatchet blade back, capable of being switched between."
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/axes_picks.dmi'
 	icon_state = "paxe"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/pick)
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
@@ -361,7 +363,7 @@
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	name = "steel kasuyu"
 	desc = "An steel axe hailing from the nation of Lakkari. Great for felling trees and foes alike."
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "nsapo_steel"
 	max_blade_int = 300
 	max_integrity = INTEGRITY_STANDARD

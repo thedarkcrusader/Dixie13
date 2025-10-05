@@ -39,9 +39,9 @@
 /obj/item/flashlight/flare/torch/lantern/psycenser
 	name = "Golgatha"
 	desc = "A masterfully-crafted thurible that, when opened, emits a ghastly perfume that reinvigorates the flesh-and-steel. It is said to contain a linger portion of Psydon."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psycenser"
 	item_state = "psycenser"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	light_outer_range = 8
 	light_color ="#70d1e2"
 	possible_item_intents = list(/datum/intent/flail/strike/smash/golgotha)
@@ -115,7 +115,7 @@
 		explosion(get_turf(A),devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flame_range = 2, flash_range = 4, smoke = FALSE)
 		fuel = 0
 		turn_off()
-		icon_state = "psycenser-broken"
+		//icon_state = "psycenser-broken"
 		possible_item_intents = list(/datum/intent/weep)
 		user.update_a_intents()
 		for(var/mob/living/carbon/human/H in view(get_turf(src)))

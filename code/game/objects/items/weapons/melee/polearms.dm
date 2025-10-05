@@ -3,7 +3,7 @@
 
 /obj/item/weapon/polearm
 	throwforce = DAMAGE_STAFF
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/64/polearms.dmi'
 	SET_BASE_PIXEL(-16, -16)
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
@@ -253,6 +253,7 @@
 	force_wielded = DAMAGE_SPEAR_WIELD
 	name = "psydonian spear"
 	desc = "A polearm with a twisting trident head perfect for mangling the bodies of the impure."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
 	icon_state = "psyspear"
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	melting_material = /datum/material/silver
@@ -453,6 +454,7 @@
 	force_wielded = DAMAGE_HALBERD_WIELD
 	name = "psydonian halberd"
 	desc = "A mighty halberd capable of cutting down the heretical with remarkable ease, be it effigy, man, or beast."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
 	icon_state = "psyhalberd"
 	melting_material = /datum/material/silver
 	melt_amount = 150

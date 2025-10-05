@@ -296,7 +296,7 @@
 /datum/anvil_recipe/weapons/iron/shortsword_iron
 	name = "Short Sword"
 	recipe_name = "a Short Sword"
-	created_item = /obj/item/weapon/sword/short
+	created_item = /obj/item/weapon/sword/short/iron
 
 /datum/anvil_recipe/weapons/iron/ida
 	name = "Ida"
@@ -335,7 +335,7 @@
 	name = "Iron Kaskara"
 	recipe_name = "a Iron Kaskara"
 	appro_skill = /datum/skill/craft/weaponsmithing
-	created_item = /obj/item/weapon/sword/kaskara/iron
+	created_item = /obj/item/weapon/sword/iron/kaskara
 
 /datum/anvil_recipe/weapons/iron/towershield
 	name = "Tower Shield (+Small Log)"

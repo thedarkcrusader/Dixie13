@@ -6,7 +6,7 @@
 	name = "master's rod"
 	desc = "Bend the knee."
 	icon_state = "scepter"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/special.dmi'
 	sharpness = IS_BLUNT
 	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
@@ -120,6 +120,7 @@
 	force = 15
 	force_wielded = 15
 	name = "stunmace"
+	icon = 'icons/roguetown/weapons/32/special.dmi'
 	icon_state = "stunmace0"
 	desc = "A dwarven invention, a mace that bears tiny soul-gems that imbue the crown of the mace with lightning mana."
 	gripped_intents = null

@@ -7,7 +7,7 @@
 	name = "whip"
 	desc = "A leather whip, intertwining rope, leather and a fanged tip to inflict enormous pain. Favored by slavers and beast-tamers."
 	icon_state = "whip"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/whips_flails.dmi'
 	sharpness = IS_BLUNT
 	//dropshrink = 0.75
 	wlength = WLENGTH_GREAT
@@ -99,6 +99,7 @@
 	force = DAMAGE_WHIP+2
 	name = "psydonian whip"
 	desc = "A whip fashioned with the iconography of Psydon, and crafted entirely out of silver."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psywhip"
 	resistance_flags = FIRE_PROOF
 	smeltresult = /obj/item/ingot/silver
@@ -166,6 +167,7 @@
 	force = DAMAGE_WHIP+3
 	name = "lashkiss whip"
 	desc = "A dark whip with segmented, ashen spines for a base. Claimed to be hewn from dendrified prisoners of terror."
+	icon = 'icons/roguetown/weapons/32/elven.dmi'
 	icon_state = "spiderwhip"
 	minstr = 6
 
@@ -192,12 +194,12 @@
 /datum/intent/whip/crack/metal
 	penfactor = 20
 
-
 //................ Xylix Whip ............... //
 /obj/item/weapon/whip/xylix
 	name = "cackle lash"
 	force = DAMAGE_WHIP+4
 	desc = "The chimes of this whip are said to sound as the trickster's laughter itself."
+	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "xylixwhip"
 
 /obj/item/weapon/whip/nagaika

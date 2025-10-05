@@ -6,7 +6,7 @@
 	name = "military flail"
 	desc = "A sturdy handle afixed to a cruel spiked ball with a harrowing metal chain."
 	icon_state = "iflail"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/whips/flail.dmi'
 	sharpness = IS_BLUNT
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
@@ -115,6 +115,7 @@
 /obj/item/weapon/flail/sflail/necraflail
 	name = "swift journey"
 	desc = "The striking head resembles Necra's original skull, striking true with a sculpted emblem of love and sacrifice. Perhaps one of the few Psydonic-designed emblems of The Ten left."
+	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "necraflail"
 
 //................ Psydon Flail ............... //
@@ -122,6 +123,7 @@
 	force = DAMAGE_GOOD_FLAIL
 	name = "psydonian flail"
 	desc = "A flail fashioned with the iconography of Psydon, and crafted entirely out of silver."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psyflail"
 	melting_material = /datum/material/silver
 	melt_amount = 75

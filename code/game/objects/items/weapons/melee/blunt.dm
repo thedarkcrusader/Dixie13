@@ -51,7 +51,7 @@
 	name = "iron rungu"
 	desc = "An iron Lakkarian mace favored by the Shackle-Breakers of Sebbet. It is the bane of Zalad slavers."
 	icon_state = "rungu_iron"
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	equip_sound = "rustle"
@@ -260,7 +260,7 @@
 	name = "steel rungu"
 	desc = "A steel Lakkarian mace favored by the Shackle-Breakers of Sebbet. It is the bane of Zalad slavers."
 	icon_state = "rungu_steel"
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	blade_dulling = DULLING_BASH
 	melting_material = /datum/material/steel
 	melt_amount = 150
@@ -496,6 +496,7 @@
 /obj/item/weapon/mace/goden/psydon
 	name = "psydonian grand mace"
 	desc = "A mighty mace which seems to be a large psycross with a handle, though no less effective at crushing the spirit and bones of the inhumen."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
 	icon_state = "psymace"
 	resistance_flags = FIRE_PROOF
 	melting_material = /datum/material/silver
@@ -688,7 +689,7 @@
 	name = "silver rungu"
 	desc = "A silver mace favored by Lakkarian clerics. The weapon of choice for the monster-slayers of Napatahuum."
 	icon_state = "rungu_silver"
-	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	blade_dulling = DULLING_BASH
 	melting_material = /datum/material/silver
 	melt_amount = 150
