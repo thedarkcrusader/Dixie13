@@ -41,6 +41,7 @@
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
 	sellprice = 0
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/head/roguehood/rousman
 	name = "rous assassin mask"
@@ -52,6 +53,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "piercing" = 20, "fire" = 0, "acid" = 0)
 	sellprice = 0
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/head/roguehood/rousman/AdjustClothes(mob/living/carbon/user)
 	. = ..()
@@ -77,6 +79,7 @@
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)
 	allowed_race = list(SPEC_ID_ROUSMAN)
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/head/roguehood/rousman/rousseer
 	name = "rousman seer hood"
@@ -84,3 +87,4 @@
 	item_state = "seer_hood"
 	mob_overlay_icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 20, "piercing" = 10, "fire" = 0, "acid" = 0)
+	misc_flags = CRAFTING_TEST_EXCLUDE
