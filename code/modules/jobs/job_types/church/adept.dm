@@ -39,7 +39,6 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
-	maximum_possible_slots = 2
 
 /datum/outfit/adept/bzealot/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -86,7 +85,6 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/adventurer/CombatRogue.ogg'
-	maximum_possible_slots = 2
 
 /datum/outfit/adept/rthief/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -136,7 +134,6 @@
 
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
-	maximum_possible_slots = 2
 
 /datum/outfit/adept/highwayman/pre_equip(mob/living/carbon/human/H)
 	..()
