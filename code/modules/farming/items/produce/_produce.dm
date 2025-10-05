@@ -63,8 +63,8 @@
 			return ..()
 	..()
 
-/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/natural/cloth, mob/user, params)
-	if(cloth && isturf(loc))
+/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/grown/log/tree/stick, mob/user, params)
+	if(stick && isturf(loc))
 		var/turf/location = get_turf(src)
 		if(inoculate && (user.used_intent) && (!user.used_intent.noaa))
 			if(prob(5))
@@ -80,7 +80,7 @@
 			if(prob(6))
 				new inoculate(location, source_genetics)
 			qdel(src)
-			qdel(cloth)
+			qdel(stick)
 			return
 
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat

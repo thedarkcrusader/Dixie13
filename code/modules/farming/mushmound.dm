@@ -5,7 +5,8 @@
 	icon_state = "mushmound-dry"
 	density = TRUE
 	anchored = TRUE
-	climbable = FALSE
+	climbable = TRUE
+	climb_offset = 5
 	max_integrity = 200
 
 	COOLDOWN_DECLARE(mushmound_update)
@@ -30,18 +31,6 @@
 
 /obj/structure/soil/mushmound/proc/try_handle_inoculate_planting(obj/item/attacking_item, mob/user, params)
 	var/obj/item/old_item
-	if(istype(attacking_item, /obj/item/neuFarm/seed/inoculate)) //SLOP OBJECT PROC SHARING
-		playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
-		if(do_after(user, get_farming_do_time(user, 15), src))
-			if(old_item)
-				SEND_SIGNAL(old_item, COMSIG_TRY_STORAGE_TAKE, attacking_item, get_turf(user), TRUE)
-			var/obj/item/neuFarm/seed/inoculate/inoculate = attacking_item
-			inoculate.try_plant_inoculate(user, src)
-		return TRUE
-	return FALSE
-
-/obj/structure/soil/mushmound/proc/try_handle_inoculate_planting(obj/item/attacking_item, mob/user, params)
-	var/obj/item/old_item
 	if(istype(attacking_item, /obj/item/storage/sack))
 		var/list/inoculates= list()
 		for(var/obj/item/neuFarm/seed/inoculate/inoculate in attacking_item.contents)
@@ -49,3 +38,13 @@
 		old_item = attacking_item
 		if(LAZYLEN(inoculates))
 			attacking_item = pick(inoculates)
+
+		if(istype(attacking_item, /obj/item/neuFarm/seed/inoculate)) //SLOP OBJECT PROC SHARING
+			playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
+			if(do_after(user, get_farming_do_time(user, 15), src))
+				if(old_item)
+					SEND_SIGNAL(old_item, COMSIG_TRY_STORAGE_TAKE, attacking_item, get_turf(user), TRUE)
+				var/obj/item/neuFarm/seed/inoculate/inoculate = attacking_item
+				inoculate.try_plant_inoculate(user, src)
+			return TRUE
+		return FALSE
