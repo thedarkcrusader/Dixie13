@@ -30,14 +30,14 @@
 	if(victim.mind)
 		if(victim.mind.has_antag_datum(/datum/antagonist/vampire/lord))
 			var/datum/antagonist/vampire/lord/lord_datum = victim.mind.has_antag_datum(/datum/antagonist/vampire/lord)
+			victim.visible_message(span_warning("[victim] overpowers being churned!"), span_greentext("I overpower being churned!"))
 			if(lord_datum.ascended)
-				victim.visible_message(span_warning("[victim] overpowers being churned!"), span_greentext("I overpower being churned!"))
 				to_chat(owner, span_userdanger("[victim] is too strong, I am churned!"))
 				if(isliving(owner))
 					var/mob/living/fool = owner
 					fool.Stun(50)
 				owner.throw_at(get_ranged_target_turf(owner, get_dir(owner, victim), 7), 7, 1, victim, spin = FALSE)
-				return
+			return
 	if((victim.mob_biotypes & MOB_UNDEAD))
 		victim.visible_message(span_warning("[victim] HAS BEEN CHURNED BY NECRA'S GRIP!"), span_userdanger("I'VE BEEN CHURNED BY NECRA'S GRIP!"))
 		explosion(get_turf(victim), light_impact_range = 1, flash_range = 1, smoke = FALSE)
