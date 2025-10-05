@@ -15,7 +15,9 @@
 	wdefense = BAD_PARRY
 	wbalance = EASY_TO_DODGE
 	force = DAMAGE_MACE - 5
-	force_wielded = DAMAGE_MACE_WIELD
+	SET_BASE_PIXEL(-16, -16)
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	cartridge_wording = "bullet"
 	fire_sound = 'sound/foley/industrial/pneumaticpop.ogg'
 	load_sound = 'sound/foley/industrial/loadin.ogg'
@@ -23,7 +25,6 @@
 	pickup_sound = 'sound/foley/gun_equip.ogg'
 	drop_sound = 'sound/foley/gun_drop.ogg'
 	dropshrink = 0.7
-	associated_skill = /datum/skill/combat/axesmaces //what is used when swinging with it
 	var/pressure_to_use = 100
 	var/maximum_pressure = 200 //the max pressure we can set the gun to
 	var/cranked = FALSE
@@ -79,6 +80,12 @@
 			return 1
 	return chargetime
 
+/*
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/examine(mob/user)
+	. = ..()
+	to_chat(user, span_info("The [src]'s steam lever is []"))
+*/
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber(mob/user)
 	if(steam_lever)
 		to_chat(user, span_warning("Fires a sad gust of air..."))
@@ -133,7 +140,7 @@
 	if(user.get_skill_level(/datum/skill/craft/engineering) <= 1)//requires average engineering
 		to_chat(user, span_warning("I can't make a sense of all these knobs and levers!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	var/choice = input(user, "An incomprehensible mass of knobs and levers", "[src]") in list("Increase Pressure", "Decrease Pressure", "Loading Chamber", "Hand Crank", "Steam Lever", "Cancel")
+	var/choice = browser_input_list(user, "An incomprehensible mass of knobs and levers", "[src]", list("Increase Pressure", "Decrease Pressure", "Loading Chamber", "Hand Crank", "Steam Lever", "Cancel"), "Cancel")
 	if(!choice || choice == "cancel")
 		return
 	var/use_time = 4 //how much time the player needs to crank a knob, pull a lever, etc. in seconds
@@ -228,6 +235,7 @@
 	. = ..()
 	cranked = FALSE
 	steam_lever = FALSE
+	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_USE, pressure_to_use)
 	if(.)
 		if(istype(user) && user.mind)
 			var/modifier = 1.25/(spread+1)
@@ -235,6 +243,7 @@
 			var/amt2raise = user.STAINT/2
 			user.adjust_experience(/datum/skill/craft/engineering, amt2raise * boon * modifier, FALSE)
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/update_overlays()
+/obj/item/gun/ballistic/revolver/grenadelauncher/airgun/prefilled/Initialize()
 	. = ..()
+	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_INCREASE, 800)
 
