@@ -210,7 +210,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return TRUE
 	. = ..()
 
-/mob/living/simple_animal/proc/try_tame(obj/item/O, mob/user)
+/mob/living/simple_animal/proc/try_tame(obj/item/O, mob/living/carbon/human/user)
 	if(!stat)
 		user.visible_message("<span class='info'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>I hand-feed [O] to [src].</span>")
 		playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
@@ -225,6 +225,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				realchance += (user.get_skill_level(/datum/skill/labor/taming) * 20)
 			if(prob(realchance))
 				tamed(user)
+				var/boon = user.get_learning_boon(/datum/skill/labor/taming)
+				user.adjust_experience(/datum/skill/labor/taming, (user.STAINT*10) * boon)
 			else
 				tame_chance += bonus_tame_chance
 		return TRUE
@@ -393,7 +395,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		ssaddle.forceMove(get_turf(src))
 		ssaddle = null
 	var/list/butcher = list()
-	var/butchery_skill_level = user.get_skill_level(/datum/skill/labor/butchering)
+	var/butchery_skill_level = user.get_skill_level(/datum/skill/labor/butchering) + user.get_inspirational_bonus()
 	var/time_per_cut = max(5, 30 - butchery_skill_level * 5) // 30 seconds for no skill, 5 seconds for master
 	var/botch_chance = 0
 	if(length(botched_butcher_results) && butchery_skill_level < SKILL_LEVEL_JOURNEYMAN)
@@ -912,3 +914,17 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	var/drop_location = (src in home.contents) ? get_turf(home) : home
 	forceMove(drop_location)
+
+/mob/living/simple_animal/proc/eat_food(obj/item/reagent_containers/food/snacks/eaten)
+	if(!istype(eaten))
+		stack_trace("eating non snack")
+		return FALSE
+
+	playsound(src, 'sound/misc/eat.ogg', rand(30,60), TRUE)
+	var/nutriment_give = 0
+	for(var/datum/reagent/consumable/C in eaten.reagents.reagent_list)
+		nutriment_give += C.nutriment_factor * C.volume / C.metabolization_rate
+	. = nutriment_give
+
+/mob/living/simple_animal/proc/eat_food_after(obj/item/reagent_containers/food/snacks/eaten)
+	qdel(eaten)

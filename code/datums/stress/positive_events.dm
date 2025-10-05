@@ -98,6 +98,9 @@
 	stress_change = -5
 	desc = span_green("Down with the tyranny!")
 
+
+//Hygiene
+
 /datum/stress_event/clean
 	timer = 20 MINUTES
 	stress_change = -1
@@ -108,15 +111,16 @@
 	stress_change = -1
 	desc = span_green("That was an amazing bath.")
 
+/datum/stress_event/filth_lover
+	timer = 10 MINUTES
+	stress_change = -1
+	desc = span_green("I smell horrid.")
+
+//Music
 /datum/stress_event/music
 	timer = 30 SECONDS
 	stress_change = 0 // you suck at music
 	desc = span_green("This music is pleasant.")
-
-/datum/stress_event/beautiful
-	timer = 2 MINUTES
-	stress_change = -2
-	desc = span_green("Their face is a work of art!")
 
 /datum/stress_event/music/two
 	stress_change = -1
@@ -137,6 +141,11 @@
 /datum/stress_event/music/six
 	stress_change = -3
 	desc = span_green("This music is divine.")
+
+/datum/stress_event/beautiful
+	timer = 2 MINUTES
+	stress_change = -2
+	desc = span_green("Their face is a work of art!")
 
 /datum/stress_event/eora
 	stress_change = -4
@@ -189,29 +198,39 @@
 	desc = span_green("A soothing fragrance envelops me.")
 	timer = 10 MINUTES
 
+/datum/stress_event/odor_lover
+	stress_change = -1
+	desc = span_green("This pungent odor is wonderful!")
+	timer = 10 MINUTES
+
 /datum/stress_event/divine_beauty
 	stress_change = -2
 	desc = span_green("I feel touched by a divine beauty.")
 	timer = 5 MINUTES
 
 /datum/stress_event/apprentice_making_me_proud
-	timer = 5 MINUTES
 	stress_change = -3
 	desc = span_green("My apprentice is improving, all thanks to me!")
+	timer = 5 MINUTES
 
 /datum/stress_event/saw_old_party
-	timer = 2 MINUTES
 	stress_change = -2
 	desc = span_green("Its always good to see an old friends face.")
+	timer = 2 MINUTES
 
 /datum/stress_event/astrata_grandeur
-	timer = 30 MINUTES
 	stress_change = -2
 	desc = span_green("Astrata's light shines brightly through me. I must not let others ever forget that.")
+	timer = 30 MINUTES
 
 /datum/stress_event/graggar_culling_finished
 	stress_change = -1
 	desc = span_green("I have prevailed over my rival! Graggar favours me now!")
+	timer = INFINITY
+
+/datum/stress_event/abyssor_serenity
+	stress_change = -1
+	desc = span_blue("Abyssor is calm, and so am I.")
 	timer = INFINITY
 
 /datum/stress_event/night_owl_night

@@ -544,7 +544,7 @@
 					data += "</div>"
 
 					var/obj_count = 1
-					for(var/datum/objective/objective as anything in mind.personal_objectives)
+					for(var/datum/objective/personal/objective as anything in mind.personal_objectives)
 						var/completed = objective.check_completion()
 						data += "<div style='margin-bottom: 6px; padding-left: 8px; border-left: 2px solid #555;'>"
 						data += "<b>Quest #[obj_count]:</b> [objective.explanation_text] "
@@ -875,7 +875,7 @@
 			if(GLOB.patron_follower_counts[patron] >= psydon_followers)
 				largest_religion = FALSE
 				break
-	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] || 0
+	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] + GLOB.patron_follower_counts["Autotheist"] + GLOB.patron_follower_counts["Defiant"] + GLOB.patron_follower_counts["Dystheist"] + GLOB.patron_follower_counts["Naivety"]|| 0
 	var/psydonite_monarch = GLOB.vanderlin_round_stats[STATS_MONARCH_PATRON] == "Psydon" ? TRUE : FALSE
 	var/psydon_influence = (psydon_followers * 20) + (GLOB.confessors.len * 20) + (GLOB.vanderlin_round_stats[STATS_HUMEN_DEATHS] * -10) + (GLOB.vanderlin_round_stats[STATS_ALIVE_TIEFLINGS] * -20) + (psydonite_monarch ? (psydonite_monarch * 500) : -250) + (largest_religion? (largest_religion * 500) : -250) + (GLOB.vanderlin_round_stats[STATS_PSYCROSS_USERS] * 10) + (apostasy_followers * -20) + (GLOB.vanderlin_round_stats[STATS_LUX_HARVESTED] * -50) + (psydonite_user ? 10000 : -10000)
 
