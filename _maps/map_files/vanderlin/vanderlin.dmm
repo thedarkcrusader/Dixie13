@@ -11940,6 +11940,8 @@
 /obj/structure/door{
 	name = "vault spare key"
 	},
+/obj/effect/mapping_helpers/access/keyset/manor/vault,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/vault)
 "gVQ" = (
