@@ -491,13 +491,18 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	head = /obj/item/clothing/head/roguehood/rousman/rousseer
 	r_hand = /obj/item/weapon/polearm/woodstaff/seer
 
-	var/spells = list(
-		/datum/action/cooldown/spell/projectile/fireball/greater,
-		/datum/action/cooldown/spell/projectile/lightning,
+	var/list/spells = list(
+		/datum/action/cooldown/spell/projectile/fireball,
+		/datum/action/cooldown/spell/projectile/blood_bolt,
+		/datum/action/cooldown/spell/projectile/sickness,
 		/datum/action/cooldown/spell/projectile/fetch,
-		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
+		/datum/action/cooldown/spell/undirected/arcyne_eye,
+		/datum/action/cooldown/spell/eyebite,
+		/datum/action/cooldown/spell/sundering_lightning,
 	)
+
 	H.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
+	H.adjust_spell_points(17)
 	H.generate_random_attunements(rand(4,6))
 	H.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	H.mana_pool.adjust_mana(100)
