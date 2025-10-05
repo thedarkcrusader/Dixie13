@@ -1824,7 +1824,7 @@
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/crafting/roseamulet
-	name = "rosellusk amuelt"
+	name = "rosellusk amulet"
 	output = /obj/item/clothing/neck/roseamulet
 	requirements = list(
 		/obj/item/carvedgem/rose/rawrose = 1,
