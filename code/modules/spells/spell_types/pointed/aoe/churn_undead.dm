@@ -14,7 +14,8 @@
 	invocation_type = INVOCATION_SHOUT
 
 	click_to_activate = FALSE
-	charge_required = FALSE
+	charge_time = 3 SECONDS
+	charge_slowdown = 0.3
 	cooldown_time = 60 SECONDS
 	spell_cost = 100
 
@@ -38,17 +39,14 @@
 				owner.throw_at(get_ranged_target_turf(owner, get_dir(owner, victim), 7), 7, 1, victim, spin = FALSE)
 				return
 	if((victim.mob_biotypes & MOB_UNDEAD))
-		var/prob2explode = 20 * owner.get_skill_level(associated_skill)
-		if(prob(prob2explode))
-			victim.visible_message(span_warning("[victim] HAS BEEN CHURNED BY NECRA'S GRIP!"), span_userdanger("I'VE BEEN CHURNED BY NECRA'S GRIP!"))
-			explosion(get_turf(victim), light_impact_range = 1, flash_range = 1, smoke = FALSE)
-			victim.throw_at(get_ranged_target_turf(victim, get_dir(owner, victim), 4), 4, 1, victim, spin = FALSE)
-			//Same as a lesser miracle direct
-			victim.adjustFireLoss(30)
-			victim.adjust_divine_fire_stacks(1)
-			victim.IgniteMob()
-			victim.Immobilize(5 SECONDS)
-		if(istype(victim, /mob/living/simple_animal/hostile/retaliate/poltergeist))
-			victim.gib()
-		else
-			victim.visible_message(span_warning("[victim] resists being churned!"), span_greentext("I resist being churned!"))
+		victim.visible_message(span_warning("[victim] HAS BEEN CHURNED BY NECRA'S GRIP!"), span_userdanger("I'VE BEEN CHURNED BY NECRA'S GRIP!"))
+		explosion(get_turf(victim), light_impact_range = 1, flash_range = 1, smoke = FALSE)
+		victim.throw_at(get_ranged_target_turf(victim, get_dir(owner, victim), 4), 4, 1, victim, spin = FALSE)
+		//Same as a lesser miracle direct
+		victim.adjustFireLoss(50)
+		victim.adjust_divine_fire_stacks(1)
+		victim.IgniteMob()
+		victim.Immobilize(5 SECONDS)
+	if(istype(victim, /mob/living/simple_animal/hostile/retaliate/poltergeist))
+		victim.gib()
+

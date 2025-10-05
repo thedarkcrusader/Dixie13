@@ -3236,6 +3236,7 @@
 #include "code\modules\spells\spell_types\undirected\forcewall.dm"
 #include "code\modules\spells\spell_types\undirected\hags_call.dm"
 #include "code\modules\spells\spell_types\undirected\joke.dm"
+#include "code\modules\spells\spell_types\undirected\locate_dead.dm"
 #include "code\modules\spells\spell_types\undirected\longstrider.dm"
 #include "code\modules\spells\spell_types\undirected\mansion_portal.dm"
 #include "code\modules\spells\spell_types\undirected\message.dm"

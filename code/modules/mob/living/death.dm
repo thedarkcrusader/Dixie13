@@ -134,24 +134,23 @@ GLOBAL_LIST_EMPTY(last_words)
 
 	return TRUE
 
-
 /mob/living/proc/prepare_deathsight_message()
-	var/area_of_death = lowertext(get_area_name(src))
+	var/area_of_death = get_area(get_turf(src))
 	var/locale = "a locale wreathed in enigmatic fog"
-	switch (area_of_death) // we're deliberately obtuse with this.
-		if ("mountains", "mt decapitation", "malum's anvil forest", "malum's anvil under lower caves", "malum's anvil cave building", "malum's anvil lower dungeon", "malum's anvil surface building", "malum's anvil hidden grove", "malum's anvil peak")
-			locale = "a twisted tangle of dense rocks and rivers of lava"
-		if ("wilderness", "azure basin")
-			locale = "somewhere in the wilds"
-		if ("the bog", "bog", "dense bog", "latejoin cave")
-			locale = "a wretched, fetid bog"
-		if ("coast", "coastforest", "river")
-			locale = "somewhere betwixt Abyssor's realm and Dendor's bounty"
-		if ("indoors", "shop", "physician", "outdoors", "roofs", "manor", "wizard's tower", "garrison","village garrison", "dungeon cell", "baths", "tavern", "basement")
-			locale = "the city of [SSmapping.config.map_name] and all its bustling souls"
-		if ("sewers")
-			locale = "somwhere under the city of [SSmapping.config.map_name] and all its bustling souls"
-		if ("church")
-			locale = "a hallowed place, sworn to the Ten" // special bit for the church since it's sacred ground
-
+	if(istype(area_of_death, /area/rogue/outdoors/mountains/anvil) || istype(area_of_death, /area/rogue/under/mountains/anvil))
+		locale = "a twisted tangle of dense rocks and rivers of lava"
+	else if(istype(area_of_death, /area/rogue/outdoors/rtfield) || istype(area_of_death, /area/rogue/outdoors/woods) || istype(area_of_death, /area/rogue/outdoors/woods_safe) || area_of_death == /area/rogue/indoors/ || istype(area_of_death, /area/rogue/indoors/shelter/woods) || istype(area_of_death, /area/rogue/indoors/villagegarrison))
+		locale = "somewhere in the wilds"
+	else if(istype(area_of_death, /area/rogue/outdoors/bog) || istype(area_of_death, /area/rogue/indoors/shelter/bog))
+		locale = "a wretched, fetid bog"
+	else if(istype(area_of_death, /area/rogue/outdoors/river) || istype(area_of_death, /area/rogue/under/cavewet))
+		locale = "somewhere betwixt Abyssor's realm and Dendor's bounty"
+	else if(istype(area_of_death, /area/rogue/indoors/town/church))
+		locale = "a hallowed place, sworn to the Ten"
+	else if(istype(area_of_death, /area/rogue/under/town/sewer) || istype(area_of_death, /area/rogue/under/town/basement))
+		locale = "somewhere under the city of [SSmapping.config.map_name] and all its bustling souls"
+	else if(istype(area_of_death, /area/rogue/outdoors/town) || istype(area_of_death, /area/rogue/under/town) || istype(area_of_death, /area/rogue/indoors/town))
+		locale = "the city of [SSmapping.config.map_name] and all its bustling souls"
+	else if(istype(area_of_death, /area/rogue/outdoors/mountains) || istype(area_of_death, /area/rogue/under/mountains || istype(area_of_death, /area/rogue/indoors/mountains) || istype(area_of_death, /area/rogue/indoors/cave) || istype(area_of_death, /area/rogue/under/cave)))
+		locale = "a rocky, mountainous tomb"
 	return locale

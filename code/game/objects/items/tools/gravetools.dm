@@ -3,8 +3,8 @@
 \---------*/
 
 /obj/item/weapon/shovel
-	force = DAMAGE_STAFF - 5
-	force_wielded = DAMAGE_STAFF_WIELD - 3
+	force = DAMAGE_AXE - 5
+	force_wielded = DAMAGE_AXE_WIELD - 5
 	possible_item_intents = list(/datum/intent/mace/strike/shovel)
 	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/irrigate, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop)
 	name = "shovel"
@@ -246,6 +246,21 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+// --------- Templar Combat Shovel -----------
+
+/obj/item/weapon/shovel/necran
+	force = DAMAGE_MACE
+	force_wielded = DAMAGE_HALBERD_WIELD
+	possible_item_intents = list(MACE_STRIKE)
+	gripped_intents = list(/datum/intent/shovelscoop, POLEARM_THRUST, /datum/intent/polearm/chop)
+	name = "The Carriageman's Toll"
+	desc = "A finely crafted shovel with a golden blade. Used by Necran's to bring the dead to their final rest."
+	icon_state = "necranshovel"
+	item_state = "necranshovel"
+	sharpness = IS_SHARP
+	wdefense = GOOD_PARRY
+	max_integrity = INTEGRITY_STRONGEST
+	smeltresult = /obj/item/ingot/gold
 
 // --------- BURIAL SHROUD -----------
 

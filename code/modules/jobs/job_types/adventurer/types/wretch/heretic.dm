@@ -68,15 +68,14 @@
 			head = /obj/item/clothing/head/helmet/heavy/necked/necra
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
-			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/psycross/silver/pestra
 			head = /obj/item/clothing/head/helmet/heavy/necked/pestrahelm
 			cloak = /obj/item/clothing/cloak/stabard/templar/pestra
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			beltr = /obj/item/reagent_containers/glass/bottle/strongpoison //hm
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(/datum/patron/divine/eora)
 			head = /obj/item/clothing/head/helmet/sallet/eoran
@@ -191,13 +190,11 @@
 			var/obj/item/weapon/polearm/halberd/bardiche/dendor/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/divine/necra)
-			var/obj/item/weapon/flail/sflail/necraflail/P = new(get_turf(src))
+			var/obj/item/weapon/shovel/necran/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/divine/pestra)
-			var/obj/item/weapon/knife/dagger/steel/pestrasickle/P = new(get_turf(src))
+			var/obj/item/weapon/flail/sflail/pestraflail/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
-			var/obj/item/weapon/knife/dagger/steel/pestrasickle/L = new(get_turf(src))
-			H.equip_to_appropriate_slot(L)
 		if(/datum/patron/divine/eora)
 			var/obj/item/weapon/sword/rapier/eora/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
