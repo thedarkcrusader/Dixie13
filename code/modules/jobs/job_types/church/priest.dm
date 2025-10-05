@@ -16,7 +16,7 @@
 	selection_color = "#c2a45d"
 	cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 
-	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	allowed_races = RACES_PLAYER_NONHERETICAL
 
 	outfit = /datum/outfit/priest
 	spells = list(
