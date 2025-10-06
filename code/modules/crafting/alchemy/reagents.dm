@@ -138,7 +138,7 @@
 	description = "Rapidly regenerates energy."
 	color = "#0000ff"
 	taste_description = "raw power"
-	scent_description = "electric spark"
+	scent_description = "dry air"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongmana/on_mob_life(mob/living/carbon/M)
