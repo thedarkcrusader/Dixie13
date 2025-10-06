@@ -161,6 +161,7 @@
 /obj/item/weapon/mace/courtphysician
 	name = "physician's cane"
 	desc = "A prized cane. Embellished with a golden serpent, representing the Kingsfield university. The pointy end is quite sharp."
+	icon = 'icons/roguetown/weapons/32/special.dmi'
 	icon_state = "fancy_cane"
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/thrust)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
@@ -387,11 +388,12 @@
 
 //................ Wooden sword ............... //
 /obj/item/weapon/mace/woodclub/train_sword
-	force = 5
-	force_wielded = 8
 	name = "wooden sword"
 	desc = "Crude wood assembled into the shape of a sword, a terrible weapon to be on the recieving end of during a training spat."
+	icon = 'icons/roguetown/weapons/32/swords.dmi'
 	icon_state = "wsword"
+	force = 5
+	force_wielded = 8
 	wbalance = DODGE_CHANCE_NORMAL
 	associated_skill = /datum/skill/combat/swords
 	wdefense = ULTMATE_PARRY
@@ -488,6 +490,7 @@
 /obj/item/weapon/mace/goden/steel/malum
 	name = "forgefiend"
 	desc = "This hammer's creation took a riddle in its own making. A great sacrifice for perfect quality"
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "malumhammer"
 	gripped_intents = list(/datum/intent/mace/strike/heavy, /datum/intent/mace/smash/heavy)
 	max_integrity = 200

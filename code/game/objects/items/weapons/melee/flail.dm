@@ -243,6 +243,7 @@
 /obj/item/weapon/flail/peasantwarflail/matthios
 	name = "Gilded Flail"
 	desc = "Weight of wealth in a deadly striking end."
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "matthiosflail"
 	sellprice = 250
 	smeltresult = /obj/item/ingot/steel

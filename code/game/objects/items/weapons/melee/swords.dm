@@ -799,18 +799,19 @@
 /obj/item/weapon/sword/long/ravox
 	name = "duel settler"
 	desc = "The tenets of ravoxian duels are enscribed upon the blade of this sword."
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "ravoxflamberge"
 	force = DAMAGE_SWORD + 2
 	force_wielded = DAMAGE_LONGSWORD_WIELD
 
 //................ Psydonian Longsword ............... //
 /obj/item/weapon/sword/long/psydon
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
-	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
-	icon_state = "psysword"
 	name = "psydonian longsword"
 	desc = "A large silver longsword forged in the shape of a psycross."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
+	icon_state = "psysword"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 100
 	last_used = 0
@@ -1106,6 +1107,7 @@
 /obj/item/weapon/sword/long/exe/astrata
 	name = "solar judge"
 	desc = "This wicked executioner's blade calls for order."
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "astratasword"
 	max_integrity = INTEGRITY_STRONG
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)

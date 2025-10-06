@@ -628,11 +628,11 @@
 /obj/item/weapon/knife/throwingknife/steel
 	name = "steel tossblade"
 	desc = ""
+	icon_state = "throw_knifes"
 	item_state = "bone_dagger"
 	throw_speed = 4
 	max_integrity = INTEGRITY_WORST
 	wdefense = 1
-	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
 	melt_amount = 50
 	sellprice = 4
@@ -640,11 +640,11 @@
 /obj/item/weapon/knife/throwingknife/psydon
 	name = "psydonian tossblade"
 	desc = "An unconventional method of delivering silver to a heretic; but one PSYDON smiles at, all the same. Doubles as an 'actual' knife in a pinch."
+	icon_state = "throw_knifes"
 	item_state = "bone_dagger"
 	throw_speed = 4
 	max_integrity = INTEGRITY_POOR
 	wdefense = 3
-	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	sellprice = 65
 	melting_material = /datum/material/silver

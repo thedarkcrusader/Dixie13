@@ -221,9 +221,10 @@
 /obj/item/weapon/polearm/spear/abyssor
 	name = "depthseeker"
 	desc = "An instrument of Abyssor's wrath to punish the ignorant."
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
+	icon_state = "gsspear"
 	force_wielded = DAMAGE_SPEAR_WIELD+2
 	throwforce = DAMAGE_SPEAR_WIELD
-	icon_state = "gsspear"
 
 /obj/item/weapon/polearm/spear/assegai
 	name = "iron assegai"
@@ -499,6 +500,7 @@
 /obj/item/weapon/polearm/halberd/bardiche/dendor
 	name = "summer scythe"
 	desc = "Summer's verdancy runs through the head of this scythe. All the more to sow."
+	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "dendorscythe"
 	gripped_intents = list(POLEARM_THRUST, /datum/intent/spear/cut/bardiche/scythe, /datum/intent/axe/chop/scythe, POLEARM_BASH)
 
@@ -567,6 +569,7 @@
 /obj/item/weapon/polearm/spear/hoplite/abyssal
 	name = "Abyssal spear"
 	desc = "A spear with a toothed end, inspired after the teeth of an abyssal monstrosity"
+	icon = 'icons/roguetown/weapons/64/ancient.dmi'
 	icon_state = "ancient_spear"
 	wdefense = ULTMATE_PARRY
 	sellprice = 40
