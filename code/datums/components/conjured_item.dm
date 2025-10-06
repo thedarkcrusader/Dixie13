@@ -61,10 +61,9 @@
 	if(QDELETED(holder))
 		clean_up(TRUE)
 		return
-	if(refresh_count != -1)
-		if(refresh_count <= 0)
-			clean_up(TRUE)
-			return
+	if(refresh_count != -1 && refresh_count <= 0)
+		clean_up(TRUE)
+		return
 	if(!refresh_skill || !holder.has_skill(refresh_skill))
 		clean_up(TRUE)
 		return
