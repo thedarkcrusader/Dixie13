@@ -75,7 +75,8 @@
 			cloak = /obj/item/clothing/cloak/stabard/templar/pestra
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			beltr = /obj/item/reagent_containers/glass/bottle/strongpoison //hm
-			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+			H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(/datum/patron/divine/eora)
 			head = /obj/item/clothing/head/helmet/sallet/eoran
