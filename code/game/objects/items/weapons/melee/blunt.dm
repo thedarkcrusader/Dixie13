@@ -412,14 +412,14 @@
 
 //................ Goedendag ............... //
 /obj/item/weapon/mace/goden
+	name = "warclub"
+	desc = "A two handed club, decorated with a spiked cap crown. A perfect way to say Good Morning to any would be noble-knight."
+	icon = 'icons/roguetown/weapons/64/maces.dmi'
+	icon_state = "goedendag"
 	force = DAMAGE_CLUB
 	force_wielded = DAMAGE_HEAVYCLUB_WIELD
 	possible_item_intents = list(/datum/intent/mace/strike/heavy)
 	gripped_intents = list(/datum/intent/mace/smash/heavy, /datum/intent/mace/thrust)
-	name = "warclub"
-	desc = "A two handed club, decorated with a spiked cap crown. A perfect way to say Good Morning to any would be noble-knight."
-	icon_state = "goedendag"
-	icon = 'icons/roguetown/weapons/64.dmi'
 	SET_BASE_PIXEL(-16, -16)
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64

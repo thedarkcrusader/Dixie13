@@ -138,12 +138,12 @@
 
 //................ Peasant Flail ............... // A little confusing still
 /obj/item/weapon/flail/peasant
-	force = DAMAGE_NORMAL_FLAIL
-	force_wielded = DAMAGE_GOOD_FLAIL
 	name = "peasant flail"
 	desc = "What used to be a humble thresher by design, has become a deadly flail with extended range and punch. Favored by the peasantry militia or knight errants."
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/64/flails.dmi'
 	icon_state = "bigflail"
+	force = DAMAGE_NORMAL_FLAIL
+	force_wielded = DAMAGE_GOOD_FLAIL
 	possible_item_intents = list(/datum/intent/flail/strike/long)
 	gripped_intents = list(/datum/intent/flail/strike/long, /datum/intent/flail/strike/smash/long)
 	bigboy = TRUE
@@ -197,14 +197,14 @@
 	item_damage_type = "blunt"
 
 /obj/item/weapon/flail/peasantwarflail
+	name = "militia thresher"
+	desc = "Just like how a sling's bullet can fell a giant, so too does this great flail follow the principle of converting 'momentum' into 'plate-rupturing force'."
+	icon = 'icons/roguetown/weapons/64/flails.dmi'
+	icon_state = "peasantwarflail"
 	force = 10
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
-	name = "militia thresher"
-	desc = "Just like how a sling's bullet can fell a giant, so too does this great flail follow the principle of converting 'momentum' into 'plate-rupturing force'."
-	icon_state = "peasantwarflail"
-	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64
