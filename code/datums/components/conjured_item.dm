@@ -67,7 +67,7 @@
 	if(refresh_skill && !holder.has_skill(refresh_skill))
 		clean_up(TRUE)
 		return
-	if(skill_threshold && (!holder.get_skill_level(refresh_skill) > skill_threshold))
+	if(skill_threshold && holder.get_skill_level(refresh_skill) < skill_threshold)
 		clean_up(TRUE)
 		return
 
