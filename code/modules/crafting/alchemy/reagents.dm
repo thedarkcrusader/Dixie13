@@ -1,14 +1,8 @@
-// Catalyst. This reagent combined with normal potion reagent makes the strong potion reagent. Reactions defined by the end of this doccument
-/datum/reagent/additive
-	name = "additive"
-	reagent_state = LIQUID
-
 //Potions
 /datum/reagent/medicine/healthpot
 	name = "Health Potion"
 	description = "Gradually regenerates all types of damage."
 	reagent_state = LIQUID
-	random_reagent_color = TRUE
 	color = "#ff0000"
 	taste_description = "lifeblood"
 	scent_description = "metal"
@@ -39,7 +33,6 @@
 /datum/reagent/medicine/stronghealth
 	name = "Strong Health Potion"
 	description = "Quickly regenerates all types of damage."
-	random_reagent_color = TRUE
 	color = "#820000be"
 	taste_description = "rich lifeblood"
 	scent_description = "metal"
@@ -47,7 +40,7 @@
 
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
 	if(volume >= 60)
-		M.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 2) //No overhealing.
+		M.reagents.remove_reagent(/datum/reagent/medicine/stronghealth, 2) //No overhealing.
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 		M.blood_volume = min(M.blood_volume+80, BLOOD_VOLUME_MAXIMUM)
 	else
@@ -69,7 +62,9 @@
 	description = "Steeped rose petals with mild regeneration."
 	reagent_state = LIQUID
 	color = "#f398b6"
+	random_reagent_color = FALSE
 	taste_description = "floral"
+	scent_description = "rosa"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
@@ -93,8 +88,8 @@
 	description = "Change the user's gender."
 	reagent_state = LIQUID
 	color = "#FF33FF"
-	random_reagent_color = TRUE
-	taste_description = "organic scent"
+	taste_description = "raw sweetness"
+	scent_description = "flower nectar"
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM * 5
 	alpha = 173
@@ -121,7 +116,6 @@
 	description = "Gradually regenerates energy."
 	reagent_state = LIQUID
 	color = "#000042"
-	random_reagent_color = TRUE
 	taste_description = "sweet mana"
 	scent_description = "berries"
 	overdose_threshold = 0
@@ -134,6 +128,7 @@
 
 /datum/reagent/medicine/manapot/weak
 	name = "Weak Mana Potion"
+	taste_description = "sour mana"
 
 /datum/reagent/medicine/manapot/weak/on_mob_life(mob/living/carbon/M)
 	M.mana_pool.adjust_mana(2)
@@ -143,7 +138,6 @@
 	name = "Strong Mana Potion"
 	description = "Rapidly regenerates energy."
 	color = "#0000ff"
-	random_reagent_color = TRUE
 	taste_description = "raw power"
 	scent_description = "berries"
 	metabolization_rate = REAGENTS_METABOLISM * 3
@@ -158,7 +152,6 @@
 	description = "Gradually regenerates stamina."
 	reagent_state = LIQUID
 	color = "#129c00"
-	random_reagent_color = TRUE
 	taste_description = "sweet tea"
 	scent_description = "grass"
 	overdose_threshold = 0
@@ -174,7 +167,6 @@
 	name = "Strong Stamina Potion"
 	description = "Rapidly regenerates stamina."
 	color = "#13df00"
-	random_reagent_color = TRUE
 	taste_description = "sparkly static"
 	scent_description = "grass"
 	metabolization_rate = REAGENTS_METABOLISM * 3
@@ -189,9 +181,8 @@
 	description = ""
 	reagent_state = LIQUID
 	color = "#00ff00"
-	random_reagent_color = TRUE
 	taste_description = "sickly sweet"
-	scent_description = "medicine"
+	scent_description = "stale bread"
 	metabolization_rate = REAGENTS_METABOLISM
 
 /datum/reagent/medicine/antidote/on_mob_life(mob/living/carbon/M)
@@ -205,8 +196,8 @@
 	description = ""
 	reagent_state = LIQUID
 	color = "#004200"
-	random_reagent_color = TRUE
 	taste_description = "dirt"
+	scent_description = "pig feces"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/diseasecure/on_mob_life(mob/living/carbon/M)
@@ -218,20 +209,20 @@
 //Buff potions
 /datum/reagent/buff
 	description = ""
+	random_reagent_color = TRUE
 	reagent_state = LIQUID
 	metabolization_rate = REAGENTS_METABOLISM
 
 /datum/reagent/buff/strength
 	name = "Strength"
 	color = "#ff9000"
-	random_reagent_color = TRUE
-	taste_description = "old meat"
-	scent_description = "meat"
+	taste_description = "raw meat"
+	scent_description = "rotting meat"
 
 /datum/reagent/buff/strength/on_mob_add(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/strengthpot))
 		return ..()
-	if(M.reagents.has_reagent(/datum/reagent/buff/strength,4))
+	if(M.reagents.has_reagent(/datum/reagent/buff/strength, 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/strengthpot)
 		M.reagents.remove_reagent(/datum/reagent/buff/strength, M.reagents.get_reagent_amount(/datum/reagent/buff/strength))
 	return ..()
@@ -239,14 +230,13 @@
 /datum/reagent/buff/perception
 	name = "Perception"
 	color = "#ffff00"
-	random_reagent_color = TRUE
 	taste_description = "cat piss"
 	scent_description = "urine"
 
 /datum/reagent/buff/perception/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/perceptionpot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/perception),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/perception), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/perceptionpot)
 		M.reagents.remove_reagent(/datum/reagent/buff/perception, M.reagents.get_reagent_amount(/datum/reagent/buff/perception))
 	return ..()
@@ -254,14 +244,13 @@
 /datum/reagent/buff/intelligence
 	name = "Intelligence"
 	color = "#438127"
-	random_reagent_color = TRUE
 	taste_description = "bog water"
 	scent_description = "moss"
 
 /datum/reagent/buff/intelligence/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/intelligencepot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/intelligence),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/intelligence), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/intelligencepot)
 		M.reagents.remove_reagent(/datum/reagent/buff/intelligence, M.reagents.get_reagent_amount(/datum/reagent/buff/intelligence))
 	return ..()
@@ -269,14 +258,13 @@
 /datum/reagent/buff/constitution
 	name = "Constitution"
 	color = "#130604"
-	random_reagent_color = TRUE
 	taste_description = "bile"
 	scent_description = "vomit"
 
 /datum/reagent/buff/constitution/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/constitutionpot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/constitution),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/constitution), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/constitutionpot)
 		M.reagents.remove_reagent(/datum/reagent/buff/constitution, M.reagents.get_reagent_amount(/datum/reagent/buff/constitution))
 	return ..()
@@ -284,14 +272,13 @@
 /datum/reagent/buff/endurance
 	name = "Endurance"
 	color = "#ffff00"
-	random_reagent_color = TRUE
 	taste_description = "gote urine"
 	scent_description = "urine"
 
 /datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/endurancepot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/endurance),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/endurance), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/endurancepot)
 		M.reagents.remove_reagent(/datum/reagent/buff/endurance, M.reagents.get_reagent_amount(/datum/reagent/buff/endurance))
 	return ..()
@@ -299,14 +286,13 @@
 /datum/reagent/buff/speed
 	name = "Speed"
 	color = "#ffff00"
-	random_reagent_color = TRUE
 	taste_description = "raw egg yolk"
 	scent_description = "sweat"
 
 /datum/reagent/buff/speed/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/speedpot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/speed),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/speed), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/speedpot)
 		M.reagents.remove_reagent(/datum/reagent/buff/speed, M.reagents.get_reagent_amount(/datum/reagent/buff/speed))
 	return ..()
@@ -314,14 +300,13 @@
 /datum/reagent/buff/fortune
 	name = "Fortune"
 	color = "#ffff00"
-	random_reagent_color = TRUE
 	taste_description = "pig urine"
 	scent_description = "urine"
 
 /datum/reagent/buff/fortune/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/fortunepot))
 		return ..()
-	if(M.reagents.has_reagent((/datum/reagent/buff/fortune),4))
+	if(M.reagents.has_reagent((/datum/reagent/buff/fortune), 4))
 		M.apply_status_effect(/datum/status_effect/buff/alch/fortunepot)
 		M.reagents.remove_reagent(/datum/reagent/buff/fortune, M.reagents.get_reagent_amount(/datum/reagent/buff/fortune))
 	return ..()
@@ -443,45 +428,6 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER))
 		M.adjustToxLoss(5)
 	return ..()
-
-
-//Potion reactions
-/datum/chemical_reaction/alch/stronghealth
-	name = "Strong Health Potion"
-	id = /datum/reagent/medicine/stronghealth
-	results = list(/datum/reagent/medicine/stronghealth = 1)
-	required_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
-
-/datum/chemical_reaction/alch/strongmana
-	name = "Strong Mana Potion"
-	id = /datum/reagent/medicine/strongmana
-	results = list(/datum/reagent/medicine/strongmana = 1)
-	required_reagents = list(/datum/reagent/medicine/manapot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
-
-/datum/chemical_reaction/alch/strongstam
-	name = "Strong Stamina Potion"
-	id = /datum/reagent/medicine/strongstam
-	results = list(/datum/reagent/medicine/strongstam = 1)
-	required_reagents = list(/datum/reagent/medicine/stampot = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
-
-/datum/chemical_reaction/alch/strongpoison
-	name = "Strong Health Poison"
-	id = /datum/reagent/strongpoison
-	results = list(/datum/reagent/strongpoison = 1)
-	required_reagents = list(/datum/reagent/berrypoison = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
-
-/datum/chemical_reaction/alch/strongstampoison
-	name = "Strong Stamina Leech Potion"
-	id = /datum/reagent/strongstampoison
-	results = list(/datum/reagent/strongstampoison = 1)
-	required_reagents = list(/datum/reagent/stampoison = 1, /datum/reagent/additive = 1)
-	mix_message = "The cauldron glows for a moment."
-
-
 
 /*----------\
 |Ingredients|
