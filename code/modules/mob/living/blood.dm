@@ -164,6 +164,11 @@
 		bleed_rate += bodypart.get_bleed_rate()
 	return bleed_rate
 
+/// How much slower we'll be bleeding for every CON point. 0.1 = 10% slower.
+#define CONSTITUTION_BLEEDRATE_MOD 0.1
+/// The CON value up to which we get a bleedrate increase.
+#define CONSTITUTION_BLEEDRATE_LOW 5
+
 /// Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/proc/bleed(amt)
 	if(!iscarbon(src) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
@@ -174,12 +179,16 @@
 	// For each CON above 10, we bleed slower.
 	// Consequently, for each CON under 10 we bleed faster.
 	var/con_modifier = 1
-	if(STACON >= CONSTITUTION_BLEEDRATE_CAP)
-		con_modifier = CONSTITUTION_BLEEDRATE_CAP - 10
-	else if(STACON != 10)
-		con_modifier = STACON - 10
+	var/base_mod = CONSTITUTION_BLEEDRATE_MOD
+	var/our_con = STACON
+	if(our_con <= CONSTITUTION_BLEEDRATE_LOW)
+		con_modifier = CONSTITUTION_BLEEDRATE_LOW - 10
+	else if (our_con != 10)
+		if(our_con < 10)
+			base_mod *= 0.5
+		con_modifier = our_con - 10
 
-	amt -= amt * con_modifier * CONSTITUTION_BLEEDRATE_MOD
+	amt -= amt * con_modifier * base_mod
 
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
 		amt /= 2
@@ -201,6 +210,9 @@
 	updatehealth()
 
 	return TRUE
+
+#undef CONSTITUTION_BLEEDRATE_MOD
+#undef CONSTITUTION_BLEEDRATE_LOW
 
 /mob/living/carbon/human/bleed(amt)
 	if(NOBLOOD in dna?.species?.species_traits)

@@ -152,7 +152,11 @@
 		to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
 		return FALSE
 
-	var/datum/wound/target_wound = browser_input_list(doctor, "Which wound?", "WOUND CRAFT", sewable)
+	var/datum/wound/target_wound
+	if(length(sewable) > 1)
+		target_wound = browser_input_list(doctor, "Which wound?", "WOUND CRAFT", sewable)
+	else
+		target_wound = sewable[1]
 	if(!target_wound || QDELETED(target_wound) || QDELETED(src) || QDELETED(doctor) || QDELETED(user))
 		return FALSE
 
