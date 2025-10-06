@@ -48,3 +48,6 @@
 				inoculate.try_plant_inoculate(user, src)
 			return TRUE
 		return FALSE
+	if(istype(attacking_item, /obj/item/neuFarm/seed))
+		to_chat(user, span_warning("I cannot plant regular seeds into the mound!"))
+		return FALSE

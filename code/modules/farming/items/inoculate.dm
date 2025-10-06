@@ -27,7 +27,7 @@ var/datum/plant_genetics/inoculate_genetics
 		visible_message(span_warning("[L] crushes [src] underfoot."))
 		qdel(src)
 
-/* /obj/item/neuFarm/seed/inoculate/examine(mob/user)
+/obj/item/neuFarm/seed/inoculate/examine(mob/user)
 	. = ..()
 	var/show_real_identity = FALSE
 	if(isliving(user))
@@ -48,7 +48,7 @@ var/datum/plant_genetics/inoculate_genetics
 			if(inoculate_genetics_instance.inoculate_identity_modifier)
 				examine_name = "[inoculate_genetics_instance.inoculate_identity_modifier] " + examine_name
 			. += span_notice("I can tell this is a [examine_name].")
-			. += plant_def_instance.get_examine_details() */
+			. += plant_def_instance.get_examine_details()
 
 /obj/item/neuFarm/seed/inoculate/proc/try_plant_inoculate(mob/living/user, obj/structure/soil/mushmound/mushmound)
 	if(mushmound.plant)
@@ -59,6 +59,21 @@ var/datum/plant_genetics/inoculate_genetics
 	to_chat(user, span_notice("I plant \the [src] in \the [mushmound]."))
 	mushmound.insert_plant(GLOB.plant_defs[plant_def_type], inoculate_genetics)
 	qdel(src)
+
+/obj/item/neuFarm/seed/inoculate/attack_atom(atom/attacked_atom, mob/living/user)
+	if(!isturf(attacked_atom))
+		return ..()
+
+	var/turf/T = attacked_atom
+	var/obj/structure/soil/soil = get_soil_on_turf(T)
+	var/obj/structure/mushmound/mushmound
+	if(mushmound)
+		try_plant_seed(user, soil)
+		return TRUE
+	if(soil)
+		to_chat(user, span_warning("I cannot plant this into regular soil!")
+		return FALSE
+	return ..()
 
 /obj/item/neuFarm/seed/inoculate/coprinus
 	plant_def_type = /datum/plant_def/coprinus
