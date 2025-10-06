@@ -196,7 +196,7 @@
 	reagent_state = LIQUID
 	color = "#004200"
 	taste_description = "dirt"
-	scent_description = "pig feces"
+	scent_description = "saiga droppings"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/diseasecure/on_mob_life(mob/living/carbon/M)
@@ -413,6 +413,31 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 			M.adjust_stamina(9) //Rapidly leech stamina
 	return ..()
 
+//a combination of strong stamina and doom poison
+//THIS SHOULDN'T BE SPAWNABLE, LEAVE IT CRAFT ONLY
+//If you do think this should be spawnable, make it spawn in INCREDIBLY small amounts
+//reminder this is incredibly potent, the poison to out poison anyone, this the shit that killed Psydon
+/datum/reagent/dreaddeath
+	name = "Dread Death"
+	description = "A terribly potent poison."
+	reagent_state = LIQUID
+	color = "#041d0e"
+	random_reagent_color = TRUE
+	taste_description = "the end"
+	scent_description = "nothing"
+	metabolization_rate = REAGENTS_SLOW_METABOLISM * 5
+
+/datum/reagent/dreaddeath/on_mob_life(mob/living/carbon/M)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		if(HAS_TRAIT(M, TRAIT_POISON_RESILIENCE))
+			M.adjust_stamina(5)
+		else
+			M.adjust_stamina(10)
+	if(HAS_TRAIT(M, TRAIT_POISON_RESILIENCE))
+		M.adjustToxLoss(3)
+	else
+		M.adjustToxLoss(6)
+	return ..()
 
 /datum/reagent/killersice
 	name = "Killer's Ice"

@@ -150,7 +150,7 @@
 	name = "Energia Essence"
 	inputs = list(
 		/datum/thaumaturgical_essence/fire = 2,
-		/datum/thaumaturgical_essence/chaos = 2
+		/datum/thaumaturgical_essence/chaos = 2,
 	)
 	output_type = /datum/thaumaturgical_essence/energia
 	output_amount = 3
@@ -159,7 +159,7 @@
 	name = "Void Essence"
 	inputs = list(
 		/datum/thaumaturgical_essence/chaos = 3,
-		/datum/thaumaturgical_essence/earth = 1
+		/datum/thaumaturgical_essence/earth = 1,
 	)
 	output_type = /datum/thaumaturgical_essence/void
 	output_amount = 2
@@ -177,7 +177,7 @@
 	name = "Life Essence"
 	inputs = list(
 		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/order = 2
+		/datum/thaumaturgical_essence/order = 2,
 	)
 	output_type = /datum/thaumaturgical_essence/life
 	output_amount = 3
@@ -186,7 +186,7 @@
 	name = "Crystal Essence"
 	inputs = list(
 		/datum/thaumaturgical_essence/earth = 3,
-		/datum/thaumaturgical_essence/order = 1
+		/datum/thaumaturgical_essence/order = 1,
 	)
 	output_type = /datum/thaumaturgical_essence/crystal
 	output_amount = 3
@@ -196,9 +196,20 @@
 	name = "Magic Essence"
 	inputs = list(
 		/datum/thaumaturgical_essence/energia = 2,
-		/datum/thaumaturgical_essence/void = 1,
-		/datum/thaumaturgical_essence/order = 1
+		/datum/thaumaturgical_essence/void = 2,
+		/datum/thaumaturgical_essence/order = 1,
 	)
 	output_type = /datum/thaumaturgical_essence/magic
 	output_amount = 2
-	skill_required = SKILL_LEVEL_APPRENTICE
+	skill_required = SKILL_LEVEL_JOURNEYMAN
+
+/datum/essence_combination/death
+	name = "Death Essence"
+	inputs = list(
+		/datum/thaumaturgical_essence/void = 2,
+		/datum/thaumaturgical_essence/poison = 2,
+		/datum/thaumaturgical_essence/chaos = 1,
+	)
+	output_type = /datum/thaumaturgical_essence/magic
+	output_amount = 2
+	skill_required = SKILL_LEVEL_JOURNEYMAN

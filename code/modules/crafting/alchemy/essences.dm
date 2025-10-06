@@ -103,14 +103,14 @@
 	desc = "The essence of structure and harmony."
 	color = "#FFD700"
 	icon_state = "essence_order"
-	smells_like = "purity"
+	smells_like = "purity and stagnation"
 
 /datum/thaumaturgical_essence/chaos
 	name = "Chaos Essence"
 	desc = "The essence of change and discord."
 	color = "#8A2BE2"
 	icon_state = "essence_chaos"
-	smells_like = "uncertainty"
+	smells_like = "change and uncertanity"
 
 // =============================================================================
 // TIER 1 - FIRST COMPOUND ESSENCES
@@ -130,7 +130,7 @@
 	tier = 1
 	color = "#FFFF99"
 	icon_state = "essence_light"
-	smells_like = "dawn"
+	smells_like = "warm embrace"
 
 /datum/thaumaturgical_essence/motion
 	name = "Motion Essence"
@@ -170,7 +170,7 @@
 	tier = 1
 	color = "#9ACD32"
 	icon_state = "essence_poison"
-	smells_like = "death"
+	smells_like = "toxic fumes"
 
 /datum/thaumaturgical_essence/life
 	name = "Life Essence"
@@ -199,3 +199,11 @@
 	color = "#9370DB"
 	icon_state = "essence_magic"
 	smells_like = "raw magic"
+
+/datum/thaumaturgical_essence/death
+	name = "Death Essence"
+	desc = "The essence of pure death."
+	tier = 2
+	color = "#221123"
+	icon_state = "essence_magic"
+	smells_like = "death and the end"
