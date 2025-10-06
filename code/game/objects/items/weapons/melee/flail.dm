@@ -117,31 +117,6 @@
 	desc = "The striking head resembles Necra's original skull, striking true with a sculpted emblem of love and sacrifice. Perhaps one of the few Psydonic-designed emblems of The Ten left."
 	icon_state = "necraflail"
 
-/obj/item/weapon/flail/sflail/pestraflail
-	name = "plaguebringer censer"
-	desc = "A heavy censer burning with a terrible incense, used by the faithful of Pestra to cleanse rot."
-	icon_state = "pestraflail"
-
-/obj/item/weapon/flail/sflail/pestraflail/attack(mob/living/target, mob/user)
-	. = ..()
-	target.adjust_hygiene(-20)
-	var/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-	var/has_rot = FALSE
-	if(!was_zombie)
-		if(ishuman(target))
-			var/mob/living/carbon/human/human_target = target
-			for(var/obj/item/bodypart/bodypart as anything in human_target.bodyparts)
-				if(bodypart.skeletonized)
-					return .
-				if(bodypart.rotted)
-					has_rot = TRUE
-	if(!has_rot && !was_zombie)
-		return .
-	if(isliving(target))
-		target.adjust_divine_fire_stacks(1)
-		target.IgniteMob()
-		to_chat(target, span_warning("The censer's incense burns at your rotten flesh!"))
-
 //................ Psydon Flail ............... //
 /obj/item/weapon/flail/psydon
 	force = DAMAGE_GOOD_FLAIL

@@ -805,9 +805,11 @@
 			psycross = /obj/item/clothing/neck/psycross/silver/pestra
 			helmet = /obj/item/clothing/head/helmet/heavy/necked/pestrahelm
 			cloak = /obj/item/clothing/cloak/stabard/templar/pestra
-			weapon = /obj/item/weapon/flail/sflail/pestraflail
+			weapon = /obj/item/weapon/knife/dagger/steel/pestrasickle
+			character.mind.special_items["Second Weapon"] = /obj/item/weapon/knife/dagger/steel/pestrasickle
 			character.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
-			character.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4, TRUE)
+			ADD_TRAIT(character, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+			character.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, 4, TRUE)
 			character.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(/datum/patron/divine/eora)
 			helmet = /obj/item/clothing/head/helmet/sallet/eoran
