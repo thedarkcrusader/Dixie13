@@ -6,7 +6,6 @@
 	color = "#ff0000"
 	taste_description = "lifeblood"
 	scent_description = "metal"
-	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
@@ -65,7 +64,6 @@
 	random_reagent_color = FALSE
 	taste_description = "floral"
 	scent_description = "rosa"
-	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
@@ -90,7 +88,6 @@
 	color = "#FF33FF"
 	taste_description = "raw sweetness"
 	scent_description = "flower nectar"
-	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM * 5
 	alpha = 173
 
@@ -118,7 +115,6 @@
 	color = "#000042"
 	taste_description = "sweet mana"
 	scent_description = "dry air"
-	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
@@ -153,7 +149,6 @@
 	color = "#129c00"
 	taste_description = "sweet tea"
 	scent_description = "grass"
-	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 

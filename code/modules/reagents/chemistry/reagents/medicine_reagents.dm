@@ -2,6 +2,7 @@
 	name = "Medicine"
 	taste_description = "bitterness"
 	random_reagent_color = TRUE
+	overdose_threshold = 0
 
 /datum/reagent/medicine/on_mob_life(mob/living/carbon/M)
 	current_cycle++
