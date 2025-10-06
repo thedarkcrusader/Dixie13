@@ -2475,6 +2475,9 @@
 	dir = 8
 	},
 /obj/effect/decal/shadow_floor,
+/obj/structure/chair/bench/church/smallbench{
+	dir = 8
+	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
 "bnc" = (
@@ -6608,18 +6611,7 @@
 /turf/open/floor/carpet/lord/right,
 /area/rogue/indoors/town/manor)
 "dqZ" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall";
-	pixel_y = 0;
-	pixel_x = -7
-	},
-/obj/structure/chair/stool/crafted,
 /obj/effect/decal/shadow_floor,
-/obj/effect/decal/shadow_floor{
-	pixel_y = -14;
-	pixel_x = -7
-	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
 "drn" = (
@@ -6731,7 +6723,6 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/smithy)
 "dtD" = (
-/obj/structure/fluff/railing/border,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -6740,6 +6731,9 @@
 	},
 /obj/effect/decal/shadow_floor{
 	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
@@ -11467,19 +11461,21 @@
 	pixel_y = 0;
 	pixel_x = -9
 	},
-/obj/machinery/light/fueled/firebowl/standing,
 /obj/effect/decal/shadow_floor,
 /obj/effect/decal/shadow_floor{
 	dir = 8
+	},
+/obj/effect/decal/shadow_floor{
+	pixel_y = -14;
+	pixel_x = -9
 	},
 /obj/effect/decal/shadow_floor{
 	dir = 8;
 	pixel_x = -14;
 	pixel_y = -6
 	},
-/obj/effect/decal/shadow_floor{
-	pixel_y = -14;
-	pixel_x = -15
+/obj/machinery/light/fueled/wallfire/candle/lamp{
+	pixel_y = 6
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
@@ -12677,13 +12673,12 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/indoors/town)
 "gCj" = (
-/obj/structure/table/wood/crafted,
-/obj/item/candle/yellow/lit{
-	pixel_y = -3;
-	pixel_x = -8
-	},
 /obj/effect/decal/shadow_floor{
 	dir = 5
+	},
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/chair/bench/church/smallbench{
+	dir = 4
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
@@ -20435,9 +20430,8 @@
 	dir = 1;
 	icon_state = "borderfall";
 	pixel_y = 0;
-	pixel_x = 9
+	pixel_x = 7
 	},
-/obj/machinery/light/fueled/firebowl/standing,
 /obj/effect/decal/shadow_floor{
 	dir = 4
 	},
@@ -20445,6 +20439,9 @@
 /obj/effect/decal/shadow_floor{
 	pixel_y = -14;
 	pixel_x = 7
+	},
+/obj/machinery/light/fueled/wallfire/candle/lamp{
+	pixel_y = 6
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
@@ -23182,6 +23179,9 @@
 	dir = 4
 	},
 /obj/effect/decal/shadow_floor,
+/obj/structure/chair/bench/church/smallbench{
+	dir = 4
+	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
 "mhc" = (
@@ -29805,21 +29805,6 @@
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/indoors/town/magician)
-"psT" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall";
-	pixel_y = 0;
-	pixel_x = 7
-	},
-/obj/structure/chair/stool/crafted,
-/obj/effect/decal/shadow_floor,
-/obj/effect/decal/shadow_floor{
-	pixel_y = -14;
-	pixel_x = 7
-	},
-/turf/open/floor/ruinedwood/spiralfade,
-/area/rogue/indoors/town/theatre)
 "psW" = (
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/smithy)
@@ -41693,7 +41678,6 @@
 /area/rogue/indoors/town/bath)
 "vAz" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/stool/crafted,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
 "vAA" = (
@@ -41762,7 +41746,9 @@
 /obj/effect/decal/shadow_floor{
 	pixel_y = -14
 	},
-/obj/machinery/light/fueled/firebowl/standing,
+/obj/machinery/light/fueled/wallfire/candle/lamp{
+	pixel_y = 6
+	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
 "vBs" = (
@@ -42390,20 +42376,12 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/indoors/town)
 "vTq" = (
-/obj/structure/table/wood/crafted,
-/obj/item/candle/yellow/lit{
-	pixel_y = 5
-	},
-/obj/item/candle/yellow/lit{
-	pixel_y = -1;
-	pixel_x = 6
-	},
-/obj/item/candle/yellow/lit{
-	pixel_y = -4;
-	pixel_x = -5
-	},
 /obj/effect/decal/shadow_floor{
 	dir = 9
+	},
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/chair/bench/church/smallbench{
+	dir = 8
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/theatre)
@@ -42754,7 +42732,6 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town/roofs)
 "wbU" = (
-/obj/structure/fluff/railing/border,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -42763,6 +42740,9 @@
 	},
 /obj/effect/decal/shadow_floor{
 	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
@@ -62425,7 +62405,7 @@ lJy
 vwC
 jvz
 dtD
-psT
+dqZ
 vAz
 jNk
 dru
