@@ -18220,13 +18220,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
-"jCP" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	pixel_y = 6
-	},
-/turf/open/floor/cobblerock/snow,
-/area/rogue/outdoors/town)
 "jCR" = (
 /turf/open/floor/cobble,
 /area/rogue/indoors)
@@ -25823,9 +25816,6 @@
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/mountains)
 "nzw" = (
-/obj/structure/fluff/railing/wood{
-	pixel_y = -4
-	},
 /obj/effect/decal/cleanable/blood/old{
 	pixel_y = 14;
 	pixel_x = 21
@@ -32679,9 +32669,6 @@
 "qVz" = (
 /obj/structure/fluff/statue/gaffer{
 	pixel_y = 21
-	},
-/obj/structure/fluff/railing/wood{
-	pixel_y = -4
 	},
 /turf/open/floor/cobblerock/snow,
 /area/rogue/outdoors/town)
@@ -39947,13 +39934,6 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/under/town/basement)
-"uIB" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	pixel_y = 6
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors/town)
 "uII" = (
 /obj/structure/fluff/walldeco/vinez/blue,
 /obj/structure/lever/hidden/keep{
@@ -111756,7 +111736,7 @@ pmI
 jnM
 pii
 jKl
-jCP
+jnM
 nzw
 jKl
 xBn
@@ -111958,7 +111938,7 @@ pmI
 eSv
 jKl
 jKl
-uIB
+pmI
 qVz
 cbQ
 jKl
