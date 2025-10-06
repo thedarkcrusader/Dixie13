@@ -165,7 +165,7 @@
 /datum/alch_cauldron_recipe/doompoison
 	recipe_name = "Doom Poison"
 	smells_like = "doom"
-	output_reagents = list(/datum/reagent/strongpoison = 6, /datum/reagent/additive = 6)
+	output_reagents = list(/datum/reagent/strongpoison = 6)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 6,
 		/datum/thaumaturgical_essence/void = 3,
@@ -184,7 +184,7 @@
 /datum/alch_cauldron_recipe/big_stam_poison
 	recipe_name = "Strong Stamina Poison"
 	smells_like = "stagnant air"
-	output_reagents = list(/datum/reagent/stampoison = 18, /datum/reagent/additive = 18)
+	output_reagents = list(/datum/reagent/stampoison = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 5,
 		/datum/thaumaturgical_essence/void = 4,
@@ -214,7 +214,7 @@
 /datum/alch_cauldron_recipe/big_health_potion
 	recipe_name = "Strong Elixir of Health"
 	smells_like = "berry pie"
-	output_reagents = list(/datum/reagent/medicine/healthpot = 18, /datum/reagent/additive = 18)
+	output_reagents = list(/datum/reagent/medicine/healthpot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 6,
 		/datum/thaumaturgical_essence/order = 3,
@@ -243,7 +243,7 @@
 /datum/alch_cauldron_recipe/big_mana_potion
 	recipe_name = "Powerful Arcyne Elixir"
 	smells_like = "fear"
-	output_reagents = list(/datum/reagent/medicine/manapot = 18, /datum/reagent/additive = 18)
+	output_reagents = list(/datum/reagent/medicine/manapot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/magic = 5,
 		/datum/thaumaturgical_essence/energia = 4,
@@ -262,7 +262,7 @@
 /datum/alch_cauldron_recipe/big_stamina_potion
 	recipe_name = "Powerful Stamina Elixir"
 	smells_like = "clean winds"
-	output_reagents = list(/datum/reagent/medicine/stampot = 18, /datum/reagent/additive = 18)
+	output_reagents = list(/datum/reagent/medicine/stampot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/air = 5,
 		/datum/thaumaturgical_essence/motion = 4,
