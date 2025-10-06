@@ -13,7 +13,7 @@
 	min_pq = 10
 	bypass_lastclass = TRUE
 
-	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	allowed_races = RACES_PLAYER_NONHERETICAL
 
 	outfit = /datum/outfit/gatemaster	//Default outfit.
 	advclass_cat_rolls = list(CTAG_GATEMASTER = 20)	//Handles class selection.
