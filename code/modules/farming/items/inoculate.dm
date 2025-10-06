@@ -60,21 +60,6 @@ var/datum/plant_genetics/inoculate_genetics
 	mushmound.insert_plant(GLOB.plant_defs[plant_def_type], inoculate_genetics)
 	qdel(src)
 
-/obj/item/neuFarm/seed/inoculate/attack_atom(atom/attacked_atom, mob/living/user)
-	if(!isturf(attacked_atom))
-		return ..()
-
-	var/turf/T = attacked_atom
-	var/obj/structure/soil/soil = get_soil_on_turf(T)
-	var/obj/structure/mushmound/mushmound
-	if(mushmound)
-		try_plant_seed(user, soil)
-		return TRUE
-	if(soil)
-		to_chat(user, span_warning("I cannot plant this into regular soil!")
-		return FALSE
-	return ..()
-
 /obj/item/neuFarm/seed/inoculate/coprinus
 	plant_def_type = /datum/plant_def/coprinus
 
