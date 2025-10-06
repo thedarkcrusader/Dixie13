@@ -421,7 +421,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	name = "Dread Death"
 	description = "A terribly potent poison."
 	reagent_state = LIQUID
-	color = "#041d0e"
+	color = "#0e0004"
 	random_reagent_color = TRUE
 	taste_description = "the end"
 	scent_description = "nothing"
