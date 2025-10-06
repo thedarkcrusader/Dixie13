@@ -350,19 +350,25 @@
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
 	character.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
-/datum/special_trait/dilligent
-	name = "Dilligent"
-	greet_text = span_notice("I work dae and nite in Malum's name, nothing shall stop my toil!")
-	weight = 50
+/datum/special_trait/burdened
+	name = "The Burdened One"
+	greet_text = span_notice("You are a true instrument of creation, the most blessed of Malum, nothing will stop your toil, be it sleep or fatigue.")
+	weight = 10
 	allowed_patrons = list(/datum/patron/divine/malum)
+	req_text = "Worship Malum"
 
-/datum/special_trait/dilligent/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/burdened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_MALUMFIRE, "[type]")
-	character.change_stat(STATKEY_END, 2)
-	character.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-	character.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-	character.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-	character.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+	ADD_TRAIT(character, TRAIT_NOSLEEP, "[type]") // can't learn any new skills
+	ADD_TRAIT(character, TRAIT_NOENERGY, "[type]")
+	character.change_stat(STATKEY_END, 4) // Never stop.
+	character.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
+	character.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
 
 /datum/special_trait/richpouch
 	name = "Rich Pouch"
@@ -402,6 +408,27 @@
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(15, 20) //In other words, In the next round following the special, you are effectively lucky.
 
+/datum/special_trait/blessed
+	name = "The Blessed One"
+	greet_text = span_notice("I am a devout blessed by the Ten")
+	req_text = "Be Tennite"
+	weight = 7
+	allowed_patrons = ALL_TEMPLE_PATRONS
+
+/datum/special_trait/blessed/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_APRICITY, "[type]")
+	ADD_TRAIT(character, TRAIT_TUTELAGE, "[type]")
+	ADD_TRAIT(character, TRAIT_KNEESTINGER_IMMUNITY, "[type]")
+	ADD_TRAIT(character, TRAIT_LEECHIMMUNE, "[type]")
+	ADD_TRAIT(character, TRAIT_SOUL_EXAMINE, "[type]")
+	ADD_TRAIT(character, TRAIT_SHARPER_BLADES, "[type]")
+	ADD_TRAIT(character, TRAIT_BLACKLEG, "[type]")
+	ADD_TRAIT(character, TRAIT_ROT_EATER, "[type]")
+	ADD_TRAIT(character, TRAIT_BETTER_SLEEP, "[type]")
+	ADD_TRAIT(character, TRAIT_EXTEROCEPTION, "[type]")
+	character.change_stat(STATKEY_LCK, 1)
+	character.add_stress(/datum/stress_event/blessed)
+
 //neutral
 /datum/special_trait/backproblems
 	name = "Giant"
@@ -431,6 +458,7 @@
 	character.change_stat(STATKEY_CON, -2)
 	character.change_stat(STATKEY_SPD, 2)
 	character.change_stat(STATKEY_INT, 2)
+	ADD_TRAIT(character, TRAIT_TINY, "[type]")
 	character.transform = character.transform.Scale(0.90, 0.90)
 	character.update_transform()
 
