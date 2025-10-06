@@ -136,7 +136,7 @@
 
 /datum/alch_cauldron_recipe/disease_cure
 	recipe_name = "Disease Cure"
-	smells_like = "purity"
+	smells_like = "feces"
 	output_reagents = list(/datum/reagent/medicine/diseasecure = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/order = 3,
@@ -146,7 +146,7 @@
 
 /datum/alch_cauldron_recipe/antidote
 	recipe_name = "Antidote"
-	smells_like = "wet moss"
+	smells_like = "rotten cheese"
 	output_reagents = list(/datum/reagent/medicine/antidote = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 3,
@@ -155,7 +155,7 @@
 
 /datum/alch_cauldron_recipe/berrypoison
 	recipe_name = "Poison"
-	smells_like = "death"
+	smells_like = "charcoal"
 	output_reagents = list(/datum/reagent/berrypoison = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 4,
@@ -164,7 +164,7 @@
 
 /datum/alch_cauldron_recipe/doompoison
 	recipe_name = "Doom Poison"
-	smells_like = "doom"
+	smells_like = "charcoal"
 	output_reagents = list(/datum/reagent/strongpoison = 6)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 6,
@@ -174,7 +174,7 @@
 
 /datum/alch_cauldron_recipe/stam_poison
 	recipe_name = "Stamina Poison"
-	smells_like = "a slow breeze"
+	smells_like = "kicked up dust"
 	output_reagents = list(/datum/reagent/stampoison = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 3,
@@ -183,7 +183,7 @@
 
 /datum/alch_cauldron_recipe/big_stam_poison
 	recipe_name = "Strong Stamina Poison"
-	smells_like = "stagnant air"
+	smells_like = "stagnant cold air"
 	output_reagents = list(/datum/reagent/stampoison = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/poison = 5,
@@ -193,7 +193,7 @@
 
 /datum/alch_cauldron_recipe/gender_potion
 	recipe_name = "Gender Potion"
-	smells_like = "living beings"
+	smells_like = "flowery nectars"
 	output_reagents = list(/datum/reagent/medicine/gender_potion = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 4,
@@ -203,8 +203,8 @@
 
 // Healing potions
 /datum/alch_cauldron_recipe/health_potion
-	recipe_name = "Elixir of Health"
-	smells_like = "sweet berries"
+	recipe_name = "Lifeblood Potion"
+	smells_like = "metal"
 	output_reagents = list(/datum/reagent/medicine/healthpot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 4,
@@ -212,8 +212,8 @@
 	)
 
 /datum/alch_cauldron_recipe/big_health_potion
-	recipe_name = "Strong Elixir of Health"
-	smells_like = "berry pie"
+	recipe_name = "Strong Lifeblood Potion"
+	smells_like = "rich metal"
 	output_reagents = list(/datum/reagent/medicine/healthpot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 6,
@@ -223,7 +223,7 @@
 
 /datum/alch_cauldron_recipe/rosawater_potion
 	recipe_name = "Rose Water"
-	smells_like = "roses"
+	smells_like = "rosa"
 	output_reagents = list(/datum/reagent/medicine/rosawater = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/life = 3,
@@ -232,8 +232,8 @@
 	)
 
 /datum/alch_cauldron_recipe/mana_potion
-	recipe_name = "Arcyne Elixir"
-	smells_like = "power"
+	recipe_name = "Mana Potion"
+	smells_like = "dry air"
 	output_reagents = list(/datum/reagent/medicine/manapot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/magic = 3,
@@ -241,8 +241,8 @@
 	)
 
 /datum/alch_cauldron_recipe/big_mana_potion
-	recipe_name = "Powerful Arcyne Elixir"
-	smells_like = "fear"
+	recipe_name = "Strong Mana Potion"
+	smells_like = "crackling thunder"
 	output_reagents = list(/datum/reagent/medicine/manapot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/magic = 5,
@@ -251,8 +251,8 @@
 	)
 
 /datum/alch_cauldron_recipe/stamina_potion
-	recipe_name = "Stamina Elixir"
-	smells_like = "fresh air"
+	recipe_name = "Stamina Potion"
+	smells_like = "wet grass"
 	output_reagents = list(/datum/reagent/medicine/stampot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/air = 3,
@@ -260,8 +260,8 @@
 	)
 
 /datum/alch_cauldron_recipe/big_stamina_potion
-	recipe_name = "Powerful Stamina Elixir"
-	smells_like = "clean winds"
+	recipe_name = "Powerful Stamina Potion"
+	smells_like = "freshly cut grass"
 	output_reagents = list(/datum/reagent/medicine/stampot = 18)
 	required_essences = list(
 		/datum/thaumaturgical_essence/air = 5,
@@ -271,8 +271,8 @@
 
 // S.P.E.C.I.A.L. potions
 /datum/alch_cauldron_recipe/str_potion
-	recipe_name = "Potion of Mountain Muscles"
-	smells_like = "petrichor"
+	recipe_name = "Strength of Troll Muscles"
+	smells_like = "sour vomit"
 	output_reagents = list(/datum/reagent/buff/strength = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/earth = 4,
@@ -281,8 +281,8 @@
 	)
 
 /datum/alch_cauldron_recipe/per_potion
-	recipe_name = "Potion of Keen Eye"
-	smells_like = "fire"
+	recipe_name = "Perception of Cat Eyes"
+	smells_like = "cat urine"
 	output_reagents = list(/datum/reagent/buff/perception = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/fire = 3,
@@ -291,8 +291,8 @@
 	)
 
 /datum/alch_cauldron_recipe/end_potion
-	recipe_name = "Potion of Enduring Fortitude"
-	smells_like = "mountain air"
+	recipe_name = "Fortitude of Enduring Mountains"
+	smells_like = "gote urine"
 	output_reagents = list(/datum/reagent/buff/endurance = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/earth = 3,
@@ -301,8 +301,8 @@
 	)
 
 /datum/alch_cauldron_recipe/con_potion
-	recipe_name = "Potion of Stone Flesh"
-	smells_like = "earth"
+	recipe_name = "Constitution of Stone Flesh"
+	smells_like = "petrichor"
 	output_reagents = list(/datum/reagent/buff/constitution = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/earth = 5,
@@ -310,8 +310,8 @@
 	)
 
 /datum/alch_cauldron_recipe/int_potion
-	recipe_name = "Potion of Keen Mind"
-	smells_like = "water"
+	recipe_name = "Intelligence of Ancient Minds"
+	smells_like = "fresh moss"
 	output_reagents = list(/datum/reagent/buff/intelligence = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/water = 3,
@@ -320,8 +320,8 @@
 	)
 
 /datum/alch_cauldron_recipe/spd_potion
-	recipe_name = "Potion of Fleet Foot"
-	smells_like = "clean air"
+	recipe_name = "Speed of Fleeting Spirits"
+	smells_like = "sea salt"
 	output_reagents = list(/datum/reagent/buff/speed = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/air = 4,
@@ -329,8 +329,8 @@
 	)
 
 /datum/alch_cauldron_recipe/lck_potion
-	recipe_name = "Potion of Seven Clovers"
-	smells_like = "calming"
+	recipe_name = "Luck of Seven Clovers"
+	smells_like = "rich compost"
 	output_reagents = list(/datum/reagent/buff/fortune = 9)
 	required_essences = list(
 		/datum/thaumaturgical_essence/chaos = 3,
