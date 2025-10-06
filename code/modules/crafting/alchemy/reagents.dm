@@ -365,7 +365,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	color = "#2c1818"
 	random_reagent_color = TRUE
 	taste_description = "sour meat"
-	scent_description = "rancid meat"
+	scent_description = "metal"
 	metabolization_rate = REAGENTS_SLOW_METABOLISM
 
 /datum/reagent/organpoison/on_mob_life(mob/living/carbon/M)

@@ -83,7 +83,7 @@
 	html += {"
 		</div>
 		<div>
-			<h2>Requires [UNIT_FORM_STRING(20)] of Water</h2>
+			<h2>Requires [UNIT_FORM_STRING(50)] of Water</h2>
 			<h2>Creates</h2>
 	"}
 	//regarding the above, the amount of water needed can be found in the cauldron.dm file
