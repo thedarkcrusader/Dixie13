@@ -6,7 +6,7 @@
 	force = DAMAGE_AXE - 5
 	force_wielded = DAMAGE_AXE_WIELD - 5
 	possible_item_intents = list(/datum/intent/mace/strike/shovel)
-	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/irrigate, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop)
+	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/irrigate, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/shovel)
 	name = "shovel"
 	desc = ""
 	icon_state = "shovel"
@@ -73,6 +73,9 @@
 	icon_state = "instrike"
 	misscost = 5
 	item_damage_type = "blunt"
+
+/datum/intent/axe/chop/shovel
+	penfactor = AP_AXE_CHOP - 2
 
 /datum/intent/shovelscoop
 	name = "scoop"
