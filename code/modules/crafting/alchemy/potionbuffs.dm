@@ -7,6 +7,7 @@
 
 /datum/status_effect/buff/alch/strengthpot/weak
 	effectedstats = list(STATKEY_STR = 1)
+	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/strengthpot
 	id = "strpot"
@@ -18,6 +19,7 @@
 
 /datum/status_effect/buff/alch/perceptionpot/weak
 	effectedstats = list(STATKEY_PER = 1)
+	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/perceptionpot
 	id = "perpot"
@@ -34,8 +36,10 @@
 
 /atom/movable/screen/alert/status_effect/buff/alch/intelligencepot
 	name = "Intelligence"
+
 /datum/status_effect/buff/alch/constitutionpot/weak
 	effectedstats = list(STATKEY_CON = 1)
+	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/constitutionpot
 	id = "conpot"
@@ -47,6 +51,7 @@
 
 /datum/status_effect/buff/alch/endurancepot/weak
 	effectedstats = list(STATKEY_END = 1)
+	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/endurancepot
 	id = "endpot"
@@ -63,6 +68,7 @@
 	id = "artemisia_luck"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/artemisia_luck
 	effectedstats = list(STATKEY_SPD = 1, STATKEY_LCK = 1)
+	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/speedpot
 	id = "spdpot"

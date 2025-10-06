@@ -206,10 +206,10 @@
 /datum/essence_combination/death
 	name = "Death Essence"
 	inputs = list(
-		/datum/thaumaturgical_essence/void = 2,
+		/datum/thaumaturgical_essence/void = 4,
 		/datum/thaumaturgical_essence/poison = 2,
-		/datum/thaumaturgical_essence/chaos = 1,
+		/datum/thaumaturgical_essence/chaos = 2,
 	)
-	output_type = /datum/thaumaturgical_essence/magic
-	output_amount = 1
+	output_type = /datum/thaumaturgical_essence/death
+	output_amount = 2
 	skill_required = SKILL_LEVEL_JOURNEYMAN

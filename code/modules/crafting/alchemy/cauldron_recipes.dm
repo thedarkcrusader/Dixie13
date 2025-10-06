@@ -210,7 +210,7 @@ Keep them reasonable to make
 	output_reagents = list(/datum/reagent/strongpoison = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/void = 4,
-		/datum/thaumaturgical_essence/poison = 5,
+		/datum/thaumaturgical_essence/poison = 7,
 	)
 
 /datum/alch_cauldron_recipe/big_stam_poison
@@ -219,7 +219,7 @@ Keep them reasonable to make
 	output_reagents = list(/datum/reagent/stampoison = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/frost = 4,
-		/datum/thaumaturgical_essence/poison = 5,
+		/datum/thaumaturgical_essence/poison = 7,
 	)
 
 /datum/alch_cauldron_recipe/disease_cure
@@ -266,7 +266,7 @@ Keep them reasonable to make
 /datum/alch_cauldron_recipe/dread_death
 	recipe_name = "Dread Death"
 	smells_like = "cold fire"
-	output_reagents = list(/datum/reagent/dreaddeath = 1)
+	output_reagents = list(/datum/reagent/dreaddeath = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/frost = 3,
 		/datum/thaumaturgical_essence/life = 3,
@@ -280,10 +280,10 @@ Keep them reasonable to make
 	smells_like = "sour vomit"
 	output_reagents = list(/datum/reagent/buff/strength = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/earth = 6,
 		/datum/thaumaturgical_essence/order = 3,
 		/datum/thaumaturgical_essence/crystal = 2,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/per_potion
@@ -291,10 +291,10 @@ Keep them reasonable to make
 	smells_like = "cat urine"
 	output_reagents = list(/datum/reagent/buff/perception = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/fire = 3,
+		/datum/thaumaturgical_essence/fire = 6,
 		/datum/thaumaturgical_essence/order = 3,
 		/datum/thaumaturgical_essence/light = 2,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/end_potion
@@ -302,10 +302,10 @@ Keep them reasonable to make
 	smells_like = "gote urine"
 	output_reagents = list(/datum/reagent/buff/endurance = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/earth = 6,
 		/datum/thaumaturgical_essence/fire = 3,
 		/datum/thaumaturgical_essence/life = 3,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/con_potion
@@ -313,9 +313,9 @@ Keep them reasonable to make
 	smells_like = "petrichor"
 	output_reagents = list(/datum/reagent/buff/constitution = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/earth = 6,
-		/datum/thaumaturgical_essence/crystal = 2,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/earth = 9,
+		/datum/thaumaturgical_essence/crystal = 4,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/int_potion
@@ -323,10 +323,10 @@ Keep them reasonable to make
 	smells_like = "fresh moss"
 	output_reagents = list(/datum/reagent/buff/intelligence = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/water = 3,
+		/datum/thaumaturgical_essence/water = 6,
 		/datum/thaumaturgical_essence/frost = 3,
 		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/spd_potion
@@ -334,10 +334,10 @@ Keep them reasonable to make
 	smells_like = "sea salt"
 	output_reagents = list(/datum/reagent/buff/speed = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/water = 3,
+		/datum/thaumaturgical_essence/water = 6,
 		/datum/thaumaturgical_essence/air = 3,
 		/datum/thaumaturgical_essence/motion = 3,
-		/datum/thaumaturgical_essence/magic = 1,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 /datum/alch_cauldron_recipe/lck_potion
@@ -345,9 +345,9 @@ Keep them reasonable to make
 	smells_like = "rich compost"
 	output_reagents = list(/datum/reagent/buff/fortune = 5)
 	required_essences = list(
-		/datum/thaumaturgical_essence/chaos = 4,
-		/datum/thaumaturgical_essence/energia = 4,
-		/datum/thaumaturgical_essence/magic = 2,
+		/datum/thaumaturgical_essence/chaos = 8,
+		/datum/thaumaturgical_essence/energia = 6,
+		/datum/thaumaturgical_essence/magic = 4,
 	)
 
 //Misc
@@ -373,5 +373,5 @@ Keep them reasonable to make
 		/datum/thaumaturgical_essence/energia = 3,
 		/datum/thaumaturgical_essence/order = 3,
 		/datum/thaumaturgical_essence/light = 3,
-		/datum/thaumaturgical_essence/water = 1,
+		/datum/thaumaturgical_essence/water = 3,
 	)
