@@ -355,7 +355,8 @@
 	greet_text = span_notice("You are a true instrument of creation, the most blessed of Malum, nothing will stop your toil, be it sleep or fatigue.")
 	weight = 10
 	allowed_patrons = list(/datum/patron/divine/malum)
-	req_text = "Worship Malum"
+	req_text = "Worship Malum, must be a carpenter, smith, artificer or miner."
+	allowed_jobs = list(/datum/job/carpenter, /datum/job/armorsmith, /datum/job/weaponsmith, /datum/job/artificer, /datum/job/bapprentice, /datum/job/miner) // no combat roles
 
 /datum/special_trait/burdened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_MALUMFIRE, "[type]")
