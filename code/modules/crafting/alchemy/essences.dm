@@ -104,7 +104,7 @@
 	name = "Chaos Essence"
 	desc = "The essence of change and discord."
 	color = "#8A2BE2"
-	smells_like = "change and uncertanity"
+	smells_like = "freedom and chaos"
 
 // =============================================================================
 // TIER 1 - FIRST COMPOUND ESSENCES
