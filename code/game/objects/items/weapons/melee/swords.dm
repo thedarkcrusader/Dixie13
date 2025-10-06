@@ -795,7 +795,6 @@
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
-
 /obj/item/weapon/sword/long/ravox
 	name = "duel settler"
 	desc = "The tenets of ravoxian duels are enscribed upon the blade of this sword."
