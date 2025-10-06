@@ -178,7 +178,7 @@
 
 /datum/reagent/medicine/antidote
 	name = "Poison Antidote"
-	description = ""
+	description = "Heals damage induced by toxins and poisons."
 	reagent_state = LIQUID
 	color = "#00ff00"
 	taste_description = "sickly sweet"
@@ -193,7 +193,7 @@
 
 /datum/reagent/medicine/diseasecure
 	name = "Disease Cure"
-	description = ""
+	description = "Quickly heals damage induced by toxins and poisons."
 	reagent_state = LIQUID
 	color = "#004200"
 	taste_description = "dirt"
