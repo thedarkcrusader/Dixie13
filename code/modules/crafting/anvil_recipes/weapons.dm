@@ -335,7 +335,7 @@
 	name = "Iron Kaskara"
 	recipe_name = "a Iron Kaskara"
 	appro_skill = /datum/skill/craft/weaponsmithing
-	created_item = /obj/item/weapon/sword/iron/kaskara
+	created_item = /obj/item/weapon/sword/kaskara/iron
 
 /datum/anvil_recipe/weapons/iron/towershield
 	name = "Tower Shield (+Small Log)"

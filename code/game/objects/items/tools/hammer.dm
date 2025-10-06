@@ -188,16 +188,15 @@
 	time_multiplier = 1.1
 
 /obj/item/weapon/hammer/sledgehammer
+	name = "sledgehammer"
+	desc = "It's almost asking to be put to work."
+	icon = 'icons/roguetown/weapons/32/clubs.dmi'
+	icon_state = "sledgehammer"
 	force = DAMAGE_HAMMER + 5
 	force_wielded = DAMAGE_HAMMER_WIELD + 5
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike/heavy, /datum/intent/mace/smash/heavy)
-	name = "sledgehammer"
-	desc = "It's almost asking to be put to work."
-	icon_state = "sledgehammer"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	wbalance = -1 // Heavy
 	minstr = 8
 	gripsprite = TRUE
@@ -221,7 +220,7 @@
 /obj/item/weapon/hammer/sledgehammer/war
 	name = "steel sledgehammer"
 	desc = "A heavy steel sledgehammer, a weapon designed to make knights run in fear, the best option for a common soldier against a knight."
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/clubs.dmi'
 	icon_state = "warbonker"
 	force = DAMAGE_HAMMER + 5
 	force_wielded = DAMAGE_HAMMER_WIELD + 10

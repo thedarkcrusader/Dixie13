@@ -2,14 +2,14 @@
 ==========================================================*/
 //................ Mace ............... //
 /obj/item/weapon/mace
+	name = "iron mace"
+	desc = "A heavy iron mace, prefered by those with a grudge against knightly whoresons."
+	icon_state = "mace"
+	icon = 'icons/roguetown/weapons/32/clubs.dmi'
 	force = DAMAGE_MACE
 	force_wielded = DAMAGE_MACE_WIELD
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "iron mace"
-	desc = "A heavy iron mace, prefered by those with a grudge against knightly whoresons."
-	icon_state = "mace"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	item_state = "mace_greyscale"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
@@ -524,11 +524,11 @@
 
 //................ Shillelagh ............... //
 /obj/item/weapon/mace/goden/shillelagh		// The Briar signature weapon. Sturdy oak war club.
-	gripped_intents = list(/datum/intent/mace/smash/wood)
 	name = "shillelagh"
 	desc = "Big old oak branch, carved to a deadly weapon."
+	icon = 'icons/roguetown/weapons/32/clubs.dmi'
 	icon_state = "shillelagh"
-	icon = 'icons/roguetown/weapons/shillelagh.dmi'
+	gripped_intents = list(/datum/intent/mace/smash/wood)
 	SET_BASE_PIXEL(0, 0)
 	bigboy = FALSE
 	gripsprite = TRUE

@@ -6,7 +6,7 @@
 	name = "military flail"
 	desc = "A sturdy handle afixed to a cruel spiked ball with a harrowing metal chain."
 	icon_state = "iflail"
-	icon = 'icons/roguetown/weapons/32/whips/flail.dmi'
+	icon = 'icons/roguetown/weapons/32/whips_flails.dmi'
 	sharpness = IS_BLUNT
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
