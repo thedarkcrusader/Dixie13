@@ -6,11 +6,16 @@
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
 	possible_item_intents = list(/datum/intent/use)
+	var/datum/plant_def/plant_def_type
 
-var/datum/plant_genetics/inoculate_genetics
+	var/datum/plant_genetics/inoculate_genetics
 
 /obj/item/neuFarm/seed/inoculate/Initialize(mapload, datum/plant_genetics/passed_genetics)
 	. = ..()
+	if(plant_def_type)
+		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
+		color = def.seed_color // make a new inoculate color list later
+
 	if(!passed_genetics)
 		if(!inoculate_genetics)
 			var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]

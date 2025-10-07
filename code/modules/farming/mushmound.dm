@@ -4,10 +4,10 @@
 	icon = 'icons/roguetown/misc/soil.dmi'
 	icon_state = "mushmound-dry"
 	density = TRUE
-	anchored = TRUE
+	anchored = FALSE
 	climbable = TRUE
 	climb_offset = 5
-	max_integrity = 200
+	max_integrity = 100
 
 	COOLDOWN_DECLARE(mushmound_update)
 
@@ -48,3 +48,24 @@
 				inoculate.try_plant_inoculate(user, src)
 			return TRUE
 		return FALSE
+
+/obj/structure/soil/mushmound/update_overlays()
+	. = ..()
+	if(tilled_time > 0)
+		. += "soil-tilled"
+	. += get_water_mushoverlay()
+	. += get_nutri_overlay()
+	if(plant)
+		. += get_plant_overlay()
+	if(weeds >= MAX_PLANT_WEEDS * 0.6)
+		. += "mushweeds-2"
+	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
+		. += "mushweeds-1"
+
+/obj/structure/soil/mushmound/proc/get_water_mushoverlay()
+	return mutable_appearance(
+		icon,\
+		"mushmound-wet",\
+		color = "#000033",\
+		alpha = (100 * (water / MAX_PLANT_WATER)),\
+	)
