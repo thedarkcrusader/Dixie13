@@ -237,8 +237,6 @@
 	desc = "A fossilized clam shell. It would be a good idea to pry it open with a knife."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "oyster_closed"
-	grid_height = 3
-	grid_width = 3
 	sellprice = 5
 
 /obj/item/gem/coral
