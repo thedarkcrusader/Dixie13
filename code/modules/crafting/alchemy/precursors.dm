@@ -115,163 +115,43 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/proc/show_menu(mob/user)
 	user << browse(generate_html(user), "window=natural_precursor;size=500x810")
 
-/datum/natural_precursor/manabloom
-	name = "manabloom"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 3
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/manabloom,
-		/obj/item/reagent_containers/powder/manabloom
-	)
+/*
+--------------------PLANTS AND PRODUCE--------------------
+*/
 
 /datum/natural_precursor/vegetable
 	name = "vegetable"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/life = 1
+		/datum/thaumaturgical_essence/water = 1,
+		/datum/thaumaturgical_essence/life = 1,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable,
-	)
-
-/datum/natural_precursor/potato
-	name = "potato"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato,
-		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked,
-		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried,
-	)
-
-/datum/natural_precursor/cabbage
-	name = "cabbage"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/earth = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable/cabbage,
-	)
-
-/datum/natural_precursor/onion
-	name = "onion"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/poison = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable/onion,
-	)
-
-/datum/natural_precursor/turnip
-	name = "turnip"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/earth = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable/turnip,
 	)
 
 /datum/natural_precursor/fruit
 	name = "fruit"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3
+		/datum/thaumaturgical_essence/air = 2,
+		/datum/thaumaturgical_essence/water = 1,
+		/datum/thaumaturgical_essence/life = 1,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit,
-	)
-
-/datum/natural_precursor/strawberry
-	name = "strawberry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/apple,
 		/obj/item/reagent_containers/food/snacks/produce/fruit/strawberry,
-	)
-
-/datum/natural_precursor/raspberry
-	name = "raspberry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/fruit/raspberry,
-	)
-
-/datum/natural_precursor/blackberry
-	name = "blackberry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/blackberry,
-	)
-
-/datum/natural_precursor/jacksberry
-	name = "jacksberry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/poison = 3
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry,
 		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison,
-	)
-
-/datum/natural_precursor/pear
-	name = "pear"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/pear,
-	)
-
-/datum/natural_precursor/lemon
-	name = "lemon"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/water = 1//juicy
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/lemon,
-	)
-
-/datum/natural_precursor/lime
-	name = "lime"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/water = 1//juicy
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/lime,
-	)
-
-/datum/natural_precursor/tangerine
-	name = "tangerine"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/tangerine,
-	)
-
-/datum/natural_precursor/plum
-	name = "plum"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/plum,
 	)
 
@@ -279,95 +159,43 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	name = "grain"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/life = 1
+		/datum/thaumaturgical_essence/earth = 1,
+		/datum/thaumaturgical_essence/life = 1,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/grain,
-	)
-
-/datum/natural_precursor/wheat
-	name = "wheat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
-	)
-
-/datum/natural_precursor/oat
-	name = "oat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/grain/oat,
 	)
 
 /datum/natural_precursor/swampweed
 	name = "swampweed"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 3
+		/datum/thaumaturgical_essence/earth = 2,
+		/datum/thaumaturgical_essence/chaos = 2,
+		/datum/thaumaturgical_essence/poison = 1,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/swampweed,
-	)
-
-/datum/natural_precursor/swampweed_dried
-	name = "dried swampweed"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 3
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
-	)
-
-/datum/natural_precursor/westleach
-	name = "westleach"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/water = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/westleach,
-	)
-
-/datum/natural_precursor/dry_westleach
-	name = "dried westleach"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/fire = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 	)
 
 /datum/natural_precursor/sunflower
 	name = "sunflower"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/light = 2,
-		/datum/thaumaturgical_essence/life = 1
+		/datum/thaumaturgical_essence/fire = 1,
+		/datum/thaumaturgical_essence/life = 1,
+		/datum/thaumaturgical_essence/light = 1,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/sunflower,
 	)
 
-/datum/natural_precursor/sugarcane
-	name = "sugarcane"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/sugarcane,
-	)
-
 /datum/natural_precursor/fyritius
 	name = "fyritius flower"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 4,
-		/datum/thaumaturgical_essence/energia = 2
+		/datum/thaumaturgical_essence/fire = 3,
+		/datum/thaumaturgical_essence/life = 1
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/fyritius,
@@ -376,47 +204,17 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/poppy
 	name = "poppy"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 3
+		/datum/thaumaturgical_essence/earth = 2,
+		/datum/thaumaturgical_essence/chaos = 2,
+		/datum/thaumaturgical_essence/poison = 1
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/poppy,
 	)
 
-
-/datum/natural_precursor/apple
-	name = "apple"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 4,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/produce/fruit/apple,
-		/obj/item/reagent_containers/food/snacks/apple_dried,
-	)
-
-
-/datum/natural_precursor/herb
-	name = "herb"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/earth = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/hypericum,
-	)
-
-/datum/natural_precursor/leech
-	name = "leech"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3,
-		/datum/thaumaturgical_essence/water = 2
-	)
-	init_types = list(
-		/obj/item/natural/worms/leech,
-		/obj/item/natural/worms/leech/parasite,
-		/obj/item/natural/worms/leech/propaganda,
-		/obj/item/natural/worms/leech/abyssoid,
-	)
+/*
+--------------------WOOD AND STONE--------------------
+*/
 
 /datum/natural_precursor/stone
 	name = "stone"
@@ -1194,6 +992,19 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/reagent_containers/food/snacks/fish/carp
 	)
 
+/datum/natural_precursor/leech
+	name = "leech"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/life = 3,
+		/datum/thaumaturgical_essence/water = 2
+	)
+	init_types = list(
+		/obj/item/natural/worms/leech,
+		/obj/item/natural/worms/leech/parasite,
+		/obj/item/natural/worms/leech/propaganda,
+		/obj/item/natural/worms/leech/abyssoid,
+	)
+
 /datum/natural_precursor/fish_clownfish
 	name = "clownfish"
 	essence_yields = list(
@@ -1699,12 +1510,25 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/ingot/thaumic
 	)
 
+/datum/natural_precursor/manabloom
+	name = "manabloom"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/magic = 3
+	)
+	init_types = list(
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
+		/obj/item/reagent_containers/powder/manabloom
+	)
+
+/*
+--------------------MISC--------------------
+*/
 
 /datum/natural_precursor/rotten_food
 	name = "rotten food"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 4,
-		/datum/thaumaturgical_essence/chaos = 1
+		/datum/thaumaturgical_essence/chaos = 4,
+		/datum/thaumaturgical_essence/poison = 2,
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/rotten,
@@ -1718,13 +1542,33 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/reagent_containers/food/snacks/rotten/mince,
 	)
 
-//generic organs here
+/datum/natural_precursor/sugar
+	name = "sugar"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 3,
+		/datum/thaumaturgical_essence/energia = 1 //its meant to be a joke/pun about sugar being a great energy source
+	)
+	init_types = list(
+		/obj/item/reagent_containers/food/snacks/sugar,
+	)
+
+/datum/natural_precursor/tiefling_sugar
+	name = "tiefling sugar"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/chaos = 3,
+		/datum/thaumaturgical_essence/energia = 1 //its meant to be a joke/pun about sugar being a great energy source
+	)
+	init_types = list(
+		/obj/item/reagent_containers/food/snacks/tiefsugar,
+	)
+
 /datum/natural_precursor/organs
 	name = "organs"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 5,
-		/datum/thaumaturgical_essence/void = 2,
-		/datum/thaumaturgical_essence/chaos = 1
+		/datum/thaumaturgical_essence/chaos = 4,
+		/datum/thaumaturgical_essence/void = 1,
+		/datum/thaumaturgical_essence/poison = 1,
+		/datum/thaumaturgical_essence/life = 1
 	)
 	init_types = list(
 		/obj/item/organ/appendix,
@@ -1733,17 +1577,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/organ/liver,
 		/obj/item/organ/lungs,
 		/obj/item/organ/stomach,
-		/obj/item/organ/tongue
-	)
-
-//the brain is unique enough that I think it justifies its own precursor
-/datum/natural_precursor/brain
-	name = "brain"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 8,
-		/datum/thaumaturgical_essence/void = 5,
-		/datum/thaumaturgical_essence/magic = 1
-	)
-	init_types = list(
+		/obj/item/organ/tongue,
 		/obj/item/organ/brain,
 	)
