@@ -17,8 +17,8 @@
 	grid_width = 32
 	grid_height = 32
 	/// Amount of uses left
-	var/stringamt = 20
-	var/maxstring = 20
+	var/stringamt = 24
+	var/maxstring = 24
 	/// If this needle is infinite
 	var/infinite = FALSE
 	/// If this needle can be used to repair items
@@ -169,8 +169,8 @@
 	name = "needle"
 	icon_state = "thornneedle"
 	desc = "This rough needle can be used to sew cloth and wounds."
-	stringamt = 5
-	maxstring = 5
+	stringamt = 8
+	maxstring = 8
 	anvilrepair = null
 	melting_material = null
 
