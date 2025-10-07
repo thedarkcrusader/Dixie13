@@ -1478,9 +1478,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/examine(mob/user)
 	. = ..()
-	//will return FALSE if the item has no precursor
-	if(!(get_precursor_data(src)))
-	//and because !FALSE is TRUE, we return
+	if(!get_precursor_data(src))
 		return
 	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
 	var/datum/natural_precursor/precursor = get_precursor_data(src)
