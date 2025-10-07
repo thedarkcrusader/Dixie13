@@ -3,13 +3,12 @@
 	desc = "Attempt to make a undead your ally."
 	button_icon_state = "raiseskele"
 	sound = 'sound/vo/smokedrag.ogg'
-	charge_sound = 'sound/magic/antimagic.ogg'
 	self_cast_possible = FALSE
 
 	cast_range = 5
 	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE_UNHOLY
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/skill/magic/arcane
 	attunements = list(
 		/datum/attunement/death = 1,
 	)
@@ -38,21 +37,19 @@
 	. = ..()
 	if(!.)
 		return
-	if(!isliving(cast_on))
+	if(!cast_on.mind)
 		return FALSE
-	var/mob/living/victim = cast_on
-	if(victim.stat == DEAD)
+	if (cast_on.mob_biotypes & MOB_UNDEAD)
 		return
-	return !victim.mind && (victim.mob_biotypes & MOB_UNDEAD)
 
-/datum/action/cooldown/spell/control_undead/cast(mob/living/cast_on, atom/caster)
+
+/datum/action/cooldown/spell/control_undead/cast(mob/living/cast_on)
 	. = ..()
 	cast_on.LoadComponent(/datum/component/obeys_commands, pet_commands)
-	cast_on.ai_controller.can_idle = FALSE
-	cast_on.ai_controller.add_to_top(/datum/ai_planning_subtree/pet_planning)
 	cast_on.ai_controller.CancelActions()
 	cast_on.ai_controller.set_blackboard_key(BB_PET_TARGETING_DATUM, new /datum/targetting_datum/basic/not_friends())
-	cast_on.befriend(caster)
+	cast_on.faction = list("Cabal", "Undead")
+	cast_on.befriend(owner)
 	cast_on.pet_passive = TRUE
 
 	owner.visible_message(
