@@ -1,3 +1,5 @@
+/* #define MAX_PLANT_NUTRITION 300
+
 /obj/structure/soil/mushmound
 	name = "mushroom mound"
 	desc = "A mound of hay and nitesoil, used as the growing medium for various types of mushrooms."
@@ -57,7 +59,7 @@
 	if(tilled_time > 0)
 		. += "soil-tilled"
 	. += get_water_mushoverlay()
-	. += get_nutri_overlay()
+	. += get_nutri_mushoverlay()
 	if(plant)
 		. += get_plant_overlay()
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
@@ -72,3 +74,15 @@
 		color = "#000033",\
 		alpha = (100 * (water / MAX_PLANT_WATER)),\
 	)
+
+/obj/structure/soil/mushmound/proc/get_nutri_mushoverlay()
+	return mutable_appearance(
+		icon,\
+		"mushmound-dry",\
+		color = "#6d3a00",\
+		alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
+	)
+
+#undef MAX_PLANT_NUTRITION
+
+*/
