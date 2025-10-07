@@ -63,10 +63,11 @@
 			return ..()
 	..()
 
-/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/grown/log/tree/stick, mob/user, params)
-	if(stick && isturf(loc))
+/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/weapon, mob/user, params)
+	if(weapon && isturf(loc))
 		var/turf/location = get_turf(src)
-		if(inoculate && (user.used_intent) && (!user.used_intent.noaa))
+		if(inoculate && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
+			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			if(prob(5))
 				user.visible_message("<span class= 'info'>[user] fails to extract any spores.</span>")
 				qdel(src)
@@ -80,8 +81,10 @@
 			if(prob(6))
 				new inoculate(location, source_genetics)
 			qdel(src)
-			qdel(stick)
 			return
+		else
+			return ..()
+	..()
 
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat
 	seed = /obj/item/neuFarm/seed/wheat
