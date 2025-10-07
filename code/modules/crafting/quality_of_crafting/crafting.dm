@@ -853,7 +853,7 @@
 
 // jade //
 
-/datum/repeatable_crafting_recipe/crafting/cutjade
+/datum/repeatable_crafting_recipe/crafting/jade/cutgem
 	name = "cut joapstone gem"
 	output = /obj/item/carvedgem/jade/cutgem
 	requirements = list(
@@ -867,7 +867,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadefork
+/datum/repeatable_crafting_recipe/crafting/jade/fork
 	name = "joapstone fork"
 	output = /obj/item/carvedgem/jade/fork
 	requirements = list(
@@ -881,7 +881,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadespoon
+/datum/repeatable_crafting_recipe/crafting/jade/spoon
 	name = "joapstone spoon"
 	output = /obj/item/carvedgem/jade/spoon
 	requirements = list(
@@ -895,7 +895,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadecameo
+/datum/repeatable_crafting_recipe/crafting/jade/cameo
 	name = "joapstone cameo"
 	output = /obj/item/carvedgem/jade/cameo
 	requirements = list(
@@ -909,7 +909,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadebowl
+/datum/repeatable_crafting_recipe/crafting/jade/bowl
 	name = "joapstone bowl"
 	output = /obj/item/reagent_containers/glass/bowl/jade
 	requirements = list(
@@ -923,7 +923,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadecup
+/datum/repeatable_crafting_recipe/crafting/jade/cup
 	name = "joapstone cup"
 	output = /obj/item/reagent_containers/glass/cup/jade
 	requirements = list(
@@ -937,7 +937,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/jadeplatter
+/datum/repeatable_crafting_recipe/crafting/jade/platter
 	name = "joapstone platter"
 	output = /obj/item/plate/jade
 	requirements = list(
@@ -951,7 +951,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadering
+/datum/repeatable_crafting_recipe/crafting/jade/ring
 	name = "joapstone ring"
 	output = /obj/item/clothing/ring/jade
 	requirements = list(
@@ -965,7 +965,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadeamulet
+/datum/repeatable_crafting_recipe/crafting/jade/amulet
 	name = "joapstone amulet"
 	output = /obj/item/clothing/neck/jadeamulet
 	requirements = list(
@@ -979,7 +979,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadevase
+/datum/repeatable_crafting_recipe/crafting/jade/vase
 	name = "joapstone vase"
 	output = /obj/item/carvedgem/jade/vase
 	requirements = list(
@@ -993,7 +993,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadefigurine
+/datum/repeatable_crafting_recipe/crafting/jade/figurine
 	name = "joapstone figurine"
 	output = /obj/item/carvedgem/jade/figurine
 	requirements = list(
@@ -1007,7 +1007,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadefish
+/datum/repeatable_crafting_recipe/crafting/jade/fish
 	name = "joapstone fish figurine"
 	output = /obj/item/carvedgem/jade/fish
 	requirements = list(
@@ -1021,7 +1021,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadetablet
+/datum/repeatable_crafting_recipe/crafting/jade/tablet
 	name = "joapstone tablet"
 	output = /obj/item/carvedgem/jade/tablet
 	requirements = list(
@@ -1035,7 +1035,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadeteapot
+/datum/repeatable_crafting_recipe/crafting/jade/teapot
 	name = "joapstone teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotjade
 	requirements = list(
@@ -1049,7 +1049,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/jadebust
+/datum/repeatable_crafting_recipe/crafting/jade/bust
 	name = "joapstone bust"
 	output = /obj/item/carvedgem/jade/bust
 	requirements = list(
@@ -1062,7 +1062,7 @@
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 3
-/datum/repeatable_crafting_recipe/crafting/fancyvase
+/datum/repeatable_crafting_recipe/crafting/jade/fancyvase
 	name = "fancy joapstone vase"
 	output = /obj/item/carvedgem/jade/fancyvase
 	requirements = list(
@@ -1076,7 +1076,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jadecomb
+/datum/repeatable_crafting_recipe/crafting/jade/comb
 	name = "joapstone comb"
 	output = /obj/item/carvedgem/jade/comb
 	requirements = list(
@@ -1090,7 +1090,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jadeduck
+/datum/repeatable_crafting_recipe/crafting/jade/duck
 	name = "joapstone duck"
 	output = /obj/item/carvedgem/jade/duck
 	requirements = list(
@@ -1104,7 +1104,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jadebracelet
+/datum/repeatable_crafting_recipe/crafting/jade/bracelet
 	name = "joapstone bracelets"
 	output = /obj/item/clothing/wrists/gem/jadebracelet
 	requirements = list(
@@ -1118,7 +1118,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jadecirclet
+/datum/repeatable_crafting_recipe/crafting/jade/circlet
 	name = "joapstone circlet"
 	output = /obj/item/clothing/head/crown/circlet/jade
 	requirements = list(
@@ -1132,7 +1132,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jadefancycup
+/datum/repeatable_crafting_recipe/crafting/jade/fancycup
 	name = "fancy joapstone cup"
 	output = /obj/item/reagent_containers/glass/cup/jadefancy
 	requirements = list(
@@ -1146,7 +1146,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/jademask
+/datum/repeatable_crafting_recipe/crafting/jade/mask
 	name = "joapstone mask"
 	output = /obj/item/clothing/face/jademask
 	requirements = list(
@@ -1160,7 +1160,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/jadeurn
+/datum/repeatable_crafting_recipe/crafting/jade/urn
 	name = "joapstone urn"
 	output = /obj/item/carvedgem/jade/urn
 	requirements = list(
@@ -1173,7 +1173,7 @@
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 	craftdiff = 4
-/datum/repeatable_crafting_recipe/crafting/jadestatue
+/datum/repeatable_crafting_recipe/crafting/jade/statue
 	name = "joapstone statue"
 	output = /obj/item/carvedgem/jade/statue
 	requirements = list(
@@ -1187,7 +1187,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/jadeobelisk
+/datum/repeatable_crafting_recipe/crafting/jade/obelisk
 	name = "joapstone obelisk"
 	output = /obj/item/carvedgem/jade/obelisk
 	requirements = list(
@@ -1201,7 +1201,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/jadewyrm
+/datum/repeatable_crafting_recipe/crafting/jade/wyrm
 	name = "joapstone wyrm"
 	output = /obj/item/carvedgem/jade/wyrm
 	requirements = list(
@@ -1216,7 +1216,7 @@
 	craftdiff = 5
 
 
-/datum/repeatable_crafting_recipe/crafting/jadekukri
+/datum/repeatable_crafting_recipe/crafting/jade/kukri
 	name = "joapstone kukri"
 	output = /obj/item/weapon/knife/stone/kukri
 	requirements = list(
@@ -1232,7 +1232,7 @@
 
 // shell //
 
-/datum/repeatable_crafting_recipe/crafting/openclam
+/datum/repeatable_crafting_recipe/crafting/shell/openclam
 	name = "opened clam"
 	output = list (
 		/obj/item/carvedgem/shell/openoyster,
@@ -1250,7 +1250,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rawshell
+/datum/repeatable_crafting_recipe/crafting/shell/rawshell
 
 	name = "2x clam shells "
 	output = /obj/item/carvedgem/shell/rawshell
@@ -1265,7 +1265,7 @@
 	output_amount = 2
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/cutshell
+/datum/repeatable_crafting_recipe/crafting/shell/cutgem
 
 	name = "polished clam shell"
 	output = /obj/item/carvedgem/shell/cutgem
@@ -1280,7 +1280,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellfork
+/datum/repeatable_crafting_recipe/crafting/shell/fork
 
 	name = "shell fork"
 	output = /obj/item/carvedgem/shell/fork
@@ -1295,7 +1295,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellspoon
+/datum/repeatable_crafting_recipe/crafting/shell/spoon
 
 	name = "shell spoon"
 	output = /obj/item/carvedgem/shell/spoon
@@ -1310,7 +1310,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellcameo
+/datum/repeatable_crafting_recipe/crafting/shell/cameo
 
 	name = "shell cameo"
 	output = /obj/item/carvedgem/shell/cameo
@@ -1325,7 +1325,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellbowl
+/datum/repeatable_crafting_recipe/crafting/shell/bowl
 
 	name = "shell bowl"
 	output = /obj/item/reagent_containers/glass/bowl/shell
@@ -1340,7 +1340,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellcup
+/datum/repeatable_crafting_recipe/crafting/shell/cup
 
 	name = "shell cup"
 	output = /obj/item/reagent_containers/glass/cup/shell
@@ -1355,7 +1355,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/shellplatter
+/datum/repeatable_crafting_recipe/crafting/shell/platter
 
 	name = "shell platter"
 	output = /obj/item/plate/shell
@@ -1370,7 +1370,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellring
+/datum/repeatable_crafting_recipe/crafting/shell/ring
 
 	name = "shell ring"
 	output = /obj/item/clothing/ring/shell
@@ -1385,7 +1385,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellteapot
+/datum/repeatable_crafting_recipe/crafting/shell/teapot
 
 	name = "shell teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotshell
@@ -1400,7 +1400,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellamulet
+/datum/repeatable_crafting_recipe/crafting/shell/amulet
 
 	name = "shell amulet"
 	output = /obj/item/clothing/neck/shellamulet
@@ -1415,7 +1415,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellfigurine
+/datum/repeatable_crafting_recipe/crafting/shell/figurine
 
 	name = "shell figurine"
 	output = /obj/item/carvedgem/shell/figurine
@@ -1429,7 +1429,7 @@
 	starting_atom = /obj/item/weapon/knife
 	output_amount = 1
 
-/datum/repeatable_crafting_recipe/crafting/shelltablet
+/datum/repeatable_crafting_recipe/crafting/shell/tablet
 
 	name = "shell tablet"
 	output = /obj/item/carvedgem/shell/tablet
@@ -1443,7 +1443,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellfish
+/datum/repeatable_crafting_recipe/crafting/shell/fish
 
 	name = "shell fish figurine"
 	output = /obj/item/carvedgem/shell/fish
@@ -1457,7 +1457,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellvase
+/datum/repeatable_crafting_recipe/crafting/shell/vase
 
 	name = "shell vases"
 	output = /obj/item/carvedgem/shell/vase
@@ -1471,7 +1471,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/shellbust
+/datum/repeatable_crafting_recipe/crafting/shell/bust
 
 	name = "shell bust"
 	output = /obj/item/carvedgem/shell/bust
@@ -1485,7 +1485,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellcirclet
+/datum/repeatable_crafting_recipe/crafting/shell/circlet
 
 	name = "shell circlet"
 	output = /obj/item/clothing/head/crown/circlet/shell
@@ -1499,7 +1499,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellbracelet
+/datum/repeatable_crafting_recipe/crafting/shell/bracelet
 
 	name = "shell bracelets"
 	output = /obj/item/clothing/wrists/gem/shellbracelet
@@ -1513,7 +1513,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellfancycup
+/datum/repeatable_crafting_recipe/crafting/shell/fancycup
 
 	name = "fancy shell cup"
 	output = /obj/item/reagent_containers/glass/cup/shellfancy
@@ -1527,7 +1527,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellfancyvase
+/datum/repeatable_crafting_recipe/crafting/shell/fancyvase
 
 	name = "fancy shell vase"
 	output = /obj/item/carvedgem/shell/fancyvase
@@ -1541,7 +1541,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellcomb
+/datum/repeatable_crafting_recipe/crafting/shell/comb
 
 	name = "shell comb"
 	output = /obj/item/carvedgem/shell/comb
@@ -1555,7 +1555,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellduck
+/datum/repeatable_crafting_recipe/crafting/shell/duck
 
 	name = "shell duck"
 	output = /obj/item/carvedgem/shell/duck
@@ -1569,7 +1569,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/shellmask
+/datum/repeatable_crafting_recipe/crafting/shell/mask
 
 	name = "shell mask"
 	output = /obj/item/clothing/face/shellmask
@@ -1583,7 +1583,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/shellurn
+/datum/repeatable_crafting_recipe/crafting/shell/urn
 
 	name = "shell urn"
 	output = /obj/item/carvedgem/shell/urn
@@ -1597,7 +1597,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/shellstatue
+/datum/repeatable_crafting_recipe/crafting/shell/statue
 
 	name = "shell statue"
 	output = /obj/item/carvedgem/shell/statue
@@ -1611,7 +1611,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/shellobelisk
+/datum/repeatable_crafting_recipe/crafting/shell/obelisk
 
 	name = "shell obelisk"
 	output = /obj/item/carvedgem/shell/obelisk
@@ -1625,7 +1625,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/shellturtle
+/datum/repeatable_crafting_recipe/crafting/shell/turtle
 
 	name = "turtle carving"
 	output = /obj/item/carvedgem/shell/turtle
@@ -1639,7 +1639,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/shellrungu
+/datum/repeatable_crafting_recipe/crafting/shell/rungu
 
 	name = "shell rungu"
 	output = /obj/item/weapon/mace/cudgel/shellrungu
@@ -1655,7 +1655,7 @@
 
 // rose //
 
-/datum/repeatable_crafting_recipe/crafting/cutrose
+/datum/repeatable_crafting_recipe/crafting/rose/cutgem
 	name = "rosellusk pearl"
 	output = /obj/item/carvedgem/rose/cutgem
 	requirements = list(
@@ -1669,7 +1669,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosespoon
+/datum/repeatable_crafting_recipe/crafting/rose/spoon
 	name = "rosellusk spoon"
 	output = /obj/item/carvedgem/rose/spoon
 	requirements = list(
@@ -1683,7 +1683,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosefork
+/datum/repeatable_crafting_recipe/crafting/rose/fork
 	name = "rosellusk fork"
 	output = /obj/item/carvedgem/rose/fork
 	requirements = list(
@@ -1697,7 +1697,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosecup
+/datum/repeatable_crafting_recipe/crafting/rose/cup
 	name = "rosellusk cup"
 	output = /obj/item/reagent_containers/glass/cup/rose
 	requirements = list(
@@ -1711,7 +1711,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosebowl
+/datum/repeatable_crafting_recipe/crafting/rose/bowl
 	name = "rosellusk bowl"
 	output = /obj/item/reagent_containers/glass/bowl/rose
 	requirements = list(
@@ -1725,7 +1725,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosecameo
+/datum/repeatable_crafting_recipe/crafting/rose/cameo
 	name = "rosellusk cameo"
 	output = /obj/item/carvedgem/rose/cameo
 	requirements = list(
@@ -1739,7 +1739,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/rosefigurine
+/datum/repeatable_crafting_recipe/crafting/rose/figurine
 	name = "rosellusk figurine"
 	output = /obj/item/carvedgem/rose/figurine
 	requirements = list(
@@ -1753,7 +1753,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/rosefish
+/datum/repeatable_crafting_recipe/crafting/rose/fish
 	name = "rosellusk fish figurine"
 	output = /obj/item/carvedgem/rose/fish
 	requirements = list(
@@ -1767,7 +1767,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/rosevase
+/datum/repeatable_crafting_recipe/crafting/rose/vase
 	name = "rosellusk vase"
 	output = /obj/item/carvedgem/rose/vase
 	requirements = list(
@@ -1781,7 +1781,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/rosetablet
+/datum/repeatable_crafting_recipe/crafting/rose/tablet
 	name = "rosellusk tablet"
 	output = /obj/item/carvedgem/rose/tablet
 	requirements = list(
@@ -1795,7 +1795,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/roseteapot
+/datum/repeatable_crafting_recipe/crafting/rose/teapot
 	name = "rosellusk teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotrose
 	requirements = list(
@@ -1809,7 +1809,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/rosering
+/datum/repeatable_crafting_recipe/crafting/rose/ring
 	name = "rosellusk ring"
 	output = /obj/item/clothing/ring/rose
 	requirements = list(
@@ -1823,7 +1823,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/roseamulet
+/datum/repeatable_crafting_recipe/crafting/rose/amulet
 	name = "rosellusk amulet"
 	output = /obj/item/clothing/neck/roseamulet
 	requirements = list(
@@ -1837,7 +1837,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/roseplatter
+/datum/repeatable_crafting_recipe/crafting/rose/platter
 	name = "rosellusk platter"
 	output = /obj/item/plate/rose
 	requirements = list(
@@ -1851,7 +1851,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/rosebust
+/datum/repeatable_crafting_recipe/crafting/rose/bust
 	name = "rosellusk bust"
 	output = /obj/item/carvedgem/rose/bust
 	requirements = list(
@@ -1865,7 +1865,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/rosefancyvase
+/datum/repeatable_crafting_recipe/crafting/rose/fancyvase
 	name = "fancy rosellusk vase"
 	output = /obj/item/carvedgem/rose/fancyvase
 	requirements = list(
@@ -1879,7 +1879,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/rosecomb
+/datum/repeatable_crafting_recipe/crafting/rose/comb
 	name = "rosellusk comb"
 	output = /obj/item/carvedgem/rose/comb
 	requirements = list(
@@ -1893,7 +1893,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/roseduck
+/datum/repeatable_crafting_recipe/crafting/rose/duck
 	name = "rosellusk duck"
 	output = /obj/item/carvedgem/rose/duck
 	requirements = list(
@@ -1907,7 +1907,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/rosebracelet
+/datum/repeatable_crafting_recipe/crafting/rose/bracelet
 	name = "rosellusk bracelets"
 	output = /obj/item/clothing/wrists/gem/rosebracelet
 	requirements = list(
@@ -1921,7 +1921,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/rosecirclet
+/datum/repeatable_crafting_recipe/crafting/rose/circlet
 	name = "rosellusk circlet"
 	output = /obj/item/clothing/head/crown/circlet/rose
 	requirements = list(
@@ -1935,7 +1935,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/rosefancycup
+/datum/repeatable_crafting_recipe/crafting/rose/fancycup
 	name = "fancy rosellusk cup"
 	output = /obj/item/reagent_containers/glass/cup/rosefancy
 	requirements = list(
@@ -1949,7 +1949,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/roseurn
+/datum/repeatable_crafting_recipe/crafting/rose/urn
 	name = "rosellusk urn"
 	output = /obj/item/carvedgem/rose/urn
 	requirements = list(
@@ -1963,7 +1963,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/rosestatue
+/datum/repeatable_crafting_recipe/crafting/rose/statue
 	name = "rosellusk statue"
 	output = /obj/item/carvedgem/rose/statue
 	requirements = list(
@@ -1977,7 +1977,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/roseobelisk
+/datum/repeatable_crafting_recipe/crafting/rose/obelisk
 	name = "rosellusk obelisk"
 	output = /obj/item/carvedgem/rose/obelisk
 	requirements = list(
@@ -1991,7 +1991,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/rosemask
+/datum/repeatable_crafting_recipe/crafting/rose/mask
 	name = "rosellusk mask"
 	output = /obj/item/clothing/face/rosemask
 	requirements = list(
@@ -2005,7 +2005,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/roseflower
+/datum/repeatable_crafting_recipe/crafting/rose/flower
 	name = "rosellusk flower carving"
 	output = /obj/item/carvedgem/rose/flower
 	requirements = list(
@@ -2019,7 +2019,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/rosecarp
+/datum/repeatable_crafting_recipe/crafting/rose/carp
 	name = "rosellusk carp statue"
 	output = /obj/item/carvedgem/rose/carp
 	requirements = list(
@@ -2035,7 +2035,7 @@
 
 // onyxa //
 
-/datum/repeatable_crafting_recipe/crafting/cutonyxa
+/datum/repeatable_crafting_recipe/crafting/onyxa/cutgem
 	name = "cut onyxa gem"
 	output = /obj/item/carvedgem/onyxa/cutgem
 	requirements = list(
@@ -2049,7 +2049,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/onyxafork
+/datum/repeatable_crafting_recipe/crafting/onyxa/fork
 	name = "onyxa fork"
 	output = /obj/item/carvedgem/onyxa/fork
 	requirements = list(
@@ -2063,7 +2063,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/onyxaspoon
+/datum/repeatable_crafting_recipe/crafting/onyxa/spoon
 	name = "onyxa spoon"
 	output = /obj/item/carvedgem/onyxa/spoon
 	requirements = list(
@@ -2077,7 +2077,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/onyxacameo
+/datum/repeatable_crafting_recipe/crafting/onyxa/cameo
 	name = "onyxa cameo"
 	output = /obj/item/carvedgem/onyxa/cameo
 	requirements = list(
@@ -2091,7 +2091,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/onyxacup
+/datum/repeatable_crafting_recipe/crafting/onyxa/cup
 	name = "onyxa cup"
 	output = /obj/item/reagent_containers/glass/cup/opal
 	requirements = list(
@@ -2105,7 +2105,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/onyxabowl
+/datum/repeatable_crafting_recipe/crafting/onyxa/bowl
 	name = "onyxa bowl"
 	output = /obj/item/reagent_containers/glass/bowl/onyxa
 	requirements = list(
@@ -2120,7 +2120,7 @@
 	craftdiff = 1
 
 
-/datum/repeatable_crafting_recipe/crafting/onyxafigurine
+/datum/repeatable_crafting_recipe/crafting/onyxa/figurine
 	name = "onyxa figurine"
 	output = /obj/item/carvedgem/onyxa/figurine
 	requirements = list(
@@ -2135,7 +2135,7 @@
 	craftdiff = 2
 
 
-/datum/repeatable_crafting_recipe/crafting/onyxafish
+/datum/repeatable_crafting_recipe/crafting/onyxa/fish
 	name = "onyxa fish figurine"
 	output = /obj/item/carvedgem/onyxa/fish
 	requirements = list(
@@ -2149,7 +2149,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxavase
+/datum/repeatable_crafting_recipe/crafting/onyxa/vase
 	name = "onyxa vase"
 	output = /obj/item/carvedgem/onyxa/vase
 	requirements = list(
@@ -2163,7 +2163,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxatablet
+/datum/repeatable_crafting_recipe/crafting/onyxa/tablet
 	name = "onyxa tablet"
 	output = /obj/item/carvedgem/onyxa/tablet
 	requirements = list(
@@ -2177,7 +2177,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxateapot
+/datum/repeatable_crafting_recipe/crafting/onyxa/teapot
 	name = "onyxa teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotonyxa
 	requirements = list(
@@ -2191,7 +2191,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxaring
+/datum/repeatable_crafting_recipe/crafting/onyxa/ring
 	name = "onyxa ring"
 	output = /obj/item/clothing/ring/onyxa
 	requirements = list(
@@ -2205,7 +2205,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxaamulet
+/datum/repeatable_crafting_recipe/crafting/onyxa/amulet
 	name = "onyxa amulet"
 	output = /obj/item/clothing/neck/onyxaamulet
 	requirements = list(
@@ -2219,7 +2219,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxaplatter
+/datum/repeatable_crafting_recipe/crafting/onyxa/platter
 	name = "onyxa platter"
 	output = /obj/item/plate/onyxa
 	requirements = list(
@@ -2233,7 +2233,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/onyxabust
+/datum/repeatable_crafting_recipe/crafting/onyxa/bust
 	name = "onyxa bust"
 	output = /obj/item/carvedgem/onyxa/bust
 	requirements = list(
@@ -2247,7 +2247,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxafancyvase
+/datum/repeatable_crafting_recipe/crafting/onyxa/fancyvase
 	name = "fancy onyxa vase"
 	output = /obj/item/carvedgem/onyxa/fancyvase
 	requirements = list(
@@ -2261,7 +2261,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxacomb
+/datum/repeatable_crafting_recipe/crafting/onyxa/comb
 	name = "onyxa comb"
 	output = /obj/item/carvedgem/onyxa/comb
 	requirements = list(
@@ -2275,7 +2275,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxaduck
+/datum/repeatable_crafting_recipe/crafting/onyxa/duck
 	name = "onyxa duck"
 	output = /obj/item/carvedgem/onyxa/duck
 	requirements = list(
@@ -2289,7 +2289,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxafancycup
+/datum/repeatable_crafting_recipe/crafting/onyxa/fancycup
 	name = "fancy onyxa cup"
 	output = /obj/item/reagent_containers/glass/cup/onyxafancy
 	requirements = list(
@@ -2303,7 +2303,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxabracelet
+/datum/repeatable_crafting_recipe/crafting/onyxa/bracelet
 	name = "onyxa bracelets"
 	output = /obj/item/clothing/wrists/gem/onyxabracelet
 	requirements = list(
@@ -2317,7 +2317,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxacirclet
+/datum/repeatable_crafting_recipe/crafting/onyxa/circlet
 	name = "onyxa circlet"
 	output = /obj/item/clothing/head/crown/circlet/onyxa
 	requirements = list(
@@ -2331,7 +2331,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/onyxamask
+/datum/repeatable_crafting_recipe/crafting/onyxa/mask
 	name = "onyxa mask"
 	output = /obj/item/clothing/face/onyxamask
 	requirements = list(
@@ -2345,7 +2345,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/onyxaurn
+/datum/repeatable_crafting_recipe/crafting/onyxa/urn
 	name = "onyxa urn"
 	output = /obj/item/carvedgem/onyxa/urn
 	requirements = list(
@@ -2359,7 +2359,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/onyxastatue
+/datum/repeatable_crafting_recipe/crafting/onyxa/statue
 	name = "onyxa statue"
 	output = /obj/item/carvedgem/onyxa/statue
 	requirements = list(
@@ -2373,7 +2373,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/onyxaobelisk
+/datum/repeatable_crafting_recipe/crafting/onyxa/obelisk
 	name = "onyxa obelisk"
 	output = /obj/item/carvedgem/onyxa/obelisk
 	requirements = list(
@@ -2387,7 +2387,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/onyxaurn
+/datum/repeatable_crafting_recipe/crafting/onyxa/urn
 	name = "onyxa urn"
 	output = /obj/item/carvedgem/onyxa/urn
 	requirements = list(
@@ -2401,7 +2401,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/onyxaspider
+/datum/repeatable_crafting_recipe/crafting/onyxa/spider
 	name = "onyxa spider statue"
 	output = /obj/item/carvedgem/onyxa/spider
 	requirements = list(
@@ -2415,7 +2415,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/onyxasnake
+/datum/repeatable_crafting_recipe/crafting/onyxa/snake
 	name = "onyxa snake statue"
 	output = /obj/item/carvedgem/onyxa/snake
 	requirements = list(
@@ -2431,7 +2431,7 @@
 
 // ceruleabaster //
 
-/datum/repeatable_crafting_recipe/crafting/cutturq
+/datum/repeatable_crafting_recipe/crafting/turq/cutgem
 	name = "cut ceruleabaster gem"
 	output = /obj/item/carvedgem/turq/cutgem
 	requirements = list(
@@ -2445,7 +2445,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqfork
+/datum/repeatable_crafting_recipe/crafting/turq/fork
 	name = "ceruleabaster fork"
 	output = /obj/item/carvedgem/turq/fork
 	requirements = list(
@@ -2459,7 +2459,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqspoon
+/datum/repeatable_crafting_recipe/crafting/turq/spoon
 	name = "ceruleabaster spoon"
 	output = /obj/item/carvedgem/turq/spoon
 	requirements = list(
@@ -2473,7 +2473,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqcameo
+/datum/repeatable_crafting_recipe/crafting/turq/cameo
 	name = "ceruleabaster cameo"
 	output = /obj/item/carvedgem/turq/cameo
 	requirements = list(
@@ -2487,7 +2487,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqbowl
+/datum/repeatable_crafting_recipe/crafting/turq/bowl
 	name = "ceruleabaster bowl"
 	output = /obj/item/reagent_containers/glass/bowl/turq
 	requirements = list(
@@ -2501,7 +2501,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqcup
+/datum/repeatable_crafting_recipe/crafting/turq/cup
 	name = "ceruleabaster cup"
 	output = /obj/item/reagent_containers/glass/cup/turq
 	requirements = list(
@@ -2515,7 +2515,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/turqfigurine
+/datum/repeatable_crafting_recipe/crafting/turq/figurine
 	name = "ceruleabaster figurine"
 	output = /obj/item/carvedgem/turq/figurine
 	requirements = list(
@@ -2529,7 +2529,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqfish
+/datum/repeatable_crafting_recipe/crafting/turq/fish
 	name = "ceruleabaster fish figurine"
 	output = /obj/item/carvedgem/turq/fish
 	requirements = list(
@@ -2543,7 +2543,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqvase
+/datum/repeatable_crafting_recipe/crafting/turq/vase
 	name = "ceruleabaster vase"
 	output = /obj/item/carvedgem/turq/vase
 	requirements = list(
@@ -2557,7 +2557,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqamulet
+/datum/repeatable_crafting_recipe/crafting/turq/amulet
 	name = "ceruleabaster amulet"
 	output = /obj/item/clothing/neck/turqamulet
 	requirements = list(
@@ -2571,7 +2571,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqtablet
+/datum/repeatable_crafting_recipe/crafting/turq/tablet
 	name = "ceruleabaster tablet"
 	output = /obj/item/carvedgem/turq/tablet
 	requirements = list(
@@ -2585,7 +2585,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqring
+/datum/repeatable_crafting_recipe/crafting/turq/ring
 	name = "ceruleabaster ring"
 	output = /obj/item/clothing/ring/turq
 	requirements = list(
@@ -2599,7 +2599,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqplatter
+/datum/repeatable_crafting_recipe/crafting/turq/platter
 	name = "ceruleabaster platter"
 	output = /obj/item/plate/turq
 	requirements = list(
@@ -2613,7 +2613,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/turqbracelet
+/datum/repeatable_crafting_recipe/crafting/turq/bracelet
 	name = "ceruleabaster bracelets"
 	output = /obj/item/clothing/wrists/gem/turqbracelet
 	requirements = list(
@@ -2627,7 +2627,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqcirclet
+/datum/repeatable_crafting_recipe/crafting/turq/circlet
 	name = "ceruleabaster circlet"
 	output = /obj/item/clothing/head/crown/circlet/turq
 	requirements = list(
@@ -2641,7 +2641,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqfancycup
+/datum/repeatable_crafting_recipe/crafting/turq/fancycup
 	name = "fancy ceruleabaster cup"
 	output = /obj/item/reagent_containers/glass/cup/turqfancy
 	requirements = list(
@@ -2655,7 +2655,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqfancyvase
+/datum/repeatable_crafting_recipe/crafting/turq/fancyvase
 	name = "fancy ceruleabaster vase"
 	output = /obj/item/carvedgem/turq/fancyvase
 	requirements = list(
@@ -2669,7 +2669,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqbust
+/datum/repeatable_crafting_recipe/crafting/turq/bust
 	name = "ceruleabaster bust"
 	output = /obj/item/carvedgem/turq/bust
 	requirements = list(
@@ -2683,7 +2683,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqcomb
+/datum/repeatable_crafting_recipe/crafting/turq/comb
 	name = "ceruleabaster comb"
 	output = /obj/item/carvedgem/turq/comb
 	requirements = list(
@@ -2697,7 +2697,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqduck
+/datum/repeatable_crafting_recipe/crafting/turq/duck
 	name = "ceruleabaster duck"
 	output = /obj/item/carvedgem/turq/duck
 	requirements = list(
@@ -2711,7 +2711,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/turqurn
+/datum/repeatable_crafting_recipe/crafting/turq/urn
 	name = "ceruleabaster urn"
 	output = /obj/item/carvedgem/turq/urn
 	requirements = list(
@@ -2725,7 +2725,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/turqstatue
+/datum/repeatable_crafting_recipe/crafting/turq/statue
 	name = "ceruleabaster statue"
 	output = /obj/item/carvedgem/turq/statue
 	requirements = list(
@@ -2739,7 +2739,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/turqobelisk
+/datum/repeatable_crafting_recipe/crafting/turq/obelisk
 	name = "ceruleabaster obelisk"
 	output = /obj/item/carvedgem/turq/obelisk
 	requirements = list(
@@ -2753,7 +2753,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/turqmask
+/datum/repeatable_crafting_recipe/crafting/turq/mask
 	name = "ceruleabaster urn"
 	output = /obj/item/clothing/face/turqmask
 	requirements = list(
@@ -2767,7 +2767,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/turqka
+/datum/repeatable_crafting_recipe/crafting/turq/ka
 	name = "ceruleabaster ka statue"
 	output = /obj/item/carvedgem/turq/ka
 	requirements = list(
@@ -2781,7 +2781,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/turqscarab
+/datum/repeatable_crafting_recipe/crafting/turq/scarab
 	name = "ceruleabaster scarab"
 	output = /obj/item/carvedgem/turq/scarab
 	requirements = list(
@@ -2797,7 +2797,7 @@
 
 // aoetal //
 
-/datum/repeatable_crafting_recipe/crafting/cutcoral
+/datum/repeatable_crafting_recipe/crafting/coral/cutgem
 	name = "cut aoetal gem"
 	output = /obj/item/carvedgem/coral/cutgem
 	requirements = list(
@@ -2811,7 +2811,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralfork
+/datum/repeatable_crafting_recipe/crafting/coral/fork
 	name = "aoetal fork"
 	output = /obj/item/carvedgem/coral/fork
 	requirements = list(
@@ -2825,7 +2825,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralspoon
+/datum/repeatable_crafting_recipe/crafting/coral/spoon
 	name = "aoetal spoon"
 	output = /obj/item/carvedgem/coral/spoon
 	requirements = list(
@@ -2839,7 +2839,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralcameo
+/datum/repeatable_crafting_recipe/crafting/coral/cameo
 	name = "aoetal cameo"
 	output = /obj/item/carvedgem/coral/cameo
 	requirements = list(
@@ -2853,7 +2853,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralcup
+/datum/repeatable_crafting_recipe/crafting/coral/cup
 	name = "aoetal cup"
 	output = /obj/item/reagent_containers/glass/cup/coral
 	requirements = list(
@@ -2867,7 +2867,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralbowl
+/datum/repeatable_crafting_recipe/crafting/coral/bowl
 	name = "aoetal bowl"
 	output = /obj/item/reagent_containers/glass/bowl/coral
 	requirements = list(
@@ -2881,7 +2881,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/coralfigurine
+/datum/repeatable_crafting_recipe/crafting/coral/figurine
 	name = "aoetal figurine"
 	output = /obj/item/carvedgem/coral/figurine
 	requirements = list(
@@ -2895,7 +2895,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralfish
+/datum/repeatable_crafting_recipe/crafting/coral/fish
 	name = "aoetal fish figurine"
 	output = /obj/item/carvedgem/coral/fish
 	requirements = list(
@@ -2909,7 +2909,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralvase
+/datum/repeatable_crafting_recipe/crafting/coral/vase
 	name = "aoetal vase"
 	output = /obj/item/carvedgem/coral/vase
 	requirements = list(
@@ -2923,7 +2923,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coraltablet
+/datum/repeatable_crafting_recipe/crafting/coral/tablet
 	name = "aoetal tablet"
 	output = /obj/item/carvedgem/coral/tablet
 	requirements = list(
@@ -2937,7 +2937,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralteapot
+/datum/repeatable_crafting_recipe/crafting/coral/teapot
 	name = "aoetal teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotcoral
 	requirements = list(
@@ -2951,7 +2951,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralplatter
+/datum/repeatable_crafting_recipe/crafting/coral/platter
 	name = "aoetal platter"
 	output = /obj/item/plate/coral
 	requirements = list(
@@ -2965,7 +2965,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralamulet
+/datum/repeatable_crafting_recipe/crafting/coral/amulet
 	name = "aoetal amulet"
 	output = /obj/item/clothing/neck/coralamulet
 	requirements = list(
@@ -2979,7 +2979,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralring
+/datum/repeatable_crafting_recipe/crafting/coral/ring
 	name = "aoetal ring"
 	output = /obj/item/clothing/ring/coral
 	requirements = list(
@@ -2993,7 +2993,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/coralbust
+/datum/repeatable_crafting_recipe/crafting/coral/bust
 	name = "aoetal bust"
 	output = /obj/item/carvedgem/coral/bust
 	requirements = list(
@@ -3007,7 +3007,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralfancyvase
+/datum/repeatable_crafting_recipe/crafting/coral/fancyvase
 	name = "fancy aoetal vase"
 	output = /obj/item/carvedgem/coral/fancyvase
 	requirements = list(
@@ -3021,7 +3021,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralcomb
+/datum/repeatable_crafting_recipe/crafting/coral/comb
 	name = "aoetal comb"
 	output = /obj/item/carvedgem/coral/comb
 	requirements = list(
@@ -3035,7 +3035,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralduck
+/datum/repeatable_crafting_recipe/crafting/coral/duck
 	name = "aoetal duck"
 	output = /obj/item/carvedgem/coral/duck
 	requirements = list(
@@ -3049,7 +3049,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralfancycup
+/datum/repeatable_crafting_recipe/crafting/coral/fancycup
 	name = "fancy aoetal cup"
 	output = /obj/item/reagent_containers/glass/cup/coralfancy
 	requirements = list(
@@ -3063,7 +3063,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralcirclet
+/datum/repeatable_crafting_recipe/crafting/coral/circlet
 	name = "aoetal circlet"
 	output = /obj/item/clothing/head/crown/circlet/coral
 	requirements = list(
@@ -3077,7 +3077,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralbracelet
+/datum/repeatable_crafting_recipe/crafting/coral/bracelet
 	name = "aoetal bracelets"
 	output = /obj/item/clothing/wrists/gem/coralbracelet
 	requirements = list(
@@ -3091,7 +3091,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/coralmask
+/datum/repeatable_crafting_recipe/crafting/coral/mask
 	name = "aoetal mask"
 	output = /obj/item/clothing/face/coralmask
 	requirements = list(
@@ -3105,7 +3105,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/coralstatue
+/datum/repeatable_crafting_recipe/crafting/coral/statue
 	name = "aoetal statue"
 	output = /obj/item/carvedgem/coral/statue
 	requirements = list(
@@ -3119,21 +3119,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/coralstatue
-	name = "aoetal statue"
-	output = /obj/item/carvedgem/coral/statue
-	requirements = list(
-		/obj/item/gem/coral = 1,
-	)
-	tool_usage = list(
-		/obj/item/weapon/knife = list("carves the raw aoetal", "carve the raw aoetal")
-	)
-	attacked_atom = /obj/item/gem/coral
-	starting_atom = /obj/item/weapon/knife
-	output_amount = 1
-	craftdiff = 4
-
-/datum/repeatable_crafting_recipe/crafting/coralurn
+/datum/repeatable_crafting_recipe/crafting/coral/urn
 	name = "aoetal urn"
 	output = /obj/item/carvedgem/coral/urn
 	requirements = list(
@@ -3147,7 +3133,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/coralobelisk
+/datum/repeatable_crafting_recipe/crafting/coral/obelisk
 	name = "aoetal obelisk"
 	output = /obj/item/carvedgem/coral/obelisk
 	requirements = list(
@@ -3161,7 +3147,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/coraljaw
+/datum/repeatable_crafting_recipe/crafting/coral/jaw
 	name = "shark jaw statue"
 	output = /obj/item/carvedgem/coral/jaw
 	requirements = list(
@@ -3175,7 +3161,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/coralshark
+/datum/repeatable_crafting_recipe/crafting/coral/shark
 	name = "aoetal shark statue"
 	output = /obj/item/carvedgem/coral/shark
 	requirements = list(
@@ -3191,7 +3177,7 @@
 
 // petriamber //
 
-/datum/repeatable_crafting_recipe/crafting/ambercutgem
+/datum/repeatable_crafting_recipe/crafting/amber/cutgem
 	name = "cut petriamber gem"
 	output = /obj/item/carvedgem/amber/cutgem
 	requirements = list(
@@ -3205,7 +3191,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/amberspoon
+/datum/repeatable_crafting_recipe/crafting/amber/spoon
 	name = "petriamber spoon"
 	output = /obj/item/carvedgem/amber/spoon
 	requirements = list(
@@ -3219,7 +3205,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/amberfork
+/datum/repeatable_crafting_recipe/crafting/amber/fork
 	name = "petriamber fork"
 	output = /obj/item/carvedgem/amber/fork
 	requirements = list(
@@ -3233,7 +3219,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/ambercameo
+/datum/repeatable_crafting_recipe/crafting/amber/cameo
 	name = "petriamber cameo"
 	output = /obj/item/carvedgem/amber/cameo
 	requirements = list(
@@ -3247,7 +3233,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/amberbowl
+/datum/repeatable_crafting_recipe/crafting/amber/bowl
 	name = "petriamber bowl"
 	output = /obj/item/reagent_containers/glass/bowl/amber
 	requirements = list(
@@ -3261,7 +3247,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/ambercup
+/datum/repeatable_crafting_recipe/crafting/amber/cup
 	name = "petriamber cup"
 	output = /obj/item/reagent_containers/glass/cup/amber
 	requirements = list(
@@ -3275,7 +3261,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/amberfigurine
+/datum/repeatable_crafting_recipe/crafting/amber/figurine
 	name = "petriamber figurine"
 	output = /obj/item/carvedgem/amber/figurine
 	requirements = list(
@@ -3289,7 +3275,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberfish
+/datum/repeatable_crafting_recipe/crafting/amber/fish
 	name = "petriamber fish figurine"
 	output = /obj/item/carvedgem/amber/fish
 	requirements = list(
@@ -3303,7 +3289,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/ambertablet
+/datum/repeatable_crafting_recipe/crafting/amber/tablet
 	name = "petriamber tablet"
 	output = /obj/item/carvedgem/amber/tablet
 	requirements = list(
@@ -3317,7 +3303,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/ambervase
+/datum/repeatable_crafting_recipe/crafting/amber/vase
 	name = "petriamber vase"
 	output = /obj/item/carvedgem/amber/vase
 	requirements = list(
@@ -3331,7 +3317,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberteapot
+/datum/repeatable_crafting_recipe/crafting/amber/teapot
 	name = "petriamber teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotamber
 	requirements = list(
@@ -3345,7 +3331,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberplatter
+/datum/repeatable_crafting_recipe/crafting/amber/platter
 	name = "petriamber platter"
 	output = /obj/item/plate/amber
 	requirements = list(
@@ -3359,7 +3345,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberring
+/datum/repeatable_crafting_recipe/crafting/amber/ring
 	name = "petriamber ring"
 	output = /obj/item/clothing/ring/amber
 	requirements = list(
@@ -3373,7 +3359,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberamulet
+/datum/repeatable_crafting_recipe/crafting/amber/amulet
 	name = "petriamber amulet"
 	output = /obj/item/clothing/neck/amberamulet
 	requirements = list(
@@ -3387,7 +3373,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/amberbracelet
+/datum/repeatable_crafting_recipe/crafting/amber/bracelet
 	name = "petriamber bracelets"
 	output = /obj/item/clothing/wrists/gem/amberbracelet
 	requirements = list(
@@ -3401,7 +3387,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/ambercirclet
+/datum/repeatable_crafting_recipe/crafting/amber/circlet
 	name = "petriamber circlet"
 	output = /obj/item/clothing/head/crown/circlet/amber
 	requirements = list(
@@ -3415,7 +3401,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/amberfancycup
+/datum/repeatable_crafting_recipe/crafting/amber/fancycup
 	name = "fancy petriamber cup"
 	output = /obj/item/reagent_containers/glass/cup/amberfancy
 
@@ -3430,7 +3416,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/amberfancyvase
+/datum/repeatable_crafting_recipe/crafting/amber/fancyvase
 	name = "fancy petriamber vase"
 	output = /obj/item/carvedgem/amber/fancyvase
 
@@ -3445,7 +3431,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/amberbust
+/datum/repeatable_crafting_recipe/crafting/amber/bust
 	name = "petriamber bust"
 	output = /obj/item/carvedgem/amber/bust
 
@@ -3460,7 +3446,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/ambercomb
+/datum/repeatable_crafting_recipe/crafting/amber/comb
 	name = "petriamber comb"
 	output = /obj/item/carvedgem/amber/comb
 
@@ -3475,7 +3461,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/amberduck
+/datum/repeatable_crafting_recipe/crafting/amber/duck
 	name = "petriamber duck"
 	output = /obj/item/carvedgem/amber/duck
 
@@ -3490,7 +3476,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/ambermask
+/datum/repeatable_crafting_recipe/crafting/amber/mask
 	name = "petriamber mask"
 	output = /obj/item/clothing/face/ambermask
 
@@ -3505,7 +3491,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/amberobelisk
+/datum/repeatable_crafting_recipe/crafting/amber/obelisk
 	name = "petriamber obelisk"
 	output = /obj/item/carvedgem/amber/obelisk
 
@@ -3520,7 +3506,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/amberurn
+/datum/repeatable_crafting_recipe/crafting/amber/urn
 	name = "petriamber urn"
 	output = /obj/item/carvedgem/amber/urn
 
@@ -3535,7 +3521,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/amberstatue
+/datum/repeatable_crafting_recipe/crafting/amber/statue
 	name = "petriamber statue"
 	output = /obj/item/carvedgem/amber/statue
 
@@ -3550,7 +3536,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/amberbeaver
+/datum/repeatable_crafting_recipe/crafting/amber/beaver
 	name = "petriamber beaver statue"
 	output = /obj/item/carvedgem/amber/beaver
 
@@ -3565,7 +3551,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/ambersun
+/datum/repeatable_crafting_recipe/crafting/amber/sun
 	name = "petriamber sun carving"
 	output = /obj/item/carvedgem/amber/sun
 
@@ -3582,7 +3568,7 @@
 
 // opaloise //
 
-/datum/repeatable_crafting_recipe/crafting/opalcutgem
+/datum/repeatable_crafting_recipe/crafting/opal/cutgem
 	name = "cut opaloise gem"
 	output = /obj/item/carvedgem/opal/cutgem
 
@@ -3597,7 +3583,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalspoon
+/datum/repeatable_crafting_recipe/crafting/opal/spoon
 	name = "opaloise spoon"
 	output = /obj/item/carvedgem/opal/spoon
 
@@ -3612,7 +3598,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalfork
+/datum/repeatable_crafting_recipe/crafting/opal/fork
 	name = "opaloise fork"
 	output = /obj/item/carvedgem/opal/fork
 
@@ -3627,7 +3613,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalcameo
+/datum/repeatable_crafting_recipe/crafting/opal/cameo
 	name = "opaloise cameo"
 	output = /obj/item/carvedgem/opal/cameo
 
@@ -3642,7 +3628,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalbowl
+/datum/repeatable_crafting_recipe/crafting/opal/bowl
 	name = "opaloise bowl"
 	output = /obj/item/reagent_containers/glass/bowl/opal
 
@@ -3657,7 +3643,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalcup
+/datum/repeatable_crafting_recipe/crafting/opal/cup
 	name = "opaloise cup"
 	output = /obj/item/reagent_containers/glass/cup/opal
 
@@ -3672,7 +3658,7 @@
 	output_amount = 1
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/crafting/opalteapot
+/datum/repeatable_crafting_recipe/crafting/opal/teapot
 	name = "opaloise teapot"
 	output = /obj/item/reagent_containers/glass/carafe/teapotopal
 
@@ -3687,7 +3673,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalplatter
+/datum/repeatable_crafting_recipe/crafting/opal/platter
 	name = "opaloise platter"
 	output = /obj/item/plate/opal
 
@@ -3702,7 +3688,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalring
+/datum/repeatable_crafting_recipe/crafting/opal/ring
 	name = "opaloise ring"
 	output = /obj/item/clothing/ring/opal
 
@@ -3717,7 +3703,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalamulet
+/datum/repeatable_crafting_recipe/crafting/opal/amulet
 	name = "opaloise amulet"
 	output = /obj/item/clothing/neck/opalamulet
 
@@ -3732,7 +3718,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalfigurine
+/datum/repeatable_crafting_recipe/crafting/opal/figurine
 	name = "opaloise figurine"
 	output = /obj/item/carvedgem/opal/figurine
 
@@ -3747,7 +3733,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalfish
+/datum/repeatable_crafting_recipe/crafting/opal/fish
 	name = "opaloise fish figurine"
 	output = /obj/item/carvedgem/opal/fish
 
@@ -3762,7 +3748,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalvase
+/datum/repeatable_crafting_recipe/crafting/opal/vase
 	name = "opaloise vase"
 	output = /obj/item/carvedgem/opal/vase
 
@@ -3777,7 +3763,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opaltablet
+/datum/repeatable_crafting_recipe/crafting/opal/tablet
 	name = "opaloise tablet"
 	output = /obj/item/carvedgem/opal/tablet
 
@@ -3792,7 +3778,7 @@
 	output_amount = 1
 	craftdiff = 2
 
-/datum/repeatable_crafting_recipe/crafting/opalbracelet
+/datum/repeatable_crafting_recipe/crafting/opal/bracelet
 	name = "opaloise bracelets"
 	output = /obj/item/clothing/wrists/gem/opalbracelet
 
@@ -3807,7 +3793,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalcirclet
+/datum/repeatable_crafting_recipe/crafting/opal/circlet
 	name = "opaloise circlet"
 	output = /obj/item/clothing/head/crown/circlet/opal
 
@@ -3822,7 +3808,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalfancycup
+/datum/repeatable_crafting_recipe/crafting/opal/fancycup
 	name = "fancy opaloise cup"
 	output = /obj/item/reagent_containers/glass/cup/opalfancy
 
@@ -3837,7 +3823,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalbust
+/datum/repeatable_crafting_recipe/crafting/opal/bust
 	name = "opaloise bust"
 	output = /obj/item/carvedgem/opal/bust
 
@@ -3852,7 +3838,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalfancyvase
+/datum/repeatable_crafting_recipe/crafting/opal/fancyvase
 	name = "fancy opaloise vase"
 	output = /obj/item/carvedgem/opal/fancyvase
 
@@ -3867,7 +3853,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalcomb
+/datum/repeatable_crafting_recipe/crafting/opal/comb
 	name = "opaloise comb"
 	output = /obj/item/carvedgem/opal/comb
 
@@ -3882,7 +3868,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalduck
+/datum/repeatable_crafting_recipe/crafting/opal/duck
 	name = "opaloise duck"
 	output = /obj/item/carvedgem/opal/duck
 
@@ -3897,7 +3883,7 @@
 	output_amount = 1
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/crafting/opalmask
+/datum/repeatable_crafting_recipe/crafting/opal/mask
 	name = "opaloise mask"
 	output = /obj/item/clothing/face/opalmask
 
@@ -3912,7 +3898,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/opalobelisk
+/datum/repeatable_crafting_recipe/crafting/opal/obelisk
 	name = "opaloise obelisk"
 	output = /obj/item/carvedgem/opal/obelisk
 
@@ -3927,7 +3913,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/opalurn
+/datum/repeatable_crafting_recipe/crafting/opal/urn
 	name = "opaloise urn"
 	output = /obj/item/carvedgem/opal/urn
 
@@ -3942,7 +3928,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/opalstatue
+/datum/repeatable_crafting_recipe/crafting/opal/statue
 	name = "opaloise statue"
 	output = /obj/item/carvedgem/opal/statue
 
@@ -3957,7 +3943,7 @@
 	output_amount = 1
 	craftdiff = 4
 
-/datum/repeatable_crafting_recipe/crafting/opalcrab
+/datum/repeatable_crafting_recipe/crafting/opal/crab
 	name = "opaloise crab sculpture"
 	output = /obj/item/carvedgem/opal/crab
 
@@ -3972,7 +3958,7 @@
 	output_amount = 1
 	craftdiff = 5
 
-/datum/repeatable_crafting_recipe/crafting/opalknife
+/datum/repeatable_crafting_recipe/crafting/opal/knife
 	name = "opaloise knife"
 	output = /obj/item/weapon/knife/stone/opal
 
