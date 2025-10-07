@@ -33,7 +33,7 @@
 	var/loading_chamber = FALSE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/apply_components()
-	AddComponent(/datum/component/steam_storage, 800, 0)
+	AddComponent(/datum/component/steam_storage, 800, 0, "airgun")
 	AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = force_wielded, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
 
 /obj/item/ammo_box/magazine/internal/shot/airgun
@@ -84,18 +84,20 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/examine(mob/user)
 	. = ..()
 	desc = initial(desc)
-	desc += "\n" + ("\The [src]'s steam lever is [steam_lever ? "raised, enabling" : "lowered, disabling"] the flow of steam.")
-	desc += "\n" + ("\The [src]'s spring is [cranked ? "under tension" : "relaxed"].")
-	desc += "\n" + ("\The [src]'s loading chamber is [loading_chamber ? "open" : "closed"].")
+	desc += "\n" + ("The steam lever is [steam_lever ? "raised, enabling" : "lowered, disabling"] the flow of steam.")
+	desc += "\n" + ("The spring is [cranked ? "under tension" : "relaxed"].")
+	desc += "\n" + ("The loading chamber is [loading_chamber ? "open" : "closed"].")
+	switch(pressure_to_use)
+		if(1)
+			desc += "\n" + ("The pressure gauge arrow is positioned to the far left.")
+		if(2)
+			desc += "\n" + ("The pressure gauge arrow is positioned in the middle.")
+		if(3)
+			desc += "\n" + ("The pressure gauge arrow is positioned to the far right.")
 	return ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/shoot_with_empty_chamber(mob/user)
-	if(steam_lever)
-		to_chat(user, span_warning("Fires a sad gust of air..."))
-		playsound(src.loc, 'sound/foley/industrial/pneumaticpop.ogg', 100, FALSE)
-	else
-		to_chat(user, span_warning("[src] refuses to fire!"))
-		playsound(src.loc, 'sound/foley/industrial/pneumatichiss.ogg', 100, FALSE)
+		to_chat(user, span_warning("[src] has nothing to fire!"))
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/attackby(obj/item/A, mob/user, params)
 	if((istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing)))
@@ -193,7 +195,7 @@
 			else
 				to_chat(user, span_info("I begin to turn the crank clockwise..."))
 				if(do_after(user, use_time SECONDS, src))
-					to_chat(user, span_info("I turn the crank clockwise, comporessing the spring."))
+					to_chat(user, span_info("I turn the crank clockwise, compressing the spring."))
 					playsound(src.loc, 'sound/foley/winding.ogg', 100, FALSE)
 					cranked = TRUE
 		if("Steam Lever")
@@ -213,6 +215,9 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	if(!SEND_SIGNAL(user, COMSIG_ATOM_PROXY_STEAM_USE, src, pressure_to_use * 100, "airgun", FALSE, TRUE))
+		to_chat(user, span_warning("Fires a sad gust of air."))
+		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -231,14 +236,18 @@
 		if(user.STAPER > 8)
 			BB.accuracy += (user.STAPER - 8) * 4 //each point of perception above 8 increases standard accuracy by 4.
 			BB.bonus_accuracy += (user.STAPER - 8) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
+
+		//fixed boost is intended
 		if(user.STAPER > 10)
-			BB.damage = BB.damage * (user.STAPER / 10) * (1 + pressure_to_use / 3) * pressure_to_use //2/3rds damage at pressure 1, normal at pressure 2, 4/3rds at pressure 3
+			BB.damage *= 1.1
+
+		BB.damage *= ((1 + pressure_to_use) / 3) //2/3rds damage at pressure 1, normal at pressure 2, 4/3rds at pressure 3
 
 		if(user.STAPER > 10)
 			BB.accuracy += (user.STAPER - 10) * 2 //each point of perception above 10 increases standard accuracy by 2.
 			BB.bonus_accuracy += (user.STAPER - 10) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
 		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/craft/engineering) * 4) //+4 accuracy per level. Bonus accuracy will not drop-off.
-	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_USE, pressure_to_use * 100)
+	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_USE, pressure_to_use * 100, "airgun")
 	. = ..()
 	cranked = FALSE
 	var/modifier = 1.25/(spread+1)
@@ -248,5 +257,5 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/airgun/prefilled/Initialize()
 	. = ..()
-	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_INCREASE, 800)
+	SEND_SIGNAL(src, COMSIG_ATOM_STEAM_INCREASE, 800, "airgun")
 
