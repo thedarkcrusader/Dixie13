@@ -149,8 +149,8 @@
 			var/obj/item/neuFarm/seed/seeds = attacking_item
 			seeds.try_plant_seed(user, src)
 		return TRUE
-	if(istype(attacking_item, /obj/item/neuFarm/inoculate))
-		to_chat(user, span_warning("I cannot plant the inoculate in \the [src]!"))
+	if(istype(attacking_item, /obj/item/neuFarm/spore))
+		to_chat(user, span_warning("I cannot plant the spore in \the [src]!"))
 		return FALSE
 	return FALSE
 
@@ -1255,7 +1255,7 @@
 
 /obj/structure/soil/mushmound/attackby(obj/item/attacking_item, mob/user, params)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(try_handle_inoculate_planting(attacking_item, user, params))
+	if(try_handle_spore_planting(attacking_item, user, params))
 		return
 	if(try_handle_uprooting(attacking_item, user, params))
 		return
@@ -1270,23 +1270,23 @@
 			return
 	return ..()
 
-/obj/structure/soil/mushmound/proc/try_handle_inoculate_planting(obj/item/attacking_item, mob/user, params)
+/obj/structure/soil/mushmound/proc/try_handle_spore_planting(obj/item/attacking_item, mob/user, params)
 	var/obj/item/old_item
 	if(istype(attacking_item, /obj/item/storage/sack))
-		var/list/inoculates = list()
-		for(var/obj/item/neuFarm/inoculate/inoculate in attacking_item.contents)
-			inoculates |= inoculate
+		var/list/spores = list()
+		for(var/obj/item/neuFarm/spore/spore in attacking_item.contents)
+			spores |= spore
 		old_item = attacking_item
-		if(LAZYLEN(inoculates))
-			attacking_item = pick(inoculates)
+		if(LAZYLEN(spores))
+			attacking_item = pick(spores)
 
-	if(istype(attacking_item, /obj/item/neuFarm/inoculate)) //SLOP OBJECT PROC SHARING
+	if(istype(attacking_item, /obj/item/neuFarm/spore))
 		playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
 		if(do_after(user, get_farming_do_time(user, 15), src))
 			if(old_item)
 				SEND_SIGNAL(old_item, COMSIG_TRY_STORAGE_TAKE, attacking_item, get_turf(user), TRUE)
-			var/obj/item/neuFarm/inoculate/inoculates = attacking_item
-			inoculates.try_plant_inoculate(user, src)
+			var/obj/item/neuFarm/spore/spores = attacking_item
+			spores.try_plant_spore(user, src)
 		return TRUE
 	if(istype(attacking_item, /obj/item/neuFarm/seed))
 		to_chat(user, span_warning("I cannot plant the seed in \the [src]!"))
@@ -1323,23 +1323,23 @@
 	)
 
 /obj/structure/soil/mushmound/debug_mushmound
-	var/obj/item/neuFarm/inoculate/inoculate_to_grow
+	var/obj/item/neuFarm/spore/spore_to_grow
 
 /obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
-	inoculate_to_grow = pick(subtypesof(/obj/item/neuFarm/inoculate))
+	spore_to_grow = pick(subtypesof(/obj/item/neuFarm/spore))
 	. = ..()
 
 /obj/structure/soil/mushmound/debug_mushmound/Initialize()
 	. = ..()
-	if(!inoculate_to_grow)
+	if(!spore_to_grow)
 		return
-	var/debug_inoculate_genetics = initial(inoculate_to_grow.inoculate_genetics)
-	if(!debug_inoculate_genetics)
-		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(inoculate_to_grow.plant_def_type)]
-		debug_inoculate_genetics = new /datum/plant_genetics(plant_def_instance)
+	var/debug_spore_genetics = initial(spore_to_grow.spore_genetics)
+	if(!debug_spore_genetics)
+		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(spore_to_grow.plant_def_type)]
+		debug_spore_genetics = new /datum/plant_genetics(plant_def_instance)
 	else
-		debug_inoculate_genetics = new debug_inoculate_genetics()
-	insert_plant(GLOB.plant_defs[initial(inoculate_to_grow.plant_def_type)], debug_inoculate_genetics)
+		debug_spore_genetics = new debug_spore_genetics()
+	insert_plant(GLOB.plant_defs[initial(spore_to_grow.plant_def_type)], debug_spore_genetics)
 	add_growth(plant.maturation_time)
 	add_growth(plant.produce_time)
 

@@ -45,8 +45,8 @@
 	var/plant_family = FAMILY_HERB
 	/// Identity of seeds with this type
 	var/seed_identity = "some seeds"
-	/// Identity of inoculate with this type
-	var/inoculate_identity ="some inoculate"
+	/// Identity of spores with this type
+	var/spore_identity ="some spores"
 	///this is if we become seethrough or not
 	var/see_through = FALSE
 

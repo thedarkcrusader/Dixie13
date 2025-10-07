@@ -87,7 +87,7 @@
 
 /obj/structure/closet/crate/chest/wicker/random_mushroom/Initialize()
 	for(var/i = 1 to rand(5,8))
-		var/obj/item/neuFarm/inoculate/random = pick(subtypesof(/obj/item/neuFarm/inoculate))
+		var/obj/item/neuFarm/spore/random = pick(subtypesof(/obj/item/neuFarm/spore))
 		new random (get_turf(src))
 	. = ..()
 
