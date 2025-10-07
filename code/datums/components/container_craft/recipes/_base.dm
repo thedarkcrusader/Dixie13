@@ -18,9 +18,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	var/atom/output
 	/// How many times the output is made. Preferrably for item outputs.
 	var/output_amount = 1
-
 	var/category
-
 
 	var/user_craft = FALSE
 

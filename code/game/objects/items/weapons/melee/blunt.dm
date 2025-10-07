@@ -379,9 +379,10 @@
 
 /obj/item/weapon/mace/cudgel/shellrungu
 	name = "shell rungu"
+	desc = "A ceremonial rungu carved out of clam shell. Not intended for combat. Its used in various Sea and Coastal Elven rituals and ceremonies."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "rungu_shell"
-	desc = "A ceremonial rungu carved out of clam shell. Not intended for combat. Its used in various Sea and Coastal Elven rituals and ceremonies."
+
 	max_integrity = INTEGRITY_POOR
 	sellprice = 35
 
