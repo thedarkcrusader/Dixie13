@@ -1244,10 +1244,11 @@
 	desc = "A mound of hay and nitesoil, used as the growing medium for various types of mushrooms."
 	icon = 'icons/roguetown/misc/soil.dmi'
 	icon_state = "mushmound-dry"
-	density = TRUE
+	density = FALSE
 	anchored = FALSE
+	drag_slowdown = 2
 	climbable = TRUE
-	climb_offset = 5
+	climb_offset = 10
 	max_integrity = 100
 
 	COOLDOWN_DECLARE(mushmound_update)
@@ -1293,10 +1294,29 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/soil/mushmound/proc/try_handle_mushfertilizing(obj/item/attacking_item, mob/user, params)
+	var/fertilize_success = FALSE
+
+	if(istype(attacking_item, /obj/item/fertilizer))
+		var/obj/item/fertilizer/fert = attacking_item
+		fertilize_success = apply_fertilizer(fert, user)
+	else if(istype(attacking_item, /obj/item/natural/poo))
+		// Manure is balanced NPK with high nitrogen
+		if(can_accept_fertilizer())
+			to_chat(user, span_notice("I fertilize the mushroom mound with manure."))
+			adjust_nitrogen(60)
+			adjust_phosphorus(40)
+			adjust_potassium(50)
+			fertilize_success = TRUE
+		else
+			to_chat(user, span_warning("The mushroom mound is already well fertilized!"))
+	if(fertilize_success)
+		qdel(attacking_item)
+		return TRUE
+	return FALSE
+
 /obj/structure/soil/mushmound/update_overlays()
 	. = ..()
-	if(tilled_time > 0)
-		. += "soil-tilled"
 	. += get_water_mushoverlay()
 	. += get_nutri_mushoverlay()
 	if(plant)

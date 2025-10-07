@@ -52,7 +52,7 @@
 			var/datum/plant_genetics/spore_genetics_instance = spore_genetics
 			if(spore_genetics_instance.spore_identity_modifier)
 				examine_name = "[spore_genetics_instance.spore_identity_modifier] " + examine_name
-			. += span_notice("I can tell this is a [examine_name].")
+			. += span_notice("I can tell this is some [examine_name].")
 			. += plant_def_instance.get_examine_details()
 
 /obj/item/neuFarm/spore/attack_atom(atom/attacked_atom, mob/living/user)

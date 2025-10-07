@@ -208,26 +208,32 @@
 	plant_type = /datum/plant_def/fyritiusflower
 
 /obj/structure/wild_plant/nospread/coprinus
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "coprinus2"
 	plant_type = /datum/plant_def/coprinus
 
 /obj/structure/wild_plant/nospread/reishi
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "reishi2"
 	plant_type = /datum/plant_def/reishi
 
 /obj/structure/wild_plant/nospread/morel
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "morel2"
 	plant_type = /datum/plant_def/morel
 
 /obj/structure/wild_plant/nospread/oyster
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "oyster2"
 	plant_type = /datum/plant_def/oyster
 
 /obj/structure/wild_plant/nospread/porcini
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "porcini2"
 	plant_type = /datum/plant_def/porcini
 
 /obj/structure/wild_plant/nospread/chanterelle
+	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 	icon_state = "chanterelle2"
 	plant_type = /datum/plant_def/chanterelle
 
