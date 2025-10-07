@@ -85,6 +85,12 @@
 		new random (get_turf(src))
 	. = ..()
 
+/obj/structure/closet/crate/chest/wicker/random_mushroom/Initialize()
+	for(var/i = 1 to rand(5,8))
+		var/obj/item/neuFarm/inoculate/random = pick(subtypesof(/obj/item/neuFarm/inoculate))
+		new random (get_turf(src))
+	. = ..()
+
 /obj/structure/closet/crate/chest/neu
 	name = "sturdy oak chest"
 	icon_state = "chest_neu"
