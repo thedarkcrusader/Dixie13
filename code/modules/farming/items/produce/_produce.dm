@@ -554,8 +554,7 @@
 	name = "coprinus"
 	desc = "An inedible mushroom cultivated for the fibres it produces when dried."
 	icon_state = "coprinus"
-	// seed = /obj/item/neuFarm/seed/coprinus
-	inoculate = /obj/item/neuFarm/seed/inoculate/coprinus
+	inoculate = /obj/item/neuFarm/inoculate/coprinus
 	throwforce = 0
 	tastes = list("bitter" = 1,"fibrous" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -569,8 +568,7 @@
 	name = "reishi"
 	desc = "A mushroom prized for its medicinal properties. Typically dried then used in tea. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "reishi"
-	// seed = /obj/item/neuFarm/seed/reishi
-	inoculate = /obj/item/neuFarm/seed/inoculate/reishi
+	inoculate = /obj/item/neuFarm/inoculate/reishi
 	throwforce = 0
 	tastes = list("woody" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -584,8 +582,7 @@
 	name = "morel"
 	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "morel"
-	// seed = /obj/item/neuFarm/seed/morel
-	inoculate = /obj/item/neuFarm/seed/inoculate/morel
+	inoculate = /obj/item/neuFarm/inoculate/morel
 	throwforce = 0
 	tastes = list("umami" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -599,8 +596,7 @@
 	name = "oyster"
 	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "oyster"
-	// seed = /obj/item/neuFarm/seed/oyster
-	inoculate = /obj/item/neuFarm/seed/inoculate/oyster
+	inoculate = /obj/item/neuFarm/inoculate/oyster
 	throwforce = 0
 	tastes = list("sweet" = 1,"briny" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -614,8 +610,7 @@
 	name = "porcini"
 	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "porcini"
-	// seed = /obj/item/neuFarm/seed/porcini
-	inoculate = /obj/item/neuFarm/seed/inoculate/porcini
+	inoculate = /obj/item/neuFarm/inoculate/porcini
 	throwforce = 0
 	tastes = list("earthy" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -629,8 +624,7 @@
 	name = "chanterelle"
 	desc = "A rare mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "chanterelle"
-	// seed = /obj/item/neuFarm/seed/chanterelle
-	inoculate = /obj/item/neuFarm/seed/inoculate/chanterelle
+	inoculate = /obj/item/neuFarm/inoculate/chanterelle
 	throwforce = 0
 	tastes = list("fruity" = 1,"earthy" = 1)
 	w_class = WEIGHT_CLASS_TINY

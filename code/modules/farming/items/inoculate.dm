@@ -1,4 +1,4 @@
-/obj/item/neuFarm/seed/inoculate
+/obj/item/neuFarm/inoculate
 	name = "mushroom inoculate"
 	desc = "A cloth covered in mushroom spores, used to inoculate mushroom mounds for cultivation."
 	icon_state = "inoculate"
@@ -10,7 +10,7 @@
 
 	var/datum/plant_genetics/inoculate_genetics
 
-/obj/item/neuFarm/seed/inoculate/Initialize(mapload, datum/plant_genetics/passed_genetics)
+/obj/item/neuFarm/inoculate/Initialize(mapload, datum/plant_genetics/passed_genetics)
 	. = ..()
 	if(plant_def_type)
 		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
@@ -25,14 +25,14 @@
 	else
 		inoculate_genetics = passed_genetics.copy()
 
-/obj/item/neuFarm/seed/inoculate/Crossed(mob/living/L)
+/obj/item/neuFarm/inoculate/Crossed(mob/living/L)
 	. = ..()
 	if(prob(10) && istype(L))
 		playsound(loc,"seedextract", 40, FALSE)
 		visible_message(span_warning("[L] crushes [src] underfoot."))
 		qdel(src)
 
-/obj/item/neuFarm/seed/inoculate/examine(mob/user)
+/obj/item/neuFarm/inoculate/examine(mob/user)
 	. = ..()
 	var/show_real_identity = FALSE
 	if(isliving(user))
@@ -55,7 +55,17 @@
 			. += span_notice("I can tell this is a [examine_name].")
 			. += plant_def_instance.get_examine_details()
 
-/obj/item/neuFarm/seed/inoculate/proc/try_plant_inoculate(mob/living/user, obj/structure/soil/mushmound/mushmound)
+/obj/item/neuFarm/inoculate/attack_atom(atom/attacked_atom, mob/living/user)
+	if(!isturf(attacked_atom))
+		return ..()
+
+	var/obj/structure/soil/mushmound/mushmound
+	if(mushmound)
+		try_plant_inoculate(user, mushmound)
+		return TRUE
+	return ..()
+
+/obj/item/neuFarm/inoculate/proc/try_plant_inoculate(mob/living/user, obj/structure/soil/mushmound/mushmound)
 	if(mushmound.plant)
 		to_chat(user, span_warning("There is already something planted in \the [mushmound]!"))
 		return
@@ -65,20 +75,20 @@
 	mushmound.insert_plant(GLOB.plant_defs[plant_def_type], inoculate_genetics)
 	qdel(src)
 
-/obj/item/neuFarm/seed/inoculate/coprinus
+/obj/item/neuFarm/inoculate/coprinus
 	plant_def_type = /datum/plant_def/coprinus
 
-/obj/item/neuFarm/seed/inoculate/reishi
+/obj/item/neuFarm/inoculate/reishi
 	plant_def_type = /datum/plant_def/reishi
 
-/obj/item/neuFarm/seed/inoculate/morel
+/obj/item/neuFarm/inoculate/morel
 	plant_def_type = /datum/plant_def/morel
 
-/obj/item/neuFarm/seed/inoculate/oyster
+/obj/item/neuFarm/inoculate/oyster
 	plant_def_type = /datum/plant_def/oyster
 
-/obj/item/neuFarm/seed/inoculate/porcini
+/obj/item/neuFarm/inoculate/porcini
 	plant_def_type = /datum/plant_def/porcini
 
-/obj/item/neuFarm/seed/inoculate/chanterelle
+/obj/item/neuFarm/inoculate/chanterelle
 	plant_def_type = /datum/plant_def/chanterelle

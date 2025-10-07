@@ -149,6 +149,9 @@
 			var/obj/item/neuFarm/seed/seeds = attacking_item
 			seeds.try_plant_seed(user, src)
 		return TRUE
+	if(istype(attacking_item, /obj/item/neuFarm/inoculate))
+		to_chat(user, span_warning("I cannot plant the inoculate in \the [src]!"))
+		return FALSE
 	return FALSE
 
 /obj/structure/soil/proc/try_handle_uprooting(obj/item/attacking_item, mob/user, params)
