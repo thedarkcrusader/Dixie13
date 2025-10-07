@@ -21,7 +21,6 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 	var/category
 
-
 	var/user_craft = FALSE
 
 	///if this is set we will only ever craft if only the contents are in the bag
