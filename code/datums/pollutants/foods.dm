@@ -244,6 +244,10 @@
 	name = "minty smell"
 	scent = "minty smell"
 
+/datum/pollutant/food/fried_messenger
+	name = "fried messenger"
+	scent = "fried messenger"
+
 /datum/pollutant/food/reishi
 	name = "woody smell"
 	scent = "woody smell"
