@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	)
 
 /datum/natural_precursor/plank
-	name = "plank"
+	name = "wooden plank"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/earth = 1,
 		/datum/thaumaturgical_essence/order = 3,
@@ -294,7 +294,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/ore/cinnabar,
 		/obj/item/chalk,
 	)
-
 
 /datum/natural_precursor/common_ore
 	name = "common ore"
@@ -383,7 +382,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	name = "mentha"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/water = 10,
-		/datum/thaumaturgical_essence/life = 5
+		/datum/thaumaturgical_essence/frost = 5
 	)
 	init_types = list(
 		/obj/item/alch/herb/mentha
@@ -447,7 +446,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	name = "benedictus"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/order = 10,
-		/datum/thaumaturgical_essence/cycle = 5
+		/datum/thaumaturgical_essence/crystal = 5
 	)
 	init_types = list(
 		/obj/item/alch/herb/benedictus
