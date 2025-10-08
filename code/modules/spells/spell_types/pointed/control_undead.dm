@@ -37,10 +37,12 @@
 	. = ..()
 	if(!.)
 		return
-	if(!cast_on.mind)
+	if(!isliving(cast_on))
 		return FALSE
-	if (cast_on.mob_biotypes & MOB_UNDEAD)
-		return
+	var/mob/living/victim = cast_on
+	if(!victim.mind || victim.stat == DEAD)
+		return FALSE
+	return (victim.mob_biotypes & MOB_UNDEAD)
 
 
 /datum/action/cooldown/spell/control_undead/cast(mob/living/cast_on)
