@@ -452,7 +452,7 @@
 
 //.....................Onyxa......................//
 
-/obj/item/carveedgem/onyxa
+/obj/item/carvedgem/onyxa
 	name = "onyxa base"
 	desc = "if you are seeing this, its a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
