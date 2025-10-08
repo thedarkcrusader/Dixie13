@@ -1,6 +1,6 @@
 /datum/spell_node/arcyne_eye
 	name = "Arcyne Eye"
-	desc = "Create an invisible, magical eye."
+	desc = "Imbue yourself with the ability to percieve magical phenomena."
 	node_x = 0
 	node_y = 0
 	spell_type = /datum/action/cooldown/spell/undirected/arcyne_eye
