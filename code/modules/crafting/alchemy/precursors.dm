@@ -347,16 +347,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/herb/matricaria
 	)
 
-/datum/natural_precursor/valeriana
-	name = "valeriana"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 10,
-		/datum/thaumaturgical_essence/motion = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/valeriana
-	)
-
 /datum/natural_precursor/euphorbia
 	name = "euphorbia"
 	essence_yields = list(
@@ -376,16 +366,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	)
 	init_types = list(
 		/obj/item/alch/herb/symphitum
-	)
-
-/datum/natural_precursor/taraxacum
-	name = "taraxacum"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/air = 10,
-		/datum/thaumaturgical_essence/motion = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/taraxacum
 	)
 
 /datum/natural_precursor/euphrasia
@@ -441,6 +421,16 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/herb/calendula
 	)
 
+/datum/natural_precursor/taraxacum
+	name = "taraxacum"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 10,
+		/datum/thaumaturgical_essence/motion = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/taraxacum
+	)
+
 /datum/natural_precursor/hypericum
 	name = "hypericum"
 	essence_yields = list(
@@ -473,230 +463,50 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/herb/rosa
 	)
 
+/datum/natural_precursor/valeriana
+	name = "valeriana"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/motion = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/valeriana
+	)
+
 /*
 --------------------OTHER NATURAL ITEMS--------------------
 */
 
-/datum/natural_precursor/bone
-	name = "bone"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/void = 10,
-		/datum/thaumaturgical_essence/order = 5
-	)
-	init_types = list(
-		/obj/item/alch/bone,
-		/obj/item/fertilizer/bone_meal,
-	)
-
 /datum/natural_precursor/feather
 	name = "feather"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/air = 2,
-		/datum/thaumaturgical_essence/motion = 1
+		/datum/thaumaturgical_essence/air = 5,
+		/datum/thaumaturgical_essence/motion = 1,
 	)
 	init_types = list(
 		/obj/item/natural/feather,
 		/obj/item/natural/feather/infernal
 	)
 
-/datum/natural_precursor/stone_sending
-	name = "sending stone"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/void = 1
-	)
-	init_types = list(
-		/obj/item/natural/stone/sending
-	)
-
 /datum/natural_precursor/obsidian
 	name = "obsidian"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 2,
-		/datum/thaumaturgical_essence/earth = 1
+		/datum/thaumaturgical_essence/fire = 4,
+		/datum/thaumaturgical_essence/chaos = 3,
 	)
 	init_types = list(
 		/obj/item/natural/obsidian
 	)
 
-/datum/natural_precursor/leyline
-	name = "leyline crystal"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 3
-	)
-	init_types = list(
-		/obj/item/natural/leyline
-	)
-
-/datum/natural_precursor/artifact
-	name = "arcyne artifact"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/natural/artifact
-	)
-
-/datum/natural_precursor/voidstone
-	name = "voidstone"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/void = 3
-	)
-	init_types = list(
-		/obj/item/natural/voidstone
-	)
-
-/datum/natural_precursor/melded
-	name = "melded stone"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 20,
-		/datum/thaumaturgical_essence/chaos = 10
-	)
-	init_types = list(
-		/obj/item/natural/melded,
-		/obj/item/natural/melded/t1,
-		/obj/item/natural/melded/t2,
-		/obj/item/natural/melded/t3,
-		/obj/item/natural/melded/t4,
-		/obj/item/natural/melded/t5
-	)
-
-/datum/natural_precursor/infernalash
-	name = "infernal ash"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 10,
-		/datum/thaumaturgical_essence/chaos = 15
-	)
-	init_types = list(
-		/obj/item/natural/infernalash
-	)
-
-/datum/natural_precursor/hellhoundfang
-	name = "hellhound fang"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 5,
-		/datum/thaumaturgical_essence/life = 10
-	)
-	init_types = list(
-		/obj/item/natural/hellhoundfang
-	)
-
-/datum/natural_precursor/moltencore
-	name = "molten core"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 20
-	)
-	init_types = list(
-		/obj/item/natural/moltencore
-	)
-
-/datum/natural_precursor/abyssalflame
-	name = "abyssal flame"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 20,
-		/datum/thaumaturgical_essence/void = 10
-	)
-	init_types = list(
-		/obj/item/natural/abyssalflame
-	)
-
-/datum/natural_precursor/fairydust
-	name = "fairy dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/light = 20
-	)
-	init_types = list(
-		/obj/item/natural/fairydust
-	)
-
-/datum/natural_precursor/iridescentscale
-	name = "iridescent scale"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/crystal = 20,
-		/datum/thaumaturgical_essence/life = 10
-	)
-	init_types = list(
-		/obj/item/natural/iridescentscale
-	)
-
-/datum/natural_precursor/heartwoodcore
-	name = "heartwood core"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/earth = 5
-	)
-	init_types = list(
-		/obj/item/natural/heartwoodcore
-	)
-
-/datum/natural_precursor/sylvanessence
-	name = "sylvan essence"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 20
-	)
-	init_types = list(
-		/obj/item/natural/sylvanessence
-	)
-
-/datum/natural_precursor/elementalmote
-	name = "elemental mote"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/energia = 10,
-		/datum/thaumaturgical_essence/magic = 5
-	)
-	init_types = list(
-		/obj/item/natural/elementalmote
-	)
-
-/datum/natural_precursor/elementalshard
-	name = "elemental shard"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/energia = 5,
-		/datum/thaumaturgical_essence/magic = 10
-	)
-	init_types = list(
-		/obj/item/natural/elementalshard
-	)
-
-/datum/natural_precursor/elementalfragment
-	name = "elemental fragment"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/energia = 5,
-		/datum/thaumaturgical_essence/magic = 10
-	)
-	init_types = list(
-		/obj/item/natural/elementalfragment
-	)
-
-/datum/natural_precursor/elementalrelic
-	name = "elemental relic"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 20
-	)
-	init_types = list(
-		/obj/item/natural/elementalrelic
-	)
-
-/datum/natural_precursor/hide
-	name = "animal hide"
+/datum/natural_precursor/hide_and_fur
+	name = "animal hide and fur"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/earth = 1
+		/datum/thaumaturgical_essence/earth = 4
 	)
 	init_types = list(
 		/obj/item/natural/hide,
 		/obj/item/natural/hide/cured,
-		/obj/item/natural/cured,
-		/obj/item/natural/cured/essence
-	)
-
-/datum/natural_precursor/fur
-	name = "animal fur"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3
-	)
-	init_types = list(
 		/obj/item/natural/fur,
 		/obj/item/natural/fur/gote,
 		/obj/item/natural/fur/volf,
@@ -705,64 +515,27 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/fur/cabbit
 	)
 
-/datum/natural_precursor/head
-	name = "animal head"
+//intentionally no fibre, turn it into cloth instead
+/datum/natural_precursor/cloth_and_silk
+	name = "silk and cloth"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/natural/head,
-		/obj/item/natural/head/volf,
-		/obj/item/natural/head/saiga,
-		/obj/item/natural/head/troll,
-		/obj/item/natural/head/troll/axe,
-		/obj/item/natural/head/troll/cave,
-		/obj/item/natural/head/rous,
-		/obj/item/natural/head/spider,
-		/obj/item/natural/head/bug,
-		/obj/item/natural/head/mole,
-		/obj/item/natural/head/gote
-	)
-
-/datum/natural_precursor/fibers
-	name = "natural fibers"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
+		/datum/thaumaturgical_essence/air = 2,
 		/datum/thaumaturgical_essence/order = 2
 	)
 	init_types = list(
-		/obj/item/natural/fibers,
 		/obj/item/natural/silk,
 		/obj/item/natural/cloth
 	)
 
-/datum/natural_precursor/thorn
-	name = "thorn"
+/datum/natural_precursor/clod_and_clay
+	name = "dirt and clay"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/poison = 1
+		/datum/thaumaturgical_essence/earth = 2,
+		/datum/thaumaturgical_essence/water = 1
 	)
 	init_types = list(
-		/obj/item/natural/thorn
-	)
-
-/datum/natural_precursor/bowstring
-	name = "bowstring"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 3
-	)
-	init_types = list(
-		/obj/item/natural/bowstring
-	)
-
-/datum/natural_precursor/dirtclod
-	name = "dirt clod"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 3
-	)
-	init_types = list(
-		/obj/item/natural/dirtclod
+		/obj/item/natural/dirtclod,
+		/obj/item/natural/clay
 	)
 
 /datum/natural_precursor/glass
@@ -778,8 +551,8 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/poo
 	name = "animal waste"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/poison = 2
+		/datum/thaumaturgical_essence/earth = 4,
+		/datum/thaumaturgical_essence/chaos = 3
 	)
 	init_types = list(
 		/obj/item/natural/poo,
@@ -787,327 +560,21 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/poo/horse
 	)
 
-/datum/natural_precursor/clay
-	name = "clay"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/water = 1
-	)
-	init_types = list(
-		/obj/item/natural/clay
-	)
-
-
 /datum/natural_precursor/worms
 	name = "worms"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/poison = 1
+		/datum/thaumaturgical_essence/earth = 2
 	)
 	init_types = list(
 		/obj/item/natural/worms,
 		/obj/item/natural/worms/grub_silk
 	)
 
-
-
-/datum/natural_precursor/gold_ingot
-	name = "gold ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/light = 1
-	)
-	init_types = list(
-		/obj/item/ingot/gold
-	)
-
-/datum/natural_precursor/iron_ingot
-	name = "iron ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ingot/iron
-	)
-
-/datum/natural_precursor/copper_ingot
-	name = "copper ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 1,
-		/datum/thaumaturgical_essence/energia = 2
-	)
-	init_types = list(
-		/obj/item/ingot/copper
-	)
-
-/datum/natural_precursor/tin_ingot
-	name = "tin ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ingot/tin
-	)
-
-/datum/natural_precursor/bronze_ingot
-	name = "bronze ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ingot/bronze
-	)
-
-/datum/natural_precursor/silver_ingot
-	name = "silver ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/light = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ingot/silver
-	)
-
-/datum/natural_precursor/steel_ingot
-	name = "steel ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/fire = 1
-	)
-	init_types = list(
-		/obj/item/ingot/steel
-	)
-
-/datum/natural_precursor/blacksteel_ingot
-	name = "blacksteel ingot"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/void = 2,
-		/datum/thaumaturgical_essence/fire = 1
-	)
-	init_types = list(
-		/obj/item/ingot/blacksteel
-	)
-
-/datum/natural_precursor/meat_steak
-	name = "steak"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/steak
-	)
-
-/datum/natural_precursor/meat_human
-	name = "human meat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/void = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/human
-	)
-
-/datum/natural_precursor/meat_fatty
-	name = "fatty meat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/order = 1,
-		/datum/thaumaturgical_essence/earth = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/fatty
-	)
-
-/datum/natural_precursor/meat_strange
-	name = "strange meat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/chaos = 2,
-		/datum/thaumaturgical_essence/poison = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/strange
-	)
-
-/datum/natural_precursor/meat_poultry
-	name = "poultry meat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/poultry
-	)
-
-/datum/natural_precursor/meat_poultry_cutlet
-	name = "poultry cutlet"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet
-	)
-
-/datum/natural_precursor/meat_minced
-	name = "minced meat"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince
-	)
-
-/datum/natural_precursor/meat_minced_beef
-	name = "minced beef"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/beef
-	)
-
-/datum/natural_precursor/meat_minced_beef_cooked
-	name = "cooked minced beef"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/order = 2
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/beef/cooked
-	)
-
-/datum/natural_precursor/meat_minced_beef_mett
-	name = "beef mett"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/beef/mett
-	)
-
-/datum/natural_precursor/meat_minced_beef_mett_slice
-	name = "beef mett slice"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/beef/mett/slice
-	)
-
-/datum/natural_precursor/meat_minced_fish
-	name = "minced fish"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 1,
-		/datum/thaumaturgical_essence/life = 2
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/fish
-	)
-
-/datum/natural_precursor/meat_minced_fish_cooked
-	name = "cooked minced fish"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 1,
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked
-	)
-
-/datum/natural_precursor/meat_minced_poultry
-	name = "minced poultry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/poultry
-	)
-
-/datum/natural_precursor/meat_minced_poultry_cooked
-	name = "cooked minced poultry"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/order = 2
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/mince/poultry/cooked
-	)
-
-/datum/natural_precursor/meat_sausage
-	name = "sausage"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/sausage
-	)
-
-/datum/natural_precursor/meat_wiener
-	name = "wiener"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/order = 1,
-		/datum/thaumaturgical_essence/earth = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/wiener
-	)
-
-/datum/natural_precursor/meat_salami
-	name = "salami"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 8,
-		/datum/thaumaturgical_essence/chaos = 4
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/salami
-	)
-
-/datum/natural_precursor/meat_salami_slice
-	name = "salami slice"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/meat/salami/slice
-	)
-
-/datum/natural_precursor/fish_dead
-	name = "dead fish"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/void = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/dead
-	)
-
-/datum/natural_precursor/fish_carp
-	name = "carp"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/carp
-	)
-
 /datum/natural_precursor/leech
 	name = "leech"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 3,
+		/datum/thaumaturgical_essence/life = 2,
 		/datum/thaumaturgical_essence/water = 2
 	)
 	init_types = list(
@@ -1117,205 +584,63 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/worms/leech/abyssoid,
 	)
 
-/datum/natural_precursor/fish_clownfish
-	name = "clownfish"
+/datum/natural_precursor/dendor_essence
+	name = "dendor essence"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/light = 1
+		/datum/thaumaturgical_essence/life = 10,
+		/datum/thaumaturgical_essence/chaos = 10
 	)
 	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/clownfish
-	)
-
-/datum/natural_precursor/fish_angler
-	name = "angler fish"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 1,
-		/datum/thaumaturgical_essence/chaos = 1,
-		/datum/thaumaturgical_essence/poison = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/angler
-	)
-
-/datum/natural_precursor/fish_eel
-	name = "eel"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 1,
-		/datum/thaumaturgical_essence/energia = 1,
-		/datum/thaumaturgical_essence/poison = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/eel
-	)
-
-/datum/natural_precursor/fish_shrimp
-	name = "shrimp"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/shrimp
-	)
-
-/datum/natural_precursor/fish_swordfish
-	name = "swordfish"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 2,
-		/datum/thaumaturgical_essence/motion = 1
-	)
-	init_types = list(
-		/obj/item/reagent_containers/food/snacks/fish/swordfish
-	)
-
-/datum/natural_precursor/tree_log
-	name = "tree log"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 3,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
-		/obj/item/grown/log/tree
-	)
-
-/datum/natural_precursor/tree_log_small
-	name = "small tree log"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
-		/obj/item/grown/log/tree/small
-	)
-
-/datum/natural_precursor/tree_log_small_essence
-	name = "small essence-infused tree log"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/magic = 1,
-		/datum/thaumaturgical_essence/life = 1
-	)
-	init_types = list(
+		/obj/item/natural/cured/essence,
 		/obj/item/grown/log/tree/essence
 	)
 
-/datum/natural_precursor/tree_stick
-	name = "tree stick"
+/datum/natural_precursor/meat
+	name = "meat"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 1,
-		/datum/thaumaturgical_essence/life = 1
+		/datum/thaumaturgical_essence/life = 4,
+		/datum/thaumaturgical_essence/order = 3
 	)
 	init_types = list(
-		/obj/item/grown/log/tree/stick
+		/obj/item/reagent_containers/food/snacks/meat/steak,
+		/obj/item/reagent_containers/food/snacks/meat/human,
+		/obj/item/reagent_containers/food/snacks/meat/fatty,
+		/obj/item/reagent_containers/food/snacks/meat/strange,
+		/obj/item/reagent_containers/food/snacks/meat/poultry,
+		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet,
+		/obj/item/reagent_containers/food/snacks/meat/mince,
+		/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+		/obj/item/reagent_containers/food/snacks/meat/mince/beef/mett,
+		/obj/item/reagent_containers/food/snacks/meat/mince/poultry,
+		/obj/item/reagent_containers/food/snacks/meat/sausage,
+		/obj/item/reagent_containers/food/snacks/meat/wiener,
+		/obj/item/reagent_containers/food/snacks/meat/salami,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish,
 	)
 
-/datum/natural_precursor/tree_stake
-	name = "tree stake"
+/datum/natural_precursor/fish
+	name = "fish"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
+		/datum/thaumaturgical_essence/life = 4,
+		/datum/thaumaturgical_essence/order = 3
 	)
 	init_types = list(
-		/obj/item/grown/log/tree/stake
+		/obj/item/reagent_containers/food/snacks/fish/carp,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish,
+		/obj/item/reagent_containers/food/snacks/fish/angler,
+		/obj/item/reagent_containers/food/snacks/fish/eel,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp,
+		/obj/item/reagent_containers/food/snacks/fish/swordfish,
 	)
 
-/datum/natural_precursor/bamboo_log
-	name = "bamboo log"
+/datum/natural_precursor/bone
+	name = "bone"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/life = 1,
-		/datum/thaumaturgical_essence/magic = 1
+		/datum/thaumaturgical_essence/void = 10,
+		/datum/thaumaturgical_essence/crystal = 5
 	)
 	init_types = list(
-		/obj/item/grown/log/bamboo
-	)
-
-/datum/natural_precursor/viscera
-	name = "viscera"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/poison = 5
-	)
-	init_types = list(
-		/obj/item/alch/viscera
-	)
-
-/datum/natural_precursor/waterdust
-	name = "water dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/water = 20
-	)
-	init_types = list(
-		/obj/item/alch/waterdust
-	)
-
-/datum/natural_precursor/bonemeal
-	name = "bonemeal"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/fertilizer/bone_meal
-	)
-
-/datum/natural_precursor/seeddust
-	name = "seed dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/order = 5
-	)
-	init_types = list(
-		/obj/item/alch/seeddust
-	)
-
-/datum/natural_precursor/runedust
-	name = "rune dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 10,
-		/datum/thaumaturgical_essence/magic = 5
-	)
-	init_types = list(
-		/obj/item/alch/runedust
-	)
-
-/datum/natural_precursor/coaldust
-	name = "coal dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 5,
-		/datum/thaumaturgical_essence/earth = 10
-	)
-	init_types = list(
-		/obj/item/alch/coaldust
-	)
-
-/datum/natural_precursor/silverdust
-	name = "silver dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 10,
-		/datum/thaumaturgical_essence/void = 5
-	)
-	init_types = list(
-		/obj/item/alch/silverdust
-	)
-
-/datum/natural_precursor/magicdust
-	name = "magic dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 20
-	)
-	init_types = list(
-		/obj/item/alch/magicdust
-	)
-
-/datum/natural_precursor/firedust
-	name = "fire dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 20
-	)
-	init_types = list(
-		/obj/item/alch/firedust
+		/obj/item/alch/bone,
 	)
 
 /datum/natural_precursor/sinew
@@ -1328,14 +653,75 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/sinew
 	)
 
-/datum/natural_precursor/irondust
-	name = "iron dust"
+/datum/natural_precursor/viscera
+	name = "viscera"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 10,
-		/datum/thaumaturgical_essence/order = 5
+		/datum/thaumaturgical_essence/chaos = 10,
+		/datum/thaumaturgical_essence/poison = 5
 	)
 	init_types = list(
-		/obj/item/alch/irondust
+		/obj/item/alch/viscera
+	)
+
+/datum/natural_precursor/bonemeal
+	name = "bone meal"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/chaos = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/fertilizer/bone_meal
+	)
+
+/*
+--------------------ALCHEMY DUSTS--------------------
+*/
+
+/datum/natural_precursor/magicdust
+	name = "magic dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/magic = 20
+	)
+	init_types = list(
+		/obj/item/alch/magicdust
+	)
+
+/datum/natural_precursor/runedust
+	name = "rune dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/magic = 5
+	)
+	init_types = list(
+		/obj/item/alch/runedust
+	)
+
+/datum/natural_precursor/transisdust
+	name = "transis dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/chaos = 10,
+		/datum/thaumaturgical_essence/magic = 5
+	)
+	init_types = list(
+		/obj/item/alch/transisdust
+	)
+
+/datum/natural_precursor/waterdust
+	name = "water dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/water = 20
+	)
+	init_types = list(
+		/obj/item/alch/waterdust
+	)
+
+/datum/natural_precursor/firedust
+	name = "fire dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 20
+	)
+	init_types = list(
+		/obj/item/alch/firedust
 	)
 
 /datum/natural_precursor/airdust
@@ -1347,26 +733,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/airdust
 	)
 
-/datum/natural_precursor/swampdust
-	name = "swamp dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/swampdust
-	)
-
-/datum/natural_precursor/tobaccodust
-	name = "tobacco dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/air = 10,
-		/datum/thaumaturgical_essence/poison = 5
-	)
-	init_types = list(
-		/obj/item/alch/tobaccodust
-	)
-
 /datum/natural_precursor/earthdust
 	name = "earth dust"
 	essence_yields = list(
@@ -1376,78 +742,113 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/earthdust
 	)
 
-/datum/natural_precursor/horn
-	name = "horn"
+/datum/natural_precursor/seeddust
+	name = "seed dust"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/order =51
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/life = 5
 	)
 	init_types = list(
-		/obj/item/alch/horn
+		/obj/item/alch/seeddust
+	)
+
+/datum/natural_precursor/coaldust
+	name = "coal dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 10,
+		/datum/thaumaturgical_essence/earth = 10
+	)
+	init_types = list(
+		/obj/item/alch/coaldust
+	)
+
+/datum/natural_precursor/silverdust
+	name = "silver dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/void = 10
+	)
+	init_types = list(
+		/obj/item/alch/silverdust
 	)
 
 /datum/natural_precursor/golddust
 	name = "gold dust"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/order = 10,
-		/datum/thaumaturgical_essence/light = 5
+		/datum/thaumaturgical_essence/light = 10
 	)
 	init_types = list(
 		/obj/item/alch/golddust
 	)
 
+/datum/natural_precursor/irondust
+	name = "iron dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 10,
+		/datum/thaumaturgical_essence/order = 5
+	)
+	init_types = list(
+		/obj/item/alch/irondust
+	)
+
 /datum/natural_precursor/feaudust
 	name = "feau dust"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 5,
-		/datum/thaumaturgical_essence/chaos = 10
+		/datum/thaumaturgical_essence/chaos = 15,
+		/datum/thaumaturgical_essence/energia = 5
 	)
 	init_types = list(
 		/obj/item/alch/feaudust
 	)
 
+/datum/natural_precursor/swampdust
+	name = "swamp dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 5,
+		/datum/thaumaturgical_essence/life = 5,
+		/datum/thaumaturgical_essence/poison = 5
+	)
+	init_types = list(
+		/obj/item/alch/swampdust
+	)
+
+/datum/natural_precursor/westleach_dust
+	name = "westleach dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/air = 5,
+		/datum/thaumaturgical_essence/life = 5,
+		/datum/thaumaturgical_essence/poison = 5
+	)
+	init_types = list(
+		/obj/item/alch/tobaccodust
+	)
+
 /datum/natural_precursor/ozium
 	name = "ozium"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/air = 5,
+		/datum/thaumaturgical_essence/order = 5,
+		/datum/thaumaturgical_essence/chaos = 5,
 		/datum/thaumaturgical_essence/void = 10
 	)
 	init_types = list(
 		/obj/item/alch/ozium
 	)
 
-/datum/natural_precursor/transisdust
-	name = "transis dust"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 10,
-		/datum/thaumaturgical_essence/order = 5
-	)
-	init_types = list(
-		/obj/item/alch/transisdust
-	)
+
+/*
+--------------------MAGIC AND MANA--------------------
+*/
 
 //1 standard crystal can be split into two small ones
 /datum/natural_precursor/mana_crystal_small
 	name = "small mana crystal"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 2,
-		/datum/thaumaturgical_essence/earth = 1
+		/datum/thaumaturgical_essence/magic = 3,
+		/datum/thaumaturgical_essence/earth = 2
 	)
 	init_types = list(
 		/obj/item/mana_battery/mana_crystal/small
-	)
-
-
-//why would you split thaumic iron after making, I do not know, but you can now
-/datum/natural_precursor/thaumic_iron
-	name = "thaumic iron"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 10,
-		/datum/thaumaturgical_essence/earth = 5
-	)
-	init_types = list(
-		/obj/item/alch/thaumicdust,
-		/obj/item/ingot/thaumic
 	)
 
 /datum/natural_precursor/manabloom
@@ -1460,14 +861,155 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/reagent_containers/powder/manabloom
 	)
 
-/datum/natural_precursor/mana_crystal
-	name = "mana crystal"
+/datum/natural_precursor/leyline
+	name = "leyline crystal"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 5,
-		/datum/thaumaturgical_essence/earth = 5
+		/datum/thaumaturgical_essence/magic = 10
 	)
 	init_types = list(
-		/obj/item/mana_battery/mana_crystal/standard
+		/obj/item/natural/leyline
+	)
+
+/datum/natural_precursor/artifact
+	name = "arcyne artifact"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/magic = 5,
+		/datum/thaumaturgical_essence/void = 3
+	)
+	init_types = list(
+		/obj/item/natural/artifact
+	)
+
+/datum/natural_precursor/voidstone
+	name = "voidstone"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/void = 60
+	)
+	init_types = list(
+		/obj/item/natural/voidstone
+	)
+
+//infernal summons
+/datum/natural_precursor/infernalash
+	name = "infernal ash"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/energia = 10,
+		/datum/thaumaturgical_essence/fire = 5,
+	)
+	init_types = list(
+		/obj/item/natural/infernalash
+	)
+
+/datum/natural_precursor/hellhoundfang
+	name = "hellhound fang"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/energia = 15,
+		/datum/thaumaturgical_essence/fire = 10,
+	)
+	init_types = list(
+		/obj/item/natural/hellhoundfang
+	)
+
+/datum/natural_precursor/moltencore
+	name = "molten core"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/energia = 20,
+		/datum/thaumaturgical_essence/fire = 15,
+	)
+	init_types = list(
+		/obj/item/natural/moltencore
+	)
+
+/datum/natural_precursor/abyssalflame
+	name = "abyssal flame"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/energia = 25,
+		/datum/thaumaturgical_essence/fire = 20,
+	)
+	init_types = list(
+		/obj/item/natural/abyssalflame
+	)
+
+//fae summons
+/datum/natural_precursor/fairydust
+	name = "fairy dust"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/cycle = 10,
+		/datum/thaumaturgical_essence/chaos = 5,
+	)
+	init_types = list(
+		/obj/item/natural/fairydust
+	)
+
+/datum/natural_precursor/iridescentscale
+	name = "iridescent scale"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/cycle = 15,
+		/datum/thaumaturgical_essence/chaos = 10,
+	)
+	init_types = list(
+		/obj/item/natural/iridescentscale
+	)
+
+/datum/natural_precursor/heartwoodcore
+	name = "heartwood core"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/cycle = 20,
+		/datum/thaumaturgical_essence/chaos = 15,
+	)
+	init_types = list(
+		/obj/item/natural/heartwoodcore
+	)
+
+/datum/natural_precursor/sylvanessence
+	name = "sylvan essence"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/cycle = 25,
+		/datum/thaumaturgical_essence/chaos = 20,
+	)
+	init_types = list(
+		/obj/item/natural/sylvanessence
+	)
+
+//elemental summons
+/datum/natural_precursor/elementalmote
+	name = "elemental mote"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 10,
+		/datum/thaumaturgical_essence/earth = 5,
+	)
+	init_types = list(
+		/obj/item/natural/elementalmote
+	)
+
+/datum/natural_precursor/elementalshard
+	name = "elemental shard"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 15,
+		/datum/thaumaturgical_essence/earth = 10,
+	)
+	init_types = list(
+		/obj/item/natural/elementalshard
+	)
+
+/datum/natural_precursor/elementalfragment
+	name = "elemental fragment"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 20,
+		/datum/thaumaturgical_essence/earth = 15,
+	)
+	init_types = list(
+		/obj/item/natural/elementalfragment
+	)
+
+/datum/natural_precursor/elementalrelic
+	name = "elemental relic"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 25,
+		/datum/thaumaturgical_essence/earth = 20,
+	)
+	init_types = list(
+		/obj/item/natural/elementalrelic
 	)
 
 /*
@@ -1490,6 +1032,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/reagent_containers/food/snacks/rotten/breadslice,
 		/obj/item/reagent_containers/food/snacks/rotten/egg,
 		/obj/item/reagent_containers/food/snacks/rotten/mince,
+		/obj/item/reagent_containers/food/snacks/stale_bread,
 	)
 
 /datum/natural_precursor/sugar
@@ -1500,15 +1043,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/sugar,
-	)
-
-/datum/natural_precursor/tiefling_sugar
-	name = "tiefling sugar"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/chaos = 3,
-		/datum/thaumaturgical_essence/energia = 1 //its meant to be a joke/pun about sugar being a great energy source
-	)
-	init_types = list(
 		/obj/item/reagent_containers/food/snacks/tiefsugar,
 	)
 
@@ -1529,4 +1063,26 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/organ/stomach,
 		/obj/item/organ/tongue,
 		/obj/item/organ/brain,
+	)
+
+/datum/natural_precursor/horn
+	name = "horn"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/magic = 20,
+		/datum/thaumaturgical_essence/order = 5,
+		/datum/thaumaturgical_essence/earth = 5
+	)
+	init_types = list(
+		/obj/item/alch/horn
+	)
+
+/datum/natural_precursor/thaumic_iron
+	name = "thaumic iron"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 10,
+		/datum/thaumaturgical_essence/earth = 5
+	)
+	init_types = list(
+		/obj/item/alch/thaumicdust,
+		/obj/item/ingot/thaumic
 	)
