@@ -219,17 +219,55 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/stone
 	name = "stone"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 5
+		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/order = 1,
 	)
 	init_types = list(
 		/obj/item/natural/stone,
+		/obj/item/natural/stone/sending,
 	)
+
+/datum/natural_precursor/wood
+	name = "wood"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/order = 1
+	)
+	init_types = list(
+		/obj/item/grown/log/tree/small,
+	)
+
+/datum/natural_precursor/plank
+	name = "plank"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 1,
+		/datum/thaumaturgical_essence/order = 3,
+	)
+	init_types = list(
+		/obj/item/natural/wood/plank,
+	)
+
+/datum/natural_precursor/stoneblock
+	name = "stone block"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 1,
+		/datum/thaumaturgical_essence/order = 3,
+	)
+	init_types = list(
+		/obj/item/natural/stoneblock
+	)
+
+/*
+--------------------ORES AND GEMS--------------------
+*/
+//featuring coal and charcoal from the devil may cry series
 
 /datum/natural_precursor/gem
 	name = "gem"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/crystal = 3,
-		/datum/thaumaturgical_essence/order = 2
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 4,
+		/datum/thaumaturgical_essence/earth = 2,
 	)
 	init_types = list(
 		/obj/item/gem,
@@ -243,7 +281,201 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	)
 	init_types = list(
 		/obj/item/ore/coal,
+		/obj/item/ore/coal/charcoal,
 	)
+
+/datum/natural_precursor/quicksilver
+	name = "quicksilver"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/poison = 1
+	)
+	init_types = list(
+		/obj/item/ore/cinnabar,
+		/obj/item/chalk,
+	)
+
+
+/datum/natural_precursor/common_ore
+	name = "common ore"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 3,
+		/datum/thaumaturgical_essence/order = 1
+	)
+	init_types = list(
+		/obj/item/ore/iron,
+		/obj/item/ore/copper,
+		/obj/item/ore/tin,
+	)
+
+/datum/natural_precursor/noble_ore
+	name = "noble ore"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 3,
+		/datum/thaumaturgical_essence/energia = 1,
+	)
+	init_types = list(
+		/obj/item/ore/gold,
+		/obj/item/ore/silver,
+	)
+
+/*
+--------------------HERBS--------------------
+*/
+
+//Try to keep the herbs being 1 T0 essence and 1 T1 essence
+//T1 essences should primarly be poison, life and cycle, but feel free to go wild
+
+//earth herbs
+/datum/natural_precursor/atropa
+	name = "atropa"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 10,
+		/datum/thaumaturgical_essence/poison = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/atropa
+	)
+
+/datum/natural_precursor/matricaria
+	name = "matricaria"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/matricaria
+	)
+
+/datum/natural_precursor/valeriana
+	name = "valeriana"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 10,
+		/datum/thaumaturgical_essence/motion = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/valeriana
+	)
+
+/datum/natural_precursor/euphorbia
+	name = "euphorbia"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/earth = 10,
+		/datum/thaumaturgical_essence/life = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/euphorbia
+	)
+
+//air herbs
+/datum/natural_precursor/symphitum
+	name = "symphitum"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/air = 10,
+		/datum/thaumaturgical_essence/life = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/symphitum
+	)
+
+/datum/natural_precursor/taraxacum
+	name = "taraxacum"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/air = 10,
+		/datum/thaumaturgical_essence/motion = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/taraxacum
+	)
+
+/datum/natural_precursor/euphrasia
+	name = "euphrasia"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/air = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/euphrasia
+	)
+
+//water herbs
+/datum/natural_precursor/mentha
+	name = "mentha"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/water = 10,
+		/datum/thaumaturgical_essence/life = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/mentha
+	)
+
+/datum/natural_precursor/paris
+	name = "paris"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/water = 10,
+		/datum/thaumaturgical_essence/poison = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/paris
+	)
+
+/datum/natural_precursor/artemisia
+	name = "artemisia"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/water = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/artemisia
+	)
+
+//fire herbs
+
+/datum/natural_precursor/calendula
+	name = "calendula"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 10,
+		/datum/thaumaturgical_essence/life = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/calendula
+	)
+
+/datum/natural_precursor/hypericum
+	name = "hypericum"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/fire = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/hypericum
+	)
+
+//order herbs
+
+/datum/natural_precursor/benedictus
+	name = "benedictus"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/cycle = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/benedictus
+	)
+
+/datum/natural_precursor/rosa
+	name = "rosa"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/order = 10,
+		/datum/thaumaturgical_essence/life = 5
+	)
+	init_types = list(
+		/obj/item/alch/herb/rosa
+	)
+
+/*
+--------------------OTHER NATURAL ITEMS--------------------
+*/
 
 /datum/natural_precursor/bone
 	name = "bone"
@@ -555,48 +787,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/poo/horse
 	)
 
-/datum/natural_precursor/rock
-	name = "rock"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 2
-	)
-	init_types = list(
-		/obj/item/natural/rock,
-		/obj/item/natural/rock/gold,
-		/obj/item/natural/rock/iron,
-		/obj/item/natural/rock/coal,
-		/obj/item/natural/rock/salt,
-		/obj/item/natural/rock/silver,
-		/obj/item/natural/rock/copper,
-		/obj/item/natural/rock/tin,
-		/obj/item/natural/rock/gemerald,
-		/obj/item/natural/rock/random_ore,
-		/obj/item/natural/rock/random,
-		/obj/item/natural/rock/mana_crystal,
-		/obj/item/natural/rock/cinnabar
-	)
-
-/datum/natural_precursor/stoneblock
-	name = "stone block"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 3
-	)
-	init_types = list(
-		/obj/item/natural/stoneblock
-	)
-
-/datum/natural_precursor/wood
-	name = "wood"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/natural/wood,
-		/obj/item/natural/wood/plank
-	)
-
 /datum/natural_precursor/clay
 	name = "clay"
 	essence_yields = list(
@@ -607,17 +797,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/clay
 	)
 
-/datum/natural_precursor/chaff
-	name = "grain chaff"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 1,
-		/datum/thaumaturgical_essence/life = 2
-	)
-	init_types = list(
-		/obj/item/natural/chaff,
-		/obj/item/natural/chaff/wheat,
-		/obj/item/natural/chaff/oat
-	)
 
 /datum/natural_precursor/worms
 	name = "worms"
@@ -630,74 +809,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/natural/worms/grub_silk
 	)
 
-/datum/natural_precursor/gold_ore
-	name = "gold ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/order = 2,
-		/datum/thaumaturgical_essence/energia = 1
-	)
-	init_types = list(
-		/obj/item/ore/gold
-	)
 
-/datum/natural_precursor/silver_ore
-	name = "silver ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/light = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ore/silver
-	)
-
-/datum/natural_precursor/iron_ore
-	name = "iron ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ore/iron
-	)
-
-/datum/natural_precursor/copper_ore
-	name = "copper ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 1,
-		/datum/thaumaturgical_essence/energia = 2
-	)
-	init_types = list(
-		/obj/item/ore/copper
-	)
-
-/datum/natural_precursor/tin_ore
-	name = "tin ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 2,
-		/datum/thaumaturgical_essence/order = 1
-	)
-	init_types = list(
-		/obj/item/ore/tin
-	)
-
-/datum/natural_precursor/charcoal
-	name = "charcoal"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 3
-	)
-	init_types = list(
-		/obj/item/ore/coal/charcoal
-	)
-
-/datum/natural_precursor/cinnabar_ore
-	name = "cinnabar ore"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 1,
-		/datum/thaumaturgical_essence/poison = 2
-	)
-	init_types = list(
-		/obj/item/ore/cinnabar
-	)
 
 /datum/natural_precursor/gold_ingot
 	name = "gold ingot"
@@ -1314,178 +1426,6 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/obj/item/alch/transisdust
 	)
 
-// Herbs, mostly life, poison, and cycle essences
-
-/datum/natural_precursor/atropa
-	name = "atropa"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/atropa
-	)
-
-/datum/natural_precursor/matricaria
-	name = "matricaria"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/cycle = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/matricaria
-	)
-
-/datum/natural_precursor/symphitum
-	name = "symphitum"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/earth = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/symphitum
-	)
-
-/datum/natural_precursor/taraxacum
-	name = "taraxacum"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/cycle = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/taraxacum
-	)
-
-/datum/natural_precursor/euphrasia
-	name = "euphrasia"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/light = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/euphrasia
-	)
-
-/datum/natural_precursor/paris
-	name = "paris"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/paris
-	)
-
-/datum/natural_precursor/calendula
-	name = "calendula"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/light = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/calendula
-	)
-
-/datum/natural_precursor/mentha
-	name = "mentha"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 5,
-		/datum/thaumaturgical_essence/air = 10
-	)
-	init_types = list(
-		/obj/item/alch/herb/mentha
-	)
-
-/datum/natural_precursor/urtica
-	name = "urtica"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/poison = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/urtica
-	)
-
-/datum/natural_precursor/salvia
-	name = "salvia"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/magic = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/salvia
-	)
-
-/datum/natural_precursor/rosa
-	name = "rosa"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/light = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/rosa
-	)
-
-/datum/natural_precursor/hypericum
-	name = "hypericum"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/order = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/hypericum
-	)
-
-/datum/natural_precursor/benedictus
-	name = "benedictus"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/cycle = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/benedictus
-	)
-
-/datum/natural_precursor/valeriana
-	name = "valeriana"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/motion = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/valeriana
-	)
-
-/datum/natural_precursor/artemisia
-	name = "artemisia"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 10,
-		/datum/thaumaturgical_essence/poison = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/artemisia
-	)
-
-/datum/natural_precursor/euphorbia
-	name = "euphorbia"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/earth = 10,
-		/datum/thaumaturgical_essence/life = 5
-	)
-	init_types = list(
-		/obj/item/alch/herb/euphorbia
-	)
-
-/datum/natural_precursor/mana_crystal
-	name = "mana crystal"
-	essence_yields = list(
-		/datum/thaumaturgical_essence/magic = 5,
-		/datum/thaumaturgical_essence/earth = 5
-	)
-	init_types = list(
-		/obj/item/mana_battery/mana_crystal/standard
-	)
-
 //1 standard crystal can be split into two small ones
 /datum/natural_precursor/mana_crystal_small
 	name = "small mana crystal"
@@ -1518,6 +1458,16 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/produce/manabloom,
 		/obj/item/reagent_containers/powder/manabloom
+	)
+
+/datum/natural_precursor/mana_crystal
+	name = "mana crystal"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/magic = 5,
+		/datum/thaumaturgical_essence/earth = 5
+	)
+	init_types = list(
+		/obj/item/mana_battery/mana_crystal/standard
 	)
 
 /*
