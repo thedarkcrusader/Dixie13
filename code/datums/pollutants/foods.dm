@@ -243,3 +243,7 @@
 /datum/pollutant/food/mint
 	name = "minty smell"
 	scent = "minty smell"
+
+/datum/pollutant/food/reishi
+	name = "woody smell"
+	scent = "woody smell"

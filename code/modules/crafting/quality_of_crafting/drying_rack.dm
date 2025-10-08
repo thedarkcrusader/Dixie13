@@ -262,3 +262,31 @@
 	craft_time = 2.5 SECONDS
 	crafting_message = "starts mixing the blood"
 	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/coprinusfiber
+	name = "dried coprinus fibers"
+	output = /obj/item/natural/fibers
+	output_amount = 3
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus = 1
+	)
+	attacked_atom = /obj/machinery/tanningrack
+
+	craft_time = 1.5 SECONDS
+	crafting_message = "starts extracting some fibers"
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/driedreishi
+	name = "dried reishi"
+	output = /obj/item/reagent_containers/food/snacks/reishi_dried
+	output_amount = 1
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/mushroom/reishi = 1
+	)
+	attacked_atom = /obj/machinery/tanningrack
+
+	craft_time = 1.5
+	crafting_message = "starts drying a reishi"
+	craftdiff = 1

@@ -561,12 +561,13 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0, /datum/reagent/berrypoison = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/debuff/badmeal
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
 	name = "reishi"
-	desc = "A mushroom prized for its medicinal properties. Typically dried then used in tea. (HEY CHANGE THIS LATER DINGUS!!)"
+	desc = "A mushroom prized for its calming properties when dried and brewed into tea."
 	icon_state = "reishi"
 	spore = /obj/item/neuFarm/spore/reishi
 	throwforce = 0
@@ -575,7 +576,7 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/morel
@@ -589,7 +590,7 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/oyster
@@ -603,7 +604,7 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
@@ -617,7 +618,7 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/chanterelle
@@ -631,7 +632,7 @@
 	throw_speed = 1
 	throw_range = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	dropshrink = 0.75
+	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 
 /*

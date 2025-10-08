@@ -297,6 +297,21 @@
 	foodtype = FRUIT
 	faretype = FARE_NEUTRAL
 
+/***************** Mushrooms *****************/
+
+/obj/item/reagent_containers/food/snacks/reishi_dried
+	name = "dried reishi"
+	desc = "A reishi that has been dried for use in tea."
+	icon_state = "driedreishi"
+	dropshrink = 1
+	bitesize = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("woody" = 1,"bitter" = 1)
+	foodtype = MUSHROOM
+	faretype = FARE_POOR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+
 /*------------\
 | Salted milk |
 \------------*/		// The base for making butter and cheese

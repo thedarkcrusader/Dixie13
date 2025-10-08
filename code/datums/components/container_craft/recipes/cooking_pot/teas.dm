@@ -92,3 +92,10 @@
 	created_reagent = /datum/reagent/consumable/caffeine/coffee
 	requirements = list(/obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted = 2)
 	finished_smell = /datum/pollutant/food/coffee
+
+/datum/container_craft/cooking/tea/reishi
+	name = "Reishi tonic"
+	crafting_time = 30 SECONDS
+	created_reagent = /datum/reagent/consumable/tea/reishi
+	requirements = list(/obj/item/reagent_containers/food/snacks/produce/mushroom/reishi_dried = 2)
+	finished_smell = /datum/pollutant/food/reishi
