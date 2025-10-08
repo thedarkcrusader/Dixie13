@@ -31,7 +31,26 @@
 	custom_clothes = TRUE
 	custom_id = SPEC_ID_DWARF
 
-	// From female dwarf
+	// Both from female dwarf
+	offset_features_m = list(
+		OFFSET_RING = list(0,-4),\
+		OFFSET_GLOVES = list(0,0),\
+		OFFSET_WRISTS = list(0,0),\
+		OFFSET_HANDS = list(0,-4),\
+		OFFSET_CLOAK = list(0,0),\
+		OFFSET_FACEMASK = list(0,-5),\
+		OFFSET_HEAD = list(0,-5),\
+		OFFSET_FACE = list(0,-5),\
+		OFFSET_BELT = list(0,0),\
+		OFFSET_BACK = list(0,-5),\
+		OFFSET_NECK = list(0,-5),\
+		OFFSET_MOUTH = list(0,-5),\
+		OFFSET_PANTS = list(0,0),\
+		OFFSET_SHIRT = list(0,0),\
+		OFFSET_ARMOR = list(0,0),\
+		OFFSET_UNDIES = list(0,0)\
+	)
+
 	offset_features_f = list(
 		OFFSET_RING = list(0,-4),\
 		OFFSET_GLOVES = list(0,0),\
@@ -51,8 +70,8 @@
 		OFFSET_UNDIES = list(0,0)\
 	)
 
-	specstats_m = list(STATKEY_STR = 0, STATKEY_PER = 0, STATKEY_INT = 0, STATKEY_CON = 1, STATKEY_END = 2, STATKEY_SPD = 0, STATKEY_LCK = 1)
-	specstats_f = list(STATKEY_STR = 0, STATKEY_PER = 0, STATKEY_INT = 0, STATKEY_CON = 1, STATKEY_END = 2, STATKEY_SPD = 0, STATKEY_LCK = 1)
+	specstats_m = list(STATKEY_STR = -1, STATKEY_PER = 1, STATKEY_CON = -1, STATKEY_END = 1, STATKEY_SPD = 2)
+	specstats_f = list(STATKEY_STR = -1, STATKEY_PER = 1, STATKEY_CON = -1, STATKEY_END = 1, STATKEY_SPD = 2)
 
 	enflamed_icon = "widefire"
 
