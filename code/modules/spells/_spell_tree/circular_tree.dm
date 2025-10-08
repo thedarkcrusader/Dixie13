@@ -209,7 +209,7 @@
 
 /datum/spell_node/poison_spray
 	name = "Create Cloud"
-	desc = "Produce smoke from the liquid in a bottle."
+	desc = "Produce smoke from the liquid within an open bottle."
 	node_x = RIGHT_X_TIER_3
 	node_y = RIGHT_Y_LEFT
 	prerequisites = list(/datum/spell_node/acid_splash)
@@ -421,7 +421,7 @@
 
 
 /datum/spell_node/magic_stone
-	name = "Magician's Brick"
+	name = "Magicians Brick"
 	desc = "Concentrate your intelect into an arcyne brick."
 	node_x = LEFT_X_TIER_2
 	node_y = LEFT_Y_LEFT - 50
@@ -539,7 +539,7 @@
 
 /datum/spell_node/encode_thoughts
 	name = "Encode Thoughts"
-	desc = "Incept an intrusive thought into a target's mind. They may not agree with it."
+	desc = "Incept an intrusive thought into the mind of your target. They may not agree with it."
 	node_x = UP_X_LEFT - 50
 	node_y = UP_Y_TIER_2
 	prerequisites = list(/datum/spell_node/dark_attunement)
@@ -547,7 +547,7 @@
 
 /datum/spell_node/mind_sliver
 	name = "Mind Spike"
-	desc = "Drive a disorienting spike of psychic energy into a target's brain."
+	desc = "Drive a disorienting spike of psychic energy into the brain of your enemy."
 	node_x = UP_X_LEFT - 50
 	node_y = UP_Y_TIER_3
 	prerequisites = list(/datum/spell_node/encode_thoughts)
@@ -596,7 +596,7 @@
 
 
 /datum/spell_node/gib
-	name = "Xylix's Cruel Prank"
+	name = "Xylixs Cruel Prank"
 	desc = "Fucked up and evil."
 	node_x = -500
 	node_y = -500
