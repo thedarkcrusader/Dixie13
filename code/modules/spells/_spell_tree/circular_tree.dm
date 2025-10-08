@@ -193,7 +193,7 @@
 
 /datum/spell_node/infestation
 	name = "Infestation"
-	desc = "Cause a cloud of mites, fleas, and other parasites to swarm your enemies."
+	desc = "Cause a cloud of mites, fleas, and other parasites to swarm an enemy."
 	node_x = RIGHT_X_TIER_2
 	node_y = RIGHT_Y_LEFT - 50
 	prerequisites = list(/datum/spell_node/death_affinity)
