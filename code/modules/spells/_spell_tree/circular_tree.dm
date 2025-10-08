@@ -598,8 +598,8 @@
 /datum/spell_node/gib
 	name = "Xylix's Cruel Prank"
 	desc = "Fucked up and evil."
-	node_x = -1000
-	node_y = -1000
+	node_x = -500
+	node_y = -500
 	is_passive = TRUE
 
 /datum/spell_node/gib/on_node_buy(mob/user)
