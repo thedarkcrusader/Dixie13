@@ -21,8 +21,8 @@
 	name = "open fossilized clam"
 	desc = "A clam shell that has recently been opened. You could split the shell in two with a knife."
 	icon_state = "oyster_open"
-	grid_height = 3
-	grid_width = 3
+	grid_height = 96
+	grid_width = 64
 	sellprice = 10
 
 /obj/item/carvedgem/shell/rawshell
