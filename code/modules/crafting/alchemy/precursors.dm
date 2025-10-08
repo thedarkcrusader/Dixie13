@@ -271,7 +271,26 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/earth = 2,
 	)
 	init_types = list(
-		/obj/item/gem,
+		/obj/item/gem/green,
+		/obj/item/gem/blue,
+		/obj/item/gem/yellow,
+		/obj/item/gem/violet,
+		/obj/item/gem/diamond,
+		/obj/item/gem/red,
+		/obj/item/gem/black,
+		/obj/item/gem/amethyst,
+	)
+
+/datum/natural_precursor/riddleofsteel
+	name = "riddle of steel"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 50,
+		/datum/thaumaturgical_essence/order = 40,
+		/datum/thaumaturgical_essence/earth = 30,
+		/datum/thaumaturgical_essence/fire = 30,
+	)
+	init_types = list(
+		/obj/item/riddleofsteel
 	)
 
 /datum/natural_precursor/coal
