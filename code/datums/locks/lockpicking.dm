@@ -314,6 +314,10 @@
 				to_chat(picker, span_notice("My \the [the_lockpick] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
 				qdel(the_lockpick)
+				//one tenth of the usual boost for picking a lock
+				var/amt2raise = ((picker.STAINT / 2) * (50 / difficulty)) / 10
+				var/boon = picker.get_learning_boon(/datum/skill/misc/lockpicking)
+				picker.adjust_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
 			if(picker.client?.prefs.showrolls)
 				to_chat(picker, span_notice("The chance to break was [break_prob]%!"))
 			break_checking_cooldown = world.time + 9 - (7 - difficulty) SECONDS
