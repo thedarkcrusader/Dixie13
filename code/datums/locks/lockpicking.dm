@@ -322,7 +322,7 @@
 					picker_real.adjust_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
 			if(picker.client?.prefs.showrolls)
 				to_chat(picker, span_notice("The chance to break was [break_prob]%!"))
-			break_checking_cooldown = world.time + 9 - (7 - difficulty) SECONDS
+			break_checking_cooldown = world.time + (9 - (7 - difficulty)) SECONDS
 			//break check cooldown at highest difficulty is 3 seconds, at lowest its 8
 
 		lock_angle -= 20
