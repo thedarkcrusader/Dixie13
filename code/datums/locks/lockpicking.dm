@@ -34,10 +34,14 @@
 	finish_lockpicking(user)
 
 	//difficulty goes from 1 to 6, hence 6 - difficulty
-	if(prob(60 - (skill_level * 10) + (6 - difficulty * 10)))
+	var/break_prob = 60 - (skill_level * 10) + (6 - difficulty * 10)
+	if(prob(break_prob))
 		to_chat(user, span_notice("My \the [lockpick_used] broke!"))
 		playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
 		qdel(lockpick_used)
+
+	if(user.client?.prefs.showrolls)
+		to_chat(user, span_notice("The chance to break was [break_prob]!"))
 
 	if(lock)
 		lock.locked = FALSE
