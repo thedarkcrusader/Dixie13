@@ -309,7 +309,8 @@
 	var/pick_y = 6 + cos(lock_angle)*6 - 6
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			if(prob(10 - skill_level + (6 - difficulty) * 2))
+			var/break_prob = 10 - skill_level + (6 - difficulty) * 2
+			if(prob(break_prob))
 				to_chat(picker, span_notice("My \the [the_lockpick] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
 				qdel(the_lockpick)
