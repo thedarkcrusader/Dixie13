@@ -41,7 +41,7 @@
 		qdel(lockpick_used)
 
 	if(user.client?.prefs.showrolls)
-		to_chat(user, span_notice("The chance to break was [break_prob]!"))
+		to_chat(user, span_notice("The chance to break was [break_prob]%!"))
 
 	if(lock)
 		lock.locked = FALSE
@@ -315,7 +315,7 @@
 				playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
 				qdel(the_lockpick)
 			if(picker.client?.prefs.showrolls)
-				to_chat(picker, span_notice("The chance to break was [break_prob]!"))
+				to_chat(picker, span_notice("The chance to break was [break_prob]%!"))
 			break_checking_cooldown = world.time + 9 - (7 - difficulty) SECONDS
 			//break check cooldown at highest difficulty is 3 seconds, at lowest its 8
 
