@@ -321,6 +321,8 @@
 	desc =  "if you are seeing this, its a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "cutgem_jade"
+	grid_height = 32
+	grid_width = 32
 
 /obj/item/carvedgem/jade/cutgem
 	name = "cut joapstone"
@@ -752,6 +754,7 @@
 	icon_state = "cutgem_coral"
 	grid_height = 32
 	grid_width = 32
+
 /obj/item/carvedgem/coral/cutgem
 	name = "cut aoetal gem"
 	desc = "A cut and carved piece of aoetal."
