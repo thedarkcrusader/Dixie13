@@ -216,7 +216,7 @@ Keep them reasonable to make
 /datum/alch_cauldron_recipe/big_stam_poison
 	recipe_name = "Strong Stamina Poison"
 	smells_like = "stagnant cold air"
-	output_reagents = list(/datum/reagent/stampoison = 10)
+	output_reagents = list(/datum/reagent/strongstampoison = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/frost = 4,
 		/datum/thaumaturgical_essence/poison = 7,
@@ -235,7 +235,7 @@ Keep them reasonable to make
 /datum/alch_cauldron_recipe/big_mana_potion
 	recipe_name = "Strong Mana"
 	smells_like = "crackling thunder"
-	output_reagents = list(/datum/reagent/medicine/manapot = 10)
+	output_reagents = list(/datum/reagent/medicine/strongmana = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/energia = 2,
 		/datum/thaumaturgical_essence/crystal = 2,
@@ -253,9 +253,9 @@ Keep them reasonable to make
 	)
 
 /datum/alch_cauldron_recipe/big_stamina_potion
-	recipe_name = "Powerful Stamina Potion"
+	recipe_name = "Strong Stamina Potion"
 	smells_like = "freshly cut grass"
-	output_reagents = list(/datum/reagent/medicine/stampot = 10)
+	output_reagents = list(/datum/reagent/medicine/strongstam = 10)
 	required_essences = list(
 		/datum/thaumaturgical_essence/air = 3,
 		/datum/thaumaturgical_essence/energia = 2,
