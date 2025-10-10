@@ -2559,6 +2559,7 @@
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\mason.dm"
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\miner.dm"
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\noble.dm"
+#include "code\modules\jobs\job_types\adventurer\types\pilgrim\friar.dm"
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\peasant.dm"
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\physicker.dm"
 #include "code\modules\jobs\job_types\adventurer\types\pilgrim\weaver.dm"
