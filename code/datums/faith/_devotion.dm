@@ -115,16 +115,16 @@
 		/datum/action/cooldown/spell/cure_rot,
 	)
 
-/datum/devotion/proc/make_templar()
+/datum/devotion/proc/make_templar() // up to T2 miracles, used for templars and clerics
 	devotion = 50
 	max_devotion = CLERIC_REQ_3
 	progression = CLERIC_REQ_1
-	max_progression = CLERIC_REQ_3
+	max_progression = CLERIC_REQ_2
 
 /datum/devotion/proc/make_acolyte()
 	progression = CLERIC_REQ_1
 
-/datum/devotion/proc/make_cleric()
+/datum/devotion/proc/make_cleric() // up to T3 miracles, used for inhumen clerics
 	devotion = 50
 	max_devotion = CLERIC_REQ_3
 	progression = CLERIC_REQ_1
