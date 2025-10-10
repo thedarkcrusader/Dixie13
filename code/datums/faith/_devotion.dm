@@ -128,7 +128,7 @@
 	devotion = 50
 	max_devotion = CLERIC_REQ_3
 	progression = CLERIC_REQ_1
-	max_progression = CLERIC_REQ_2
+	max_progression = CLERIC_REQ_3
 
 /datum/devotion/proc/make_churching()
 	max_devotion = CLERIC_REQ_1
