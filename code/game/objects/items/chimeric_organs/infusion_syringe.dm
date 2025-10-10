@@ -61,14 +61,14 @@
 		if(SYRINGE_DRAW)
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, span_notice("The syringe is full."))
+				to_chat(user, span_notice("\The [src] is full."))
 				return
 
 			if(L) //living mob
 				var/drawn_amount = reagents.maximum_volume - reagents.total_volume
 				if(target != user)
-					target.visible_message(span_danger("[user] is trying to draws blood from [target]!"), \
-									span_danger("[user] is trying to draws blood from you!"))
+					target.visible_message(span_danger("[user] is trying to draw blood from [target]!"), \
+									span_userdanger("[user] is trying to draws blood from me!"))
 					busy = TRUE
 					if(!do_after(user, 4 SECONDS, target, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
 						busy = FALSE
@@ -92,9 +92,9 @@
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
 
-				to_chat(user, span_notice("I fill [src] with [UNIT_FORM_STRING(trans)] from [target]. It now contains [UNIT_FORM_STRING(reagents.total_volume)]."))
+				to_chat(user, span_notice("I fill \the [src] with [UNIT_FORM_STRING(trans)] from [target]. It now contains [UNIT_FORM_STRING(reagents.total_volume)]."))
 			if(reagents.total_volume >= reagents.maximum_volume)
-				mode = !mode
+				mode = SYRINGE_INJECT
 				update_appearance(UPDATE_OVERLAYS)
 
 		if(SYRINGE_INJECT)
@@ -119,33 +119,34 @@
 					return
 				if(L != user)
 					L.visible_message(span_danger("[user] is trying to inject [L]!"), \
-											span_danger("[user] is trying to inject you!"))
+											span_userdanger("[user] is trying to inject me!"))
 					if(!do_after(user, 4 SECONDS, L, extra_checks = CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject), user, TRUE)))
 						return
 					if(!reagents.total_volume)
 						return
 					if(L.reagents.total_volume >= L.reagents.maximum_volume)
 						return
-					L.visible_message(span_danger("[user] injects [L] with the syringe!"), \
-									span_danger("[user] injects you with the syringe!"))
+					L.visible_message(span_danger("[user] injects [L] with the \the [src]!"), \
+									span_userdanger("[user] injects me!"))
 
 				if(L != user)
-					log_combat(user, L, "injected", src, addition="which had [contained]")
+					log_combat(user, L, "injected", src, addition = "which had [contained]")
 				else
 					L.log_message("injected themselves ([contained]) with [src.name]", LOG_ATTACK, color="orange")
 			reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user, method = INJECT)
-			to_chat(user, span_notice("I inject [amount_per_transfer_from_this] units of the solution. The syringe now contains [reagents.total_volume] units."))
+			to_chat(user, span_notice("I inject [UNIT_FORM_STRING(amount_per_transfer_from_this)] into [target]. \The [src] now contains [UNIT_FORM_STRING(reagents.total_volume)]."))
 			if(!reagents.total_volume && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/syringe/update_overlays()
 	. = ..()
-	if(ismob(loc))
-		var/injoverlay
-		switch(mode)
-			if (SYRINGE_DRAW)
-				injoverlay = "draw"
-			if (SYRINGE_INJECT)
-				injoverlay = "inject"
-		. += injoverlay
+	if(!ismob(loc))
+		return
+	var/injoverlay
+	switch(mode)
+		if(SYRINGE_DRAW)
+			injoverlay = "draw"
+		if(SYRINGE_INJECT)
+			injoverlay = "inject"
+	. += injoverlay
