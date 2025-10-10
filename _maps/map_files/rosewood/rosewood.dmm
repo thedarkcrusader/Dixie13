@@ -12866,8 +12866,8 @@
 /obj/structure/door/stone{
 	name = "Feldsher's Office"
 	},
-/obj/effect/mapping_helpers/access/keyset/town/clinic,
 /obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/doctor,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/clinic_large)
 "gHM" = (
