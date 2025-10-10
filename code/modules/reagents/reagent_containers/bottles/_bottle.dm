@@ -283,14 +283,13 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	. = ..()
 	name = "[lowertext(initial(main_material.name))] clay teapot"
 
-
-/obj/item/reagent_containers/glass/bottle/glazed_teacup
+/obj/item/reagent_containers/glass/cup/glazed_teacup
 	name = "fancy teacup"
 	desc = "A fancy tea cup made out of ceramic. Used to serve tea."
+	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "cup_fancy"
 	volume = 30
 	dropshrink = 0.7
-	can_label_container = FALSE
 
 /obj/item/reagent_containers/glass/bottle/glazed_teapot
 	name = "fancy teapot"
@@ -299,6 +298,14 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	volume = 100
 	dropshrink = 0.7
 	can_label_container = FALSE
+
+/obj/item/reagent_containers/glass/bottle/glazed_teapot/Initialize()
+	. = ..()
+	icon_state = "teapot_fancy"
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea
+	list_reagents = list(/datum/reagent/consumable/tea/compot = 100)
 
 /obj/item/reagent_containers/glass/bottle/black
 	name = "wine pot"
