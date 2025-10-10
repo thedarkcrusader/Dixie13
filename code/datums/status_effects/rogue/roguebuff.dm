@@ -904,3 +904,11 @@
 	owner.visible_message(span_warning("[owner]'s rage simmers down."))
 	REMOVE_TRAIT(owner, TRAIT_MATRON, TRAIT_GENERIC)
 
+/datum/status_effect/buff/received_lux
+	id = "received_lux"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/received_lux
+	duration = -1
+
+/atom/movable/screen/alert/status_effect/buff/received_lux
+	name = "Received Lux"
+	desc = "I can feel something... is this what it means to have a soul?"
