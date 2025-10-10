@@ -146,5 +146,5 @@
 	var/holder = H.patron?.devotion_holder
 	if(holder)
 		var/datum/devotion/devotion = new holder()
-		devotion.make_templar()
+		devotion.make_cleric()
 		devotion.grant_to(H)
