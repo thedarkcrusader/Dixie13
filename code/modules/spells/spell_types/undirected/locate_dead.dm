@@ -17,7 +17,7 @@
 	spell_cost = 100
 
 	var/no_corpses = FALSE
-	var/datum/weakref/corpseref
+	var/list/mob/corpses = list()
 
 
 /datum/action/cooldown/spell/undirected/locate_dead/before_cast(atom/cast_on)
@@ -25,7 +25,7 @@
 	if(. & SPELL_CANCEL_CAST)
 		return
 
-	var/list/mob/corpses = list()
+	corpses = list()
 	for(var/mob/living/C in GLOB.dead_mob_list)
 		if(!C.mind || !is_in_zweb(C.z, owner.z))
 			continue
@@ -47,28 +47,21 @@
 		corpse_name += " [copytext(C.name, 1, 2)]..."
 		corpses[corpse_name] = C
 
-
 	if(!length(corpses))
 		to_chat(owner, span_warning("The Undermaiden's grasp lets slip."))
 		StartCooldown() // Meant to punish templars
 		return . | SPELL_CANCEL_CAST
 
+/datum/action/cooldown/spell/undirected/locate_dead/cast(atom/cast_on)
+	. = ..()
 	var/mob/selected
 	selected = browser_input_list(owner, "Which body shall I seek?", "Available Bodies", corpses)
-
 
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(corpses[selected]) || !can_cast_spell())
 		to_chat(owner, span_warning("The Undermaiden's grasp lets slip."))
 		return . | SPELL_CANCEL_CAST
 
-
-	corpseref = WEAKREF(corpses[selected])
-
-/datum/action/cooldown/spell/undirected/locate_dead/cast(atom/cast_on)
-	. = ..()
-	var/mob/dead/corpse = corpseref.resolve()
-	if(QDELETED(corpse))
-		return
+	var/corpse = corpses[selected]
 
 	var/direction = get_dir(owner, corpse)
 	var/direction_name = "unknown"

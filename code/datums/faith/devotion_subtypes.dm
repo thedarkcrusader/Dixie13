@@ -34,7 +34,11 @@
 	miracles = list(
 		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/avert),
 		CLERIC_T1 = /datum/action/cooldown/spell/burial_rites,
+<<<<<<< HEAD
 		CLERIC_T2 = list(/datum/action/cooldown/spell/undirected/soul_speak, /datum/action/cooldown/spell/aoe/abrogation, /datum/action/cooldown/spell/undirected/locate_dead),
+=======
+		CLERIC_T2 = list(/datum/action/cooldown/spell/undirected/locate_dead, /datum/action/cooldown/spell/undirected/soul_speak),
+>>>>>>> 55e3c1634 (locate dead changes + readds speak with deadd)
 		CLERIC_T3 = /datum/action/cooldown/spell/aoe/churn_undead,
 	)
 	traits = list(TRAIT_DEATHSIGHT)
