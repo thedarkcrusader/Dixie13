@@ -80,8 +80,8 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	var/ui_style
 
 	var/atom/movable/screen/read/reads
-	var/atom/movable/screen/textl
-	var/atom/movable/screen/textr
+	var/atom/movable/screen/readtext/textl
+	var/atom/movable/screen/readtext/textr
 
 	var/atom/movable/screen/vis_holder/vis_holder
 
@@ -95,15 +95,15 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client && owner.client.prefs && owner.client.prefs.UI_style)
 
-	reads = new /atom/movable/screen/read
-	reads.hud = src
+	reads = new()
+	reads.set_new_hud(src)
 	static_inventory += reads
-	textr = new /atom/movable/screen/readtext
-	textr.hud = src
+	textr = new()
+	textr.set_new_hud(src)
 	static_inventory += textr
 	reads.textright = textr
-	textl = new /atom/movable/screen/readtext
-	textl.hud = src
+	textl = new()
+	textl.set_new_hud(src)
 	static_inventory += textl
 	reads.textleft = textl
 
