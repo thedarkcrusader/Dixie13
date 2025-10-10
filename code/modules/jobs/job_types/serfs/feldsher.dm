@@ -73,23 +73,6 @@
 	mask = /obj/item/clothing/face/feld
 	neck = /obj/item/clothing/neck/feld
 	belt = /obj/item/storage/belt/leather
-	wrists = /obj/item/storage/keyring/feldsher
+	wrists = /obj/item/storage/keyring/clinic
 	beltl = /obj/item/storage/fancy/ifak
 	beltr = /obj/item/storage/belt/pouch
-
-	H.adjust_skillrank(/datum/skill/combat/wrestling, pick(2,2,3), TRUE)//so he can hold down unruly patients
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat(STATKEY_STR, -1)
-	H.change_stat(STATKEY_INT, 4)
-	H.change_stat(STATKEY_CON, -1)
-	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
