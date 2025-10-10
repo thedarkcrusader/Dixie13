@@ -41,6 +41,12 @@
 		"Cancel" = "cancel",
 	)
 
+/datum/action/cooldown/spell/undirected/call_bird/inquisitor
+	destinations = list(
+		"Holy Bishop of the Inquisition" = "the Holy Bishop of the Inquisition",
+		"Cancel" = "cancel",
+	)
+
 /datum/action/cooldown/spell/undirected/call_bird/Destroy(force)
 	owned_bird?.source_spell = null
 	owned_bird = null
@@ -125,8 +131,8 @@
 		icon_state = "[icon_state]l"
 
 /obj/item/reagent_containers/food/snacks/messenger_bird/Destroy()
-    source_spell = null
-    return ..()
+	source_spell = null
+	return ..()
 
 /obj/item/reagent_containers/food/snacks/messenger_bird/attack_hand(mob/user)
 	if(isliving(user))
