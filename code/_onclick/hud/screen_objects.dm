@@ -11,13 +11,21 @@
 	icon = 'icons/mob/screen_gen.dmi'
 	plane = HUD_PLANE
 	appearance_flags = APPEARANCE_UI
-	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
-	var/datum/hud/hud = null // A reference to the owner HUD, if any.
+	/// A reference to the object in the slot. Grabs or items, generally, but any datum will do.
+	var/datum/weakref/master_ref = null
+	/// A reference to the owner HUD, if any.
+	VAR_PRIVATE/datum/hud/hud = null
 	var/lastclick
 	var/category
 
+/atom/movable/screen/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	if(isnull(hud_owner)) //some screens set their hud owners on /new, this prevents overriding them with null post atoms init
+		return
+	set_new_hud(hud_owner)
+
 /atom/movable/screen/Destroy()
-	master = null
+	master_ref = null
 	hud = null
 	return ..()
 
@@ -313,21 +321,6 @@
 			I.Click(location, control, params)
 	else
 		user.swap_hand(held_index)
-	return TRUE
-
-/atom/movable/screen/close
-	name = "close"
-	plane = ABOVE_HUD_PLANE
-	icon_state = "backpack_close"
-
-/atom/movable/screen/close/Initialize(mapload, new_master)
-	. = ..()
-	master = new_master
-
-/atom/movable/screen/close/Click()
-	var/datum/component/storage/S = master
-	S.hide_from(usr)
-	SEND_SIGNAL(S.parent, COMSIG_STORAGE_CLOSED, usr)
 	return TRUE
 
 /atom/movable/screen/drop
@@ -853,12 +846,13 @@
 	screen_loc = "7,7 to 10,8"
 	plane = HUD_PLANE
 
-/atom/movable/screen/storage/Initialize(mapload, new_master)
+/atom/movable/screen/storage/Initialize(mapload, datum/hud/hud_owner, obj/item/new_master)
 	. = ..()
-	master = new_master
+	master_ref = WEAKREF(new_master)
 
 /atom/movable/screen/storage/Click(location, control, params)
 	var/list/modifiers = params2list(params)
+	var/obj/item/master = master_ref?.resolve()
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(master)
 			var/obj/item/flipper = usr.get_active_held_item()

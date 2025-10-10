@@ -8,8 +8,7 @@
 
 /datum/hud/new_player/New(mob/owner)
 
-	scannies = new /atom/movable/screen/scannies
-	scannies.hud = src
+	scannies = new /atom/movable/screen/scannies(null, src)
 	static_inventory += scannies
 	if(owner.client?.prefs?.crt == TRUE)
 		scannies.alpha = 70
@@ -21,8 +20,7 @@
 	for (var/atom/movable/screen/lobby/lobbyscreen as anything in buttons)
 		if (!initial(lobbyscreen.always_available))
 			continue
-		lobbyscreen = new lobbyscreen(our_hud = src)
-		lobbyscreen.hud = src
+		lobbyscreen = new lobbyscreen(null, src)
 		static_inventory += lobbyscreen
 		if (!lobbyscreen.always_shown)
 			lobbyscreen.RegisterSignal(src, COMSIG_HUD_LOBBY_COLLAPSED, TYPE_PROC_REF(/atom/movable/screen/lobby, collapse_button))
