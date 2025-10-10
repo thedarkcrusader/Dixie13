@@ -30,6 +30,8 @@
 
 //copypaste begin
 
+INITIALIZE_IMMEDIATE(/atom/movable/screen/lobby)
+
 /atom/movable/screen/lobby
 	plane = LOBBY_MENU_PLANE
 	layer = LOBBY_MENU_LAYER
@@ -39,10 +41,6 @@
 	/// If true we will create this button every time the HUD is generated
 	var/always_available = TRUE
 	alpha = 210
-
-/atom/movable/screen/lobby/New(loc, datum/hud/our_hud, ...)
-	set_new_hud(our_hud)
-	return ..()
 
 ///Run sleeping actions after initialize
 /atom/movable/screen/lobby/proc/SlowInit()
