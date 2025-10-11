@@ -112,9 +112,9 @@
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/boots/leather/advanced/watch
-	name = "watch boots"
+	name = "parade boots"
 	color = "#d5c2aa"
-	desc = "These boots are reinforced with iron padding, designed not just for protection but for presence, announcing the approach of the city watch long before they're seen."
+	desc = "Iron-padded and built for presence, these boots were once worn in parades"
 	gender = PLURAL
 	icon_state = "nobleboots"
 	item_state = "nobleboots"

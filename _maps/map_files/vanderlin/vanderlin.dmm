@@ -4985,7 +4985,14 @@
 /area/rogue/indoors/soilsons)
 "cSM" = (
 /obj/structure/closet/crate/chest,
-/obj/item/storage/belt/pouch/coins/rich,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor/lord_appt)
 "cSO" = (
@@ -25866,6 +25873,7 @@
 "pxr" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/gem/blue,
+/obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor/lord_appt)
 "pxw" = (
