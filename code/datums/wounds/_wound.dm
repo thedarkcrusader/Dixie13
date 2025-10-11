@@ -314,11 +314,12 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		if(!do_after(doctor, 5 SECONDS, owner))
 			return FALSE
 
+		if(owner)
+			log_combat(doctor, owner, "sew wound", sewing)
+
 		sewing_step_complete(doctor, owner)
 
 		sewing?.use(1)
-
-		log_combat(doctor, owner, "sew wound", sewing)
 
 	return TRUE
 
