@@ -318,7 +318,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 		sewing?.use(1)
 
-		log_combat(doctor, owner, "sew wound", src)
+		log_combat(doctor, owner, "sew wound", sewing)
 
 	return TRUE
 
