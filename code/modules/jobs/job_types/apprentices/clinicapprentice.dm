@@ -58,6 +58,7 @@
 
 /datum/outfit/clinicapprentice
 	head = /obj/item/clothing/head/roguehood/colored/black
+	backl = /obj/item/storage/backpack/satchel/surgbag/shit
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	shirt = /obj/item/clothing/shirt/undershirt/colored/random
 	pants = /obj/item/clothing/pants/tights/colored/random

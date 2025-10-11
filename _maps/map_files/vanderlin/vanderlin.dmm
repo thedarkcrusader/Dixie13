@@ -1312,6 +1312,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
 	},
+/obj/item/recipe_book/medical,
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/clinic_large/feldsher)
 "aHD" = (
@@ -14715,6 +14716,7 @@
 	pixel_x = -8;
 	pixel_y = 5
 	},
+/obj/item/recipe_book/medical,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "ixx" = (
@@ -23476,6 +23478,10 @@
 /obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/churchmarble,
 /area/rogue/under/town/basement)
+"nPS" = (
+/obj/item/recipe_book/medical,
+/turf/open/floor/cobble,
+/area/rogue/outdoors/town)
 "nQk" = (
 /turf/closed/wall/mineral/roofwall/middle,
 /area/rogue/indoors/town)
@@ -100479,7 +100485,7 @@ elp
 elp
 elp
 elp
-elp
+nPS
 elp
 elp
 tJX
