@@ -92,7 +92,7 @@
 /datum/devotion/divine/malum
 	miracles = list(
 		CLERIC_T0 = /datum/action/cooldown/spell/healing,
-		CLERIC_T1 = /datum/action/cooldown/spell/status/vigorous_craft, /datum/action/cooldown/spell/undirected/touch/mending_mantra,
+		CLERIC_T1 = list(/datum/action/cooldown/spell/status/vigorous_craft, /datum/action/cooldown/spell/undirected/touch/mending_mantra),
 		CLERIC_T2 = /datum/action/cooldown/spell/hammer_fall,
 		CLERIC_T3 = /datum/action/cooldown/spell/heat_metal,
 	)
