@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
-	TRAIT_BRUSHWALK = "I can move freely through meagre bushes.",
+	TRAIT_BRUSHWALK = "I can move freely through plain bushes.",
 	TRAIT_DEADNOSE = span_dead("My nose is numb to the smell of unpleasant odors."),
 	TRAIT_ZJUMP = "Time to reach a new height.",
 	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
