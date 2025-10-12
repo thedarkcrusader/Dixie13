@@ -2891,6 +2891,7 @@
 "qb" = (
 /obj/structure/rack,
 /obj/item/weapon/sword/iron,
+/obj/item/weapon/knife/dagger,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/vampire_manor)
 "qc" = (
@@ -7315,6 +7316,7 @@
 /obj/structure/rack,
 /obj/item/weapon/mace,
 /obj/item/weapon/polearm/spear,
+/obj/item/weapon/flail,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/vampire_manor)
 "TM" = (
