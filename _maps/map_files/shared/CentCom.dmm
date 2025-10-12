@@ -2634,6 +2634,7 @@
 /obj/item/clothing/shirt/dress/royal/prince,
 /obj/item/clothing/armor/leather/jacket/handjacket,
 /obj/item/clothing/cloak/cape/blkknight,
+/obj/item/clothing/head/fancyhat,
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/vampire_manor)
 "ob" = (
