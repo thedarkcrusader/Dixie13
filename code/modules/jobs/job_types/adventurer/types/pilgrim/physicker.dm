@@ -13,9 +13,6 @@
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/athletics = 1,
 		/datum/skill/craft/crafting = 2,
 		/datum/skill/misc/reading = 3,
 		/datum/skill/combat/knives = 2,
@@ -37,6 +34,11 @@
 
 	outfit = /datum/outfit/adventurer/physicker
 
+/datum/job/advclass/pilgrim/physicker/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	spawned.adjust_skillrank(/datum/skill/combat/unarmed, pick(0,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(0,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,1,2), TRUE)
 
 /datum/outfit/adventurer/physicker
 	mask = /obj/item/clothing/face/phys
