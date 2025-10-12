@@ -38,11 +38,6 @@
 	 */
 	var/missinghpbonus = 0
 
-/datum/surgery_step/heal/validate_tech(mob/user, mob/living/target, target_zone, datum/intent/intent)
-	if(!brutehealing && !burnhealing)
-		return FALSE
-	return ..()
-
 /datum/surgery_step/heal/validate_target(mob/user, mob/living/target, target_zone, datum/intent/intent)
 	. = ..()
 	if(!.)
