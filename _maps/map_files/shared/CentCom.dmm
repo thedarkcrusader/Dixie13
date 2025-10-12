@@ -1142,6 +1142,10 @@
 	},
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /obj/item/textbook/novice,
+/obj/item/clothing/face/spectacles,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles/inqglasses,
+/obj/item/clothing/face/spectacles/sglasses,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/vampire_manor)
 "dR" = (
