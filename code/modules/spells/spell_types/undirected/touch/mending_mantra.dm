@@ -70,8 +70,9 @@
 		fatigue_spent += fatigue_used
 		humcaster.adjust_stamina(fatigue_used)
 		humcaster.cleric?.update_devotion(-1)
-
-	adjust_experience(humcaster, associated_skill, fatigue_spent)
+	var/skill_level = humcaster.get_skill_level(associated_skill)
+	if(skill_level <= SKILL_LEVEL_EXPERT)
+		adjust_experience(humcaster, associated_skill, fatigue_spent)
 
 /obj/item/melee/touch_attack/mending_mantra
 	name = "\improper mending mantra"
