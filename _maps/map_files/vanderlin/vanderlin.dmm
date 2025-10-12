@@ -2657,12 +2657,14 @@
 /area/rogue/outdoors/town)
 "bwJ" = (
 /obj/structure/closet/crate/crafted_closet/crafted,
-/obj/item/clothing/shoes/boots,
-/obj/item/clothing/shoes/boots,
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = 32;
 	pixel_y = 0
 	},
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor/garrison)
 "bwL" = (
@@ -4985,14 +4987,7 @@
 /area/rogue/indoors/soilsons)
 "cSM" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
-/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor/lord_appt)
 "cSO" = (
@@ -25873,7 +25868,6 @@
 "pxr" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/gem/blue,
-/obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor/lord_appt)
 "pxw" = (
@@ -36623,6 +36617,10 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 1
 	},
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
+/obj/item/clothing/shoes/boots/leather/advanced/watch,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/garrison)
 "wep" = (

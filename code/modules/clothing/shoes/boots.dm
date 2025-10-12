@@ -112,7 +112,7 @@
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/boots/leather/advanced/watch
-	name = "parade boots"
+	name = "booming boots"
 	color = "#d5c2aa"
 	desc = "Iron-padded and built for presence, these boots were once worn in parades"
 	gender = PLURAL
