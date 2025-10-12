@@ -8050,9 +8050,6 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
-"eAP" = (
-/turf/closed/basic,
-/area/rogue)
 "eBo" = (
 /obj/machinery/light/fueled/chand,
 /turf/open/transparent/openspace,
@@ -186157,7 +186154,7 @@ uVx
 uVx
 uVx
 uVx
-eAP
+uVx
 uVx
 uVx
 uVx
@@ -186359,7 +186356,7 @@ uVx
 uVx
 uVx
 uVx
-eAP
+uVx
 uVx
 uVx
 uVx
@@ -186561,7 +186558,7 @@ uVx
 uVx
 uVx
 uVx
-eAP
+uVx
 uVx
 uVx
 uVx
@@ -186763,7 +186760,7 @@ uVx
 uVx
 uVx
 uVx
-eAP
+uVx
 uVx
 uVx
 uVx
@@ -186965,7 +186962,7 @@ uVx
 uVx
 uVx
 uVx
-eAP
+uVx
 uVx
 uVx
 uVx
