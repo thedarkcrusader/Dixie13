@@ -160,7 +160,7 @@
 	playsound(get_turf(user), 'sound/misc/wind.ogg', 100, TRUE, -1)
 	to_chat(user, span_good("Plants grow rampant with your every step... things that constrain no longer impede you."))
 	user.emote("smile")
-	ADD_TRAIT(user, TRAIT_WEBWALK, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_BRUSHWALK, TRAIT_GENERIC)
 	user.add_spell(/datum/action/cooldown/spell/undirected/touch/entangler, source = user.cleric)
 	user.apply_status_effect(/datum/status_effect/buff/calm)
 
