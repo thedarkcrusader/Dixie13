@@ -43,7 +43,7 @@
 		if(sord.blade_int < sord.max_blade_int)
 			bladeintgood = FALSE
 	if(!integrity)
-		to_chat(humcaster, span_info("\The [victim] cannot be damaged in the first place."))
+		to_chat(humcaster, span_info("\The [victim] cannot be repaired in the first place."))
 		return
 	if(integrity >= max_integrity && bladeintgood)
 		to_chat(humcaster, span_info("\The [victim] appears to be in pefect condition."))
