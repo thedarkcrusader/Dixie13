@@ -34,7 +34,7 @@
 	finish_lockpicking(user)
 
 	//difficulty goes from 1 to 6, hence 6 - difficulty
-	var/break_prob = 60 - (skill_level * 10) + (6 - difficulty * 10)
+	var/break_prob = clamp(60 - (skill_level * 10) + (6 - difficulty * 10), 0, 100)
 	if(prob(break_prob))
 		to_chat(user, span_notice("My \the [lockpick_used] broke!"))
 		playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
@@ -49,7 +49,7 @@
 
 	playsound(loc, 'sound/items/LPWin.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
 
-	var/amt2raise = (user.STAINT / 2) * (50 / difficulty)
+	var/amt2raise = (user.STAINT / 2) * (20 / difficulty)
 	var/boon = user.get_learning_boon(/datum/skill/misc/lockpicking)
 	user.adjust_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
 	return TRUE
@@ -309,7 +309,7 @@
 	var/pick_y = 6 + cos(lock_angle)*6 - 6
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			var/break_prob = 10 - skill_level + (6 - difficulty) * 2
+			var/break_prob = clamp(10 - skill_level + (6 - difficulty) * 2, 0, 100)
 			if(prob(break_prob))
 				to_chat(picker, span_notice("My \the [the_lockpick] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', min(100 - (15 * skill_level) + (10 * 6 - difficulty), 100), extrarange = SILENCED_SOUND_EXTRARANGE)
@@ -317,7 +317,7 @@
 				//one tenth of the usual boost for picking a lock
 				if(isliving(picker))
 					var/mob/living/picker_real = picker
-					var/amt2raise = ((picker_real.STAINT / 2) * (50 / difficulty)) / 10
+					var/amt2raise = ((picker_real.STAINT / 2) * (20 / difficulty)) / 10
 					var/boon = picker_real.get_learning_boon(/datum/skill/misc/lockpicking)
 					picker_real.adjust_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
 			if(picker.client?.prefs.showrolls)
