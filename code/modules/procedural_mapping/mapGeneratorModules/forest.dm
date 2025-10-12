@@ -74,6 +74,8 @@
 		/obj/structure/essence_node = 0.1,
 		/obj/structure/flora/grass/maneater/real = 0.1,
 		/obj/item/restraints/legcuffs/beartrap/armed/camouflage = 0.1,
+		/obj/structure/wild_plant/nospread/reishi = 0.5,
+		/obj/structure/wild_plant/nospread/morel = 0.2,
 	)
 
 /datum/mapGeneratorModule/forestwaterturf

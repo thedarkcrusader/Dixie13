@@ -32,6 +32,10 @@
 	name = "berry pie"
 	scent = "berry pie"
 
+/datum/pollutant/food/porcini_pie
+	name = "porcini pie"
+	scent = "porcini pie"
+
 /datum/pollutant/food/bread
 	name = "fresh baked bread"
 	scent = "fresh baked bread"
@@ -203,6 +207,10 @@
 /datum/pollutant/food/truffle_stew
 	name = "truffle stew"
 	scent = "truffle stew"
+
+/datum/pollutant/food/porcini_stew
+	name = "porcini stew"
+	scent = "porcini stew"
 
 /datum/pollutant/food/cheese_soup
 	name = "cheese soup"

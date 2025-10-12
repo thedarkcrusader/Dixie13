@@ -552,7 +552,7 @@
 /* .......... Mushrooms ........ */
 /obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus
 	name = "coprinus"
-	desc = "An inedible mushroom cultivated for the fibres it produces when dried."
+	desc = "An inedible mushroom cultivated for the fibers it produces when dried."
 	icon_state = "coprinus"
 	spore = /obj/item/neuFarm/spore/coprinus
 	throwforce = 0
@@ -581,7 +581,7 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/morel
 	name = "morel"
-	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
+	desc = "A mushroom prized for its unique flavor and culinary uses."
 	icon_state = "morel"
 	spore = /obj/item/neuFarm/spore/morel
 	throwforce = 0
@@ -609,7 +609,7 @@
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
 	name = "porcini"
-	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste. (HEY CHANGE THIS LATER DINGUS!!)"
+	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste."
 	icon_state = "porcini"
 	spore = /obj/item/neuFarm/spore/porcini
 	throwforce = 0
@@ -617,7 +617,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
 	throw_range = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 

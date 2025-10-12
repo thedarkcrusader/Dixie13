@@ -96,3 +96,10 @@
 			/obj/item/reagent_containers/food/snacks/egg) = 1)
 	overlay_state = "fill_meat"
 	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/meat
+
+/datum/orderless_slapcraft/food/pie/porcini
+	name = "unbaked porcini pie"
+	requirements = list(/obj/item/reagent_containers/food/snacks/produce/mushroom/porcini = 3
+		)
+	overlay_state = "fill_pot"
+	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/porcini

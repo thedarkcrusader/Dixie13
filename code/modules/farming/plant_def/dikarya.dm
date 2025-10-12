@@ -10,7 +10,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.
@@ -35,7 +35,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.
@@ -61,7 +61,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.
@@ -86,7 +86,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.
@@ -111,7 +111,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.
@@ -136,7 +136,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 50 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	// Mushrooms won't produce ANY. For now.

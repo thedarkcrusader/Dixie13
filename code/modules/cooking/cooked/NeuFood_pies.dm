@@ -72,6 +72,11 @@
 	filling_color = "#b44f44"
 	overlay_state = "fill_meat"
 
+/obj/item/reagent_containers/food/snacks/raw_pie/porcini
+	name = "uncoooked porcini pie"
+	filling_color = "#7c6b75"
+	overlay_state = "fill_pot"
+
 /*--------------\
 | Pie templates |
 \--------------*/
@@ -155,6 +160,8 @@
 	filling_color = "#eca48c"
 /obj/item/reagent_containers/food/snacks/pieslice/good/pear
 	filling_color = "#edd28c"
+/obj/item/reagent_containers/food/snacks/pieslice/good/porcini
+	filling_color = "#7c6b75"
 
 // -------------- MEAT PIE -----------------
 /obj/item/reagent_containers/food/snacks/pie/cooked/meat // bae item
@@ -260,6 +267,21 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/pieslice/good/pear
 	tastes = list("baked pears and crispy butterdough" = 1)
 /obj/item/reagent_containers/food/snacks/pie/cooked/pear/good/New()
+	. = ..()
+	good_quality_descriptors()
+
+// -------------- PORCINI PIE -----------------
+/obj/item/reagent_containers/food/snacks/pie/cooked/porcini
+	name = "porcini pie"
+	desc = "A savory pie filled with hearty porcini mushrooms."
+	slices_num = 4
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEATPIE_NUTRITION)
+	tastes = list("porcini and butterdough" = 1)
+/obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good
+	eat_effect = /datum/status_effect/buff/foodbuff
+	slice_path = /obj/item/reagent_containers/food/snacks/pieslice/good/porcini
+	tastes = list("savory porcini and crispy butterdough" = 1)
+/obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good/New()
 	. = ..()
 	good_quality_descriptors()
 
