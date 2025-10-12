@@ -57,6 +57,3 @@
 		span_greentext("[owner] soothes \the [cast_on] with zizo's blessing."),
 		span_notice("The creacher now obeys me."),
 	)
-
-
-
