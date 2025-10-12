@@ -3285,6 +3285,7 @@
 #include "code\modules\spells\spell_types\undirected\touch\_touch.dm"
 #include "code\modules\spells\spell_types\undirected\touch\darkvision.dm"
 #include "code\modules\spells\spell_types\undirected\touch\entangler.dm"
+#include "code\modules\spells\spell_types\undirected\touch\mending_mantra.dm"
 #include "code\modules\spells\spell_types\undirected\touch\non_detection.dm"
 #include "code\modules\spells\spell_types\undirected\touch\orison.dm"
 #include "code\modules\spells\spell_types\undirected\touch\prestidigitation.dm"
