@@ -12,8 +12,33 @@
 
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
 
-/datum/outfit/adventurer/physicker/pre_equip(mob/living/carbon/human/H)
-	..()
+	skills = list(
+		/datum/skill/combat/wrestling = 2,
+		/datum/skill/combat/unarmed = 1,
+		/datum/skill/misc/athletics = 2,
+		/datum/skill/craft/crafting = 2,
+		/datum/skill/misc/reading = 3,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/misc/sewing = 2,
+		/datum/skill/craft/alchemy = 2,
+		/datum/skill/misc/medicine = 3,
+	)
+
+	jobstats = list(
+		STATKEY_STR = -1,
+		STATKEY_INT = 2,
+		STATKEY_CON = -1,
+	)
+
+	traits = list(
+		TRAIT_DEADNOSE,
+		TRAIT_EMPATH,
+	)
+
+	outfit = /datum/outfit/adventurer/physicker
+
+
+/datum/outfit/adventurer/physicker
 	mask = /obj/item/clothing/face/phys
 	head = /obj/item/clothing/head/roguehood/phys
 	shoes = /obj/item/clothing/shoes/boots/leather
@@ -24,14 +49,3 @@
 	armor = /obj/item/clothing/shirt/robe/phys
 	neck = /obj/item/clothing/neck/phys
 	belt = /obj/item/storage/belt/leather/rope
-
-	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
-	H.change_stat(STATKEY_INT, -1)
-	H.change_stat(STATKEY_SPD, 1)
-	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
