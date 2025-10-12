@@ -10037,7 +10037,7 @@
 /obj/structure/door/iron/bars,
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/town/soilson,
-/turf/open/floor/dirt,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield/safe)
 "fIh" = (
 /obj/structure/closet/crate/crafted_closet,
