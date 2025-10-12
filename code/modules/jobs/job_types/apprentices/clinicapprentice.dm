@@ -31,7 +31,7 @@
 		/datum/skill/combat/unarmed = 1,
 		/datum/skill/misc/athletics = 1,
 		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/reading = 2,
+		/datum/skill/misc/reading = 3,
 		/datum/skill/craft/alchemy = 2,
 		/datum/skill/misc/medicine = 2,
 	)
@@ -49,12 +49,12 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-/datum/job/clinicapprentice/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/clinicapprentice/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age != AGE_CHILD)
-		LAZYADDASSOC(skills, /datum/skill/combat/unarmed, 1)
-		LAZYADDASSOC(skills, /datum/skill/misc/athletics, 1)
-		LAZYADDASSOC(skills, /datum/skill/combat/wrestling, 1)
+		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 
 /datum/outfit/clinicapprentice
 	head = /obj/item/clothing/head/roguehood/colored/black

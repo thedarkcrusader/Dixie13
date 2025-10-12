@@ -28,7 +28,7 @@
 		/datum/skill/combat/unarmed = 2,
 		/datum/skill/craft/crafting = 2,//they need this to craft bottles
 		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 3,
+		/datum/skill/misc/reading = 4,
 		/datum/skill/misc/sneaking = 3,
 		/datum/skill/misc/climbing = 2,
 		/datum/skill/craft/alchemy = 5,
@@ -49,11 +49,11 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-/datum/job/apothecary/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/apothecary/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	LAZYADDASSOC(skills, /datum/skill/combat/wrestling, pick(0,0,1))
+	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,0,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		LAZYADDASSOC(skills, /datum/skill/craft/alchemy, 1)
+		spawned.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 
 /datum/outfit/apothecary
 	armor = /obj/item/clothing/armor/gambeson/apothecary

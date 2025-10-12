@@ -55,11 +55,11 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-/datum/job/apothecary/adjust_values(mob/living/carbon/human/spawned)
+/datum/job/feldsher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	LAZYADDASSOC(skills, /datum/skill/combat/wrestling, pick(0,0,1))
+	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,0,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		LAZYADDASSOC(skills, /datum/skill/misc/medicine, 1)
+		spawned.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 
 /datum/outfit/feldsher
 	shoes = /obj/item/clothing/shoes/shortboots
