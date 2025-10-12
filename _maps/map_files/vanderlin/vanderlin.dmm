@@ -17307,7 +17307,7 @@
 /area/rogue/indoors/town/manor/heir/heir2)
 "kiS" = (
 /obj/machinery/light/fueled/torchholder/l,
-/obj/structure/composter/halffull,
+/obj/structure/composter/full,
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/cell)
 "kiV" = (
@@ -18383,10 +18383,10 @@
 /area/rogue/indoors/town/tavern)
 "kZN" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/neuFarm/seed/potato,
-/obj/item/neuFarm/seed/potato,
-/obj/item/neuFarm/seed/pear,
-/obj/item/neuFarm/seed/pear,
+/obj/item/neuFarm/spore/porcini,
+/obj/item/neuFarm/spore/porcini,
+/obj/item/neuFarm/spore/coprinus,
+/obj/item/neuFarm/spore/coprinus,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
 "lai" = (
@@ -19142,6 +19142,10 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/manor/feast)
+"lCb" = (
+/obj/structure/soil/mushmound,
+/turf/open/floor/dirt,
+/area/rogue/indoors/town/cell)
 "lCy" = (
 /obj/structure/giantfur,
 /turf/open/floor/wood,
@@ -29331,6 +29335,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
+"rXI" = (
+/obj/machinery/tanningrack,
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/cell)
 "rXT" = (
 /turf/open/floor/rooftop{
 	dir = 4
@@ -57043,7 +57051,7 @@ iqd
 iqd
 iqd
 iqd
-pXR
+pdO
 lBA
 kjO
 pXR
@@ -57245,7 +57253,7 @@ iqd
 nqJ
 iqd
 iqd
-pXR
+rXI
 huh
 lBA
 tyx
@@ -57443,8 +57451,8 @@ jUb
 fkZ
 vgJ
 huh
-iqd
-iqd
+lCb
+lCb
 iqd
 iqd
 pXR
@@ -57847,8 +57855,8 @@ jUb
 fkZ
 vgJ
 jEP
-iqd
-iqd
+lCb
+lCb
 iqd
 pXR
 pXR
