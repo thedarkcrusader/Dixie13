@@ -20,7 +20,6 @@
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	time = 4 SECONDS
-	requires_tech = TRUE
 	replaced_by = /datum/surgery_step
 	repeating = TRUE
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED
