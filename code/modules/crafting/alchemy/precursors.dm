@@ -263,22 +263,109 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 */
 //featuring coal and charcoal from the devil may cry series
 
-/datum/natural_precursor/gem
-	name = "gem"
+//Why are there so many gem categories?
+//since gems are rarer than other items, they can have their own specialized category, akin to the alchemy dusts
+//each gem shouldn't have its own unique category, but rather it should be assigned to a unique category, for example
+//the gem_magic precursor is for gems strongly connected to magic
+//gem_frost precursor is for gems strongly connected to frost
+//and so on and so on
+//gem_fire and gem_water, atm of writing, have one gem each
+//but more gems can be added in the future
+
+/datum/natural_precursor/gem_magic
+	name = "magic gem"
 	essence_yields = list(
 		/datum/thaumaturgical_essence/crystal = 6,
-		/datum/thaumaturgical_essence/order = 4,
-		/datum/thaumaturgical_essence/earth = 2,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/magic = 2,
+	)
+	init_types = list(
+		/obj/item/gem/amethyst,
+		/obj/item/gem/violet,
+	)
+
+/datum/natural_precursor/gem_light
+	name = "light gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/light = 4,
+	)
+	init_types = list(
+		/obj/item/gem/yellow,
+		/obj/item/gem/amber,
+	)
+
+/datum/natural_precursor/gem_frost
+	name = "frost gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/frost = 4,
+	)
+	init_types = list(
+		/obj/item/gem/blue,
+		/obj/item/gem/turq,//frost because its associated with necra
+	)
+
+//we can assume opal is really dense due to being seen as crystalized rainbow
+//also something about E = cm^2, you get the idea I hope
+/datum/natural_precursor/gem_energia
+	name = "energia gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/energia = 4,
+	)
+	init_types = list(
+		/obj/item/gem/opal,
+		/obj/item/gem/diamond,
+	)
+
+/datum/natural_precursor/gem_earth
+	name = "earth gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/earth = 8,
 	)
 	init_types = list(
 		/obj/item/gem/green,
-		/obj/item/gem/blue,
-		/obj/item/gem/yellow,
-		/obj/item/gem/violet,
-		/obj/item/gem/diamond,
+		/obj/item/gem/jade,
+	)
+
+/datum/natural_precursor/gem_fire
+	name = "fire gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/fire = 8,
+	)
+	init_types = list(
 		/obj/item/gem/red,
-		/obj/item/gem/black,
-		/obj/item/gem/amethyst,
+	)
+
+/datum/natural_precursor/gem_water
+	name = "water gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/water = 8,
+	)
+	init_types = list(
+		/obj/item/gem/oyster,
+	)
+
+/datum/natural_precursor/gem_void
+	name = "void gem"
+	essence_yields = list(
+		/datum/thaumaturgical_essence/crystal = 6,
+		/datum/thaumaturgical_essence/order = 2,
+		/datum/thaumaturgical_essence/void = 4,
+	)
+	init_types = list(
+		/obj/item/gem/onyxa,
+		/obj/item/gem/coral,
 	)
 
 /datum/natural_precursor/riddleofsteel
