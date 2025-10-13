@@ -1843,12 +1843,6 @@
 /obj/structure/fake_machine/atm,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
-"aWz" = (
-/obj/machinery/light/fueled/torchholder{
-	dir = 4
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors/rtfield/safe)
 "aWD" = (
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
@@ -5653,7 +5647,8 @@
 	dir = 4;
 	pixel_x = 1
 	},
-/turf/closed/wall/mineral/wooddark/window,
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield/safe)
 "dlx" = (
 /obj/structure/chair/wood/alt,
@@ -6098,6 +6093,10 @@
 /obj/structure/chair/bench/couch/middle,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
+"dyG" = (
+/obj/machinery/light/fueled/oven/west,
+/turf/open/floor/wood,
+/area/rogue/indoors/soilsons)
 "dyJ" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -6716,6 +6715,12 @@
 	},
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors/town/manor/throne)
+"dRn" = (
+/obj/machinery/light/fueled/torchholder{
+	dir = 4
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors/rtfield/safe)
 "dRv" = (
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
@@ -15720,7 +15725,8 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "jdl" = (
-/turf/closed/wall/mineral/wooddark/window,
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield/safe)
 "jdn" = (
 /obj/structure/mannequin,
@@ -24507,10 +24513,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
-"oFy" = (
-/obj/structure/fake_machine/scomm,
-/turf/open/floor/dirt,
-/area/rogue/outdoors/rtfield/safe)
 "oFJ" = (
 /obj/structure/bed/bear,
 /obj/effect/landmark/start/villager,
@@ -100518,7 +100520,7 @@ cue
 cue
 fYr
 mNM
-jdl
+bhD
 uKg
 aux
 fYr
@@ -100718,9 +100720,9 @@ uCt
 aWD
 nlp
 jdl
-nlp
+dRn
 fYR
-aWz
+fYR
 nlp
 nlp
 fYR
@@ -101927,12 +101929,12 @@ kiQ
 wDm
 lAc
 wtX
-jdl
+wtX
 mNM
-jdl
+wtX
 nkg
 wtX
-jdl
+wtX
 mNM
 aim
 mEV
@@ -102727,7 +102729,7 @@ fYR
 fYR
 fYR
 fYR
-aWD
+uzX
 wDm
 fYR
 fYR
@@ -103125,7 +103127,7 @@ wMs
 wMs
 mZi
 nlp
-nlp
+pVJ
 fYR
 fYR
 fYR
@@ -103535,7 +103537,7 @@ fYR
 fYR
 fYR
 nlp
-pVJ
+nlp
 cue
 aWD
 fYR
@@ -103737,9 +103739,9 @@ fYR
 fYR
 fYR
 nlp
-aWD
+uzX
 cue
-oFy
+nlp
 aWD
 fYR
 fYR
@@ -103933,7 +103935,7 @@ wMs
 wMs
 wMs
 wMs
-nlp
+pVJ
 fYR
 fYR
 fYR
@@ -105144,14 +105146,14 @@ wMs
 wMs
 wMs
 mZi
-nlp
+pVJ
 fYR
 fYR
 fYR
 fYR
 fYR
 fYR
-nlp
+pVJ
 aWD
 utC
 pcL
@@ -107776,7 +107778,7 @@ qLU
 qLU
 vAi
 uzC
-cZU
+dyG
 cmM
 wnz
 nlp
