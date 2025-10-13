@@ -126,7 +126,7 @@
 	filling.color = mix_color_from_reagents(reagents.reagent_list)
 	filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 
-	if(fill_icon_under_override || reagent_flags & TRANSPARENT)
+	if(fill_icon_under_override)
 		underlays.Cut()
 		underlays += filling
 	else
@@ -168,7 +168,8 @@
 
 /obj/item/reagent_containers/MiddleClick(mob/user, params)
 	. = ..()
-	remove_label(user)
+	if(iscarbon(user))
+		remove_label(user)
 
 /obj/item/reagent_containers/proc/label_container(mob/user, label_name, label_desc)
 	if((!label_name && !label_desc) || !can_label_container)

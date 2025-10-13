@@ -277,6 +277,11 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	///the processing quality we have
 	var/recipe_quality = 1
 
+	// Lock related
+
+	// This sucks but I can see it being useful
+	/// This thing can be used to unlock locks
+	var/can_unlock = TRUE
 
 /obj/item/proc/set_quality(quality)
 	recipe_quality = clamp(quality, 0, 4)
@@ -1457,7 +1462,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		/obj/item/gem/green,
 		/obj/item/gem/diamond,
 		/obj/item/gem/blue,
-		/obj/item/gem/black
 	)
 
 	for(var/i = 1 to socket_count)
@@ -1471,3 +1475,26 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	return new_item
 
+/obj/item/examine(mob/user)
+	. = ..()
+	if(!get_precursor_data(src))
+		return
+	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
+	var/datum/natural_precursor/precursor = get_precursor_data(src)
+	if(precursor)
+		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
+			var/amount = precursor.essence_yields[essence]
+			var/smell = initial(essence.smells_like)
+			switch(amount)
+				if(15 to 100)
+					if(alch_skill >= SKILL_LEVEL_NOVICE)
+						. += span_notice(" Smells intensely of [smell].")
+				if(10 to 14)
+					if(alch_skill >= SKILL_LEVEL_APPRENTICE)
+						. += span_notice(" Smells strongly of [smell].")
+				if(5 to 9)
+					if(alch_skill >= SKILL_LEVEL_JOURNEYMAN)
+						. += span_notice(" Smells slightly of [smell].")
+				if(1 to 4)
+					if(alch_skill >= SKILL_LEVEL_EXPERT)
+						. += span_notice(" Smells faintly of [smell].")

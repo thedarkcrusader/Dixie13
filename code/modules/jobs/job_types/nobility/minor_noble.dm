@@ -13,15 +13,18 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
-	outfit = /datum/outfit/job/noble
+	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
 	noble_income = 16
 
-/datum/outfit/job/noble
+	spells = list(
+		/datum/action/cooldown/spell/undirected/call_bird = 1,
+	)
+
 	job_bitflag = BITFLAG_ROYALTY
 
-/datum/outfit/job/noble/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/noble/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name

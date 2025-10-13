@@ -420,6 +420,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		return null
 
 	GLOB.clients += src
+	GLOB.keys_by_ckey[ckey] += key
 	GLOB.directory[ckey] = src
 
 	chatOutput = new /datum/chatOutput(src)
@@ -524,10 +525,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 
 	. = ..()	//calls mob.Login()
-	if (length(GLOB.stickybanadminexemptions))
-		GLOB.stickybanadminexemptions -= ckey
-		if (!length(GLOB.stickybanadminexemptions))
-			restore_stickybans()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)

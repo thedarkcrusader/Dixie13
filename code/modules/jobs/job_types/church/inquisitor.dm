@@ -15,27 +15,18 @@
 
 	allowed_races = list(SPEC_ID_HUMEN)
 
-	outfit = /datum/outfit/job/inquisitor
+	outfit = /datum/outfit/inquisitor
 	is_foreigner = TRUE
 	is_recognized = TRUE
+	antag_role = /datum/antagonist/purishep
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
-/datum/job/inquisitor/after_spawn(mob/living/spawned, client/player_client)
-	..()
-	if(!spawned.mind)
-		return
-	if(spawned.mind.has_antag_datum(/datum/antagonist))
-		return
-	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	spawned.mind.add_antag_datum(new_antag)
-
-/datum/outfit/job/inquisitor
-	name = "Inquisitor"
-	jobtype = /datum/job/inquisitor
-	allowed_patrons = list(/datum/patron/psydon)
 	job_bitflag = BITFLAG_CHURCH
 
-/datum/outfit/job/inquisitor/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/inquisitor
+	name = "Inquisitor"
+
+/datum/outfit/inquisitor/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/armor/gambeson/heavy/colored/dark
 	belt = /obj/item/storage/belt/leather/black
@@ -51,7 +42,7 @@
 	neck = /obj/item/clothing/neck/bevor
 	mask = /obj/item/clothing/face/spectacles/inqglasses
 	armor = /obj/item/clothing/armor/medium/scale/inqcoat
-	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1, /obj/item/storage/belt/pouch/coins/rich)
+	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1, /obj/item/storage/belt/pouch/coins/rich = 1)
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Ritter"
@@ -70,7 +61,7 @@
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
@@ -88,7 +79,9 @@
 		return
 	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
 	H.mind?.add_antag_datum(new_antag)
+	H.add_spell(/datum/action/cooldown/spell/undirected/call_bird/inquisitor)
 	H.set_patron(/datum/patron/psydon)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //his gear is medium, he needs this to dodge well
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -107,7 +100,7 @@
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
-	set category = "Inquisition"
+	set category = "Torture"
 
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
@@ -151,7 +144,7 @@
 
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
-	set category = "Inquisition"
+	set category = "Torture"
 
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H

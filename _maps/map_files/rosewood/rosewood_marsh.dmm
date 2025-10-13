@@ -2889,7 +2889,7 @@
 /area/rogue/indoors/lich)
 "rs" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/clothing/neck/mercmedal/zaladian,
+/obj/item/clothing/neck/mercmedal/zaladin,
 /obj/effect/spawner/map_spawner/loot/common,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/twig,
@@ -6695,7 +6695,7 @@
 	pixel_y = 6
 	},
 /obj/item/clothing/neck/psycross/silver/ravox,
-/obj/item/clothing/neck/psycross/noc{
+/obj/item/clothing/neck/psycross/silver/noc{
 	pixel_x = 15;
 	pixel_y = -2
 	},

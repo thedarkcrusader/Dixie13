@@ -15,12 +15,12 @@ SUBSYSTEM_DEF(crediticons)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 
-	while (currentrun.len)
-		var/mob/living/carbon/human/thing = currentrun[currentrun.len]
+	while(length(currentrun))
+		var/mob/living/carbon/human/thing = currentrun[length(currentrun)]
 		currentrun.len--
-		if (!thing || QDELETED(thing))
+		if(QDELETED(thing))
 			processing -= thing
-			if (MC_TICK_CHECK)
+			if(MC_TICK_CHECK)
 				return
 			continue
 		add_credit(thing)
@@ -57,9 +57,13 @@ SUBSYSTEM_DEF(crediticons)
 		return null
 
 	var/credit_name = "[target.real_name]"
+	if(target.original_name)
+		credit_name = "[target.original_name]"
 	if(target.mind.assigned_role)
 		var/datum/job/job = target.mind.assigned_role
 		var/used_title = job.get_informed_title(target)
+		if(job.parent_job)
+			used_title = job.parent_job.get_informed_title(target)
 		if(used_title)
 			credit_name = "[credit_name]\nthe [used_title]"
 

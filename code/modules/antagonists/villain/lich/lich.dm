@@ -46,11 +46,15 @@
 		/datum/action/cooldown/spell/raise_undead,
 		/datum/action/cooldown/spell/diagnose,
 		/datum/action/cooldown/spell/eyebite,
+		/datum/action/cooldown/spell/control_undead
 	)
 
 /datum/antagonist/lich/on_gain()
 	SSmapping.retainer.liches |= owner
-	owner.current?.purge_combat_knowledge() // purge all their combat skills first
+	var/mob/living/carbon/human/lich = owner?.current
+	lich.purge_combat_knowledge() // purge all their combat skills first
+	lich.reset_and_reroll_stats()
+	lich.remove_all_traits()
 	. = ..()
 	if(iscarbon(owner.current))
 		lich_body_ref = WEAKREF(owner.current)
@@ -60,7 +64,8 @@
 	owner.special_role = name
 	move_to_spawnpoint()
 	remove_job()
-	owner.current?.roll_mob_stats()
+	lich.delete_equipment()
+	owner.current?.remove_stat_modifier("innate_age")
 	skele_look()
 	equip_lich()
 
@@ -103,10 +108,10 @@
 	L.dna.species.species_traits |= NOBLOOD
 	L.grant_undead_eyes()
 	L.skeletonize(FALSE)
-	L.equipOutfit(/datum/outfit/job/lich)
+	L.equipOutfit(/datum/outfit/lich)
 	L.set_patron(/datum/patron/inhumen/zizo)
 
-/datum/outfit/job/lich/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/lich/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/skullcap/cult
 	pants = /obj/item/clothing/pants/chainlegs
@@ -152,7 +157,7 @@
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
 
-/datum/outfit/job/lich/post_equip(mob/living/carbon/human/H)
+/datum/outfit/lich/post_equip(mob/living/carbon/human/H)
 	..()
 	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
 	for(var/i in 1 to 3)

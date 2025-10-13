@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	var/list/possible_ages = ALL_AGES_LIST_CHILD
 	/// Whether or not this species has sexual characteristics
 	var/sexes = TRUE
-	/// Whether this species a requires patreon subscription to access
+	/// Whether this species a requires patreon subscription to access, we removed all patreon restrictions for species, but it's here if we ever want to reenable them or smth.
 	var/patreon_req = FALSE
 
 	/**
@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 // PROCS //
 ///////////
 
-/datum/species/proc/get_accent(var/language, var/variant = 0)
+/datum/species/proc/get_accent(language, variant = 0)
 	if(language == "Old Psydonic")
 		return strings("accents/grenz_replacement.json", "grenz")
 	if(language == "Zalad")

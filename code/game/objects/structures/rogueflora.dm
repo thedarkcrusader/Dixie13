@@ -36,7 +36,7 @@
 		return
 	if(user.mind && isliving(user))
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			var/item = browser_input_list(user, "What will I take?", "STASH", user.mind.special_items)
 			if(item)
 				if(user.Adjacent(src))
 					if(user.mind.special_items[item])
@@ -316,7 +316,9 @@
 	AddComponent(/datum/component/grass)
 
 /obj/structure/flora/grass/Destroy()
-	if(prob(5))
+	if(isliving(usr) && HAS_TRAIT(usr, TRAIT_SEED_FINDER))
+		new /obj/item/neuFarm/seed/mixed_seed(get_turf(src))
+	else if(prob(5))
 		new /obj/item/neuFarm/seed/mixed_seed(get_turf(src))
 	return ..()
 
@@ -600,7 +602,7 @@
 		return
 	if(user.mind && isliving(user))
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			var/item = browser_input_list(user, "What will I take?", "STASH", user.mind.special_items)
 			if(item)
 				if(user.Adjacent(src))
 					if(user.mind.special_items[item])

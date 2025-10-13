@@ -18,7 +18,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 
 
-	outfit = /datum/outfit/job/magician
+	outfit = /datum/outfit/magician
 	give_bank_account = 120
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	magic_user = TRUE
@@ -32,16 +32,18 @@
 	attunements_max = 6
 	attunements_min = 4
 
-/datum/job/magician/New()
-	if(prob(1)) //extremely rare
-		cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
-
-/datum/outfit/job/magician
 	job_bitflag = BITFLAG_ROYALTY
+
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo) //intentional. This means it's a gamble between Noc or Zizo if your not one already. Don't fucking change this.
 
-/datum/outfit/job/magician/pre_equip(mob/living/carbon/human/H)
+/datum/job/magician/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	if(prob(1))
+		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
+
+/datum/outfit/magician/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	backr = /obj/item/storage/backpack/satchel
 	cloak = /obj/item/clothing/cloak/black_cloak
 	ring = /obj/item/clothing/ring/gold
@@ -78,7 +80,7 @@
 	H.change_stat(STATKEY_CON, -2)
 	H.change_stat(STATKEY_SPD, -2)
 
-/datum/outfit/job/magician/post_equip(mob/living/carbon/human/H)
+/datum/outfit/magician/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/static/list/selectablehat = list(
 		"Witch hat" = /obj/item/clothing/head/wizhat/witch,
@@ -93,6 +95,6 @@
 		"Black robes" = /obj/item/clothing/shirt/robe/colored/black,
 		"Mage robes" = /obj/item/clothing/shirt/robe/colored/mage,
 		"Courtmage Robes" = /obj/item/clothing/shirt/robe/colored/courtmage,
-		"Wizard robes (male only, won't fit on dwarves)" = /obj/item/clothing/shirt/robe/wizard,
+		"Wizard robes" = /obj/item/clothing/shirt/robe/wizard,
 	)
 	H.select_equippable(H, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")

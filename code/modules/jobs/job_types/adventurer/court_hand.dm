@@ -17,6 +17,7 @@
 	job_reopens_slots_on_death = FALSE
 	shows_in_list = FALSE
 	can_have_apprentices = FALSE
+	scales = FALSE
 
 /datum/job/adventurer/courtagent
 
@@ -25,5 +26,3 @@
 	if(ishuman(spawned))
 		GLOB.roundstart_court_agents += spawned.real_name
 	..()
-	if(advclass_cat_rolls)
-		hugboxify_for_class_selection(spawned)

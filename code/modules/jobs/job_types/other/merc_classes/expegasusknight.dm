@@ -1,12 +1,12 @@
-/datum/advclass/mercenary/expegasusknight
-	name = "Ex-Pegasus Knight"
+/datum/job/advclass/mercenary/expegasusknight
+	title = "Ex-Pegasus Knight"
 	tutorial = "A former pegasus knight hailing from the southern Elven nation of Lakkari. Once a graceful warrior that ruled the skies, now a traveling sellsword that rules the streets, doing Faience's dirtiest work."
 	allowed_races = RACES_PLAYER_ELF
-	outfit = /datum/outfit/job/mercenary/expegasusknight
+	outfit = /datum/outfit/mercenary/expegasusknight
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
+	total_positions = 5
 
-/datum/outfit/job/mercenary/expegasusknight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/mercenary/expegasusknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/ridingboots
 	cloak = /obj/item/clothing/cloak/pegasusknight
@@ -33,7 +33,7 @@
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-
+	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.merctype = 11
 
 	H.change_stat(STATKEY_END, 2)

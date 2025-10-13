@@ -20,14 +20,16 @@
 #define JOB_SHOW_IN_CREDITS (1<<1)
 /// Whether the mob is equipped through SSjob.EquipRank() on spawn.
 #define JOB_EQUIP_RANK (1<<2)
-/// Whether the job is considered a regular crew member of the station. Equipment such as AI and cyborgs not included.
-#define JOB_CREW_MEMBER (1<<3)
 /// Whether this job can be joined through the new_player menu.
-#define JOB_NEW_PLAYER_JOINABLE (1<<4)
+#define JOB_NEW_PLAYER_JOINABLE (1<<3)
+/// Whether the job can be displayed on the actors list
+#define JOB_SHOW_IN_ACTOR_LIST (1<<4)
 
 #define FACTION_NONE		"None"
 #define FACTION_NEUTRAL		"Neutral"
 #define FACTION_TOWN		"Town"
+#define FACTION_FOREIGNERS  "Foreigners"
+#define FACTION_MIGRANTS  	"Migrants"
 #define FACTION_UNDEAD		"Undead"
 #define FACTION_PLANTS		"Plants"
 #define FACTION_VINES		"Vines" //Seemingly unused
@@ -73,6 +75,7 @@
 
 #define JDO_APOTHECARY 6
 #define JDO_FELDSHER 6.1
+#define JDO_CLINICAPPRENTICE 6.2
 
 #define JDO_CAPTAIN 7
 #define JDO_VET 7.1
