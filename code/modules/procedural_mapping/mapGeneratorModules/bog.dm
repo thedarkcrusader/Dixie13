@@ -31,8 +31,8 @@
 							/obj/structure/flora/grass/maneater/real = 2,
 							/obj/structure/essence_node = 0.1,
 							/obj/structure/innocent_bush = 1,
-							/obj/structure/wild_plant/nospread/chanterelle = 0.5,
-							/obj/structure/wild_plant/nospread/morel = 0.2,
+							/obj/structure/wild_plant/nospread/chanterelle = 1,
+							/obj/structure/wild_plant/nospread/morel = 0.5,
 							)
 	spawnableTurfs = list(/turf/open/water/swamp = 5)
 	allowed_areas = list(/area/rogue/outdoors/bog)
