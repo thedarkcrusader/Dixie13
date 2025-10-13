@@ -428,7 +428,7 @@
 	rotprocess = SHELFLIFE_EXTREME
 
 /*	.................   Pastry Loaf's   ................... */
-/obj/item/reagent_containers/food/snack/pastryloaf
+/obj/item/reagent_containers/food/snacks/pastryloaf
 	name = "pastry loaf"
 	desc = "a plain loaf of pastry bread."
 	icon = 'icons/roguetown/items/pastryloaf.dmi'
