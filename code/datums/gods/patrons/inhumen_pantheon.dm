@@ -27,7 +27,7 @@
 	worshippers = "Dark Elves, Aspirants, Necromancers, Misandrists"
 	sins = "Pearl-clutching, Moralism, Wastefulness"
 	boons = "You may perform fleshcrafting. Access to roles with magic."
-	//added_traits = list(TRAIT_CABAL)	No need for this. They have fleshcrafting now.
+	added_traits = list(TRAIT_CABAL)
 	devotion_holder = /datum/devotion/inhumen/zizo
 	confess_lines = list(
 		"I FOLLOW THE PATH OF ZIZO!",
