@@ -120,6 +120,15 @@
 /area/rogue/outdoors/rtfield/safe
 	ambush_mobs = null
 
+/area/rogue/outdoors/farm
+	name = "farm"
+	icon_state = "rtfield"
+	soundenv = 19
+	background_track = 'sound/music/area/field.ogg'
+	background_track_dusk = 'sound/music/area/septimus.ogg'
+	background_track_night = 'sound/music/area/sleeping.ogg'
+	converted_type = /area/rogue/indoors/shelter/rtfield
+
 /area/rogue/indoors/shelter/rtfield
 	icon_state = "rtfield"
 	background_track = 'sound/music/area/field.ogg'
