@@ -644,6 +644,7 @@
 	queen_bee = new_queen
 	queen_deceased = FALSE
 	max_bees = 30 + (queen_bee.bee_efficiency * 10) // Queen efficiency affects max colony size
+	bee_count++
 	visible_message(span_notice("The bees in [src] welcome their new queen!"))
 	new_queen.forceMove(src)
 
