@@ -79,8 +79,6 @@
 
 	COOLDOWN_DECLARE(soil_update)
 
-
-
 /obj/structure/soil/Crossed(atom/movable/AM)
 	. = ..()
 	if(isliving(AM))
@@ -1015,13 +1013,6 @@
 			soil.adjust_nitrogen(FLOOR(plant.nitrogen_production, 1) / 2)
 			soil.adjust_phosphorus(FLOOR(plant.phosphorus_production, 1) / 2)
 			soil.adjust_potassium(FLOOR(plant.potassium_production, 1) / 2)
-		for(var/obj/structure/soil/mushmound/mushmound in cardinal_turf)
-			if(mushmound == src)
-				continue
-			mushmound.adjust_nitrogen(FLOOR(plant.nitrogen_production, 1) / 2)
-			mushmound.adjust_phosphorus(FLOOR(plant.phosphorus_production, 1)/ 2)
-			mushmound.adjust_potassium(FLOOR(plant.potassium_production, 1) / 2)
-
 
 /obj/structure/soil/proc/add_growth(added_growth)
 	if(!plant)

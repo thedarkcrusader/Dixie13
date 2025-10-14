@@ -146,20 +146,28 @@
 	faretype = FARE_FINE
 	portable = FALSE
 
+// ------ GOOD PIE SLICES -----
 /obj/item/reagent_containers/food/snacks/pieslice/good
 	eat_effect = /datum/status_effect/buff/foodbuff
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/pot
 	filling_color = "#9d8c3b"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/fish
 	filling_color = "#bb5a93"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/meat
 	filling_color = "#b44f44"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/berry
 	filling_color = "#394da5"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/apple
 	filling_color = "#eca48c"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/pear
 	filling_color = "#edd28c"
+
 /obj/item/reagent_containers/food/snacks/pieslice/good/porcini
 	filling_color = "#7c6b75"
 
