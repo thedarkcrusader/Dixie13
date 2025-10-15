@@ -59,5 +59,5 @@
 
 	ADD_TRAIT(cast_on, TRAIT_RECRUITED, TRAIT_GENERIC)
 	cast_on.job = new_role
-
+	cast_on?.mind.set_assigned_role(new_role)
 	SEND_SIGNAL(SSdcs, COMSIG_GLOBAL_ROLE_CONVERTED, owner, cast_on, new_role)

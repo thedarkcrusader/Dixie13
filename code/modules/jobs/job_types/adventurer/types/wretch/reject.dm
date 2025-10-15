@@ -49,9 +49,14 @@
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
 		H.job = "Disowned Prince"
+		if(H.mind?.assigned_role)
+			H.mind.assigned_role.title = "Disowned Prince"
+
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/princess
 		H.job = "Disowned Princess"
+		if(H.mind?.assigned_role)
+			H.mind.assigned_role.title = "Disowned Princess"
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

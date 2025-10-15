@@ -999,8 +999,8 @@
 
 /mob/living/carbon/human/proc/get_role_title()
 	var/used_title
-	if(job)
-		var/datum/job/J = SSjob.GetJob(job)
+	if(mind?.assigned_role)
+		var/datum/job/J = SSjob.GetJob(mind.assigned_role.title)
 		if(!J)
 			return "Unknown"
 		used_title = J.get_informed_title(src)

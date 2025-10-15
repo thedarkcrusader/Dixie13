@@ -7,7 +7,6 @@
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 2
 	roll_chance = 100
-	inherit_parent_title = TRUE //this prevents advjob from being set back to "Assassin" in equipme
 	min_pq = 6
 
 /datum/outfit/adventurer/assassin/pre_equip(mob/living/carbon/human/H)
@@ -68,6 +67,8 @@
 					backr = /obj/item/instrument/guitar
 		if("Beggar") //The sole "town" disguise available.
 			H.job = "Beggar"
+			if(H.mind?.assigned_role)
+				H.mind.assigned_role.title = "Beggar"
 			belt = /obj/item/storage/belt/leather/assassin
 			if(H.gender == FEMALE)
 				armor = /obj/item/clothing/shirt/rags
@@ -244,6 +245,8 @@
 			H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //Once more, the assassin trades their crossbow abilities to match their disguise.
 			H.adjust_skillrank(/datum/skill/combat/crossbows, -2, TRUE)
 		if("Servant") // You think you're safe? No keys to the keep though. Hopefully less people pick Noble with this in mind.
+			if(H.mind?.assigned_role)
+				H.mind.assigned_role.title = "Servant"
 			H.job = "Servant"
 			H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
