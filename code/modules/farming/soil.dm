@@ -147,9 +147,6 @@
 			var/obj/item/neuFarm/seed/seeds = attacking_item
 			seeds.try_plant_seed(user, src)
 		return TRUE
-	if(istype(attacking_item, /obj/item/neuFarm/spore))
-		to_chat(user, span_warning("I cannot plant the spore in \the [src]!"))
-		return FALSE
 	return FALSE
 
 /obj/structure/soil/proc/try_handle_uprooting(obj/item/attacking_item, mob/user, params)
@@ -847,6 +844,9 @@
 	var/turf/location = loc
 	if(!plant.can_grow_underground && !location.can_see_sky())
 		return
+	var/obj/structure/soil/box/box = locate(/obj/structure/soil/box) in location
+	if(box && !plant.can_grow_boxed)
+		return
 	// If matured and produce is ready, don't process plant nutrition
 	if(matured && produce_ready)
 		return
@@ -875,6 +875,9 @@
 	if(has_world_trait(/datum/world_trait/dendor_drought))
 		growth_multiplier *= is_ascendant(DENDOR) ? 0.3 : 0.4
 		nutriment_eat_multiplier *= is_ascendant(DENDOR) ? 2.5 : 2
+	if(box && plant.prefer_boxed)
+		growth_multiplier *= 1.2
+		nutriment_eat_multiplier *= 0.8
 
 	// Weed interference
 	if(weeds >= MAX_PLANT_WEEDS * 0.3)
@@ -1212,7 +1215,7 @@
 	var/obj/item/neuFarm/seed/seed_to_grow
 
 /obj/structure/soil/debug_soil/random/Initialize()
-	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed) - /obj/item/neuFarm/seed/mixed_seed)
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed || /obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/mixed_seed - /obj/item/neuFarm/seed/spore)
 	. = ..()
 
 /obj/structure/soil/debug_soil/Initialize()
@@ -1229,126 +1232,74 @@
 	add_growth(plant.maturation_time)
 	add_growth(plant.produce_time)
 
-/*	..................   Mushroom Mound   ................... */
-/obj/structure/soil/mushmound
-	name = "mushroom mound"
-	desc = "A mound of hay and nitesoil, used as the growing medium for various types of mushrooms."
-	icon_state = "mushmound-dry"
-	density = FALSE
+/*	..................   Planter Box   ................... */
+/obj/structure/soil/box
+	name = "planter box"
+	desc = "A constructed box of lumber, filled with soil. Its confined space is not suitable for large plants, like trees and bushes."
+	icon_state = "planterbox"
+	density = TRUE
 	anchored = FALSE
-	drag_slowdown = 2
+	drag_slowdown = 6
 	climbable = TRUE
 	climb_offset = 10
 	max_integrity = 100
 
-	COOLDOWN_DECLARE(mushmound_update)
+	COOLDOWN_DECLARE(box_update)
 
-/obj/structure/soil/mushmound/attackby(obj/item/attacking_item, mob/user, params)
-	user.changeNext_move(CLICK_CD_FAST)
-	if(try_handle_spore_planting(attacking_item, user, params))
-		return
-	if(try_handle_uprooting(attacking_item, user, params))
-		return
-	if(try_handle_watering(attacking_item, user, params))
-		return
-	if(try_handle_harvest(attacking_item, user, params))
-		return
-	if(try_handle_fertilizing(attacking_item, user, params))
-		return
-	for(var/obj/item/bagged_item in attacking_item.contents)
-		if(try_handle_fertilizing(bagged_item, user, params))
-			return
-	return ..()
-
-/obj/structure/soil/mushmound/proc/try_handle_spore_planting(obj/item/attacking_item, mob/user, params)
-	var/obj/item/old_item
-	if(istype(attacking_item, /obj/item/storage/sack))
-		var/list/spores = list()
-		for(var/obj/item/neuFarm/spore/spore in attacking_item.contents)
-			spores |= spore
-		old_item = attacking_item
-		if(LAZYLEN(spores))
-			attacking_item = pick(spores)
-
-	if(istype(attacking_item, /obj/item/neuFarm/spore))
-		playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
-		if(do_after(user, get_farming_do_time(user, 15), src))
-			if(old_item)
-				SEND_SIGNAL(old_item, COMSIG_TRY_STORAGE_TAKE, attacking_item, get_turf(user), TRUE)
-			var/obj/item/neuFarm/spore/spores = attacking_item
-			spores.try_plant_spore(user, src)
-		return TRUE
-	if(istype(attacking_item, /obj/item/neuFarm/seed))
-		to_chat(user, span_warning("I cannot plant the seed in \the [src]!"))
-		return TRUE
-	return FALSE
-
-/obj/structure/soil/mushmound/proc/try_handle_mushfertilizing(obj/item/attacking_item, mob/user, params)
-	var/fertilize_success = FALSE
-
-	if(istype(attacking_item, /obj/item/fertilizer))
-		var/obj/item/fertilizer/fert = attacking_item
-		fertilize_success = apply_fertilizer(fert, user)
-	else if(istype(attacking_item, /obj/item/natural/poo))
-		// Manure is balanced NPK with high nitrogen
-		if(can_accept_fertilizer())
-			to_chat(user, span_notice("I fertilize the mushroom mound with manure."))
-			adjust_nitrogen(60)
-			adjust_phosphorus(40)
-			adjust_potassium(50)
-			fertilize_success = TRUE
-		else
-			to_chat(user, span_warning("The mushroom mound is already well fertilized!"))
-	if(fertilize_success)
-		qdel(attacking_item)
-		return TRUE
-	return FALSE
-
-/obj/structure/soil/mushmound/update_overlays()
+/obj/structure/soil/box/update_overlays()
 	. = ..()
-	. += get_water_mushoverlay()
-	. += get_nutri_mushoverlay()
+	if(tilled_time > 0)
+		. += "box-tilled"
+	. += get_water_boxoverlay()
+	. += get_nutri_boxoverlay()
 	if(plant)
 		. += get_plant_overlay()
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
-		. += "mushweeds-2"
+		. += "weeds-1"
 	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
-		. += "mushweeds-1"
+		. += "weeds-2"
 
-/obj/structure/soil/mushmound/proc/get_water_mushoverlay()
+/obj/structure/soil/box/proc/get_tilled_boxoverlay()
 	return mutable_appearance(
 		icon,\
-		"mushmound-wet",\
+		"box-tilled",\
+		alpha = (50),\
+	)
+
+/obj/structure/soil/box/proc/get_water_boxoverlay()
+	return mutable_appearance(
+		icon,\
+		"box-overlay",\
 		color = "#000033",\
 		alpha = (100 * (water / MAX_PLANT_WATER)),\
 	)
 
-/obj/structure/soil/mushmound/proc/get_nutri_mushoverlay()
+/obj/structure/soil/box/proc/get_nutri_boxoverlay()
 	return mutable_appearance(
 		icon,\
-		"mushmound-dry",\
+		"box-overlay",\
 		color = "#6d3a00",\
 		alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
 	)
 
-/obj/structure/soil/mushmound/debug_mushmound
-	var/obj/item/neuFarm/spore/spore_to_grow
+/obj/structure/soil/box/debug_box
+	var/obj/item/neuFarm/seed/seed_to_grow
 
-/obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
-	spore_to_grow = pick(subtypesof(/obj/item/neuFarm/spore))
+/obj/structure/soil/box/debug_box/random/Initialize()
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed || /obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/mixed_seed - /obj/item/neuFarm/seed/spore)
 	. = ..()
 
-/obj/structure/soil/mushmound/debug_mushmound/Initialize()
+/obj/structure/soil/box/debug_box/Initialize()
 	. = ..()
-	if(!spore_to_grow)
+	if(!seed_to_grow)
 		return
-	var/debug_spore_genetics = initial(spore_to_grow.spore_genetics)
-	if(!debug_spore_genetics)
-		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(spore_to_grow.plant_def_type)]
-		debug_spore_genetics = new /datum/plant_genetics(plant_def_instance)
+	var/debug_seed_genetics = initial(seed_to_grow.seed_genetics)
+	if(!debug_seed_genetics)
+		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(seed_to_grow.plant_def_type)]
+		debug_seed_genetics = new /datum/plant_genetics(plant_def_instance)
 	else
-		debug_spore_genetics = new debug_spore_genetics()
-	insert_plant(GLOB.plant_defs[initial(spore_to_grow.plant_def_type)], debug_spore_genetics)
+		debug_seed_genetics = new debug_seed_genetics()
+	insert_plant(GLOB.plant_defs[initial(seed_to_grow.plant_def_type)], debug_seed_genetics)
 	add_growth(plant.maturation_time)
 	add_growth(plant.produce_time)
 

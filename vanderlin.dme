@@ -2458,7 +2458,6 @@
 #include "code\modules\farming\items\eggs.dm"
 #include "code\modules\farming\items\fertilizer.dm"
 #include "code\modules\farming\items\seeds.dm"
-#include "code\modules\farming\items\spores.dm"
 #include "code\modules\farming\items\tools.dm"
 #include "code\modules\farming\items\trash.dm"
 #include "code\modules\farming\items\produce\_produce.dm"

@@ -9,6 +9,7 @@
 	maturation_time = FAST_GROWING
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_ROSACEAE
+	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 35
 	potassium_requirement = 0
@@ -28,6 +29,7 @@
 	maturation_time = FAST_GROWING
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_ROSACEAE
+	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 0
 	potassium_requirement = 35
@@ -117,6 +119,7 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_ROSACEAE
+	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 0
 	potassium_requirement = 40
@@ -140,6 +143,7 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_ROSACEAE
+	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 0
 	potassium_requirement = 38
@@ -163,6 +167,7 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_ROSACEAE
+	can_grow_boxed = FALSE
 	nitrogen_requirement = 35
 	phosphorus_requirement = 0
 	potassium_requirement = 0

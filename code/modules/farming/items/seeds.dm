@@ -233,3 +233,34 @@
 
 /obj/item/neuFarm/seed/tea
 	plant_def_type = /datum/plant_def/tea
+
+// ----- SPORES ----- //
+
+/obj/item/neuFarm/seed/spore
+	name = "mushroom spores"
+	desc = "Used to inoculate soil with mycelium for cultivation."
+	icon_state = "spores"
+
+/obj/item/neuFarm/seed/spore/Initialize(mapload, datum/plant_genetics/passed_genetics)
+	. = ..()
+	if(plant_def_type)
+		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
+		color = def.seed_color // make a new spore color list later
+
+/obj/item/neuFarm/seed/spore/coprinus
+	plant_def_type = /datum/plant_def/coprinus
+
+/obj/item/neuFarm/seed/spore/reishi
+	plant_def_type = /datum/plant_def/reishi
+
+/obj/item/neuFarm/seed/spore/morel
+	plant_def_type = /datum/plant_def/morel
+
+/obj/item/neuFarm/seed/spore/oyster
+	plant_def_type = /datum/plant_def/oyster
+
+/obj/item/neuFarm/seed/spore/porcini
+	plant_def_type = /datum/plant_def/porcini
+
+/obj/item/neuFarm/seed/spore/chanterelle
+	plant_def_type = /datum/plant_def/chanterelle

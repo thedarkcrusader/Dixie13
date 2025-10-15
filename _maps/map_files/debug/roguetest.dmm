@@ -1953,7 +1953,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "rH" = (
-/obj/structure/soil/mushmound/debug_mushmound/random,
+/obj/structure/soil/box/debug_box/random,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "rK" = (
@@ -2720,7 +2720,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "FM" = (
-/obj/structure/soil/mushmound/debug_mushmound/random,
+/obj/structure/soil/box/debug_box/random,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "FN" = (
@@ -18092,7 +18092,7 @@ at
 UJ
 Wr
 rH
-rH
+Wr
 oH
 oH
 Wr
@@ -18603,7 +18603,7 @@ as
 as
 as
 at
-rH
+Wr
 Wr
 Wr
 Wr
@@ -19120,7 +19120,7 @@ at
 rK
 QN
 FM
-FM
+QN
 EW
 do
 kj

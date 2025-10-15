@@ -9,7 +9,6 @@
 	faretype = FARE_POOR
 	var/list/pipe_reagents = list()
 	var/seed
-	var/spore
 	var/bitesize_mod = 0
 	var/datum/plant_genetics/source_genetics
 
@@ -57,29 +56,6 @@
 				new seed(location, source_genetics)
 			if(prob(6))
 				new seed(location, source_genetics)
-			qdel(src)
-			return
-		else
-			return ..()
-	..()
-
-/obj/item/reagent_containers/food/snacks/produce/mushroom/attackby(obj/item/weapon, mob/user, params)
-	if(weapon && isturf(loc))
-		var/turf/location = get_turf(src)
-		if(spore && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
-			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
-			if(prob(5))
-				user.visible_message("<span class= 'info'>[user] fails to extract any spores.</span>")
-				qdel(src)
-				return
-			user.visible_message("<span class='info>[user] extracts some spores.</span>")
-			new spore(location, source_genetics)
-			if(prob(90))
-				new spore(location, source_genetics)
-			if(prob(23))
-				new spore(location, source_genetics)
-			if(prob(6))
-				new spore(location, source_genetics)
 			qdel(src)
 			return
 		else
@@ -554,7 +530,7 @@
 	name = "coprinus"
 	desc = "An inedible mushroom cultivated for the fibers it produces when dried."
 	icon_state = "coprinus"
-	spore = /obj/item/neuFarm/spore/coprinus
+	seed = /obj/item/neuFarm/seed/spore/coprinus
 	throwforce = 0
 	tastes = list("bitter" = 1,"fibrous" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -569,7 +545,7 @@
 	name = "reishi"
 	desc = "A mushroom prized for its calming properties when dried and brewed into tea."
 	icon_state = "reishi"
-	spore = /obj/item/neuFarm/spore/reishi
+	seed = /obj/item/neuFarm/seed/spore/reishi
 	throwforce = 0
 	tastes = list("woody" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -583,7 +559,7 @@
 	name = "morel"
 	desc = "A mushroom prized for its unique flavor and culinary uses."
 	icon_state = "morel"
-	spore = /obj/item/neuFarm/spore/morel
+	seed = /obj/item/neuFarm/seed/spore/morel
 	throwforce = 0
 	tastes = list("umami" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -597,7 +573,7 @@
 	name = "oyster"
 	desc = "A mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "oyster"
-	spore = /obj/item/neuFarm/spore/oyster
+	seed = /obj/item/neuFarm/seed/spore/oyster
 	throwforce = 0
 	tastes = list("sweet" = 1,"briny" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -611,7 +587,7 @@
 	name = "porcini"
 	desc = "A common mushroom, often cultivated in regions too dark to grow much else. Prized for its hardiness and mild taste."
 	icon_state = "porcini"
-	spore = /obj/item/neuFarm/spore/porcini
+	seed = /obj/item/neuFarm/seed/spore/porcini
 	throwforce = 0
 	tastes = list("earthy" = 1,"nutty" = 1)
 	w_class = WEIGHT_CLASS_TINY
@@ -625,7 +601,7 @@
 	name = "chanterelle"
 	desc = "A rare mushroom prized for its unique flavor and culinary uses. (HEY CHANGE THIS LATER DINGUS!!)"
 	icon_state = "chanterelle"
-	spore = /obj/item/neuFarm/spore/chanterelle
+	seed = /obj/item/neuFarm/seed/spore/chanterelle
 	throwforce = 0
 	tastes = list("fruity" = 1,"earthy" = 1)
 	w_class = WEIGHT_CLASS_TINY

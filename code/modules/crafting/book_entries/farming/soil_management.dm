@@ -46,6 +46,10 @@
 			- Remove weeds by hand or with tools to prevent competition<br>
 			- Water soil when it appears dry<br>
 			- Apply appropriate fertilizers based on plant needs<br>
-			- Consider irrigation channels for consistent water supply
+			- Consider irrigation channels for consistent water supply<br>
+			<h2>Planter Boxes</h2>
+			- Allows one to grow plants in a convenient, raised planter box that can be moved as needed.<br>
+			- Larger plants like trees and bushes will not have room to spread their roots for proper nutrient uptake, killing them.<br>
+			- Root vegetables and Fungi <b>prefer<b> these boxes, and will perform slightly better if planted in one.<br>
 		</div>
 	"}

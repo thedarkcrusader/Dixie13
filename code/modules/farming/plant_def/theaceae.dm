@@ -13,6 +13,7 @@
 	water_drain_rate = 1 / (2 MINUTES)
 	can_grow_underground = FALSE  // Tea needs sunlight
 	plant_family = FAMILY_THEACEAE
+	can_grow_boxed = FALSE
 	// Tea bushes are efficient with nutrients
 	nitrogen_requirement = 0
 	phosphorus_requirement = 25

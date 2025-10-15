@@ -285,10 +285,12 @@
 	slices_num = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEATPIE_NUTRITION)
 	tastes = list("porcini and butterdough" = 1)
+
 /obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good
 	eat_effect = /datum/status_effect/buff/foodbuff
 	slice_path = /obj/item/reagent_containers/food/snacks/pieslice/good/porcini
 	tastes = list("savory porcini and crispy butterdough" = 1)
+
 /obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good/New()
 	. = ..()
 	good_quality_descriptors()

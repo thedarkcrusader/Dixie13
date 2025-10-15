@@ -20,8 +20,6 @@
 	var/variety_name
 	/// What string to add in front of the plant_def seed_identity
 	var/seed_identity_modifier
-	/// What string to add in front of the plant_def spore_identity
-	var/spore_identity_modifier
 
 /datum/plant_genetics/New(datum/plant_def/plant_def_instance)
 	. = ..()

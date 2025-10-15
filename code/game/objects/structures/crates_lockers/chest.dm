@@ -79,7 +79,7 @@
 	close_sound = 'sound/items/book_close.ogg'
 	sellprice = 0
 
-/obj/structure/closet/crate/chest/wicker/random_soilson/PopulateContents()
+/obj/structure/closet/crate/chest/wicker/random_soilson/Initialize()
 	for(var/i = 1 to rand(5, 8))
 		var/obj/item/neuFarm/seed/random = pick(subtypesof(/obj/item/neuFarm/seed) - /obj/item/neuFarm/seed/mixed_seed)
 		new random (get_turf(src))
@@ -87,7 +87,7 @@
 
 /obj/structure/closet/crate/chest/wicker/random_mushroom/PopulateContents()
 	for(var/i = 1 to rand(5,8))
-		var/obj/item/neuFarm/spore/random = pick(subtypesof(/obj/item/neuFarm/spore))
+		var/obj/item/neuFarm/seed/spore/random = pick(subtypesof(/obj/item/neuFarm/seed/spore))
 		new random (get_turf(src))
 	. = ..()
 
