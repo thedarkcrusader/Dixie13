@@ -1233,7 +1233,6 @@
 /obj/structure/soil/mushmound
 	name = "mushroom mound"
 	desc = "A mound of hay and nitesoil, used as the growing medium for various types of mushrooms."
-	icon = 'icons/roguetown/misc/soil.dmi'
 	icon_state = "mushmound-dry"
 	density = FALSE
 	anchored = FALSE
@@ -1243,7 +1242,6 @@
 	max_integrity = 100
 
 	COOLDOWN_DECLARE(mushmound_update)
-
 
 /obj/structure/soil/mushmound/attackby(obj/item/attacking_item, mob/user, params)
 	user.changeNext_move(CLICK_CD_FAST)
