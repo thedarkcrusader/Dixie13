@@ -242,10 +242,11 @@
 	var/list/pollen_sources = list() // Tracks which plants were pollinated
 	var/list/honey_types = list(
 		"default" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey,
-		"addictive" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing,
+		"healthy" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing,
+		"magical" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/luminescent,
+		"mad" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/mad,
+		"poisonous" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic,
 	)
-
-
 
 /obj/structure/apiary/Initialize()
 	. = ..()
@@ -488,9 +489,15 @@
 		if(pollen_sources[plant_type] > highest_count)
 			highest_count = pollen_sources[plant_type]
 
-			// Map plant type to honey type this will increase as I make more honey
+			// Map plant type to honey type
 			if(plant_type == /datum/plant_def/poppy)
-				highest_type = "addictive"
+				highest_type = "healthy"
+			if(plant_type == /datum/plant_def/manabloom)
+				highest_type = "magical"
+			if(plant_type == /datum/plant_def/swampweed)
+				highest_type = "mad"
+			if(plant_type == /datum/plant_def/jacksberry_poison)
+				highest_type = "poisonous"
 
 	// Clear pollen sources after honey is determined
 	pollen_sources.Cut()
@@ -884,29 +891,32 @@
 	treatment_type = "wax_moths"
 	treatment_strength = 40
 
-/obj/item/reagent_containers/food/snacks/spiderhoney/honey/ambrosia
-	name = "relaxing honey"
-	desc = "Sweet honey with subtle relaxing properties."
+/obj/item/reagent_containers/food/snacks/spiderhoney/honey/mad
+	name = "mad honey"
+	desc = "Dark green honey tainted by the strange plants of the bog, yet often sought by Dendorite melissai."
 	icon_state = "honey_green"
-	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/drug/space_drugs = 2)
+	volume = 20
+	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 1, /datum/reagent/druqks = 10, /datum/reagent/toxin = 4)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing
-	name = "medicinal honey"
-	desc = "Sweet honey with healing properties."
+	name = "rouge honey"
+	desc = "A rich red honey, still used in traditional medicine and prized by the faithful of Pestra."
 	icon_state = "honey_red"
-	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3)
+	volume = 20
+	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/ozium = 7, /datum/reagent/medicine/herbal/herbalist_panacea = 5)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic
-	name = "strange honey"
-	desc = "This honey has an unusual smell and appearance."
-	icon_state = "honey_toxic"
-	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/toxin = 2)
+	name = "honey"
+	desc = ""
+	icon_state = "honeycomb"
+	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/berrypoison = 5)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/luminescent
-	name = "glowing honey"
-	desc = "This honey gives off a soft bioluminescent glow."
+	name = "moon honey"
+	desc = "Strange blue honey, softly glowing with all the promise and danger of Noc's starborne knowledge."
 	icon_state = "honey_glowing"
-	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3)
+	volume = 20
+	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/manabloom_juice = 1, /datum/reagent/medicine/manapot/weak = 11)
 	light_system = MOVABLE_LIGHT
 	light_outer_range = 2
 	light_power = 1
