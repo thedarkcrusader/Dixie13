@@ -893,7 +893,7 @@
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/mad
 	name = "mad honey"
-	desc = "Dark green honey tainted by the strange plants of the bog, yet often sought by Dendorite melissai."
+	desc = "Dark green honey tainted by the strange plants of the bog, yet often sought by Dendorite Melissae."
 	icon_state = "honey_green"
 	volume = 20
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 1, /datum/reagent/druqks = 10, /datum/reagent/toxin = 4)
