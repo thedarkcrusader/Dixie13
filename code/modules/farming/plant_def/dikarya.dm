@@ -11,12 +11,12 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = FAST_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 35 // Mushrooms thrive on nitrogen
-	phosphorus_requirement = 0
+	nitrogen_requirement = 0
+	phosphorus_requirement = 30 // Grows well with its companion, porcini
 	potassium_requirement = 0
-	nitrogen_production = 0
+	nitrogen_production = 20
 	phosphorus_production = 0
-	potassium_production = 25
+	potassium_production = 0
 	seed_identity = "coprinus spores"
 
 /datum/plant_def/coprinus/set_genetic_tendencies(datum/plant_genetics/base_genetics)
@@ -36,9 +36,9 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = DEFAULT_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 40 // Porcini is a cultivar that produces more and heartier mushrooms, but requires more NPK.
-	phosphorus_requirement = 10
-	potassium_requirement = 12
+	nitrogen_requirement = 40 // Porcini is a cultivar that produces more and heartier mushrooms, but requires more N than most.
+	phosphorus_requirement = 0
+	potassium_requirement = 0
 	nitrogen_production = 0
 	phosphorus_production = 20
 	potassium_production = 0
@@ -84,7 +84,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 38 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	nitrogen_production = 16
@@ -108,11 +108,11 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 38 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 32 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	nitrogen_production = 0
-	phosphorus_production = 30
+	phosphorus_production = 26
 	potassium_production = 0
 	seed_identity = "oyster spores"
 
@@ -133,7 +133,7 @@
 	maturation_time = DEFAULT_GROW_TIME
 	produce_time = DEFAULT_PRODUCE_TIME
 	plant_family = FAMILY_DIKARYA
-	nitrogen_requirement = 40 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 32 // Mushrooms thrive on nitrogen
 	phosphorus_requirement = 0
 	potassium_requirement = 0
 	nitrogen_production = 0

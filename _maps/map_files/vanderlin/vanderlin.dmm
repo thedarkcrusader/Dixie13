@@ -18799,10 +18799,10 @@
 /area/rogue/indoors/town/tavern)
 "kZN" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/neuFarm/spore/porcini,
-/obj/item/neuFarm/spore/porcini,
-/obj/item/neuFarm/spore/coprinus,
-/obj/item/neuFarm/spore/coprinus,
+/obj/item/neuFarm/seed/spore/porcini,
+/obj/item/neuFarm/seed/spore/porcini,
+/obj/item/neuFarm/seed/spore/coprinus,
+/obj/item/neuFarm/seed/spore/coprinus,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
 "lai" = (
@@ -19567,7 +19567,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/manor/feast)
 "lCb" = (
-/obj/structure/soil/mushmound,
+/obj/structure/soil/box,
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/cell)
 "lCy" = (
