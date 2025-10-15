@@ -343,7 +343,7 @@
 	created_item = /obj/item/clothing/ring/gold
 	createditem_extra = 2
 
-/datum/anvil_recipe/valuables/silver/diadem
+/datum/anvil_recipe/valuables/gold/diadem
 	name = "Gold Diadem"
 	recipe_name = "a Gold Diadem"
 	created_item = /obj/item/clothing/head/crown/circlet/golddiadem
