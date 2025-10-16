@@ -1242,7 +1242,7 @@
 	add_growth(plant.maturation_time)
 	add_growth(plant.produce_time)
 
-/*	..................   Planter Box   ................... */
+/*	..................   Mushroom Mound   ................... */
 /obj/structure/soil/mushmound
 	name = "mushroom mound"
 	desc = "A mound made of chaff and nitesoil. A suitable place to grow mushrooms and not much else."
