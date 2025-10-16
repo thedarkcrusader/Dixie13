@@ -262,8 +262,10 @@
 	max_integrity = INTEGRITY_STRONG
 	item_weight = 6 * STEEL_MULTIPLIER
 
-
-
+/obj/item/clothing/head/helmet/bascinet/steppe
+	name = "steppe bascinet"
+	icon_state = "shishak"
+	desc = "A flat decorated steel bascinet with a spike at the top end."
 
 //......................................................................................................
 /*----------------\
