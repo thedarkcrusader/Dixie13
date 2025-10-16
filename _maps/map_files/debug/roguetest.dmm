@@ -1272,6 +1272,10 @@
 /obj/structure/table/wood/treestump/shroomstump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
+"hk" = (
+/obj/structure/closet/crate/chest/wicker/random_mushroom,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "hn" = (
 /mob/living/simple_animal/hostile/retaliate/blacksmith,
 /turf/open/floor/cobble,
@@ -1953,7 +1957,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "rH" = (
-/obj/structure/soil/box/debug_box/random,
+/obj/structure/soil/mushmound/debug_mushmound/random,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "rK" = (
@@ -2720,7 +2724,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "FM" = (
-/obj/structure/soil/box/debug_box/random,
+/obj/structure/soil/mushmound/debug_mushmound/random,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "FN" = (
@@ -3287,10 +3291,6 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
-"UJ" = (
-/obj/structure/closet/crate/chest/wicker/random_mushroom,
-/turf/open/floor/cobblerock,
-/area/rogue/outdoors)
 "UX" = (
 /obj/structure/rotation_piece{
 	dir = 1
@@ -18089,8 +18089,8 @@ ac
 ac
 ac
 at
-UJ
-Wr
+at
+rH
 rH
 Wr
 oH
@@ -18603,7 +18603,7 @@ as
 as
 as
 at
-Wr
+rH
 Wr
 Wr
 Wr
@@ -19118,7 +19118,7 @@ as
 as
 at
 rK
-QN
+hk
 FM
 QN
 EW

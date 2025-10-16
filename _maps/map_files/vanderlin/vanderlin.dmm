@@ -17616,7 +17616,7 @@
 /area/rogue/indoors/town/manor/heir/heir2)
 "kiS" = (
 /obj/machinery/light/fueled/torchholder/l,
-/obj/structure/composter/full,
+/obj/structure/composter/halffull,
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/cell)
 "kiV" = (
@@ -19567,7 +19567,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/manor/feast)
 "lCb" = (
-/obj/structure/soil/box,
+/obj/structure/soil/mushmound,
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/cell)
 "lCy" = (
