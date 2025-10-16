@@ -102,6 +102,8 @@
 				splash_holder.reaction(mob, TOUCH, 1)
 			for(var/obj/structure/soil/crop in T)
 				crop.adjust_water(water_pressure * 2)
+			for(var/obj/structure/soil/mushmound/crop in T)
+				crop.adjust_water(water_pressure * 2)
 
 /obj/structure/sprinkler/proc/can_spray_reach(turf/start, turf/target)
 	var/list/path_turfs = getline(start, target)
