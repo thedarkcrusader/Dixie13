@@ -896,6 +896,7 @@
 	desc = "Dark green honey tainted by the strange plants of the bog, yet often sought by Dendorite Melissae."
 	icon_state = "honey_green"
 	volume = 20
+	tastes = list("earthy sweetness" = 1, "something spicy" = 1)
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 1, /datum/reagent/druqks = 10, /datum/reagent/toxin = 4)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing
@@ -903,12 +904,14 @@
 	desc = "A rich red honey, still used in traditional medicine and prized by the faithful of Pestra."
 	icon_state = "honey_red"
 	volume = 20
+	tastes = list("numbing sweetness" = 1, "a flash of white" = 1)
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/ozium = 7, /datum/reagent/medicine/herbal/herbalist_panacea = 5)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic
 	name = "honey"
 	desc = ""
 	icon_state = "honeycomb"
+	tastes = list("bitterness" = 1)
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/berrypoison = 5)
 
 /obj/item/reagent_containers/food/snacks/spiderhoney/honey/luminescent
@@ -916,6 +919,7 @@
 	desc = "Strange blue honey, softly glowing with all the promise and danger of Noc's starborne knowledge."
 	icon_state = "honey_glowing"
 	volume = 20
+	tastes = list("complex sweetness" = 1, "sharp floral tones" = 1)
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/manabloom_juice = 1, /datum/reagent/medicine/manapot/weak = 11)
 	light_system = MOVABLE_LIGHT
 	light_outer_range = 2
