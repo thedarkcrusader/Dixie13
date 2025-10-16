@@ -496,7 +496,7 @@
 				highest_type = "magical"
 			if(plant_type == /datum/plant_def/swampweed)
 				highest_type = "mad"
-			if(plant_type == /datum/plant_def/jacksberry_poison)
+			if(plant_type == /datum/plant_def/jacksberry_poison || /datum/plant_def/alchemical/atropa || /datum/plant_def/alchemical/paris || /datum/plant_def/fyritiusflower)
 				highest_type = "poisonous"
 
 	// Clear pollen sources after honey is determined
