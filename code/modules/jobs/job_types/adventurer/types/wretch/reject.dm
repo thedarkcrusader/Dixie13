@@ -1,5 +1,6 @@
 /datum/job/advclass/wretch/reject
 	title = "Rejected Royal"
+	f_title = "Disowned Princess"
 	tutorial = "You were once a member of the royal family, but due to your actions, or the circumstances of your birth, you have been cast out to roam the wilds. \
 	Now, you return, seeking redemption or perhaps... revenge."
 	allowed_races = list(\
@@ -48,15 +49,10 @@
 
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
-		H.job = "Disowned Prince"
 		if(H.mind?.assigned_role)
 			H.mind.assigned_role.title = "Disowned Prince"
-
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/princess
-		H.job = "Disowned Princess"
-		if(H.mind?.assigned_role)
-			H.mind.assigned_role.title = "Disowned Princess"
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
