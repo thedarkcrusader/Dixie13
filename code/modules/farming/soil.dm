@@ -448,12 +448,15 @@
 	COOLDOWN_START(src, soil_update, 10 SECONDS)
 	update_appearance(UPDATE_OVERLAYS) // only update icon after all the processes have run
 
+var/soil_tilled = "soil-tilled"
+var/mushmound_tilled = "mushmound-tilled"
+
 /obj/structure/soil/update_overlays()
 	. = ..()
 	if(!mushmound && tilled_time > 0)
-		. += "soil-tilled"
+		. += soil_tilled
 	else if(mushmound && tilled_time > 0)
-		. += "mushmound-tilled"
+		. += mushmound_tilled
 	. += get_water_overlay()
 	. += get_nutri_overlay()
 	if(plant)
@@ -463,31 +466,33 @@
 	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
 		. += "weeds-1"
 
+var/soil_overlay = "soil-overlay"
+var/mushmound_overlay = "mushmound-overlay"
+
 /obj/structure/soil/proc/get_water_overlay()
 		if(!mushmound) return mutable_appearance(
 			icon,\
-			"soil-overlay",\
+			soil_overlay,\
 			color = "#000033",\
 			alpha = (100 * (water / MAX_PLANT_WATER)),\
 		)
 		if(mushmound) return mutable_appearance(
 			icon,\
-			"mushmound-overlay",\
+			mushmound_overlay,\
 			color = "#000033",\
 			alpha = (100 * (water / MAX_PLANT_WATER)),\
 		)
 
-
 /obj/structure/soil/proc/get_nutri_overlay()
 		if(!mushmound) return mutable_appearance(
 			icon,\
-			"soil-overlay",\
+			soil_overlay,\
 			color = "#6d3a00",\
 			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
 		)
 		if(mushmound) return mutable_appearance(
 			icon,\
-			"mushmound-overlay",\
+			mushmound_overlay,\
 			color = "#6d3a00",\
 			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
 		)
