@@ -17,3 +17,9 @@
 		return FALSE
 
 	return TRUE
+
+/datum/job/town_militiaman
+	title = "Town Militiaman"
+	faction = FACTION_TOWN
+	total_positions = 0
+	spawn_positions = 0

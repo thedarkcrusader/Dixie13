@@ -10,5 +10,10 @@
 
 /datum/action/cooldown/spell/undirected/list_target/convert_role/guard/on_conversion(mob/living/cast_on)
 	. = ..()
-	if(cast_on.gender == FEMALE)
-		new_role = "Sister"
+
+/datum/job/brother
+	title = "Brother"
+	f_title = "Sister"
+	faction = FACTION_TOWN
+	total_positions = 0
+	spawn_positions = 0
