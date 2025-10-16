@@ -242,7 +242,7 @@
 	var/list/pollen_sources = list() // Tracks which plants were pollinated
 	var/list/honey_types = list(
 		"default" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey,
-		"healthy" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing,
+		"addictive" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/poppy,
 		"magical" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/luminescent,
 		"mad" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/mad,
 		"poisonous" = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic,
@@ -491,7 +491,7 @@
 
 			// Map plant type to honey type
 			if(plant_type == /datum/plant_def/poppy)
-				highest_type = "healthy"
+				highest_type = "addictive"
 			if(plant_type == /datum/plant_def/manabloom)
 				highest_type = "magical"
 			if(plant_type == /datum/plant_def/swampweed)
@@ -899,7 +899,7 @@
 	tastes = list("earthy sweetness" = 1, "something spicy" = 1)
 	list_reagents = list(/datum/reagent/consumable/honey = 5, /datum/reagent/consumable/nutriment = 1, /datum/reagent/druqks = 10, /datum/reagent/toxin = 4)
 
-/obj/item/reagent_containers/food/snacks/spiderhoney/honey/healing
+/obj/item/reagent_containers/food/snacks/spiderhoney/honey/poppy
 	name = "rouge honey"
 	desc = "A rich red honey, still used in traditional medicine and prized by the faithful of Pestra."
 	icon_state = "honey_red"
