@@ -14,6 +14,6 @@
 /datum/job/brother
 	title = "Brother"
 	f_title = "Sister"
-	faction = FACTION_TOWN
+	faction = FACTION_NEUTRAL
 	total_positions = 0
 	spawn_positions = 0
