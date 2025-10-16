@@ -193,11 +193,12 @@
 		record_featured_stat(FEATURED_STATS_BLEEDERS, src)
 	record_round_statistic(STATS_BLOOD_SPILT, amt / 100)
 
-	if(isturf(loc)) // Blood loss still happens in locker, floor stays clean
-		add_drip_floor(get_turf(src), amt)
+	if(amt > 0.5)
+		if(isturf(loc)) // Blood loss still happens in locker, floor stays clean
+			add_drip_floor(get_turf(src), amt)
 
-	if(body_position != LYING_DOWN && !stat)
-		playsound(get_turf(src), pick('sound/misc/bleed (1).ogg', 'sound/misc/bleed (2).ogg', 'sound/misc/bleed (3).ogg'), 100, FALSE)
+		if(body_position != LYING_DOWN && !stat)
+			playsound(get_turf(src), pick('sound/misc/bleed (1).ogg', 'sound/misc/bleed (2).ogg', 'sound/misc/bleed (3).ogg'), 100, FALSE)
 
 	updatehealth()
 
