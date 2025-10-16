@@ -7,7 +7,6 @@
 	maturation_time = FAST_GROWING
 	water_drain_rate = 1 / (1 MINUTES)
 	plant_family = FAMILY_ROOT
-	prefer_boxed = TRUE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 30
 	potassium_requirement = 0

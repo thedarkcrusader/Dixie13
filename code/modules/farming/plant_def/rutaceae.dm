@@ -8,7 +8,6 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_RUTACEAE  // Citrus family
-	can_grow_boxed = FALSE
 	nitrogen_requirement = 45
 	phosphorus_requirement = 0
 	potassium_requirement = 0
@@ -32,7 +31,6 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_RUTACEAE
-	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 42
 	potassium_requirement = 0
@@ -56,7 +54,6 @@
 	produce_amount_max = 3
 	produce_time = SLOW_PRODUCE_TIME
 	plant_family = FAMILY_RUTACEAE
-	can_grow_boxed = FALSE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 0
 	potassium_requirement = 48

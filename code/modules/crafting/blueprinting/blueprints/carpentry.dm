@@ -478,12 +478,3 @@
 	)
 	craftdiff = 1
 
-/datum/blueprint_recipe/carpentry/planterbox
-	name = "planter box"
-	desc = "A box for planting things."
-	result_type = /obj/structure/soil/box
-	required_materials = list(
-		/obj/item/natural/dirtclod = 5,
-		/obj/item/grown/log/tree/small = 2
-	)
-	craftdiff = 0

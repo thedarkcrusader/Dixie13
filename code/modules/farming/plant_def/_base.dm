@@ -30,10 +30,8 @@
 	var/seed_color
 	/// Whether the plant can grow underground
 	var/can_grow_underground = FALSE
-	/// Whether the plant can grow in a planter box
-	var/can_grow_boxed = TRUE
-	/// Whether the plant PREFERS growing in a planter box
-	var/prefer_boxed = FALSE
+	/// Whether the plant can grow in mushroom mound
+	var/mound_growth = FALSE
 
 	// NPK nutrient requirements (consumed during growth)
 	var/nitrogen_requirement = 30      // For leafy growth
@@ -192,7 +190,6 @@
 					<strong>Water Usage:</strong> [water_drain_rate * (1 MINUTES)] units/minute<br>
 					<strong>Weed Resistance:</strong> [weed_immune ? "Yes" : "No"]<br>
 					<strong>Underground Growth:</strong> [can_grow_underground ? "Yes" : "No"]<br>
-					<strong>Planter Box Growth:</strong> [can_grow_boxed ? "Yes" : "No"]<br>
 				</div>
 			</div>
 		</body>

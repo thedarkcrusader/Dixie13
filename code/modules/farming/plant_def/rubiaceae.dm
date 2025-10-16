@@ -12,7 +12,6 @@
 	water_drain_rate = 1 / (2 MINUTES)
 	can_grow_underground = FALSE  // Coffee needs sunlight
 	plant_family = FAMILY_RUBIACEAE
-	can_grow_boxed = FALSE
 	// Coffee bushes need moderate nutrients
 	nitrogen_requirement = 25
 	phosphorus_requirement = 0

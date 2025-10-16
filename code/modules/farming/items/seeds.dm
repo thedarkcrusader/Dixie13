@@ -248,19 +248,19 @@
 		color = def.seed_color // make a new spore color list later
 
 /obj/item/neuFarm/seed/spore/coprinus
-	plant_def_type = /datum/plant_def/coprinus
+	plant_def_type = /datum/plant_def/mushroom/coprinus
 
 /obj/item/neuFarm/seed/spore/reishi
-	plant_def_type = /datum/plant_def/reishi
+	plant_def_type = /datum/plant_def/mushroom/reishi
 
 /obj/item/neuFarm/seed/spore/morel
-	plant_def_type = /datum/plant_def/morel
+	plant_def_type = /datum/plant_def/mushroom/morel
 
 /obj/item/neuFarm/seed/spore/oyster
-	plant_def_type = /datum/plant_def/oyster
+	plant_def_type = /datum/plant_def/mushroom/oyster
 
 /obj/item/neuFarm/seed/spore/porcini
-	plant_def_type = /datum/plant_def/porcini
+	plant_def_type = /datum/plant_def/mushroom/porcini
 
 /obj/item/neuFarm/seed/spore/chanterelle
-	plant_def_type = /datum/plant_def/chanterelle
+	plant_def_type = /datum/plant_def/mushroom/chanterelle

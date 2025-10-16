@@ -207,34 +207,32 @@
 	icon_state = "fyritius2"
 	plant_type = /datum/plant_def/fyritiusflower
 
-/obj/structure/wild_plant/nospread/coprinus
+/* Wild Mushrooms */
+/obj/structure/wild_plant/nospread/mushroom
 	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+
+/obj/structure/wild_plant/nospread/mushroom/coprinus
 	icon_state = "coprinus2"
-	plant_type = /datum/plant_def/coprinus
+	plant_type = /datum/plant_def/mushroom/coprinus
 
-/obj/structure/wild_plant/nospread/reishi
-	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+/obj/structure/wild_plant/nospread/mushroom/reishi
 	icon_state = "reishi2"
-	plant_type = /datum/plant_def/reishi
+	plant_type = /datum/plant_def/mushroom/reishi
 
-/obj/structure/wild_plant/nospread/morel
-	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+/obj/structure/wild_plant/nospread/mushroom/morel
 	icon_state = "morel2"
-	plant_type = /datum/plant_def/morel
+	plant_type = /datum/plant_def/mushroom/morel
 
-/obj/structure/wild_plant/nospread/oyster
-	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+/obj/structure/wild_plant/nospread/mushroom/oyster
 	icon_state = "oyster2"
-	plant_type = /datum/plant_def/oyster
+	plant_type = /datum/plant_def/mushroom/oyster
 
-/obj/structure/wild_plant/nospread/porcini
-	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+/obj/structure/wild_plant/nospread/mushroom/porcini
 	icon_state = "porcini2"
-	plant_type = /datum/plant_def/porcini
+	plant_type = /datum/plant_def/mushroom/porcini
 
-/obj/structure/wild_plant/nospread/chanterelle
-	icon = 'icons/roguetown/misc/dikaryawild.dmi'
+/obj/structure/wild_plant/nospread/mushroom/chanterelle
 	icon_state = "chanterelle2"
-	plant_type = /datum/plant_def/chanterelle
+	plant_type = /datum/plant_def/mushroom/chanterelle
 
 

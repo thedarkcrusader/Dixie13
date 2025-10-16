@@ -937,7 +937,7 @@
 		/datum/repeatable_crafting_recipe/bee_treatment/miticide,
 		/datum/repeatable_crafting_recipe/bee_treatment/insecticide,
 		/datum/blueprint_recipe/carpentry/apiary,
-		/datum/blueprint_recipe/carpentry/planterbox,
+		/datum/repeatable_crafting_recipe/survival/mushmound,
 	)
 
 /obj/item/recipe_book/medical

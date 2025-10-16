@@ -6,7 +6,6 @@
 	produce_amount_max = 4
 	water_drain_rate = 1 / (1 MINUTES)
 	plant_family = FAMILY_SOLANACEAE
-	prefer_boxed = TRUE
 	nitrogen_requirement = 0
 	phosphorus_requirement = 0
 	potassium_requirement = 40

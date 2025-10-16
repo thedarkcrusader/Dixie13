@@ -49,7 +49,7 @@
 			<h3>Root - Root Vegetables</h3>
 			<b>Characteristics:</b> Underground storage organs, excellent yields, and good cold resistance. Efficient water usage.<br>
 			<b>Examples:</b> Turnip<br>
-			<b>Growing Tips:</b> Need deep, loose soil for proper root development. Generally hardy and productive. Thrive in planter boxes.<br>
+			<b>Growing Tips:</b> Need deep, loose soil for proper root development. Generally hardy and productive.<br>
 			<br>
 
 			<h3>Rutaceae - Citrus Family</h3>
@@ -61,13 +61,13 @@
 			<h3>Solanaceae - Nightshade Family</h3>
 			<b>Characteristics:</b> Diverse family including both food crops and potentially toxic plants. Often high-yielding with good water efficiency.<br>
 			<b>Examples:</b> Potato<br>
-			<b>Growing Tips:</b> Variable family - some members are excellent food crops while others may be toxic. Generally productive. Thrive in planter boxes.<br>
+			<b>Growing Tips:</b> Variable family - some members are excellent food crops while others may be toxic. Generally productive.<br>
 			<br>
 
 			<h3>Dikarya - Fungus Family</h3>
-			<b>Characteristics:</b> Not truly a plant, this family consists of strange fungi that can be grown without sunlight. Members of this family are often quick to grow but succumb quickly to cold conditions.<br>
+			<b>Characteristics:</b> Not truly a plant, this family consists of strange fungi that can be grown without sunlight. Members of this family succumb quickly to cold conditions.<br>
 			<b>Examples:</b> Coprinus, Porcini, Morel<br>
-			<b>Growing Tips:</b> Need warm conditions and nitrogen heavy fertilizer to grow. Good for succession planting. Thrive in planter boxes.<br>
+			<b>Growing Tips:</b> Need warm conditions and nitrogen heavy fertilizer to grow. Good for succession planting. Thrive when planted in mushroom mounds.<br>
 			<br>
 
 			<h2>Crop Rotation Benefits</h2>

@@ -71,7 +71,8 @@
 	var/quality_points = 0
 	///accellerated_growth
 	var/accellerated_growth = 0
-
+	/// Differentiating the overlays
+	var/mushmound = FALSE
 	///the overlays we are adding to mobs
 	var/list/vanished
 
@@ -449,8 +450,10 @@
 
 /obj/structure/soil/update_overlays()
 	. = ..()
-	if(tilled_time > 0)
+	if(!mushmound && tilled_time > 0)
 		. += "soil-tilled"
+	else if(mushmound && tilled_time > 0)
+		. += "mushmound-tilled"
 	. += get_water_overlay()
 	. += get_nutri_overlay()
 	if(plant)
@@ -461,20 +464,33 @@
 		. += "weeds-1"
 
 /obj/structure/soil/proc/get_water_overlay()
-	return mutable_appearance(
-		icon,\
-		"soil-overlay",\
-		color = "#000033",\
-		alpha = (100 * (water / MAX_PLANT_WATER)),\
-	)
+		if(!mushmound) return mutable_appearance(
+			icon,\
+			"soil-overlay",\
+			color = "#000033",\
+			alpha = (100 * (water / MAX_PLANT_WATER)),\
+		)
+		if(mushmound) return mutable_appearance(
+			icon,\
+			"mushmound-overlay",\
+			color = "#000033",\
+			alpha = (100 * (water / MAX_PLANT_WATER)),\
+		)
+
 
 /obj/structure/soil/proc/get_nutri_overlay()
-	return mutable_appearance(
-		icon,\
-		"soil-overlay",\
-		color = "#6d3a00",\
-		alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
-	)
+		if(!mushmound) return mutable_appearance(
+			icon,\
+			"soil-overlay",\
+			color = "#6d3a00",\
+			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
+		)
+		if(mushmound) return mutable_appearance(
+			icon,\
+			"mushmound-overlay",\
+			color = "#6d3a00",\
+			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
+		)
 
 /obj/structure/soil/proc/get_plant_overlay()
 	var/plant_color
@@ -844,9 +860,6 @@
 	var/turf/location = loc
 	if(!plant.can_grow_underground && !location.can_see_sky())
 		return
-	var/obj/structure/soil/box/box = locate(/obj/structure/soil/box) in location
-	if(box && !plant.can_grow_boxed)
-		return
 	// If matured and produce is ready, don't process plant nutrition
 	if(matured && produce_ready)
 		return
@@ -875,9 +888,6 @@
 	if(has_world_trait(/datum/world_trait/dendor_drought))
 		growth_multiplier *= is_ascendant(DENDOR) ? 0.3 : 0.4
 		nutriment_eat_multiplier *= is_ascendant(DENDOR) ? 2.5 : 2
-	if(box && plant.prefer_boxed)
-		growth_multiplier *= 1.2
-		nutriment_eat_multiplier *= 0.8
 
 	// Weed interference
 	if(weeds >= MAX_PLANT_WEEDS * 0.3)
@@ -1233,63 +1243,37 @@
 	add_growth(plant.produce_time)
 
 /*	..................   Planter Box   ................... */
-/obj/structure/soil/box
-	name = "planter box"
-	desc = "A constructed box of lumber, filled with soil. Its confined space is not suitable for large plants, like trees and bushes."
-	icon_state = "planterbox"
-	density = TRUE
-	anchored = FALSE
-	drag_slowdown = 6
-	climbable = TRUE
+/obj/structure/soil/mushmound
+	name = "mushroom mound"
+	desc = "A mound made of chaff and nitesoil. A suitable place to grow mushrooms and not much else."
+	icon_state = "mushmound"
+	density = FALSE
+	anchored = TRUE
+	climbable = FALSE
 	climb_offset = 10
 	max_integrity = 100
+	mushmound = TRUE
+	resistance_flags = NONE
+	debris = list(/obj/item/natural/chaff = 1)
+	attacked_sound = "plantcross"
 
-	COOLDOWN_DECLARE(box_update)
-
-/obj/structure/soil/box/update_overlays()
+/obj/structure/soil/mushmound/process_plant_nutrition(dt)
+	var/growth_multiplier = 1.0
+	var/nutriment_eat_multiplier = 1.0
+	if(!plant.mound_growth)
+		return
 	. = ..()
-	if(tilled_time > 0)
-		. += "box-tilled"
-	. += get_water_boxoverlay()
-	. += get_nutri_boxoverlay()
-	if(plant)
-		. += get_plant_overlay()
-	if(weeds >= MAX_PLANT_WEEDS * 0.6)
-		. += "weeds-1"
-	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
-		. += "weeds-2"
+	growth_multiplier *= 1.2
+	nutriment_eat_multiplier *= 0.8
 
-/obj/structure/soil/box/proc/get_tilled_boxoverlay()
-	return mutable_appearance(
-		icon,\
-		"box-tilled",\
-		alpha = (50),\
-	)
-
-/obj/structure/soil/box/proc/get_water_boxoverlay()
-	return mutable_appearance(
-		icon,\
-		"box-overlay",\
-		color = "#000033",\
-		alpha = (100 * (water / MAX_PLANT_WATER)),\
-	)
-
-/obj/structure/soil/box/proc/get_nutri_boxoverlay()
-	return mutable_appearance(
-		icon,\
-		"box-overlay",\
-		color = "#6d3a00",\
-		alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
-	)
-
-/obj/structure/soil/box/debug_box
+/obj/structure/soil/mushmound/debug_mushmound
 	var/obj/item/neuFarm/seed/seed_to_grow
 
-/obj/structure/soil/box/debug_box/random/Initialize()
-	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed || /obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/mixed_seed - /obj/item/neuFarm/seed/spore)
+/obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/spore)
 	. = ..()
 
-/obj/structure/soil/box/debug_box/Initialize()
+/obj/structure/soil/mushmound/debug_mushmound/Initialize()
 	. = ..()
 	if(!seed_to_grow)
 		return

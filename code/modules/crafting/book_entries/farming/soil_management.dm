@@ -47,9 +47,9 @@
 			- Water soil when it appears dry<br>
 			- Apply appropriate fertilizers based on plant needs<br>
 			- Consider irrigation channels for consistent water supply<br>
-			<h2>Planter Boxes</h2>
-			- Allows one to grow plants in a convenient, raised planter box that can be moved as needed.<br>
-			- Larger plants like trees and bushes will not have room to spread their roots for proper nutrient uptake, killing them.<br>
-			- Root vegetables and Fungi <b>prefer<b> these boxes, and will perform slightly better if planted in one.<br>
+			<h2>Mushroom Mounds</h2>
+			- Growing medium exclusively for mushrooms. Provides them with the ideal environment to flourish.<br>
+			- Mushroom spores planted in this mound will get a boost to their growth and nutrient uptake.<br>
+			- Other plants will not be able to establish a proper root system, killing them if planted in this mound.<br>
 		</div>
 	"}
