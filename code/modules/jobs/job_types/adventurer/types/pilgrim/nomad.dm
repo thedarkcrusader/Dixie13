@@ -48,5 +48,4 @@
 	beltl = /obj/item/storage/meatbag
 	backpack_contents = list(/obj/item/bait = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1)
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(H))
-	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(H))
 	new /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled(get_turf(H))

@@ -27,7 +27,7 @@
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary/black
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	beltr = /obj/item/weapon/sword/sabre
+	beltr = /obj/item/weapon/sword/long/rider/steppe
 	beltl= /obj/item/ammo_holder/quiver/arrows
 	shirt = /obj/item/clothing/armor/gambeson/light/steppe
 	pants = /obj/item/clothing/pants/tights/colored/red
