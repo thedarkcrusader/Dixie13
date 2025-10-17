@@ -71,8 +71,10 @@
 	var/quality_points = 0
 	///accellerated_growth
 	var/accellerated_growth = 0
-	/// Differentiating the overlays
-	var/mushmound = FALSE
+	/// Soil overlay icon state
+	var/tilled_overlay = "soil-tilled"
+	/// Water overlay icon state
+	var/water_overlay = "soil-overlay"
 	///the overlays we are adding to mobs
 	var/list/vanished
 
@@ -448,15 +450,10 @@
 	COOLDOWN_START(src, soil_update, 10 SECONDS)
 	update_appearance(UPDATE_OVERLAYS) // only update icon after all the processes have run
 
-var/soil_tilled = "soil-tilled"
-var/mushmound_tilled = "mushmound-tilled"
-
 /obj/structure/soil/update_overlays()
 	. = ..()
-	if(!mushmound && tilled_time > 0)
-		. += soil_tilled
-	else if(mushmound && tilled_time > 0)
-		. += mushmound_tilled
+	if(tilled_time > 0)
+		. += tilled_overlay
 	. += get_water_overlay()
 	. += get_nutri_overlay()
 	if(plant)
@@ -466,33 +463,18 @@ var/mushmound_tilled = "mushmound-tilled"
 	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
 		. += "weeds-1"
 
-var/soil_overlay = "soil-overlay"
-var/mushmound_overlay = "mushmound-overlay"
-
 /obj/structure/soil/proc/get_water_overlay()
-		if(!mushmound) return mutable_appearance(
+		return mutable_appearance(
 			icon,\
-			soil_overlay,\
-			color = "#000033",\
-			alpha = (100 * (water / MAX_PLANT_WATER)),\
-		)
-		if(mushmound) return mutable_appearance(
-			icon,\
-			mushmound_overlay,\
+			water_overlay,\
 			color = "#000033",\
 			alpha = (100 * (water / MAX_PLANT_WATER)),\
 		)
 
 /obj/structure/soil/proc/get_nutri_overlay()
-		if(!mushmound) return mutable_appearance(
+		return mutable_appearance(
 			icon,\
-			soil_overlay,\
-			color = "#6d3a00",\
-			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
-		)
-		if(mushmound) return mutable_appearance(
-			icon,\
-			mushmound_overlay,\
+			tilled_overlay,\
 			color = "#6d3a00",\
 			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
 		)
@@ -1230,7 +1212,7 @@ var/mushmound_overlay = "mushmound-overlay"
 	var/obj/item/neuFarm/seed/seed_to_grow
 
 /obj/structure/soil/debug_soil/random/Initialize()
-	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed || /obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/mixed_seed - /obj/item/neuFarm/seed/spore)
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed) - /obj/item/neuFarm/seed/mixed_seed - /obj/item/neuFarm/seed/spore)
 	. = ..()
 
 /obj/structure/soil/debug_soil/Initialize()
@@ -1252,15 +1234,15 @@ var/mushmound_overlay = "mushmound-overlay"
 	name = "mushroom mound"
 	desc = "A mound made of chaff and nitesoil. A suitable place to grow mushrooms and not much else."
 	icon_state = "mushmound"
-	density = FALSE
 	anchored = TRUE
 	climbable = FALSE
 	climb_offset = 10
 	max_integrity = 100
-	mushmound = TRUE
 	resistance_flags = NONE
-	debris = list(/obj/item/natural/chaff = 1)
+	debris = list(/obj/item/natural/poo = 1)
 	attacked_sound = "plantcross"
+	tilled_overlay = "mushmound-tilled"
+	water_overlay = "mushmound-overlay"
 
 /obj/structure/soil/mushmound/process_plant_nutrition(dt)
 	var/growth_multiplier = 1.0
@@ -1277,20 +1259,6 @@ var/mushmound_overlay = "mushmound-overlay"
 /obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
 	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/spore)
 	. = ..()
-
-/obj/structure/soil/mushmound/debug_mushmound/Initialize()
-	. = ..()
-	if(!seed_to_grow)
-		return
-	var/debug_seed_genetics = initial(seed_to_grow.seed_genetics)
-	if(!debug_seed_genetics)
-		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(seed_to_grow.plant_def_type)]
-		debug_seed_genetics = new /datum/plant_genetics(plant_def_instance)
-	else
-		debug_seed_genetics = new debug_seed_genetics()
-	insert_plant(GLOB.plant_defs[initial(seed_to_grow.plant_def_type)], debug_seed_genetics)
-	add_growth(plant.maturation_time)
-	add_growth(plant.produce_time)
 
 #undef MAX_PLANT_HEALTH
 #undef MAX_PLANT_NUTRITION
