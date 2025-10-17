@@ -64,7 +64,7 @@
 					break
 			else
 				break
-		if(humcaster.cleric.devotion - 1 < 0)
+		if(humcaster.cleric && !humcaster.cleric.check_devotion(1))
 			break
 		victim.repair_damage(max_integrity * (0.02 * humcaster.get_skill_level(associated_skill)))
 		victim.atom_fix()
