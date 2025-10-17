@@ -31,10 +31,9 @@
 	if(!ishuman(owner))
 		return FALSE
 
-/datum/action/cooldown/spell/undirected/touch/mending_mantra/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster, list/modifiers)
-	if(!istype(caster, /mob/living/carbon/human))
+/datum/action/cooldown/spell/undirected/touch/mending_mantra/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/human/caster, list/modifiers)
+	if(!istype(caster))
 		return
-	var/mob/living/carbon/human/humcaster = caster
 	var/integrity = victim.get_integrity()
 	var/max_integrity = victim.max_integrity
 	var/bladeintgood = TRUE
