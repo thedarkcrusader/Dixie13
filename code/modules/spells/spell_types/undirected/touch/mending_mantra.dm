@@ -53,6 +53,11 @@
 	humcaster.visible_message(span_info("[humcaster] holds [humcaster.p_their()] hand up to [victim], a haze of orange energy flowing from [humcaster.p_their()] fingertips."), span_notice("I beeseech Malum to return [victim] to health and function..."))
 	while(do_after(humcaster, 0.5 SECONDS, victim))
 		if((victim.get_integrity() == victim.max_integrity))
+			if(!istype(victim, /obj/item))
+				break
+			var/obj/item/sord = victim
+			if(sord.blade_int >= sord.max_blade_int)
+				break
 			if(istype(victim, /obj/item))
 				var/obj/item/sord = victim
 				if(sord.blade_int >= sord.max_blade_int)
