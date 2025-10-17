@@ -437,6 +437,16 @@
 	recipe_name = "a Face Mask"
 	created_item = /obj/item/clothing/face/facemask/steel
 
+/datum/anvil_recipe/armor/steel/steppemask
+	name = "Steppe War Mask"
+	recipe_name = "a Face Mask"
+	created_item = /obj/item/clothing/face/facemask/steel/steppe
+
+/datum/anvil_recipe/armor/steel/maskbeast
+	name = "Steppe Beast Mask"
+	recipe_name = "a Face Mask"
+	created_item = /obj/item/clothing/face/facemask/steel/steppebeast
+
 /datum/anvil_recipe/armor/steel/cuirass
 	name = "Steel Cuirass"
 	recipe_name = "a Cuirass"
@@ -567,6 +577,13 @@
 	recipe_name = "a Scalemail"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/armor/medium/scale
+	craftdiff = 3
+
+/datum/anvil_recipe/armor/steel/scalemail/steppe
+	name = "Lamellar (+Bar, +cured hide)"
+	recipe_name = "Steel Lamellar"
+	additional_items = list(/obj/item/ingot/steel,/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/armor/medium/scale/steppe
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/surcoat

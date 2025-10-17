@@ -267,6 +267,7 @@
 	icon_state = "shishak"
 	desc = "A flat decorated steel bascinet with a spike at the top end."
 	flags_inv = HIDEEARS|HIDEHAIR
+	body_parts_covered = HEAD_NECK // built in coif
 
 //......................................................................................................
 /*----------------\

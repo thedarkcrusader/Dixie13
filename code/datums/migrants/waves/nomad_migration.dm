@@ -1,11 +1,11 @@
 /datum/migrant_role/khan
 	name = "Khan"
-	greet_text = "You are the khan of a horde of nomads, you have migrated to these lands with them"
+	greet_text = "You are the khan of a horde of nomads, a warlord of the steppes, you have migrated to these lands with your horde"
 	migrant_job = /datum/job/migrant/khan
 
 /datum/job/migrant/khan
 	title = "khan"
-	tutorial = "The khan rides at the head of a small horde of nomads, crossing into unfamiliar land in search of pasture and a place to set up your tents"
+	tutorial = "The khan rides at the head of a small horde of nomads, crossing into unfamiliar land in search of pasture and a place to set up tents"
 	outfit = /datum/outfit/khan
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
 
@@ -58,8 +58,8 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/steel
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	beltr = /obj/item/weapon/sword/long/rider/steppe
-	beltl= /obj/item/ammo_holder/quiver/arrows
+	beltr = /obj/item/weapon/sword/long/rider/steppe // dual wielder warlord
+	beltl= /obj/item/weapon/sword/long/rider/steppe
 	shirt = /obj/item/clothing/armor/gambeson/light/steppe
 	pants = /obj/item/clothing/pants/tights/colored/red
 	neck = /obj/item/storage/belt/pouch/coins/rich
@@ -67,8 +67,8 @@
 	backr = /obj/item/storage/backpack/satchel
 	armor = /obj/item/clothing/armor/medium/scale/steppe
 	head = /obj/item/clothing/head/helmet/bascinet/steppe
-	scabbards = list(/obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/steel/steppe = 1)
+	scabbards = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/scabbard/sword)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/steel/steppe = 1, /obj/item/reagent_containers/glass/bottle/avarmead = 1)
 
 /datum/migrant_role/nomadrider
 	name = "Nomad Rider"
