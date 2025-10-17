@@ -459,9 +459,9 @@
 	if(plant)
 		. += get_plant_overlay()
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
-		. += "weeds-2"
+		. += "weeds2"
 	else if (weeds >= MAX_PLANT_WEEDS * 0.3)
-		. += "weeds-1"
+		. += "weeds1"
 
 /obj/structure/soil/proc/get_water_overlay()
 		return mutable_appearance(
