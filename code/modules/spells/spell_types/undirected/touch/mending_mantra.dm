@@ -26,10 +26,9 @@
 /datum/action/cooldown/spell/undirected/touch/orison/can_cast_spell(feedback)
 	. = ..()
 	if(!.)
-		return FALSE
+		return
 
-	if(!ishuman(owner))
-		return FALSE
+	return ishuman(owner)
 
 /datum/action/cooldown/spell/undirected/touch/mending_mantra/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/human/caster, list/modifiers)
 	if(!istype(caster))
