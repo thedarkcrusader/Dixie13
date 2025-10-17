@@ -86,7 +86,7 @@
 	max_spawns = 2
 	shared_wave_type = /datum/migrant_wave/nomad_migration
 	downgrade_wave = /datum/migrant_wave/nomad_migration_down
-	weight = 40
+	weight = 30
 	roles = list(
 		/datum/migrant_role/khan = 1,
 		/datum/migrant_role/nomadrider = 5,

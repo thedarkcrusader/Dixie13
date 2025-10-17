@@ -673,6 +673,11 @@
 	recipe_name = "a bascinet"
 	created_item = /obj/item/clothing/head/helmet/bascinet
 
+/datum/anvil_recipe/armor/steel/bascinet/steppe
+	name = "Steppe Bascinet"
+	recipe_name = "a bascinet"
+	created_item = /obj/item/clothing/head/helmet/bascinet/steppe
+
 /datum/anvil_recipe/armor/steel/spangenhelm
 	name = "Spangenhelm"
 	recipe_name = "a nasal helm with built in eye protection"
