@@ -1,12 +1,8 @@
 /datum/job/advclass/mercenary/steppesman
 	title = "Steppesman"
-	tutorial = "A mercenary from hailing from the wild frontier steppes. There are three things you value most; saigas, freedom, and coin."
-	allowed_races = list(\
-		SPEC_ID_HUMEN,\
-		SPEC_ID_ELF,\
-		SPEC_ID_HALF_ELF,\
-		SPEC_ID_AASIMAR,\
-	)
+	tutorial = "A mercenary hailing from the wild frontier steppes. There are three things you value most; saigas, freedom, and coin."
+	allowed_races = RACES_PLAYER_ALL
+
 	outfit = /datum/outfit/mercenary/steppesman
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
@@ -41,7 +37,7 @@
 		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/riding, 5, TRUE) // I don't think riding skill has that big of an effect
 		H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
