@@ -1257,7 +1257,7 @@
 	var/obj/item/neuFarm/seed/seed_to_grow
 
 /obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
-	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed/spore) - /obj/item/neuFarm/seed/spore)
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed/spore))
 	. = ..()
 
 #undef MAX_PLANT_HEALTH
