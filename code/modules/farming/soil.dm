@@ -75,6 +75,8 @@
 	var/tilled_overlay = "soil-tilled"
 	/// Water overlay icon state
 	var/water_overlay = "soil-overlay"
+	/// Check if we're using base soil or a mushroom mound
+	var/mushmound = FALSE
 	///the overlays we are adding to mobs
 	var/list/vanished
 
@@ -888,6 +890,12 @@
 	if(plant_health <= MAX_PLANT_HEALTH * 0.3)
 		growth_multiplier *= 0.75
 
+	// Limit non-mushrooms from mushroom mounds and apply boosts to mushrooms
+	if(mushmound && !plant.mound_growth)
+		return
+	if(mushmound && plant.mound_growth)
+		growth_multiplier *= 1.2
+		nutriment_eat_multiplier *= 0.8
 	var/target_growth_time = growth_multiplier * dt
 	return process_npk_growth(target_growth_time, nutriment_eat_multiplier, dt)
 
@@ -1243,15 +1251,7 @@
 	attacked_sound = "plantcross"
 	tilled_overlay = "mushmound-tilled"
 	water_overlay = "mushmound-overlay"
-
-/obj/structure/soil/mushmound/process_plant_nutrition(dt)
-	var/growth_multiplier = 1.0
-	var/nutriment_eat_multiplier = 1.0
-	if(!plant.mound_growth)
-		return
-	. = ..()
-	growth_multiplier *= 1.2
-	nutriment_eat_multiplier *= 0.8
+	mushmound = TRUE
 
 /obj/structure/soil/mushmound/debug_mushmound
 	var/obj/item/neuFarm/seed/seed_to_grow
