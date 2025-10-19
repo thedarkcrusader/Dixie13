@@ -793,6 +793,10 @@
 	name = "steppe sabre"
 	desc = "A curved blade of nomadic origin, it is used by cavalrymen all across the far steppes."
 	icon_state = "steppe"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/curved)
+	force_wielded = 0
+	gripped_intents = null
+	wdefense = ULTMATE_PARRY
 
 /obj/item/weapon/sword/long/rider/getonmobprop(tag)
 	. = ..()
