@@ -32,7 +32,7 @@
 	icon_state = "headdress_g"
 
 /obj/item/clothing/head/crown/circlet/silverheaddress
-	name = ""
+	name = "ziliquae headdress"
 	desc = "a fancy headdress made out of ziliquae. Light and fashionable, it's worn by the noble ladies of The Zaladin Dynasty."
 	icon_state = "headdress_s"
 	sellprice = VALUE_SILVER_ITEM
