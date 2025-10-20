@@ -47,7 +47,7 @@
 #define SKIN_COLOR_BAYOU_ELF "7b4f42" //Native American 1
 #define SKIN_COLOR_TAIGA_ELF "734c37" //Native American 2
 #define SKIN_COLOR_ARCHIPELAGO_ELF "84674b" //Polynesian
-#define SKIN_COLOR_VOLCANO_ELF "421e10" //Melanesian
+#define SKIN_COLOR_VOLCANO_ELF "3a1e22" //Melanesian
 
 //HALF ELF SKIN TONES
 #define SKIN_COLOR_TIMBER_GRONN "ffe0d1" //Pale
@@ -64,7 +64,7 @@
 #define SKIN_COLOR_MANGROVE_CRADLED "7b4f42" //Native American 1
 #define SKIN_COLOR_TUNDRA_KISSED "734c37" //Native American 2
 #define SKIN_COLOR_OCEAN_BORN "84674b" //Polynesian
-#define SKIN_COLOR_BASALT_BIRTHED "421e10" //Melanesian
+#define SKIN_COLOR_BASALT_BIRTHED "3a1e22" //Melanesian
 
 //HALF DROW SKIN TONES
 #define SKIN_COLOR_ZIZO_CURSED "fff0e9" //Pale as SHIT
@@ -87,7 +87,7 @@
 #define SKIN_COLOR_DESERT "9c6f52" //Middle-east 1
 #define SKIN_COLOR_OASIS "845a3a" //Middle-east 2
 #define SKIN_COLOR_CRIMSONLANDS "4e3729" //Black
-#define SKIN_COLOR_VOLCANIC "421e10" //Melanesian
+#define SKIN_COLOR_VOLCANIC "3a1e22" //Melanesian
 #define SKIN_COLOR_ISLAND "84674b" //Polynesian
 #define SKIN_COLOR_SWAMP "7b4f42" //Native American 1
 #define SKIN_COLOR_TAIGA "734c37" //Native American 2
