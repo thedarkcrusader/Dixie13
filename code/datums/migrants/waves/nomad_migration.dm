@@ -51,8 +51,8 @@
 	var/honorary = "Khan"
 	if(spawned.gender == FEMALE)
 		honorary = "Khatun"
-	spawned.real_name = "[honorary] [prev_real_name]"
-	spawned.name = "[honorary] [prev_name]"
+	spawned.real_name = "[prev_real_name] [honorary]"
+	spawned.name = "[prev_name] [honorary]"
 	new /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled(get_turf(spawned))
 
 /datum/outfit/khan
