@@ -10,11 +10,15 @@
 		GLOB.personal_objective_minds |= owner
 
 /datum/objective/personal/proc/complete_objective()
+	SHOULD_CALL_PARENT(TRUE)
+
 	completed = TRUE
 	reward_owner()
 	escalate_objective()
 
 /datum/objective/personal/proc/reward_owner()
+	SHOULD_CALL_PARENT(TRUE)
+
 	owner.adjust_triumphs(triumph_count)
 
 /datum/objective/personal/proc/escalate_objective(event_track = EVENT_TRACK_PERSONAL, second_event_track = EVENT_TRACK_INTERVENTION)
