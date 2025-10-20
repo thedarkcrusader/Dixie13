@@ -3,9 +3,7 @@
 	desc = "Shoot out rapid bolts of arcyne power."
 	button_icon_state =  "arcane_bolt"
 	sound = 'sound/combat/Ranged/muskshoot.ogg'
-
 	spell_cost = 0
-	spell_flags = SPELL_RITUOS
 	projectile_type = /obj/projectile/bullet/reusable/bullet
 
 /datum/action/cooldown/spell/projectile/bullet/cast(atom/cast_on, mob/living/carbon)
