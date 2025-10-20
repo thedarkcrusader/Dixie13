@@ -9,18 +9,20 @@
 
 /datum/objective/personal/ravox_duel/on_creation()
 	. = ..()
-	var/datum/action/innate/ravox_challenge/challenge = new(src)
-	challenge.Grant(owner.current)
+	if(owner?.current)
+		var/datum/action/innate/ravox_challenge/challenge = new(src)
+		challenge.Grant(owner.current)
 	update_explanation_text()
 
 /datum/objective/personal/ravox_duel/proc/on_duel_won()
 	duels_won++
 	if(duels_won >= duels_required && !completed)
-		to_chat(owner.current, span_greentext("You have proven your worth in combat! Ravox is pleased!"))
-		owner.current.adjust_triumphs(triumph_count * duels_required)
-		completed = TRUE
-		adjust_storyteller_influence(RAVOX, duels_required * 20)
-		escalate_objective()
+		complete_objective()
+
+/datum/objective/personal/ravox_duel/complete_objective()
+	. = ..()
+	to_chat(owner.current, span_greentext("You have proven your worth in combat! Ravox is pleased!"))
+	adjust_storyteller_influence(RAVOX, 20)
 
 /datum/objective/personal/ravox_duel/update_explanation_text()
 	explanation_text = "Win [duels_required] duel\s with honor against other warriors to prove your might!"
@@ -125,7 +127,7 @@
 
 	if(objective)
 		var/datum/objective/personal/ravox_duel/ravox = objective.resolve()
-		if(ravox?.owner == winner)
+		if(ravox?.owner == winner.mind)
 			ravox.on_duel_won()
 
 	qdel(src)
