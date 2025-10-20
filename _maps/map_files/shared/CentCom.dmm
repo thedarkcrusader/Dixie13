@@ -2870,6 +2870,7 @@
 /obj/item/clothing/shirt/rags,
 /obj/item/clothing/shirt/rags,
 /obj/item/clothing/shirt/rags,
+/obj/item/soap/bath,
 /turf/open/floor/blocks/paving/vert,
 /area/rogue/indoors/vampire_manor)
 "pQ" = (
