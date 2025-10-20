@@ -52,19 +52,16 @@
 	data += "<div style='padding: 0 20px;'>"
 	for(var/datum/objective/personal/objective in categories[current_category])
 		var/completed = objective.completed
-		data += "<B>[objective.name]</B>:<br> [objective.explanation_text] "
-		data += "<ul style='color: #f1d669; margin: 1px 0;'><li><span style='color:[completed ? "#5cb85c" : "#d9534f"]'>"
+		data += "<B>[objective.name]</B>:<br><ul style='margin: 1px 0;'><li> [objective.explanation_text] "
+		data += "<span style='color:[completed ? "#5cb85c" : "#d9534f"]'>"
 		data += "[completed ? "(COMPLETED)" : "(NOT COMPLETED)"]</span></li></ul>"
 
 		if(length(objective.immediate_effects))
-			data += "<br>"
 			data += "<br><span style='color: #f1d669;'><B>Immediate Effects:</B></span>"
 			data += "<ul style='color: #f1d669; margin: 1px 0;'>"
 			for(var/effect in objective.immediate_effects)
 				data += "<li>[effect]</li>"
 			data += "</ul>"
-		else if(length(objective.rewards))
-			data += "<br>"
 
 		if(length(objective.rewards))
 			data += "<br><span style='color: #80b077;'><B>Rewards:</B></span>"
