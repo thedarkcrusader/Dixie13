@@ -34,6 +34,10 @@
 	src.parent_ui = parent_ui
 	return ..()
 
+/atom/movable/screen/controller_ui/controller_button/patrol/Destroy(force)
+	parent_ui = null
+	return ..()
+
 /atom/movable/screen/controller_ui/controller_button/patrol/Click(location, control, params)
 	. = ..()
 	if(!parent_ui || !parent_ui.worker_mob)
