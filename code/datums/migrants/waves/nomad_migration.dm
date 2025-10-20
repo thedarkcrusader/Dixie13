@@ -49,6 +49,8 @@
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
 	var/honorary = "Khan"
+	if(spawned.gender == FEMALE)
+		honorary = "Khatun"
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 	new /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled(get_turf(spawned))
@@ -68,7 +70,7 @@
 	armor = /obj/item/clothing/armor/medium/scale/steppe
 	head = /obj/item/clothing/head/helmet/bascinet/steppe
 	scabbards = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/steel/steppe = 1, /obj/item/reagent_containers/glass/bottle/avarmead = 1)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/goldmask/steppe = 1, /obj/item/reagent_containers/glass/bottle/avarmead = 1)
 
 /datum/migrant_role/nomadrider
 	name = "Nomad Rider"

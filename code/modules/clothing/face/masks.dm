@@ -420,6 +420,13 @@
 	sellprice = 100
 	smeltresult = /obj/item/ingot/gold
 
+/obj/item/clothing/face/facemask/goldmask/steppe
+	name = "steppe gold mask"
+	icon_state = "steppegold"
+	max_integrity = 150
+	sellprice = 100
+	smeltresult = /obj/item/ingot/gold
+
 /obj/item/clothing/face/operavisage
 	name = "opera visage"
 	desc = "A painted wooden opera mask worn by the faithful of Eora, usually during their rituals."
