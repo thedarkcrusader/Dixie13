@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 	. = ..()
 	if(!.)
 		return FALSE
-	if(GLOB.patron_follower_counts["Graggar"] < 3)
+	if(GLOB.patron_follower_counts["Graggar"] < 2)
 		return FALSE
 
 /datum/round_event/graggar_culling/start()
@@ -132,8 +132,11 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		first_chosen.add_stress(/datum/stress_event/graggar_culling_unfinished)
 		first_chosen.add_spell(/datum/action/cooldown/spell/extract_heart)
 		first_chosen.verbs |= /mob/living/carbon/human/proc/remember_culling
-		to_chat(first_chosen, span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"))
-		to_chat(first_chosen, span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(second_chosen.real_name)], the [second_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."))
+
+		bordered_message(chosen_one, list(
+			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
+			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(second_chosen.real_name)], the [second_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
+		))
 		to_chat(first_chosen, span_red("[span_notice("[second_chosen.real_name]")], the [second_chosen.job] is somewhere in [span_notice("[second_chosen_location]")]. Eat their heart before they eat yours!"))
 		if(grand_culling)
 			to_chat(first_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
@@ -143,8 +146,11 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		second_chosen.add_stress(/datum/stress_event/graggar_culling_unfinished)
 		second_chosen.add_spell(/datum/action/cooldown/spell/extract_heart)
 		second_chosen.verbs |= /mob/living/carbon/human/proc/remember_culling
-		to_chat(second_chosen, span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"))
-		to_chat(second_chosen, span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(first_chosen.real_name)], the [first_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."))
+
+		bordered_message(chosen_one, list(
+			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
+			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(first_chosen.real_name)], the [first_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
+		))
 		to_chat(second_chosen, span_red("[span_notice("[first_chosen.real_name]")], the [first_chosen.job] is somewhere in [span_notice("[first_chosen_location]")]. Eat their heart before they eat yours!"))
 		if(grand_culling)
 			to_chat(second_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
