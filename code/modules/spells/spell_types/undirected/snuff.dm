@@ -6,7 +6,7 @@
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
-	invocation = "O'veta tela"
+	invocation = ",w O'veta tela" // incantation in zizo chant
 	invocation_type = INVOCATION_SHOUT
 	charge_required = FALSE
 	cooldown_time = 1 MINUTES
