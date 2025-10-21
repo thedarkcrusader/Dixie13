@@ -16,16 +16,10 @@
 	cooldown_time = 240 SECONDS // This should not be spammed
 	spell_cost = 100
 
-	var/no_corpses = FALSE
-	var/list/mob/corpses = list()
-
-
-/datum/action/cooldown/spell/undirected/locate_dead/before_cast(atom/cast_on)
+/datum/action/cooldown/spell/undirected/locate_dead/cast(atom/cast_on)
 	. = ..()
-	if(. & SPELL_CANCEL_CAST)
-		return
 
-	corpses = list()
+	var/list/mob/corpses = list()
 	for(var/mob/living/C in GLOB.dead_mob_list)
 		if(!C.mind || !is_in_zweb(C.z, owner.z))
 			continue
@@ -49,17 +43,14 @@
 
 	if(!length(corpses))
 		to_chat(owner, span_warning("The Undermaiden's grasp lets slip."))
-		StartCooldown() // Meant to punish templars
-		return . | SPELL_CANCEL_CAST
+		return .
 
-/datum/action/cooldown/spell/undirected/locate_dead/cast(atom/cast_on)
-	. = ..()
 	var/mob/selected
 	selected = browser_input_list(owner, "Which body shall I seek?", "Available Bodies", corpses)
 
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(corpses[selected]) || !can_cast_spell())
 		to_chat(owner, span_warning("The Undermaiden's grasp lets slip."))
-		return . | SPELL_CANCEL_CAST
+		return .
 
 	var/corpse = corpses[selected]
 
