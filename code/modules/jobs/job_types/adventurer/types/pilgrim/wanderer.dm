@@ -37,10 +37,8 @@
 		H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 
-		H.change_stat(STATKEY_PER, 1)
-		H.change_stat(STATKEY_CON, 2) //they got no armor dawg!
-		H.change_stat(STATKEY_END, 1)
-		H.change_stat(STATKEY_STR, 1)
+
+		H.change_stat(STATKEY_LCK, 1) //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
 
 
 
