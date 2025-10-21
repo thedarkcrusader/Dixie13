@@ -189,6 +189,21 @@
 	stress_change = 1
 	desc = span_red("Same old ugly mug...")
 
+/datum/stress_event/fishface
+	timer = 30 SECONDS
+	stress_change = 1
+	desc = "<span class='red'>That thing is hideous!.</span>"
+
+/datum/stress_event/fish_monster
+	timer = 30 SECONDS
+	stress_change = 3
+	desc = span_boldred("<B>IT'S A HIDEOUS MONSTER!!!</B>")
+
+/datum/stress_event/fishfaceaintthatugly
+	timer = 30 SECONDS
+	stress_change = 0
+	desc = "Eh, I've seen worse faces than that fish."
+
 /datum/stress_event/delf
 	timer = 30 SECONDS
 	stress_change = 1
@@ -630,6 +645,11 @@
 	stress_change = 50
 	timer = 1000 MINUTES
 
+/datum/stress_event/consumed_tainted_lux
+	desc = span_warning("Why did i drink that?")
+	stress_change = 15
+	timer = 10 MINUTES
+  
 /datum/stress_event/dead_bird
 	timer = 5 MINUTES
 	stress_change = 3

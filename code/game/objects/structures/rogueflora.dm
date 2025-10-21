@@ -799,8 +799,10 @@
 // bush crossing
 /obj/structure/flora/grass/bush_meagre/Crossed(atom/movable/AM)
 	..()
-	if(isliving(AM))
+	if(isliving(AM) && !HAS_TRAIT(AM, TRAIT_BRUSHWALK))
 		var/mob/living/L = AM
+		if(L.pulledby)
+			return
 		L.Immobilize(5)
 		if(L.m_intent == MOVE_INTENT_WALK)
 			L.Immobilize(5)
