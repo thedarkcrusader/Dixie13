@@ -149,7 +149,7 @@
 				if(displayed_mob_ui)
 					displayed_mob_ui.remove_ui(client)
 					close_inventory_ui()
-				displayed_mob_ui  = living.controller_mind.stats
+				displayed_mob_ui = living.controller_mind.stats
 				open_inventory_ui(living.controller_mind)
 			displayed_mob_ui.add_ui(client)
 	. = ..()
