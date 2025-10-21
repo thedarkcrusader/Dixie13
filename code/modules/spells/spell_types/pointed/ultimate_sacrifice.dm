@@ -59,7 +59,7 @@
 
 	cast_on.revive(full_heal = TRUE, admin_revive = FALSE)
 
-	playsound(owner, 'sound/magic/churn.ogg', 100)
+	playsound(owner, 'sound/magic/churn.ogg', 80)
 	ADD_TRAIT(owner, TRAIT_NECRA_CURSE, "ravox_ritual")
 	owner.death()
 

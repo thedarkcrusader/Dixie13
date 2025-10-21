@@ -699,6 +699,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			O.update_explanation_text()
 			to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
 			personal_count++
+		to_chat(current, "<br>")
 
 /// Announce all objectives (both types)
 /datum/mind/proc/announce_objectives()
