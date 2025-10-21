@@ -358,7 +358,7 @@ GLOBAL_PROTECT(tracy_init_reason)
 #ifdef UNIT_TESTS
 	FinishTestRun()
 	return
-#endif
+#else
 
 	if(TgsAvailable())
 		send2chat(new /datum/tgs_message_content("Round ending!"), CONFIG_GET(string/chat_announce_new_game))
@@ -394,6 +394,7 @@ GLOBAL_PROTECT(tracy_init_reason)
 	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
 	shutdown_byond_tracy()
 	..()
+#endif
 
 /world/proc/update_status()
 	var/s = ""
