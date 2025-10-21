@@ -34,34 +34,11 @@
 	miracles = list(
 		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/avert),
 		CLERIC_T1 = /datum/action/cooldown/spell/burial_rites,
-<<<<<<< HEAD
 		CLERIC_T2 = list(/datum/action/cooldown/spell/undirected/soul_speak, /datum/action/cooldown/spell/aoe/abrogation, /datum/action/cooldown/spell/undirected/locate_dead),
-=======
-		CLERIC_T2 = list(/datum/action/cooldown/spell/undirected/locate_dead, /datum/action/cooldown/spell/undirected/soul_speak),
->>>>>>> 55e3c1634 (locate dead changes + readds speak with deadd)
 		CLERIC_T3 = /datum/action/cooldown/spell/aoe/churn_undead,
 	)
 	traits = list(TRAIT_DEATHSIGHT)
-<<<<<<< HEAD
-=======
 
-/datum/devotion/divine/necra/make_acolyte()
-	. = ..()
-	miracles_extra += /datum/action/cooldown/spell/avert
->>>>>>> b4f109b79 (Gives templars back veiled whispers)
-
-<<<<<<< HEAD
-=======
-/datum/devotion/divine/necra/make_cleric()
-	. = ..()
-	miracles_extra += /datum/action/cooldown/spell/avert
-
-/datum/devotion/divine/necra/make_templar()
-	. = ..()
-	miracles_extra -= /datum/action/cooldown/spell/aoe/abrogation
-	miracles_extra += list(/datum/action/cooldown/spell/aoe/churn_undead, /datum/action/cooldown/spell/avert)
-
->>>>>>> f8f81d3f9 (Gives necran cleric veiled whispers)
 /datum/devotion/divine/ravox
 	miracles = list(
 		CLERIC_T0 = /datum/action/cooldown/spell/healing,
