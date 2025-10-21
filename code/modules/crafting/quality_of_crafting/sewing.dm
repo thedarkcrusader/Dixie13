@@ -116,7 +116,7 @@
 	output = /obj/item/clothing/gloves/fingerless
 	category = "Gloves"
 
-	/datum/repeatable_crafting_recipe/sewing/clothvest
+/datum/repeatable_crafting_recipe/sewing/clothvest
 	name = "cloth vest"
 	output = /obj/item/clothing/shirt/clothvest
 	requirements = list(
