@@ -11,7 +11,7 @@
 	var/turf/T = get_turf(owner)
 	var/static/shakeradius = 1
 	playsound(T, 'sound/foley/tinnitus.ogg', 60, TRUE, soundping = TRUE)
-	new /obj/effect/particle_effect/smoke(get_turf(T))
+	T.pollute_turf(/datum/pollutant/smoke, 300)
 	for (var/mob/living/carbon/shaken in view(shakeradius, T))
 		shake_camera(shaken, 5, 5)
 
