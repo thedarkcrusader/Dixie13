@@ -56,6 +56,8 @@
 	mask = /obj/item/clothing/face/facemask/steel/steppe
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1)
+	if(H.dna.species.id in RACES_PLAYER_HERETICAL_RACE)
+		mask = /obj/item/clothing/face/facemask/steel/steppebeast
 
 /datum/job/advclass/mercenary/steppesman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
