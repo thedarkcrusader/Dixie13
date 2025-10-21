@@ -379,7 +379,13 @@
 	abstract_type = /datum/anvil_recipe/weapons/steel
 	req_bar = /obj/item/ingot/steel
 	craftdiff = 2
+
 ///////////////////////////////////////////////
+
+/datum/anvil_recipe/weapons/steel/short_sword
+	name = "Steel Short Sword"
+	recipe_name = "a Steel Short Sword"
+	created_item = /obj/item/weapon/sword/short
 
 /datum/anvil_recipe/weapons/steel/assegai
 	name = "Steel Assegai (+ Small Log)"
