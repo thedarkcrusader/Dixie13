@@ -75,8 +75,7 @@
 	var/tilled_overlay = "soil-tilled"
 	/// Water overlay icon state
 	var/water_overlay = "soil-overlay"
-	/// Check if we're using base soil or a mushroom mound
-	var/mushmound = FALSE
+
 	///the overlays we are adding to mobs
 	var/list/vanished
 
@@ -466,20 +465,20 @@
 		. += "weeds1"
 
 /obj/structure/soil/proc/get_water_overlay()
-		return mutable_appearance(
-			icon,\
-			water_overlay,\
-			color = "#000033",\
-			alpha = (100 * (water / MAX_PLANT_WATER)),\
-		)
+	return mutable_appearance(
+		icon,
+		water_overlay,
+		color = "#000033",
+		alpha = (100 * (water / MAX_PLANT_WATER)),
+	)
 
 /obj/structure/soil/proc/get_nutri_overlay()
-		return mutable_appearance(
-			icon,\
-			tilled_overlay,\
-			color = "#6d3a00",\
-			alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),\
-		)
+	return mutable_appearance(
+		icon,
+		tilled_overlay,
+		color = "#6d3a00",
+		alpha = (50 * (get_total_npk() / MAX_PLANT_NUTRITION)),
+	)
 
 /obj/structure/soil/proc/get_plant_overlay()
 	var/plant_color
@@ -890,10 +889,8 @@
 	if(plant_health <= MAX_PLANT_HEALTH * 0.3)
 		growth_multiplier *= 0.75
 
-	// Limit non-mushrooms from mushroom mounds and apply boosts to mushrooms
-	if(mushmound && !plant.mound_growth)
-		return
-	if(mushmound && plant.mound_growth)
+	// Mushrooms are more efficient in the mushroom mound
+	if(istype(src, /obj/structure/soil/mushmound) && plant.mound_growth)
 		growth_multiplier *= 1.2
 		nutriment_eat_multiplier *= 0.8
 	var/target_growth_time = growth_multiplier * dt
@@ -1251,7 +1248,6 @@
 	attacked_sound = "plantcross"
 	tilled_overlay = "mushmound-tilled"
 	water_overlay = "mushmound-overlay"
-	mushmound = TRUE
 
 /obj/structure/soil/mushmound/debug_mushmound
 	var/obj/item/neuFarm/seed/seed_to_grow
