@@ -13,7 +13,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(GLOB.patron_follower_counts["Astrata"] < 4)
+	if(GLOB.patron_follower_counts["Astrata"] < 3)
 		return FALSE
 
 /datum/round_event/astrata_grandeur/start()
