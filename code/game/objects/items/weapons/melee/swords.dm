@@ -98,7 +98,7 @@
 /obj/item/weapon/sword/silver
 	name = "silver sword"
 	desc = "A simple silver sword with an edge that gleams in moonlight."
-	icon_state = "sword_s"
+	icon_state = "silversword"
 	force = DAMAGE_SWORD-1
 	force_wielded = DAMAGE_SWORD_WIELD-1
 	smeltresult = /obj/item/ingot/silver
