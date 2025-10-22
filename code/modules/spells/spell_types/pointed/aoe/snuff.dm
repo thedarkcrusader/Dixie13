@@ -1,4 +1,4 @@
-/datum/action/cooldown/spell/undirected/snuff
+/datum/action/cooldown/spell/aoe/snuff
 	name = "snuff lights"
 	desc = "Snuff the light around you"
 	button_icon_state = "light"
@@ -13,8 +13,7 @@
 	spell_cost = 20
 	cast_range = 2
 
-/datum/action/cooldown/spell/undirected/snuff/cast(list/targets)
-	. = ..()
+/datum/action/cooldown/spell/aoe/snuff/get_things_to_cast_on(atom/center)
 	var/checkrange = (cast_range + owner.get_skill_level(/datum/skill/magic/holy))
 	for(var/obj/O in range(checkrange, owner))
 		O.extinguish()
