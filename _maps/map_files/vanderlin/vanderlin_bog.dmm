@@ -2162,7 +2162,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors/shelter/bog)
 "DP" = (
-/obj/item/chair/stool/bar/crafted,
+/obj/item/chair/stool/crafted,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "DT" = (
