@@ -7,7 +7,7 @@
 	outfit = /datum/outfit/adventurer/wanderingpilgrim
 
 	jobstats = list(
-		STATKEY_LCK, 1 //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
+		STATKEY_LCK = 1 //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
 	)
 
 	skills = list(
