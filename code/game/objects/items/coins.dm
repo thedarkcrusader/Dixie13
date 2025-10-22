@@ -396,10 +396,6 @@
 	if(!coin_amount)
 		set_quantity(rand(4,14))
 
-/obj/item/coin/silver/pile/readyuppile/Initialize()
-	. = ..()
-	set_quantity(3) // 15 mammons is a decent amount, :smiley:
-
 /obj/item/coin/gold/pile/Initialize(mapload, coin_amount)
 	. = ..()
 	if(!coin_amount)

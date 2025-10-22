@@ -207,13 +207,6 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/pouch/coins/readyuppouch/Initialize()
-	. = ..()
-	var/obj/item/coin/silver/pile/readyuppile/H = new(loc)
-	if(istype(H))
-		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
-			qdel(H)
-
 /obj/item/storage/belt/pouch/bullets
 	populate_contents = list(
 		/obj/item/ammo_casing/caseless/bullet,
