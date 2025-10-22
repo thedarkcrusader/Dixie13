@@ -398,7 +398,7 @@
 
 /obj/item/coin/silver/pile/readyuppile/Initialize()
 	. = ..()
-	set_quantity(6) // 30 mammons is a decent amount
+	set_quantity(3) // 15 mammons is a decent amount, :smiley:
 
 /obj/item/coin/gold/pile/Initialize(mapload, coin_amount)
 	. = ..()
