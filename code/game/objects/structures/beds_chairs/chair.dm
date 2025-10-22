@@ -211,6 +211,7 @@
 
 /obj/item/chair/stool
 	name = "stool"
+	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "stoolover"
 	item_state = "stool"
 	origin_type = /obj/structure/chair/stool
