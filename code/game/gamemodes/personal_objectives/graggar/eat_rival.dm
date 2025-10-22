@@ -2,8 +2,8 @@
 	name = "Eat Rival's Heart"
 	category = "Graggar's Contestant"
 	triumph_count = 4
-	immediate_effects = list("Gained an ability to rip hearts out of corpses")
-	rewards = list("4 Triumphs", "Graggar grows stronger", "Overwhelming Power (+2 to all stats)")
+	immediate_effects = list("You will feel stressed until the culling ends (+1 Stress)", "Gained an ability to rip hearts out of corpses")
+	rewards = list("4 Triumphs", "Graggar grows stronger", "Overwhelming Power (+2 to all stats)", "Pride of Victory (-1 Stress)")
 	var/rival_name
 	var/rival_job
 
