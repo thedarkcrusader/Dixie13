@@ -102,12 +102,11 @@
 
 /datum/blueprint_recipe/carpentry/stool/bar
 	name = "barstool"
-	desc = "Leather cushioning and a simple copper band make this stool more comfy than usual."
+	desc = "Stool with a cloth cushion."
 	result_type = /obj/structure/chair/stool/bar
 	required_materials = list(
 		/obj/item/grown/log/tree/small = 1,
-		/obj/item/ingot/copper = 1,
-		/obj/item/natural/hide/cured = 1
+		/obj/item/natural/cloth = 1
 	)
 	supports_directions = TRUE
 	craftdiff = 2
