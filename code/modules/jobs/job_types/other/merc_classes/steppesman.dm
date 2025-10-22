@@ -11,8 +11,8 @@
 
 	jobstats = list(
 		STATKEY_STR = 2,
-		STATKEY_END = 2,
-		STATKEY_PER = 1,
+		STATKEY_END = 1,
+		STATKEY_PER = 2,
 	)
 
 	skills = list(
@@ -38,9 +38,12 @@
         TRAIT_MEDIUMARMOR,
         TRAIT_DUALWIELDER,
 	)
+/datum/job/advclass/mercenary/steppesman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 
-/datum/outfit/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/mercenary/steppesman
+	name = "Steppesman"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary/black
@@ -57,9 +60,10 @@
 	mask = /obj/item/clothing/face/facemask/steel/steppe
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1)
+
+/datum/outfit/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+
 	if(H.dna.species.id in RACES_PLAYER_HERETICAL_RACE)
 		mask = /obj/item/clothing/face/facemask/steel/steppebeast
 
-/datum/job/advclass/mercenary/steppesman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))

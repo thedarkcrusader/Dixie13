@@ -36,14 +36,14 @@
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 	new /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled(get_turf(spawned))
 
-/datum/outfit/adventurer/nomad/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/adventurer/nomad
+	name = "Nomad"
 	pants = /obj/item/clothing/pants/tights/colored/random
 	shirt =  /obj/item/clothing/armor/gambeson/light/steppe
 	armor = /obj/item/clothing/armor/leather/hide/steppe
-	shoes = pick(/obj/item/clothing/shoes/simpleshoes, /obj/item/clothing/shoes/boots/leather)
+	shoes = /obj/item/clothing/shoes/boots/leather
 	neck = /obj/item/storage/belt/pouch/coins/poor
-	head = pick (/obj/item/clothing/head/papakha, /obj/item/clothing/head/helmet/leather/volfhelm)
+	head = /obj/item/clothing/head/papakha
 	cloak = /obj/item/clothing/cloak/volfmantle
 	backr = /obj/item/storage/backpack/satchel
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/short
