@@ -1,5 +1,5 @@
 /datum/action/cooldown/spell/aoe/snuff
-	name = "snuff lights"
+	name = "Snuff"
 	desc = "Snuff the light around you"
 	button_icon_state = "light"
 	sound = 'sound/magic/soulsteal.ogg'
@@ -17,6 +17,6 @@
 	var/checkrange = (cast_range + owner.get_skill_level(/datum/skill/magic/holy))
 	for(var/obj/O in range(checkrange, owner))
 		O.extinguish()
-	for(var/mob/M in range(checkrange, owner))
+	for(var/mob/living/carbon/M in range(checkrange, owner))
 		for(var/obj/O in M.contents)
-			O.extinguish()
+			M.ExtinguishMob()
