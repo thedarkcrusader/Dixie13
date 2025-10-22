@@ -23,13 +23,11 @@
 	icon_state = "csickle"
 	smeltresult = /obj/item/ingot/copper
 
-
 /obj/item/weapon/pitchfork/copper
 	name = "copper fork"
 	desc = "A simple and rustic tool for working the fields, not a very effective weapon."
 	icon_state = "cpitchfork"
 	item_state = "cpitchfork"
-	SET_BASE_PIXEL(-16, -16)
 	force_wielded = DAMAGE_SPEAR
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
