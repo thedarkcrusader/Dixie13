@@ -212,13 +212,13 @@
 /obj/item/chair/stool
 	name = "stool"
 	icon_state = "stoolover"
-	item_state = "stoolover"
+	item_state = "stool"
 	origin_type = /obj/structure/chair/stool
 
 /obj/item/chair/stool/bar
 	name = "barstool"
 	icon_state = "barstoolover"
-	item_state = "barstoolover"
+	item_state = "barstool"
 	origin_type = /obj/structure/chair/stool/bar
 
 /obj/item/chair/stool/narsie_act()
