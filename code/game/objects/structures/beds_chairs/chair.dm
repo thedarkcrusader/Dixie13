@@ -117,7 +117,7 @@
 
 /obj/structure/chair/stool/bar
 	name = "barstool"
-	desc = "Leather cushioning and a simple copper band make this stool more comfy than usual."
+	desc = ""
 	icon_state = "barstool"
 	item_chair = /obj/item/chair/stool/bar
 	sleepy = 0.2
