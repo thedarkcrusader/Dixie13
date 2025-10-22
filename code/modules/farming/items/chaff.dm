@@ -43,10 +43,7 @@
 							stuff++
 					if(stuff)
 						to_chat(user, span_notice("I pick up the stalks with the pitchfork."))
-						if(istype(I, /obj/item/weapon/pitchfork/copper))
-							W.icon_state = "cpitchforkstuff"
-						else
-							W.icon_state = "pitchforkstuff"
+						W.icon_state = W.icon_state + "stuff"
 					else
 						to_chat(user, span_warning("I'm carrying enough with the pitchfork."))
 					return
