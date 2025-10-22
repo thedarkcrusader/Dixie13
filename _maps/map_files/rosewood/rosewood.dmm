@@ -28205,7 +28205,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "oFZ" = (
-/obj/item/chair/stool/bar/crafted{
+/obj/item/chair/stool/crafted{
 	pixel_y = 10;
 	pixel_x = 11
 	},
