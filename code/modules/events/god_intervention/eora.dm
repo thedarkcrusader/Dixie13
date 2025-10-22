@@ -69,6 +69,7 @@
 		var/mob/living/carbon/human/female = pair[2]
 
 		bordered_message(male, list(
+			span_userdanger("YOU ARE EORA'S LOVEBIRD!"),
 			span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."),
 			span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[female.real_name]")], the [female.job] seems to get your heart racing for some reason..."),
 		))
@@ -79,6 +80,7 @@
 		male.mind.announce_personal_objectives()
 
 		bordered_message(female, list(
+			span_userdanger("YOU ARE EORA'S LOVEBIRD!"),
 			span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."),
 			span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[male.real_name]")], the [male.job] seems to get your heart racing for some reason..."),
 		))

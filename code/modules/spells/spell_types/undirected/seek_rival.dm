@@ -34,7 +34,7 @@
 		rival_heart = current_duel.challenger_heart?.resolve()
 
 	if(QDELETED(rival_heart))
-		to_chat(owner, span_red("Your rival's heart appears has been destroyed..."))
+		to_chat(owner, span_red("Your rival's heart has been destroyed..."))
 		return
 
 	to_chat(owner, span_notice("Your rival's heart is [where_heart(rival_heart)]"))

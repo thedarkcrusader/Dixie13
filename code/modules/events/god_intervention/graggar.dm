@@ -50,15 +50,11 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		var/datum/culling_duel/new_duel = new(first_chosen, second_chosen)
 		GLOB.graggar_cullings += new_duel
 
-		var/first_chosen_location = first_chosen.prepare_deathsight_message()
-		var/second_chosen_location = second_chosen.prepare_deathsight_message()
-
 		// Notify first chosen
 		bordered_message(first_chosen, list(
 			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
 			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(second_chosen.real_name)], the [second_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
 		))
-		to_chat(first_chosen, span_red("[span_notice("[second_chosen.real_name]")], the [second_chosen.job] is somewhere in [span_notice("[second_chosen_location]")]. Eat their heart before they eat yours!"))
 		if(grand_culling)
 			to_chat(first_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
 		first_chosen.playsound_local(first_chosen, 'sound/misc/gods/graggar_omen.ogg', 100)
@@ -72,7 +68,6 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
 			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(first_chosen.real_name)], the [first_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
 		))
-		to_chat(second_chosen, span_red("[span_notice("[first_chosen.real_name]")], the [first_chosen.job] is somewhere in [span_notice("[first_chosen_location]")]. Eat their heart before they eat yours!"))
 		if(grand_culling)
 			to_chat(second_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
 		second_chosen.playsound_local(second_chosen, 'sound/misc/gods/graggar_omen.ogg', 100)
@@ -95,8 +90,8 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 	var/obj/item/organ/heart/t_heart = target.getorganslot(ORGAN_SLOT_HEART)
 	src.challenger_heart = WEAKREF(c_heart)
 	src.target_heart = WEAKREF(t_heart)
-	RegisterSignal(c_heart, COMSIG_PARENT_QDELETING, PROC_REF(handle_heart_destroyed))
-	RegisterSignal(t_heart, COMSIG_PARENT_QDELETING, PROC_REF(handle_heart_destroyed))
+	RegisterSignal(c_heart, COMSIG_PARENT_QDELETING, PROC_REF(handle_challenger_heart_destroyed))
+	RegisterSignal(t_heart, COMSIG_PARENT_QDELETING, PROC_REF(handle_target_heart_destroyed))
 
 /datum/culling_duel/Destroy()
 	GLOB.graggar_cullings -= src
@@ -108,17 +103,19 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		UnregisterSignal(d_target_heart, COMSIG_PARENT_QDELETING)
 	return ..()
 
-/datum/culling_duel/proc/handle_heart_destroyed(which_heart)
-	var/mob/living/carbon/human/winner
-	var/mob/living/carbon/human/loser
+/datum/culling_duel/proc/handle_challenger_heart_destroyed()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/winner = target?.resolve()
+	var/mob/living/carbon/human/loser = challenger?.resolve()
+	partial_victory(winner, loser)
 
-	if(which_heart == "target")
-		winner = challenger.resolve()
-		loser = target.resolve()
-	else if(which_heart == "challenger")
-		winner = target.resolve()
-		loser = challenger.resolve()
+/datum/culling_duel/proc/handle_target_heart_destroyed()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/winner = challenger?.resolve()
+	var/mob/living/carbon/human/loser = target?.resolve()
+	partial_victory(winner, loser)
 
+/datum/culling_duel/proc/partial_victory(mob/living/winner, mob/living/loser)
 	if(winner)
 		winner.add_stress(/datum/stress_event/graggar_culling_finished)
 		winner.adjust_triumphs(1)

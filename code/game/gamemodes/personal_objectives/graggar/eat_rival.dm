@@ -2,7 +2,7 @@
 	name = "Eat Rival's Heart"
 	category = "Graggar's Contestant"
 	triumph_count = 4
-	immediate_effects = list("You will feel stressed until the culling ends (+1 Stress)", "Gained an ability to rip hearts out of corpses")
+	immediate_effects = list("You will feel stressed until the culling ends (+1 Stress)", "Gained an ability to rip hearts out of corpses", "Gained an ability to locate your rival's heart")
 	rewards = list("4 Triumphs", "Graggar grows stronger", "Overwhelming Power (+2 to all stats)", "Pride of Victory (-1 Stress)")
 	var/rival_name
 	var/rival_job
@@ -46,7 +46,7 @@
 
 /datum/objective/personal/eat_rival_heart/complete_objective()
 	. = ..()
-	to_chat(owner.current, span_notice("You have proven your strength to Graggar by consuming your rival's heart! Your rival's power is now YOURS!"))
+	to_chat(owner.current, span_greentext("You have proven your strength to Graggar by consuming your rival's heart! Your rival's power is now YOURS!"))
 	adjust_storyteller_influence(GRAGGAR, 30)
 	UnregisterSignal(owner.current, COMSIG_ORGAN_CONSUMED)
 
@@ -63,4 +63,4 @@
 	owner.current.playsound_local(owner.current, 'sound/misc/gods/graggar_omen.ogg', 100)
 
 /datum/objective/personal/eat_rival_heart/update_explanation_text()
-	explanation_text = "Prove that you are not weak to Graggar by eating the heart of [span_notice(rival_name)], the [rival_job]!"
+	explanation_text = "Prove that you are not weak to Graggar by eating the heart of [rival_name], the [rival_job]! Eat them before they eat YOU!"

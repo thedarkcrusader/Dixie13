@@ -1,6 +1,7 @@
 /datum/action/cooldown/spell/detect_singles
 	name = "Find Singles"
 	button_icon_state = "love"
+	sound = null
 	self_cast_possible = FALSE
 	has_visual_effects = FALSE
 

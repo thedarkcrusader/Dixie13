@@ -1,6 +1,7 @@
 /datum/action/cooldown/spell/undirected/list_target/ultimate_sacrifice
 	name = "Ultimate Sacrifice"
 	button_icon_state = "revive"
+	sound = null
 	has_visual_effects = FALSE
 	cast_range = 1
 

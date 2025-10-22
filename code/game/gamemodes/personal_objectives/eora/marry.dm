@@ -42,4 +42,4 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOBAL_MARRIAGE)
 
 /datum/objective/personal/marry/update_explanation_text()
-	explanation_text = "Eora wants you to find love and marry someone! Perhaps [span_notice(lovebird_name)], the [lovebird_job] could be a good match?"
+	explanation_text = "Eora wants you to find your true love and marry them! Perhaps [lovebird_name], the [lovebird_job] could be a good match?"
