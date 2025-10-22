@@ -30,5 +30,7 @@
 
 		human_mob.add_stress(/datum/stress_event/astrata_grandeur)
 
-		to_chat(human_mob, span_notice("Astrata shines brightly todae - and just as she leads the Ten, so must you guide others with a firm hand. The Sun Queen demands no less from those who bask in her glory."))
+		bordered_message(human_mob, list(
+			span_notice("Astrata shines brightly todae - and just as she leads the Ten, so must you guide others with a firm hand. The Sun Queen demands no less from those who bask in her glory.")
+		))
 		human_mob.playsound_local(human_mob, 'sound/magic/bless.ogg', 100)

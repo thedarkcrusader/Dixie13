@@ -71,10 +71,14 @@
 		male.add_stress(/datum/stress_event/eora_matchmaking)
 		female.add_stress(/datum/stress_event/eora_matchmaking)
 
-		to_chat(male, span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."))
-		to_chat(male, span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[female.real_name]")], the [female.job] seems to get your heart racing for some reason..."))
+		bordered_message(male, list(
+			span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."),
+			span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[female.real_name]")], the [female.job] seems to get your heart racing for some reason..."),
+		))
 		male.playsound_local(male, 'sound/vo/female/gen/giggle (1).ogg', 100)
 
-		to_chat(female, span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."))
-		to_chat(female, span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[male.real_name]")], the [male.job] seems to get your heart racing for some reason..."))
+		bordered_message(female, list(
+			span_rose("Eora's voice whispers in your heart - you feel an irresistible urge to finally get married..."),
+			span_rose("You can choose anyone you fancy to fulfill this desire, but the name of [span_notice("[male.real_name]")], the [male.job] seems to get your heart racing for some reason..."),
+		))
 		female.playsound_local(female, 'sound/vo/female/gen/giggle (1).ogg', 100)
