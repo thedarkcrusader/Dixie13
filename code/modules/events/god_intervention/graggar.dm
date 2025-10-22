@@ -120,27 +120,22 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		loser = challenger.resolve()
 
 	if(winner)
-		winner.remove_stress(/datum/stress_event/graggar_culling_unfinished)
-		winner.verbs -= /mob/living/carbon/human/proc/remember_culling
 		winner.add_stress(/datum/stress_event/graggar_culling_finished)
-		to_chat(winner, span_notice("Your rival's heart has been DESTROYED! While not the glorious consumption Graggar desired, he acknowledges you as not weak."))
 		winner.adjust_triumphs(1)
+		adjust_storyteller_influence(GRAGGAR, 10)
+		to_chat(winner, span_notice("Your rival's heart has been DESTROYED! While not the glorious consumption Graggar has desired, you have overcome the culling nevertheless."))
 
 	finish_culling(winner, loser)
 
 /datum/culling_duel/proc/finish_culling(mob/living/winner, mob/living/loser)
+	if(winner)
+		winner.remove_stress(/datum/stress_event/graggar_culling_unfinished)
+		winner.remove_spell(/datum/action/cooldown/spell/undirected/seek_rival)
+
 	if(loser)
 		loser.remove_stress(/datum/stress_event/graggar_culling_unfinished)
-		loser.verbs -= /mob/living/carbon/human/proc/remember_culling
+		loser.remove_spell(/datum/action/cooldown/spell/undirected/seek_rival)
 		to_chat(loser, span_boldred("You have FAILED Graggar for the LAST TIME!"))
 		loser.gib()
 
 	qdel(src)
-
-/// Verb for the graggar's culling contestants to remember their targets
-/mob/living/carbon/human/proc/remember_culling()
-	set name = "Graggar's Culling"
-	set category = "Graggar"
-	if(!mind)
-		return
-	mind.recall_culling(src)

@@ -1,9 +1,9 @@
 /datum/objective/personal/eat_rival_heart
 	name = "Eat Rival's Heart"
 	category = "Graggar's Contestant"
-	triumph_count = 3
+	triumph_count = 4
 	immediate_effects = list("Gained an ability to rip hearts out of corpses")
-	rewards = list("3 Triumphs", "Graggar grows stronger", "Overwhelming Power (+2 to all stats)")
+	rewards = list("4 Triumphs", "Graggar grows stronger", "Overwhelming Power (+2 to all stats)")
 	var/rival_name
 	var/rival_job
 
@@ -17,7 +17,7 @@
 	if(owner?.current)
 		owner.current.add_stress(/datum/stress_event/graggar_culling_unfinished)
 		owner.current.add_spell(/datum/action/cooldown/spell/extract_heart)
-		owner.current.verbs |= /mob/living/carbon/human/proc/remember_culling
+		owner.current.add_spell(/datum/action/cooldown/spell/undirected/seek_rival)
 		RegisterSignal(owner.current, COMSIG_ORGAN_CONSUMED, PROC_REF(on_organ_consumed))
 	update_explanation_text()
 
@@ -47,13 +47,11 @@
 /datum/objective/personal/eat_rival_heart/complete_objective()
 	. = ..()
 	to_chat(owner.current, span_notice("You have proven your strength to Graggar by consuming your rival's heart! Your rival's power is now YOURS!"))
-	adjust_storyteller_influence(GRAGGAR, 20)
+	adjust_storyteller_influence(GRAGGAR, 30)
 	UnregisterSignal(owner.current, COMSIG_ORGAN_CONSUMED)
 
 /datum/objective/personal/eat_rival_heart/reward_owner()
 	. = ..()
-	owner.current.remove_stress(/datum/stress_event/graggar_culling_unfinished)
-	owner.current.verbs -= /mob/living/carbon/human/proc/remember_culling
 	owner.current.add_stress(/datum/stress_event/graggar_culling_finished)
 	owner.current.set_stat_modifier("graggar_culling", STATKEY_STR, 2)
 	owner.current.set_stat_modifier("graggar_culling", STATKEY_END, 2)
