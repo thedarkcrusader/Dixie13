@@ -409,7 +409,3 @@
 /obj/structure/chair/stool/crafted
 	item_chair = /obj/item/chair/stool/bar/crafted
 	sellprice = 6
-
-/obj/item/chair/stool/bar/crafted
-	origin_type = /obj/structure/chair/stool/crafted
-	sellprice = 6
