@@ -8,6 +8,26 @@
 	outfit = /datum/outfit/adventurer/wanderingpilgrim
 	allowed_sexes = list(MALE, FEMALE)
 
+	jobstats = list(
+		STATKEY_LCK, 1 //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
+	)
+
+	skills = list(
+		/datum/skill/misc/sewing = 2,
+		/datum/skill/craft/crafting = 2,
+		/datum/skill/misc/medicine = 2,
+		/datum/skill/combat/polearms = 3, // have to be atleaast somewhat competent with one weapon to have traveled alot
+		/datum/skill/combat/unarmed = 1,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/combat/wrestling = 1,
+		/datum/skill/misc/athletics = 2,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/swimming = 1,
+		/datum/skill/misc/reading = 2,
+		/datum/skill/craft/cooking = 2,
+	)
+
+
 /datum/outfit/adventurer/wanderingpilgrim/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/leather/headscarf
@@ -22,52 +42,39 @@
 	backr = /obj/item/weapon/polearm/woodstaff/quarterstaff
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor = 1, /obj/item/reagent_containers/food/snacks/hardtack = 1)
-	if (H.mind)
-		var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zaladin" = 1, "Orcish" = 1, "Old Psydonic" = 1,))
-		switch(language)
-			if("Dwarvish")
-				H.grant_language(/datum/language/dwarvish)
-				to_chat(H,span_info("\
-				I learned the tongue of the Dwarves through my travels.")
-				)
-			if("Elvish")
-				H.grant_language(/datum/language/elvish)
-				to_chat(H,span_info("\
-				I learned the tongue of the Elves through my travels.")
-				)
-			if("Hellspeak")
-				H.grant_language(/datum/language/hellspeak)
-				to_chat(H,span_info("\
-				I learned the tongue of the hellspawn through my travels.")
-				)
-			if("Zaladin")
-				H.grant_language(/datum/language/zalad)
-				to_chat(H,span_info("\
-				I learned the tongue of Zaladin through my travels.")
-				)
-			if("Orcish")
-				H.grant_language(/datum/language/orcish)
-				to_chat(H,span_info("\
-				I learned the tongue of the Orcs through my travels.")
-				)
-			if("Old Psydonic")
-				H.grant_language(/datum/language/orcish)
-				to_chat(H,span_info("\
-				I learned to speak Old Psydonic through my travels.")
-				)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) // have to be atleaast somewhat competent with one weapon to have traveled alot
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-		H.change_stat(STATKEY_LCK, 1) //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
+
+	var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zaladin" = 1, "Orcish" = 1, "Old Psydonic" = 1,))
+	switch(language)
+		if("Dwarvish")
+			H.grant_language(/datum/language/dwarvish)
+			to_chat(("\
+			I learned the tongue of the Dwarves through my travels.")
+			)
+		if("Elvish")
+			H.grant_language(/datum/language/elvish)
+			to_chat(("\
+			I learned the tongue of the Elves through my travels.")
+			)
+		if("Hellspeak")
+			H.grant_language(/datum/language/hellspeak)
+			to_chat(("\
+			I learned the tongue of the hellspawn through my travels.")
+			)
+		if("Zaladin")
+			H.grant_language(/datum/language/zalad)
+			to_chat(("\
+			I learned the tongue of Zaladin through my travels.")
+			)
+		if("Orcish")
+			H.grant_language(/datum/language/orcish)
+			to_chat(("\
+			I learned the tongue of the Orcs through my travels.")
+			)
+		if("Old Psydonic")
+			H.grant_language(/datum/language/orcish)
+			to_chat(("\
+			I learned to speak Old Psydonic through my travels.")
+			)
 
 
 
