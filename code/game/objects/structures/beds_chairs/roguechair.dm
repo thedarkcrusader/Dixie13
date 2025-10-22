@@ -407,5 +407,5 @@
 	sellprice = 12
 
 /obj/structure/chair/stool/crafted
-	item_chair = /obj/item/chair/stool/bar/crafted
+	item_chair = /obj/item/chair/stool/crafted
 	sellprice = 6
