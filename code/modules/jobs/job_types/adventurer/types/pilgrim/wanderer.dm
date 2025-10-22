@@ -1,12 +1,10 @@
 /datum/job/advclass/pilgrim/wanderer
 	title = "Wanderer"
-	tutorial = "You are a member of the Merry Band, a humble guild of wanderers who have united under one common desire. Wandering for the sake of experiencing the beauty and diversity of Faience to the fullest extent. As the motto of the Merry Band goes, ''Make every step count, and may your journeys be full of wonder''."
-	allowed_races = RACES_PLAYER_ALL
+	tutorial = "You are a member of the Merry Band, a humble guild of wanderers who have united under one common desire. Wandering for the sake of experiencing the beauty and diversity of Faience to the fullest extent. As the motto of the Merry Band goes, \"Make every step count, and may your journeys be full of wonder\"."
 	total_positions = 5
 	min_pq = 0
 	category_tags = list(CTAG_PILGRIM)
 	outfit = /datum/outfit/adventurer/wanderingpilgrim
-	allowed_sexes = list(MALE, FEMALE)
 
 	jobstats = list(
 		STATKEY_LCK, 1 //Wanderers are meant to be a blank slate, so they dont really have anything. But i think some bonus luck would be make sense for them.
