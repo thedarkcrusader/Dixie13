@@ -31,8 +31,8 @@
 	spawned.grant_language(language)
 	to_chat(spawned, span_notice("I learned the tongue of [initial(language.name)] through my travels."))
 
-/datum/outfit/adventurer/wanderingpilgrim/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/outfit/adventurer/wanderingpilgrim
+	name = "Wandering Pilgrim
 	head = /obj/item/clothing/head/helmet/leather/headscarf
 	shoes = /obj/item/clothing/shoes/sandals
 	pants = /obj/item/clothing/pants/trou/leather/quiltedkilt/colored/linen
