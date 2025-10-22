@@ -281,6 +281,16 @@
 		for(var/datum/mind/MF in get_minds(X))
 			spawned.mind.i_know_person(MF)
 
+	// Ready up bonus
+	if(!spawned.islatejoin)
+		spawned.adjust_triumphs(1)
+		spawned.apply_status_effect(/datum/status_effect/buff/foodbuff)
+		spawned.hydration = 800 // Set higher hydration
+
+		if(spawned.mind)
+			spawned.mind?.special_items["Pouch of Coins"] = /obj/item/storage/belt/pouch/coins/readyuppouch
+		to_chat(spawned, span_notice("Rising early, you made sure to pack a pouch of coins in your stash and eat a hearty breakfast before starting your day. A true TRIUMPH!"))
+
 	var/used_title = get_informed_title(spawned)
 	if(spawned.islatejoin && (job_flags & JOB_ANNOUNCE_ARRIVAL)) //to be moved somewhere more appropriate
 		scom_announce("[spawned.real_name] the [used_title] arrives from [SSmapping.config.immigrant_origin].")
