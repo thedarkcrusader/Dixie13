@@ -25,6 +25,12 @@
 		/datum/skill/craft/cooking = 2,
 	)
 
+/datum/job/advclass/pilgrim/wanderer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/datum/language/language = pickweight(list(/datum/language/orcish = 1, /datum/language/celestial = 1, /datum/language/hellspeak = 1, /datum/language/dwarvish = 1, /datum/language/elvish = 1, /datum/language/oldpsydonic = 1, /datum/language/zalad = 1,))
+	spawned.grant_language(language)
+	to_chat(spawned, span_notice("I learned the tongue of [initial(language.name)] through my travels."))
+
 
 /datum/outfit/adventurer/wanderingpilgrim/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -36,43 +42,8 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/knife/dagger
-	neck = /obj/item/clothing/neck/silveramulet
+	neck = /obj/item/clothing/neck/shellamulet // was previously silver but then i realized, "wait if a vampire lord spawns as a wanderer they immediately get frenzied"
 	backr = /obj/item/weapon/polearm/woodstaff/quarterstaff
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor = 1, /obj/item/reagent_containers/food/snacks/hardtack = 1)
-
-	var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zaladin" = 1, "Orcish" = 1, "Old Psydonic" = 1,))
-	switch(language)
-		if("Dwarvish")
-			H.grant_language(/datum/language/dwarvish)
-			to_chat(("\
-			I learned the tongue of the Dwarves through my travels.")
-			)
-		if("Elvish")
-			H.grant_language(/datum/language/elvish)
-			to_chat(("\
-			I learned the tongue of the Elves through my travels.")
-			)
-		if("Hellspeak")
-			H.grant_language(/datum/language/hellspeak)
-			to_chat(("\
-			I learned the tongue of the hellspawn through my travels.")
-			)
-		if("Zaladin")
-			H.grant_language(/datum/language/zalad)
-			to_chat(("\
-			I learned the tongue of Zaladin through my travels.")
-			)
-		if("Orcish")
-			H.grant_language(/datum/language/orcish)
-			to_chat(("\
-			I learned the tongue of the Orcs through my travels.")
-			)
-		if("Old Psydonic")
-			H.grant_language(/datum/language/orcish)
-			to_chat(("\
-			I learned to speak Old Psydonic through my travels.")
-			)
-
-
 
