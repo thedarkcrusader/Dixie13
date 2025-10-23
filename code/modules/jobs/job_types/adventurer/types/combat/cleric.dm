@@ -74,7 +74,7 @@
 		if(/datum/patron/divine/ravox)
 			wrists = /obj/item/clothing/neck/psycross/silver/ravox
 			cloak =  /obj/item/clothing/cloak/stabard/templar/ravox
-			H.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 			backr = /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 			H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
