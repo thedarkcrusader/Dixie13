@@ -32,7 +32,6 @@
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
 	experimental_onhip = TRUE
-	bigboy = TRUE
 	wdefense = 2
 	smeltresult = /obj/item/ingot/copper
 	associated_skill = /datum/skill/combat/polearms
