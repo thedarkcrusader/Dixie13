@@ -37090,7 +37090,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/church/chapel)
 "tiA" = (
-/obj/item/chair/stool/bar,
+/obj/item/chair/stool,
 /turf/open/floor/greenstone,
 /area/rogue/under/town/basement)
 "tiF" = (
@@ -41539,7 +41539,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "vvq" = (
-/obj/item/chair/stool/bar,
+/obj/item/chair/stool,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town)
 "vvB" = (
