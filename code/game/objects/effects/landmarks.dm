@@ -82,7 +82,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/adventurerlate
 	name = "Adventurerlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Pilgrim", "Adventurer")
+	jobspawn_override = list("Pilgrim", "Adventurer", "Wretch")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -137,6 +137,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/guardsman
 	name = "City Watchmen"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/lieutenant
+	name = "City Watch Lieutenant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/manorguardsman
@@ -392,6 +396,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/innkeep_son
 	name = "Innkeepers Son"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/clinicapprentice
+	name = "Clinic Apprentice"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/evilskeleton	// Trying to make EVIL SKELTON actually spawn

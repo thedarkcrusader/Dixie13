@@ -200,9 +200,12 @@
 	if(!currently_charging)
 		return
 
+	if(!owner)
+		return PROCESS_KILL
+
 	if(charge_drain)
 		if(!check_cost(charge_drain))
-			to_chat(owner, span_userdanger("I cannot uphold the channeling!"))
+			owner.balloon_alert(owner, "I cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
 		invoke_cost(charge_drain)
@@ -211,7 +214,7 @@
 	if(world.time > (charge_started_at + charge_target_time))
 		// We don't want that mouseUp to end in sadness
 		if(!check_cost(charge_drain))
-			to_chat(owner, span_userdanger("I cannot uphold the channeling!"))
+			owner.balloon_alert(owner, "I cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
 		owner.client.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
@@ -264,8 +267,8 @@
 		return currently_charging
 	return ..()
 
-/datum/action/cooldown/spell/IsAvailable()
-	return ..() && can_cast_spell(feedback = FALSE)
+/datum/action/cooldown/spell/IsAvailable(feedback = FALSE)
+	return ..() && can_cast_spell(feedback = feedback)
 
 /datum/action/cooldown/spell/Trigger(trigger_flags, atom/target)
 	// We implement this can_cast_spell check before the parent call of Trigger()
@@ -433,12 +436,12 @@
 
 	if(!(spell_flags & SPELL_IGNORE_SPELLBLOCK) && HAS_TRAIT(owner, TRAIT_SPELLBLOCK))
 		if(feedback)
-			to_chat(owner, span_warning("I can't seem to concentrate on casting..."))
+			owner.balloon_alert(owner, "Can't focus on casting...")
 		return FALSE
 
 	if(HAS_TRAIT(owner, TRAIT_NOC_CURSE))
 		if(feedback)
-			to_chat(owner, span_warning("My magicka has left me..."))
+			owner.balloon_alert(owner, "My magicka has left me...")
 		return FALSE
 
 	for(var/datum/action/cooldown/spell/spell in owner.actions)
@@ -446,7 +449,7 @@
 			continue
 		if(spell.currently_charging)
 			if(feedback)
-				to_chat(owner, span_warning("I am already channeling a spell!"))
+				owner.balloon_alert(owner, "Already channeling!")
 			return FALSE
 
 	if(!check_cost(feedback = feedback))
@@ -456,7 +459,7 @@
 	var/turf/caster_turf = get_turf(owner)
 	if((spell_requirements & SPELL_REQUIRES_STATION) && is_centcom_level(caster_turf.z))
 		if(feedback)
-			to_chat(owner, span_warning("You can't cast [src] here!"))
+			owner.balloon_alert(owner, "Cannot cast here!")
 		return FALSE
 
 	if((spell_requirements & SPELL_REQUIRES_MIND) && !owner.mind)
@@ -467,7 +470,7 @@
 	// that corresponds with the spell's antimagic, then they can't actually cast the spell
 	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && !owner.can_cast_magic(antimagic_flags))
 		if(feedback)
-			to_chat(owner, span_warning("Some form of antimagic is preventing you from casting [src]!"))
+			owner.balloon_alert(owner, "Antimagic is preventing casting!")
 		return FALSE
 
 	if(!can_invoke(feedback = feedback))
@@ -476,12 +479,7 @@
 	if(!ishuman(owner))
 		if(spell_requirements & (SPELL_REQUIRES_HUMAN))
 			if(feedback)
-				to_chat(owner, span_warning("[src] can only be cast by humans!"))
-			return FALSE
-
-		if(spell_type == SPELL_MIRACLE)
-			if(feedback)
-				to_chat(owner, span_warning("My link to the divine is too weak to cast [src]!"))
+				owner.balloon_alert(owner, "Can only be cast by humans!")
 			return FALSE
 
 	if(LAZYLEN(required_items))
@@ -491,7 +489,7 @@
 				found = TRUE
 				break
 		if(!found && feedback)
-			to_chat(owner, span_warning("I'm missing something to cast this!"))
+			owner.balloon_alert(owner, "Missing something to cast!")
 			return FALSE
 
 	return TRUE
@@ -505,7 +503,7 @@
 /datum/action/cooldown/spell/proc/is_valid_target(atom/cast_on)
 	if(click_to_activate && !self_cast_possible)
 		if(cast_on == owner)
-			to_chat(owner, span_warning("You cannot cast [src] on yourself!"))
+			owner.balloon_alert(owner, "Can't self cast!")
 			return FALSE
 
 	return TRUE
@@ -583,7 +581,7 @@
 			return sig_return
 
 		if(get_dist(owner, cast_on) > cast_range)
-			to_chat(owner, span_warning("Too far away!"))
+			owner.balloon_alert(owner, "Too far away!")
 			return sig_return | SPELL_CANCEL_CAST
 
 		if((spell_type == SPELL_MIRACLE) && HAS_TRAIT(cast_on, TRAIT_ATHEISM_CURSE))
@@ -603,13 +601,23 @@
 			do_after_flags &= ~IGNORE_USER_LOC_CHANGE
 		on_start_charge()
 		var/success = TRUE
-		if(!do_after(owner, get_adjusted_charge_time(), timed_action_flags = do_after_flags))
+		if(!do_after(owner, get_adjusted_charge_time(), timed_action_flags = do_after_flags, extra_checks = CALLBACK(src, PROC_REF(do_after_checks), owner, cast_on)))
 			success = FALSE
 			sig_return |= SPELL_CANCEL_CAST
 
-		on_end_charge(success)
+		if(currently_charging) // in case charging was interrupted elsewhere
+			on_end_charge(success)
 
 	return sig_return
+
+/datum/action/cooldown/spell/proc/do_after_checks(mob/owner, atom/cast_on)
+	if(!currently_charging)
+		return FALSE
+	if(!can_cast_spell(TRUE))
+		return FALSE
+	if(!is_valid_target(cast_on))
+		return FALSE
+	return TRUE
 
 /**
  * Actions done as the main effect of the spell.
@@ -625,7 +633,9 @@
 	if(owner)
 		SEND_SIGNAL(owner, COMSIG_MOB_CAST_SPELL, src, cast_on)
 		if(owner.ckey)
-			owner.log_message("cast the spell [name][cast_on != owner ? " on / at [cast_on]":""].", LOG_ATTACK)
+			owner.log_message("cast the spell [name][cast_on != owner ? " on / at [key_name_admin(cast_on)]":""].", LOG_ATTACK)
+			if(cast_on != owner)
+				cast_on.log_message("affected by spell [name] by [key_name_admin(owner)].", LOG_ATTACK)
 
 /**
  * Actions done after the main cast is finished.
@@ -697,10 +707,10 @@
 		caster.start_spell_visual_effects(attunements)
 
 	if(charge_message)
-		to_chat(owner, span_warning(charge_message))
+		owner.balloon_alert(owner, charge_message)
 
 	if(spell_requirements & SPELL_REQUIRES_NO_MOVE)
-		to_chat(owner, span_warning("I must be still while I channel [src]!"))
+		owner.balloon_alert(owner, "Be still while channelling...")
 
 	if(owner?.mmb_intent)
 		owner.mmb_intent_change(null)
@@ -714,7 +724,7 @@
 		charged = TRUE
 		return
 	if(owner)
-		to_chat(owner, span_warning("My channeling of [src] was interrupted!"))
+		owner.balloon_alert(owner, "Channeling was interrupted!")
 
 /// End the charging cycle
 /datum/action/cooldown/spell/proc/end_charging()
@@ -757,12 +767,12 @@
 	var/mob/living/living_owner = owner
 	if(invocation_type == INVOCATION_EMOTE && HAS_TRAIT(living_owner, TRAIT_EMOTEMUTE))
 		if(feedback)
-			to_chat(owner, span_warning("You can't position your hands correctly to invoke [src]!"))
+			owner.balloon_alert(owner, "Can't position your hands correctly to invoke!")
 		return FALSE
 
 	if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !living_owner.can_speak_vocal())
 		if(feedback)
-			to_chat(owner, span_warning("You can't get the words out to invoke [src]!"))
+			owner.balloon_alert(owner, "Can't get the words out to invoke!")
 		return FALSE
 
 	return TRUE
@@ -843,10 +853,10 @@
 		return TRUE
 
 	if(!HAS_TRAIT(owner, TRAIT_NOSTAMINA))
-		var/stamina_spell = (spell_type == SPELL_STAMINA)
-		if(!caster.check_stamina(used_cost / (1 + stamina_spell)))
+		var/not_stamina_spell = (spell_type != SPELL_STAMINA)
+		if(!caster.check_stamina(used_cost / (1 + not_stamina_spell)))
 			if(feedback)
-				to_chat(owner, span_warning("I don't have enough stamina to cast!"))
+				owner.balloon_alert(owner, "Not enough stamina to cast!")
 			return FALSE
 
 	if(spell_type == NONE || spell_type == SPELL_STAMINA)
@@ -856,7 +866,7 @@
 		if(SPELL_MANA)
 			if(!caster.has_mana_available(attunements, used_cost))
 				if(feedback)
-					to_chat(owner, span_warning("I am too drained to cast!"))
+					owner.balloon_alert(owner, "Not enough mana to cast!")
 				return FALSE
 
 			return TRUE
@@ -864,7 +874,7 @@
 		if(SPELL_BLOOD)
 			if(!caster.has_bloodpool_cost(used_cost))
 				if(feedback)
-					to_chat(owner, span_warning("I am too drained to cast!"))
+					owner.balloon_alert(owner, "Need more blood to cast!")
 				return FALSE
 
 			return TRUE
@@ -873,7 +883,7 @@
 			var/mob/living/carbon/human/H = caster
 			if(!istype(H) || !H.cleric?.check_devotion(spell_cost))
 				if(feedback)
-					to_chat(owner, span_warning("My devotion is too weak!"))
+					owner.balloon_alert(owner, "Devotion too weak!")
 				return FALSE
 
 			return TRUE
@@ -885,15 +895,12 @@
 				return FALSE
 			if(!gaunt.check_gauntlet_validity(owner))
 				return FALSE
-			// This should not be possible without admemes or bad coders
-			if(!(is_type_in_list(src, gaunt.granted_spells)))
-				return FALSE
 			// Ditto
 			if(!length(gaunt.stored_vials))
 				return FALSE
 			if(!gaunt.can_consume_essence(used_cost, attunements))
 				if(feedback)
-					to_chat(owner, span_warning(("The gauntlet hasn't got enough essence to cast!")))
+					owner.balloon_alert(owner, "Not enough essence!")
 				return FALSE
 
 			return TRUE
@@ -923,8 +930,8 @@
 		used_type = type_override
 
 	if(!re_run)
-		var/stamina_spell = (used_type == SPELL_STAMINA)
-		owner.adjust_stamina(-(used_cost / (1 + stamina_spell)))
+		var/not_stamina_spell = (used_type != SPELL_STAMINA)
+		owner.adjust_stamina(-(used_cost / (1 + not_stamina_spell)))
 
 	if(spell_type == NONE)
 		return // No return value == No exp
@@ -937,13 +944,13 @@
 		if(SPELL_MIRACLE)
 			var/mob/living/carbon/human/H = owner
 			if(!istype(H) || !H.cleric)
-				return invoke_cost(used_cost, SPELL_MANA, TRUE)
+				return
 			H.cleric.update_devotion(-used_cost)
 
 		if(SPELL_ESSENCE)
 			var/obj/item/clothing/gloves/essence_gauntlet/gaunt = target
 			if(!gaunt.check_gauntlet_validity(owner))
-				return invoke_cost(used_cost, SPELL_MANA, TRUE)
+				return
 
 			gaunt.consume_essence(used_cost, attunements)
 

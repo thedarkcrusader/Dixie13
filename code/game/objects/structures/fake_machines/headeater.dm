@@ -49,20 +49,18 @@
 
 /obj/structure/fake_machine/headeater
 	name = "head eating HAILER"
-	desc = "A machine that feeds on certain heads for coin, this itteration seems unfinished, what a sell out"
+	desc = "A machine that feeds on certain heads for coin, this itteration seems unfinished, what a sell out."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "headeater"
 	density = FALSE
 	blade_dulling = DULLING_BASH
-	pixel_y = 32
+	SET_BASE_PIXEL(0, 32)
 
 /obj/structure/fake_machine/headeater/r
-	pixel_y = 0
-	pixel_x = 32
+	SET_BASE_PIXEL(32, 0)
 
 /obj/structure/fake_machine/headeater/l
-	pixel_y = 0
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 
 /obj/structure/fake_machine/headeater/attackby(obj/item/H, mob/user, params)
 	. = ..()
@@ -94,7 +92,7 @@
 		var/obj/item/painting/lorehead/D = H
 		if(D.headprice > 0)
 			to_chat(user, span_danger("as the [src] consumes [D] without a trace, you are hit with a wistful feeling, your past...gone in an instant."))
-			user.add_stress(/datum/stressevent/destroyed_past)
+			user.add_stress(/datum/stress_event/destroyed_past)
 			budget2change(D.headprice, user)
 			qdel(D)
 			return

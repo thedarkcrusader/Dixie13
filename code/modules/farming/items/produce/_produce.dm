@@ -6,30 +6,11 @@
 	sellprice = 0
 	force = 0
 	throwforce = 0
+	faretype = FARE_POOR
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
-	var/crop_quality = 1
 	var/datum/plant_genetics/source_genetics
-
-/obj/item/reagent_containers/food/snacks/produce/proc/set_quality(quality)
-	crop_quality = quality
-	update_appearance(UPDATE_OVERLAYS)
-
-/obj/item/reagent_containers/food/snacks/produce/update_overlays()
-	. = ..()
-	// Add quality overlay to the food item
-	if(crop_quality <= 0)
-		return
-	var/list/quality_icons = list(
-		null, // Regular has no overlay
-		"bronze",
-		"silver",
-		"gold",
-		"diamond",
-	)
-	if(crop_quality <= length(quality_icons) && quality_icons[crop_quality])
-		. += mutable_appearance('icons/effects/crop_quality.dmi', quality_icons[crop_quality])
 
 /obj/item/reagent_containers/food/snacks/produce/fruit
 	name = "fruit"
@@ -44,8 +25,8 @@
 	. = ..()
 	if(!tastes)
 		tastes = list("[name]" = 1)
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 /obj/item/reagent_containers/food/snacks/produce/Crossed(mob/living/carbon/human/H)
 	..()
@@ -81,7 +62,7 @@
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat
 	seed = /obj/item/neuFarm/seed/wheat
 	name = "wheat grain"
-	desc = ""
+	desc = "A staple grain. Bread is made from this, and from bread, springs forth life."
 	icon_state = "wheat"
 	gender = PLURAL
 	filling_color = "#F0E68C"
@@ -101,7 +82,7 @@
 /obj/item/reagent_containers/food/snacks/produce/grain/oat
 	seed = /obj/item/neuFarm/seed/oat
 	name = "oat grain"
-	desc = ""
+	desc = "A staple grain. Used to create oatmeal, and to feed saigas and horses."
 	icon_state = "oat"
 	gender = PLURAL
 	filling_color = "#b1d179"
@@ -109,6 +90,7 @@
 	foodtype = GRAIN
 	tastes = list("oat" = 1)
 	grind_results = list(/datum/reagent/flour = 10)
+
 /obj/item/reagent_containers/food/snacks/produce/grain/oat/examine(mob/user)
 	var/farminglvl = user.get_skill_level(/datum/skill/labor/farming)
 	. += ..()
@@ -176,7 +158,6 @@
 	faretype = FARE_NEUTRAL
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
-	dropshrink = 0.75
 	rotprocess = SHELFLIFE_SHORT
 	sellprice = 0 // spoil too quickly to export
 
@@ -210,11 +191,11 @@
 
 /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry
 	name = "jacksberries"
-	desc = "Common berries found throughout Enigma and surrounding lands. A traveler's repast, or Dendor's wrath."
+	desc = "Common berries found throughout most of Faience. A traveler's repast, or Dendor's wrath."
 	icon_state = "berriesc0"
 	seed = /obj/item/neuFarm/seed/berry
 	tastes = list("berry" = 1)
-	faretype = FARE_NEUTRAL
+	faretype = FARE_POOR
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
 	dropshrink = 0.75
@@ -415,7 +396,7 @@
 /obj/item/reagent_containers/food/snacks/produce/fruit/lemon
 	name = "lemon"
 	seed = /obj/item/neuFarm/seed/lemon
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	desc = "A sleep alternative for those determined enough."
 	icon_state = "lemon"
 	bitesize = 2
 	foodtype = FRUIT
@@ -425,7 +406,7 @@
 /obj/item/reagent_containers/food/snacks/produce/fruit/lime
 	name = "lime"
 	seed = /obj/item/neuFarm/seed/lime
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	desc = "Along with its other citrus cousins, limes are well loved by sailors and seafolk for their ability to keep and stave off scurvy."
 	icon_state = "lime"
 	bitesize = 2
 	foodtype = FRUIT
@@ -435,7 +416,7 @@
 /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine
 	name = "tangerine"
 	seed = /obj/item/neuFarm/seed/tangerine
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	desc = "A citrus fruit loved by kids for its peelablity and more mild sweetness compared to limes and lemons."
 	icon_state = "tangerine"
 	bitesize = 2
 	foodtype = FRUIT
@@ -445,7 +426,7 @@
 /obj/item/reagent_containers/food/snacks/produce/fruit/plum
 	name = "plum"
 	seed = /obj/item/neuFarm/seed/plum
-	desc = "Too sweet for many, a favored treat for little ones. Dwarves do love them."
+	desc = "A fruit with a large seed in the middle. Its blossoms are enjoyed in the spring, and its fruits in the summer."
 	icon_state = "plum"
 	bitesize = 2
 	foodtype = FRUIT
@@ -472,10 +453,9 @@
 /obj/item/reagent_containers/food/snacks/produce/sunflower
 	seed = /obj/item/neuFarm/seed/sunflower
 	name = "sunflower"
-	desc = ""
+	desc = "Astratas favoured flower, said to carry some of her warmth and radiance. Astratan acolytes hold them in high regard."
 	icon_state = "sunflower"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
-	seed = /obj/item/neuFarm/seed/sunflower
 	slot_flags = ITEM_SLOT_HEAD
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -485,14 +465,14 @@
 	dropshrink = 0.8
 	rotprocess = null
 
-
+/*	..................   Sugarcane   ................... */
 /obj/item/reagent_containers/food/snacks/produce/sugarcane
 	seed = /obj/item/neuFarm/seed/sugarcane
 	name = "sugarcane"
-	desc = ""
+	desc = "A crop best suited for a warmer climate, raw sugar cane is considered a sweet snack by some sea elves."
 	icon_state = "sugarcane"
-	seed = /obj/item/neuFarm/seed/sugarcane
 	throwforce = 0
+	faretype = FARE_FINE //Reasoning: Sugarcane is a rare import. You can also chew sugarcane fibers. Try some out next time you have some!
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
 	throw_range = 3
@@ -513,7 +493,7 @@
 /obj/item/reagent_containers/food/snacks/produce/fyritius
 	name = "fyritius flower"
 	seed = /obj/item/neuFarm/seed/fyritius // if mass producing these breaks shit just comment it out
-	desc = ""
+	desc = "A flower that's colored like flickering flames. Said to contain a bit of the power of fire as well."
 	icon_state = "fyritius"
 	tastes = list("tastes like a burning coal and fire" = 1)
 	bitesize = 1

@@ -120,7 +120,7 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 
@@ -138,7 +138,7 @@
 
 	var/added_wound
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
-		if(BCLASS_SMASH, BCLASS_BLUNT)
+		if(BCLASS_SMASH, BCLASS_BLUNT, BCLASS_PUNCH)
 			switch(dam)
 				if(30 to INFINITY)
 					added_wound = /datum/wound/bruise/large
@@ -175,28 +175,38 @@
 					added_wound = /datum/wound/lashing/small
 
 		if(BCLASS_BITE)
-			do_crit = FALSE
+			// Change crit handling becase biting is so free
 			switch(dam)
 				if(20 to INFINITY)
 					added_wound = /datum/wound/bite/large
-					do_crit = TRUE
 				if(10 to 20)
 					added_wound = /datum/wound/bite
+					// Areas that don't really make sense to be vulnerable to regular biting
+					var/static/list/bite_crit_hard = list(
+						BODY_ZONE_L_ARM,
+						BODY_ZONE_R_ARM,
+						BODY_ZONE_L_LEG,
+						BODY_ZONE_R_LEG,
+						BODY_ZONE_CHEST,
+						BODY_ZONE_HEAD,
+						BODY_ZONE_PRECISE_SKULL,
+					)
+					// So you can bite exposed parts of the head, hands, feet, neck, and groin which are typically easier to bite and fleshy
+					if(!HAS_TRAIT(user, TRAIT_STRONGBITE) && (zone_precise in bite_crit_hard))
+						do_crit = FALSE
 				if(1 to 10)
 					added_wound = /datum/wound/bite/small
-
-	if(!added_wound)
-		return
+					do_crit = FALSE // This is like leaving a mark on your skin or getting bit by a cat
 
 	if(do_crit)
-		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message)
+		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message, reduce_crit)
 		if(crit_attempt)
 			return crit_attempt
 
 	return add_wound(added_wound, silent, crit_message)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
-/obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0)
 	if(!bclass || !dam || (owner.status_flags & GODMODE))
 		return FALSE
 
@@ -220,6 +230,7 @@
 		dam += 10
 
 	var/used
+	used -= reduce_crit
 	var/damage_dividend = (get_damage() / max_damage)
 	var/list/attempted_wounds
 	switch(pick(crit_classes))
@@ -556,7 +567,7 @@
 	if(owner)
 		if(!owner.has_embedded_objects())
 			owner.clear_alert("embeddedobject")
-			SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "embedded")
+			owner.remove_stress(/datum/stress_event/embedded)
 		if(can_be_disabled)
 			update_disabled()
 	return TRUE

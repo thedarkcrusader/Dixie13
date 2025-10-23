@@ -1,9 +1,8 @@
 /datum/job/captain
 	title = "Captain"
 	tutorial = "Law and Order, your divine reason for existence. \
-	You have been given command over the garrison to help keep order and peace within the city, \
+	You have been given command over the town and keep garrison to help ensure order and peace within the city, \
 	and defend it against the many dangers of the peninsula."
-	flag = CAPTAIN
 	department_flag = NOBLEMEN
 	display_order = JDO_CAPTAIN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
@@ -15,11 +14,13 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
-	outfit = /datum/outfit/job/captain
+	outfit = /datum/outfit/captain
 	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/guard)
 	give_bank_account = 120
 	cmode_music = 'sound/music/cmode/antag/CombatSausageMaker.ogg'
 	noble_income = 11
+
+	job_bitflag = BITFLAG_ROYALTY | BITFLAG_GARRISON
 
 /datum/job/captain/after_spawn(mob/living/spawned, client/player_client)
 	..()
@@ -32,15 +33,12 @@
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
 
-/datum/outfit/job/captain
-	job_bitflag = BITFLAG_ROYALTY | BITFLAG_GARRISON
-
-/datum/outfit/job/captain/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/visored/captain
 	gloves = /obj/item/clothing/gloves/plate
 	pants = /obj/item/clothing/pants/platelegs/captain
-	armor = /obj/item/clothing/armor/captain
+	armor = /obj/item/clothing/armor/brigandine/captain
 	neck = /obj/item/clothing/neck/gorget
 	shirt = /obj/item/clothing/shirt/undershirt/colored/guard
 	shoes = /obj/item/clothing/shoes/boots
@@ -50,7 +48,7 @@
 	beltl = /obj/item/weapon/sword/sabre/dec
 	beltr = /obj/item/weapon/mace/cudgel
 	cloak = /obj/item/clothing/cloak/captain
-	scabbards = list(/obj/item/weapon/scabbard/sword)
+	scabbards = list(/obj/item/weapon/scabbard/sword/noble)
 	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/signal_horn = 1)
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

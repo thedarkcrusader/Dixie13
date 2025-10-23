@@ -109,7 +109,7 @@
 		client.verbs |= /client/proc/commendsomeone
 
 /client/proc/show_game_over()
-	var/atom/movable/screen/splash/credits/S = new(src, FALSE)
+	var/atom/movable/screen/splash/credits/S = new(null, null, src, FALSE, FALSE)
 	S.Fade(FALSE,FALSE)
 	RollCredits()
 
@@ -424,7 +424,7 @@
 
 		has_any_objectives = TRUE
 		var/any_success = FALSE
-		for(var/datum/objective/objective as anything in mind.personal_objectives)
+		for(var/datum/objective/personal/objective as anything in mind.personal_objectives)
 			if(objective.check_completion())
 				any_success = TRUE
 				break
@@ -443,7 +443,7 @@
 		parts += name_with_title
 
 		var/obj_count = 1
-		for(var/datum/objective/objective as anything in mind.personal_objectives)
+		for(var/datum/objective/personal/objective as anything in mind.personal_objectives)
 			var/result = objective.check_completion() ? span_greentext("TRIUMPH!") : span_redtext("FAIL")
 			parts += "<B>Goal #[obj_count]</B>: [objective.explanation_text] - [result]"
 			obj_count++

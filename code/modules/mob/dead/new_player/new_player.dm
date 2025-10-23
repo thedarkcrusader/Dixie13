@@ -92,11 +92,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			if(ready != tready)
 				ready = tready
-		//if it's post initialisation and they're trying to observe we do the needful
-		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
-			ready = tready
-			make_me_an_observer()
-			return
 
 	if(href_list["refresh"])
 		winshow(src, "stonekeep_prefwin", FALSE)
@@ -219,6 +214,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_UNAVAILABLE_RACE_BANNED)
+			return "You are currently banned from playing that species."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
@@ -292,6 +289,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 
 	if(is_role_banned(client.ckey, job.title))
 		return JOB_UNAVAILABLE_BANNED
+	if(is_race_banned(client.ckey, client.prefs.pref_species.id))
+		return JOB_UNAVAILABLE_RACE_BANNED
 	if(job.banned_leprosy && is_misc_banned(client.ckey, BAN_MISC_LEPROSY))
 		return JOB_UNAVAILABLE_BANNED
 	if(job.banned_lunatic && is_misc_banned(client.ckey, BAN_MISC_LUNATIC))
@@ -311,8 +310,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 /*	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
 		return JOB_UNAVAILABLE_DEITY */
 
+	#ifdef USES_PQ
 	if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
 		return JOB_UNAVAILABLE_QUALITY
+	#endif
 	if(length(job.allowed_sexes) && !(client.prefs.gender in job.allowed_sexes))
 		return JOB_UNAVAILABLE_SEX
 	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
@@ -466,6 +467,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 			for(var/job in available_jobs)
 				var/datum/job/job_datum = SSjob.name_occupations[job]
 				if(job_datum)
+					if(job_datum.scales && job_datum.enabled)
+						var/new_slots = job_datum.get_total_positions()
+						if(new_slots > job_datum.spawn_positions)
+							job_datum.set_spawn_and_total_positions(get_total_town_members())
 					var/command_bold = ""
 					if(job in GLOB.noble_positions)
 						command_bold = " command"
@@ -528,7 +533,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	if(joined_area)
 		joined_area.on_joining_game(new_character)
 	if(new_character.client)
-		var/atom/movable/screen/splash/Spl = new(new_character.client, TRUE)
+		var/atom/movable/screen/splash/Spl = new(null, null, new_character.client, TRUE, FALSE)
 		Spl.Fade(TRUE)
 	new_character = null
 	qdel(src)
@@ -545,6 +550,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+	src << browse(null, "window=culinary_customization")
+	src << browse(null, "window=food_selection")
+	src << browse(null, "window=drink_selection")
 
 	SStriumphs.remove_triumph_buy_menu(client)
 

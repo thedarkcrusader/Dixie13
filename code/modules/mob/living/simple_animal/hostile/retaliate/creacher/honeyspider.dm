@@ -18,14 +18,15 @@
 							/obj/item/natural/silk = 2)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 2,
 							/obj/item/reagent_containers/food/snacks/spiderhoney = 2,
-							/obj/item/natural/silk = 3,
-							/obj/item/natural/head/spider = 1)
+							/obj/item/natural/silk = 3)
+	head_butcher = /obj/item/natural/head/spider
 
 	health = SPIDER_HEALTH
 	maxHealth = SPIDER_HEALTH
 	food_type = list(/obj/item/bodypart,
 					/obj/item/organ,
 					/obj/item/reagent_containers/food/snacks/meat)
+	pooptype = /obj/structure/spider/stickyweb
 
 	base_intents = list(/datum/intent/simple/bite)
 	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')
@@ -92,24 +93,30 @@
 
 	ADD_TRAIT(src, TRAIT_WEBWALK, TRAIT_GENERIC)
 
-/mob/living/simple_animal/hostile/retaliate/spider/UnarmedAttack(atom/A)
+/mob/living/simple_animal/hostile/retaliate/spider/UnarmedAttack(atom/A, proximity_flag, params, atom/source)
 	if(!..())
 		return
-	production += rand(30, 50)
+	production += 50
 
 /mob/living/simple_animal/hostile/retaliate/spider/AttackingTarget()
 	. = ..()
 	if(. && isliving(target))
 		var/mob/living/L = target
+		production += 10
 		if(L.reagents)
 			L.reagents.add_reagent(/datum/reagent/toxin/venom, 1)
 
-/mob/living/simple_animal/hostile/retaliate/spider/try_tame(obj/item/O, mob/user)
+/mob/living/simple_animal/hostile/retaliate/spider/try_tame(obj/item/O, mob/living/carbon/human/user)
 	if(!stat)
 		user.visible_message("<span class='info'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>I hand-feed [O] to [src].</span>")
 		playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
+		SEND_SIGNAL(src, COMSIG_MOB_FEED, O, 30, user)
+		SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHANGE, user, 10)
 		qdel(O)
-		food = min(food + 30, 100)
+		if(is_species(user, /datum/species/elf/dark))
+			production += 50
+		else
+			production += 25
 		if(tame && owner == user)
 			return TRUE
 		var/realchance = tame_chance
@@ -120,6 +127,8 @@
 				realchance += (user.get_skill_level(/datum/skill/labor/taming) * 20)
 			if(prob(realchance))
 				tamed(user)
+				var/boon = user.get_learning_boon(/datum/skill/labor/taming)
+				user.adjust_experience(/datum/skill/labor/taming, (user.STAINT*10) * boon)
 			else
 				tame_chance += bonus_tame_chance
 		return TRUE

@@ -7,11 +7,30 @@
 	bodyparts = list(/obj/item/bodypart/chest/orc, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/orc,
 					/obj/item/bodypart/r_arm/orc, /obj/item/bodypart/r_leg/orc, /obj/item/bodypart/l_leg/orc)
 	rot_type = /datum/component/rot/corpse/orc
-//	var/gob_outfit = /datum/outfit/job/npc/orc/ambush removed to apply different classes to the orcs
+//	var/gob_outfit = /datum/outfit/npc/orc/ambush removed to apply different classes to the orcs
 	ambushable = FALSE
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw, /datum/intent/simple/bite, /datum/intent/kick)
 	possible_rmb_intents = list()
 	bloodpool = 1000 // Not as much vitae from them as humans to avoid vampires cheesing mobs
+
+/mob/living/carbon/human/species/orc/slaved
+	ai_controller = /datum/ai_controller/human_npc
+	dodgetime = 15 //they can dodge easily, but have a cooldown on it
+	canparry = TRUE
+	wander = FALSE
+
+/mob/living/carbon/human/species/orc/slaved/Initialize()
+	. = ..()
+	var/static/list/pet_commands = list(
+				/datum/pet_command/idle,
+				/datum/pet_command/free,
+				/datum/pet_command/follow,
+				/datum/pet_command/attack,
+				/datum/pet_command/protect_owner,
+				/datum/pet_command/aggressive,
+				/datum/pet_command/calm,
+			)
+	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 /mob/living/carbon/human/species/orc/npc
 	ai_controller = /datum/ai_controller/human_npc
@@ -38,7 +57,7 @@
 	job = "Ambush Orc"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/ambush)
+	equipOutfit(new /datum/outfit/npc/orc/ambush)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE
@@ -167,13 +186,14 @@
 	damage_overlay_type = ""
 	changesource_flags = WABBAJACK
 	var/raceicon = "orc"
+	exotic_bloodtype = /datum/blood_type/human/corrupted/orc
 
 /datum/species/orc/update_damage_overlays(mob/living/carbon/human/H)
 	return
 
 /datum/species/orc/regenerate_icons(mob/living/carbon/human/H)
 	H.icon_state = ""
-	if(H.notransform)
+	if(HAS_TRAIT(H, TRAIT_NO_TRANSFORM))
 		return 1
 	H.update_inv_hands()
 	H.update_inv_handcuffed()
@@ -232,12 +252,13 @@
 ////
 ///
 
-/datum/outfit/job/npc/orc/ambush/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/npc/orc/ambush/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.base_strength = 13
 	H.base_speed = 12
 	H.base_constitution = 13
 	H.base_endurance = 13
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //Stolen Tool armed raider
@@ -313,7 +334,7 @@
 /mob/living/carbon/human/species/orc/tribal
 	name = "Tribal Orc"
 	ai_controller = /datum/ai_controller/human_npc
-	var/loadout = /datum/outfit/job/npc/orc/tribal
+	var/loadout = /datum/outfit/npc/orc/tribal
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/tribal/Initialize()
@@ -324,18 +345,19 @@
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/tribal)
+	equipOutfit(new /datum/outfit/npc/orc/tribal)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/npc/orc/tribal/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/npc/orc/tribal/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.base_strength = 13
 	H.base_speed = 13
 	H.base_constitution = 13
 	H.base_endurance = 13
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //Dual Axe Warrior
@@ -367,7 +389,7 @@
 /mob/living/carbon/human/species/orc/warrior
 	name = "Warrior Orc"
 	ai_controller = /datum/ai_controller/human_npc
-	var/loadout = /datum/outfit/job/npc/orc/warrior
+	var/loadout = /datum/outfit/npc/orc/warrior
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/warrior/after_creation()
@@ -375,18 +397,19 @@
 	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/warrior)
+	equipOutfit(new /datum/outfit/npc/orc/warrior)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/npc/orc/warrior/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/npc/orc/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.base_strength = 13
 	H.base_speed = 13
 	H.base_constitution = 14
 	H.base_endurance = 14
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //Marauder with Sword and Shield
@@ -439,7 +462,7 @@
 /mob/living/carbon/human/species/orc/marauder
 	name = "Marauder Orc"
 	ai_controller = /datum/ai_controller/human_npc
-	var/loadout = /datum/outfit/job/npc/orc/marauder
+	var/loadout = /datum/outfit/npc/orc/marauder
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/marauder/after_creation()
@@ -447,18 +470,19 @@
 	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/marauder)
+	equipOutfit(new /datum/outfit/npc/orc/marauder)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/npc/orc/marauder/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/npc/orc/marauder/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.base_strength = 12
 	H.base_speed = 12
 	H.base_constitution = 13
 	H.base_endurance = 13
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //Marauder with Sword and Shield
@@ -494,7 +518,7 @@
 /mob/living/carbon/human/species/orc/warlord
 	name = "Warlord Orc"
 	ai_controller = /datum/ai_controller/human_npc
-	var/loadout = /datum/outfit/job/npc/orc/warlord
+	var/loadout = /datum/outfit/npc/orc/warlord
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/warlord/after_creation()
@@ -502,18 +526,19 @@
 	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/warlord)
+	equipOutfit(new /datum/outfit/npc/orc/warlord)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/npc/orc/warlord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/npc/orc/warlord/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.base_strength = 14
 	H.base_speed = 14
 	H.base_constitution = 14
 	H.base_endurance = 14
+	H.recalculate_stats(FALSE)
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //Halberd Warlord
@@ -543,7 +568,7 @@
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/npc/orc/warlord)
+	equipOutfit(new /datum/outfit/npc/orc/warlord)
 	dodgetime = 15
 	canparry = TRUE
 	flee_in_pain = FALSE

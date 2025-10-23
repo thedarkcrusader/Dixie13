@@ -32,6 +32,7 @@
 SUBSYSTEM_DEF(treasury)
 	name = "treasury"
 	wait = 1
+	init_order = INIT_ORDER_TREASURY
 	priority = FIRE_PRIORITY_WATER_LEVEL
 	var/tax_value = 0.11
 	var/queens_tax = 0.15
@@ -48,6 +49,7 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/Initialize()
 	//Randomizes the roundstart amount of money and the queens tax.
 	treasury_value = rand(800,1200)
+	force_set_round_statistic(STATS_STARTING_TREASURY, treasury_value)
 	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
 
 	//For the merchants import and export.
@@ -56,6 +58,8 @@ SUBSYSTEM_DEF(treasury)
 		stockpile_datums += D
 	for(var/path in subtypesof(/datum/stock/stockpile))
 		var/datum/D = new path
+		if(istype(D, /datum/stock/stockpile/custom))
+			continue
 		stockpile_datums += D
 	for(var/path in subtypesof(/datum/stock/import))
 		var/datum/D = new path
@@ -203,10 +207,10 @@ SUBSYSTEM_DEF(treasury)
 		// Player was fined
 		if(source)
 			send_ooc_note("<b>MEISTER:</b> Your account was fined [abs(amt)] mammon. ([source])", name = target_name)
-			log_to_steward("[name] was fined [target_name] ([source])")
+			log_to_steward("[abs(amt)] was fined from [target_name] ([source])")
 		else
 			send_ooc_note("<b>MEISTER:</b> Your account was fined [abs(amt)] mammon.", name = target_name)
-			log_to_steward("[name] was fined [target_name]")
+			log_to_steward("[abs(amt)] was fined from [target_name]")
 
 	return TRUE
 

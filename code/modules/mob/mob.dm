@@ -44,6 +44,17 @@ GLOBAL_VAR_INIT(mobids, 1)
 	..()
 	return QDEL_HINT_HARDDEL
 
+/// Assigns a (c)key to this mob.
+/mob/proc/PossessByPlayer(ckey)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(isnull(ckey))
+		return
+
+	if(!istext(ckey))
+		CRASH("Tried to assign a mob a non-text ckey, wtf?!")
+
+	src.ckey = ckey(ckey)
+
 /**
  * Intialize a mob
  *
@@ -344,36 +355,37 @@ GLOBAL_VAR_INIT(mobids, 1)
  * reset_perspective() set eye to common default : mob on turf, loc otherwise
  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
  */
-/mob/proc/reset_perspective(atom/A,atom/B)
-	if(client)
-		if(A)
-			if(ismovableatom(A))
-				//Set the the thing unless it's us
-				if(A != src)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else if(isturf(A))
-				//Set to the turf unless it's our current turf
-				if(A != loc)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else
-				//Do nothing
+/mob/proc/reset_perspective(atom/new_perspective)
+	if(!client)
+		return
+
+	if(!new_perspective)
+		if(isturf(loc))
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
 		else
-			//Reset to common defaults: mob if on turf, otherwise current loc
-			if(isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-		return 1
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = loc
+		return
+
+	if(ismovableatom(new_perspective))
+		//Set the the thing unless it's us
+		if(new_perspective != src)
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = new_perspective
+		else
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
+		return
+
+	if(isturf(new_perspective))
+		//Set to the turf unless it's our current turf
+		if(new_perspective != loc)
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = new_perspective
+		else
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
 
 /// Show the mob's inventory to another mob
 /mob/proc/show_inv(mob/user)
@@ -397,13 +409,52 @@ GLOBAL_VAR_INIT(mobids, 1)
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
 		return
 
-	if(is_blind(src))
+	if(is_blind())
 		to_chat(src, "<span class='warning'>Something is there but I can't see it!</span>")
 		return
 
 	if(isturf(A.loc) && isliving(src))
 		face_atom(A)
-		visible_message("<span class='emote'>[src] looks at [A].</span>")
+		if(src.m_intent != MOVE_INTENT_SNEAK)
+			visible_message("<span class='emote'>[src] looks at [A].</span>")
+		else
+			if(isliving(A))
+				var/mob/living/observer = src
+				var/mob/living/target = A
+				var/observer_skill = observer.get_skill_level(/datum/skill/misc/sneaking)
+				if(observer_skill <= 0)
+					observer_skill = 1
+				if(observer.rogue_sneaking)
+					observer_skill += 1
+
+				// determine PER multiplier based on the target PER
+				var/multiplier = 5
+				if(target.STAPER < 5)
+					multiplier = 4
+				else if(target.STAPER >= 5 && target.STAPER < 10)
+					multiplier = 5
+				else if(target.STAPER >= 10 && target.STAPER < 15)
+					multiplier = 6
+				else if(target.STAPER >= 15 && target.STAPER <= 20)
+					multiplier = 7
+
+				// calculate probability to fail
+				var/probby = (target.STAPER * multiplier) - (observer_skill * 10)
+
+				// clamp probability
+				probby = max(probby, 5)
+				probby = min(probby, 95)
+
+				if(prob(probby))
+					to_chat(src, span_warning("[A] noticed me peeking!"))
+					to_chat(A, span_warning("[src] peeks at you!"))
+					if(target.client) // only if they have a client to see it
+						found_ping(get_turf(observer), target.client, "hidden")
+				else
+					if(observer.client?.prefs.showrolls)
+						to_chat(src, span_info("[probby]%... my peeking went unnoticed.."))
+					else
+						to_chat(src, span_info("My peeking went unnoticed.."))
 	var/list/result = A.examine(src)
 	if(LAZYLEN(result))
 		for(var/i in 1 to (length(result) - 1))
@@ -740,7 +791,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return FALSE
 	if(anchored)
 		return FALSE
-	if(notransform)
+	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return FALSE
@@ -914,13 +965,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 ///Call back post buckle to a mob to offset your visual height
 /mob/post_buckle_mob(mob/living/M)
 	var/height = M.get_mob_buckling_height(src)
-	M.pixel_y = initial(M.pixel_y) + height
+	M.pixel_y = M.base_pixel_y + height
 	if(M.layer < layer)
 		M.layer = layer + 0.1
 ///Call back post unbuckle from a mob, (reset your visual height here)
 /mob/post_unbuckle_mob(mob/living/M)
 	M.layer = initial(M.layer)
-	M.pixel_y = initial(M.pixel_y)
+	M.pixel_y = M.base_pixel_y
 
 ///returns the height in pixel the mob should have when buckled to another mob.
 /mob/proc/get_mob_buckling_height(mob/seat)
@@ -1113,7 +1164,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/can_read(obj/O, silent = FALSE)
 	if(isobserver(src))
 		return TRUE
-	if(is_blind(src) || eye_blurry)
+	if(is_blind() || eye_blurry)
 		if(!silent)
 			to_chat(src, span_warning("I'm too blind to read."))
 		return
@@ -1245,13 +1296,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	hydration = max(0, change)
 	if(hydration > HYDRATION_LEVEL_FULL)
 		hydration = HYDRATION_LEVEL_FULL
-
-///Set the movement type of the mob and update it's movespeed
-/mob/setMovetype(newval)
-	. = ..()
-	if(isnull(.))
-		return
-	update_movespeed(FALSE)
 
 /mob/proc/update_equipment_speed_mods()
 	var/speedies = equipped_speed_mods()

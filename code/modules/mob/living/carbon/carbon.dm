@@ -94,7 +94,7 @@
 	else
 		mode() // Activate held item
 
-/mob/living/carbon/attackby(obj/item/I, mob/user, params)
+/mob/living/attackby(obj/item/I, mob/user, params)
 	if(!user.cmode && (istype(user.rmb_intent, /datum/rmb_intent/weak) || istype(user.rmb_intent, /datum/rmb_intent/strong)))
 		var/try_to_fail = !istype(user.rmb_intent, /datum/rmb_intent/weak)
 		var/list/possible_steps = list()
@@ -201,17 +201,17 @@
 
 	if(I)
 		if(istype(I, /obj/item/grabbing))
-			var/obj/item/grabbing/G = I
 			if(pulling && pulling != src)
 				if(isliving(pulling))
 					var/mob/living/throwable_mob = pulling
 					if(!throwable_mob.buckled)
 						var/obj/item/grabbing/other_grab = offhand ? get_active_held_item() : get_inactive_held_item()
-						stop_pulling()
-						if(G.grab_state < GRAB_AGGRESSIVE)
+						if(grab_state < GRAB_AGGRESSIVE)
+							stop_pulling()
 							return
+						stop_pulling()
 						if(HAS_TRAIT(src, TRAIT_PACIFISM))
-							to_chat(src, "<span class='notice'>I gently let go of [throwable_mob].</span>")
+							to_chat(src, span_notice("I gently let go of [throwable_mob]."))
 							return
 						thrown_thing = throwable_mob
 						thrown_speed = 1
@@ -472,11 +472,6 @@
 			update_inv_legcuffed()
 			return TRUE
 
-/mob/living/carbon/get_standard_pixel_y_offset(lying = 0)
-	. = ..()
-	if(lying)
-		. = . - 6
-
 /mob/living/carbon/proc/accident(obj/item/I)
 	if(!I || (I.item_flags & ABSTRACT) || HAS_TRAIT(I, TRAIT_NODROP))
 		return
@@ -581,18 +576,19 @@
 			if(message)
 				visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
 								"<span class='danger'>I puke all over myself!</span>")
-				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomitself)
+				add_stress(/datum/stress_event/vomitself)
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
-					C.add_stress(/datum/stressevent/vomitself)
+					C.add_stress(/datum/stress_event/vomitself)
+					C.adjust_hygiene(-25)
 			distance = 0
 		else
 			if(message)
 				visible_message("<span class='danger'>[src] pukes!</span>", "<span class='danger'>I puke!</span>")
-				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
+				add_stress(/datum/stress_event/vomit)
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
-					C.add_stress(/datum/stressevent/vomit)
+					C.add_stress(/datum/stress_event/vomit)
 	else
 		if(NOBLOOD in dna?.species?.species_traits)
 			return TRUE
@@ -974,7 +970,6 @@
 				set_stat(SOFT_CRIT)
 			else
 				set_stat(CONSCIOUS)
-		// update_mobility()
 	update_damage_hud()
 	update_health_hud()
 	update_spd()
@@ -984,10 +979,10 @@
 	if(handcuffed)
 		stop_pulling()
 		throw_alert("handcuffed", /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "handcuffed", /datum/mood_event/handcuffed)
+		add_stress(/datum/stress_event/handcuffed)
 	else
 		clear_alert("handcuffed")
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "handcuffed")
+		remove_stress(/datum/stress_event/handcuffed)
 	update_mob_action_buttons()
 	update_inv_handcuffed()
 	update_hud_handcuffed()
@@ -1113,16 +1108,6 @@
 			if(!old_bodypart.bodypart_disabled)
 				set_usable_hands(usable_hands - 1)
 
-/mob/living/carbon/do_after_coefficent()
-	. = ..()
-	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood) //Currently, only carbons or higher use mood, move this once that changes.
-	if(mood)
-		switch(mood.sanity) //Alters do_after delay based on how sane you are
-			if(-INFINITY to SANITY_DISTURBED)
-				. *= 1.25
-			if(SANITY_NEUTRAL to INFINITY)
-				. *= 0.90
-
 /mob/living/carbon/proc/create_internal_organs()
 	for(var/obj/item/organ/I as anything in internal_organs)
 		I.Insert(src)
@@ -1235,10 +1220,6 @@
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
-	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
-	if(mood)
-		if(mood.sanity < SANITY_UNSTABLE)
-			return TRUE
 
 /// Modifies the handcuffed value if a different value is passed, returning FALSE otherwise. The variable should only be changed through this proc.
 /mob/living/carbon/proc/set_handcuffed(new_value)
@@ -1268,6 +1249,8 @@
 	. = ..()
 	if(!.)
 		return
+	if(silent)
+		return FALSE
 	if(mouth?.muteinmouth)
 		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby)
@@ -1320,7 +1303,7 @@
 		var/modifier = 1
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
-			if(is_child(H))
+			if(H.age == AGE_CHILD)
 				modifier = 5
 		if(HAS_TRAIT(src, TRAIT_HOLLOWBONES))
 			modifier = 4
@@ -1359,7 +1342,7 @@
 /mob/living/carbon/encumbrance_to_speed()
 	var/exponential = (2.71 ** -(get_encumbrance() - 0.6)) * 10
 	var/speed_factor = 1 / (1 + exponential)
-	var/precentage =  CLAMP(speed_factor * (1 - (STASTR / 20)), 0, 1)
+	var/precentage =  CLAMP(speed_factor, 0, 1)
 
 	add_movespeed_modifier("encumbrance", override = TRUE, multiplicative_slowdown = 5 * precentage)
 

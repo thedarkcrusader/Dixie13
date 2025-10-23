@@ -28,11 +28,11 @@
 		return
 
 	var/static/list/flower_type_map = list(
-		/obj/item/alch/rosa = /obj/structure/flora/field/rosa,
-		/obj/item/alch/salvia = /obj/structure/flora/field/salvia,
-		/obj/item/alch/calendula = /obj/structure/flora/field/calendula,
-		/obj/item/alch/matricaria = /obj/structure/flora/field/matricaria,
-		/obj/item/alch/euphorbia = /obj/structure/flora/field/euphorbia,
+		/obj/item/alch/herb/rosa = /obj/structure/flora/field/rosa,
+		/obj/item/alch/herb/salvia = /obj/structure/flora/field/salvia,
+		/obj/item/alch/herb/calendula = /obj/structure/flora/field/calendula,
+		/obj/item/alch/herb/matricaria = /obj/structure/flora/field/matricaria,
+		/obj/item/alch/herb/euphorbia = /obj/structure/flora/field/euphorbia,
 		/obj/item/reagent_containers/food/snacks/produce/manabloom = /obj/structure/flora/field/manabloom,
 		/obj/item/reagent_containers/food/snacks/produce/poppy = /obj/structure/flora/field/poppy,
 	)
@@ -63,6 +63,8 @@
 		return
 	var/obj/structure/flora/field/field = new flowers(victim)
 	field.dir = pick(GLOB.cardinals)
+	for(var/mob/living/L in victim)
+		field.Crossed(L)
 
 /*-----------------\
 |  Flower Fields   |
@@ -240,7 +242,8 @@
 	. = ..()
 	if(overlay_state && ismob(owner))
 		var/mob/M = owner
-		M.add_overlay(mutable_appearance('icons/effects/effects.dmi', overlay_state))
+		flower_overlay = mutable_appearance('icons/effects/effects.dmi', overlay_state)
+		M.add_overlay(flower_overlay)
 		RegisterSignal(M, COMSIG_MOVABLE_MOVED, PROC_REF(_check_flower_field))
 
 /datum/status_effect/debuff/flower_base/on_remove()
@@ -249,7 +252,11 @@
 		var/mob/M = owner
 		if (flower_overlay)
 			M.overlays -= flower_overlay
+			flower_overlay = null
 		UnregisterSignal(M, COMSIG_MOVABLE_MOVED)
+
+/datum/status_effect/debuff/flower_base/tick()
+	check_field_presence()
 
 /datum/status_effect/debuff/flower_base/proc/_check_flower_field(mob/living/L)
 	if (!field_path || !locate(field_path) in get_turf(L))
@@ -476,7 +483,7 @@
 
 	if (iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		C.add_stress(/datum/stressevent/ozium)//i think this is the screen effect thing
+		C.add_stress(/datum/stress_event/ozium)//i think this is the screen effect thing
 
 /datum/status_effect/debuff/poppy_arena/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
@@ -484,7 +491,7 @@
 
 	if (iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		C.remove_stress(/datum/stressevent/ozium)
+		C.remove_stress(/datum/stress_event/ozium)
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/debuff/poppy_arena

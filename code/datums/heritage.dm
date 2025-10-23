@@ -41,8 +41,8 @@
 		"Your ancestors' misdeeds continue to haunt you."
 	)
 
-/atom/movable/screen/alert/status_effect/family_curse/mmisfortune/New()
-	..()
+/atom/movable/screen/alert/status_effect/family_curse/mmisfortune/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
 	if(desc == initial(desc))
 		desc = "[initial(desc)] [pick(misfortune_tips)]"
 
@@ -144,9 +144,6 @@
 	bride.HandleBiologicalChildren(groom)
 
 	return TRUE
-
-/mob/living/carbon/human
-	var/datum/family_member/family_member_datum
 
 /datum/family_member
 	var/tmp/mob/living/carbon/human/person

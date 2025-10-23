@@ -1,6 +1,6 @@
 #define ALL_TEMPLE_PATRONS 		list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/ravox, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
 #define ALL_CLERIC_PATRONS 		list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/ravox, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
-#define ALL_PALADIN_PATRONS 	list(/datum/patron/psydon, /datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/ravox, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
+#define ALL_PALADIN_PATRONS 	list(/datum/patron/psydon, /datum/patron/psydon/progressive, /datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/ravox, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
 #define ALL_TEMPLAR_PATRONS 	list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/eora, /datum/patron/divine/necra, /datum/patron/divine/ravox, /datum/patron/divine/pestra, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/malum, /datum/patron/divine/xylix)
 #define ALL_PROFANE_PATRONS 	list(/datum/patron/inhumen/graggar, /datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios, /datum/patron/inhumen/baotha)
 
@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(curse_names, list())
 
 #define INHUMEN_CURSES list(\
 	/datum/curse/zizo,\
+	/datum/curse/zizo/minor,\
 	/datum/curse/graggar,\
 	/datum/curse/matthios,\
 	/datum/curse/baotha\
@@ -63,8 +64,6 @@ GLOBAL_LIST_INIT(curse_names, list())
 
 GLOBAL_LIST_EMPTY(confessors)
 
-GLOBAL_LIST_INIT(wolf_prefixes, list("Red", "Moon", "Bloody", "Hairy", "Eager", "Sharp"))
-GLOBAL_LIST_INIT(wolf_suffixes, list("Fang", "Claw", "Stalker", "Prowler", "Roar", "Ripper"))
 //preference stuff
 #define FAMILY_NONE "None"
 #define FAMILY_PARTIAL "Siblings"
@@ -84,14 +83,13 @@ GLOBAL_LIST_INIT(wolf_suffixes, list("Fang", "Claw", "Stalker", "Prowler", "Roar
 
 GLOBAL_LIST_EMPTY(job_respawn_delays)
 
-//stress levels
-#define STRESS_MAX 30
+//stress levels. Stress starts at 0.
 #define STRESS_INSANE 7
 #define STRESS_VBAD 5
 #define STRESS_BAD 3
 #define STRESS_NEUTRAL 2
 #define STRESS_GOOD 1
-#define STRESS_VGOOD -1
+#define STRESS_VGOOD -4
 
 /*	........   Nutrition defines   ................ */
 #define MEAL_FILLING 30
@@ -104,18 +102,18 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define SNACK_POOR 3
 
 
-#define MEATPIE_NUTRITION MINCE_NUTRITION + MINCE_NUTRITION + MINCE_NUTRITION + BUTTERDOUGH_NUTRITION
-#define FRUITPIE_NUTRITION SNACK_POOR + SNACK_POOR + SNACK_POOR + BUTTERDOUGH_NUTRITION
+#define MEATPIE_NUTRITION (MINCE_NUTRITION * 3) + BUTTERDOUGH_NUTRITION
+#define FRUITPIE_NUTRITION (SNACK_POOR * 3) + BUTTERDOUGH_NUTRITION
 #define BREADSLICE_NUTRITION SNACK_POOR
 #define DOUGH_NUTRITION BREADSLICE_NUTRITION * 6
-#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
-#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+2
-#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
+#define SMALLDOUGH_NUTRITION (MEAL_MEAGRE / 2)
+#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION + BUTTER_NUTRITION
+#define BUTTERDOUGHSLICE_NUTRITION (BUTTERDOUGH_NUTRITION / 2)
 #define BUTTER_NUTRITION SNACK_POOR
 #define RAWMEAT_NUTRITION SNACK_DECENT
 #define COOKED_MEAT_NUTRITION SNACK_NUTRITIOUS
 #define MINCE_NUTRITION SNACK_DECENT
-#define SAUSAGE_NUTRITION MINCE_NUTRITION+COOKED_FAT_NUTRITION
+#define SAUSAGE_NUTRITION MINCE_NUTRITION + COOKED_FAT_NUTRITION
 #define CHEESE_NUTRITION SNACK_DECENT
 #define EGG_NUTRITION SNACK_DECENT
 #define FRYVEGGIE_NUTRITION SNACK_POOR
@@ -134,7 +132,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 */
 
 #define CTAG_ALLCLASS		"CAT_ALLCLASS"		// jus a define for allclass to not deal with actively typing strings
-#define CTAG_DISABLED 		"CAT_DISABLED" 		// Disabled, aka don't make it fuckin APPEAR
 #define CTAG_PILGRIM 		"CAT_PILGRIM"  		// Pilgrim classes
 #define CTAG_ADVENTURER 	"CAT_ADVENTURER"  	// Adventurer classes
 #define CTAG_TOWNER 		"CAT_TOWNER"  		// Villager class - Villagers can use it
@@ -156,6 +153,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_MENATARMS		"CAT_MENATARMS"
 #define CTAG_SERVANT		"CAT_SERVANT" 		// Servant class - 4 type of servant to fill in someplace.
 #define CTAG_GATEMASTER		"CAT_GATEMASTER"
+#define CTAG_WRETCH			"CAT_WRETCH"
 
 // Character category and its buys
 #define TRIUMPH_CAT_CHARACTER "CHARACTER"
@@ -164,7 +162,13 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_BUY_ANY_CLASS "pick_any"
 #define TRIUMPH_BUY_ADOPTION "adoption"
 #define TRIUMPH_BUY_FART "fart"
+#define TRIUMPH_BUY_SECRET_OFFICIANT "secret_officiant"
+
+// Character category and its buys
+#define TRIUMPH_CAT_CHALLENGES "CHALLENGES"
+
 #define TRIUMPH_BUY_LEPROSY "leprosy"
+#define TRIUMPH_BUY_CURSE "curse"
 
 // Storyteller category and its buys
 #define TRIUMPH_CAT_STORYTELLER "STORYTELLER"

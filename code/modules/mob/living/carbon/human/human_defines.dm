@@ -58,6 +58,8 @@
 	var/obj/item/cloak = null
 	var/obj/item/clothing/wear_shirt = null
 
+	var/hygiene = HYGIENE_LEVEL_NORMAL
+
 	///for the intent of dodge this is your armor class that you have worn (its highest worn)
 	var/worn_armor_class = ARMOR_CLASS_NONE
 
@@ -80,9 +82,6 @@
 	dodgecd = FALSE
 	dodgetime = 0
 
-//	var/alignment = ALIGNMENT_TN
-
-	var/advjob = null
 	var/canseebandits = FALSE
 
 	//Familytree datum
@@ -103,10 +102,15 @@
 	var/buried = FALSE // Whether the body is buried or not.
 	var/funeral = FALSE // Whether the body has received rites or not.
 
-	var/datum/devotion/cleric_holder/cleric = null // Used for cleric_holder for priests
+	var/datum/devotion/cleric = null // Used for cleric_holder for priests
 
 	var/headshot_link = null
 	var/flavortext = null
+	var/flavortext_display = null
+	var/ooc_notes = null
+	var/ooc_notes_display = null
+	var/ooc_extra_link
+	var/ooc_extra
 
 	var/confession_points = 0 // Used to track how many confessions the Inquisitor has gotten signed. Used to buy items at mailboxes.
 	var/purchase_history = null // Used to track what the Inquisitor has bought from the mailbox.
@@ -133,6 +137,9 @@
 	blocks_emissive = NONE
 	var/datum/charflaw/charflaw
 
+	/// Assoc list of culinary preferences of the mob
+	var/list/culinary_preferences = list()
+
 	/// List of curses on this mob
 	var/list/curses = list()
 
@@ -140,6 +147,10 @@
 	var/list/mob/minions = list()
 
 	var/mob/stored_mob = null // werewolf bullshit
+
+	var/datum/family_member/family_member_datum
+
+	var/temp_debuff_level = null
 
 	fovangle = FOV_DEFAULT // our fov
 

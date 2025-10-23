@@ -128,11 +128,13 @@
 						if(throwingdatum)
 							throwee = isliving(throwingdatum.thrower) ? throwingdatum.thrower : null
 						affecting.bodypart_attacked_by(I.thrown_bclass, I.throwforce, throwee, affecting.body_zone, crit_message = TRUE)
+					I.do_special_attack_effect(I.thrownby, affecting, null, src, zone, thrown = TRUE)
 				else
 					simple_woundcritroll(I.thrown_bclass, I.throwforce, null, zone, crit_message = TRUE)
 					if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
 						if(can_embed(I) && prob(I.embedding.embed_chance) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 							simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
+					I.do_special_attack_effect(I.thrownby, null, null, src, null, thrown = TRUE)
 			visible_message("<span class='danger'>[src] is hit by [I]![next_attack_msg.Join()]</span>", \
 							"<span class='danger'>I'm hit by [I]![next_attack_msg.Join()]</span>")
 			next_attack_msg.Cut()
@@ -410,7 +412,6 @@
 	return
 
 /mob/living/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect, item_animation_override = null, datum/intent/used_intent, atom_bounce)
-	if(!used_item)
+	if(isnull(used_item) && (used_item != 0))
 		used_item = get_active_held_item()
-	..()
-	setMovetype(movement_type & ~FLOATING) // If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
+	return ..()

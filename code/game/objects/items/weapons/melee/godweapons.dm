@@ -40,7 +40,7 @@
 
 /obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast/Initialize(mapload, ...)
 	. = ..()
-	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/graggar, PUNISHMENT_STRESS, /datum/stressevent/divine_punishment, TRUE)
+	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/graggar, PUNISHMENT_STRESS, /datum/stress_event/divine_punishment, TRUE)
 
 /obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast/pickup(mob/user)
 	. = ..()
@@ -86,6 +86,7 @@
 			H.add_splatter_floor()
 			H.adjustBruteLoss(20)
 			to_chat(user, span_notice("I finish pulling the heart from [H]!"))
+	. = ..()
 
 #undef GOREFEAST_UNWORTHY
 #undef GOREFEAST_WORTHY
@@ -117,7 +118,7 @@
 
 /obj/item/weapon/polearm/neant/Initialize(mapload, ...)
 	. = ..()
-	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/zizo, PUNISHMENT_BURN, /datum/stressevent/divine_punishment, TRUE)
+	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/zizo, PUNISHMENT_BURN, /datum/stress_event/divine_punishment, TRUE)
 
 /obj/item/weapon/polearm/neant/attack(mob/living/M, mob/living/user)
 	if(user.used_intent.tranged)
@@ -126,7 +127,7 @@
 
 /obj/item/weapon/polearm/neant/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!HAS_TRAIT(user, TRAIT_CABAL))
+	if(!HAS_TRAIT(user, TRAIT_CABAL) || !istype(user.patron, /datum/patron/inhumen/zizo))
 		return
 	if(user.used_intent?.tranged)
 		handle_magick(user, target)
@@ -240,8 +241,7 @@
 	icon_state = "turbulenta"
 	base_icon = "turbulenta"
 	slot_flags = ITEM_SLOT_BACK
-	pixel_y = -16
-	pixel_x = -16
+	SET_BASE_PIXEL(-16, -16)
 	bigboy = TRUE
 	dropshrink = 0.75
 	fire_sound = 'sound/combat/Ranged/turbulentafire.ogg'
@@ -252,7 +252,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/turbulenta/Initialize(mapload, ...)
 	. = ..()
-	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/baotha, PUNISHMENT_STRESS, /datum/stressevent/divine_punishment, TRUE)
+	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/baotha, PUNISHMENT_STRESS, /datum/stress_event/divine_punishment, TRUE)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/turbulenta/getonmobprop(tag)
 	if(tag)
@@ -381,7 +381,7 @@
 
 /obj/item/weapon/sword/long/pleonexia/Initialize(mapload, ...)
 	. = ..()
-	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/matthios, PUNISHMENT_STRESS, /datum/stressevent/divine_punishment, TRUE)
+	AddElement(/datum/element/divine_intervention, /datum/patron/inhumen/matthios, PUNISHMENT_STRESS, /datum/stress_event/divine_punishment, TRUE)
 
 /obj/item/weapon/sword/long/pleonexia/pre_attack(atom/A, mob/living/user, params)
 	if(!istype(user.used_intent, /datum/intent/plex_dash) || !HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))

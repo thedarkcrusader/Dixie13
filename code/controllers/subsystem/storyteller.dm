@@ -558,6 +558,8 @@ SUBSYSTEM_DEF(gamemode)
 				continue
 			if(length(required_roles) && !(candidate.mind.assigned_role.title in required_roles))
 				continue
+			if(candidate.mind.special_role)
+				continue
 
 		if(be_special)
 			if(!(candidate.client.prefs) || !(be_special in candidate.client.prefs.be_special))
@@ -704,14 +706,15 @@ SUBSYSTEM_DEF(gamemode)
 		if(!ishuman(player_mob))
 			continue
 		active_players++
-		if(player_mob.mind?.assigned_role)
-			if(player_mob.mind.job_bitflag & BITFLAG_ROYALTY)
+		var/datum/job/assigned = player_mob.mind?.assigned_role
+		if(assigned)
+			if(assigned.job_bitflag & BITFLAG_ROYALTY)
 				royalty++
-			if(player_mob.mind.job_bitflag & BITFLAG_CONSTRUCTOR)
+			if(assigned.job_bitflag & BITFLAG_CONSTRUCTOR)
 				constructor++
-			if(player_mob.mind.job_bitflag & BITFLAG_CHURCH)
+			if(assigned.job_bitflag & BITFLAG_CHURCH)
 				church++
-			if(player_mob.mind.job_bitflag & BITFLAG_GARRISON)
+			if(assigned.job_bitflag & BITFLAG_GARRISON)
 				garrison++
 	update_pop_scaling()
 
@@ -753,13 +756,7 @@ SUBSYSTEM_DEF(gamemode)
 		for(var/type in subtypesof(/datum/storyteller))
 			storytellers[type] = new type()
 
-	for(var/storyteller_name in storytellers)
-		var/datum/storyteller/initialized_storyteller = storytellers[storyteller_name]
-		if(initialized_storyteller?.ascendant)
-			to_chat(world, "<br>")
-			to_chat(world, span_reallybig("[initialized_storyteller.name] is ascendant!"))
-			to_chat(world, "<br>")
-
+	handle_god_ascensions()
 	pick_most_influential(TRUE)
 	calculate_ready_players()
 	roll_pre_setup_points()
@@ -1019,7 +1016,9 @@ SUBSYSTEM_DEF(gamemode)
 				var/next = 0
 				var/last_points = last_point_gains[track]
 				if(last_points)
-					next = round(((upper - lower) / last_points / STORYTELLER_WAIT_TIME))
+					var/points_per_second = last_points / (STORYTELLER_WAIT_TIME / 10)
+					if(points_per_second > 0)
+						next = round((upper - lower) / points_per_second)
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 				dat += "<td>[track] - [last_points] per process.</td>" //Track
 				dat += "<td>[percent]% ([lower]/[upper])</td>" //Progress
@@ -1282,6 +1281,7 @@ SUBSYSTEM_DEF(gamemode)
 			if(listed.name != event_name)
 				continue
 			listed.occurrences++
+			listed.last_round_occurrences++
 
 /// Chooses a number of chronicle stats from the chronicle sets which will be shown at the round end panel
 /datum/controller/subsystem/gamemode/proc/pick_chronicle_stats()
@@ -1346,7 +1346,7 @@ SUBSYSTEM_DEF(gamemode)
 	if(!highest)
 		return
 
-	var/adjustment = min(3, 1 + (0.4 * FLOOR(max(0, highest.times_chosen - 5) / 5, 1)))
+	var/adjustment = min(3, 1 + (0.4 * FLOOR(max(0, highest.times_chosen - 4) / 4, 1)))
 
 	if(storytellers_with_influence[highest] > adjustment)
 		highest.bonus_points -= adjustment
@@ -1426,6 +1426,8 @@ SUBSYSTEM_DEF(gamemode)
 
 	for(var/stat_name in statistics_to_clear)
 		force_set_round_statistic(stat_name, 0)
+
+	var/total_wealth = 0
 
 	var/list/current_valid_humans = list()
 
@@ -1526,7 +1528,7 @@ SUBSYSTEM_DEF(gamemode)
 				if(human_mob.IsWedded() || member.children.len > 0)
 					record_round_statistic(STATS_MARRIED)
 
-			// Races
+			// species
 			if(istiefling(human_mob))
 				record_round_statistic(STATS_ALIVE_TIEFLINGS)
 			if(ishumannorthern(human_mob))
@@ -1585,46 +1587,47 @@ SUBSYSTEM_DEF(gamemode)
 				set_chronicle_stat(CHRONICLE_STATS_FASTEST_PERSON, human_mob, "SPEEDSTER", "#54d6c2", "[human_mob.STASPD] speed")
 
 			var/wealth = get_mammons_in_atom(human_mob)
+			total_wealth += wealth
 			if(wealth > highest_wealth)
 				highest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_RICHEST_PERSON, human_mob, "MAGNATE", "#d8dd90", "[wealth] mammons")
 
-			if(!lowest_total_stats)
+			if(isnull(lowest_total_stats))
 				lowest_total_stats = total_stats
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_SKILLS_PERSON, human_mob, "HOPELESS", "#8a8887", "[total_stats] total stats")
 			else if(total_stats < lowest_total_stats)
 				lowest_total_stats = total_stats
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_SKILLS_PERSON, human_mob, "HOPELESS", "#8a8887", "[total_stats] total stats")
 
-			if(!lowest_strength)
+			if(isnull(lowest_strength))
 				lowest_strength = human_mob.STASTR
 				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
 			else if(human_mob.STASTR < lowest_strength)
 				lowest_strength = human_mob.STASTR
 				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
 
-			if(!lowest_intelligence)
+			if(isnull(lowest_intelligence))
 				lowest_intelligence = human_mob.STAINT
 				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
 			else if(human_mob.STAINT < lowest_intelligence)
 				lowest_intelligence = human_mob.STAINT
 				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
 
-			if(!lowest_speed)
+			if(isnull(lowest_speed))
 				lowest_speed = human_mob.STASPD
 				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
 			else if(human_mob.STASPD < lowest_speed)
 				lowest_speed = human_mob.STASPD
 				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
 
-			if(!lowest_luck)
+			if(isnull(lowest_luck))
 				lowest_luck = human_mob.STALUC
 				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
 			else if(human_mob.STALUC < lowest_luck)
 				lowest_luck = human_mob.STALUC
 				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
 
-			if(!lowest_wealth)
+			if(isnull(lowest_wealth))
 				lowest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_POOREST_PERSON, human_mob, "PAUPER", "#909c63", "[wealth] mammons")
 			else if(wealth < lowest_wealth)
@@ -1647,6 +1650,8 @@ SUBSYSTEM_DEF(gamemode)
 		chosen_chronicle_stats = list()
 		pick_chronicle_stats()
 
+	force_set_round_statistic(STATS_MAMMONS_HELD, total_wealth)
+
 /// Returns total follower influence for the given storyteller
 /datum/controller/subsystem/gamemode/proc/get_follower_influence(datum/storyteller/chosen_storyteller)
 	var/datum/storyteller/initialized_storyteller = storytellers[chosen_storyteller]
@@ -1655,20 +1660,27 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/follower_count = GLOB.patron_follower_counts[initialized_storyteller.name] || 0
 	var/base_mod = initialized_storyteller.follower_modifier
-	var/diminish_threshold = 4
-	var/second_diminish_threshold = 9
+	var/diminish_threshold = 3
+	var/second_diminish_threshold = 6
 	var/min_mod = 15
 	var/second_min_mod = 10
 
 	// Calculate total influence with diminishing returns
 	var/total_influence = 0
+	var/current_penalty = 0
+
 	for(var/i in 1 to follower_count)
 		if(i <= diminish_threshold)
 			total_influence += base_mod
+			current_penalty = 0
 		else if(i <= second_diminish_threshold)
-			total_influence += max(min_mod, base_mod - (i - diminish_threshold))
+			current_penalty += 1
+			total_influence += max(min_mod, base_mod - current_penalty)
 		else
-			total_influence += max(second_min_mod, base_mod - (i - diminish_threshold))
+			current_penalty += 2
+			total_influence += max(second_min_mod, base_mod - current_penalty)
+
+	total_influence = total_influence * initialized_storyteller.influence_modifier
 
 	return total_influence
 

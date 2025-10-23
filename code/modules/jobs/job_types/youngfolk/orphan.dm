@@ -3,7 +3,6 @@
 	tutorial = "Before you could even form words, you were abandoned, or perhaps lost. \
 	Ever since, you have lived in the Orphanage under the Matron's care. \
 	Will you make something of yourself, or will you die in the streets as a nobody?"
-	flag = ORPHAN
 	department_flag = YOUNGFOLK
 	job_flags = (JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_ORPHAN
@@ -16,7 +15,7 @@
 	allowed_races = RACES_PLAYER_ALL
 	allowed_ages = list(AGE_CHILD)
 
-	outfit = /datum/outfit/job/orphan
+	outfit = /datum/outfit/orphan
 	can_have_apprentices = FALSE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
@@ -24,7 +23,7 @@
 	. = ..()
 	peopleknowme = list()
 
-/datum/outfit/job/orphan/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/orphan/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/orphanage_renovated = FALSE
 	if(has_world_trait(/datum/world_trait/orphanage_renovated))
@@ -45,14 +44,8 @@
 		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	else
 		if(prob(50))
-			if(prob(50))
-				shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant/l
-			else
-				shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
-			if(prob(50))
-				pants = /obj/item/clothing/pants/tights/colored/vagrant/l
-			else
-				pants = /obj/item/clothing/pants/tights/colored/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
+			pants = /obj/item/clothing/pants/tights/colored/vagrant
 		else
 			armor = /obj/item/clothing/shirt/rags
 

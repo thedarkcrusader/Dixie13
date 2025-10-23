@@ -4,7 +4,6 @@
 	you are an emmissary of political and theological import. \
 	You have been sent by your leader, the Orthodox Bishop, \
 	to assist the local Priest in combatting the increasing number of heretics and monsters infiltrating Vanderlin."
-	flag = PURITAN
 	department_flag = CHURCHMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_PURITAN
@@ -16,26 +15,18 @@
 
 	allowed_races = list(SPEC_ID_HUMEN)
 
-	outfit = /datum/outfit/job/inquisitor
+	outfit = /datum/outfit/inquisitor
 	is_foreigner = TRUE
+	is_recognized = TRUE
+	antag_role = /datum/antagonist/purishep
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
-/datum/job/inquisitor/after_spawn(mob/living/spawned, client/player_client)
-	..()
-	if(!spawned.mind)
-		return
-	if(spawned.mind.has_antag_datum(/datum/antagonist))
-		return
-	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	spawned.mind.add_antag_datum(new_antag)
-
-/datum/outfit/job/inquisitor
-	name = "Inquisitor"
-	jobtype = /datum/job/inquisitor
-	allowed_patrons = list(/datum/patron/psydon)
 	job_bitflag = BITFLAG_CHURCH
 
-/datum/outfit/job/inquisitor/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/inquisitor
+	name = "Inquisitor"
+
+/datum/outfit/inquisitor/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/armor/gambeson/heavy/colored/dark
 	belt = /obj/item/storage/belt/leather/black
@@ -51,7 +42,7 @@
 	neck = /obj/item/clothing/neck/bevor
 	mask = /obj/item/clothing/face/spectacles/inqglasses
 	armor = /obj/item/clothing/armor/medium/scale/inqcoat
-	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1, /obj/item/storage/belt/pouch/coins/rich)
+	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1, /obj/item/storage/belt/pouch/coins/rich = 1)
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Ritter"
@@ -70,7 +61,7 @@
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
@@ -88,7 +79,9 @@
 		return
 	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
 	H.mind?.add_antag_datum(new_antag)
+	H.add_spell(/datum/action/cooldown/spell/undirected/call_bird/inquisitor)
 	H.set_patron(/datum/patron/psydon)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //his gear is medium, he needs this to dodge well
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -101,10 +94,13 @@
 		-You've also been gaven 10 favors to use at the mail machines, you can get more favor by sending signed confessions to The Holy Bishop. Spend your favors wisely.")
 		)
 	H.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
+	if(H.dna?.species.id == SPEC_ID_HUMEN)
+		H.dna.species.native_language = "Old Psydonic"
+		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
-	set category = "Inquisition"
+	set category = "Torture"
 
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
@@ -132,7 +128,7 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
-	if(H.add_stress(/datum/stressevent/tortured))
+	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/torture_lines = list(
 			"CONFESS YOUR WRONGDOINGS!",
@@ -148,7 +144,7 @@
 
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
-	set category = "Inquisition"
+	set category = "Torture"
 
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
@@ -176,7 +172,7 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
-	if(H.add_stress(/datum/stressevent/tortured))
+	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/faith_lines = list(
 			"DO YOU DENY PSYDON AND THE TEN?",
@@ -227,7 +223,7 @@
 
 	if(!prob(resist_chance))
 		var/list/confessions = list()
-		var/antag_type = null
+		var/datum/antag_type = null
 		switch(confession_type)
 			if("antag")
 				if(!false_result)
@@ -235,18 +231,18 @@
 						if(!length(antag.confess_lines))
 							continue
 						confessions += antag.confess_lines
-						antag_type = antag.name
+						antag_type = antag.type
 						break // Only need one antag type
 			if("patron")
 				if(ispath(false_result, /datum/patron))
 					var/datum/patron/fake_patron = new false_result()
 					if(length(fake_patron.confess_lines))
 						confessions += fake_patron.confess_lines
-						antag_type = fake_patron.name
+						antag_type = fake_patron.type
 				else
 					if(length(patron?.confess_lines))
 						confessions += patron.confess_lines
-						antag_type = patron.name
+						antag_type = patron.type
 
 		if(torture && interrogator && confession_type == "patron")
 			var/datum/patron/interrogator_patron = interrogator.patron
@@ -254,11 +250,13 @@
 			switch(interrogator_patron.associated_faith.type)
 				if(/datum/faith/psydon)
 					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra) //lore
-						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon/progressive)
-						interrogator.add_stress(/datum/stressevent/torture_small_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
+					else if(victim_patron.type == /datum/patron/godless/naivety)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon)
-						interrogator.add_stress(/datum/stressevent/torture_large_penalty)
+						interrogator.add_stress(/datum/stress_event/torture_large_penalty)
 
 		if(length(confessions))
 			if(torture) // Only scream your confession if it's due to torture.
@@ -277,56 +275,72 @@
 				// held_confession.bad_type = "AN EVILDOER" // In case new antags are added with confession lines but have yet to be added here.
 				//this is no longer reliable as all patrons have confess lines now
 				switch(antag_type)
-					if("Bandit")
+					if(/datum/antagonist/bandit)
 						held_confession.bad_type = "AN OUTLAW OF THE THIEF-LORD"
-						held_confession.antag = antag_type
-					if("Matthios")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/matthios)
 						held_confession.bad_type = "A FOLLOWER OF THE THIEF-LORD"
-						held_confession.antag = "worshiper of " + antag_type
-					if("Maniac")
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/antagonist/maniac)
 						held_confession.bad_type = "A MANIAC DELUDED BY MADNESS"
-						held_confession.antag = antag_type
-					if("Assassin")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/assassin)
 						held_confession.bad_type = "A DEATH CULTIST"
-						held_confession.antag = antag_type
-					if("Zizoid Lackey")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/zizocultist)
 						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
-						held_confession.antag = antag_type
-					if("Zizoid Cultist")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/zizocultist/leader)
 						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
-						held_confession.antag = antag_type
-					if("Zizo")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/zizo)
 						held_confession.bad_type = "A FOLLOWER OF THE FORBIDDEN ONE"
-						held_confession.antag = "worshiper of " + antag_type
-					if("Werevolf")
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/antagonist/werewolf)
+						var/datum/antagonist/werewolf/werewolf_antag = mind.has_antag_datum(/datum/antagonist/werewolf, TRUE)
+						if(werewolf_antag.transformed) // haha real clever of ya
+							return
 						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
-						held_confession.antag = antag_type
-					if("Lesser Werevolf")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/werewolf/lesser)
+						var/datum/antagonist/werewolf/werewolf_antag = mind.has_antag_datum(/datum/antagonist/werewolf, TRUE)
+						if(werewolf_antag.transformed)
+							return
 						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
-						held_confession.antag = antag_type
-					if("Vampire")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire)
 						held_confession.bad_type = "A SCION OF KAINE"
-						held_confession.antag = antag_type
-					if("Lesser Vampire")
-						held_confession.bad_type = "A SCION OF KAINE"
-						held_confession.antag = antag_type
-					if("Vampire Lord")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire/lord)
 						held_confession.bad_type = "THE BLOOD-LORD OF VANDERLIN"
-						held_confession.antag = antag_type
-					if("Vampire Spawn")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire/lesser)
 						held_confession.bad_type = "AN UNDERLING OF THE BLOOD-LORD"
-						held_confession.antag = antag_type
-					if("Graggar")
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/graggar)
 						held_confession.bad_type = "A FOLLOWER OF THE DARK SUN"
-						held_confession.antag = "worshiper of " + antag_type
-					if("Godless")
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/patron/godless/godless)
 						held_confession.bad_type = "A DAMNED ANTI-THEIST"
 						held_confession.antag = "worshiper of nothing"
-					if("Baotha")
+					if(/datum/patron/godless/autotheist)
+						held_confession.bad_type = "A DELUSIONAL SELF-PROCLAIMED GOD"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/defiant) //need better desc
+						held_confession.bad_type = "A DAMNED CHAINBREAKER"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/dystheist) //need better desc
+						held_confession.bad_type = "A SPURNER OF THE DIVINE"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/naivety)
+						held_confession.bad_type = "A IGNORANT FOOL"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/rashan)
+						held_confession.bad_type = "A FOLLOWER OF A FALSE GOD"
+						held_confession.antag = "worshiper of the false god, Rashan-Kahl"
+					if(/datum/patron/inhumen/baotha)
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
-						held_confession.antag = "worshiper of " + antag_type
-					if("Peasant Rebel")
-						return // Inquisitors don't care about peasant revolts targeting the King
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
 					else
 						return // good job you tortured an innocent person
 				has_confessed = TRUE

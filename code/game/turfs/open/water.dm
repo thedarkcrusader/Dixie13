@@ -34,7 +34,7 @@
 	heavyfootstep = null
 	landsound = 'sound/foley/jumpland/waterland.ogg'
 	shine = SHINE_SHINY
-	nomouseover = FALSE
+	no_over_text = FALSE
 	water_level = 2
 	var/uses_level = TRUE
 	var/datum/reagent/water_reagent = /datum/reagent/water
@@ -50,6 +50,8 @@
 	var/childless = FALSE
 
 	var/cached_use = 0
+
+	var/cleanliness_factor = 1 //related to hygiene for washing
 
 /turf/open/water/proc/set_watervolume(volume)
 	water_volume = volume
@@ -273,6 +275,10 @@
 	if(water_overlay)
 		var/image/overlay = image(icon, water_overlay, add, ABOVE_MOB_LAYER + 0.01, pixel_x = offset ? x : 0, pixel_y = offset ? y : 0 )
 		overlay.color = water_reagent.color
+		if("[dir]" in water_overlay.neighborlay_list)
+			water_overlay.cut_overlay(water_overlay.neighborlay_list["[dir]"])
+			qdel(water_overlay.neighborlay_list["[dir]"])
+			LAZYREMOVE(water_overlay.neighborlay_list, "[dir]")
 		LAZYADDASSOC(water_overlay.neighborlay_list, "[dir]", overlay)
 		water_overlay.add_overlay(overlay)
 
@@ -409,6 +415,16 @@
 			if(!mapped)
 				adjust_originate_watervolume(-2)
 			playsound(user, pick(wash), 100, FALSE)
+
+			//handle hygiene
+			if(isliving(user))
+				var/mob/living/hygiene_target = user
+				var/list/equipped_items = hygiene_target.get_equipped_items()
+				if(length(equipped_items) > 0)
+					to_chat(user, span_notice("I could probably clean myself faster if I weren't wearing clothes..."))
+					hygiene_target.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
+				else
+					hygiene_target.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /turf/open/water/attackby_secondary(obj/item/item2wash, mob/user, params)
@@ -477,6 +493,7 @@
 	icon_state = MAP_SWITCH("bathtile", "bathtileW")
 	water_level = 2
 	slowdown = 15
+	cleanliness_factor = 5
 	water_reagent = /datum/reagent/water
 
 /turf/open/water/sewer
@@ -491,6 +508,7 @@
 	footstep = FOOTSTEP_MUD
 	barefootstep = FOOTSTEP_MUD
 	heavyfootstep = FOOTSTEP_MUD
+	cleanliness_factor = -5
 
 /turf/open/water/sewer/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
@@ -533,6 +551,7 @@
 	slowdown = 20
 	wash_in = FALSE
 	water_reagent = /datum/reagent/water/gross/sewer
+	cleanliness_factor = -5
 
 /turf/open/water/swamp/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -607,6 +626,7 @@
 	slowdown = 15
 	wash_in = FALSE
 	water_reagent = /datum/reagent/water/gross/marshy
+	cleanliness_factor = -3
 
 /turf/open/water/marsh/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -639,6 +659,7 @@
 	name = "water"
 	desc = "Clear and shallow water, mostly untainted by surrounding soil."
 	icon_state = MAP_SWITCH("dirt", "dirtW5")
+	cleanliness_factor = -1
 
 /turf/open/water/cleanshallow/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -651,6 +672,7 @@
 	icon_state = MAP_SWITCH("rock", "rockb")
 	water_level = 2
 	slowdown = 15
+	cleanliness_factor = -5
 	water_reagent = /datum/reagent/blood
 
 /turf/open/water/blood/Initialize()
@@ -660,7 +682,6 @@
 /turf/open/water/river
 	name = "water"
 	desc = "Crystal clear water! Flowing swiflty along the river."
-	icon = 'icons/turf/newwater.dmi'
 	icon_state = MAP_SWITCH("rocky", "rivermove-dir")
 	water_level = 3
 	slowdown = 20
@@ -723,17 +744,58 @@
 
 /turf/open/water/river/dirt
 	icon_state = MAP_SWITCH("dirty", "rivermovealt-dir")
-	water_reagent = /datum/reagent/water/gross/sewer
+	water_reagent = /datum/reagent/water/gross
+	cleanliness_factor = -5
 
 /turf/open/water/river/blood
 	icon_state = MAP_SWITCH("rocky", "rivermovealt2-dir")
 	water_reagent = /datum/reagent/blood
+	cleanliness_factor = -5
 
 /turf/open/water/acid // holy SHIT
 	name = "acid pool"
 	desc = "Well... how did THIS get here?"
 	water_reagent = /datum/reagent/rogueacid
+	cleanliness_factor = -100
 
 /turf/open/water/acid/mapped
 	desc = "You know how this got here. You think."
 	notake = TRUE
+
+/turf/open/water/ocean
+	name = "salt water"
+	desc = "The waves lap at the coast, hungry to swallow the land. Doesn't look too deep."
+	icon_state = "water"
+	icon = 'icons/turf/floors.dmi'
+	neighborlay_self = null
+	water_level = 2
+	slowdown = 4
+	swim_skill = TRUE
+	wash_in = TRUE
+	water_reagent = /datum/reagent/water/salty
+
+/turf/open/water/ocean/deep
+	name = "salt water"
+	desc = "Deceptively deep, be careful not to find yourself this far out."
+	icon_state = "ash"
+	icon = 'icons/turf/floors.dmi'
+	water_level = 3
+	slowdown = 8
+	swim_skill = TRUE
+	wash_in = TRUE
+
+/datum/reagent/water/salty
+	taste_description = "salt"
+	color = "#3e7459"
+
+/datum/reagent/water/salty/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
+	if(method == INGEST) // Make sure you DRANK the salty water before losing hydration
+		..()
+
+/datum/reagent/water/salty/on_mob_life(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.adjust_hydration(-hydration)  //saltwater dehydrates more than it hydrates
+		M.adjustToxLoss(0.25) // Slightly toxic
+		M.add_nausea(2)
+	..()

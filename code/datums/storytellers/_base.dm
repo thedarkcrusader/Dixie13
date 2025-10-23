@@ -1,7 +1,7 @@
 /// Standard follower modifier for storytellers, ie. how many points they get for each follower
 #define STANDARD_FOLLOWER_MODIFIER 20
 /// Lower follower modifier for special storytellers such as Astrata, who is a default patron
-#define LOWER_FOLLOWER_MODIFIER STANDARD_FOLLOWER_MODIFIER - 2
+#define LOWER_FOLLOWER_MODIFIER STANDARD_FOLLOWER_MODIFIER - 3
 
 ///The storyteller datum. He operates with the SSgamemode data to run events
 /datum/storyteller
@@ -72,7 +72,7 @@
 	var/list/influence_sets = list()
 	/// Chosen influence factors, which are used to calculate storyteller influence. List of lists, which looks like RELEVANT_STATS = list(point gain, max capacity)
 	var/influence_factors = list()
-	/// Modifier to the calcualted value of the chosen influence factors, default is 1 (100%)
+	/// Point modifier to all influence factors including the follower count, default is 1 (100%)
 	var/influence_modifier = 1
 	/// How many influence points storyteller gets for each follower
 	var/follower_modifier = STANDARD_FOLLOWER_MODIFIER
@@ -224,9 +224,9 @@
 		mode.TriggerEvent(bought_event, forced)
 	else
 		if(track == EVENT_TRACK_OMENS)
-			mode.schedule_event(bought_event, 3 MINUTES, total_cost, _forced = forced, omen = TRUE)
+			mode.schedule_event(bought_event, 2 MINUTES, total_cost, _forced = forced, omen = TRUE)
 		else
-			mode.schedule_event(bought_event, 3 MINUTES, total_cost, _forced = forced)
+			mode.schedule_event(bought_event, 2 MINUTES, total_cost, _forced = forced)
 	SSgamemode.triggered_round_events |= bought_event.name
 
 /// Calculates the weights of the events from a passed track.

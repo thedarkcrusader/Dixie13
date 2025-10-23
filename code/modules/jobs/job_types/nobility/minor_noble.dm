@@ -4,7 +4,6 @@
 	still exist in spite of the Monarch. You have many mammons to your name, but with wealth comes \
 	danger, so keep your wits and tread lightly..."
 	display_order = JDO_MINOR_NOBLE
-	flag = MINOR_NOBLE
 	department_flag = NOBLEMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
@@ -14,15 +13,19 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
-	outfit = /datum/outfit/job/noble
+	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
 	noble_income = 16
+	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
-/datum/outfit/job/noble
+	spells = list(
+		/datum/action/cooldown/spell/undirected/call_bird = 1,
+	)
+
 	job_bitflag = BITFLAG_ROYALTY
 
-/datum/outfit/job/noble/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/noble/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name

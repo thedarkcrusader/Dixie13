@@ -128,9 +128,6 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	var/has_studied = FALSE
 	/// Variable that lets the event picker see if someones getting chosen or not
 	var/picking = FALSE
-	///the bitflag our job applied
-	var/job_bitflag = NONE
-
 
 /datum/mind/New(key)
 	src.key = key
@@ -440,7 +437,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(personal_objectives.len)
 		output += "<B>Personal Objectives:</B>"
 		var/personal_count = 1
-		for(var/datum/objective/objective in personal_objectives)
+		for(var/datum/objective/personal/objective in personal_objectives)
 			output += "<br><B>Personal Goal #[personal_count]</B>: [objective.explanation_text][objective.completed ? " (COMPLETED)" : ""]"
 			personal_count++
 		output += "<br>"
@@ -471,67 +468,6 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			if (carbon.job)
 				output += " - [carbon.job]"
 	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger to trap their souls for Graggar."
-
-	if(window)
-		recipient << browse(output,"window=memory")
-
-/datum/mind/proc/recall_culling(mob/recipient, window=1)
-	var/output = "<B>[recipient.real_name]'s Rival:</B><br>"
-	for(var/datum/culling_duel/D in GLOB.graggar_cullings)
-		var/mob/living/carbon/human/challenger = D.challenger.resolve()
-		var/mob/living/carbon/human/target = D.target.resolve()
-		var/obj/item/organ/heart/target_heart = D.target_heart.resolve()
-		var/obj/item/organ/heart/challenger_heart = D.challenger_heart.resolve()
-		var/target_heart_location
-		var/challenger_heart_location
-
-		if(target_heart)
-			target_heart_location = target_heart.owner ? target_heart.owner.prepare_deathsight_message() : lowertext(get_area_name(target_heart))
-
-		if(challenger_heart)
-			challenger_heart_location = challenger_heart.owner ? challenger_heart.owner.prepare_deathsight_message() : lowertext(get_area_name(challenger_heart))
-
-		if(recipient == challenger)
-			if(target)
-				if(target_heart && target_heart.owner && target_heart.owner != target) // Rival is not gone but their heart is in someone else
-					output += "<br>[target.real_name], the [target.job]"
-					output += "<br>Your rival's heart beats in [target_heart.owner.real_name]'s chest in [target_heart_location]"
-					output += "<br>Retrieve and consume it to claim victory! Graggar will not forgive failure."
-				else
-					output += "<br>[target.real_name], the [target.job]"
-					output += "<br>Eat your rival's heart before they eat YOURS! Graggar will not forgive failure."
-			else if(target_heart)
-				if(target_heart.owner && target_heart.owner != recipient)
-					output += "<br>Rival's Heart"
-					output += "<br>It's currently inside [target_heart.owner.real_name]'s chest in [target_heart_location]"
-					output += "<br>Your rival's heart beats in another's chest. Retrieve and consume it to claim victory!"
-				else
-					output += "<br>Rival's Heart"
-					output += "<br>It's somewhere in the [target_heart_location]"
-					output += "<br>Your rival's heart is exposed bare! Consume it to claim victory!"
-			else
-				continue
-
-		else if(recipient == target)
-			if(challenger)
-				if(challenger_heart && challenger_heart.owner && challenger_heart.owner != challenger) // Rival is not gone but their heart is in someone else
-					output += "<br>[challenger.real_name], the [challenger.job]"
-					output += "<br>Your rival's heart beats in [challenger_heart.owner.real_name]'s chest in [challenger_heart_location]"
-					output += "<br>Retrieve and consume it to claim victory! Graggar will not forgive failure."
-				else
-					output += "<br>[challenger.real_name], the [challenger.job]"
-					output += "<br>Eat your rival's heart before he eat YOURS! Graggar will not forgive failure."
-			else if(challenger_heart)
-				if(challenger_heart.owner && challenger_heart.owner != recipient)
-					output += "<br>Rival's Heart"
-					output += "<br>It's currently inside [challenger_heart.owner.real_name]'s chest in [challenger_heart_location]"
-					output += "<br>Your rival's heart beats in another's chest. Retrieve and consume it to claim victory!"
-				else
-					output += "<br>Rival's Heart"
-					output += "<br>It's somewhere in the [challenger_heart_location]"
-					output += "<br>Your rival's heart is exposed bare! Consume it to claim victory!"
-			else
-				continue
 
 	if(window)
 		recipient << browse(output,"window=memory")
@@ -698,9 +634,13 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/announce_personal_objectives()
 	if(length(personal_objectives))
 		var/personal_count = 1
-		for(var/datum/objective/O in personal_objectives)
+		var/last_index = length(personal_objectives)
+		for(var/datum/objective/personal/O in personal_objectives)
 			O.update_explanation_text()
-			to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
+			if(personal_count == last_index)
+				to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]<br>")
+			else
+				to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
 			personal_count++
 
 /// Announce all objectives (both types)
@@ -781,6 +721,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
  ** check_apprentice - do apprentices recieve skill experience too?
 */
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE, check_apprentice = TRUE)
+	amt *= GLOB.sleep_experience_modifier
 	if(check_apprentice)
 		current.adjust_apprentice_exp(skill, amt, silent)
 	if(sleep_adv.add_sleep_experience(skill, amt, silent))
@@ -789,6 +730,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/add_personal_objective(datum/objective/O)
 	if(!istype(O))
 		return FALSE
+	if(current)
+		current.apply_status_effect(/datum/status_effect/purpose)
 	personal_objectives += O
 	O.owner = src
 	return TRUE

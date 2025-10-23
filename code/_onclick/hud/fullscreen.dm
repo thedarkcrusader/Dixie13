@@ -129,7 +129,7 @@
 	plane = FULLSCREEN_PLANE
 	alpha = 0
 
-/atom/movable/screen/fullscreen/love/New(client/C)
+/atom/movable/screen/fullscreen/love/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
 	animate(src, alpha = 255, time = 30)
 
@@ -156,7 +156,7 @@
 	layer = 20.512
 	plane = ABOVE_HUD_PLANE
 	mouse_opacity = 1
-	nomouseover = FALSE
+	no_over_text = FALSE
 
 /atom/movable/screen/fullscreen/crit/dying/Click()
 	if(isliving(usr))

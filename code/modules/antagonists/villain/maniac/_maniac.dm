@@ -20,7 +20,7 @@
 	/// Traits we apply to the owner
 	innate_traits = list(
 		TRAIT_DECEIVING_MEEKNESS,
-		TRAIT_NOSTINK,
+		TRAIT_DEADNOSE,
 		TRAIT_EMPATH,
 		TRAIT_STEELHEARTED,
 		TRAIT_NOMOOD,
@@ -29,6 +29,7 @@
 		TRAIT_NOPAINSTUN,
 		TRAIT_NOENERGY,
 		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_STRONG_GRABBER,
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
@@ -117,12 +118,13 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.verbs += /mob/living/carbon/human/proc/toggle_maniac_music
 			dreamer.verbs += /mob/living/carbon/human/proc/set_custom_music
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
+			dreamer.remove_stat_modifier("innate_age")
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
 				heart.maniacs2wonder_ids = list()
 				heart.maniacs = list()
-			dreamer.remove_stress(/datum/stressevent/saw_wonder)
+			dreamer.remove_stress(/datum/stress_event/saw_wonder)
 			dreamer.remove_curse(/datum/curse/zizo)
 			RegisterSignal(dreamer, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
@@ -199,6 +201,8 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	for(var/trait in final_traits)
 		ADD_TRAIT(dreamer, trait, "[type]")
 	waking_up = TRUE
+	sleep(10 SECONDS)
+	dreamer.clear_fullscreen("wakeup")
 
 /datum/antagonist/maniac/proc/spawn_trey_liam()
 	var/turf/spawnturf
@@ -206,7 +210,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	if(trey)
 		spawnturf = get_turf(trey)
 	if(spawnturf)
-		var/mob/living/carbon/human/trey_liam = new /mob/living/carbon/human/species/human/northern(spawnturf)
+		var/mob/living/carbon/human/trey_liam = new /mob/living/carbon/human/species/human/space(spawnturf)
 		trey_liam.fully_replace_character_name(trey_liam.name, "Trey Liam")
 		trey_liam.gender = MALE
 		trey_liam.skin_tone = "ffe0d1"
@@ -241,7 +245,6 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	// var/client/dreamer_client = dreamer.client // Trust me, we need it later
 	to_chat(dreamer, "...It couldn't be.")
 	dreamer.clear_fullscreen("dream")
-	dreamer.clear_fullscreen("wakeup")
 	var/client/client = dreamer?.client
 	if(client) //clear screenshake animation
 		animate(client, dreamer.pixel_y)
@@ -271,7 +274,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		cull_competitors(trey_liam)
 		SEND_SOUND(trey_liam, 'sound/villain/dreamer_win.ogg')
 		trey_liam.SetSleeping(25 SECONDS)
-		trey_liam.add_stress(/datum/stressevent/maniac_woke_up)
+		trey_liam.add_stress(/datum/stress_event/maniac_woke_up)
 		sleep(1.5 SECONDS)
 		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
 		sleep(1.5 SECONDS)
@@ -289,28 +292,33 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			sleep(3 SECONDS)
 		to_chat(trey_liam, span_big(span_deadsay("I have to go back, I have to go back, I have to go back to Vanderlin.")))
 	else
-		INVOKE_ASYNC(src, PROC_REF(cant_wake_up), dreamer)
+		INVOKE_ASYNC(src, GLOBAL_PROC_REF(cant_wake_up), dreamer)
 		cull_competitors(dreamer)
 	// sleep(15 SECONDS)
 	// to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
 	// SSticker.declare_completion()
 
-/datum/antagonist/maniac/proc/cant_wake_up(mob/living/dreamer)
-	if(!iscarbon(dreamer))
+/proc/cant_wake_up(mob/living/target)
+	if(!iscarbon(target))
 		return
-	to_chat(dreamer, span_deadsay("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
+	ADD_TRAIT(target, TRAIT_SHAKY_SPEECH, TRAIT_GENERIC)
+	target.Knockdown(10 SECONDS)
+	to_chat(target, span_deadsay("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
+	target.say("I CAN'T WAKE UP!", spans = list("reallybig"), ignore_spam = TRUE)
 	sleep(2 SECONDS)
 	for(var/i in 1 to 10)
-		to_chat(dreamer, span_deadsay("<span class='reallybig'>ICANTWAKEUP</span>"))
+		to_chat(target, span_deadsay("<span class='reallybig'>ICANTWAKEUP</span>"))
+		target.say("ICANTWAKEUP!!", spans = list("reallybig"), ignore_spam = TRUE)
 		sleep(0.5 SECONDS)
-	var/obj/item/organ/brain/brain = dreamer.getorganslot(ORGAN_SLOT_BRAIN)
-	var/obj/item/bodypart/head/head = dreamer.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/organ/brain/brain = target.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/bodypart/head/head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
 		head.dismember(BURN)
 		if(!QDELETED(head))
 			qdel(head)
 	if(brain)
 		qdel(brain)
+	target.gib()
 
 // Culls any living maniacs in the world apart from the victor.
 /datum/antagonist/maniac/proc/cull_competitors(mob/living/carbon/victor)
@@ -333,7 +341,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			sleep(2 SECONDS)
 			to_chat(C, span_userdanger("How can I be TOO LATE-"))
 			sleep(1 SECONDS)
-			INVOKE_ASYNC(src, PROC_REF(cant_wake_up), C)
+			INVOKE_ASYNC(src, GLOBAL_PROC_REF(cant_wake_up), C)
 			QDEL_LIST(competitor.wonders_made)
 			competitor.wonders_made = null
 
@@ -431,7 +439,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	if(!infile)
 		return
 
-	var/filename = "[infile]"
+	var/filename = SANITIZE_FILENAME("[infile]")
 	var/file_ext = lowertext(copytext(filename, -4))
 	var/file_size = length(infile)
 

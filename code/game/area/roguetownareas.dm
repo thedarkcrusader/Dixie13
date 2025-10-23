@@ -370,7 +370,7 @@
 	name = "Manor"
 	icon = 'icons/turf/areas_manor.dmi'
 	icon_state = "manor"
-	background_track = list('sound/music/area/manor.ogg', 'sound/music/area/manor2.ogg')
+	background_track = 'sound/music/area/manor.ogg'
 	background_track_dusk = null
 	background_track_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
@@ -585,6 +585,9 @@
 	background_track_dusk = null
 	background_track_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
+
+/area/rogue/indoors/town/garrison/lieutenant
+	name = "Watch Lieutenant"
 
 /area/rogue/indoors/town/cell
 	name = "dungeon cell"
@@ -910,7 +913,7 @@
 		return
 
 	var/static/list/profane_words = list("zizo","cock","dick","fuck","shit","pussy","cuck","cunt","asshole")
-	var/prayer = sanitize_hear_message(message)
+	var/prayer = SANITIZE_HEAR_MESSAGE(message)
 
 	for(var/profanity in profane_words)
 		if(findtext(prayer, profanity))
@@ -1011,3 +1014,43 @@
 /area/rogue/indoors/lich
 	name = "lair (Lich)"
 	background_track = 'sound/music/area/churchnight.ogg'
+
+/area/rogue/delver
+	delver_restrictions = TRUE
+	converted_type = /area/rogue/delver
+
+/area/rogue/ship/topdeck
+	name = "upperdeck"
+	icon_state = "roofs"
+	droning_index = DRONING_BOAT
+	background_track = 'sound/music/area/topdeckdrone.ogg'
+	background_track_dusk = null
+	background_track_night = null
+	first_time_text = "The Voyager"
+	outdoors = TRUE
+
+/area/rogue/ship/middeck
+	name = "middeck"
+	icon_state = "indoors"
+	droning_index = DRONING_BOAT
+	background_track = 'sound/music/area/middeckdrone.ogg'
+	background_track_dusk = null
+	background_track_night = null
+	first_time_text = "Waist Deck"
+
+/area/rogue/ship/nobledeck
+	name = "nobledeck"
+	icon_state = "manor"
+	droning_index = DRONING_BOAT
+	background_track = 'sound/music/area/nobledeckdrone.ogg'
+	background_track_dusk = null
+	background_track_night = null
+
+/area/rogue/ship/shipbrig
+	name = "shipbrig"
+	icon_state = "cell"
+	droning_index = DRONING_BOAT
+	background_track = 'sound/music/area/shipbrig.ogg'
+	background_track_dusk = null
+	background_track_night = null
+	first_time_text = "The Brig"

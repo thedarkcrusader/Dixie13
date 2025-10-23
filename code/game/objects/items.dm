@@ -60,10 +60,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	var/obj/item/master = null
 
-	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
-	var/cold_protection = 0 //flags which determine which body parts are protected from cold. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
-	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags
-	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags
+	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN Celcius) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags
+	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN Celcius) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags
 
 	// List of /datum/action's that this item has.
 	var/list/datum/action/actions
@@ -124,8 +122,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/block_chance = 0
 	//If you want to have something unrelated to blocking/armour piercing etc. Maybe not needed, but trying to think ahead/allow more freedom
 	var/hit_reaction_chance = 0
-	// Number of tiles for how far this weapon can reach. 1 is adjacent (default)
-	var/reach = 1
 
 	//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
 	var/list/slot_equipment_priority = null // for default list, see /mob/proc/equip_to_appropriate_slot()
@@ -278,6 +274,47 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	/// angle of the icon, these are used for attack animations
 	var/icon_angle = 50 // most of our icons are angled
+	///the processing quality we have
+	var/recipe_quality = 1
+
+	// Lock related
+
+	// This sucks but I can see it being useful
+	/// This thing can be used to unlock locks
+	var/can_unlock = TRUE
+
+/obj/item/proc/set_quality(quality)
+	recipe_quality = clamp(quality, 0, 4)
+	update_appearance(UPDATE_OVERLAYS)
+	if(recipe_quality >= 3) // gold tier and above
+		AddComponent(/datum/component/particle_spewer/sparkle)
+	else
+		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
+		if(particle_spewer)
+			particle_spewer.RemoveComponent()
+
+/obj/item/update_overlays()
+	. = ..()
+	// Add quality overlay to the food item
+	if(recipe_quality <= 0 || !ismob(loc))
+		return
+	var/list/quality_icons = list(
+		null, // Regular has no overlay
+		// "bronze",
+		"silver",
+		"gold",
+		"diamond",
+	)
+	if(recipe_quality <= length(quality_icons) && quality_icons[recipe_quality])
+		. += mutable_appearance('icons/effects/crop_quality.dmi', quality_icons[recipe_quality])
+
+/obj/item/dropped(mob/user, silent)
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/item/equipped(mob/user, slot, initial)
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
 
 /**
  * Handles adding components to the item. Added in Initialize()
@@ -344,7 +381,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				B.generate_appearance()
 				B.apply()
 
-/obj/item/Initialize(mapload, freshly_made = FALSE)
+/obj/item/Initialize(mapload)
 	if (attack_verb)
 		attack_verb = typelist("attack_verb", attack_verb)
 
@@ -412,9 +449,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(max_blade_int && !blade_int) //set blade integrity to randomized 60% to 100% if not already set
 		blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
-
-		if(!freshly_made)
-			obj_integrity = max_integrity + rand(-(max_integrity * 0.2), 0)
 
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
@@ -548,7 +582,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/simpleton_price = FALSE
 
 /obj/item/get_inspect_button()
-	if(has_inspect_verb || (obj_integrity < max_integrity))
+	if(has_inspect_verb || (atom_integrity < max_integrity))
 		return " <span class='info'><a href='byond://?src=[REF(src)];inspect=1'>{?}</a></span>"
 	return ..()
 
@@ -591,9 +625,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		inspect_list += "[meme]%"
 
 //**** General durability
-	if(max_integrity)
+	if(uses_integrity)
 		inspect_list += "\n<b>DURABILITY:</b> "
-		var/meme = round(((obj_integrity / max_integrity) * 100), 1)
+		var/meme = round(((atom_integrity / max_integrity) * 100), 1)
 		inspect_list += "[meme]%"
 
 	return inspect_list
@@ -761,12 +795,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(item_flags & DROPDEL)
 		qdel(src)
 		return
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
+	pixel_x = base_pixel_x
+	pixel_y = base_pixel_y
 	if(isturf(loc))
 		if(!ontable())
 			var/oldy = pixel_y
-			pixel_y = pixel_y+5
+			pixel_y += 5
 			animate(src, pixel_y = oldy, time = 0.5)
 	item_flags &= ~IN_INVENTORY
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED,user)
@@ -841,7 +875,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!isnull(action_slots))
 		return (slot & action_slots)
 	else if (slot_flags)
-		return (slot & slot_flags)
+		if(isweapon(src))
+			var/obj/item/active = user.get_active_held_item()
+			var/obj/item/inactive = user.get_inactive_hand_index()
+			if(active == src || inactive == src)
+				return TRUE
+			else
+				return FALSE
+		else
+			return (slot & slot_flags)
 	return TRUE
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
@@ -918,7 +960,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	else
 		M.take_bodypart_damage(7)
 
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "eye_stab", /datum/mood_event/eye_stab)
+	M.add_stress(/datum/stress_event/eye_stab)
 
 	log_combat(user, M, "attacked", "[src.name]", "(INTENT: [uppertext(user.used_intent)])")
 
@@ -981,8 +1023,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		. = callback.Invoke()
 	item_flags &= ~IN_INVENTORY
 	if(!pixel_y && !pixel_x)
-		pixel_x = rand(-8,8)
-		pixel_y = rand(-8,8)
+		pixel_x = base_pixel_x + rand(-8,8)
+		pixel_y = base_pixel_y + rand(-8,8)
 
 
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
@@ -1122,8 +1164,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!QDELETED(src))
 		var/turf/T = get_turf(src)
 		var/obj/effect/decal/cleanable/molten_object/MO = new(T)
-		MO.pixel_x = rand(-16,16)
-		MO.pixel_y = rand(-16,16)
+		MO.pixel_x = MO.base_pixel_x + rand(-16,16)
+		MO.pixel_y = MO.base_pixel_y + rand(-16,16)
 		MO.desc = ""
 		..()
 
@@ -1260,7 +1302,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			dropped(M, TRUE)
 	return ..()
 
-/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, datum/callback/callback, gentle = FALSE)
+/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, datum/callback/callback, force, gentle = FALSE)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
 		return
 	return ..()
@@ -1394,3 +1436,65 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	animate(pickup, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 0.3 SECONDS, transform = animation_matrix, easing = CUBIC_EASING)
 	animate(alpha = 0, transform = matrix().Scale(0.7), time = 0.1 SECONDS)
+
+/obj/item/proc/make_modifyable(sockets = 2, max_sockets = 2)
+	AddComponent(/datum/component/modifications, sockets, max_sockets)
+
+/proc/generate_random_socketed_item(item_type, socket_count, gem_quality_range = list(GEM_CHIPPED, GEM_PERFECT))
+	if(!item_type)
+		switch(rand(1, 2))
+			if(1)
+				item_type = pick(subtypesof(/obj/item/clothing))
+			if(2)
+				item_type = pick(subtypesof(/obj/item/weapon))
+
+	if(!socket_count)
+		socket_count = rand(1, 6)
+
+	var/obj/item/new_item = new item_type(get_turf(usr))
+	new_item.make_modifyable(socket_count, socket_count)
+
+	// Fill with random gems
+	var/list/gem_types = list(
+		/obj/item/gem/red,
+		/obj/item/gem/violet,
+		/obj/item/gem/yellow,
+		/obj/item/gem/green,
+		/obj/item/gem/diamond,
+		/obj/item/gem/blue,
+	)
+
+	for(var/i = 1 to socket_count)
+		var/gem_type = pick(gem_types)
+		var/obj/item/gem/new_gem = new gem_type
+		new_gem.quality = rand(gem_quality_range[1], gem_quality_range[2])
+		new_gem.generate_socketing_properties()
+
+		var/datum/component/modifications/mod = new_item.GetComponent(/datum/component/modifications)
+		mod?.socket_gem(new_gem, null) // null user for automatic generation
+
+	return new_item
+
+/obj/item/examine(mob/user)
+	. = ..()
+	if(!get_precursor_data(src))
+		return
+	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
+	var/datum/natural_precursor/precursor = get_precursor_data(src)
+	if(precursor)
+		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
+			var/amount = precursor.essence_yields[essence]
+			var/smell = initial(essence.smells_like)
+			switch(amount)
+				if(15 to 100)
+					if(alch_skill >= SKILL_LEVEL_NOVICE)
+						. += span_notice(" Smells intensely of [smell].")
+				if(10 to 14)
+					if(alch_skill >= SKILL_LEVEL_APPRENTICE)
+						. += span_notice(" Smells strongly of [smell].")
+				if(5 to 9)
+					if(alch_skill >= SKILL_LEVEL_JOURNEYMAN)
+						. += span_notice(" Smells slightly of [smell].")
+				if(1 to 4)
+					if(alch_skill >= SKILL_LEVEL_EXPERT)
+						. += span_notice(" Smells faintly of [smell].")

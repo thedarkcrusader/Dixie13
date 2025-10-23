@@ -40,11 +40,13 @@
 
 	var/mob/living/carbon/human/chosen_one = pick(valid_targets)
 
-	var/datum/objective/energy_expenditure/new_objective = new(owner = chosen_one.mind)
+	var/datum/objective/personal/energy_expenditure/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE MALUM'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("There is an honor in hard toil! Spend enough energy working to earn Malum's approval!"))
+	bordered_message(chosen_one, list(
+		span_userdanger("YOU ARE MALUM'S CHOSEN!"),
+		span_notice("There is an honor in hard toil! Spend enough energy working to earn Malum's approval!"),
+	))
 	chosen_one.playsound_local(chosen_one, 'sound/magic/dwarf_chant01.ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

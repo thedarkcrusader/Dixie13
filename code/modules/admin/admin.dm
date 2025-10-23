@@ -539,11 +539,14 @@
 	if(!check_rights(0))
 		return
 
-	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
+	var/message = browser_input_text(usr, "Global message to send:", "Admin Announce")
 	if(message)
 		if(!check_rights(R_SERVER,0))
-			message = adminscrub(message,500)
-		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b></span>\n \t [message]")
+			message = adminscrub(message, 500)
+
+		var/admin_name = span_adminannounce_big("[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:")
+		var/message_to_announce = ("[span_adminannounce(message)]")
+		to_chat(world, announcement_block("[admin_name] \n \n [message_to_announce]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -681,6 +684,47 @@
 			SEND_SOUND(world, sound('sound/blank.ogg'))
 			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/datum/admins/proc/accelerate_or_delay_round_end()
+	set category = "Server"
+	set desc="Delay / Accelerate the round ending or vote time"
+	set name="Delay / Accelerate the round ending or vote time"
+
+
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		return alert("This is only available while the game is in progress.")
+	var/list/choices = list("Time before the round end vote.", "Time until the game ends.")
+	var/choice = browser_input_list(src, "Choose what you want to adjust.", "Delay Tools", choices)
+	var/number
+	switch(choice)
+		if("Time before the round end vote.")
+			number = input(usr, "By how many minutes do you want to delay or accelerate it? (positive numbers delay, negative numbers accelerate)", "Time before the first round end vote.") as num
+			if(number)
+				if(number > 0)
+					to_chat(world, "<b>The round end vote will now occur in [(GLOB.round_timer + (number * 1 MINUTES))/600] minutes instead of [GLOB.round_timer/600] minutes.</b>")
+					log_admin("[key_name(usr)] delayed the round end vote by [number] minutes.")
+					message_admins("[key_name(usr)] delayed the round end vote by [number] minutes.")
+				else
+					to_chat(world, "<b>The round end vote will now occur in [(GLOB.round_timer - (-number * 1 MINUTES))/600] minutes instead of [GLOB.round_timer/600] minutes.</b>")
+					log_admin("[key_name(usr)] accelerated the round end vote by [-number] minutes.")
+					message_admins("[key_name(usr)] accelerated the round end vote by [-number] minutes.")
+				number *= 1 MINUTES
+				GLOB.round_timer += number
+				SSblackbox.record_feedback("tally", "admin_verb", 1, "Time before the round end vote triggered.")
+		if("Time until the game ends.")
+			number = input(usr, "By how many minutes do you want to delay or accelerate it? (positive numbers delay, negative numbers accelerate)", "Time until the round ends.") as num
+			if(number)
+				if(number > 0)
+					to_chat(world, "<b>The round ending will now occur after an additional [number] minutes.</b>")
+					log_admin("[key_name(usr)] delayed the round ending by [number] minutes.")
+					message_admins("[key_name(usr)] delayed the round ending by [number] minutes.")
+				else
+					to_chat(world, "<b>The round ending has been accelerated by [-number] minutes.</b>")
+					log_admin("[key_name(usr)] accelerated the round ending by [-number] minutes.")
+					message_admins("[key_name(usr)] accelerated the round ending by [-number] minutes.")
+				number *= 1 MINUTES
+				SSgamemode.round_ends_at += number
+				SSblackbox.record_feedback("tally", "admin_verb", 1, "Time until round ends triggered.")
 
 /datum/admins/proc/unprison(mob/M in GLOB.mob_list)
 	set category = "Admin"
@@ -822,6 +866,10 @@
 				dat += "<A href='byond://?src=[REF(src)];[HrefToken()];removejobslot=[job.title]'>Remove</A> | "
 			else
 				dat += "Remove | "
+			if(job.enabled)
+				dat += "<A href='byond://?src=[REF(src)];[HrefToken()];disablejob=[job.title]'>Disable</A> | "
+			else
+				dat += "<A href='byond://?src=[REF(src)];[HrefToken()];enablejob=[job.title]'>Enable</A> | "
 			dat += "<A href='byond://?src=[REF(src)];[HrefToken()];unlimitjobslot=[job.title]'>Unlimit</A></td>"
 		else
 			dat += "<A href='byond://?src=[REF(src)];[HrefToken()];limitjobslot=[job.title]'>Limit</A></td>"
@@ -1028,9 +1076,11 @@
 	M.mind.set_assigned_role(/datum/job/priest)
 	M.job = "Priest"
 	M.set_patron(/datum/patron/divine/astrata)
-	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(M, M.patron)
-	C.grant_spells_priest(M)
-	M.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	var/holder = M.patron?.devotion_holder
+	if(holder)
+		var/datum/devotion/devotion = new holder()
+		devotion.make_priest()
+		devotion.grant_to(M)
 	M.verbs |= /mob/living/carbon/human/proc/coronate_lord
 	M.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	M.verbs |= /mob/living/carbon/human/proc/churchcurse
@@ -1079,3 +1129,25 @@
 
 	for(var/client/client as anything in GLOB.clients)
 		client.mob.adjust_triumphs(amount, reason = reason)
+
+/datum/admins/proc/change_skill_exp_modifier()
+	set name = "Change Skill Experience Gain"
+	set desc = "Changes the experience gain of either the adjust_experience proc, or add_sleep_experience proc."
+	set category = "GameMaster"
+
+	var/list/options = list("Adjust Experience Modifier", "Sleep Experience Modifier", "Both")
+
+	var/type = browser_input_list(usr, "Change which modifier? \n The current value of adjust_experience_modifier is [GLOB.adjust_experience_modifier] \n The current value of sleep_experience_modifier is [GLOB.sleep_experience_modifier].", "Change Skill Experience Gain", options, "Both")
+	var/modifier = input(usr, "Enter what the modifier should be, default is 1", "Change Skill Experience Gain", 1) as num
+	switch(type)
+		if("Adjust Experience Modifier")
+			GLOB.adjust_experience_modifier = modifier
+			message_admins("[key_name_admin(usr)] set the value of adjust_experience_modifier to [modifier].")
+		if("Sleep Experience Modifier")
+			GLOB.sleep_experience_modifier = modifier
+			message_admins("[key_name_admin(usr)] set the value of sleep_experience_modifier to [modifier].")
+		if("Both")
+			GLOB.adjust_experience_modifier = modifier
+			GLOB.sleep_experience_modifier = modifier
+			message_admins("[key_name_admin(usr)] set the value of both adjust_experience_modifier and sleep_experience_modifier to [modifier].")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Change Skill Experience Gain")
