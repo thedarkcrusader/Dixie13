@@ -21,6 +21,12 @@
 		to_chat(owner, span_love("\The [cast_on] has a spouse! May they find happiness in each other."))
 	else
 		if(cast_on.age == AGE_CHILD)
-			to_chat(owner, span_notice("\The [cast_on] is a mere child! Of course they don't have any partner."))
+			to_chat(owner, span_warning("\The [cast_on] is a mere child! Of course they don't have any partner."))
+		else if(length(cast_on?.mind?.personal_objectives))
+			var/datum/objective/personal/marry/marry_objective = locate() in cast_on.mind.personal_objectives
+			if(!marry_objective.completed)
+				to_chat(owner, span_love("\The [cast_on] is single and their heart is aching for love!"))
+			else
+				to_chat(owner, span_warning("\The [cast_on] has no romantic partner! How could this be?!"))
 		else
 			to_chat(owner, span_warning("\The [cast_on] has no romantic partner! How could this be?!"))

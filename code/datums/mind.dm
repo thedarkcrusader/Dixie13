@@ -634,9 +634,13 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/announce_personal_objectives()
 	if(length(personal_objectives))
 		var/personal_count = 1
+		var/last_index = length(personal_objectives)
 		for(var/datum/objective/personal/O in personal_objectives)
 			O.update_explanation_text()
-			to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
+			if(personal_count == last_index)
+				to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]<br>")
+			else
+				to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
 			personal_count++
 
 /// Announce all objectives (both types)
