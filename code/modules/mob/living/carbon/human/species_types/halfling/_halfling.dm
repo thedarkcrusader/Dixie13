@@ -14,9 +14,10 @@
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_LIGHT_STEP)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_LIGHT_STEP, TRAIT_COIN_ILLITERATE)
 	inherent_skills = list(
 		/datum/skill/craft/cooking = 1,
+		/datum/skill/misc/sneaking = 1,
 	)
 
 	use_skintones = TRUE
@@ -70,8 +71,10 @@
 		OFFSET_UNDIES = list(0,0)\
 	)
 
-	specstats_m = list(STATKEY_STR = -1, STATKEY_PER = 1, STATKEY_CON = -1, STATKEY_END = 1, STATKEY_SPD = 2)
-	specstats_f = list(STATKEY_STR = -1, STATKEY_PER = 1, STATKEY_CON = -1, STATKEY_END = 1, STATKEY_SPD = 2)
+	// Gets 2 SPD if they aren't wearing shoes
+	// Gets 0 / 1 END if they eat enough
+	specstats_m = list(STATKEY_STR = -1, STATKEY_PER = 2, STATKEY_CON = -1, STATKEY_END = 0, STATKEY_SPD = 1, STATKEY_LCK = 1)
+	specstats_f = list(STATKEY_STR = -1, STATKEY_PER = 2, STATKEY_CON = -1, STATKEY_END = 0, STATKEY_SPD = 1, STATKEY_LCK = 1)
 
 	enflamed_icon = "widefire"
 
@@ -86,6 +89,8 @@
 	body_markings = list(
 		/datum/body_marking/tonage,
 	)
+
+	nutrition_mod = 2
 
 /datum/species/halfling/check_roundstart_eligible()
 	return TRUE
@@ -131,3 +136,35 @@
 
 		"orange - rust" = "bc5e35"
 	))
+
+/datum/species/halfling/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
+	. = ..()
+
+	RegisterSignal(C, COMSIG_MOB_EQUIPPED_ITEM, PROC_REF(handle_equip))
+
+	if(!C.shoes)
+		C.apply_status_effect(/datum/status_effect/buff/free_feet)
+
+/datum/species/halfling/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_EQUIPPED_ITEM)
+
+/datum/species/halfling/proc/handle_equip(mob/living/carbon/source, obj/item/equipping, slot)
+	if(QDELETED(source) || !istype(source))
+		return
+
+	// This is bad :(
+	if(slot == ITEM_SLOT_SHOES)
+		source.remove_status_effect(/datum/status_effect/buff/free_feet)
+	else if(!source.shoes)
+		source.apply_status_effect(/datum/status_effect/buff/free_feet)
+
+/datum/species/halfling/handle_digestion(mob/living/carbon/human/H)
+	. = ..()
+	if(H.stat == DEAD || HAS_TRAIT(H, TRAIT_NOHUNGER))
+		return
+
+	if(H.nutrition > NUTRITION_LEVEL_FAT)
+		H.apply_status_effect(/datum/status_effect/buff/stuffed)
+	else
+		H.remove_status_effect(/datum/status_effect/buff/stuffed)

@@ -393,6 +393,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_KEENEARS					"Keen Ears"
 #define TRAIT_POISON_RESILIENCE			"Poison Resilience"
 #define TRAIT_SEED_FINDER				"Seed Finder"
+#define TRAIT_COIN_ILLITERATE "Barterer"
 /// applied to orphans
 #define TRAIT_ORPHAN 					"Orphan"
 #define TRAIT_RECRUITED					"Recruit" //Trait used to give foreigners their new title
