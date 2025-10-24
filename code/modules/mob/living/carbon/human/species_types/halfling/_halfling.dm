@@ -147,7 +147,11 @@
 
 /datum/species/halfling/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
+	if(QDELETED(C))
+		return
 	UnregisterSignal(C, COMSIG_MOB_EQUIPPED_ITEM)
+	C.remove_status_effect(/datum/status_effect/buff/free_feet)
+	C.remove_status_effect(/datum/status_effect/buff/stuffed)
 
 /datum/species/halfling/proc/handle_equip(mob/living/carbon/source, obj/item/equipping, slot)
 	if(QDELETED(source) || !istype(source))
