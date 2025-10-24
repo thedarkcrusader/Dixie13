@@ -85,6 +85,46 @@
 	icon_state = "g_ring_ruby"
 	sellprice = 255
 
+/obj/item/clothing/ring/jade
+	name = "joapstone ring"
+	icon_state = "ring_jade"
+	sellprice = 60
+
+/obj/item/clothing/ring/coral
+	name = "aoetal ring"
+	icon_state = "ring_coral"
+	sellprice = 70
+
+/obj/item/clothing/ring/onyxa
+	name = "onyxa ring"
+	icon_state = "ring_onyxa"
+	sellprice = 40
+
+/obj/item/clothing/ring/shell
+	name = "shell ring"
+	icon_state = "ring_shell"
+	sellprice = 20
+
+/obj/item/clothing/ring/amber
+	name = "petriamber ring"
+	icon_state = "ring_amber"
+	sellprice = 20
+
+/obj/item/clothing/ring/turq
+	name = "ceruleabaster ring"
+	icon_state = "ring_turq"
+	sellprice = 85
+
+/obj/item/clothing/ring/rose
+	name = "rosellusk ring"
+	icon_state = "ring_rose"
+	sellprice = 25
+
+/obj/item/clothing/ring/opal
+	name = "opaloise ring"
+	icon_state = "ring_opal"
+	sellprice = 90
+
 /obj/item/clothing/ring/active
 	var/active = FALSE
 	desc = "Unfortunately, like most magic rings, it must be used sparingly. (Right-click me to activate)"
@@ -376,3 +416,10 @@
 		active_item = FALSE
 	return
 
+
+// ................... The Feldsher's ring .......................
+
+/obj/item/clothing/ring/feldsher_ring
+	name = "feldsher's ring"
+	icon_state = "ring_feldsher"
+	desc = "A hallowed copper ring, ritualistically forged by Pestran clergymen upon the graduation of a feldsher. \n It bears a vulture skull, whose beak is crooked, and the copper was blessed with pestra's rot : it will corrode in time, yet never lose it's resilience. \n Although the wearer may not have Pestra as her patron, this ring is proof of Her blessing. This allows the feldsher to extract and manipulate Lux, so long as they follow Her teachings"

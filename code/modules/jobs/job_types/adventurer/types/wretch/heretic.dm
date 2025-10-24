@@ -4,7 +4,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/wretch/heretic
-	category_tags = list(CTAG_WRETCH)
 	total_positions = 2
 
 /datum/outfit/wretch/heretic/pre_equip(mob/living/carbon/human/H)
@@ -51,7 +50,7 @@
 			H.cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if(/datum/patron/divine/noc)
-			wrists = /obj/item/clothing/neck/psycross/noc
+			wrists = /obj/item/clothing/neck/psycross/silver/noc
 			head = /obj/item/clothing/head/helmet/heavy/necked/noc
 			cloak = /obj/item/clothing/cloak/stabard/templar/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
