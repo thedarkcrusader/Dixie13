@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_FORAGER = span_info("I can tell which jackberries are poisonous."),
 	TRAIT_SEED_FINDER = span_info("I find seeds more easily."),
 	TRAIT_COIN_ILLITERATE = span_info("I care little for the concept of coins and prefer to barter via other means."),
-	TRAIT_LUCKY_COOK = span_info("Xylix smiles upon my cooking, I often end up with impossible amounts of extra goods...")
+	TRAIT_LUCKY_COOK = span_info("Xylix smiles upon my cooking, I often end up with impossible amounts of extra goods..."),
 ))
 
 /// value -> trait name, generated on use from trait_by_type global
