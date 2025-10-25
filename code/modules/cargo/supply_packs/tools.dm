@@ -67,7 +67,7 @@
 
 /datum/supply_pack/tools/lamptern
 	name = "Iron Lamptern"
-	cost = 15
+	cost = 20
 	contains = /obj/item/flashlight/flare/torch/lantern
 
 /datum/supply_pack/tools/pick
