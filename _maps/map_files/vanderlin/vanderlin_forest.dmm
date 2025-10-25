@@ -422,8 +422,6 @@
 	},
 /obj/structure/rack,
 /obj/item/weapon/mace/cudgel/carpenter,
-/obj/item/key/thatchwood/garrison,
-/obj/item/key/thatchwood/garrison,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "fR" = (
