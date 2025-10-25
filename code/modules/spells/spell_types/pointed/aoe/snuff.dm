@@ -12,13 +12,16 @@
 	cooldown_time = 1 MINUTES
 	spell_cost = 20
 	aoe_radius = 2
+
 /datum/action/cooldown/spell/aoe/snuff/is_valid_target(atom/cast_on)
 	return isobj(cast_on) || ismob(cast_on)
+
 /datum/action/cooldown/spell/aoe/snuff/before_cast(atom/cast_on)
 	. = ..()
 	if(. & SPELL_CANCEL_CAST)
 		return
-	aoe_radius = initial(aoe_radius) + owner.get_skill_level(/datum/skill/magic/holy)
+	aoe_radius = initial(aoe_radius) + owner.get_skill_level(associated_skill)
+
 /datum/action/cooldown/spell/aoe/snuff/cast_on_thing_in_aoe(atom/victim, atom/caster)
 	if(isobj(victim))
 		var/obj/O = victim
