@@ -813,9 +813,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/twig,
 /area/rogue/indoors)
-"lt" = (
-/turf/closed/basic,
-/area/rogue/indoors)
 "lK" = (
 /obj/structure/chair/stool,
 /obj/effect/landmark/start/adventurerlate{
@@ -77877,8 +77874,8 @@ Rh
 Rh
 Rh
 Rh
-lt
-lt
+aP
+VE
 Bj
 VS
 VS
