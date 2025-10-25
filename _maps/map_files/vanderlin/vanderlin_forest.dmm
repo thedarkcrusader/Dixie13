@@ -711,7 +711,7 @@
 "jv" = (
 /obj/structure/roguetent,
 /turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
+/area/rogue/indoors)
 "jz" = (
 /obj/structure/fluff/customsign{
 	name = "Thatchwood Smithy"
@@ -1475,6 +1475,9 @@
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/darker,
+/area/rogue/indoors)
+"uH" = (
+/turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "uJ" = (
 /obj/structure/spider/stickyweb,
@@ -2721,7 +2724,7 @@
 "Qq" = (
 /obj/structure/bed/shit,
 /turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
+/area/rogue/indoors)
 "Qr" = (
 /obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
@@ -3174,7 +3177,7 @@
 /obj/effect/spawner/map_spawner/loot/coin/low,
 /obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
+/area/rogue/indoors)
 "Yc" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 1
@@ -9126,8 +9129,8 @@ eX
 wV
 Qd
 tB
-mB
-mB
+YY
+YY
 Xk
 UR
 UR
@@ -9328,9 +9331,9 @@ Qd
 Qd
 Qd
 jv
-Qd
+uH
 XQ
-mB
+YY
 UR
 UR
 UR
@@ -9529,10 +9532,10 @@ Qd
 NR
 wV
 Qd
-mB
-Qd
+YY
+uH
 Qq
-mB
+YY
 UR
 Xk
 UR
@@ -9731,10 +9734,10 @@ Qd
 ba
 NR
 Qd
-mB
-Qd
+YY
+uH
 Qq
-mB
+YY
 tR
 Xk
 Xk
@@ -9934,8 +9937,8 @@ NR
 wV
 Qd
 tB
-mB
-mB
+YY
+YY
 Xk
 Xk
 Xk
