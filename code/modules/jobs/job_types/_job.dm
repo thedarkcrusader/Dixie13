@@ -287,7 +287,8 @@
 		spawned.apply_status_effect(/datum/status_effect/buff/foodbuff)
 		spawned.hydration = 800 // Set higher hydration
 		spawned.nutrition = 800
-		to_chat(spawned, span_notice("Rising early, you made sure to eat a hearty breakfast before starting your day. A true TRIUMPH!"))
+		to_chat(spawned, span_notice("Rising early, you made sure to eat a hearty meal before starting your dae. A true TRIUMPH!"))
+
 
 	var/used_title = get_informed_title(spawned)
 	if(spawned.islatejoin && (job_flags & JOB_ANNOUNCE_ARRIVAL)) //to be moved somewhere more appropriate
