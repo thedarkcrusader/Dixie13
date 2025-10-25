@@ -60,6 +60,11 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"ba" = (
+/obj/machinery/light/fueled/campfire/longlived,
+/obj/effect/decal/remains/human,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "bd" = (
 /obj/effect/decal/cleanable/debris/wood,
 /obj/item/grown/log/tree/stake,
@@ -370,6 +375,10 @@
 /area/rogue/outdoors/woods)
 "eU" = (
 /turf/closed/mineral/random/med,
+/area/rogue/outdoors/woods)
+"eX" = (
+/mob/living/carbon/human/species/orc/ambush,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "eZ" = (
 /obj/effect/decal/cleanable/dirt/cobweb{
@@ -699,6 +708,10 @@
 /obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
+"jv" = (
+/obj/structure/roguetent,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "jz" = (
 /obj/structure/fluff/customsign{
 	name = "Thatchwood Smithy"
@@ -813,6 +826,20 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/twig,
 /area/rogue/indoors)
+"lp" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/reagent_containers/food/snacks/meat/human,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
+"ls" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 1
+	},
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 4
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "lt" = (
 /turf/closed/basic,
 /area/rogue/indoors)
@@ -1454,6 +1481,13 @@
 /obj/structure/spider/cocoon,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
+"uK" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 8
+	},
+/obj/structure/fluff/railing/tall/palisade,
+/turf/open/floor/grass,
+/area/rogue/outdoors/woods)
 "uR" = (
 /obj/structure/bars,
 /turf/open/floor/cobble,
@@ -1468,6 +1502,11 @@
 /obj/item/natural/cloth,
 /turf/open/floor/ruinedwood/alt,
 /area/rogue/indoors)
+"vk" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/effect/spawner/map_spawner/loot/armor,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "vt" = (
 /obj/structure/flora/newtree,
 /turf/open/water/cleanshallow,
@@ -1734,6 +1773,10 @@
 "yB" = (
 /turf/open/floor/cobble,
 /area/rogue/indoors)
+"yE" = (
+/obj/machinery/tanningrack,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "yH" = (
 /obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/naturalstone,
@@ -1783,6 +1826,10 @@
 /obj/structure/bars,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
+"zQ" = (
+/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "zU" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -1870,6 +1917,13 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors)
+"BZ" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 4
+	},
+/obj/structure/fluff/railing/tall/palisade,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "Cb" = (
 /obj/item/candle/yellow{
 	pixel_y = 12;
@@ -2033,6 +2087,12 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
+"Fc" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/rogue/outdoors/woods)
 "Fo" = (
 /obj/structure/fluff/signage{
 	name = "Bog - East"
@@ -2305,6 +2365,10 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
+"Kf" = (
+/obj/machinery/light/fueled/firebowl,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "Kg" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
@@ -2530,6 +2594,10 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors)
+"NR" = (
+/mob/living/carbon/human/species/goblin/npc/ambush,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "Oh" = (
 /obj/item/grown/log/tree,
 /obj/item/grown/log/tree{
@@ -2650,6 +2718,10 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
+"Qq" = (
+/obj/structure/bed/shit,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "Qr" = (
 /obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
@@ -3096,6 +3168,13 @@
 "Xw" = (
 /turf/open/water,
 /area/rogue/outdoors/woods)
+"XQ" = (
+/obj/structure/closet/crate/chest/neu_fancy,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/weapon,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "Yc" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 1
@@ -3228,6 +3307,10 @@
 /obj/structure/bed/shit,
 /turf/open/floor/ruinedwood/alt,
 /area/rogue/indoors)
+"ZM" = (
+/mob/living/carbon/human/species/orc/ambush,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "ZR" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/candle/yellow{
@@ -8636,11 +8719,11 @@ UR
 tR
 tR
 tR
-UR
+Zk
+zQ
+Lp
 wV
-wV
-wV
-UR
+uK
 UR
 Xk
 tR
@@ -8838,11 +8921,11 @@ UR
 Xk
 tR
 tR
-UR
+Qd
 wV
 wV
 wV
-UR
+sX
 Xk
 Xk
 UR
@@ -9035,16 +9118,16 @@ UR
 UR
 UR
 Xk
+Lp
+Zk
+lp
+yE
+eX
 wV
-UR
-wV
-wV
-wV
-UR
-Xk
-UR
-wV
-tR
+Qd
+tB
+mB
+mB
 Xk
 UR
 UR
@@ -9235,19 +9318,19 @@ tR
 Xk
 wV
 UR
-UR
-UR
-wV
 wV
 UR
-UR
+wQ
 wV
+Qd
 wV
-UR
-Xk
-wV
-UR
-UR
+Qd
+Qd
+Qd
+jv
+Qd
+XQ
+mB
 UR
 UR
 UR
@@ -9426,8 +9509,8 @@ cA
 Qd
 tR
 wV
-UR
-wV
+Qd
+lR
 wV
 UR
 UR
@@ -9436,20 +9519,20 @@ Xk
 tR
 Xk
 Xk
-UR
-UR
-UR
-Xk
-tR
-tR
-UR
-UR
 wV
-UR
-Xk
-UR
+Qd
 wV
+wQ
+Qd
+Qd
+Qd
+NR
 wV
+Qd
+mB
+Qd
+Qq
+mB
 UR
 Xk
 UR
@@ -9627,31 +9710,31 @@ wV
 Qd
 Qd
 Qd
-wV
-wV
-wV
-wV
-lR
-wV
-Xk
-UR
-Xk
-Xk
-UR
-UR
-UR
-wV
+Qd
+Qd
+Qd
+Qd
+dq
 wV
 Xk
-tR
-wV
-wV
-UR
 Xk
 Xk
-UR
-UR
-UR
+Xk
+wV
+Qd
+Qd
+Qd
+Qd
+Qd
+wV
+Qd
+ba
+NR
+Qd
+mB
+Qd
+Qq
+mB
 tR
 Xk
 Xk
@@ -9830,29 +9913,29 @@ UR
 UR
 wV
 UR
-tR
-Xk
-UR
 wV
-UR
-Xk
-wV
-UR
-UR
-UR
-UR
-UR
-UR
+Qd
+Qd
+Qd
+Qd
 wV
 wV
-UR
+Qd
+Qd
+Qd
+Qd
+Qd
+Qd
+ls
 wV
+Qd
 wV
-UR
-Xk
-UR
-UR
-UR
+NR
+wV
+Qd
+tB
+mB
+mB
 Xk
 Xk
 Xk
@@ -10033,27 +10116,27 @@ wV
 Qd
 wV
 wV
+dq
+dq
+dq
+Qd
+Qd
+Qd
+Qd
+Qd
+Kf
+wV
+wV
+wV
+dq
 tR
-tR
-UR
+vk
+Qd
 wV
-UR
-UR
-UR
+Qd
 wV
-UR
 wV
-UR
-wV
-UR
-tR
-UR
-UR
-UR
-wV
-UR
-UR
-UR
+JS
 tR
 tR
 wV
@@ -10233,16 +10316,16 @@ so
 tR
 Qd
 Qd
+dq
+wV
+sX
+Xk
 tR
 wV
-Xk
-Xk
-tR
 wV
+Qd
+Qd
 wV
-wV
-UR
-UR
 Xk
 UR
 UR
@@ -10250,12 +10333,12 @@ wV
 wV
 Xk
 Xk
-UR
-UR
 wV
-Xk
 UR
-Xk
+ZM
+wV
+wV
+pu
 UR
 wV
 wV
@@ -10441,9 +10524,9 @@ wV
 tR
 Xk
 UR
+dq
 wV
-UR
-UR
+wV
 Xk
 tR
 UR
@@ -10454,10 +10537,10 @@ tR
 Xk
 Xk
 Xk
+Fc
+Fc
 UR
-Xk
-UR
-wV
+BZ
 wV
 wV
 Xk
@@ -49444,8 +49527,8 @@ Rh
 Rh
 Rh
 Rh
-Rh
-Rh
+Ga
+Ga
 Rh
 Rh
 Rh
@@ -49645,10 +49728,10 @@ Rh
 Rh
 Rh
 Rh
-Rh
-Rh
-Rh
-Rh
+Ga
+Ga
+Ga
+Ga
 Rh
 Rh
 Rh
@@ -49847,10 +49930,10 @@ Rh
 Rh
 Rh
 Rh
-Rh
-Rh
-Rh
-Rh
+Ga
+Ga
+Ga
+Ga
 Rh
 Rh
 Rh
@@ -50049,10 +50132,10 @@ Rh
 Rh
 Rh
 Rh
-Rh
-Rh
-Rh
-Rh
+Ga
+Ga
+Ga
+Ga
 Rh
 Rh
 Rh
@@ -50252,8 +50335,8 @@ Rh
 Rh
 Rh
 Rh
-Rh
-Rh
+Ga
+Ga
 Rh
 Rh
 Rh
