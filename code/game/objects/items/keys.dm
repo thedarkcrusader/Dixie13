@@ -745,6 +745,11 @@
 	desc = "A rusty key. Something was engraved on its handle, but you can't make it out anymore."
 	lockids = list("oldinn3")
 
+/obj/item/key/thatchwood/garrison
+	name = "old garrison key"
+	desc = "A rusty key. A shield has been engraved on its handle."
+	lockids = list("oldgarrison")
+
 // Special Keys
 
 // grenchensnacker

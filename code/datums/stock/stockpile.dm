@@ -66,7 +66,7 @@
 	desc = "Strands of fine silk used for exotic weaving"
 	item_type = /obj/item/natural/silk
 	held_items = 4
-	payout_price = 5
+	payout_price = 2
 	withdraw_price = 8
 	export_price = 7
 	importexport_amt = 10

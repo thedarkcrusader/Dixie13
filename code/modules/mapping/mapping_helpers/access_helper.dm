@@ -193,3 +193,6 @@
 
 /obj/effect/mapping_helpers/access/keyset/thatchwood/smith
 	accesses = list("oldsmith")
+
+/obj/effect/mapping_helpers/access/keyset/thatchwood/garrison
+	accesses = list("oldgarrison")

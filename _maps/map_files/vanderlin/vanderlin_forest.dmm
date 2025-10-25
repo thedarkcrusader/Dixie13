@@ -407,11 +407,11 @@
 /turf/closed,
 /area/rogue/outdoors/mountains)
 "fE" = (
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/door/green{
 	name = "Thatchwood Garrison"
 	},
+/obj/effect/mapping_helpers/access/keyset/thatchwood/garrison,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "fI" = (
@@ -422,6 +422,8 @@
 	},
 /obj/structure/rack,
 /obj/item/weapon/mace/cudgel/carpenter,
+/obj/item/key/thatchwood/garrison,
+/obj/item/key/thatchwood/garrison,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "fR" = (
@@ -2550,6 +2552,8 @@
 	pixel_x = -4;
 	pixel_y = 5
 	},
+/obj/item/key/thatchwood/garrison,
+/obj/item/key/thatchwood/garrison,
 /turf/open/floor/wood,
 /area/rogue/indoors)
 "Ot" = (
@@ -2674,6 +2678,10 @@
 /obj/effect/decal/cleanable/debris/wood,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
+"QI" = (
+/mob/living/carbon/human/species/skeleton/npc/peasant,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
 "QN" = (
 /obj/structure/bed/sleepingbag,
 /turf/open/floor/naturalstone,
@@ -2888,11 +2896,11 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "UZ" = (
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/door/green{
 	name = "Thatchwood Barracks"
 	},
+/obj/effect/mapping_helpers/access/keyset/thatchwood/garrison,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Vc" = (
@@ -3055,11 +3063,11 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "WS" = (
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
 /obj/structure/door/viewport{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/structure/breaker,
+/obj/effect/mapping_helpers/access/keyset/thatchwood/garrison,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "WX" = (
@@ -26538,7 +26546,7 @@ wV
 OX
 UR
 UR
-Qd
+QI
 UR
 wV
 Qd
