@@ -79,7 +79,7 @@
 	backr = /obj/item/storage/backpack/satchel/otavan
 	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/trou/leather/advanced/colored/duelpants
-	armor = /obj/item/clothing/armor/plate/cuirass/psydon
+	armor = /obj/item/clothing/armor/cuirass/psydon
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	shoes = /obj/item/clothing/shoes/psydonboots
 	mask = /obj/item/clothing/head/helmet/blacksteel/psythorns

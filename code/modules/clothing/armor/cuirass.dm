@@ -112,7 +112,7 @@
 	icon_state = "fencercuirass"
 	item_state = "fencercuirass"
 
-/obj/item/clothing/armor/plate/cuirass/psydon
+/obj/item/clothing/armor/cuirass/psydon
 	name = "psydonian chestplate"
 	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."
 	melt_amount = 75
@@ -127,7 +127,7 @@
 	body_parts_covered = CHEST | VITALS | LEGS
 	max_integrity = 300
 
-/obj/item/clothing/armor/plate/cuirass/ornate
+/obj/item/clothing/armor/cuirass/ornate
 	name = "psydonian cuirass"
 	icon_state = "ornatecuirass"
 	desc = "An ornate steel cuirass with tassets, favored by both the Holy Otavan Inquisition and the Order of the Silver Psycross. \

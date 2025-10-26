@@ -45,19 +45,6 @@
 
 ///The dirty, violent side of the Inquisition. Meant for confrontational, conflict-driven situations as opposed to simply sneaking around and asking questions. Templar with none of the miracles, but with all the muscles and more.
 
-
-/obj/item/clothing/gloves/chain/blk
-		color = "#6c6c6c"
-
-/obj/item/clothing/under/chainlegs/blk
-		color = "#6c6c6c"
-
-/obj/item/clothing/suit/armor/plate/blk
-		color = "#6c6c6c"
-
-/obj/item/clothing/shoes/boots/armor/blk
-		color = "#6c6c6c"
-
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
 	set category = "Inquisition"
