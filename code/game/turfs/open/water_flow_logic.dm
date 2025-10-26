@@ -51,7 +51,7 @@
 		if(istype(src, /turf/open/water/river))
 			if(direction == REVERSE_DIR(dir))
 				continue
-		if(blocked_flow_directions["[direction]"])
+		if(blocked_flow_directions & direction)
 			continue
 		var/turf/open/water/river/creatable/water = get_step(src, direction)
 		if(!istype(water))
