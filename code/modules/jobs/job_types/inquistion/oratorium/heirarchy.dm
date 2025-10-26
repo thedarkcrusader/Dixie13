@@ -441,21 +441,70 @@
 
 	return hierarchy_html
 
+
 /datum/inquisition_hierarchy_interface/proc/calculate_hierarchy_positions()
 	if(!user_inquisition)
 		return
 
-	var/vertical_spacing = 120
-	var/horizontal_spacing = 160
+	var/horizontal_spacing = 200  // Space between columns
+	var/vertical_spacing = 100    // Space between siblings
 	var/base_x = 400
 	var/base_y = 50
 
 	var/datum/inquisition_hierarchy_node/school_root = user_inquisition.get_school_root(selected_school)
 
 	if(school_root)
-		//we sort by merits first
+		// Sort all subordinates by merit (recursive)
 		sort_subordinates_by_merits(school_root)
-		position_node_and_children(school_root, base_x, base_y, horizontal_spacing, vertical_spacing)
+		// Position using vertical merit layout
+		position_vertical_merit_layout(school_root, base_x, base_y, horizontal_spacing, vertical_spacing)
+
+/datum/inquisition_hierarchy_interface/proc/position_vertical_merit_layout(datum/inquisition_hierarchy_node/node, center_x, y_pos, h_spacing, v_spacing_base, v_spacing_per_merit)
+	if(!node)
+		return
+
+	// Position this node
+	node.node_x = center_x - 60
+	node.node_y = y_pos
+
+	if(node.subordinates.len == 0)
+		return
+
+	// Group subordinates by merit
+	var/list/merit_groups = list()
+	var/list/merit_values = list()  // Track unique merit values in order
+
+	for(var/datum/inquisition_hierarchy_node/sub in node.subordinates)
+		var/merit_key = "[sub.merits]"
+		if(!merit_groups[merit_key])
+			merit_groups[merit_key] = list()
+			merit_values += sub.merits
+		merit_groups[merit_key] += sub
+
+	var/current_y = y_pos + v_spacing_base
+	var/previous_merit = null
+
+	for(var/merit_value in merit_values)
+		var/merit_key = "[merit_value]"
+		var/list/same_merit_nodes = merit_groups[merit_key]
+
+		if(previous_merit != null)
+			var/merit_diff = previous_merit - merit_value
+			var/spacing = v_spacing_base + (merit_diff * v_spacing_per_merit)
+			current_y += spacing
+
+		var/group_count = same_merit_nodes.len
+		var/total_width = (group_count - 1) * h_spacing
+		var/start_x = center_x - (total_width / 2)
+
+		for(var/i = 1 to group_count)
+			var/datum/inquisition_hierarchy_node/merit_node = same_merit_nodes[i]
+			var/node_x = start_x + ((i - 1) * h_spacing)
+
+			position_vertical_merit_layout(merit_node, node_x, current_y, h_spacing, v_spacing_base, v_spacing_per_merit)
+
+		previous_merit = merit_value
+
 
 /datum/inquisition_hierarchy_interface/proc/sort_subordinates_by_merits(datum/inquisition_hierarchy_node/node)
 	if(!node || !node.subordinates.len)
@@ -479,42 +528,6 @@
 
 	for(var/datum/inquisition_hierarchy_node/subordinate in node.subordinates)
 		sort_subordinates_by_merits(subordinate)
-
-
-/datum/inquisition_hierarchy_interface/proc/position_node_and_children(datum/inquisition_hierarchy_node/node, center_x, y_pos, h_spacing, v_spacing)
-	if(!node)
-		return 0
-
-	var/subordinate_count = node.subordinates.len
-
-	node.node_x = center_x - 60
-	node.node_y = y_pos
-
-	if(subordinate_count == 0)
-		return h_spacing
-
-	var/list/subordinate_widths = list()
-	var/total_width = 0
-
-	for(var/datum/inquisition_hierarchy_node/subordinate in node.subordinates)
-		var/width_needed = calculate_subtree_width(subordinate, h_spacing)
-		subordinate_widths += width_needed
-		total_width += width_needed
-
-	var/start_x = center_x - total_width / 2
-	var/current_x = start_x
-	var/child_y = y_pos + v_spacing
-
-	for(var/i = 1; i <= subordinate_count; i++)
-		var/datum/inquisition_hierarchy_node/subordinate = node.subordinates[i]
-		var/width_for_this_subtree = subordinate_widths[i]
-		var/subtree_center = current_x + width_for_this_subtree / 2
-
-		position_node_and_children(subordinate, subtree_center, child_y, h_spacing, v_spacing)
-
-		current_x += width_for_this_subtree
-
-	return max(total_width, h_spacing)
 
 /datum/inquisition_hierarchy_interface/proc/calculate_subtree_width(datum/inquisition_hierarchy_node/node, h_spacing)
 	if(!node || node.subordinates.len == 0)
@@ -1015,14 +1028,12 @@
 		var selectedPosition = '[selected_position ? REF(selected_position) : ""]';
 		var currentSchool = '[selected_school]';
 
-		// Dragging state
+		// Dragging state - SIMPLIFIED
 		var isDragging = false;
 		var startX = 0;
 		var startY = 0;
-		var translateX = 0;  // Start centered on hierarchy
-		var translateY = 0;
-		var currentX = translateX;
-		var currentY = translateY;
+		var currentX = 0;
+		var currentY = 0;
 
 		// Initialize on page load
 		window.addEventListener('DOMContentLoaded', function() {
@@ -1033,7 +1044,7 @@
 
 			if(!container || !canvas) return;
 
-			// Set initial position
+			// Set initial position from storage
 			try {
 				const savedX = sessionStorage.getItem('translateX');
 				const savedY = sessionStorage.getItem('translateY');
@@ -1044,7 +1055,7 @@
 				currentY = 0;
 			}
 
-			canvas.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px)';
+			canvas.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
 
 			// Restore selected position if exists
 			if(selectedPosition) {
@@ -1068,23 +1079,21 @@
 				e.preventDefault();
 			});
 
-			// Mouse move - drag canvas
+			// Mouse move - drag canvas (NO requestAnimationFrame)
 			container.addEventListener('mousemove', function(e) {
 				if(!isDragging) return;
 
 				currentX = e.clientX - startX;
 				currentY = e.clientY - startY;
 
-				// Update canvas position
-				requestAnimationFrame(function() {
-					canvas.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
+				// Direct update - no animation frame needed
+				canvas.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
 
-					// Update parallax
-					if(parallaxBg && parallaxStars) {
-						parallaxBg.style.transform = 'translate(' + (currentX * 0.1) + 'px, ' + (currentY * 0.1) + 'px)';
-						parallaxStars.style.transform = 'translate(' + (currentX * 0.3) + 'px, ' + (currentY * 0.3) + 'px)';
-					}
-				});
+				// Update parallax
+				if(parallaxBg && parallaxStars) {
+					parallaxBg.style.transform = 'translate(' + (currentX * 0.1) + 'px, ' + (currentY * 0.1) + 'px)';
+					parallaxStars.style.transform = 'translate(' + (currentX * 0.3) + 'px, ' + (currentY * 0.3) + 'px)';
+				}
 			});
 
 			// Mouse up - stop dragging
@@ -1092,11 +1101,13 @@
 				if(isDragging) {
 					isDragging = false;
 					container.classList.remove('dragging');
-					translateX = currentX;
-					translateY = currentY;
-					sessionStorage.setItem('translateX', currentX.toString());
-					sessionStorage.setItem('translateY', currentY.toString());
-
+					// Save current position
+					try {
+						sessionStorage.setItem('translateX', currentX.toString());
+						sessionStorage.setItem('translateY', currentY.toString());
+					} catch(e) {
+						// Ignore storage errors
+					}
 				}
 			});
 

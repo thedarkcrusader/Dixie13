@@ -222,6 +222,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_HAS_CONFESSED "has_confessed"
 #define TRAIT_CONFESSED_FOR	"confessed_for"
+#define TRAIT_RECENTLY_TORTURED "recently_tortured"
 
 /// this object has been frozen
 #define TRAIT_FROZEN "frozen"

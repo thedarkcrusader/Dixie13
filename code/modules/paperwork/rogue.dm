@@ -251,6 +251,7 @@
 	sliptype = 2
 	var/bad_type // Type of crime confessed to
 	var/antag // Specific antagonist type
+	var/false_confession
 
 /obj/item/paper/inqslip/confession/attemptsign(mob/user, mob/living/carbon/human/M)
 	// Check if they've confessed via torture

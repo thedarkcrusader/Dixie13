@@ -67,6 +67,12 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
+
+	// Anti-spam check
+	if(HAS_TRAIT(H, TRAIT_RECENTLY_TORTURED))
+		to_chat(src, span_warning("[H] needs time to recover before being tortured again!"))
+		return
+
 	var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
 	if(painpercent < 100)
 		to_chat(src, span_warning("Not ready to speak yet."))
@@ -81,6 +87,11 @@
 		return
 	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
+
+		// Add torture cooldown
+		ADD_TRAIT(H, TRAIT_RECENTLY_TORTURED, TRAIT_GENERIC)
+		addtimer(TRAIT_CALLBACK_REMOVE(H, TRAIT_RECENTLY_TORTURED, TRAIT_GENERIC), 3 MINUTES)
+
 		var/static/list/torture_lines = list(
 			"CONFESS YOUR WRONGDOINGS!",
 			"TELL ME YOUR SECRETS!",
@@ -111,6 +122,12 @@
 	if(H.stat == DEAD)
 		to_chat(src, span_warning("[H] is dead already..."))
 		return
+
+	// Anti-spam check
+	if(HAS_TRAIT(H, TRAIT_RECENTLY_TORTURED))
+		to_chat(src, span_warning("[H] needs time to recover before being tortured again!"))
+		return
+
 	var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
 	if(painpercent < 100)
 		to_chat(src, span_warning("Not ready to speak yet."))
@@ -125,6 +142,11 @@
 		return
 	if(H.add_stress(/datum/stress_event/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
+
+		// Add torture cooldown
+		ADD_TRAIT(H, TRAIT_RECENTLY_TORTURED, TRAIT_GENERIC)
+		addtimer(TRAIT_CALLBACK_REMOVE(H, TRAIT_RECENTLY_TORTURED, TRAIT_GENERIC), 30 SECONDS)
+
 		var/static/list/faith_lines = list(
 			"DO YOU DENY PSYDON AND THE TEN?",
 			"WHO IS YOUR GOD?",
@@ -164,17 +186,39 @@
 		"I AM NO SINNER!",
 	)
 	var/resist_chance = 0
+	var/false_confession_chance = 0
+	var/is_innocent = TRUE
+
 	if(resist)
 		to_chat(src, span_boldwarning("I attempt to resist the torture!"))
 		resist_chance = (STAINT + STAEND) + 10
-		if(istype(buckled, /obj/structure/fluff/walldeco/chains)) // If the victim is on hanging chains, apply a resist penalty
+		if(istype(buckled, /obj/structure/fluff/walldeco/chains))
 			resist_chance -= 15
 		if(confession_type == "antag")
 			resist_chance += 25
 
+	// Check if they're actually guilty
+	if(confession_type == "antag")
+		for(var/datum/antagonist/antag in mind?.antag_datums)
+			if(length(antag.confess_lines))
+				is_innocent = FALSE
+				break
+	else if(confession_type == "patron")
+		if(ispath(false_result, /datum/patron))
+			is_innocent = FALSE
+		else if(length(patron?.confess_lines))
+			is_innocent = FALSE
+
+	// Calculate false confession chance for innocents under torture
+	if(is_innocent && !resist)
+		false_confession_chance = 100 - (STAINT + STAEND) // Low willpower = higher chance to falsely confess
+		false_confession_chance = CLAMP(false_confession_chance, 20, 80) // Between 20-80%
+
 	if(!prob(resist_chance))
 		var/list/confessions = list()
 		var/datum/antag_type = null
+		var/is_false_confession = FALSE
+
 		switch(confession_type)
 			if("antag")
 				if(!false_result)
@@ -183,7 +227,20 @@
 							continue
 						confessions += antag.confess_lines
 						antag_type = antag.type
-						break // Only need one antag type
+						break
+
+					// If innocent and failed to resist, chance of false confession
+					if(!length(confessions) && prob(false_confession_chance))
+						is_false_confession = TRUE
+						// Pick a random antag type to falsely confess to
+						var/static/list/false_antag_types = list(
+							/datum/antagonist/bandit,
+							/datum/antagonist/maniac,
+							/datum/antagonist/zizocultist
+						)
+						antag_type = pick(false_antag_types)
+						confessions += list("I... I AM GUILTY!", "YES! I CONFESS!", "I DID IT!")
+
 			if("patron")
 				if(ispath(false_result, /datum/patron))
 					var/datum/patron/fake_patron = new false_result()
@@ -195,13 +252,24 @@
 						confessions += patron.confess_lines
 						antag_type = patron.type
 
+					// If innocent and failed to resist, chance of false confession
+					if(!length(confessions) && prob(false_confession_chance))
+						is_false_confession = TRUE
+						var/static/list/false_patron_types = list(
+							/datum/patron/inhumen/matthios,
+							/datum/patron/inhumen/zizo,
+							/datum/patron/inhumen/graggar
+						)
+						antag_type = pick(false_patron_types)
+						confessions += list("I WORSHIP THE FORBIDDEN!", "I FOLLOW THE DARK PATH!", "I AM A HERETIC!")
+
 		// Apply stress penalties for torturing innocents/faithful
 		if(torture && interrogator && confession_type == "patron")
 			var/datum/patron/interrogator_patron = interrogator.patron
 			var/datum/patron/victim_patron = patron
 			switch(interrogator_patron.associated_faith.type)
 				if(/datum/faith/psydon)
-					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra) //lore
+					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra)
 						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon/progressive)
 						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
@@ -211,7 +279,7 @@
 						interrogator.add_stress(/datum/stress_event/torture_large_penalty)
 
 		if(length(confessions))
-			if(torture) // Only scream your confession if it's due to torture.
+			if(torture)
 				say(pick(confessions), spans = list("torture"), forced = TRUE)
 			else
 				say(pick(confessions), forced = TRUE)
@@ -219,9 +287,15 @@
 			var/obj/item/paper/inqslip/confession/held_confession
 			if(istype(confession_paper))
 				held_confession = confession_paper
-			else if(interrogator?.is_holding_item_of_type(/obj/item/paper/inqslip/confession)) // This code is to process gettin a signed confession through torture.
+			else if(interrogator?.is_holding_item_of_type(/obj/item/paper/inqslip/confession))
 				held_confession = interrogator.is_holding_item_of_type(/obj/item/paper/inqslip/confession)
-			if(held_confession && !held_confession.signed) // Check to see if the confession is already signed.
+
+			if(held_confession && !held_confession.signed)
+				// Mark if this is a false confession
+				if(is_false_confession)
+					held_confession.false_confession = TRUE
+					to_chat(interrogator, span_danger("Something seems off about this confession..."))
+
 				switch(antag_type)
 					if(/datum/antagonist/bandit)
 						held_confession.bad_type = "AN OUTLAW OF THE THIEF-LORD"
@@ -246,7 +320,7 @@
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
 					if(/datum/antagonist/werewolf)
 						var/datum/antagonist/werewolf/werewolf_antag = mind.has_antag_datum(/datum/antagonist/werewolf, TRUE)
-						if(werewolf_antag.transformed) // haha real clever of ya
+						if(werewolf_antag.transformed)
 							return
 						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
 						held_confession.antag = initial(antag_type:name)
@@ -290,15 +364,16 @@
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
 					else
-						return // good job you tortured an innocent person
+						return
+
 				if(HAS_TRAIT_FROM(src, TRAIT_CONFESSED_FOR, held_confession.bad_type))
 					visible_message(span_warning("[name] has already confessed for this!"), "I have confessed this!")
-					return //cruel
+					return
 				ADD_TRAIT(src, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
 				ADD_TRAIT(src, TRAIT_CONFESSED_FOR, held_confession.bad_type)
 			return
 		else
-			if(torture) // Only scream your confession if it's due to torture.
+			if(torture)
 				say(pick(innocent_lines), spans = list("torture"), forced = TRUE)
 			else
 				say(pick(innocent_lines), forced = TRUE)

@@ -35,3 +35,6 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+
+		H.verbs |= /mob/living/carbon/human/proc/torture_victim
+		H.verbs |= /mob/living/carbon/human/proc/faith_test
