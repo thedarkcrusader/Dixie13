@@ -236,7 +236,7 @@
 		var/path = pickweight(mineralSpawnChanceList)
 		var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 
-		if(T && ismineralturf(T))
+		if(ismineralturf(T))
 			var/turf/closed/mineral/M = T
 			M.mineralAmt = rand(1, 5)
 			M.turf_type = src.turf_type
