@@ -41,7 +41,7 @@
 			//passively heal wounds, but not if you're skullcracked OR DEAD.
 			if(blood_volume > BLOOD_VOLUME_SURVIVE)
 				for(var/datum/wound/wound as anything in get_wounds())
-					wound.heal_wound(0.6)
+					wound.heal_wound(0.3)
 
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
