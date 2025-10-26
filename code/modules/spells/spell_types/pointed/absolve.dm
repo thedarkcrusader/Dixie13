@@ -1,9 +1,9 @@
 
 /datum/action/cooldown/spell/psydonabsolve
 	name = "ABSOLVE"
-	spell_type = SPELL_MIRACLE
+	spell_type = SPELL_PSYDONIC_MIRACLE
 	spell_flags = SPELL_PSYDON
-	spell_cost = 80
+	spell_cost = 160
 	charge_time = 1
 	cast_range = 1
 	sound = 'sound/magic/psyabsolution.ogg'

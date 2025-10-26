@@ -735,7 +735,7 @@
 	pixel_y = 29
 	},
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "fP" = (
 /obj/structure/door/violet{
 	name = "Mage's Quarters"
@@ -1563,7 +1563,6 @@
 /area/rogue/ship/middeck)
 "nf" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/paper/confession,
 /obj/item/key/church,
 /obj/item/key/church,
 /obj/item/reagent_containers/glass/cup/silver,
@@ -1660,6 +1659,9 @@
 "nF" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/church)
+"nG" = (
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/indoors/inq/import)
 "nL" = (
 /obj/structure/stairs/fancy/r{
 	dir = 1;
@@ -2276,10 +2278,9 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "uw" = (
-/obj/structure/door/stone{
-	lockid = "confession"
-	},
 /obj/effect/mapping_helpers/access/locker,
+/obj/structure/door/stone,
+/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "uB" = (
@@ -2529,12 +2530,8 @@
 	pixel_y = 12;
 	density = 0
 	},
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "wv" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/closet/crate/chest/old_crate,
@@ -2611,7 +2608,7 @@
 /obj/item/bedsheet/wool,
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "wZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -3695,7 +3692,7 @@
 /obj/item/scomstone,
 /obj/item/weapon/whip/antique,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "GU" = (
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
@@ -4545,7 +4542,7 @@
 "OZ" = (
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "Pb" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -5700,7 +5697,7 @@
 /obj/item/bedsheet/fabric,
 /obj/item/book/bibble,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/inq/import)
 "Za" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
@@ -14665,7 +14662,7 @@ wF
 ne
 Ze
 wU
-ne
+nG
 Ze
 Cg
 vU
@@ -14867,7 +14864,7 @@ UI
 ne
 Ze
 wq
-ne
+nG
 Ze
 Cg
 cI

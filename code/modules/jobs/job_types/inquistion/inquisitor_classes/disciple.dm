@@ -100,13 +100,6 @@
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	cloak = /obj/item/clothing/cloak/psydontabard/alt
 
-
-	var/datum/devotion/devotion = new /datum/devotion(H, H.patron)
-	devotion.make_cleric()
-	devotion.grant_to(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-
 /datum/outfit/job/disciple/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(H, "Benetarus", 0, "Disciple")

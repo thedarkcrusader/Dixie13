@@ -58,9 +58,18 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.grant_language(/datum/language/oldpsydonic)
+		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
 
 /datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
+
+	H.hud_used?.shutdown_bloodpool()
+	H.hud_used?.initialize_bloodpool()
+	H.hud_used?.bloodpool.set_fill_color("#dcdddb")
+	H?.hud_used?.bloodpool?.name = "Psydon's Grace: [H.bloodpool]"
+	H?.hud_used?.bloodpool?.desc = "Devotion: [H.bloodpool]/[H.maxbloodpool]"
+	H.maxbloodpool = 1000
+
 	wrists = /obj/item/clothing/wrists/bracers/psythorns
 	gloves = /obj/item/clothing/gloves/leather/otavan/inqgloves
 	beltr = /obj/item/flashlight/flare/torch/lantern/psycenser
@@ -85,9 +94,6 @@
 		/obj/item/natural/worms/leech = 1,
 		/obj/item/key/inquisition = 1,
 		)
-	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.make_absolver()
-	C.grant_to(H)
 
 /datum/outfit/job/absolver/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()

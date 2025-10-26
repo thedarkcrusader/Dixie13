@@ -911,6 +911,14 @@
 
 			return TRUE
 
+		if(SPELL_PSYDONIC_MIRACLE)
+			if(!caster.has_bloodpool_cost(used_cost))
+				if(feedback)
+					owner.balloon_alert(owner, "Need more grace to cast!")
+				return FALSE
+
+			return TRUE
+
 /**
  * Charge the owner with the cost of the spell.
  *
@@ -961,6 +969,10 @@
 			gaunt.consume_essence(used_cost, attunements)
 
 		if(SPELL_BLOOD)
+			var/mob/living/caster = owner
+			caster.adjust_bloodpool(-used_cost)
+
+		if(SPELL_PSYDONIC_MIRACLE)
 			var/mob/living/caster = owner
 			caster.adjust_bloodpool(-used_cost)
 

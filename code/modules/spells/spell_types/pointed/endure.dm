@@ -17,10 +17,10 @@
 
 /datum/action/cooldown/spell/psydonendure
 	name = "ENDURE"
-	spell_type = SPELL_MIRACLE
+	spell_type = SPELL_PSYDONIC_MIRACLE
 	spell_flags = SPELL_PSYDON
 
-	spell_cost = 20
+	spell_cost = 40
 	charge_time = 1
 	cast_range = 2
 	sound = 'sound/magic/ENDVRE.ogg'

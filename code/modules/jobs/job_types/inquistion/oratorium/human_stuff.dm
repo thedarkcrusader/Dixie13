@@ -5,11 +5,11 @@ GLOBAL_DATUM_INIT(inquisition, /datum/oratorium, new)
 	var/datum/inquisition_hierarchy_node/inquisition_position
 	var/datum/inquisition_hierarchy_interface/hierarchy_interface
 
-/mob/living/carbon/human/proc/show_inquisition()
-	if(!GLOB.inquisition)
-		GLOB.inquisition = new /datum/oratorium()
+/mob/living/carbon/human/proc/view_inquisition()
+	set name = "View Inquisition"
+	set category = "Inquisition"
 
-	inquisition = GLOB.inquisition
 	if(!hierarchy_interface)
 		hierarchy_interface = new /datum/inquisition_hierarchy_interface(src)
+	hierarchy_interface.selected_school = inquisition_position.school
 	hierarchy_interface.refresh_hierarchy()

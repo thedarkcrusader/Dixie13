@@ -42,6 +42,8 @@
 		H.set_patron(/datum/patron/psydon, TRUE)
 		H.verbs |= /mob/living/carbon/human/proc/torture_victim
 		H.verbs |= /mob/living/carbon/human/proc/faith_test
+		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
+
 		if(!H.has_language(/datum/language/oldpsydonic))
 			H.grant_language(/datum/language/oldpsydonic)
 			to_chat(H, span_info("I can speak Old Psydonic with ,m before my speech."))

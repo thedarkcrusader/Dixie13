@@ -38,3 +38,11 @@
 
 		H.verbs |= /mob/living/carbon/human/proc/torture_victim
 		H.verbs |= /mob/living/carbon/human/proc/faith_test
+		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
+
+		H.hud_used?.shutdown_bloodpool()
+		H.hud_used?.initialize_bloodpool()
+		H.hud_used?.bloodpool.set_fill_color("#dcdddb")
+		H?.hud_used?.bloodpool?.name = "Psydon's Grace: [H.bloodpool]"
+		H?.hud_used?.bloodpool?.desc = "Devotion: [H.bloodpool]/[H.maxbloodpool]"
+		H.maxbloodpool = 1000

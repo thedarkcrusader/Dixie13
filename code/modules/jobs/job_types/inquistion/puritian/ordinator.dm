@@ -34,13 +34,6 @@
 
 /datum/outfit/job/inquisitor/ordinator/pre_equip(mob/living/carbon/human/H)
 	..()
-	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.make_templar()
-	C.grant_to(H)
-
-	H.verbs |= /mob/living/carbon/human/proc/faith_test
-	H.verbs |= /mob/living/carbon/human/proc/torture_victim
-
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	armor = /obj/item/clothing/armor/plate/full/fluted/ornate/ordinator
 	belt = /obj/item/storage/belt/leather/steel

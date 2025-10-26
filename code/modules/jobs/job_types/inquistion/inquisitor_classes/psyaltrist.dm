@@ -36,9 +36,6 @@
 	beltr = /obj/item/weapon/knife/dagger/silver/psydon
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ring = /obj/item/clothing/ring/signet/silver
-	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.make_templar()
-	C.grant_to(H)
 	var/datum/inspiration/I = new /datum/inspiration(H)
 	I.grant_inspiration(H, bard_tier = BARD_T3)
 	backpack_contents = list(

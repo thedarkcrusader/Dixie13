@@ -1,9 +1,9 @@
 
 /datum/action/cooldown/spell/undirected/psydonrespite
 	name = "RESPITE"
-	spell_type = SPELL_MIRACLE
+	spell_type = SPELL_PSYDONIC_MIRACLE
 	spell_flags = SPELL_PSYDON
-	spell_cost = 5
+	spell_cost = 10
 	charge_time = 1
 	sound = null
 	invocation = ". . ."

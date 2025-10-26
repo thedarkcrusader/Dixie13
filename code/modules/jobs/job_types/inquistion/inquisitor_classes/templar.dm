@@ -58,10 +58,6 @@
 	)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	var/datum/devotion/devotion = new /datum/devotion(H, H.patron)
-	devotion.make_cleric()
-	devotion.grant_to(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 	var/helmets = list("Barbute", "Sallet", "Armet", "Bucket Helm")
 	var/helmet_choice = input(H,"Choose your HELMET.", "TAKE UP PSYDON'S HELMS.") as anything in helmets

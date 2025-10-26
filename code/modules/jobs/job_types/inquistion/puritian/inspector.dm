@@ -40,10 +40,6 @@
 
 /datum/outfit/job/inquisitor/inspector/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/faith_test
-	H.verbs |= /mob/living/carbon/human/proc/torture_victim
-	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.make_templar(H)
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	belt = /obj/item/storage/belt/leather/knifebelt/black/psydon
 	neck = /obj/item/clothing/neck/gorget
