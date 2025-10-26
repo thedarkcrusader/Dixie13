@@ -163,7 +163,7 @@
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
-/obj/item/clothing/suit/armor/plate/fluted
+/obj/item/clothing/armor/plate/fluted
 	name = "fluted half-plate"
 	desc = "An ornate steel cuirass, fitted with tassets and pauldrons for additional coverage. This lightweight deviation of 'plate armor' is favored by cuirassiers all across Psydonia, alongside fledging barons who've - up until now - waged their fiercest battles upon a chamberpot."
 	icon_state = "ornatehalfplate"
