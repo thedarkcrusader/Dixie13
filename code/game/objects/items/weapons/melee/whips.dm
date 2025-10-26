@@ -247,6 +247,7 @@
 
 /obj/item/weapon/whip/urumi/silver
 	name = "silver urumi"
+	icon_state = "urumi_silver"
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/silver
 	max_integrity = 100
