@@ -221,7 +221,6 @@ SUBSYSTEM_DEF(triumphs)
 
 		triumph_buy.show_menu()
 
-
 /// We cleanup the datum thats just holding the stuff for displaying the menu.
 /datum/controller/subsystem/triumphs/proc/remove_triumph_buy_menu(client/C)
 	if(C && active_triumph_menus[C.ckey])
