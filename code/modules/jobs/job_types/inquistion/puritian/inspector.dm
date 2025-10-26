@@ -66,9 +66,7 @@
 		/obj/item/inqarticles/garrote = 1,
 		/obj/item/rope/inqarticles/inquirycord = 1,
 		/obj/item/grapplinghook = 1,
-		/obj/item/storage/belt/pouch/coins/rich = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1,
-		/obj/item/weapon/scabbard/knife = 1
 		)
 
 	var/weapons = list("Eucharist (Rapier)", "Daybreak (Whip)", "Stigmata (Halberd)")
@@ -84,3 +82,7 @@
 		if("Stigmata (Halberd)")
 			H.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
+
+/datum/outfit/job/inquisitor/inspector/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_position(H, GLOB.inquisition.venatari, 100)

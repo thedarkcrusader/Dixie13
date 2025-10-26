@@ -89,3 +89,6 @@
 	C.make_absolver()
 	C.grant_to(H)
 
+/datum/outfit/job/absolver/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(H, "Sanctae", 0, "Absolver")

@@ -100,3 +100,7 @@
 		/obj/item/grapplinghook = 1,
 		/obj/item/paper/inqslip/arrival/ortho = 1
 		)
+
+/datum/outfit/job/confessor/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Confessor")

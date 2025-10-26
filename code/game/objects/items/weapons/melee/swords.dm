@@ -524,7 +524,7 @@
 	icon_state = "psyrapier"
 	max_integrity = 300
 	max_blade_int = 300
-	wdefense = 7
+	wdefense = GOOD_PARRY
 
 /obj/item/weapon/sword/rapier/psy/relic/Initialize(mapload)
 	. = ..()

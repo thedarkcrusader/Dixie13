@@ -52,7 +52,10 @@
 	belt = /obj/item/storage/belt/leather/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ring = /obj/item/clothing/ring/signet/silver
-	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1)
+	backpack_contents = list(
+		/obj/item/storage/keyring/inquisitor = 1,
+		/obj/item/paper/inqslip/arrival/ortho = 1,
+	)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	var/datum/devotion/devotion = new /datum/devotion(H, H.patron)
@@ -108,3 +111,7 @@
 			H.put_in_hands(new /obj/item/weapon/greataxe/psy(H), TRUE)
 			H.put_in_hands(new /obj/item/weapon/sword/short/psy(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
+
+/datum/outfit/job/psydoniantemplar/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(H, "Benetarus", 0, "Templar")

@@ -41,8 +41,10 @@
 	C.grant_to(H)
 	var/datum/inspiration/I = new /datum/inspiration(H)
 	I.grant_inspiration(H, bard_tier = BARD_T3)
-	backpack_contents = list(/obj/item/key/inquisition = 1,
-	/obj/item/paper/inqslip/arrival/ortho = 1)
+	backpack_contents = list(
+		/obj/item/key/inquisition = 1,
+		/obj/item/paper/inqslip/arrival/ortho = 1
+	)
 
 
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
@@ -70,3 +72,7 @@
 				backr = /obj/item/instrument/psyaltery
 			if("Flute")
 				backr = /obj/item/instrument/flute
+
+/datum/outfit/job/psyaltrist/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Psyaltrist")

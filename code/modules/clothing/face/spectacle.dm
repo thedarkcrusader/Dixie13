@@ -53,7 +53,7 @@
 /obj/item/clothing/face/spectacles/inq/equipped(mob/user, slot)
 	..()
 
-	if(slot == ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+	if(slot & ITEM_SLOT_MASK || slot & ITEM_SLOT_HEAD)
 		if(!lensmoved)
 			ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return
@@ -61,7 +61,7 @@
 /obj/item/clothing/face/spectacles/inq/update_icon(mob/user, slot)
 	cut_overlays()
 	..()
-	if(slot == ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+	if(slot & ITEM_SLOT_MASK || slot & ITEM_SLOT_HEAD)
 		var/mutable_appearance/redlenses = mutable_appearance(mob_overlay_icon, "bglasses_glow")
 		redlenses.layer = 19
 		redlenses.plane = 20
@@ -82,7 +82,7 @@
 
 /obj/item/clothing/face/spectacles/inq/dropped(mob/user, slot)
 	..()
-	if(slot != ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+	if(!(slot & ITEM_SLOT_MASK) || slot & ITEM_SLOT_HEAD)
 		if(!lensmoved)
 			REMOVE_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return
@@ -158,7 +158,7 @@
 
 /obj/item/clothing/face/facemask/steel/confessor/lensed/equipped(mob/user, slot)
 	..()
-	if(slot == ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+	if(slot & ITEM_SLOT_MASK || slot & ITEM_SLOT_HEAD)
 		if(!lensmoved)
 			ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return
@@ -176,7 +176,7 @@
 
 /obj/item/clothing/face/facemask/steel/confessor/lensed/dropped(mob/user, slot)
 	..()
-	if(slot != ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+	if(!(slot & ITEM_SLOT_MASK) || slot & ITEM_SLOT_HEAD)
 		if(!lensmoved)
 			REMOVE_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return

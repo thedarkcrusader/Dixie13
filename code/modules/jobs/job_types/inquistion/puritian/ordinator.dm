@@ -82,3 +82,7 @@
 			H.equip_to_slot_or_del(new /obj/item/weapon/scabbard/knife, ITEM_SLOT_BACK_L, TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, 5)
 			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, 4)
+
+/datum/outfit/job/inquisitor/ordinator/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_position(H, GLOB.inquisition.benetarus, 100)
