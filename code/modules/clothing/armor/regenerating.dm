@@ -81,7 +81,7 @@
 	repairmsg_end = "My skin has become taut with newfound vigor!"
 
 /obj/item/clothing/armor/regenerating/skin/Initialize(mapload)
-	..()
+	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/armor/regenerating/skin/dropped(mob/living/carbon/human/user)

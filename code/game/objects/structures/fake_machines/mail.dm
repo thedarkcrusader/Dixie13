@@ -767,11 +767,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 /obj/item/fake_machine/mastermail/Destroy()
 	set_light(0)
 	SSroguemachine.hermailers -= src
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
+	SSroguemachine.hermailermaster = null
 	return ..()
 
 /obj/structure/fake_machine/mail/proc/any_additional_mail(obj/item/fake_machine/mastermail/M, name)
