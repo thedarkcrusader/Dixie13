@@ -2,8 +2,8 @@
 /turf/open/water
 	var/turf/open/water/source_originate
 	var/turf/open/water/parent
-	var/list/children = list()
-	var/list/conflicting_originate_turfs = list()
+	var/list/children
+	var/list/conflicting_originate_turfs
 
 
 /turf/open/water/proc/set_parent(turf/open/water/incoming)
@@ -11,8 +11,8 @@
 		return
 	if(source_originate && incoming.source_originate)
 		if(source_originate != incoming.source_originate)
-			source_originate?.conflicting_originate_turfs |= incoming.source_originate
-			incoming?.source_originate?.conflicting_originate_turfs |= source_originate
+			LAZYOR(source_originate.conflicting_originate_turfs, incoming.source_originate)
+			LAZYOR(incoming.source_originate.conflicting_originate_turfs, source_originate)
 
 	source_originate = incoming.source_originate
 	if(istype(incoming, /turf/open/water/river/creatable))
@@ -76,7 +76,7 @@
 		water.check_surrounding_water()
 
 /turf/open/water/proc/remove_child(turf/open/water/water)
-	children -= water
+	LAZYREMOVE(children, water)
 
 /turf/open/water/proc/add_child(turf/open/water/water)
-	children |= water
+	LAZYOR(children, water)
