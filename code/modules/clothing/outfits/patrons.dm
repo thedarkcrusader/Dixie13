@@ -122,34 +122,6 @@
 	desc = "A cloak meant to keep one's body warm in the cold of the mountains as well as the dampness of Azuria."
 	icon_state = "snowcloak"
 
-/obj/item/clothing/cloak/poncho
-	name = "cloth poncho"
-	desc = "A loose garment that is usually draped across ones upper body. No one's quite sure of its cultural origin."
-	icon_state = "poncho"
-	item_state = "poncho"
-	alternate_worn_layer = TABARD_LAYER
-	boobed = FALSE
-	flags_inv = HIDEBOOB
-	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_ARMOR
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	nodismemsleeves = TRUE
-	color = CLOTHING_WHITE
-	detail_tag = "_detail"
-	detail_color = CLOTHING_WHITE
-
-/obj/item/clothing/cloak/poncho/Initialize(mapload, ...)
-	. = ..()
-	AddComponent(/datum/component/storage/concrete/grid/cloak)
-
-/obj/item/clothing/cloak/poncho/dropped(mob/living/carbon/human/user)
-	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
-
-
 /obj/item/clothing/cloak/templar/MiddleClick(mob/user)
 	overarmor = !overarmor
 	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))

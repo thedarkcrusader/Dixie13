@@ -1138,3 +1138,119 @@
 	created_item = /obj/item/clothing/head/rare/elfplate/welfplate
 	craftdiff = 5
 */
+
+/datum/anvil_recipe/armor/anklets
+    name = "golden anklets"
+    req_bar = /obj/item/ingot/gold
+    created_item = /obj/item/clothing/shoes/anklets
+    craftdiff = 2
+
+
+/datum/anvil_recipe/armor/holysee_plate
+    name = "holy silver plate"
+    req_bar = /obj/item/ingot/silverblessed
+    additional_items = list(/obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed)
+    created_item = /obj/item/clothing/armor/plate/full/holysee
+    craftdiff = 4
+
+/datum/anvil_recipe/armor/holysee_chausses
+    name = "holy silver chausses"
+    req_bar = /obj/item/ingot/silverblessed
+    additional_items = list(/obj/item/ingot/silverblessed)
+    created_item = /obj/item/clothing/pants/platelegs/holysee
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/holysee_bascinet
+    name = "holy silver bascinet"
+    req_bar = /obj/item/ingot/silverblessed
+    additional_items = list(/obj/item/ingot/silver)
+    created_item = /obj/item/clothing/head/helmet/heavy/holysee
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/naledi_mask
+    name = "war scholar's mask"
+    req_bar = /obj/item/ingot/gold
+    created_item = /obj/item/clothing/face/lordmask/naledi
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/sojourner_mask
+    name = "sojourner's mask"
+    req_bar = /obj/item/ingot/gold
+    additional_items = list(/obj/item/ingot/gold)
+    created_item = /obj/item/clothing/face/lordmask/naledi/sojourner
+    craftdiff = 4
+
+
+/datum/anvil_recipe/armor/xylixhelm
+    name = "xylixian helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/xylixhelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/astratahelm
+    name = "astrata helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/astratahelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/nochelm
+    name = "noc helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/nochelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/necrahelm
+    name = "necra helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/necrahelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/dendorhelm
+    name = "dendor helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/dendorhelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/abyssorgreathelm
+    name = "abyssorite helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/abyssorgreathelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/ravoxhelm
+    name = "justice eagle"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/ravoxhelm
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/volfplate
+    name = "volf-face helm"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/heavy/volfplate
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/volfplate_puritan
+    name = "volfskulle bascinet"
+    req_bar = /obj/item/ingot/steel
+    additional_items = list(/obj/item/ingot/steel)
+    created_item = /obj/item/clothing/head/helmet/heavy/volfplate/puritan
+    craftdiff = 4
+
+/datum/anvil_recipe/armor/atgervi_hauberk
+    name = "vagarian hauberk"
+    req_bar = /obj/item/ingot/steel
+    additional_items = list(/obj/item/ingot/steel)
+    created_item = /obj/item/clothing/armor/chainmail/hauberk/atgervi
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/atgervi_claws
+    name = "beast claws"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/gloves/plate/atgervi
+    craftdiff = 3
+
+/datum/anvil_recipe/armor/atgervi_helmet
+    name = "owl helmet"
+    req_bar = /obj/item/ingot/steel
+    created_item = /obj/item/clothing/head/helmet/bascinet/atgervi
+    craftdiff = 3

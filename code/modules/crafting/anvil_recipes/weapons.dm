@@ -872,3 +872,19 @@
 	created_item = /obj/item/weapon/whip/psydon
 	additional_items = list(/obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/atgervi_shield
+	name = "kite shield"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/grown/log/tree)
+	created_item = /obj/item/weapon/shield/atgervi
+	i_type = "Shields"
+	craftdiff = 2
+
+/datum/anvil_recipe/weapons/atgervi_axe
+	name = "bearded axe"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/weapon/axe/steel/atgervi
+	i_type = "Weapons"
+	craftdiff = 3
