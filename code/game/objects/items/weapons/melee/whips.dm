@@ -238,9 +238,19 @@
 	max_integrity = 150
 	blade_dulling = DULLING_BASH
 
-/obj/item/weapon/urumi/iron
+/obj/item/weapon/whip/urumi/iron
 	name = "iron urumi"
 	icon_state = "urumi_iron"
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 125
+
+/obj/item/weapon/whip/urumi/silver
+	name = "silver urumi"
+	force = DAMAGEWHIP+2
+	smeltresult = /obj/item/ingot/silver
+	max_integrity = 100
+
+/obj/item/weapon/whip/urumi/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
