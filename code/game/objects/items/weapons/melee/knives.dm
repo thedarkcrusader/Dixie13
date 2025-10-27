@@ -146,7 +146,7 @@
 	icon_state = "navaja_c"
 	item_state = "elfdag"
 	var/extended = 0
-	wdefense = 2
+	wdefense = TERRIBLE_PARRY
 	sellprice = 30 //shiny :o
 
 /obj/item/weapon/knife/dagger/navaja/attack_self(mob/user)
@@ -154,7 +154,7 @@
 	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 	if(extended)
 		force = 20
-		wdefense = 6
+		wdefense = MEDIOCRE_PARRY
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "navaja_o"
@@ -167,7 +167,7 @@
 		icon_state = "navaja_c"
 		attack_verb = list("stubbed", "poked")
 		sharpness = IS_BLUNT
-		wdefense = 2
+		wdefense = TERRIBLE_PARRY
 
 /obj/item/weapon/knife/scissors
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)

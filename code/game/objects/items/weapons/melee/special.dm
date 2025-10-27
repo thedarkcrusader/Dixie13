@@ -324,7 +324,7 @@
 	swingsound = list('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
 	associated_skill = /datum/skill/combat/unarmed
 	throwforce = 12
-	wdefense = 7
+	wdefense = MEDIOCRE_PARRY
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	melting_material = /datum/material/steel
 	melt_amount = 75
