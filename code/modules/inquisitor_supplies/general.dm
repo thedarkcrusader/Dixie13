@@ -356,13 +356,12 @@
 	detail_color = "#99b2b1"
 	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_SIDE_STEEL
-	body_parts_inherent = NECK
+	body_parts_covered = NECK
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
-	allowed_race = NON_DWARVEN_RACE_TYPES
 	detail_tag = "_detail"
 	color = "#5058c1"
 
