@@ -6,7 +6,8 @@
 	earliest_start = 20 MINUTES
 	max_occurrences = 1
 	min_players = 30
-	allowed_storytellers = list(/datum/storyteller/ravox)
+	dedicated_storytellers = list(/datum/storyteller/ravox)
+	allowed_storytellers = DIVINE_STORYTELLERS
 
 /datum/round_event_control/ravox_resolve/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
