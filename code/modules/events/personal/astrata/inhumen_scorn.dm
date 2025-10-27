@@ -7,6 +7,10 @@
 	max_occurrences = 1
 	min_players = 30
 
+	tags = list(
+		TAG_ASTRATA,
+	)
+
 /datum/round_event_control/inhumen_scorn/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)

@@ -10,6 +10,10 @@
 	earliest_start = 2 HOURS
 	var/last_siege = 0
 
+	tags = list(
+		TAG_RAID,
+		TAG_BATTLE,
+	)
 
 /datum/round_event/skellysiege
 	announceWhen	= 1

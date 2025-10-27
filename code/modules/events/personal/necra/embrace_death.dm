@@ -8,6 +8,7 @@
 	min_players = 40
 
 	tags = list(
+		TAG_NECRA,
 		TAG_HAUNTED,
 	)
 

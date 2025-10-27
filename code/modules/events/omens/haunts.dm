@@ -8,6 +8,12 @@
 	req_omen = TRUE
 	todreq = list("night")
 
+	tags = list(
+		TAG_HAUNTED,
+		TAG_CURSE,
+		TAG_BATTLE,
+	)
+
 /datum/round_event/haunts
 	announceWhen	= 50
 	var/spawncount = 5

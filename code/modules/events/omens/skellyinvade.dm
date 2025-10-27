@@ -8,6 +8,11 @@
 	req_omen = TRUE
 	todreq = list("night")
 
+	tags = list(
+		TAG_RAID,
+		TAG_BATTLE,
+	)
+
 /datum/round_event/skellyinvade
 	announceWhen	= 50
 	var/spawncount = 3

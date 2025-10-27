@@ -8,6 +8,7 @@
 	earliest_start = 15 MINUTES
 
 	tags = list(
+		TAG_ZIZO,
 		TAG_HAUNTED,
 		TAG_COMBAT,
 		TAG_VILLIAN,

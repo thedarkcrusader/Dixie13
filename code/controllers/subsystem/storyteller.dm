@@ -1392,6 +1392,7 @@ SUBSYSTEM_DEF(gamemode)
 		STATS_VAMPIRES,
 		STATS_DEADITES_ALIVE,
 		STATS_CLINGY_PEOPLE,
+		STATS_HUNTED_PEOPLE,
 		STATS_ALCOHOLICS,
 		STATS_JUNKIES,
 		STATS_KLEPTOMANIACS,
@@ -1517,6 +1518,8 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_KLEPTOMANIACS)
 			if(human_mob.has_flaw(/datum/charflaw/greedy))
 				record_round_statistic(STATS_GREEDY_PEOPLE)
+			if(human_mob.has_flaw(/datum/charflaw/hunted))
+				record_round_statistic(STATS_HUNTED_PEOPLE)
 			if(HAS_TRAIT_NOT_FROM(human_mob, TRAIT_PACIFISM, "hugbox"))
 				record_round_statistic(STATS_PACIFISTS)
 			if(human_mob.family_datum && human_mob.family_member_datum)

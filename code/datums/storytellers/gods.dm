@@ -42,8 +42,8 @@
 
 	tag_multipliers = list(
 		TAG_NOC = 2,
-		TAG_MAGICAL = 1.4,
-		TAG_HAUNTED = 1.2,
+		TAG_MAGICAL = 1.5,
+		TAG_HAUNTED = 1.25,
 	)
 	cost_variance = 25
 
@@ -80,17 +80,17 @@
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 0.75,
-		EVENT_TRACK_PERSONAL = 0.9,
+		EVENT_TRACK_PERSONAL = 1,
 		EVENT_TRACK_MODERATE = 1,
 		EVENT_TRACK_INTERVENTION = 1,
-		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1.25,
 		EVENT_TRACK_OMENS = 1,
 		EVENT_TRACK_RAIDS = 2,
 	)
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.9, "capacity" = 80),
+			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.8, "capacity" = 80),
 		),
 		"Set 2" = list(
 			STATS_PARRIES = list("name" = "Parries made:", "points" = 0.0535, "capacity" = 100),
@@ -116,8 +116,8 @@
 
 	tag_multipliers = list(
 		TAG_ABYSSOR = 2,
-		TAG_WATER = 1.4,
-		TAG_TRADE = 1.2,
+		TAG_WATER = 1.5,
+		TAG_TRADE = 1.5,
 	)
 
 	influence_sets = list(
@@ -153,8 +153,8 @@
 	tag_multipliers = list(
 		TAG_XYLIX = 2,
 		TAG_GAMBLE = 1.5,
-		TAG_TRICKERY = 1.4,
-		TAG_UNEXPECTED = 1.3,
+		TAG_TRICKERY = 1.5,
+		TAG_UNEXPECTED = 1.25,
 	)
 
 	point_gains_multipliers = list(
@@ -201,10 +201,10 @@
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1.25,
-		EVENT_TRACK_PERSONAL = 0.7,
+		EVENT_TRACK_PERSONAL = 0.75,
 		EVENT_TRACK_MODERATE = 1.25,
 		EVENT_TRACK_INTERVENTION = 1.25,
-		EVENT_TRACK_CHARACTER_INJECTION = 0.5,
+		EVENT_TRACK_CHARACTER_INJECTION = 0.75,
 		EVENT_TRACK_OMENS = 1.25,
 		EVENT_TRACK_RAIDS = 0.5,
 	)
@@ -237,9 +237,9 @@
 
 	tag_multipliers = list(
 		TAG_PESTRA = 2,
-		TAG_ALCHEMY = 1.3,
-		TAG_MEDICAL = 1.3,
-		TAG_NATURE = 1.1,
+		TAG_ALCHEMY = 1.5,
+		TAG_MEDICAL = 1.5,
+		TAG_NATURE = 1.25,
 	)
 
 	influence_sets = list(
@@ -275,7 +275,7 @@
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_PERSONAL = 1.2,
+		EVENT_TRACK_PERSONAL = 1.25,
 		EVENT_TRACK_MODERATE = 1,
 		EVENT_TRACK_INTERVENTION = 2,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
@@ -291,7 +291,7 @@
 			STATS_ROCKS_MINED = list("name" = "Rocks mined:", "points" = 0.25, "capacity" = 100),
 		),
 		"Set 3" = list(
-			STATS_CRAFT_SKILLS = list("name" = "Craft skills learned:", "points" = 0.65, "capacity" = 80),
+			STATS_CRAFT_SKILLS = list("name" = "Craft skills learned:", "points" = 0.7, "capacity" = 80),
 		),
 		"Set 4" = list(
 			STATS_BEARDS_SHAVED = list("name" = "Beards shaved:", "points" = -4, "capacity" = -40),
@@ -310,13 +310,13 @@
 
 	tag_multipliers = list(
 		TAG_EORA = 2,
-		TAG_WIDESPREAD = 1.4,
-		TAG_BOON = 1.2,
+		TAG_BOON = 1.5,
+		TAG_WIDESPREAD = 1.25,
 	)
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_PERSONAL = 1.4,
+		EVENT_TRACK_PERSONAL = 1.5,
 		EVENT_TRACK_MODERATE = 1,
 		EVENT_TRACK_INTERVENTION = 2,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
@@ -360,8 +360,8 @@
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_PERSONAL = 0.8,
-		EVENT_TRACK_MODERATE = 1,
+		EVENT_TRACK_PERSONAL = 0.75,
+		EVENT_TRACK_MODERATE = 1.25,
 		EVENT_TRACK_INTERVENTION = 2,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
 		EVENT_TRACK_OMENS = 1,
@@ -400,19 +400,18 @@
 
 	tag_multipliers = list(
 		TAG_ZIZO = 2,
-		TAG_MAGICAL = 1.3,
-		TAG_GAMBLE = 1.2,
-		TAG_TRICKERY = 1.2,
+		TAG_MAGICAL = 1.5,
+		TAG_TRICKERY = 1.25,
 		TAG_UNEXPECTED = 1.5,
 	)
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_PERSONAL = 1.2,
-		EVENT_TRACK_MODERATE = 1.1,
+		EVENT_TRACK_PERSONAL = 1.25,
+		EVENT_TRACK_MODERATE = 1.25,
 		EVENT_TRACK_INTERVENTION = 1.5,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
-		EVENT_TRACK_OMENS = 1.3,
+		EVENT_TRACK_OMENS = 1.25,
 		EVENT_TRACK_RAIDS = 0.8,
 	)
 
@@ -447,19 +446,18 @@
 
 	tag_multipliers = list(
 		TAG_BAOTHA = 2,
-		TAG_INSANITY = 1.4,
-		TAG_MAGIC = 1.1,
-		TAG_DISASTER = 1.2,
+		TAG_INSANITY = 1.5,
+		TAG_DISASTER = 1.25,
 	)
 
 	point_gains_multipliers = list(
-		EVENT_TRACK_MUNDANE = 1.1,
-		EVENT_TRACK_PERSONAL = 1.2,
-		EVENT_TRACK_MODERATE = 1.3,
+		EVENT_TRACK_MUNDANE = 1.25,
+		EVENT_TRACK_PERSONAL = 1.25,
+		EVENT_TRACK_MODERATE = 1.25,
 		EVENT_TRACK_INTERVENTION = 2,
-		EVENT_TRACK_CHARACTER_INJECTION = 0.7,
+		EVENT_TRACK_CHARACTER_INJECTION = 0.75,
 		EVENT_TRACK_OMENS = 1.5,
-		EVENT_TRACK_RAIDS = 1.2,
+		EVENT_TRACK_RAIDS = 1.25,
 	)
 
 	influence_sets = list(
@@ -494,22 +492,23 @@
 	tag_multipliers = list(
 		TAG_GRAGGAR = 2,
 		TAG_BATTLE = 1.5,
-		TAG_BLOOD = 1.3,
-		TAG_WAR = 1.2,
+		TAG_BLOOD = 1.5,
+		TAG_WAR = 1.25,
 	)
 
 	point_gains_multipliers = list(
-		EVENT_TRACK_MUNDANE = 0.8,
-		EVENT_TRACK_PERSONAL = 0.7,
-		EVENT_TRACK_MODERATE = 1.2,
+		EVENT_TRACK_MUNDANE = 0.75,
+		EVENT_TRACK_PERSONAL = 0.75,
+		EVENT_TRACK_MODERATE = 1.25,
 		EVENT_TRACK_INTERVENTION = 1.5,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
-		EVENT_TRACK_OMENS = 0.9,
+		EVENT_TRACK_OMENS = 1,
 		EVENT_TRACK_RAIDS = 2.5,
 	)
 
 	influence_sets = list(
 		"Set 1" = list(
+			STATS_HUNTED_PEOPLE = list("name" = "Number of available prey:", "points" = 10, "capacity" = 70),
 			STATS_ASSASSINATIONS = list("name" = "Successful assasinations:", "points" = 20, "capacity" = 80),
 		),
 		"Set 2" = list(
@@ -540,19 +539,19 @@
 
 	tag_multipliers = list(
 		TAG_MATTHIOS = 2,
-		TAG_TRADE = 1.2,
-		TAG_CORRUPTION = 1.4,
-		TAG_LOOT = 1.3,
+		TAG_CORRUPTION = 1.5,
+		TAG_LOOT = 1.5,
+		TAG_TRADE = 1.25,
 	)
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_PERSONAL = 1.1,
-		EVENT_TRACK_MODERATE = 1.2,
-		EVENT_TRACK_INTERVENTION = 1.3,
+		EVENT_TRACK_PERSONAL = 1,
+		EVENT_TRACK_MODERATE = 1.25,
+		EVENT_TRACK_INTERVENTION = 1.25,
 		EVENT_TRACK_CHARACTER_INJECTION = 1.5,
-		EVENT_TRACK_OMENS = 1.1,
-		EVENT_TRACK_RAIDS = 0.6,
+		EVENT_TRACK_OMENS = 1.25,
+		EVENT_TRACK_RAIDS = 0.75,
 	)
 
 	influence_sets = list(

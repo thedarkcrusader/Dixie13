@@ -8,6 +8,7 @@
 	min_players = 15
 
 	tags = list(
+		TAG_XYLIX,
 		TAG_GAMBLE,
 		TAG_TRICKERY,
 	)

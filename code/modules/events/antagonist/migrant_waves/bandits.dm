@@ -7,6 +7,7 @@
 	earliest_start = 10 MINUTES
 
 	tags = list(
+		TAG_MATTHIOS,
 		TAG_COMBAT,
 		TAG_VILLIAN,
 	)

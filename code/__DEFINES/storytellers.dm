@@ -71,7 +71,7 @@
 /// Tag representing war-like influence, tied to Graggar
 #define TAG_WAR "war"
 
-/// Tag for gambling-related systems or events, used by Zizo and Xylix
+/// Tag for gambling-related systems or events, used by Xylix
 #define TAG_GAMBLE "gamble"
 
 /// Tag symbolizing trickery, mischief, or deception, belonging to Zizo and Xylix
