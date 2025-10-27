@@ -265,7 +265,21 @@
 	icon_state = "scytheblade"
 	wdefense = AVERAGE_PARRY
 
+/obj/item/weapon/sword/sabre/dadao
+	name = "steel dadao"
+	icon_state = "dadao_steel"
+	desc = "Also sometimes refered to as \"Saiga Choppers\". Dadaos are heavy eastern blades infamous for their ability to slice men in half."
+	force = DAMAGE_SWORD+1
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/curved)
+	gripped_intents = list(/datum/intent/axe/chop, /datum/intent/sword/thrust/curved)
+	wdefense = AVERAGE_PARRY
+	wbalance = EASY_TO_DODGE
+	smeltresult = /obj/item/ingot/steel
 
+/obj/item/weapon/sword/sabre/dadao/iron
+	name = "iron dadao"
+	icon_state = "dadao_iron"
+	smeltresult = /obj/item/ingot/iron
 /*----------\
 | Scimitars |	Normal swords with a strong cutting emphasis.
 \----------*/
@@ -288,12 +302,13 @@
 
 /obj/item/weapon/sword/scimitar/ngombe
 	name = "ngombe ngulu"
-	desc = "A heavy executioner's sword originating from Lakkari. It was used by Astratans to behead Psydonite settlers responsible for the Red Dune Massacre."
+	desc = "A heavy executioner's sword originating from the Queendom of Lakkari. It was used by Astratans to behead Psydonite settlers responsible for the Red Dune Massacre."
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "ngombe"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop,)
-	minstr = 8 //this thing is HEAVY
+	force = DAMAGE_SWORD+1
+	minstr = 9 //this thing is HEAVY
 	swingsound = BLADEWOOSH_HUGE
 
 /obj/item/weapon/sword/scimitar/messer
@@ -305,6 +320,26 @@
 	minstr = 8 // Heavy blade used by orcs
 	wbalance = EASY_TO_DODGE
 	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/weapon/sword/scimitar/wodao
+	name = "steel wo dao"
+	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
+	desc = "A slightly curved blade of eastern origin. While less durable compared to other swords, it's swift balance and unique design makes it great for unleashing precise strikes."
+	icon_state = "wodao_steel"
+	minstr = 6
+	wbalance = VERY_HARD_TO_DODGE
+	wdefense = AVERAGE_PARRY
+	swingsound =  BLADEWOOSH_SMALL
+	max_blade_int = 150
+	max_integrity = INTEGRITY_STANDARD
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/weapon/sword/scimitar/wodao/iron
+	name = "iron wo dao"
+	icon_state = "wodao_iron"
+	max_blade_int = 125
+	max_integrity = INTEGRITY_STANDARD
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/weapon/sword/scimitar/lakkarikhopesh/iron
@@ -361,8 +396,8 @@
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "sengese_iron"
 	swingsound = BLADEWOOSH_SMALL
-	wdefense = AVERAGE_PARRY
-	minstr = 7
+	wdefense = GOOD_PARRY
+	minstr = 5
 	sellprice = 20
 	smeltresult = /obj/item/ingot/iron
 
@@ -374,8 +409,8 @@
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "sengese_steel"
 	swingsound = BLADEWOOSH_SMALL
-	wdefense = AVERAGE_PARRY
-	minstr = 7
+	wdefense = GOOD_PARRY
+	minstr = 5
 	sellprice = 45
 
 /obj/item/weapon/sword/scimitar/sengese/silver
@@ -386,8 +421,8 @@
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "sengese_silver"
 	swingsound = BLADEWOOSH_SMALL
-	wdefense = AVERAGE_PARRY
-	minstr = 7
+	wdefense = GOOD_PARRY
+	minstr = 5
 	sellprice = 30
 	smeltresult = /obj/item/ingot/silver
 

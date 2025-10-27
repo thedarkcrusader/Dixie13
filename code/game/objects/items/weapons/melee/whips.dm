@@ -229,28 +229,30 @@
 	desc = "A long, flexible whip-like sword originally developed by the Savannah Elves. While an effective weapon, it requires more maintenance compared to other swords."
 	icon_state = "urumi_steel"
 	force = DAMAGE_WHIP+3
-	possible_item_intents = list(/datum/intent/whip/crack/metal, /datum/intent/whip/lash/metal, /datum/intent/whip/cut,)
+	possible_item_intents = list(/datum/intent/whip/crack/metal, /datum/intent/whip/lash, /datum/intent/whip/cut,)
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
 	minstr = 5
 	sharpness = IS_SHARP
-	max_integrity = 150
+	max_blade_int = 175
+	max_integrity = INTEGRITY_STANDARD
 	blade_dulling = DULLING_BASH
+	wdefense = 1 // Parrying with a whip sword is inherently badass, plus its a small benefit for it since its supposed to have less durability.
 
 /obj/item/weapon/whip/urumi/iron
 	name = "iron urumi"
 	icon_state = "urumi_iron"
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/iron
-	max_integrity = 125
+	max_blade_int = 150
 
 /obj/item/weapon/whip/urumi/silver
 	name = "silver urumi"
 	icon_state = "urumi_silver"
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/silver
-	max_integrity = 100
+	max_blade_int= 130
 
 /obj/item/weapon/whip/urumi/silver/Initialize(mapload)
 	. = ..()

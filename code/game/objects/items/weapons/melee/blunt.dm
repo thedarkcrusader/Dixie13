@@ -707,3 +707,17 @@
 /obj/item/weapon/mace/silver/rungu/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
+
+/obj/item/weapon/mace/silver/gada
+	name = "regal gada"
+	icon_state = "gada"
+	desc = "A luxurious silver mace of Savannah Elf origin thats been reinforced and embellished with gold. It's considerably heavier compared to other maces."
+	minstr = 8
+	force = DAMAGE_MACE+2
+	wbalance = DODGE_CHANCE_NORMAL
+	wdefense = AVERAGE_PARRY
+	sellprice = 150 // It's silver and gold.
+
+/obj/item/weapon/mace/silver/gada/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)

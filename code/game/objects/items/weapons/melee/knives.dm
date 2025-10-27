@@ -312,6 +312,15 @@
 	sellprice = 12
 	dropshrink = 1.0
 
+/obj/item/weapon/knife/dagger/kukri/iron
+	name = "iron kukri"
+	force = DAMAGE_DAGGER+1
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop)
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	icon_state = "kukri_iron"
+	wdefense = BAD_PARRY
+	melting_material = null
+	dropshrink = 0.9
 //................ Steel Dagger ............... //
 /obj/item/weapon/knife/dagger/steel
 	name = "steel dagger"
@@ -356,6 +365,16 @@
 	icon_state = "pestrasickle"
 	max_integrity = INTEGRITY_STANDARD
 	wdefense = GOOD_PARRY //They use a dagger, but it should be fine for them to also parry with it.
+
+/obj/item/weapon/knife/dagger/steel/kukri
+	name = "steel kukri"
+	force = DAMAGE_DAGGER+1
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop)
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	icon_state = "kukri_steel"
+	wdefense = BAD_PARRY
+	melting_material = null
+	dropshrink = 0.9
 //................ Fanged dagger ............... //
 /obj/item/weapon/knife/dagger/steel/dirk
 	name = "fanged dagger"
