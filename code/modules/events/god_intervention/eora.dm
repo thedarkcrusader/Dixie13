@@ -9,6 +9,10 @@
 	dedicated_storytellers = list(/datum/storyteller/eora)
 	allowed_storytellers = DIVINE_STORYTELLERS
 
+	tags = list(
+		TAG_EORA,
+	)
+
 /datum/round_event/eora_matchmaking/start()
 	var/list/eligible_males = list()
 	var/list/eligible_females = list()

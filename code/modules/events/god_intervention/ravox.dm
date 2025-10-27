@@ -9,6 +9,10 @@
 	dedicated_storytellers = list(/datum/storyteller/ravox)
 	allowed_storytellers = DIVINE_STORYTELLERS
 
+	tags = list(
+		TAG_RAVOX,
+	)
+
 /datum/round_event_control/ravox_resolve/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)

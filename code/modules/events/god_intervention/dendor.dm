@@ -9,6 +9,10 @@
 	dedicated_storytellers = list(/datum/storyteller/dendor)
 	allowed_storytellers = DIVINE_STORYTELLERS
 
+	tags = list(
+		TAG_DENDOR,
+	)
+
 /datum/round_event/dendor_vines/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
@@ -39,6 +43,10 @@
 	min_players = 15
 	dedicated_storytellers = list(/datum/storyteller/dendor)
 	allowed_storytellers = DIVINE_STORYTELLERS
+
+	tags = list(
+		TAG_DENDOR,
+	)
 
 /datum/round_event/dendor_vines_good/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
@@ -71,6 +79,10 @@
 	dedicated_storytellers = list(/datum/storyteller/dendor)
 	allowed_storytellers = DIVINE_STORYTELLERS
 
+	tags = list(
+		TAG_DENDOR,
+	)
+
 /datum/round_event/dendor_fertility/start()
 	SSmapping.add_world_trait(/datum/world_trait/dendor_fertility, 20 MINUTES)
 
@@ -84,6 +96,10 @@
 	min_players = 15
 	dedicated_storytellers = list(/datum/storyteller/dendor)
 	allowed_storytellers = DIVINE_STORYTELLERS
+
+	tags = list(
+		TAG_DENDOR,
+	)
 
 /datum/round_event/dendor_ire/start()
 	SSmapping.add_world_trait(/datum/world_trait/dendor_drought, 15 MINUTES)

@@ -9,6 +9,10 @@
 	dedicated_storytellers = list(/datum/storyteller/xylix)
 	allowed_storytellers = DIVINE_STORYTELLERS
 
+	tags = list(
+		TAG_XYLIX,
+	)
+
 /datum/round_event_control/xylix_fortune/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)

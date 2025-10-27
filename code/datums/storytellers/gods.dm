@@ -6,6 +6,10 @@
 	follower_modifier = LOWER_FOLLOWER_MODIFIER
 	color_theme = "#FFD700"
 
+	tag_multipliers = list(
+		TAG_ASTRATA = 2,
+	)
+
 	influence_sets = list(
 		"Set 1" = list(
 			STATS_LAWS_AND_DECREES_MADE = list("name" = "Laws and decrees:", "points" = 2.75, "capacity" = 40),
@@ -37,6 +41,7 @@
 	color_theme = "#F0F0F0"
 
 	tag_multipliers = list(
+		TAG_NOC = 2,
 		TAG_MAGICAL = 1.4,
 		TAG_HAUNTED = 1.2,
 	)
@@ -69,6 +74,7 @@
 	color_theme = "#228822"
 
 	tag_multipliers = list(
+		TAG_RAVOX = 2,
 		TAG_RAID = 1.5,
 	)
 
@@ -109,6 +115,7 @@
 	color_theme = "#3366CC"
 
 	tag_multipliers = list(
+		TAG_ABYSSOR = 2,
 		TAG_WATER = 1.4,
 		TAG_TRADE = 1.2,
 	)
@@ -142,6 +149,13 @@
 	color_theme = "#AA8888"
 	event_repetition_multiplier = 0
 	forced = TRUE
+
+	tag_multipliers = list(
+		TAG_XYLIX = 2,
+		TAG_GAMBLE = 1.5,
+		TAG_TRICKERY = 1.4,
+		TAG_UNEXPECTED = 1.3,
+	)
 
 	point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
@@ -181,6 +195,7 @@
 	color_theme = "#888888"
 
 	tag_multipliers = list(
+		TAG_NECRA = 2,
 		TAG_HAUNTED = 1.5,
 	)
 
@@ -221,6 +236,7 @@
 	color_theme = "#AADDAA"
 
 	tag_multipliers = list(
+		TAG_PESTRA = 2,
 		TAG_ALCHEMY = 1.3,
 		TAG_MEDICAL = 1.3,
 		TAG_NATURE = 1.1,
@@ -253,6 +269,7 @@
 	color_theme = "#D4A56C"
 
 	tag_multipliers = list(
+		TAG_MALUM = 2,
 		TAG_WORK = 1.5,
 	)
 
@@ -292,6 +309,7 @@
 	color_theme = "#9966CC"
 
 	tag_multipliers = list(
+		TAG_EORA = 2,
 		TAG_WIDESPREAD = 1.4,
 		TAG_BOON = 1.2,
 	)
@@ -336,6 +354,7 @@
 	color_theme = "#664422"
 
 	tag_multipliers = list(
+		TAG_DENDOR = 2,
 		TAG_NATURE = 1.5,
 	)
 
@@ -380,10 +399,11 @@
 	color_theme = "#CC4444"
 
 	tag_multipliers = list(
-		TAG_MAGICAL = 1.2,
-		TAG_GAMBLE = 1.5,
-		TAG_TRICKERY = 1.3,
-		TAG_UNEXPECTED = 1.2,
+		TAG_ZIZO = 2,
+		TAG_MAGICAL = 1.3,
+		TAG_GAMBLE = 1.2,
+		TAG_TRICKERY = 1.2,
+		TAG_UNEXPECTED = 1.5,
 	)
 
 	point_gains_multipliers = list(
@@ -426,6 +446,7 @@
 	color_theme = "#9933FF"
 
 	tag_multipliers = list(
+		TAG_BAOTHA = 2,
 		TAG_INSANITY = 1.4,
 		TAG_MAGIC = 1.1,
 		TAG_DISASTER = 1.2,
@@ -471,6 +492,7 @@
 	color_theme = "#8B3A3A"
 
 	tag_multipliers = list(
+		TAG_GRAGGAR = 2,
 		TAG_BATTLE = 1.5,
 		TAG_BLOOD = 1.3,
 		TAG_WAR = 1.2,
@@ -517,6 +539,7 @@
 	color_theme = "#8B4513"
 
 	tag_multipliers = list(
+		TAG_MATTHIOS = 2,
 		TAG_TRADE = 1.2,
 		TAG_CORRUPTION = 1.4,
 		TAG_LOOT = 1.3,

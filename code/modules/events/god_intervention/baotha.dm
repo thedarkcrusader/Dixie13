@@ -9,5 +9,9 @@
 	dedicated_storytellers = list(/datum/storyteller/baotha)
 	allowed_storytellers = INHUMEN_STORYTELLERS
 
+	tags = list(
+		TAG_BAOTHA,
+	)
+
 /datum/round_event/baotha_revelry/start()
 	SSmapping.add_world_trait(/datum/world_trait/baotha_revelry, 20 MINUTES)

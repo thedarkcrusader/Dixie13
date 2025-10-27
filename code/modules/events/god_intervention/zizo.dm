@@ -9,6 +9,10 @@
 	dedicated_storytellers = list(/datum/storyteller/zizo)
 	allowed_storytellers = INHUMEN_STORYTELLERS
 
+	tags = list(
+		TAG_ZIZO,
+	)
+
 /datum/round_event/zizo_defilement/start()
 	SSmapping.add_world_trait(/datum/world_trait/zizo_defilement, 15 MINUTES)
 

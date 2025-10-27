@@ -1,6 +1,22 @@
 
-//Could be bitflags, but that would require a good amount of translations, which eh, either way works for me
+/// Could be bitflags, but that would require a good amount of translations, which eh, either way works for me
 /// When the event is combat oriented (spawning monsters, inherently hostile antags)
+
+#define TAG_ASTRATA "astrata"
+#define TAG_NOC "noc"
+#define TAG_RAVOX "ravox"
+#define TAG_ABYSSOR "abyssor"
+#define TAG_XYLIX "xylix"
+#define TAG_NECRA "necra"
+#define TAG_PESTRA "pestra"
+#define TAG_MALUM "malum"
+#define TAG_EORA "eora"
+#define TAG_DENDOR "dendor"
+#define TAG_ZIZO "zizo"
+#define TAG_BAOTHA "baotha"
+#define TAG_GRAGGAR "graggar"
+#define TAG_MATTHIOS "matthios"
+
 /// Base tag for god-related logic and identification
 #define TAG_GOD "god"
 
@@ -55,13 +71,13 @@
 /// Tag representing war-like influence, tied to Graggar
 #define TAG_WAR "war"
 
-/// Tag for gambling-related systems or events, used by Zizo
+/// Tag for gambling-related systems or events, used by Zizo and Xylix
 #define TAG_GAMBLE "gamble"
 
-/// Tag symbolizing trickery, mischief, or deception, belonging to Zizo
+/// Tag symbolizing trickery, mischief, or deception, belonging to Zizo and Xylix
 #define TAG_TRICKERY "trickery"
 
-/// Tag representing unexpected outcomes or randomness, tied to Zizo
+/// Tag representing unexpected outcomes or randomness, tied to Zizo and Xylix
 #define TAG_UNEXPECTED "unexpected"
 
 /// Tag representing insanity-related mechanics, used by Baotha

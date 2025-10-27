@@ -9,5 +9,9 @@
 	dedicated_storytellers = list(/datum/storyteller/matthios)
 	allowed_storytellers = INHUMEN_STORYTELLERS
 
+	tags = list(
+		TAG_MATTHIOS,
+	)
+
 /datum/round_event/matthios_fingers/start()
 	SSmapping.add_world_trait(/datum/world_trait/matthios_fingers, 20 MINUTES)

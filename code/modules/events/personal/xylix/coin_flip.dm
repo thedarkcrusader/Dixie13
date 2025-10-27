@@ -10,7 +10,6 @@
 	tags = list(
 		TAG_GAMBLE,
 		TAG_TRICKERY,
-		TAG_UNEXPECTED,
 	)
 
 /datum/round_event_control/xylix_gamble/canSpawnEvent(players_amt, gamemode, fake_check)

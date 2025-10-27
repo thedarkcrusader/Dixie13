@@ -12,6 +12,10 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 	dedicated_storytellers = list(/datum/storyteller/graggar)
 	allowed_storytellers = INHUMEN_STORYTELLERS
 
+	tags = list(
+		TAG_GRAGGAR,
+	)
+
 /datum/round_event_control/graggar_culling/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)
