@@ -16,10 +16,10 @@
 
 	/// Rage threshold tiers for dynamic abilities
 	var/list/rage_thresholds = list(
-		RAGE_LEVEL_LOW = list(),
-		RAGE_LEVEL_MEDIUM = list(),
-		RAGE_LEVEL_HIGH = list(),
-		RAGE_LEVEL_CRITICAL = list(),
+		"[RAGE_LEVEL_LOW]" = list(),
+		"[RAGE_LEVEL_MEDIUM]" = list(),
+		"[RAGE_LEVEL_HIGH]" = list(),
+		"[RAGE_LEVEL_CRITICAL]" = list(),
 	)
 	/// Currently active tier
 	var/current_tier = 0
@@ -136,8 +136,8 @@
 
 	// Find highest threshold we've crossed
 	for(var/threshold in rage_thresholds)
-		if(rage >= threshold)
-			new_tier = threshold
+		if(rage >= text2num(threshold))
+			new_tier = text2num(threshold)
 
 	// If tier changed, update abilities
 	if(new_tier != current_tier)
@@ -145,16 +145,16 @@
 		current_tier = new_tier
 
 		// Remove old tier abilities
-		if(old_tier && rage_thresholds[old_tier])
-			var/list/old_abilities = rage_thresholds[old_tier]
+		if(old_tier && rage_thresholds["[old_tier]"])
+			var/list/old_abilities = rage_thresholds["[old_tier]"]
 			if(!islist(old_abilities))
 				old_abilities = list(old_abilities)
 			for(var/ability in old_abilities)
 				remove_ability(ability)
 
 		// Grant new tier abilities
-		if(new_tier && rage_thresholds[new_tier])
-			var/list/new_abilities = rage_thresholds[new_tier]
+		if(new_tier && rage_thresholds["[new_tier]"])
+			var/list/new_abilities = rage_thresholds["[new_tier]"]
 			if(!islist(new_abilities))
 				new_abilities = list(new_abilities)
 			for(var/ability in new_abilities)
