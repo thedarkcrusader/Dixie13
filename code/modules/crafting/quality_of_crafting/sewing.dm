@@ -1595,3 +1595,23 @@
 	)
 	craftdiff = 2
 	category = "Mask"
+
+/datum/repeatable_crafting_recipe/sewing/bandaged_gloves
+	name = "Bandaged Gloves"
+	output = /obj/item/clothing/gloves/bandages
+	requirements = list(
+		/obj/item/natural/cloth = 3,
+		/obj/item/natural/fibers = 1
+	)
+	craftdiff = 2
+	category = "Gloves"
+
+/datum/repeatable_crafting_recipe/sewing/bandaged_gloves
+	name = "Weighted Bandaged Gloves"
+	output = /obj/item/clothing/gloves/bandages/weighted
+	requirements = list(
+		/obj/item/natural/cloth = 3,
+		/obj/item/clothing/gloves/bandages = 1
+	)
+	craftdiff = 2
+	category = "Gloves"

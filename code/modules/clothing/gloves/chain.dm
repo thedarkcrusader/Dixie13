@@ -28,6 +28,8 @@
 	name = "otavan chain gauntlets"
 	icon_state = "psydongloveschain"
 	item_state = "psydongloveschains"
+	melting_material = /datum/material/silver
+	melt_amount = 75
 
 /obj/item/clothing/gloves/chain/iron
 	name = "iron chain gauntlets"

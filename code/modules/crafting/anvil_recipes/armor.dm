@@ -1261,6 +1261,11 @@
 	created_item = /obj/item/clothing/head/helmet/blacksteel/psythorns
 	craftdiff = 3
 
+/datum/anvil_recipe/armor/hauberk
+	name = "fluted hauberk"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/armor/chainmail/hauberk/fluted
+	craftdiff = 3
 
 /datum/anvil_recipe/armor/blessedsilver/psychestplate
 	name = "Psydonic Chestplate (+1 Cured Leather)"
@@ -1312,3 +1317,13 @@
 	req_bar = /obj/item/ingot/silverblessed
 	additional_items = list(/obj/item/clothing/armor/chainmail/hauberk/fluted, /obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/armor/plate/full/fluted/ornate
+
+/datum/anvil_recipe/armor/blessedsilver/psydonmask
+	name = "Psydonic Mask"
+	req_bar = /obj/item/ingot/silverblessed
+	created_item = /obj/item/clothing/face/facemask/psydonmask
+
+/datum/anvil_recipe/armor/blessedsilver/psydonic_gloves
+	name = "Psydonic Chain Gloves"
+	req_bar = /obj/item/ingot/silverblessed
+	created_item = /obj/item/clothing/gloves/chain/psydon

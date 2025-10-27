@@ -167,6 +167,8 @@
 
 	recipe.handle_creation(I, quality_score, skill_level)
 
+	record_featured_stat(FEATURED_STATS_SMITHS, user)
+	record_featured_object_stat(FEATURED_STATS_FORGED_ITEMS, I.name)
 
 	for(var/i in 1 to recipe.createditem_extra)
 		var/obj/item/extra = new recipe.created_item(loc)
