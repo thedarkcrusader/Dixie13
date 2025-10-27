@@ -231,8 +231,7 @@
 	penfactor = 0
 	chargetime = 0
 	swingdelay = 0
-	damfactor = 1.3
-	clickcd = 6
+	clickcd = 10
 	item_damage_type = "slash"
 
 /datum/intent/katar/thrust
@@ -244,12 +243,12 @@
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 40
 	chargetime = 0
-	clickcd = 6
+	clickcd = 14
 	item_damage_type = "stab"
 
 /obj/item/weapon/katar
 	slot_flags = ITEM_SLOT_HIP
-	force = 24
+	force = 20
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
 	name = "katar"
 	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting"
