@@ -115,17 +115,22 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/lever/hidden
 	icon = null
 
-/obj/structure/lever/hidden/proc/feel_button(mob/living/user)
+	//the perception DC to use this
+	var/hidden_dc = 10
+
+/obj/structure/lever/hidden/proc/feel_button(mob/living/user, ignore_dc = FALSE)
 	if(isliving(user))
 		var/mob/living/L = user
-		L.changeNext_move(CLICK_CD_MELEE)
-		user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
-		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
-		for(var/obj/structure/O in redstone_attached)
-			spawn(0) O.redstone_triggered(user)
-		trigger_wire_network(user)
-		toggled = !toggled
-		playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
+		var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+		if(L.STAPER + bonuses >= hidden_dc || ignore_dc)
+			L.changeNext_move(CLICK_CD_MELEE)
+			user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
+			user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
+			for(var/obj/structure/O in redstone_attached)
+				spawn(0) O.redstone_triggered(user)
+			trigger_wire_network(user)
+			toggled = !toggled
+			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
 
 /obj/structure/lever/hidden/onkick(mob/user) // nice try
 	return FALSE

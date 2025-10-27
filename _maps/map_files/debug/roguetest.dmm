@@ -1264,6 +1264,11 @@
 	},
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
+"gT" = (
+/obj/structure/table/wood/large/corner,
+/obj/item/paper/scroll/keep_plans,
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/manor)
 "hd" = (
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
@@ -1821,6 +1826,12 @@
 /obj/effect/island_tester,
 /turf/closed/basic,
 /area/rogue/outdoors)
+"pN" = (
+/obj/structure/lever/hidden/keep{
+	redstone_id = "roguetest hidden wall"
+	},
+/turf/closed/wall/mineral/decorstone,
+/area/rogue/indoors/town/manor)
 "pQ" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/wood,
@@ -2095,6 +2106,12 @@
 	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"ur" = (
+/obj/effect/mapping_helpers/secret_door_creator/keep{
+	redstone_id = "roguetest hidden wall"
+	},
+/turf/closed/wall/mineral/decostone/center,
+/area/rogue/indoors/town/manor)
 "us" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -2165,6 +2182,10 @@
 "wj" = (
 /obj/structure/window/openclose,
 /turf/open/floor/churchbrick,
+/area/rogue/indoors/town/manor)
+"wq" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "wD" = (
 /obj/structure/bridge_stakes{
@@ -18829,14 +18850,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+WL
+WL
+WL
+WL
+pN
+WL
+WL
+WL
 as
 as
 at
@@ -19086,14 +19107,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+WL
+gT
+ru
+ur
+ru
+wq
+ru
+WL
 as
 as
 at
@@ -19345,12 +19366,12 @@ WL
 WL
 WL
 WL
+pT
+pN
 WL
 WL
+ru
 WL
-ac
-ac
-ac
 ac
 ac
 at
@@ -19606,7 +19627,7 @@ hC
 hC
 WL
 WL
-WL
+ru
 WL
 WL
 vr

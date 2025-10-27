@@ -26,6 +26,9 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	repair_skill = null
 	metalizer_result = null
 
+	//the perception DC to use this door
+	var/hidden_dc = 10
+
 	var/open_phrase = "open sesame"
 
 	var/speaking_distance = 1
@@ -85,6 +88,14 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	if(locked())
 		return
 	..()
+
+/obj/structure/door/secret/examine(mob/user)
+	. = ..()
+	if(isliving(user))
+		var/mob/living/L = user
+		var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+		if(L.stat_roll(STATKEY_PER, 25, hidden_dc - bonuses - 1))
+			. += span_purple("Something's not right about this wall...")
 
 /obj/structure/door/secret/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), original_message)
 	var/mob/living/carbon/human/H = speaker
@@ -227,7 +238,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 		"wind",
 		"earth",
 		"shadow",
-		"night",
+		"nite",
 		"oblivion",
 		"void",
 		"time",
@@ -247,7 +258,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 		"bargain",
 		"ritual",
 		"dream",
-		"nightmare",
+		"nitemare",
 		"vision",
 		"hunger",
 		"lust",
@@ -280,6 +291,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 
 ///// KEEP DOORS /////
 /obj/structure/door/secret/keep
+	hidden_dc = 14
 	vip = list(
 		/datum/job/lord,
 		/datum/job/consort,
@@ -313,15 +325,22 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 /obj/structure/door/secret/keep/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS))
-		. += span_purple("There's a hidden wall here...")
+		. += span_purple("There's a hidden door here...")
 
-/obj/structure/lever/hidden/keep/feel_button(mob/living/user)
-	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS))
+/obj/structure/lever/hidden/keep
+	hidden_dc = 14
+
+/obj/structure/lever/hidden/keep/feel_button(mob/living/user, ignore_dc = FALSE)
+	var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS) || (user.STAPER + bonuses) >= hidden_dc || ignore_dc)
+		ignore_dc = TRUE // passes onto parent dc check, otherwise someone who knows the keep plans would still need perception
 		..()
 
 /proc/know_keep_door_password(mob/living/carbon/human/H)
 	var/obj/structure/door/secret/D = GLOB.keep_doors[1]
-	to_chat(H, span_notice("The keep's secret doors answer to: '[D.open_phrase]'"))
+	var/msg = "The keep's secret doors answer to: '[D.open_phrase]'"
+	to_chat(H, span_notice(msg))
+	H.mind?.store_memory(msg)
 
 ///// THIEVES GUILD DOORS /////
 /obj/structure/door/secret/thieves_guild
