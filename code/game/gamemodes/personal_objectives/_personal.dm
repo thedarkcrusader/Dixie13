@@ -9,15 +9,23 @@
 	if(owner && !(owner in GLOB.personal_objective_minds))
 		GLOB.personal_objective_minds |= owner
 
-/datum/objective/personal/proc/complete_objective()
+/datum/objective/personal/proc/complete_objective(escalatation_type = ESCALATION_PERSONAL_AND_INTERVENTION)
 	completed = TRUE
 	reward_owner()
-	escalate_objective()
+	switch(escalatation_type)
+		if(ESCALATION_NONE)
+			return
+		if(ESCALATION_PERSONAL_AND_INTERVENTION)
+			escalate_objective(event_track = EVENT_TRACK_PERSONAL, second_event_track = EVENT_TRACK_INTERVENTION)
+		if(ESCALATION_PERSONAL_ONLY)
+			escalate_objective(event_track = EVENT_TRACK_PERSONAL)
+		if(ESCALATION_INTERVENTION_ONLY)
+			escalate_objective(second_event_track = EVENT_TRACK_INTERVENTION)
 
 /datum/objective/personal/proc/reward_owner()
 	owner.adjust_triumphs(triumph_count)
 
-/datum/objective/personal/proc/escalate_objective(event_track = EVENT_TRACK_PERSONAL, second_event_track = EVENT_TRACK_INTERVENTION, first_value_modifier, second_value_modifier)
+/datum/objective/personal/proc/escalate_objective(event_track, second_event_track, first_value_modifier, second_value_modifier)
 	if(event_track)
 		var/first_modifer = first_value_modifier || round(rand(40, 60)) / 100
 		var/first_points_to_add = SSgamemode.point_thresholds[event_track] * first_modifer
