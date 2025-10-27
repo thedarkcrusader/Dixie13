@@ -310,7 +310,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-/obj/item/clothing/shirt/easttats/easttats/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/shirt/undershirt/easttats/easttats/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(QDELETED(src))
 		return

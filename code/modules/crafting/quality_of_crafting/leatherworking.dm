@@ -978,9 +978,19 @@
 
 /datum/repeatable_crafting_recipe/leather/atgervi_boots
 	name = "atgervi leather boots"
-	output = /obj/item/clothing/shoes/leather/atgervi
+	output = /obj/item/clothing/shoes/boots/leather/atgervi
 	requirements = list(
 		/obj/item/natural/hide/cured = 1
 	)
 	craftdiff = 1
+	category = "Shoes"
+
+/datum/repeatable_crafting_recipe/leather/psydonboots
+	name = "enduring boots"
+	output = /obj/item/clothing/shoes/psydonboots
+	requirements = list(
+		/obj/item/natural/hide/cured = 3,
+		/obj/item/natural/fibers = 1,
+	)
+	craftdiff = 3
 	category = "Shoes"

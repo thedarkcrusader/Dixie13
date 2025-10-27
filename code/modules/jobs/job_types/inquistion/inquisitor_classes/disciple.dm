@@ -71,7 +71,7 @@
 			if("Naledian - Lightweight, Arcyne-Martiality")
 				head = /obj/item/clothing/head/headband/naledi
 				mask = /obj/item/clothing/face/lordmask/naledi/sojourner
-				wrists = /obj/item/clothing/wrists/bracers/cloth/naledi
+				wrists = /obj/item/clothing/wrists/bracers/naledi
 				neck = /obj/item/clothing/neck/psycross/g //Naledians covet gold far more than the Orthodoxists cover silver. Emphasizes their nature as 'visitors', more-so than anything else.
 				ring = /obj/item/clothing/ring/signet
 				l_hand = /obj/item/spellbook_unfinished/pre_arcyne

@@ -104,6 +104,7 @@
 
 	var/datum/devotion/cleric = null // Used for cleric_holder for priests
 	var/datum/inspiration/inspiration = null
+	var/datum/rage/rage_datum = null //teehee
 
 	var/headshot_link = null
 	var/flavortext = null

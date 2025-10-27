@@ -1196,6 +1196,7 @@
 #include "code\datums\quality\brewing.dm"
 #include "code\datums\quality\cooking.dm"
 #include "code\datums\quality\metallurgy.dm"
+#include "code\datums\rage\_base.dm"
 #include "code\datums\rituals\ritual.dm"
 #include "code\datums\rituals\ritual_runes.dm"
 #include "code\datums\rts\controller_mob.dm"

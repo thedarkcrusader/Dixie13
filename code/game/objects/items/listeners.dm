@@ -145,6 +145,7 @@
 	desc = initial(desc)
 	hidden = FALSE
 	return TRUE
+
 /* - REVISIT IN A FUTURE PR. ATTACHABLE LISTENERS.
 /obj/item/listeningdevice/attack(mob/living/M, mob/living/user)
 	if(!active)

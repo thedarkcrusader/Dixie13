@@ -1391,7 +1391,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/ravox_tabard
 	name = "ravox tabard"
-	output = /obj/item/clothing/cloak/cleric/ravox
+	output = /obj/item/clothing/cloak/ravox
 	requirements = list(
 		/obj/item/natural/cloth = 2,
 		/obj/item/natural/fibers = 1
@@ -1555,3 +1555,43 @@
 	craftdiff = 0
 	attacked_atom = /obj/item/natural/fibers
 	category = "Accessories"
+
+/datum/repeatable_crafting_recipe/sewing/naledi
+	name = "sojourner's wrappings"
+	output = /obj/item/clothing/wrists/bracers/naledi
+	requirements = list(
+		/obj/item/natural/cloth = 2,
+		/obj/item/natural/fibers = 1
+	)
+	craftdiff = 2
+	category = "Gloves"
+
+/datum/repeatable_crafting_recipe/sewing/naledi
+	name = "sojourner's wrappings"
+	output = /obj/item/clothing/wrists/bracers/naledi
+	requirements = list(
+		/obj/item/natural/cloth = 2,
+		/obj/item/natural/fibers = 1
+	)
+	craftdiff = 2
+	category = "Gloves"
+
+/datum/repeatable_crafting_recipe/sewing/psy_sack
+	name = "psydonian sack mask"
+	output = /obj/item/clothing/face/sack/psy
+	requirements = list(
+		/obj/item/natural/cloth = 4,
+		/obj/item/natural/fibers = 1
+	)
+	craftdiff = 2
+	category = "Mask"
+
+/datum/repeatable_crafting_recipe/sewing/sack_mask
+	name = "sack mask"
+	output = /obj/item/clothing/face/sack
+	requirements = list(
+		/obj/item/natural/cloth = 2,
+		/obj/item/natural/fibers = 1
+	)
+	craftdiff = 2
+	category = "Mask"

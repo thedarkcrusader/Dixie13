@@ -15,7 +15,7 @@
 
 /obj/item/clothing/cloak/psydontabard/alt
 	name = "open otavan tabard"
-	desc = "Used by more radical followers of the Eoran Church"
+	desc = "Used by more radical followers of the Inquisition"
 	body_parts_covered = null
 	icon_state = "psydontabardalt"
 	item_state = "psydontabardalt"

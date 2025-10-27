@@ -160,7 +160,7 @@
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDEBOOB
 
-/obj/item/clothing/cloak/cleric/ravox
+/obj/item/clothing/cloak/ravox
 	name = "ravox tabard"
 	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Ravox on it."
 	icon_state = "tabard_ravox"

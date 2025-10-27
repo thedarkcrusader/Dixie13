@@ -33,6 +33,14 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/spectacles/inq/spawnpair, //spawn type
 		/obj/item/clothing/face/facemask/steel/confessor/lensed, //manual craft
 		/obj/item/clothing/head/helmet/heavy/ordinatorhelm/plume, //manual craft
+		/obj/item/clothing/wall_grab, ///abstract
+		/obj/item/clothing/climbing_gear, ///weird
+		/obj/item/clothing/wrists/bracers/psythorns, //inqport
+		/obj/item/clothing/cloak/psydontabard, ///they'd kill you for this
+		/obj/item/clothing/cloak/psydontabard/alt, ///same here
+		/obj/item/clothing/face/spectacles/inq, //these are powerful
+		/obj/item/clothing/shirt/undershirt/easttats, ///no
+		/obj/item/clothing/armor/leather/heavy, ///abstract type
 
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.
@@ -48,6 +56,7 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/cigarette, // TODO
 		/obj/item/clothing/head/takuhatsugasa,
 		/obj/item/clothing/shirt/robe/kimono, //these are mob holders only
+		/obj/item/clothing/armor/regenerating, ///uh no
 	)
 
 	/// excludes paths that are subtypes of these types and only subtypes

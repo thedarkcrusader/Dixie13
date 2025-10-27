@@ -626,3 +626,19 @@
 		/obj/item/natural/silk = 3
 	)
 	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/sewing/weaving/absolver
+	name = "absolver's robe"
+	output = /obj/item/clothing/cloak/absolutionistrobe
+	requirements = list(
+		/obj/item/natural/silk = 3
+	)
+	craftdiff = 3
+
+/datum/repeatable_crafting_recipe/sewing/weaving/ordinatorcape
+	name = "ordinator cape"
+	output = /obj/item/clothing/cloak/ordinatorcape
+	requirements = list(
+		/obj/item/natural/silk = 3
+	)
+	craftdiff = 3

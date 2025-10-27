@@ -57,7 +57,7 @@
 	experimental_inhand = TRUE
 	experimental_onhip = FALSE
 
-/obj/item/clothing/shoes/leather/atgervi
+/obj/item/clothing/shoes/boots/leather/atgervi
 	name = "atgervi leather boots"
 	desc = "A pair of strong leather boots, designed to endure battle and the chill of the frozen north both."
 	icon_state = "atgervi_boots"
