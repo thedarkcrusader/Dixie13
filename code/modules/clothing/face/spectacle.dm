@@ -58,15 +58,6 @@
 			ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return
 
-/obj/item/clothing/face/spectacles/inq/update_icon(mob/user, slot)
-	cut_overlays()
-	..()
-	if(slot & ITEM_SLOT_MASK || slot & ITEM_SLOT_HEAD)
-		var/mutable_appearance/redlenses = mutable_appearance(mob_overlay_icon, "bglasses_glow")
-		redlenses.layer = 19
-		redlenses.plane = 20
-		user.add_overlay(redlenses)
-
 /obj/item/clothing/face/spectacles/inq/attack_hand_secondary(mob/user, params)
 	. = ..()
 	..()
@@ -79,6 +70,7 @@
 	to_chat(user, span_info("You discreetly slide the inner lenses back into place."))
 	ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 	lensmoved = FALSE
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/face/spectacles/inq/dropped(mob/user, slot)
 	..()

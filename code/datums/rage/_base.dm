@@ -1,7 +1,7 @@
-#define RAGE_LEVEL_LOW 25
-#define RAGE_LEVEL_MEDIUM 50
-#define RAGE_LEVEL_HIGH 75
-#define RAGE_LEVEL_CRITICAL 90
+#define RAGE_LEVEL_LOW "25"
+#define RAGE_LEVEL_MEDIUM "50"
+#define RAGE_LEVEL_HIGH "75"
+#define RAGE_LEVEL_CRITICAL "90"
 
 /datum/rage
 	var/mob/living/carbon/human/holder_mob = null
@@ -16,10 +16,10 @@
 
 	/// Rage threshold tiers for dynamic abilities
 	var/list/rage_thresholds = list(
-		"[RAGE_LEVEL_LOW]" = list(),
-		"[RAGE_LEVEL_MEDIUM]" = list(),
-		"[RAGE_LEVEL_HIGH]" = list(),
-		"[RAGE_LEVEL_CRITICAL]" = list(),
+		RAGE_LEVEL_LOW = list(),
+		RAGE_LEVEL_MEDIUM = list(),
+		RAGE_LEVEL_HIGH = list(),
+		RAGE_LEVEL_CRITICAL = list(),
 	)
 	/// Currently active tier
 	var/current_tier = 0
