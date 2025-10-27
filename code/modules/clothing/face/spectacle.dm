@@ -58,10 +58,8 @@
 			ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 			return
 
-/obj/item/clothing/face/spectacles/inq/attack_hand_secondary(mob/user, params)
+/obj/item/clothing/face/spectacles/inq/MiddleClick(mob/user, params)
 	. = ..()
-	..()
-
 	if(!lensmoved)
 		to_chat(user, span_info("You discreetly slide the inner lenses out of the way."))
 		REMOVE_TRAIT(user, TRAIT_NOCSHADES, "redlens")
@@ -70,7 +68,6 @@
 	to_chat(user, span_info("You discreetly slide the inner lenses back into place."))
 	ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
 	lensmoved = FALSE
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/face/spectacles/inq/dropped(mob/user, slot)
 	..()

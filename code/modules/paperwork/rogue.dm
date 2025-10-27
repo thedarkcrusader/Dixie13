@@ -255,16 +255,14 @@
 
 /obj/item/paper/inqslip/confession/attemptsign(mob/user, mob/living/carbon/human/M)
 	// Check if they've confessed via torture
-	if(!HAS_TRAIT(user, TRAIT_HAS_CONFESSED))
-		to_chat(M, span_warning("[user] has not been brought to confession yet!"))
-		to_chat(user, span_warning("I have nothing to confess!"))
-		return
+
+	var/forced_signing = HAS_TRAIT(user, TRAIT_HAS_CONFESSED)
 
 	if(paired)
 		if(paired.subject != user)
 			to_chat(M, span_warning("Why am I trying to make them sign this with the wrong [paired] paired with it?"))
 			return
-		else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
+		else if(forced_signing || (alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO"))
 			signed = TRUE
 			signee = user
 			marquevalue += 2
