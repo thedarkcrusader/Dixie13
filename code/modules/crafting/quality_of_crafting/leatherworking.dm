@@ -501,8 +501,6 @@
 				/obj/item/natural/fibers = 2)
 	craftdiff = 3
 
-
-
 /datum/repeatable_crafting_recipe/leather/ominous_hood
 	name = "ominous hood"
 	requirements = list(
@@ -994,3 +992,13 @@
 	)
 	craftdiff = 3
 	category = "Shoes"
+
+/datum/repeatable_crafting_recipe/leather/psyaltrist
+	name = "cuir-bouilli armor"
+	requirements = list(
+		/obj/item/natural/hide/cured = 3,
+		/obj/item/ingot/iron = 1,
+	)
+	output = /obj/item/clothing/armor/leather/studded/psyaltrist
+	craftdiff = 3
+	category = "Armor"

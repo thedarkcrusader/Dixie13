@@ -49,7 +49,22 @@ abstract types are automatically excluded.
 		/obj/item/clothing/head/roguehood/psydon/confessor, ///inqport
 		/obj/item/clothing/face/facemask/steel/confessor, ///inqport
 		/obj/item/clothing/gloves/bandages/pugilist,
-
+		/obj/item/clothing/armor/gambeson/heavy/otavan/inq, ///inqport
+		/obj/item/clothing/armor/gambeson/heavy/otavan, ///null
+		/obj/item/clothing/armor/gambeson/heavy/inq, //inqport
+		/obj/item/clothing/armor/leather/studded,
+		/obj/item/clothing/armor/leather/jacket/leathercoat/confessor, //inqport
+		/obj/item/clothing/head/roguehood/psydon,
+		/obj/item/clothing/neck/fencerguard/inq, ///inqport
+		/obj/item/clothing/neck/fencerguard, //null
+		/obj/item/clothing/armor/cuirass/fencer, //meh
+		/obj/item/clothing/armor/cuirass/fluted, //eh
+		/obj/item/clothing/armor/medium/scale/inqcoat/armored, //upgrade
+		/obj/item/clothing/armor/brigandine/light, //basetype,
+		/obj/item/clothing/armor/plate/full/fluted, //basetype
+		/obj/item/clothing/armor/plate/full/fluted/ornate/ordinator, //inqport
+		/obj/item/clothing/armor/plate/fluted,
+		/obj/item/clothing/cloak/templar, //base type
 
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.

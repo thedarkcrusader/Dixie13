@@ -175,6 +175,14 @@
 				/obj/item/natural/fibers = 1)
 	category = "Hat"
 
+/datum/repeatable_crafting_recipe/sewing/headband_naledi
+	name = "headband"
+	output = /obj/item/clothing/head/headband/naledi
+	requirements = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	category = "Hat"
+	craftdiff = 4
+
 /datum/repeatable_crafting_recipe/sewing/strawhat
 	name = "crude straw hat"
 	output = /obj/item/clothing/head/strawhat
@@ -1606,7 +1614,7 @@
 	craftdiff = 2
 	category = "Gloves"
 
-/datum/repeatable_crafting_recipe/sewing/bandaged_gloves
+/datum/repeatable_crafting_recipe/sewing/bandaged_gloves_weighted
 	name = "Weighted Bandaged Gloves"
 	output = /obj/item/clothing/gloves/bandages/weighted
 	requirements = list(

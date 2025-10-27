@@ -351,8 +351,20 @@
 // ✤ WARDROBE ✤ STARTS HERE! YEP!
 
 /obj/item/clothing/neck/fencerguard/inq
+	icon_state = "fencercollar"
 	color = "#8b1414"
 	detail_color = "#99b2b1"
+	armor = ARMOR_PLATE
+	max_integrity = ARMOR_INT_SIDE_STEEL
+	body_parts_inherent = NECK
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	detail_tag = "_detail"
+	color = "#5058c1"
 
 /obj/item/clothing/armor/gambeson/heavy/otavan/inq
 	color = "#8b1414"
