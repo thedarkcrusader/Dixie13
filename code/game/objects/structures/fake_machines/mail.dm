@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		else if(mirror.bloody)
 			to_chat(user, span_warning("Clean it first."))
 
-/obj/structure/fake_machine/mail/proc/handle_confession(obj/item/paper/inqslip/confession/confession, mob/user)
+/obj/structure/fake_machine/mail/proc/handle_confession(obj/item/paper/inqslip/confession/confession, mob/living/carbon/human/user)
 	if(!confession.signee || !confession.signed)
 		return
 
@@ -369,6 +369,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			marque_value -= 4
 
 		GLOB.vanderlin_round_stats[STATS_MARQUES_MADE] += marque_value
+		user.inquisition_position.merits += CEILING(marque_value * 0.5, 1)
 		budget2change(marque_value, user, "MARQUE")
 
 	// Accept confession
@@ -383,7 +384,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
 
-/obj/structure/fake_machine/mail/proc/handle_indexer(obj/item/inqarticles/indexer/indexer, mob/user)
+/obj/structure/fake_machine/mail/proc/handle_indexer(obj/item/inqarticles/indexer/indexer, mob/living/carbon/human/user)
 	// Handle cursed blood samples
 	if(indexer.cursedblood)
 		var/is_duplicate = FALSE
@@ -440,6 +441,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		else
 			budget2change(2, user, "MARQUE")
 			GLOB.vanderlin_round_stats[STATS_MARQUES_MADE] += 2
+			user.inquisition_position.merits += 1
 			qdel(indexer)
 			visible_message(span_warning("[user] sends something."))
 			playsound(loc, 'sound/misc/otavasent.ogg', 100, FALSE, -1)
@@ -460,7 +462,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	playsound(loc, 'sound/misc/otavasent.ogg', 100, FALSE, -1)
 	playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
-/obj/structure/fake_machine/mail/proc/handle_accusation(obj/item/paper/inqslip/accusation/accusation, mob/user)
+/obj/structure/fake_machine/mail/proc/handle_accusation(obj/item/paper/inqslip/accusation/accusation, mob/living/carbon/human/user)
 	if(!accusation.paired)
 		to_chat(user, span_warning("[accusation] is missing an INDEXER."))
 		return
@@ -552,6 +554,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 
 		budget2change(marque_value, user, "MARQUE")
 		GLOB.vanderlin_round_stats[STATS_MARQUES_MADE] += marque_value
+		user.inquisition_position.merits += CEILING(marque_value * 0.5, 1)
 
 	qdel(accusation.paired)
 	qdel(accusation)
