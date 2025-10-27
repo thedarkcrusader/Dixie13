@@ -6,6 +6,7 @@
 	max_occurrences = 2
 	min_players = 0
 	req_omen = TRUE
+	earliest_start = 25 MINUTES
 	todreq = list("night")
 
 	tags = list(

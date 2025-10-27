@@ -3,7 +3,7 @@
 	track = EVENT_TRACK_INTERVENTION
 	typepath = /datum/round_event/xylix_fortune
 	weight = 8
-	earliest_start = 20 MINUTES
+	earliest_start = 15 MINUTES
 	max_occurrences = 1
 	min_players = 30
 	dedicated_storytellers = list(/datum/storyteller/xylix)
