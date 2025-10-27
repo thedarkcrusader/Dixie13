@@ -19,7 +19,7 @@
 
 /datum/objective/personal/proc/escalate_objective(event_track = EVENT_TRACK_PERSONAL, second_event_track = EVENT_TRACK_INTERVENTION, first_value_modifier, second_value_modifier)
 	if(event_track)
-		var/first_modifer = first_value_modifier || round(rand(30, 60)) / 100
+		var/first_modifer = first_value_modifier || round(rand(40, 60)) / 100
 		var/first_points_to_add = SSgamemode.point_thresholds[event_track] * first_modifer
 		SSgamemode.event_track_points[event_track] += first_points_to_add
 	if(second_event_track)

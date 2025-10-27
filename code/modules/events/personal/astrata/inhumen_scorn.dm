@@ -45,7 +45,7 @@
 
 	bordered_message(chosen_one, list(
 		span_userdanger("YOU ARE ASTRATA'S CHOSEN!"),
-		span_notice("Astrata wishes you to insult the inhumen! Spit in the face of 2 inhumen to earn her favor!"),
+		span_notice("Astrata wishes you to insult the inhumen! Spit in the face of inhumen to earn her favor!"),
 	))
 	chosen_one.playsound_local(chosen_one, 'sound/magic/bless.ogg', 100)
 
