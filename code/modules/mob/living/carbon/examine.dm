@@ -81,7 +81,7 @@
 	if(on_fire)
 		msg += "[t_He] [t_is] on fire!"
 		if(user.has_flaw(/datum/charflaw/addiction/pyromaniac))
-			msg += span_red(" It's beautiful!")
+			msg += span_boldred(" IT'S BEAUTIFUL!")
 			user.sate_addiction()
 		msg += "\n"
 	else if(fire_stacks + divine_fire_stacks > 0)
