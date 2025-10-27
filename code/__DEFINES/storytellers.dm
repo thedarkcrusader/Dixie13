@@ -105,8 +105,8 @@
 #define ROLESET_POINT_THRESHOLD 80
 #define OBJECTIVES_POINT_THRESHOLD 80
 
-#define MUNDANE_MIN_POP 4
-#define MODERATE_MIN_POP 6
+#define MUNDANE_MIN_POP 5
+#define MODERATE_MIN_POP 8
 #define MAJOR_MIN_POP 20
 #define CHARACTER_INJECTION_MIN_POP 0
 #define OBJECTIVES_MIN_POP 20
@@ -156,7 +156,6 @@
 #define ROUNDSTART_OBJECTIVES_GAIN 2
 
 #define SHARED_HIGH_THREAT	"high threat event"
-#define SHARED_ANOMALIES	"anomalous event"
 #define SHARED_MINOR_THREAT "minor event"
 
 /// Divine pantheon storytellers

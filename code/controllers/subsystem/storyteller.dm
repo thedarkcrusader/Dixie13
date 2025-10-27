@@ -54,14 +54,14 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POINT_THRESHOLD,
 		EVENT_TRACK_INTERVENTION = MAJOR_POINT_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POINT_THRESHOLD,
-		EVENT_TRACK_OMENS = MUNDANE_POINT_THRESHOLD,
+		EVENT_TRACK_OMENS = MUNDANE_POINT_THRESHOLD * 1.5,
 		EVENT_TRACK_RAIDS = OBJECTIVES_POINT_THRESHOLD * 2,
 		)
 
 	/// Minimum population thresholds for the tracks to fire off events.
 	var/list/min_pop_thresholds = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_MIN_POP,
-		EVENT_TRACK_PERSONAL = MODERATE_MIN_POP,
+		EVENT_TRACK_PERSONAL = MUNDANE_MIN_POP,
 		EVENT_TRACK_MODERATE = MODERATE_MIN_POP,
 		EVENT_TRACK_INTERVENTION = MAJOR_MIN_POP,
 		EVENT_TRACK_CHARACTER_INJECTION = CHARACTER_INJECTION_MIN_POP,
@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_OMENS = MUNDANE_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_OMENS = MAJOR_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_RAIDS = RAID_POP_SCALE_THRESHOLD,
 		)
 
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_PENALTY,
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_PENALTY,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_PENALTY,
-		EVENT_TRACK_OMENS = MUNDANE_POP_SCALE_PENALTY,
+		EVENT_TRACK_OMENS = MAJOR_POP_SCALE_PENALTY,
 		EVENT_TRACK_RAIDS = RAID_POP_SCALE_PENALTY,
 		)
 
@@ -867,7 +867,7 @@ SUBSYSTEM_DEF(gamemode)
 	point_gain_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	roundstart_point_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_roundstart_point_multiplier)
@@ -875,11 +875,11 @@ SUBSYSTEM_DEF(gamemode)
 	roundstart_point_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	min_pop_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_min_pop)
-	min_pop_thresholds[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/moderate_min_pop)
+	min_pop_thresholds[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/mundane_min_pop)
 	min_pop_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_min_pop)
 	min_pop_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_min_pop)
 	min_pop_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_min_pop)
-	min_pop_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_min_pop)
+	min_pop_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/major_min_pop)
 	min_pop_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_min_pop)
 
 	point_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_point_threshold)
@@ -887,7 +887,7 @@ SUBSYSTEM_DEF(gamemode)
 	point_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_point_threshold)
 	point_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_threshold)
 	point_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_threshold)
-	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_point_threshold)
+	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_point_threshold) * 1.5
 	point_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_threshold) * 2
 
 /datum/controller/subsystem/gamemode/proc/handle_picking_storyteller()
