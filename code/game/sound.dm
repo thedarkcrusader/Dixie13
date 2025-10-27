@@ -32,6 +32,11 @@
 	channel = channel || SSsounds.random_available_channel()
 
 	// Looping through the player list has the added bonus of working for mobs inside containers
+	if(islist(soundin))
+		soundin = pick(soundin)
+		log_world("A list was passed into soundin this is not good!")
+		message_admins("A list was passed into soundin this is not good!")
+
 	var/sound/S = soundin
 	if(!istype(S))
 		S = sound(get_sfx(soundin))
@@ -85,6 +90,11 @@
 /mob/proc/playsound_local(atom/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, repeat, muffled)
 	if(!client || !can_hear())
 		return FALSE
+
+	if(islist(soundin))
+		soundin = pick(soundin)
+		log_world("A list was passed into soundin this is not good!")
+		message_admins("A list was passed into soundin this is not good!")
 
 	if(!S)
 		S = sound(get_sfx(soundin))

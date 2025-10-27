@@ -1032,7 +1032,7 @@
 	name = "middeck"
 	icon_state = "indoors"
 	droning_index = DRONING_BOAT
-	background_track = 'sound/music/area/middeckdrone.ogg'
+	background_track = 'sound/music/area/topdeckdrone.ogg'
 	background_track_dusk = null
 	background_track_night = null
 	first_time_text = "Waist Deck"
