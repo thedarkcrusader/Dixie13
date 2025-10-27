@@ -2439,7 +2439,8 @@
 				found_ping(get_turf(O), client, "trap")
 			if(istype(O, /obj/structure/lever/hidden))
 				var/obj/structure/lever/hidden/lever = O
-				var/bonuses = min((HAS_TRAIT(src, TRAIT_THIEVESGUILD) + HAS_TRAIT(src, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+				// they're trained at this
+				var/bonuses = (HAS_TRAIT(src, TRAIT_THIEVESGUILD) || HAS_TRAIT(src, TRAIT_ASSASSIN)) ? 2 : 0
 				if(stat_roll(STATKEY_PER, 25, lever.hidden_dc - bonuses - 1) || (istype(lever, /obj/structure/lever/hidden/keep) && HAS_TRAIT(src, TRAIT_KNOWKEEPPLANS)))
 					found_ping(get_turf(O), client, "hidden")
 

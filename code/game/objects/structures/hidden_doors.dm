@@ -93,7 +93,8 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	. = ..()
 	if(isliving(user))
 		var/mob/living/L = user
-		var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+		// they're trained at this
+		var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
 		if(L.stat_roll(STATKEY_PER, 25, hidden_dc - bonuses - 1))
 			. += span_purple("Something's not right about this wall...")
 
@@ -331,7 +332,8 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	hidden_dc = 14
 
 /obj/structure/lever/hidden/keep/feel_button(mob/living/user, ignore_dc = FALSE)
-	var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+	// they're trained at this
+	var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
 	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS) || (user.STAPER + bonuses) >= hidden_dc || ignore_dc)
 		ignore_dc = TRUE // passes onto parent dc check, otherwise someone who knows the keep plans would still need perception
 		..()

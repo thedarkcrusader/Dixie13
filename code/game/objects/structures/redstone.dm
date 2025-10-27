@@ -121,7 +121,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/lever/hidden/proc/feel_button(mob/living/user, ignore_dc = FALSE)
 	if(isliving(user))
 		var/mob/living/L = user
-		var/bonuses = min((HAS_TRAIT(user, TRAIT_THIEVESGUILD) + HAS_TRAIT(user, TRAIT_ASSASSIN)) * 2, 3) // they'd know a hidden wall when they see one
+		// they're trained at this
+		var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
 		if(L.STAPER + bonuses >= hidden_dc || ignore_dc)
 			L.changeNext_move(CLICK_CD_MELEE)
 			user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
