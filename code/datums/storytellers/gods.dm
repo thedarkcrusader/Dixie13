@@ -22,7 +22,7 @@
 			STATS_PRAYERS_MADE = list("name" = "Prayers made:", "points" = 1.4, "capacity" = 65),
 		),
 		"Set 5" = list(
-			STATS_TAXES_COLLECTED = list("name" = "Taxes collected:", "points" = 0.215, "capacity" = 80),
+			STATS_TAXES_COLLECTED = list("name" = "Taxes collected:", "points" = 0.21, "capacity" = 80),
 			STATS_SLURS_SPOKEN = list("name" = "Slurs spoken:", "points" = 1.45, "capacity" = 80),
 		)
 	)
@@ -37,8 +37,8 @@
 	color_theme = "#F0F0F0"
 
 	tag_multipliers = list(
-		TAG_MAGICAL = 1.2,
-		TAG_HAUNTED = 1.1,
+		TAG_MAGICAL = 1.4,
+		TAG_HAUNTED = 1.2,
 	)
 	cost_variance = 25
 
@@ -50,7 +50,7 @@
 			STATS_LITERACY_TAUGHT = list("name" = "Literacy taught:", "points" = 10, "capacity" = 65),
 		),
 		"Set 3" = list(
-			STATS_ILLITERATES = list("name" = "Number of illiterates:", "points" = -3, "capacity" = -50),
+			STATS_ILLITERATES = list("name" = "Number of illiterates:", "points" = -2.85, "capacity" = -50),
 		),
 		"Set 4" = list(
 			STATS_SKILLS_DREAMED = list("name" = "Skills dreamed:", "points" = 0.265, "capacity" = 80),
@@ -69,7 +69,7 @@
 	color_theme = "#228822"
 
 	tag_multipliers = list(
-		TAG_RAID = 1.3,
+		TAG_RAID = 1.5,
 	)
 
 	point_gains_multipliers = list(
@@ -84,7 +84,7 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.95, "capacity" = 80),
+			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.9, "capacity" = 80),
 		),
 		"Set 2" = list(
 			STATS_PARRIES = list("name" = "Parries made:", "points" = 0.0535, "capacity" = 100),
@@ -109,7 +109,7 @@
 	color_theme = "#3366CC"
 
 	tag_multipliers = list(
-		TAG_WATER = 1.3,
+		TAG_WATER = 1.4,
 		TAG_TRADE = 1.2,
 	)
 
@@ -181,7 +181,7 @@
 	color_theme = "#888888"
 
 	tag_multipliers = list(
-		TAG_HAUNTED = 1.3,
+		TAG_HAUNTED = 1.5,
 	)
 
 	point_gains_multipliers = list(
@@ -221,8 +221,8 @@
 	color_theme = "#AADDAA"
 
 	tag_multipliers = list(
-		TAG_ALCHEMY = 1.2,
-		TAG_MEDICAL = 1.2,
+		TAG_ALCHEMY = 1.3,
+		TAG_MEDICAL = 1.3,
 		TAG_NATURE = 1.1,
 	)
 
@@ -274,7 +274,7 @@
 			STATS_ROCKS_MINED = list("name" = "Rocks mined:", "points" = 0.25, "capacity" = 100),
 		),
 		"Set 3" = list(
-			STATS_CRAFT_SKILLS = list("name" = "Craft skills learned:", "points" = 0.75, "capacity" = 80),
+			STATS_CRAFT_SKILLS = list("name" = "Craft skills learned:", "points" = 0.65, "capacity" = 80),
 		),
 		"Set 4" = list(
 			STATS_BEARDS_SHAVED = list("name" = "Beards shaved:", "points" = -4, "capacity" = -40),
@@ -292,7 +292,7 @@
 	color_theme = "#9966CC"
 
 	tag_multipliers = list(
-		TAG_WIDESPREAD = 1.5,
+		TAG_WIDESPREAD = 1.4,
 		TAG_BOON = 1.2,
 	)
 
@@ -309,7 +309,7 @@
 	influence_sets = list(
 		"Set 1" = list(
 			STATS_PARENTS = list("name" = "Number of parents:", "points" = 8.5, "capacity" = 90),
-			STATS_CHILD_POPULATION = list("name" = "Number of children:", "points" = 6.75, "capacity" = 75),
+			STATS_CHILD_POPULATION = list("name" = "Number of children:", "points" = 7, "capacity" = 75),
 		),
 		"Set 2" = list(
 			STATS_MARRIAGES = list("name" = "Marriages made:", "points" = 20, "capacity" = 80),
@@ -358,7 +358,7 @@
 			STATS_PLANTS_HARVESTED = list("name" = "Plants harvested:", "points" = 0.7, "capacity" = 100),
 		),
 		"Set 3" = list(
-			STATS_FOREST_DEATHS = list("name" = "Forest deaths:", "points" = 6.25, "capacity" = 90),
+			STATS_FOREST_DEATHS = list("name" = "Forest deaths:", "points" = 6, "capacity" = 90),
 		),
 		"Set 4" = list(
 			STATS_DENDOR_SACRIFICES = list("name" = "Sacrifices to Dendor:", "points" = 12.5, "capacity" = 75),
@@ -398,8 +398,8 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_ZIZO_PRAISED = list("name" = "Zizo praised:", "points" = 1, "capacity" = 40),
-			STATS_ALIVE_DARK_ELVES = list("name" = "Number of dark elves:", "points" = 6.5, "capacity" = 60),
+			STATS_ZIZO_PRAISED = list("name" = "Zizo praised:", "points" = 1.25, "capacity" = 45),
+			STATS_ALIVE_DARK_ELVES = list("name" = "Number of dark elves:", "points" = 6.75, "capacity" = 60),
 		),
 		"Set 2" = list(
 			STATS_NOBLE_DEATHS = list("name" = "Nobles killed:", "points" = 5.25, "capacity" = 80),
@@ -427,8 +427,8 @@
 
 	tag_multipliers = list(
 		TAG_INSANITY = 1.4,
-		TAG_MAGIC = 1.2,
-		TAG_DISASTER = 1.1,
+		TAG_MAGIC = 1.1,
+		TAG_DISASTER = 1.2,
 	)
 
 	point_gains_multipliers = list(
@@ -471,7 +471,7 @@
 	color_theme = "#8B3A3A"
 
 	tag_multipliers = list(
-		TAG_BATTLE = 1.6,
+		TAG_BATTLE = 1.5,
 		TAG_BLOOD = 1.3,
 		TAG_WAR = 1.2,
 	)
@@ -501,7 +501,7 @@
 			STATS_ALIVE_HALF_ORCS = list("name" = "Number of half-orcs:", "points" = 8.5, "capacity" = 70),
 		),
 		"Set 5" = list(
-			STATS_PEOPLE_GIBBED = list("name" = "People gibbed:", "points" = 4.25, "capacity" = 60),
+			STATS_PEOPLE_GIBBED = list("name" = "People gibbed:", "points" = 4.5, "capacity" = 60),
 		)
 	)
 
@@ -517,9 +517,9 @@
 	color_theme = "#8B4513"
 
 	tag_multipliers = list(
-		TAG_TRADE = 1.4,
-		TAG_CORRUPTION = 1.3,
-		TAG_LOOT = 1.2,
+		TAG_TRADE = 1.2,
+		TAG_CORRUPTION = 1.4,
+		TAG_LOOT = 1.3,
 	)
 
 	point_gains_multipliers = list(
@@ -540,8 +540,8 @@
 			STATS_SHRINE_VALUE = list("name" = "Value offered to his idol:", "points" = 0.07, "capacity" = 70),
 		),
 		"Set 3" = list(
-			STATS_GREEDY_PEOPLE = list("name" = "Number of greedy people:", "points" = 6, "capacity" = 70),
-			STATS_KLEPTOMANIACS = list("name" = "Number of kleptomaniacs:", "points" = 12, "capacity" = 70),
+			STATS_GREEDY_PEOPLE = list("name" = "Number of greedy people:", "points" = 6.5, "capacity" = 70),
+			STATS_KLEPTOMANIACS = list("name" = "Number of kleptomaniacs:", "points" = 13, "capacity" = 70),
 		),
 		"Set 4" = list(
 			STATS_DODGES = list("name" = "Dodges made:", "points" = 0.0875, "capacity" = 100),
