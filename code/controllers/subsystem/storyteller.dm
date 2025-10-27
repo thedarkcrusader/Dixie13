@@ -875,7 +875,7 @@ SUBSYSTEM_DEF(gamemode)
 	roundstart_point_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	min_pop_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_min_pop)
-	min_pop_thresholds[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/mundane_min_pop)
+	min_pop_thresholds[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/moderate_min_pop)
 	min_pop_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_min_pop)
 	min_pop_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_min_pop)
 	min_pop_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_min_pop)
