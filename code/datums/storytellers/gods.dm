@@ -7,7 +7,7 @@
 	color_theme = "#FFD700"
 
 	tag_multipliers = list(
-		TAG_ASTRATA = 2,
+		TAG_ASTRATA = 3,
 	)
 
 	influence_sets = list(
@@ -41,9 +41,9 @@
 	color_theme = "#F0F0F0"
 
 	tag_multipliers = list(
-		TAG_NOC = 2,
-		TAG_MAGICAL = 1.5,
-		TAG_HAUNTED = 1.25,
+		TAG_NOC = 3,
+		TAG_MAGICAL = 1.75,
+		TAG_HAUNTED = 1.5,
 	)
 	cost_variance = 25
 
@@ -74,7 +74,8 @@
 	color_theme = "#228822"
 
 	tag_multipliers = list(
-		TAG_RAVOX = 2,
+		TAG_RAVOX = 3,
+		TAG_COMBAT = 1.75,
 		TAG_RAID = 1.5,
 	)
 
@@ -90,7 +91,7 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.8, "capacity" = 80),
+			STATS_COMBAT_SKILLS = list("name" = "Combat skills learned:", "points" = 0.7, "capacity" = 80),
 		),
 		"Set 2" = list(
 			STATS_PARRIES = list("name" = "Parries made:", "points" = 0.0535, "capacity" = 100),
@@ -115,14 +116,14 @@
 	color_theme = "#3366CC"
 
 	tag_multipliers = list(
-		TAG_ABYSSOR = 2,
-		TAG_WATER = 1.5,
+		TAG_ABYSSOR = 3,
+		TAG_WATER = 1.75,
 		TAG_TRADE = 1.5,
 	)
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_FISH_CAUGHT = list("name" = "Fish caught:", "points" = 1.7, "capacity" = 80),
+			STATS_FISH_CAUGHT = list("name" = "Fish caught:", "points" = 1.75, "capacity" = 80),
 		),
 		"Set 2" = list(
 			STATS_WATER_CONSUMED = list("name" = "Water consumed:", "points" = 0.014, "capacity" = 90),
@@ -151,8 +152,8 @@
 	forced = TRUE
 
 	tag_multipliers = list(
-		TAG_XYLIX = 2,
-		TAG_GAMBLE = 1.5,
+		TAG_XYLIX = 3,
+		TAG_GAMBLE = 1.75,
 		TAG_TRICKERY = 1.5,
 		TAG_UNEXPECTED = 1.25,
 	)
@@ -181,7 +182,7 @@
 			STATS_CRITS_MADE = list("name" = "Crits made:", "points" = 0.28, "capacity" = 90),
 		),
 		"Set 5" = list(
-			STATS_SONGS_PLAYED = list("name" = "Songs played:", "points" = 0.775, "capacity" = 70),
+			STATS_SONGS_PLAYED = list("name" = "Songs played:", "points" = 0.8, "capacity" = 70),
 			STATS_MOAT_FALLERS = list("name" = "Moat fallers:", "points" = 5, "capacity" = 50),
 		)
 	)
@@ -195,8 +196,8 @@
 	color_theme = "#888888"
 
 	tag_multipliers = list(
-		TAG_NECRA = 2,
-		TAG_HAUNTED = 1.5,
+		TAG_NECRA = 3,
+		TAG_HAUNTED = 1.75,
 	)
 
 	point_gains_multipliers = list(
@@ -211,21 +212,21 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_DEATHS = list("name" = "Total deaths:", "points" = 1.275, "capacity" = 100),
+			STATS_DEATHS = list("name" = "Total deaths:", "points" = 1.3, "capacity" = 100),
 		),
 		"Set 2" = list(
 			STATS_GRAVES_CONSECRATED = list("name" = "Graves consecrated:", "points" = 6, "capacity" = 80),
 		),
 		"Set 3" = list(
 			STATS_GRAVES_ROBBED = list("name" = "Graves robbed:", "points" = -3.5, "capacity" = -40),
-			STATS_ALIVE_SNOW_ELVES = list("name" = "Number of elves:", "points" = 4.25, "capacity" = 55),
+			STATS_ALIVE_SNOW_ELVES = list("name" = "Number of elves:", "points" = 4.25, "capacity" = 60),
 		),
 		"Set 4" = list(
 			STATS_DEADITES_KILLED = list("name" = "Deadites killed:", "points" = 5.5, "capacity" = 90),
 		),
 		"Set 5" = list(
 			STATS_VAMPIRES_KILLED = list("name" = "Vampires killed:", "points" = 10, "capacity" = 70),
-			STATS_SOULS_REINCARNATED = list("name" = "Souls reincarnated:", "points" = 2.25, "capacity" = 65),
+			STATS_SOULS_REINCARNATED = list("name" = "Souls reincarnated:", "points" = 2.3, "capacity" = 65),
 		)
 	)
 
@@ -236,9 +237,9 @@
 	color_theme = "#AADDAA"
 
 	tag_multipliers = list(
-		TAG_PESTRA = 2,
-		TAG_ALCHEMY = 1.5,
-		TAG_MEDICAL = 1.5,
+		TAG_PESTRA = 3,
+		TAG_ALCHEMY = 1.75,
+		TAG_MEDICAL = 1.75,
 		TAG_NATURE = 1.25,
 	)
 
@@ -269,8 +270,8 @@
 	color_theme = "#D4A56C"
 
 	tag_multipliers = list(
-		TAG_MALUM = 2,
-		TAG_WORK = 1.5,
+		TAG_MALUM = 3,
+		TAG_WORK = 1.75,
 	)
 
 	point_gains_multipliers = list(
@@ -309,9 +310,9 @@
 	color_theme = "#9966CC"
 
 	tag_multipliers = list(
-		TAG_EORA = 2,
-		TAG_BOON = 1.5,
-		TAG_WIDESPREAD = 1.25,
+		TAG_EORA = 3,
+		TAG_BOON = 1.75,
+		TAG_WIDESPREAD = 1.5,
 	)
 
 	point_gains_multipliers = list(
@@ -354,8 +355,8 @@
 	color_theme = "#664422"
 
 	tag_multipliers = list(
-		TAG_DENDOR = 2,
-		TAG_NATURE = 1.5,
+		TAG_DENDOR = 3,
+		TAG_NATURE = 1.75,
 	)
 
 	point_gains_multipliers = list(
@@ -395,14 +396,13 @@
 	welcome_text = "You will kneel."
 	weight = 4
 	always_votable = TRUE
-	follower_modifier = LOWER_FOLLOWER_MODIFIER
 	color_theme = "#CC4444"
 
 	tag_multipliers = list(
-		TAG_ZIZO = 2,
+		TAG_ZIZO = 3,
 		TAG_MAGICAL = 1.5,
-		TAG_TRICKERY = 1.25,
 		TAG_UNEXPECTED = 1.5,
+		TAG_TRICKERY = 1.25,
 	)
 
 	point_gains_multipliers = list(
@@ -421,16 +421,16 @@
 			STATS_ALIVE_DARK_ELVES = list("name" = "Number of dark elves:", "points" = 6.75, "capacity" = 60),
 		),
 		"Set 2" = list(
-			STATS_NOBLE_DEATHS = list("name" = "Nobles killed:", "points" = 5.25, "capacity" = 80),
+			STATS_NOBLE_DEATHS = list("name" = "Nobles killed:", "points" = 5.5, "capacity" = 80),
 		),
 		"Set 3" = list(
 			STATS_DEADITES_WOKEN_UP = list("name" = "Deadites woken up:", "points" = 4.5, "capacity" = 85),
 		),
 		"Set 4" = list(
-			STATS_CLERGY_DEATHS = list("name" = "Clergy killed:", "points" = 12, "capacity" = 70),
+			STATS_CLERGY_DEATHS = list("name" = "Clergy killed:", "points" = 12.25, "capacity" = 70),
 		),
 		"Set 5" = list(
-			STATS_TORTURES = list("name" = "Tortures performed:", "points" = 5.5, "capacity" = 70),
+			STATS_TORTURES = list("name" = "Tortures performed:", "points" = 5.75, "capacity" = 70),
 		)
 	)
 
@@ -445,9 +445,9 @@
 	color_theme = "#9933FF"
 
 	tag_multipliers = list(
-		TAG_BAOTHA = 2,
-		TAG_INSANITY = 1.5,
-		TAG_DISASTER = 1.25,
+		TAG_BAOTHA = 3,
+		TAG_INSANITY = 1.75,
+		TAG_DISASTER = 1.5,
 	)
 
 	point_gains_multipliers = list(
@@ -468,14 +468,14 @@
 			STATS_ALCOHOL_CONSUMED = list("name" = "Alcohol consumed:", "points" = 0.04, "capacity" = 90),
 		),
 		"Set 3" = list(
-			STATS_ALCOHOLICS = list("name" = "Number of alcoholics:", "points" = 2.75, "capacity" = 60),
+			STATS_ALCOHOLICS = list("name" = "Number of alcoholics:", "points" = 3, "capacity" = 60),
 		),
 		"Set 4" = list(
 			STATS_JUNKIES = list("name" = "Number of junkies:", "points" = 9, "capacity" = 70),
 			STATS_ALIVE_TIEFLINGS = list("name" = "Number of tieflings:", "points" = 6.25, "capacity" = 60),
 		),
 		"Set 5" = list(
-			STATS_LUXURIOUS_FOOD_EATEN = list("name" = "Luxurious food eaten:", "points" = 0.9, "capacity" = 85),
+			STATS_LUXURIOUS_FOOD_EATEN = list("name" = "Luxurious food eaten:", "points" = 0.925, "capacity" = 85),
 		)
 	)
 
@@ -490,8 +490,8 @@
 	color_theme = "#8B3A3A"
 
 	tag_multipliers = list(
-		TAG_GRAGGAR = 2,
-		TAG_BATTLE = 1.5,
+		TAG_GRAGGAR = 3,
+		TAG_BATTLE = 1.75,
 		TAG_BLOOD = 1.5,
 		TAG_WAR = 1.25,
 	)
@@ -503,12 +503,12 @@
 		EVENT_TRACK_INTERVENTION = 1.5,
 		EVENT_TRACK_CHARACTER_INJECTION = 1,
 		EVENT_TRACK_OMENS = 1,
-		EVENT_TRACK_RAIDS = 2.5,
+		EVENT_TRACK_RAIDS = 2.25,
 	)
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_HUNTED_PEOPLE = list("name" = "Number of available prey:", "points" = 10, "capacity" = 70),
+			STATS_HUNTED_PEOPLE = list("name" = "Number of available prey:", "points" = 10, "capacity" = 80),
 			STATS_ASSASSINATIONS = list("name" = "Successful assasinations:", "points" = 20, "capacity" = 80),
 		),
 		"Set 2" = list(
@@ -534,13 +534,12 @@
 	welcome_text = "Fortune favors the cunning."
 	weight = 4
 	always_votable = TRUE
-	follower_modifier = LOWER_FOLLOWER_MODIFIER
 	color_theme = "#8B4513"
 
 	tag_multipliers = list(
-		TAG_MATTHIOS = 2,
-		TAG_CORRUPTION = 1.5,
-		TAG_LOOT = 1.5,
+		TAG_MATTHIOS = 3,
+		TAG_CORRUPTION = 1.75,
+		TAG_LOOT = 1.75,
 		TAG_TRADE = 1.25,
 	)
 
@@ -559,17 +558,17 @@
 			STATS_ITEMS_PICKPOCKETED = list("name" = "Items pickpocketed:", "points" = 5.25, "capacity" = 80),
 		),
 		"Set 2" = list(
-			STATS_SHRINE_VALUE = list("name" = "Value offered to his idol:", "points" = 0.07, "capacity" = 70),
+			STATS_SHRINE_VALUE = list("name" = "Value offered to his idol:", "points" = 0.0725, "capacity" = 70),
 		),
 		"Set 3" = list(
-			STATS_GREEDY_PEOPLE = list("name" = "Number of greedy people:", "points" = 6.5, "capacity" = 70),
+			STATS_GREEDY_PEOPLE = list("name" = "Number of greedy people:", "points" = 7, "capacity" = 70),
 			STATS_KLEPTOMANIACS = list("name" = "Number of kleptomaniacs:", "points" = 13, "capacity" = 70),
 		),
 		"Set 4" = list(
 			STATS_DODGES = list("name" = "Dodges made:", "points" = 0.0875, "capacity" = 100),
 		),
 		"Set 5" = list(
-			STATS_LOCKS_PICKED = list("name" = "Locks picked:", "points" = 4.25, "capacity" = 80),
+			STATS_LOCKS_PICKED = list("name" = "Locks picked:", "points" = 4.5, "capacity" = 80),
 			STATS_GRAVES_ROBBED = list("name" = "Graves robbed:", "points" = 5.75, "capacity" = 60),
 		)
 	)

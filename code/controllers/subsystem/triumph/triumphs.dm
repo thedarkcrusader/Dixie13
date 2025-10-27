@@ -41,7 +41,10 @@ SUBSYSTEM_DEF(triumphs)
 
 	/// List of top ten for display in browser page on button click
 	var/list/triumph_leaderboard = list()
+	/// How many leaderboard positions are we showing
 	var/triumph_leaderboard_positions_tracked = 20
+	/// Cached list of all admin ckeys (from config/database) to filter from leaderboard
+	var/list/cached_admin_ckeys = list()
 	// A cache for triumphs. Basically when client first hops in for the session we will cram their ckey in and retrieve from file
 	// When the server session is about to end we will write it all in.
 	var/list/triumph_amount_cache = list()
@@ -87,6 +90,7 @@ SUBSYSTEM_DEF(triumphs)
 /datum/controller/subsystem/triumphs/Initialize()
 	. = ..()
 
+	load_admin_cache()
 	prep_the_triumphs_leaderboard()
 
 	for(var/cur_path in subtypesof(/datum/triumph_buy))
@@ -343,15 +347,19 @@ SUBSYSTEM_DEF(triumphs)
 
 /// Displays leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
-	var/webpage = "<div style='text-align:center'>Current Season: [GLOB.triumph_wipe_season]</div>"
+	var/webpage = "<div style='text-align:center'>Current Season: [GLOB.triumph_wipe_season || 1]</div>"
 	webpage += "<hr>"
 
-	if(triumph_leaderboard.len)
+	if(length(triumph_leaderboard) && islist(cached_admin_ckeys))
 		var/position_number = 0
 
 		for(var/key in triumph_leaderboard)
+			var/check_ckey = ckey(key)
+			if(check_ckey in cached_admin_ckeys)
+				continue
+
 			position_number++
-			webpage += "[position_number]. [key] - [triumph_leaderboard[key]]<br>"
+			webpage += "[position_number]. [capitalize(key)] - [triumph_leaderboard[key]]<br>"
 			if(position_number >= triumph_leaderboard_positions_tracked)
 				break
 	else
@@ -408,6 +416,28 @@ SUBSYSTEM_DEF(triumphs)
 			sorted_list[cache_key] = triumph_leaderboard[cache_key]
 
 	triumph_leaderboard = sorted_list
+
+/// Load all admin ckeys to filter them from the leaderboards later
+/datum/controller/subsystem/triumphs/proc/load_admin_cache()
+	if(islist(cached_admin_ckeys))
+		return
+
+	cached_admin_ckeys = list()
+
+	var/admins_text = file2text("[global.config.directory]/admins.txt")
+	if(admins_text)
+		var/regex/admins_regex = new(@"^(?!#)(.+?)\s+=\s+(.+)", "gm")
+		while(admins_regex.Find(admins_text))
+			var/ckey = ckey(admins_regex.group[1])
+			cached_admin_ckeys[ckey] = TRUE
+
+	if(!CONFIG_GET(flag/admin_legacy_system) && SSdbcore.IsConnected())
+		var/datum/DBQuery/query_get_all_admins = SSdbcore.NewQuery("SELECT ckey FROM [format_table_name("admin")]")
+		if(query_get_all_admins.Execute())
+			while(query_get_all_admins.NextRow())
+				var/ckey = ckey(query_get_all_admins.item[1])
+				cached_admin_ckeys[ckey] = TRUE
+		qdel(query_get_all_admins)
 
 /// Called when an admin disables a Triumph Buy.
 /// Refunds all current owners of that Triumph Buy and disactive it.
