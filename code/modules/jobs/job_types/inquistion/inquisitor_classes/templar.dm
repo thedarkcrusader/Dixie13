@@ -34,6 +34,8 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_INQUISITION,
 		TRAIT_SILVER_BLESSED,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 /datum/outfit/job/psydoniantemplar/pre_equip(mob/living/carbon/human/H)
