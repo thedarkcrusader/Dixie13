@@ -1,8 +1,8 @@
 /datum/round_event_control/antagonist/migrant_wave/lich
-	name = "Wanderling Lich"
+	name = "Wandering Lich"
 	wave_type = /datum/migrant_wave/lich
 
-	weight = 6 //temp disabled 6
+	weight = 6
 
 	earliest_start = 20 MINUTES
 
@@ -19,4 +19,3 @@
 		/datum/migrant_role/lich = 1,
 	)
 	can_roll = FALSE
-
