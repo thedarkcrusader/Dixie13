@@ -221,6 +221,8 @@
 			return "Madder"
 		if(FAMILY_THEACEAE)
 			return "Theaceae"
+		if(FAMILY_FRUIT)
+			return "Fruit"
 		if(FAMILY_DIKARYA)
 			return "Dikarya"
 		else
