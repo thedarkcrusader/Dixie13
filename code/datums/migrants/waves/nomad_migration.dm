@@ -70,7 +70,7 @@
 	armor = /obj/item/clothing/armor/medium/scale/steppe
 	head = /obj/item/clothing/head/helmet/bascinet/steppe
 	scabbards = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/goldmask/steppe = 1, /obj/item/reagent_containers/glass/bottle/avarmead = 1)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/tent_kit = 1, /obj/item/clothing/face/facemask/steel/steppe = 1, /obj/item/reagent_containers/glass/bottle/avarmead = 1)
 
 /datum/migrant_role/nomadrider
 	name = "Nomad Rider"

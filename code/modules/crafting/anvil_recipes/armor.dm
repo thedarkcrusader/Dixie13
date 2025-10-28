@@ -1021,10 +1021,6 @@
 	name = "Gold Mask"
 	created_item = /obj/item/clothing/face/facemask/goldmask
 
-/datum/anvil_recipe/armor/gold/mask/steppe
-	name = "Steppe Gold Mask"
-	created_item = /obj/item/clothing/face/facemask/goldmask/steppe
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 // --------- BLACKSTEEL -----------
 /datum/anvil_recipe/armor/blacksteel

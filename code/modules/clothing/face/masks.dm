@@ -325,7 +325,7 @@
 
 /obj/item/clothing/face/facemask/steel/steppebeast
 	name = "steppe beast mask"
-	icon_state = "steppebeast"
+	icon_state = "steppemask_snout"
 	desc = "A steel mask shaped like a beast's face, worn by steppe riders to intimidate their enemies."
 
 /obj/item/clothing/face/facemask/silver
@@ -492,13 +492,6 @@
 /obj/item/clothing/face/facemask/goldmask
 	name = "gold mask"
 	icon_state = "goldmask"
-	max_integrity = 150
-	sellprice = 100
-	smeltresult = /obj/item/ingot/gold
-
-/obj/item/clothing/face/facemask/goldmask/steppe
-	name = "steppe gold mask"
-	icon_state = "steppegold"
 	max_integrity = 150
 	sellprice = 100
 	smeltresult = /obj/item/ingot/gold
