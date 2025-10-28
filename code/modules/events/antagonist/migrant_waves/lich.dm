@@ -3,7 +3,6 @@
 	wave_type = /datum/migrant_wave/lich
 
 	weight = 6 //temp disabled 6
-	max_occurrences = 2
 
 	earliest_start = 20 MINUTES
 

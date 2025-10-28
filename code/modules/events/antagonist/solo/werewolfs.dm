@@ -11,7 +11,7 @@
 	antag_flag = ROLE_WEREWOLF
 	shared_occurence_type = SHARED_HIGH_THREAT
 
-	denominator = 80
+	denominator = 60
 
 	base_antags = 1
 	maximum_antags = 2

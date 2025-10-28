@@ -3,7 +3,6 @@
 	wave_type = /datum/migrant_wave/maniac
 
 	weight = 8
-	max_occurrences = 4
 
 	earliest_start = 25 MINUTES
 

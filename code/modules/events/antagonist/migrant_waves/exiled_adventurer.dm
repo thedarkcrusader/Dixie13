@@ -3,7 +3,6 @@
 	wave_type = /datum/migrant_wave/werewolf
 
 	weight = 4
-	max_occurrences = 2
 
 	earliest_start = 25 MINUTES
 
