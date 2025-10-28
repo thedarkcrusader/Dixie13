@@ -203,12 +203,26 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/scimitar/ada/iron
 
+/datum/anvil_recipe/weapons/iron/aruval
+	name = "Iron Aruval (+1 Iron Bar)"
+	recipe_name = "a Iron Aruval"
+	additional_items = list(/obj/item/ingot/iron)
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/long/aruval/iron
+
 /datum/anvil_recipe/weapons/iron/dadao
-	name = "Iron Dadao (+Iron Bar)"
+	name = "Iron Dadao (+1 Iron Bar)"
 	recipe_name = "a Iron Dadao"
 	additional_items = list(/obj/item/ingot/iron)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/sabre/dadao/iron
+
+/datum/anvil_recipe/weapons/iron/ji
+	name = "Iron Dagger-Ax (+ Small Log)"
+	recipe_name = "a Iron Dagger-Ax"
+	additional_items = list(/obj/item/grown/log/tree/small)
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/polearm/spear/billhook/ji/iron
 
 /datum/anvil_recipe/weapons/iron/wodao
 	name = "Iron Wo Dao"
@@ -420,12 +434,26 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/scimitar/ada
 
+/datum/anvil_recipe/weapons/steel/aruval
+	name = "Steel Aruval (+1 Steel Bar)"
+	recipe_name = "a Steel Aruval"
+	additional_items = list(/obj/item/ingot/steel)
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/sword/long/aruval
+
 /datum/anvil_recipe/weapons/steel/dadao
 	name = "Steel Dadao (+1 Steel Bar)"
 	recipe_name = "a Steel Dadao"
 	additional_items = list(/obj/item/ingot/steel)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/sabre/dadao
+
+/datum/anvil_recipe/weapons/steel/ji
+	name = "Steel Dagger-Ax (+ Small Log)"
+	recipe_name = "a Steel Dagger-Ax"
+	additional_items = list(/obj/item/grown/log/tree/small)
+	appro_skill = /datum/skill/craft/weaponsmithing
+	created_item = /obj/item/weapon/polearm/spear/billhook/ji
 
 /datum/anvil_recipe/weapons/steel/wodao
 	name = "Steel Wo Dao"
@@ -568,7 +596,7 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/kaskara
 
-/datum/anvil_recipe/weapon/steel/kukri
+/datum/anvil_recipe/weapons/steel/kukri
 	name = "Steel Kukri"
 	recipe_name = "a Steel Kukri"
 	appro_skill = /datum/skill/craft/weaponsmithing
