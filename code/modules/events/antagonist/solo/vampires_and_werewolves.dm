@@ -5,7 +5,7 @@
 		TAG_GRAGGAR,
 		TAG_COMBAT,
 		TAG_HAUNTED,
-		TAG_VILLIAN,
+		TAG_VILLAIN,
 	)
 	roundstart = TRUE
 	antag_flag = ROLE_NBEAST

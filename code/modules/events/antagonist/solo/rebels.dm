@@ -3,7 +3,7 @@
 	tags = list(
 		TAG_MATTHIOS,
 		TAG_COMBAT,
-		TAG_VILLIAN,
+		TAG_VILLAIN,
 	)
 	roundstart = TRUE
 	antag_flag = ROLE_PREBEL

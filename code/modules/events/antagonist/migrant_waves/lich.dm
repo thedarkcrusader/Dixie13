@@ -11,7 +11,7 @@
 		TAG_ZIZO,
 		TAG_HAUNTED,
 		TAG_COMBAT,
-		TAG_VILLIAN,
+		TAG_VILLAIN,
 	)
 
 /datum/migrant_wave/lich
