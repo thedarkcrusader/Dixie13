@@ -910,7 +910,7 @@
 
 /datum/special_trait/glutton/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat(STATKEY_STR, 5)
-	character.change_stat(STATKEY_CON, 5)
+	character.change_stat(STATKEY_CON, 7)
 	character.change_stat(STATKEY_END, -6)
 	character.change_stat(STATKEY_SPD, -8)
 
@@ -918,7 +918,6 @@
 	character.adjust_skillrank(/datum/skill/misc/athletics, -3, TRUE)
 
 	ADD_TRAIT(character, TRAIT_FAT, "[type]")
-	ADD_TRAIT(character, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
 
 
