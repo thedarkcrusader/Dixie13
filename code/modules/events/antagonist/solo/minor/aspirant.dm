@@ -11,14 +11,15 @@
 	minor_roleset = TRUE
 
 	needed_job = list(
-		"Consort" ,
-		"Hand" ,
-		"Prince" ,
+		"Consort",
+		"Hand",
+		"Prince",
 		"Captain",
 		"Steward",
 		"Court Magician",
+		"Court Physician",
 		"Archivist",
-		"Town Elder"
+		"Noble"
 	)
 
 	base_antags = 1
@@ -43,7 +44,7 @@
 /datum/round_event/antagonist/solo/aspirant/start()
 	. = ..()
 
-	var/list/helping = list("Consort", "Hand", "Prince", "Captain", "Steward", "Court Magician", "Archivist", "Royal Knight", "Town Elder", "Veteran")
+	var/list/helping = list("Consort", "Hand", "Prince", "Captain", "Steward", "Court Magician", "Court Physician", "Archivist", "Noble", "Jester", "Dungeoneer", "Men-at-arms", "Gatemaster", "Butler", "Servant")
 	var/list/possible_helpers = list()
 
 	for(var/mob/living/living in GLOB.human_list)
