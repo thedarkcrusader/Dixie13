@@ -143,7 +143,7 @@
 	new /obj/item/smokebomb(src)
 	new /obj/item/smokebomb(src)
 
-	/datum/inqports/supplies/frags
+/datum/inqports/supplies/frags
 	name = "4 Fragmentation Grenades"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/frags
 	maximum = 1
