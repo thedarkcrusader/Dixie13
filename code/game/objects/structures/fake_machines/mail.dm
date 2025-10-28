@@ -560,11 +560,6 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			cost = 2,
 			max_purchases = 4
 		),
-		"Fragmentation Grenades (4)" = list(
-			list(type =/obj/item/explosive/canister_bomb, count = 1),
-			cost = 4,
-			max_purchases = 5
-		),
 	)
 
 	// Populate the options for the shop interface
