@@ -165,8 +165,6 @@
 			H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 			H.grant_language(/datum/language/oldpsydonic)
-			ADD_TRAIT(H, TRAIT_PSYDONIAN_GRIT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_PSYDONITE, TRAIT_GENERIC)
 			to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
 		else //Why are you going faithless
 			wrists = /obj/item/clothing/neck/psycross/silver

@@ -12,7 +12,7 @@
 
 	invocation = "Let the weight of Malum's hammer fall!"
 	invocation_type = INVOCATION_SHOUT
-	spell_flags = SPELL_HOLY_HARMFUL
+
 	charge_time = 2 SECONDS
 	charge_slowdown = 1.3
 	cooldown_time = 3 MINUTES

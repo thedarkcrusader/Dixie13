@@ -9,7 +9,7 @@
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross/silver/necra)
-	spell_flags = SPELL_HOLY_HARMFUL
+
 	invocation = "The Undermaiden rebukes!"
 	invocation_type = INVOCATION_SHOUT
 

@@ -11,7 +11,7 @@
 
 	invocation = "Feel Abyssor's rage!"
 	invocation_type = INVOCATION_SHOUT
-	spell_flags = SPELL_HOLY_HARMFUL
+
 	charge_time = 2 SECONDS
 	cooldown_time = 15 SECONDS
 	spell_cost = 35

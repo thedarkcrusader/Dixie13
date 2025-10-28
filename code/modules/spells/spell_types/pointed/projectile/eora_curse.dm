@@ -8,7 +8,7 @@
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross/silver/eora)
-	spell_flags = SPELL_HOLY_HARMFUL
+
 	invocation =  "Nulla felicitas sine amore!"
 	invocation_type = INVOCATION_WHISPER
 

@@ -9,7 +9,7 @@
 	associated_skill = /datum/skill/magic/holy
 	invocation =  "Have a taste of the maiden's pure-bliss..."
 	invocation_type = INVOCATION_WHISPER
-	spell_flags = SPELL_HOLY_HARMFUL
+
 	attunements = list(
 		/datum/attunement/electric = 0.3,
 		/datum/attunement/aeromancy = 0.3,
