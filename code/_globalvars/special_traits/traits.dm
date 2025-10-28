@@ -903,7 +903,7 @@
 
 /datum/special_trait/musical
 	name = "Musical Legend"
-	greet_text = span_notice("I am very good with instruments!")
+	greet_text = span_notice("I am very good with instruments! though my previous one got stolen..")
 	weight = 50
 
 /datum/special_trait/musical/on_apply(mob/living/carbon/human/character, silent)
