@@ -42,6 +42,8 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_NOBLE,
 		TRAIT_MEDIUMARMOR,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 	languages = list(/datum/language/oldpsydonic)
@@ -118,6 +120,8 @@
 	traits = list(
 		TRAIT_STEELHEARTED,
 		TRAIT_HEAVYARMOR,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 	languages = list(/datum/language/oldpsydonic)
