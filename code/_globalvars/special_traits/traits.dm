@@ -901,3 +901,47 @@
 	character.add_spell(/datum/action/cooldown/spell/undirected/howl/call_of_the_moon, silent = TRUE)
 	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]") // eat the raw meat
 
+/datum/special_trait/glutton
+	name = "The Glutton"
+	greet_text = span_notice("You rarely get time away from your court. It's taken a toll on your mind and body. At least the food helps.")
+	weight = 20
+	req_text = "Monarch"
+	allowed_jobs = list(/datum/job/lord)
+
+/datum/special_trait/glutton/on_apply(mob/living/carbon/human/character, silent)
+	character.change_stat(STATKEY_STR, 5)
+	character.change_stat(STATKEY_CON, 5)
+	character.change_stat(STATKEY_END, -6)
+	character.change_stat(STATKEY_SPD, -8)
+
+	character.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) // this guy will sit on you
+	character.adjust_skillrank(/datum/skill/misc/athletics, -3, TRUE)
+
+	ADD_TRAIT(character, TRAIT_FAT, "[type]")
+	ADD_TRAIT(character, TRAIT_STRONGBITE, "[type]")
+	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
+
+
+	character.set_flaw(/datum/charflaw/addiction/stress_eater)
+
+	character.transform = character.transform.Scale(1.15, 1)
+	character.update_transform()
+
+	character.verbs |= /mob/living/carbon/human/proc/emote_burp_loud
+	character.dna.species.soundpack_m = new /datum/voicepack/male/glutton()
+	character.dna.species.soundpack_f = new /datum/voicepack/female/glutton()
+
+/datum/emote/living/burp_loud
+	key = "burploud"
+	emote_type = EMOTE_AUDIBLE
+	key_third_person = "burps gluttonously"
+	message = "burps gluttonously!"
+	snd_range = 16
+	snd_vol = 200
+	mute_time = 100 // little less spammable
+
+/mob/living/carbon/human/proc/emote_burp_loud()
+	set name = "Gluttonous Burp"
+	set category = "Noises"
+
+	emote("burploud", intentional = TRUE)
