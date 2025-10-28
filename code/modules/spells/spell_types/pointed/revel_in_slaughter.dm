@@ -12,6 +12,7 @@
 	attunements = list(
 		/datum/attunement/blood = 0.5,
 	)
+	spell_flags = SPELL_HOLY_HARMFUL
 	charge_required = FALSE
 	cooldown_time = 5 MINUTES
 	spell_cost = 70

@@ -13,7 +13,7 @@
 
 	invocation = "Embrace the waters of Abyssor's domain!"
 	invocation_type = INVOCATION_SHOUT
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	charge_time = 1 SECONDS
 	cooldown_time = 30 SECONDS
 	spell_cost = 50

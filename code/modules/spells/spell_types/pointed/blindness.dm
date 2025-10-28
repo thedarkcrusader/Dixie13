@@ -30,7 +30,7 @@
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross/silver/noc)
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	invocation = "Noc blinds thee of thy sins!"
 	invocation_type = INVOCATION_SHOUT
 

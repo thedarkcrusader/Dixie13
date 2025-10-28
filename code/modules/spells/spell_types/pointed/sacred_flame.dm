@@ -12,7 +12,7 @@
 
 	invocation = "Cleansing flames, kindle!"
 	invocation_type = INVOCATION_SHOUT
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	charge_required = FALSE
 	cooldown_time = 10 SECONDS
 	spell_cost = 40

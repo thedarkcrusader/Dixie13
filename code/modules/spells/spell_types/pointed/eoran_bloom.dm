@@ -11,7 +11,7 @@
 
 	invocation = "Be at peace with Eora."
 	invocation_type = INVOCATION_SHOUT
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	cast_range = 3
 
 	charge_time = 3 SECONDS

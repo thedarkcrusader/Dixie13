@@ -162,6 +162,8 @@ DEFINE_BITFIELD(antimagic_flags, list(
 
 #define SPELL_PSYDON (1 << 2)
 
+#define SPELL_HOLY_HARMFUL (1 << 3)
+
 // Bitflags for spell requirements
 /// Whether the spell requires wizard clothes to cast.
 #define SPELL_REQUIRES_WIZARD_GARB (1 << 0)

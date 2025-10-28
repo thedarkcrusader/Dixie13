@@ -12,7 +12,7 @@
 
 	invocation = "Begone foul beasts!"
 	invocation_type = INVOCATION_SHOUT
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	charge_time = 2 SECONDS
 	charge_slowdown = 0.3
 	cooldown_time = 30 SECONDS

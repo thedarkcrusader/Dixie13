@@ -8,7 +8,7 @@
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/skill/magic/holy
-
+	spell_flags = SPELL_HOLY_HARMFUL
 	charge_required = FALSE
 	cooldown_time = 10 SECONDS
 	spell_cost = 40
