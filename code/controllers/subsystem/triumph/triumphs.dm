@@ -41,8 +41,6 @@ SUBSYSTEM_DEF(triumphs)
 
 	/// List of top ten for display in browser page on button click
 	var/list/triumph_leaderboard = list()
-	/// How many leaderboard positions are we showing
-	var/triumph_leaderboard_positions_tracked = 20
 	/// A cache for triumphs. Basically when client first hops in for the session we will cram their ckey in and retrieve from file
 	/// When the server session is about to end we will write it all in.
 	var/list/triumph_amount_cache = list()
@@ -339,7 +337,7 @@ SUBSYSTEM_DEF(triumphs)
 	return triumph_amount_cache[target_ckey]
 
 /*
-	TRIUMPH LEADERBOARD STUFF
+	TRIUMPH LEADERBOARD
 */
 
 /// Displays leaderboard browser popup
@@ -357,7 +355,7 @@ SUBSYSTEM_DEF(triumphs)
 
 			position_number++
 			webpage += "[position_number]. [capitalize(key)] - [triumph_leaderboard[key]]<br>"
-			if(position_number >= triumph_leaderboard_positions_tracked)
+			if(position_number >= 20)
 				break
 	else
 		webpage += "The hall of triumphs is empty"
@@ -376,21 +374,12 @@ SUBSYSTEM_DEF(triumphs)
 
 	sort_leaderboard()
 
-/datum/controller/subsystem/triumphs/proc/adjust_leaderboard(CLIENT_KEY_not_CKEY)
-	var/user_key = CLIENT_KEY_not_CKEY
+/datum/controller/subsystem/triumphs/proc/adjust_leaderboard(user_key)
 	var/triumph_total = triumph_amount_cache[ckey(user_key)]
 
-	for(var/existing_key in triumph_leaderboard)
-		if(ckey(existing_key) == ckey(user_key))
-			triumph_leaderboard.Remove(existing_key)
+	if(triumph_leaderboard[user_key] || triumph_leaderboard[ckey(user_key)])
+		triumph_leaderboard.Remove(user_key)
 
-	if(triumph_leaderboard_positions_tracked > triumph_leaderboard.len)
-		triumph_leaderboard[user_key] = triumph_total
-
-	if(triumph_leaderboard[triumph_leaderboard[triumph_leaderboard.len]] > triumph_total)
-		return
-
-	triumph_leaderboard.Cut(triumph_leaderboard.len)
 	triumph_leaderboard[user_key] = triumph_total
 	sort_leaderboard()
 
