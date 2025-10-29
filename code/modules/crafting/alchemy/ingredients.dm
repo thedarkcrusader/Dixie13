@@ -193,7 +193,7 @@
 	name = "artemisia"
 	icon_state = "artemisia"
 
-/obj/item/alch/herb/lavender // Does not currently exist but needed for the wearable, will correct later
+/obj/item/alch/herb/lavender // Not obtainable currently, will correct later
 	name = "lavender"
 	icon_state = "lavender"
 
