@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(job_pack_singletons, init_jobpacks())
 	///this is a list of contents that go item = slot
 	var/list/pack_contents = list()
 
-/datum/job_pack/proc/can_pick_pack(mob/living/carbon/human/H)
+/datum/job_pack/proc/can_pick_pack(mob/living/carbon/human/H, list/previous_picked_types)
 	return TRUE
 
 /datum/job_pack/proc/pick_pack(mob/living/carbon/human/H)

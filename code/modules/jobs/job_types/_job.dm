@@ -395,6 +395,8 @@
 	if(islist(equipping.job_packs[1]))
 		for_length = length(equipping.job_packs)
 
+	var/list/previous_picked_types = list()
+
 	for(var/i = 1 to for_length)
 		var/list/job_packs = equipping.job_packs
 		if(islist(equipping.job_packs[i]))
@@ -403,7 +405,7 @@
 		var/list/reals = list()
 		for(var/pack as anything in job_packs)
 			var/datum/job_pack/real_pack = GLOB.job_pack_singletons[pack]
-			if(!real_pack.can_pick_pack(src))
+			if(!real_pack.can_pick_pack(src, previous_picked_types))
 				continue
 			reals |= real_pack
 		if(!length(reals))
@@ -412,7 +414,7 @@
 			picked_pack = GLOB.job_pack_singletons[pick(reals)]
 		else
 			picked_pack = browser_input_list(src, equipping.pack_title, equipping.pack_message, reals, timeout = 20 SECONDS)
-
+		previous_picked_types |= picked_pack.type
 		picked_pack.pick_pack(src)
 
 /mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
