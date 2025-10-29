@@ -926,6 +926,9 @@
 	character.transform = character.transform.Scale(1.15, 1)
 	character.update_transform()
 
+	character.RemoveElement(/datum/element/footstep, character.footstep_type, 1, -6)
+	character.AddElement(/datum/element/footstep, FOOTSTEP_MOB_HEAVY, 1, -2)
+
 	character.verbs |= /mob/living/carbon/human/proc/emote_burp_loud
 	character.dna.species.soundpack_m = new /datum/voicepack/male/glutton()
 	character.dna.species.soundpack_f = new /datum/voicepack/female/glutton()
@@ -935,7 +938,7 @@
 	emote_type = EMOTE_AUDIBLE
 	key_third_person = "burps gluttonously"
 	message = "burps gluttonously!"
-	snd_range = 16
+	snd_range = 8
 	snd_vol = 200
 	mute_time = 100 // little less spammable
 
