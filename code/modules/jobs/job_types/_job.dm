@@ -215,6 +215,9 @@
 		for(var/X in GLOB.youngfolk_positions)
 			peopleiknow += X
 			peopleknowme += X
+		for(var/X in GLOB.inquisition_positions)
+			peopleiknow += X
+			peopleknowme += X
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
@@ -271,7 +274,7 @@
 		if(islist(amount_or_list))
 			spawned.clamped_adjust_skillrank(skill, amount_or_list[1], amount_or_list[2], TRUE)
 		else
-			spawned.adjust_skillrank(skill, amount_or_list, TRUE)
+			spawned.clamped_adjust_skillrank(skill, amount_or_list, amount_or_list, TRUE) //! This was changed because what the fuck.
 
 	for(var/X in peopleknowme)
 		for(var/datum/mind/MF in get_minds(X))
@@ -293,9 +296,6 @@
 		if(noble_income)
 			SStreasury.noble_incomes[spawned] = noble_income
 
-	if(job_flags & JOB_SHOW_IN_CREDITS)
-		SScrediticons.processing += spawned
-
 	if(cmode_music)
 		DIRECT_OUTPUT(spawned, load_resource(cmode_music, -1)) //preload their combat mode music
 		spawned.cmode_music = cmode_music
@@ -313,7 +313,7 @@
 		spawned.set_flaw(forced_flaw)
 
 	if(spawned.charflaw)
-		spawned.charflaw.after_spawn(spawned)
+		spawned.charflaw.after_spawn(spawned, player_client)
 
 	if(antag_role && spawned.mind)
 		spawned.mind.add_antag_datum(antag_role)
@@ -335,6 +335,9 @@
 
 	if(length(advclass_cat_rolls))
 		spawned.hugboxify_for_class_selection()
+
+	if(job_flags & JOB_SHOW_IN_CREDITS)
+		SScrediticons.processing += spawned
 
 /datum/job/proc/adjust_patron(mob/living/carbon/human/spawned)
 	if(!length(allowed_patrons))
