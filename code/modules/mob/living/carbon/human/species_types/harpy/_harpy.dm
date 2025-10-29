@@ -168,6 +168,16 @@
 	foreign.AddComponent(/datum/component/abberant_eater, list(/obj/item/natural/worms/grub_silk, /obj/item/natural/worms) + typesof(/obj/item/neuFarm/seed), TRUE)
 	foreign.grant_language(/datum/language/common)
 
+/datum/species/harpy/after_creation(mob/living/carbon/C)
+	. = ..()
+	C.grant_language(/datum/language/beast)
+	to_chat(C, "<span class='info'>I can speak Beastish with ,b before my speech.</span>")
+
+/datum/species/harpy/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
+	C.remove_language(/datum/language/beast)
+
 /datum/species/harpy/get_skin_list()
 	return sortList(list(
 		"Ice Cap" = SKIN_COLOR_ICECAP, // - (Pale)
