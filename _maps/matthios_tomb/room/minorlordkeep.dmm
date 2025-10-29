@@ -4,8 +4,7 @@
 /area/rogue/under/tomb/cave/lava)
 "ag" = (
 /obj/structure/table/stone_small,
-/obj/effect/spawner/map_spawner/loot/common,
-/obj/effect/spawner/map_spawner/loot/common,
+/obj/item/carvedgem/turq/fancyvase,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
 "ah" = (
@@ -27,7 +26,6 @@
 /area/rogue/under/tomb/cave/lava)
 "aI" = (
 /obj/item/natural/bundle/stoneblock,
-/obj/effect/spawner/map_spawner/loot/coin/med,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
 "aS" = (
@@ -49,10 +47,6 @@
 /area/rogue/under/tomb/cave/lava)
 "en" = (
 /obj/item/candle/skull,
-/turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"eX" = (
-/obj/item/bin/water,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
 "gp" = (
@@ -80,10 +74,6 @@
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
-"kF" = (
-/obj/structure/fluff/big_chain,
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/cave/lava)
 "lG" = (
 /obj/structure/door/iron,
 /turf/open/floor/cobblerock,
@@ -94,23 +84,9 @@
 /obj/item/natural/stone,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
-"nA" = (
-/obj/structure/bars/pipe/left,
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/indoors)
-"nC" = (
-/obj/structure/ladder,
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/cave/lava)
 "nT" = (
 /obj/structure/bed/shit,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"oB" = (
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/effect/landmark/chest_or_mimic,
-/obj/item/dmusicbox,
-/turf/open/floor/metal/barograte,
 /area/rogue/under/tomb/cave/lava)
 "oC" = (
 /obj/structure/door/red,
@@ -120,68 +96,22 @@
 "pO" = (
 /obj/structure/closet/crate/chest/neu_iron,
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/spawner/map_spawner/loot/rare,
-/obj/effect/spawner/map_spawner/loot/rare,
-/obj/effect/spawner/map_spawner/loot/magic,
+/obj/item/carvedgem/amber/figurine,
+/obj/item/carvedgem/amber/figurine,
+/obj/item/carvedgem/coral/fish,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"rg" = (
-/turf/open/floor/metal/barograte,
 /area/rogue/under/tomb/cave/lava)
 "rS" = (
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/dirt/road,
 /area/rogue/under/tomb/cave/lava)
-"so" = (
-/turf/open/floor/metal{
-	dir = 4
-	},
-/area/rogue/under/tomb/cave/lava)
 "th" = (
 /obj/structure/chair/wood,
+/mob/living/carbon/human/species/rousman/npc,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"to" = (
-/obj/structure/bed/shit,
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/indoors)
-"tq" = (
-/obj/structure/fluff/walldeco/chains,
-/obj/structure/bars/pipe,
-/turf/open/transparent/openspace,
-/area/rogue/under/tomb/cave/lava)
-"uy" = (
-/obj/structure/fluff/wallclock,
-/obj/item/flashlight/flare/torch/lantern/copper,
-/obj/structure/closet/crate/chest,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/indoors)
-"uR" = (
-/obj/structure/fluff/walldeco/chains,
-/turf/open/floor/metal,
 /area/rogue/under/tomb/cave/lava)
 "uV" = (
 /turf/open/transparent/openspace,
-/area/rogue/under/tomb/cave/lava)
-"wj" = (
-/obj/item/ammo_casing/caseless/bolt{
-	pixel_x = -9
-	},
-/obj/item/ammo_casing/caseless/bolt{
-	pixel_y = 11
-	},
-/obj/item/ammo_casing/caseless/bolt{
-	pixel_y = 10;
-	pixel_x = -25
-	},
-/obj/item/ammo_casing/caseless/bolt{
-	pixel_y = -16
-	},
-/obj/item/ammo_casing/caseless/bolt{
-	pixel_x = 11
-	},
-/turf/open/floor/metal/barograte,
 /area/rogue/under/tomb/cave/lava)
 "wZ" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior,
@@ -189,7 +119,6 @@
 /area/rogue/under/tomb/cave/lava)
 "xx" = (
 /obj/structure/bed/shit,
-/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
@@ -212,19 +141,11 @@
 "zY" = (
 /turf/closed/wall/mineral/decostone,
 /area/rogue/under/tomb/cave/lava)
-"Ar" = (
-/turf/open/floor/metal,
-/area/rogue/under/tomb/cave/lava)
-"Av" = (
-/obj/structure/fluff/walldeco/chains,
-/turf/open/transparent/openspace,
-/area/rogue/under/tomb/cave/lava)
 "AC" = (
-/turf/closed/wall/mineral/pipe,
+/turf/open/transparent/openspace,
 /area/rogue/under/tomb/indoors)
 "DC" = (
 /obj/structure/bed/shit,
-/obj/effect/spawner/map_spawner/loot/armor,
 /obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
@@ -232,7 +153,15 @@
 /turf/closed/wall/window,
 /area/rogue/under/tomb/cave/lava)
 "Ea" = (
-/obj/structure/lever/hidden,
+/obj/structure/lever/hidden{
+	redstone_id = MLK1;
+	pixel_x = -32
+	},
+/obj/structure/lever/hidden{
+	redstone_id = MLK1;
+	pixel_x = 32
+	},
+/obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/under/tomb/cave/lava)
 "Fc" = (
@@ -266,25 +195,19 @@
 "OQ" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/cup/fancy_clay,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
 "OR" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
-"OZ" = (
-/obj/structure/floordoor,
-/turf/open/floor/metal,
-/area/rogue/under/tomb/indoors)
 "PH" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/map_spawner/loot/weapon,
-/obj/effect/spawner/map_spawner/loot/coin/high,
+/obj/item/clothing/head/fancyhat,
+/obj/item/clothing/shirt/undershirt/fancy,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"PL" = (
-/obj/structure/bars/pipe,
-/turf/open/transparent/openspace,
 /area/rogue/under/tomb/cave/lava)
 "Rl" = (
 /obj/item/gear{
@@ -298,51 +221,38 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/floor/metal/barograte,
+/turf/open/transparent/openspace,
 /area/rogue/under/tomb/indoors)
 "Rz" = (
 /obj/structure/door/weak,
 /obj/effect/mapping_helpers/structure/breaker,
 /turf/open/floor/cobblerock,
 /area/rogue/under/tomb/cave/lava)
-"RX" = (
-/turf/open/floor/metal/barograte,
-/area/rogue/under/tomb/indoors)
 "Sk" = (
 /turf/closed/wall/mineral/decostone/moss/cand,
 /area/rogue/under/tomb/cave/lava)
 "Sl" = (
 /obj/item/chair/stool/bar,
+/obj/item/clothing/cloak/apron/brown,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"Vk" = (
-/turf/open/floor/metal{
-	dir = 8
-	},
-/area/rogue/under/tomb/cave/lava)
-"WZ" = (
-/obj/item/natural/poo/cow,
-/turf/open/floor/metal,
 /area/rogue/under/tomb/cave/lava)
 "Xv" = (
 /obj/item/natural/poo,
-/turf/open/floor/metal,
+/turf/open/transparent/openspace,
 /area/rogue/under/tomb/cave/lava)
 "YL" = (
 /obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/naturalstone,
 /area/rogue/under/tomb/cave/lava)
 "Ze" = (
-/obj/effect/mapping_helpers/secret_door_creator,
+/obj/effect/mapping_helpers/secret_door_creator{
+	redstone_id = MLK1
+	},
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/under/tomb/cave/lava)
 "Zr" = (
 /obj/item/chair/fancy,
 /turf/open/floor/cobblerock,
-/area/rogue/under/tomb/cave/lava)
-"ZG" = (
-/obj/item/ammo_holder/quiver/bolts,
-/turf/open/floor/metal/barograte,
 /area/rogue/under/tomb/cave/lava)
 
 (1,1,1) = {"
@@ -532,7 +442,7 @@ aG
 JY
 aG
 zY
-aG
+wZ
 aG
 wZ
 aG
@@ -572,7 +482,7 @@ aG
 aG
 aG
 aG
-aG
+wZ
 aG
 aG
 zY
@@ -667,7 +577,7 @@ ai
 Zr
 JY
 aG
-eX
+aG
 ai
 aG
 aG
@@ -794,11 +704,11 @@ ah
 ah
 ah
 ah
-rg
-rg
-rg
-rg
-rg
+uV
+uV
+uV
+uV
+uV
 ah
 ah
 ah
@@ -816,17 +726,17 @@ uV
 uV
 uV
 uV
-Ar
-rg
-rg
-rg
-Ar
 uV
 uV
 uV
 uV
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
@@ -834,43 +744,43 @@ ah
 ah
 uV
 uV
-Ar
-Ar
 uV
 uV
-Ar
-rg
-kF
-rg
-Ar
-Ar
-Ar
-uR
 uV
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
 (4,1,2) = {"
 ah
 uV
-Ar
-rg
-kF
-Ar
-uV
-PL
-Ar
-Ar
-Ar
 uV
 uV
 uV
-Ar
 uV
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
@@ -878,21 +788,21 @@ ah
 ah
 uV
 uV
-Ar
-Ar
-uV
-uV
-PL
-uV
-Ar
 uV
 uV
 uV
 uV
-Ar
 uV
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
@@ -901,173 +811,173 @@ ah
 uV
 uV
 uV
-PL
-uV
-uV
-tq
 uV
 uV
 uV
 uV
 uV
-Ar
-kF
-Ar
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
 (7,1,2) = {"
 ah
-so
-so
-uV
-PL
-uV
-uV
-PL
-uV
-Ar
 uV
 uV
 uV
-Ar
-rg
-Ar
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
 (8,1,2) = {"
-rg
-rg
-kF
-so
 uV
 uV
 uV
-Ar
-Vk
-Ar
-Ar
 uV
 uV
-Ar
-kF
-Ar
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 ah
 "}
 (9,1,2) = {"
-rg
-rg
-rg
-so
 uV
 uV
-Ar
-kF
-wj
-rg
-kF
-Ar
 uV
 uV
-Ar
 uV
 uV
-Ar
-Ar
-Ar
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 "}
 (10,1,2) = {"
-rg
-rg
-rg
-so
 uV
-Ar
-so
-oB
-rg
-nC
-rg
-Ar
-WZ
 uV
-Ar
-Ar
-Ar
-kF
-rg
-rg
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 "}
 (11,1,2) = {"
-rg
-rg
-rg
-so
-uV
-uV
-Ar
-kF
-ZG
-rg
-kF
-Ar
 uV
 uV
 uV
 uV
-Ar
-kF
-rg
-rg
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 "}
 (12,1,2) = {"
-rg
-rg
-kF
-so
-uV
-uV
-uV
-Ar
-Ar
-Ar
-Ar
 uV
 uV
 uV
 uV
 uV
-PL
-Ar
-Ar
-Ar
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 "}
 (13,1,2) = {"
 ah
-so
-so
 uV
 uV
 uV
 uV
-Ar
 uV
 uV
 uV
 uV
-Ar
-Ar
 uV
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 uV
 ah
@@ -1075,21 +985,21 @@ ah
 (14,1,2) = {"
 ah
 uV
-Ar
 uV
 uV
 uV
 uV
-Av
 uV
 uV
-Ar
-Ar
-rg
-rg
-Ar
 uV
-PL
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 uV
 ah
@@ -1097,40 +1007,40 @@ ah
 (15,1,2) = {"
 ah
 uV
-Ar
-Ar
-Ar
+uV
+uV
+uV
 uV
 uV
 Xv
 uV
 uV
 uV
-Ar
-kF
-rg
-Ar
 uV
-PL
+uV
+uV
+uV
+uV
+uV
 uV
 uV
 ah
 "}
 (16,1,2) = {"
 ah
-Ar
-rg
-rg
-rg
-Ar
-Ar
-Ar
-Ar
 uV
 uV
 uV
-Ar
-Ar
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 AC
 AC
 AC
@@ -1140,68 +1050,68 @@ hA
 "}
 (17,1,2) = {"
 ah
-Ar
-rg
-kF
-rg
-Ar
 uV
 uV
-Ar
-Ar
-Ar
 uV
 uV
-Ar
-OZ
-RX
-RX
-RX
-RX
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+AC
+AC
+AC
+AC
+AC
 hA
 "}
 (18,1,2) = {"
 ah
-Ar
-rg
-rg
-rg
-Ar
 uV
-Ar
-rg
-kF
-rg
-Ar
 uV
-Ar
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 AC
-uy
-RX
-RX
-RX
+AC
+AC
+AC
+AC
 hA
 "}
 (19,1,2) = {"
 ah
 uV
-Ar
-Ar
-Ar
 uV
 uV
-Ar
-rg
-rg
-rg
-Ar
+uV
+uV
+uV
+uV
+uV
+uV
+uV
+uV
 uV
 uV
 AC
-nA
-RX
+AC
+AC
 Rl
-to
+AC
 hA
 "}
 (20,1,2) = {"
@@ -1212,11 +1122,11 @@ ah
 ah
 ah
 ah
-rg
-rg
-rg
-rg
-rg
+uV
+uV
+uV
+uV
+uV
 ah
 ah
 hA
