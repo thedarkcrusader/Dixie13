@@ -96,6 +96,8 @@
 
 /datum/action/cooldown/spell/woundlick/cast(mob/living/carbon/human/cast_on)
 	. = ..()
+	if(!istype(cast_on))
+		return
 
 	if(do_after(owner, 7 SECONDS, cast_on))
 		var/ramount = 20
