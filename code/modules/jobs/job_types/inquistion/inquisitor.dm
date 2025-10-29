@@ -40,6 +40,13 @@
 		H?.hud_used?.bloodpool?.name = "Psydon's Grace: [H.bloodpool]"
 		H?.hud_used?.bloodpool?.desc = "Devotion: [H.bloodpool]/[H.maxbloodpool]"
 		H.maxbloodpool = 1000
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Herr Prafekt"
+		if(H.gender == FEMALE)
+			honorary = "Frau Prafekt"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 ////Classic Inquisitor with a much more underground twist. Use listening devices, sneak into places to gather evidence, track down suspicious individuals. Has relatively the same utility stats as Confessor, but fulfills a different niche in terms of their combative job as the head honcho.
 
