@@ -92,9 +92,10 @@
 	W.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
-	W.STASTR = 20
-	W.STACON = 20
-	W.STAEND = 20
+	W.set_stat_modifier("[type]", STATKEY_STR, 20)
+	W.set_stat_modifier("[type]", STATKEY_CON, 20)
+	W.set_stat_modifier("[type]", STATKEY_END, 20)
+
 
 	W.add_spell(/datum/action/cooldown/spell/undirected/howl)
 	W.add_spell(/datum/action/cooldown/spell/undirected/claws)
