@@ -284,6 +284,17 @@
 	new /obj/item/storage/belt/pouch/bullets(src)
 	new /obj/item/reagent_containers/glass/bottle/aflask(src)
 
+/datum/inqports/equipment/lantern
+	name = "3 Iron Lamptern"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/lantern
+	marquescost = 16
+
+/obj/structure/closet/crate/chest/inqcrate/equipment/lantern/Initialize()
+	. = ..()
+	new /obj/item/flashlight/flare/torch/lantern(src)
+	new /obj/item/flashlight/flare/torch/lantern(src)
+	new /obj/item/flashlight/flare/torch/lantern(src)
+
 /datum/inqports/equipment/psydonthorns
 	name = "1 Psydonian Thorns"
 	item_type = /obj/item/clothing/wrists/bracers/psythorns
