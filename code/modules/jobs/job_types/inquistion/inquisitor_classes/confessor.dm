@@ -44,14 +44,14 @@
 			if("Blessed Psydonic Dagger")
 				l_hand = /obj/item/weapon/knife/dagger/silver/psydon
 				r_hand = /obj/item/weapon/scabbard/knife
-				H.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, 4)
+				H.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, 4, TRUE)
 			if("Psydonic Handmace")
 				l_hand = /obj/item/weapon/mace/cudgel/psy
-				H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
+				H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4, TRUE)
 			if("Psydonic Shortsword")
 				l_hand = /obj/item/weapon/sword/short/psy
 				r_hand = /obj/item/weapon/scabbard/sword
-				H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)
+				H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
 		var/armors = list("Confessor - Slurbow, Leather Maillecoat", "Arbalist - Crossbow, Lightweight Brigandine")
 		var/armor_choice = input(H, "Choose your ARCHETYPE.", "TAKE UP PSYDON'S DUTY.") as anything in armors
 		switch(armor_choice)
@@ -65,7 +65,7 @@
 				armor = /obj/item/clothing/armor/brigandine/light
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-				H.clamped_adjust_skillrank(/datum/skill/combat/crossbows, 5, 5)
+				H.clamped_adjust_skillrank(/datum/skill/combat/crossbows, 5, 5, TRUE)
 				H.change_stat(STATKEY_CON, 1)
 				H.change_stat(STATKEY_STR, 2)
 				H.change_stat(STATKEY_PER, 1) //Applies a base statblock of 11/11/11/13 to CON, STR, SPD and PER - compared to the standard 10/9/13/12 + DODGE EXPERT. Physically adept and capable of higher ranged damage..

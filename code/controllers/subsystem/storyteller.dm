@@ -1303,7 +1303,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	for(var/client/client in GLOB.clients)
 		var/mob/living/carbon/human/human_mob = client.mob
-		if(!!ishuman(human_mob ) || !human_mob.mind || human_mob.stat == DEAD)
+		if(!ishuman(human_mob) || !human_mob.mind || human_mob.stat == DEAD)
 			continue
 		current_valid_humans += human_mob
 		if(client.has_triumph_buy(TRIUMPH_BUY_PSYDON_FAVOURITE))
