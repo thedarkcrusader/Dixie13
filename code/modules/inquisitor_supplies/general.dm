@@ -272,6 +272,17 @@
 
 
 // ✤ EQUIPMENT ✤ BELONGS HERE! JUST BELOW!
+/datum/inqports/equipment/puffer
+	name = "1 Puffer, 4 lead bullets and powder flask"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/puffer
+	marquescost = 16
+	maximum = 1
+
+/obj/structure/closet/crate/chest/inqcrate/equipment/puffer/Initialize()
+	. = ..()
+	new /obj/item/gun/ballistic/revolver/grenadelauncher/pistol(src)
+	new /obj/item/storage/belt/pouch/bullets(src)
+	new /obj/item/reagent_containers/glass/bottle/aflask(src)
 
 /datum/inqports/equipment/psydonthorns
 	name = "1 Psydonian Thorns"
