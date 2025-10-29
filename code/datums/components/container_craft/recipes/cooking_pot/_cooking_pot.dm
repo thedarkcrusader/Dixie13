@@ -104,7 +104,7 @@
 	var/average_freshness = (ingredient_count > 0) ? (total_freshness / ingredient_count) : 0
 
 	// Get the initiator's cooking skill
-	var/cooking_skill = initiator.get_skill_level(/datum/skill/craft/cooking)
+	var/cooking_skill = initiator.get_skill_level(/datum/skill/craft/cooking) + initiator.get_inspirational_bonus()
 
 	// Use the quality calculator to determine final quality
 	var/datum/quality_calculator/cooking/cook_calc = new(
@@ -165,7 +165,7 @@
 			reagent.metabolization_rate *= 1.2 // Metabolizes faster (less effective)
 
 		if(2) // Standard quality
-			// No modifications - baseline
+			EMPTY_BLOCK_GUARD // No modifications - baseline
 
 		if(3) // High quality
 			// High quality is more effective

@@ -472,6 +472,7 @@
 	spill_embedded_objects()
 	set_heartattack(FALSE)
 	drunkenness = 0
+	set_hygiene(HYGIENE_LEVEL_NORMAL)
 	..()
 
 /mob/living/carbon/human/check_weakness(obj/item/weapon, mob/living/attacker)
@@ -505,6 +506,8 @@
 	VV_DROPDOWN_OPTION("", "---------")
 	VV_DROPDOWN_OPTION(VV_HK_COPY_OUTFIT, "Copy Outfit")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
+	VV_DROPDOWN_OPTION(VV_HK_CORONATE, "Coronate")
+	VV_DROPDOWN_OPTION(VV_HK_CHANGE_TITLE, "Change Title")
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -520,6 +523,54 @@
 			var/newtype = GLOB.species_list[result]
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
 			set_species(newtype)
+	if(href_list[VV_HK_CORONATE])
+		if(!src.mind)
+			return
+		if(is_lord_job(mind.assigned_role))
+			return
+
+		var/appointment_type = browser_alert(usr, "Are you sure you want to coronate [src.real_name] as the new Monarch?", "Confirmation", DEFAULT_INPUT_CHOICES)
+		if(appointment_type == CHOICE_NO)
+			return
+
+		var/mob/living/carbon/coronated
+		coronated = src
+
+		var/datum/job/lord_job = SSjob.GetJobType(/datum/job/lord)
+		var/datum/job/consort_job = SSjob.GetJobType(/datum/job/consort)
+		for(var/mob/living/carbon/human/HL in GLOB.human_list)
+			//this sucks ass. refactor to locate the current ruler/consort
+			if(HL.mind)
+				if(is_lord_job(HL.mind.assigned_role) || is_consort_job(HL.mind.assigned_role))
+					HL.mind.set_assigned_role(SSjob.GetJobType(/datum/job/villager))
+			//would be better to change their title directly, but that's not possible since the title comes from the job datum
+			if(HL.job == "Monarch")
+				HL.job = "Ex-Monarch"
+				lord_job?.remove_spells(HL)
+			if(HL.job == "Consort")
+				HL.job = "Ex-Consort"
+				consort_job?.remove_spells(HL)
+
+		var/new_title = (coronated.gender == MALE) ? SSmapping.config.monarch_title : SSmapping.config.monarch_title_f
+		coronated.mind.set_assigned_role(/datum/job/lord)
+		lord_job?.get_informed_title(coronated, TRUE, new_title)
+		coronated.job = "Monarch" //Monarch is used when checking if the ruler is alive, not "King" or "Queen". Can also pass it on and have the title change properly later.
+		lord_job?.add_spells(coronated)
+		SSticker.rulermob = coronated
+		GLOB.badomens -= OMEN_NOLORD
+		priority_announce("The Ten have named [coronated.real_name] the inheritor of [SSmapping.config.map_name]!", \
+		title = "Long Live [lord_job.get_informed_title(coronated)] [coronated.real_name]!", sound = 'sound/misc/bell.ogg')
+	if(href_list[VV_HK_CHANGE_TITLE])
+		if(!mind?.assigned_role)
+			return
+		var/datum/job/human_job = mind.assigned_role
+		var/new_title = browser_input_text(usr, "What new title would you like to assign?", "Title Change")
+		if(!new_title)
+			return
+		admin_title = new_title
+		if(is_lord_job(human_job))
+			var/datum/job/lord_job = SSjob.GetJobType(/datum/job/lord)
+			lord_job?.get_informed_title(src, TRUE, new_title)
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
 	if(pulling == target && stat == CONSCIOUS)
@@ -692,7 +743,6 @@
 	updateappearance(mutcolor_update = TRUE)
 
 	job = target.job // NOT assigned_role
-	migrant_type = target.migrant_type
 	faction = target.faction
 	deathsound = target.deathsound
 	gender = target.gender
@@ -709,13 +759,12 @@
 	undershirt = target.undershirt
 	shavelevel = target.shavelevel
 	socks = target.socks
-	advjob = target.advjob
 	spouse_mob = target.spouse_mob
 	spouse_indicator = target.spouse_indicator
 	has_stubble = target.has_stubble
 	headshot_link = target.headshot_link
 	flavortext = target.flavortext
-	bloodpool = target.bloodpool
+	set_bloodpool(target.bloodpool)
 
 	var/obj/item/bodypart/head/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(!isnull(target_head))
@@ -803,7 +852,10 @@
 				GLOB.weatherproof_z_levels |= "[turf.z]"
 		if("[turf.z]" in GLOB.weatherproof_z_levels)
 			faction |= FACTION_MATTHIOS
-			SSmobs.matthios_mobs |= src
+			SSmatthios_mobs.register_mob(src)
+		if(SSterrain_generation.get_island_at_location(turf))
+			faction |= "islander"
+			SSisland_mobs.register_mob(src, SSterrain_generation.get_island_at_location(turf))
 
 /**
  * Called when this human should be washed

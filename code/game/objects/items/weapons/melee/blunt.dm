@@ -368,7 +368,6 @@
 	sellprice = 15
 	wdefense = MEDIOCRE_PARRY
 
-
 /obj/item/weapon/mace/cudgel/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -377,6 +376,33 @@
 				return list("shrink" = 0.5,"sx" = -8,"sy" = -7,"nx" = 10,"ny" = -7,"wx" = -1,"wy" = -8,"ex" = 1,"ey" = -7,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 91,"sturn" = -90,"wturn" = -90,"eturn" = 90,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -3,"sy" = -4,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 70,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
+
+/obj/item/weapon/mace/cudgel/psy
+	name = "psydonian handmace"
+	desc = "A shorthanded mace, a convenient sleeping aid, or a means to root out heresy. It's all in the wrist."
+	resistance_flags = FIRE_PROOF
+	icon_state = "psyflangedmace"
+	wdefense = 2
+
+/obj/item/weapon/mace/cudgel/psy/Initialize(mapload)
+	. = ..()
+	// +3 force, +100 blade int, +50 int, +1 def, make silver
+	AddComponent(/datum/component/psyblessed, FALSE, 3, 100, 50, 1, TRUE)
+
+/obj/item/weapon/mace/cudgel/psy/preblessed
+
+/obj/item/weapon/mace/cudgel/psy/preblessed/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/psyblessed, TRUE, 3, 100, 50, 1, TRUE)
+
+/obj/item/weapon/mace/cudgel/shellrungu
+	name = "shell rungu"
+	desc = "A ceremonial rungu carved out of clam shell. Not intended for combat. Its used in various Sea and Coastal Elven rituals and ceremonies."
+	icon = 'icons/roguetown/gems/gem_shell.dmi'
+	icon_state = "rungu_shell"
+
+	max_integrity = INTEGRITY_POOR
+	sellprice = 35
 
 //................ Alt cudgel ............... //
 /obj/item/weapon/mace/cudgel/carpenter

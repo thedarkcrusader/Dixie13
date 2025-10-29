@@ -54,14 +54,14 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POINT_THRESHOLD,
 		EVENT_TRACK_INTERVENTION = MAJOR_POINT_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POINT_THRESHOLD,
-		EVENT_TRACK_OMENS = MUNDANE_POINT_THRESHOLD,
+		EVENT_TRACK_OMENS = MUNDANE_POINT_THRESHOLD * 1.5,
 		EVENT_TRACK_RAIDS = OBJECTIVES_POINT_THRESHOLD * 2,
 		)
 
 	/// Minimum population thresholds for the tracks to fire off events.
 	var/list/min_pop_thresholds = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_MIN_POP,
-		EVENT_TRACK_PERSONAL = MODERATE_MIN_POP,
+		EVENT_TRACK_PERSONAL = MUNDANE_MIN_POP,
 		EVENT_TRACK_MODERATE = MODERATE_MIN_POP,
 		EVENT_TRACK_INTERVENTION = MAJOR_MIN_POP,
 		EVENT_TRACK_CHARACTER_INJECTION = CHARACTER_INJECTION_MIN_POP,
@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_OMENS = MUNDANE_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_OMENS = MAJOR_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_RAIDS = RAID_POP_SCALE_THRESHOLD,
 		)
 
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_PENALTY,
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_PENALTY,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_PENALTY,
-		EVENT_TRACK_OMENS = MUNDANE_POP_SCALE_PENALTY,
+		EVENT_TRACK_OMENS = MAJOR_POP_SCALE_PENALTY,
 		EVENT_TRACK_RAIDS = RAID_POP_SCALE_PENALTY,
 		)
 
@@ -706,14 +706,15 @@ SUBSYSTEM_DEF(gamemode)
 		if(!ishuman(player_mob))
 			continue
 		active_players++
-		if(player_mob.mind?.assigned_role)
-			if(player_mob.mind.job_bitflag & BITFLAG_ROYALTY)
+		var/datum/job/assigned = player_mob.mind?.assigned_role
+		if(assigned)
+			if(assigned.job_bitflag & BITFLAG_ROYALTY)
 				royalty++
-			if(player_mob.mind.job_bitflag & BITFLAG_CONSTRUCTOR)
+			if(assigned.job_bitflag & BITFLAG_CONSTRUCTOR)
 				constructor++
-			if(player_mob.mind.job_bitflag & BITFLAG_CHURCH)
+			if(assigned.job_bitflag & BITFLAG_CHURCH)
 				church++
-			if(player_mob.mind.job_bitflag & BITFLAG_GARRISON)
+			if(assigned.job_bitflag & BITFLAG_GARRISON)
 				garrison++
 	update_pop_scaling()
 
@@ -755,13 +756,7 @@ SUBSYSTEM_DEF(gamemode)
 		for(var/type in subtypesof(/datum/storyteller))
 			storytellers[type] = new type()
 
-	for(var/storyteller_name in storytellers)
-		var/datum/storyteller/initialized_storyteller = storytellers[storyteller_name]
-		if(initialized_storyteller?.ascendant)
-			to_chat(world, "<br>")
-			to_chat(world, span_reallybig("[initialized_storyteller.name] is ascendant!"))
-			to_chat(world, "<br>")
-
+	handle_god_ascensions()
 	pick_most_influential(TRUE)
 	calculate_ready_players()
 	roll_pre_setup_points()
@@ -864,7 +859,7 @@ SUBSYSTEM_DEF(gamemode)
 /// Loads config values from game_options.txt
 /datum/controller/subsystem/gamemode/proc/load_config_vars()
 	point_gain_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_point_gain_multiplier)
-	point_gain_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/moderate_point_gain_multiplier) * 1.25
+	point_gain_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/mundane_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_gain_multiplier)
@@ -872,7 +867,7 @@ SUBSYSTEM_DEF(gamemode)
 	point_gain_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	roundstart_point_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_PERSONAL] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_roundstart_point_multiplier)
@@ -884,7 +879,7 @@ SUBSYSTEM_DEF(gamemode)
 	min_pop_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_min_pop)
 	min_pop_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_min_pop)
 	min_pop_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_min_pop)
-	min_pop_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_min_pop)
+	min_pop_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/major_min_pop)
 	min_pop_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_min_pop)
 
 	point_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_point_threshold)
@@ -892,7 +887,7 @@ SUBSYSTEM_DEF(gamemode)
 	point_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_point_threshold)
 	point_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_threshold)
 	point_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_threshold)
-	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_point_threshold)
+	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/mundane_point_threshold) * 1.5
 	point_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_threshold) * 2
 
 /datum/controller/subsystem/gamemode/proc/handle_picking_storyteller()
@@ -1021,7 +1016,9 @@ SUBSYSTEM_DEF(gamemode)
 				var/next = 0
 				var/last_points = last_point_gains[track]
 				if(last_points)
-					next = round(((upper - lower) / last_points / STORYTELLER_WAIT_TIME))
+					var/points_per_second = last_points / (STORYTELLER_WAIT_TIME / 10)
+					if(points_per_second > 0)
+						next = round((upper - lower) / points_per_second)
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 				dat += "<td>[track] - [last_points] per process.</td>" //Track
 				dat += "<td>[percent]% ([lower]/[upper])</td>" //Progress
@@ -1349,7 +1346,7 @@ SUBSYSTEM_DEF(gamemode)
 	if(!highest)
 		return
 
-	var/adjustment = min(3, 1 + (0.4 * FLOOR(max(0, highest.times_chosen - 5) / 5, 1)))
+	var/adjustment = min(3, 1 + (0.4 * FLOOR(max(0, highest.times_chosen - 4) / 4, 1)))
 
 	if(storytellers_with_influence[highest] > adjustment)
 		highest.bonus_points -= adjustment
@@ -1395,6 +1392,7 @@ SUBSYSTEM_DEF(gamemode)
 		STATS_VAMPIRES,
 		STATS_DEADITES_ALIVE,
 		STATS_CLINGY_PEOPLE,
+		STATS_HUNTED_PEOPLE,
 		STATS_ALCOHOLICS,
 		STATS_JUNKIES,
 		STATS_KLEPTOMANIACS,
@@ -1520,6 +1518,8 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_KLEPTOMANIACS)
 			if(human_mob.has_flaw(/datum/charflaw/greedy))
 				record_round_statistic(STATS_GREEDY_PEOPLE)
+			if(human_mob.has_flaw(/datum/charflaw/hunted))
+				record_round_statistic(STATS_HUNTED_PEOPLE)
 			if(HAS_TRAIT_NOT_FROM(human_mob, TRAIT_PACIFISM, "hugbox"))
 				record_round_statistic(STATS_PACIFISTS)
 			if(human_mob.family_datum && human_mob.family_member_datum)
@@ -1595,42 +1595,42 @@ SUBSYSTEM_DEF(gamemode)
 				highest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_RICHEST_PERSON, human_mob, "MAGNATE", "#d8dd90", "[wealth] mammons")
 
-			if(!lowest_total_stats)
+			if(isnull(lowest_total_stats))
 				lowest_total_stats = total_stats
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_SKILLS_PERSON, human_mob, "HOPELESS", "#8a8887", "[total_stats] total stats")
 			else if(total_stats < lowest_total_stats)
 				lowest_total_stats = total_stats
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_SKILLS_PERSON, human_mob, "HOPELESS", "#8a8887", "[total_stats] total stats")
 
-			if(!lowest_strength)
+			if(isnull(lowest_strength))
 				lowest_strength = human_mob.STASTR
 				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
 			else if(human_mob.STASTR < lowest_strength)
 				lowest_strength = human_mob.STASTR
 				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
 
-			if(!lowest_intelligence)
+			if(isnull(lowest_intelligence))
 				lowest_intelligence = human_mob.STAINT
 				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
 			else if(human_mob.STAINT < lowest_intelligence)
 				lowest_intelligence = human_mob.STAINT
 				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
 
-			if(!lowest_speed)
+			if(isnull(lowest_speed))
 				lowest_speed = human_mob.STASPD
 				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
 			else if(human_mob.STASPD < lowest_speed)
 				lowest_speed = human_mob.STASPD
 				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
 
-			if(!lowest_luck)
+			if(isnull(lowest_luck))
 				lowest_luck = human_mob.STALUC
 				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
 			else if(human_mob.STALUC < lowest_luck)
 				lowest_luck = human_mob.STALUC
 				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
 
-			if(!lowest_wealth)
+			if(isnull(lowest_wealth))
 				lowest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_POOREST_PERSON, human_mob, "PAUPER", "#909c63", "[wealth] mammons")
 			else if(wealth < lowest_wealth)
@@ -1663,20 +1663,25 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/follower_count = GLOB.patron_follower_counts[initialized_storyteller.name] || 0
 	var/base_mod = initialized_storyteller.follower_modifier
-	var/diminish_threshold = 4
-	var/second_diminish_threshold = 9
+	var/diminish_threshold = 3
+	var/second_diminish_threshold = 6
 	var/min_mod = 15
 	var/second_min_mod = 10
 
 	// Calculate total influence with diminishing returns
 	var/total_influence = 0
+	var/current_penalty = 0
+
 	for(var/i in 1 to follower_count)
 		if(i <= diminish_threshold)
 			total_influence += base_mod
+			current_penalty = 0
 		else if(i <= second_diminish_threshold)
-			total_influence += max(min_mod, base_mod - (i - diminish_threshold))
+			current_penalty += 1
+			total_influence += max(min_mod, base_mod - current_penalty)
 		else
-			total_influence += max(second_min_mod, base_mod - (i - diminish_threshold))
+			current_penalty += 2
+			total_influence += max(second_min_mod, base_mod - current_penalty)
 
 	total_influence = total_influence * initialized_storyteller.influence_modifier
 

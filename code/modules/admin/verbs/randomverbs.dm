@@ -719,6 +719,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_HUNTED,
 		ADMIN_PUNISHMENT_MEATPIE,
 		ADMIN_PUNISHMENT_GODHAND,
+		ADMIN_PUNISHMENT_FORCECOLLAR,
+		ADMIN_PUNISHMENT_PSYDON,
 	)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in sortList(punishment_list)
@@ -739,6 +741,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
 			target.gib(FALSE)
+		if(ADMIN_PUNISHMENT_PSYDON)
+			sleep(60)
+			target.psydo_nyte()
+			target.playsound_local(target, 'sound/misc/psydong.ogg', 100, FALSE)
+			sleep(20)
+			target.psydo_nyte()
+			target.playsound_local(target, 'sound/misc/psydong.ogg', 100, FALSE)
+			sleep(15)
+			target.psydo_nyte()
+			target.playsound_local(target, 'sound/misc/psydong.ogg', 100, FALSE)
+			sleep(10)
+			target.gib(FALSE)
+
 		if(ADMIN_PUNISHMENT_BSA)
 			bluespace_artillery(target)
 		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
@@ -822,6 +837,27 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(!typepath_choice)
 				return
 			target.be_taken_with_hand_of_god(hands[typepath_choice])
+		if(ADMIN_PUNISHMENT_FORCECOLLAR)
+			if(!ishuman(target))
+				to_chat(usr, span_warning("Target must be human!"))
+				return
+			var/static/list/collar = list(
+				"Bell Collar" = /obj/item/clothing/neck/bellcollar,
+				"Leather Collar" = /obj/item/clothing/neck/leathercollar,
+			)
+			var/typepath_choice = browser_input_list(src, "Inflict Suffering", "What kind?", collar) // Hopefully just copying and pasting actual code works <3
+			if(!typepath_choice)
+				return
+			var/mob/living/carbon/human/H = target
+			if(H.wear_neck)
+				var/obj/I = H.wear_neck
+				target.dropItemToGround(I, TRUE)
+			var/typepath = collar[typepath_choice]
+			var/obj/created_collar = new typepath (get_turf(target))
+			H.equip_to_slot(created_collar, ITEM_SLOT_NECK)
+			ADD_TRAIT(created_collar, TRAIT_NODROP, "adminabuse")
+			to_chat(target, span_userdanger("A ring of darkness restrains my neck, and a collar is made manifest!"))
+			H.add_stress(/datum/stress_event/collarcurse)
 
 	punish_log(target, punishment)
 
@@ -932,3 +968,38 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)
+
+/client/proc/send_bird_letter(mob/M in GLOB.player_list)
+	set name = "Send Messenger Bird Letter"
+	set category = "Special"
+
+	if(!ismob(M))
+		return
+	if(!check_rights(R_ADMIN))
+		return
+
+	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s letter.")
+
+	var/msg = input("Message:", text("Letter to [M.key]")) as message|null
+	if(!msg)
+		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s letter.")
+		return
+
+	var/obj/item/paper/letter = new /obj/item/paper()
+	letter.clearpaper()
+	var/penned_msg = letter.parsepencode(msg, new /obj/item/natural/feather())
+	letter.info = penned_msg
+	letter.updateinfolinks()
+	letter.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+
+	if(M.put_in_hands(letter))
+		to_chat(M, "<span class='notice'>A messenger bird drops a letter in your hand!</span>")
+	else
+		letter.loc = get_turf(M)
+		to_chat(M, "<span class='notice'>A messenger bird drops a letter at your feet!</span>")
+
+	playsound(M, 'sound/vo/mobs/bird/birdfly.ogg', 100, FALSE, -1)
+	log_admin("Letter: [key_name(usr)] -> [key_name(M)] : [msg]")
+	message_admins(span_adminnotice("Messenger Bird Letter: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]"))
+	log_game("LETTER RECEIVED: [key_name(usr)] -> [key_name(M)]: \n[msg]")
+	SSblackbox.record_feedback("tally", "admin_verb_send_messenger_bird", 1, "Messenger Bird Letter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

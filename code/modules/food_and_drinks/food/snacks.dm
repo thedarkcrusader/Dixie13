@@ -360,7 +360,7 @@ All foods are distributed among various categories. Use common sense.
 	return
 
 /obj/item/reagent_containers/food/snacks/attack(mob/living/M, mob/living/user, def_zone)
-	if(user.used_intent.type != /datum/intent/food)
+	if(user.used_intent.type != /datum/intent/food && (!(M == user) && isanimal(M)))
 		return ..()
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
@@ -436,6 +436,7 @@ All foods are distributed among various categories. Use common sense.
 			playsound(M.loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			if(reagents.total_volume)
 				SEND_SIGNAL(src, COMSIG_FOOD_EATEN, M, user)
+				SEND_SIGNAL(M, COMSIG_MOB_FOOD_EAT, src)
 				var/fraction = min(bitesize / reagents.total_volume, 1)
 				var/amt2take = reagents.total_volume / (bitesize - bitecount)
 				if((bitecount >= bitesize) || (bitesize == 1))
@@ -450,6 +451,11 @@ All foods are distributed among various categories. Use common sense.
 		playsound(M.loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 		qdel(src)
 		return FALSE
+	else if(isanimal(M))
+		var/mob/living/simple_animal/animal = M
+		if(animal.eat_food(src))
+			animal.eat_food_after(src)
+			return TRUE
 
 	return ..()
 

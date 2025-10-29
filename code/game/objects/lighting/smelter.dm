@@ -16,7 +16,7 @@
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
 	var/max_crucible_temperature = 1850
-	fueluse = 5 MINUTES
+	fueluse = 30 MINUTES
 	crossfire = FALSE
 
 /obj/machinery/light/fueled/smelter/attackby(obj/item/W, mob/living/user, params)
@@ -198,7 +198,7 @@
 
 					if(steelalloy == 7)
 						maxore = 3
-						alloy = /obj/item/ingot/steel
+						alloy = /obj/item/ingot/steel_slag
 					else if(bronzealloy == 7)
 						alloy = /obj/item/ingot/bronze
 					else if(blacksteelalloy == 7)

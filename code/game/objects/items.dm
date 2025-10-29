@@ -83,6 +83,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/permeability_coefficient = 1 // for chemicals/diseases
 	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
+	var/surgery_cover = TRUE // binary, whether this item is considered covering its bodyparts in respect to surgery. Tattoos, etc. are false.
 	// How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown = 0
 	// Value of armour effectiveness to remove. Since armor values can go over 100, this is no longer a percentage.
@@ -166,6 +167,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/alt_intents //these replace main intents
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
 	var/gripspriteonmob = FALSE //use alternate sprite for onmob
+	var/wieldsound = FALSE
 
 	/// Item will be scaled by this factor when on the ground.
 	var/dropshrink = 0
@@ -277,6 +279,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	///the processing quality we have
 	var/recipe_quality = 1
 
+	// Lock related
+
+	// This sucks but I can see it being useful
+	/// This thing can be used to unlock locks
+	var/can_unlock = TRUE
+
+	///do we block the offhand while wielding
+	var/wield_block = TRUE
 
 /obj/item/proc/set_quality(quality)
 	recipe_quality = clamp(quality, 0, 4)
@@ -319,7 +329,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/apply_components()
 	if(force_wielded || gripped_intents)
 		var/wielded_force = force_wielded ? force_wielded : force
-		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), wield_blocking = wield_block)
 
 /obj/item/proc/get_detail_tag() //this is for extra layers on clothes
 	return detail_tag
@@ -645,6 +655,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/attempt_pickup(mob/user)
 	. = TRUE
+	if(HAS_TRAIT(src, TRAIT_NEEDS_QUENCH))
+		to_chat(user, "<span class='warning'>[src] is too hot to touch.</span>")
+		return
 
 	if(resistance_flags & ON_FIRE)
 		var/mob/living/carbon/C = user
@@ -678,14 +691,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(!(interaction_flags_item & INTERACT_ITEM_ATTACK_HAND_PICKUP))		//See if we're supposed to auto pickup.
 		return
-
-	//Heavy gravity makes picking up things very slow.
-	var/grav = user.has_gravity()
-	if(grav > STANDARD_GRAVITY)
-		var/grav_power = min(3,grav - STANDARD_GRAVITY)
-		to_chat(user,"<span class='notice'>I start picking up [src]...</span>")
-		if(!do_after(user, (3 SECONDS * grav_power), src))
-			return
 
 	if(SEND_SIGNAL(loc, COMSIG_STORAGE_BLOCK_USER_TAKE, src, user, TRUE))
 		return
@@ -1322,7 +1327,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	wdefense += 1
-	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
+	if(!wieldsound)
+		playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
 	user.update_a_intents()
 
 /obj/item/proc/on_unwield(obj/item/source, mob/living/carbon/user)
@@ -1457,7 +1463,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		/obj/item/gem/green,
 		/obj/item/gem/diamond,
 		/obj/item/gem/blue,
-		/obj/item/gem/black
 	)
 
 	for(var/i = 1 to socket_count)
@@ -1471,3 +1476,26 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	return new_item
 
+/obj/item/examine(mob/user)
+	. = ..()
+	if(!get_precursor_data(src))
+		return
+	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
+	var/datum/natural_precursor/precursor = get_precursor_data(src)
+	if(precursor)
+		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
+			var/amount = precursor.essence_yields[essence]
+			var/smell = initial(essence.smells_like)
+			switch(amount)
+				if(15 to 100)
+					if(alch_skill >= SKILL_LEVEL_NOVICE)
+						. += span_notice(" Smells intensely of [smell].")
+				if(10 to 14)
+					if(alch_skill >= SKILL_LEVEL_APPRENTICE)
+						. += span_notice(" Smells strongly of [smell].")
+				if(5 to 9)
+					if(alch_skill >= SKILL_LEVEL_JOURNEYMAN)
+						. += span_notice(" Smells slightly of [smell].")
+				if(1 to 4)
+					if(alch_skill >= SKILL_LEVEL_EXPERT)
+						. += span_notice(" Smells faintly of [smell].")

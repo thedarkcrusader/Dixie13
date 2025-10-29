@@ -28,8 +28,16 @@
 	uses_lord_coloring = LORD_PRIMARY
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
-//THE ARMOUR VALUES OF ADVANCED AND MASTERWORK TROUSERS ARE INTENDED
-//KEEP THIS IN MIND
+/obj/item/clothing/pants/trou/leather/splint
+	name = "splint plate trousers"
+	desc = "Affordable armored pants for regular soldiers, they seem simple and their craftmanship is solid, makes sure all stays in place with a plated codpiece."
+	icon_state = "splintlegs"
+	armor = ARMOR_MAILLE_IRON
+	max_integrity = INTEGRITY_STANDARD
+
+/obj/item/clothing/pants/trou/leather/guard
+	uses_lord_coloring = LORD_PRIMARY
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/pants/trou/leather/advanced
 	name = "hardened leather chausses"
@@ -51,6 +59,15 @@
 	max_integrity = 175
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP)
 	armor = list("blunt" = 65, "slash" = 50, "stab" = 25, "piercing" = 25,"fire" = 0, "acid" = 0)
+
+/obj/item/clothing/pants/trou/leather/quiltedkilt/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
+/obj/item/clothing/pants/trou/leather/quiltedkilt/colored/blue
+	color = CLOTHING_SKY_BLUE
+
+/obj/item/clothing/pants/trou/leather/quiltedkilt/colored/linen
+	color = CLOTHING_LINEN
 
 /obj/item/clothing/pants/trou/leather/masterwork
 	name = "masterwork leather chausses"

@@ -12,19 +12,22 @@
 	min_pq = 8
 	bypass_lastclass = TRUE
 
-	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+// Medicators and Tritons are hallowed in the eyes of the Ten, no matter how much Astrata dislikes it, Harpies do not get to be templars because they literally cannot wear plate armour nor lift their weapons.
+	allowed_races = RACES_TEMPLAR
+
+
 	allowed_patrons = ALL_TEMPLAR_PATRONS
 
-	outfit = /datum/outfit/job/templar
+	outfit = /datum/outfit/templar
 	give_bank_account = 0
 
-/datum/outfit/job/templar
-	name = "Templar"
-	jobtype = /datum/job/templar
 	allowed_patrons = ALL_TEMPLAR_PATRONS
 	job_bitflag = BITFLAG_CHURCH
 
-/datum/outfit/job/templar/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/templar
+	name = "Templar"
+
+/datum/outfit/templar/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/heavy/necked
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
@@ -49,8 +52,8 @@
 	H.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-	H.change_stat(STATKEY_STR, 3)
-	H.change_stat(STATKEY_CON, 4)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_CON, 2)
 	H.change_stat(STATKEY_END, 2)
 	H.change_stat(STATKEY_SPD, -1)
 	if(!H.has_language(/datum/language/celestial)) // For discussing church matters with the other Clergy
@@ -64,7 +67,7 @@
 			H.cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if(/datum/patron/divine/noc)
-			wrists = /obj/item/clothing/neck/psycross/noc
+			wrists = /obj/item/clothing/neck/psycross/silver/noc
 			head = /obj/item/clothing/head/helmet/heavy/necked/noc
 			cloak = /obj/item/clothing/cloak/stabard/templar/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
@@ -83,7 +86,7 @@
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)//accustomed to death
+			ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)//accustomed to death
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/psycross/silver/pestra
 			head = /obj/item/clothing/head/helmet/heavy/necked/pestrahelm
@@ -105,7 +108,7 @@
 			wrists = /obj/item/clothing/neck/psycross/silver/ravox
 			head = /obj/item/clothing/head/helmet/heavy/necked/ravox
 			cloak = /obj/item/clothing/cloak/stabard/templar/ravox
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if(/datum/patron/divine/malum)
 			wrists = /obj/item/clothing/neck/psycross/silver/malum
@@ -123,7 +126,7 @@
 			wrists = /obj/item/clothing/neck/psycross/silver/xylix
 			head = /obj/item/clothing/head/helmet/heavy/necked/xylix
 			cloak = /obj/item/clothing/cloak/stabard/templar/xylix
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -138,7 +141,7 @@
 		if(H.dna.species.id == SPEC_ID_HUMEN)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-/datum/outfit/job/templar/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/templar/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	switch(H.patron?.type) //this is a ridiculous way of doing it and it is annoying.
 		if(/datum/patron/divine/astrata)

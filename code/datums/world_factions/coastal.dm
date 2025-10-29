@@ -2,13 +2,13 @@
 	mob_species = /datum/species/demihuman
 
 /obj/effect/mob_spawn/human/demi/trader
-	outfit = /datum/outfit/job/bard
+	outfit = /datum/outfit/bard
 
 /obj/effect/mob_spawn/human/elf
 	mob_species = /datum/species/elf/snow
 
 /obj/effect/mob_spawn/human/elf/trader
-	outfit = /datum/outfit/job/bard
+	outfit = /datum/outfit/bard
 
 /datum/world_faction/coastal_merchants
 	faction_name = "Coastal Trade Union"
@@ -76,6 +76,8 @@
 		/datum/supply_pack/seeds/apple,
 		/datum/supply_pack/seeds/blackberry,
 		/datum/supply_pack/seeds/rasberry,
+		/datum/supply_pack/seeds/avocado,
+		/datum/supply_pack/seeds/pineapple,
 		// Livestock - coastal communities
 		/datum/supply_pack/livestock/chicken,
 		/datum/supply_pack/livestock/cat
@@ -103,6 +105,7 @@
 		/datum/supply_pack/jewelry/nomag,
 		// Seeds
 		/datum/supply_pack/seeds/tangerine,
+		/datum/supply_pack/seeds/mango,
 		// Livestock - more valuable
 		/datum/supply_pack/livestock/saiga,
 		/datum/supply_pack/livestock/cow,
@@ -141,6 +144,8 @@
 		/datum/supply_pack/luxury/spectacles_golden,
 		// Seeds
 		/datum/supply_pack/seeds/pear,
+		/datum/supply_pack/seeds/mangosteen,
+		/datum/supply_pack/seeds/dragonfruit,
 		/datum/supply_pack/seeds/poppy
 	)
 	exotic_pool = list(

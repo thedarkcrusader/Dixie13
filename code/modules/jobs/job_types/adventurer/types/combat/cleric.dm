@@ -1,21 +1,17 @@
 //shield
-/datum/advclass/combat/cleric
-	name = "Cleric"
+/datum/job/advclass/combat/cleric
+	title = "Cleric"
 	tutorial = "Clerics are wandering warriors of the Gods, \
 	drawn from the ranks of temple acolytes who demonstrated martial talent. \
 	Protected by armor and zeal, they are a force to be reckoned with."
 	allowed_races = RACES_PLAYER_NONHERETICAL
-	vampcompat = FALSE
-	outfit = /datum/outfit/job/adventurer/cleric
+	outfit = /datum/outfit/adventurer/cleric
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 0
-	maximum_possible_slots = 4
+	total_positions = 4
 	allowed_patrons = ALL_CLERIC_PATRONS
 
-/datum/outfit/job/adventurer/cleric
-	allowed_patrons = ALL_CLERIC_PATRONS
-
-/datum/outfit/job/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
@@ -54,7 +50,7 @@
 			wrists = /obj/item/clothing/neck/psycross/silver/necra
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
-			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)//accustomed to death
+			ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)//accustomed to death
 			backr = /obj/item/weapon/shield/heater
 			if(iself(H) || ishalfelf(H))
 				beltl = /obj/item/weapon/mace/elvenclub
@@ -78,12 +74,12 @@
 		if(/datum/patron/divine/ravox)
 			wrists = /obj/item/clothing/neck/psycross/silver/ravox
 			cloak =  /obj/item/clothing/cloak/stabard/templar/ravox
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 			backr = /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 			H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		if(/datum/patron/divine/noc)
-			wrists = /obj/item/clothing/neck/psycross/noc
+			wrists = /obj/item/clothing/neck/psycross/silver/noc
 			cloak = /obj/item/clothing/cloak/stabard/templar/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			backr = /obj/item/weapon/shield/heater
@@ -115,7 +111,7 @@
 		if(/datum/patron/divine/xylix)
 			wrists = /obj/item/clothing/neck/psycross/silver/xylix
 			cloak = /obj/item/clothing/cloak/stabard/templar/xylix
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
 			backr = /obj/item/weapon/shield/heater
 			beltl = /obj/item/weapon/flail
 			H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)

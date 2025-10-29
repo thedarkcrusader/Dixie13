@@ -28,6 +28,86 @@
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
+/obj/item/clothing/neck/jadeamulet
+	name = "joapstone amulet"
+	icon_state = "amulet_jade"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 60
+
+/obj/item/clothing/neck/turqamulet
+	name = "ceruleabaster amulet"
+	icon_state = "amulet_turq"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 85
+
+/obj/item/clothing/neck/onyxaamulet
+	name = "onyxa amulet"
+	icon_state = "amulet_onyxa"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 40
+
+/obj/item/clothing/neck/coralamulet
+	name = "aoetal amulet"
+	icon_state = "amulet_coral"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 70
+
+/obj/item/clothing/neck/amberamulet
+	name = "petriamber amulet"
+	icon_state = "amulet_amber"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 60
+
+/obj/item/clothing/neck/opalamulet
+	name = "opaloise amulet"
+	icon_state = "amulet_opal"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 90
+
+/obj/item/clothing/neck/roseamulet
+	name = "rosellusk amulet"
+	icon_state = "amulet_rose"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 25
+
+/obj/item/clothing/neck/shellamulet
+	name = "shell amulet"
+	icon_state = "amulet_shell"
+	slot_flags = ITEM_SLOT_NECK
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sellprice = 25
+
 /obj/item/clothing/neck/coif
 	name = "leather coif"
 	desc = "A simple coif made of boiled leather, not that good as armor itself but mostly useful as padding for proper helmets."
@@ -75,6 +155,10 @@
 					H.update_inv_neck()
 					H.update_inv_head()
 		user.regenerate_clothes()
+
+/obj/item/clothing/neck/coif/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
 /obj/item/clothing/neck/coif/cloth
 	name = "padded coif"
@@ -152,8 +236,9 @@
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
 	smeltresult = null
-	melt_amount = 75
-	melting_material = /datum/material/steel
+	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/iron
+	melt_amount = 100
 	clothing_flags = CANT_SLEEP_IN
 
 	armor_class = AC_MEDIUM
@@ -186,12 +271,18 @@
 
 	user.regenerate_clothes()
 
+/obj/item/clothing/neck/chaincoif/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
+
 /obj/item/clothing/neck/chaincoif/iron
 	icon_state = "ichaincoif"
 	name = "iron chain coif"
 	desc = "A chain coif made of interwoven iron rings. Affordable protection against arrows and blades, \
 			but should be used as padding rather than relied upon as armor."
+	smeltresult = /obj/item/ingot/iron
 	melting_material = /datum/material/iron
+	melt_amount = 100
 
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STRONG
@@ -219,7 +310,8 @@
 	desc = "A piece of steel plate armor meant to protect the throat and neck of its wearer against decapitation, extending the protection of armor plates."
 	icon_state = "bevor"
 	flags_inv = HIDEFACIALHAIR
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	melt_amount = 100
 	melting_material = /datum/material/steel
 	equip_sound = 'sound/foley/equip/equip_armor.ogg'
@@ -234,6 +326,10 @@
 	body_parts_covered = NECK|EARS|MOUTH|NOSE
 	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = ALL_EXCEPT_STAB
+
+/obj/item/clothing/neck/bevor/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
 /obj/item/clothing/neck/bevor/iron
 	name = "iron bevor"
@@ -266,6 +362,10 @@
 	body_parts_covered = NECK
 	max_integrity = INTEGRITY_STRONG
 	prevent_crits = ALL_EXCEPT_STAB
+
+/obj/item/clothing/neck/gorget/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
 /obj/item/clothing/neck/gorget/hoplite // Better than an iron gorget, not quite as good as a steel bevor
 	name = "bronze gorget"
@@ -317,6 +417,10 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_neck()
 		user.regenerate_clothes()
+
+/obj/item/clothing/neck/highcollier/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
 /obj/item/clothing/neck/highcollier/iron
 	name = "iron high collier"

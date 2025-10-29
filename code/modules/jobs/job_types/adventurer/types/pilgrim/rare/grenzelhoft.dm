@@ -1,17 +1,16 @@
-/datum/advclass/pilgrim/rare/grenzelhoft
-	name = "Grenzelhoft Count"
+/datum/job/advclass/pilgrim/rare/grenzelhoft
+	title = "Grenzelhoft Count"
 	tutorial = "A Count hailing from the Grenzelhoft Imperiate, here on an official visit to Vanderlin."
 	allowed_races = RACES_PLAYER_GRENZ
-	outfit = /datum/outfit/job/adventurer/grenzelhoft
+	outfit = /datum/outfit/adventurer/grenzelhoft
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 1
-	pickprob = 30
+	total_positions = 1
 	min_pq = 0
 	is_recognized = TRUE
 
 	cmode_music = 'sound/music/cmode/combat_grenzelhoft.ogg'
 
-/datum/outfit/job/adventurer/grenzelhoft/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/grenzelhoft/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/rare/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
@@ -62,3 +61,4 @@
 	if(H.dna?.species.id == SPEC_ID_HUMEN)
 		H.dna.species.native_language = "Old Psydonic"
 		H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
+	H.add_spell(/datum/action/cooldown/spell/undirected/call_bird/grenzel)

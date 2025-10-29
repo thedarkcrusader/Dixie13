@@ -149,10 +149,10 @@
 	// Right column
 	data += "<div style='display: table-cell; width: 50%; vertical-align: top; padding: 0 10px;'>"
 	data += "<font color='#36959c'><span class='bold'>Triumphs Awarded:</span></font> [GLOB.vanderlin_round_stats[STATS_TRIUMPHS_AWARDED]]<br>"
-	data += "<font color='#a02fa4'><span class='bold'>Triumphs Stolen:</span></font> [GLOB.vanderlin_round_stats[STATS_TRIUMPHS_STOLEN] * -1]<br>"
+	data += "<font color='#c65fc9'><span class='bold'>Marriages Perfomed:</span></font> [GLOB.vanderlin_round_stats[STATS_MARRIAGES]]<br>"
 	data += "<font color='#d7da2f'><span class='bold'>Prayers Made:</span></font> [GLOB.vanderlin_round_stats[STATS_PRAYERS_MADE]]<br>"
 	data += "<font color='#bacfd6'><span class='bold'>Graves Consecrated:</span></font> [GLOB.vanderlin_round_stats[STATS_GRAVES_CONSECRATED]]<br>"
-	data += "<font color='#9c3e46'><span class='bold'>Wandering Deadites:</span></font> [GLOB.vanderlin_round_stats[STATS_DEADITES_ALIVE]]<br>"
+	data += "<font color='#9c3e46'><span class='bold'>Controlled Deadites:</span></font> [GLOB.vanderlin_round_stats[STATS_DEADITES_ALIVE]]<br>"
 	data += "<font color='#0f555c'><span class='bold'>Beards Shaved:</span></font> [GLOB.vanderlin_round_stats[STATS_BEARDS_SHAVED]]<br>"
 	data += "<font color='#6e7c81'><span class='bold'>Skills Learned:</span></font> [GLOB.vanderlin_round_stats[STATS_SKILLS_LEARNED]]<br>"
 	data += "<div style='height: 17.5px;'>&nbsp;</div>"
@@ -228,7 +228,7 @@
 	data += "</div></div>"
 
 	mob << browse(null, "window=vanderlin_influences")
-	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1080, 818)
+	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 820)
 	popup.set_content(data.Join())
 	popup.open()
 
@@ -544,7 +544,7 @@
 					data += "</div>"
 
 					var/obj_count = 1
-					for(var/datum/objective/objective as anything in mind.personal_objectives)
+					for(var/datum/objective/personal/objective as anything in mind.personal_objectives)
 						var/completed = objective.check_completion()
 						data += "<div style='margin-bottom: 6px; padding-left: 8px; border-left: 2px solid #555;'>"
 						data += "<b>Quest #[obj_count]:</b> [objective.explanation_text] "
@@ -806,7 +806,7 @@
 	data += "</div>"
 
 	mob << browse(null, "window=vanderlin_influences")
-	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1080, 818)
+	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 820)
 	popup.set_content(data.Join())
 	popup.open()
 
@@ -875,7 +875,7 @@
 			if(GLOB.patron_follower_counts[patron] >= psydon_followers)
 				largest_religion = FALSE
 				break
-	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] || 0
+	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] + GLOB.patron_follower_counts["Autotheist"] + GLOB.patron_follower_counts["Defiant"] + GLOB.patron_follower_counts["Dystheist"] + GLOB.patron_follower_counts["Naivety"]|| 0
 	var/psydonite_monarch = GLOB.vanderlin_round_stats[STATS_MONARCH_PATRON] == "Psydon" ? TRUE : FALSE
 	var/psydon_influence = (psydon_followers * 20) + (GLOB.confessors.len * 20) + (GLOB.vanderlin_round_stats[STATS_HUMEN_DEATHS] * -10) + (GLOB.vanderlin_round_stats[STATS_ALIVE_TIEFLINGS] * -20) + (psydonite_monarch ? (psydonite_monarch * 500) : -250) + (largest_religion? (largest_religion * 500) : -250) + (GLOB.vanderlin_round_stats[STATS_PSYCROSS_USERS] * 10) + (apostasy_followers * -20) + (GLOB.vanderlin_round_stats[STATS_LUX_HARVESTED] * -50) + (psydonite_user ? 10000 : -10000)
 

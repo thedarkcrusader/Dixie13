@@ -1,16 +1,16 @@
-/datum/advclass/combat/assassin
-	name = "Assassin"
+/datum/job/advclass/combat/assassin
+	title = "Assassin"
 	tutorial = "From a young age you have been drawn to blood, to hurting others. Eventually you found others like you, and a god who would bless your actions. Your cursed dagger has never led you astray, and with every stab you feel a little less empty."
 	allowed_sexes = list(MALE, FEMALE)
 
-	outfit = /datum/outfit/job/adventurer/assassin
+	outfit = /datum/outfit/adventurer/assassin
 	category_tags = list(CTAG_PILGRIM)
-	maximum_possible_slots = 2
-	pickprob = 100
-	displays_adv_job = FALSE //this prevents advjob from being set back to "Assassin" in equipme
+	total_positions = 2
+	roll_chance = 100
+	inherit_parent_title = TRUE //this prevents advjob from being set back to "Assassin" in equipme
 	min_pq = 6
 
-/datum/outfit/job/adventurer/assassin/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/assassin/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
@@ -35,13 +35,13 @@
 		H.mind.add_antag_datum(new_antag)
 
 	H.become_blind("TRAIT_GENERIC")
-	H.advjob = "Assassin"
 	// Assassin now spawns disguised as one of the non-combat drifters. You never know who will stab you in the back.
 	var/disguises = list("Bard", "Beggar", "Fisher", "Hunter", "Miner", "Noble", "Peasant", "Carpenter", "Thief", "Ranger", "Servant", "Faceless One")
-	var/disguisechoice = input("Choose your cover", "Available disguises") as anything in disguises
-
+	var/disguisechoice = browser_input_list(H, "Choose your cover.", "Available disguises", disguises)
 	if(disguisechoice)
-		H.advjob = disguisechoice
+		H.job = disguisechoice
+	if(!disguisechoice)
+		disguisechoice = pick(disguises)
 
 	switch(disguisechoice)
 		if("Bard")
@@ -161,7 +161,7 @@
 				H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE) //Female nobles get the male noble's bow, but are less trained than an Assassin disguising as a Hunter. Balance.
 				H.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
 				shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
-				head = /obj/item/clothing/head/hatfur
+				head = /obj/item/clothing/head/fancyhat
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				beltr = /obj/item/weapon/knife/dagger/steel/special
@@ -253,6 +253,7 @@
 			shirt = /obj/item/clothing/shirt/undershirt/colored/uncolored
 			belt = /obj/item/storage/belt/leather/assassin
 			beltl = /obj/item/storage/belt/pouch/coins/poor
+			backl = /obj/item/storage/backpack/satchel
 			if(H.gender == MALE)
 				armor = /obj/item/clothing/armor/leather/vest/colored/black
 			else
@@ -266,7 +267,6 @@
 			pants = /obj/item/clothing/pants/trou/leather
 			shoes = /obj/item/clothing/shoes/boots
 			backl = /obj/item/storage/backpack/satchel
-			belt = /obj/item/storage/belt/leather/knifebelt/black/steel
 			beltl = /obj/item/storage/belt/pouch/coins/poor
 			beltr = /obj/item/weapon/knife/dagger/steel
 			cloak = /obj/item/clothing/cloak/faceless
@@ -275,12 +275,21 @@
 			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/poison, /obj/item/weapon/knife/dagger/steel/profane, /obj/item/lockpick, /obj/item/storage/fancy/cigarettes/zig, /obj/item/flint)
 			ADD_TRAIT(H, TRAIT_FACELESS, TRAIT_GENERIC)
 			H.real_name = get_faceless_name(H)
+			var/list/belt_options = list("Leather Belt", "Toss Blade Belt")
+			var/belt_pick = browser_input_list(H, "Select belt.", "BELT OPTION", belt_options)
+			if(!belt_pick)
+				belt_pick = pick(belt_options)
+			switch(belt_pick)
+				if("Leather Belt")
+					belt = /obj/item/storage/belt/leather
+				if("Toss Blade Belt")
+					belt = /obj/item/storage/belt/leather/knifebelt/black/steel
 
 	H.cure_blind("TRAIT_GENERIC")
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ASSASSIN, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VILLAIN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
@@ -293,7 +302,7 @@
 		else
 			H.dna.species.soundpack_f = new /datum/voicepack/female/assassin()
 
-/datum/outfit/job/adventurer/assassin/proc/get_faceless_name(mob/living/carbon/human/H)
+/datum/outfit/adventurer/assassin/proc/get_faceless_name(mob/living/carbon/human/H)
 	if(is_species(H, /datum/species/rakshari) && prob(10))
 		return "Furless One"
 	else if(is_species(H, /datum/species/harpy) && prob(10))

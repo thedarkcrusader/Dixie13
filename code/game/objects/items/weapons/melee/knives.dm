@@ -17,7 +17,7 @@
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	max_blade_int = 140
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	equip_sound = 'sound/foley/dropsound/holster_sword.ogg'
@@ -146,7 +146,7 @@
 	icon_state = "navaja_c"
 	item_state = "elfdag"
 	var/extended = 0
-	wdefense = 2
+	wdefense = TERRIBLE_PARRY
 	sellprice = 30 //shiny :o
 
 /obj/item/weapon/knife/dagger/navaja/attack_self(mob/user)
@@ -154,7 +154,7 @@
 	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
 	if(extended)
 		force = 20
-		wdefense = 6
+		wdefense = MEDIOCRE_PARRY
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "navaja_o"
@@ -167,7 +167,7 @@
 		icon_state = "navaja_c"
 		attack_verb = list("stubbed", "poked")
 		sharpness = IS_BLUNT
-		wdefense = 2
+		wdefense = TERRIBLE_PARRY
 
 /obj/item/weapon/knife/scissors
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
@@ -299,12 +299,13 @@
 	icon_state = "jile_iron"
 	melting_material = null
 	sellprice = 12
+	dropshrink = 1.0
 
 /obj/item/weapon/knife/njora/iron
 
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 	name = "iron seme"
-	desc = "A broad iron dagger of ancient Lakkarian design. Popular amongst the indigenous elven tribes of western Lakkari."
+	desc = "A broad iron dagger of ancient Lakkarian design. Popular amongst the indigenous jungle elf tribes of the Lakkarian Rainforests."
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "njora_iron"
 	melting_material = null
@@ -331,11 +332,12 @@
 	wdefense = AVERAGE_PARRY
 	wbalance = VERY_HARD_TO_DODGE
 	sellprice = 20
+	dropshrink = 1.0
 
 /obj/item/weapon/knife/njora/steel
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 	name = "steel seme"
-	desc = "A broad steel dagger of ancient Lakkarian design. Popular amongst the indigenous elven tribes of western Lakkari."
+	desc = "A broad steel dagger of ancient Lakkarian design. Popular amongst the indigenous jungle elf tribes of the Lakkarian Rainforests."
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "njora_steel"
 	melting_material = null
@@ -352,7 +354,7 @@
 	name ="plaguebringer sickle"
 	desc = "A wicked edge brings feculent delights."
 	icon_state = "pestrasickle"
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	wdefense = GOOD_PARRY //They use a dagger, but it should be fine for them to also parry with it.
 //................ Fanged dagger ............... //
 /obj/item/weapon/knife/dagger/steel/dirk
@@ -581,7 +583,27 @@
 	melting_material = null
 	sellprice = 5
 
+/obj/item/weapon/knife/stone/kukri
+	name = "joapstone kukri"
+	desc = "A kukri made out of joapstone. Its more of a ceremonial piece than it is an implement of war, its somewhat fragile. Be gentle with it."
+	icon = 'icons/roguetown/gems/gem_jade.dmi'
+	icon_state = "kukri_jade"
+	max_integrity = INTEGRITY_POOR - 100
+	max_blade_int = 35
+	wdefense = AVERAGE_PARRY
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	sellprice = 75
 
+/obj/item/weapon/knife/stone/opal
+	name = "opaloise knife"
+	desc = "A beautiful knife carved out of opaloise. Its not intended for combat. It's presence is vital in some Crimson Elven ceremonies."
+	icon = 'icons/roguetown/gems/gem_opal.dmi'
+	icon_state = "knife_opal"
+	max_integrity = INTEGRITY_POOR - 100
+	max_blade_int = 35
+	wdefense = AVERAGE_PARRY
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	sellprice = 105
 //................ Villager Knife ............... //
 /obj/item/weapon/knife/villager
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
@@ -649,3 +671,14 @@
 /obj/item/weapon/knife/throwingknife/psydon/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
+
+/obj/item/weapon/knife/throwingknife/rous
+	name = "rous kunai"
+	desc = "A typical knife used by rous assassins. Quite effective when thrown."
+	icon_state = "rouskunai"
+	throw_speed = 4
+	wdefense = 3
+	max_integrity = INTEGRITY_POOR
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
+	sellprice = 5
+	melt_amount = 50

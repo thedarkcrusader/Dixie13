@@ -40,10 +40,24 @@
 	item_state = "soldierboots"
 	desc = "Lightly armored boots made from iron offering protection against both melee and ranged attacks."
 	armor = list("blunt" = 80, "slash" = 80, "stab" = 80,  "piercing" = 60, "fire" = 0, "acid" = 0)
-	max_integrity = INTEGRITY_STANDARD + 50
+	max_integrity = INTEGRITY_STRONG + 50
 	armor_class = AC_MEDIUM
 	sellprice = 20
 	item_weight = 7 * IRON_MULTIPLIER
+
+/obj/item/clothing/shoes/boots/armor/ironmaille
+	name = "chainmail boots"
+	icon_state = "mailleboots"
+	item_state = "mailleboots"
+	desc = "Chainmail boots made from iron and cured leather, they offer a good protection for their cheap cost."
+	armor = ARMOR_MAILLE_IRON
+	max_integrity = 200 //meant to be weaker than iron plated boots, better options are out there waiting at the smith
+	armor_class = AC_LIGHT
+	sellprice = VALUE_IRON_ARMOR
+	item_weight = 6 * IRON_MULTIPLIER
+	smeltresult = /obj/item/fertilizer/ash //we avoid melting one piece for one bar
+	melting_material = /datum/material/iron // we get one bar per two pieces of the item recovered and smelted
+	melt_amount = 75
 
 /obj/item/clothing/shoes/boots/armor/light/rust
 	name = "rusted light plate boots"

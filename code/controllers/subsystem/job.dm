@@ -105,6 +105,13 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ isbanned failed, Player: [player], Job: [job.title]")
 			continue
 
+		if(is_race_banned(player.ckey, player.client.prefs.pref_species.id)|| QDELETED(player))
+			if(QDELETED(player))
+				JobDebug("GRJ is_race_banned failed, Player deleted")
+				break
+			JobDebug("GRJ is_race_banned failed, Player: [player], Race: [player.client.prefs.pref_species.id]")
+			continue
+
 		if(!job.can_random)
 			JobDebug("GRJ can't random into this job, Job: [job.title], Player: [player]")
 			continue
@@ -157,6 +164,10 @@ SUBSYSTEM_DEF(job)
 
 		if(!job.special_job_check(player))
 			JobDebug("GRJ player did not pass special check, Player: [player], Job:[job.title]")
+			continue
+
+		if(!job.enabled)
+			JobDebug("GRJ player tried to play a disabled job, Player: [player], Job:[job.title]")
 			continue
 
 		if(CONFIG_GET(flag/usewhitelist))
@@ -256,6 +267,10 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO isbanned failed, Player: [player], Job:[job.title]")
 					continue
 
+				if(is_race_banned(player.ckey, player.client.prefs.pref_species.id))
+					JobDebug("DO is_race_banned, Player: [player], Race: [player.client.prefs.pref_species.id]")
+					continue
+
 				if(QDELETED(player))
 					JobDebug("DO player deleted during job ban check")
 					break
@@ -318,10 +333,14 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player did not pass special check, Player: [player], Job:[job.title]")
 					continue
 
+				if(!job.enabled)
+					JobDebug("DO player tried to play a disabled job, Player: [player], Job:[job.title]")
+					continue
+
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.job_preferences[job.title] == level)
 					// If the job isn't filled
-					if((job.current_positions < job.total_positions) || job.total_positions == -1)
+					if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 						// Use boost if applicable
 						for(var/datum/job_priority_boost/boost in player_boosts)
 							if(boost.can_boost_job(job))
@@ -469,6 +488,9 @@ SUBSYSTEM_DEF(job)
 			if(is_role_banned(player.ckey, job.title))
 				continue
 
+			if(is_race_banned(player.ckey, player.client.prefs.pref_species.id))
+				continue
+
 			if(QDELETED(player))
 				break
 
@@ -511,6 +533,9 @@ SUBSYSTEM_DEF(job)
 				continue
 
 			if(!job.special_job_check(player))
+				continue
+
+			if(!job.enabled)
 				continue
 
 			// If the player wants that job on this level, then try give it to him.
@@ -566,10 +591,11 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
+	job.pre_outfit_equip(equipping, player_client) // sigh
 	equipping.on_job_equipping(job)
 	addtimer(CALLBACK(job, TYPE_PROC_REF(/datum/job, greet), equipping), 5 SECONDS) //TODO: REFACTOR OUT
 
-	if(player_client.holder)
+	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
 			player_client.holder.auto_deadmin()
 		else
@@ -620,6 +646,9 @@ SUBSYSTEM_DEF(job)
 			if(!(player.ready == PLAYER_READY_TO_PLAY && player.mind && !player.mind.assigned_role))
 				continue //This player is not ready
 			if(is_role_banned(player.ckey, job.title) || QDELETED(player))
+				banned++
+				continue
+			if(is_race_banned(player.ckey, player.client.prefs.pref_species.id))
 				banned++
 				continue
 			if(!job.player_old_enough(player.client))
@@ -723,6 +752,9 @@ SUBSYSTEM_DEF(job)
 	. = FALSE
 
 	if(is_role_banned(player.ckey, job.title))
+		return
+
+	if(is_race_banned(player.ckey, player.client.prefs.pref_species.id))
 		return
 
 	if(QDELETED(player))

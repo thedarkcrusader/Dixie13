@@ -1,15 +1,14 @@
-/datum/advclass/combat/lakkariancleric // terra was here! <3
-	name = "Lakkarian Cleric"
-	tutorial = "A follower of the Order of the Southern Sun. Acolytes who underwent years of martial training, they seek to root out the corruption caused by the Four in Faience and spread the word of the Sun Queen."
+/datum/job/advclass/combat/lakkariancleric // terra was here! <3
+	title = "Lakkarian Cleric"
+	tutorial = "A cleric belonging to the Order of the Southern Sun. After years of martial training and rigorous theological study, your abbess has deemed you worthy of a grand task. You will root out the corruption spread by The Four across Faience, and deliver the gospel of the glorious Sun Queen."
 	allowed_races = RACES_PLAYER_ELF
-	outfit = /datum/outfit/job/adventurer/lakkariancleric
-	vampcompat = FALSE
+	outfit = /datum/outfit/adventurer/lakkariancleric
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 0
-	pickprob = 25
-	maximum_possible_slots = 2
+	roll_chance = 25
+	total_positions = 2
 
-/datum/outfit/job/adventurer/lakkariancleric/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/lakkariancleric/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
 	H.cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
@@ -19,7 +18,7 @@
 	shirt = /obj/item/clothing/shirt/undershirt/fancy
 	gloves = /obj/item/clothing/gloves/leather
 	wrists = /obj/item/clothing/neck/psycross/silver/astrata
-	pants = /obj/item/clothing/pants/trou/leather/quiltedkilt
+	pants = /obj/item/clothing/pants/trou/leather/quiltedkilt/colored/blue
 	shoes = /obj/item/clothing/shoes/boots/leather
 	neck = /obj/item/clothing/neck/coif/cloth // price to pay for being a speedy class, less neck protection
 	belt = /obj/item/storage/belt/leather

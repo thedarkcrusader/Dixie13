@@ -11,9 +11,9 @@
 	spawn_positions = 1
 	min_pq = 6
 
-	allowed_races = RACES_PLAYER_COURT_PHYSICIAN
+	allowed_races = RACES_PLAYER_NONHERETICAL
 
-	outfit = /datum/outfit/job/courtphys
+	outfit = /datum/outfit/courtphys
 	give_bank_account = 100
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
 
@@ -21,10 +21,9 @@
 		/datum/action/cooldown/spell/diagnose,
 	)
 
-/datum/outfit/job/courtphys
 	job_bitflag = BITFLAG_ROYALTY
 
-/datum/outfit/job/courtphys/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/courtphys/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/shortboots
@@ -39,6 +38,7 @@
 	beltl = /obj/item/storage/keyring/physician
 	beltr = /obj/item/weapon/mace/courtphysician
 	armor = /obj/item/clothing/shirt/robe/courtphysician
+	ring = /obj/item/clothing/ring/feldsher_ring
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/pants/skirt/colored/random
 	else
@@ -57,7 +57,7 @@
 	H.change_stat(STATKEY_CON, -1)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEGENDARY_ALCHEMIST, TRAIT_GENERIC)
-	if(H.dna.species.id != SPEC_ID_MEDICATOR)
+	if(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED) // Astrata forbid a medicator gets nobility
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

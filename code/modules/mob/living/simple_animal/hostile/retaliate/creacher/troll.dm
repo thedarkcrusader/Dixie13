@@ -21,6 +21,8 @@
 	vision_range = 6
 	aggro_vision_range = 6
 
+	animal_type = /datum/blood_type/troll
+
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1, \
 						/obj/item/natural/hide = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
@@ -67,6 +69,22 @@
 
 
 	var/range = 9
+
+/mob/living/simple_animal/hostile/retaliate/troll/slaved
+	ai_controller = /datum/ai_controller/summon
+
+/mob/living/simple_animal/hostile/retaliate/troll/slaved/Initialize()
+	. = ..()
+	var/static/list/pet_commands = list(
+				/datum/pet_command/idle,
+				/datum/pet_command/free,
+				/datum/pet_command/follow,
+				/datum/pet_command/attack,
+				/datum/pet_command/protect_owner,
+				/datum/pet_command/aggressive,
+				/datum/pet_command/calm,
+			)
+	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 /mob/living/simple_animal/hostile/retaliate/troll/Initialize()
 	. = ..()
@@ -211,7 +229,7 @@
 	defprob = 15
 
 	//stone chucking ability
-	var/datum/action/cooldown/mob_cooldown/stone_throw/throwing_stone
+	var/datum/action/cooldown/spell/stone_throw/throwing_stone
 
 /mob/living/simple_animal/hostile/retaliate/troll/cave/Initialize()
 	. = ..()

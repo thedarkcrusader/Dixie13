@@ -12,13 +12,21 @@
 
 	allowed_races = RACES_PLAYER_ALL
 
-	outfit = /datum/outfit/job/miner
+	outfit = /datum/outfit/miner
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-/datum/outfit/job/miner
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-/datum/outfit/job/miner/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/miner/map_override(mob/living/carbon/human/H)
+	if(SSmapping.config.map_name != "Voyage")
+		return
+	head = /obj/item/clothing/head/armingcap
+	shirt = /obj/item/clothing/shirt/undershirt/sailor
+	pants = /obj/item/clothing/pants/tights/sailor
+	wrists = null
+	shoes = /obj/item/clothing/shoes/boots
+
+/datum/outfit/miner/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/armingcap
 	pants = /obj/item/clothing/pants/trou

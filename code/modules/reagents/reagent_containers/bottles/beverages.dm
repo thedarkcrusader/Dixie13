@@ -91,13 +91,13 @@
 	auto_label_desc = "This one appears to be labelled as a sweet wine from the colder northern regions."
 
 /obj/item/reagent_containers/glass/bottle/elfred
-	desc = "A bottle gilded with a silver cork-seal. Likely worth more than what an entire village makes!"
+	desc = "A bottle gilded with a silver cork-seal."
 	list_reagents = list(/datum/reagent/consumable/ethanol/elfred = 70)
 	auto_label_name = "valorian red"
 	auto_label_desc = "An Elvish red wine from Valoria. Likely worth more than what an entire village makes!"
 
 /obj/item/reagent_containers/glass/bottle/elfblue
-	desc = "A bottle gilded with a golden cork-seal. This bottle would swoon Gods over!"
+	desc = "A bottle gilded with a golden cork-seal."
 	list_reagents = list(/datum/reagent/consumable/ethanol/elfblue = 70)
 	auto_label_name = "valmora blue"
 	auto_label_desc = "This is the legendary Valmora Blue from the Vineyard of Valmora, headed by a sainted Dark-Elf swordsmaster. This bottle would swoon Gods over!"
@@ -140,14 +140,14 @@
 /obj/item/reagent_containers/glass/bottle/avarmead
 	desc = "A bottle with a simple cork-seal."
 	list_reagents = list(/datum/reagent/consumable/ethanol/avarmead = 48)
-	auto_label_name = "avar mead"
-	auto_label_desc = "A golden honey-wine brewed in the Avar Steppes. Manages to keep a proper taste while staying strong."
+	auto_label_name = "steppe mead"
+	auto_label_desc = "A golden honey-wine brewed in the steppes. Manages to keep a proper taste while staying strong."
 
 /obj/item/reagent_containers/glass/bottle/avarrice
 	desc = "A bottle with a simple cork-seal."
 	list_reagents = list(/datum/reagent/consumable/ethanol/avarrice = 48)
-	auto_label_name = "avarice"
-	auto_label_desc = "A murky, white wine made from rice grown in the steppes of Avar."
+	auto_label_name = "steppe rice"
+	auto_label_desc = "A murky, white wine made from rice grown in the steppes."
 
 /obj/item/reagent_containers/glass/bottle/saigamilk
 	desc = "A bottle with a Running Saiga cork-seal."

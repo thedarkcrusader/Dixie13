@@ -234,13 +234,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 ///Extra effects to add when the mob is tamed, such as adding a riding component
 /mob/living/simple_animal/proc/tamed(mob/user)
 	INVOKE_ASYNC(src, PROC_REF(emote), "lower_head", null, null, null, TRUE)
-	tame = TRUE
-	if(user)
-		SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHANGE, user, 55)
-		befriend(user)
-		record_round_statistic(STATS_ANIMALS_TAMED)
-		SEND_SIGNAL(user, COMSIG_ANIMAL_TAMED, src)
-	pet_passive = TRUE
 
 	if(ai_controller)
 		ai_controller.can_idle = FALSE
@@ -260,6 +253,14 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			)
 			if(!GetComponent(/datum/component/obeys_commands))
 				AddComponent(/datum/component/obeys_commands, pet_commands)
+
+	tame = TRUE
+	if(user)
+		SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHANGE, user, 55)
+		befriend(user)
+		record_round_statistic(STATS_ANIMALS_TAMED)
+		SEND_SIGNAL(user, COMSIG_ANIMAL_TAMED, src)
+	pet_passive = TRUE
 
 	if(user)
 		owner = user
@@ -395,7 +396,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		ssaddle.forceMove(get_turf(src))
 		ssaddle = null
 	var/list/butcher = list()
-	var/butchery_skill_level = user.get_skill_level(/datum/skill/labor/butchering)
+	var/butchery_skill_level = user.get_skill_level(/datum/skill/labor/butchering) + user.get_inspirational_bonus()
 	var/time_per_cut = max(5, 30 - butchery_skill_level * 5) // 30 seconds for no skill, 5 seconds for master
 	var/botch_chance = 0
 	if(length(botched_butcher_results) && butchery_skill_level < SKILL_LEVEL_JOURNEYMAN)
@@ -496,6 +497,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(happiness_message)
 			final_message += " [happiness_message]"
 		to_chat(user, span_notice("[final_message]"))
+		SEND_SIGNAL(user, COMSIG_MOB_BUTCHERED, src)
 		gib()
 
 /mob/living/proc/butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)
@@ -914,3 +916,17 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	var/drop_location = (src in home.contents) ? get_turf(home) : home
 	forceMove(drop_location)
+
+/mob/living/simple_animal/proc/eat_food(obj/item/reagent_containers/food/snacks/eaten)
+	if(!istype(eaten))
+		stack_trace("eating non snack")
+		return FALSE
+
+	playsound(src, 'sound/misc/eat.ogg', rand(30,60), TRUE)
+	var/nutriment_give = 0
+	for(var/datum/reagent/consumable/C in eaten.reagents.reagent_list)
+		nutriment_give += C.nutriment_factor * C.volume / C.metabolization_rate
+	. = nutriment_give
+
+/mob/living/simple_animal/proc/eat_food_after(obj/item/reagent_containers/food/snacks/eaten)
+	qdel(eaten)

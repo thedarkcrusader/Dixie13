@@ -253,7 +253,7 @@
 		if(H.bloodpool < 1)
 			to_chat(owner, span_warning("You don't have enough <b>BLOOD</b> to do that!"))
 			return
-		H.bloodpool = max(H.bloodpool - 1, 0)
+		H.adjust_bloodpool(-15)
 		switch(try_trap)
 			if("Brutal")
 				var/obj/fae_trickery_trap/trap = new (get_turf(owner))
@@ -325,9 +325,7 @@
 	if(iscarbon(AM) && owner)
 		if(AM != owner)
 			var/mob/living/carbon/L = AM
-			for(var/obj/item/I in L.get_equipped_items(include_pockets = TRUE))
-				if(I)
-					L.dropItemToGround(I, TRUE)
+			L.drop_all_held_items()
 			qdel(src)
 
 //CHANJELIN WARD
@@ -474,7 +472,7 @@
 		to_chat(riddler, span_danger("Your riddle is too complicated."))
 		return FALSE
 
-/datum/riddle/proc/answer_riddle(mob/living/answerer, the_answer, var/atom/movable/screen/alert/riddle/alert)
+/datum/riddle/proc/answer_riddle(mob/living/answerer, the_answer, atom/movable/screen/alert/riddle/alert)
 	if(the_answer != riddle_answer)
 		alert.bad_answers++
 		to_chat(answerer,

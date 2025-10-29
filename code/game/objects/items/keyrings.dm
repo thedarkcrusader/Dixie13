@@ -208,13 +208,16 @@
 	picks = list(/obj/item/lockpick, /obj/item/lockpick, /obj/item/lockpick)
 
 /obj/item/storage/keyring/captain
-	keys = list(/obj/item/key/captain, /obj/item/key/dungeon, /obj/item/key/garrison, /obj/item/key/forrestgarrison, /obj/item/key/atarms, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/guest)
+	keys = list(/obj/item/key/captain, /obj/item/key/dungeon, /obj/item/key/garrison, /obj/item/key/lieutenant, /obj/item/key/forrestgarrison, /obj/item/key/atarms, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/guest)
 
 /obj/item/storage/keyring/consort
 	keys = list(/obj/item/key/dungeon, /obj/item/key/atarms, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/consort, /obj/item/key/guest)
 
 /obj/item/storage/keyring/guard
 	keys = list(/obj/item/key/garrison)
+
+/obj/item/storage/keyring/lieutenant
+	keys = list(/obj/item/key/garrison, /obj/item/key/lieutenant)
 
 /obj/item/storage/keyring/manorguard
 	keys = list(/obj/item/key/manor, /obj/item/key/dungeon, /obj/item/key/atarms, /obj/item/key/walls)
@@ -243,9 +246,6 @@
 /obj/item/storage/keyring/adept
 	keys = list(/obj/item/key/inquisition)
 
-/obj/item/storage/keyring/apothecary
-	keys = list(/obj/item/key/apothecary, /obj/item/key/bathhouse, /obj/item/key/clinic)
-
 /obj/item/storage/keyring/gravetender
 	keys = list(/obj/item/key/church, /obj/item/key/graveyard)
 
@@ -270,8 +270,11 @@
 /obj/item/storage/keyring/elder
 	keys = list(/obj/item/key/veteran, /obj/item/key/walls, /obj/item/key/elder, /obj/item/key/butcher, /obj/item/key/soilson, /obj/item/key/manor)
 
-/obj/item/storage/keyring/feldsher
+/obj/item/storage/keyring/clinic
 	keys = list(/obj/item/key/feldsher, /obj/item/key/clinic, /obj/item/key/bathhouse, /obj/item/key/apothecary)
+
+/obj/item/storage/keyring/clinicapprentice
+	keys = list(/obj/item/key/clinic, /obj/item/key/bathhouse)
 
 /obj/item/storage/keyring/artificer
 	keys = list(/obj/item/key/artificer, /obj/item/key/blacksmith, /obj/item/key/miner)

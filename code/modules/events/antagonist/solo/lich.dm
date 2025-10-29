@@ -1,15 +1,16 @@
 /datum/round_event_control/antagonist/solo/lich
 	name = "Lich"
 	tags = list(
+		TAG_ZIZO,
 		TAG_COMBAT,
 		TAG_HAUNTED,
-		TAG_VILLIAN,
+		TAG_VILLAIN,
 	)
 	roundstart = TRUE
 	antag_flag = ROLE_LICH
 	shared_occurence_type = SHARED_HIGH_THREAT
 
-	denominator = 80
+	denominator = 70
 
 	base_antags = 1
 	maximum_antags = 2
@@ -24,16 +25,13 @@
 	restricted_roles = list(
 		"Monarch",
 		"Consort",
-		"Hand",
-		"Captain",
-		"Prince",
 		"Priest",
-		"Merchant",
-		"Forest Warden",
-		"Inquisitor",
-		"Adept",
-		"Royal Knight",
-		"Templar",
 	)
+
+
+/datum/round_event_control/antagonist/solo/lich/valid_for_map()
+	if(SSmapping.config.map_name != "Voyage")
+		return TRUE
+	return FALSE
 
 /datum/round_event/antagonist/solo/lich
