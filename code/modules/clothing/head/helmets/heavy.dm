@@ -453,7 +453,7 @@
 	bloody_icon = 'icons/effects/blood64x64.dmi'
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	adjustable = CAN_CADJUST
-	max_integrity = 250 // stronger than iron, weaker than steel
+	max_integrity = 350
 	var/plumed = FALSE
 
 /obj/item/clothing/head/helmet/heavy/ordinatorhelm/attackby(obj/item/W, mob/living/user, params)
