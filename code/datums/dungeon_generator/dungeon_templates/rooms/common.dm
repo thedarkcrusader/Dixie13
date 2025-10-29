@@ -451,6 +451,7 @@
 	west_offset = 18
 	east_offset = 18
 	south_offset = 26
+
 /datum/map_template/dungeon/room/MinorLordKeep
 	mappath = "_maps/matthios_tomb/room/MinorLordKeep.dmm"
 	id = "MinorLordKeep"
