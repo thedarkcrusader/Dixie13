@@ -329,7 +329,8 @@ Inquisitorial armory down here
 	. = ..()	//We smashed a guy with it turned on. Bad idea!
 	if(ismob(A) && on && (user.used_intent.type == /datum/intent/flail/strike/smash/golgotha) && user.cmode)
 		user.visible_message(span_warningbig("You see an oddly bright spark before it detonates!"))
-		explosion(get_turf(A),devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flame_range = 2, flash_range = 4, smoke = FALSE)
+		cell_explosion(get_turf(A), 40, 2)
+		explosion(get_turf(A),devastation_range = 0, heavy_impact_range = 0, light_impact_range = 0, flame_range = 2, flash_range = 4, smoke = FALSE)
 		fuel = 0
 		turn_off()
 		icon_state = "psycenser-broken"
