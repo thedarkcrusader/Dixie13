@@ -22,7 +22,7 @@
 		return
 	return istype(cast_on, /obj/structure/door)
 
-/datum/action/cooldown/spell/enchant_door/cast(/obj/structure/door/target_door)
+/datum/action/cooldown/spell/enchant_door/cast(obj/structure/door/target_door)
 	. = ..()
 	var/datum/antagonist/overlord/overlord_datum = owner.mind.has_antag_datum(/datum/antagonist/overlord)
 	if(!overlord_datum)
@@ -165,7 +165,7 @@
 		return
 	return istype(cast_on, /obj/structure/door)
 
-/datum/action/cooldown/spell/remove_enchantment/cast(/obj/structure/door/target_door)
+/datum/action/cooldown/spell/remove_enchantment/cast(obj/structure/door/target_door)
 	. = ..()
 	var/datum/antagonist/overlord/overlord_datum = owner.mind?.has_antag_datum(/datum/antagonist/overlord)
 	if(!overlord_datum)
