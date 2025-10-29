@@ -134,10 +134,3 @@
 	desc = "I need to pray to my Patron, their blessings are stronger."
 	time = 40 MINUTES
 	needsate_text = "Time to pray."
-
-/// Stress Eater
-/datum/charflaw/addiction/stress_eater
-	name = "Stress Eater"
-	desc = "I'm a habitual stress eater."
-	time = 10 MINUTES
-	needsate_text = "Getting kind of hungry."

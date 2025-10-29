@@ -446,8 +446,6 @@ All foods are distributed among various categories. Use common sense.
 				on_consume(M)
 				checkLiked(fraction, M)
 				if(bitecount >= bitesize && !QDELETED(src))
-					if(M.has_flaw(/datum/charflaw/addiction/stress_eater))
-						M.sate_addiction()
 					qdel(src)
 				return TRUE
 		playsound(M.loc,'sound/misc/eat.ogg', rand(30,60), TRUE)

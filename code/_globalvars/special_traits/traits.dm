@@ -903,8 +903,8 @@
 
 /datum/special_trait/glutton
 	name = "The Glutton"
-	greet_text = span_notice("You rarely get time away from your court. It's taken a toll on your mind and body. At least the food helps.")
-	weight = 20
+	greet_text = span_notice("My rise to lordship began with a swindling deal with Mephistopheles. I was granted a life of luxury and decadance, and now my family must indulge.")
+	weight = 10 // it affects the whole family
 	req_text = "Monarch"
 	allowed_jobs = list(/datum/job/lord)
 
@@ -917,18 +917,16 @@
 	character.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) // this guy will sit on you
 	character.adjust_skillrank(/datum/skill/misc/athletics, -3, TRUE)
 
+	character.dna.species.nutrition_mod = 2
 	ADD_TRAIT(character, TRAIT_FAT, "[type]")
 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
 
-
-	character.set_flaw(/datum/charflaw/addiction/stress_eater)
+	character.family_datum.AddFamilyCurse(/datum/family_curse/demonic/gluttony, 1, "Mephistopheles")
 
 	character.transform = character.transform.Scale(1.15, 1)
 	character.update_transform()
-
 	character.RemoveElement(/datum/element/footstep, character.footstep_type, 1, -6)
 	character.AddElement(/datum/element/footstep, FOOTSTEP_MOB_HEAVY, 1, -2)
-
 	character.verbs |= /mob/living/carbon/human/proc/emote_burp_loud
 	character.dna.species.soundpack_m = new /datum/voicepack/male/glutton()
 	character.dna.species.soundpack_f = new /datum/voicepack/female/glutton()
