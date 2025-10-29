@@ -38780,9 +38780,7 @@
 "xdV" = (
 /obj/effect/mapping_helpers/access/keyset/manor/dungeon,
 /obj/effect/mapping_helpers/access/locker,
-/obj/structure/door{
-	name = "<s>Wash Room</s><br>The Hole"
-	},
+/obj/structure/door,
 /turf/open/floor/greenstone,
 /area/rogue/under/town/basement)
 "xei" = (
