@@ -2555,6 +2555,7 @@
 #include "code\modules\inquisitor_supplies\general.dm"
 #include "code\modules\instruments\_instruments.dm"
 #include "code\modules\instruments\music_effect.dm"
+#include "code\modules\jobs\_job_pack.dm"
 #include "code\modules\jobs\job_exp.dm"
 #include "code\modules\jobs\jobs.dm"
 #include "code\modules\jobs\slot_scaling.dm"
