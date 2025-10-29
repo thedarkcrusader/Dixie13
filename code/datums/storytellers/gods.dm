@@ -286,20 +286,20 @@
 
 	influence_sets = list(
 		"Set 1" = list(
-			STATS_MASTERWORKS_FORGED = list("name" = "Masterworks forged:", "points" = 6, "capacity" = 80),
+			STATS_MASTERWORKS_FORGED = list("name" = "Masterworks forged:", "points" = 5, "capacity" = 70),
 		),
 		"Set 2" = list(
-			STATS_ROCKS_MINED = list("name" = "Rocks mined:", "points" = 0.275, "capacity" = 100),
+			STATS_ROCKS_MINED = list("name" = "Rocks mined:", "points" = 0.265, "capacity" = 90),
 		),
 		"Set 3" = list(
 			STATS_CRAFT_SKILLS = list("name" = "Craft skills learned:", "points" = 0.7, "capacity" = 80),
 		),
 		"Set 4" = list(
-			STATS_BEARDS_SHAVED = list("name" = "Beards shaved:", "points" = -4, "capacity" = -40),
 			STATS_ALIVE_DWARVES = list("name" = "Number of dwarfs:", "points" = 4.25, "capacity" = 50),
 		),
 		"Set 5" = list(
-			STATS_BLACKSTEEL_SMELTED = list("name" = "Blacksteel smelted:", "points" = 4.75, "capacity" = 65),
+			STATS_BLACKSTEEL_SMELTED = list("name" = "Blacksteel smelted:", "points" = 4.5, "capacity" = 60),
+			STATS_BEARDS_SHAVED = list("name" = "Beards shaved:", "points" = -4, "capacity" = -40),
 		)
 	)
 
@@ -375,10 +375,10 @@
 			STATS_WEREVOLVES = list("name" = "Number of werevolves:", "points" = 12.5, "capacity" = 65),
 		),
 		"Set 2" = list(
-			STATS_PLANTS_HARVESTED = list("name" = "Plants harvested:", "points" = 0.675, "capacity" = 90),
+			STATS_PLANTS_HARVESTED = list("name" = "Plants harvested:", "points" = 0.675, "capacity" = 80),
 		),
 		"Set 3" = list(
-			STATS_FOREST_DEATHS = list("name" = "Forest deaths:", "points" = 6, "capacity" = 90),
+			STATS_FOREST_DEATHS = list("name" = "Forest deaths:", "points" = 6, "capacity" = 80),
 		),
 		"Set 4" = list(
 			STATS_DENDOR_SACRIFICES = list("name" = "Sacrifices to Dendor:", "points" = 12.5, "capacity" = 75),
@@ -521,7 +521,7 @@
 			STATS_ORGANS_EATEN = list("name" = "Organs eaten:", "points" = 4.75, "capacity" = 70),
 		),
 		"Set 4" = list(
-			STATS_LIMBS_BITTEN = list("name" = "Limbs bitten:", "points" = 1.425, "capacity" = 70),
+			STATS_LIMBS_BITTEN = list("name" = "Limbs bitten:", "points" = 1.25, "capacity" = 70),
 			STATS_ALIVE_HALF_ORCS = list("name" = "Number of half-orcs:", "points" = 8.5, "capacity" = 70),
 		),
 		"Set 5" = list(

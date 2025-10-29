@@ -9,9 +9,10 @@
 	antag_flag = ROLE_NBEAST
 	shared_occurence_type = SHARED_HIGH_THREAT
 
+	min_players = 15
 	weight = 12
 
-	denominator = 40
+	denominator = 35
 
 	base_antags = 1
 	maximum_antags = 3

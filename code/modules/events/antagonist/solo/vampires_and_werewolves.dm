@@ -10,13 +10,13 @@
 	roundstart = TRUE
 	antag_flag = ROLE_NBEAST
 	shared_occurence_type = SHARED_HIGH_THREAT
-	denominator = 40
+	denominator = 35
 
 	base_antags = 2
 	maximum_antags = 4
 
 	earliest_start = 0 SECONDS
-	min_players = 30
+	min_players = 45
 	weight = 8
 	secondary_prob = 0
 	typepath = /datum/round_event/antagonist/solo/vampires_and_werewolves
