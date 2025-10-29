@@ -140,6 +140,9 @@
 /datum/species/halfling/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
 	. = ..()
 
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	C.grant_language(/datum/language/common)
+
 	RegisterSignal(C, COMSIG_MOB_EQUIPPED_ITEM, PROC_REF(handle_equip))
 
 	if(!C.shoes)
@@ -149,6 +152,8 @@
 	. = ..()
 	if(QDELETED(C))
 		return
+	C.remove_language(/datum/language/common)
+	UnregisterSignal(C, COMSIG_MOB_SAY)
 	UnregisterSignal(C, COMSIG_MOB_EQUIPPED_ITEM)
 	C.remove_status_effect(/datum/status_effect/buff/free_feet)
 	C.remove_status_effect(/datum/status_effect/buff/stuffed)
