@@ -336,6 +336,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 				removed_turf |= best_candidate
 				cached_edge_turfs -= best_candidate
 				connection_cache -= best_candidate
+				if(best_candidate in burning_members)
+					extinguish(best_candidate)
 
 				for(var/dir in GLOB.cardinals)
 					var/turf/open/open_turf = get_step(best_candidate, dir)
@@ -614,13 +616,15 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	for(var/turf/floor in burning_members)
 		if(!(floor in cached_edge_turfs))
 			continue
-		var/modifier = 1
+		var/modifier = 3
 		if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 			if(!floor.outdoor_effect?.weatherproof)
-				modifier = 0.5
+				modifier *= 0.5
 		if(prob(floor.spread_chance * modifier))
 			for(var/turf/ranged_floor in range(1, floor))
 				if(ranged_floor == floor || !ranged_floor.burn_power || (ranged_floor in members))
+					continue
+				if(!(ranged_floor in floor.atmos_adjacent_turfs))
 					continue
 				var/obj/effect/hotspot/located_fire = locate() in ranged_floor
 				if(!located_fire)
@@ -631,37 +635,6 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		return
 
 	remove_any(amount = reagents_to_remove)
-
-	if(!reagents_per_turf)
-		return
-
-	if(group_burn_rate >= reagents_per_turf)
-		var/list/removed_turf = list()
-		var/number = round(group_burn_rate / reagents_per_turf)
-		for(var/num in 1 to number)
-			if(!length(burning_members))
-				break
-			var/turf/picked_turf = burning_members[1]
-			extinguish(picked_turf)
-			remove_from_group(picked_turf)
-			QDEL_NULL(picked_turf.liquids)
-			removed_turf |= picked_turf
-
-
-		for(var/turf/remover in removed_turf)
-			for(var/dir in GLOB.cardinals)
-				var/turf/open/open_turf = get_step(remover, dir)
-				if(!isopenturf(open_turf) || QDELETED(open_turf.liquids))
-					continue
-				check_edges(open_turf)
-
-		while(length(removed_turf))
-			var/turf/picked_turf = pick(removed_turf)
-			var/list/output = try_split(picked_turf, TRUE)
-			removed_turf -= picked_turf
-			for(var/turf/outputted_turf in output)
-				if(outputted_turf in removed_turf)
-					removed_turf -= outputted_turf
 
 
 /datum/liquid_group/proc/ignite_turf(turf/member)
