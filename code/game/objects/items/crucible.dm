@@ -61,6 +61,14 @@
 
 	for(var/obj/item/item in contents)
 		var/datum/material/material = item.melting_material
+		if(!material)
+			var/obj/item/ingot/ingot = item.smeltresult
+			if(!istype(ingot))
+				continue
+			material = initial(ingot.melting_material)
+			if(!material)
+				continue
+
 		if(crucible_temperature < initial(material.melting_point))
 			melting_pot -= item
 			continue
