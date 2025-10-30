@@ -46,3 +46,7 @@
 		H?.hud_used?.bloodpool?.name = "Psydon's Grace: [H.bloodpool]"
 		H?.hud_used?.bloodpool?.desc = "Devotion: [H.bloodpool]/[H.maxbloodpool]"
 		H.maxbloodpool = 1000
+
+		if(H.dna?.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Old Psydonic"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)

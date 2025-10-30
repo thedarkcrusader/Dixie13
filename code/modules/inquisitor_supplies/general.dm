@@ -315,6 +315,11 @@
 	item_type = /obj/item/storage/backpack/satchel/otavan
 	marquescost = 8
 
+/datum/inqports/equipment/surgerybag
+	name = "1 Surgery Bag"
+	item_type = /obj/item/storage/backpack/satchel/surgbag
+	marquescost = 16
+
 /datum/inqports/equipment/psysack
 	name = "1 Identity Concealer"
 	item_type = /obj/item/clothing/face/sack/psy
