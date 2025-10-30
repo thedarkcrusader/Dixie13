@@ -5,7 +5,7 @@
 	damage = 45
 	damage_type = BRUTE
 	woundclass = BCLASS_SHOT
-	range = 30
+	range = 5
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 	flag =  "piercing"
 	speed = 0.8
@@ -42,5 +42,5 @@
 	ex_flame = 1
 
 	shrapnel_type = /obj/projectile/bullet/shrap
-	shrapnel_radius = 7
+	shrapnel_radius = 5
 	det_time = 10 SECONDS

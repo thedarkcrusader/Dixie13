@@ -18,5 +18,5 @@
 	ex_flame = 1
 
 	shrapnel_type = /obj/projectile/bullet/shrap
-	shrapnel_radius = 7
+	shrapnel_radius = 5
 	det_time = 10 SECONDS
