@@ -613,7 +613,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 /datum/liquid_group/proc/process_fire()
 	get_group_burn()
 
-	var/reagents_to_remove = group_burn_rate * (length(burning_members))
+	var/reagents_to_remove = group_burn_rate * 0.2 * (length(burning_members))
 	for(var/turf/floor in burning_members)
 		if(!(floor in cached_edge_turfs))
 			continue
