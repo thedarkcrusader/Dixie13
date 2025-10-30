@@ -63,7 +63,7 @@
 		var/datum/material/material = item.melting_material
 		if(!material)
 			var/obj/item/ingot/ingot = item.smeltresult
-			if(!istype(ingot))
+			if(!ispath(ingot))
 				continue
 			material = initial(ingot.melting_material)
 			if(!material)
