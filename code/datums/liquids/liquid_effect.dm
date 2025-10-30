@@ -198,6 +198,7 @@
 			if(!turf.liquids)
 				continue
 			turf.liquids.update_appearance(UPDATE_OVERLAYS)
+		update_appearance(UPDATE_OVERLAYS)
 
 /obj/effect/abstract/liquid_turf/proc/set_fire_effect()
 	if(displayed_content)
