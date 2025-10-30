@@ -321,6 +321,7 @@
 	wdefense = BAD_PARRY
 	melting_material = null
 	dropshrink = 0.9
+
 //................ Steel Dagger ............... //
 /obj/item/weapon/knife/dagger/steel
 	name = "steel dagger"
@@ -366,7 +367,7 @@
 	max_integrity = INTEGRITY_STRONG
 	wdefense = GOOD_PARRY //They use a dagger, but it should be fine for them to also parry with it.
 
-/obj/item/weapon/knife/dagger/steel/kukri
+/obj/item/weapon/knife/dagger/kukri/steel
 	name = "steel kukri"
 	force = DAMAGE_DAGGER+1
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop)
@@ -375,6 +376,7 @@
 	wdefense = BAD_PARRY
 	melting_material = null
 	dropshrink = 0.9
+
 //................ Fanged dagger ............... //
 /obj/item/weapon/knife/dagger/steel/dirk
 	name = "fanged dagger"

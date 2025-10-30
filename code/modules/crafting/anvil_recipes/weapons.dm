@@ -358,6 +358,13 @@
 	additional_items = list(/obj/item/ingot/iron,)
 	created_item = /obj/item/weapon/sword/long/shotel/iron
 
+/datum/anvil_recipe/weapons/iron/shishpar
+	name = "Iron Shishpar (+ Iron Bar)"
+	recipe_name = "a Iron Shishpar"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/weapon/mace/shishpar/iron
+
 /datum/anvil_recipe/weapons/iron/sword_iron
 	name = "Sword"
 	recipe_name = "a Sword"
@@ -577,6 +584,13 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/weapon/sword/long/shotel
 
+/datum/anvil_recipe/weapons/steel/shishpar
+	name = "Steel Shishpar (+ Steel Bar)"
+	recipe_name = "a Steel Shishpar"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/weapon/mace/steel/shishpar
+
 /datum/anvil_recipe/weapons/steel/ida
 	name = "Steel Ida"
 	recipe_name = "a Steel Ida"
@@ -600,7 +614,7 @@
 	name = "Steel Kukri"
 	recipe_name = "a Steel Kukri"
 	appro_skill = /datum/skill/craft/weaponsmithing
-	created_item = /obj/item/weapon/knife/dagger/steel/kukri
+	created_item = /obj/item/weapon/knife/dagger/kukri/steel
 
 /datum/anvil_recipe/weapons/steel/dagger_steel
 	name = "2x Steel Daggers"
