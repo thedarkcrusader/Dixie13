@@ -110,7 +110,7 @@
 				continue
 			for(var/miracle in miracle_list)
 				grant_miracle(miracle)
-			if(holder_mob?.dna.species.id in favored_species)
+			if(holder_mob.dna?.species?.id in favored_species)
 				var/favored_miracle_list = favored_miracles[tier]
 				if(!islist(favored_miracle_list))
 					favored_miracle_list = list(favored_miracle_list)
