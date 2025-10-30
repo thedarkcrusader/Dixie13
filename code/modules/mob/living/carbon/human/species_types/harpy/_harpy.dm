@@ -170,13 +170,13 @@
 
 /datum/species/harpy/after_creation(mob/living/carbon/C)
 	. = ..()
-	C.grant_language(/datum/language/beast)
-	to_chat(C, "<span class='info'>I can speak Beastish with ,b before my speech.</span>")
+	C.grant_language(/datum/language/celestial)
+	to_chat(C, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 
 /datum/species/harpy/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/beast)
+	C.remove_language(/datum/language/celestial)
 
 /datum/species/harpy/get_skin_list()
 	return sortList(list(
