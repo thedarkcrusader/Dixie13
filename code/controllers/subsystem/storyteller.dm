@@ -1287,17 +1287,6 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/pick_chronicle_stats()
 	chosen_chronicle_stats.Cut()
 
-	var/list/available_sets = chronicle_sets.Copy()
-	var/list/complete_sets = list()
-	var/list/incomplete_sets = list()
-
-	for(var/set_name in available_sets)
-		var/list/set_data = available_sets[set_name]
-		if(length(set_data) >= 2)
-			complete_sets[set_name] = set_data
-		else
-			incomplete_sets[set_name] = set_data
-
 	var/list/current_valid_humans = list()
 	var/mob/living/carbon/human/valid_psydon_favourite
 
@@ -1314,43 +1303,58 @@ SUBSYSTEM_DEF(gamemode)
 		chosen_chronicle_stats += CHRONICLE_STATS_RANDOM_PASSERBY
 	else if(valid_psydon_favourite)
 		chosen_chronicle_stats += CHRONICLE_STATS_PSYDON_FAVOURITE
+		for(var/set_name in chronicle_sets)
+			var/list/set_data = chronicle_sets[set_name]
+			if(length(set_data) >= 2 && GLOB.chronicle_stats[set_data[1]] && GLOB.chronicle_stats[set_data[2]])
+				chosen_chronicle_stats += set_data[1]
+				break
+
+	var/list/available_complete_sets = list()
+	for(var/set_name in chronicle_sets)
+		var/list/set_data = chronicle_sets[set_name]
+		if(length(set_data) >= 2 && GLOB.chronicle_stats[set_data[1]] && GLOB.chronicle_stats[set_data[2]])
+			if(!(set_data[1] in chosen_chronicle_stats) && !(set_data[2] in chosen_chronicle_stats))
+				available_complete_sets[set_name] = set_data
 
 	var/slots_needed = 8 - length(chosen_chronicle_stats)
-	var/sets_picked = 0
-	var/sets_needed = FLOOR(slots_needed / 2, 1)
+	var/sets_to_pick = FLOOR(slots_needed / 2, 1)
 
-	while(sets_picked < sets_needed && length(complete_sets) > 0)
-		var/picked_set_name = pick(complete_sets)
-		var/list/picked_set = complete_sets[picked_set_name]
+	for(var/i in 1 to sets_to_pick)
+		if(!length(available_complete_sets))
+			break
+
+		var/picked_set_name = pick(available_complete_sets)
+		var/list/picked_set = available_complete_sets[picked_set_name]
 
 		chosen_chronicle_stats += picked_set[1]
 		chosen_chronicle_stats += picked_set[2]
 
-		complete_sets -= picked_set_name
-		sets_picked++
+		available_complete_sets -= picked_set_name
 
-	while(sets_picked < sets_needed && length(incomplete_sets) > 0)
-		var/picked_set_name = pick(incomplete_sets)
-		var/list/picked_set = incomplete_sets[picked_set_name]
+	if(length(chosen_chronicle_stats) < 8)
+		var/list/all_stats = list()
+		for(var/set_name in chronicle_sets)
+			var/list/set_data = chronicle_sets[set_name]
+			for(var/stat in set_data)
+				if(!(stat in chosen_chronicle_stats) && GLOB.chronicle_stats[stat])
+					all_stats += stat
 
-		for(var/entry in picked_set)
+		shuffle_inplace(all_stats)
+		for(var/stat in all_stats)
 			if(length(chosen_chronicle_stats) >= 8)
 				break
-			chosen_chronicle_stats += entry
-
-		incomplete_sets -= picked_set_name
-		sets_picked++
+			chosen_chronicle_stats += stat
 
 	if(length(chosen_chronicle_stats) < 8)
 		for(var/set_name in chronicle_sets)
 			if(length(chosen_chronicle_stats) >= 8)
 				break
 			var/list/set_data = chronicle_sets[set_name]
-			for(var/entry in set_data)
+			for(var/stat in set_data)
 				if(length(chosen_chronicle_stats) >= 8)
 					break
-				if(!(entry in chosen_chronicle_stats))
-					chosen_chronicle_stats += entry
+				if(!(stat in chosen_chronicle_stats))
+					chosen_chronicle_stats += stat
 
 /// Compares influence of all storytellers and sets a new storyteller with a highest influence
 /datum/controller/subsystem/gamemode/proc/pick_most_influential(roundstart = FALSE)
