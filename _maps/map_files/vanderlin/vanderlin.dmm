@@ -11490,7 +11490,8 @@
 /area/rogue/indoors/town/garrison)
 "gBy" = (
 /obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
+	pixel_x = -32;
+	pixel_y = 0
 	},
 /obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
@@ -13643,7 +13644,6 @@
 /area/rogue/outdoors/town)
 "hND" = (
 /obj/structure/table/wood/plain_alt,
-/obj/machinery/light/fueled/wallfire/candle,
 /obj/item/natural/feather,
 /obj/item/paper,
 /turf/open/floor/ruinedwood/turned/darker,
@@ -18752,12 +18752,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "kXt" = (
-/obj/structure/chair/wood/alt/chair_noble/red{
-	dir = 4
-	},
-/obj/machinery/light/fueled/wallfire{
-	pixel_y = 32
-	},
+/obj/machinery/light/fueled/oven/east,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "kXA" = (
@@ -23227,6 +23222,10 @@
 /obj/item/clothing/pants/tights/colored/black,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
+"nIP" = (
+/obj/structure/bookcase/random_recipes,
+/turf/open/floor/ruinedwood/turned/darker,
+/area/rogue/indoors/town)
 "nJb" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -23401,7 +23400,7 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/obj/item/reagent_containers/glass/carafe/silver,
+/obj/item/reagent_containers/glass/carafe/silver/redwine,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "nML" = (
@@ -25601,8 +25600,12 @@
 /turf/closed/wall/mineral/stone/window,
 /area/rogue/under/town/basement)
 "pbI" = (
-/obj/structure/closet/crate/crafted_closet/inn,
-/turf/open/floor/wood,
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/obj/structure/bookcase/random_recipes,
+/turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "pbT" = (
 /obj/structure/kneestingers,
@@ -26583,7 +26586,7 @@
 	pixel_y = 0
 	},
 /obj/item/coin/copper/pile,
-/obj/item/key/apartments/penthouse1,
+/obj/item/key/veteran,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "pHZ" = (
@@ -27025,6 +27028,13 @@
 /obj/structure/flora/grass/bush,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/town)
+"pXB" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/rogue/indoors/town)
 "pXR" = (
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
@@ -29806,6 +29816,7 @@
 	pixel_y = 0
 	},
 /obj/item/coin/copper/pile,
+/obj/item/key/elder,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "rKR" = (
@@ -183267,14 +183278,14 @@ ocA
 ocA
 ocA
 dtq
-cBH
-dhG
-qEy
+oEk
+pbI
+nIP
 dtq
-gTT
-dhG
-ocA
-gFb
+qDs
+gBy
+kXt
+oau
 dtq
 jjT
 jjT
@@ -183469,7 +183480,7 @@ vwV
 ocA
 uGx
 dtq
-hND
+srH
 ocA
 ocA
 biN
@@ -183671,11 +183682,11 @@ ocA
 ocA
 ocA
 dtq
-xBE
+gTT
 ocA
-gBy
+cBH
 dtq
-ocA
+qEy
 ocA
 ocA
 dtq
@@ -183873,11 +183884,11 @@ ocA
 ocA
 gFb
 dtq
-wnm
+gIr
 ocA
-qDs
+hND
 dtq
-gTT
+ocA
 ocA
 ocA
 dOf
@@ -184077,15 +184088,15 @@ oEk
 dtq
 ocA
 iul
-oEk
+xBE
 dtq
-gTT
+ocA
 ocA
 ocA
 dtq
 iGx
 iGx
-nJb
+pXB
 dtq
 iBK
 acx
@@ -184484,8 +184495,8 @@ kGV
 acx
 fdp
 dtq
-kXt
 ocA
+cBH
 dtq
 dMk
 iGx
@@ -184691,7 +184702,7 @@ idK
 dtq
 rKL
 apt
-pbI
+afS
 dtq
 iBK
 acx
