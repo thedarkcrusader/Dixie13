@@ -1655,7 +1655,7 @@ SUBSYSTEM_DEF(gamemode)
 
 			if(human_mob.STAPER > highest_perception)
 				highest_perception = human_mob.STAPER
-				set_chronicle_stat(CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON, human_mob, "EAGLE-EYED", "#54a8d6", "[human_mob.STAPER] perception")
+				set_chronicle_stat(CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON, human_mob, "EAGLE-EYED", "#a8d654", "[human_mob.STAPER] perception")
 
 			if(human_mob.STACON > highest_constitution)
 				highest_constitution = human_mob.STACON
@@ -1663,7 +1663,7 @@ SUBSYSTEM_DEF(gamemode)
 
 			if(human_mob.STAEND > highest_endurance)
 				highest_endurance = human_mob.STAEND
-				set_chronicle_stat(CHRONICLE_STATS_MOST_ENDURANT_PERSON, human_mob, "WORKHORSE", "#b0c261", "[human_mob.STAEND] endurance")
+				set_chronicle_stat(CHRONICLE_STATS_MOST_ENDURANT_PERSON, human_mob, "WORKHORSE", "#dbb169", "[human_mob.STAEND] endurance")
 
 			var/wealth = get_mammons_in_atom(human_mob)
 			total_wealth += wealth
