@@ -903,8 +903,8 @@
 
 /datum/special_trait/glutton
 	name = "The Glutton"
-	greet_text = span_notice("My rise to lordship began with a swindling deal with Mephistopheles. I was granted a life of luxury and decadance, and now my family must indulge.")
-	weight = 10 // it affects the whole family
+	greet_text = span_notice("Baotha has cursed my entire bloodline, demanding that we indulge in luxuries and dine in decadance.")
+	weight = 20
 	req_text = "Monarch"
 	allowed_jobs = list(/datum/job/lord)
 
@@ -912,16 +912,15 @@
 	character.change_stat(STATKEY_STR, 5)
 	character.change_stat(STATKEY_CON, 7)
 	character.change_stat(STATKEY_END, -6)
-	character.change_stat(STATKEY_SPD, -8)
+	character.change_stat(STATKEY_SPD, -10)
 
 	character.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) // this guy will sit on you
 	character.adjust_skillrank(/datum/skill/misc/athletics, -3, TRUE)
 
-	character.dna.species.nutrition_mod = 2
 	ADD_TRAIT(character, TRAIT_FAT, "[type]")
 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
 
-	character.family_datum.AddFamilyCurse(/datum/family_curse/demonic/gluttony, 1, "Mephistopheles")
+	character.family_datum.AddFamilyCurse(/datum/family_curse/hunger, 1, "Baotha")
 
 	character.transform = character.transform.Scale(1.15, 1)
 	character.update_transform()
