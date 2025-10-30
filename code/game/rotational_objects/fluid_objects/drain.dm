@@ -119,8 +119,6 @@
 
 		if(drain_amount > 0)
 			targeted_group.trans_to_seperate_group(collected_fluids, drain_amount)
-			targeted_group.process_turf_disperse()
-
 
 			// Visual effect
 			show_drain_effect(T)
