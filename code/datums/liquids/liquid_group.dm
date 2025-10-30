@@ -355,6 +355,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 				cached_edge_turfs -= best_candidate
 				connection_cache -= best_candidate
 
+		get_group_burn()
 		if(!length(removed_turf))
 			return
 		try_bulk_split(removed_turf)
