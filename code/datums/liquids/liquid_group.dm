@@ -297,20 +297,61 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		var/turfs_to_remove = round(length(members) - (total_reagent_volume / 6))
 		if(turfs_to_remove <= 0)
 			return
-		while(turfs_to_remove > 0)
+
+		var/list/connection_cache = list()
+		for(var/turf/edge_turf in cached_edge_turfs)
+			var/liquid_neighbor_count = 0
+			for(var/turf/adjacent in edge_turf.atmos_adjacent_turfs)
+				if(!QDELETED(adjacent.liquids) && adjacent.liquids.liquid_group == src)
+					liquid_neighbor_count++
+			connection_cache[edge_turf] = liquid_neighbor_count
+
+		while(turfs_to_remove > 0 && length(cached_edge_turfs))
 			turfs_to_remove--
-			if(members && length(members))
-				var/turf/picked_turf = pick(members)
-				if(!QDELETED(picked_turf.liquids))
-					remove_from_group(picked_turf)
-					QDEL_NULL(picked_turf.liquids)
-					removed_turf |= picked_turf
-					if(!total_reagent_volume)
-						reagents_per_turf = 0
-					else
-						reagents_per_turf = total_reagent_volume / length(members)
+
+			var/turf/best_candidate
+			var/lowest_connections = INFINITY
+
+			for(var/turf/edge_turf in cached_edge_turfs)
+				var/connections = connection_cache[edge_turf]
+				if(isnull(connections)) // In case new edges were added
+					connections = 0
+					for(var/turf/adjacent in edge_turf.atmos_adjacent_turfs)
+						if(!QDELETED(adjacent.liquids) && adjacent.liquids.liquid_group == src)
+							connections++
+					connection_cache[edge_turf] = connections
+
+				if(connections < lowest_connections)
+					lowest_connections = connections
+					best_candidate = edge_turf
+					if(lowest_connections == 1) // Can't get better than this
+						break
+
+			if(!best_candidate)
+				break
+
+			if(!QDELETED(best_candidate.liquids))
+				remove_from_group(best_candidate, FALSE)
+				QDEL_NULL(best_candidate.liquids)
+				removed_turf |= best_candidate
+				cached_edge_turfs -= best_candidate
+				connection_cache -= best_candidate
+
+				for(var/dir in GLOB.cardinals)
+					var/turf/open/open_turf = get_step(best_candidate, dir)
+					if(!isopenturf(open_turf) || QDELETED(open_turf.liquids))
+						continue
+					check_edges(open_turf)
+					if(connection_cache[open_turf])
+						connection_cache[open_turf]--
+
+				if(!total_reagent_volume)
+					reagents_per_turf = 0
 				else
-					members -= picked_turf
+					reagents_per_turf = total_reagent_volume / length(members)
+			else
+				cached_edge_turfs -= best_candidate
+				connection_cache -= best_candidate
 
 		if(!length(removed_turf))
 			return
