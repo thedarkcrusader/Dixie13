@@ -123,10 +123,10 @@
 			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, 4, TRUE)
 			grant_shield = FALSE
 		if("Knuckles")
-			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 3, 5, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 1, 4, TRUE)
 			grant_shield = FALSE
 		if("Katar")
-			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 3, 5, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 1, 4, TRUE)
 			grant_shield = FALSE
 	if(grant_shield)
 		H.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
