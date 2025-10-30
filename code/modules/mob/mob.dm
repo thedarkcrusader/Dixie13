@@ -336,7 +336,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  *
  * returns 0 if it cannot, 1 if successful
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/W)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, initial = FALSE)
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -345,8 +345,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		slot_priority = DEFAULT_SLOT_PRIORITY
 
 	for(var/slot as anything in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE)) //qdel_on_fail = 0; disable_warning = 1; redraw_mob = 1
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, initial = initial)) //qdel_on_fail = 0; disable_warning = 1; redraw_mob = 1
 			return TRUE
+
+	if(qdel_on_fail)
+		qdel(W)
 
 	return FALSE
 /**

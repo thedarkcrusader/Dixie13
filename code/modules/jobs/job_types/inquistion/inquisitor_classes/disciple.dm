@@ -3,7 +3,7 @@
 	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Psydon’s most dauntless warriors."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/disciple
+	outfit = /datum/outfit/disciple
 	category_tags = list(CTAG_INQUISITION)
 	jobstats = list(
 		STATKEY_STR = 3,
@@ -30,76 +30,86 @@
 		TRAIT_STEELHEARTED,
 	)
 
-/obj/item/storage/belt/leather/rope/dark
-	color = "#505050"
+/datum/job/advclass/disciple/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Disciple")
 
-/datum/outfit/job/disciple/pre_equip(mob/living/carbon/human/H)
-	..()
-	if(H.mind)
-		var/weapons = list("Discipline - Unarmed", "Katar", "Knuckledusters", "Quarterstaff")
-		var/weapon_choice = input(H,"Choose your WEAPON.", "TAKE UP PSYDON'S ARMS.") as anything in weapons
-		switch(weapon_choice)
-			if("Discipline - Unarmed")
-				H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5)
-				H.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5)
-				gloves = /obj/item/clothing/gloves/bandages/pugilist
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC) //Removes pain-inflicted slowdowns. Does not immunize against pain, nor other means of slowdown - frostspells, unpaved terrain, etc.
-			if("Katar")
-				r_hand = /obj/item/weapon/katar/psydon
-				gloves = /obj/item/clothing/gloves/bandages/weighted
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			if("Knuckledusters")
-				r_hand = /obj/item/weapon/knuckles/psydon
-				gloves = /obj/item/clothing/gloves/bandages/weighted
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			if("Quarterstaff")
-				H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
-				r_hand = /obj/item/weapon/polearm/woodstaff/quarterstaff
-				gloves = /obj/item/clothing/gloves/bandages/weighted
-				H.change_stat(STATKEY_PER, 1)
-				H.change_stat(STATKEY_INT, 1) //Changes statblock from 3/3/3/-2/-1/0 to 3/3/3/-1/-1/1. Note that this comes at the cost of losing the 'critical resistance' trait, and retaining the unarmorable status.
-		var/armors = list("Grenzelhoftian - Heavyweight, Blacksteel Thorns", "Naledian - Lightweight, Arcyne-Martiality")
-		var/armor_choice = input(H, "Choose your ARCHETYPE.", "TAKE UP PSYDON'S DUTY.") as anything in armors
-		switch(armor_choice)
-			if("Grenzelhoftian - Heavyweight, Blacksteel Thorns")
-				head = /obj/item/clothing/head/roguehood/psydon
-				mask = /obj/item/clothing/head/helmet/blacksteel/psythorns
-				wrists = /obj/item/clothing/wrists/bracers/psythorns
-				neck = /obj/item/clothing/neck/psycross/silver
-				ring = /obj/item/clothing/ring/signet/silver
-			if("Naledian - Lightweight, Arcyne-Martiality")
-				head = /obj/item/clothing/head/headband/naledi
-				mask = /obj/item/clothing/face/lordmask/naledi/sojourner
-				wrists = /obj/item/clothing/wrists/bracers/naledi
-				neck = /obj/item/clothing/neck/psycross/g //Naledians covet gold far more than the Orthodoxists cover silver. Emphasizes their nature as 'visitors', more-so than anything else.
-				ring = /obj/item/clothing/ring/signet
-				l_hand = /obj/item/spellbook_unfinished/pre_arcyne
-				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-				REMOVE_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-				H.clamped_adjust_skillrank(/datum/skill/magic/arcane, 3, 3)
+	if(!spawned.mind)
+		return
 
-				H.add_spell(/datum/action/cooldown/spell/undirected/forcewall)
-				H.add_spell(/datum/action/cooldown/spell/projectile/sickness)
-				H.add_spell(/datum/action/cooldown/spell/projectile/fetch)
-				H.add_spell(/datum/action/cooldown/spell/undirected/message)
-				H.add_spell(/datum/action/cooldown/spell/undirected/touch/bladeofpsydon)
+	var/static/list/weapons = list(
+		"Discipline - Unarmed" = null,
+		"Katar" = /obj/item/weapon/katar/psydon,
+		"Knuckledusters" = /obj/item/weapon/knuckles/psydon,
+		"Quarterstaff" = /obj/item/weapon/polearm/woodstaff/quarterstaff,
+	)
+	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "TAKE UP PSYDON'S ARMS!")
+	var/obj/item/clothing/gloves/gloves_to_wear = /obj/item/clothing/gloves/bandages/weighted
+	switch(weapon_choice)
+		if("Discipline - Unarmed")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5)
+			spawned.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5)
+			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
+		if("Katar")
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+		if("Knuckledusters")
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+		if("Quarterstaff")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
+			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+			spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
-				H.change_stat(STATKEY_CON, -3)
-				H.change_stat(STATKEY_INT, 3)
-				H.change_stat(STATKEY_SPD, 2) //Turns the Sojourner's unmodified statblock to 3/0/0/1/1, compared to the Disciple's 3/3/3/-2/-1.
+	var/static/list/gear = list(
+		"Grenzelhoftian - Heavyweight, Blacksteel Thorns",
+		"Naledian - Lightweight, Arcyne-Martiality",
+	)
+	var/armor_choice = browser_input_list(player_client, "Choose your ARCHETYPE.", "TAKE UP PSYDON'S DUTY.", gear)
+	switch(armor_choice)
+		if("Grenzelhoftian - Heavyweight, Blacksteel Thorns")
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/roguehood/psydon(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/helmet/blacksteel/psythorns(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/wrists/bracers/psythorns(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/neck/psycross/silver(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/ring/signet/silver(), TRUE, TRUE)
+		if("Naledian - Lightweight, Arcyne-Martiality")
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/headband/naledi(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/face/lordmask/naledi/sojourner(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/wrists/bracers/naledi(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/neck/psycross/g(), TRUE, TRUE)
+			spawned.equip_to_appropriate_slot(new /obj/item/clothing/ring/signet(), TRUE, TRUE)
+			spawned.put_in_hands(new /obj/item/spellbook_unfinished/pre_arcyne)
+			ADD_TRAIT(spawned, TRAIT_DODGEEXPERT, JOB_TRAIT)
+			REMOVE_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+			var/list/spells = list(
+				/datum/action/cooldown/spell/undirected/forcewall,
+				/datum/action/cooldown/spell/projectile/sickness,
+				/datum/action/cooldown/spell/projectile/fetch,
+				/datum/action/cooldown/spell/undirected/message,
+				/datum/action/cooldown/spell/undirected/touch/bladeofpsydon,
+			)
+			for(var/datum/action/cooldown/spell/spell as anything in spells)
+				spawned.add_spell(spell)
+			var/list/stats = list(
+				STATKEY_CON = -3,
+				STATKEY_INT = 3,
+				STATKEY_SPD = 2,
+			)
+			spawned.adjust_stat_modifier_list("job_stats", stats)
 
+/datum/outfit/disciple
+	name = "Disciple"
 	shoes = /obj/item/clothing/shoes/psydonboots
 	armor = /obj/item/clothing/armor/regenerating/skin/disciple
 	backl = /obj/item/storage/backpack/satchel/otavan
-	backpack_contents = list(/obj/item/key/inquisition = 1,
-	/obj/item/paper/inqslip/arrival/ortho = 1,
-	/obj/item/gem/amethyst = 1) //Kept here for now, until we figure out how to make it better fit in overfilled hands.
 	belt = /obj/item/storage/belt/leather/rope/dark
 	pants = /obj/item/clothing/pants/tights/colored/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	cloak = /obj/item/clothing/cloak/psydontabard/alt
-
-/datum/outfit/job/disciple/post_equip(mob/living/carbon/human/H, visuals_only)
-	. = ..()
-	GLOB.inquisition.add_member_to_school(H, "Benetarus", 0, "Disciple")
+	backpack_contents = list(
+		/obj/item/key/inquisition = 1,
+		/obj/item/paper/inqslip/arrival/ortho = 1,
+		/obj/item/gem/amethyst = 1,
+	)

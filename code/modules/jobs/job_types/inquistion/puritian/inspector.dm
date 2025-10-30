@@ -2,7 +2,7 @@
 /datum/job/advclass/puritan/inspector
 	title = "Inquisitor"
 	tutorial = "The head of the Ordo Venatari, your lessons are of a subtle touch and a light step. A silver dagger in the right place at the right time is all that is needed. Preparation is key, and this is something you impart on your students. Be always ready, be always waiting, and always be vigilant."
-	outfit = /datum/outfit/job/inquisitor/inspector
+	outfit = /datum/outfit/inquisitor/inspector
 
 	category_tags = list(CTAG_PURITAN)
 
@@ -38,8 +38,12 @@
 		/datum/skill/misc/sewing = SKILL_LEVEL_APPRENTICE
 	)
 
-/datum/outfit/job/inquisitor/inspector/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/job/advclass/puritan/inspector/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	GLOB.inquisition.add_member_to_position(spawned, GLOB.inquisition.venatari, 100)
+
+/datum/outfit/inquisitor/inspector
+	name = "Inspector"
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	belt = /obj/item/storage/belt/leather/knifebelt/black/psydon
 	neck = /obj/item/clothing/neck/gorget
@@ -63,7 +67,10 @@
 		/obj/item/rope/inqarticles/inquirycord = 1,
 		/obj/item/grapplinghook = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1,
-		)
+	)
+
+/datum/outfit/inquisitor/inspector/pre_equip(mob/living/carbon/human/H)
+	. = ..()
 
 	var/weapons = list("Retribution (Rapier)", "Daybreak (Whip)", "Sanctum (Halberd)")
 	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons
@@ -78,7 +85,3 @@
 		if("S (Halberd)")
 			H.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
-
-/datum/outfit/job/inquisitor/inspector/post_equip(mob/living/carbon/human/H, visuals_only)
-	. = ..()
-	GLOB.inquisition.add_member_to_position(H, GLOB.inquisition.venatari, 100)

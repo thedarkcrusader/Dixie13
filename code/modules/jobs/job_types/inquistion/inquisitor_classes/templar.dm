@@ -3,7 +3,7 @@
 	tutorial = "You are among the strongest students of the Ordo Benetarus. Top of your classes in both physical skill and intellectual matters, you’re here to prove you’re worthy of becoming an inquisitor. One simple step, before your skill is recognized."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
-	outfit = /datum/outfit/job/psydoniantemplar
+	outfit = /datum/outfit/psydoniantemplar
 	category_tags = list(CTAG_INQUISITION)
 	cmode_music = 'sound/music/templarofpsydonia.ogg'
 
@@ -36,8 +36,14 @@
 		TRAIT_SILVER_BLESSED,
 	)
 
-/datum/outfit/job/psydoniantemplar/pre_equip(mob/living/carbon/human/H)
-	..()
+	voicepack_m = /datum/voicepack/male/knight
+
+/datum/job/advclass/psydoniantemplar/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Templar")
+
+/datum/outfit/psydoniantemplar
+	name = "Psydonian Templar"
 	wrists = /obj/item/clothing/neck/psycross/silver
 	cloak = /obj/item/clothing/cloak/psydontabard
 	backr = /obj/item/weapon/shield/tower/metal
@@ -57,7 +63,9 @@
 		/obj/item/paper/inqslip/arrival/ortho = 1,
 	)
 
-	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+/datum/outfit/psydoniantemplar/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	//ffs
 
 	var/helmets = list("Barbute", "Sallet", "Armet", "Bucket Helm")
 	var/helmet_choice = input(H,"Choose your HELMET.", "TAKE UP PSYDON'S HELMS.") as anything in helmets
@@ -107,7 +115,3 @@
 			H.put_in_hands(new /obj/item/weapon/greataxe/psy(H), TRUE)
 			H.put_in_hands(new /obj/item/weapon/sword/short/psy(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
-
-/datum/outfit/job/psydoniantemplar/post_equip(mob/living/carbon/human/H, visuals_only)
-	. = ..()
-	GLOB.inquisition.add_member_to_school(H, "Benetarus", 0, "Templar")

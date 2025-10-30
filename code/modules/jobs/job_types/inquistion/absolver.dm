@@ -9,7 +9,7 @@
 	allowed_patrons = list(/datum/patron/psydon) //You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Psydon!
 	tutorial = "The Oratorium claims you are naught more than a 'cleric', but you know the truth; you are a sacrificial lamb. Your hands, unmarred through prayer and pacifism, have been gifted with the power to manipulate blood - to siphon away the wounds of others, so that you may endure in their stead. Let your censer's light shepherd the Inquisitor's retinue forth, lest they're led astray by wrath and temptation."
 	selection_color = JCOLOR_INQUISITION
-	outfit = /datum/outfit/job/absolver
+	outfit = /datum/outfit/absolver
 	bypass_lastclass = TRUE
 	display_order = JDO_ABSOLVER
 	min_pq = 3 // Low potential for grief. A pacifist by trade. Also needs to know wtf a PSYDON is.
@@ -50,17 +50,23 @@
 		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
 	)
 
+	languages = list(/datum/language/oldpsydonic)
+
 
 // REMEMBER FLAGELLANT? REMEMBER LASZLO? THIS IS HIM NOW. FEEL OLD YET?
 
-/datum/job/absolver/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/absolver/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		H.grant_language(/datum/language/oldpsydonic)
-		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
+	spawned.verbs |= /mob/living/carbon/human/proc/view_inquisition
 
-/datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
+	var/datum/species/species = spawned.dna?.species
+	if(!species)
+		return
+	species.native_language = "Old Psydonic"
+	species.accent_language = species.get_accent(species.native_language)
+
+
+/datum/outfit/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
 
 	H.hud_used?.shutdown_bloodpool()
@@ -95,6 +101,6 @@
 		/obj/item/key/inquisition = 1,
 		)
 
-/datum/outfit/job/absolver/post_equip(mob/living/carbon/human/H, visuals_only)
+/datum/outfit/absolver/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(H, "Sanctae", 0, "Absolver")
