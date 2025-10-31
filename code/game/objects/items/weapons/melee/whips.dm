@@ -230,7 +230,7 @@
 	icon_state = "nagaika"
 	force = 25		//Same as a cudgel/sword for intent purposes. Basically a 2 range cudgel while one-handing.
 	possible_item_intents = list(/datum/intent/whip/crack/metal, /datum/intent/whip/lash, /datum/intent/sword/strike)
-	wdefense = 1	//Akin to a cudgel, still terrible at parrying though. Better than nothing I guess; thing is used irl as a counter-weapon to knives.
+	wdefense = BAD_PARRY	//Akin to a cudgel, still terrible at parrying though. Better than nothing I guess; thing is used irl as a counter-weapon to knives.
 
 //................ Urumi ............... //
 
@@ -248,7 +248,7 @@
 	max_blade_int = 175
 	max_integrity = INTEGRITY_STANDARD
 	blade_dulling = DULLING_BASH
-	wdefense = 1 // Parrying with a whip sword is inherently badass, plus its a small benefit for it since its supposed to have less durability.
+	wdefense = BAD_PARRY // Parrying with a whip sword is inherently badass, plus its a small benefit for it since its supposed to have less durability.
 
 /obj/item/weapon/whip/urumi/iron
 	name = "iron urumi"
