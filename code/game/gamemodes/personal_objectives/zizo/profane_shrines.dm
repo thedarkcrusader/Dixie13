@@ -2,8 +2,8 @@
 	name = "Construct Profane Shrines"
 	category = "Zizo's Chosen"
 	triumph_count = 2
-	immediate_effects = list("Gained an ability to construct profane shrines", "Zizo blesses you (+2 Fortune)")
-	rewards = list("2 Triumphs", "Zizo grows stronger")
+	immediate_effects = list("Gained an ability to construct profane shrines")
+	rewards = list("2 Triumphs", "Zizo grows stronger", "Zizo blesses you (+2 Fortune)")
 	var/target_type = /obj/structure/fluff/psycross/zizocross
 	var/target_count = 2
 	var/current_count = 0

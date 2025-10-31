@@ -2,8 +2,8 @@
 	name = "Extract Truth Through Pain"
 	category = "Zizo's Chosen"
 	triumph_count = 3
-	immediate_effects = list("Gained an ability to torture others for information", "Zizo blesses you (+1 Strength, +1 Endurance)")
-	rewards = list("3 Triumphs", "Zizo grows stronger")
+	immediate_effects = list("Gained an ability to torture others for information")
+	rewards = list("3 Triumphs", "Zizo grows stronger", "Zizo blesses you (+1 Strength, +1 Endurance)")
 	var/torture_count = 0
 	var/required_count = 1
 
