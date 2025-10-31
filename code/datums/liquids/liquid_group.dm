@@ -669,7 +669,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	if(!cached_fire_spreads[member])
 		build_fire_cache(member)
 
-	var/modifier = 1
+	var/modifier = 25 //yea this is nuts
 	if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 		modifier = 0.5
 	for(var/turf/open/adjacent_turf in cached_fire_spreads[member])
@@ -882,6 +882,13 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	if(!length(new_group.members))
 		qdel(new_group)
 		return FALSE
+
+	if(length(new_group.burning_members))
+		new_group.get_group_burn()
+		for(var/turf/burning_turf in new_group.burning_members)
+			if(!QDELETED(burning_turf.liquids))
+				burning_turf.liquids.fire_state = new_group.group_fire_state
+				burning_turf.liquids.set_fire_effect()
 
 	if(return_list)
 		return connected_liquids

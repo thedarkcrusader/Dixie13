@@ -12,8 +12,9 @@
 				var/turf/loc = H.loc
 				if(loc.can_see_sky())
 					var/mob/living/carbon/human/human = user
-					if(human.rage_datum?.rage > human.rage_datum.max_rage - 20)
-						to_chat(H, span_userdanger("The moonlight scorns me... It is too late."))
+					if(!is_species(H, /datum/species/werewolf))
+						if(human.rage_datum?.rage > human.rage_datum.max_rage - 20)
+							to_chat(H, span_userdanger("The moonlight scorns me... It is too late."))
 					human.rage_datum?.update_rage(10)
 
 
