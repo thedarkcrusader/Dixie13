@@ -14,6 +14,11 @@
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
+"dl" = (
+/obj/structure/flora/grass,
+/obj/item/natural/stone,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "dw" = (
 /obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/naturalstone,
@@ -138,6 +143,10 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
+"vY" = (
+/obj/structure/flora/grass,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "wl" = (
 /obj/structure/spider/cocoon,
 /turf/open/floor/blocks,
@@ -214,6 +223,11 @@
 /obj/structure/spider/cocoon,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/manor)
+"ET" = (
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "FU" = (
 /obj/structure/chair/wood,
 /mob/living/carbon/human/species/rousman/npc,
@@ -223,6 +237,9 @@
 /obj/structure/fluff/statue/knight,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"Hp" = (
+/turf/open/floor/grass,
+/area/rogue/outdoors/woods)
 "Hu" = (
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
@@ -310,6 +327,13 @@
 /obj/effect/mapping_helpers/structure/breaker,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
+"SP" = (
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/woods)
+"TH" = (
+/obj/item/natural/stone,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/woods)
 "Um" = (
 /obj/structure/fluff/walldeco/stone,
 /obj/structure/lever/hidden{
@@ -320,7 +344,11 @@
 /area/rogue/indoors/town/manor)
 "Vw" = (
 /obj/effect/decal/remains/wolf,
-/turf/open/floor/dirt,
+/turf/open/floor/grass,
+/area/rogue/outdoors/woods)
+"VG" = (
+/obj/structure/flora/grass,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "VQ" = (
 /obj/structure/table/wood,
@@ -354,18 +382,18 @@ hB
 (2,1,1) = {"
 hB
 NH
+Hp
+NH
+NH
+vY
 NH
 NH
 NH
 NH
 NH
 NH
-Cz
-Cz
-Cz
-NH
-NH
-NH
+vY
+VG
 ji
 fT
 NH
@@ -375,23 +403,23 @@ hB
 "}
 (3,1,1) = {"
 hB
+SP
 NH
-NH
-NH
-NH
+TH
+VG
 NH
 fT
 NH
-Cz
-Cz
-Cz
+vY
+vY
+vY
 pJ
 pJ
 pJ
 pJ
 pJ
 NH
-NH
+VG
 NH
 hB
 "}
@@ -399,8 +427,8 @@ hB
 hB
 fT
 fT
-NH
-NH
+dl
+SP
 pJ
 pJ
 fY
@@ -412,8 +440,8 @@ De
 Pu
 fI
 pJ
-NH
-NH
+Hp
+vY
 NH
 hB
 "}
@@ -422,43 +450,43 @@ hB
 fT
 fT
 NH
-NH
+Hp
 pJ
 AS
 Hu
 Ay
 pJ
-NH
+Hp
 pJ
 Pu
 FU
 Kj
 pJ
-NH
-NH
-NH
+Hp
+ET
+SP
 hB
 "}
 (6,1,1) = {"
 hB
-NH
-NH
-NH
-NH
+vY
+SP
+Hp
+Hp
 pJ
 Ch
 tt
 ww
 pJ
-NH
+Hp
 pJ
 Oj
 Pu
 Pu
 pJ
+Hp
 NH
-NH
-NH
+SP
 hB
 "}
 (7,1,1) = {"
@@ -480,7 +508,7 @@ un
 pJ
 pJ
 NH
-NH
+SP
 hB
 "}
 (8,1,1) = {"
@@ -507,8 +535,8 @@ hB
 "}
 (9,1,1) = {"
 Cz
-Cz
-Cz
+SP
+NH
 sT
 kf
 Rc
@@ -524,13 +552,13 @@ lh
 QQ
 Qv
 bd
-Cz
+NH
 Cz
 "}
 (10,1,1) = {"
 yu
-Cz
-Cz
+SP
+NH
 Rf
 kf
 kf
@@ -546,13 +574,13 @@ Pu
 QQ
 lw
 bd
-Cz
+NH
 dw
 "}
 (11,1,1) = {"
 Cz
-Cz
-Cz
+NH
+SP
 Rf
 dO
 uJ
@@ -568,13 +596,13 @@ QQ
 Pu
 wG
 bd
-Cz
+NH
 Cz
 "}
 (12,1,1) = {"
 hB
 NH
-NH
+vY
 pJ
 mo
 wl
@@ -595,7 +623,7 @@ hB
 "}
 (13,1,1) = {"
 hB
-NH
+Hp
 NH
 pJ
 pJ
@@ -617,8 +645,8 @@ hB
 "}
 (14,1,1) = {"
 hB
-NH
-NH
+Hp
+SP
 NH
 fT
 pJ
@@ -632,17 +660,17 @@ jr
 jr
 pJ
 NH
-NH
-NH
-NH
+Hp
+vY
+vY
 hB
 "}
 (15,1,1) = {"
 hB
+SP
+vY
 NH
-NH
-NH
-NH
+ET
 pJ
 Ev
 PC
@@ -653,10 +681,10 @@ JD
 jr
 jr
 pJ
-NH
-NH
-NH
-NH
+Hp
+Hp
+ET
+TH
 hB
 "}
 (16,1,1) = {"
@@ -676,7 +704,7 @@ pJ
 pJ
 pJ
 NH
-NH
+Hp
 NH
 NH
 hB
@@ -692,55 +720,55 @@ sz
 pJ
 pJ
 pJ
+Hp
 NH
 NH
+SP
 NH
 NH
-NH
-NH
-NH
+vY
 fT
-NH
+Hp
 hB
 "}
 (18,1,1) = {"
 hB
+Hp
 NH
 NH
+SP
+vY
+VG
+NH
+vY
 NH
 NH
-NH
-NH
-NH
-Cz
-Cz
-Cz
-NH
-NH
+SP
+dl
 NH
 NH
 NH
 NH
 fT
-NH
+Hp
 hB
 "}
 (19,1,1) = {"
 hB
+Hp
+NH
+NH
+Hp
 NH
 NH
 NH
 NH
 NH
 NH
-NH
-Cz
-Cz
-Cz
+SP
 NH
 NH
-NH
-NH
+vY
 NH
 NH
 fT
