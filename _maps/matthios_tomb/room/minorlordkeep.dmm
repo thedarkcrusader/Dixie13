@@ -64,6 +64,7 @@
 /area/rogue/indoors/town/manor)
 "jI" = (
 /turf/open/floor/blocks,
+/turf/open/floor/rooftop/green,
 /area/rogue/outdoors/woods)
 "kf" = (
 /turf/open/floor/blocks,
@@ -215,6 +216,7 @@
 "DC" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/blocks,
+/turf/open/floor/rooftop/green,
 /area/rogue/outdoors/woods)
 "DM" = (
 /turf/open/transparent/openspace,
@@ -356,6 +358,11 @@
 /obj/item/natural/feather,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
+"YN" = (
+/turf/open/floor/blocks,
+/turf/open/floor/rooftop/green,
+/turf/open/floor/rooftop/green,
+/area/rogue/outdoors/woods)
 
 (1,1,1) = {"
 hB
@@ -936,7 +943,7 @@ DM
 DM
 jI
 jI
-jI
+YN
 jI
 jI
 jI
