@@ -267,7 +267,7 @@
 /area/rogue/outdoors/woods)
 "MO" = (
 /obj/effect/mapping_helpers/secret_door_creator{
-	redstone_id = MLK1
+	redstone_id = "mlk1"
 	},
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/indoors/town/manor)
@@ -313,7 +313,7 @@
 "Um" = (
 /obj/structure/fluff/walldeco/stone,
 /obj/structure/lever/hidden{
-	redstone_id = MLK1;
+	redstone_id = "mlk1";
 	pixel_x = null
 	},
 /turf/closed/wall/mineral/decostone/moss,
