@@ -20,7 +20,7 @@
 	werewolf_untransform(null, TRUE, gibbed)
 
 /mob/living/carbon/human/proc/werewolf_transform()
-	if(HAS_TRAIT(H, TRAIT_SILVER_BLESSED)) return
+	if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED)) return
 
 	if(HAS_TRAIT(src, TRAIT_WEREWOLF_RAGE))
 		return
