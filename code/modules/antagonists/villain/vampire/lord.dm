@@ -49,6 +49,8 @@
 	var/list/candidates = SSgamemode.get_candidates(ROLE_NBEAST, ROLE_NBEAST, living_players = TRUE, restricted_roles = restricted_roles)
 	var/thralls = rand(2, 3)
 
+	candidates -= owner.current
+
 	for(var/i = 1 to thralls)
 		if(!length(candidates))
 			return
