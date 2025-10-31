@@ -204,9 +204,9 @@
 	created_item = /obj/item/weapon/sword/scimitar/ada/iron
 
 /datum/anvil_recipe/weapons/iron/aruval
-	name = "Iron Aruval (+1 Iron Bar)"
+	name = "Iron Aruval (+2 Iron Bar)"
 	recipe_name = "a Iron Aruval"
-	additional_items = list(/obj/item/ingot/iron)
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/long/aruval/iron
 
@@ -442,9 +442,9 @@
 	created_item = /obj/item/weapon/sword/scimitar/ada
 
 /datum/anvil_recipe/weapons/steel/aruval
-	name = "Steel Aruval (+1 Steel Bar)"
+	name = "Steel Aruval (+2 Steel Bar)"
 	recipe_name = "a Steel Aruval"
-	additional_items = list(/obj/item/ingot/steel)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	created_item = /obj/item/weapon/sword/long/aruval
 
