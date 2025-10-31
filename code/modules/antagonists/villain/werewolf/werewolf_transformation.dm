@@ -101,6 +101,8 @@
 	W.add_spell(/datum/action/cooldown/spell/undirected/claws)
 	W.add_spell(/datum/action/cooldown/spell/aoe/repulse/howl)
 	W.add_spell(/datum/action/cooldown/spell/woundlick)
+	W.add_spell(/datum/action/cooldown/spell/lunge)
+	W.add_spell(/datum/action/cooldown/spell/throw_target)
 
 	W.rage_datum.grant_to_secondary(W)
 
@@ -141,6 +143,8 @@
 	W.remove_spell(/datum/action/cooldown/spell/undirected/claws)
 	W.remove_spell(/datum/action/cooldown/spell/aoe/repulse/howl)
 	W.remove_spell(/datum/action/cooldown/spell/woundlick)
+	W.remove_spell(/datum/action/cooldown/spell/lunge)
+	W.remove_spell(/datum/action/cooldown/spell/throw_target)
 	W.rage_datum.remove_secondary()
 	W.regenerate_icons()
 
