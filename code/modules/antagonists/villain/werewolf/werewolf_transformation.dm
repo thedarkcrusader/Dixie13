@@ -3,8 +3,6 @@
 	var/mob/living/carbon/human/H = user
 	if(H.stat == DEAD) return
 	if(H.advsetup) return
-	if(HAS_TRAIT(H, TRAIT_SILVER_BLESSED)) return
-
 	// Werewolf transforms at night AND under the sky
 	if(!HAS_TRAIT(user, TRAIT_WEREWOLF_RAGE))
 		if(GLOB.tod == "night")
@@ -22,6 +20,7 @@
 	werewolf_untransform(null, TRUE, gibbed)
 
 /mob/living/carbon/human/proc/werewolf_transform()
+	if(HAS_TRAIT(H, TRAIT_SILVER_BLESSED)) return
 
 	if(HAS_TRAIT(src, TRAIT_WEREWOLF_RAGE))
 		return
