@@ -673,6 +673,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		var/mob/living/carbon/human/human_owner = owner
 		armor = human_owner.check_crit_armor(src, bclass)
 
+	if(!armor)
+		werewolf_infect_attempt()
+
 	var/upper_clamp = ARTERY_LIMB_BLEEDRATE
 	if(armor && upgrade_bleed_clamp_armor)
 		upper_clamp = upgrade_bleed_clamp_armor
