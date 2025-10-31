@@ -109,6 +109,9 @@
 	. = ..()
 	stacks = 1
 	update_alert()
+	var/datum/antagonist/werewolf/wolf_datum = owner.mind.has_antag_datum(/datum/antagonist/werewolf)
+	if(wolf_datum)
+		owner.rage_datum.update_rage(15)
 	return TRUE
 
 /datum/status_effect/debuff/silver_bane/on_remove()
@@ -130,6 +133,9 @@
 		trigger_stun()
 	else
 		update_alert()
+	var/datum/antagonist/werewolf/wolf_datum = owner.mind.has_antag_datum(/datum/antagonist/werewolf)
+	if(wolf_datum)
+		owner.rage_datum.update_rage(15)
 
 /datum/status_effect/debuff/silver_bane/proc/trigger_stun()
 	if(!owner || is_stunned)
