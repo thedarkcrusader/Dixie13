@@ -132,6 +132,7 @@
 
 /datum/rage/proc/update_rage(amount)
 	var/old_rage = rage
+	if(holder_mob.stat == DEAD) return
 	rage = clamp(rage + amount, 0, max_rage)
 
 	update_hud()
