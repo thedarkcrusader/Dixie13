@@ -1,6 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bd" = (
+/turf/closed/wall/mineral/stone/moss,
+/area/rogue/outdoors/woods)
+"bH" = (
+/turf/closed/wall/mineral/decostone/moss,
+/area/rogue/indoors/town/manor)
 "cK" = (
 /obj/structure/fluff/statue/pillar,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
 "df" = (
@@ -11,6 +18,10 @@
 /obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/woods)
+"dO" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/cobble/alt,
+/area/rogue/indoors/town/manor)
 "fI" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/undershirt/fancy,
@@ -49,9 +60,15 @@
 "jI" = (
 /turf/open/floor/blocks,
 /area/rogue/outdoors/woods)
+"kf" = (
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/manor)
 "kr" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /turf/open/floor/churchrough,
+/area/rogue/indoors/town/manor)
+"lh" = (
+/turf/open/floor/church,
 /area/rogue/indoors/town/manor)
 "lw" = (
 /obj/structure/chair/bench/throne,
@@ -64,9 +81,7 @@
 /area/rogue/indoors/town/manor)
 "mo" = (
 /obj/machinery/light/fueled/wallfire/candle,
-/turf/open/floor/blocks,
-/area/rogue/indoors/town/manor)
-"nR" = (
+/obj/structure/winch,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "om" = (
@@ -86,6 +101,10 @@
 /obj/structure/door/iron,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
+"rw" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/cobblerock,
+/area/rogue/indoors/town/manor)
 "sz" = (
 /obj/item/natural/rock,
 /turf/open/floor/dirt,
@@ -102,6 +121,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
 "tC" = (
+/obj/structure/spider/stickyweb,
 /turf/open/floor/church,
 /area/rogue/indoors/town/manor)
 "un" = (
@@ -109,12 +129,22 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
-"vB" = (
-/turf/open/floor/dirt,
+"uJ" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "vX" = (
 /obj/structure/inert_bonepile,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/blocks,
+/area/rogue/indoors/town/manor)
+"wl" = (
+/obj/structure/spider/cocoon,
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/manor)
+"ww" = (
+/obj/structure/bed/shit,
+/turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
 "wG" = (
 /obj/item/natural/bundle/stoneblock,
@@ -129,6 +159,11 @@
 /area/rogue/indoors/town/manor)
 "xn" = (
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/spider/cocoon,
+/turf/open/floor/churchrough,
+/area/rogue/indoors/town/manor)
+"ya" = (
+/obj/structure/spider/cocoon,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
 "yu" = (
@@ -137,15 +172,9 @@
 /area/rogue/outdoors/woods)
 "yD" = (
 /obj/machinery/light/fueled/hearth,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
-"yE" = (
-/mob/living/simple_animal/hostile/retaliate/bigrat,
-/turf/open/floor/blocks,
-/area/rogue/outdoors/woods)
-"yR" = (
-/turf/closed/wall/mineral/stone/moss,
-/area/rogue/outdoors/woods)
 "zB" = (
 /obj/item/chair/fancy,
 /turf/open/floor/cobble/alt,
@@ -157,6 +186,7 @@
 /area/rogue/indoors/town/manor)
 "AS" = (
 /obj/structure/bed/shit,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
 "Ch" = (
@@ -173,9 +203,17 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"DC" = (
+/mob/living/simple_animal/hostile/retaliate/spider,
+/turf/open/floor/blocks,
+/area/rogue/outdoors/woods)
 "DM" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
+"Ev" = (
+/obj/structure/spider/cocoon,
+/turf/open/floor/cobblerock,
+/area/rogue/indoors/town/manor)
 "FU" = (
 /obj/structure/chair/wood,
 /mob/living/carbon/human/species/rousman/npc,
@@ -223,9 +261,6 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/indoors/town/manor)
-"Lq" = (
-/turf/closed/wall/mineral/decostone/moss,
-/area/rogue/indoors/town/manor)
 "MF" = (
 /obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/naturalstone,
@@ -260,8 +295,15 @@
 /obj/item/carvedgem/turq/fancyvase,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"QQ" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/churchrough,
+/area/rogue/indoors/town/manor)
 "Rc" = (
 /turf/open/floor/cobblerock,
+/area/rogue/indoors/town/manor)
+"Rf" = (
+/turf/open/floor/dirt,
 /area/rogue/indoors/town/manor)
 "RN" = (
 /obj/structure/door/weak,
@@ -406,7 +448,7 @@ NH
 pJ
 Ch
 tt
-AS
+ww
 pJ
 NH
 pJ
@@ -426,9 +468,9 @@ NH
 pJ
 pJ
 pJ
-Lq
+bH
 RN
-Lq
+bH
 pJ
 pJ
 pJ
@@ -447,19 +489,19 @@ NH
 NH
 pJ
 gw
-nR
-nR
-nR
-nR
+uJ
+uJ
+kf
+kf
 xh
 xn
 cK
 Pu
 Gz
-Pu
+QQ
 cK
 pJ
-yR
+bd
 NH
 hB
 "}
@@ -468,20 +510,20 @@ Cz
 Cz
 Cz
 sT
-nR
+kf
 Rc
-Rc
+rw
 vX
 Rc
 xh
 kr
-Pu
+QQ
 kr
-tC
-tC
-Pu
+lh
+lh
+QQ
 Qv
-yR
+bd
 Cz
 Cz
 "}
@@ -489,21 +531,21 @@ Cz
 yu
 Cz
 Cz
-vB
-nR
-nR
-nR
-nR
-nR
+Rf
+kf
+kf
+kf
+kf
+kf
 ro
 Pu
 Pu
 Pu
 Pu
 Pu
-Pu
+QQ
 lw
-yR
+bd
 Cz
 dw
 "}
@@ -511,21 +553,21 @@ dw
 Cz
 Cz
 Cz
-vB
-jr
-nR
+Rf
+dO
+uJ
 gw
-nR
-nR
+kf
+kf
 xh
 JY
 tC
 tC
-Pu
-Pu
+QQ
+QQ
 Pu
 wG
-yR
+bd
 Cz
 Cz
 "}
@@ -535,19 +577,19 @@ NH
 NH
 pJ
 mo
-nR
-nR
+wl
+kf
 Rc
-jr
+dO
 tf
 Pu
 cK
-Pu
+ya
 gx
 pd
 cK
 pJ
-yR
+bd
 NH
 hB
 "}
@@ -602,7 +644,7 @@ NH
 NH
 NH
 pJ
-Rc
+Ev
 PC
 HY
 pJ
@@ -624,7 +666,7 @@ NH
 NH
 NH
 pJ
-Rc
+rw
 yD
 jr
 pJ
@@ -831,7 +873,7 @@ DM
 jI
 jI
 jI
-yE
+jI
 jI
 DM
 DM
@@ -847,13 +889,13 @@ DM
 jI
 DM
 jI
-yE
+jI
 jI
 DM
 jI
 jI
 jI
-jI
+DC
 jI
 DM
 DM
@@ -893,7 +935,7 @@ jI
 jI
 jI
 jI
-jI
+DC
 jI
 jI
 jI
@@ -912,7 +954,7 @@ jI
 jI
 jI
 jI
-jI
+DC
 jI
 jI
 jI
@@ -1002,7 +1044,7 @@ jI
 jI
 jI
 jI
-yE
+jI
 jI
 jI
 jI
@@ -1046,7 +1088,7 @@ jI
 DM
 DM
 jI
-jI
+DC
 jI
 jI
 jI
