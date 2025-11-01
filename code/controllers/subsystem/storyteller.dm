@@ -774,7 +774,6 @@ SUBSYSTEM_DEF(gamemode)
 
 	handle_god_ascensions()
 	pick_most_influential(TRUE)
-	message_admins("Storyteller [current_storyteller.name] is directing round start events.")
 	calculate_ready_players()
 	roll_pre_setup_points()
 	//handle_pre_setup_roundstart_events()
@@ -794,9 +793,9 @@ SUBSYSTEM_DEF(gamemode)
 			delay = (4 MINUTES) //default to 4 minutes if the delay isn't defined.
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reopen_roundstart_suicide_roles)), delay)
 
-	refresh_alive_stats()
 	handle_post_setup_roundstart_events()
 	handle_post_setup_points()
+	refresh_alive_stats()
 	roundstart_event_view = FALSE
 	return TRUE
 
@@ -1516,8 +1515,11 @@ SUBSYSTEM_DEF(gamemode)
 	var/lowest_endurance
 
 	for(var/client/client in GLOB.clients)
-		if(roundstart)
-			GLOB.patron_follower_counts[client.prefs.selected_patron.name]++
+		if(roundstart && istype(client?.mob, /mob/dead/new_player))
+			var/mob/dead/new_player/player = client.mob
+			if(player.ready == PLAYER_READY_TO_PLAY)
+				GLOB.patron_follower_counts[client.prefs.selected_patron.name]++
+
 		var/mob/living/living = client.mob
 		if(!istype(living))
 			continue

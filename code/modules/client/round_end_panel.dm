@@ -232,7 +232,7 @@
 	data += "</div></div>"
 
 	mob << browse(null, "window=vanderlin_influences")
-	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 860)
+	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 855)
 	popup.set_content(data.Join())
 	popup.open()
 
@@ -812,7 +812,7 @@
 	data += "</div>"
 
 	mob << browse(null, "window=vanderlin_influences")
-	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 860)
+	var/datum/browser/popup = new(mob, "vanderlin_round_end", "<center>The Chronicle</center>", 1085, 855)
 	popup.set_content(data.Join())
 	popup.open()
 
