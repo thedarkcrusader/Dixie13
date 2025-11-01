@@ -28,6 +28,7 @@
 
 #define FACTION_NONE		"None"
 #define FACTION_NEUTRAL		"Neutral"
+#define FACTION_HOSTILE		"Hostile"
 #define FACTION_TOWN		"Town"
 #define FACTION_FOREIGNERS  "Foreigners"
 #define FACTION_MIGRANTS  	"Migrants"
@@ -49,6 +50,7 @@
 #define YOUNGFOLK		(1<<6)
 #define OUTSIDERS		(1<<7)
 #define COMPANY			(1<<8)
+#define INQUISITION 	(1<<9)
 
 #define UNDEAD			(1<<10)
 
@@ -58,7 +60,7 @@
 #define JCOLOR_SOLDIER "#b64949"
 #define JCOLOR_SERF "#669968"
 #define JCOLOR_PEASANT "#936d6c"
-
+#define JCOLOR_INQUISITION "#FF0000"
 
 // job display orders //
 
@@ -96,7 +98,6 @@
 #define JDO_GRAVETENDER 15
 #define JDO_CHURCHLING 15.1
 
-#define JDO_PURITAN 16
 #define JDO_SHEPHERD 17
 #define JDO_TEMPLAR 17.1
 
@@ -149,6 +150,9 @@
 #define JDO_ORPHAN 37
 #define JDO_SOILCHILD 38
 
+#define JDO_PURITAN 40
+#define JDO_ORTHODOXIST	40.1
+#define JDO_ABSOLVER 40.2
 
 #define BITFLAG_CHURCH (1<<0)
 #define BITFLAG_ROYALTY (1<<1)

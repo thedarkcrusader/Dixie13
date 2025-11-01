@@ -537,6 +537,57 @@
 
 #undef MIRACLE_HEALING_FILTER //Why is this a thing?
 
+#define CRANKBOX_FILTER "crankboxbuff_glow"
+/atom/movable/screen/alert/status_effect/buff/churnerprotection
+	name = "Magick Distorted"
+	desc = "The wailing box is disrupting magicks around me!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/churnerprotection
+	var/outline_colour = "#fad55a"
+	id = "soulchurnerprotection"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/churnerprotection
+	duration = 20 SECONDS
+
+/datum/status_effect/buff/churnerprotection/on_apply()
+	. = ..()
+	var/filter = owner.get_filter(CRANKBOX_FILTER)
+	if (!filter)
+		owner.add_filter(CRANKBOX_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
+	to_chat(owner, span_warning("I feel the wailing box distorting magicks around me!"))
+	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
+
+/datum/status_effect/buff/churnerprotection/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The wailing box's protection fades..."))
+	owner.remove_filter(CRANKBOX_FILTER)
+	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
+
+#undef CRANKBOX_FILTER
+
+/atom/movable/screen/alert/status_effect/buff/churnernegative
+	name = "Magick Distorted"
+	desc = "That infernal contraption is sapping my very arcyne essence!"
+	icon_state = "buff"
+
+
+/datum/status_effect/buff/churnernegative
+	id ="soulchurnernegative"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/churnernegative
+	duration = 23 SECONDS
+
+/datum/status_effect/buff/churnernegative/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
+	to_chat(owner, span_warning("I feel as if my connection to the Arcyne disappears entirely. The air feels still..."))
+	owner.visible_message("[owner]'s arcyne aura seems to fade.")
+
+/datum/status_effect/buff/churnernegative/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
+	to_chat(owner, span_warning("I feel my connection to the arcyne surround me once more."))
+	owner.visible_message("[owner]'s arcyne aura seems to return once more.")
+
 /datum/status_effect/buff/lux_drank/baothavitae
 	id = "druqks"
 	duration = 1 MINUTES
@@ -891,3 +942,37 @@
 /atom/movable/screen/alert/status_effect/buff/received_lux
 	name = "Received Lux"
 	desc = "I can feel something... is this what it means to have a soul?"
+
+// Small buff to halflings for having over 800 nutrition currently
+/datum/status_effect/buff/stuffed
+	id = "stuffed"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/stuffed
+	effectedstats = list(STATKEY_CON = 1, STATKEY_END = 1)
+	duration = 3 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/stuffed
+	name = "Stuffed"
+	desc = "A hearty meal!"
+
+// Buff to halflings for not wearing shoes, comes with stress events
+/datum/status_effect/buff/free_feet
+	id = "free_feet"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/free_feet
+	effectedstats = list(STATKEY_SPD = 1)
+	duration = -1
+
+/datum/status_effect/buff/free_feet/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stress_event/feet_free)
+	owner.remove_stress(/datum/stress_event/feet_constrained)
+
+/datum/status_effect/buff/free_feet/on_remove()
+	. = ..()
+	if(!owner)
+		return
+	owner.add_stress(/datum/stress_event/feet_constrained)
+	owner.remove_stress(/datum/stress_event/feet_free)
+
+/atom/movable/screen/alert/status_effect/buff/free_feet
+	name = "Foot Freedom"
+	desc = "Not wearing shoes allows me to move more freely."

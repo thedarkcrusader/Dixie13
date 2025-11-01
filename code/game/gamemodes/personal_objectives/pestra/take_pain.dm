@@ -5,7 +5,7 @@
 	immediate_effects = list("Gained an ability to take pain of others upon yourself")
 	rewards = list("3 Triumphs", "Pestra grows stronger", "Pestra blesses you (+1 Constitution)")
 	var/total_pain_taken = 0
-	var/target_pain = 750
+	var/target_pain = 500
 
 /datum/objective/personal/take_pain/on_creation()
 	. = ..()
@@ -46,7 +46,7 @@
 
 /datum/objective/personal/take_pain/reward_owner()
 	. = ..()
-	owner.current.set_stat_modifier("pestra_blessing", STATKEY_CON, 1)
+	owner.current.adjust_stat_modifier("pestra_blessing", STATKEY_CON, 1)
 
 /datum/objective/personal/take_pain/update_explanation_text()
 	explanation_text = "Take enough pain from others upon yourself as an act of mercy and devotion to Pestra."

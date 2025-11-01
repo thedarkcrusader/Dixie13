@@ -304,11 +304,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 		return JOB_UNAVAILABLE_PLAYTIME
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
-	if(length(job.allowed_races) && !(client.prefs.pref_species.id in job.allowed_races))
+	if((length(job.allowed_races) && !(client.prefs.pref_species.id in job.allowed_races)) || \
+		(length(job.blacklisted_species) && (client.prefs.pref_species.id in job.blacklisted_species)))
 		if(!client.has_triumph_buy(TRIUMPH_BUY_RACE_ALL))
 			return JOB_UNAVAILABLE_RACE
-/*	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
-		return JOB_UNAVAILABLE_DEITY */
 
 	#ifdef USES_PQ
 	if(!isnull(job.min_pq) && (get_playerquality(ckey) < job.min_pq))
@@ -393,6 +392,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 		GLOB.company_positions,
 		GLOB.youngfolk_positions,
 		GLOB.allmig_positions,
+		GLOB.inquisition_positions,
 	)
 
 	for(var/list/category in omegalist)
@@ -433,6 +433,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 					cat_name = "Young Folk"
 				if (OUTSIDERS)
 					cat_name = "Outsiders"
+				if (INQUISITION)
+					cat_name = "Inquisition"
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
