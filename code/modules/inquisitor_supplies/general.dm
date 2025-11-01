@@ -289,7 +289,6 @@
 	marquescost = 16
 
 /obj/structure/closet/crate/chest/inqcrate/equipment/lantern/PopulateContents()
-	. = ..()
 	new /obj/item/flashlight/flare/torch/lantern(src)
 	new /obj/item/flashlight/flare/torch/lantern(src)
 	new /obj/item/flashlight/flare/torch/lantern(src)
