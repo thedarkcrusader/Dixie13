@@ -51,6 +51,7 @@
 		/obj/item/storage/keyring/inquisitor = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1
 		)
+	H.add_spell(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 
 	var/weapons = list("Covenant And Creed (Broadsword + Shield)", "Covenant and Consecratia (Flail + Shield)", "Crusade (Greatsword) and a Silver Dagger")
 	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons

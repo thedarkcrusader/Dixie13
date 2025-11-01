@@ -64,6 +64,7 @@
 		/obj/item/grapplinghook = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1,
 		)
+	H.add_spell(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 
 	var/weapons = list("Retribution (Rapier)", "Daybreak (Whip)", "Sanctum (Halberd)")
 	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons
@@ -82,3 +83,4 @@
 /datum/outfit/job/inquisitor/inspector/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	GLOB.inquisition.add_member_to_position(H, GLOB.inquisition.venatari, 100)
+
