@@ -256,9 +256,9 @@ Inquisitorial armory down here
 /obj/item/flashlight/flare/torch/lantern/psycenser
 	name = "Censer of Penitence"
 	desc = "A device filled with bubbling silver. Its unstable state is dangerous to those who do not know its true nature, but to wield it is great honour for Psydon."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psycenser"
 	item_state = "psycenser"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	light_outer_range = 8
 	light_color ="#70d1e2"
 	possible_item_intents = list(/datum/intent/flail/strike/smash/golgotha)
@@ -310,7 +310,6 @@ Inquisitorial armory down here
 		new /obj/effect/temp_visual/censer_dust(get_turf(src))
 		next_smoke = world.time + smoke_interval
 
-
 /obj/item/flashlight/flare/torch/lantern/psycenser/turn_off()
 	playsound(src.loc, 'sound/items/censer_off.ogg', 100)
 	STOP_PROCESSING(SSobj, src)
@@ -320,7 +319,6 @@ Inquisitorial armory down here
 		M.update_inv_hands()
 		M.update_inv_belt()
 	damtype = BRUTE
-
 
 /obj/item/flashlight/flare/torch/lantern/psycenser/fire_act(added, maxstacks)
 	return
@@ -333,7 +331,7 @@ Inquisitorial armory down here
 		explosion(get_turf(A),devastation_range = -1, heavy_impact_range = -1, light_impact_range = -1, flame_range = 2, flash_range = 4, smoke = FALSE)
 		fuel = 0
 		turn_off()
-		icon_state = "psycenser-broken"
+		//icon_state = "psycenser-broken"
 		possible_item_intents = list(/datum/intent/weep)
 		user.update_a_intents()
 		for(var/mob/living/carbon/human/H in view(get_turf(src)))
@@ -427,7 +425,6 @@ Inquisitorial armory down here
 		I.name = "blessed [I.name]"
 		if(silver)
 			I.enchant(/datum/enchantment/silver)
-
 
 /obj/effect/temp_visual/censer_dust
 	icon = 'icons/effects/effects.dmi'
