@@ -974,8 +974,8 @@
 				to_chat(user, span_warning("The idol had collected enough tribute from you."))
 				return
 			if(istype(W, /obj/item/reagent_containers/lux))
-				B.contrib += 150
-				record_round_statistic(STATS_SHRINE_VALUE, 150)
+				B.contrib += 120
+				record_round_statistic(STATS_SHRINE_VALUE, 120)
 			else if(istype(W, /obj/item/coin) || istype(W, /obj/item/gem) || istype(W, /obj/item/reagent_containers/glass/cup/silver) || istype(W, /obj/item/reagent_containers/glass/cup/golden) || istype(W, /obj/item/reagent_containers/glass/carafe) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/clothing/head/crown/circlet) || istype(W, /obj/item/statue))
 				if(!istype(W, /obj/item/coin))
 					B.contrib += (W.get_real_price() / 2) // sell jewelry and other fineries, though at a lesser price compared to fencing them first
@@ -986,7 +986,7 @@
 			else
 				to_chat(user, span_warning("The idol doesn't want your garbage."))
 				return
-			if(B.contrib >= 100)
+			if(B.contrib >= 80)
 				give_rewards(B, user)
 			else
 				playsound(loc,'sound/items/matidol1.ogg', 50, TRUE)
@@ -999,7 +999,7 @@
 /obj/structure/fluff/statue/evil/proc/give_rewards(datum/antagonist/bandit/offering_bandit, mob/user)
 	offering_bandit.tri_amt++
 	user.mind.adjust_triumphs(1)
-	offering_bandit.contrib -= 100
+	offering_bandit.contrib -= 80
 
 	var/obj/item/I
 	switch(offering_bandit.tri_amt)
