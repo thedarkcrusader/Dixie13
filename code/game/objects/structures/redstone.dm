@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/hidden_dc = 10
 
 /obj/structure/lever/hidden/proc/feel_button(mob/living/user, ignore_dc = FALSE)
-	if(isliving(user))
+	if(!isliving(user))
 		return
 	var/mob/living/L = user
 	// they're trained at this
