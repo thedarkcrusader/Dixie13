@@ -971,7 +971,7 @@
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
 			if(B.tri_amt >= 8)
-				to_chat(user, "<span class='warning'>The idol had collected enough tribute from you.</span>")
+				to_chat(user, span_warning("The idol had collected enough tribute from you."))
 				return
 			if(istype(W, /obj/item/reagent_containers/lux))
 				B.contrib += 150
@@ -983,6 +983,9 @@
 				else
 					B.contrib += W.get_real_price()
 					record_round_statistic(STATS_SHRINE_VALUE, W.get_real_price())
+			else
+				to_chat(user, span_warning("The idol doesn't want your garbage."))
+				return
 			if(B.contrib >= 100)
 				give_rewards(B, user)
 			else
