@@ -428,7 +428,7 @@
 	ADD_TRAIT(character, TRAIT_BETTER_SLEEP, "[type]")
 	ADD_TRAIT(character, TRAIT_EXTEROCEPTION, "[type]")
 	character.change_stat(STATKEY_LCK, 1)
-	character.add_stress(/datum/stress_event/blessed)
+	character.add_stress(/datum/stress_event/blessed/permanent)
 
 //neutral
 /datum/special_trait/backproblems
@@ -526,7 +526,7 @@
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
 	weight = 20
-	restricted_jobs = list(CHURCHMEN)
+	restricted_jobs = list(/datum/job/priest, /datum/job/monk, /datum/job/undertaker, /datum/job/templar, /datum/job/churchling)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
@@ -944,3 +944,15 @@
 	set category = "Noises"
 
 	emote("burploud", intentional = TRUE)
+
+
+/datum/special_trait/musical
+	name = "Musical Legend"
+	greet_text = span_notice("I am very good with instruments! though my previous one got stolen..")
+	weight = 50
+
+/datum/special_trait/musical/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)
+	var/datum/inspiration/I = new /datum/inspiration(character)
+	I.grant_inspiration(character, bard_tier = BARD_T2)
+	character.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
