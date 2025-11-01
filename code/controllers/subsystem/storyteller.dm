@@ -774,6 +774,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	handle_god_ascensions()
 	pick_most_influential(TRUE)
+	message_admins("Storyteller [current_storyteller.name] is directing round start events.")
 	calculate_ready_players()
 	roll_pre_setup_points()
 	//handle_pre_setup_roundstart_events()
@@ -1481,6 +1482,8 @@ SUBSYSTEM_DEF(gamemode)
 		STATS_ALIVE_HARPIES,
 		STATS_ALIVE_TRITONS,
 		STATS_ALIVE_MEDICATORS,
+		STATS_ALIVE_HALFLINGS,
+		STATS_FOREIGNERS,
 	)
 
 	for(var/stat_name in statistics_to_clear)
@@ -1572,6 +1575,8 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_TRADESMEN)
 			if(!human_mob.is_literate())
 				record_round_statistic(STATS_ILLITERATES)
+			if(HAS_TRAIT(human_mob, TRAIT_FOREIGNER))
+				record_round_statistic(STATS_FOREIGNERS)
 			if(human_mob.has_flaw(/datum/charflaw/clingy))
 				record_round_statistic(STATS_CLINGY_PEOPLE)
 			if(human_mob.has_flaw(/datum/charflaw/addiction/alcoholic))
@@ -1595,7 +1600,7 @@ SUBSYSTEM_DEF(gamemode)
 				if(human_mob.IsWedded() || member.children.len > 0)
 					record_round_statistic(STATS_MARRIED)
 
-			// species
+			// Species
 			if(istiefling(human_mob))
 				record_round_statistic(STATS_ALIVE_TIEFLINGS)
 			if(ishumannorthern(human_mob))
@@ -1626,6 +1631,8 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_TRITONS)
 			if(ismedicator(human_mob))
 				record_round_statistic(STATS_ALIVE_MEDICATORS)
+			if(ishalfling(human_mob))
+				record_round_statistic(STATS_ALIVE_HALFLINGS)
 
 			// Chronicle statistics
 
@@ -1735,6 +1742,11 @@ SUBSYSTEM_DEF(gamemode)
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[human_mob.STAEND] endurance")
 
 	force_set_round_statistic(STATS_MAMMONS_HELD, total_wealth)
+
+	var/total_bank_wealth = 0
+	for(var/account_name in SStreasury.bank_accounts)
+		total_bank_wealth += SStreasury.bank_accounts[account_name]
+	force_set_round_statistic(STATS_MAMMONS_IN_BANK, total_bank_wealth)
 
 	var/list/potential_passers = current_valid_humans.Copy()
 	var/list/beautiful_candidates = list()
