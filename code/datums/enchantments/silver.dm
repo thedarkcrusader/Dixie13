@@ -56,7 +56,7 @@
 	target.apply_status_effect(/datum/status_effect/debuff/silver_bane, null, affected)
 
 	// Fire damage
-	target.adjustFireLoss(5)
+	target.adjustFireLoss(10)
 	target.adjust_divine_fire_stacks(1)
 	target.IgniteMob()
 
