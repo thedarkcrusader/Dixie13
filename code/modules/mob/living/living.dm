@@ -2441,7 +2441,7 @@
 				var/obj/structure/lever/hidden/lever = O
 				// they're trained at this
 				var/bonuses = (HAS_TRAIT(src, TRAIT_THIEVESGUILD) || HAS_TRAIT(src, TRAIT_ASSASSIN)) ? 2 : 0
-				if(stat_roll(STATKEY_PER, 25, lever.hidden_dc - bonuses - 1) || (istype(lever, /obj/structure/lever/hidden/keep) && HAS_TRAIT(src, TRAIT_KNOWKEEPPLANS)))
+				if(stat_roll(STATKEY_PER, 25, lever.hidden_dc - bonuses - 1) || istype(lever, /obj/structure/lever/hidden/keep && HAS_TRAIT(src, TRAIT_KNOWKEEPPLANS)))
 					found_ping(get_turf(O), client, "hidden")
 
 		for(var/obj/effect/skill_tracker/potential_track in orange(7, src)) //Can't use view because they're invisible by default.
