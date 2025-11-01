@@ -335,8 +335,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	// they're trained at this
 	var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
 	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS) || (user.STAPER + bonuses) >= hidden_dc || ignore_dc)
-		ignore_dc = TRUE // passes onto parent dc check, otherwise someone who knows the keep plans would still need perception
-		..()
+	..(ignore_dc = TRUE)// passes onto parent dc check, otherwise someone who knows the keep plans would still need perception
 
 /proc/know_keep_door_password(mob/living/carbon/human/H)
 	var/obj/structure/door/secret/D = GLOB.keep_doors[1]
