@@ -256,14 +256,14 @@
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 150
-
+	wdefense = BAD_PARRY
 /obj/item/weapon/whip/urumi/silver
 	name = "silver urumi"
 	icon_state = "urumi_silver"
 	force = DAMAGE_WHIP+2
 	smeltresult = /obj/item/ingot/silver
 	max_blade_int= 130
-
+	wdefense = BAD_PARRY
 /obj/item/weapon/whip/urumi/silver/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
