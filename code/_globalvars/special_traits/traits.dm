@@ -945,7 +945,6 @@
 
 	emote("burploud", intentional = TRUE)
 
-
 /datum/special_trait/musical
 	name = "Musical Legend"
 	greet_text = span_notice("I am very good with instruments! though my previous one got stolen..")
