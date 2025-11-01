@@ -42,7 +42,7 @@
 	cast_on.visible_message(span_warning("[pick(charms_public)]"), span_warning("[pick(charms_target)]"))
 	cast_on.apply_status_effect(/datum/status_effect/eorapacify)
 	cast_on.apply_status_effect(/datum/status_effect/debuff/mesmerised)
-	cast_on.Immobilize(40)
+	cast_on.Immobilize(4 SECONDS)
 
 /datum/action/cooldown/spell/charm/vampire
 	name = "Vampiric Charm"
