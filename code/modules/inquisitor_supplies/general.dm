@@ -47,10 +47,6 @@
 	new /obj/item/coin/silver/inqpile(src)
 	new /obj/item/coin/silver/inqpile(src)
 
-/datum/inqports/supplies/adeptmask
-	name = "1 Adept's Mask"
-	item_type = /obj/item/clothing/face/facemask/silver
-	marquescost = 3
 
 /datum/inqports/supplies/stampstuff
 	name = "1 Lump of Redtallow"
@@ -297,6 +293,11 @@
 	name = "1 Grenzelhoftian Leather Satchel"
 	item_type = /obj/item/storage/backpack/satchel/otavan
 	marquescost = 8
+
+/datum/inqports/equipment/adeptmask
+	name = "1 Adept's Mask"
+	item_type = /obj/item/clothing/face/facemask/silver
+	marquescost = 3
 
 /datum/inqports/equipment/psysack
 	name = "1 Identity Concealer"
