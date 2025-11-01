@@ -14,7 +14,7 @@
 		return
 
 	//only migrants and peasants
-	if(cast_on(has_flaw(/datum/charflaw/addiction/godfearing)))
+	if(cast_on.has_flaw(/datum/charflaw/addiction/godfearing))
 		cast_on.say("I FOLLOW MY GOD INTO DEATH!!!")
 		return FALSE
 
