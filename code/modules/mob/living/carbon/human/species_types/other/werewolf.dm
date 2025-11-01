@@ -10,6 +10,11 @@
 	var/list/stored_skills
 	var/list/stored_experience
 
+/mob/living/carbon/human/species/werewolf/death(gibbed, nocutscene)
+	. = ..()
+	if(stored_mob)
+		werewolf_untransform(null, TRUE, gibbed)
+
 /mob/living/carbon/human/species/werewolf/male
 	gender = MALE
 
