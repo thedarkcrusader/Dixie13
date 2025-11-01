@@ -17,5 +17,6 @@
 	if(cast_on.has_flaw(/datum/charflaw/addiction/godfearing))
 		cast_on.say("I FOLLOW MY GOD INTO DEATH!!!")
 		return FALSE
-
+	if(accept_message)
+		cast_on.set_patron(/datum/patron/psydon, TRUE)
 	return TRUE

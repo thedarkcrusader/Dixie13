@@ -47,6 +47,11 @@
 	new /obj/item/coin/silver/inqpile(src)
 	new /obj/item/coin/silver/inqpile(src)
 
+/datum/inqports/supplies/adeptmask
+	name = "1 Adept's Mask"
+	item_type = /obj/item/clothing/face/mask/adept
+	marquescost = 3
+
 /datum/inqports/supplies/stampstuff
 	name = "1 Lump of Redtallow"
 	item_type = /obj/item/reagent_containers/food/snacks/tallow/red
