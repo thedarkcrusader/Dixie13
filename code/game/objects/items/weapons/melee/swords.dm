@@ -519,19 +519,23 @@
 				"westabove" = 0,
 				)
 
-/obj/item/weapon/sword/rapier/psy/relic
-	name = "Retribution"
-	desc = "A rapier as swift as the inquisitors of the Ordo Venetari. Strike evil at its heart. Purge the unholy through the slightest window it offers, in Psydon’s name."
+/obj/item/weapon/sword/rapier/psy
+	name = "psydonian rapier"
+	desc = "A highly ornate silver rapier, used more as a show of status for members of the inquisition."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
 	icon_state = "psyrapier"
 	max_integrity = 300
 	max_blade_int = 300
 	wdefense = GOOD_PARRY
 
-/obj/item/weapon/sword/rapier/psy/relic/Initialize(mapload)
+/obj/item/weapon/sword/rapier/psy/Initialize(mapload)
 	. = ..()
 	//Pre-blessed, +100 Blade int, +100 int, +2 def, make it silver
 	AddComponent(/datum/component/psyblessed, TRUE, 5, 100, 100, 2, TRUE)
 
+/obj/item/weapon/sword/rapier/psy/relic
+	name = "retribution"
+	desc = "A rapier as swift as the inquisitors of the Ordo Venetari. Strike evil at its heart. Purge the unholy through the slightest window it offers, in Psydon’s name."
 
 /obj/item/weapon/sword/rapier/dec
 	icon_state = "decrapier"
@@ -549,10 +553,10 @@
 
 //................ Lord's Rapier ............... //
 /obj/item/weapon/sword/rapier/dec/lord
-	force = DAMAGE_SWORD_WIELD
 	name = "Lord's Rapier"
 	desc = "Passed down through the ages, a weapon that once carved a kingdom out now relegated to a decorative piece."
 	icon_state = "lord_rapier"
+	force = DAMAGE_SWORD_WIELD
 	sellprice = 200
 	max_blade_int = 400
 
@@ -950,8 +954,8 @@
 /obj/item/weapon/sword/long/greatsword/psydon/relic
 	name = "Crusade"
 	desc = "The heaviest blade of the Ordo Benetarus. Its unparalleled strength commands even the greatest of foes to fall. Wade through the unholy in Psydon’s name. Let none survive."
-	force = 25
 	icon_state = "psygsword"
+	force = 25
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/axe/chop)
 
