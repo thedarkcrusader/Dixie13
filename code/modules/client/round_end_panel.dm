@@ -497,7 +497,7 @@
 			// Left column
 			data += "<div style='width: 44%; display: flex; justify-content: flex-end;'>"
 			data += "<div style='text-align: left; padding-right: 20px;'>"
-			data += "<div style='margin-bottom: 4px;'><font color='#cdd86f'>Total Mammons in Bank: </font>[GLOB.vanderlin_round_stats[STATS_MAMMONS_IN_BANK]]</div>"
+			data += "<div style='margin-bottom: 4px;'><font color='#cdd86f'>Mammons in Accounts: </font>[GLOB.vanderlin_round_stats[STATS_MAMMONS_IN_BANK]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#e6b327'>Regular Vault Income: </font>[GLOB.vanderlin_round_stats[STATS_REGULAR_VAULT_INCOME]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#c57e62'>Sold to Stockpile: </font>[GLOB.vanderlin_round_stats[STATS_STOCKPILE_EXPANSES]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#b6a17f'>Salary Payments: </font>[GLOB.vanderlin_round_stats[STATS_WAGES_PAID]]</div>"
@@ -522,7 +522,7 @@
 
 		if("Heroes")
 			data += "<div style='text-align: center; color: #e6e6e6; font-size: 1.2em; margin-bottom: 15px;'>HEROES OF THE REALM</div>"
-			data += "<div style='border-top: 1.5px solid #7a7a7a; margin: 0 auto 20px auto; width: 65%;'></div>"
+			data += "<div style='border-top: 1.5px solid #7a7a7a; margin: 0 auto 20px auto; width: 75%;'></div>"
 
 			if(length(GLOB.personal_objective_minds))
 				data += "<div style='display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;'>"
@@ -567,7 +567,7 @@
 
 		if("Villains")
 			data += "<div style='text-align: center; color: #d4b4b4; font-size: 1.2em; margin-bottom: 15px;'>VILLAINS OF THE REALM</div>"
-			data += "<div style='border-top: 1.5px solid #8a6a6a; margin: 0 auto 20px auto; width: 65%;'></div>"
+			data += "<div style='border-top: 1.5px solid #8a6a6a; margin: 0 auto 20px auto; width: 75%;'></div>"
 
 			var/list/all_teams = list()
 			var/list/all_antagonists = list()
@@ -690,7 +690,7 @@
 
 		if("Outlaws")
 			data += "<div style='text-align: center; color: #ffd494; font-size: 1.2em; margin-bottom: 15px;'>WANTED OUTLAWS</div>"
-			data += "<div style='border-top: 1.5px solid #aa8a5a; margin: 0 auto 20px auto; width: 65%;'></div>"
+			data += "<div style='border-top: 1.5px solid #aa8a5a; margin: 0 auto 20px auto; width: 75%;'></div>"
 
 			var/list/outlaws = list()
 			for(var/mob/living/carbon/human/outlaw in GLOB.human_list)
