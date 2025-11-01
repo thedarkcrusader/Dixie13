@@ -249,7 +249,7 @@
 	max_integrity = INTEGRITY_STANDARD
 	blade_dulling = DULLING_BASH
 	wdefense = BAD_PARRY // Parrying with a whip sword is inherently badass, plus its a small benefit for it since its supposed to have less durability.
-
+	can_parry = TRUE
 /obj/item/weapon/whip/urumi/iron
 	name = "iron urumi"
 	icon_state = "urumi_iron"
@@ -257,6 +257,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 150
 	wdefense = BAD_PARRY
+	can_parry = TRUE
 /obj/item/weapon/whip/urumi/silver
 	name = "silver urumi"
 	icon_state = "urumi_silver"
@@ -264,6 +265,7 @@
 	smeltresult = /obj/item/ingot/silver
 	max_blade_int= 130
 	wdefense = BAD_PARRY
+	can_parry = TRUE
 /obj/item/weapon/whip/urumi/silver/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
