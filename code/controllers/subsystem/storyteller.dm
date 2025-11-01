@@ -1196,7 +1196,7 @@ SUBSYSTEM_DEF(gamemode)
 					for(var/storyteller_type in storytellers)
 						var/datum/storyteller/storyboy = storytellers[storyteller_type]
 						name_list[storyboy.name] = storyboy.type
-					var/new_storyteller_name = input(usr, "Choose new storyteller (circumvents voted one):", "Storyteller")  as null|anything in name_list
+					var/new_storyteller_name = input(usr, "Choose a new Storyteller (Circumvents voted one):", "Storyteller")  as null|anything in name_list
 					if(!new_storyteller_name)
 						message_admins("[key_name_admin(usr)] has cancelled picking a Storyteller.")
 						return
@@ -1219,7 +1219,7 @@ SUBSYSTEM_DEF(gamemode)
 							var/new_value = input(usr, "New value:", "Set new value") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] set roundstart pts multiplier for [track] track to [new_value].")
+							message_admins("[key_name_admin(usr)] set roundstart point multiplier for [track] track to [new_value].")
 							roundstart_point_multipliers[track] = new_value
 						if("min_pop")
 							var/new_value = input(usr, "New value:", "Set new value") as num|null
