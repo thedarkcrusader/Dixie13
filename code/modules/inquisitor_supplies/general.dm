@@ -278,7 +278,7 @@
 	marquescost = 16
 	maximum = 1
 
-/obj/structure/closet/crate/chest/inqcrate/equipment/puffer/Initialize()
+/obj/structure/closet/crate/chest/inqcrate/equipment/puffer/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/pistol(src)
 	new /obj/item/storage/belt/pouch/bullets(src)
@@ -289,7 +289,7 @@
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/lantern
 	marquescost = 16
 
-/obj/structure/closet/crate/chest/inqcrate/equipment/lantern/Initialize()
+/obj/structure/closet/crate/chest/inqcrate/equipment/lantern/PopulateContents()
 	. = ..()
 	new /obj/item/flashlight/flare/torch/lantern(src)
 	new /obj/item/flashlight/flare/torch/lantern(src)
