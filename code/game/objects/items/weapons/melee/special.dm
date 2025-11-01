@@ -253,7 +253,7 @@
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
 	name = "katar"
 	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting"
-	icon = 'icons/roguetown/weapons/32/fist_claws.dmi'
+	icon = 'icons/roguetown/weapons/32/fists_claws.dmi'
 	icon_state = "katar"
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
@@ -319,7 +319,7 @@
 	desc = "A mean looking pair of steel knuckles."
 	force = 22
 	possible_item_intents = list(/datum/intent/knuckles/strike,/datum/intent/knuckles/smash)
-	icon = 'icons/roguetown/weapons/32/fist_claws.dmi'
+	icon = 'icons/roguetown/weapons/32/fists_claws.dmi'
 	icon_state = "steelknuckle"
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
