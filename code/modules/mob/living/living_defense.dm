@@ -234,6 +234,14 @@
 		if(user.l_grab)
 			user.l_grab.grab_state = GRAB_AGGRESSIVE
 			user.l_grab.update_grab_intents()
+	if(HAS_TRAIT(src, TRAIT_NOHANDGRABS))
+		var/list/ct = user.contents
+		for(var/i = length(ct), i > 0, i--)
+			if(istype(ct[i], /obj/item/grabbing))
+				var/obj/item/grabbing/cti = ct[i]
+				cti.grab_state = GRAB_AGGRESSIVE
+				cti.update_grab_intents()
+				break
 
 	var/add_log = ""
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))

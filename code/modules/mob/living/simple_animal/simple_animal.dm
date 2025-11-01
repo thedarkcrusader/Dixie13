@@ -930,3 +930,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/proc/eat_food_after(obj/item/reagent_containers/food/snacks/eaten)
 	qdel(eaten)
+
+/// To be used with AI controller
+/mob/living/simple_animal/proc/ambush()
+	return
+
+/// To be used with AI controller
+/mob/living/simple_animal/proc/hide()
+	return
+
+

@@ -240,3 +240,15 @@
 	var/mob/living/pawn = controller.pawn
 	if(pawn)
 		pawn.cmode = FALSE
+
+/datum/ai_behavior/find_aggro_targets/ambush/finish_action(datum/ai_controller/controller, succeeded, ...)
+	. = ..()
+	if(succeeded && isanimal(controller.pawn))
+		var/mob/living/simple_animal/mob = controller.pawn
+		mob.ambush()
+
+/datum/ai_behavior/find_aggro_targets/ambush/failed_to_find_anyone(datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
+	. = ..()
+	if(isanimal(controller.pawn))
+		var/mob/living/simple_animal/mob = controller.pawn
+		mob.hide()

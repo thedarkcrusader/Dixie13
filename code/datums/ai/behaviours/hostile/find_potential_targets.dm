@@ -166,28 +166,23 @@ GLOBAL_LIST_INIT(target_interested_atoms, typecacheof(list(/mob)))
 /datum/ai_behavior/find_potential_targets/spider
 	vision_range = 5
 
-/datum/ai_behavior/find_potential_targets/mimic
-	vision_range = 1
-
-/datum/ai_behavior/find_potential_targets/mimic/finish_action(datum/ai_controller/controller, succeeded, ...)
-	. = ..()
-	if (succeeded)
-		controller.CancelActions()
-		controller.pawn.icon_state = "mimicopen"
-
-
 /datum/ai_behavior/find_potential_targets/mole
 	vision_range = 9
 
 /datum/ai_behavior/find_potential_targets/troll
 	vision_range = 7
 
-/datum/ai_behavior/find_potential_targets/bog_troll
-	vision_range = 3
 
-/datum/ai_behavior/find_potential_targets/bog_troll/finish_action(datum/ai_controller/controller, succeeded, ...)
+/datum/ai_behavior/find_potential_targets/ambush/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
-	if(succeeded)
-		if(istype(controller.pawn, /mob/living/simple_animal/hostile/retaliate/troll))
-			var/mob/living/simple_animal/hostile/retaliate/troll/mob = controller.pawn
+	if (succeeded)
+		controller.CancelActions()
+		if(isanimal(controller.pawn))
+			var/mob/living/simple_animal/mob = controller.pawn
 			mob.ambush()
+
+/datum/ai_behavior/find_potential_targets/ambush/mimic
+	vision_range = 1
+
+/datum/ai_behavior/find_potential_targets/ambush/nautilus
+	vision_range = 6

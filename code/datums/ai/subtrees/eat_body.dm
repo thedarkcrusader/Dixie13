@@ -13,8 +13,5 @@
 	return SUBTREE_RETURN_FINISH_PLANNING //we are going into battle...no distractions.
 
 
-/datum/ai_planning_subtree/eat_dead_body/bog_troll
-	behavior = /datum/ai_behavior/eat_dead_body/bog_troll
-
-/datum/ai_planning_subtree/eat_dead_body/mimic
-	behavior = /datum/ai_behavior/eat_dead_body/mimic
+/datum/ai_planning_subtree/eat_dead_body/then_hide
+	behavior = /datum/ai_behavior/eat_dead_body/then_hide

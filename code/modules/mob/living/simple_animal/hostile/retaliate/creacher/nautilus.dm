@@ -11,11 +11,13 @@
 	speak_emote = list("gurgles", "bubbles")
 	emote_see = list("writhes its tentacles")
 	emote_hear = list("gurgles wetly", "makes bubbling sounds")
-	see_in_dark = 9
-	move_to_delay = 2
-	vision_range = 9
-	aggro_vision_range = 9
+	move_to_delay = 3
+	vision_range = 5
+	see_in_dark = 5
+	aggro_vision_range = 5
 
+
+	//todo: set these
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 						/obj/item/natural/fur/volf = 1,
 						/obj/item/alch/bone = 1)
@@ -31,15 +33,16 @@
 						/obj/item/alch/bone = 2)
 	head_butcher = /obj/item/natural/head/volf
 
-	armor = 12
-	health = 500
-	maxHealth = 500
+	gender = PLURAL
+	health = 600
+	maxHealth = 600
 	food_type = list(/obj/item/reagent_containers/food/snacks/meat/mince,
 					/obj/item/reagent_containers/food/snacks/fish,
-					/obj/item/organ)
+					/obj/item/organ,
+					/obj/item/bodypart)
 
 	base_intents = list(/datum/intent/simple/nautilus_lash)
-	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	attack_sound = list('sound/combat/wooshes/whip_crack1.ogg','sound/combat/wooshes/whip_crack2.ogg','sound/combat/wooshes/whip_crack3.ogg')
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 
@@ -64,43 +67,90 @@
 	remains_type = /obj/effect/decal/remains/nautilus
 	body_eater = TRUE
 
-	//buckle_lying = TRUE
-	//max_buckled_mobs = 4
-
 	ai_controller = /datum/ai_controller/nautilus
 	dendor_taming_chance = DENDOR_TAME_PROB_NONE
 
-	var/wrestling_bonus = SKILL_LEVEL_JOURNEYMAN
+	var/wrestling_bonus = SKILL_LEVEL_EXPERT
+
+	var/hiding = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/nautilus/Initialize()
 	. = ..()
-	AddComponent(/datum/component/ai_aggro_system)
+	//AddComponent(/datum/component/ai_aggro_system)
 
-	gender = MALE
-	if(prob(50))
-		gender = FEMALE
 	update_appearance(UPDATE_OVERLAYS)
 	ADD_TRAIT(src, TRAIT_NOHANDGRABS, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
 
-
-/mob/living/simple_animal/hostile/retaliate/nautilus/get_sound(input)
-	switch(input)
-		if("aggro")
-			return pick('sound/vo/mobs/vw/aggro (1).ogg','sound/vo/mobs/vw/aggro (2).ogg')
-		if("pain")
-			return pick('sound/vo/mobs/vw/pain (1).ogg','sound/vo/mobs/vw/pain (2).ogg','sound/vo/mobs/vw/pain (3).ogg')
-		if("death")
-			return pick('sound/vo/mobs/vw/death (1).ogg','sound/vo/mobs/vw/death (2).ogg','sound/vo/mobs/vw/death (3).ogg','sound/vo/mobs/vw/death (4).ogg','sound/vo/mobs/vw/death (5).ogg')
-		if("idle")
-			return pick('sound/vo/mobs/vw/idle (1).ogg','sound/vo/mobs/vw/idle (2).ogg','sound/vo/mobs/vw/idle (3).ogg','sound/vo/mobs/vw/idle (4).ogg')
-		if("cidle")
-			return pick('sound/vo/mobs/vw/bark (1).ogg','sound/vo/mobs/vw/bark (2).ogg','sound/vo/mobs/vw/bark (3).ogg','sound/vo/mobs/vw/bark (4).ogg','sound/vo/mobs/vw/bark (5).ogg','sound/vo/mobs/vw/bark (6).ogg','sound/vo/mobs/vw/bark (7).ogg')
-
 /mob/living/simple_animal/hostile/retaliate/nautilus/taunted(mob/user)
 	emote("aggro")
 	return
+
+/mob/living/simple_animal/hostile/retaliate/nautilus/hide()
+	if(!hiding)
+		sleep(1 SECONDS)
+		icon_state = "nautilus_hide"
+		force_threshold = 80
+		hiding = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/nautilus/ambush()
+	if(hiding)
+		icon_state = "nautilus"
+		sleep(1 SECONDS)
+		force_threshold = 15
+		hiding = FALSE
+
+//this is an impermanent solution with an indefinite fix date
+/mob/living/simple_animal/hostile/retaliate/nautilus/apply_damage(damage, damagetype, def_zone, blocked, forced)
+	if(damage > force_threshold)
+		return ..()
+
+/mob/living/simple_animal/hostile/retaliate/nautilus/AttackingTarget(mob/living/passed_target)
+	. = ..()
+	if(!(. && isliving(target)))
+		return
+	var/mob/living/L = target
+
+	var/grappledAlready = FALSE
+	for(var/obj/item/grabbing/G in get_contents())
+		if(!iscarbon(G.grabbed))
+			continue
+		if(target == G.grabbed)
+			grappledAlready = TRUE
+
+		if(prob(70))
+			continue
+		var/mob/living/carbon/C = G.grabbed
+		if(C.body_position == STANDING_UP)
+			C.Knockdown(20)
+			visible_message(span_userdanger("[src] tackles [C] to the ground!"))
+		else
+			var/choke = /datum/intent/grab/choke
+			var/twist = /datum/intent/grab/twist
+			var/smash = /datum/intent/grab/smash
+
+			G.update_grab_intents()
+			var/list/grabIntents = G.possible_item_intents
+			grabIntents &= list(choke, twist, smash)
+			if(!length(grabIntents))
+				continue
+			if(grabIntents.Find(choke) && get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
+				var/choke_damage = STASTR * 0.5 // less than the average choke
+				choke_damage *= 1.2
+				if(C.pulling == src && C.grab_state >= GRAB_AGGRESSIVE)
+					choke_damage *= 0.95
+				C.adjustOxyLoss(choke_damage)
+				C.visible_message(span_danger("[src] [pick("chokes", "strangles")] [C][G.chokehold ? " with a chokehold" : ""]!"), \
+						span_userdanger("[src] [pick("chokes", "strangles")] me[G.chokehold ? " with a chokehold" : ""]!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, src)
+			else if (pick(grabIntents) == twist)
+				G.twistlimb(src)
+			else
+				G.smashlimb(C, src, C.loc)
+
+	if(!grappledAlready && prob(30) && start_pulling(L, suppress_message = TRUE, accurate = TRUE))
+		visible_message(span_boldwarning("[src] wraps their tentacles around [L]!"))
+		L.Immobilize(10)
 
 /mob/living/simple_animal/hostile/retaliate/nautilus/simple_limb_hit(zone)
 	if(!zone)
@@ -114,12 +164,12 @@
 			return "beak"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "beak"
+		if(BODY_ZONE_HEAD)
+			return "beak"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "shell"
 		if(BODY_ZONE_PRECISE_EARS)
 			return "head"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "body"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "tentacles"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -128,12 +178,6 @@
 			return "tentacles"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "tentacles"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "body"
-		if(BODY_ZONE_PRECISE_GROIN)
-			return "body"
-		if(BODY_ZONE_HEAD)
-			return "beak"
 		if(BODY_ZONE_R_LEG)
 			return "tentacles"
 		if(BODY_ZONE_L_LEG)
@@ -142,7 +186,8 @@
 			return "tentacles"
 		if(BODY_ZONE_L_ARM)
 			return "tentacles"
-	return ..()
+		else
+			return "shell"
 
 /mob/living/simple_animal/hostile/retaliate/nautilus/get_wrestling_bonuses()
 	return wrestling_bonus
@@ -155,7 +200,7 @@
 	blade_class = BCLASS_LASHING
 	hitsound = "smallslash"
 	chargetime = 0
-	penfactor = 5
+	penfactor = 8
 	canparry = FALSE
 	item_damage_type = "slash"
 
