@@ -484,7 +484,7 @@
 					span_warning("I slip from [src]'s grab."))
 			log_combat(src, M, "tried grabbing", addition="passive grab")
 			stop_pulling()
-			return
+			return FALSE
 		log_combat(src, M, "grabbed", addition="passive grab")
 		playsound(src.loc, 'sound/combat/shove.ogg', 50, TRUE, -1)
 		if(iscarbon(M))
@@ -559,6 +559,7 @@
 		for(var/hand in living.hud_used?.hand_slots)
 			var/atom/movable/screen/inventory/hand/H = living.hud_used.hand_slots[hand]
 			H?.update_appearance()
+	return TRUE
 
 /mob/living/proc/is_limb_covered(obj/item/bodypart/limb)
 	if(!limb)

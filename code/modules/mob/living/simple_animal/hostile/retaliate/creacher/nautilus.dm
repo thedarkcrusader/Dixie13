@@ -31,43 +31,46 @@
 						/obj/item/alch/bone = 2)
 	head_butcher = /obj/item/natural/head/volf
 
-	health = 350
-	maxHealth = 350
+	armor = 12
+	health = 450
+	maxHealth = 450
 	food_type = list(/obj/item/reagent_containers/food/snacks/meat/mince,
 					/obj/item/reagent_containers/food/snacks/fish,
 					/obj/item/organ)
 
 	base_intents = list(/datum/intent/simple/nautilus_lash)
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 20
+	melee_damage_upper = 30
 
-	base_constitution = 12
-	base_strength = 15
-	base_speed = 10
+	base_constitution = 14
+	base_strength = 12
+	base_speed = 6
+	force_threshold = 15
 
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
 	deaggroprob = 0
-	defprob = 35
-	defdrain = 5
+	defprob = 15
+	defdrain = 10
 	del_on_deaggro = 999 SECONDS
 	retreat_health = 0
 
-	dodgetime = 17
+	dodgetime = 50
 	aggressive = 1
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/nautilus
 	body_eater = TRUE
 
-	buckle_lying = TRUE
-	max_buckled_mobs = 4
+	//buckle_lying = TRUE
+	//max_buckled_mobs = 4
 
 	ai_controller = /datum/ai_controller/nautilus
 	dendor_taming_chance = DENDOR_TAME_PROB_NONE
 
-	var/wrestling_bonus = SKILL_LEVEL_MASTER
+	var/wrestling_bonus = SKILL_LEVEL_JOURNEYMAN
 
 /mob/living/simple_animal/hostile/retaliate/nautilus/Initialize()
 	. = ..()
@@ -80,11 +83,6 @@
 	ADD_TRAIT(src, TRAIT_NOHANDGRABS, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
-
-	var/datum/action/cooldown/mob_cooldown/nautilus_grab/grab = new(src)
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, grab)
-	grab.Grant(src)
-
 
 
 /mob/living/simple_animal/hostile/retaliate/nautilus/get_sound(input)
@@ -146,12 +144,8 @@
 			return "tentacles"
 	return ..()
 
-
-
-
 /mob/living/simple_animal/hostile/retaliate/nautilus/get_wrestling_bonuses()
 	return wrestling_bonus
-
 
 /datum/intent/simple/nautilus_lash
 	name = "tendril lash"
@@ -164,42 +158,6 @@
 	penfactor = 5
 	canparry = FALSE
 	item_damage_type = "slash"
-
-
-
-
-/datum/action/cooldown/mob_cooldown/nautilus_grab
-	name = "Grab"
-	button_icon = 'icons/effects/effects.dmi'
-	button_icon_state = "grabbing"
-	desc = "Grab a target."
-	cooldown_time = 6 SECONDS
-	var/constrict_damage = 15
-	var/constrict_duration = 3 SECONDS
-
-
-/datum/action/cooldown/mob_cooldown/nautilus_grab/Activate(atom/target)
-	if(!isliving(owner) || owner.buckled_mobs?.Find(target) > 0)
-		return FALSE
-
-	owner.cmode = 1
-	var/mob/living/victim = target
-	var/dist = get_dist(owner, victim)
-	if(dist > 1)
-		return FALSE
-
-	var/mob/living/L = owner
-	if(L.start_pulling(victim, suppress_message = TRUE, accurate = TRUE))
-		owner.visible_message(span_boldwarning("[owner] wraps their tentacles around [victim]!"))
-		victim.buckle_mob(owner, TRUE, check_loc = FALSE)
-		victim.Immobilize(constrict_duration)
-
-	//victim.apply_damage(constrict_damage, BRUTE, "chest")
-
-	//to_chat(victim, span_userdanger("[owner] crushes you!"))
-
-	StartCooldown()
-	return TRUE
 
 
 /obj/effect/decal/remains/nautilus
