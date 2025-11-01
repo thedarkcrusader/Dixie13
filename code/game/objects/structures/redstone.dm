@@ -120,18 +120,19 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 
 /obj/structure/lever/hidden/proc/feel_button(mob/living/user, ignore_dc = FALSE)
 	if(isliving(user))
-		var/mob/living/L = user
-		// they're trained at this
-		var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
-		if(L.STAPER + bonuses >= hidden_dc || ignore_dc)
-			L.changeNext_move(CLICK_CD_MELEE)
-			user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
-			user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
-			for(var/obj/structure/O in redstone_attached)
-				spawn(0) O.redstone_triggered(user)
-			trigger_wire_network(user)
-			toggled = !toggled
-			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
+		return
+	var/mob/living/L = user
+	// they're trained at this
+	var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
+	if(L.STAPER + bonuses >= hidden_dc || ignore_dc)
+		L.changeNext_move(CLICK_CD_MELEE)
+		user.visible_message(span_danger("[user] presses a hidden button."), span_notice("I push a hidden button."))
+		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
+		for(var/obj/structure/O in redstone_attached)
+			INVOKE_ASYNC(O, PROC_REF(redstone_triggered), user)
+		trigger_wire_network(user)
+		toggled = !toggled
+		playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
 
 /obj/structure/lever/hidden/onkick(mob/user) // nice try
 	return FALSE
