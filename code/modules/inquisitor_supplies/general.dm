@@ -49,7 +49,7 @@
 
 /datum/inqports/supplies/adeptmask
 	name = "1 Adept's Mask"
-	item_type = /obj/item/clothing/face/mask/adept
+	item_type = /obj/item/clothing/face/facemask/silver
 	marquescost = 3
 
 /datum/inqports/supplies/stampstuff
