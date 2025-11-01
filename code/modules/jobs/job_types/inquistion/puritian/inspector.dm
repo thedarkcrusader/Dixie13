@@ -3,7 +3,7 @@
 	title = "Inquisitor"
 	tutorial = "The head of the Ordo Venatari, your lessons are of a subtle touch and a light step. A silver dagger in the right place at the right time is all that is needed. Preparation is key, and this is something you impart on your students. Be always ready, be always waiting, and always be vigilant."
 	outfit = /datum/outfit/job/inquisitor/inspector
-
+	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 	category_tags = list(CTAG_PURITAN)
 
 	traits = list(
@@ -64,7 +64,7 @@
 		/obj/item/grapplinghook = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1,
 		)
-	H.add_spell(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
+
 
 	var/weapons = list("Retribution (Rapier)", "Daybreak (Whip)", "Sanctum (Halberd)")
 	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons
