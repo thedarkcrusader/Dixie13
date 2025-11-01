@@ -503,8 +503,11 @@
 			else
 				O.sublimb_grabbed = used_limb
 			O.icon_state = zone_selected
-			put_in_hands(O)
-			O.update_hands(src)
+			if(HAS_TRAIT(src, TRAIT_NOHANDGRABS))
+				src.contents += O
+			else
+				put_in_hands(O)
+				O.update_hands(src)
 			if((HAS_TRAIT(src, TRAIT_STRONG_GRABBER) && cmode) || item_override)
 				suppress_message = TRUE
 				C.grippedby(src)
@@ -519,8 +522,13 @@
 				O.sublimb_grabbed = item_override
 			else
 				O.sublimb_grabbed = M.simple_limb_hit(zone_selected)
-			put_in_hands(O)
-			O.update_hands(src)
+
+			if(HAS_TRAIT(src, TRAIT_NOHANDGRABS))
+				src.contents += O
+			else
+				put_in_hands(O)
+				O.update_hands(src)
+
 			if((HAS_TRAIT(src, TRAIT_STRONG_GRABBER) && cmode) || item_override)
 				suppress_message = TRUE
 				M.grippedby(src)
@@ -536,9 +544,12 @@
 		O.name = "[AM.name]"
 		O.grabbed = AM
 		O.grabbee = src
-		src.put_in_hands(O)
-		O.update_hands(src)
-		O.update_grab_intents()
+		if(HAS_TRAIT(src, TRAIT_NOHANDGRABS))
+			src.contents += O
+		else
+			src.put_in_hands(O)
+			O.update_hands(src)
+			O.update_grab_intents()
 
 	if(isliving(AM))
 		var/mob/living/living = AM
@@ -1228,12 +1239,8 @@
 	if(!mutual_grab)
 		return FALSE
 
-	var/my_wrestling = 0
-	var/their_wrestling = 0
-	if(mind)
-		my_wrestling = get_skill_level(/datum/skill/combat/wrestling)
-	if(pulledby.mind)
-		their_wrestling = pulledby.get_skill_level(/datum/skill/combat/wrestling)
+	var/my_wrestling = (mind ? get_skill_level(/datum/skill/combat/wrestling) : 0) + get_wrestling_bonuses()
+	var/their_wrestling = (pulledby.mind ? pulledby.get_skill_level(/datum/skill/combat/wrestling) : 0) + pulledby.get_wrestling_bonuses()
 
 	var/break_chance = 15 // Base chance
 	break_chance += (my_wrestling - their_wrestling)
@@ -1275,8 +1282,8 @@
 		return FALSE
 
 	var/counter_chance = 15 // Base chance
-	if(mind)
-		counter_chance += get_skill_level(/datum/skill/combat/wrestling) * 8
+	var/my_wrestling = (mind ? get_skill_level(/datum/skill/combat/wrestling) : 0) + get_wrestling_bonuses()
+	counter_chance += my_wrestling * 8
 
 	// Stat differences
 	counter_chance += (STASTR - attacker.STASTR) * 2
@@ -1423,7 +1430,6 @@
 
 	SEND_SIGNAL(src, COMSIG_LIVING_RESIST_GRAB, src, pulledby, moving_resist)
 
-	var/wrestling_diff = 0
 	var/resist_chance = BASE_GRAB_RESIST_CHANCE
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
@@ -1431,10 +1437,9 @@
 	// Modifier of pulledby against the resisting src
 	var/positioning_modifier = L.get_positioning_modifier(src)
 
-	if(mind)
-		wrestling_diff += (get_skill_level(/datum/skill/combat/wrestling))
-	if(L.mind)
-		wrestling_diff -= (L.get_skill_level(/datum/skill/combat/wrestling))
+	var/my_wrestling = (mind ? get_skill_level(/datum/skill/combat/wrestling) : 0) + get_wrestling_bonuses()
+	var/their_wrestling = (L.mind ? L.get_skill_level(/datum/skill/combat/wrestling) : 0) + L.get_wrestling_bonuses()
+	var/wrestling_diff = my_wrestling - their_wrestling
 
 	if(has_status_effect(/datum/status_effect/buff/oiled))
 		var/obj/item/grabbing/grabbed = L.get_active_held_item()
@@ -1521,9 +1526,8 @@
 		log_combat(pulledby, src, "broke grab")
 		pulledby.stop_pulling()
 
-		var/wrestling_cooldown_reduction = 0
-		if(pulledby?.get_skill_level(/datum/skill/combat/wrestling))
-			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.get_skill_level(/datum/skill/combat/wrestling)
+		var/wrestling_cooldown_reduction = 0.2 SECONDS * their_wrestling
+
 		TIMER_COOLDOWN_START(src, "broke_free", max(0, 2 SECONDS - wrestling_cooldown_reduction)) // BUFF: Reduced cooldown
 		playsound(src.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)
 		return FALSE
@@ -1564,6 +1568,11 @@
 							client?.move_delay = world.time + 20
 							return TRUE
 	return ..()
+
+
+/// Provides a bonus to wrestling checks made. Used for simple mobs to give them pseudo wrestle skills.
+/mob/living/proc/get_wrestling_bonuses()
+	return 0
 
 /mob/living/proc/resist_buckle()
 	buckled.user_unbuckle_mob(src,src)

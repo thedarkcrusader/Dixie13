@@ -174,10 +174,9 @@
 	user.changeNext_move(CLICK_CD_GRABBING)
 	var/skill_diff = 0
 	var/combat_modifier = 1
-	if(user.mind)
-		skill_diff += (user.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
-	if(mind)
-		skill_diff -= (get_skill_level(/datum/skill/combat/wrestling))
+
+	skill_diff -= (mind ? get_skill_level(/datum/skill/combat/wrestling) : 0) + get_wrestling_bonuses() //my wrestling
+	skill_diff += (user.mind ? user.get_skill_level(/datum/skill/combat/wrestling) : 0) + user.get_wrestling_bonuses() //their wrestling
 
 	if(user == src)
 		instant = TRUE
