@@ -1096,20 +1096,20 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/dat = list()
 	if(current_storyteller)
 		dat += "Storyteller: [current_storyteller.name]"
-		dat += "<BR>Repetition penalty multiplier: [current_storyteller.event_repetition_multiplier]"
-		dat += "<BR>Cost variance: [current_storyteller.cost_variance]"
+		dat += "<BR>Repetition Penalty Multiplier: [current_storyteller.event_repetition_multiplier]"
+		dat += "<BR>Cost Variance: [current_storyteller.cost_variance]"
 		if(current_storyteller.tag_multipliers)
-			dat += "<BR>Tag multipliers:"
+			dat += "<BR>Tag Multipliers: "
 			for(var/tag in current_storyteller.tag_multipliers)
-				dat += "[tag]:[current_storyteller.tag_multipliers[tag]] | "
+				dat += "[tag]: [current_storyteller.tag_multipliers[tag]] | "
 		current_storyteller.calculate_weights(statistics_track_page)
 	else
 		dat += "Storyteller: None<BR>Weight and chance statistics will be inaccurate due to the present lack of a storyteller."
-	dat += "<BR><a href='byond://?src=[REF(src)];panel=stats;action=set_roundstart'[roundstart_event_view ? "class='linkOn'" : ""]>Roundstart Events</a> Forced Roundstart events will use rolled points, and are guaranteed to trigger (even if the used points are not enough)"
-	dat += "<BR>Avg. event intervals: "
+	dat += "<BR><a href='byond://?src=[REF(src)];panel=stats;action=set_roundstart'[roundstart_event_view ? "class='linkOn'" : ""]>Show Roundstart Events</a> Forced Roundstart events will use rolled points, and are guaranteed to trigger (even if the used points are not enough)"
+	dat += "<BR>Average Event Intervals: "
 	for(var/track in event_tracks)
 		if(last_point_gains[track])
-			var/est_time = round(point_thresholds[track] / last_point_gains[track] / STORYTELLER_WAIT_TIME * 40 / 6) / 10
+			var/est_time = round((point_thresholds[track] / last_point_gains[track]) * (STORYTELLER_WAIT_TIME / (1 MINUTES)), 1)
 			dat += "[track]: ~[est_time] m. | "
 	dat += "<HR>"
 	for(var/track in EVENT_PANEL_TRACKS)
@@ -1169,7 +1169,7 @@ SUBSYSTEM_DEF(gamemode)
 		dat += "<td>[event.earliest_start / (1 MINUTES)] m.</td>" //Minimum time
 		dat += "<td>[assoc_spawn_weight[event] ? "Yes" : "No"]</td>" //Can happen?
 		dat += "<td>[event.return_failure_string(active_players)]</td>" //Why can't happen?
-		var/weight_string = "(new.[event.calculated_weight] /raw.[event.weight])"
+		var/weight_string = "(New: [event.calculated_weight] / Raw: [event.weight])"
 		if(assoc_spawn_weight[event])
 			var/percent = round((event.calculated_weight / total_weight) * 100)
 			weight_string = "[percent]% - [weight_string]"
