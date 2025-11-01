@@ -73,9 +73,9 @@
 			H.equip_to_slot_or_del(new /obj/item/weapon/scabbard/sword, ITEM_SLOT_BELT_L, TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)
 		if("Daybreak (Whip)")
-			H.put_in_hands(new /obj/item/weapon/whip/antique/psywhip(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/whip/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
-		if("S (Halberd)")
+		if("Stigmata (Halberd)")
 			H.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
 

@@ -81,16 +81,6 @@
 	melting_material = /datum/material/steel
 	sellprice = 50
 
-/obj/item/weapon/whip/antique/psywhip
-	name = "Daybreak"
-	desc = "Holding this blessed silver evokes memories of the grand cathedrals, testaments to humanity’s faith. There, upon the ceiling, was painted a scene-most-beautiful: of Psydon, robed, in battle against the archdevils. Bring daelight to the faithful."
-	icon_state = "psywhip"
-
-/obj/item/weapon/whip/antique/psywhip/Initialize(mapload)
-	. = ..()					// Pre-blessed, +5 force, +100 INT, +2 Def, Silver.
-	AddComponent(/datum/component/psyblessed, TRUE, 5, FALSE, 100, 2, TRUE)
-
-
 //................ Silver Whip ............... //
 /obj/item/weapon/whip/silver
 	name = "silver whip"
@@ -107,11 +97,11 @@
 
 //................ Psydon Whip ............... //
 /obj/item/weapon/whip/psydon
-	force = DAMAGE_WHIP+2
 	name = "psydonian whip"
 	desc = "A whip fashioned with the iconography of Psydon, and crafted entirely out of silver."
 	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psywhip"
+	force = DAMAGE_WHIP+2
 	resistance_flags = FIRE_PROOF
 	smeltresult = /obj/item/ingot/silver
 	last_used = 0
@@ -119,6 +109,14 @@
 /obj/item/weapon/whip/psydon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
+
+/obj/item/weapon/whip/psydon/relic
+	name = "Daybreak"
+	desc = "Holding this blessed silver evokes memories of the grand cathedrals, testaments to humanity’s faith. There, upon the ceiling, was painted a scene-most-beautiful: of Psydon, robed, in battle against the archdevils. Bring daelight to the faithful."
+
+/obj/item/weapon/whip/psydon/relic/Initialize(mapload)
+	. = ..()					// Pre-blessed, +5 force, +100 INT, +2 Def, Silver.
+	AddComponent(/datum/component/psyblessed, TRUE, 5, FALSE, 100, 2, TRUE)
 
 //................ Caning Stick.................//
 /obj/item/weapon/whip/cane

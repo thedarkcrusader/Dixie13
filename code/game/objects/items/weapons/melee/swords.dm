@@ -76,9 +76,10 @@
 /obj/item/weapon/sword/short/psy
 	name = "psydonian shortsword"
 	desc = "Grenzelhoftian smiths worked with artificers, and an esoteric blade was born: a blade with an unique design, dismissing a crossguard in favor of a hollow beak to hook and draw harm away from its user. Short in length, yet lethally light in weight."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
+	icon_state = "psyswordshort"
 	force = 19
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
-	icon_state = "psyswordshort"
 	gripped_intents = null
 	minstr = 4
 	wdefense = 4
@@ -821,13 +822,14 @@
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/weapon/sword/long/forgotten
+	name = "forgotten blade"
+	desc = "A large silver-alloy sword made in a revisionist style, honoring Psydon. Best known as the prefered weapon of Inquisitorial Lodges."
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
+	icon_state = "oldpsybroadsword"
 	force = DAMAGE_SWORD * 0.9 // Damage is .9 of a steel sword
 	force_wielded = DAMAGE_LONGSWORD_WIELD
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
-	icon_state = "forgotten"
-	name = "forgotten blade"
-	desc = "A large silver-alloy sword made in a revisionist style, honoring Psydon. Best known as the prefered weapon of Inquisitorial Lodges."
 	max_blade_int = INTEGRITY_STRONG * 0.8 // Integrity and blade retention is .8 of a steel sword
 	max_integrity = 400
 	smeltresult = /obj/item/ingot/silver
@@ -886,7 +888,8 @@
 /obj/item/weapon/sword/long/oldpsysword
 	name = "old psydonian longsword"
 	desc = "A finely made longsword, plated in a worn-down veneer of grubby silver. It's long seen better daes."
-	icon_state = "psysword"
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
+	icon_state = "opsysword"
 
 //................ Greatsword ............... //
 /obj/item/weapon/sword/long/greatsword
@@ -917,12 +920,12 @@
 
 //................ Psydonian Greatsword ............... //
 /obj/item/weapon/sword/long/greatsword/psydon
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
-	force_wielded = DAMAGE_LONGSWORD_WIELD
 	name = "psydonian greatsword"
 	desc = "A mighty silver greatsword made to strike fear into the heart of even archdevils."
 	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
 	icon_state = "psygsword"
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
+	force_wielded = DAMAGE_LONGSWORD_WIELD
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 150
 	minstr = 11
@@ -955,7 +958,8 @@
 /obj/item/weapon/sword/long/greatsword/broadsword/psy
 	name = "old psydonian broadsword"
 	desc = "Even the most ignorant of zealots know that the holy silver loses its properties when not blessed by Adjudicators and Priests of the Holy See for an extended period of time. Its edge remains as lethal as ever, however."
-	icon_state = "oldpsybroadsword"
+	icon = 'icons/roguetown/weapons/64/psydonite.dmi'
+	icon_state = "psybroadsword"
 	force = 25
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/sword/cut,/datum/intent/sword/chop,/datum/intent/stab)
@@ -965,7 +969,6 @@
 /obj/item/weapon/sword/long/greatsword/broadsword/psy/relic
 	name = "Creed"
 	desc = "Bathed in Psydonian prayers, this large and heavy blade exists to slay the inhumen and evil. The crossguard’s psycross is engraved with prayers of the Ordo Benetarus. You’re the light - show them the way."
-	icon_state = "psybroadsword"
 
 /obj/item/weapon/sword/long/greatsword/broadsword/psy/getonmobprop(tag)
 	. = ..()

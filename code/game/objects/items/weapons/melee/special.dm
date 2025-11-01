@@ -284,6 +284,7 @@
 /obj/item/weapon/katar/abyssor
 	name = "barotrauma"
 	desc = "A gift from a creature of the sea. The claw is sharpened to a wicked edge."
+	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "abyssorclaw"
 	force = 24 //Less damage, Original was 27, But more integrity in exchange.
 	max_integrity = 250
@@ -317,10 +318,10 @@
 /obj/item/weapon/knuckles
 	name = "steel knuckles"
 	desc = "A mean looking pair of steel knuckles."
-	force = 22
-	possible_item_intents = list(/datum/intent/knuckles/strike,/datum/intent/knuckles/smash)
 	icon = 'icons/roguetown/weapons/32/fists_claws.dmi'
 	icon_state = "steelknuckle"
+	force = 22
+	possible_item_intents = list(/datum/intent/knuckles/strike,/datum/intent/knuckles/smash)
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
@@ -360,5 +361,6 @@
 /obj/item/weapon/knuckles/eora
 	name = "close caress"
 	desc = "Some times call for a more intimate approach."
+	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "eoraknuckle"
 	force = 24

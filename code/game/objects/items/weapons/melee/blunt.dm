@@ -381,20 +381,15 @@
 /obj/item/weapon/mace/cudgel/psy
 	name = "psydonian handmace"
 	desc = "A shorthanded mace, a convenient sleeping aid, or a means to root out heresy. It's all in the wrist."
-	resistance_flags = FIRE_PROOF
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psyflangedmace"
+	resistance_flags = FIRE_PROOF
 	wdefense = 2
 
 /obj/item/weapon/mace/cudgel/psy/Initialize(mapload)
 	. = ..()
 	// +3 force, +100 blade int, +50 int, +1 def, make silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, 100, 50, 1, TRUE)
-
-/obj/item/weapon/mace/cudgel/psy/preblessed
-
-/obj/item/weapon/mace/cudgel/psy/preblessed/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/psyblessed, TRUE, 3, 100, 50, 1, TRUE)
 
 /obj/item/weapon/mace/cudgel/shellrungu
 	name = "shell rungu"
@@ -410,7 +405,6 @@
 	name = "peasant cudgel"
 	icon_state = "carpentercudgel"
 	desc = "A stubby club reinforced with iron bits, popular among village watchmen and peasant militias. Despite being reinforced and hard-hitting, it still cannot compare to a proper mace."
-
 
 //................ Wooden sword ............... //
 /obj/item/weapon/mace/woodclub/train_sword

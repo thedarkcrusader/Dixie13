@@ -43,13 +43,13 @@
 				if("Melancholic Crankbox - Antimagic")
 					choice = /obj/item/psydonmusicbox
 				if("Daybreak - Silver Whip")
-					choice = /obj/item/weapon/whip/antique/psywhip
+					choice = /obj/item/weapon/whip/psydon/relic
 				if("Sanctum - Silver Halberd")
 					choice = /obj/item/weapon/polearm/halberd/psydon
-					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)	//We make sure the weapon is usable by the Inquisitor.
+					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)	//We make sure the weapon is usable by the Inquisitor.
 				if("Crusade - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
-					user.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)		//Ditto.
+					user.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)		//Ditto.
 				if("Censer of Penitence")
 					choice = /obj/item/flashlight/flare/torch/lantern/psycenser
 			to_chat(user, span_info("I have chosen the relic, may HE guide my hand."))
@@ -192,25 +192,6 @@
 							H.apply_status_effect(/datum/status_effect/buff/churnernegative)
 					to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 					to_chat(H, (span_cultsmall(pick(lines))))
-
-/*
-Inquisitorial armory down here
-
-/obj/structure/closet/crate/chest/inqarmory
-
-/obj/structure/closet/crate/chest/inqarmory/PopulateContents()
-	.=..()
-	new /obj/item/weapon/huntingknife/idagger/silver/psydagger(src)
-	new /obj/item/weapon/greatsword/psygsword(src)
-	new /obj/item/weapon/polearm/halberd/psyhalberd(src)
-	new /obj/item/weapon/whip/psywhip_lesser
-	new /obj/item/weapon/flail/sflail/psyflail
-	new /obj/item/weapon/spear/psyspear(src)
-	new /obj/item/weapon/sword/long/psysword(src)
-	new /obj/item/weapon/mace/goden/psymace(src)
-	new /obj/item/weapon/stoneaxe/battle/psyaxe(src)
-	*/
-
 
 /atom/movable/screen/alert/status_effect/buff/censerbuff
 	name = "Inspired by Psydon."
