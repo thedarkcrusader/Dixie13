@@ -56,9 +56,7 @@
 		if(directory)
 			if(!(directory in MAP_DIRECTORY_WHITELIST))
 				log_world("map directory not in whitelist: [directory] for map [filename]")
-				if(station_load)
-					return config
-				return
+				return config
 		else
 			directory = MAP_DIRECTORY_MAPS
 
@@ -70,7 +68,6 @@
 		qdel(config)
 		if(station_load)
 			return load_default_map_config()
-		return
 
 	return config
 
