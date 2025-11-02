@@ -215,6 +215,22 @@ SUBSYSTEM_DEF(gamemode)
 			CHRONICLE_STATS_LUCKIEST_PERSON,
 			CHRONICLE_STATS_UNLUCKIEST_PERSON,
 		),
+		"Perception" = list(
+			CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON,
+			CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON,
+		),
+		"Constitution" = list(
+			CHRONICLE_STATS_MOST_RESILIENT_PERSON,
+			CHRONICLE_STATS_LEAST_RESILIENT_PERSON,
+		),
+		"Endurance" = list(
+			CHRONICLE_STATS_MOST_ENDURANT_PERSON,
+			CHRONICLE_STATS_LEAST_ENDURANT_PERSON,
+		),
+		"Beauty" = list(
+			CHRONICLE_STATS_MOST_BEAUTIFUL_PERSON,
+			CHRONICLE_STATS_UGLIEST_PERSON,
+		),
 	)
 
 	/// Chosen chronicle stats of the notable people, which show at the end round panel
@@ -1285,34 +1301,76 @@ SUBSYSTEM_DEF(gamemode)
 
 /// Chooses a number of chronicle stats from the chronicle sets which will be shown at the round end panel
 /datum/controller/subsystem/gamemode/proc/pick_chronicle_stats()
-	var/list/available_sets = chronicle_sets.Copy()
+	chosen_chronicle_stats.Cut()
 
-	while(length(chosen_chronicle_stats) < 8 && length(available_sets))
-		var/picked_set_name = pick(available_sets)
-		var/list/picked_set = available_sets[picked_set_name]
+	var/list/current_valid_humans = list()
+	var/mob/living/carbon/human/valid_psydon_favourite
 
-		var/stats_needed = 8 - length(chosen_chronicle_stats)
-		var/stats_to_take = min(length(picked_set), stats_needed)
+	for(var/client/client in GLOB.clients)
+		var/mob/living/carbon/human/human_mob = client.mob
+		if(!ishuman(human_mob) || !human_mob.mind || human_mob.stat == DEAD)
+			continue
+		current_valid_humans += human_mob
+		if(client.has_triumph_buy(TRIUMPH_BUY_PSYDON_FAVOURITE))
+			valid_psydon_favourite = human_mob
 
-		for(var/i in 1 to stats_to_take)
-			chosen_chronicle_stats += picked_set[i]
-
-		available_sets -= picked_set_name
-
-	if(length(chosen_chronicle_stats) < 8)
+	if(valid_psydon_favourite && length(current_valid_humans) >= 2)
+		chosen_chronicle_stats += CHRONICLE_STATS_PSYDON_FAVOURITE
+		chosen_chronicle_stats += CHRONICLE_STATS_RANDOM_PASSERBY
+	else if(valid_psydon_favourite)
+		chosen_chronicle_stats += CHRONICLE_STATS_PSYDON_FAVOURITE
 		for(var/set_name in chronicle_sets)
-			if(length(chosen_chronicle_stats) >= 8)
+			var/list/set_data = chronicle_sets[set_name]
+			if(length(set_data) >= 2 && GLOB.chronicle_stats[set_data[1]] && GLOB.chronicle_stats[set_data[2]])
+				chosen_chronicle_stats += set_data[1]
 				break
 
-			if(!(set_name in available_sets))
-				continue
+	var/list/available_complete_sets = list()
+	for(var/set_name in chronicle_sets)
+		var/list/set_data = chronicle_sets[set_name]
+		if(length(set_data) >= 2 && GLOB.chronicle_stats[set_data[1]] && GLOB.chronicle_stats[set_data[2]])
+			if(!(set_data[1] in chosen_chronicle_stats) && !(set_data[2] in chosen_chronicle_stats))
+				available_complete_sets[set_name] = set_data
 
-			var/list/remaining_set = chronicle_sets[set_name]
-			var/stats_needed = 8 - length(chosen_chronicle_stats)
-			var/stats_to_take = min(length(remaining_set), stats_needed)
+	var/slots_needed = MAX_CHRONICLE_STATS - length(chosen_chronicle_stats)
+	var/sets_to_pick = FLOOR(slots_needed / 2, 1)
 
-			for(var/i in 1 to stats_to_take)
-				chosen_chronicle_stats += remaining_set[i]
+	for(var/i in 1 to sets_to_pick)
+		if(!length(available_complete_sets))
+			break
+
+		var/picked_set_name = pick(available_complete_sets)
+		var/list/picked_set = available_complete_sets[picked_set_name]
+
+		chosen_chronicle_stats += picked_set[1]
+		chosen_chronicle_stats += picked_set[2]
+
+		available_complete_sets -= picked_set_name
+
+	if(length(chosen_chronicle_stats) < MAX_CHRONICLE_STATS)
+		var/list/all_stats = list()
+		for(var/set_name in chronicle_sets)
+			var/list/set_data = chronicle_sets[set_name]
+			for(var/stat in set_data)
+				if(!(stat in chosen_chronicle_stats) && GLOB.chronicle_stats[stat])
+					all_stats += stat
+
+		shuffle_inplace(all_stats)
+		for(var/stat in all_stats)
+			if(length(chosen_chronicle_stats) >= MAX_CHRONICLE_STATS)
+				break
+			chosen_chronicle_stats += stat
+
+	if(length(chosen_chronicle_stats) < MAX_CHRONICLE_STATS)
+		for(var/set_name in chronicle_sets)
+			if(length(chosen_chronicle_stats) >= MAX_CHRONICLE_STATS)
+				break
+			var/list/set_data = chronicle_sets[set_name]
+			for(var/stat in set_data)
+				if(length(chosen_chronicle_stats) >= MAX_CHRONICLE_STATS)
+					break
+				if(!(stat in chosen_chronicle_stats))
+					chosen_chronicle_stats += stat
 
 /// Compares influence of all storytellers and sets a new storyteller with a highest influence
 /datum/controller/subsystem/gamemode/proc/pick_most_influential(roundstart = FALSE)
@@ -1440,6 +1498,9 @@ SUBSYSTEM_DEF(gamemode)
 	var/highest_wealth = -1
 	var/highest_luck = -1
 	var/highest_speed = -1
+	var/highest_perception = -1
+	var/highest_constitution = -1
+	var/highest_endurance = -1
 
 	var/lowest_total_stats
 	var/lowest_strength
@@ -1447,6 +1508,9 @@ SUBSYSTEM_DEF(gamemode)
 	var/lowest_wealth
 	var/lowest_luck
 	var/lowest_speed
+	var/lowest_perception
+	var/lowest_constitution
+	var/lowest_endurance
 
 	for(var/client/client in GLOB.clients)
 		if(roundstart)
@@ -1502,7 +1566,7 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_NOBLES)
 			if(human_mob.mind.assigned_role.title in GLOB.garrison_positions)
 				record_round_statistic(STATS_ALIVE_GARRISON)
-			if(human_mob.mind.assigned_role.title in GLOB.church_positions)
+			if((human_mob.mind.assigned_role.title in GLOB.church_positions) || (human_mob.mind.assigned_role.title in GLOB.inquisition_positions))
 				record_round_statistic(STATS_ALIVE_CLERGY)
 			if((human_mob.mind.assigned_role.title in GLOB.serf_positions) || (human_mob.mind.assigned_role.title in GLOB.peasant_positions) || (human_mob.mind.assigned_role.title in GLOB.company_positions))
 				record_round_statistic(STATS_ALIVE_TRADESMEN)
@@ -1589,6 +1653,18 @@ SUBSYSTEM_DEF(gamemode)
 				highest_speed = human_mob.STASPD
 				set_chronicle_stat(CHRONICLE_STATS_FASTEST_PERSON, human_mob, "SPEEDSTER", "#54d6c2", "[human_mob.STASPD] speed")
 
+			if(human_mob.STAPER > highest_perception)
+				highest_perception = human_mob.STAPER
+				set_chronicle_stat(CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON, human_mob, "EAGLE-EYED", "#a8d654", "[human_mob.STAPER] perception")
+
+			if(human_mob.STACON > highest_constitution)
+				highest_constitution = human_mob.STACON
+				set_chronicle_stat(CHRONICLE_STATS_MOST_RESILIENT_PERSON, human_mob, "THE ROCK", "#d67c54", "[human_mob.STACON] constitution")
+
+			if(human_mob.STAEND > highest_endurance)
+				highest_endurance = human_mob.STAEND
+				set_chronicle_stat(CHRONICLE_STATS_MOST_ENDURANT_PERSON, human_mob, "WORKHORSE", "#dbb169", "[human_mob.STAEND] endurance")
+
 			var/wealth = get_mammons_in_atom(human_mob)
 			total_wealth += wealth
 			if(wealth > highest_wealth)
@@ -1637,23 +1713,56 @@ SUBSYSTEM_DEF(gamemode)
 				lowest_wealth = wealth
 				set_chronicle_stat(CHRONICLE_STATS_POOREST_PERSON, human_mob, "PAUPER", "#909c63", "[wealth] mammons")
 
-	if(length(current_valid_humans) >= 2 && valid_psydon_favourite)
-		var/list/potential_passers = current_valid_humans.Copy()
-		potential_passers -= valid_psydon_favourite
-		var/mob/living/carbon/human/random_passerby = pick(potential_passers)
+			if(isnull(lowest_perception))
+				lowest_perception = human_mob.STAPER
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[human_mob.STAPER] perception")
+			else if(human_mob.STAPER < lowest_perception)
+				lowest_perception = human_mob.STAPER
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[human_mob.STAPER] perception")
 
-		chosen_chronicle_stats[1] = CHRONICLE_STATS_PSYDON_FAVOURITE
-		set_chronicle_stat(CHRONICLE_STATS_PSYDON_FAVOURITE, valid_psydon_favourite, "PSYDON'S FAVOURITE", "#e6e6e6", "buying their way in")
+			if(isnull(lowest_constitution))
+				lowest_constitution = human_mob.STACON
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[human_mob.STACON] constitution")
+			else if(human_mob.STACON < lowest_constitution)
+				lowest_constitution = human_mob.STACON
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[human_mob.STACON] constitution")
 
-		if(random_passerby)
-			chosen_chronicle_stats[2] = CHRONICLE_STATS_RANDOM_PASSERBY
-			set_chronicle_stat(CHRONICLE_STATS_RANDOM_PASSERBY, random_passerby, "RANDOM PASSERBY", "#888888", "just happening to be here")
-
-	else if(!isnull(GLOB.chronicle_stats[CHRONICLE_STATS_PSYDON_FAVOURITE]))
-		chosen_chronicle_stats = list()
-		pick_chronicle_stats()
+			if(isnull(lowest_endurance))
+				lowest_endurance = human_mob.STAEND
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[human_mob.STAEND] endurance")
+			else if(human_mob.STAEND < lowest_endurance)
+				lowest_endurance = human_mob.STAEND
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[human_mob.STAEND] endurance")
 
 	force_set_round_statistic(STATS_MAMMONS_HELD, total_wealth)
+
+	var/list/potential_passers = current_valid_humans.Copy()
+	var/list/beautiful_candidates = list()
+	var/list/ugly_candidates = list()
+
+	for(var/mob/living/carbon/human/human_mob in current_valid_humans)
+		if(HAS_TRAIT(human_mob, TRAIT_BEAUTIFUL))
+			beautiful_candidates += human_mob
+		if(HAS_TRAIT(human_mob, TRAIT_UGLY))
+			ugly_candidates += human_mob
+
+	if(length(beautiful_candidates) > 0)
+		var/mob/living/carbon/human/selected_beautiful = pick(beautiful_candidates)
+		set_chronicle_stat(CHRONICLE_STATS_MOST_BEAUTIFUL_PERSON, selected_beautiful, "BEAUTIFUL", "#f5a2ee", "their beauty")
+
+	if(length(ugly_candidates) > 0)
+		var/mob/living/carbon/human/selected_ugly = pick(ugly_candidates)
+		set_chronicle_stat(CHRONICLE_STATS_UGLIEST_PERSON, selected_ugly, "EYESORE", "#9e6033", "their ugliness")
+
+	if(valid_psydon_favourite)
+		set_chronicle_stat(CHRONICLE_STATS_PSYDON_FAVOURITE, valid_psydon_favourite, "PSYDON'S FAVOURITE", "#e6e6e6", "buying their way in")
+		potential_passers -= valid_psydon_favourite
+
+	if(length(potential_passers) > 0)
+		var/mob/living/carbon/human/selected_passerby = pick(potential_passers)
+		set_chronicle_stat(CHRONICLE_STATS_RANDOM_PASSERBY, selected_passerby, "RANDOM PASSERBY", "#888888", "just happening to be here")
+
+	pick_chronicle_stats()
 
 /// Returns total follower influence for the given storyteller
 /datum/controller/subsystem/gamemode/proc/get_follower_influence(datum/storyteller/chosen_storyteller)

@@ -103,12 +103,11 @@
 			H.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 			H.virginity = FALSE
 			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
-			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if(/datum/patron/divine/ravox)
 			wrists = /obj/item/clothing/neck/psycross/silver/ravox
 			head = /obj/item/clothing/head/helmet/heavy/necked/ravox
 			cloak = /obj/item/clothing/cloak/stabard/templar/ravox
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 			H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if(/datum/patron/divine/malum)
 			wrists = /obj/item/clothing/neck/psycross/silver/malum
@@ -117,16 +116,17 @@
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 		if(/datum/patron/divine/abyssor)
+			head = /obj/item/clothing/head/helmet/heavy/necked/abyssor
+			armor = /obj/item/clothing/armor/brigandine/abyssor
 			wrists = /obj/item/clothing/neck/psycross/silver/abyssor
 			cloak = /obj/item/clothing/cloak/stabard/templar/abyssor
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		if(/datum/patron/divine/xylix)
 			wrists = /obj/item/clothing/neck/psycross/silver/xylix
 			head = /obj/item/clothing/head/helmet/heavy/necked/xylix
 			cloak = /obj/item/clothing/cloak/stabard/templar/xylix
-			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
+			H.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -162,8 +162,18 @@
 			var/obj/item/weapon/knife/dagger/steel/pestrasickle/L = new(get_turf(src))
 			H.equip_to_appropriate_slot(L)
 		if(/datum/patron/divine/eora)
-			var/obj/item/weapon/sword/rapier/eora/P = new(get_turf(src))
-			H.equip_to_appropriate_slot(P)
+			var/static/list/selectable = list( \
+			"Heartstring (Rapier)" = /obj/item/weapon/sword/rapier/eora, \
+			"Close Caress (Knuckles)" = /obj/item/weapon/knuckles/eora, \
+			)
+			var/choice = H.select_equippable(H, selectable, message = "Choose Your Specialisation", title = "TEMPLAR")
+			if(!choice)
+				return
+			switch(choice)
+				if("Heartstring (Rapier)")
+					H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+				if("Close Caress (Knuckles)")
+					H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		if(/datum/patron/divine/ravox)
 			var/obj/item/weapon/sword/long/ravox/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
@@ -171,8 +181,18 @@
 			var/obj/item/weapon/hammer/sledgehammer/war/malum/P = new(get_turf(src))
 			H.put_in_hands(P, forced = TRUE)
 		if(/datum/patron/divine/abyssor)
-			var/obj/item/weapon/polearm/spear/abyssor/P = new(get_turf(src))
-			H.equip_to_appropriate_slot(P)
+			var/static/list/selectable = list( \
+			"DepthSeeker (Spear)" = /obj/item/weapon/polearm/spear/abyssor, \
+			"Barotrauma (Katars)" = /obj/item/weapon/katar/abyssor, \
+			)
+			var/choice = H.select_equippable(H, selectable, message = "Choose Your Specialisation", title = "TEMPLAR")
+			if(!choice)
+				return
+			switch(choice)
+				if("DepthSeeker (Spear)")
+					H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+				if("Barotrauma (Katars)")
+					H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		if(/datum/patron/divine/xylix)
 			var/obj/item/weapon/whip/xylix/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
