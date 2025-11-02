@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/sunflower
 	name = "sunflower"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/fire = 5,
+		/datum/thaumaturgical_essence/fire = 2,
 		/datum/thaumaturgical_essence/life = 3,
 		/datum/thaumaturgical_essence/light = 5,
 	)
