@@ -21,7 +21,7 @@
 	var/datum/map_config/data_config = load_map_config("load_map_security_temp/[VALID_TEST_MAP]", MAP_DIRECTORY_DATA)
 
 	// data/load_map_security_temp/ is not in our whitelist, this should fail
-	var/datum/map_config/bad_config = load_map_config(VALID_TEST_MAP,"data/load_map_security_temp")
+	var/datum/map_config/bad_config = load_map_config(VALID_TEST_MAP, "data/load_map_security_temp")
 
 	// Check we can load from _maps
 	TEST_ASSERT(!maps_config.defaulted, "Failed to load: _maps/[VALID_TEST_MAP]")

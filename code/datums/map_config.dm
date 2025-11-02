@@ -5,8 +5,10 @@
 
 /datum/map_config
 	// Metadata
+	/// Full path to map load json
 	var/config_filename = "_maps/vanderlin.json"
-	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
+	/// If TRUE map config was either not loaded or loaded unsuccessfully via LoadConfig()
+	var/defaulted = TRUE
 	// Config from maps.txt
 	var/config_max_users = 0
 	var/config_min_users = 0
@@ -45,20 +47,17 @@
  * * filename - Name of the config file for the map we want to load. The .json file extension is added during the proc, so do not specify filenames with the extension.
  * * directory - Name of the directory containing our .json - Must be in MAP_DIRECTORY_WHITELIST. We default this to MAP_DIRECTORY_MAPS as it will likely be the most common usecase. If no filename is set, we ignore this.
  * * error_if_missing - Bool that says whether failing to load the config for the map will be logged in log_world or not as it's passed to LoadConfig().
- * * station_load - If we are loading a z level that should fallback to vanderlin, such as the main map. Else we do nothing.
  *
  * Returns the config for the map to load.
  */
-/proc/load_map_config(filename = null, directory = null, error_if_missing = TRUE, station_load = FALSE)
+/proc/load_map_config(filename = null, directory = null, error_if_missing = TRUE)
 	var/datum/map_config/config = load_default_map_config()
 
 	if(filename) // If none is specified, then go to look for next_map.json, for map rotation purposes.
 		if(directory)
 			if(!(directory in MAP_DIRECTORY_WHITELIST))
 				log_world("map directory not in whitelist: [directory] for map [filename]")
-				if(station_load)
-					return config
-				return
+				return config
 		else
 			directory = MAP_DIRECTORY_MAPS
 
@@ -68,9 +67,7 @@
 
 	if(!config.LoadConfig(filename, error_if_missing))
 		qdel(config)
-		if(station_load)
-			return load_default_map_config()
-		return
+		return load_default_map_config()
 
 	return config
 

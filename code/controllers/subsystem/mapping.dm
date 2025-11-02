@@ -51,13 +51,13 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/PreInit()
 #ifdef FORCE_MAP
-	config = load_map_config(FORCE_MAP, FORCE_MAP_DIRECTORY, station_load = TRUE)
+	config = load_map_config(FORCE_MAP, FORCE_MAP_DIRECTORY)
 #else
-	config = load_map_config(error_if_missing = FALSE, station_load = TRUE)
+	config = load_map_config(error_if_missing = FALSE)
 #endif
 
 #ifdef FORCE_RANDOM_WORLD_GEN
-	config = load_map_config("kalypso", station_load = TRUE)
+	config = load_map_config("kalypso")
 	log_world("FORCE_RANDOM_WORLD_GEN enabled - loading Kalypso only for random world generation")
 #endif
 
@@ -236,7 +236,9 @@ SUBSYSTEM_DEF(mapping)
 #endif
 
 	if(length(otherZ))
-		for(var/datum/map_config/OtherZ in otherZ)
+		for(var/datum/map_config/OtherZ as anything in otherZ)
+			if(OtherZ.defaulted)
+				continue
 			LoadGroup(FailedZs, OtherZ.map_name, OtherZ.map_path, OtherZ.map_file, OtherZ.traits, ZTRAITS_STATION, delve = OtherZ.delve)
 
 	if(SSdbcore.Connect())

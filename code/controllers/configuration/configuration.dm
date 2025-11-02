@@ -288,7 +288,7 @@ Example config:
 
 		switch (command)
 			if ("map")
-				currentmap = load_map_config(data, MAP_DIRECTORY_MAPS, station_load = TRUE)
+				currentmap = load_map_config(data, MAP_DIRECTORY_MAPS)
 				if(currentmap.defaulted)
 					var/error_message = "Failed to load map config for [data]!"
 					log_config(error_message)
