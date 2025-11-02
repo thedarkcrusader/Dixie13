@@ -68,6 +68,7 @@
 		qdel(config)
 		if(station_load)
 			return load_default_map_config()
+		return
 
 	return config
 
