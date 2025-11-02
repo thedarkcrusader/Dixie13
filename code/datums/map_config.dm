@@ -56,7 +56,9 @@
 		if(directory)
 			if(!(directory in MAP_DIRECTORY_WHITELIST))
 				log_world("map directory not in whitelist: [directory] for map [filename]")
-				return config
+				if(station_load)
+					return config
+				return
 		else
 			directory = MAP_DIRECTORY_MAPS
 
