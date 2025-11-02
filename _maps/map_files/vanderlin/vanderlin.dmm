@@ -5542,9 +5542,8 @@
 /obj/item/textbook/novice,
 /obj/item/textbook/apprentice,
 /obj/item/textbook/expert,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor/archivist)
 "dlx" = (
@@ -38646,8 +38645,9 @@
 /area/rogue/outdoors/town)
 "wZt" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/paper/scroll/keep_plans,
-/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
 /turf/open/floor/greenstone,
 /area/rogue/indoors/town/manor/library)
 "wZx" = (
