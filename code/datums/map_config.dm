@@ -17,6 +17,7 @@
 	var/map_name = "Vanderlin"
 	var/map_path = "map_files/vanderlin"
 	var/map_file = "vanderlin.dmm"
+
 	var/immigrant_origin = "Kingsfield"
 	var/monarch_title = "King"
 	var/monarch_title_f = "Queen"
@@ -32,20 +33,49 @@
 	var/list/other_z
 	var/delve = 0
 
-/proc/load_map_config(filename = "data/next_map.json", default_to_van, delete_after, error_if_missing = TRUE)
-	var/datum/map_config/config = new
-	if (default_to_van)
-		return config
-	if (!config.LoadConfig(filename, error_if_missing))
+/**
+ * Proc that simply loads the default map config, which should always be functional.
+ */
+/proc/load_default_map_config()
+	return new /datum/map_config
+
+/**
+ * Proc handling the loading of map configs. Will return the default map config using [/proc/load_default_map_config] if the loading of said file fails for any reason whatsoever, so we always have a working map for the server to run.
+ * Arguments:
+ * * filename - Name of the config file for the map we want to load. The .json file extension is added during the proc, so do not specify filenames with the extension.
+ * * directory - Name of the directory containing our .json - Must be in MAP_DIRECTORY_WHITELIST. We default this to MAP_DIRECTORY_MAPS as it will likely be the most common usecase. If no filename is set, we ignore this.
+ * * error_if_missing - Bool that says whether failing to load the config for the map will be logged in log_world or not as it's passed to LoadConfig().
+ * * station_load - If we are loading a z level that should fallback to vanderlin, such as the main map. Else we do nothing.
+ *
+ * Returns the config for the map to load.
+ */
+/proc/load_map_config(filename = null, directory = null, error_if_missing = TRUE, station_load = FALSE)
+	var/datum/map_config/config = load_default_map_config()
+
+	if(filename) // If none is specified, then go to look for next_map.json, for map rotation purposes.
+		if(directory)
+			if(!(directory in MAP_DIRECTORY_WHITELIST))
+				log_world("map directory not in whitelist: [directory] for map [filename]")
+				if(station_load)
+					return config
+				return
+		else
+			directory = MAP_DIRECTORY_MAPS
+
+		filename = "[directory]/[filename].json"
+	else
+		filename = PATH_TO_NEXT_MAP_JSON
+
+	if(!config.LoadConfig(filename, error_if_missing))
 		qdel(config)
-		if(default_to_van)
-			config = new /datum/map_config
-	if (delete_after)
-		fdel(filename)
-	if(config)
-		return config
+		if(station_load)
+			return load_default_map_config()
+		return
+
+	return config
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
+
 /datum/map_config/proc/LoadConfig(filename, error_if_missing)
 	if(!fexists(filename))
 		if(error_if_missing)
@@ -172,7 +202,7 @@
 		. += "_maps/[map_path]/[file]"
 
 /datum/map_config/proc/MakeNextMap()
-	return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")
+	return config_filename == PATH_TO_NEXT_MAP_JSON || fcopy(config_filename, PATH_TO_NEXT_MAP_JSON)
 
 /// Checks config parameters to see if this map can be voted for. Returns TRUE or FALSE accordingly.
 /datum/map_config/proc/available_for_vote()
