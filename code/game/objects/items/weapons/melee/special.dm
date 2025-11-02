@@ -272,14 +272,19 @@
 
 /obj/item/weapon/katar/psydon
 	name = "psydonian katar"
-	desc = "An exotic weapon taken from the hands of wandering monks, an esoteric design to the Otavan Holy See. Special care was taken into account towards the user's knuckles: silver-tipped steel from tip to edges, and His holy cross reinforcing the heart of the weapon, with curved shoulders to allow its user to deflect incoming blows - provided they lead it in with the blade."
+	desc = "An exotic weapon taken from the hands of wandering monks, an esoteric design to the Grenzelhoftian nation. Special care was taken into account towards the user's knuckles: silver-tipped steel from tip to edges, and His holy cross reinforcing the heart of the weapon, with curved shoulders to allow its user to deflect incoming blows - provided they lead it in with the blade."
 	icon_state = "psykatar"
 
 /obj/item/weapon/katar/psydon/Initialize(mapload)
 	. = ..()						//+3 force, +50 int, +1 def, make silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
-
+/obj/item/weapon/katar/abyssor
+	name = "barotrauma"
+	desc = "A gift from a creature of the sea. The claw is sharpened to a wicked edge."
+	icon_state = "abyssorclaw"
+	force = 24 //Less damage, Original was 27, But more integrity in exchange.
+	max_integrity = 250
 
 /datum/intent/knuckles/strike
 	name = "punch"
@@ -348,3 +353,9 @@
 /obj/item/weapon/knuckles/psydon/Initialize(mapload)
 	. = ..()							//+3 force, +50 int, +1 def, make silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
+
+/obj/item/weapon/knuckles/eora
+	name = "close caress"
+	desc = "Some times call for a more intimate approach."
+	icon_state = "eoraknuckle"
+	force = 24
