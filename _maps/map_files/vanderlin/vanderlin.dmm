@@ -279,6 +279,22 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/clinic_large/apothecary)
+"agP" = (
+/obj/structure/table/wood/plain,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/natural/feather{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/structure/fake_machine/mail{
+	mailtag = "Upper City Garrison"
+	},
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/wood,
+/area/rogue/indoors/town/garrison/lieutenant)
 "ahe" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -504,16 +520,6 @@
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town)
-"amy" = (
-/obj/structure/table/wood/counter{
-	dir = 1
-	},
-/obj/item/storage/hip/headhook,
-/obj/structure/fake_machine/mail{
-	mailtag = "Mercenary Guild"
-	},
-/turf/open/floor/carpet/green,
-/area/rogue/indoors/town/merc_guild)
 "amE" = (
 /obj/structure/flora/grass/bush,
 /obj/effect/landmark/start/vagrant,
@@ -1489,6 +1495,15 @@
 /obj/effect/spawner/map_spawner/loot/coin/low,
 /turf/open/floor/ruinedwood/turned/alt,
 /area/rogue/indoors/town/tavern)
+"aLC" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/obj/structure/fake_machine/mail{
+	mailtag = "Hand's Quarters"
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/rogue/indoors/town/manor/hand)
 "aLP" = (
 /obj/item/natural/stone{
 	pixel_x = -3;
@@ -1706,13 +1721,6 @@
 /obj/item/weapon/pick,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/smithy)
-"aTj" = (
-/obj/structure/table/wood/plain_alt,
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Jester's Quarters"
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/town/manor/jester)
 "aTl" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -1803,6 +1811,15 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/metal/alt,
 /area/rogue/indoors/town/garrison)
+"aVe" = (
+/obj/structure/table/wood{
+	icon_state = "longtable"
+	},
+/obj/structure/fake_machine/mail{
+	mailtag = "Soilson"
+	},
+/turf/open/floor/ruinedwood/turned/darker,
+/area/rogue/indoors/soilsons)
 "aVg" = (
 /turf/closed/wall/mineral/decorstone,
 /area/rogue/indoors/town/manor/library)
@@ -1852,14 +1869,6 @@
 "aXa" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/storage/sack,
-/turf/open/floor/ruinedwood/turned/darker,
-/area/rogue/indoors/town)
-"aXe" = (
-/obj/structure/door{
-	name = "Apartment XV";
-	lockid = "apartment15"
-	},
-/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "aXg" = (
@@ -1915,16 +1924,6 @@
 /obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
-"aZa" = (
-/obj/item/natural/feather,
-/obj/structure/table/map/vanderlin{
-	dir = 6
-	},
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Lord's Apartment"
-	},
-/turf/open/floor/carpet/lord/center,
-/area/rogue/indoors/town/manor/lord_appt)
 "aZd" = (
 /obj/structure/window/openclose{
 	dir = 1
@@ -4014,13 +4013,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/sewer)
-"ckJ" = (
-/obj/structure/table/wood/plain_alt,
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Squire's Quarters"
-	},
-/turf/open/floor/woodturned/nosmooth,
-/area/rogue/indoors/town/manor/squire)
 "ckU" = (
 /turf/closed/wall/mineral/roofwall/outercorner{
 	dir = 4
@@ -4081,13 +4073,6 @@
 	},
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
-"cmK" = (
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Inquisitor's Quarters"
-	},
-/obj/structure/table/wood/crafted,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church/inquisition)
 "cnc" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato,
@@ -4294,17 +4279,21 @@
 /obj/structure/window/solid,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/clocktower)
+"cvP" = (
+/obj/structure/table/wood/counter{
+	dir = 1
+	},
+/obj/item/storage/hip/headhook,
+/obj/structure/fake_machine/mail{
+	mailtag = "Mercenary Guild"
+	},
+/turf/open/floor/carpet/green,
+/area/rogue/indoors/town/merc_guild)
 "cvQ" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/candle/skull/lit,
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
-"cvS" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "City Garrison"
-	},
-/turf/open/floor/hexstone,
-/area/rogue/indoors/town/garrison)
 "cvZ" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/key/guest,
@@ -4765,6 +4754,15 @@
 	},
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/smithy)
+"cKF" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Feldsher's Office"
+	},
+/obj/structure/chair/wood/alt{
+	dir = 4
+	},
+/turf/open/floor/tile,
+/area/rogue/indoors/town/clinic_large/feldsher)
 "cKJ" = (
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/town)
@@ -5655,12 +5653,6 @@
 	dir = 8
 	},
 /area/rogue/outdoors/rtfield/safe)
-"dor" = (
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Tailor"
-	},
-/turf/open/floor/tile/kitchen,
-/area/rogue/indoors/town)
 "doz" = (
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/town/cell)
@@ -5733,12 +5725,6 @@
 "dqD" = (
 /turf/open/floor/cobble,
 /area/rogue/under/town/caverogue)
-"dqG" = (
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Captain's Quarters"
-	},
-/turf/open/floor/herringbone,
-/area/rogue/indoors/town/manor/captain)
 "dqT" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/bottle/beer/hagwoodbitter,
@@ -5927,13 +5913,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/clocktower)
-"dwm" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Wizard Tower"
-	},
-/obj/structure/chair/bench/couch/right,
-/turf/open/floor/carpet/stellar,
-/area/rogue/indoors/town/magician)
 "dws" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /obj/item/paper/scroll,
@@ -6042,6 +6021,13 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/outdoors/mountains)
+"dyL" = (
+/obj/structure/table/wood/plain_alt,
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Squire's Quarters"
+	},
+/turf/open/floor/woodturned/nosmooth,
+/area/rogue/indoors/town/manor/squire)
 "dyZ" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/clothing/face/cigarette/pipe/crafted{
@@ -6641,6 +6627,23 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/cobblerock,
 /area/rogue/under/town/sewer)
+"dQV" = (
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Keep Guest Room 2"
+	},
+/turf/open/floor/ruinedwood,
+/area/rogue/indoors/town/manor/guest/guest2)
+"dRd" = (
+/obj/structure/lever{
+	redstone_id = "orphanagelockdown";
+	pixel_y = 9
+	},
+/obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Matron's Office"
+	},
+/turf/open/floor/metal/barograte,
+/area/rogue/indoors/town)
 "dRk" = (
 /obj/effect/decal/carpet/kover_purple{
 	pixel_x = 5
@@ -8420,6 +8423,13 @@
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
+"eMr" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/turf/open/floor/greenstone,
+/area/rogue/indoors/town/manor/library)
 "eMz" = (
 /obj/structure/fluff/traveltile{
 	aportalgoesto = "vanderlin-mountain_town-mountain";
@@ -8537,6 +8547,12 @@
 /obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
+"ePV" = (
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Captain's Quarters"
+	},
+/turf/open/floor/herringbone,
+/area/rogue/indoors/town/manor/captain)
 "ePY" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/effect/decal/cleanable/dirt/cobweb{
@@ -8676,6 +8692,19 @@
 /obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
+"eUc" = (
+/obj/structure/closet/crate/crafted_closet/dark,
+/obj/item/lockpick,
+/obj/item/lockpick,
+/obj/item/reagent_containers/food/snacks/cheese,
+/obj/item/reagent_containers/food/snacks/cheese{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/natural/cloth,
+/obj/item/reagent_containers/food/snacks/cheesecake_cooked,
+/turf/open/floor/cobble,
+/area/rogue/indoors/dungeon)
 "eUh" = (
 /obj/item/natural/rock/random_ore,
 /obj/structure/minecart_rail{
@@ -8935,12 +8964,6 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor/feast)
-"fdo" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Butcher"
-	},
-/turf/open/floor/woodturned,
-/area/rogue/indoors/butchershop)
 "fdp" = (
 /turf/open/floor/rooftop{
 	dir = 1
@@ -8973,6 +8996,12 @@
 	dir = 1
 	},
 /area/rogue/outdoors/town/roofs)
+"feS" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Smithy"
+	},
+/turf/open/floor/blocks,
+/area/rogue/indoors/town/smithy)
 "ffi" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/open/floor/cobble/mossy,
@@ -9247,6 +9276,12 @@
 "fjG" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/villagegarrison)
+"fkh" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Keep Court"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor/throne)
 "fkk" = (
 /obj/structure/door/window,
 /obj/effect/mapping_helpers/access/locker,
@@ -11655,12 +11690,6 @@
 /obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
-"gGo" = (
-/obj/structure/fluff/signage{
-	name = "Vanderlin - North"
-	},
-/turf/open/floor/dirt,
-/area/rogue/outdoors/rtfield)
 "gGq" = (
 /obj/structure/fermentation_keg/random/water,
 /turf/open/floor/greenstone,
@@ -13009,15 +13038,6 @@
 "huq" = (
 /turf/closed/wall/mineral/wooddark/vertical,
 /area/rogue/under/town/basement)
-"huw" = (
-/obj/structure/closet/crate/crafted_closet,
-/obj/item/candle/yellow,
-/obj/item/natural/feather,
-/obj/item/textbook/novice,
-/obj/item/textbook/apprentice,
-/obj/item/textbook/expert,
-/turf/open/floor/carpet/red,
-/area/rogue/indoors/town/manor/archivist)
 "huy" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -13731,6 +13751,27 @@
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/magician)
+"hQj" = (
+/obj/structure/rack/shelf/big{
+	pixel_y = 10
+	},
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/structure/fake_machine/mail{
+	mailtag = "Forest Garrison"
+	},
+/turf/open/floor/hexstone,
+/area/rogue/indoors/villagegarrison)
 "hQC" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/landmark/start/villager,
@@ -14576,13 +14617,6 @@
 /obj/structure/astratanshard,
 /turf/open/floor/metal/barograte/open,
 /area/rogue/indoors/town/clocktower)
-"isV" = (
-/obj/machinery/light/fueled/wallfire/candle/l,
-/obj/structure/fake_machine/mail{
-	mailtag = "Keep Meeting Room"
-	},
-/turf/open/floor/churchbrick,
-/area/rogue/indoors/town/manor/guest/meeting)
 "isX" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -14687,15 +14721,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/dungeon)
-"ivB" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
-	},
-/obj/structure/fake_machine/mail{
-	mailtag = "Soilson"
-	},
-/turf/open/floor/ruinedwood/turned/darker,
-/area/rogue/indoors/soilsons)
 "ivI" = (
 /obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot/copper{
@@ -15429,6 +15454,12 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/church/purple,
 /area/rogue/indoors/town/church/inquisition)
+"iSQ" = (
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Tailor"
+	},
+/turf/open/floor/tile/kitchen,
+/area/rogue/indoors/town)
 "iSW" = (
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor/halls/w)
@@ -16684,12 +16715,6 @@
 /obj/item/candle/skull,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
-"jFM" = (
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Archivist's Chambers"
-	},
-/turf/open/floor/carpet/red,
-/area/rogue/indoors/town/manor/archivist)
 "jFX" = (
 /obj/item/bin/water,
 /turf/open/floor/blocks/paving,
@@ -16757,6 +16782,13 @@
 /obj/machinery/light/fueled/chand,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor/throne)
+"jIr" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/fake_machine/mail{
+	mailtag = "Keep Meeting Room"
+	},
+/turf/open/floor/churchbrick,
+/area/rogue/indoors/town/manor/guest/meeting)
 "jJi" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -17805,6 +17837,15 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/tavern)
+"kns" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/structure/fake_machine/mail{
+	mailtag = "Old Church"
+	},
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "knA" = (
 /obj/effect/landmark/tram/queued_path{
 	next_path_id = "cargo_map_enter";
@@ -19062,6 +19103,12 @@
 "lfU" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/under/town/sewer)
+"lgg" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Clocktower"
+	},
+/turf/open/floor/metal/barograte,
+/area/rogue/indoors/town/clocktower)
 "lgG" = (
 /obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
@@ -20173,6 +20220,19 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
+"lTe" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 8
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Court Physician's Office"
+	},
+/obj/structure/chair/stool,
+/turf/open/floor/churchmarble,
+/area/rogue/indoors/town/manor/phys)
 "lTn" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/reagent_containers/glass/bucket/wooden{
@@ -20673,17 +20733,6 @@
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
-"mma" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "largetable"
-	},
-/obj/item/dice,
-/obj/structure/fake_machine/mail{
-	mailtag = "Inn"
-	},
-/turf/open/floor/wood,
-/area/rogue/indoors/town/tavern)
 "mmb" = (
 /obj/structure/hotspring/border/eleven,
 /turf/open/floor/grass/eora,
@@ -20799,6 +20848,13 @@
 /obj/structure/window/openclose,
 /turf/open/floor/tile/brownbrick,
 /area/rogue/indoors/town/merc_guild)
+"mpG" = (
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Inquisitor's Quarters"
+	},
+/obj/structure/table/wood/crafted,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/church/inquisition)
 "mpO" = (
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/outdoors/town/roofs)
@@ -21121,19 +21177,6 @@
 	},
 /turf/open/floor/metal/alt,
 /area/rogue/indoors/town/clocktower)
-"mzE" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 8
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Court Physician's Office"
-	},
-/obj/structure/chair/stool,
-/turf/open/floor/churchmarble,
-/area/rogue/indoors/town/manor/phys)
 "mAn" = (
 /turf/open/floor/carpet/green,
 /area/rogue/indoors/town/merc_guild)
@@ -22145,42 +22188,10 @@
 /obj/structure/door/window,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor/feast)
-"nbv" = (
-/obj/structure/rack/shelf/big{
-	pixel_y = 10
-	},
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/natural/feather,
-/obj/item/natural/feather,
-/obj/structure/fake_machine/mail{
-	mailtag = "Forest Garrison"
-	},
-/turf/open/floor/hexstone,
-/area/rogue/indoors/villagegarrison)
 "ncd" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor/captain)
-"ncf" = (
-/obj/structure/lever{
-	redstone_id = "orphanagelockdown";
-	pixel_y = 9
-	},
-/obj/machinery/light/fueled/wallfire/candle,
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Matron's Office"
-	},
-/turf/open/floor/metal/barograte,
-/area/rogue/indoors/town)
 "ncG" = (
 /obj/structure/bars/cemetery,
 /obj/effect/mapping_helpers/structure/breaker{
@@ -22469,12 +22480,6 @@
 "nmv" = (
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/caverogue)
-"nmx" = (
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Keep Kitchen"
-	},
-/turf/open/floor/blocks/stonered,
-/area/rogue/indoors/town/manor/kitchen)
 "nmU" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/reagent_containers/food/snacks/egg,
@@ -22558,15 +22563,6 @@
 	},
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/inquisition)
-"npu" = (
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
-/obj/structure/fake_machine/mail{
-	mailtag = "Hand's Quarters"
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/rogue/indoors/town/manor/hand)
 "npy" = (
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/rogue/indoors/town/manor/halls/w)
@@ -22619,6 +22615,12 @@
 /obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
+"nrs" = (
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Keep Guest Room 1"
+	},
+/turf/open/floor/ruinedwood,
+/area/rogue/indoors/town/manor/guest/guest1)
 "nrI" = (
 /obj/structure/fake_machine/scomm/r,
 /turf/open/floor/blocks/stonered,
@@ -23217,6 +23219,12 @@
 "nHH" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/clinic_large/apothecary)
+"nHI" = (
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Royal Guard's Chambers 1"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor/knight/knight1)
 "nHJ" = (
 /obj/structure/flora/grass/water/reeds,
 /turf/open/floor/dirt/road,
@@ -23322,6 +23330,13 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors/town/roofs)
+"nKn" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Wizard Tower"
+	},
+/obj/structure/chair/bench/couch/right,
+/turf/open/floor/carpet/stellar,
+/area/rogue/indoors/town/magician)
 "nKx" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /obj/item/candle/yellow{
@@ -24121,20 +24136,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/bath)
-"ohV" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
-/obj/item/handheld_bell{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/structure/fake_machine/mail{
-	mailtag = "House of The Ten"
-	},
-/turf/open/floor/churchrough,
-/area/rogue/indoors/town/church/chapel)
 "oif" = (
 /obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/churchrough,
@@ -25072,6 +25073,12 @@
 /obj/item/clothing/shirt/undershirt/colored/random,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/smithy)
+"oMD" = (
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Archivist's Chambers"
+	},
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor/archivist)
 "oMJ" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/dress,
@@ -26447,22 +26454,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/manor/library)
-"pDJ" = (
-/obj/structure/table/wood/plain,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/natural/feather{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/structure/fake_machine/mail{
-	mailtag = "Upper City Garrison"
-	},
-/obj/machinery/light/fueled/wallfire/candle/r,
-/turf/open/floor/wood,
-/area/rogue/indoors/town/garrison/lieutenant)
 "pDV" = (
 /obj/machinery/light/fueled/wallfire{
 	pixel_y = 32
@@ -26953,6 +26944,20 @@
 	},
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor/halls/s)
+"pTX" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "longtable"
+	},
+/obj/item/handheld_bell{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/structure/fake_machine/mail{
+	mailtag = "House of The Ten"
+	},
+/turf/open/floor/churchrough,
+/area/rogue/indoors/town/church/chapel)
 "pUG" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/cloak/raincloak,
@@ -27299,19 +27304,6 @@
 	},
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/town/basement)
-"qeA" = (
-/obj/structure/closet/crate/crafted_closet/dark,
-/obj/item/lockpick,
-/obj/item/lockpick,
-/obj/item/reagent_containers/food/snacks/cheese,
-/obj/item/reagent_containers/food/snacks/cheese{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/natural/cloth,
-/obj/item/reagent_containers/food/snacks/cheesecake_cooked,
-/turf/open/floor/cobble,
-/area/rogue/indoors/dungeon)
 "qeH" = (
 /obj/structure/closet/crate/drawer/random,
 /obj/item/clothing/shirt/tunic/colored/random,
@@ -27405,12 +27397,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/garrison)
-"qfA" = (
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Keep Guest Room 1"
-	},
-/turf/open/floor/ruinedwood,
-/area/rogue/indoors/town/manor/guest/guest1)
 "qfK" = (
 /obj/structure/chair/bench/church/mid{
 	dir = 1
@@ -27774,6 +27760,16 @@
 	},
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
+"qup" = (
+/obj/item/natural/feather,
+/obj/structure/table/map/vanderlin{
+	dir = 6
+	},
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Lord's Apartment"
+	},
+/turf/open/floor/carpet/lord/center,
+/area/rogue/indoors/town/manor/lord_appt)
 "qut" = (
 /obj/structure/fluff/wallclock{
 	pixel_y = -32
@@ -27949,6 +27945,17 @@
 	},
 /turf/open/floor/woodturned/nosmooth,
 /area/rogue/indoors/town/manor/knight/knight2)
+"qBK" = (
+/obj/structure/table/wood/reinf_long{
+	dir = 1
+	},
+/obj/item/paper/scroll,
+/obj/structure/fake_machine/mail{
+	mailtag = "Steward's Office"
+	},
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/indoors/town/steward)
 "qBL" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/smithy)
@@ -28679,12 +28686,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/orphanage)
-"rdk" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Clocktower"
-	},
-/turf/open/floor/metal/barograte,
-/area/rogue/indoors/town/clocktower)
 "rdn" = (
 /obj/structure/bed/inn/double,
 /obj/item/bedsheet/double_pelt,
@@ -29956,6 +29957,12 @@
 	},
 /turf/open/floor/tile,
 /area/rogue/indoors/town/vault)
+"rPf" = (
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Royal Guard's Chambers 2"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor/knight/knight2)
 "rPs" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -30410,12 +30417,6 @@
 /obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
-"sfa" = (
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Keep Guest Room 2"
-	},
-/turf/open/floor/ruinedwood,
-/area/rogue/indoors/town/manor/guest/guest2)
 "sfl" = (
 /obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot/copper,
@@ -30538,12 +30539,6 @@
 /obj/structure/table/wood/reinf_long,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/bath)
-"siD" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Smithy"
-	},
-/turf/open/floor/blocks,
-/area/rogue/indoors/town/smithy)
 "siX" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/greenstone,
@@ -30896,12 +30891,6 @@
 /obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
-"srN" = (
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Royal Guard's Chambers 2"
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor/knight/knight2)
 "ssc" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
@@ -32065,12 +32054,6 @@
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town)
-"sVT" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Keep Dining Hall"
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor/feast)
 "sWl" = (
 /obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
@@ -32132,6 +32115,12 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/garrison)
+"sYW" = (
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Keep Kitchen"
+	},
+/turf/open/floor/blocks/stonered,
+/area/rogue/indoors/town/manor/kitchen)
 "sZm" = (
 /obj/structure/fake_machine/scomm,
 /turf/open/floor/cobble,
@@ -32455,6 +32444,19 @@
 	},
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/outdoors/town)
+"tjR" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Butcher"
+	},
+/turf/open/floor/woodturned,
+/area/rogue/indoors/butchershop)
+"tjS" = (
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/structure/fake_machine/mail/l{
+	mailtag = "Merchant"
+	},
+/turf/open/floor/concrete,
+/area/rogue/indoors/town/shop)
 "tjV" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -32624,12 +32626,6 @@
 	},
 /turf/closed/wall/mineral/pipe,
 /area/rogue/indoors/town/clocktower)
-"tpd" = (
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Royal Guard's Chambers 1"
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor/knight/knight1)
 "tpk" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town)
@@ -32678,6 +32674,12 @@
 	},
 /turf/open/floor/churchrough/purple,
 /area/rogue/indoors/town/church/inquisition)
+"tqV" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "City Garrison"
+	},
+/turf/open/floor/hexstone,
+/area/rogue/indoors/town/garrison)
 "tqW" = (
 /obj/structure/lever/hidden/keep{
 	redstone_id = 614
@@ -33916,6 +33918,14 @@
 /obj/structure/kneestingers,
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/sewer)
+"ubS" = (
+/obj/structure/door{
+	name = "Apartment XV";
+	lockid = "apartment15"
+	},
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/turned/darker,
+/area/rogue/indoors/town)
 "ucd" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/carpet/royalblack,
@@ -34154,15 +34164,6 @@
 /obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
-"ulk" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/obj/structure/fake_machine/mail{
-	mailtag = "Old Church"
-	},
-/turf/open/floor/church/purple,
-/area/rogue/indoors/town/church/inquisition)
 "ulo" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 1
@@ -34248,16 +34249,6 @@
 "unK" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
-"unX" = (
-/obj/structure/chair/wood/alt{
-	dir = 4
-	},
-/obj/structure/fake_machine/mail{
-	pixel_y = -32;
-	mailtag = "Apothecary's Quarters"
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/town/clinic_large/apothecary)
 "uoa" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood/turned,
@@ -35435,15 +35426,6 @@
 	},
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
-"uZz" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Feldsher's Office"
-	},
-/obj/structure/chair/wood/alt{
-	dir = 4
-	},
-/turf/open/floor/tile,
-/area/rogue/indoors/town/clinic_large/feldsher)
 "vag" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -35755,14 +35737,6 @@
 "vlt" = (
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor/halls)
-"vlw" = (
-/obj/structure/table/wood/plain_alt,
-/obj/item/paper/scroll{
-	pixel_x = -1;
-	pixel_y = 8
-	},
-/turf/open/floor/greenstone,
-/area/rogue/indoors/town/manor/library)
 "vlI" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/natural/cloth,
@@ -37063,12 +37037,6 @@
 "wdH" = (
 /turf/open/water/sewer,
 /area/rogue/outdoors/river)
-"wdJ" = (
-/obj/structure/fake_machine/mail{
-	mailtag = "Keep Court"
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor/throne)
 "wdQ" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/closed/wall/mineral/stone,
@@ -37566,6 +37534,12 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
+"wqf" = (
+/obj/structure/fake_machine/mail{
+	mailtag = "Keep Dining Hall"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor/feast)
 "wqh" = (
 /turf/open/floor/metal/alt,
 /area/rogue/indoors/town/dwarfin)
@@ -37884,13 +37858,6 @@
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/magician)
-"wyj" = (
-/obj/machinery/light/fueled/wallfire/candle/blue,
-/obj/structure/fake_machine/mail/l{
-	mailtag = "Merchant"
-	},
-/turf/open/floor/concrete,
-/area/rogue/indoors/town/shop)
 "wyl" = (
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/manor/servant)
@@ -38129,6 +38096,17 @@
 /obj/structure/fake_machine/camera/left,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
+"wEN" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "largetable"
+	},
+/obj/item/dice,
+/obj/structure/fake_machine/mail{
+	mailtag = "Inn"
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors/town/tavern)
 "wFi" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -38591,6 +38569,16 @@
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/garrison)
+"wVS" = (
+/obj/structure/chair/wood/alt{
+	dir = 4
+	},
+/obj/structure/fake_machine/mail{
+	pixel_y = -32;
+	mailtag = "Apothecary's Quarters"
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/indoors/town/clinic_large/apothecary)
 "wVU" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = -32;
@@ -38741,6 +38729,12 @@
 "xaa" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/steward)
+"xak" = (
+/obj/structure/fluff/signage{
+	name = "Vanderlin - North"
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors/rtfield)
 "xal" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -40069,6 +40063,13 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
+"xQy" = (
+/obj/structure/table/wood/plain_alt,
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Jester's Quarters"
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/indoors/town/manor/jester)
 "xQz" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -40306,6 +40307,17 @@
 "xXb" = (
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
+"xXo" = (
+/obj/structure/closet/crate/crafted_closet,
+/obj/item/candle/yellow,
+/obj/item/natural/feather,
+/obj/item/textbook/novice,
+/obj/item/textbook/apprentice,
+/obj/item/textbook/expert,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor/archivist)
 "xXB" = (
 /obj/structure/rack,
 /obj/item/weapon/pick,
@@ -40540,17 +40552,6 @@
 "ydy" = (
 /turf/open/water/cleanshallow,
 /area/rogue/under/cavewet)
-"yef" = (
-/obj/structure/table/wood/reinf_long{
-	dir = 1
-	},
-/obj/item/paper/scroll,
-/obj/structure/fake_machine/mail{
-	mailtag = "Steward's Office"
-	},
-/obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/town/steward)
 "yel" = (
 /obj/structure/table/wood/reinforced_alter,
 /obj/structure/bars{
@@ -96590,7 +96591,7 @@ vgJ
 rDr
 bET
 lnG
-dwm
+nKn
 lUN
 pLB
 cBw
@@ -97912,7 +97913,7 @@ jMD
 nDj
 mAn
 jMD
-amy
+cvP
 mAn
 ksa
 dYt
@@ -99569,7 +99570,7 @@ aWD
 aWD
 nlp
 odc
-nbv
+hQj
 ikG
 apD
 pUY
@@ -100020,7 +100021,7 @@ rDr
 bET
 afD
 fFx
-nmx
+sYW
 wvF
 lyY
 lyY
@@ -100636,7 +100637,7 @@ nRb
 nRb
 nRb
 wSk
-sVT
+wqf
 cIa
 oRC
 omJ
@@ -101032,7 +101033,7 @@ bET
 bET
 ozR
 gew
-dqG
+ePV
 fAM
 pXg
 pdC
@@ -102642,7 +102643,7 @@ qih
 wbs
 wbs
 ldk
-wdJ
+fkh
 jqi
 bqR
 hfu
@@ -102749,7 +102750,7 @@ ueK
 tpk
 tpk
 tpk
-dor
+iSQ
 qqE
 qqE
 ivd
@@ -103133,7 +103134,7 @@ tTU
 llX
 tTU
 qBL
-siD
+feS
 sTi
 dFv
 sSS
@@ -105358,7 +105359,7 @@ cKz
 cKz
 iVJ
 nWe
-wyj
+tjS
 jcc
 hsJ
 nWe
@@ -105606,7 +105607,7 @@ iSk
 iSk
 wVG
 xJk
-cvS
+tqV
 oMf
 oMf
 oMf
@@ -105889,7 +105890,7 @@ cDC
 pNd
 utO
 wOi
-vlw
+eMr
 hMT
 bPj
 aVg
@@ -106073,7 +106074,7 @@ bET
 bET
 rDr
 wwb
-npu
+aLC
 xrO
 tJq
 lSx
@@ -106481,7 +106482,7 @@ lZa
 lZa
 lZa
 lSx
-tpd
+nHI
 jGf
 yeY
 eik
@@ -106953,7 +106954,7 @@ aXm
 aXm
 mTy
 vNi
-mma
+wEN
 jZz
 fOt
 pRo
@@ -107286,7 +107287,7 @@ bET
 lZa
 pzg
 ipx
-ckJ
+dyL
 lsH
 huC
 huC
@@ -107895,7 +107896,7 @@ rDr
 qoU
 bET
 huC
-srN
+rPf
 hjm
 yfN
 soc
@@ -115273,7 +115274,7 @@ dhF
 dhF
 dhF
 fgn
-ulk
+kns
 mEH
 dMK
 fgn
@@ -131280,7 +131281,7 @@ uVx
 tzO
 tzO
 jAf
-gGo
+xak
 sBG
 sEQ
 sEQ
@@ -137469,7 +137470,7 @@ pQS
 pQS
 cjt
 pQS
-aXe
+ubS
 pQS
 tZj
 cjt
@@ -137886,7 +137887,7 @@ oLd
 elp
 elp
 rnJ
-ncf
+dRd
 aky
 wTm
 wTm
@@ -139208,7 +139209,7 @@ agc
 bgM
 tzH
 hor
-mzE
+lTe
 aDL
 sDR
 diR
@@ -139677,7 +139678,7 @@ aaU
 crV
 oht
 mMj
-unX
+wVS
 aaU
 dSF
 iGx
@@ -139889,7 +139890,7 @@ tLz
 vot
 vot
 tLz
-uZz
+cKF
 okA
 pJw
 miW
@@ -141868,7 +141869,7 @@ acx
 acx
 vgJ
 cHi
-yef
+qBK
 pmd
 ptM
 myn
@@ -144251,7 +144252,7 @@ cKY
 cKY
 wjF
 dnb
-aZa
+qup
 jlR
 lum
 neG
@@ -145264,7 +145265,7 @@ wFw
 rNo
 iFZ
 kue
-qfA
+nrs
 gpt
 xrz
 xvc
@@ -146072,7 +146073,7 @@ gPf
 tuX
 tzJ
 sAI
-sfa
+dQV
 vGW
 xrz
 jmF
@@ -146479,14 +146480,14 @@ gPf
 gPf
 snf
 peq
-isV
+jIr
 hXe
 hXe
 bMO
 rVU
 kXX
 anA
-jFM
+oMD
 jBP
 ecl
 riB
@@ -147292,7 +147293,7 @@ hXe
 hXe
 wgm
 rVU
-huw
+xXo
 eOM
 wKX
 xaP
@@ -147620,7 +147621,7 @@ vgJ
 vgJ
 vgJ
 lEc
-pDJ
+agP
 bsg
 oWl
 mPP
@@ -153831,7 +153832,7 @@ aWD
 aWD
 nlp
 hXa
-ivB
+aVe
 oPu
 qLU
 aJF
@@ -155055,7 +155056,7 @@ wMs
 wMs
 wMs
 twL
-fdo
+tjR
 wdv
 rqQ
 rqQ
@@ -156487,7 +156488,7 @@ qMe
 fgn
 xPg
 iHl
-cmK
+mpG
 fuY
 fgn
 vgJ
@@ -156828,7 +156829,7 @@ vgJ
 vgJ
 vgJ
 dHg
-ohV
+pTX
 qGo
 fAO
 cKx
@@ -213495,7 +213496,7 @@ tAl
 nWQ
 sGj
 uPr
-qeA
+eUc
 nWQ
 gtm
 nWQ
@@ -223897,7 +223898,7 @@ mlm
 mlm
 fuo
 mlm
-rdk
+lgg
 hfX
 cCZ
 mlm
@@ -225056,7 +225057,7 @@ kgl
 ial
 pXp
 ucd
-aTj
+xQy
 xBJ
 hAN
 uTP
