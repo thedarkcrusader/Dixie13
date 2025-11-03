@@ -3479,7 +3479,6 @@
 #include "code\modules\surgery\surgeries\extract_lux.dm"
 #include "code\modules\surgery\surgeries\fracture.dm"
 #include "code\modules\surgery\surgeries\healing.dm"
-#include "code\modules\surgery\surgeries\heart_stab.dm"
 #include "code\modules\surgery\surgeries\limb_replacement.dm"
 #include "code\modules\surgery\surgeries\mouth_to_mouth.dm"
 #include "code\modules\surgery\surgeries\organ_manipulation.dm"
