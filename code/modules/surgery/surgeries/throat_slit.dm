@@ -29,4 +29,5 @@
 	var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(target_zone))
 	if(gotten_part)
 		gotten_part.add_wound(/datum/wound/artery/neck)
+		target.emote("breathgasp")
 	return TRUE
