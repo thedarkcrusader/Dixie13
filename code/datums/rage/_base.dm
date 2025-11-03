@@ -46,7 +46,7 @@
 	if(!holder)
 		return
 
-	RegisterSignal(holder_mob, COMSIG_HUMAN_LIFE, PROC_REF(on_life))
+	RegisterSignal(holder, COMSIG_HUMAN_LIFE, PROC_REF(on_life))
 	holder_mob = holder
 	holder_mob.rage_datum = src
 	holder_mob?.hud_used?.initialize_bloodpool()

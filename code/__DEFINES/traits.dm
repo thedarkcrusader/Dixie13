@@ -205,6 +205,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ECHOLOCATION_RECEIVER "echolocation_receiver"
 /// Echolocation has a higher range.
 #define TRAIT_ECHOLOCATION_EXTRA_RANGE "echolocation_extra_range"
+#define TRAIT_BLOCKED_DIAGONAL "blocked_diagonals"
 
 /// Can swim ignoring water flow and slowdown
 #define TRAIT_GOOD_SWIM "Good Swim"
