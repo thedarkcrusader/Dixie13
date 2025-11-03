@@ -927,15 +927,19 @@
 	character.RemoveElement(/datum/element/footstep, character.footstep_type, 1, -6)
 	character.AddElement(/datum/element/footstep, FOOTSTEP_MOB_HEAVY, 1, -2)
 	character.verbs |= /mob/living/carbon/human/proc/emote_burp_loud
-	character.dna.species.soundpack_m = new /datum/voicepack/male/glutton()
-	character.dna.species.soundpack_f = new /datum/voicepack/female/glutton()
+	var/datum/voicepack/glutton/sound_m = new()
+	var/datum/voicepack/glutton/sound_f = new()
+	sound_m.parent_datum = character.dna.species.soundpack_m
+	sound_f.parent_datum = character.dna.species.soundpack_f
+	character.dna.species.soundpack_m = sound_m
+	character.dna.species.soundpack_f = sound_f
 
 /datum/emote/living/burp_loud
 	key = "burploud"
 	emote_type = EMOTE_AUDIBLE
 	key_third_person = "burps gluttonously"
 	message = "burps gluttonously!"
-	snd_range = 8
+	snd_range = 4
 	snd_vol = 200
 	mute_time = 100 // little less spammable
 
