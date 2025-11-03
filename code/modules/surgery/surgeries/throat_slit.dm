@@ -9,6 +9,7 @@
 	possible_locs = list(
 		BODY_ZONE_PRECISE_NECK,
 	)
+	skill_used = /datum/skill/combat/knives
 	time = 7 SECONDS
 	surgery_flags = SURGERY_BLOODY
 	skill_min = SKILL_LEVEL_APPRENTICE
