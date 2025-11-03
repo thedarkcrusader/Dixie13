@@ -27,5 +27,5 @@
 	var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(target_zone))
 	if(gotten_part)
 		gotten_part.add_wound(/datum/wound/artery/chest)
-        gotten_part.add_wound(/datum/wound/fracture/chest)
+    gotten_part.add_wound(/datum/wound/fracture/chest)
 	return TRUE
