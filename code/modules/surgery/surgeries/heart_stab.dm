@@ -13,7 +13,7 @@
 	skill_min = SKILL_LEVEL_JOURNEYMAN
 	skill_median = SKILL_LEVEL_EXPERT
 	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/scalpel2.ogg'
+	success_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/heart_stab/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, "<span class='notice'>I line up my strike on [target]'s [parse_zone(target_zone)]...</span>",
