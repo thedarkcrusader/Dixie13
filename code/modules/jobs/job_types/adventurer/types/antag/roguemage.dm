@@ -17,7 +17,7 @@
 	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/shirt/shortshirt
+	/obj/item/clothing/armor/gambeson
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/reagent_containers/glass/bottle/manapot
 	backr = /obj/item/storage/backpack/satchel
