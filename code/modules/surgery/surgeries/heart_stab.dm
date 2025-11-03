@@ -17,7 +17,7 @@
 	success_sound = 'sound/surgery/organ2.ogg'
 
 	/datum/surgery_step/heart_stab/(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, "<span class='notice'>I begin to line up my strike on [target]'s [parse_zone(target_zone)]...</span>",
+	display_results(user, target, "<span class='notice'>I begin to line up my strike on my victim's [parse_zone(target_zone)]...</span>",
 		"<span class='notice'>[user] begins to line up a stab on [target]'s [parse_zone(target_zone)].</span>",
 		"<span class='notice'>[user] begins to line up a stab on [target]'s [parse_zone(target_zone)].</span>")
 	return TRUE
