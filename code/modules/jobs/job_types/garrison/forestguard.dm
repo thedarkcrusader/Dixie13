@@ -179,6 +179,48 @@
 		ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC) //Nopainstun was pretty insane, definitely too much while spawning with a hauberk, this should keep their vibe of angry guy that keeps running at you.
 		ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 
+// Hand to Hand
+/datum/job/advclass/forestguard/brawler
+	title = "Forest Brawler"
+	tutorial = "In the goblin wars you took an oath to never wield a weapon, you just enjoy getting your hands dirty too much..."
+	outfit = /datum/outfit/job/forestguard/brawler
+	category_tags = list(CTAG_FORGARRISON)
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
+
+/datum/outfit/job/forestguard/brawler/pre_equip(mob/living/carbon/human/H)
+	..()
+	armor = /obj/item/clothing/armor/leather/advanced/forrester
+	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
+	head = /obj/item/clothing/head/helmet/medium/decorated/skullmet
+	neck = /obj/item/clothing/neck/gorget
+	beltl = /obj/item/weapon/knife/hunting
+	beltr = /obj/item/weapon/axe/iron
+	scabbards = list(/obj/item/weapon/scabbard/knife)
+	backpack_contents = list(/obj/item/clothing/gloves/bandages/pugilist = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/pouch/coins/poor)
+	H.verbs |= /mob/proc/haltyell
+	if(H.mind)
+		H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+		H.change_stat(STATKEY_STR, 3)
+		H.change_stat(STATKEY_CON, 2)
+		H.change_stat(STATKEY_END, 2)
+		H.change_stat(STATKEY_SPD, -1)
+		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC) // expert fists vs expert weapons is 5%, skilled is 20%. I'm not giving them fist weapons, they can't block, they can tank.
+		ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
+
 // Ruffian, knives, bows and a lot of cooking.
 /datum/job/advclass/forestguard/ruffian
 	title = "Forest Ruffian"
