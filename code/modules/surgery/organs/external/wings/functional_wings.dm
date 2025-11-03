@@ -118,6 +118,9 @@
 	if(!isturf(flier.loc))
 		to_chat(flier, span_warning("I need space to fly!"))
 		return FALSE
+	if(flier.grab_state >= GRAB_AGGRESSIVE)
+		to_chat(flier, span_warning("I can't fly while being grabbed so tightly!"))
+		return FALSE
 	if(flier.body_position != STANDING_UP)
 		to_chat(flier, span_warning("I can't spread my wings!"))
 		return FALSE
