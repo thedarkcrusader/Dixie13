@@ -38728,10 +38728,6 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
-"wZC" = (
-/obj/item/bin/crackers,
-/turf/open/floor/tile/bfloorz,
-/area/rogue/indoors/town/bath)
 "wZH" = (
 /obj/structure/water_pipe,
 /obj/structure/water_pipe,
@@ -92618,7 +92614,7 @@ xXb
 pLJ
 eqe
 eqe
-wZC
+llS
 cnu
 xXb
 dvZ
