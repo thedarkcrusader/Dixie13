@@ -1,8 +1,8 @@
 /datum/surgery_step/heart_stab
 	name = "Spear Heart"
 	implements = list(
-		TOOL_SCALPEL = 65,
-		TOOL_SHARP = 50,
+		TOOL_SCALPEL = 100,
+		TOOL_SHARP = 80,
 	)
 	possible_locs = list(
 		BODY_ZONE_CHEST,
@@ -10,8 +10,8 @@
 	skill_used = /datum/skill/combat/knives
 	time = 20 SECONDS
 	surgery_flags = SURGERY_BLOODY
-	skill_min = SKILL_LEVEL_APPRENTICE
-	skill_median = SKILL_LEVEL_JOURNEYMAN
+	skill_min = SKILL_LEVEL_NOVICE
+	skill_median = SKILL_LEVEL_APPRENTICE
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
 
