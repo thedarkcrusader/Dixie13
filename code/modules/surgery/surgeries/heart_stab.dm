@@ -2,7 +2,7 @@
 	name = "Spear Heart"
 	implements = list(
 		TOOL_SCALPEL = 65,
-        TOOL_SHARP = 50,
+		TOOL_SHARP = 50,
 	)
 	possible_locs = list(
 		BODY_ZONE_CHEST,
