@@ -57,9 +57,9 @@
 	display_results(user, target, "<span class='notice'>I spear [target]'s heart!</span>",
 		"<span class='notice'>[user] spears [target]'s [parse_zone(target_zone)] ! Blood sprays everywhere!</span>",
 		"<span class='notice'>[user] spears [target]'s [parse_zone(target_zone)] ! Blood sprays everywhere!</span>")
-	obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
+	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
-		fracture_type = /datum/wound/fracture
+		var/fracture_type = /datum/wound/fracture
 		//yes we ignore crit resist here because this is a proper surgical procedure, not a crit
 		switch(bodypart.body_zone)
 			if(BODY_ZONE_CHEST)
