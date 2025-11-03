@@ -103,6 +103,8 @@
 		if(!can_fly())
 			return
 		if(do_after(owner, 5 SECONDS, owner))
+			if(!can_fly()) // recheck after the delay
+				return
 			start_flying()
 		return
 	if(do_after(owner, 5 SECONDS, owner))
