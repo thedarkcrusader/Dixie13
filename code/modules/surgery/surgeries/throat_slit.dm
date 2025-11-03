@@ -2,7 +2,7 @@
 	name = "Slit Throat"
 	implements = list(
 		TOOL_SHARP = 80,
-		TOOL_SCALPEL = 80,
+		TOOL_SCALPEL = 70,
 		TOOL_SAW = 65,
 		TOOL_IMPROVISED_SAW = 50,
 	)
@@ -10,7 +10,7 @@
 		BODY_ZONE_PRECISE_NECK,
 	)
 	skill_used = /datum/skill/combat/knives
-	time = 7 SECONDS
+	time = 9 SECONDS
 	surgery_flags = SURGERY_BLOODY
 	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_JOURNEYMAN
