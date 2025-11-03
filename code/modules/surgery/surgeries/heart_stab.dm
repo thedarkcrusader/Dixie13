@@ -10,8 +10,8 @@
 	skill_used = /datum/skill/combat/knives
 	time = 20 SECONDS
 	surgery_flags = SURGERY_BLOODY
-	skill_min = SKILL_LEVEL_JOURNEYMAN
-	skill_median = SKILL_LEVEL_EXPERT
+	skill_min = SKILL_LEVEL_APPRENTICE
+	skill_median = SKILL_LEVEL_JOURNEYMAN
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
 
