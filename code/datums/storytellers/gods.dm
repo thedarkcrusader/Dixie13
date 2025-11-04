@@ -341,7 +341,7 @@
 			STATS_HANDS_HELD = list("name" = "Hands held:", "points" = 2.25, "capacity" = 70),
 		),
 		"Set 5" = list(
-			STATS_CLINGY_PEOPLE = list("name" = "Clingy people:", "points" = 6, "capacity" = 70),
+			STATS_CLINGY_PEOPLE = list("name" = "Clingy people:", "points" = 4.5, "capacity" = 70),
 			STATS_ALIVE_HARPIES = list("name" = "Number of harpies:", "points" = 8, "capacity" = 70),
 		)
 	)
