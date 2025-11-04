@@ -23,6 +23,7 @@
 	cmode_music = 'sound/music/cmode/garrison/CombatManAtArms.ogg'
 	give_bank_account = 15
 	min_pq = 6
+	give_bank_account = 30
 
 	job_bitflag = BITFLAG_GARRISON
 
