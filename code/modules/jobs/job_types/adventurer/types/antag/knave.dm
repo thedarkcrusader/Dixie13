@@ -57,6 +57,7 @@
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
 			beltl = /obj/item/ammo_holder/quiver/arrows
+			cloak = /obj/item/clothing/cloak/raincloak/furcloak
 			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps

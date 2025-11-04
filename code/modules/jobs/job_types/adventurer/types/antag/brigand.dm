@@ -48,6 +48,7 @@
 		if("Battleaxe & Mace") //one weapon to hurt people one weapon to kill people
 			backl= /obj/item/weapon/axe/battle
 			beltr = /obj/item/weapon/mace
+			gloves = /obj/item/clothing/gloves/leather
 			H.change_stat(STATKEY_STR, 1)
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		if("Katar") //Unarmed grappler, less strength so it's not as absurd hopefully, katar so they have staying power

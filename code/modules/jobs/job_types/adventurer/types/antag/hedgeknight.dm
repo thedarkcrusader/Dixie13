@@ -2,6 +2,8 @@
 	title = "Hedge Knight"
 	tutorial = "A noble fallen from grace, your tarnished armor sits upon your shoulders as a heavy reminder of the life you've lost. Take back what is rightfully yours."
 	outfit = /datum/outfit/bandit/hedgeknight
+	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	total_positions = 1
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
 
