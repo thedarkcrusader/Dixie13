@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 
 	dat += "<div class='random-toggle'>"
 	dat += "<b>Random Preferences:</b> <a href='byond://?_src_=prefs;preference=toggle_random_culinary;task=change_culinary_preferences'>[random_preferences ? "Enabled" : "Disabled"]</a>"
-	dat += "<br>When enabled, random foods and drinks will be selected for you automatically each round. Eating or drinking your favourites when this setting is enabled will give you a triumphs, but only once per category. You can view your character's preferences in their memories."
+	dat += "<br>When enabled, random foods and drinks will be selected for you automatically each round. Eating or drinking your favourites when this setting is enabled will give you a triumph, but only once per category. You can view your character's preferences in their memories."
 	dat += "</div>"
 
 	dat += "<div [random_preferences ? "" : "class='culinary-item'"]><b>Favourite Food: </b> <span class='culinary-icon'>[food_icon]</span> <span class='culinary-text'>"
