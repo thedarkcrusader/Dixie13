@@ -140,6 +140,18 @@ While it's not required reading, leadership roles may find this information usef
 		<br><br>
 		Their people cannot remember a time when the Empire was not at war, and many have served within its military forces to escape the intense poverty of its lower-class. A world-scale conflict between Grenzelhoft and its neighbours was narrowly avoided in the early 2100s by the rise of a new common enemy: Zizo. Grenzelhoft's forces, explosives, and firearms now supply the Eastern front with vital support under the explicit command of Grenzelhoft's cabal of sun-averse counts and countesses.
 		<br><br>
+
+		<details>
+		<summary><strong> THE ORATORIUM THRONI VACUI </strong> </summary>
+		<br><br>
+		The inquisition, formally known as the Oratorium Throni Vacui, is an order of Psydonite warriors, investigators, and faithful dedicated to cleansing the rot of the inhumen gods from Psydonia, and eventually ushering in the return of Psydon.
+		<br><br>
+		It is divided into three major orders, the stealthy and clever Ordo Venatari, the knightly and honourable Ordo Benetarus, and the reclusive and devout Ordo Sanctae Cruoris. Their leaders are powerful and faithful in equal measure, and below them, operating in small teams, are the Inquisitors, the highest ranking of which are the Herrs Prefekt. Prospective inquisitors are known as Sacrestants, and often join a Prefekt in pairs or trios, competing in the Iter Maledictum for the right to become an inquisitor in full.
+		<br><br>
+		More on the Oratorium's divisions can be found on the wiki: https://wiki.monkestation.com/Oratorium_Throni_Vacui
+		<br><br>
+		</details>
+		<br><br>
 	</details>
 
 	<details>
