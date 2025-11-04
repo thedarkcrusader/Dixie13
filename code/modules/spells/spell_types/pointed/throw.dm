@@ -16,15 +16,12 @@
 		return FALSE
 
 	if(QDELETED(owner.pulling))
-		owner.balloon_alert(owner, "not grabbing anyone!")
 		return FALSE
 
 	if(!isliving(owner.pulling))
-		owner.balloon_alert(owner, "can't throw that!")
 		return FALSE
 
 	if(!QDELETED(owner.pulledby) && owner.pulledby.grab_state >= GRAB_AGGRESSIVE)
-		owner.balloon_alert(owner, "grabbed!")
 		return FALSE
 
 	return TRUE

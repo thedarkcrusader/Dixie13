@@ -31,7 +31,7 @@
 		return (!lord_datum.ascended) ? AFFECTED_VLORD : UNAFFECTED
 	if(!vamp_datum && !wolf_datum)
 		return UNAFFECTED
-	if(wolf_datum?.transformed == TRUE || vamp_datum)
+	if(HAS_TRAIT(target, TRAIT_WEREWOLF_RAGE) || vamp_datum)
 		return AFFECTED
 	return UNAFFECTED
 
