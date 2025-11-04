@@ -415,6 +415,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/produce/sugarcane,
 		/obj/item/reagent_containers/food/snacks/fat,
 		/obj/item/reagent_containers/food/snacks/produce/swampweed,
+		/obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
 		/obj/item/reagent_containers/food/snacks/produce/sunflower,
 		/obj/item/reagent_containers/food/snacks/produce/fyritius,
 		/obj/item/reagent_containers/food/snacks/produce/fyritius/bloodied,
