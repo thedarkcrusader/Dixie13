@@ -424,8 +424,11 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/produce/manabloom,
 		/obj/item/reagent_containers/food/snacks/meat/human,
 		/obj/item/reagent_containers/food/snacks/crow,
+		/obj/item/reagent_containers/food/snacks/crow/dead,
 		/obj/item/reagent_containers/food/snacks/smallrat,
+		/obj/item/reagent_containers/food/snacks/smallrat/dead,
 		/obj/item/reagent_containers/food/snacks/messenger_bird,
+		/obj/item/reagent_containers/food/snacks/messenger_bird/dead,
 	)
 
 	var/list/slice_paths = list()
