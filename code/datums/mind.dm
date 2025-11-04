@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	if(ishuman(current))
 		var/mob/living/carbon/human/human_current = current
-		if(human_current.culinary_preferences)
+		if(length(human_current.culinary_preferences))
 			var/favourite_food = human_current.culinary_preferences[CULINARY_FAVOURITE_FOOD]
 			var/favourite_drink = human_current.culinary_preferences[CULINARY_FAVOURITE_DRINK]
 			var/hated_food = human_current.culinary_preferences[CULINARY_HATED_FOOD]

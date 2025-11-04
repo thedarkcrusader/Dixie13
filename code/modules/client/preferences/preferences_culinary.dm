@@ -90,44 +90,38 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 	return /datum/container_craft/cooking/tea/badidea
 
 /datum/preferences/proc/get_random_food()
-	if(length(GLOB.selectable_foods))
-		return pick(GLOB.selectable_foods)
-	return get_default_food()
+	if(!length(GLOB.selectable_foods))
+		GLOB.selectable_foods = get_global_selectable_foods()
+	var/list/choices = GLOB.selectable_foods - culinary_preferences[CULINARY_HATED_FOOD]
+	return pick(choices)
 
 /datum/preferences/proc/get_random_drink()
-	if(length(GLOB.selectable_drinks))
-		return pick(GLOB.selectable_drinks)
-	return get_default_drink()
+	if(!length(GLOB.selectable_drinks))
+		GLOB.selectable_drinks = get_global_selectable_drinks()
+	var/list/choices = GLOB.selectable_drinks - culinary_preferences[CULINARY_HATED_DRINK]
+	return pick(choices)
 
 /datum/preferences/proc/get_random_hated_food()
-	if(length(GLOB.selectable_foods))
-		return pick(GLOB.selectable_foods)
-	return get_default_hated_food()
+	if(!length(GLOB.selectable_foods))
+		GLOB.selectable_foods = get_global_selectable_foods()
+	var/list/choices = GLOB.selectable_foods - culinary_preferences[CULINARY_FAVOURITE_FOOD]
+	return pick(choices)
 
 /datum/preferences/proc/get_random_hated_drink()
-	if(length(GLOB.selectable_drinks))
-		return pick(GLOB.selectable_drinks)
-	return get_default_hated_drink()
+	if(!length(GLOB.selectable_drinks))
+		GLOB.selectable_drinks = get_global_selectable_drinks()
+	var/list/choices = GLOB.selectable_drinks - culinary_preferences[CULINARY_FAVOURITE_DRINK]
+	return pick(choices)
 
 /datum/preferences/proc/handle_culinary_topic(mob/user, href_list)
 	switch(href_list["preference"])
 		if("toggle_random_culinary")
 			var/current_random = culinary_preferences[CULINARY_RANDOM_PREFERENCES]
 			culinary_preferences[CULINARY_RANDOM_PREFERENCES] = !current_random
-
 			if(culinary_preferences[CULINARY_RANDOM_PREFERENCES])
-				culinary_preferences[CULINARY_FAVOURITE_FOOD] = get_random_food()
-				culinary_preferences[CULINARY_FAVOURITE_DRINK] = get_random_drink()
-				culinary_preferences[CULINARY_HATED_FOOD] = get_random_hated_food()
-				culinary_preferences[CULINARY_HATED_DRINK] = get_random_hated_drink()
 				to_chat(user, span_notice("Random culinary preferences enabled. Your food and drink preferences will be randomized."))
 			else
-				culinary_preferences[CULINARY_FAVOURITE_FOOD] = get_random_food()
-				culinary_preferences[CULINARY_FAVOURITE_DRINK] = get_random_drink()
-				culinary_preferences[CULINARY_HATED_FOOD] = get_random_hated_food()
-				culinary_preferences[CULINARY_HATED_DRINK] = get_random_hated_drink()
 				to_chat(user, span_notice("Random culinary preferences disabled. You can now manually choose your preferences."))
-
 			show_culinary_ui(user)
 		if("choose_food")
 			show_food_selection_ui(user, CULINARY_FAVOURITE_FOOD)
@@ -370,6 +364,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/produce/fruit,
 		/obj/item/reagent_containers/food/snacks/produce/grain,
 		/obj/item/reagent_containers/food/snacks/pie,
+		/obj/item/reagent_containers/food/snacks/pie/cooked,
 		/obj/item/reagent_containers/food/snacks/rotten,
 		/obj/item/reagent_containers/food/snacks/meat/mince,
 		/obj/item/reagent_containers/food/snacks/dough_base,
@@ -413,6 +408,23 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		/obj/item/reagent_containers/food/snacks/meat/mince/poultry,
 		/obj/item/reagent_containers/food/snacks/meat/poultry,
 		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet,
+		/obj/item/reagent_containers/food/snacks/tart,
+		/obj/item/reagent_containers/food/snacks/tart/cooked,
+		/obj/item/reagent_containers/food/snacks/tartslice,
+		/obj/item/reagent_containers/food/snacks/fruit,
+		/obj/item/reagent_containers/food/snacks/produce/sugarcane,
+		/obj/item/reagent_containers/food/snacks/fat,
+		/obj/item/reagent_containers/food/snacks/produce/swampweed,
+		/obj/item/reagent_containers/food/snacks/produce/sunflower,
+		/obj/item/reagent_containers/food/snacks/produce/fyritius,
+		/obj/item/reagent_containers/food/snacks/produce/fyritius/bloodied,
+		/obj/item/reagent_containers/food/snacks/produce/westleach,
+		/obj/item/reagent_containers/food/snacks/produce/dry_westleach,
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
+		/obj/item/reagent_containers/food/snacks/meat/human,
+		/obj/item/reagent_containers/food/snacks/crow,
+		/obj/item/reagent_containers/food/snacks/smallrat,
+		/obj/item/reagent_containers/food/snacks/messenger_bird,
 	)
 
 	var/list/slice_paths = list()
@@ -422,7 +434,7 @@ GLOBAL_LIST_EMPTY(cached_drink_flat_icons)
 		if(slice_path)
 			slice_paths |= slice_path
 
-	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - typesof(/obj/item/reagent_containers/food/snacks/fish) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food - slice_paths
+	var/list/food_types = subtypesof(/obj/item/reagent_containers/food/snacks) - typesof(/obj/item/reagent_containers/food/snacks/foodbase) - typesof(/obj/item/reagent_containers/food/snacks/raw_pie) - typesof(/obj/item/reagent_containers/food/snacks/raw_tart) - typesof(/obj/item/reagent_containers/food/snacks/fish) - subtypesof(/obj/item/reagent_containers/food/snacks/spiderhoney/honey) - blacklisted_food - slice_paths
 
 	var/list/filtered_food_types = list()
 	var/list/name_to_type = list()
