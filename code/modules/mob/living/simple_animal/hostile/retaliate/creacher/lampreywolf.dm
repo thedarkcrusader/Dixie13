@@ -41,23 +41,25 @@
 
 	base_intents = list(/datum/intent/simple/bite)
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+
+	// pack tactics, steal blood and get out of there
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	melee_attack_cooldown = 4 SECONDS
 	var/blood_steal = 20 // how much blood are we stealing per bite
+	retreat_health = 0.3
+	retreat_distance = 4
+	minimum_distance = 0
 
 	base_constitution = 8
 	base_strength = 8
 	base_speed = 12
 
 	simple_detect_bonus = 20
-	retreat_distance = 0
-	minimum_distance = 0
 	deaggroprob = 0
 	defprob = 35
 	defdrain = 5
 	del_on_deaggro = 999 SECONDS
-	retreat_health = 0.3
-
 
 	can_buckle = FALSE
 	buckle_lying = FALSE
@@ -67,7 +69,6 @@
 	aggressive = 1
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/lampreywolf
-	body_eater = TRUE
 
 	ai_controller = /datum/ai_controller/lampreywolf
 	var/static/list/pet_commands = list(
@@ -108,7 +109,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/lampreywolf/update_overlays()
 	. = ..()
-	if(stat <= DEAD)
+	if(stat == DEAD)
 		return
 	if(ssaddle)
 		var/mutable_appearance/saddlet = mutable_appearance(icon, "lampreyvolf_saddle_above", 4.3)
@@ -211,6 +212,9 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 	blood_steal = 30
+	retreat_distance = 3
+	melee_attack_cooldown = 2 SECONDS
+	retreat_health = 0.2
 
 	defprob = 50
 
@@ -220,8 +224,6 @@
 	base_constitution = 10
 	base_strength = 10
 	base_speed = 14
-
-	retreat_health = 0.2
 
 
 /obj/effect/decal/remains/lampreywolf

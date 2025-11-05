@@ -781,7 +781,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(riding_datum)
 		var/time2mount = 12
-		riding_datum.vehicle_move_delay = move_to_delay
+		riding_datum.vehicle_move_delay = riding_datum.override_move_to_delay > 0 ? riding_datum.override_move_to_delay : move_to_delay
 		if(M.mind)
 			var/amt = M.get_skill_level(/datum/skill/misc/riding)
 			if(amt)
@@ -803,6 +803,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		M.adjust_experience(/datum/skill/misc/riding, M.STAINT, FALSE)
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
+		riding_datum.vehicle_move_delay = max(riding_datum.vehicle_move_delay, 1)
 	..()
 	update_appearance()
 
@@ -857,7 +858,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(tame && riding_datum)
 		if(riding_datum.handle_ride(user, direction))
-			riding_datum.vehicle_move_delay = move_to_delay
+			riding_datum.vehicle_move_delay = riding_datum.override_move_to_delay > 0 ? riding_datum.override_move_to_delay : move_to_delay
 			if(user.m_intent == MOVE_INTENT_RUN)
 				riding_datum.vehicle_move_delay -= 1
 				if(loc != oldloc)
@@ -893,6 +894,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 							L.Stun(50)
 							playsound(L.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 							L.visible_message(span_danger("[L] falls off [src]!"))
+			riding_datum.vehicle_move_delay = max(riding_datum.vehicle_move_delay, 1)
 
 /mob/living/simple_animal/buckle_mob(mob/living/buckled_mob, force = 0, check_loc = 1)
 	. = ..()
