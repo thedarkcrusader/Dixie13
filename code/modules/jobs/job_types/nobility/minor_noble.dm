@@ -260,6 +260,7 @@
 		"Great flail" = /obj/item/weapon/flail/peasant, \
 		"Goedendag" = /obj/item/weapon/mace/goden, \
 		"Great axe" = /obj/item/weapon/polearm/halberd/bardiche/woodcutter, \
+		"Dagger" = /obj/item/weapon/knife/dagger, \
 		)
 	var/weaponchoice = H.select_equippable(H, selectableweapon, message = "Choose Your armory inheritance!", title = "Poor nobleson!")
 	if(!weaponchoice)
@@ -286,6 +287,9 @@
 		if("Great axe")
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 			grant_shield = FALSE
+		if("Daggers")
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			grant_shield = FALSE
 	if(grant_shield)
 		var/shield_path = pick(list(/obj/item/weapon/shield/heater, /obj/item/weapon/shield/wood))
 		var/obj/item/shield = new shield_path()
@@ -298,13 +302,10 @@
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
-	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
-	switch(H.patron?.type)
 		if(/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
-	switch(H.patron?.type)
 		if(/datum/patron/inhumen/graggar)
 			H.cmode_music = 'sound/music/cmode/antag/combat_maniac.ogg'
 
@@ -318,53 +319,3 @@
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
-
-
-/*
-/datum/outfit/noble/noblelord/pre_equip/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	var/static/list/selectablehat = list(
-		"Fancy Hat" = /obj/item/clothing/head/fancyhat,
-		"Fancy Hat with ear cover" = /obj/item/clothing/head/courtierhat,
-		"Chaperon Hat" = /obj/item/clothing/head/chaperon/colored/greyscale/random,
-		"Hood" = /obj/item/clothing/head/roguehood/colored/random,
-		"Turban" = /obj/item/clothing/head/turban,
-		"Fur Hat" = /obj/item/clothing/head/hatfur,
-		"Blue Hat" = /obj/item/clothing/head/hatblu,
-		"Papakha Hat" = /obj/item/clothing/head/papakha,
-		"Hennin Hat" = /obj/item/clothing/head/hennin,
-	)
-	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
-	var/static/list/selectablerobe = list(
-		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
-		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
-		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
-		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
-		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
-		"Ornate tunic" = /obj/item/clothing/shirt/ornate/tunic,
-		"Ornate dress" = /obj/item/clothing/shirt/ornate/dress,
-		"Silk dress" = /obj/item/clothing/shirt/dress/silkdress/colored/random,
-	)
-	H.select_equippable(H, selectablerobe, message = "Choose your shirt of choice", title = "Noble!")
-
-/datum/outfit/noble/noblelord/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
-	..()
-	var/static/list/selectablecloak = list(
-		"Rain cloak" = /obj/item/clothing/cloak/raincloak/colored/random,
-		"Fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak,
-		"Brown fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown,
-		"Black fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/black,
-		"Half cloak" = /obj/item/clothing/cloak/half/colored/random,
-	)
-	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
-
-/datum/job/advclass/noble/trader // challenge for the merchant, have more money in exchange for more RP money aka hire a lot of people
-	title = "Trading noble"
-	tutorial = "You are a very wealthy individual. \
-	You are well versed in the art of trade, with coins you can make men kill each other and that could get you even more wealth, thankfully your business are more profitable without blood on it."
-	outfit = /datum/outfit/noble/trader
-	give_bank_account = 85
-	noble_income = 30
-	category_tags = list(NOBLEMEN)
-
-*/
