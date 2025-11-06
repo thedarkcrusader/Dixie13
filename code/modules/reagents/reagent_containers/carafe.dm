@@ -62,11 +62,16 @@
 	dropshrink = 0.7
 	sellprice = 25
 
+	amount_per_transfer_from_this = 6
+	possible_transfer_amounts = list(6)
+
+
 /obj/item/reagent_containers/glass/carafe/teapot/Initialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/teapot)
 	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/cooking/tea), TRUE)
 
+//this functionality is off for now, it was from before i refactored but it doesn't really fit in well with the current layout
 /*/obj/item/reagent_containers/glass/carafe/teapot/random/Initialize()
 	. = ..()
 	main_material = pick(typesof(/datum/material/clay))
@@ -167,9 +172,6 @@
 
 	icon = 'icons/obj/handmade/teapot.dmi'
 	icon_state = "world"
-	amount_per_transfer_from_this = 6
-	possible_transfer_amounts = list(6)
-	spillable = FALSE
 
 /obj/item/reagent_containers/glass/carafe/decanter
 	name = "clay decanter"
