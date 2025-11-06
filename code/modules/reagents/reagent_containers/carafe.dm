@@ -208,5 +208,5 @@
 /obj/item/reagent_containers/glass/carafe/gold/redwine
 	list_reagents = list(/datum/reagent/consumable/ethanol/redwine = 100)
 
-/obj/item/reagent_containers/glass/bottle/teapot/tea
+/obj/item/reagent_containers/glass/carafe/teapot/tea
 	list_reagents = list(/datum/reagent/consumable/tea/compot = 100)

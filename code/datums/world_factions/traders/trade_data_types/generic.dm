@@ -130,7 +130,7 @@
 	)
 	custom_items = list(
 		/obj/item/reagent_containers/glass/cup/glazed_teacup = list(5, 10, 6),
-		/obj/item/reagent_containers/glass/bottle/teapot = list(5, 40, 1),
+		/obj/item/reagent_containers/glass/carafe/teapot = list(5, 40, 1),
 	)
 	say_phrases = list(
 		ITEM_REJECTED_PHRASE = list(
