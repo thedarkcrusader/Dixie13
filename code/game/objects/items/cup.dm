@@ -65,6 +65,13 @@
 	icon_state = "cup_skull"
 	dropshrink = 0.8
 
+/obj/item/reagent_containers/glass/cup/glazed_teacup
+	name = "fancy teacup"
+	desc = "A fancy tea cup made out of ceramic. Used to serve tea."
+	icon_state = "cup_fancy"
+	volume = 30
+	dropshrink = 0.7
+
 /obj/item/reagent_containers/glass/cup/jade
 	name = "joapstone cup"
 	desc = "A simple cup carved out of joapstone."
