@@ -29463,10 +29463,10 @@
 /area/rogue/indoors/town/manor/halls/s)
 "rAh" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/neuFarm/seed/spore/porcini,
-/obj/item/neuFarm/seed/spore/porcini,
-/obj/item/neuFarm/seed/spore/coprinus,
-/obj/item/neuFarm/seed/spore/coprinus,
+/obj/item/neuFarm/seed/spore/capillus,
+/obj/item/neuFarm/seed/spore/capillus,
+/obj/item/neuFarm/seed/spore/borowiki,
+/obj/item/neuFarm/seed/spore/borowiki,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
 "rAx" = (
