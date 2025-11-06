@@ -278,7 +278,7 @@
 	. = ..()
 	good_quality_descriptors()
 
-// -------------- PORCINI PIE -----------------
+// -------------- BOROWIKI PIE -----------------
 /obj/item/reagent_containers/food/snacks/pie/cooked/borowiki
 	name = "borowiki pie"
 	desc = "A savory pie filled with hearty borowiki mushrooms."

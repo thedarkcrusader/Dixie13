@@ -26,7 +26,7 @@
 	base_genetics.cold_resistance = TRAIT_GRADE_POOR
 	base_genetics.water_efficiency = TRAIT_GRADE_POOR
 
-/datum/plant_def/mushroom/porcini
+/datum/plant_def/mushroom/borowiki
 	name = "borowiki cluster"
 	icon_state = "borowiki"
 	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/borowiki
