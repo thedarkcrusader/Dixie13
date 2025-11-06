@@ -333,10 +333,10 @@
 
 /***************** Mushrooms *****************/
 
-/obj/item/reagent_containers/food/snacks/reishi_dried
-	name = "dried reishi"
-	desc = "A reishi that has been dried for use in tea."
-	icon_state = "driedreishi"
+/obj/item/reagent_containers/food/snacks/waddle_dried
+	name = "dried waddle"
+	desc = "A waddle mushroom that has been dried for use in stock. Not pleasant to eat in this state."
+	icon_state = "driedwaddle"
 	dropshrink = 1
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)

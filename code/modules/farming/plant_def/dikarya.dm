@@ -7,98 +7,98 @@
 	potassium_requirement = 0 // Ash won't work well as fertilizer for these
 
 /* Cultivars */
-/datum/plant_def/mushroom/coprinus
-	name = "coprinus cluster"
-	icon_state = "coprinus"
-	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus
+/datum/plant_def/mushroom/capillus
+	name = "capillus mort cluster"
+	icon_state = "capillus"
+	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/capillus
 	produce_amount_min = 2
 	produce_amount_max = 5
 	produce_time = FAST_PRODUCE_TIME
 	nitrogen_requirement = 0
-	phosphorus_requirement = 30 // Grows well with its companion, porcini
+	phosphorus_requirement = 30 // Grows well with its companion, borowiki
 	nitrogen_production = 20
 	phosphorus_production = 0
 	potassium_production = 0
-	seed_identity = "coprinus spores"
+	seed_identity = "capillus mort spores"
 
-/datum/plant_def/mushroom/coprinus/set_genetic_tendencies(datum/plant_genetics/base_genetics)
+/datum/plant_def/mushroom/capillus/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
 	base_genetics.cold_resistance = TRAIT_GRADE_POOR
 	base_genetics.water_efficiency = TRAIT_GRADE_POOR
 
 /datum/plant_def/mushroom/porcini
-	name = "porcini cluster"
-	icon_state = "porcini"
-	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
+	name = "borowiki cluster"
+	icon_state = "borowiki"
+	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/borowiki
 	produce_amount_min = 2
 	produce_amount_max = 5
 	produce_time = DEFAULT_PRODUCE_TIME
-	nitrogen_requirement = 40 // Porcini is a cultivar that produces more and heartier mushrooms, but requires more N than most.
+	nitrogen_requirement = 40 // Borowiki is a cultivar that produces more and heartier mushrooms, but requires more N than most.
 	phosphorus_requirement = 0
 	nitrogen_production = 0
 	phosphorus_production = 20
 	potassium_production = 0
-	seed_identity = "porcini spores"
+	seed_identity = "borowiki spores"
 
-/datum/plant_def/mushroom/porcini/set_genetic_tendencies(datum/plant_genetics/base_genetics)
+/datum/plant_def/mushroom/borowiki/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
 	base_genetics.water_efficiency = TRAIT_GRADE_GOOD
 
 /* Wild varieties */
-/datum/plant_def/mushroom/reishi
-	name = "reishi cluster"
-	icon_state = "reishi"
-	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
+/datum/plant_def/mushroom/waddle
+	name = "waddle cluster"
+	icon_state = "waddle"
+	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/waddle
 	produce_time = SLOW_PRODUCE_TIME
 	nitrogen_requirement = 35
 	phosphorus_requirement = 0
 	nitrogen_production = 0
 	phosphorus_production = 24
 	potassium_production = 0
-	seed_identity = "reishi spores"
+	seed_identity = "waddle spores"
 
-/datum/plant_def/mushroom/reishi/set_genetic_tendencies(datum/plant_genetics/base_genetics)
+/datum/plant_def/mushroom/waddle/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
 
-/datum/plant_def/mushroom/morel
-	name = "morel cluster"
-	icon_state = "morel"
-	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/morel
+/datum/plant_def/mushroom/merkel
+	name = "merkel cluster"
+	icon_state = "merkel"
+	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/merkel
 	produce_time = SLOW_PRODUCE_TIME
-	nitrogen_requirement = 38 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 38
 	phosphorus_requirement = 0
 	nitrogen_production = 16
 	phosphorus_production = 20 // Wider production spread that makes the wait more worthwhile
 	potassium_production = 12
-	seed_identity = "morel spores"
+	seed_identity = "merkel spores"
 
-/datum/plant_def/mushroom/morel/set_genetic_tendencies(datum/plant_genetics/base_genetics)
+/datum/plant_def/mushroom/merkel/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_POOR // Grow slowly
 	base_genetics.cold_resistance = TRAIT_GRADE_GOOD // But grow in a wider range of conditions
 
-/datum/plant_def/mushroom/oyster
-	name = "oyster cluster"
-	icon_state = "oyster"
-	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/oyster
+/datum/plant_def/mushroom/caveweep
+	name = "caveweep cluster"
+	icon_state = "caveweep"
+	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/caveweep
 	produce_time = SLOW_PRODUCE_TIME
-	nitrogen_requirement = 32 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 32
 	phosphorus_requirement = 0
 	nitrogen_production = 0
 	phosphorus_production = 26
 	potassium_production = 0
-	seed_identity = "oyster spores"
+	seed_identity = "caveweep spores"
 
-/datum/plant_def/mushroom/oyster/set_genetic_tendencies(datum/plant_genetics/base_genetics)
+/datum/plant_def/mushroom/caveweep/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_POOR
-	base_genetics.cold_resistance = TRAIT_GRADE_GOOD // Oysters can grow in harsher conditions
+	base_genetics.cold_resistance = TRAIT_GRADE_GOOD // Can grow in colder conditions
 	base_genetics.water_efficiency = TRAIT_GRADE_GOOD
 
-/datum/plant_def/mushroom/chanterelle
+/* /datum/plant_def/mushroom/chanterelle
 	name = "chanterelle cluster"
 	icon_state = "chanterelle"
 	produce_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/chanterelle
 	produce_time = DEFAULT_PRODUCE_TIME
-	nitrogen_requirement = 32 // Mushrooms thrive on nitrogen
+	nitrogen_requirement = 32
 	phosphorus_requirement = 0
 	nitrogen_production = 0
 	phosphorus_production = 0
@@ -108,4 +108,4 @@
 /datum/plant_def/mushroom/chanterelle/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.growth_speed = TRAIT_GRADE_GOOD
 	base_genetics.cold_resistance = TRAIT_GRADE_POOR
-	base_genetics.water_efficiency = TRAIT_GRADE_GOOD
+	base_genetics.water_efficiency = TRAIT_GRADE_GOOD */ // Saving this for later expansion and rework

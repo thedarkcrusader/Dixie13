@@ -48,8 +48,8 @@
 			- Apply appropriate fertilizers based on plant needs<br>
 			- Consider irrigation channels for consistent water supply<br>
 			<h2>Mushroom Mounds</h2>
-			- Growing medium exclusively for mushrooms. Provides them with the ideal environment to flourish.<br>
+			- Growing medium for mushrooms. Provides them with the ideal environment to flourish.<br>
 			- Mushroom spores planted in this mound will get a boost to their growth and nutrient uptake.<br>
-			- Other plants will not be able to establish a proper root system, killing them if planted in this mound.<br>
+			- Other plants will not be able to establish a proper root system, stunting them if planted in this mound.<br>
 		</div>
 	"}

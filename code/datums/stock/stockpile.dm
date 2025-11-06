@@ -126,10 +126,10 @@
 	importexport_amt = 20
 	stockpile_id = STOCK_FOOD
 
-/datum/stock/stockpile/porcini
-	name = "Porcini"
+/datum/stock/stockpile/borowiki
+	name = "Borowiki"
 	desc = "A hearty mushroom fit for stews and pies."
-	item_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/porcini
+	item_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/borowiki
 	held_items = 2
 	payout_price = 2
 	withdraw_price = 7

@@ -231,28 +231,28 @@
 /obj/structure/wild_plant/nospread/mushroom
 	icon = 'icons/roguetown/misc/dikaryawild.dmi'
 
-/obj/structure/wild_plant/nospread/mushroom/coprinus
-	icon_state = "coprinus2"
-	plant_type = /datum/plant_def/mushroom/coprinus
+/obj/structure/wild_plant/nospread/mushroom/capillus
+	icon_state = "capillus2"
+	plant_type = /datum/plant_def/mushroom/capillus
 
-/obj/structure/wild_plant/nospread/mushroom/reishi
-	icon_state = "reishi2"
-	plant_type = /datum/plant_def/mushroom/reishi
+/obj/structure/wild_plant/nospread/mushroom/waddle
+	icon_state = "waddle2"
+	plant_type = /datum/plant_def/mushroom/waddle
 
-/obj/structure/wild_plant/nospread/mushroom/morel
-	icon_state = "morel2"
-	plant_type = /datum/plant_def/mushroom/morel
+/obj/structure/wild_plant/nospread/mushroom/merkel
+	icon_state = "merkel2"
+	plant_type = /datum/plant_def/mushroom/merkel
 
-/obj/structure/wild_plant/nospread/mushroom/oyster
-	icon_state = "oyster2"
-	plant_type = /datum/plant_def/mushroom/oyster
+/obj/structure/wild_plant/nospread/mushroom/caveweep
+	icon_state = "caveweep2"
+	plant_type = /datum/plant_def/mushroom/caveweep
 
-/obj/structure/wild_plant/nospread/mushroom/porcini
-	icon_state = "porcini2"
-	plant_type = /datum/plant_def/mushroom/porcini
+/obj/structure/wild_plant/nospread/mushroom/borowiki
+	icon_state = "borowiki2"
+	plant_type = /datum/plant_def/mushroom/borowiki
 
-/obj/structure/wild_plant/nospread/mushroom/chanterelle
+/* /obj/structure/wild_plant/nospread/mushroom/chanterelle // Removing for now to expand upon later
 	icon_state = "chanterelle2"
-	plant_type = /datum/plant_def/mushroom/chanterelle
+	plant_type = /datum/plant_def/mushroom/chanterelle */
 
 

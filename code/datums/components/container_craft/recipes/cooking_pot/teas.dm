@@ -93,9 +93,9 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted = 2)
 	finished_smell = /datum/pollutant/food/coffee
 
-/datum/container_craft/cooking/tea/reishi
-	name = "Reishi tonic"
+/datum/container_craft/cooking/tea/waddle
+	name = "Waddle tea"
 	crafting_time = 30 SECONDS
-	created_reagent = /datum/reagent/consumable/tea/reishi
-	requirements = list(/obj/item/reagent_containers/food/snacks/reishi_dried = 2)
-	finished_smell = /datum/pollutant/food/reishi
+	created_reagent = /datum/reagent/consumable/tea/waddle
+	requirements = list(/obj/item/reagent_containers/food/snacks/waddle_dried = 2)
+	finished_smell = /datum/pollutant/food/waddle

@@ -23,7 +23,7 @@
 						/obj/structure/essence_node = 0.1,
 						/obj/item/grown/log/tree/stick = 10,
 						/obj/structure/flora/grass/pyroclasticflowers = 10,
-						/obj/structure/wild_plant/nospread/mushroom/morel = 1,)
+						/obj/structure/wild_plant/nospread/mushroom/merkel = 1,)
 	allowed_areas = list(/area/rogue/outdoors/mountains/anvil/snowyforest)
 
 /datum/mapGeneratorModule/undermountain
@@ -35,7 +35,7 @@
 						/obj/structure/flora/shroom_tree = 1,
 						/obj/structure/essence_node = 0.1,
 						/obj/item/restraints/legcuffs/beartrap/armed = 0.5,
-						/obj/structure/wild_plant/nospread/mushroom/oyster = 1,)
+						/obj/structure/wild_plant/nospread/mushroom/caveweep = 1,)
 	allowed_areas = list(/area/rogue/under/mountains/anvil/lower)
 
 /datum/mapGeneratorModule/grove // This area is not utilized in Malum's Anvil at all as of 10-13-2025

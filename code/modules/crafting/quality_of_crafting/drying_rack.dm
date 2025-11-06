@@ -263,13 +263,13 @@
 	crafting_message = "starts mixing the blood"
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/coprinusfiber
-	name = "dried coprinus fibers"
+/datum/repeatable_crafting_recipe/capillusfiber
+	name = "dried capillus mort fibers"
 	output = /obj/item/natural/fibers
 	output_amount = 3
-	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/capillus
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/produce/mushroom/coprinus = 1
+		/obj/item/reagent_containers/food/snacks/produce/mushroom/capillus = 1
 	)
 	attacked_atom = /obj/machinery/tanningrack
 
@@ -277,16 +277,16 @@
 	crafting_message = "starts extracting some fibers"
 	craftdiff = 1
 
-/datum/repeatable_crafting_recipe/driedreishi
-	name = "dried reishi"
-	output = /obj/item/reagent_containers/food/snacks/reishi_dried
+/datum/repeatable_crafting_recipe/driedwaddle
+	name = "dried waddle"
+	output = /obj/item/reagent_containers/food/snacks/waddle_dried
 	output_amount = 1
-	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/reishi
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/mushroom/waddle
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/produce/mushroom/reishi = 1
+		/obj/item/reagent_containers/food/snacks/produce/mushroom/waddle = 1
 	)
 	attacked_atom = /obj/machinery/tanningrack
 
 	craft_time = 1.5
-	crafting_message = "starts drying a reishi"
+	crafting_message = "starts drying a waddle"
 	craftdiff = 1

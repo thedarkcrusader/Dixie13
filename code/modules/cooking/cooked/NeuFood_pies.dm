@@ -72,8 +72,8 @@
 	filling_color = "#b44f44"
 	overlay_state = "fill_meat"
 
-/obj/item/reagent_containers/food/snacks/raw_pie/porcini
-	name = "uncoooked porcini pie"
+/obj/item/reagent_containers/food/snacks/raw_pie/borowiki
+	name = "uncoooked borowiki pie"
 	filling_color = "#7c6b75"
 	overlay_state = "fill_pot"
 
@@ -168,7 +168,7 @@
 /obj/item/reagent_containers/food/snacks/pieslice/good/pear
 	filling_color = "#edd28c"
 
-/obj/item/reagent_containers/food/snacks/pieslice/good/porcini
+/obj/item/reagent_containers/food/snacks/pieslice/good/borowiki
 	filling_color = "#7c6b75"
 
 // -------------- MEAT PIE -----------------
@@ -279,19 +279,19 @@
 	good_quality_descriptors()
 
 // -------------- PORCINI PIE -----------------
-/obj/item/reagent_containers/food/snacks/pie/cooked/porcini
-	name = "porcini pie"
-	desc = "A savory pie filled with hearty porcini mushrooms."
+/obj/item/reagent_containers/food/snacks/pie/cooked/borowiki
+	name = "borowiki pie"
+	desc = "A savory pie filled with hearty borowiki mushrooms."
 	slices_num = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEATPIE_NUTRITION)
-	tastes = list("porcini and butterdough" = 1)
+	tastes = list("borowiki and butterdough" = 1)
 
-/obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good
+/obj/item/reagent_containers/food/snacks/pie/cooked/borowiki/good
 	eat_effect = /datum/status_effect/buff/foodbuff
-	slice_path = /obj/item/reagent_containers/food/snacks/pieslice/good/porcini
-	tastes = list("savory porcini and crispy butterdough" = 1)
+	slice_path = /obj/item/reagent_containers/food/snacks/pieslice/good/borowiki
+	tastes = list("savory borowiki and crispy butterdough" = 1)
 
-/obj/item/reagent_containers/food/snacks/pie/cooked/porcini/good/New()
+/obj/item/reagent_containers/food/snacks/pie/cooked/borowiki/good/New()
 	. = ..()
 	good_quality_descriptors()
 

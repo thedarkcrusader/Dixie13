@@ -415,9 +415,9 @@
 	color = "#5f4a0e"
 	taste_description = "rich truffles"
 
-/datum/reagent/consumable/soup/stew/porcini
+/datum/reagent/consumable/soup/stew/borowiki
 	color = "#7c6b75"
-	taste_description = "hearty porcini"
+	taste_description = "hearty borowiki"
 
 /datum/reagent/water/spicy // filler, not important
 	taste_description = "something spicy"

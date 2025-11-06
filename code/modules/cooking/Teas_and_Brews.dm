@@ -136,17 +136,12 @@
 	nutriment_factor = 2
 	quality = 4
 
-/datum/reagent/consumable/tea/reishi
-	name = "Reishi tonic"
-	description = "How are you seeing this?"
+/datum/reagent/consumable/tea/waddle
+	name = "Waddle tea"
 	color = "#b57232"
 	metabolization_rate = 0.5
-	taste_description = "slightly bitter, with an earthy aftertaste"
+	taste_description = "slightly earthy, with a meaty aftertaste"
 	taste_mult = 3
-	nutriment_factor = 2
+	nutriment_factor = 3
 	quality = 1
-
-/datum/reagent/consumable/tea/reishi/on_mob_metabolize(mob/living/M)
-	. = ..()
-	M.add_stress(/datum/stress_event/herbal_calm)
 
