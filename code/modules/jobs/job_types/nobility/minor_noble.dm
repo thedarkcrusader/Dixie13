@@ -37,6 +37,7 @@
 	backl = /obj/item/storage/backpack/satchel
 	belt = /obj/item/storage/belt/leather
 	ring = /obj/item/clothing/ring/silver
+//trait
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 //................. Trading noble, no weapons or gear .............. //
@@ -61,13 +62,17 @@
 	armor = /obj/item/clothing/shirt/clothvest/colored
 	pants = /obj/item/clothing/pants/tights/colored/black
 
+//jobstats
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_STR, -1)
 	H.change_stat(STATKEY_END, -1)
 	H.change_stat(STATKEY_CON, -1)
+
+//traits
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 
+//skills
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) // very good at hiding behind their bodyguard
 	H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
@@ -128,6 +133,7 @@
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
 	pants = /obj/item/clothing/pants/tights/colored/black
 
+//gender & age code
 	if(H.gender == FEMALE)
 		beltr = /obj/item/weapon/knife/dagger/steel/special
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
@@ -142,10 +148,12 @@
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
 
+//jobstats
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_CON, 1)
 
+//skills
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -191,7 +199,6 @@
 	)
 	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
 
-
 //................. Minor son, the poorest yet most armed noble, aka worse than adventurers .............. //
 /datum/job/advclass/noble/minorson
 	title = "Minor noble"
@@ -209,12 +216,14 @@
 	neck = /obj/item/clothing/neck/coif/cloth
 	armor = pick(/obj/item/clothing/armor/leather/splint, /obj/item/clothing/armor/cuirass/iron)
 	pants = /obj/item/clothing/pants/trou/leather/advanced
-	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor, /obj/item/storage/belt/pouch/coins/poor)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger)
 
+//jobstats
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_CON, 1)
 
+//skills
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -227,6 +236,9 @@
 	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+
+//traits
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // if he menages to survive he can use a heavy armor like a knight does, way less experienced in fights however
 
 /datum/outfit/noble/minorson/post_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -296,7 +308,153 @@
 		if(!H.equip_to_appropriate_slot(shield))
 			qdel(shield)
 
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // we are giving them a chance to rp get noble gear to improve their status, if they get an armor to fight they should be able to run away
+/datum/outfit/noble/common/pre_equip(mob/living/carbon/human/H)
+	..()
+	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	beltl = /obj/item/ammo_holder/quiver/arrows
+	neck = /obj/item/storage/belt/pouch/coins/veryrich
+	pants = /obj/item/clothing/pants/tights/colored/black
+
+//gender & age code
+	if(H.gender == FEMALE)
+		beltr = /obj/item/weapon/knife/dagger/steel/special
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
+	if(H.age == AGE_CHILD)
+		beltr = /obj/item/weapon/knife/dagger/steel/special
+		scabbards = list(/obj/item/weapon/scabbard/knife)
+		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea = 1, /obj/item/reagent_containers/glass/bottle/glazed_teacup = 3, /obj/item/storage/keyring)
+	else
+		beltr = /obj/item/weapon/sword/rapier/dec
+		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
+		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring,)
+
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+
+/datum/outfit/noble/common/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	var/static/list/selectablehat = list(
+		"Fancy Hat" = /obj/item/clothing/head/fancyhat,
+		"Fancy Hat with ear cover" = /obj/item/clothing/head/courtierhat,
+		"Chaperon Hat" = /obj/item/clothing/head/chaperon/colored/greyscale/random,
+		"Hood" = /obj/item/clothing/head/roguehood/colored/random,
+		"Turban" = /obj/item/clothing/head/turban,
+		"Fur Hat" = /obj/item/clothing/head/hatfur,
+		"Blue Hat" = /obj/item/clothing/head/hatblu,
+		"Papakha Hat" = /obj/item/clothing/head/papakha,
+		"Hennin Hat" = /obj/item/clothing/head/hennin,
+	)
+	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
+	var/static/list/selectablerobe = list(
+		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
+		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
+		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
+		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
+		"Ornate tunic" = /obj/item/clothing/shirt/ornate/tunic,
+		"Ornate dress" = /obj/item/clothing/shirt/ornate/dress,
+		"Silk dress" = /obj/item/clothing/shirt/dress/silkdress/colored/random,
+	)
+	H.select_equippable(H, selectablerobe, message = "Choose your shirt of choice", title = "Noble!")
+	..()
+	var/static/list/selectablecloak = list(
+		"Rain cloak" = /obj/item/clothing/cloak/raincloak/colored/random,
+		"Fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak,
+		"Brown fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown,
+		"Black fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/black,
+		"Half cloak" = /obj/item/clothing/cloak/half/colored/random,
+	)
+	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
+
+
+//................. Uplifted peasant, a commision to have a worker noble .............. //
+/datum/job/advclass/noble/peasant
+	title = "Field Noble"
+	tutorial = "You are a new addition to nobility, uplifted by your lord chosen by astrata herself. \
+	You aren't skilled in the art of trade since your hands know the work, a minor lord on the town of vanderlin, you don't seem to adapt fully to this life of pleasure and diplomacy, yet this is your future for now on..."
+	outfit = /datum/outfit/noble/peasant
+	give_bank_account = 60 // normal noble bank
+	noble_income = 20 // normal income
+	category_tags = list(CTAG_NOBLEMINOR)
+	bypass_lastclass = TRUE
+
+/datum/outfit/noble/peasant/pre_equip(mob/living/carbon/human/H)
+	..()
+	backr = /obj/item/weapon/pitchfork
+	beltl = /obj/item/weapon/sword/decorated// his first sword
+	neck = /obj/item/storage/belt/pouch/coins/veryrich
+	pants = /obj/item/clothing/pants/tights/colored/black
+	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring, , /obj/item/weapon/knife/villager)
+
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+
+/datum/outfit/noble/peasant/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	var/static/list/selectablehat = list(
+		"Fancy Hat" = /obj/item/clothing/head/fancyhat,
+		"Fancy Hat with ear cover" = /obj/item/clothing/head/courtierhat,
+		"Chaperon Hat" = /obj/item/clothing/head/chaperon/colored/greyscale/random,
+		"Hood" = /obj/item/clothing/head/roguehood/colored/random,
+		"Turban" = /obj/item/clothing/head/turban,
+		"Fur Hat" = /obj/item/clothing/head/hatfur,
+		"Blue Hat" = /obj/item/clothing/head/hatblu,
+		"Papakha Hat" = /obj/item/clothing/head/papakha,
+		"Hennin Hat" = /obj/item/clothing/head/hennin,
+	)
+	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
+	var/static/list/selectablerobe = list(
+		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
+		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
+		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
+		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
+		"Ornate tunic" = /obj/item/clothing/shirt/ornate/tunic,
+		"Ornate dress" = /obj/item/clothing/shirt/ornate/dress,
+		"Silk dress" = /obj/item/clothing/shirt/dress/silkdress/colored/random,
+	)
+	H.select_equippable(H, selectablerobe, message = "Choose your shirt of choice", title = "Noble!")
+	..()
+	var/static/list/selectablecloak = list(
+		"Rain cloak" = /obj/item/clothing/cloak/raincloak/colored/random,
+		"Fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak,
+		"Brown fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown,
+		"Black fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/black,
+		"Half cloak" = /obj/item/clothing/cloak/half/colored/random,
+	)
+	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
 
 //................. inhumen traits .............. //
 	switch(H.patron?.type)
@@ -309,9 +467,11 @@
 		if(/datum/patron/inhumen/graggar)
 			H.cmode_music = 'sound/music/cmode/antag/combat_maniac.ogg'
 
+//voices
 	if(H.dna?.species?.id == SPEC_ID_HUMEN)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
+//noble honorary
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Lord"

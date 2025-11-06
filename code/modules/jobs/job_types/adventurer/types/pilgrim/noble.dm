@@ -22,23 +22,12 @@
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
-
-	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
-	H.change_stat(STATKEY_INT, 1)
 	shoes = /obj/item/clothing/shoes/nobleboot
 	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
 	belt = /obj/item/storage/belt/leather
 	ring = /obj/item/clothing/ring/silver
 	if(H.gender == FEMALE)
-		H.change_stat(STATKEY_SPD, 1)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		pants = /obj/item/clothing/pants/tights/colored/black
@@ -47,7 +36,6 @@
 		beltl = /obj/item/ammo_holder/quiver/arrows
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
 	if(H.gender == MALE)
-		H.change_stat(STATKEY_CON, 1)
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		pants = /obj/item/clothing/pants/tights/colored/black
@@ -55,7 +43,24 @@
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+
+//traits
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
 
 /datum/outfit/adventurer/noble/post_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -92,6 +97,17 @@
 	)
 	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
 
+//................. inhumen traits .............. //
+	switch(H.patron?.type)
+		if(/datum/patron/inhumen/baotha)
+			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
+		if(/datum/patron/inhumen/zizo)
+			H.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
+		if(/datum/patron/inhumen/matthios)
+			H.cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
+		if(/datum/patron/inhumen/graggar)
+			H.cmode_music = 'sound/music/cmode/antag/combat_maniac.ogg'
+
+//voices
 	if(H.dna?.species?.id == SPEC_ID_HUMEN)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-
