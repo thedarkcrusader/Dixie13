@@ -335,7 +335,7 @@
 
 /obj/item/reagent_containers/food/snacks/waddle_dried
 	name = "dried waddle"
-	desc = "A waddle mushroom that has been dried for use in stock. Not pleasant to eat in this state."
+	desc = "A waddle mushroom that has been dried for use in tea. Not pleasant to eat in this state."
 	icon_state = "driedwaddle"
 	dropshrink = 1
 	bitesize = 3
