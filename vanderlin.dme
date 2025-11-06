@@ -745,7 +745,6 @@
 #include "code\datums\ai\subtrees\generic_resist.dm"
 #include "code\datums\ai\subtrees\generic_stand.dm"
 #include "code\datums\ai\subtrees\glimmerwing.dm"
-#include "code\datums\ai\subtrees\lampreywolf_melee.dm"
 #include "code\datums\ai\subtrees\lay_egg.dm"
 #include "code\datums\ai\subtrees\leyline_abilities.dm"
 #include "code\datums\ai\subtrees\leyline_attack.dm"

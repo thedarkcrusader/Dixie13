@@ -119,5 +119,4 @@
 
 /datum/ai_behavior/run_away_from_target/lampreywolf
 	run_distance = 4
-	until_destination = TRUE
 	clear_failed_targets = FALSE

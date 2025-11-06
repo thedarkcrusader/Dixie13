@@ -1444,6 +1444,10 @@
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"ki" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf,
+/turf/open/floor/dirt/road,
+/area/rogue/under/town/basement)
 "kj" = (
 /obj/structure/well,
 /turf/open/floor/grass/yel,
@@ -1951,6 +1955,10 @@
 	redstone_id = "hd2"
 	},
 /turf/closed/wall/mineral/decorstone,
+/area/rogue/under/town/basement)
+"qS" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf,
+/turf/open/floor/cobblerock,
 /area/rogue/under/town/basement)
 "qZ" = (
 /turf/closed/mineral/random/high,
@@ -2895,10 +2903,6 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
-"GI" = (
-/mob/living/simple_animal/hostile/retaliate/nautilus,
-/turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
 "GN" = (
 /obj/structure/table/wood/crafted,
 /obj/item/reagent_containers/powder/ozium,
@@ -4974,11 +4978,11 @@ Gw
 Gw
 Nx
 Nx
+qS
 Gw
 Gw
 Gw
-Gw
-Nx
+ki
 Gw
 Gw
 Gw
@@ -5745,7 +5749,7 @@ Gw
 Gw
 Gw
 Gw
-GI
+Gw
 Gw
 Gw
 Gw
@@ -6259,7 +6263,7 @@ Nx
 Nx
 Gw
 Gw
-Gw
+qS
 Gw
 Gw
 eX

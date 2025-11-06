@@ -93,5 +93,3 @@
 
 #define BB_IS_BEING_RIDDEN "bb_is_ridden"
 #define BB_BASIC_MOB_SCARED_ITEM "scared_item"
-
-#define BB_LAMPREYWOLF_NEXTATTACKING "bb_lampreywolf_nextattacking"

@@ -39,7 +39,7 @@
 					/obj/item/bodypart,
 					/obj/item/organ)
 
-	base_intents = list(/datum/intent/simple/bite)
+	base_intents = list(/datum/intent/simple/bite/lampreywolf)
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 
 	// pack tactics, steal blood and get out of there
@@ -59,7 +59,7 @@
 	defdrain = 5
 	del_on_deaggro = 999 SECONDS
 
-	density = FALSE // this is surely not a bad idea
+	//these change when tamed
 	can_buckle = FALSE
 	buckle_lying = FALSE
 	can_saddle = FALSE
@@ -124,7 +124,6 @@
 	deaggroprob = 30
 	can_buckle = TRUE
 	can_saddle = TRUE
-	density = TRUE
 	AddComponent(/datum/component/riding/lampreywolf)
 
 /mob/living/simple_animal/hostile/retaliate/lampreywolf/get_sound(input)
@@ -238,3 +237,7 @@
 
 /obj/effect/decal/remains/lampreywolf/alpha
 	icon_state = "lampreyvolf3_dead"
+
+/datum/intent/simple/bite/lampreywolf
+	penfactor = 5
+	blade_class = BCLASS_STAB
