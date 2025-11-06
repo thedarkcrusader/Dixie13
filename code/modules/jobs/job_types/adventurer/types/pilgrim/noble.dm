@@ -13,56 +13,46 @@
 		/datum/action/cooldown/spell/undirected/call_bird = 1,
 	)
 
-/datum/outfit/adventurer/noble/pre_equip(mob/living/carbon/human/H)
-	..()
-	var/prev_real_name = H.real_name
-	var/prev_name = H.name
-	var/honorary = "Lord"
-	if(H.gender == FEMALE)
-		honorary = "Lady"
-	H.real_name = "[honorary] [prev_real_name]"
-	H.name = "[honorary] [prev_name]"
-	shoes = /obj/item/clothing/shoes/nobleboot
-	backl = /obj/item/storage/backpack/satchel
+    jobstats = list(
+        STATKEY_INT = 1,
+        STATKEY_PER = 1,
+        STATKEY_CON = 1,
+    )
+    skills = list(
+        /datum/skill/misc/reading = SKILL_LEVEL_MASTER,
+        /datum/skill/labor/mathematics = SKILL_LEVEL_JOURNEYMAN,
+        /datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
+        /datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/music, rand(1,2),
+		/datum/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
+    )
+
+/datum/outfit/adventurer/noble
+    name = "Noble"
+	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	beltl = /obj/item/ammo_holder/quiver/arrows
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
-	belt = /obj/item/storage/belt/leather
-	ring = /obj/item/clothing/ring/silver
+	pants = /obj/item/clothing/pants/tights/colored/black
+
+//gender & age code
 	if(H.gender == FEMALE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		pants = /obj/item/clothing/pants/tights/colored/black
-		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 		beltr = /obj/item/weapon/knife/dagger/steel/special
-		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
-	if(H.gender == MALE)
-		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		pants = /obj/item/clothing/pants/tights/colored/black
-		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
+	if(H.age == AGE_CHILD)
+		beltr = /obj/item/weapon/knife/dagger/steel/special
+		scabbards = list(/obj/item/weapon/scabbard/knife)
+		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea = 1, /obj/item/reagent_containers/glass/bottle/glazed_teacup = 3, /obj/item/storage/keyring)
+	else
 		beltr = /obj/item/weapon/sword/rapier/dec
-		beltl = /obj/item/ammo_holder/quiver/arrows
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
+		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
+		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
 
-//skills
-	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
-
-//traits
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-
-//jobstats
-	H.change_stat(STATKEY_INT, 1)
-	H.change_stat(STATKEY_PER, 1)
-	H.change_stat(STATKEY_CON, 1)
-
-/datum/outfit/adventurer/noble/post_equip(mob/living/carbon/human/H)
+/datum/outfit/adventurer/noble/common/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/static/list/selectablehat = list(
 		"Fancy Hat" = /obj/item/clothing/head/fancyhat,
