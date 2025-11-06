@@ -1252,6 +1252,20 @@
 /obj/structure/soil/mushmound/debug_mushmound
 	var/obj/item/neuFarm/seed/seed_to_grow
 
+/obj/structure/soil/mushmound/debug_mushmound/Initialize()
+	. = ..()
+	if(!seed_to_grow)
+		return
+	var/debug_seed_genetics = initial(seed_to_grow.seed_genetics)
+	if(!debug_seed_genetics)
+		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[initial(seed_to_grow.plant_def_type)]
+		debug_seed_genetics = new /datum/plant_genetics(plant_def_instance)
+	else
+		debug_seed_genetics = new debug_seed_genetics()
+	insert_plant(GLOB.plant_defs[initial(seed_to_grow.plant_def_type)], debug_seed_genetics)
+	add_growth(plant.maturation_time)
+	add_growth(plant.produce_time)
+
 /obj/structure/soil/mushmound/debug_mushmound/random/Initialize()
 	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed/spore))
 	. = ..()
