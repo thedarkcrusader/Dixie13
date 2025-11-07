@@ -10,9 +10,9 @@
 	associated_faith = /datum/faith/psydon
 	added_traits = list(TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	confess_lines = list(
-		"THERE IS ONLY ONE GOD!",
+		"THERE IS ONLY ONE TRUE GOD!",
 		"THE SUCCESSORS HALT HIS RETURN!",
-		"PSYDON LYVES!",
+		"PSYDON WILL RETURN!",
 	)
 	profane_words = list()
 	devotion_holder = /datum/devotion/psydon
@@ -36,4 +36,16 @@
 		"PSYDON AND THE TEN ARE THE RIGHTFUL GODS!",
 		"THE SUCCESSORS ARE HIS MANIFESTATIONS!",
 		"THROUGH THE TEN PSYDON LIVES!",
+	)
+
+/datum/patron/psydon/extremist
+	display_name = "Extremist Psydonite"
+	desc = "The Ten are conmen, false prophets, and heathens. The acts of the Tennite church are all tricks to beguile the mind and dissuade you from following the true path of Psydon. My actions prove my faith and His strength. Psydon lives, and you cannot convince me otherwise."
+	flaws = "Stubborn, Fanatical, Spiteful"
+	worshippers = "Fanatics, Misinformed Fools"
+	sins = "Blasphemy, False Prophets, Trickery"
+	confess_lines = list(
+		"THERE IS ONLY ONE GOD!",
+		"YOUR FALSE TEN ARE LIES!",
+		"PSYDON LIVES!",
 	)
