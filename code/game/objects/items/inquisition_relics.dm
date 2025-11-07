@@ -45,7 +45,7 @@
 				if("Daybreak - Silver Whip")
 					choice = /obj/item/weapon/whip/antique/psywhip
 				if("Sanctum - Silver Halberd")
-					choice = /obj/item/weapon/polearm/halberd/psydon
+					choice = /obj/item/weapon/polearm/halberd/psydon/relic
 					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)	//We make sure the weapon is usable by the Inquisitor.
 				if("Crusade - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
@@ -329,7 +329,8 @@ Inquisitorial armory down here
 	. = ..()	//We smashed a guy with it turned on. Bad idea!
 	if(ismob(A) && on && (user.used_intent.type == /datum/intent/flail/strike/smash/golgotha) && user.cmode)
 		user.visible_message(span_warningbig("You see an oddly bright spark before it detonates!"))
-		explosion(get_turf(A),devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flame_range = 2, flash_range = 4, smoke = FALSE)
+		cell_explosion(get_turf(A), 40, 2)
+		explosion(get_turf(A),devastation_range = -1, heavy_impact_range = -1, light_impact_range = -1, flame_range = 2, flash_range = 4, smoke = FALSE)
 		fuel = 0
 		turn_off()
 		icon_state = "psycenser-broken"
@@ -361,7 +362,7 @@ Inquisitorial armory down here
 					playsound(H, 'sound/magic/holyshield.ogg', 100)
 					new /obj/effect/temp_visual/censer_dust(get_turf(H))
 			else
-				to_chat(span_warning("They've already been blessed."))
+				to_chat(user, span_warning("They've already been blessed."))
 
 		else
 			to_chat(user, span_warning("They do not share our faith."))
@@ -781,7 +782,7 @@ Inquisitorial armory down here
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	experimental_inhand = TRUE
 	wieldsound = TRUE
-	max_integrity = 200
+	max_integrity = 400
 	w_class = WEIGHT_CLASS_SMALL
 	can_parry = FALSE
 	break_sound = 'sound/items/garrotebreak.ogg'

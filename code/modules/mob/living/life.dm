@@ -36,12 +36,20 @@
 				wound.heal_wound(1)
 
 		/// ENDVRE AS HE DOES.
-		if(!stat && HAS_TRAIT(src, TRAIT_PSYDONITE) && !HAS_TRAIT(src, TRAIT_PARALYSIS))
+		if(!stat && HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT) && !HAS_TRAIT(src, TRAIT_PARALYSIS))
 			handle_wounds()
 			//passively heal wounds, but not if you're skullcracked OR DEAD.
 			if(blood_volume > BLOOD_VOLUME_SURVIVE)
 				for(var/datum/wound/wound as anything in get_wounds())
 					wound.heal_wound(wound.passive_healing * 0.25)
+
+		if(!stat && HAS_TRAIT(src, TRAIT_LYCANRESILENCE) && !HAS_TRAIT(src, TRAIT_PARALYSIS))
+			var/mob/living/carbon/human/human = src
+			if(human.rage_datum.check_rage(50))
+				handle_wounds()
+				if(blood_volume > BLOOD_VOLUME_SURVIVE)
+					for(var/datum/wound/wound as anything in get_wounds())
+						wound.heal_wound(1.2)
 
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
@@ -139,7 +147,7 @@
 
 /mob/living/proc/handle_fire()
 	if(fire_stacks < 0) //If we've doused ourselves in water to avoid fire, dry off slowly
-		fire_stacks = min(0, fire_stacks + 1)//So we dry ourselves back to default, nonflammable.
+		fire_stacks = min(0, fire_stacks + 0.4)//So we dry ourselves back to default, nonflammable.
 	if(!on_fire)
 		return TRUE //the mob is no longer on fire, no need to do the rest.
 	if(fire_stacks + divine_fire_stacks > 0)

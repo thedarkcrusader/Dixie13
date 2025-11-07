@@ -1505,9 +1505,9 @@
 			gcord = L.get_inactive_held_item()
 		to_chat(pulledby, span_warning("[src] struggles against the [gcord]!"))
 		if(!src.mind) // NPCs do less damage to the garrote
-			gcord.take_damage(10)
+			gcord.take_damage(5)
 		else
-			gcord.take_damage(25)
+			gcord.take_damage(10)
 	if(prob(resist_chance))
 		visible_message("<span class='warning'>[src] breaks free of [pulledby]'s grip!</span>", \
 						"<span class='notice'>I break free of [pulledby]'s grip![shitte]</span>", null, null, pulledby)
@@ -1516,7 +1516,7 @@
 			var/obj/item/inqarticles/garrote/gcord = L.get_active_held_item()
 			if(!gcord)
 				gcord = L.get_inactive_held_item()
-			gcord.take_damage(gcord.max_integrity)
+			gcord.take_damage(gcord.max_integrity * 0.2)
 			gcord.wipeslate(src)
 		log_combat(pulledby, src, "broke grab")
 		pulledby.stop_pulling()
@@ -1924,6 +1924,10 @@
 /mob/living/proc/SoakMob(locations)
 	if(locations & CHEST)
 		ExtinguishMob()
+		if(locations & HEAD)
+			adjust_fire_stacks(-2)
+		else
+			adjust_fire_stacks(-1)
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
@@ -2437,6 +2441,12 @@
 					found_ping(get_turf(M), client, "trap")
 			if(istype(O, /obj/structure/flora/grass/maneater/real))
 				found_ping(get_turf(O), client, "trap")
+			if(istype(O, /obj/structure/lever/hidden))
+				var/obj/structure/lever/hidden/lever = O
+				// they're trained at this
+				var/bonuses = (HAS_TRAIT(src, TRAIT_THIEVESGUILD) || HAS_TRAIT(src, TRAIT_ASSASSIN)) ? 2 : 0
+				if(stat_roll(STATKEY_PER, 25, lever.hidden_dc - bonuses - 1) || istype(lever, /obj/structure/lever/hidden/keep && HAS_TRAIT(src, TRAIT_KNOWKEEPPLANS)))
+					found_ping(get_turf(O), client, "hidden")
 
 		for(var/obj/effect/skill_tracker/potential_track in orange(7, src)) //Can't use view because they're invisible by default.
 			if(!can_see(src, potential_track, 10))
