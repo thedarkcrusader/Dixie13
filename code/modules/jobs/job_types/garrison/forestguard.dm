@@ -189,10 +189,10 @@
 
 /datum/outfit/job/forestguard/brawler/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/armor/leather/advanced/forrester
-	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
 	head = /obj/item/clothing/head/helmet/medium/decorated/skullmet
 	neck = /obj/item/clothing/neck/gorget
+	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
+	armor = /obj/item/clothing/armor/leather/advanced/forrester
 	beltl = /obj/item/weapon/knife/hunting
 	beltr = /obj/item/weapon/axe/iron
 	scabbards = list(/obj/item/weapon/scabbard/knife)
