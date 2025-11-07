@@ -221,7 +221,7 @@ Inquisitorial armory down here
 	id = "censer"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/censerbuff
 	duration = 15 MINUTES
-	effectedstats = list("endurance" = 1, "constitution" = 1)
+	effectedstats = list(STATKEY_END = 1, STATKEY_CON = 1)
 
 /datum/stress_event/syoncalamity
 	stress_change = 15

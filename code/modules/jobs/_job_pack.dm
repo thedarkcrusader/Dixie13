@@ -11,20 +11,23 @@ GLOBAL_LIST_INIT(job_pack_singletons, init_jobpacks())
 
 /datum/job_pack
 	abstract_type = /datum/job_pack
-
+	/// Name used as a title in the modal
 	var/name = "Generic"
+	/// Associtive list of statkey to stat value
 	var/list/pack_stats = list()
+	/// Associtive list of skill to skill value
 	var/list/pack_skills = list()
+	/// List of spells
 	var/list/pack_spells = list()
-	///this is a list of contents that go item = slot
+	/// Associtive list of item to slot
 	var/list/pack_contents = list()
 
 /datum/job_pack/proc/can_pick_pack(mob/living/carbon/human/H, list/previous_picked_types)
 	return TRUE
 
 /datum/job_pack/proc/pick_pack(mob/living/carbon/human/H)
-	H.remove_stat_modifier("pack_stats") // Reset so no inf stat
-	H.adjust_stat_modifier_list("pack_stats", pack_stats)
+	H.remove_stat_modifier(STATMOD_PACK) // Reset so no inf stat
+	H.adjust_stat_modifier_list(STATMOD_PACK, pack_stats)
 
 	for(var/datum/skill/skill as anything in pack_skills)
 		var/amount_or_list = pack_skills[skill]
