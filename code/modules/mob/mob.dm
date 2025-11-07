@@ -1352,6 +1352,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	var/list/spawn_items = LAZYACCESS(selection_list, choice)
 	if(!islist(spawn_items))
 		spawn_items = list(spawn_items)
+
 	if(!length(spawn_items))
 		return choice
 
