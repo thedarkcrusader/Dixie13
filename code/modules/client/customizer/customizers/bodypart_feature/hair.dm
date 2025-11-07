@@ -339,6 +339,17 @@
 		/datum/sprite_accessory/hair/head/medicator/crown,
 	)
 
+/datum/customizer/bodypart_feature/hair/head/humanoid/rakshari
+	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/head/humanoid/rakshari)
+
+/datum/customizer_choice/bodypart_feature/hair/head/humanoid/rakshari
+	sprite_accessories = list(
+		/datum/sprite_accessory/hair/head/bald,
+		/datum/sprite_accessory/hair/head/rakshari/high_tail,
+		/datum/sprite_accessory/hair/head/rakshari/doubleknot,
+		/datum/sprite_accessory/hair/head/rakshari/fluffy_tail,
+	)
+
 // ===== FACIAL HAIR
 
 /datum/customizer_entry/hair/facial
@@ -383,6 +394,18 @@
 		/datum/sprite_accessory/hair/facial/vandyke,
 		/datum/sprite_accessory/hair/facial/burns,
 		/datum/sprite_accessory/hair/facial/hermit,
+	)
+
+/datum/customizer/bodypart_feature/hair/facial/humanoid/rakshari
+	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/rakshari)
+
+/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/rakshari
+	sprite_accessories = list(
+		/datum/sprite_accessory/hair/facial/none,
+		/datum/sprite_accessory/hair/facial/shaved,
+		/datum/sprite_accessory/hair/facial/rakshari/kesh,
+		/datum/sprite_accessory/hair/facial/rakshari/spry,
+		/datum/sprite_accessory/hair/facial/rakshari/whiskered,
 	)
 
 /datum/customizer_choice/bodypart_feature/hair/facial/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)
