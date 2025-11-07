@@ -50,6 +50,7 @@
 	spawned.set_patron(/datum/patron/divine/xylix)
 
 /datum/outfit/adventurer/sekketianshinobi
+	name = "Sekketian Shinobi"
 	head = /obj/item/clothing/head/helmet/leather/headscarf/colored/red
 	neck = /obj/item/clothing/neck/coif/cloth/colored/berryblue
 	mask = /obj/item/clothing/face/shellmask

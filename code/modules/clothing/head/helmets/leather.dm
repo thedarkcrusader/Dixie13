@@ -62,6 +62,7 @@
 
 /obj/item/clothing/head/helmet/leather/headscarf/colored/red
 	color = CLOTHING_ROYAL_RED
+
 //............... Buckled Hat ............... //
 /obj/item/clothing/head/helmet/leather/inquisitor
 	name = "buckled hat"
