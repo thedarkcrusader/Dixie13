@@ -45,11 +45,11 @@
 				if("Daybreak - Silver Whip")
 					choice = /obj/item/weapon/whip/psydon/relic
 				if("Sanctum - Silver Halberd")
-					choice = /obj/item/weapon/polearm/halberd/psydon
-					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)	//We make sure the weapon is usable by the Inquisitor.
+					choice = /obj/item/weapon/polearm/halberd/psydon/relic
+					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)	//We make sure the weapon is usable by the Inquisitor.
 				if("Crusade - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
-					user.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)		//Ditto.
+					user.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)		//Ditto.
 				if("Censer of Penitence")
 					choice = /obj/item/flashlight/flare/torch/lantern/psycenser
 			to_chat(user, span_info("I have chosen the relic, may HE guide my hand."))
@@ -341,7 +341,7 @@
 					playsound(H, 'sound/magic/holyshield.ogg', 100)
 					new /obj/effect/temp_visual/censer_dust(get_turf(H))
 			else
-				to_chat(span_warning("They've already been blessed."))
+				to_chat(user, span_warning("They've already been blessed."))
 
 		else
 			to_chat(user, span_warning("They do not share our faith."))

@@ -175,7 +175,8 @@
 
 /obj/item/weapon/sword/ida/iron
 	name = "iron ida"
-	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
+	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Onkara."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "ida_iron"
 	minstr = 4
 	wdefense = GOOD_PARRY
