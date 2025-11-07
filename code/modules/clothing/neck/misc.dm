@@ -180,6 +180,7 @@
 
 /obj/item/clothing/neck/coif/cloth/colored/berryblue
 	color = CLOTHING_BERRY_BLUE
+
 /obj/item/clothing/neck/leathercollar
 	name = "leather collar"
 	desc = "A fashionable piece of neckwear popular among Hollow-Kin."
