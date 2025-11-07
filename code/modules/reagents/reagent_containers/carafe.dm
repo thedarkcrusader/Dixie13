@@ -60,7 +60,7 @@
 	fill_icon_thresholds = null
 	volume = 100
 	dropshrink = 0.7
-	sellprice = 25
+	sellprice = 30
 
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)

@@ -170,7 +170,7 @@
 /obj/structure/table/map/baotha{
 	dir = 6
 	},
-/obj/item/reagent_containers/glass/cup/glazed_teacup{
+/obj/item/reagent_containers/glass/cup/teacup/fancy{
 	pixel_y = 11;
 	pixel_x = -9
 	},

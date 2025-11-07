@@ -814,7 +814,7 @@
 /area/rogue/outdoors/mountains)
 "jD" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/glass/cup/glazed_teacup,
+/obj/item/reagent_containers/glass/cup/teacup/fancy,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/dungeon)
 "jG" = (
