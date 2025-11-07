@@ -139,6 +139,6 @@
 
 /datum/devotion/psydon
 	miracles = list(
-		CLERIC_T1 = /datum/action/cooldown/spell/psydonendure,
-		CLERIC_T2 = /datum/action/cooldown/spell/undirected/psydonrespite,
+	//	CLERIC_T1 = /datum/action/cooldown/spell/psydonendure,
+	//	CLERIC_T2 = /datum/action/cooldown/spell/undirected/psydonrespite,
 	)
