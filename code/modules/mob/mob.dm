@@ -1355,7 +1355,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(!length(spawn_items))
 		return choice
 
-	for(var/obj/item/to_spawn as anything in spawn_items)
+	for(var/obj/item/spawn_item as anything in spawn_items)
 		equip_to_appropriate_slot(new spawn_item(), TRUE)
 
 	return choice
