@@ -9,7 +9,6 @@
 		SPEC_ID_ELF,\
 		SPEC_ID_HALF_DROW,\
 	) // excluding harpies because their weak as hell, excluding rakshari, hollowkin, and kobolds because they have no lux, which is incredibly taboo in lakkarian society/culture, half orcs are excluded as well becausee theyll be too damn strong
-	is_recognized = TRUE
 	total_positions = 2
 	roll_chance = 30
 	category_tags = list(CTAG_ADVENTURER)
