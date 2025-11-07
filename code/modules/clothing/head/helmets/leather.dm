@@ -60,7 +60,7 @@
 /obj/item/clothing/head/helmet/leather/headscarf/colored
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
-/obj/item/clothing/head/helmet/leather/headscarf/red
+/obj/item/clothing/head/helmet/leather/headscarf/colored/red
 	color = CLOTHING_ROYAL_RED
 //............... Buckled Hat ............... //
 /obj/item/clothing/head/helmet/leather/inquisitor

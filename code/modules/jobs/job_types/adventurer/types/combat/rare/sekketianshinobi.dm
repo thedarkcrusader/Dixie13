@@ -20,7 +20,6 @@
 		STATKEY_END = 1,
 		STATKEY_SPD = 2, //they're basically ninjas.
 		STATKEY_STR = 2, //because they're mainly supposed to use blunt weapons.
-		STATKEY_CON = 1,
 		STATKET_INT = -1,
 		STATKEY_PER = -1,
 	)
@@ -52,7 +51,7 @@
 	spawned.set_patron(/datum/patron/divine/xylix)
 
 /datum/outfit/adventurer/sekketianshinobi
-	head = /obj/item/clothing/head/helmet/leather/headscarf/red
+	head = /obj/item/clothing/head/helmet/leather/headscarf/colored/red
 	neck = /obj/item/clothing/neck/coif/cloth/colored/berryblue
 	mask = /obj/item/clothing/face/shellmask
 	armor = /obj/item/clothing/armor/gambeson/heavy/colored/dark
