@@ -11,6 +11,10 @@
 	icon = 'icons/mob/sprite_accessory/hair/facial/rakshari.dmi'
 	gender = MALE
 
+/datum/sprite_accessory/hair/facial/triton
+	icon = 'icons/mob/sprite_accessory/hair/facial/triton.dmi'
+	gender = FEMALE || MALE
+
 /datum/sprite_accessory/hair/facial/none
 	name = "None"
 	icon_state = ""
@@ -21,7 +25,7 @@
 	name = "None"
 	icon_state = "facial_shaven"
 	gender = MALE
-	specuse = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_ELF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING, SPEC_ID_HALF_ORC, SPEC_ID_RAKSHARI)
+	specuse = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_ELF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING, SPEC_ID_HALF_ORC, SPEC_ID_RAKSHARI, SPEC_ID_TRITON)
 
 /datum/sprite_accessory/hair/facial/brew
 	name = "Brew"
@@ -142,3 +146,15 @@
 	icon_state = "whiskered"
 	gender = MALE
 	specuse = list(SPEC_ID_RAKSHARI)
+
+/datum/sprite_accessory/hair/facial/triton/seaqueen
+	name = "Seaqueen"
+	icon_state = "seaqueen"
+	gender = FEMALE
+	specuse = list(SPEC_ID_TRITON)
+
+/datum/sprite_accessory/hair/facial/triton/catfish
+	name = "Catfish"
+	icon_state = "catfish"
+	gender = FEMALE
+	specuse = list(SPEC_ID_TRITON)
