@@ -909,10 +909,10 @@
 	allowed_jobs = list(/datum/job/lord)
 
 /datum/special_trait/glutton/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat(STATKEY_STR, 5)
-	character.change_stat(STATKEY_CON, 7)
-	character.change_stat(STATKEY_END, -6)
-	character.change_stat(STATKEY_SPD, -10)
+	character.set_stat_modifier("[type]", STATKEY_STR, 5)
+	character.set_stat_modifier("[type]", STATKEY_CON, 7)
+	character.set_stat_modifier("[type]", STATKEY_END, -6)
+	character.set_stat_modifier("[type]", STATKEY_SPD, -10)
 
 	character.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) // this guy will sit on you
 	character.adjust_skillrank(/datum/skill/misc/athletics, -3, TRUE)
@@ -920,7 +920,7 @@
 	ADD_TRAIT(character, TRAIT_FAT, "[type]")
 	ADD_TRAIT(character, TRAIT_CRITICAL_RESISTANCE, "[type]")
 
-	character.family_datum.AddFamilyCurse(/datum/family_curse/hunger, 1, "Baotha")
+	character.family_datum.AddFamilyCurse(/datum/family_curse/hunger, 1, BAOTHA)
 
 	character.transform = character.transform.Scale(1.15, 1)
 	character.update_transform()
