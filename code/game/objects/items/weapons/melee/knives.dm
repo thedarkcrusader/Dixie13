@@ -294,7 +294,7 @@
 /obj/item/weapon/knife/jile/iron
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "iron jile"
-	desc = "A curved iron dagger of Lakkarian origin. Nobles of Napatahuum were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
+	desc = "A curved iron dagger of Lakkarian origin. Nobles of Sakhumeti were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
 	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "jile_iron"
 	melting_material = null
@@ -324,7 +324,7 @@
 
 /obj/item/weapon/knife/jile/steel
 	name = "steel jile"
-	desc = "A curved steel dagger of Lakkarian origin. Nobles of Napatahuum were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
+	desc = "A curved steel dagger of Lakkarian origin. Nobles of Sakhumeti were often buried with these daggers, but this practice has become less common ever since Zizo's ascension."
 	icon = 'icons/roguetown/weapons/32/lakkari.dmi'
 	icon_state = "jile_steel"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
