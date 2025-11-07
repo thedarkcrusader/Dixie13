@@ -2,7 +2,7 @@
 	name = "Psydon"
 	display_name = "Orthodox Psydonite"
 	domain = "God of Humenity, Dreams and Creation"
-	desc = "Deceased, slain by Necra in His final moments. She ripped His body apart to create The Ten... we must put Him back together again. Psydon lives. He will return."
+	desc = "Deceased, slain by Necra in His final moments. She ripped His body apart to create The Ten... we must put Him back together again. Psydon lives on, He will return."
 	flaws = "Grudge-Holding, Judgemental, Self-Sacrificing"
 	worshippers = "Grenzelhofters, Inquisitors, Heroes"
 	sins = "Apostasy, Demon Worship, Betraying thy Father"
