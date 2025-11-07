@@ -18,7 +18,7 @@
 	jobstats = list(
 		STATKEY_END = 1,
 		STATKEY_SPD = 2, //they're basically ninjas.
-		STATKEY_STR = 2, //because they're mainly supposed to use blunt weapons.
+		STATKEY_STR = 1, //because they're mainly supposed to use blunt weapons.
 		STATKET_INT = -1,
 		STATKEY_PER = -1,
 	)
