@@ -5,7 +5,7 @@
 	blacklisted_species = null
 	outfit = /datum/outfit/mercenary/porter
 	category_tags = list(CTAG_MERCENARY)
-	total_positions = 1
+	total_positions = 2
 	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
 
 	jobstats = list(
