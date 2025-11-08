@@ -84,6 +84,8 @@
 	var/list/allowed_sexes = list(MALE, FEMALE)
 	/// Species allowed to be this job
 	var/list/allowed_races = RACES_PLAYER_ALL
+	/// Species blacklisted from this job
+	var/list/blacklisted_species = list()
 	/// Ages allowed to be this job
 	var/list/allowed_ages = ALL_AGES_LIST
 
@@ -187,6 +189,11 @@
 		/datum/job/adventurer,
 		/datum/job/pilgrim,
 	)
+
+	///list of job packs we select from during job setup
+	var/list/job_packs
+	var/pack_title = "JOB PACKS"
+	var/pack_message = "Choose a job pack"
 
 /datum/job/New()
 	. = ..()
@@ -345,8 +352,21 @@
 	if(length(advclass_cat_rolls))
 		spawned.hugboxify_for_class_selection()
 
+	if(spawned.culinary_preferences[CULINARY_RANDOM_PREFERENCES])
+		var/obj/item/food_instance = spawned.culinary_preferences[CULINARY_FAVOURITE_FOOD]
+		var/datum/reagent/consumable/drink_instance = spawned.culinary_preferences[CULINARY_FAVOURITE_DRINK]
+		var/obj/item/hated_food_instance = spawned.culinary_preferences[CULINARY_HATED_FOOD]
+		var/datum/reagent/consumable/hated_drink_instance = spawned.culinary_preferences[CULINARY_HATED_DRINK]
+
+		bordered_message(spawned, list(
+			"Your favourite food is <span style='color: green;'>[capitalize(initial(food_instance.name))]</span>",
+			"Your favourite drink is <span style='color: green;'>[capitalize(initial(drink_instance.name))]</span>",
+			"Your most hated food is <span style='color: red;'>[capitalize(initial(hated_food_instance.name))]</span>",
+			"Your most hated drink is <span style='color: red;'>[capitalize(initial(hated_drink_instance.name))]</span>",
+		))
+
 	if(job_flags & JOB_SHOW_IN_CREDITS)
-		SScrediticons.processing += spawned
+		START_PROCESSING(SScrediticons, player_client)
 
 /datum/job/proc/adjust_patron(mob/living/carbon/human/spawned)
 	if(!length(allowed_patrons))
@@ -390,6 +410,36 @@
 
 /mob/living/carbon/human/on_job_equipping(datum/job/equipping)
 	dress_up_as_job(equipping)
+	pick_job_packs(equipping)
+
+/mob/living/carbon/human/proc/pick_job_packs(datum/job/equipping)
+	if(!length(equipping.job_packs))
+		return
+	var/for_length = 1
+	if(islist(equipping.job_packs[1]))
+		for_length = length(equipping.job_packs)
+
+	var/list/previous_picked_types = list()
+
+	for(var/i = 1 to for_length)
+		var/list/job_packs = equipping.job_packs
+		if(islist(equipping.job_packs[i]))
+			job_packs = equipping.job_packs[i]
+		var/datum/job_pack/picked_pack
+		var/list/reals = list()
+		for(var/pack as anything in job_packs)
+			var/datum/job_pack/real_pack = GLOB.job_pack_singletons[pack]
+			if(!real_pack.can_pick_pack(src, previous_picked_types))
+				continue
+			reals |= real_pack
+		if(!length(reals))
+			return
+		if(!client)
+			picked_pack = GLOB.job_pack_singletons[pick(reals)]
+		else
+			picked_pack = browser_input_list(src, equipping.pack_title, equipping.pack_message, reals, timeout = 20 SECONDS)
+		previous_picked_types |= picked_pack.type
+		picked_pack.pick_pack(src)
 
 /mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
 	return

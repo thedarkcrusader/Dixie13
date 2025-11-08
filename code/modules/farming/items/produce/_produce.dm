@@ -597,7 +597,7 @@
 	tastes = list("tastes like a burning coal and fire and blood" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
-	rotprocess = 10 MINUTES
+	rotprocess = SHELFLIFE_TINY
 
 /obj/item/reagent_containers/food/snacks/produce/fyritius/bloodied/become_rotten()
 	visible_message(span_danger("[src] burns into ash!"))
@@ -618,6 +618,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
 	dropshrink = 0.5
 	rotprocess = null
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	body_parts_covered = NONE
 	alternate_worn_layer  = 8.9

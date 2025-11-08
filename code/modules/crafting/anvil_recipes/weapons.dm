@@ -21,6 +21,13 @@
 	craftdiff = 1
 	createditem_extra = 3
 
+/datum/anvil_recipe/weapons/tin/grenade_shell
+	name = "2x Grenade shells"
+	recipe_name = "Grenade Casings"
+	created_item = /obj/item/ammo_casing/caseless/grenadeshell
+	craftdiff = 3
+	createditem_extra = 1
+	///jokes on you whoever said lead bullets were the only tin weapon, may I introduce the pipe casing.
 //////////////////////////////////////////////////////////////////////////////////////////////
 // --------- COPPER -----------
 /datum/anvil_recipe/weapons/copper
@@ -336,7 +343,7 @@
 /datum/anvil_recipe/weapons/iron/shortsword_iron
 	name = "Short Sword"
 	recipe_name = "a Short Sword"
-	created_item = /obj/item/weapon/sword/short
+	created_item = /obj/item/weapon/sword/short/iron
 
 /datum/anvil_recipe/weapons/iron/ida
 	name = "Ida"
@@ -426,7 +433,13 @@
 	abstract_type = /datum/anvil_recipe/weapons/steel
 	req_bar = /obj/item/ingot/steel
 	craftdiff = 2
+
 ///////////////////////////////////////////////
+
+/datum/anvil_recipe/weapons/steel/short_sword
+	name = "Steel Short Sword"
+	recipe_name = "a Steel Short Sword"
+	created_item = /obj/item/weapon/sword/short
 
 /datum/anvil_recipe/weapons/steel/assegai
 	name = "Steel Assegai (+ Small Log)"
