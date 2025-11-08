@@ -2,7 +2,21 @@
 	..()
 	if(!user)
 		return
-	var/obj/item/held_item = user.get_active_held_item()
+		if(user.cmode)
+			var/obj/item/held_item = user.get_active_held_item()
+	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+				playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to slit [user.p_their()] throat with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
+				if(do_after(user, 5 SECONDS, src))
+/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
+	if(bodypart)
+	bodypart.add_wound(/datum/wound/artery/neck)
+		else
+	/obj/item/held_item = user.get_active_held_item()
 	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			var/datum/bodypart_feature/hair/facial = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
