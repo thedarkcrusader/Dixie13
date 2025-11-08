@@ -9,7 +9,7 @@
 				if(user == src)
 					user.visible_message("<span class='danger'>[user] prepares to slit [user.p_their()] throat with [held_item]!</span>")
 				else
-					user.visible_message("<span class='danger'>[user] prepares tp slit [src]'s throat with [held_item]!</span>")
+					user.visible_message("<span class='danger'>[user] prepares to slit [src]'s throat with [held_item]!</span>")
 				if(do_after(user, 5 SECONDS, src))
 				add_wound(/datum/wound/artery/neck)
 				target.emote("breathgasp")
