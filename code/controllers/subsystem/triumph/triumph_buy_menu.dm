@@ -268,6 +268,7 @@
 				return
 			if(!amount || amount <= 0)
 				return
+
 			if(SSticker.current_state == GAME_STATE_FINISHED)
 				to_chat(linked_client, span_warning("You cannot contribute after the round has ended!"))
 				return
@@ -276,6 +277,14 @@
 				return
 			if(istype(communal_buy, /datum/triumph_buy/communal/preround) && SSticker.HasRoundStarted())
 				to_chat(linked_client, span_warning("This can only be contributed to before the round starts!"))
+				return
+
+			amount = round(amount)
+			if(amount <= 0)
+				to_chat(linked_client, span_warning("You must contribute at least one whole triumph!"))
+				return
+			if(amount > available)
+				to_chat(linked_client, span_warning("You don't have [amount] triumph\s! You only have [available] triumph\s."))
 				return
 
 			amount = min(amount, available, max_possible)
