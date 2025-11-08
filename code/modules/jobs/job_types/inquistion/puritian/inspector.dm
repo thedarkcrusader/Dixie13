@@ -14,6 +14,8 @@
 		TRAIT_INQUISITION,
 		TRAIT_SILVER_BLESSED,
 		TRAIT_PURITAN,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 	jobstats = list(
@@ -76,7 +78,7 @@
 		if("Daybreak (Whip)")
 			H.put_in_hands(new /obj/item/weapon/whip/antique/psywhip(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4, TRUE)
-		if("S (Halberd)")
+		if("Sanctum (Halberd)")
 			H.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)
 		if("The Forgotten Blade")
