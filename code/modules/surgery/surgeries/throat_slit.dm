@@ -10,7 +10,7 @@
 		BODY_ZONE_PRECISE_NECK,
 	)
 	skill_used = /datum/skill/combat/knives
-	time = 5 SECONDS
+	time = 6 SECONDS
 	surgery_flags = SURGERY_BLOODY
 	skill_min = SKILL_LEVEL_APPRENTICE
 	skill_median = SKILL_LEVEL_JOURNEYMAN
