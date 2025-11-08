@@ -19,6 +19,8 @@
 
 	ai_controller = /datum/ai_controller/volf // Laziness, we really need a generic hostile controller
 
+	has_glowy_eyes = FALSE
+
 /mob/living/simple_animal/hostile/retaliate/spider/robotic/Initialize(mapload, ...)
 	. = ..()
 	gender = NEUTER
