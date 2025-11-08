@@ -8,7 +8,7 @@
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
 			if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to slit [user.p_their()] throat with [held_item].</span>")
+				user.visible_message("<span class='danger'>[user] starts to slit [user.p_their()] throat with [held_item].</span>")
 				else
 					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 				if(do_after(user, 5 SECONDS, src))
