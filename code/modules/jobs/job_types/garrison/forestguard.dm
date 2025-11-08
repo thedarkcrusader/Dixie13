@@ -183,43 +183,51 @@
 /datum/job/advclass/forestguard/brawler
 	title = "Forest Brawler"
 	tutorial = "In the goblin wars you took an oath to never wield a weapon, you just enjoy getting your hands dirty too much..."
-	outfit = /datum/outfit/job/forestguard/brawler
 	category_tags = list(CTAG_FORGARRISON)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
+	jobstats = list(
+		STATKEY_END = 2,
+		STATKEY_CON = 2,
+		STATKEY_STR = 3,
+		STATKEY_SPD = -1,
+	)
 
-/datum/outfit/job/forestguard/brawler/pre_equip(mob/living/carbon/human/H)
-	..()
+	skills = list(
+		/datum/skill/misc/swimming = 3,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/riding = 2,
+		/datum/skill/craft/crafting = 2,
+		/datum/skill/labor/lumberjacking = 3,
+		/datum/skill/craft/carpentry = 1,
+		/datum/skill/misc/sewing = 2,
+		/datum/skill/craft/tanning = 1,
+		/datum/skill/combat/wrestling = 4,
+		/datum/skill/combat/unarmed = 4,
+		/datum/skill/combat/knives = 3,
+		/datum/skill/combat/axesmaces = 1,
+	)
+
+	traits = list(
+		TRAIT_MEDIUMARMOR,
+		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_FORAGER,
+	)
+
+	cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
+	outfit = /datum/outfit/forestguard/brawler
+
+/datum/outfit/forestguard/brawler
+	name = "Forest Brawler"
 	head = /obj/item/clothing/head/helmet/medium/decorated/skullmet
 	neck = /obj/item/clothing/neck/gorget
-	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
 	armor = /obj/item/clothing/armor/leather/advanced/forrester
-	beltl = /obj/item/weapon/knife/hunting
+	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
 	beltr = /obj/item/weapon/axe/iron
+	beltl = /obj/item/weapon/knife/hunting
+	backpack_contents = list(/obj/item/clothing/gloves/bandages/pugilist = 1, /obj/item/rope/chain = 1, /obj/item/storage/belt/pouch/coins/poor)
 	scabbards = list(/obj/item/weapon/scabbard/knife)
-	backpack_contents = list(/obj/item/clothing/gloves/bandages/pugilist = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/pouch/coins/poor)
-	H.verbs |= /mob/proc/haltyell
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		H.change_stat(STATKEY_STR, 3)
-		H.change_stat(STATKEY_CON, 2)
-		H.change_stat(STATKEY_END, 2)
-		H.change_stat(STATKEY_SPD, -1)
-		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC) // expert fists vs expert weapons is 5%, skilled is 20%. I'm not giving them fist weapons, they can't block, they can tank.
-		ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 
 // Ruffian, knives, bows and a lot of cooking.
 /datum/job/advclass/forestguard/ruffian
