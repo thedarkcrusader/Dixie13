@@ -1,0 +1,16 @@
+/mob/living/carbon/human/MiddleClick(mob/user, params)
+	..()
+	if(!user)
+		return
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item && (user.zone_selected == BODY_ZONE_CHEST))
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+				playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] lines up a strike on [user.p_their()]'s heart with [held_item]!</span>")
+				else
+					user.visible_message("<span class='danger'>[user] lines up a strike on [src]'s throat with [held_item]!</span>")
+				if(do_after(user, 20 SECONDS, src))
+				add_wound(/datum/wound/artery/chest)
+				add_wound(/datum/wound/fracture/chest)
+					update_body()
