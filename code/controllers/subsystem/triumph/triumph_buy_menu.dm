@@ -218,8 +218,7 @@
 		</body>
 	</html>
 	"}
-	linked_client << browse(data, "window=triumph_buy_window;size=674x715;can_close=1;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
-
+	linked_client << browse(data, "window=triumph_buy_window;size=675x860;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1")
 	for(var/i in 1 to 10)
 		if(!linked_client)
 			break
@@ -286,10 +285,15 @@
 				LAZYADD(SStriumphs.communal_contributions[communal_buy.type][linked_client.ckey], amount)
 				to_chat(linked_client, span_notice("You have contributed [amount] triumph\s to the [communal_buy.name]."))
 
+				if(amount >= 5 && SSticker.current_state < GAME_STATE_SETTING_UP)
+					to_chat(world, span_notice("[amount] triumph\s were contributed to the [communal_buy.name] communal buy!"))
+
 				if(communal_buy.maximum_pool && SStriumphs.communal_pools[communal_buy.type] >= communal_buy.maximum_pool)
 					communal_buy.on_activate()
 
-			show_menu()
+				SStriumphs.refresh_communal_menus()
+			else
+				show_menu()
 
 	if(href_list["handle_buy_button"])
 		if(!linked_client?.ckey)

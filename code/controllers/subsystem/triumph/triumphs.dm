@@ -55,8 +55,10 @@ SUBSYSTEM_DEF(triumphs)
 	var/triumph_buys_enabled = TRUE
 	/// Init list to hold triumph buy menus for the session (aka menu data) (Assc list "ckey" = datum)
 	var/list/active_triumph_menus = list()
-	/// Display limit per page in a category on the user menu
-	var/page_display_limit = 11
+	/// Display limit per page in a non communal category on the user menu
+	var/page_display_limit = 14
+	/// Display limit per page in a communal category on the user menu
+	var/communal_display_limit = 4
 	// This represents the triumph buy organization on the main SS for triumphs, each key is a category name.
 	// And then the list will have a number in a string that leads to a list of datums
 	var/list/list/list/central_state_data = list( // this is updated to be a list of lists in subsystem Initialize
@@ -103,8 +105,9 @@ SUBSYSTEM_DEF(triumphs)
 
 	// Figure out how many lists we are about to make to represent the pages
 	for(var/catty_key in central_state_data)
-		var/page_count = ceil(central_state_data[catty_key]/page_display_limit) // Get the page count total
-		central_state_data[catty_key] = list() // Now we swap the numbers out for lists on each cat as it will contain lists representing one page
+		var/current_limit = (catty_key == TRIUMPH_CAT_COMMUNAL) ? communal_display_limit : page_display_limit
+		var/page_count = ceil(central_state_data[catty_key]/current_limit)
+		central_state_data[catty_key] = list()
 
 		// Now fill in the lists starting at index "1"
 		for(var/page_numba in 1 to page_count)
@@ -114,7 +117,7 @@ SUBSYSTEM_DEF(triumphs)
 				if(current_triumph_buy_datum.category == catty_key)
 					central_state_data[catty_key]["[page_numba]"] += current_triumph_buy_datum
 					copy_list -= current_triumph_buy_datum
-				if(central_state_data[catty_key]["[page_numba]"].len == page_display_limit)
+				if(central_state_data[catty_key]["[page_numba]"].len == current_limit)
 					break
 
 /// This occurs when you try to buy a triumph condition and sets it up
@@ -218,6 +221,12 @@ SUBSYSTEM_DEF(triumphs)
 			continue
 
 		triumph_buy.show_menu()
+
+/datum/controller/subsystem/triumphs/proc/refresh_communal_menus()
+	for(var/ckey in active_triumph_menus)
+		var/datum/triumph_buy_menu/menu = active_triumph_menus[ckey]
+		if(menu && menu.current_category == TRIUMPH_CAT_COMMUNAL)
+			menu.show_menu()
 
 /// We cleanup the datum thats just holding the stuff for displaying the menu.
 /datum/controller/subsystem/triumphs/proc/remove_triumph_buy_menu(client/C)
