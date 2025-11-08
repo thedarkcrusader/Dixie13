@@ -752,15 +752,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "cd" = (
-/mob/living/simple_animal/hostile/retaliate/blood{
-	faction = list("Hostile");
-	icon_living = "new state";
-	icon_state = "new state";
-	icon = 'icons/roguetown/underworld/carriageman.dmi';
-	pixel_x = -16;
-	pixel_y = 0;
-	health = 1200
-	},
+/mob/living/simple_animal/hostile/retaliate/blood/weird,
 /turf/open/floor/tile/diamond/purple,
 /area/rogue/indoors/town/clocktower)
 "ce" = (
@@ -7827,15 +7819,7 @@
 	pixel_x = -17;
 	pixel_y = -18
 	},
-/mob/living/simple_animal/hostile/retaliate/blood{
-	faction = list("Hostile");
-	icon_living = "new state";
-	icon_state = "new state";
-	icon = 'icons/roguetown/underworld/carriageman.dmi';
-	pixel_x = -16;
-	pixel_y = 0;
-	health = 1200
-	},
+/mob/living/simple_animal/hostile/retaliate/blood/weird,
 /turf/open/floor/tile/diamond/purple,
 /area/rogue/indoors/town/clocktower)
 "vG" = (
@@ -14951,12 +14935,7 @@
 	},
 /area/rogue/under/cavewet)
 "Pb" = (
-/mob/living/simple_animal/hostile/retaliate/voiddragon/red{
-	color = "#4B758F";
-	icon_living = "dragon";
-	icon_state = "dragon";
-	icon_dead = "dragon_dead"
-	},
+/mob/living/simple_animal/hostile/retaliate/voiddragon,
 /turf/open/floor/abyss_tile/three{
 	color = "#7D9BAE"
 	},
