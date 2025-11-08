@@ -218,6 +218,10 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 	outfit = /datum/outfit/forestguard/brawler
 
+/datum/job/advclass/forestguard/brawler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	spawned.verbs |= /mob/proc/haltyell
+
 /datum/outfit/forestguard/brawler
 	name = "Forest Brawler"
 	head = /obj/item/clothing/head/helmet/medium/decorated/skullmet
