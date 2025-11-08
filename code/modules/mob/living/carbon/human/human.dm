@@ -12,7 +12,7 @@
 				else
 					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 				if(do_after(user, 5 SECONDS, src))
-				/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
+				var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 				if(bodypart)
 				bodypart.add_wound(/datum/wound/artery/neck)
 		else
