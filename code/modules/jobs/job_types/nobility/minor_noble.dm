@@ -59,12 +59,13 @@
         STATKEY_CON = -1,
     )
     skills = list(
-        /datum/skill/misc/reading = SKILL_LEVEL_MASTER,
-        /datum/skill/labor/mathematics = SKILL_LEVEL_MASTER,
-        /datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-        /datum/skill/misc/stealing = SKILL_LEVEL_JOURNEYMAN,
-        /datum/skill/misc/lockpicking = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
+        /datum/skill/misc/reading = 5,
+        /datum/skill/labor/mathematics = 5,
+        /datum/skill/misc/sneaking = 3,
+        /datum/skill/misc/stealing = 3,
+        /datum/skill/misc/lockpicking = 3,
+        /datum/skill/misc/riding = 2,
+		/datum/skill/combat/knives = 1,
     )
 
     traits = list(TRAIT_SEEPRICES)
@@ -95,8 +96,8 @@
 	)
 	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
 	var/static/list/selectablerobe = list(
-		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
-		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Shirt" = /obj/item/clothing/shirt,
+		"Fancy coat" = /obj/item/clothing/shirt/tunic/noblecoat,
 		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
 		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
 		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
@@ -117,34 +118,17 @@
 
 //................. Noble Lord, the one we got currently .............. //
 /datum/job/advclass/noble/common
-    title = "Noble"
+	title = "Noble"
 	tutorial = "You are a wealthy individual who shouldn't be feeding the oppositors to nobility. \
 	You are skilled in the art of trade, a minor lord on the town of vanderlin, your wealth attracts the attention of the wrongdoers, wich said people wich end on a bad place after mess with you, relax and enjoy your week like any other, not like anything bad can happen right?"
-    outfit = /datum/outfit/noble/common
-    give_bank_account = 60
-    noble_income = 20 
-    category_tags = list(CTAG_NOBLEMINOR)
-    bypass_lastclass = TRUE
+	outfit = /datum/outfit/noble/common
+	give_bank_account = 60 // normal noble bank
+	noble_income = 20 // normal income
+	category_tags = list(CTAG_NOBLEMINOR)
+	bypass_lastclass = TRUE
 
-    jobstats = list(
-        STATKEY_INT = 1,
-        STATKEY_PER = 1,
-        STATKEY_CON = 1,
-    )
-    skills = list(
-        /datum/skill/misc/reading = SKILL_LEVEL_MASTER,
-        /datum/skill/labor/mathematics = SKILL_LEVEL_JOURNEYMAN,
-        /datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-        /datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/music, rand(1,2),
-		/datum/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-    )
-
-/datum/outfit/noble/common
-    name = "Noble"
+/datum/outfit/noble/common/pre_equip(mob/living/carbon/human/H)
+	..()
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
@@ -165,6 +149,22 @@
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
 
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+
 /datum/outfit/noble/common/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/static/list/selectablehat = list(
@@ -180,8 +180,8 @@
 	)
 	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
 	var/static/list/selectablerobe = list(
-		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
-		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Shirt" = /obj/item/clothing/shirt,
+		"Fancy coat" = /obj/item/clothing/shirt/tunic/noblecoat,
 		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
 		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
 		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
@@ -211,26 +211,35 @@
 	category_tags = list(CTAG_NOBLEMINOR)
 	bypass_lastclass = TRUE
 
-    jobstats = list(
-        STATKEY_INT = 1,
-        STATKEY_PER = 1,
-        STATKEY_CON = 1,
-    )
-    skills = list(
-        /datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/labor/mathematics = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/misc/riding = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/music, SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/bows = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-    )
+/datum/outfit/noble/minorson/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = pick(/obj/item/clothing/head/helmet/visored/knight/iron, /obj/item/clothing/head/helmet/visored/sallet/iron)
+	neck = /obj/item/clothing/neck/coif/cloth
+	armor = pick(/obj/item/clothing/armor/leather/splint, /obj/item/clothing/armor/cuirass/iron)
+	pants = /obj/item/clothing/pants/trou/leather/advanced
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid, /obj/item/weapon/knife/dagger)
 
-	traits = list(TRAIT_HEAVYARMOR)
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+
+//traits
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // if he menages to survive he can use a heavy armor like a knight does, way less experienced in fights however
 
 /datum/outfit/noble/minorson/post_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -300,9 +309,81 @@
 		if(!H.equip_to_appropriate_slot(shield))
 			qdel(shield)
 
-//................. Uplifted peasant, a commision to have a worker noble .............. //
+/datum/outfit/noble/common/pre_equip(mob/living/carbon/human/H)
+	..()
+	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	beltl = /obj/item/ammo_holder/quiver/arrows
+	neck = /obj/item/storage/belt/pouch/coins/veryrich
+	pants = /obj/item/clothing/pants/tights/colored/black
 
-/
+//gender & age code
+	if(H.gender == FEMALE)
+		beltr = /obj/item/weapon/knife/dagger/steel/special
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring)
+	if(H.age == AGE_CHILD)
+		beltr = /obj/item/weapon/knife/dagger/steel/special
+		scabbards = list(/obj/item/weapon/scabbard/knife)
+		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea = 1, /obj/item/reagent_containers/glass/bottle/glazed_teacup = 3, /obj/item/storage/keyring)
+	else
+		beltr = /obj/item/weapon/sword/rapier/dec
+		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
+		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring,)
+
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+
+/datum/outfit/noble/common/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	var/static/list/selectablehat = list(
+		"Fancy Hat" = /obj/item/clothing/head/fancyhat,
+		"Fancy Hat with ear cover" = /obj/item/clothing/head/courtierhat,
+		"Chaperon Hat" = /obj/item/clothing/head/chaperon/colored/greyscale/random,
+		"Hood" = /obj/item/clothing/head/roguehood/colored/random,
+		"Turban" = /obj/item/clothing/head/turban,
+		"Fur Hat" = /obj/item/clothing/head/hatfur,
+		"Blue Hat" = /obj/item/clothing/head/hatblu,
+		"Papakha Hat" = /obj/item/clothing/head/papakha,
+		"Hennin Hat" = /obj/item/clothing/head/hennin,
+	)
+	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
+	var/static/list/selectablerobe = list(
+		"Shirt" = /obj/item/clothing/shirt,
+		"Fancy coat" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
+		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
+		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
+		"Ornate tunic" = /obj/item/clothing/shirt/ornate/tunic,
+		"Ornate dress" = /obj/item/clothing/shirt/ornate/dress,
+		"Silk dress" = /obj/item/clothing/shirt/dress/silkdress/colored/random,
+	)
+	H.select_equippable(H, selectablerobe, message = "Choose your shirt of choice", title = "Noble!")
+	..()
+	var/static/list/selectablecloak = list(
+		"Rain cloak" = /obj/item/clothing/cloak/raincloak/colored/random,
+		"Fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak,
+		"Brown fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown,
+		"Black fur cloak" = /obj/item/clothing/cloak/raincloak/furcloak/colored/black,
+		"Half cloak" = /obj/item/clothing/cloak/half/colored/random,
+	)
+	H.select_equippable(H, selectablecloak, message = "Choose your cloak", title = "Noble!")
+
+
+//................. Uplifted peasant, a commision to have a worker noble .............. //
 /datum/job/advclass/noble/peasant
 	title = "Field Noble"
 	tutorial = "You are a new addition to nobility, uplifted by your lord chosen by astrata herself. \
@@ -313,32 +394,33 @@
 	category_tags = list(CTAG_NOBLEMINOR)
 	bypass_lastclass = TRUE
 
-    jobstats = list(
-        STATKEY_INT = 1,
-        STATKEY_PER = 1,
-        STATKEY_CON = 1,
-    )
-    skills = list(
-        /datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/labor/mathematics = SKILL_LEVEL_NOVICE,
-        /datum/skill/misc/lockpicking = SKILL_LEVEL_APPRENTICE,
-        /datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
-		/datum/skill/labor/farming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/tanning = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/bows = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
-    )
-
-    traits = list(TRAIT_SEEDKNOW)
-
-/datum/outfit/noble/peasant
-    name = "Field Noble"
+/datum/outfit/noble/peasant/pre_equip(mob/living/carbon/human/H)
+	..()
 	backr = /obj/item/weapon/pitchfork
 	beltl = /obj/item/weapon/sword/decorated// his first sword
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
 	pants = /obj/item/clothing/pants/tights/colored/black
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1, /obj/item/storage/keyring, , /obj/item/weapon/knife/villager)
+
+//jobstats
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+
+//skills
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
+	H.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 
 /datum/outfit/noble/peasant/post_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -355,8 +437,8 @@
 	)
 	H.select_equippable(H, selectablehat, message = "Choose your hat of choice", title = "Noble!")
 	var/static/list/selectablerobe = list(
-		"Shirt" = /obj/item/clothing/shirt/tunic/colored/random,
-		"Fancy shirt" = /obj/item/clothing/shirt/tunic/noblecoat,
+		"Shirt" = /obj/item/clothing/shirt,
+		"Fancy coat" = /obj/item/clothing/shirt/tunic/noblecoat,
 		"Short shirt" = /obj/item/clothing/shirt/shortshirt/colored/random,
 		"Fancy tunic" = /obj/item/clothing/shirt/tunic/colored/random,
 		"Grenzelhoft hip shirt" = /obj/item/clothing/shirt/grenzelhoft,
