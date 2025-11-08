@@ -7,8 +7,11 @@
 	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
-			user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
-			if(do_after(user, 5 SECONDS, src))
+			if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to slit [user.p_their()] throat with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
+				if(do_after(user, 5 SECONDS, src))
 /obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 	bodypart.add_wound(/datum/wound/artery/neck)
