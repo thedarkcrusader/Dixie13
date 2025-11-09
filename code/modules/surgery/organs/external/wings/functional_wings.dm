@@ -102,9 +102,7 @@
 	if(!flying)
 		if(!can_fly())
 			return
-		if(do_after(owner, 5 SECONDS, owner))
-			if(!can_fly()) // recheck after the delay
-				return
+		if(do_after(owner, 5 SECONDS, owner, extra_checks = CALLBACK(src, PROC_REF(can_fly))))
 			start_flying()
 		return
 	if(do_after(owner, 5 SECONDS, owner))
