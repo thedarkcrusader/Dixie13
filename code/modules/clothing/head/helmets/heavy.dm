@@ -175,7 +175,10 @@
 
 /obj/item/clothing/head/helmet/heavy/baotha
 	name = "willful helmet"
-	desc = "Baothan knights are an antithesis : the tiefling queen preaches self preservation at the cost of even family or friend. Choosing to embark on a quest to knightlyhood means facing peril at the forefront. \n Indeed, many are the upstarts who understood the folly of their journey, and either turned back to the warmth of ozium and wine or died in the process. \n The original wearer of this helmet is no such pushover : they do not have the might of Graggar nor the magick of Zizo, and instead rely on their wits and grit to proclaim their unicity in the face of this cold, uncaring world. \n It is rumoured that Baotha offers this baroque piece in person, as a reward for the knight's unflinching will in the face of sheer terror, minute after minute, hour after hour. \n Fashioned in steel and petals, it has no viewport, the wearer instead having their senses heightened to preternatural levels." // yes, this is a long item description, but it's the only piece of armour unique to Baotha.
+	desc = "Baothan knights are an antithesis : the tiefling queen preaches self preservation at the cost of even family or friend. Choosing to embark on a quest to knightlyhood means facing peril at the forefront. \
+	Indeed, many are the upstarts who understood the folly of their journey, and either turned back to the warmth of ozium and wine or died in the process. \
+	The original wearer of this helmet is no such pushover : they do not have the might of Graggar nor the magick of Zizo, and instead rely on their wits and grit to proclaim their unicity in the face of this cold, uncaring world. \
+	It is rumoured that Baotha offers this baroque piece in person, as a reward for the knight's unflinching will in the face of sheer terror, minute after minute, hour after hour. \n Fashioned in steel and petals, it has no viewport, the wearer instead having their senses heightened to preternatural levels." // yes, this is a long item description, but it's the only piece of armour unique to Baotha.
 	icon_state = "baothahelm"
 	icon = 'icons/roguetown/clothing/special/baothanknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/evilarmor64x64.dmi'
