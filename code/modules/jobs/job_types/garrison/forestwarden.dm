@@ -26,16 +26,19 @@
 
 	job_bitflag = BITFLAG_GARRISON
 
-/datum/outfit/forestwarden/pre_equip(mob/living/carbon/human/H)
+/datum/job/forestwarden/after_spawn(mob/living/spawned, client/player_client)
 	..()
+	var/mob/living/carbon/human/H = spawned
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
-	var/honorary = "Lord"
+	var/honorary = "Sir"
 	if(H.gender == FEMALE)
-		honorary = "Lady"
+	honorary = "Dame"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
 
+/datum/outfit/forestwarden/pre_equip(mob/living/carbon/human/H)
+	..()
 	cloak = /obj/item/clothing/cloak/wardencloak
 	armor = /obj/item/clothing/armor/plate
 	shirt = /obj/item/clothing/armor/chainmail
