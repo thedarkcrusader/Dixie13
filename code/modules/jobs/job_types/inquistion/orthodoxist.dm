@@ -35,6 +35,10 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
+		H.mind.add_antag_datum(new_antag)
 
 		H.verbs |= /mob/living/carbon/human/proc/torture_victim
 		H.verbs |= /mob/living/carbon/human/proc/faith_test

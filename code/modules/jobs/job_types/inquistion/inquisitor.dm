@@ -37,6 +37,10 @@
 		H.verbs |= /mob/living/carbon/human/proc/faith_test
 		H.verbs |= /mob/living/carbon/human/proc/torture_victim
 		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
+		H.mind.add_antag_datum(new_antag)
 
 		H.hud_used?.shutdown_bloodpool()
 		H.hud_used?.initialize_bloodpool()
