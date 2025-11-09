@@ -71,8 +71,6 @@
 			H.dna.species.native_language = "Old Psydonic"
 			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
-
-
 /datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
 
