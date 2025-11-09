@@ -166,7 +166,7 @@ SUBSYSTEM_DEF(triumphs)
 	return TRUE
 
 /// This occurs when you try to unbuy a triumph condition and removes it, also used for refunding due to conflicts
-/datum/controller/subsystem/triumphs/proc/attempt_to_unbuy_triumph_condition(client/C, datum/triumph_buy/triumph_buy, reason = "\improper REFUND", force = FALSE)
+/datum/controller/subsystem/triumphs/proc/attempt_to_unbuy_triumph_condition(client/C, datum/triumph_buy/triumph_buy, reason = "\improper MANUAL REFUND", force = FALSE)
 	var/previous_owner_ckey = triumph_buy.ckey_of_buyer
 	if(previous_owner_ckey != C?.ckey)
 		if(C)
