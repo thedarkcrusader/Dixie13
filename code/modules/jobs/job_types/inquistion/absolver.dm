@@ -15,6 +15,7 @@
 	min_pq = 3 // Low potential for grief. A pacifist by trade. Also needs to know wtf a PSYDON is.
 	give_bank_account = 15
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
+	antag_role = /datum/antagonist/purishep
 
 	traits = list(
 		TRAIT_NOPAINSTUN,
@@ -61,10 +62,6 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(H.mind.has_antag_datum(/datum/antagonist))
-			return
-		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-		H.mind.add_antag_datum(new_antag)
 		H.grant_language(/datum/language/oldpsydonic)
 		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
 		if(H.dna?.species.id == SPEC_ID_HUMEN)
