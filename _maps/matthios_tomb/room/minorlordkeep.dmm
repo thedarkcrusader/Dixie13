@@ -1,7 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"bd" = (
-/turf/closed/wall/mineral/stone/moss,
+"bj" = (
+/turf/closed/wall/mineral/wooddark/window,
 /area/rogue/outdoors/woods)
+"bA" = (
+/obj/structure/table/wood/plain,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "bH" = (
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/indoors/town/manor)
@@ -51,6 +55,23 @@
 /obj/item/natural/bundle/stoneblock,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"gM" = (
+/obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/closet/crate/chest/crafted,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/paper,
+/obj/item/paper,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
+"hn" = (
+/obj/structure/stairs,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
+"ho" = (
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "hB" = (
 /turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
@@ -63,7 +84,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
 "jI" = (
-/turf/open/floor/blocks,
+/turf/closed/wall/mineral/decowood,
 /area/rogue/outdoors/woods)
 "kf" = (
 /turf/open/floor/blocks,
@@ -95,10 +116,23 @@
 /obj/item/book/random_book,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
+"oK" = (
+/obj/structure/closet/crate/chest/crafted,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "pd" = (
 /obj/item/candle/skull,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"pI" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "pJ" = (
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/indoors/town/manor)
@@ -109,6 +143,10 @@
 "rw" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/cobblerock,
+/area/rogue/indoors/town/manor)
+"rR" = (
+/obj/structure/stairs,
+/turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
 "sz" = (
 /obj/item/natural/rock,
@@ -175,6 +213,15 @@
 /obj/structure/spider/cocoon,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"yd" = (
+/obj/machinery/light/fueled/wallfire/candle,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
+"yf" = (
+/obj/structure/table/wood/plain,
+/obj/item/paper/scroll,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "yu" = (
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/naturalstone,
@@ -198,6 +245,10 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
+"BP" = (
+/obj/item/book/advice_soup,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "Ch" = (
 /obj/structure/bed/shit,
 /obj/effect/spawner/map_spawner/loot/armor,
@@ -214,8 +265,8 @@
 /area/rogue/indoors/town/manor)
 "DC" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
-/turf/open/floor/blocks,
-/area/rogue/outdoors/woods)
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "DM" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
@@ -233,6 +284,16 @@
 /mob/living/carbon/human/species/rousman/npc,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"Gb" = (
+/obj/structure/table/wood/plain,
+/obj/item/paper/scroll,
+/obj/item/book/random_book,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
+"Gn" = (
+/obj/item/natural/wood/plank,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/outdoors/woods)
 "Gz" = (
 /obj/structure/fluff/statue/knight,
 /turf/open/floor/churchrough,
@@ -264,6 +325,10 @@
 /obj/structure/inert_bonepile,
 /turf/open/floor/cobble/alt,
 /area/rogue/indoors/town/manor)
+"JH" = (
+/obj/effect/decal/cleanable/dirt/cobweb,
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/manor/library)
 "JY" = (
 /obj/structure/inert_bonepile,
 /turf/open/floor/churchrough,
@@ -278,6 +343,11 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/indoors/town/manor)
+"LA" = (
+/obj/item/natural/wood/plank,
+/obj/item/natural/wood/plank,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/outdoors/woods)
 "MF" = (
 /obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/naturalstone,
@@ -307,11 +377,22 @@
 /obj/item/chair/stool/bar,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/manor)
+"PM" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_x = -3
+	},
+/turf/closed/wall/mineral/decowood,
+/area/rogue/outdoors/woods)
 "Qv" = (
 /obj/structure/table/stone_small,
 /obj/item/carvedgem/turq/fancyvase,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor)
+"QJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "QQ" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/churchrough,
@@ -322,11 +403,19 @@
 "Rf" = (
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/manor)
+"Rq" = (
+/obj/item/trash/candle,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "RN" = (
 /obj/structure/door/weak,
 /obj/effect/mapping_helpers/structure/breaker,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/manor)
+"RY" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "SP" = (
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
@@ -342,9 +431,20 @@
 	},
 /turf/closed/wall/mineral/decostone/moss,
 /area/rogue/indoors/town/manor)
+"UC" = (
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/manor/library)
+"UI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/rogue/indoors/town/manor/library)
 "Vw" = (
 /obj/effect/decal/remains/wolf,
 /turf/open/floor/grass,
+/area/rogue/outdoors/woods)
+"VB" = (
+/obj/effect/decal/cleanable/debris/wood,
+/turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/outdoors/woods)
 "VG" = (
 /obj/structure/flora/grass,
@@ -529,7 +629,7 @@ Gz
 QQ
 cK
 pJ
-bd
+pJ
 NH
 hB
 "}
@@ -551,7 +651,7 @@ lh
 lh
 QQ
 Qv
-bd
+pJ
 NH
 Cz
 "}
@@ -573,7 +673,7 @@ Pu
 Pu
 QQ
 lw
-bd
+pJ
 NH
 dw
 "}
@@ -595,7 +695,7 @@ QQ
 QQ
 Pu
 wG
-bd
+pJ
 NH
 Cz
 "}
@@ -608,7 +708,7 @@ mo
 wl
 kf
 Rc
-dO
+rR
 tf
 Pu
 cK
@@ -617,7 +717,7 @@ gx
 pd
 cK
 pJ
-bd
+pJ
 NH
 hB
 "}
@@ -873,13 +973,13 @@ DM
 jI
 jI
 jI
-jI
-jI
-DM
-jI
+Gn
 jI
 DM
 jI
+yd
+UC
+RY
 jI
 DM
 DM
@@ -893,15 +993,15 @@ DM
 DM
 DM
 jI
+JH
+UC
+BP
+Gn
 DM
-DM
 jI
-jI
-DM
-jI
-jI
-jI
-jI
+pI
+ho
+ho
 jI
 DM
 DM
@@ -915,14 +1015,14 @@ DM
 DM
 DM
 jI
+UC
+RY
+yf
+bj
 DM
 jI
-jI
-jI
-DM
-jI
-jI
-jI
+pI
+ho
 DC
 jI
 DM
@@ -937,15 +1037,15 @@ DM
 jI
 jI
 jI
+Rq
+QJ
+Gb
 jI
+LA
 jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
+ho
+UI
+ho
 jI
 jI
 DM
@@ -956,19 +1056,19 @@ hB
 hB
 DM
 DM
-jI
-DM
-DM
-jI
-jI
-jI
-jI
+bj
+JH
+UC
+ho
+ho
+ho
+ho
 DC
-jI
-jI
-jI
-DM
-jI
+RY
+ho
+ho
+UC
+ho
 jI
 jI
 DM
@@ -979,19 +1079,19 @@ DM
 DM
 DM
 jI
-jI
-jI
-jI
+gM
+ho
+ho
 DC
-jI
-jI
-jI
-DM
-jI
-jI
-DM
-jI
-jI
+ho
+ho
+ho
+UC
+ho
+ho
+UC
+ho
+oK
 jI
 DM
 DM
@@ -1001,20 +1101,20 @@ DM
 DM
 DM
 jI
-jI
-DM
-DM
-jI
-DM
-jI
-jI
-jI
-jI
-jI
-DM
-jI
-jI
-jI
+pI
+UC
+UC
+ho
+UC
+UI
+RY
+ho
+ho
+ho
+UC
+ho
+ho
+bj
 DM
 DM
 "}
@@ -1023,19 +1123,19 @@ DM
 DM
 DM
 jI
-jI
-jI
-jI
-jI
-jI
-jI
-DM
-jI
-jI
-jI
-jI
-DM
-DM
+pI
+ho
+ho
+ho
+ho
+RY
+UC
+ho
+ho
+UI
+ho
+UC
+UC
 jI
 DM
 DM
@@ -1045,18 +1145,18 @@ hB
 DM
 DM
 jI
-jI
-jI
-DM
-DM
-DM
-jI
-jI
-DM
-DM
-jI
-jI
-jI
+pI
+RY
+UC
+UC
+UC
+hn
+ho
+UC
+UC
+ho
+ho
+ho
 jI
 jI
 DM
@@ -1069,14 +1169,14 @@ DM
 jI
 jI
 jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
 jI
 jI
 jI
@@ -1091,14 +1191,14 @@ DM
 DM
 DM
 jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
+Rq
+ho
+ho
+UI
+ho
+RY
+ho
+bA
 jI
 DM
 DM
@@ -1113,14 +1213,14 @@ DM
 DM
 DM
 jI
-DM
-DM
-jI
+UC
+UC
+RY
 DC
-jI
-jI
-jI
-jI
+ho
+ho
+RY
+RY
 jI
 DM
 DM
@@ -1135,14 +1235,14 @@ DM
 DM
 DM
 jI
-jI
-DM
-jI
-jI
-jI
+ho
+UC
+RY
 jI
 jI
 jI
+jI
+PM
 jI
 DM
 DM
@@ -1156,8 +1256,8 @@ DM
 DM
 DM
 DM
-jI
-jI
+VB
+VB
 jI
 jI
 jI
