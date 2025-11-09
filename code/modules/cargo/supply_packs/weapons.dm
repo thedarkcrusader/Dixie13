@@ -65,6 +65,11 @@
 	cost = 20
 	contains = /obj/item/weapon/knife/dagger
 
+/datum/supply_pack/weapons/iron/bayonet
+	name = "Musket Bayonet"
+	cost = 23
+	contains = /obj/item/weapon/knife/dagger/bayonet
+
 /datum/supply_pack/weapons/iron/spear
 	name = "Iron Spear"
 	cost = 30
@@ -157,6 +162,11 @@
 	name = "Smuggled Püffer"
 	cost = 800
 	contains = /obj/item/gun/ballistic/revolver/grenadelauncher/pistol
+
+/datum/supply_pack/weapons/ranged/musket
+	name = "Smuggled Musket"
+	cost = 1240 //needs balancing
+	contains = /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket
 
 /datum/supply_pack/weapons/ranged/crossbow
 	name = "Crossbow"

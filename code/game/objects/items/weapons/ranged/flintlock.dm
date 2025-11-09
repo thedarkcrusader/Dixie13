@@ -14,6 +14,7 @@
 	experimental_inhand = FALSE
 	experimental_onback = FALSE
 	var/click_delay = 0.5
+	var/damage_mult = 1.625
 	var/obj/item/ramrod/rod
 	cartridge_wording = "ball"
 	var/rammed = FALSE
@@ -32,6 +33,7 @@
 	sellprice = 200 // This kind of equipment is very hard to come by in Rockhill.
 	grid_height = 32
 	grid_width = 96
+	var/wheellock = TRUE
 	var/cocked = FALSE
 	var/ramrod_inserted = TRUE
 	var/powdered = FALSE
@@ -55,7 +57,9 @@
 			M.playsound_local(M_turf, null, 100, 1, get_rand_frequency(), S = shot_sound)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/shoot_with_empty_chamber(mob/living/user)
-	if(!cocked || !wound)
+	if(!cocked)
+		return
+	if(wheellock && !wound)
 		return
 	playsound(src.loc, 'sound/combat/Ranged/muskclick.ogg', 100, FALSE)
 	cocked = FALSE
@@ -83,6 +87,8 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/attack_self_secondary(mob/user, params)
 	. = ..()
+	if(!wheellock)
+		return
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(user.get_skill_level(/datum/skill/combat/firearms) <= 0)
@@ -125,7 +131,7 @@
 		return
 	if(!powdered)
 		return
-	if(!wound)
+	if(wheellock && !wound)
 		return
 	if(user.client)
 		if(user.client.chargedprog >= 100)
@@ -142,7 +148,7 @@
 		if(user.STAPER > 8)
 			BB.accuracy += (user.STAPER - 8) * 4 //each point of perception above 8 increases standard accuracy by 4.
 			BB.bonus_accuracy += (user.STAPER - 8) //Also, increases bonus accuracy by 1, which cannot fall off due to distance.
-		BB.damage = BB.damage *1.625 // 80 * 1.5 = 130 of damage.
+		BB.damage = BB.damage * damage_mult // 80 * 1.5 = 130 of damage.
 		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/combat/firearms) * 3) //+3 accuracy per level in firearms
 	playsound(src.loc, 'sound/combat/Ranged/muskclick.ogg', 100, FALSE)
 	cocked = FALSE
@@ -251,3 +257,151 @@
 
 	QDEL_IN(src, rand(2 SECONDS, 5 SECONDS)) //Apparently, a puffer being broken can still be shot, because that make sense. so we're qdel'ing it right after.
 	visible_message(span_warning("The puffer begins to crumble, the enchantment falls!"))
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket
+	name = "musket"
+	icon = 'icons/roguetown/weapons/64/guns.dmi'
+	icon_state = "musket_uncocked_ramrod"
+	item_state = "musket"
+	bigboy = TRUE
+	recoil = 10
+	randomspread = 2
+	spread = 2
+	force = 10
+	experimental_inhand = TRUE
+	experimental_onback = TRUE
+	damage_mult = 3
+	dropshrink = 0.7
+	possible_item_intents = list(/datum/intent/shoot/musket, /datum/intent/shoot/musket/arc, POLEARM_BASH)
+	associated_skill = /datum/skill/combat/polearms
+	slot_flags = ITEM_SLOT_BACK
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	wdefense = GOOD_PARRY
+	blade_dulling = DULLING_BASHCHOP
+	max_blade_int = 100
+	sellprice = 400
+	wheellock = FALSE
+	var/bayonet_affixed = FALSE
+	rod = /obj/item/ramrod/musket
+	var/obj/item/weapon/knife/dagger/bayonet/bayonet
+	can_parry = TRUE
+	max_integrity = 30
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/Initialize()
+	. = ..()
+	var/obj/item/ramrod/musket/rrod = new(src)
+	rod = rrod
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/update_icon_state()
+	. = ..()
+	icon_state = "musket_[cocked ? "cocked" : "uncocked"][ramrod_inserted ? "_ramrod" : ""][bayonet_affixed ? "_bayonet" : ""]"
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list(
+				"shrink" = 0.5,
+				"sx" = -2,
+				"sy" = 0,
+				"nx" = 11,
+				"ny" = 0,
+				"wx" = -4,
+				"wy" = -4,
+				"ex" = 2,
+				"ey" = 0,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 0,
+				"eturn" = 0,
+				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 5,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0
+				)
+			if("onback")
+				return list(
+					"shrink" = 0.5,
+					"sx" = 1,
+					"sy" = -1,
+					"nx" = 1,
+					"ny" = -1,
+					"wx" = -1,
+					"wy" = 0,
+					"ex" = 1,
+					"ey" = -1,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 5,
+					"sflip" = 5,
+					"wflip" = 5,
+					"eflip" = 5,
+					"northabove" = 1,
+					"southabove" = 0,
+					"eastabove" = 0,
+					"westabove" = 0)
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/attack_self_secondary(mob/user, params)
+	if(bayonet)
+		if(do_after(user, 2 SECONDS, src))
+			user.put_in_hands(bayonet)
+			bayonet_affixed = FALSE
+			possible_item_intents -= SPEAR_THRUST
+			sharpness = IS_BLUNT
+			bayonet.max_blade_int = max_blade_int
+			bayonet.blade_int = blade_int
+			max_blade_int = 0
+			blade_int = 0
+			armor_penetration = 0
+			spread -= bayonet.spread
+			force -= bayonet.force
+			bayonet = null
+			to_chat(user, "<span class='info'>I remove the bayonet from \the [src].</span>")
+			playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
+		update_appearance(UPDATE_ICON_STATE)
+	..()
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/attackby(obj/item/I, mob/user, params)
+	var/ramtime = 5.5
+	ramtime = ramtime - (user.get_skill_level(/datum/skill/combat/firearms) / 2)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(istype(H.get_active_held_item(), /obj/item/weapon/knife/dagger/bayonet))
+			if(!H.is_holding(src))
+				to_chat(user, "<span class='warning'>I need to hold \the [src] to affix a bayonet to it!</span>")
+				return
+			if(do_after(user, ramtime SECONDS, src))
+				var/obj/item/weapon/knife/dagger/bayonet/attached_bayonet = H.get_active_held_item()
+				attached_bayonet.forceMove(src)
+				bayonet = attached_bayonet
+				bayonet_affixed = TRUE
+				possible_item_intents += SPEAR_THRUST
+				sharpness = IS_SHARP
+				max_blade_int = attached_bayonet.max_blade_int
+				blade_int = attached_bayonet.blade_int
+				armor_penetration = 5
+				spread += bayonet.spread
+				force += bayonet.force
+				to_chat(user, "<span class='info'>I affix the bayonet to \the [src].</span>")
+				playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
+			update_appearance(UPDATE_ICON_STATE)
+	..()
+
+/obj/item/weapon/knife/dagger/bayonet
+	name = "bayonet"
+	force = 10
+	max_blade_int = 100
+	var/spread = 2
+
+/obj/item/ramrod/musket
+	name = "musket ram rod"
+	desc = ""
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "ramrod_musket"
