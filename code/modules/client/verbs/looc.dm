@@ -8,7 +8,7 @@
 
 /datum/keybinding/looc/down(client/user)
 	. = ..()
-	user.get_looc()
+	user.native_say.open_say_window("LOOC")
 	return TRUE
 
 /client/proc/get_looc()
