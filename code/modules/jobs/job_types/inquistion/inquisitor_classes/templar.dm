@@ -55,6 +55,7 @@
 	backpack_contents = list(
 		/obj/item/storage/keyring/inquisitor = 1,
 		/obj/item/paper/inqslip/arrival/ortho = 1,
+		/obj/item/collar_detonator = 1,
 	)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
