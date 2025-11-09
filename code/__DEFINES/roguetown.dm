@@ -222,7 +222,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_BUY_LONGER_WEEK "longer_week"
 #define TRIUMPH_BUY_EXOTIC_TASTES "exotic_tastes"
 
-
 // Bought triumph buys category
 #define TRIUMPH_CAT_ACTIVE_DATUMS "BOUGHT"
 
