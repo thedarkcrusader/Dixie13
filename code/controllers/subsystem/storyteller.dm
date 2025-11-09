@@ -456,6 +456,8 @@ SUBSYSTEM_DEF(gamemode)
 
 	check_roundstart_gods_rankings()
 
+	initialize_culinary_globals()
+
 	pick_chronicle_stats()
 
 	. = ..()
@@ -506,6 +508,10 @@ SUBSYSTEM_DEF(gamemode)
 		update_crew_infos()
 		next_storyteller_process = world.time + STORYTELLER_WAIT_TIME
 		current_storyteller.process(STORYTELLER_WAIT_TIME * 0.1)
+
+/datum/controller/subsystem/gamemode/proc/initialize_culinary_globals()
+	GLOB.selectable_foods = get_global_selectable_foods()
+	GLOB.selectable_drinks = get_global_selectable_drinks()
 
 /// Gets the number of antagonists the antagonist injection events will stop rolling after.
 /datum/controller/subsystem/gamemode/proc/get_antag_cap()
@@ -795,7 +801,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	handle_post_setup_roundstart_events()
 	handle_post_setup_points()
-	refresh_alive_stats()
+	refresh_alive_stats(first_post_roundstart_check = TRUE)
 	roundstart_event_view = FALSE
 	return TRUE
 
@@ -1430,7 +1436,7 @@ SUBSYSTEM_DEF(gamemode)
 	return highest
 
 /// Refreshes statistics regarding alive statuses of certain professions or antags, like nobles
-/datum/controller/subsystem/gamemode/proc/refresh_alive_stats(roundstart = FALSE)
+/datum/controller/subsystem/gamemode/proc/refresh_alive_stats(roundstart = FALSE, first_post_roundstart_check = FALSE)
 	if(SSticker.current_state == GAME_STATE_FINISHED)
 		return
 
@@ -1575,7 +1581,7 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_CLERGY)
 			if((human_mob.mind.assigned_role.title in GLOB.serf_positions) || (human_mob.mind.assigned_role.title in GLOB.peasant_positions) || (human_mob.mind.assigned_role.title in GLOB.company_positions))
 				record_round_statistic(STATS_ALIVE_TRADESMEN)
-			if(!human_mob.is_literate())
+			if(!human_mob.is_literate() && !first_post_roundstart_check)
 				record_round_statistic(STATS_ILLITERATES)
 			if(HAS_TRAIT(human_mob, TRAIT_FOREIGNER))
 				record_round_statistic(STATS_FOREIGNERS)
