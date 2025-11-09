@@ -22809,7 +22809,7 @@
 /area/rogue/under/town/basement)
 "mTy" = (
 /obj/structure/rack/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/teapot,
+/obj/item/reagent_containers/glass/carafe/teapot/clay,
 /obj/item/reagent_containers/glass/cup/clay_mug,
 /obj/item/reagent_containers/glass/cup/clay_mug,
 /obj/item/reagent_containers/glass/cup/clay,
