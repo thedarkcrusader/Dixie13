@@ -184,6 +184,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/evilarmor64x64.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
+	bloody_icon_state = "helmetblood_big"
 	armor = ARMOR_PLATE
 	prevent_crits = ALL_CRITICAL_HITS
 	item_weight = 5 * STEEL_MULTIPLIER
