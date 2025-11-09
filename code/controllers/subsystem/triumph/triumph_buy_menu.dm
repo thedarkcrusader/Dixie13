@@ -218,7 +218,7 @@
 		</body>
 	</html>
 	"}
-	linked_client << browse(data, "window=triumph_buy_window;size=675x860;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1")
+	linked_client << browse(data, "window=triumph_buy_window;size=675x855;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1")
 	for(var/i in 1 to 10)
 		if(!linked_client)
 			break

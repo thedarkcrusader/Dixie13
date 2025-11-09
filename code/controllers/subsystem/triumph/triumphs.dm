@@ -341,9 +341,9 @@ SUBSYSTEM_DEF(triumphs)
 
 		var/cur_client_triumph_count = not_new_guy["triumph_count"]
 		triumph_amount_cache[target_ckey] = cur_client_triumph_count
-		return cur_client_triumph_count
+		return FLOOR(cur_client_triumph_count, 1)
 
-	return triumph_amount_cache[target_ckey]
+	return FLOOR(triumph_amount_cache[target_ckey], 1)
 
 /*
 	TRIUMPH LEADERBOARD

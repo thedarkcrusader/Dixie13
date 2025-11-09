@@ -1,7 +1,7 @@
 /datum/triumph_buy/communal/preround/exotic_tastes
 	name = "Exotic Tastes"
 	desc = "Contribute to randomize everyone's culinary desires for this round. Automatically refunds if it does not reach its goal before the round starts."
-	triumph_buy_id = TRIUMPH_BUY_ORPHANAGE_RENOVATION
+	triumph_buy_id = TRIUMPH_BUY_EXOTIC_TASTES
 	maximum_pool = 50
 
 /datum/triumph_buy/communal/preround/exotic_tastes/on_activate()
