@@ -14,7 +14,7 @@
 				if(do_after(user, 5 SECONDS, src))
 					var/obj/item/bodypart/bodypart = var/target.get_bodypart(check_zone(user.zone_selected))
 				if(var/bodypart)
-					var/bodypart.add_wound(/datum/wound/artery/neck)
+					bodypart.add_wound(/datum/wound/artery/neck)
 		else
 			var/obj/item/held_item = user.get_active_held_item()
 				if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
