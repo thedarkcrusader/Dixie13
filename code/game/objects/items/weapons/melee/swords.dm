@@ -1070,12 +1070,12 @@
 	. = ..()					//Pre-blessed, +5 DMG, +100 Blade int, +100 int, +2 def, make it silver
 	AddComponent(/datum/component/psyblessed, TRUE, 5, 100, 100, 2, TRUE)
 
-/obj/item/weapon/sword/long/broadsword/psy/unforgotten
+/obj/item/weapon/sword/long/greatsword/psydon/unforgotten
 	name = "unforgotten blade"
 	desc = "High Inquisitor Archibald once recorded an expedition of seven brave Adjudicators into Gronnian snow-felled wastes to root out evil. Its leader, Holy Ordinator Guillemin, was said to have held on for seven daes and seven nights against darksteel-clad heretics before Psydon acknowledged his endurance. Nothing but his blade remained - his psycross wrapped around its hilt in rememberance."
 	icon_state = "forgottenblade"
 
-/obj/item/weapon/sword/long/broadsword/psy/unforgotten/Initialize()
+/obj/item/weapon/sword/long/greatsword/psydon/unforgotten/Initialize()
 	. = ..()					//+50 Blade int, +3 DMG, +50 int, +1 def, make it silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, 50, 50, 1, TRUE)
 
