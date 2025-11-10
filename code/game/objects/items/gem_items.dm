@@ -1074,7 +1074,7 @@
 
 /obj/item/carvedgem/opal/cameo
 	name = "opaloise cameo"
-	desc = "A cameo carved out of shell depicting...someone? Use your imagination on who it could be."
+	desc = "A cameo carved out of opaloise depicting...someone? Use your imagination on who it could be."
 	icon_state = "cameo_opal"
 	grid_height = 32
 	grid_width = 32
