@@ -1,6 +1,6 @@
 /datum/job/advclass/psyaltrist
-	title = "Psyaltrist"
-	tutorial = "Every inquisitor has their second. You aim to keep spirits and faith high, while handling the needs of the inquisitor. Not a glamorous role, but a vital one. “Maybe his lordship would prefer the lute, today, over the viola?”"
+	title = "Cantor"
+	tutorial = "While other prospective inquisitors have their blades or their cords, you have faith. The Ordo Venatari has allowed the Ordo Sanctae Cruoris to bless you - Psydon hears your prayers. Play your music, soothe your allies' souls, and lull the unwary to sleep."
 	outfit = /datum/outfit/job/psyaltrist
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	category_tags = list(CTAG_INQUISITION)
@@ -16,12 +16,14 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
 	)
-
+	spells = list(
+		// baby transfix goes here
+	)
 
 /datum/outfit/job/psyaltrist/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/armor/leather/studded/psyaltrist
@@ -71,4 +73,4 @@
 
 /datum/outfit/job/psyaltrist/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
-	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Psyaltrist")
+	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Cantor")
