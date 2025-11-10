@@ -11,7 +11,7 @@
 	confess_lines = list(
 		"THERE IS ONLY ONE GOD!",
 		"THE SUCCESSORS HALT HIS RETURN!",
-		"PSYDON LIVES!",
+		"PSYDON LYVES!",
 	)
 	profane_words = list()
 
