@@ -9,7 +9,7 @@
 	sound = 'sound/magic/psydonbleeds.ogg'
 	invocation = "I BLEED, SO THAT YOU MIGHT ENDURE!"
 	invocation_type = "shout"
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/skill/magic/blood
 	cooldown_time = 1 MINUTES // 60 seconds cooldown
 
 /datum/action/cooldown/spell/psydonlux_tamper/cast(mob/living/carbon/human/H)

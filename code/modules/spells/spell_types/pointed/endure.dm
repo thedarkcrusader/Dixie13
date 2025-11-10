@@ -26,7 +26,7 @@
 	sound = 'sound/magic/ENDVRE.ogg'
 	invocation = "LIVE, ENDURE!" // holy larp yelling for healing is silly
 	invocation_type = "none"
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/skill/magic/blood
 	cooldown_time = 30 SECONDS
 
 /datum/action/cooldown/spell/psydonendure/cast(mob/living/target)
