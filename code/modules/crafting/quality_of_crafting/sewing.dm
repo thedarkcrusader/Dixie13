@@ -1526,7 +1526,7 @@
 	category = "Cloak"
 
 /datum/repeatable_crafting_recipe/sewing/psyaltrist
-	name = "psyalter's stole"
+	name = "cantor's stole"
 	output = /obj/item/clothing/cloak/psyaltrist
 	requirements = list(
 		/obj/item/natural/silk = 2,
