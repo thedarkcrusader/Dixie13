@@ -23,6 +23,11 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	magic_user = TRUE
 
+	spells = list(
+		/datum/action/cooldown/spell/aoe/knock,
+		/datum/action/cooldown/spell/undirected/jaunt/ethereal_jaunt,
+		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
+	)
 	spell_points = 17
 	attunements_max = 6
 	attunements_min = 4
