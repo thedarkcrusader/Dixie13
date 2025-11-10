@@ -11026,12 +11026,6 @@
 	},
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church/chapel)
-"gad" = (
-/obj/item/inqarticles/indexer{
-	pixel_x = 2
-	},
-/turf/open/floor/dirt,
-/area/rogue/outdoors/town)
 "gap" = (
 /turf/open/floor/woodturned,
 /area/rogue/indoors/soilsons)
@@ -117487,7 +117481,7 @@ vnF
 vnF
 vnF
 vnF
-gad
+jdk
 vnF
 vnF
 jdk
