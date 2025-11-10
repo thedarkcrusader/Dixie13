@@ -84,6 +84,8 @@
 	var/list/allowed_sexes = list(MALE, FEMALE)
 	/// Species allowed to be this job
 	var/list/allowed_races = RACES_PLAYER_ALL
+	/// Species blacklisted from this job
+	var/list/blacklisted_species = list()
 	/// Ages allowed to be this job
 	var/list/allowed_ages = ALL_AGES_LIST
 
@@ -271,15 +273,15 @@
 	spawned.adjust_spell_points(spell_points)
 	spawned.generate_random_attunements(rand(attunements_min, attunements_max))
 
-	spawned.remove_stat_modifier("job_stats") // Reset so no inf stat
-	spawned.adjust_stat_modifier_list("job_stats", jobstats)
+	spawned.remove_stat_modifier(STATMOD_JOB) // Reset so no inf stat
+	spawned.adjust_stat_modifier_list(STATMOD_JOB, jobstats)
 
 	for(var/datum/skill/skill as anything in skills)
 		var/amount_or_list = skills[skill]
 		if(islist(amount_or_list))
 			spawned.clamped_adjust_skillrank(skill, amount_or_list[1], amount_or_list[2], TRUE)
 		else
-			spawned.clamped_adjust_skillrank(skill, amount_or_list, amount_or_list, TRUE) //! This was changed because what the fuck.
+			spawned.adjust_skillrank(skill, amount_or_list, TRUE)
 
 	for(var/X in peopleknowme)
 		for(var/datum/mind/MF in get_minds(X))
@@ -350,8 +352,21 @@
 	if(length(advclass_cat_rolls))
 		spawned.hugboxify_for_class_selection()
 
+	if(spawned.culinary_preferences[CULINARY_RANDOM_PREFERENCES])
+		var/obj/item/food_instance = spawned.culinary_preferences[CULINARY_FAVOURITE_FOOD]
+		var/datum/reagent/consumable/drink_instance = spawned.culinary_preferences[CULINARY_FAVOURITE_DRINK]
+		var/obj/item/hated_food_instance = spawned.culinary_preferences[CULINARY_HATED_FOOD]
+		var/datum/reagent/consumable/hated_drink_instance = spawned.culinary_preferences[CULINARY_HATED_DRINK]
+
+		bordered_message(spawned, list(
+			"Your favourite food is <span style='color: green;'>[capitalize(initial(food_instance.name))]</span>",
+			"Your favourite drink is <span style='color: green;'>[capitalize(initial(drink_instance.name))]</span>",
+			"Your most hated food is <span style='color: red;'>[capitalize(initial(hated_food_instance.name))]</span>",
+			"Your most hated drink is <span style='color: red;'>[capitalize(initial(hated_drink_instance.name))]</span>",
+		))
+
 	if(job_flags & JOB_SHOW_IN_CREDITS)
-		SScrediticons.processing += spawned
+		START_PROCESSING(SScrediticons, player_client)
 
 /datum/job/proc/adjust_patron(mob/living/carbon/human/spawned)
 	if(!length(allowed_patrons))
@@ -400,6 +415,7 @@
 /mob/living/carbon/human/proc/pick_job_packs(datum/job/equipping)
 	if(!length(equipping.job_packs))
 		return
+
 	var/for_length = 1
 	if(islist(equipping.job_packs[1]))
 		for_length = length(equipping.job_packs)
@@ -410,7 +426,7 @@
 		var/list/job_packs = equipping.job_packs
 		if(islist(equipping.job_packs[i]))
 			job_packs = equipping.job_packs[i]
-		var/datum/job_pack/picked_pack
+
 		var/list/reals = list()
 		for(var/pack as anything in job_packs)
 			var/datum/job_pack/real_pack = GLOB.job_pack_singletons[pack]
@@ -419,11 +435,17 @@
 			reals |= real_pack
 		if(!length(reals))
 			return
+
+		var/datum/job_pack/picked_pack
 		if(!client)
 			picked_pack = GLOB.job_pack_singletons[pick(reals)]
 		else
 			picked_pack = browser_input_list(src, equipping.pack_title, equipping.pack_message, reals, timeout = 20 SECONDS)
+			if(QDELETED(src))
+				return
+
 		previous_picked_types |= picked_pack.type
+
 		picked_pack.pick_pack(src)
 
 /mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)

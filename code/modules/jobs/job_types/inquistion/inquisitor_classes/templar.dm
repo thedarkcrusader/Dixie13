@@ -5,7 +5,6 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/psydoniantemplar
 	category_tags = list(CTAG_INQUISITION)
-	cmode_music = 'sound/music/templarofpsydonia.ogg'
 
 	jobstats = list(
 		STATKEY_STR = 2,
@@ -24,7 +23,6 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE
 	)
@@ -34,6 +32,8 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_INQUISITION,
 		TRAIT_SILVER_BLESSED,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 	voicepack_m = /datum/voicepack/male/knight
@@ -41,6 +41,42 @@
 /datum/job/advclass/psydoniantemplar/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Templar")
+
+	var/static/list/helmets = list(
+		"Barbute" = /obj/item/clothing/head/helmet/heavy/psydonbarbute,
+		"Sallet" = /obj/item/clothing/head/helmet/heavy/psysallet,
+		"Armet" = /obj/item/clothing/head/helmet/heavy/psydonhelm,
+		"Bucket Helm" = /obj/item/clothing/head/helmet/heavy/psybucket,
+	)
+	spawned.select_equippable(player_client, helmets, message = "Choose your HELMET.", title = "TAKE UP PSYDON'S HELMS.")
+
+	var/static/list/armors = list(
+		"Hauberk" = /obj/item/clothing/armor/chainmail/hauberk/fluted,
+		"Cuirass" = /obj/item/clothing/armor/cuirass/fluted,
+	)
+	var/armor_choice = spawned.select_equippable(player_client, helmets, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
+	if(armor_choice == "Cuirass")
+		spawned.change_stat(STATKEY_SPD, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
+
+	var/static/list/weapons = list(
+		"Psydonic Longsword" = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/sword/long/psydon),
+		"Psydonic War Axe" = /obj/item/weapon/axe/psydon,
+		"Psydonic Whip" = /obj/item/weapon/whip/psydon,
+		"Psydonic Flail" = /obj/item/weapon/flail/psydon,
+		"Psydonic Mace" = /obj/item/weapon/mace/goden/psydon,
+		"Psydonic Spear + Handmace" = list(/obj/item/weapon/polearm/spear/psydon, /obj/item/weapon/mace/cudgel/psy),
+		"Psydonic Poleaxe + Shortsword" = list(/obj/item/weapon/greataxe/psy, /obj/item/weapon/sword/short/psy),
+	)
+	var/weapon_choice = spawned.select_equippable(player_client, weapons)
+	switch(weapon_choice)
+		if("Psydonic Longsword")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
+		if("Psydonic War Axe", "Psydonic Mace", "Psydonic Poleaxe + Shortsword")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4, TRUE)
+		if("Psydonic Whip", "Psydonic Flail")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4, TRUE)
+		if("Psydonic Spear + Handmace")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)
 
 /datum/outfit/psydoniantemplar
 	name = "Psydonian Templar"
@@ -62,56 +98,3 @@
 		/obj/item/storage/keyring/inquisitor = 1,
 		/obj/item/paper/inqslip/arrival/ortho = 1,
 	)
-
-/datum/outfit/psydoniantemplar/pre_equip(mob/living/carbon/human/H)
-	. = ..()
-	//ffs
-
-	var/helmets = list("Barbute", "Sallet", "Armet", "Bucket Helm")
-	var/helmet_choice = input(H,"Choose your HELMET.", "TAKE UP PSYDON'S HELMS.") as anything in helmets
-	switch(helmet_choice)
-		if("Barbute")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psydonbarbute, ITEM_SLOT_HEAD, TRUE)
-		if("Sallet")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psysallet, ITEM_SLOT_HEAD, TRUE)
-		if("Armet")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psydonhelm, ITEM_SLOT_HEAD, TRUE)
-		if("Bucket Helm")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psybucket, ITEM_SLOT_HEAD, TRUE)
-
-	var/armors = list("Hauberk", "Cuirass")
-	var/armor_choice = input(H, "Choose your ARMOR.", "TAKE UP PSYDON'S MANTLE.") as anything in armors
-	switch(armor_choice)
-		if("Hauberk")
-			H.equip_to_slot_or_del(new /obj/item/clothing/armor/chainmail/hauberk/fluted, ITEM_SLOT_ARMOR, TRUE)
-		if("Cuirass")
-			H.equip_to_slot_or_del(new /obj/item/clothing/armor/cuirass/fluted, ITEM_SLOT_ARMOR, TRUE)
-			H.change_stat(STATKEY_SPD, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
-
-	var/weapons = list("Psydonic Longsword", "Psydonic War Axe", "Psydonic Whip", "Psydonic Flail", "Psydonic Mace", "Psydonic Spear + Handmace", "Psydonic Poleaxe + Shortsword")
-	var/weapon_choice = input(H,"Choose your WEAPON.", "TAKE UP PSYDON'S ARMS.") as anything in weapons
-	switch(weapon_choice)
-		if("Psydonic Longsword")
-			H.put_in_hands(new /obj/item/weapon/sword/long/psydon(H), TRUE)
-			H.put_in_hands(new /obj/item/weapon/scabbard/sword(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)
-		if("Psydonic War Axe")
-			H.put_in_hands(new /obj/item/weapon/axe/psydon(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
-		if("Psydonic Whip")
-			H.put_in_hands(new /obj/item/weapon/whip/psydon(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
-		if("Psydonic Flail")
-			H.put_in_hands(new /obj/item/weapon/flail/psydon(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
-		if("Psydonic Mace")
-			H.put_in_hands(new /obj/item/weapon/mace/goden/psydon(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
-		if("Psydonic Spear + Handmace")
-			H.put_in_hands(new /obj/item/weapon/polearm/spear/psydon(H), TRUE)
-			H.put_in_hands(new /obj/item/weapon/mace/cudgel/psy(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
-		if("Psydonic Poleaxe + Shortsword")
-			H.put_in_hands(new /obj/item/weapon/greataxe/psy(H), TRUE)
-			H.put_in_hands(new /obj/item/weapon/sword/short/psy(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)

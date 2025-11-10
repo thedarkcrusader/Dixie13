@@ -21,22 +21,30 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
-		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 	)
 
 	traits = list(
 		TRAIT_INQUISITION,
 		TRAIT_SILVER_BLESSED,
 		TRAIT_STEELHEARTED,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
+
+	languages = list(/datum/language/oldpsydonic)
 
 /datum/job/advclass/disciple/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Disciple")
 
+	var/datum/species/species = spawned.dna?.species
+	if(species)
+		species.native_language = "Old Psydonic"
+		species.accent_language = species.get_accent(species.native_language)
+
 	if(!spawned.mind)
 		return
-
+	// I Hate
 	var/static/list/weapons = list(
 		"Discipline - Unarmed" = null,
 		"Katar" = /obj/item/weapon/katar/psydon,
@@ -62,36 +70,29 @@
 			spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
+	// This SHIT
 	var/static/list/gear = list(
-		"Grenzelhoftian - Heavyweight, Blacksteel Thorns",
-		"Naledian - Lightweight, Arcyne-Martiality",
+		"Heavyweight, Blacksteel Thorns",
+		"Lightweight, Dodge-Expert",
 	)
 	var/armor_choice = browser_input_list(player_client, "Choose your ARCHETYPE.", "TAKE UP PSYDON'S DUTY.", gear)
 	switch(armor_choice)
-		if("Grenzelhoftian - Heavyweight, Blacksteel Thorns")
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/roguehood/psydon(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/helmet/blacksteel/psythorns(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/wrists/bracers/psythorns(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/neck/psycross/silver(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/ring/signet/silver(), TRUE, TRUE)
-		if("Naledian - Lightweight, Arcyne-Martiality")
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/head/headband/naledi(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/face/lordmask/naledi/sojourner(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/wrists/bracers/naledi(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/neck/psycross/g(), TRUE, TRUE)
-			spawned.equip_to_appropriate_slot(new /obj/item/clothing/ring/signet(), TRUE, TRUE)
-			spawned.put_in_hands(new /obj/item/spellbook_unfinished/pre_arcyne)
+		if("Heavyweight, Blacksteel Thorns")
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/head/roguehood/psydon, ITEM_SLOT_HEAD)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/blacksteel/psythorns, ITEM_SLOT_MASK)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/wrists/bracers/psythorns, ITEM_SLOT_WRISTS)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/neck/psycross/silver, ITEM_SLOT_NECK)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/ring/signet/silver, ITEM_SLOT_RING)
+		if("Lightweight, Dodge-Expert")
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/head/headband/naledi(), ITEM_SLOT_HEAD)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/face/lordmask/naledi/sojourner(), ITEM_SLOT_MASK)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/wrists/bracers/naledi(), ITEM_SLOT_WRISTS)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/neck/psycross/g(), ITEM_SLOT_NECK)
+			spawned.equip_to_slot_or_del(new /obj/item/clothing/ring/signet(), ITEM_SLOT_RING)
+
 			ADD_TRAIT(spawned, TRAIT_DODGEEXPERT, JOB_TRAIT)
 			REMOVE_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
-			var/list/spells = list(
-				/datum/action/cooldown/spell/undirected/forcewall,
-				/datum/action/cooldown/spell/projectile/sickness,
-				/datum/action/cooldown/spell/projectile/fetch,
-				/datum/action/cooldown/spell/undirected/message,
-				/datum/action/cooldown/spell/undirected/touch/bladeofpsydon,
-			)
-			for(var/datum/action/cooldown/spell/spell as anything in spells)
-				spawned.add_spell(spell)
+
 			var/list/stats = list(
 				STATKEY_CON = -3,
 				STATKEY_INT = 3,

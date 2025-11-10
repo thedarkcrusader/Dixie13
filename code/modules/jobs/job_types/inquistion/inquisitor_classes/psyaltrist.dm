@@ -1,14 +1,15 @@
 /datum/job/advclass/psyaltrist
 	title = "Psyaltrist"
 	tutorial = "Every inquisitor has their second. You aim to keep spirits and faith high, while handling the needs of the inquisitor. Not a glamorous role, but a vital one. “Maybe his lordship would prefer the lute, today, over the viola?”"
-	outfit = /datum/outfit/psyaltrist
-	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH)
 	category_tags = list(CTAG_INQUISITION)
+	outfit = /datum/outfit/psyaltrist
+
 	jobstats = list(
 		STATKEY_STR = 1,
 		STATKEY_END = 1,
 		STATKEY_SPD = 3,
 	)
+
 	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
@@ -22,10 +23,11 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
 	)
 
+	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH)
+
 	spells = list(/datum/action/cooldown/spell/vicious_mockery)
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
-
 
 /datum/job/advclass/psyaltrist/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -33,9 +35,6 @@
 
 	var/datum/inspiration/I = new /datum/inspiration(spawned)
 	I.grant_inspiration(spawned, bard_tier = BARD_T3)
-
-	if(!spawned.mind)
-		return
 
 	var/static/list/instruments = list(
 		"Harp" = /obj/item/instrument/harp,

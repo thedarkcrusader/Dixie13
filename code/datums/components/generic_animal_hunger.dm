@@ -85,7 +85,7 @@
 
 /datum/component/generic_mob_hunger/proc/return_hunger()
 	SIGNAL_HANDLER
-	return current_hunger / max_hunger
+	return (current_hunger / max_hunger) * 100
 
 /datum/component/generic_mob_hunger/process()
 	if(hunger_paused || !hunger_drain || (feed_pause_end > world.time))
