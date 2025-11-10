@@ -1444,10 +1444,6 @@
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
-"ki" = (
-/mob/living/simple_animal/hostile/retaliate/lampreywolf,
-/turf/open/floor/dirt/road,
-/area/rogue/under/town/basement)
 "kj" = (
 /obj/structure/well,
 /turf/open/floor/grass/yel,
@@ -2193,6 +2189,10 @@
 /obj/structure/carpet,
 /turf/open/floor/tile/checkeralt,
 /area/rogue/indoors/town/manor)
+"uu" = (
+/mob/living/simple_animal/hostile/retaliate/trogfish,
+/turf/open/floor/cobblerock,
+/area/rogue/under/town/basement)
 "uC" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -4978,7 +4978,7 @@ Gw
 Gw
 Gw
 Gw
-ki
+Nx
 Gw
 Gw
 Gw
@@ -6001,7 +6001,7 @@ Gw
 Gw
 Gw
 Gw
-Gw
+uu
 Gw
 Gw
 Gw

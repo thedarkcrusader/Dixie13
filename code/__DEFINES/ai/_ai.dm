@@ -79,8 +79,6 @@
 #define BB_KRAKEN_INK "bb_kraken_ink"
 #define BB_KRAKEN_WHIRLPOOL "bb_kraken_whirlpool"
 
-#define BB_TROGFISH_EXPLODE "bb_trogfish_explode"
-
 ///Baby-making blackboard
 ///Types of animal we can make babies with.
 #define BB_BABIES_PARTNER_TYPES "BB_babies_partner"

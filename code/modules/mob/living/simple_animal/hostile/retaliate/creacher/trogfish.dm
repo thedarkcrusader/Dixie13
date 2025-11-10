@@ -4,12 +4,12 @@
 	desc = ""
 	icon_state = "trogfish"
 	icon_living = "trogfish"
-	icon_dead = "trogfish"
+	icon_dead = "trogfish_dead"
 
 	faction = list(FACTION_SEA)
 	emote_hear = list("gurgles.")
 	emote_see = list("oozes.")
-	move_to_delay = 5
+	move_to_delay = 4
 	vision_range = 2
 	aggro_vision_range = 2
 
@@ -21,8 +21,8 @@
 						/obj/item/natural/fur/rous = 1, /obj/item/alch/bone = 4)
 	head_butcher = /obj/item/natural/head/rous
 
-	health = 50
-	maxHealth = 50
+	health = 70
+	maxHealth = 70
 	food_type = list(/obj/item/reagent_containers/food/snacks,
 					/obj/item/bodypart,
 					/obj/item/organ)
@@ -32,7 +32,7 @@
 	melee_damage_lower = 12
 	melee_damage_upper = 14
 
-	base_constitution = 3
+	base_constitution = 8
 	base_strength = 3
 	base_speed = 6
 
@@ -41,7 +41,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 5
-	retreat_health = 0.5
+	retreat_health = 0.3
 	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/trogfish
@@ -81,86 +81,49 @@
 /mob/living/simple_animal/hostile/retaliate/trogfish/Initialize()
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands
 	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
 
-/mob/living/simple_animal/hostile/retaliate/trogfish/get_sound(input)
-	switch(input)
-		if("aggro")
-			return pick('sound/vo/mobs/rat/aggro (1).ogg','sound/vo/mobs/rat/aggro (2).ogg','sound/vo/mobs/rat/aggro (3).ogg')
-		if("pain")
-			return pick('sound/vo/mobs/rat/pain (1).ogg','sound/vo/mobs/rat/pain (2).ogg','sound/vo/mobs/rat/pain (3).ogg')
-		if("death")
-			return pick('sound/vo/mobs/rat/death (1).ogg','sound/vo/mobs/rat/death (2).ogg')
-		if("idle")
-			return pick('sound/vo/mobs/rat/rat_life.ogg','sound/vo/mobs/rat/rat_life2.ogg','sound/vo/mobs/rat/rat_life3.ogg')
+	var/datum/action/cooldown/mob_cooldown/trogfish_burst/burst = new()
+	burst.Grant(src)
+	ai_controller?.set_blackboard_key(BB_TARGETED_ACTION, burst)
 
-/mob/living/simple_animal/hostile/retaliate/trogfish/simple_limb_hit(zone)
-	if(!zone)
-		return ""
-	switch(zone)
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
-		if(BODY_ZONE_PRECISE_GROIN)
-			return "tail"
-		if(BODY_ZONE_HEAD)
-			return "head"
-		if(BODY_ZONE_R_LEG)
-			return "leg"
-		if(BODY_ZONE_L_LEG)
-			return "leg"
-		if(BODY_ZONE_R_ARM)
-			return "foreleg"
-		if(BODY_ZONE_L_ARM)
-			return "foreleg"
-	return ..()
+/datum/action/cooldown/mob_cooldown/trogfish_burst
+	name = "Burst"
+	button_icon = 'icons/effects/effects.dmi'
+	button_icon_state = "acid"
+	desc = "Contract your trogbladder, killing you in and producing a mass of acidic bile."
+	cooldown_time = 7 SECONDS
 
-/datum/action/cooldown/mob_cooldown/trogfish_explode
-    name = "Burst"
-    button_icon = 'icons/effects/effects.dmi'
-    button_icon_state = "acid"
-    desc = "Contract your trogbladder, killing you in and producing a mass of acidic bile."
-    var/projectile_type = /obj/projectile/tentacle_acid
-	var/countdown = 3.5 SECONDS
+	var/burst_liquid = /datum/reagent/toxin/acid
+	var/burst_amt = 100 // keep in mind the threat scale as well
+	var/burst_range = 2
+	//TO DO: NEW SOUND
+	var/sound_type = /datum/looping_sound/invokefire
 
 
-/datum/action/cooldown/mob_cooldown/trogfish_explode/Activate(atom/target)
-    if(!isliving(target))
-        return FALSE
+/datum/action/cooldown/mob_cooldown/trogfish_burst/Activate(atom/target)
+	if(isdead(owner)) // how
+		return FALSE
 
-    var/turf/start_turf = get_turf(owner)
-    if(!start_turf)
-        return FALSE
+	owner.visible_message(span_userdanger("[owner] starts to bubble and expand!"))
 
-    owner.visible_message(span_userdanger("[owner] starts to bubble and expand!"))
+	var/datum/looping_sound/sound_loop
+	if(sound_type)
+		sound_loop = new sound_type(_parent = owner, start_immediately = TRUE)
+	if(do_after(owner, cooldown_time / 2, owner, (IGNORE_USER_LOC_CHANGE|IGNORE_INCAPACITATED|IGNORE_SLOWDOWNS|IGNORE_USER_DIR_CHANGE)))
+		var/turf/epicenter = get_turf(owner)
+		if(!epicenter) // HOW
+			return FALSE
+		owner.visible_message(span_userdanger("[owner] violently bursts!"))
+		var/datum/reagents/R = new(burst_amt, NO_REACT)
+		R.add_reagent(burst_liquid, burst_amt)
+		chem_splash(epicenter, burst_range, list(R, owner.reagents), 2)
+		owner.gib()
+		qdel(R)
 
-	sleep(countdown)
+	if(sound_loop)
+		sound_loop.stop(TRUE)
+		qdel(sound_loop)
 
-    var/obj/projectile/tentacle_acid/proj = new projectile_type(start_turf)
-    proj.firer = owner
-    proj.fired_from = start_turf
-    proj.preparePixelProjectile(target, owner)
-    proj.fire()
-
-    StartCooldown()
-    return TRUE
+	StartCooldown()
+	return TRUE
