@@ -435,7 +435,6 @@
 
 	addtimer(CALLBACK(src, PROC_REF(go_boom)), 7.5 SECONDS)
 	is_going_to_boom = TRUE
-	return
 
 /obj/item/clothing/neck/gorget/explosive/proc/go_boom()
 	if(!is_in_neck_slot || !is_going_to_boom)
@@ -454,7 +453,6 @@
 		to_decap.dismember(BRUTE) //its a NECK collar
 
 	qdel(src)
-	return
 
 /obj/item/collar_detonator
 	name = "collar detonator"
@@ -476,8 +474,8 @@
 		return
 
 	var/mob/living/carbon/to_bomb = target
-	if(istype(to_bomb.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/gorget/explosive))
-		var/obj/item/clothing/neck/gorget/explosive/collar = to_bomb.get_item_by_slot(ITEM_SLOT_NECK)
+	var/obj/item/clothing/neck/gorget/explosive/collar = to_bomb.get_item_by_slot(ITEM_SLOT_NECK)
+	if(istype(collar))
 		collar.prepare_to_go_boom()
 	else
 		to_chat(user, span_notice("Target is not wearing a collar of servitude!"))
