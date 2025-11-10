@@ -12,11 +12,12 @@
 	. = ..()
 	if(!.)
 		return
-
-	//only migrants and peasants
+	//Can't convert devoted faithfuls
 	if(cast_on.has_flaw(/datum/charflaw/addiction/godfearing))
 		cast_on.say("I FOLLOW MY GOD INTO DEATH!!!")
 		return FALSE
-	if(accept_message)
-		cast_on.set_patron(/datum/patron/psydon, TRUE)
 	return TRUE
+
+/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/on_converion(mob/living/carbon/human/cast_on)
+	. = ..()
+	cast_on.set_patron("Psydon")
