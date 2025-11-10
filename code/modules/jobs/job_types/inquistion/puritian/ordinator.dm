@@ -44,7 +44,7 @@
 		"The Forgotten Blade",
 	)
 	var/gear_choice = browser_input_list(spawned, "CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.", gear)
-	switch(weapon_choice)
+	switch(gear_choice)
 		if("Covenant And Creed (Broadsword + Shield)")
 			spawned.put_in_hands(new /obj/item/weapon/sword/long/greatsword/broadsword/psy/relic(get_turf(spawned)), TRUE)
 			spawned.put_in_hands(new /obj/item/paper/inqslip/arrival/inq(get_turf(spawned)), TRUE)
