@@ -1525,9 +1525,9 @@
 	craftdiff = 1
 	category = "Cloak"
 
-/datum/repeatable_crafting_recipe/sewing/psyaltrist
+/datum/repeatable_crafting_recipe/sewing/cantor
 	name = "cantor's stole"
-	output = /obj/item/clothing/cloak/psyaltrist
+	output = /obj/item/clothing/cloak/cantor
 	requirements = list(
 		/obj/item/natural/silk = 2,
 		/obj/item/natural/fibers = 1

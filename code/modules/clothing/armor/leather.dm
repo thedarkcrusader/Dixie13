@@ -294,7 +294,7 @@
 	desc = "An insulated leather coat with capelets. It protects you well from the elements, a useful thing for those who like to wait in ambush."
 	color = CLOTHING_ASH_GREY
 
-/obj/item/clothing/armor/leather/studded/psyaltrist
+/obj/item/clothing/armor/leather/studded/cantor
 	name = "cuir-bouilli armor"
 	desc = "Treated, water-boiled and composite-layered leather armor of fine Grenzelhoftian make."
 	icon_state = "cuirbouilli"

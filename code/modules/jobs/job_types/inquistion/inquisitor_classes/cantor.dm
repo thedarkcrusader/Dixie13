@@ -1,7 +1,7 @@
-/datum/job/advclass/psyaltrist
+/datum/job/advclass/cantor
 	title = "Cantor"
 	tutorial = "While other prospective inquisitors have their blades or their cords, you have faith. The Ordo Venatari has allowed the Ordo Sanctae Cruoris to bless you - Psydon hears your prayers. Play your music, soothe your allies' souls, and lull the unwary to sleep."
-	outfit = /datum/outfit/job/psyaltrist
+	outfit = /datum/outfit/job/cantor
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	category_tags = list(CTAG_INQUISITION)
 	jobstats = list(
@@ -26,10 +26,10 @@
 		/datum/action/cooldown/spell/undirected/transfix/lesser,
 	)
 
-/datum/outfit/job/psyaltrist/pre_equip(mob/living/carbon/human/H)
-	armor = /obj/item/clothing/armor/leather/studded/psyaltrist
+/datum/outfit/job/cantor/pre_equip(mob/living/carbon/human/H)
+	armor = /obj/item/clothing/armor/leather/studded/cantor
 	backl = /obj/item/storage/backpack/satchel/otavan
-	cloak = /obj/item/clothing/cloak/psyaltrist
+	cloak = /obj/item/clothing/cloak/cantor
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	gloves = /obj/item/clothing/gloves/leather/otavan
 	wrists = /obj/item/clothing/neck/psycross/silver
@@ -72,6 +72,6 @@
 			if("Flute")
 				backr = /obj/item/instrument/flute
 
-/datum/outfit/job/psyaltrist/post_equip(mob/living/carbon/human/H, visuals_only)
+/datum/outfit/job/cantor/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Cantor")
