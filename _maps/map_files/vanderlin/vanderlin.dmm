@@ -18211,10 +18211,6 @@
 /obj/structure/bookcase/random_recipes,
 /turf/open/floor/carpet/green,
 /area/rogue/indoors/town)
-"kcg" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/dirt,
-/area/rogue/outdoors/rtfield/safe)
 "kcp" = (
 /obj/structure/window/openclose/reinforced{
 	dir = 4
@@ -41135,7 +41131,8 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "xyu" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/machinery/light/fueled/firebowl/stump,
+/obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "xyy" = (
@@ -159279,8 +159276,8 @@ aWD
 aWD
 nlp
 eTF
-kcg
-nZK
+ucW
+gZZ
 uzX
 ucW
 ucW
@@ -159477,11 +159474,11 @@ eCh
 nZK
 aWD
 aUi
-aWD
+nEW
 aWD
 nZK
+fYR
 aWD
-mAU
 aWD
 aWD
 fYR
@@ -159680,8 +159677,8 @@ aWD
 mAU
 aWD
 nZK
-nEW
 eTF
+aWD
 fYR
 aWD
 tWR
@@ -159883,7 +159880,7 @@ nlp
 ukJ
 aWD
 aWD
-nlp
+ucW
 nlp
 nZK
 aWD
@@ -160085,7 +160082,7 @@ aWD
 aWD
 aPT
 nlp
-aWD
+ucW
 mAU
 cxv
 nZK
@@ -160286,8 +160283,8 @@ nlp
 eUp
 fYR
 aWD
-nZK
-aWD
+gZZ
+fYR
 nEW
 nlp
 nlp
