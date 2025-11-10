@@ -27066,10 +27066,6 @@
 	},
 /turf/open/floor/concrete,
 /area/rogue/outdoors/town/roofs)
-"pkO" = (
-/obj/item/queen_bee,
-/turf/open/floor/grass,
-/area/rogue/outdoors/rtfield/safe)
 "pkP" = (
 /obj/effect/landmark/start/guardsman,
 /turf/open/floor/hexstone,
@@ -37257,7 +37253,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/manor/lord_appt)
 "vlY" = (
-/obj/structure/apiary/starter,
+/obj/structure/apiary,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "vmG" = (
@@ -160692,7 +160688,7 @@ vgJ
 mAU
 cxv
 aWD
-pkO
+aWD
 nlp
 vlY
 aWD
