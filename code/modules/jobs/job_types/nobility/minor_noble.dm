@@ -142,7 +142,7 @@
 		beltr = /obj/item/weapon/knife/dagger/steel/special
 		scabbards = list(/obj/item/weapon/scabbard/knife)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea = 1, /obj/item/reagent_containers/glass/bottle/glazed_teacup = 3, /obj/item/storage/keyring)
+		backpack_contents = list(/obj/item/reagent_containers/glass/carafe/teapot/water = 1, /obj/item/reagent_containers/glass/cup/teacup/fancy = 3, /obj/item/storage/keyring)
 	else
 		beltr = /obj/item/weapon/sword/rapier/dec
 		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
