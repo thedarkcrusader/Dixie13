@@ -116,7 +116,3 @@
 
 /datum/ai_behavior/run_away_from_target/saiga
 	run_distance = 4
-
-/datum/ai_behavior/run_away_from_target/lampreywolf
-	run_distance = 4
-	clear_failed_targets = FALSE
