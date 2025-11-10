@@ -1,13 +1,13 @@
 /datum/job/advclass/disciple
 	title = "Disciple"
-	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Psydon’s most dauntless warriors."
+	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings from the Ordo Sanctae Cruoris to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Psydon’s most dauntless warriors."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/disciple
 	category_tags = list(CTAG_INQUISITION)
 	jobstats = list(
 		STATKEY_STR = 3,
-		STATKEY_END = 3,
+		STATKEY_END = 2,
 		STATKEY_CON = 3,
 		STATKEY_INT = -2,
 		STATKEY_SPD = -1
@@ -16,7 +16,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
