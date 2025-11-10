@@ -1581,10 +1581,6 @@
 "aPS" = (
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
-"aPT" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors/rtfield/safe)
 "aQa" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat,
@@ -37250,7 +37246,7 @@
 /area/rogue/indoors/town/manor/lord_appt)
 "vlY" = (
 /obj/structure/apiary,
-/turf/open/floor/grass,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "vmG" = (
 /obj/structure/table/vtable,
@@ -41133,7 +41129,7 @@
 "xyu" = (
 /obj/machinery/light/fueled/firebowl/stump,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/dirt,
+/turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "xyy" = (
 /obj/structure/bed/shit,
@@ -159675,7 +159671,7 @@ eCh
 fYR
 aWD
 mAU
-aWD
+fYR
 nZK
 eTF
 aWD
@@ -159876,9 +159872,9 @@ aWD
 nlp
 nlp
 nEW
-nlp
-ukJ
 aWD
+nlp
+fYR
 aWD
 ucW
 nlp
@@ -160077,10 +160073,10 @@ vgJ
 ukJ
 nlp
 nZK
-aWD
-aWD
-aWD
-aPT
+nlp
+nlp
+nlp
+fYR
 nlp
 ucW
 mAU
@@ -160282,7 +160278,7 @@ aUi
 nlp
 eUp
 fYR
-aWD
+ukJ
 gZZ
 fYR
 nEW
@@ -160481,12 +160477,12 @@ vgJ
 vgJ
 eCh
 mAU
-nZK
+fYR
 ukJ
-aWD
-aWD
-aWD
-aWD
+fYR
+nlp
+nlp
+fYR
 nEW
 nEW
 ukJ
@@ -160684,8 +160680,8 @@ vgJ
 vgJ
 mAU
 cxv
-aWD
-aWD
+fYR
+fYR
 nlp
 vlY
 aWD
@@ -160888,7 +160884,7 @@ vgJ
 eCh
 eCh
 xyu
-aWD
+fYR
 aWD
 nZK
 vgJ
