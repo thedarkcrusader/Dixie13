@@ -12,6 +12,7 @@
 	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
+		/datum/skill/magic/blood = SKILL_LEVEL_APPRENTICE, //for their transfix. taught the basics by the Ordo Sanctae
 		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
@@ -22,7 +23,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
 	)
 	spells = list(
-		// baby transfix goes here
+		/datum/action/cooldown/spell/undirected/transfix/lesser,
 	)
 
 /datum/outfit/job/psyaltrist/pre_equip(mob/living/carbon/human/H)
