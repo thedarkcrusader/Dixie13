@@ -82,7 +82,22 @@
 /obj/structure/closet/crate/chest/wicker/random_soilson/PopulateContents()
 	for(var/i = 1 to rand(5, 8))
 		var/obj/item/neuFarm/seed/random = pick(subtypesof(/obj/item/neuFarm/seed) - /obj/item/neuFarm/seed/mixed_seed)
-		new random (src)
+		new random(src)
+
+/obj/structure/closet/crate/chest/wicker/random_bee_keeping/PopulateContents()
+	var/static/list/spawnable = list(
+		/obj/item/neuFarm/seed/benedictus = 8, // normal honey
+		/obj/item/neuFarm/seed/valeriana = 7, // normal honey
+		/obj/item/neuFarm/seed/rosa = 7, // normal honey
+		/obj/item/neuFarm/seed/mentha = 6, // normal honey
+		/obj/item/neuFarm/seed/paris = 2, // "toxic" = toxin
+		/obj/item/neuFarm/seed/poppy = 1, // "addictive" = ozium + healing
+		/obj/item/neuFarm/seed/swampleaf = 1, // "mad" = spice + toxin
+	)
+
+	for(var/i = 1 to rand(3, 5))
+		var/obj/item/neuFarm/seed/random = pickweight(spawnable)
+		new random(src)
 
 /obj/structure/closet/crate/chest/neu
 	name = "sturdy oak chest"

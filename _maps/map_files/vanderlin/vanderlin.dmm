@@ -1581,6 +1581,10 @@
 "aPS" = (
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
+"aPT" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/rtfield/safe)
 "aQa" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat,
@@ -1742,7 +1746,6 @@
 	pixel_y = -34
 	},
 /obj/effect/decal/carpet/square/black{
-	pixel_x = 0;
 	pixel_y = 23
 	},
 /turf/open/floor/churchrough,
@@ -5021,7 +5024,6 @@
 	pixel_x = -16
 	},
 /obj/structure/fluff/statue/small{
-	pixel_x = 0;
 	pixel_y = 38
 	},
 /obj/item/clothing/head/flowercrown/salvia{
@@ -5506,8 +5508,7 @@
 	pixel_x = 13
 	},
 /obj/item/reagent_containers/food/snacks/tallow/red{
-	pixel_x = 6;
-	pixel_y = 0
+	pixel_x = 6
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church/inquisition)
@@ -7552,8 +7553,7 @@
 /area/rogue/under/town/basement)
 "ehh" = (
 /obj/structure/fluff/statue/astrata{
-	pixel_x = 0;
-	pixel_y = 0
+	pixel_x = 0
 	},
 /obj/structure/carpet/purple,
 /turf/open/floor/church,
@@ -8642,6 +8642,11 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
+"eLe" = (
+/obj/structure/rack,
+/obj/item/weapon/hoe,
+/turf/open/floor/twig,
+/area/rogue/outdoors/rtfield/safe)
 "eLg" = (
 /obj/structure/window/stained/yellow,
 /turf/open/floor/blocks/newstone/alt,
@@ -8967,6 +8972,10 @@
 	},
 /turf/open/floor/woodturned/nosmooth,
 /area/rogue/indoors/town/manor/knight/knight1)
+"eUp" = (
+/obj/structure/apiary/starter,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors/rtfield/safe)
 "eUt" = (
 /obj/item/bin/water,
 /obj/item/natural/cloth,
@@ -11013,7 +11022,6 @@
 "fZz" = (
 /obj/effect/landmark/start/priest,
 /obj/effect/decal/carpet/kover_purple{
-	pixel_x = 0;
 	pixel_y = -15
 	},
 /turf/open/floor/churchmarble,
@@ -11885,8 +11893,7 @@
 	pixel_y = 8
 	},
 /obj/item/candle/yellow/lit{
-	pixel_x = 7;
-	pixel_y = 0
+	pixel_x = 7
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/church/inquisition)
@@ -17406,10 +17413,6 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/church/inquisition)
-"jGj" = (
-/obj/item/queen_bee,
-/turf/open/floor/dirt,
-/area/rogue/outdoors/rtfield/safe)
 "jGs" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/rack/shelf/biggest,
@@ -17621,8 +17624,7 @@
 	pixel_y = 16
 	},
 /obj/item/reagent_containers/glass/carafe/redwine{
-	pixel_x = -6;
-	pixel_y = 0
+	pixel_x = -6
 	},
 /obj/item/candle/skull/lit{
 	pixel_x = 8;
@@ -18170,7 +18172,6 @@
 	pixel_y = -19
 	},
 /obj/item/bouquet/rosa{
-	pixel_x = 0;
 	pixel_y = -14
 	},
 /turf/open/floor/grass/yel,
@@ -19774,10 +19775,6 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/river)
-"lbz" = (
-/obj/item/inqarticles/bmirror,
-/turf/closed/mineral,
-/area/rogue/under/town/caverogue)
 "lbO" = (
 /obj/structure/window,
 /turf/open/floor/blocks/stonered,
@@ -20700,12 +20697,10 @@
 /area/rogue/under/town/caverogue)
 "lIo" = (
 /obj/structure/flora/sakura{
-	pixel_x = -38;
-	pixel_y = 0
+	pixel_x = -38
 	},
 /obj/item/clothing/head/flowercrown/salvia{
-	pixel_x = 19;
-	pixel_y = 0
+	pixel_x = 19
 	},
 /obj/item/clothing/head/flowercrown/rosa{
 	pixel_x = 8;
@@ -23887,7 +23882,6 @@
 "nwm" = (
 /obj/item/bin/water,
 /obj/effect/decal/carpet/square/black{
-	pixel_x = 0;
 	pixel_y = 3
 	},
 /turf/open/floor/churchrough,
@@ -25199,7 +25193,6 @@
 /area/rogue/outdoors/rtfield/safe)
 "ofQ" = (
 /obj/structure/bars/pipe{
-	pixel_x = 0;
 	pixel_y = 14
 	},
 /turf/open/transparent/openspace,
@@ -26793,8 +26786,7 @@
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 8;
-	pixel_x = -17;
-	pixel_y = 0
+	pixel_x = -17
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/church/inquisition)
@@ -27080,6 +27072,10 @@
 	},
 /turf/open/floor/concrete,
 /area/rogue/outdoors/town/roofs)
+"pkO" = (
+/obj/item/queen_bee,
+/turf/open/floor/grass,
+/area/rogue/outdoors/rtfield/safe)
 "pkP" = (
 /obj/effect/landmark/start/guardsman,
 /turf/open/floor/hexstone,
@@ -31022,7 +31018,6 @@
 /obj/structure/table/wood/plain_alt,
 /obj/item/grown/log/tree/stake,
 /obj/item/grown/log/tree/stake{
-	pixel_x = 0;
 	pixel_y = 4
 	},
 /obj/item/needle,
@@ -35054,8 +35049,7 @@
 	pixel_y = 17
 	},
 /obj/item/inqarticles/tallowpot{
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/item/reagent_containers/food/snacks/tallow/red{
 	pixel_y = 13;
@@ -35696,7 +35690,6 @@
 	dir = 1
 	},
 /obj/effect/decal/carpet/kover_black{
-	pixel_x = 0;
 	pixel_y = 9
 	},
 /turf/open/floor/churchrough,
@@ -37071,6 +37064,10 @@
 /obj/item/paper/scroll,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
+"vdP" = (
+/obj/structure/closet/crate/chest/wicker/random_soilson,
+/turf/open/floor/twig,
+/area/rogue/outdoors/rtfield/safe)
 "vee" = (
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/outdoors/town)
@@ -39714,7 +39711,6 @@
 /area/rogue/indoors/town)
 "wEP" = (
 /obj/structure/fluff/walldeco/psybanner{
-	pixel_x = 0;
 	pixel_y = -33
 	},
 /turf/open/floor/church,
@@ -41148,6 +41144,10 @@
 /obj/structure/flora/grass/herb/random,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
+"xyu" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/rtfield/safe)
 "xyy" = (
 /obj/structure/bed/shit,
 /mob/living/carbon/human/species/rousman/npc,
@@ -42459,8 +42459,7 @@
 	pixel_y = 13
 	},
 /obj/structure/flora/grass/herb/valeriana{
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/structure/flora/grass,
 /turf/open/floor/dirt,
@@ -109850,7 +109849,7 @@ vgJ
 vgJ
 vgJ
 vgJ
-lbz
+vgJ
 vgJ
 vgJ
 vgJ
@@ -115505,7 +115504,7 @@ vgJ
 vgJ
 vgJ
 vgJ
-rnG
+vgJ
 vgJ
 fgn
 fgn
@@ -158071,7 +158070,7 @@ fYR
 nlp
 nZK
 nZK
-vlY
+aWD
 nlp
 aWD
 aWD
@@ -158271,7 +158270,7 @@ sGB
 fYR
 fYR
 fYR
-vlY
+aWD
 nZK
 aWD
 fYR
@@ -158475,7 +158474,7 @@ aWD
 fYR
 aUi
 aWD
-jGj
+nlp
 aWD
 nEW
 aWD
@@ -159488,7 +159487,7 @@ eCh
 nZK
 aWD
 aUi
-nEW
+aWD
 aWD
 nZK
 aWD
@@ -159689,10 +159688,10 @@ eCh
 fYR
 aWD
 mAU
-vgJ
-vgJ
 aWD
-aWD
+nZK
+nEW
+eTF
 fYR
 aWD
 tWR
@@ -159890,11 +159889,11 @@ aWD
 nlp
 nlp
 nEW
-vgJ
-vgJ
-vgJ
+nlp
+ukJ
 aWD
-mAU
+aWD
+nlp
 nlp
 nZK
 aWD
@@ -160090,16 +160089,16 @@ vgJ
 vgJ
 ukJ
 nlp
-nEW
-nEW
-vgJ
-vgJ
-vgJ
-vgJ
-nEW
-nlp
-cxv
+nZK
 aWD
+aWD
+aWD
+aPT
+nlp
+aWD
+mAU
+cxv
+nZK
 nEW
 fYR
 nZK
@@ -160292,14 +160291,14 @@ vgJ
 vgJ
 eCh
 eCh
-nEW
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-nEW
+aUi
+nlp
+eUp
+fYR
+aWD
 nZK
+aWD
+nEW
 nlp
 nlp
 fYR
@@ -160493,14 +160492,14 @@ vgJ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-eTF
+eCh
+mAU
+nZK
+ukJ
+aWD
+aWD
+aWD
+aWD
 nEW
 nEW
 ukJ
@@ -160696,13 +160695,13 @@ vgJ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+mAU
+cxv
+aWD
+pkO
+nlp
+vlY
+aWD
 vgJ
 dnU
 nZK
@@ -160899,12 +160898,12 @@ vgJ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+eCh
+eCh
+xyu
+aWD
+aWD
+nZK
 vgJ
 vgJ
 vgJ
@@ -161102,11 +161101,11 @@ vgJ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+eCh
+eCh
+eCh
+eLe
+vdP
 vgJ
 vgJ
 vgJ
@@ -200090,8 +200089,8 @@ uVx
 uVx
 uVx
 uVx
-iWm
-iWm
+uVx
+uVx
 uVx
 uVx
 uVx
@@ -200291,9 +200290,9 @@ uVx
 uVx
 uVx
 uVx
-owk
-dUF
-iWm
+uVx
+uVx
+uVx
 uVx
 uVx
 uVx
@@ -200493,10 +200492,10 @@ uVx
 uVx
 uVx
 uVx
-iWm
-rUM
-iWm
-iWm
+uVx
+uVx
+uVx
+uVx
 uVx
 uVx
 uVx
@@ -200694,11 +200693,11 @@ krC
 uVx
 uVx
 uVx
-owk
-iWm
-iWm
-hnC
-iWm
+uVx
+uVx
+uVx
+uVx
+uVx
 uVx
 uVx
 uVx
@@ -200894,13 +200893,13 @@ iWm
 iWm
 iWm
 iWm
+uVx
+uVx
+uVx
+uVx
 owk
-hhL
-iWm
-krC
-aOl
-owk
-iWm
+hnC
+uVx
 uVx
 uVx
 uVx
@@ -201098,12 +201097,12 @@ rUM
 hnC
 hnC
 iWm
+iWm
+krC
+iWm
 dUF
 iWm
-iWm
-iWm
-dUF
-iWm
+owk
 iWm
 uVx
 uVx
