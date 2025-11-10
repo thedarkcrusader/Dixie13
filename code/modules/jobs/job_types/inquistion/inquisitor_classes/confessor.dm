@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_INQUISITION)
 
 	jobstats = list(
-		STATKEY_SPD = 3,
+		STATKEY_SPD = 2,
 		STATKEY_END = 3,
 		STATKEY_PER = 2,
 		STATKEY_STR = -1
@@ -17,7 +17,7 @@
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_MASTER,
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT, //it is insanely funny if they eat shit fucking up the grappling hook
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN, //Ensures that captured individuals are less likely to die, if subdued with harsher force.
 		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/stealing = SKILL_LEVEL_EXPERT,
