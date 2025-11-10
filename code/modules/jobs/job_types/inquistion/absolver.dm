@@ -62,7 +62,16 @@
 
 /datum/job/absolver/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
+	GLOB.inquisition.add_member_to_school(spawned, "Sanctae", 0, "Absolver")
+
 	spawned.verbs |= /mob/living/carbon/human/proc/view_inquisition
+
+	spawned.hud_used?.shutdown_bloodpool()
+	spawned.hud_used?.initialize_bloodpool()
+	spawned.hud_used?.bloodpool.set_fill_color("#dcdddb")
+	spawned?.hud_used?.bloodpool?.name = "Psydon's Grace: [spawned.bloodpool]"
+	spawned?.hud_used?.bloodpool?.desc = "Devotion: [spawned.bloodpool]/[spawned.maxbloodpool]"
+	spawned.maxbloodpool = 1000
 
 	var/datum/species/species = spawned.dna?.species
 	if(!species)
@@ -70,16 +79,8 @@
 	species.native_language = "Old Psydonic"
 	species.accent_language = species.get_accent(species.native_language)
 
-/datum/outfit/absolver/pre_equip(mob/living/carbon/human/H)
-	..()
-
-	H.hud_used?.shutdown_bloodpool()
-	H.hud_used?.initialize_bloodpool()
-	H.hud_used?.bloodpool.set_fill_color("#dcdddb")
-	H?.hud_used?.bloodpool?.name = "Psydon's Grace: [H.bloodpool]"
-	H?.hud_used?.bloodpool?.desc = "Devotion: [H.bloodpool]/[H.maxbloodpool]"
-	H.maxbloodpool = 1000
-
+/datum/outfit/absolver
+	name = "Absolver"
 	wrists = /obj/item/clothing/wrists/bracers/psythorns
 	gloves = /obj/item/clothing/gloves/leather/otavan/inqgloves
 	beltr = /obj/item/flashlight/flare/torch/lantern/psycenser
@@ -104,7 +105,3 @@
 		/obj/item/natural/worms/leech = 1,
 		/obj/item/key/inquisition = 1,
 		)
-
-/datum/outfit/absolver/post_equip(mob/living/carbon/human/H, visuals_only)
-	. = ..()
-	GLOB.inquisition.add_member_to_school(H, "Sanctae", 0, "Absolver")
