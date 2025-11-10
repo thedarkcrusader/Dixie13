@@ -12,11 +12,11 @@
 				else
 					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 				if(do_after(user, 5 SECONDS, src))
-					var/obj/item/bodypart = target.get_bodypart(check_zone(user.zone_selected))
+					/obj/item/bodypart = target.get_bodypart(check_zone(user.zone_selected))
 				if(bodypart)
 					bodypart.add_wound(/datum/wound/artery/neck)
 		else
-			var/obj/item/held_item = user.get_active_held_item()
+			/obj/item/held_item = user.get_active_held_item()
 				if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
 					if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 						var/datum/bodypart_feature/hair/facial = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
