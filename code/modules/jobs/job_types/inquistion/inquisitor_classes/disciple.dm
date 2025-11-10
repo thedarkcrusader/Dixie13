@@ -44,31 +44,6 @@
 
 	if(!spawned.mind)
 		return
-	// I Hate
-	var/static/list/weapons = list(
-		"Discipline - Unarmed" = null,
-		"Katar" = /obj/item/weapon/katar/psydon,
-		"Knuckledusters" = /obj/item/weapon/knuckles/psydon,
-		"Quarterstaff" = /obj/item/weapon/polearm/woodstaff/quarterstaff,
-	)
-	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "TAKE UP PSYDON'S ARMS!")
-	var/obj/item/clothing/gloves/gloves_to_wear = /obj/item/clothing/gloves/bandages/weighted
-	switch(weapon_choice)
-		if("Discipline - Unarmed")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5)
-			spawned.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5)
-			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
-			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
-			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
-		if("Katar")
-			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
-		if("Knuckledusters")
-			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
-		if("Quarterstaff")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
-	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 	// This SHIT
 	var/static/list/gear = list(
@@ -99,6 +74,32 @@
 				STATKEY_SPD = 2,
 			)
 			spawned.adjust_stat_modifier_list("job_stats", stats)
+
+	// I Hate
+	var/static/list/weapons = list(
+		"Discipline - Unarmed" = null,
+		"Katar" = /obj/item/weapon/katar/psydon,
+		"Knuckledusters" = /obj/item/weapon/knuckles/psydon,
+		"Quarterstaff" = /obj/item/weapon/polearm/woodstaff/quarterstaff,
+	)
+	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "TAKE UP PSYDON'S ARMS!")
+	var/obj/item/clothing/gloves/gloves_to_wear = /obj/item/clothing/gloves/bandages/weighted
+	switch(weapon_choice)
+		if("Discipline - Unarmed")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5)
+			spawned.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5)
+			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
+		if("Katar")
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+		if("Knuckledusters")
+			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
+		if("Quarterstaff")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
+			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+			spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 /datum/outfit/disciple
 	name = "Disciple"
