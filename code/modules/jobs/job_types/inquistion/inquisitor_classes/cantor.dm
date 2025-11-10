@@ -7,13 +7,13 @@
 	jobstats = list(
 		STATKEY_STR = 1,
 		STATKEY_END = 1,
-		STATKEY_SPD = 3,
+		STATKEY_SPD = 2,
 	)
 	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
 		/datum/skill/magic/blood = SKILL_LEVEL_APPRENTICE, //for their transfix. taught the basics by the Ordo Sanctae
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
