@@ -10,6 +10,12 @@
 	var/max_length = MAX_MESSAGE_LEN
 	var/window_open = FALSE
 
+	// Window sizing
+	var/window_width = 231
+	var/window_height = 30
+	var/list/window_sizes = list("small" = 30, "medium" = 50, "large" = 70)
+	var/list/line_lengths = list("small" = 20, "medium" = 39, "large" = 59)
+
 	// Channel definitions - will be populated dynamically
 	var/list/datum/say_channel/available_channels = list()
 	var/list/channel_names = list()
@@ -43,12 +49,19 @@
 
 /datum/native_say/proc/initialize()
 	set waitfor = FALSE
-	sleep(3 SECONDS) //sleep to prevent timer stuff, also because client constructor can cut this off cause why wouldn't it be able to
 	reload_ui()
 
 /datum/native_say/proc/reload_ui()
-	client << browse(get_html(), "window=native_say;size=231x30;pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
+	client << browse(get_html(), "window=native_say;size=[window_width]x[window_height];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
 	winset(client, "native_say", "is-visible=0")
+
+/datum/native_say/proc/resize_window(size_name)
+	if(!window_sizes[size_name])
+		return
+
+	window_height = window_sizes[size_name]
+	winset(client, "native_say", "size=[window_width]x[window_height]")
+	winset(client, "native_say.browser", "size=[window_width]x[window_height]")
 
 /datum/native_say/proc/get_channel_styles()
 	var/styles = ""
@@ -93,14 +106,17 @@
 			font-family: 'Verdana', sans-serif;
 			overflow: hidden;
 			background: transparent;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
 		}
 
 		.window {
-			position: relative;
-			width: 231px;
-			height: 30px;
+			position: absolute;
+			inset: 0;
 			background-color: #000;
 			overflow: hidden;
+			z-index: 0;
 		}
 
 		.shine {
@@ -108,6 +124,8 @@
 			inset: 0;
 			background-size: 150% 150%;
 			animation: shine 15s linear infinite;
+			z-index: 1;
+			pointer-events: none;
 		}
 
 		@keyframes shine {
@@ -120,10 +138,12 @@
 			position: absolute;
 			inset: 2px;
 			background-color: #000;
-			display: grid;
-			grid-template-columns: 4rem 1fr;
+			z-index: 2;
+			display: flex;
+			flex-direction: row;
 			padding: 2px;
-			overflow: hidden;
+			gap: 2px;
+			min-height: 0;
 		}
 
 		.button {
@@ -133,22 +153,44 @@
 			font-size: 11px;
 			font-weight: bold;
 			outline: none;
-			overflow: hidden;
-			padding: 0.1rem;
+			padding: 0.1rem 0.3rem;
 			text-align: center;
 			white-space: nowrap;
 			cursor: pointer;
 			user-select: none;
+			flex-shrink: 0;
+			width: 4rem;
 		}
 
 		.textarea {
 			background: transparent;
 			border: none;
 			font-size: 1.1rem;
-			margin: 0.1rem 0 0 0.4rem;
 			outline: none;
 			resize: none;
-			overflow: hidden;
+			overflow-y: auto;
+			overflow-x: hidden;
+			flex: 1;
+			min-width: 0;
+			padding: 0.1rem 0.4rem;
+			word-wrap: break-word;
+		}
+
+		.textarea::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		.textarea::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		.textarea::-webkit-scrollbar-thumb {
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 3px;
+		}
+
+		.textarea::-webkit-scrollbar-thumb:hover {
+			background: rgba(255, 255, 255, 0.3);
 		}
 
 		/* Dynamic channel-specific colors */
@@ -161,7 +203,7 @@
 	</div>
 	<div class="content">
 		<button class="button button-[default_channel]" id="channelBtn">[default_channel]</button>
-		<textarea class="textarea textarea-[default_channel]" id="input" maxlength="1024" spellcheck="false" autocorrect="off"></textarea>
+		<textarea class="textarea textarea-[default_channel]" id="input" maxlength="1024" spellcheck="false" autocorrect="off" rows="1"></textarea>
 	</div>
 
 	<script>
@@ -173,9 +215,12 @@
 		let tempMessage = '';
 		let isDragging = false;
 		let dragStartPos = {x: 0, y: 0};
+		let currentSize = 'small';
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
+		const windowSizes = { small: 30, medium: 50, large: 70 };
+		const lineLengths = { small: 15, medium: 31, large: 46 };
 
 		const windowEl = document.getElementById('window');
 		const shineEl = document.getElementById('shine');
@@ -190,6 +235,27 @@
 			textarea.className = 'textarea textarea-' + channel;
 		}
 
+		function updateWindowSize() {
+			let len = textarea.value.length;
+			let newSize = 'small';
+
+			if (len > lineLengths.medium) {
+				newSize = 'large';
+				textarea.rows = 3;
+			} else if (len > lineLengths.small) {
+				newSize = 'medium';
+				textarea.rows = 2;
+			} else {
+				newSize = 'small';
+				textarea.rows = 1;
+			}
+
+			if (newSize !== currentSize) {
+				currentSize = newSize;
+				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=resize;size=' + newSize;
+			}
+		}
+
 		function openWindow(channel) {
 			windowOpen = true;
 			currentChannel = channel;
@@ -198,6 +264,8 @@
 			button.textContent = channel;
 			applyTheme(channel);
 			textarea.value = '';
+			textarea.rows = 1;
+			currentSize = 'small';
 			textarea.focus();
 
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=open;channel=' + encodeURIComponent(channel);
@@ -213,8 +281,9 @@
 			textarea.blur();
 			historyIndex = -1;
 			tempMessage = '';
+			textarea.rows = 1;
+			currentSize = 'small';
 
-			// Notify server
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=close';
 		}
 
@@ -224,14 +293,13 @@
 			button.textContent = currentChannel;
 			applyTheme(currentChannel);
 
-			let visible = !quietChannels.includes(currentChannel); //tldr if we are admin or something no talk indictator
+			let visible = !quietChannels.includes(currentChannel);
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=' + (visible ? '1' : '0');
 		}
 
 		function submitEntry() {
 			let entry = textarea.value.trim();
 			if (entry.length > 0 && entry.length < 1024) {
-				// Add to history
 				chatHistory.unshift(entry);
 				if (chatHistory.length > 5) chatHistory.pop();
 
@@ -256,6 +324,8 @@
 		});
 
 		textarea.addEventListener('input', function() {
+			updateWindowSize();
+
 			if (!quietChannels.includes(currentChannel)) {
 				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=typing';
 			}
@@ -273,7 +343,6 @@
 				cycleChannel();
 			} else if (e.key === 'ArrowUp') {
 				e.preventDefault();
-				// Navigate history backwards
 				if (historyIndex === -1 && textarea.value) {
 					tempMessage = textarea.value;
 				}
@@ -281,22 +350,23 @@
 					historyIndex++;
 					textarea.value = chatHistory\[historyIndex\];
 					button.textContent = (historyIndex + 1).toString();
+					updateWindowSize();
 				}
 			} else if (e.key === 'ArrowDown') {
 				e.preventDefault();
-				// Navigate history forwards
 				if (historyIndex > 0) {
 					historyIndex--;
 					textarea.value = chatHistory\[historyIndex\];
 					button.textContent = (historyIndex + 1).toString();
+					updateWindowSize();
 				} else if (historyIndex === 0) {
 					historyIndex = -1;
 					textarea.value = tempMessage;
 					tempMessage = '';
 					button.textContent = currentChannel;
+					updateWindowSize();
 				}
 			} else if ((e.key === 'Backspace' || e.key === 'Delete') && textarea.value.length === 0) {
-				// Reset history navigation or channel
 				if (historyIndex !== -1) {
 					historyIndex = -1;
 					button.textContent = currentChannel;
@@ -323,6 +393,11 @@
 				handle_thinking(text2num(href_list["visible"]))
 			if("typing")
 				handle_typing()
+			if("resize")
+				handle_resize(href_list["size"])
+
+/datum/native_say/proc/handle_resize(size_name)
+	resize_window(size_name)
 
 /datum/native_say/proc/handle_open(channel_name)
 	window_open = TRUE
@@ -338,6 +413,7 @@
 /datum/native_say/proc/handle_close()
 	window_open = FALSE
 	stop_thinking()
+	resize_window("small")
 	winset(client, "native_say", "is-visible=0")
 
 /datum/native_say/proc/handle_entry(channel_name, entry)
@@ -393,6 +469,7 @@
 		channel = available_channels[1]
 
 	if(channel)
+		resize_window("small")
 		winset(client, "native_say", "is-visible=1")
 		client << output(null, "native_say.browser:openSayWindow('[channel.name]')")
 
