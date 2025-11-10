@@ -146,7 +146,7 @@
 		set_current(null)
 	QDEL_LIST(known_skills)
 	known_skills = null
-	skill_experience = NOT_WILLING_TO_BUY_PHRASE
+	skill_experience = null
 	apprentices = null
 	apprentice_training_skills = null
 	return ..()
