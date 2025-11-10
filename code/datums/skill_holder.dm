@@ -141,9 +141,27 @@
 			skill_experience |= skill
 			skill_experience[skill] = 0
 
-/datum/skill_holder/proc/set_current(mob/incoming)
+/datum/skill_holder/Destroy(force, ...)
+	if(current)
+		set_current(null)
+	QDEL_LIST(known_skills)
+	known_skills = null
+	skill_experience = NOT_WILLING_TO_BUY_PHRASE
+	apprentices = null
+	apprentice_training_skills = null
+	return ..()
+
+/datum/skill_holder/proc/set_current(mob/living/incoming)
+	if(!QDELETED(current))
+		current.skills = null
+		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 	current = incoming
-	incoming.skills = src
+	if(current)
+		current.skills = src
+		RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(on_owner_deleted))
+
+/datum/skill_holder/proc/on_owner_deleted()
+	qdel(src)
 
 /**
  * Offer apprenticeship to a youngling
@@ -434,7 +452,7 @@
  ** max - maximum amount up to which the skill will be changed
 */
 /datum/skill_holder/proc/clamped_adjust_skillrank(skill, amt, max, silent)
-	var/skill_difference =  max - get_skill_level(skill)
+	var/skill_difference = max - get_skill_level(skill)
 
 	if(skill_difference <= 0)
 		return
