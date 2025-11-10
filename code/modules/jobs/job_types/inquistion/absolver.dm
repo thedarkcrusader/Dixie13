@@ -70,7 +70,6 @@
 	species.native_language = "Old Psydonic"
 	species.accent_language = species.get_accent(species.native_language)
 
-
 /datum/outfit/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
 

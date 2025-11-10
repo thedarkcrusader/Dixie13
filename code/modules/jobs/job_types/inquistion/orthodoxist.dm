@@ -43,6 +43,6 @@
 	spawned.maxbloodpool = 1000
 
 	var/datum/species/species = spawned.dna?.species
-	if(species?.id == SPEC_ID_HUMEN)
+	if(species)
 		species.native_language = "Old Psydonic"
 		species.accent_language = species.get_accent(species.native_language)
