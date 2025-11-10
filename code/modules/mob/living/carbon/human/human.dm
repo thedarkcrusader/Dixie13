@@ -4,7 +4,7 @@
 		return
 		if(user.cmode)
 			var/obj/item/held_item = user.get_active_held_item()
-			var/obj/item/bodypart = target.get_bodypart(check_zone(user.zone_selected))
+			var/obj/item/bodypart = /target.get_bodypart(check_zone(user.zone_selected))
 			if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 				if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 					playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
@@ -14,7 +14,7 @@
 					user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 				if(do_after(user, 5 SECONDS, src))
 				if(bodypart)
-					bodypart.add_wound(datum/wound/artery/neck)
+					bodypart.add_wound(/datum/wound/artery/neck)
 		else
 			var/obj/item/held_item = user.get_active_held_item()
 				if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
