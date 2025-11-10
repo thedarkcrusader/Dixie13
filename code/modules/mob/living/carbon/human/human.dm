@@ -3,7 +3,6 @@
 	if(!user)
 		return
 		if(user.cmode)
-			var/mob/living/carbon/carbon_target = target
 			var/obj/item/held_item = user.get_active_held_item()
 			var/obj/item/bodypart/gotten_part = target.get_bodypart(check_zone(user.zone_selected))
 			if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
