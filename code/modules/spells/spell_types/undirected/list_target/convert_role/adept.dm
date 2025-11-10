@@ -18,6 +18,6 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/on_converion(mob/living/carbon/human/cast_on)
+/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/on_conversion(mob/living/carbon/human/cast_on)
 	. = ..()
 	cast_on.set_patron(/datum/patron/psydon, FALSE)
