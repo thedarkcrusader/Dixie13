@@ -20,4 +20,4 @@
 
 /datum/action/cooldown/spell/undirected/list_target/convert_role/adept/on_converion(mob/living/carbon/human/cast_on)
 	. = ..()
-	cast_on.set_patron("Psydon")
+	cast_on.set_patron(/datum/patron/psydon, FALSE)
