@@ -2,7 +2,7 @@
 /datum/job/advclass/puritan/ordinator
 	title = "Ordinator"
 	tutorial = "The head of the Ordo Benetarus, your lessons are the most brutal of them all. Through adversity and challenge, your students will learn what it means to stand in Psydon’s name, unwavering and unblinking. Your body as hard as steel, your skills tempered through battles unending, every monster you’ve faced has fallen before you. Your students march to their doom, but with your lessons, they may yet emerge shaped in Psydon’s image, and your own."
-	outfit = /datum/outfit/job/inquisitor/ordinator
+	outfit = /datum/outfit/inquisitor/ordinator
 
 	category_tags = list(CTAG_PURITAN)
 
