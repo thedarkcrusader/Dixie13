@@ -54,7 +54,7 @@
 		"Hauberk" = /obj/item/clothing/armor/chainmail/hauberk/fluted,
 		"Cuirass" = /obj/item/clothing/armor/cuirass/fluted,
 	)
-	var/armor_choice = spawned.select_equippable(player_client, helmets, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
+	var/armor_choice = spawned.select_equippable(player_client, armors, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
 	if(armor_choice == "Cuirass")
 		spawned.change_stat(STATKEY_SPD, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
 
@@ -67,7 +67,7 @@
 		"Psydonic Spear + Handmace" = list(/obj/item/weapon/polearm/spear/psydon, /obj/item/weapon/mace/cudgel/psy),
 		"Psydonic Poleaxe + Shortsword" = list(/obj/item/weapon/greataxe/psy, /obj/item/weapon/sword/short/psy),
 	)
-	var/weapon_choice = spawned.select_equippable(player_client, weapons)
+	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "Choose your WEAPON.", title = "TAKE UP PSYDON'S ARMS.")
 	switch(weapon_choice)
 		if("Psydonic Longsword")
 			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
@@ -89,8 +89,6 @@
 	backl = /obj/item/storage/backpack/satchel/otavan
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	shoes = /obj/item/clothing/shoes/psydonboots
-	armor = /obj/item/clothing/armor/chainmail/hauberk/fluted
-	head = /obj/item/clothing/head/helmet/heavy/psydonhelm
 	belt = /obj/item/storage/belt/leather/black
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ring = /obj/item/clothing/ring/signet/silver
