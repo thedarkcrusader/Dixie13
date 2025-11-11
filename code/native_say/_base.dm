@@ -234,7 +234,7 @@
 		const shineEl = document.getElementById('shine');
 		const button = document.getElementById('channelBtn');
 		const editor = document.getElementById('editor');
-		let rawText = '';
+		let realText = ''; // Store the actual markdown input
 
 		function parseMarkdownBasic(text, barebones) {
 			if (!text || text.length === 0) return text;
@@ -290,25 +290,214 @@
 			return t;
 		}
 
-		function updatePreview() {
-			rawText = editor.textContent || '';
-			const parsed = parseMarkdownBasic(rawText, true);
-			editor.innerHTML = parsed;
-
-			// Restore cursor position at end
-			const range = document.createRange();
+		function getCursorPosition() {
 			const sel = window.getSelection();
-			if (editor.childNodes.length > 0) {
+			if (!sel.rangeCount) return 0;
+
+			const range = sel.getRangeAt(0);
+			const preRange = range.cloneRange();
+			preRange.selectNodeContents(editor);
+			preRange.setEnd(range.endContainer, range.endOffset);
+
+			const renderedPos = preRange.toString().length;
+
+			// Map rendered position back to raw text position
+			return mapRenderedToRaw(renderedPos);
+		}
+
+		function mapRenderedToRaw(renderedPos) {
+			// Parse the text to figure out where markdown syntax is
+			let rawPos = 0;
+			let renderedCount = 0;
+			let i = 0;
+
+			while (i < realText.length && renderedCount < renderedPos) {
+				// Check for +bold+
+				if (realText\[i\] === '+') {
+					const closeIdx = realText.indexOf('+', i + 1);
+					if (closeIdx !== -1) {
+						// Skip opening +
+						i++;
+						rawPos++;
+						// Count the content
+						while (i < closeIdx && renderedCount < renderedPos) {
+							renderedCount++;
+							i++;
+							rawPos++;
+						}
+						// Skip closing +
+						if (i === closeIdx) {
+							i++;
+							rawPos++;
+						}
+						continue;
+					}
+				}
+				// Check for |italic|
+				if (realText\[i\] === '|') {
+					const closeIdx = realText.indexOf('|', i + 1);
+					if (closeIdx !== -1) {
+						i++;
+						rawPos++;
+						while (i < closeIdx && renderedCount < renderedPos) {
+							renderedCount++;
+							i++;
+							rawPos++;
+						}
+						if (i === closeIdx) {
+							i++;
+							rawPos++;
+						}
+						continue;
+					}
+				}
+				// Check for _underline_
+				if (realText\[i\] === '_') {
+					const closeIdx = realText.indexOf('_', i + 1);
+					if (closeIdx !== -1) {
+						i++;
+						rawPos++;
+						while (i < closeIdx && renderedCount < renderedPos) {
+							renderedCount++;
+							i++;
+							rawPos++;
+						}
+						if (i === closeIdx) {
+							i++;
+							rawPos++;
+						}
+						continue;
+					}
+				}
+
+				// Normal character
+				renderedCount++;
+				i++;
+				rawPos++;
+			}
+
+			return rawPos;
+		}
+
+		function mapRawToRendered(rawPos) {
+			// Map raw text position to rendered position
+			let renderedPos = 0;
+			let i = 0;
+
+			while (i < rawPos && i < realText.length) {
+				// Check for +bold+
+				if (realText\[i\] === '+') {
+					const closeIdx = realText.indexOf('+', i + 1);
+					if (closeIdx !== -1 && closeIdx < rawPos) {
+						// Skip opening +
+						i++;
+						// Count the content
+						while (i < closeIdx && i < rawPos) {
+							renderedPos++;
+							i++;
+						}
+						// Skip closing + if we're past it
+						if (i === closeIdx && i < rawPos) {
+							i++;
+						}
+						continue;
+					}
+				}
+				// Check for |italic|
+				if (realText\[i\] === '|') {
+					const closeIdx = realText.indexOf('|', i + 1);
+					if (closeIdx !== -1 && closeIdx < rawPos) {
+						i++;
+						while (i < closeIdx && i < rawPos) {
+							renderedPos++;
+							i++;
+						}
+						if (i === closeIdx && i < rawPos) {
+							i++;
+						}
+						continue;
+					}
+				}
+				// Check for _underline_
+				if (realText\[i\] === '_') {
+					const closeIdx = realText.indexOf('_', i + 1);
+					if (closeIdx !== -1 && closeIdx < rawPos) {
+						i++;
+						while (i < closeIdx && i < rawPos) {
+							renderedPos++;
+							i++;
+						}
+						if (i === closeIdx && i < rawPos) {
+							i++;
+						}
+						continue;
+					}
+				}
+
+				// Normal character
+				renderedPos++;
+				i++;
+			}
+
+			return renderedPos;
+		}
+
+		function setCursorPosition(pos) {
+			const sel = window.getSelection();
+			const range = document.createRange();
+
+			let charCount = 0;
+			let foundPos = false;
+
+			function traverseNodes(node) {
+				if (foundPos) return;
+
+				if (node.nodeType === Node.TEXT_NODE) {
+					const nextCharCount = charCount + node.length;
+					if (pos >= charCount && pos <= nextCharCount) {
+						range.setStart(node, Math.min(pos - charCount, node.length));
+						range.collapse(true);
+						foundPos = true;
+						return;
+					}
+					charCount = nextCharCount;
+				} else {
+					for (let i = 0; i < node.childNodes.length; i++) {
+						traverseNodes(node.childNodes\[i\]);
+						if (foundPos) return;
+					}
+				}
+			}
+
+			traverseNodes(editor);
+
+			if (foundPos) {
+				sel.removeAllRanges();
+				sel.addRange(range);
+			} else if (editor.childNodes.length > 0) {
+				// Fallback: place at end
 				const lastNode = editor.childNodes\[editor.childNodes.length - 1\];
-				const lastChild = lastNode.lastChild || lastNode;
+				const lastChild = lastNode.nodeType === Node.TEXT_NODE ? lastNode : (lastNode.lastChild || lastNode);
 				try {
-					range.setStartAfter(lastChild);
+					if (lastChild.nodeType === Node.TEXT_NODE) {
+						range.setStart(lastChild, lastChild.length);
+					} else {
+						range.setStartAfter(lastChild);
+					}
 					range.collapse(true);
 					sel.removeAllRanges();
 					sel.addRange(range);
-				} catch(e) {
-					// Fallback if setting position fails
-				}
+				} catch(e) {}
+			}
+		}
+
+		function updatePreview() {
+			// Parse and render the markdown
+			const parsed = parseMarkdownBasic(realText, true);
+
+			// Only update if the HTML changed to avoid cursor jumps
+			if (editor.innerHTML !== parsed) {
+				editor.innerHTML = parsed;
 			}
 		}
 
@@ -320,7 +509,7 @@
 		}
 
 		function updateWindowSize() {
-			let len = rawText.length;
+			let len = realText.length;
 			let newSize = 'small';
 
 			if (len > lineLengths.medium) {
@@ -345,7 +534,7 @@
 			button.textContent = channel;
 			applyTheme(channel);
 			editor.innerHTML = '';
-			rawText = '';
+			realText = '';
 			currentSize = 'small';
 			editor.focus();
 
@@ -377,7 +566,7 @@
 		}
 
 		function submitEntry() {
-			let entry = rawText.trim();
+			let entry = realText.trim();
 			if (entry.length > 0 && entry.length < 1024) {
 				chatHistory.unshift(entry);
 				if (chatHistory.length > 5) chatHistory.pop();
@@ -401,8 +590,71 @@
 			}, 50);
 		});
 
-		editor.addEventListener('input', function() {
-			updatePreview();
+		editor.addEventListener('beforeinput', function(e) {
+			const cursorPos = getCursorPosition();
+			const sel = window.getSelection();
+			const hasSelection = sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed;
+
+			let selectionStart = cursorPos;
+			let selectionEnd = cursorPos;
+
+			if (hasSelection) {
+				const range = sel.getRangeAt(0);
+				const preRange = range.cloneRange();
+				preRange.selectNodeContents(editor);
+				preRange.setEnd(range.startContainer, range.startOffset);
+				selectionStart = preRange.toString().length;
+				selectionEnd = cursorPos;
+			}
+
+			// Track the raw text input by intercepting before HTML rendering
+			if (e.inputType === 'insertText' && e.data) {
+				e.preventDefault();
+				// Insert character at cursor position
+				realText = realText.slice(0, selectionStart) + e.data + realText.slice(selectionEnd);
+				updatePreview();
+				setCursorPosition(selectionStart + e.data.length);
+			} else if (e.inputType === 'deleteContentBackward') {
+				e.preventDefault();
+				if (hasSelection) {
+					// Delete selection
+					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
+					updatePreview();
+					setCursorPosition(selectionStart);
+				} else if (cursorPos > 0) {
+					// Delete one character before cursor
+					realText = realText.slice(0, cursorPos - 1) + realText.slice(cursorPos);
+					updatePreview();
+					setCursorPosition(cursorPos - 1);
+				}
+			} else if (e.inputType === 'deleteContentForward') {
+				e.preventDefault();
+				if (hasSelection) {
+					// Delete selection
+					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
+					updatePreview();
+					setCursorPosition(selectionStart);
+				} else if (cursorPos < realText.length) {
+					// Delete one character after cursor
+					realText = realText.slice(0, cursorPos) + realText.slice(cursorPos + 1);
+					updatePreview();
+					setCursorPosition(cursorPos);
+				}
+			} else if (e.inputType === 'insertLineBreak') {
+				e.preventDefault();
+				// Handle enter key
+				realText = realText.slice(0, selectionStart) + '\\n' + realText.slice(selectionEnd);
+				updatePreview();
+				setCursorPosition(selectionStart + 1);
+			} else if (e.inputType === 'insertFromPaste') {
+				e.preventDefault();
+				// Handle paste
+				const pastedText = e.dataTransfer ? e.dataTransfer.getData('text/plain') : '';
+				realText = realText.slice(0, selectionStart) + pastedText + realText.slice(selectionEnd);
+				updatePreview();
+				setCursorPosition(selectionStart + pastedText.length);
+			}
+
 			updateWindowSize();
 
 			if (!quietChannels.includes(currentChannel)) {
@@ -422,13 +674,13 @@
 				cycleChannel();
 			} else if (e.key === 'ArrowUp') {
 				e.preventDefault();
-				if (historyIndex === -1 && rawText) {
-					tempMessage = rawText;
+				if (historyIndex === -1 && realText) {
+					tempMessage = realText;
 				}
 				if (historyIndex < chatHistory.length - 1) {
 					historyIndex++;
-					rawText = chatHistory\[historyIndex\];
-					editor.textContent = rawText;
+					realText = chatHistory\[historyIndex\];
+					editor.textContent = realText;
 					button.textContent = (historyIndex + 1).toString();
 					updatePreview();
 					updateWindowSize();
@@ -437,21 +689,21 @@
 				e.preventDefault();
 				if (historyIndex > 0) {
 					historyIndex--;
-					rawText = chatHistory\[historyIndex\];
-					editor.textContent = rawText;
+					realText = chatHistory\[historyIndex\];
+					editor.textContent = realText;
 					button.textContent = (historyIndex + 1).toString();
 					updatePreview();
 					updateWindowSize();
 				} else if (historyIndex === 0) {
 					historyIndex = -1;
-					rawText = tempMessage;
-					editor.textContent = rawText;
+					realText = tempMessage;
+					editor.textContent = realText;
 					tempMessage = '';
 					button.textContent = currentChannel;
 					updatePreview();
 					updateWindowSize();
 				}
-			} else if ((e.key === 'Backspace' || e.key === 'Delete') && rawText.length === 0) {
+			} else if ((e.key === 'Backspace' || e.key === 'Delete') && realText.length === 0) {
 				if (historyIndex !== -1) {
 					historyIndex = -1;
 					button.textContent = currentChannel;
