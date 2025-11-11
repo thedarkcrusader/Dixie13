@@ -234,7 +234,7 @@
 
 /obj/item/weapon/polearm/spear/assegai
 	name = "iron assegai"
-	desc = "a long spear originating from the southern regions of Lakkari. Lakkarian women in the city of Sebbet are taught to use assegai so they can defend themselves against Zalad bandits."
+	desc = "a long spear originating from the southern regions of Lakkari. Lakkarian women in the city of Sekket are taught to use assegai so they can defend themselves against Zalad bandits."
 	icon = 'icons/roguetown/weapons/64/polearms.dmi'
 	icon_state = "assegai_iron"
 	gripsprite = FALSE
@@ -295,6 +295,20 @@
 	wbalance = EASY_TO_DODGE
 	sellprice = 60
 
+/obj/item/weapon/polearm/spear/billhook/ji
+	name = "steel dagger-ax"
+	desc = "An eastern polearm of ancient design. It's rarely seen on the battlefield these daes."
+	icon_state = "ji_steel"
+	wdefense = GOOD_PARRY
+	wbalance = null
+	gripsprite = FALSE
+
+/obj/item/weapon/polearm/spear/billhook/ji/iron
+	name = "iron dagger-ax"
+	icon_state = "ji_iron"
+	melting_material = /datum/material/iron
+	melt_amount = 75
+	max_integrity = INTEGRITY_STANDARD
 
 //................ Stone Short Spear ............... //		- Short spears got shorter reach and worse wield effect, made for one handed and throwing
 /obj/item/weapon/polearm/spear/stone
