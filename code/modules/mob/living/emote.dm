@@ -46,8 +46,6 @@
 
 	follower.whisper(prayer)
 
-	record_featured_stat(FEATURED_STATS_DEVOUT, follower)
-
 	if(SEND_SIGNAL(follower, COMSIG_CARBON_PRAY, prayer) & CARBON_PRAY_CANCEL)
 		return
 
