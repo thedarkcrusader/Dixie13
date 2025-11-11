@@ -86,7 +86,7 @@
 	new /obj/item/rope/chain(src)
 
 /datum/inqports/supplies/collar
-	name = "3 Collar of Servitudes Alongside Key"
+	name = "3 Collars of Servitude Alongside Key"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/collar
 	marquescost = 8
 
