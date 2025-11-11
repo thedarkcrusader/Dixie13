@@ -14,6 +14,8 @@
 	display_order = JDO_ABSOLVER
 	min_pq = 3 // Low potential for grief. A pacifist by trade. Also needs to know wtf a PSYDON is.
 	give_bank_account = 15
+	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
+	antag_role = /datum/antagonist/purishep
 
 	traits = list(
 		TRAIT_NOPAINSTUN,
@@ -23,6 +25,8 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_INQUISITION,
 		TRAIT_SILVER_BLESSED,
+		TRAIT_PSYDONIAN_GRIT,
+		TRAIT_PSYDONITE,
 	)
 
 	jobstats = list(
@@ -48,6 +52,7 @@
 		/datum/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE, // they need this so Psydon's Grace works
 	)
 
 
@@ -59,6 +64,9 @@
 		var/mob/living/carbon/human/H = L
 		H.grant_language(/datum/language/oldpsydonic)
 		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
+		if(H.dna?.species.id == SPEC_ID_HUMEN)
+			H.dna.species.native_language = "Old Psydonic"
+			H.dna.species.accent_language = H.dna.species.get_accent(H.dna.species.native_language)
 
 /datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
