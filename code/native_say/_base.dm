@@ -71,7 +71,7 @@
 		.window-[channel_name] { background-color: [channel.color]; }
 		.button-[channel_name] { border: 1px solid [channel.get_border_color()]; color: [channel.color]; }
 		.button-[channel_name]:hover { border-color: [channel.get_hover_border()]; color: [channel.get_hover_color()]; }
-		.textarea-[channel_name] { color: [channel.color]; }
+		.editor-[channel_name] { color: [channel.color]; }
 		.shine-[channel_name] {
 			background: [channel.get_shine_gradient()];
 		}
@@ -162,34 +162,40 @@
 			width: 4rem;
 		}
 
-		.textarea {
+		.textarea-container {
+			flex: 1;
+			min-width: 0;
+			display: flex;
+		}
+
+		.editor {
 			background: transparent;
 			border: none;
 			font-size: 1.1rem;
 			outline: none;
-			resize: none;
 			overflow-y: auto;
 			overflow-x: hidden;
 			flex: 1;
 			min-width: 0;
 			padding: 0.1rem 0.4rem;
 			word-wrap: break-word;
+			white-space: pre-wrap;
 		}
 
-		.textarea::-webkit-scrollbar {
+		.editor::-webkit-scrollbar {
 			width: 6px;
 		}
 
-		.textarea::-webkit-scrollbar-track {
+		.editor::-webkit-scrollbar-track {
 			background: transparent;
 		}
 
-		.textarea::-webkit-scrollbar-thumb {
+		.editor::-webkit-scrollbar-thumb {
 			background: rgba(255, 255, 255, 0.2);
 			border-radius: 3px;
 		}
 
-		.textarea::-webkit-scrollbar-thumb:hover {
+		.editor::-webkit-scrollbar-thumb:hover {
 			background: rgba(255, 255, 255, 0.3);
 		}
 
@@ -203,7 +209,9 @@
 	</div>
 	<div class="content">
 		<button class="button button-[default_channel]" id="channelBtn">[default_channel]</button>
-		<textarea class="textarea textarea-[default_channel]" id="input" maxlength="1024" spellcheck="false" autocorrect="off" rows="1"></textarea>
+		<div class="textarea-container">
+			<div class="editor editor-[default_channel]" id="editor" contenteditable="true" spellcheck="false"></div>
+		</div>
 	</div>
 
 	<script>
@@ -225,29 +233,102 @@
 		const windowEl = document.getElementById('window');
 		const shineEl = document.getElementById('shine');
 		const button = document.getElementById('channelBtn');
-		const textarea = document.getElementById('input');
+		const editor = document.getElementById('editor');
+		let rawText = '';
 
-		//theming
+		function parseMarkdownBasic(text, barebones) {
+			if (!text || text.length === 0) return text;
+			let t = text;
+
+			if (!barebones) {
+				t = t.replace(/\\$/g, '$-');
+				t = t.replace(/\\\\\\\\/g, '$1');
+				t = t.replace(/\\\\\\*\\*/g, '$2');
+				t = t.replace(/\\\\\\*/g, '$3');
+				t = t.replace(/\\\\__/g, '$4');
+				t = t.replace(/\\\\_/g, '$5');
+				t = t.replace(/\\\\\\^/g, '$6');
+				t = t.replace(/\\\\\\(\\(/g, '$7');
+				t = t.replace(/\\\\\\)\\)/g, '$8');
+				t = t.replace(/\\\\\\|/g, '$9');
+				t = t.replace(/\\\\%/g, '$0');
+			}
+
+			t = t.replace(/!/g, '$a');
+
+			if (barebones) {
+				t = t.replace(/\\+(\[^\\+\]+)\\+/g, '<b>$1</b>');
+				t = t.replace(/\\|(\[^\\|\]+)\\|/g, '<i>$1</i>');
+				t = t.replace(/_(\[^_\]+)_/g, '<u>$1</u>');
+			} else {
+				t = t.replace(/\\*(\[^\\*\]*)\\*/g, '<i>$1</i>');
+				t = t.replace(/_(\[^_\]*)_/g, '<i>$1</i>');
+				t = t.replace(/<i><\\/i>/g, '!');
+				t = t.replace(/<\\/i><i>/g, '!');
+				t = t.replace(/!(\[^!\]+)!/g, '<b>$1</b>');
+				t = t.replace(/\\^(\[^\\^\]+)\\^/g, '<font size="4">$1</font>');
+				t = t.replace(/\\|(\[^\\|\]+)\\|/g, '<center>$1</center>');
+				t = t.replace(/!/g, '</i><i>');
+			}
+
+			t = t.replace(/\\$a/g, '!');
+
+			if (!barebones) {
+				t = t.replace(/\\$1/g, '\\\\\\\\');
+				t = t.replace(/\\$2/g, '**');
+				t = t.replace(/\\$3/g, '*');
+				t = t.replace(/\\$4/g, '__');
+				t = t.replace(/\\$5/g, '_');
+				t = t.replace(/\\$6/g, '^');
+				t = t.replace(/\\$7/g, '((');
+				t = t.replace(/\\$8/g, '))');
+				t = t.replace(/\\$9/g, '|');
+				t = t.replace(/\\$0/g, '%');
+				t = t.replace(/\\$-/g, '$');
+			}
+
+			return t;
+		}
+
+		function updatePreview() {
+			rawText = editor.textContent || '';
+			const parsed = parseMarkdownBasic(rawText, true);
+			editor.innerHTML = parsed;
+
+			// Restore cursor position at end
+			const range = document.createRange();
+			const sel = window.getSelection();
+			if (editor.childNodes.length > 0) {
+				const lastNode = editor.childNodes\[editor.childNodes.length - 1\];
+				const lastChild = lastNode.lastChild || lastNode;
+				try {
+					range.setStartAfter(lastChild);
+					range.collapse(true);
+					sel.removeAllRanges();
+					sel.addRange(range);
+				} catch(e) {
+					// Fallback if setting position fails
+				}
+			}
+		}
+
 		function applyTheme(channel) {
 			windowEl.className = 'window window-' + channel;
 			shineEl.className = 'shine shine-' + channel;
 			button.className = 'button button-' + channel;
-			textarea.className = 'textarea textarea-' + channel;
+			editor.className = 'editor editor-' + channel;
 		}
 
 		function updateWindowSize() {
-			let len = textarea.value.length;
+			let len = rawText.length;
 			let newSize = 'small';
 
 			if (len > lineLengths.medium) {
 				newSize = 'large';
-				textarea.rows = 3;
 			} else if (len > lineLengths.small) {
 				newSize = 'medium';
-				textarea.rows = 2;
 			} else {
 				newSize = 'small';
-				textarea.rows = 1;
 			}
 
 			if (newSize !== currentSize) {
@@ -263,14 +344,13 @@
 
 			button.textContent = channel;
 			applyTheme(channel);
-			textarea.value = '';
-			textarea.rows = 1;
+			editor.innerHTML = '';
+			rawText = '';
 			currentSize = 'small';
-			textarea.focus();
+			editor.focus();
 
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=open;channel=' + encodeURIComponent(channel);
 
-			// thinking indicator if IC channel
 			if (!quietChannels.includes(channel)) {
 				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=1';
 			}
@@ -278,10 +358,9 @@
 
 		function closeWindow() {
 			windowOpen = false;
-			textarea.blur();
+			editor.blur();
 			historyIndex = -1;
 			tempMessage = '';
-			textarea.rows = 1;
 			currentSize = 'small';
 
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=close';
@@ -298,7 +377,7 @@
 		}
 
 		function submitEntry() {
-			let entry = textarea.value.trim();
+			let entry = rawText.trim();
 			if (entry.length > 0 && entry.length < 1024) {
 				chatHistory.unshift(entry);
 				if (chatHistory.length > 5) chatHistory.pop();
@@ -308,7 +387,6 @@
 			closeWindow();
 		}
 
-		//clickie
 		button.addEventListener('mousedown', function(e) {
 			isDragging = true;
 			dragStartPos = {x: e.screenX, y: e.screenY};
@@ -323,7 +401,8 @@
 			}, 50);
 		});
 
-		textarea.addEventListener('input', function() {
+		editor.addEventListener('input', function() {
+			updatePreview();
 			updateWindowSize();
 
 			if (!quietChannels.includes(currentChannel)) {
@@ -331,7 +410,7 @@
 			}
 		});
 
-		textarea.addEventListener('keydown', function(e) {
+		editor.addEventListener('keydown', function(e) {
 			if (e.key === 'Enter' && !e.shiftKey) {
 				e.preventDefault();
 				submitEntry();
@@ -343,30 +422,36 @@
 				cycleChannel();
 			} else if (e.key === 'ArrowUp') {
 				e.preventDefault();
-				if (historyIndex === -1 && textarea.value) {
-					tempMessage = textarea.value;
+				if (historyIndex === -1 && rawText) {
+					tempMessage = rawText;
 				}
 				if (historyIndex < chatHistory.length - 1) {
 					historyIndex++;
-					textarea.value = chatHistory\[historyIndex\];
+					rawText = chatHistory\[historyIndex\];
+					editor.textContent = rawText;
 					button.textContent = (historyIndex + 1).toString();
+					updatePreview();
 					updateWindowSize();
 				}
 			} else if (e.key === 'ArrowDown') {
 				e.preventDefault();
 				if (historyIndex > 0) {
 					historyIndex--;
-					textarea.value = chatHistory\[historyIndex\];
+					rawText = chatHistory\[historyIndex\];
+					editor.textContent = rawText;
 					button.textContent = (historyIndex + 1).toString();
+					updatePreview();
 					updateWindowSize();
 				} else if (historyIndex === 0) {
 					historyIndex = -1;
-					textarea.value = tempMessage;
+					rawText = tempMessage;
+					editor.textContent = rawText;
 					tempMessage = '';
 					button.textContent = currentChannel;
+					updatePreview();
 					updateWindowSize();
 				}
-			} else if ((e.key === 'Backspace' || e.key === 'Delete') && textarea.value.length === 0) {
+			} else if ((e.key === 'Backspace' || e.key === 'Delete') && rawText.length === 0) {
 				if (historyIndex !== -1) {
 					historyIndex = -1;
 					button.textContent = currentChannel;
