@@ -13,13 +13,12 @@
 	vision_range = 2
 	aggro_vision_range = 2
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1,
-						/obj/item/natural/fur/rous = 1,/obj/item/alch/bone = 2)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
-						/obj/item/alch/sinew = 1,
-						/obj/item/natural/fur/rous = 1, /obj/item/alch/bone = 4)
-	head_butcher = /obj/item/natural/head/rous
+
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/reagent_containers/food/snacks/meat/strange = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/reagent_containers/food/snacks/meat/strange = 2)
 
 	health = 70
 	maxHealth = 70
@@ -35,6 +34,11 @@
 	base_constitution = 8
 	base_strength = 3
 	base_speed = 6
+
+	//for gibbing
+	var/burst_liquid = /datum/reagent/toxin/acid/trogfish
+	var/burst_range = 3
+	var/threat_scale = 2
 
 	retreat_distance = 0
 	minimum_distance = 0
@@ -87,43 +91,57 @@
 	burst.Grant(src)
 	ai_controller?.set_blackboard_key(BB_TARGETED_ACTION, burst)
 
+/mob/living/simple_animal/hostile/retaliate/trogfish/proc/start_gibbing(datum/looping_sound/sound_loop)
+	addtimer(CALLBACK(src, PROC_REF(gib), TRUE, TRUE, TRUE, TRUE, sound_loop), 3 SECONDS)
+	var/matrix/M = matrix()
+	M.Scale(1.4, 1.2)
+	animate(src, time = 40, transform = M, easing = SINE_EASING)
+
+/mob/living/simple_animal/hostile/retaliate/trogfish/gib(no_brain, no_organs, no_bodyparts, burst = FALSE, datum/looping_sound/sound_loop = null)
+	var/turf/epicenter = get_turf(src)
+	if(epicenter && burst)
+		if(sound_loop)
+			sound_loop.stop(TRUE)
+			qdel(sound_loop)
+		visible_message(span_userdanger("[src] violently bursts!"))
+
+		var/list/turflist = list(epicenter)
+		for(var/turf/T in view(1, epicenter))
+			if(CanReach(T) && T.uses_integrity && !isindestructiblewall(T) && !isopenspace(T)) // probably needs more fine tuning
+				turflist |= T
+		for(var/turf/T in turflist)
+			T.acid_act(80, 30)
+			if(iswallturf(T))
+				T.take_damage(1500, BURN, "acid", 0) // there's no acid processing for turfs so this is what i'm doin for now
+
+		//explosion(epicenter, 0, 2, 3, flash_range = 0, flame_range = 0, hotspot_range = 0, smoke = TRUE)
+		var/datum/reagents/R = new(100, NO_REACT)
+		R.add_reagent(burst_liquid, 80)
+		chem_splash(epicenter, burst_range, list(R, reagents), threatscale = src.threat_scale)
+		qdel(R)
+	. = ..()
+
 /datum/action/cooldown/mob_cooldown/trogfish_burst
 	name = "Burst"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "acid"
 	desc = "Contract your trogbladder, killing you in and producing a mass of acidic bile."
-	cooldown_time = 7 SECONDS
+	cooldown_time = 10 SECONDS
 
-	var/burst_liquid = /datum/reagent/toxin/acid
-	var/burst_amt = 100 // keep in mind the threat scale as well
-	var/burst_range = 2
-	//TO DO: NEW SOUND
+	var/already_gibbing = FALSE
 	var/sound_type = /datum/looping_sound/invokefire
 
-
 /datum/action/cooldown/mob_cooldown/trogfish_burst/Activate(atom/target)
-	if(isdead(owner)) // how
+	if(isdead(owner) || already_gibbing)
 		return FALSE
-
-	owner.visible_message(span_userdanger("[owner] starts to bubble and expand!"))
-
+	owner.visible_message(span_boldwarning("[owner]'s skin starts to boil and expand!"))
 	var/datum/looping_sound/sound_loop
 	if(sound_type)
 		sound_loop = new sound_type(_parent = owner, start_immediately = TRUE)
-	if(do_after(owner, cooldown_time / 2, owner, (IGNORE_USER_LOC_CHANGE|IGNORE_INCAPACITATED|IGNORE_SLOWDOWNS|IGNORE_USER_DIR_CHANGE)))
-		var/turf/epicenter = get_turf(owner)
-		if(!epicenter) // HOW
-			return FALSE
-		owner.visible_message(span_userdanger("[owner] violently bursts!"))
-		var/datum/reagents/R = new(burst_amt, NO_REACT)
-		R.add_reagent(burst_liquid, burst_amt)
-		chem_splash(epicenter, burst_range, list(R, owner.reagents), 2)
-		owner.gib()
-		qdel(R)
 
-	if(sound_loop)
-		sound_loop.stop(TRUE)
-		qdel(sound_loop)
-
+	//this makes this not copy-pasteable
+	var/mob/living/simple_animal/hostile/retaliate/trogfish/trog = owner
+	trog.start_gibbing(sound_loop)
+	already_gibbing = TRUE
 	StartCooldown()
 	return TRUE

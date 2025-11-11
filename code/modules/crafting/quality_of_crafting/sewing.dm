@@ -1569,7 +1569,7 @@
 	name = "pearl amulet"
 	output = /obj/item/clothing/neck/psycross/pearl
 	requirements = list(
-		/obj/item/natural/stone = 3, // Representing pearls
+		/obj/item/gem/pearl = 3,
 		/obj/item/natural/fibers = 1
 	)
 	craftdiff = 2
@@ -1577,10 +1577,10 @@
 	category = "Accessories"
 
 /datum/repeatable_crafting_recipe/sewing/bpearl_amulet
-	name = "blue pearl amulet"
+	name = "cerulean pearl amulet"
 	output = /obj/item/clothing/neck/psycross/bpearl
 	requirements = list(
-		/obj/item/natural/stone = 5, // Rare blue pearls
+		/obj/item/gem/pearl_blue = 3,
 		/obj/item/natural/fibers = 1
 	)
 	craftdiff = 3

@@ -17,26 +17,24 @@
 	aggro_vision_range = 5
 
 
-	//todo: set these
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
-						/obj/item/natural/fur/volf = 1,
-						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
-						/obj/item/natural/hide = 1,
-						/obj/item/natural/fur/volf = 2,
-						/obj/item/alch/sinew = 2,
-						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
-						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur/volf = 3,
-						/obj/item/alch/sinew = 2,
-						/obj/item/alch/bone = 2)
-	head_butcher = /obj/item/natural/head/volf
+	// a pretty hefty haul, well worth the hunt if you can actually butcher it properly
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 2,
+						/obj/item/carvedgem/shell/rawshell = 2,
+						/obj/item/gem/pearl = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 3,
+						/obj/item/carvedgem/shell/rawshell = 2,
+						/obj/item/gem/pearl = 1,
+						/obj/item/gem/pearl_blue = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 4,
+						/obj/item/carvedgem/shell/rawshell = 3,
+						/obj/item/gem/pearl = 2,
+						/obj/item/gem/pearl_blue = 1)
+
 
 	gender = PLURAL
 	health = 600
 	maxHealth = 600
-	food_type = list(/obj/item/reagent_containers/food/snacks/meat/mince,
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
 					/obj/item/reagent_containers/food/snacks/fish,
 					/obj/item/organ,
 					/obj/item/bodypart)
