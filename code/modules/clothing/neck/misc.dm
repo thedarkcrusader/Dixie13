@@ -375,6 +375,7 @@
 	var/collar_unlocked = TRUE
 	var/is_in_neck_slot = FALSE
 	var/is_going_to_boom = FALSE
+	clothing_flags = null
 
 /obj/item/clothing/neck/gorget/explosive/examine(mob/user)
 	. = ..()
@@ -395,7 +396,7 @@
 /obj/item/clothing/neck/gorget/explosive/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_NECK)
-		to_chat(user, span_warning("The collar tightens its hold on you, red aura emenates from its gem. Reminding you of your current station."))
+		to_chat(user, span_warning("The collar tightens its hold on you, red aura emenates from its gem. Reminding you of your lowly station."))
 		collar_unlocked = FALSE
 		is_in_neck_slot = TRUE
 		return

@@ -171,11 +171,6 @@
 	recipe_name = "a gorget"
 	created_item = /obj/item/clothing/neck/gorget
 
-/datum/anvil_recipe/armor/iron/inquisition_collar
-	name = "Collar of Servitude"
-	recipe_name = "a collar of servitude of the inquisition"
-	created_item = /obj/item/clothing/neck/gorget/explosive
-
 /datum/anvil_recipe/armor/iron/chaincoif
 	name = "Iron Chain Coif"
 	recipe_name = "a Chain Coif"
