@@ -77,7 +77,6 @@
 		}
 "}
 	return styles
-
 /datum/native_say/proc/get_html()
 	var/list/js_channels = list()
 	var/list/js_quiet = list()
@@ -321,6 +320,25 @@
 						rawPos++;
 						// Count the content
 						while (i < closeIdx && renderedCount < renderedPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '|' || realText\[i\] === '_')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									rawPos++;
+									while (i < nestedClose && renderedCount < renderedPos) {
+										renderedCount++;
+										i++;
+										rawPos++;
+									}
+									if (i === nestedClose) {
+										i++;
+										rawPos++;
+									}
+									continue;
+								}
+							}
 							renderedCount++;
 							i++;
 							rawPos++;
@@ -340,6 +358,25 @@
 						i++;
 						rawPos++;
 						while (i < closeIdx && renderedCount < renderedPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '+' || realText\[i\] === '_')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									rawPos++;
+									while (i < nestedClose && renderedCount < renderedPos) {
+										renderedCount++;
+										i++;
+										rawPos++;
+									}
+									if (i === nestedClose) {
+										i++;
+										rawPos++;
+									}
+									continue;
+								}
+							}
 							renderedCount++;
 							i++;
 							rawPos++;
@@ -358,6 +395,25 @@
 						i++;
 						rawPos++;
 						while (i < closeIdx && renderedCount < renderedPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '+' || realText\[i\] === '|')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									rawPos++;
+									while (i < nestedClose && renderedCount < renderedPos) {
+										renderedCount++;
+										i++;
+										rawPos++;
+									}
+									if (i === nestedClose) {
+										i++;
+										rawPos++;
+									}
+									continue;
+								}
+							}
 							renderedCount++;
 							i++;
 							rawPos++;
@@ -393,6 +449,22 @@
 						i++;
 						// Count the content
 						while (i < closeIdx && i < rawPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '|' || realText\[i\] === '_')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									while (i < nestedClose && i < rawPos) {
+										renderedPos++;
+										i++;
+									}
+									if (i === nestedClose && i < rawPos) {
+										i++;
+									}
+									continue;
+								}
+							}
 							renderedPos++;
 							i++;
 						}
@@ -409,6 +481,22 @@
 					if (closeIdx !== -1 && closeIdx < rawPos) {
 						i++;
 						while (i < closeIdx && i < rawPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '+' || realText\[i\] === '_')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									while (i < nestedClose && i < rawPos) {
+										renderedPos++;
+										i++;
+									}
+									if (i === nestedClose && i < rawPos) {
+										i++;
+									}
+									continue;
+								}
+							}
 							renderedPos++;
 							i++;
 						}
@@ -424,6 +512,22 @@
 					if (closeIdx !== -1 && closeIdx < rawPos) {
 						i++;
 						while (i < closeIdx && i < rawPos) {
+							// Handle nested markers inside
+							if ((realText\[i\] === '+' || realText\[i\] === '|')) {
+								const nestedMarker = realText\[i\];
+								const nestedClose = realText.indexOf(nestedMarker, i + 1);
+								if (nestedClose !== -1 && nestedClose < closeIdx) {
+									i++;
+									while (i < nestedClose && i < rawPos) {
+										renderedPos++;
+										i++;
+									}
+									if (i === nestedClose && i < rawPos) {
+										i++;
+									}
+									continue;
+								}
+							}
 							renderedPos++;
 							i++;
 						}
