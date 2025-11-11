@@ -339,7 +339,7 @@
 	smeltresult = /obj/item/ingot/silver
 	melting_material = /datum/material/silver
 	melt_amount = 100
-	cross_retracted = 0 // Does the silver mask has it's 3 little spuds retracted or not. Used for toggling.
+	var/cross_retracted = 0 // Does the silver mask has it's 3 little spuds retracted or not. Used for toggling.
 
 /obj/item/clothing/face/facemask/silver/Initialize(mapload)
 	. = ..()
@@ -351,9 +351,11 @@
 		return
 	if(!cross_retracted)
 		icon_state = "silvermask_rimless"
+		cross_retracted = 1
 		playsound(user, 'sound/items/indexer_shut.ogg', 65, TRUE)
 	else
 		icon_state = "silvermask"
+		cross_retracted = 0
 		playsound(user, 'sound/items/indexer_open.ogg', 65, TRUE)
 	update_appearance(UPDATE_ICON)
 	if(loc == user && ishuman(user))
