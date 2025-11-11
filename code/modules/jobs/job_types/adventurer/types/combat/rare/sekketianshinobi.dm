@@ -47,21 +47,21 @@
 	)
 /datum/job/advclass/combat/sekketianshinobi/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.set_patron(/datum/patron/divine/xylix)
+	spawned.set_patron(/datum/patron/divine/xylix, TRUE)
 
 /datum/outfit/adventurer/sekketianshinobi
 	name = "Sekketian Shinobi"
 	head = /obj/item/clothing/head/helmet/leather/headscarf/colored/red
 	neck = /obj/item/clothing/neck/coif/cloth/colored/berryblue
 	mask = /obj/item/clothing/face/shellmask
-	armor = /obj/item/clothing/armor/gambeson/heavy/colored/dark
-	cloak = /obj/item/clothing/shirt/clothvest/colored/random
+	armor = /obj/item/clothing/shirt/clothvest/colored/red
+	cloak = /obj/item/clothing/shirt/undershirt/sash/colored/white
 	gloves = /obj/item/clothing/gloves/angle
-	shirt = /obj/item/clothing/shirt/tunic/colored/random
-	pants = /obj/item/clothing/pants/trou/leather/quiltedkilt
+	shirt = /obj/item/clothing/armor/gambeson/heavy/colored/dark
+	pants = /obj/item/clothing/pants/trou/shadowpants
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltr = /obj/item/weapon/mace/rungu/iron
 	beltl = /obj/item/storage/belt/pouch //broke as hell!
-	wrists = /obj/item/clothing/neck/psycross/silver/xylix
+	wrists = /obj/item/clothing/wrists/gem/shellbracelet
 
