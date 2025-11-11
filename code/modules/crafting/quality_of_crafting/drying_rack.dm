@@ -275,7 +275,7 @@
 
 	craft_time = 1.5 SECONDS
 	crafting_message = "starts extracting some fibers"
-	craftdiff = 1
+	craftdiff = 0
 
 /datum/repeatable_crafting_recipe/driedwaddle
 	name = "dried waddle"
