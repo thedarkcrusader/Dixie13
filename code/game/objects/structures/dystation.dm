@@ -166,6 +166,7 @@
 				if(href_list["type"] == "detail" && isclothing(inserted))
 					var/obj/item/clothing/cloth = inserted
 					cloth.detail_color = active_color
+					cloth.update_appearance(UPDATE_OVERLAYS)
 				else
 					inserted.add_atom_colour(active_color, FIXED_COLOUR_PRIORITY)
 
