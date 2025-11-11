@@ -266,10 +266,10 @@
 	icon_state = "osatchel"
 	item_state = "osatchel"
 
-/obj/item/storage/backpack/satchel/mule/PopulateContents()
+/obj/item/storage/backpack/satchel/mule/populate_contents()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
-			if(1)populate_contents
+			if(1)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)
 			if(2)
 				new /obj/item/reagent_containers/powder/moondust_purest(src)
