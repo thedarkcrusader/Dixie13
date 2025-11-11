@@ -115,6 +115,9 @@
 		qdel(src)
 		user.put_in_active_hand(new salvage_result(get_turf(user)))
 
+/obj/item/storage/belt/leather/rope/dark
+	color = "#505050"
+
 /obj/item/storage/belt/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
@@ -266,7 +269,7 @@
 	icon_state = "osatchel"
 	item_state = "osatchel"
 
-/obj/item/storage/backpack/satchel/mule/PopulateContents()
+/obj/item/storage/backpack/satchel/mule/populate_contents()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
 			if(1)
