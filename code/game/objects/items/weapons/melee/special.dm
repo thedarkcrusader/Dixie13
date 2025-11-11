@@ -286,7 +286,6 @@
 	desc = "A gift from a creature of the sea. The claw is sharpened to a wicked edge."
 	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "abyssorclaw"
-	force = 24 //Less damage, Original was 27, But more integrity in exchange.
 	max_integrity = 250
 
 /datum/intent/knuckles/strike
