@@ -467,6 +467,16 @@
 	new /obj/item/clothing/armor/gambeson/heavy/otavan/inq(src)
 	new /obj/item/clothing/armor/gambeson/heavy/otavan/inq(src)
 
+/datum/inqports/wardrobe/adeptset
+	name = "Adept Recruitment Set"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/adeptset
+	marquescost = 8
+
+/obj/structure/closet/crate/chest/inqcrate/wardrobe/adeptset/Initialize()
+	. = ..()
+	new /obj/item/clothing/face/facemask/silver(src)
+	new /obj/item/clothing/neck/gorget/explosive(src)
+
 /datum/inqports/wardrobe/psydonianstandard
 	name = "The Inquisitorial Standard"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/wardrobe/psydonian

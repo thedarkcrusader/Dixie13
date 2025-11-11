@@ -5,7 +5,7 @@
 	new_role = "Adept"
 	recruitment_faction = "Inquisition"
 	recruitment_message = "You will serve Psydon's will, %RECRUIT!"
-	accept_message = "By Psydon I ENDURE!"
+	accept_message = "F-fine just don't kill me!"
 	refuse_message = "I FOLLOW MY GOD INTO DEATH!!!"
 
 /datum/action/cooldown/spell/undirected/list_target/convert_role/adept/can_convert(mob/living/carbon/human/cast_on)
@@ -18,6 +18,3 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/on_conversion(mob/living/carbon/human/cast_on)
-	. = ..()
-	cast_on.set_patron(/datum/patron/psydon, FALSE)
