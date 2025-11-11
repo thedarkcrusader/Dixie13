@@ -39,6 +39,7 @@
 	var/temporary_split_key
 
 	var/list/connected = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	flags_1 = CONDUCT_1
 
 /obj/effect/abstract/liquid_turf/proc/set_connection(dir)
 	connected["[dir]"] = 1
@@ -142,7 +143,7 @@
 				return
 			set_connection(get_dir(src, pipe))
 			pipe.set_connection(get_dir(pipe, src))
-			pipe.update_appearance()
+			pipe.update_appearance(UPDATE_ICON)
 
 	for(var/direction in GLOB.cardinals)
 		var/turf/turf = get_step(src, direction)

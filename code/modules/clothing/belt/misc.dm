@@ -115,6 +115,9 @@
 		qdel(src)
 		user.put_in_active_hand(new salvage_result(get_turf(user)))
 
+/obj/item/storage/belt/leather/rope/dark
+	color = "#505050"
+
 /obj/item/storage/belt/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
@@ -219,6 +222,7 @@
 	name = "cloth pouch"
 	desc = "Usually used for holding small amount of coins."
 	icon_state = "clothpouch"
+	salvage_result = /obj/item/natural/cloth
 	component_type = /datum/component/storage/concrete/grid/coin_pouch/cloth
 
 //Poison darts pouch
@@ -250,8 +254,8 @@
 	desc = "A rudimentary cloth sack strapped to the back for storing small amounts of items."
 	icon_state = "clothbackpack"
 	item_state = "clothbackpack"
-	component_type = /datum/component/storage/concrete/grid/satchel/cloth
 	salvage_result = /obj/item/natural/cloth
+	component_type = /datum/component/storage/concrete/grid/satchel/cloth
 
 /obj/item/storage/backpack/satchel/heartfelt
 	populate_contents = list(
@@ -265,7 +269,7 @@
 	icon_state = "osatchel"
 	item_state = "osatchel"
 
-/obj/item/storage/backpack/satchel/mule/PopulateContents()
+/obj/item/storage/backpack/satchel/mule/populate_contents()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
 			if(1)
