@@ -90,7 +90,7 @@
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/collar
 	marquescost = 8
 
-/obj/structure/closet/crate/chest/inqcrate/supplies/collar/PopulateContents()
+/obj/structure/closet/crate/chest/inqcrate/supplies/collar/populate_contents()
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/neck/gorget/explosive(src)
 	new /obj/item/collar_detonator(src)
