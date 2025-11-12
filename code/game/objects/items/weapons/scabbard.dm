@@ -148,7 +148,7 @@
 /obj/item/weapon/scabbard/kazengun/apply_components()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, slot_flags|ITEM_SLOT_HANDS)
-	AddComponent(/datum/component/storage/concrete/scabbard/sword)
+	AddComponent(/datum/component/storage/concrete/scabbard/kazengun)
 
 /obj/item/weapon/scabbard/kazengun/steel
 	name = "hwang scabbard"
