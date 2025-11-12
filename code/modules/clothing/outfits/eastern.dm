@@ -126,6 +126,12 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 25 // Head Honcho gets a buff
 	sellprice = 25
 
+/obj/item/clothing/armor/basiceast/captainrobe/weak
+	desc = "Flower-styled robes, The Merchant Guild says that this is from the southern Kazengite region."
+	armor = ARMOR_LEATHER_GOOD //The Idea is that you're supposed to keep it for the drip.
+
+
+
 // this robe spawns on a role that offers no leg protection nor further upgrades to the loadout, in exchange for better roundstart gear
 
 /obj/item/storage/belt/leather/exoticsilkbelt

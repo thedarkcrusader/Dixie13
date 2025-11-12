@@ -1,0 +1,75 @@
+/datum/job/advclass/mercenary/enforcer
+	title = "Enforcer"
+	tutorial = "You're an exiled enforcer from an clan, robed in black, and known for wild antics and loose camaraderie, You once used your blade to shake down anyone who hasn't paid their 'protection fees', nowadays, you will fight for anyone for the right price."
+	allowed_races = SPECIES_BASE_BODY
+	outfit = /datum/outfit/mercenary/enforcer
+	category_tags = list(CTAG_MERCENARY)
+	total_positions = 5
+	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
+
+	jobstats = list(
+		STATKEY_CON = 3,
+		STATKEY_END = 1,
+		STATKEY_STR = 1,
+		STATKEY_PER = 2,
+		STATKEY_INT = -2,
+		STATKEY_SPD = -2,
+	) //7 - Statline
+
+	skills = list(
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/misc/climbing = 3,
+		/datum/skill/misc/sneaking = 2,
+		/datum/skill/combat/wrestling = 3,
+		/datum/skill/combat/unarmed = 2,
+		/datum/skill/combat/swords = 4,
+		/datum/skill/combat/shields = 4,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/athletics = 4,
+		/datum/skill/misc/medicine = 2,
+	)
+
+	traits = list(
+		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_HARDDISMEMBER,
+		TRAIT_NOPAINSTUN,
+	)
+
+/datum/job/advclass/mercenary/enforcer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	spawned.merctype = 9
+
+/datum/outfit/mercenary/enforcer
+	var/is_leader = FALSE //does nothing except give you a cooler blade.
+
+/datum/outfit/mercenary/enforcer
+	name = "Gun-In"
+	shirt = /obj/item/clothing/shirt/undershirt/easttats
+	belt = /obj/item/storage/belt/leather
+	beltr = /obj/item/weapon/sword/sabre/mulyeog/rumahench
+	beltl = /obj/item/weapon/scabbard/kazengun/steel
+	backr = /obj/item/storage/backpack/satchel
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM)
+		cloak = /obj/item/clothing/cloak/eastcloak1
+		pants = /obj/item/clothing/pants/trou/leather/eastpants1
+		armor = /obj/item/clothing/shirt/undershirt/eastshirt1
+		gloves = /obj/item/clothing/gloves/eastgloves2
+		shoes = /obj/item/clothing/shoes/boots
+	else
+		armor = /obj/item/clothing/armor/basiceast/captainrobe/weak
+		shoes = /obj/item/clothing/shoes/rumaclan
+
+/datum/outfit/mercenary/enforcer/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	if(prob(10) && !is_leader)
+		is_leader = TRUE
+		var/obj/item/weapon/sword/sabre/mulyeog/rumacaptain/P = new(get_turf(src))
+		H.equip_to_appropriate_slot(P)
+		var/obj/item/weapon/scabbard/kazengun/gold/L = new(get_turf(src))
+		H.equip_to_appropriate_slot(L)
+	else
+		var/obj/item/weapon/sword/sabre/mulyeog/rumahench/P = new(get_turf(src))
+		H.equip_to_appropriate_slot(P)
+		var/obj/item/weapon/scabbard/kazengun/steel/L = new(get_turf(src))
+		H.equip_to_appropriate_slot(L)
