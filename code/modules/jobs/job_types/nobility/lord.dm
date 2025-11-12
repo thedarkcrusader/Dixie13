@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	H.change_stat(STATKEY_SPD, 1)
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_LCK, 5)
-	if(H.gender == MALE)
+	if(H.pronouns != SHE_HER)
 		pants = /obj/item/clothing/pants/tights/colored/black
 		shirt = /obj/item/clothing/shirt/undershirt/colored/black
 		armor = /obj/item/clothing/armor/gambeson/arming

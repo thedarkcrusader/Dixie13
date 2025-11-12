@@ -42,7 +42,7 @@
 		armor = /obj/item/clothing/armor/leather/jacket/apothecary
 		pants = /obj/item/clothing/pants/tights/colored/black
 	else
-		if(H.gender == FEMALE)
+		if(H.pronouns == SHE_HER)
 			armor = /obj/item/clothing/shirt/robe/archivist
 			pants = /obj/item/clothing/pants/tights/colored/black
 		else

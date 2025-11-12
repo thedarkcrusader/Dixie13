@@ -32,7 +32,7 @@
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Lord"
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER)
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
@@ -60,10 +60,10 @@
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER)
 		H.change_stat(STATKEY_SPD, 1)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
-	if(H.gender == MALE)
+	else
 		H.change_stat(STATKEY_CON, 1)
 		pants = /obj/item/clothing/pants/tights/colored/black
 		shirt = /obj/item/clothing/shirt/tunic/colored/random
