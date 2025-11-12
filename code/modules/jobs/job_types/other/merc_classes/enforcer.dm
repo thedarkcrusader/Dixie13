@@ -48,7 +48,7 @@
 	shirt = /obj/item/clothing/shirt/undershirt/easttats
 	belt = /obj/item/storage/belt/leather
 	backr = /obj/item/storage/backpack/satchel
-	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM)
+	if(H.gender == MALE)
 		cloak = /obj/item/clothing/cloak/eastcloak1
 		pants = /obj/item/clothing/pants/trou/leather/eastpants1
 		armor = /obj/item/clothing/shirt/undershirt/eastshirt1
