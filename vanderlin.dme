@@ -2717,6 +2717,7 @@
 #include "code\modules\jobs\job_types\other\merc_classes\boltslinger.dm"
 #include "code\modules\jobs\job_types\other\merc_classes\corsair.dm"
 #include "code\modules\jobs\job_types\other\merc_classes\duelist.dm"
+#include "code\modules\jobs\job_types\other\merc_classes\enforcer.dm"
 #include "code\modules\jobs\job_types\other\merc_classes\exiled.dm"
 #include "code\modules\jobs\job_types\other\merc_classes\expegasusknight.dm"
 #include "code\modules\jobs\job_types\other\merc_classes\gallowglass.dm"

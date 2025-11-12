@@ -41,14 +41,12 @@
 	spawned.merctype = 9
 
 /datum/outfit/mercenary/enforcer
+	name = "Gun-In"
 	var/is_leader = FALSE //does nothing except give you a cooler blade.
 
-/datum/outfit/mercenary/enforcer
-	name = "Gun-In"
+/datum/outfit/mercenary/enforcer/pre_equip(mob/living/carbon/human/H)
 	shirt = /obj/item/clothing/shirt/undershirt/easttats
 	belt = /obj/item/storage/belt/leather
-	beltr = /obj/item/weapon/sword/sabre/mulyeog/rumahench
-	beltl = /obj/item/weapon/scabbard/kazengun/steel
 	backr = /obj/item/storage/backpack/satchel
 	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM)
 		cloak = /obj/item/clothing/cloak/eastcloak1
