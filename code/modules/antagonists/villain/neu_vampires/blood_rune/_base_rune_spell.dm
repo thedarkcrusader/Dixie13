@@ -6,17 +6,17 @@
 		if(word1.type == initial(instance.word1) && word2.type == initial(instance.word2) && word3.type == initial(instance.word3))
 			switch (use)
 				if ("ritual")
-					return new subtype(user, spell_holder, use)
+					return new instance(user, spell_holder, use)
 				if ("examine")
 					return instance
 				if ("walk")
 					if (initial(instance.walk_effect))
-						return new subtype(user, spell_holder, use) //idk man
+						return new instance(user, spell_holder, use) //idk man
 					else
 						return null
 				if ("imbue")
 					return instance
-			return new subtype(user, spell_holder, use)
+			return new instance(user, spell_holder, use)
 	return null
 
 
