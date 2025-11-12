@@ -25,9 +25,8 @@ SUBSYSTEM_DEF(pollution)
 
 /datum/controller/subsystem/pollution/Initialize()
 	//Initialize singletons
-	for(var/type in subtypesof(/datum/pollutant))
-		var/datum/pollutant/pollutant_cast = type
-		if(!length(pollutant_cast::name))
+	for(var/datum/pollutant/pollutant_cast as anything in subtypesof(/datum/pollutant))
+		if(!length(pollutant_cast.name))
 			continue
 		singletons[type] = new type()
 	return ..()

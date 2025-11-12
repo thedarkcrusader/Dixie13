@@ -42,8 +42,7 @@
 	if(!ispath(colour_type, /datum/client_colour))
 		return
 
-	for(var/cc in client_colours)
-		var/datum/client_colour/CC = cc
+	for(var/datum/client_colour/CC as anything in client_colours)
 		if(CC.type == colour_type)
 			client_colours -= CC
 			qdel(CC)

@@ -239,8 +239,7 @@
 
 		// Wound-specific pain (can be higher intensity)
 		var/wound_pain = 0
-		for(var/W in BP.wounds)
-			var/datum/wound/WO = W
+		for(var/datum/wound/WO as anything in BP.wounds)
 			if(WO.woundpain > 0)
 				wound_pain += WO.woundpain
 
@@ -853,8 +852,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 ////////////////
 
 /mob/living/carbon/proc/handle_brain_damage()
-	for(var/T in get_traumas())
-		var/datum/brain_trauma/BT = T
+	for(var/datum/brain_trauma/BT as anything in get_traumas())
 		BT.on_life()
 
 /////////////////////////////////////
