@@ -342,7 +342,7 @@
 /area/rogue/outdoors/woods)
 "dF" = (
 /turf/closed/mineral/random/med,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "dH" = (
 /obj/structure/stairs{
 	dir = 1
@@ -516,7 +516,7 @@
 "eH" = (
 /obj/effect/waterfall,
 /turf/closed/mineral/random,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "eM" = (
 /obj/structure/bed/hay,
 /turf/open/floor/twig,
@@ -733,7 +733,7 @@
 	pixel_y = 51
 	},
 /turf/closed/mineral/random/med,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "gT" = (
 /obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
@@ -1502,7 +1502,7 @@
 /area/rogue/outdoors/bog)
 "pn" = (
 /turf/closed/mineral,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "pr" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -1990,7 +1990,7 @@
 /area/rogue/outdoors/bog)
 "uo" = (
 /turf/closed/mineral/bedrock,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "uq" = (
 /obj/structure/flora/grass,
 /turf/open/floor/grass/red,
@@ -2430,7 +2430,7 @@
 /area/rogue/indoors)
 "Al" = (
 /turf/closed/wall/mineral/stone,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Ao" = (
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
@@ -2703,7 +2703,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "De" = (
 /turf/open/floor/dirt,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Df" = (
 /turf/closed/wall/mineral/tent,
 /area/rogue/under/mountains/anvil/lower)
@@ -2732,7 +2732,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "DG" = (
 /turf/closed/mineral/bedrock/cold,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "DJ" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/dirt,
@@ -2805,14 +2805,14 @@
 /area/rogue/under/mountains/anvil/lower)
 "Ew" = (
 /turf/closed/wall/mineral/decostone/center,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Ex" = (
 /obj/structure/fake_machine/musicbox,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/woods_safe)
 "EF" = (
 /turf/closed/mineral/random,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "EJ" = (
 /mob/living/carbon/human/species/goblin/npc/hell,
 /obj/item/natural/poo{
@@ -3386,7 +3386,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "Kw" = (
 /turf/closed/wall/mineral/stonebrick,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Kx" = (
 /obj/structure/meathook,
 /obj/effect/decal/remains/human,
@@ -3764,7 +3764,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "OE" = (
 /turf/closed/mineral/random/cold/med,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "OG" = (
 /obj/structure/chair/wood/alt/chair_noble/red{
 	dir = 4
@@ -3916,7 +3916,7 @@
 /area/rogue/under/mountains/anvil/upper)
 "Qf" = (
 /turf/closed,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Qk" = (
 /obj/structure/table/wood/treestump/shroomstump,
 /turf/open/floor/grass/red,
@@ -4385,7 +4385,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "Ux" = (
 /turf/open/transparent/openspace,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Uz" = (
 /obj/item/mana_battery/mana_crystal/small,
 /turf/open/floor/cobble,
@@ -4457,7 +4457,7 @@
 /area/rogue/outdoors/bog)
 "Vk" = (
 /turf/closed/mineral/random/high,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "Vp" = (
 /obj/structure/table/wood/counter/end{
 	dir = 1
@@ -4501,7 +4501,7 @@
 /area/rogue/outdoors/woods)
 "VV" = (
 /turf/closed/mineral/random/cold,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "VW" = (
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/dirt,

@@ -848,22 +848,6 @@
 	background_track_dusk = null
 	background_track_night = null
 
-/area/rogue/under/town/caverogue
-	name = "miningcave (roguetown)"
-	icon_state = "caverogue"
-	droning_index = DRONING_CAVE_GENERIC
-	ambient_index = AMBIENCE_CAVE
-	background_track = 'sound/music/area/caves.ogg'
-	background_track_dusk = null
-	background_track_night = null
-	converted_type = /area/rogue/outdoors/exposed/under/caves
-
-/area/rogue/outdoors/exposed/under/caves
-	icon_state = "caves"
-	background_track = 'sound/music/area/caves.ogg'
-	background_track_dusk = null
-	background_track_night = null
-
 /area/rogue/under/town/basement
 	name = "basement"
 	icon_state = "basement"

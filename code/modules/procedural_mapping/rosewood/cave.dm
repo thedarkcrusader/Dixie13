@@ -25,7 +25,7 @@
 							/obj/item/natural/rock/random = 0.5)
 	spawnableTurfs = list(/turf/open/floor/cobblerock = 25,
 							/turf/open/floor/dirt = 10)
-	allowed_areas = list(/area/rogue/under/town/caverogue,
+	allowed_areas = list(/area/rogue/under/cave,
 							/area/rogue/under/cavewet)
 
 /datum/mapGeneratorModule/rosewoodcave/dirt
@@ -38,7 +38,7 @@
 							/obj/item/grown/log/tree/stick = 4,
 							/obj/structure/flora/grass/bush_meagre/tundra = 1)
 	spawnableTurfs = list()
-	allowed_areas = list(/area/rogue/under/town/caverogue,
+	allowed_areas = list(/area/rogue/under/cave,
 							/area/rogue/under/cavewet)
 
 /datum/mapGeneratorModule/rosewoodcave/sewers

@@ -337,7 +337,7 @@
 /area/rogue/indoors/town/church)
 "anT" = (
 /turf/closed/wall/mineral/wood,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "aoc" = (
 /obj/structure/plasticflaps,
 /turf/open/water/sewer,
@@ -358,7 +358,7 @@
 /area/rogue/indoors/town/manor)
 "apV" = (
 /turf/closed,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "aqg" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 6
@@ -971,7 +971,7 @@
 /area/rogue/indoors/town/smithy)
 "aVp" = (
 /turf/closed/wall/mineral/decorstone,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "aWn" = (
 /obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
@@ -1277,7 +1277,7 @@
 /area/rogue/under/town/basement)
 "bkj" = (
 /turf/closed/mineral/random/high,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "bkI" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -8521,7 +8521,7 @@
 /area/rogue/indoors/town)
 "ite" = (
 /turf/closed/mineral,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "itJ" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -9887,7 +9887,7 @@
 /area/rogue/outdoors/town)
 "jDZ" = (
 /turf/closed/mineral/bedrock,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "jEf" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -10021,7 +10021,7 @@
 /area/rogue/under/town/basement)
 "jKJ" = (
 /turf/closed/mineral/random/med,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "jKR" = (
 /obj/structure/door/viewport{
 	name = "Steward";
@@ -10329,7 +10329,7 @@
 /area/rogue/indoors/town/manor)
 "jYA" = (
 /turf/closed/mineral/random,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "jYL" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -14533,7 +14533,7 @@
 /area/rogue/indoors/town)
 "ong" = (
 /turf/closed/wall/mineral/decorstone/moss,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "onj" = (
 /obj/structure/table/wood/large/corner,
 /turf/open/floor/carpet/red,
@@ -17507,7 +17507,7 @@
 "rqM" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/closed/mineral,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "rri" = (
 /obj/structure/toilet,
 /turf/open/floor/blocks/paving,
@@ -22293,7 +22293,7 @@
 /area/rogue/indoors/town/manor)
 "vCe" = (
 /turf/open/floor/dirt,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "vCJ" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/dirt,
@@ -23086,7 +23086,7 @@
 /area/rogue/under/town/sewer)
 "wqv" = (
 /turf/closed/wall/mineral/stone/moss,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "wqW" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -24352,7 +24352,7 @@
 /area/rogue/indoors/town/church/inquisition)
 "xyn" = (
 /turf/closed/wall/mineral/stone,
-/area/rogue/under/town/caverogue)
+/area/rogue/under/cave)
 "xyv" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
