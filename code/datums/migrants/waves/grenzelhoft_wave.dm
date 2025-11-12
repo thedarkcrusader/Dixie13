@@ -181,8 +181,8 @@
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
 	var/honorary = "Ritter"
-	if(spawned.pronouns == SHE_HER)
-		honorary = "Ritterin" //???
+	if(spawned.gender == FEMALE)
+		honorary = "Ritter"
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 

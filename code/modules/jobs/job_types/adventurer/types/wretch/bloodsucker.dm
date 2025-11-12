@@ -32,7 +32,7 @@
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Lord"
-	if(H.pronouns == SHE_HER)
+	if(H.gender == FEMALE)
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
@@ -61,7 +61,7 @@
 	ADD_TRAIT(H, TRAIT_FOREIGNER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	wretch_select_bounty(H)
-	if(H.pronouns == SHE_HER)
+	if(H.gender == FEMALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
@@ -71,7 +71,7 @@
 		beltr = /obj/item/weapon/sword/rapier/dec
 		beltl = /obj/item/ammo_holder/quiver/arrows
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/golden = 1, /obj/item/weapon/knife/dagger/steel/special, /obj/item/clothing/face/shepherd/rag)
-	else
+	if(H.gender == MALE)
 		H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		pants = /obj/item/clothing/pants/tights/colored/black
@@ -115,7 +115,7 @@
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Count"
-		if(H.pronouns == SHE_HER)
+		if(H.gender == FEMALE)
 			honorary = "Countess"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"

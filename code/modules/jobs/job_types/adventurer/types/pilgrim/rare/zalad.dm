@@ -26,7 +26,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich)
-	if(H.pronouns == SHE_HER)
+	if(H.gender == FEMALE)
 //		armor = /obj/item/clothing/armor/leather/jacket/silk_coat
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/black
 	if(H.mind)
@@ -46,7 +46,7 @@
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Emir"
-		if(H.pronouns == SHE_HER)
+		if(H.gender == FEMALE)
 			honorary = "Amirah"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"

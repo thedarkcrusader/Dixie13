@@ -39,7 +39,7 @@
 	beltr = /obj/item/weapon/mace/courtphysician
 	armor = /obj/item/clothing/shirt/robe/courtphysician
 	ring = /obj/item/clothing/ring/feldsher_ring
-	if(H.pronouns == SHE_HER)
+	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/pants/skirt/colored/random
 	else
 		pants = /obj/item/clothing/pants/tights/colored/random

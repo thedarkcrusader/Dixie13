@@ -145,7 +145,7 @@
 
 /datum/outfit/consort/lowborn/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	if(H.pronouns != SHE_HER)
+	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/colored/green
 		shirt = /obj/item/clothing/shirt/undershirt/colored/black
 		armor = /obj/item/clothing/shirt/tunic/colored/green
