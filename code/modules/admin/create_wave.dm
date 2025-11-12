@@ -141,7 +141,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	for(var/datum/skill/skill_instance in skills_list)
 		skills_options += "<option value='[initial(skill_instance.type)]'>[initial(skill_instance.name)]</option>"
-		qdel(skill_instance)
 
 	for(var/stat in stats_list)
 		stat_options += "<option value='[(stat)]'>[stat]</option>"
