@@ -771,7 +771,7 @@
 
 	channel.send(client, entry) // this is so we can add new channels for languages
 
-	winset(client, "native_say", "is-visible=0")
+	handle_close()
 	return TRUE
 
 /datum/native_say/proc/handle_thinking(visible)
