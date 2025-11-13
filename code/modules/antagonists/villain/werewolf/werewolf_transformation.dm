@@ -92,10 +92,10 @@
 	W.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
-	W.set_stat_modifier("[type]", STATKEY_STR, 15)
-	W.set_stat_modifier("[type]", STATKEY_CON, 15)
-	W.set_stat_modifier("[type]", STATKEY_END, 15)
-
+	W.base_constitution = 15
+	W.base_strength = 15
+	W.base_endurance = 15
+	W.recalculate_stats()
 
 	W.add_spell(/datum/action/cooldown/spell/undirected/howl)
 	W.add_spell(/datum/action/cooldown/spell/undirected/claws)
