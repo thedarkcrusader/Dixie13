@@ -1,4 +1,4 @@
-/obj/item/garrote/razor // Do not give this item out freely to other classes. Do not subtype this item for other classes. This is intended purely as the Confessor's identifying sidegrade, and as a bonus for the Inspector INQ. I will be very sad if you disregard this comment. Thank you. - Yische.
+/obj/item/inqarticles/razor // Do not give this item out freely to other classes. Do not subtype this item for other classes. This is intended purely as the Confessor's identifying sidegrade, and as a bonus for the Inspector INQ. I will be very sad if you disregard this comment. Thank you. - Yische.
 	name = "Profane Razor" // It's nonlethal. It's so silly and fun.
 	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable"
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -29,7 +29,7 @@
 	sellprice = 100
 	wield_block = FALSE
 
-/obj/item/garrote/razor/getonmobprop(tag)
+/obj/item/inqarticles/razor/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -52,7 +52,7 @@
 	desc = "Used to wrap around the target."
 	no_attack = TRUE
 
-/obj/item/garrote/razor/proc/wipeslate(mob/user)
+/obj/item/inqarticles/razor/proc/wipeslate(mob/user)
 	if(victim)
 		REMOVE_TRAIT(victim, TRAIT_MUTE, "garroteCordage")
 		REMOVE_TRAIT(victim, TRAIT_GARROTED, TRAIT_GENERIC)
@@ -65,7 +65,7 @@
 		active = FALSE
 		playsound(loc, 'sound/items/garroteshut.ogg', 65, TRUE)
 
-/obj/item/garrote/razor/attack_self(mob/user)
+/obj/item/inqarticles/razor/attack_self(mob/user)
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
 		if(ismob(loc))
@@ -85,7 +85,7 @@
 			playsound(loc, pick('sound/items/garrote.ogg', 'sound/items/garrote2.ogg'), 65, TRUE)
 			return
 
-/obj/item/garrote/razor/equipped(mob/living/carbon/human/user, slot)
+/obj/item/inqarticles/razor/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	lastcarrier = user
 	wipeslate(lastcarrier)
@@ -95,7 +95,7 @@
 		playsound(user, 'sound/items/garroteshut.ogg', 65, TRUE)
 		active = FALSE
 
-/obj/item/garrote/razor/dropped(mob/user, silent)
+/obj/item/inqarticles/razor/dropped(mob/user, silent)
 	. = ..()
 	wipeslate(lastcarrier)
 	if(active)
@@ -104,7 +104,7 @@
 		playsound(user, 'sound/items/garroteshut.ogg', 65, TRUE)
 		active = FALSE
 
-/obj/item/garrote/razor/afterattack(mob/living/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/inqarticles/razor/afterattack(mob/living/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
 	if(istype(user.used_intent, /datum/intent/garrote/grab))	// Grab your target first.
 		if(!iscarbon(target))
