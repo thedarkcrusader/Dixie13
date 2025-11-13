@@ -550,7 +550,12 @@
 
 		function closeWindow() {
 			windowOpen = false;
+
+			// Blur editor and restore focus to main window immediately (client-side)
 			editor.blur();
+			window.location = 'byond://winset?id=native_say&is-visible=0';
+			window.location = 'byond://winset?id=mainwindow.input&focus=true';
+
 			historyIndex = -1;
 			tempMessage = '';
 			currentSize = 'small';

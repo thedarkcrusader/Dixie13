@@ -30,7 +30,6 @@
 		return FALSE
 	var/mob/client_mob = mob
 	client_mob.set_typing_indicator(FALSE)
-	client_mob.set_typing_indicator(TRUE)
 
 /client/verb/open_say()
 	set name = ".open_say"
