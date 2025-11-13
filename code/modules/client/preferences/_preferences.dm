@@ -232,6 +232,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/ui_scale
 	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
 	var/list/culinary_preferences = list()
+	///this is our chat scale
+	var/chat_scale = 1
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -450,6 +452,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
 	dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
 
+	dat += "<br><b>Chat Scale:</b> <a href='?_src_=prefs;preference=chat_scale;task=input'>[chat_scale]</a>"
 	dat += "<br></td>"
 
 	dat += "</tr></table>"
@@ -1446,6 +1449,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if (!isnull(desiredfps))
 						clientfps = desiredfps
 						parent.fps = desiredfps
+
+				if ("chat_scale")
+					var/desiredfps = input(user, "Choose your desired chat scale. (1 = default, 2 = doubled", "Character Preference", chat_scale)  as null|num
+					if(desiredfps > 0)
+						if (!isnull(desiredfps))
+							chat_scale = desiredfps
+						user.client?.native_say.refresh_channels()
+
 				if("ui")
 					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in sortList(GLOB.available_ui_styles)
 					if(pickedui)

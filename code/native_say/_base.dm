@@ -55,6 +55,9 @@
 	var/scale = 1
 	if(client?.window_scaling)
 		scale = client?.window_scaling
+	if(client.prefs?.chat_scale)
+		scale *= client.prefs.chat_scale
+
 	client << browse(get_html(), "window=native_say;size=[window_width * scale]x[window_height * scale];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
 	winset(client, "native_say", "is-visible=0")
 	winset(client, "native_say.browser", "size=[window_width * scale]x[window_height * scale]")
@@ -75,6 +78,12 @@
 	return styles
 
 /datum/native_say/proc/get_html()
+	var/zoom = 100
+	if(client.prefs?.chat_scale)
+		zoom *= client.prefs.chat_scale
+	var/scale = 1
+	if(client.prefs?.chat_scale)
+		scale *= client.prefs.chat_scale
 	var/list/js_channels = list()
 	var/list/js_quiet = list()
 
@@ -105,6 +114,7 @@
 			height: 100vh;
 			display: flex;
 			flex-direction: column;
+			zoom: [zoom]%;
 		}
 
 		.window {
@@ -228,7 +238,7 @@
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
-		const windowSizes = { small: 35, medium: 50, large: 70 };
+		const windowSizes = { small: [35 * scale], medium: [50 * scale], large: [70 * scale] };
 		const lineLengths = { small: 12, medium: 25, large: 38 };
 
 		const windowEl = document.getElementById('window');
@@ -509,8 +519,8 @@
 			if (newSize !== currentSize) {
 				currentSize = newSize;
 				const newHeight = windowSizes\[newSize\];
-				window.location = 'byond://winset?id=native_say&size=231x' + newHeight;
-				window.location = 'byond://winset?id=native_say.browser&size=231x' + newHeight;
+				window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
+				window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
 			}
 		}
 
@@ -525,6 +535,11 @@
 			realText = '';
 			currentSize = 'small';
 			editor.focus();
+
+			// Force window size reset to small
+			const newHeight = windowSizes\['small'\];
+			window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
+			window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
 
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=open;channel=' + encodeURIComponent(channel);
 
@@ -580,7 +595,6 @@
 
 		// Callback function for winget
 		window.handleWingetPos = function(data) {
-			console.log('Winget callback received:', data);
 			if (data && data.pos) {
 				// pos is an object with x and y properties
 				const posX = data.pos.x;
@@ -590,7 +604,6 @@
 					y: dragStartPos.y - posY
 				};
 				isWindowDragging = true;
-				console.log('Drag started, offset:', dragPointOffset);
 			}
 		};
 
@@ -599,7 +612,6 @@
 			e.preventDefault();
 			e.stopPropagation();
 			dragStartPos = {x: e.screenX, y: e.screenY};
-			console.log('Mouse down at:', dragStartPos);
 
 			// Get current window position - try direct function call first
 			if (typeof winget === 'function') {
@@ -610,7 +622,6 @@
 					y: dragStartPos.y - posArr[1]
 				};
 				isWindowDragging = true;
-				console.log('Drag started with direct winget, offset:', dragPointOffset);
 			} else {
 				// Fallback to URL scheme
 				window.location = 'byond://winget?callback=handleWingetPos&id=native_say&property=pos';
@@ -627,8 +638,6 @@
 			const newX = e.screenX - dragPointOffset.x;
 			const newY = e.screenY - dragPointOffset.y;
 
-			console.log('Moving to:', newX, newY);
-
 			// Set window position - try direct function call first
 			if (typeof winset === 'function') {
 				winset('native_say', 'pos=' + newX + ',' + newY);
@@ -640,7 +649,6 @@
 
 		document.addEventListener('mouseup', function(e) {
 			if (isWindowDragging) {
-				console.log('Drag ended');
 				isWindowDragging = false;
 			}
 		});
@@ -817,6 +825,8 @@
 	var/scale = 1
 	if(client?.window_scaling)
 		scale = client?.window_scaling
+	if(client.prefs?.chat_scale)
+		scale *= client.prefs.chat_scale
 	winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=0")
 
 /datum/native_say/proc/handle_entry(channel_name, entry)
@@ -875,6 +885,8 @@
 		var/scale = 1
 		if(client?.window_scaling)
 			scale = client?.window_scaling
+		if(client.prefs?.chat_scale)
+			scale *= client.prefs.chat_scale
 		winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=1")
 		client << output(null, "native_say.browser:openSayWindow('[channel.name]')")
 
@@ -887,7 +899,6 @@
 
 	//we need to handle this
 	if(window_open)
-		var/current_channel_name = current_channel?.name
 		handle_close()
 	if(available_channels.len > 0 && (!current_channel || !(current_channel in available_channels)))
 		current_channel = available_channels[1]
