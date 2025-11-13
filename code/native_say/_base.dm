@@ -227,7 +227,7 @@
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
 		const windowSizes = { small: 30, medium: 50, large: 70 };
-		const lineLengths = { small: 15, medium: 31, large: 46 };
+		const lineLengths = { small: 12, medium: 25, large: 38 };
 
 		const windowEl = document.getElementById('window');
 		const shineEl = document.getElementById('shine');
