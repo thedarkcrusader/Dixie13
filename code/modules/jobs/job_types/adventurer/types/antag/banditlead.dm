@@ -2,7 +2,7 @@
 	title = "Bandit Leader"
 	tutorial = "You used to fight for coin, being paid to end lives by those who never had to risk their own. You cast down that life and brought your sellsword comrades with you, gathering up any willing scum for a new business venture."
 	outfit = /datum/outfit/bandit/banditlead
-	category_tags = list(CTAG_BANDIT)
+	category_tags = list(CTAG_BANDITLEAD)
 	cmode_music = 'sound/music/cmode/antag/combat_bandit2.ogg'
 
 /datum/outfit/bandit/banditlead/pre_equip(mob/living/carbon/human/H)

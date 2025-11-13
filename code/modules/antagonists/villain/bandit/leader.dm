@@ -1,15 +1,15 @@
 
-/datum/antagonist/bandit
-	name = "Bandit"
+/datum/antagonist/bandit/leader
+	name = "Bandit Leader"
 	roundend_category = "bandits"
 	antagpanel_category = "Bandit"
-	job_rank = ROLE_BANDIT
+	job_rank = ROLE_BANDITLEAD
 	antag_hud_type = ANTAG_HUD_BANDIT
-	antag_hud_name = "bandit"
+	antag_hud_name = "banditlead"
 	var/tri_amt
 	var/contrib
 	antag_flags = FLAG_ANTAG_CAP_IGNORE
-	confess_lines = list("FREEDOM!!!", "I WILL NOT LIVE IN YOUR WALLS!", "I WILL NOT FOLLOW YOUR RULES!")
+	confess_lines = list("I BRING THEM FREEDOM!!!", "WE WILL NOT LIVE IN YOUR WALLS!", "I AM WHY YOU CLUTCH YOUR POUCH!")
 
 	innate_traits = list(
 		TRAIT_BANDITCAMP,
@@ -18,20 +18,20 @@
 		TRAIT_VILLAIN,
 	)
 
-/datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
+/datum/antagonist/bandit/leader/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
 		if(examiner.real_name in GLOB.outlawed_players)
 			if(examined.real_name in GLOB.outlawed_players)
-				return span_boldnotice("Another free man. My ally.")
+				return span_boldnotice("One of the Free men, useful.")
 			else
-				return span_boldnotice("Pardoned free man?! Can I still trust [examined.p_them()]?!")
+				return span_boldnotice("Pardoned free man?! [examined.p_them()] is a traitor, they've turned their back on me!")
 		else if(examined.real_name in GLOB.outlawed_players)
-			return span_boldnotice("Free man still on the run. Fool.")
+			return span_boldnotice("Free man still on the run. Doomed without me.")
 		else
-			return span_boldnotice("Fellow pardoned free man.")
+			return span_boldnotice("One of mine, perhaps not so dumb as to stay on a poster.")
 
 /datum/antagonist/bandit/on_gain()
-	owner.special_role = "Bandit"
+	owner.special_role = "Bandit Leader"
 	owner.current?.purge_combat_knowledge()
 	move_to_spawnpoint()
 	owner.current.roll_mob_stats()
@@ -46,9 +46,9 @@
 	var/mob/living/carbon/human/H = owner.current
 	H.set_patron(/datum/patron/inhumen/matthios)
 
-/datum/antagonist/bandit/greet()
-	to_chat(owner.current, span_alertsyndie("I am a BANDIT!"))
-	to_chat(owner.current, span_info("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn."))
+/datum/antagonist/bandit/leader/greet()
+	to_chat(owner.current, span_alertsyndie("I am Leader of the Bandits!"))
+	to_chat(owner.current, span_info("I've led this raggedy group for quite some time it's because of me that they're alive at this point, but without them I'd be dead too."))
 	owner.announce_objectives()
 	..()
 
