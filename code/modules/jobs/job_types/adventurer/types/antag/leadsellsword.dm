@@ -1,5 +1,5 @@
 /datum/job/advclass/banditlead/leadsellsword //Strength class, starts with axe or flails and medium armor training
-	title = "Fallen Legend"
+	title = "Travelled Mercenary"
 	tutorial = "You used to fight for coin, being paid to end lives by those who never had to risk their own, you were the best of the best, employers would pay for your ferry just for a chance at your services. Eventually you realized how insufferable these employers were, you brought your sellswords to join you on this new life, the one where you could simply punch the nobles you couldn't stomach."
 	outfit = /datum/outfit/banditlead/leadsellsword
 	category_tags = list(CTAG_BANDITLEAD)
@@ -37,9 +37,9 @@
 	head = /obj/item/clothing/head/hatfur
 	gloves = /obj/item/clothing/gloves/leather
 	cloak = /obj/item/clothing/cloak/cape/crusader
-	H.change_stat(STATKEY_STR, 2) //more int statted sellsword, forced middle age/old so -2 spd aswell
+	H.change_stat(STATKEY_STR, 1) //more int statted sellsword, forced middle age/old so -1 spd with +1 end aswell
 	H.change_stat(STATKEY_END, 2)
-	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_CON, 2)
 	H.change_stat(STATKEY_INT, 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
