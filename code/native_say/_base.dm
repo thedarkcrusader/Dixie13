@@ -12,8 +12,8 @@
 
 	// Window sizing
 	var/window_width = 231
-	var/window_height = 35
-	var/list/window_sizes = list("small" = 35, "medium" = 50, "large" = 70)
+	var/window_height = 40
+	var/list/window_sizes = list("small" = 40, "medium" = 60, "large" = 80)
 	var/list/line_lengths = list("small" = 20, "medium" = 39, "large" = 59)
 
 	// Channel definitions - will be populated dynamically
@@ -238,7 +238,7 @@
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
-		const windowSizes = { small: [35 * scale], medium: [50 * scale], large: [70 * scale] };
+		const windowSizes = { small: [40 * scale], medium: [60 * scale], large: [80 * scale] };
 		const lineLengths = { small: 12, medium: 25, large: 38 };
 
 		const windowEl = document.getElementById('window');
