@@ -3,7 +3,7 @@
 	if(!user)
 		return
 	var/obj/item/held_item = user.get_active_held_item()
-	target_mobtypes = list(/mob/living/carbon/human)
+	var/target_mobtypes = list(/mob/living/carbon/human)
 	if(user.cmode)
 		if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 			if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
