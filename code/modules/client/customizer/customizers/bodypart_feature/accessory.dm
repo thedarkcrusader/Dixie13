@@ -44,8 +44,9 @@
 	default_disabled = TRUE
 
 /datum/customizer/bodypart_feature/accessory/is_allowed(datum/preferences/prefs)
-	if(prefs.age != AGE_CHILD)
-		return TRUE
+	. = ..()
+	if(prefs.age == AGE_CHILD)
+		return FALSE
 
 /datum/customizer_choice/bodypart_feature/accessory
 	name = "Accessory"
