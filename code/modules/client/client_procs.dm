@@ -161,7 +161,8 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			completed_asset_jobs += asset_cache_job
 			return
 
-	if(!holder && href_list["window_id"] != "statbrowser")
+	var/atom/ref = locate(href_list["src"])
+	if(!holder && (href_list["window_id"] != "statbrowser") && !istype(ref, /datum/native_say))
 		var/mtl = CONFIG_GET(number/minute_topic_limit)
 		if (mtl)
 			var/minute = round(world.time, 1 MINUTES)
