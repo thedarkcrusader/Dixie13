@@ -53,8 +53,8 @@
 
 /datum/native_say/proc/reload_ui()
 	var/scale = 1
-	if(owner?.window_scaling)
-		scale = owner?.window_scaling
+	if(client?.window_scaling)
+		scale = client?.window_scaling
 	client << browse(get_html(), "window=native_say;size=[window_width * scale]x[window_height * scale];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
 	winset(client, "native_say", "is-visible=0")
 
