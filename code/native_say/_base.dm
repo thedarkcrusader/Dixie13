@@ -61,10 +61,13 @@
 /datum/native_say/proc/resize_window(size_name)
 	if(!window_sizes[size_name])
 		return
+	var/scale = 1
+	if(client?.window_scaling)
+		scale = client?.window_scaling
 
 	window_height = window_sizes[size_name]
-	winset(client, "native_say", "size=[window_width]x[window_height]")
-	winset(client, "native_say.browser", "size=[window_width]x[window_height]")
+	winset(client, "native_say", "size=[window_width*scale]x[window_height*scale]")
+	winset(client, "native_say.browser", "size=[window_width*scale]x[window_height*scale]")
 
 /datum/native_say/proc/get_channel_styles()
 	var/styles = ""
