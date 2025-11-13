@@ -57,17 +57,7 @@
 		scale = client?.window_scaling
 	client << browse(get_html(), "window=native_say;size=[window_width * scale]x[window_height * scale];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
 	winset(client, "native_say", "is-visible=0")
-
-/datum/native_say/proc/resize_window(size_name)
-	if(!window_sizes[size_name])
-		return
-	var/scale = 1
-	if(client?.window_scaling)
-		scale = client?.window_scaling
-
-	window_height = window_sizes[size_name]
-	winset(client, "native_say", "size=[window_width*scale]x[window_height*scale]")
-	winset(client, "native_say.browser", "size=[window_width*scale]x[window_height*scale]")
+	winset(client, "native_say.browser", "size=[window_width * scale]x[window_height * scale]")
 
 /datum/native_say/proc/get_channel_styles()
 	var/styles = ""
@@ -83,6 +73,7 @@
 		}
 "}
 	return styles
+
 /datum/native_say/proc/get_html()
 	var/list/js_channels = list()
 	var/list/js_quiet = list()
@@ -122,6 +113,8 @@
 			background-color: #000;
 			overflow: hidden;
 			z-index: 0;
+			pointer-events: auto;
+			cursor: move;
 		}
 
 		.shine {
@@ -149,6 +142,7 @@
 			padding: 2px;
 			gap: 2px;
 			min-height: 0;
+			pointer-events: auto;
 		}
 
 		.button {
@@ -229,6 +223,8 @@
 		let isDragging = false;
 		let dragStartPos = {x: 0, y: 0};
 		let currentSize = 'small';
+		let isWindowDragging = false;
+		let dragPointOffset = {x: 0, y: 0};
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
@@ -512,7 +508,9 @@
 
 			if (newSize !== currentSize) {
 				currentSize = newSize;
-				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=resize;size=' + newSize;
+				const newHeight = windowSizes\[newSize\];
+				window.location = 'byond://winset?id=native_say&size=231x' + newHeight;
+				window.location = 'byond://winset?id=native_say.browser&size=231x' + newHeight;
 			}
 		}
 
@@ -578,6 +576,73 @@
 				}
 				isDragging = false;
 			}, 50);
+		});
+
+		// Callback function for winget
+		window.handleWingetPos = function(data) {
+			console.log('Winget callback received:', data);
+			if (data && data.pos) {
+				// pos is an object with x and y properties
+				const posX = data.pos.x;
+				const posY = data.pos.y;
+				dragPointOffset = {
+					x: dragStartPos.x - posX,
+					y: dragStartPos.y - posY
+				};
+				isWindowDragging = true;
+				console.log('Drag started, offset:', dragPointOffset);
+			}
+		};
+
+		// Window dragging functionality - the border is the window element showing through
+		windowEl.addEventListener('mousedown', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			dragStartPos = {x: e.screenX, y: e.screenY};
+			console.log('Mouse down at:', dragStartPos);
+
+			// Get current window position - try direct function call first
+			if (typeof winget === 'function') {
+				const posStr = winget('native_say', 'pos');
+				const posArr = posStr.split(',').map(v => parseInt(v));
+				dragPointOffset = {
+					x: dragStartPos.x - posArr[0],
+					y: dragStartPos.y - posArr[1]
+				};
+				isWindowDragging = true;
+				console.log('Drag started with direct winget, offset:', dragPointOffset);
+			} else {
+				// Fallback to URL scheme
+				window.location = 'byond://winget?callback=handleWingetPos&id=native_say&property=pos';
+			}
+		});
+
+		document.addEventListener('mousemove', function(e) {
+			if (!isWindowDragging) {
+				return;
+			}
+			e.preventDefault();
+
+			// Calculate new position
+			const newX = e.screenX - dragPointOffset.x;
+			const newY = e.screenY - dragPointOffset.y;
+
+			console.log('Moving to:', newX, newY);
+
+			// Set window position - try direct function call first
+			if (typeof winset === 'function') {
+				winset('native_say', 'pos=' + newX + ',' + newY);
+			} else {
+				// Fallback to URL scheme
+				window.location = 'byond://winset?id=native_say&pos=' + newX + ',' + newY;
+			}
+		});
+
+		document.addEventListener('mouseup', function(e) {
+			if (isWindowDragging) {
+				console.log('Drag ended');
+				isWindowDragging = false;
+			}
 		});
 
 		editor.addEventListener('beforeinput', function(e) {
@@ -733,11 +798,6 @@
 				handle_thinking(text2num(href_list["visible"]))
 			if("typing")
 				handle_typing()
-			if("resize")
-				handle_resize(href_list["size"])
-
-/datum/native_say/proc/handle_resize(size_name)
-	resize_window(size_name)
 
 /datum/native_say/proc/handle_open(channel_name)
 	window_open = TRUE
@@ -753,8 +813,11 @@
 /datum/native_say/proc/handle_close()
 	window_open = FALSE
 	stop_thinking()
-	resize_window("small")
-	winset(client, "native_say", "is-visible=0")
+	// Reset window size using winset
+	var/scale = 1
+	if(client?.window_scaling)
+		scale = client?.window_scaling
+	winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=0")
 
 /datum/native_say/proc/handle_entry(channel_name, entry)
 	if(!entry || length(entry) > max_length)
@@ -809,8 +872,10 @@
 		channel = available_channels[1]
 
 	if(channel)
-		resize_window("small")
-		winset(client, "native_say", "is-visible=1")
+		var/scale = 1
+		if(client?.window_scaling)
+			scale = client?.window_scaling
+		winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=1")
 		client << output(null, "native_say.browser:openSayWindow('[channel.name]')")
 
 /datum/native_say/proc/force_say()
