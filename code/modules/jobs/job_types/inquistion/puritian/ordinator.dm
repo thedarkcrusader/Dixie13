@@ -17,10 +17,10 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 3,
+		STATKEY_STR = 2,
+		STATKEY_CON = 2,
 		STATKEY_END = 2,
-		STATKEY_CON = 3,
-	) //8 Statline
+	) //6 Statline due to them having armors.
 
 	traits = list(
 		TRAIT_STEELHEARTED,
