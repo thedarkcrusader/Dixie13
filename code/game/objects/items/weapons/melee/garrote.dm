@@ -1,4 +1,4 @@
-/obj/item/weapon/garrote/razor // To Yische, the dude who made this originally, I respectfully decline your opinion simply because it would be cool as hell for assassin to have a garrote
+/obj/item/weapon/garrote // To Yische, the dude who made this originally, I respectfully decline your opinion simply because it would be cool as hell for assassin to have a garrote
 	name = "Profane Razor" // Well, it used to be non lethal. Now it isn't, have fun agent 47.
 	desc = "A thin wire of phantom black material strung between two steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable. Perfect for asphyxiation."
 	icon = 'icons/roguetown/items/misc.dmi'
