@@ -305,245 +305,104 @@
 		}
 
 		function mapRenderedToRaw(renderedPos) {
-			// Parse the text to figure out where markdown syntax is
-			let rawPos = 0;
-			let renderedCount = 0;
-			let i = 0;
+			let result = { rawPos: 0, renderedCount: 0 };
 
-			while (i < realText.length && renderedCount < renderedPos) {
-				// Check for +bold+
-				if (realText\[i\] === '+') {
-					const closeIdx = realText.indexOf('+', i + 1);
-					if (closeIdx !== -1) {
-						// Skip opening +
-						i++;
-						rawPos++;
-						// Count the content
-						while (i < closeIdx && renderedCount < renderedPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '|' || realText\[i\] === '_')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									rawPos++;
-									while (i < nestedClose && renderedCount < renderedPos) {
-										renderedCount++;
-										i++;
-										rawPos++;
-									}
-									if (i === nestedClose) {
-										i++;
-										rawPos++;
-									}
-									continue;
-								}
-							}
-							renderedCount++;
+			function processText(startIdx, endIdx, targetRendered) {
+				let i = startIdx;
+				let localRendered = 0;
+
+				while (i < endIdx && localRendered < targetRendered) {
+					const char = realText\[i\];
+
+					// Check for markdown markers
+					if (char === '+' || char === '|' || char === '_') {
+						const closeIdx = realText.indexOf(char, i + 1);
+						if (closeIdx !== -1 && closeIdx <= endIdx) {
+							// Found a complete marker pair
+							// Skip opening marker in raw position
+							result.rawPos++;
 							i++;
-							rawPos++;
-						}
-						// Skip closing +
-						if (i === closeIdx) {
+
+							// Recursively process the content inside
+							const innerResult = processText(i, closeIdx, targetRendered - localRendered);
+							localRendered += innerResult;
+							i = closeIdx;
+
+							// Skip closing marker in raw position
+							result.rawPos++;
 							i++;
-							rawPos++;
+							continue;
 						}
-						continue;
 					}
-				}
-				// Check for |italic|
-				if (realText\[i\] === '|') {
-					const closeIdx = realText.indexOf('|', i + 1);
-					if (closeIdx !== -1) {
-						i++;
-						rawPos++;
-						while (i < closeIdx && renderedCount < renderedPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '+' || realText\[i\] === '_')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									rawPos++;
-									while (i < nestedClose && renderedCount < renderedPos) {
-										renderedCount++;
-										i++;
-										rawPos++;
-									}
-									if (i === nestedClose) {
-										i++;
-										rawPos++;
-									}
-									continue;
-								}
-							}
-							renderedCount++;
-							i++;
-							rawPos++;
-						}
-						if (i === closeIdx) {
-							i++;
-							rawPos++;
-						}
-						continue;
-					}
-				}
-				// Check for _underline_
-				if (realText\[i\] === '_') {
-					const closeIdx = realText.indexOf('_', i + 1);
-					if (closeIdx !== -1) {
-						i++;
-						rawPos++;
-						while (i < closeIdx && renderedCount < renderedPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '+' || realText\[i\] === '|')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									rawPos++;
-									while (i < nestedClose && renderedCount < renderedPos) {
-										renderedCount++;
-										i++;
-										rawPos++;
-									}
-									if (i === nestedClose) {
-										i++;
-										rawPos++;
-									}
-									continue;
-								}
-							}
-							renderedCount++;
-							i++;
-							rawPos++;
-						}
-						if (i === closeIdx) {
-							i++;
-							rawPos++;
-						}
-						continue;
-					}
+
+					// Regular character
+					localRendered++;
+					result.rawPos++;
+					i++;
 				}
 
-				// Normal character
-				renderedCount++;
-				i++;
-				rawPos++;
+				return localRendered;
 			}
 
-			return rawPos;
+			processText(0, realText.length, renderedPos);
+			return result.rawPos;
 		}
 
 		function mapRawToRendered(rawPos) {
-			// Map raw text position to rendered position
-			let renderedPos = 0;
-			let i = 0;
+			let result = { renderedCount: 0, rawCount: 0 };
 
-			while (i < rawPos && i < realText.length) {
-				// Check for +bold+
-				if (realText\[i\] === '+') {
-					const closeIdx = realText.indexOf('+', i + 1);
-					if (closeIdx !== -1 && closeIdx < rawPos) {
-						// Skip opening +
-						i++;
-						// Count the content
-						while (i < closeIdx && i < rawPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '|' || realText\[i\] === '_')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									while (i < nestedClose && i < rawPos) {
-										renderedPos++;
-										i++;
-									}
-									if (i === nestedClose && i < rawPos) {
-										i++;
-									}
-									continue;
-								}
+			function processText(startIdx, endIdx, targetRaw) {
+				let i = startIdx;
+				let localRendered = 0;
+
+				while (i < endIdx && result.rawCount < targetRaw) {
+					const char = realText\[i\];
+
+					// Check for markdown markers
+					if (char === '+' || char === '|' || char === '_') {
+						const closeIdx = realText.indexOf(char, i + 1);
+						if (closeIdx !== -1 && closeIdx <= endIdx) {
+							// Found a complete marker pair
+							// Skip opening marker (doesn't count as rendered)
+							result.rawCount++;
+							i++;
+
+							if (result.rawCount >= targetRaw) {
+								return localRendered;
 							}
-							renderedPos++;
-							i++;
-						}
-						// Skip closing + if we're past it
-						if (i === closeIdx && i < rawPos) {
-							i++;
-						}
-						continue;
-					}
-				}
-				// Check for |italic|
-				if (realText\[i\] === '|') {
-					const closeIdx = realText.indexOf('|', i + 1);
-					if (closeIdx !== -1 && closeIdx < rawPos) {
-						i++;
-						while (i < closeIdx && i < rawPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '+' || realText\[i\] === '_')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									while (i < nestedClose && i < rawPos) {
-										renderedPos++;
-										i++;
-									}
-									if (i === nestedClose && i < rawPos) {
-										i++;
-									}
-									continue;
-								}
+
+							// Recursively process the content inside
+							const innerResult = processText(i, closeIdx, targetRaw);
+							localRendered += innerResult;
+							i = closeIdx;
+
+							if (result.rawCount >= targetRaw) {
+								return localRendered;
 							}
-							renderedPos++;
+
+							// Skip closing marker (doesn't count as rendered)
+							result.rawCount++;
 							i++;
+							continue;
 						}
-						if (i === closeIdx && i < rawPos) {
-							i++;
-						}
-						continue;
 					}
-				}
-				// Check for _underline_
-				if (realText\[i\] === '_') {
-					const closeIdx = realText.indexOf('_', i + 1);
-					if (closeIdx !== -1 && closeIdx < rawPos) {
-						i++;
-						while (i < closeIdx && i < rawPos) {
-							// Handle nested markers inside
-							if ((realText\[i\] === '+' || realText\[i\] === '|')) {
-								const nestedMarker = realText\[i\];
-								const nestedClose = realText.indexOf(nestedMarker, i + 1);
-								if (nestedClose !== -1 && nestedClose < closeIdx) {
-									i++;
-									while (i < nestedClose && i < rawPos) {
-										renderedPos++;
-										i++;
-									}
-									if (i === nestedClose && i < rawPos) {
-										i++;
-									}
-									continue;
-								}
-							}
-							renderedPos++;
-							i++;
-						}
-						if (i === closeIdx && i < rawPos) {
-							i++;
-						}
-						continue;
-					}
+
+					// Regular character
+					localRendered++;
+					result.renderedCount++;
+					result.rawCount++;
+					i++;
 				}
 
-				// Normal character
-				renderedPos++;
-				i++;
+				return localRendered;
 			}
 
-			return renderedPos;
+			processText(0, realText.length, rawPos);
+			return result.renderedCount;
+		}
+
+		function findClosingMarker(text, marker, startPos) {
+			return text.indexOf(marker, startPos + 1);
 		}
 
 		function setCursorPosition(pos) {
@@ -695,19 +554,25 @@
 		});
 
 		editor.addEventListener('beforeinput', function(e) {
-			const cursorPos = getCursorPosition();
 			const sel = window.getSelection();
 			const hasSelection = sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed;
 
-			let selectionStart = cursorPos;
-			let selectionEnd = cursorPos;
+			let selectionStart, selectionEnd;
 
 			if (hasSelection) {
 				const range = sel.getRangeAt(0);
-				const preRange = range.cloneRange();
-				preRange.selectNodeContents(editor);
-				preRange.setEnd(range.startContainer, range.startOffset);
-				selectionStart = preRange.toString().length;
+				const preRangeStart = range.cloneRange();
+				preRangeStart.selectNodeContents(editor);
+				preRangeStart.setEnd(range.startContainer, range.startOffset);
+				const preRangeEnd = range.cloneRange();
+				preRangeEnd.selectNodeContents(editor);
+				preRangeEnd.setEnd(range.endContainer, range.endOffset);
+
+				selectionStart = mapRenderedToRaw(preRangeStart.toString().length);
+				selectionEnd = mapRenderedToRaw(preRangeEnd.toString().length);
+			} else {
+				const cursorPos = getCursorPosition();
+				selectionStart = cursorPos;
 				selectionEnd = cursorPos;
 			}
 
@@ -717,19 +582,22 @@
 				// Insert character at cursor position
 				realText = realText.slice(0, selectionStart) + e.data + realText.slice(selectionEnd);
 				updatePreview();
-				setCursorPosition(selectionStart + e.data.length);
+				const newCursorPos = mapRawToRendered(selectionStart + e.data.length);
+				setCursorPosition(newCursorPos);
 			} else if (e.inputType === 'deleteContentBackward') {
 				e.preventDefault();
 				if (hasSelection) {
 					// Delete selection
 					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
 					updatePreview();
-					setCursorPosition(selectionStart);
-				} else if (cursorPos > 0) {
+					const newCursorPos = mapRawToRendered(selectionStart);
+					setCursorPosition(newCursorPos);
+				} else if (selectionStart > 0) {
 					// Delete one character before cursor
-					realText = realText.slice(0, cursorPos - 1) + realText.slice(cursorPos);
+					realText = realText.slice(0, selectionStart - 1) + realText.slice(selectionStart);
 					updatePreview();
-					setCursorPosition(cursorPos - 1);
+					const newCursorPos = mapRawToRendered(selectionStart - 1);
+					setCursorPosition(newCursorPos);
 				}
 			} else if (e.inputType === 'deleteContentForward') {
 				e.preventDefault();
@@ -737,26 +605,30 @@
 					// Delete selection
 					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
 					updatePreview();
-					setCursorPosition(selectionStart);
-				} else if (cursorPos < realText.length) {
+					const newCursorPos = mapRawToRendered(selectionStart);
+					setCursorPosition(newCursorPos);
+				} else if (selectionStart < realText.length) {
 					// Delete one character after cursor
-					realText = realText.slice(0, cursorPos) + realText.slice(cursorPos + 1);
+					realText = realText.slice(0, selectionStart) + realText.slice(selectionStart + 1);
 					updatePreview();
-					setCursorPosition(cursorPos);
+					const newCursorPos = mapRawToRendered(selectionStart);
+					setCursorPosition(newCursorPos);
 				}
 			} else if (e.inputType === 'insertLineBreak') {
 				e.preventDefault();
 				// Handle enter key
 				realText = realText.slice(0, selectionStart) + '\\n' + realText.slice(selectionEnd);
 				updatePreview();
-				setCursorPosition(selectionStart + 1);
+				const newCursorPos = mapRawToRendered(selectionStart + 1);
+				setCursorPosition(newCursorPos);
 			} else if (e.inputType === 'insertFromPaste') {
 				e.preventDefault();
 				// Handle paste
 				const pastedText = e.dataTransfer ? e.dataTransfer.getData('text/plain') : '';
 				realText = realText.slice(0, selectionStart) + pastedText + realText.slice(selectionEnd);
 				updatePreview();
-				setCursorPosition(selectionStart + pastedText.length);
+				const newCursorPos = mapRawToRendered(selectionStart + pastedText.length);
+				setCursorPosition(newCursorPos);
 			}
 
 			updateWindowSize();

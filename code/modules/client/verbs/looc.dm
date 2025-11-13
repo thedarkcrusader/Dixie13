@@ -61,6 +61,8 @@
 
 
 	msg = emoji_parse(msg)
+	msg = parsemarkdown_basic(msg, limited = TRUE, barebones = TRUE)
+
 	mob.log_talk("LOOC: [msg]", LOG_LOOC)
 
 	var/prefix = "LOOC"
