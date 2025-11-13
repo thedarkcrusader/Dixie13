@@ -12,8 +12,8 @@
 
 	// Window sizing
 	var/window_width = 231
-	var/window_height = 30
-	var/list/window_sizes = list("small" = 30, "medium" = 50, "large" = 70)
+	var/window_height = 35
+	var/list/window_sizes = list("small" = 35, "medium" = 50, "large" = 70)
 	var/list/line_lengths = list("small" = 20, "medium" = 39, "large" = 59)
 
 	// Channel definitions - will be populated dynamically
@@ -232,7 +232,7 @@
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
-		const windowSizes = { small: 30, medium: 50, large: 70 };
+		const windowSizes = { small: 35, medium: 50, large: 70 };
 		const lineLengths = { small: 12, medium: 25, large: 38 };
 
 		const windowEl = document.getElementById('window');
@@ -457,6 +457,27 @@
 					sel.removeAllRanges();
 					sel.addRange(range);
 				} catch(e) {}
+			}
+
+			// Scroll cursor into view
+			scrollCursorIntoView();
+		}
+
+		function scrollCursorIntoView() {
+			const sel = window.getSelection();
+			if (!sel.rangeCount) return;
+
+			const range = sel.getRangeAt(0);
+			const rect = range.getBoundingClientRect();
+			const editorRect = editor.getBoundingClientRect();
+
+			// Check if cursor is below visible area
+			if (rect.bottom > editorRect.bottom) {
+				editor.scrollTop += rect.bottom - editorRect.bottom + 5;
+			}
+			// Check if cursor is above visible area
+			else if (rect.top < editorRect.top) {
+				editor.scrollTop -= editorRect.top - rect.top + 5;
 			}
 		}
 
