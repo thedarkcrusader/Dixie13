@@ -881,3 +881,15 @@
 /datum/native_say/proc/force_say()
 	client << output(null, "native_say.browser:submitEntry()")
 	client.stop_typing()
+
+/datum/native_say/proc/refresh_channels()
+	fetch_channels()
+
+	//we need to handle this
+	if(window_open)
+		var/current_channel_name = current_channel?.name
+		handle_close()
+	if(available_channels.len > 0 && (!current_channel || !(current_channel in available_channels)))
+		current_channel = available_channels[1]
+		current_channel_index = 1
+	reload_ui()
