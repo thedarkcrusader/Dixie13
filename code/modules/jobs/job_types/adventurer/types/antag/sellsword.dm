@@ -1,4 +1,4 @@
-/datum/job/advclass/sellsword //Strength class, starts with axe or flails and medium armor training
+/datum/job/advclass/sellsword //Polearm strength class, starts with billhook or godendag with medium armor training
 	title = "Sellsword"
 	tutorial = "Perhaps a mercenary, perhaps a deserter - at one time, you killed for a master in return for gold. Now you live with no such master over your head - and take what you please."
 	allowed_sexes = list(MALE, FEMALE)
@@ -35,6 +35,7 @@
 	neck = /obj/item/clothing/neck/chaincoif
 	armor = /obj/item/clothing/armor/brigandine/light
 	head = /obj/item/clothing/head/helmet/nasal
+	gloves = /obj/item/clothing/gloves/leather
 	beltl = /obj/item/weapon/sword
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 	H.change_stat(STATKEY_STR, 2) //less buffs than brigand but no int debuff
@@ -47,9 +48,9 @@
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Billhook") //Deserter watchman. Maybe should be shield and spear? spear and crossbow is kinda clumsy
+		if("Billhook") //More lethal of the two, basic pikeman
 			backl= /obj/item/weapon/polearm/spear/billhook
 			H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		if("Godendag") //Mercenary on the wrong side of the law
+		if("Godendag") //More anti armor/non lethal of the two, still very capable of being a lineman
 			backl= /obj/item/weapon/mace/goden
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

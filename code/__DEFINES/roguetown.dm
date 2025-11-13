@@ -141,6 +141,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_TOWNER 		"CAT_TOWNER"  		// Villager class - Villagers can use it
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really	<- Disabled; bandits got stuck with class selection
+#define CTAG_BANDITLEAD		"CAT_BANDITLEAD"
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY		"CAT_MERCENARY"
 #define CTAG_GARRISON		"CAT_GARRISON"

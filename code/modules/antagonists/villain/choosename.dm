@@ -24,7 +24,7 @@
 		new_name = possible_new_name
 	while(FALSE)
 
-	if(mind.has_antag_datum(/datum/antagonist/bandit))
+	if(mind.has_antag_datum(/datum/antagonist/bandit) || mind.has_antag_datum(/datum/antagonist/bandit/leader))
 		GLOB.outlawed_players |= new_name
 
 	fully_replace_character_name(old_name, new_name)

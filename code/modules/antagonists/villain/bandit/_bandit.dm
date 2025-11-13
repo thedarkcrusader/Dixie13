@@ -19,16 +19,6 @@
 	)
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
-	if(istype(examined_datum, /datum/antagonist/bandit))
-		if(examiner.real_name in GLOB.outlawed_players)
-			if(examined.real_name in GLOB.outlawed_players)
-				return span_boldnotice("Another free man. My ally.")
-			else
-				return span_boldnotice("Pardoned free man?! Can I still trust [examined.p_them()]?!")
-		else if(examined.real_name in GLOB.outlawed_players)
-			return span_boldnotice("Free man still on the run. Fool.")
-		else
-			return span_boldnotice("Fellow pardoned free man.")
 	if(istype(examined_datum, /datum/antagonist/bandit/leader))
 		if(examiner.real_name in GLOB.outlawed_players)
 			if(examined.real_name in GLOB.outlawed_players)
@@ -39,6 +29,17 @@
 			return span_boldnotice("The one doomed to lead others to a worthless death.")
 		else
 			return span_boldnotice("Our leader's been pardoned aswell, perhaps there's another path.")
+	else
+		if(istype(examined_datum, /datum/antagonist/bandit))
+			if(examiner.real_name in GLOB.outlawed_players)
+				if(examined.real_name in GLOB.outlawed_players)
+					return span_boldnotice("Another free man. My ally.")
+				else
+					return span_boldnotice("Pardoned free man?! Can I still trust [examined.p_them()]?!")
+			else if(examined.real_name in GLOB.outlawed_players)
+				return span_boldnotice("Free man still on the run. Fool.")
+			else
+				return span_boldnotice("Fellow pardoned free man.")
 
 /datum/antagonist/bandit/on_gain()
 	owner.special_role = "Bandit"
