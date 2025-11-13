@@ -604,9 +604,9 @@
 	first_time_text = "The Drunken Saiga"
 	droning_index = DRONING_INDOORS
 	droning_index_night = DRONING_INDOORS
-	background_track = "sound/blank.ogg"
-	background_track_dusk = "sound/blank.ogg"
-	background_track_night = "sound/blank.ogg"
+	background_track = 'sound/blank.ogg'
+	background_track_dusk = 'sound/blank.ogg'
+	background_track_night = 'sound/blank.ogg'
 	converted_type = /area/rogue/outdoors/exposed/tavern
 
 /area/rogue/outdoors/exposed/tavern
@@ -665,7 +665,7 @@
 /area/rogue/indoors/town/clocktower
 	first_time_text = "Clocktower"
 	icon_state = "clocktower"
-	background_track = "sound/music/area/clocktower_ambience.ogg"
+	background_track = 'sound/music/area/clocktower_ambience.ogg'
 
 /area/rogue/indoors/town/orphanage
 	first_time_text = "The Orphanage"
