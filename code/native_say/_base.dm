@@ -52,7 +52,10 @@
 	reload_ui()
 
 /datum/native_say/proc/reload_ui()
-	client << browse(get_html(), "window=native_say;size=[window_width]x[window_height];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
+	var/scale = 1
+	if(owner?.window_scaling)
+		scale = owner?.window_scaling
+	client << browse(get_html(), "window=native_say;size=[window_width * scale]x[window_height * scale];pos=848,500;can_close=0;can_minimize=0;can_resize=0;titlebar=0")
 	winset(client, "native_say", "is-visible=0")
 
 /datum/native_say/proc/resize_window(size_name)
