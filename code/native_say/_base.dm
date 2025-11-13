@@ -76,7 +76,6 @@
 		}
 "}
 	return styles
-
 /datum/native_say/proc/get_html()
 	var/zoom = 100
 	if(client.prefs?.chat_scale)
@@ -224,17 +223,20 @@
 	</div>
 
 	<script>
-		let currentChannel = '[default_channel]';
-		let currentChannelIndex = 0;
-		let windowOpen = false;
-		let chatHistory = \[\];
-		let historyIndex = -1;
-		let tempMessage = '';
-		let isDragging = false;
-		let dragStartPos = {x: 0, y: 0};
-		let currentSize = 'small';
-		let isWindowDragging = false;
-		let dragPointOffset = {x: 0, y: 0};
+		// ===== GLOBALS =====
+		window.currentChannel = '[default_channel]';
+		window.currentChannelIndex = 0;
+		window.windowOpen = false;
+		window.isDragging = false;
+		window.dragStartPos = {x: 0, y: 0};
+		window.currentSize = 'small';
+		window.isWindowDragging = false;
+		window.dragPointOffset = {x: 0, y: 0};
+		window.isSubmitting = false;
+		window.chatHistory = \[\];
+		window.historyIndex = -1;
+		window.tempMessage = '';
+		window.realText = '';
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
@@ -245,8 +247,8 @@
 		const shineEl = document.getElementById('shine');
 		const button = document.getElementById('channelBtn');
 		const editor = document.getElementById('editor');
-		let realText = ''; // Store the actual markdown input
 
+		// ===== MARKDOWN PARSER =====
 		function parseMarkdownBasic(text, barebones) {
 			if (!text || text.length === 0) return text;
 			let t = text;
@@ -301,6 +303,7 @@
 			return t;
 		}
 
+		// ===== CURSOR UTILITIES =====
 		function getCursorPosition() {
 			const sel = window.getSelection();
 			if (!sel.rangeCount) return 0;
@@ -311,8 +314,6 @@
 			preRange.setEnd(range.endContainer, range.endOffset);
 
 			const renderedPos = preRange.toString().length;
-
-			// Map rendered position back to raw text position
 			return mapRenderedToRaw(renderedPos);
 		}
 
@@ -324,30 +325,24 @@
 				let localRendered = 0;
 
 				while (i < endIdx && localRendered < targetRendered) {
-					const char = realText\[i\];
+					const char = window.realText\[i\];
 
-					// Check for markdown markers
 					if (char === '+' || char === '|' || char === '_') {
-						const closeIdx = realText.indexOf(char, i + 1);
+						const closeIdx = window.realText.indexOf(char, i + 1);
 						if (closeIdx !== -1 && closeIdx <= endIdx) {
-							// Found a complete marker pair
-							// Skip opening marker in raw position
 							result.rawPos++;
 							i++;
 
-							// Recursively process the content inside
 							const innerResult = processText(i, closeIdx, targetRendered - localRendered);
 							localRendered += innerResult;
 							i = closeIdx;
 
-							// Skip closing marker in raw position
 							result.rawPos++;
 							i++;
 							continue;
 						}
 					}
 
-					// Regular character
 					localRendered++;
 					result.rawPos++;
 					i++;
@@ -356,7 +351,7 @@
 				return localRendered;
 			}
 
-			processText(0, realText.length, renderedPos);
+			processText(0, window.realText.length, renderedPos);
 			return result.rawPos;
 		}
 
@@ -368,14 +363,11 @@
 				let localRendered = 0;
 
 				while (i < endIdx && result.rawCount < targetRaw) {
-					const char = realText\[i\];
+					const char = window.realText\[i\];
 
-					// Check for markdown markers
 					if (char === '+' || char === '|' || char === '_') {
-						const closeIdx = realText.indexOf(char, i + 1);
+						const closeIdx = window.realText.indexOf(char, i + 1);
 						if (closeIdx !== -1 && closeIdx <= endIdx) {
-							// Found a complete marker pair
-							// Skip opening marker (doesn't count as rendered)
 							result.rawCount++;
 							i++;
 
@@ -383,7 +375,6 @@
 								return localRendered;
 							}
 
-							// Recursively process the content inside
 							const innerResult = processText(i, closeIdx, targetRaw);
 							localRendered += innerResult;
 							i = closeIdx;
@@ -392,14 +383,12 @@
 								return localRendered;
 							}
 
-							// Skip closing marker (doesn't count as rendered)
 							result.rawCount++;
 							i++;
 							continue;
 						}
 					}
 
-					// Regular character
 					localRendered++;
 					result.renderedCount++;
 					result.rawCount++;
@@ -409,12 +398,8 @@
 				return localRendered;
 			}
 
-			processText(0, realText.length, rawPos);
+			processText(0, window.realText.length, rawPos);
 			return result.renderedCount;
-		}
-
-		function findClosingMarker(text, marker, startPos) {
-			return text.indexOf(marker, startPos + 1);
 		}
 
 		function setCursorPosition(pos) {
@@ -450,7 +435,6 @@
 				sel.removeAllRanges();
 				sel.addRange(range);
 			} else if (editor.childNodes.length > 0) {
-				// Fallback: place at end
 				const lastNode = editor.childNodes\[editor.childNodes.length - 1\];
 				const lastChild = lastNode.nodeType === Node.TEXT_NODE ? lastNode : (lastNode.lastChild || lastNode);
 				try {
@@ -465,7 +449,6 @@
 				} catch(e) {}
 			}
 
-			// Scroll cursor into view
 			scrollCursorIntoView();
 		}
 
@@ -477,26 +460,21 @@
 			const rect = range.getBoundingClientRect();
 			const editorRect = editor.getBoundingClientRect();
 
-			// Check if cursor is below visible area
 			if (rect.bottom > editorRect.bottom) {
 				editor.scrollTop += rect.bottom - editorRect.bottom + 5;
-			}
-			// Check if cursor is above visible area
-			else if (rect.top < editorRect.top) {
+			} else if (rect.top < editorRect.top) {
 				editor.scrollTop -= editorRect.top - rect.top + 5;
 			}
 		}
 
 		function updatePreview() {
-			// Parse and render the markdown
-			const parsed = parseMarkdownBasic(realText, true);
-
-			// Only update if the HTML changed to avoid cursor jumps
+			const parsed = parseMarkdownBasic(window.realText, true);
 			if (editor.innerHTML !== parsed) {
 				editor.innerHTML = parsed;
 			}
 		}
 
+		// ===== UI FUNCTIONS =====
 		function applyTheme(channel) {
 			windowEl.className = 'window window-' + channel;
 			shineEl.className = 'shine shine-' + channel;
@@ -505,7 +483,7 @@
 		}
 
 		function updateWindowSize() {
-			let len = realText.length;
+			let len = window.realText.length;
 			let newSize = 'small';
 
 			if (len > lineLengths.medium) {
@@ -516,32 +494,43 @@
 				newSize = 'small';
 			}
 
-			if (newSize !== currentSize) {
-				currentSize = newSize;
+			if (newSize !== window.currentSize) {
+				window.currentSize = newSize;
 				const newHeight = windowSizes\[newSize\];
 				window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
 				window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
 			}
 		}
 
+		// ===== WINDOW CONTROL =====
 		function openWindow(channel) {
-			windowOpen = true;
-			currentChannel = channel;
-			currentChannelIndex = channels.indexOf(channel) || 0;
+			if (window.isSubmitting) {
+				window.location = 'byond://winset?id=:map&focus=true';
+				closeWindow()
+				return;
+			}
+			if (window.windowOpen) {
+				return;
+			}
+
+			window.isSubmitting = false;
+			window.windowOpen = true;
+
+			editor.contentEditable = 'true';
+			editor.style.pointerEvents = 'auto';
+			window.currentChannel = channel;
+			window.currentChannelIndex = channels.indexOf(channel) || 0;
 
 			button.textContent = channel;
 			applyTheme(channel);
 			editor.innerHTML = '';
-			realText = '';
-			currentSize = 'small';
+			window.realText = '';
+			window.currentSize = 'small';
 			editor.focus();
 
-			// Force window size reset to small
 			const newHeight = windowSizes\['small'\];
 			window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
 			window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
-
-			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=open;channel=' + encodeURIComponent(channel);
 
 			if (!quietChannels.includes(channel)) {
 				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=1';
@@ -549,116 +538,136 @@
 		}
 
 		function closeWindow() {
-			windowOpen = false;
+			if (window.isSubmitting) {
+				return;
+			}
 
-			// Blur editor and restore focus to main window immediately (client-side)
+			window.isSubmitting = true;
+			window.windowOpen = false;
+
+			editor.contentEditable = 'false';
+			editor.style.pointerEvents = 'none';
+			editor.innerHTML = '';
+			window.realText = '';
+
 			editor.blur();
-			window.location = 'byond://winset?id=native_say&is-visible=0';
-			window.location = 'byond://winset?id=mainwindow.input&focus=true';
+			button.blur();
+			if (document.activeElement) {
+				document.activeElement.blur();
+			}
 
-			historyIndex = -1;
-			tempMessage = '';
-			currentSize = 'small';
+			window.historyIndex = -1;
+			window.tempMessage = '';
+			window.currentSize = 'small';
+
+			window.location = 'byond://winset?id=native_say&is-visible=0';
+			window.location = 'byond://winset?id=:map&focus=true';
 
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=close';
+
+			setTimeout(function() {
+				window.location = 'byond://winset?id=:map&focus=true';
+
+				setTimeout(function() {
+					window.isSubmitting = false;
+				}, 150);
+			}, 50);
+
 		}
 
 		function cycleChannel() {
-			currentChannelIndex = (currentChannelIndex + 1) % channels.length;
-			currentChannel = channels\[currentChannelIndex\];
-			button.textContent = currentChannel;
-			applyTheme(currentChannel);
+			window.currentChannelIndex = (window.currentChannelIndex + 1) % channels.length;
+			window.currentChannel = channels\[window.currentChannelIndex\];
+			button.textContent = window.currentChannel;
+			applyTheme(window.currentChannel);
 
-			let visible = !quietChannels.includes(currentChannel);
+			let visible = !quietChannels.includes(window.currentChannel);
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=' + (visible ? '1' : '0');
 		}
 
 		function submitEntry() {
-			let entry = realText.trim();
+			let entry = window.realText.trim();
 			if (entry.length > 0 && entry.length < 1024) {
-				chatHistory.unshift(entry);
-				if (chatHistory.length > 5) chatHistory.pop();
+				window.chatHistory.unshift(entry);
+				if (window.chatHistory.length > 5) window.chatHistory.pop();
 
-				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=entry;channel=' + encodeURIComponent(currentChannel) + ';entry=' + encodeURIComponent(entry);
+				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=entry;channel=' + encodeURIComponent(window.currentChannel) + ';entry=' + encodeURIComponent(entry);
 			}
 			closeWindow();
 		}
 
+		// ===== EVENT HANDLERS =====
 		button.addEventListener('mousedown', function(e) {
-			isDragging = true;
-			dragStartPos = {x: e.screenX, y: e.screenY};
+			window.isDragging = true;
+			window.dragStartPos = {x: e.screenX, y: e.screenY};
 		});
 
 		button.addEventListener('mouseup', function(e) {
 			setTimeout(function() {
-				if (isDragging && e.screenX === dragStartPos.x && e.screenY === dragStartPos.y) {
+				if (window.isDragging && e.screenX === window.dragStartPos.x && e.screenY === window.dragStartPos.y) {
 					cycleChannel();
 				}
-				isDragging = false;
+				window.isDragging = false;
 			}, 50);
 		});
 
-		// Callback function for winget
 		window.handleWingetPos = function(data) {
 			if (data && data.pos) {
-				// pos is an object with x and y properties
 				const posX = data.pos.x;
 				const posY = data.pos.y;
-				dragPointOffset = {
-					x: dragStartPos.x - posX,
-					y: dragStartPos.y - posY
+				window.dragPointOffset = {
+					x: window.dragStartPos.x - posX,
+					y: window.dragStartPos.y - posY
 				};
-				isWindowDragging = true;
+				window.isWindowDragging = true;
 			}
 		};
 
-		// Window dragging functionality - the border is the window element showing through
 		windowEl.addEventListener('mousedown', function(e) {
 			e.preventDefault();
 			e.stopPropagation();
-			dragStartPos = {x: e.screenX, y: e.screenY};
+			window.dragStartPos = {x: e.screenX, y: e.screenY};
 
-			// Get current window position - try direct function call first
 			if (typeof winget === 'function') {
 				const posStr = winget('native_say', 'pos');
 				const posArr = posStr.split(',').map(v => parseInt(v));
-				dragPointOffset = {
-					x: dragStartPos.x - posArr[0],
-					y: dragStartPos.y - posArr[1]
+				window.dragPointOffset = {
+					x: window.dragStartPos.x - posArr\[0\],
+					y: window.dragStartPos.y - posArr\[1\]
 				};
-				isWindowDragging = true;
+				window.isWindowDragging = true;
 			} else {
-				// Fallback to URL scheme
 				window.location = 'byond://winget?callback=handleWingetPos&id=native_say&property=pos';
 			}
 		});
 
 		document.addEventListener('mousemove', function(e) {
-			if (!isWindowDragging) {
+			if (!window.isWindowDragging) {
 				return;
 			}
 			e.preventDefault();
 
-			// Calculate new position
-			const newX = e.screenX - dragPointOffset.x;
-			const newY = e.screenY - dragPointOffset.y;
+			const newX = e.screenX - window.dragPointOffset.x;
+			const newY = e.screenY - window.dragPointOffset.y;
 
-			// Set window position - try direct function call first
 			if (typeof winset === 'function') {
 				winset('native_say', 'pos=' + newX + ',' + newY);
 			} else {
-				// Fallback to URL scheme
 				window.location = 'byond://winset?id=native_say&pos=' + newX + ',' + newY;
 			}
 		});
 
 		document.addEventListener('mouseup', function(e) {
-			if (isWindowDragging) {
-				isWindowDragging = false;
+			if (window.isWindowDragging) {
+				window.isWindowDragging = false;
 			}
 		});
 
 		editor.addEventListener('beforeinput', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				e.preventDefault();
+				return;
+			}
 			const sel = window.getSelection();
 			const hasSelection = sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed;
 
@@ -681,25 +690,21 @@
 				selectionEnd = cursorPos;
 			}
 
-			// Track the raw text input by intercepting before HTML rendering
 			if (e.inputType === 'insertText' && e.data) {
 				e.preventDefault();
-				// Insert character at cursor position
-				realText = realText.slice(0, selectionStart) + e.data + realText.slice(selectionEnd);
+				window.realText = window.realText.slice(0, selectionStart) + e.data + window.realText.slice(selectionEnd);
 				updatePreview();
 				const newCursorPos = mapRawToRendered(selectionStart + e.data.length);
 				setCursorPosition(newCursorPos);
 			} else if (e.inputType === 'deleteContentBackward') {
 				e.preventDefault();
 				if (hasSelection) {
-					// Delete selection
-					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
+					window.realText = window.realText.slice(0, selectionStart) + window.realText.slice(selectionEnd);
 					updatePreview();
 					const newCursorPos = mapRawToRendered(selectionStart);
 					setCursorPosition(newCursorPos);
 				} else if (selectionStart > 0) {
-					// Delete one character before cursor
-					realText = realText.slice(0, selectionStart - 1) + realText.slice(selectionStart);
+					window.realText = window.realText.slice(0, selectionStart - 1) + window.realText.slice(selectionStart);
 					updatePreview();
 					const newCursorPos = mapRawToRendered(selectionStart - 1);
 					setCursorPosition(newCursorPos);
@@ -707,30 +712,26 @@
 			} else if (e.inputType === 'deleteContentForward') {
 				e.preventDefault();
 				if (hasSelection) {
-					// Delete selection
-					realText = realText.slice(0, selectionStart) + realText.slice(selectionEnd);
+					window.realText = window.realText.slice(0, selectionStart) + window.realText.slice(selectionEnd);
 					updatePreview();
 					const newCursorPos = mapRawToRendered(selectionStart);
 					setCursorPosition(newCursorPos);
-				} else if (selectionStart < realText.length) {
-					// Delete one character after cursor
-					realText = realText.slice(0, selectionStart) + realText.slice(selectionStart + 1);
+				} else if (selectionStart < window.realText.length) {
+					window.realText = window.realText.slice(0, selectionStart) + window.realText.slice(selectionStart + 1);
 					updatePreview();
 					const newCursorPos = mapRawToRendered(selectionStart);
 					setCursorPosition(newCursorPos);
 				}
 			} else if (e.inputType === 'insertLineBreak') {
 				e.preventDefault();
-				// Handle enter key
-				realText = realText.slice(0, selectionStart) + '\\n' + realText.slice(selectionEnd);
+				window.realText = window.realText.slice(0, selectionStart) + '\\n' + window.realText.slice(selectionEnd);
 				updatePreview();
 				const newCursorPos = mapRawToRendered(selectionStart + 1);
 				setCursorPosition(newCursorPos);
 			} else if (e.inputType === 'insertFromPaste') {
 				e.preventDefault();
-				// Handle paste
 				const pastedText = e.dataTransfer ? e.dataTransfer.getData('text/plain') : '';
-				realText = realText.slice(0, selectionStart) + pastedText + realText.slice(selectionEnd);
+				window.realText = window.realText.slice(0, selectionStart) + pastedText + window.realText.slice(selectionEnd);
 				updatePreview();
 				const newCursorPos = mapRawToRendered(selectionStart + pastedText.length);
 				setCursorPosition(newCursorPos);
@@ -738,12 +739,21 @@
 
 			updateWindowSize();
 
-			if (!quietChannels.includes(currentChannel)) {
+			if (!quietChannels.includes(window.currentChannel)) {
 				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=typing';
 			}
 		});
 
 		editor.addEventListener('keydown', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				window.location = 'byond://winset?id=:map&focus=true';
+				closeWindow()
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
+			}
+
 			if (e.key === 'Enter' && !e.shiftKey) {
 				e.preventDefault();
 				submitEntry();
@@ -755,42 +765,80 @@
 				cycleChannel();
 			} else if (e.key === 'ArrowUp') {
 				e.preventDefault();
-				if (historyIndex === -1 && realText) {
-					tempMessage = realText;
+				if (window.historyIndex === -1 && window.realText) {
+					window.tempMessage = window.realText;
 				}
-				if (historyIndex < chatHistory.length - 1) {
-					historyIndex++;
-					realText = chatHistory\[historyIndex\];
-					editor.textContent = realText;
-					button.textContent = (historyIndex + 1).toString();
+				if (window.historyIndex < window.chatHistory.length - 1) {
+					window.historyIndex++;
+					window.realText = window.chatHistory\[window.historyIndex\];
+					editor.textContent = window.realText;
+					button.textContent = (window.historyIndex + 1).toString();
 					updatePreview();
 					updateWindowSize();
 				}
 			} else if (e.key === 'ArrowDown') {
 				e.preventDefault();
-				if (historyIndex > 0) {
-					historyIndex--;
-					realText = chatHistory\[historyIndex\];
-					editor.textContent = realText;
-					button.textContent = (historyIndex + 1).toString();
+				if (window.historyIndex > 0) {
+					window.historyIndex--;
+					window.realText = window.chatHistory\[window.historyIndex\];
+					editor.textContent = window.realText;
+					button.textContent = (window.historyIndex + 1).toString();
 					updatePreview();
 					updateWindowSize();
-				} else if (historyIndex === 0) {
-					historyIndex = -1;
-					realText = tempMessage;
-					editor.textContent = realText;
-					tempMessage = '';
-					button.textContent = currentChannel;
+				} else if (window.historyIndex === 0) {
+					window.historyIndex = -1;
+					window.realText = window.tempMessage;
+					editor.textContent = window.realText;
+					window.tempMessage = '';
+					button.textContent = window.currentChannel;
 					updatePreview();
 					updateWindowSize();
 				}
-			} else if ((e.key === 'Backspace' || e.key === 'Delete') && realText.length === 0) {
-				if (historyIndex !== -1) {
-					historyIndex = -1;
-					button.textContent = currentChannel;
+			} else if ((e.key === 'Backspace' || e.key === 'Delete') && window.realText.length === 0) {
+				if (window.historyIndex !== -1) {
+					window.historyIndex = -1;
+					button.textContent = window.currentChannel;
 				}
 			}
 		});
+
+		editor.addEventListener('keypress', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+		});
+
+		// Block ALL keyboard events at document level when closed
+		document.addEventListener('keydown', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				window.location = 'byond://winset?id=:map&focus=true';
+				closeWindow();
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
+			}
+		}, true);
+
+		document.addEventListener('keyup', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
+			}
+		}, true);
+
+		document.addEventListener('keypress', function(e) {
+			if (window.isSubmitting || !window.windowOpen) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
+			}
+		}, true);
 
 		window.openSayWindow = openWindow;
 	</script>
