@@ -166,7 +166,7 @@
 	misscost = 15
 	item_damage_type = "blunt"
 
-//................ Court Physician Cane ............... //
+//................  Canes, my beloved. ............... //
 
 /obj/item/weapon/mace/cane/
 	name = "wooden cane"
