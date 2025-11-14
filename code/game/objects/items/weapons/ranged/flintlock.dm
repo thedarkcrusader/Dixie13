@@ -270,7 +270,7 @@
 	force = 10
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
-	damage_mult = 3
+	damage_mult = 3.5
 	dropshrink = 0.7
 	possible_item_intents = list(/datum/intent/shoot/musket, /datum/intent/shoot/musket/arc, POLEARM_BASH)
 	associated_skill = /datum/skill/combat/polearms
@@ -405,3 +405,51 @@
 	desc = ""
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "ramrod_musket"
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user) //this is probably shitcode but I'm tired and I'm not repathing the guns to be /weapons, it's better than the musket being a delimbinator 9000
+	if(!get_sharpness() || !affecting.can_dismember(src))
+		return 0
+
+	var/total_dam = affecting.get_damage()
+	var/nuforce = get_complex_damage(src, user)
+	var/pristine_blade = TRUE
+	if(max_blade_int && dismember_blade_int)
+		var/blade_int_modifier = (blade_int / dismember_blade_int)
+		//blade is about as sharp as a brick it won't dismember shit
+		if(blade_int_modifier <= 0.15)
+			return 0
+		nuforce *= blade_int_modifier
+		pristine_blade = (blade_int >= (dismember_blade_int * 0.95))
+
+	if(user)
+		if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+			nuforce = 0
+		else if(istype(user.rmb_intent, /datum/rmb_intent/strong))
+			nuforce *= 1.1
+
+		if(user.used_intent.blade_class == BCLASS_CHOP) //chopping attacks always attempt dismembering
+			nuforce *= 1.1
+		else if(user.used_intent.blade_class == BCLASS_CUT)
+			if(!pristine_blade && (total_dam < affecting.max_damage * 0.8))
+				return 0
+		else
+			return 0
+
+	if(nuforce < 23) //End force needs to be at least this high, after accounting for strong intent and chop. An iron messer should be able to do it, but not a dagger.
+		return 0
+
+	var/probability = (nuforce * (total_dam / affecting.max_damage) - 5) //More weight given to total damage accumulated on the limb
+	if(affecting.body_zone == BODY_ZONE_HEAD) //Decapitations are harder to pull off in general
+		probability *= 0.5
+	var/hard_dismember = HAS_TRAIT(affecting, TRAIT_HARDDISMEMBER)
+	var/easy_dismember = affecting.rotted || affecting.skeletonized || HAS_TRAIT(affecting, TRAIT_EASYDISMEMBER)
+	if(affecting.owner)
+		if(!hard_dismember)
+			hard_dismember = HAS_TRAIT(affecting.owner, TRAIT_HARDDISMEMBER)
+		if(!easy_dismember)
+			easy_dismember = HAS_TRAIT(affecting.owner, TRAIT_EASYDISMEMBER)
+	if(hard_dismember)
+		return min(probability, 5)
+	else if(easy_dismember)
+		return probability * 1.5
+	return probability
