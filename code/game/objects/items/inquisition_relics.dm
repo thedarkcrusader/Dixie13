@@ -1001,9 +1001,6 @@ Inquisitorial armory down here
 	w_class = WEIGHT_CLASS_SMALL
 	can_parry = FALSE
 	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/choke)
-	mob/living/victim
-	obj/item/grabbing/currentgrab
-	mob/living/lastcarrier
 	active = FALSE
 	choke_damage = 20
 	embedding = null
