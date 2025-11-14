@@ -98,7 +98,6 @@
 	blade with a specialized stabbing tip."
 	icon = 'icons/roguetown/weapons/32/swords.dmi'
 	icon_state = "caneblade"
-
 	sellprice = 75 //Gold handle
 	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -109,6 +108,7 @@
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wbalance = VERY_HARD_TO_DODGE
+
 //................ Arming Sword ............... //
 /obj/item/weapon/sword/arming
 	name = "arming sword"

@@ -82,7 +82,7 @@
 	name = "gold decorated knife sheath"
 	desc = "A slingable sheath made of leather, enamored with exquisite golden decorations, often seen on the hips of royalty"
 	sellprice = 100
-	icon_state = "r"
+	icon_state = "rsheath"
 
 /obj/item/weapon/scabbard/sword
 	name = "scabbard"
