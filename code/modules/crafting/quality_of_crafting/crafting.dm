@@ -347,7 +347,7 @@
 	output = /obj/item/weapon/whip/cane
 	craftdiff = 0
 
-/datum/repeatable_crafting_recipe/crafting/quarterstaff
+/datum/repeatable_crafting_recipe/crafting/cane
 	name = "wooden cane"
 	requirements = list(
 		/obj/item/grown/log/tree= 1,

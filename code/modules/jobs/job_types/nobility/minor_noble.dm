@@ -48,6 +48,8 @@
 	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 
 	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_SPD, 1)
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
@@ -56,16 +58,14 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	beltl = /obj/item/ammo_holder/quiver/
-	beltr = /obj/item/weapon/mace/cane/noble
+
 	head = /obj/item/clothing/head/fancyhat
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/baotha)
 			H.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 	if(H.gender == FEMALE)
-		H.change_stat(STATKEY_SPD, 1)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
 	if(H.gender == MALE)
-		H.change_stat(STATKEY_CON, 1)
 		pants = /obj/item/clothing/pants/tights/colored/black
 		shirt = /obj/item/clothing/shirt/tunic/colored/random
 	if(H.age == AGE_CHILD)
@@ -74,8 +74,15 @@
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/carafe/teapot/tea = 1, /obj/item/reagent_containers/glass/cup/teacup/fancy = 3)
 	else
-		beltr = /obj/item/weapon/sword/rapier/dec
-		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
+		/datum/outfit/noble/post_equip(mob/living/carbon/human/H)
+			var/list/selectableweapon = list(
+				"Cane Blade" = /obj/item/weapon/sword/rapier/caneblade, /obj/item/weapon/scabbard/cane,\
+				"Rapier" = /obj/item/weapon/sword/rapier/dec, /obj/item/weapon/scabbard/sword/noble,\
+				)
+			var/weaponchoice = H.select_equippable(H, selectableweapon, message = "Pick Your Blade", title = "Noble!")
+			if(!weaponchoice)
+				return
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+
