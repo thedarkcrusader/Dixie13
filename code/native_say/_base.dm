@@ -167,7 +167,7 @@
 			cursor: pointer;
 			user-select: none;
 			flex-shrink: 0;
-			width: 4rem;
+			width: 20%;
 		}
 
 		.textarea-container {
@@ -240,7 +240,7 @@
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
 		const windowSizes = { small: [40 * scale], medium: [60 * scale], large: [80 * scale] };
-		const lineLengths = { small: 12, medium: 25, large: 38 };
+		const lineLengths = { small: 14, medium: 26, large: 39 };
 
 		const windowEl = document.getElementById('window');
 		const shineEl = document.getElementById('shine');
