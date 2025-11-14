@@ -232,7 +232,6 @@
 		window.currentSize = 'small';
 		window.isWindowDragging = false;
 		window.dragPointOffset = {x: 0, y: 0};
-		window.isSubmitting = false;
 		window.chatHistory = \[\];
 		window.historyIndex = -1;
 		window.tempMessage = '';
@@ -504,19 +503,12 @@
 
 		// ===== WINDOW CONTROL =====
 		function openWindow(channel) {
-			if (window.isSubmitting) {
-				window.location = 'byond://winset?id=:map&focus=true';
-				closeWindow()
-				return;
-			}
 			if (window.windowOpen) {
 				return;
 			}
 
-			window.isSubmitting = false;
 			window.windowOpen = true;
 
-			editor.contentEditable = 'true';
 			editor.style.pointerEvents = 'auto';
 			window.currentChannel = channel;
 			window.currentChannelIndex = channels.indexOf(channel) || 0;
@@ -529,6 +521,7 @@
 			editor.focus();
 
 			const newHeight = windowSizes\['small'\];
+			window.location = 'byond://winset?id=native_say&focus=true';
 			window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
 			window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
 
@@ -538,14 +531,8 @@
 		}
 
 		function closeWindow() {
-			if (window.isSubmitting) {
-				return;
-			}
-
-			window.isSubmitting = true;
 			window.windowOpen = false;
 
-			editor.contentEditable = 'false';
 			editor.style.pointerEvents = 'none';
 			editor.innerHTML = '';
 			window.realText = '';
@@ -567,10 +554,6 @@
 
 			setTimeout(function() {
 				window.location = 'byond://winset?id=:map&focus=true';
-
-				setTimeout(function() {
-					window.isSubmitting = false;
-				}, 150);
 			}, 50);
 
 		}
@@ -664,7 +647,7 @@
 		});
 
 		editor.addEventListener('beforeinput', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				e.preventDefault();
 				return;
 			}
@@ -745,7 +728,7 @@
 		});
 
 		editor.addEventListener('keydown', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				window.location = 'byond://winset?id=:map&focus=true';
 				closeWindow()
 				e.preventDefault();
@@ -803,7 +786,7 @@
 		});
 
 		editor.addEventListener('keypress', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				e.preventDefault();
 				e.stopPropagation();
 				return false;
@@ -812,7 +795,7 @@
 
 		// Block ALL keyboard events at document level when closed
 		document.addEventListener('keydown', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				window.location = 'byond://winset?id=:map&focus=true';
 				closeWindow();
 				e.preventDefault();
@@ -823,7 +806,7 @@
 		}, true);
 
 		document.addEventListener('keyup', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				e.preventDefault();
 				e.stopPropagation();
 				e.stopImmediatePropagation();
@@ -832,7 +815,7 @@
 		}, true);
 
 		document.addEventListener('keypress', function(e) {
-			if (window.isSubmitting || !window.windowOpen) {
+			if (!window.windowOpen) {
 				e.preventDefault();
 				e.stopPropagation();
 				e.stopImmediatePropagation();

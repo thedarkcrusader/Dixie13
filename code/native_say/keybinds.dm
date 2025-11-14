@@ -17,11 +17,6 @@
 	description = "Opens Say channel"
 	category = CATEGORY_CLIENT
 
-/datum/keybinding/client/say/down(client/user)
-	. = ..()
-	user.open_say()
-	return TRUE
-
 /datum/keybinding/client/me
 	hotkey_keys = list("M")
 	name = "me"

@@ -1022,7 +1022,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						key_bindings -= old_key
 				key_bindings[full_key] += list(kb_name)
 				key_bindings[full_key] = sortList(key_bindings[full_key])
-
+				var/datum/keybinding/client/say/kb = GLOB.keybindings_by_name[kb_name]
+				if(istype(kb))
+					user.client.set_macros()
 				DIRECT_OUTPUT(user, browse(null, "window=capturekeypress"))
 				user.client.update_movement_keys()
 				save_preferences()
