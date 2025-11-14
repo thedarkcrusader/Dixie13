@@ -34,7 +34,7 @@
 		if(old_sneak_skill < 5) // If the assassined player has less than 5 sneak skill, get them to 5.
 			owner.current.adjust_skillrank(/datum/skill/misc/sneaking, 5 - old_sneak_skill, TRUE)
 		var/yea = /obj/item/weapon/knife/dagger/steel/profane
-		var/wah = /obj/item/inqarticles/garrote/razor
+		var/wah = /obj/item/garrote/razor
 		var/gah = /obj/item/lockpick
 		owner.special_items["Profane Dagger"] = yea // Assigned assassins can get their special dagger from right clicking certain objects.
 		owner.special_items["Profane Razor"] = wah //the mistakes of coders past trickle down to me here, so shitty var names persist

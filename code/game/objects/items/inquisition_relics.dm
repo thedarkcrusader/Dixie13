@@ -979,6 +979,37 @@ Inquisitorial armory down here
 		to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
 		user.changeNext_move(CLICK_CD_RESIST)	//Stops spam for choking.
 
+/obj/item/inqarticles/garrote/razor // Do not give this item out freely to other classes. Do not subtype this item for other classes. This is intended purely as the Confessor's identifying sidegrade, and as a bonus for the Inspector INQ. I will be very sad if you disregard this comment. Thank you. - Yische.
+	name = "Profane Razor" // It's nonlethal. It's so silly and fun.
+	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable"
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "garrote"
+	item_state = "garrote"
+	gripsprite = TRUE
+	throw_speed = 3
+	throw_range = 7
+	grid_height = 32
+	grid_width = 32
+	throwforce = 15
+	force_wielded = 0
+	force = 0
+	obj_flags = CAN_BE_HIT
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
+	experimental_inhand = TRUE
+	wieldsound = TRUE
+	resistance_flags = INDESTRUCTIBLE
+	w_class = WEIGHT_CLASS_SMALL
+	can_parry = FALSE
+	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/choke)
+	mob/living/victim
+	obj/item/grabbing/currentgrab
+	mob/living/lastcarrier
+	active = FALSE
+	choke_damage = 20
+	embedding = null
+	sellprice = 100
+	wield_block = FALSE
+
 /obj/item/clothing/head/inqarticles/blackbag
 	name = "black bag"
 	desc = "A heavily spell-weaved padded sack intended to muffle the cries made within it. Due to the heaviness of the materials involved, application and removal of these is usually difficult for the untrained."
