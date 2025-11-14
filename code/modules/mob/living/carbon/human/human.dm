@@ -1,9 +1,8 @@
-/mob/living/carbon/human/MiddleClick(mob/user, mob/living/target, target_zone, params)
+/mob/living/carbon/human/MiddleClick(mob/user, params)
 	..()
 	if(!user)
 		return
 	var/obj/item/held_item = user.get_active_held_item()
-	var/target_mobtypes = list(/mob/living/carbon/human)
 	if(user.cmode)
 		if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 			if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
@@ -13,7 +12,7 @@
 			else
 				user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 			if(do_after(user, 5 SECONDS, src))
-				var/obj/item/bodypart/gotten_part = target_zone
+				var/obj/item/bodypart/gotten_part = user.zone_selected
 				if(gotten_part)
 					gotten_part.add_wound(/datum/wound/artery/neck)
 	else
