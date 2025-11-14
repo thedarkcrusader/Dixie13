@@ -70,6 +70,11 @@
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [special_role]!"))
 	owner.special_role = null
+	owner.current.remove_spell(/datum/action/cooldown/spell/undirected/werewolf_form)
+	owner.current.UnregisterSignal(owner.current, COMSIG_RAGE_BOTTOMED)
+	owner.current.UnregisterSignal(owner.current, COMSIG_RAGE_OVERRAGE)
+
+
 	return ..()
 
 /datum/antagonist/werewolf/proc/add_objective(datum/objective/O)
@@ -194,10 +199,10 @@
 /obj/item/weapon/werewolf_claw
 	name = "verevolf claw"
 	desc = ""
+	icon = 'icons/roguetown/weapons/32/special.dmi'
 	item_state = null
 	lefthand_file = null
 	righthand_file = null
-	icon = 'icons/roguetown/weapons/32.dmi'
 	max_blade_int = 900
 	max_integrity = 900
 	force = 15
