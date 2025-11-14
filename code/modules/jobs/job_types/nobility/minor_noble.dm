@@ -74,8 +74,8 @@
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/carafe/teapot/tea = 1, /obj/item/reagent_containers/glass/cup/teacup/fancy = 3)
 	else
-		beltr = /obj/item/weapon/sword/rapier/dec
-		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
+		beltr = /obj/item/weapon/sword/rapier/caneblade
+		scabbards = list(/obj/item/weapon/scabbard/cane)
 		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
