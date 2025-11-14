@@ -639,14 +639,6 @@
 	icon_state = "eorarapier"
 	max_blade_int = 200
 
-/obj/item/weapon/sword/rapier/caneblade
-	name = "cane blade"
-	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. \
-	Specialized for stabbing.
-	icon = 'icons/roguetown/weapons/32/swords.dmi'
-	icon_state = "caneblade"
-	sellprice = 75 //Gold handle
-
 // Hoplite Kophesh
 /obj/item/weapon/sword/khopesh
 	name = "ancient khopesh"
