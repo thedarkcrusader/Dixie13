@@ -1,4 +1,4 @@
-/mob/living/carbon/human/MiddleClick(mob/user, params)
+/mob/living/carbon/human/MiddleClick(mob/user, mob/living/victim, params)
 	..()
 	if(!user)
 		return
