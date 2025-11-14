@@ -220,7 +220,7 @@
 	zombie.modifier_set_stat_to("[type]", STATKEY_STR, 12)
 	zombie.modifier_set_stat_to("[type]", STATKEY_SPD, 1)
 	zombie.modifier_set_stat_to("[type]", STATKEY_INT, 1)
-	zombie.modifier_set_stat_to("[type]", STATKEY_CON, 14)
+	zombie.modifier_set_stat_to("[type]", STATKEY_CON, 15)
 
 	zombie.bloodpool = 0 // Again, just in case.
 
