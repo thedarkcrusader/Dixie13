@@ -32,7 +32,6 @@
 		TRAIT_NOENERGY,
 		TRAIT_NOMOOD,
 		TRAIT_NOHUNGER,
-		TRAIT_NOLIMBDISABLE,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_NOPAIN,
 		TRAIT_NOBREATH,
@@ -221,7 +220,7 @@
 	zombie.modifier_set_stat_to("[type]", STATKEY_STR, 12)
 	zombie.modifier_set_stat_to("[type]", STATKEY_SPD, 1)
 	zombie.modifier_set_stat_to("[type]", STATKEY_INT, 1)
-	zombie.modifier_set_stat_to("[type]", STATKEY_CON, 12)
+	zombie.modifier_set_stat_to("[type]", STATKEY_CON, 14)
 
 	zombie.bloodpool = 0 // Again, just in case.
 
