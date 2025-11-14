@@ -168,11 +168,24 @@
 
 //................ Court Physician Cane ............... //
 
-/obj/item/weapon/mace/courtphysician
+/obj/item/weapon/mace/cane/
+	name = "wooden cane"
+	desc = "A simple wooden cane, good for supporting your weight."
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "simple_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 5
+	minstr = 5
+	force = DAMAGE_MACE - 4
+	force_wielded = DAMAGE_MACE - 2
+	wdefense = MEDIOCRE_PARRY
+
+/obj/item/weapon/mace/cane/courtphysician
 	name = "physician's cane"
 	desc = "A prized cane. Embellished with a golden serpent, representing the Kingsfield university. The pointy end is quite sharp."
-	icon = 'icons/roguetown/weapons/32/special.dmi'
-	icon_state = "fancy_cane"
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "physician_cane"
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/thrust)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 30
@@ -181,11 +194,11 @@
 	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCRE_PARRY
 
-/obj/item/weapon/mace/courtphysician/Initialize()
+/obj/item/weapon/mace/cane/Initialize()
 	. = ..()
 	AddComponent(/datum/component/walking_stick)
 
-/obj/item/weapon/mace/courtphysician/getonmobprop(tag)
+/obj/item/weapon/mace/cane/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
