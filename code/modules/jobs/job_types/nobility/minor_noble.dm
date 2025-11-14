@@ -55,7 +55,8 @@
 	ring = /obj/item/clothing/ring/silver
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	beltl = /obj/item/ammo_holder/quiver/arrows
+	beltl = /obj/item/ammo_holder/quiver/
+	beltr = /obj/item/weapon/mace/cane/noble
 	head = /obj/item/clothing/head/fancyhat
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/baotha)

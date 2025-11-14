@@ -170,7 +170,7 @@
 
 /obj/item/weapon/mace/cane/
 	name = "wooden cane"
-	desc = "A simple wooden cane, good for supporting your weight."
+	desc = "A simple wooden cane, carved right from wood. Good for supporting your weight."
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
 	icon_state = "simple_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
@@ -179,6 +179,20 @@
 	minstr = 5
 	force = DAMAGE_MACE - 4
 	force_wielded = DAMAGE_MACE - 2
+	wdefense = MEDIOCRE_PARRY
+
+
+/obj/item/weapon/mace/cane/noble
+	name = "fancy cane"
+	desc = "A polished, dark wooden cane, decorated with gold and silver. Often carried by nobility, even those without a limp, simply to flaunt their wealth to the peasantry."
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "noble_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 5
+	minstr = 5
+	force = DAMAGE_MACE - 3
+	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/cane/courtphysician
