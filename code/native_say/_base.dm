@@ -857,13 +857,6 @@
 /datum/native_say/proc/handle_close()
 	window_open = FALSE
 	stop_thinking()
-	// Reset window size using winset
-	var/scale = 1
-	if(client?.window_scaling)
-		scale = client?.window_scaling
-	if(client.prefs?.chat_scale)
-		scale *= client.prefs.chat_scale
-	winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=0")
 
 /datum/native_say/proc/handle_entry(channel_name, entry)
 	if(!entry || length(entry) > max_length)
