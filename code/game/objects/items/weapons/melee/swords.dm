@@ -93,9 +93,8 @@
 	AddComponent(/datum/component/psyblessed, FALSE, 3, 100, 50, 1, TRUE)
 
 /obj/item/weapon/sword/rapier/caneblade
-	name = "rapier"
-	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. \
-	blade with a specialized stabbing tip."
+	name = "cane blade"
+	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. Has a focus on stabbing"
 	icon = 'icons/roguetown/weapons/32/swords.dmi'
 	icon_state = "caneblade"
 	sellprice = 75 //Gold handle
