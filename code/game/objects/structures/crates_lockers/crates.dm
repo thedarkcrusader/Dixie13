@@ -48,6 +48,7 @@
 	open_sound_volume = 25
 	close_sound_volume = 50
 	var/sealed = FALSE // is the casket sealed? If not, we can still open and close it freely.
+	var/consecrated = FALSE // Is the casket consecrated (AKA was there someone inside when we sealed it) ?
 
 /obj/structure/closet/crate/coffin/open(mob/living/user)
 	if (!sealed) // if it's not sealed, process as usual.
@@ -61,7 +62,9 @@
 	. = ..()
 	if(istype(I, /obj/item/inqarticles/tallowpot)) // consecrating and sealing a coffin with tallow.
 		var/obj/item/inqarticles/tallowpot/pot = I
-		if(pot.tallow && pot.heatedup)
+		if(!pot.tallow || !pot.heatedup)
+			to_chat(user, span_warning("I either lack tallow in the pot, or it is not warm enough."))
+		else
 			if (istype(src, /obj/structure/closet/crate/coffin/vampire)) // you cannot seal a vampire lord's casket.
 				to_chat(user, span_warning("The coffin's material prevents the tallow from sticking, it's seeping right off!"))
 				return
@@ -71,13 +74,33 @@
 			if(pacify_coffin(src, user))
 				src.add_overlay("graveconsecrated")
 				user.visible_message(span_rose("[user] seals and consecrates [src]."), span_rose("I seal the coffin, consecrating it. I may bury it to protect it's inhabitant further."))
-				SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, cast_on)
+				SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
 				record_round_statistic(STATS_GRAVES_CONSECRATED)
+				src.consecrated = TRUE
 			else
 				to_chat(user, span_warning("The consecration failed, but you did seal the coffin."))
 			src.sealed = TRUE
 			icon_state = "casketconsecrated"
 		return
+	if(user.used_intent.type == /datum/intent/dagger/cut && istype(I, /obj/item/weapon/knife)) // unsealing a coffin
+		if (!src.sealed)
+			to_chat(user, span_info("The coffin has no seal to remove."))
+		else
+			to_chat(user, span_info("I start unsealing the coffin.."))
+			if(!do_after(user, 5 SECONDS, src))
+				return
+			record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+			record_round_statistic(STATS_GRAVES_ROBBED)
+			if(isliving(user) && src.consecrated)
+				var/mob/living/L = user
+				if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+					to_chat(user, "<span class='warning'>Necra turns a blind eye to my deeds.</span>")
+				else
+					to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
+					L.apply_status_effect(/datum/status_effect/debuff/cursed)
+			SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+			src.sealed = FALSE
+			icon_state = "casket"
 	return
 
 

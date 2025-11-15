@@ -105,7 +105,7 @@
 | Chop intent |	small AP, bonus damage
 \------------*/
 
-/obj/item/weapon/knife/pre_attack(atom/A, mob/living/user, params)
+/*/obj/item/weapon/knife/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
 	if(user.used_intent.type == /datum/intent/dagger/cut && istype(A, /obj/structure/closet/crate/coffin)) // unsealing a coffin
 		var/obj/structure/closet/crate/coffin/casket = A
@@ -125,7 +125,7 @@
 					to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
 					L.apply_status_effect(/datum/status_effect/debuff/cursed)
 			SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
-			casket.sealed = FALSE
+			casket.sealed = FALSE*/
 
 
 /datum/intent/dagger/chop
