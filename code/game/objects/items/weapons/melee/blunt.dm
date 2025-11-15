@@ -189,7 +189,7 @@
 	icon_state = "noble_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	sellprice = 5
+	sellprice = 25
 	minstr = 5
 	force = DAMAGE_MACE - 3
 	force_wielded = DAMAGE_MACE - 1
@@ -203,6 +203,19 @@
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/thrust)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 30
+	minstr = 5
+	force = DAMAGE_MACE - 3
+	force_wielded = DAMAGE_MACE - 1
+	wdefense = MEDIOCRE_PARRY
+
+/obj/item/weapon/mace/cane/merchant
+	name = "merchant's cane"
+	desc = "An expensive cane, decorated with gold and inlaid with a gem. A simbol of great wealth for the ownner"
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "merchant_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 50
 	minstr = 5
 	force = DAMAGE_MACE - 3
 	force_wielded = DAMAGE_MACE - 1
