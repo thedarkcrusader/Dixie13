@@ -46,7 +46,7 @@
 
 /datum/outfit/mercenary/enforcer/pre_equip(mob/living/carbon/human/H)
 	shirt = /obj/item/clothing/shirt/undershirt/easttats
-	belt = /obj/item/storage/belt/leather
+	belt = /obj/item/storage/belt/leather/mercenary
 	backr = /obj/item/storage/backpack/satchel
 	if(H.gender == MALE)
 		cloak = /obj/item/clothing/cloak/eastcloak1
@@ -57,6 +57,7 @@
 	else
 		armor = /obj/item/clothing/armor/basiceast/captainrobe/weak
 		shoes = /obj/item/clothing/shoes/rumaclan
+
 
 /datum/outfit/mercenary/enforcer/post_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
