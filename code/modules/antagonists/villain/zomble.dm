@@ -127,6 +127,8 @@
 	zombie.remove_stat_modifier("[type]")
 	zombie.cmode_music = old_cmode_music
 	zombie.set_patron(patron)
+	zombie.candodge = TRUE
+	zombie.canparry = TRUE
 	owner.current.skills?.known_skills = stored_skills
 	owner.current.skills?.skill_experience = stored_experience
 	for(var/trait in traits_zombie)
