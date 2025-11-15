@@ -47,6 +47,39 @@
 	close_sound = 'sound/blank.ogg'
 	open_sound_volume = 25
 	close_sound_volume = 50
+	var/sealed = FALSE // is the casket sealed? If not, we can still open and close it freely.
+
+/obj/structure/closet/crate/coffin(mob/living/user)
+	if !sealed // if it's not sealed, process as usual.
+		. = ..()
+	else // if it's sealed, you must unseal it with a sharp object first.
+		to_chat(user, span_warning("The casket is sealed with red tallow, you must slice it open with a dagger or knife first."))
+
+
+
+/obj/structure/closet/crate/coffin/attacked_by(obj/item/I, mob/living/user)
+	. = ..()
+	if(istype(I, /obj/item/inqarticles/tallowpot)) // consecrating and sealing a coffin with tallow.
+		if(I.tallow && I.heatedup)
+			if istype(src, /obj/structure/closet/crate/coffin/vampire) // you cannot seal a vampire lord's casket.
+				to_chat(user, span_warning("The coffin's material prevents the tallow from sticking, it's seeping right off!"))
+				return
+			to_chat(user, span_info("I start sealing the coffin with tallow.."))
+			if(!do_after(user, 5 SECONDS, I))
+				return
+			if(pacify_coffin(cast_on, owner))
+				cast_on.add_overlay("graveconsecrated")
+				owner.visible_message(span_rose("[owner] seals and consecrates [cast_on]."), span_rose("I seal the coffin, consecrating it. I may bury it to protect it's inhabitant further."))
+				SEND_SIGNAL(owner, COMSIG_GRAVE_CONSECRATED, cast_on)
+				record_round_statistic(STATS_GRAVES_CONSECRATED)
+			else
+				to_chat(user, span_warning("The consecration failed, but you did seal the coffin."))
+			I.sealed = TRUE
+			icon_state = "casketconsecrated"
+		return
+	return
+
+
 
 /obj/structure/closet/crate/coffin/vampire
 	name = "sleep casket"

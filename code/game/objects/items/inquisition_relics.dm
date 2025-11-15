@@ -686,6 +686,16 @@
 			update_icon()
 		else
 			to_chat(user, span_info("The [src] already has redtallow in it."))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow)) // allow normal tallow to be used, it becomes red because the pot is soaked with blood, I guess
+		if(!tallow)
+			var/obj/item/reagent_containers/food/snacks/tallow/Q = I
+			tallow = Q
+			user.transferItemToLoc(Q, src, TRUE)
+			remaining = 300
+			update_icon()
+			to_chat(user, span_info("The tallow turns a scarlet red as you place it in the pot, foreboding.."))
+		else
+			to_chat(user, span_info("The [src] already has redtallow in it."))
 
 	if(istype(I, /obj/item/flashlight/flare/torch))
 		heatedup = 28
