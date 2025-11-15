@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(job)
 	var/list/latejoin_trackers = list()
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
-	/// Dictionary of jobs indexed by the experience type they grant.
+	/// Map of jobs indexed by the experience type they grant.
 	var/list/experience_jobs_map = list()
 
 /datum/controller/subsystem/job/Initialize(timeofday)
