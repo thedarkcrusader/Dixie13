@@ -3367,6 +3367,7 @@
 #include "code\modules\spells\spell_types\undirected\feather_fall.dm"
 #include "code\modules\spells\spell_types\undirected\forcewall.dm"
 #include "code\modules\spells\spell_types\undirected\hags_call.dm"
+#include "code\modules\spells\spell_types\undirected\bandit_call.dm"
 #include "code\modules\spells\spell_types\undirected\joke.dm"
 #include "code\modules\spells\spell_types\undirected\longstrider.dm"
 #include "code\modules\spells\spell_types\undirected\mansion_portal.dm"

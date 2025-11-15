@@ -8,6 +8,9 @@
 	display_order = JDO_BANDITLEAD
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	blacklisted_species = list(SPEC_ID_KOBOLD, SPEC_ID_HALF_ORC, SPEC_ID_TIEFLING) // The leader's got some infamy, also been around awhile, no short-lived species
+	spells = list(
+		/datum/action/cooldown/spell/undirected/bandit_call,
+	)
 	faction = FACTION_NEUTRAL
 	total_positions = 1
 	spawn_positions = 1
@@ -26,3 +29,7 @@
 	traits = list(TRAIT_NOAMBUSH)
 
 	antag_role = /datum/antagonist/bandit/leader
+
+/datum/job/banditlead/after_spawn(mob/living/carbon/spawned, client/player_client)
+	..()
+	spawned.add_spell(/datum/action/cooldown/spell/undirected/bandit_call)
