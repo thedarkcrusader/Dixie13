@@ -737,7 +737,7 @@
 				return false;
 			}
 
-			if (e.key === 'Enter' && !e.shiftKey) {
+			if (e.key === 'Enter') {
 				e.preventDefault();
 				submitEntry();
 			} else if (e.key === 'Escape') {
