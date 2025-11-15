@@ -102,8 +102,12 @@
 		return 0
 
 /mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, damage_type = "blunt")
+	var/obj/item/I
 	if(istype(AM, /obj/item))
-		var/obj/item/I = AM
+		I = AM
+	if(throwingdatum && ismobholder(throwingdatum.thrownthing) && throwingdatum.thrownthing:held_mob == AM)
+		I = throwingdatum.thrownthing
+	if(I)
 		var/zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
 		SEND_SIGNAL(I, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 		if(!blocked)

@@ -41,7 +41,7 @@
 	sellprice = L.sellprice
 	name = L.name
 	desc = L.desc
-	SEND_SIGNAL(held_mob, COMSIG_LIVING_MOB_HOLDER_DEPOSIT, src)
+	SEND_SIGNAL(held_mob, COMSIG_MOB_HOLDER_DEPOSIT, src)
 	return TRUE
 
 /obj/item/clothing/head/mob_holder/attackby(obj/item/I, mob/living/user, params)
@@ -51,21 +51,23 @@
 	appearance = L?.appearance
 	plane = ABOVE_HUD_PLANE
 
-/obj/item/clothing/head/mob_holder/proc/release(del_on_release = TRUE)
+/obj/item/clothing/head/mob_holder/proc/release(del_on_release = TRUE, silent = FALSE)
 	if(!held_mob)
 		if(del_on_release && !destroying)
 			qdel(src)
 		return FALSE
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='warning'>[held_mob] wriggles free!</span>")
+		if(!silent)
+			to_chat(L, "<span class='warning'>[held_mob] wriggles free!</span>")
 		L.dropItemToGround(src)
 	held_mob?.forceMove(get_turf(held_mob))
 	held_mob?.reset_perspective()
 	held_mob?.setDir(SOUTH)
-	held_mob?.visible_message("<span class='warning'>[held_mob] uncurls!</span>")
+	if(!silent)
+		held_mob?.visible_message("<span class='warning'>[held_mob] uncurls!</span>")
 	if(held_mob)
-		SEND_SIGNAL(held_mob, COMSIG_LIVING_MOB_HOLDER_RELEASE, src)
+		SEND_SIGNAL(held_mob, COMSIG_MOB_HOLDER_RELEASE, src)
 	held_mob = null
 	if((del_on_release || !held_mob) && !destroying)
 		qdel(src)
@@ -76,3 +78,8 @@
 
 /obj/item/clothing/head/mob_holder/container_resist()
 	release()
+
+/obj/item/clothing/head/mob_holder/embedded(mob/living/user, obj/item/bodypart/bodypart)
+	. = ..()
+	if(held_mob)
+		SEND_SIGNAL(held_mob, COMSIG_MOB_HOLDER_EMBEDDED, src, user, bodypart)

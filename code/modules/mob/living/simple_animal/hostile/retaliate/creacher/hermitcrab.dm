@@ -7,8 +7,8 @@
 	icon_dead = "hermitcrab_dead"
 
 	faction = list(FACTION_SEA)
-	emote_hear = list("bubbles.")
-	emote_see = list("filter-feeds.")
+	emote_hear = list("chortles.")
+	emote_see = list("scrounges for food.")
 	move_to_delay = 5
 	vision_range = 2
 	aggro_vision_range = 2
@@ -94,41 +94,50 @@
 	ADD_TRAIT(src, TRAIT_TINY, TRAIT_GENERIC)
 	transform = transform.Scale(0.75, 0.75)
 	update_transform()
-	RegisterSignal(src, COMSIG_LIVING_MOB_HOLDER_DEPOSIT, PROC_REF(mob_holder_deposit))
-	RegisterSignal(src, COMSIG_LIVING_MOB_HOLDER_RELEASE, PROC_REF(mob_holder_release))
+	//all this shit just to avoid making a subtype mobholder...
+	RegisterSignal(src, COMSIG_MOB_HOLDER_DEPOSIT, PROC_REF(mob_holder_deposit))
+	RegisterSignal(src, COMSIG_MOB_HOLDER_RELEASE, PROC_REF(mob_holder_release))
+	RegisterSignal(src, COMSIG_MOB_HOLDER_EMBEDDED, PROC_REF(mob_holder_embedded))
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/Destroy()
-	UnregisterSignal(src, list(COMSIG_LIVING_MOB_HOLDER_DEPOSIT, COMSIG_LIVING_MOB_HOLDER_RELEASE))
+	UnregisterSignal(src, list(COMSIG_MOB_HOLDER_DEPOSIT, COMSIG_MOB_HOLDER_RELEASE, COMSIG_MOB_HOLDER_EMBEDDED))
 	. = ..()
 
-/mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_deposit(mob/living/me, obj/item/clothing/head/mob_holder/m_holder)
+/mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_deposit(me, obj/item/clothing/head/mob_holder/m_holder)
 	if(!istype(m_holder))
 		return
-	//ambush()
 	m_holder.grid_width = 64
 	m_holder.grid_height = 64
 	m_holder.sellprice = 15
 	m_holder.embedding = list(
 		"embed_chance" = 100,
-		"embedded_pain_chance" = 50,
-		"embedded_impact_pain_multiplier" = 0,
-		"embedded_pain_multiplier" = 6, //ouch!
-		"embedded_unsafe_removal_time" = 1 SECONDS,
-		"embedded_unsafe_removal_pain_multiplier" = 12, // iron grip
+		"embedded_pain_chance" = 25, // low pain chance for less chat spam
+		"embedded_impact_pain_multiplier" = 12,
+		"embedded_pain_multiplier" = 6,
+		"embedded_unsafe_removal_time" = 3 SECONDS,
+		"embedded_unsafe_removal_pain_multiplier" = 15, // whatever it's attached to is coming off with it
 		"embedded_fall_chance" = 0,
 		"embedded_bloodloss"= 0,
 		"embedded_ignore_throwspeed_threshold" = TRUE,
-		"clamp_limbs" = TRUE, // why not
-	)
+		)
 	m_holder.embedding = getEmbeddingBehavior(arglist(m_holder.embedding))
 	if(istype(ai_controller))
 		ai_controller.set_ai_status(AI_STATUS_OFF)
 
-/mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_release(mob/living/me, obj/item/clothing/head/mob_holder/m_holder)
+/mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_release(me, obj/item/clothing/head/mob_holder/m_holder)
 	if(!istype(m_holder))
 		return
 	if(istype(ai_controller))
 		ai_controller.set_ai_status(ai_controller.get_expected_ai_status())
+
+/mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_embedded(me, obj/item/clothing/head/mob_holder/m_holder, mob/living/victim, obj/item/bodypart/bodypart)
+	if(!istype(m_holder))
+		return
+
+	if(BODY_ZONE_PRECISE_GROIN in bodypart.subtargets && prob(25 - victim.STALUC) && bodypart.try_crit("cbt", 250, src, zone_selected, crit_message = TRUE)) // should be about a 50% chance for the average individual on top of the previous chance
+		if(!HAS_TRAIT(victim, TRAIT_NOPAIN))
+			to_chat(victim, span_userdanger("MY GROIN!"))
+
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/death(gibbed)
 	..()
@@ -146,23 +155,25 @@
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/AttackingTarget(mob/living/passed_target)
 	. = ..()
-	if(!(. && iscarbon(target)))
-		return
-	// note you can't latch if you're being held.
-	if(isturf(loc) && !get_active_held_item())
-		var/mob/living/carbon/C = target
-		var/obj/item/bodypart/BP = C.get_bodypart(zone_selected)
+	if(. && target && isturf(loc) && !get_active_held_item()) // if we're already a mob holder (somehow) don't do this
 		var/obj/item/clothing/head/mob_holder/m_holder = new(get_turf(src), src)
-		if(BP && !BP.is_object_embedded(m_holder) && BP.add_embedded_object(m_holder))
-			// ai effectively has a 90% chance to do this while a player has 10%. AI can't choose where to aim. A player can.
-			if(zone_selected == BODY_ZONE_PRECISE_GROIN && (ckey ^ prob(90)))
-				if(BP.try_crit(BCLASS_TWIST, 99999, src, zone_selected, crit_message = TRUE))
-					to_chat(C, span_userdanger("WHYYY!"))
-					C.Knockdown(5 SECONDS)
-		else
-			// waste of processing power to make this for nothing, but this should only happen to things with godmode or pierce immunity
-			qdel(m_holder)
-	return .
+		var/mob/living/L = target
+		var/mob/living/carbon/C = target
+		if(istype(C))
+			C.get_bodypart(zone_selected)?.add_embedded_object(m_holder)
+		else if(istype(L))
+			L.simple_add_embedded_object(m_holder)
+		if(!m_holder.is_embedded)
+			m_holder.release(TRUE, TRUE)
+
+/mob/living/simple_animal/hostile/retaliate/hermitcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	var/obj/item/clothing/head/mob_holder/m_holder
+	if(throwingdatum && isliving(hit_atom) && isturf(loc))
+		m_holder = new(get_turf(src), src)
+		throwingdatum.thrownthing = m_holder
+	. = ..()
+	if(m_holder && !m_holder.is_embedded)
+		m_holder.release(TRUE, TRUE)
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/simple_limb_hit(zone)
 	if(!zone)

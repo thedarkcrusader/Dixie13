@@ -206,6 +206,9 @@
 	var/throwpower = 30
 	if(istype(AM, /obj/item))
 		I = AM
+	if(throwingdatum && ismobholder(throwingdatum.thrownthing) && throwingdatum.thrownthing:held_mob == AM)
+		I = throwingdatum.thrownthing
+	if(I)
 		throwpower = I.throwforce
 		if(I.thrownby == src) //No throwing stuff at myself to trigger hit reactions
 			return ..()
