@@ -208,6 +208,19 @@
 	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCRE_PARRY
 
+/obj/item/weapon/mace/cane/courtphysician
+	name = "natural wooden cane"
+	desc = "A primitive cane, crudely carved from a thick tree branch. It still has a leaf on it."
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "natural_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 1
+	minstr = 5
+	force = DAMAGE_MACE - 3
+	force_wielded = DAMAGE_MACE - 1
+	wdefense = MEDIOCRE_PARRY
+
 /obj/item/weapon/mace/cane/Initialize()
 	. = ..()
 	AddComponent(/datum/component/walking_stick)
