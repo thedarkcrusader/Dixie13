@@ -958,32 +958,14 @@
 		user.changeNext_move(CLICK_CD_RESIST)	//Stops spam for choking.
 
 /obj/item/inqarticles/garrote/razor // To yische, who said not to give this out constantly, I respectfully disagree when it comes to assassin
-	name = "Profane Razor" // Its very not non lethal now.  Strangle your enemies with glee
+	name = "Profane Razor" // Its very not non lethal now.  Strangle your prey with glee
 	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "garrote"
 	item_state = "garrote"
-	gripsprite = TRUE
-	throw_speed = 3
-	throw_range = 7
-	grid_height = 32
-	grid_width = 32
-	throwforce = 15
-	force_wielded = 0
-	force = 0
-	obj_flags = CAN_BE_HIT
-	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
-	experimental_inhand = TRUE
-	wieldsound = TRUE
 	resistance_flags = INDESTRUCTIBLE
-	w_class = WEIGHT_CLASS_SMALL
-	can_parry = FALSE
-	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/choke)
-	active = FALSE
 	choke_damage = 20
-	embedding = null
 	sellprice = 100
-	wield_block = FALSE
 
 /obj/item/clothing/head/inqarticles/blackbag
 	name = "black bag"
