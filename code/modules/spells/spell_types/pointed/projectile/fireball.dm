@@ -11,6 +11,9 @@
 		/datum/attunement/fire = 0.5
 	)
 
+	invocation = "FIREBALL!!!"
+	invocation_type = INVOCATION_SHOUT
+
 	charge_time = 2.5 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.7
@@ -30,9 +33,6 @@
 
 /datum/action/cooldown/spell/projectile/fireball/baali
 	name = "Infernal Fireball"
-
-	invocation = "FR BRTH"
-	invocation_type = "whisper"
 
 	associated_skill = /datum/skill/magic/blood
 
