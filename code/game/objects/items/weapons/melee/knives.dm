@@ -301,6 +301,13 @@
 	sellprice = 12
 	dropshrink = 1.0
 
+/obj/item/weapon/knife/dagger/kukri/iron
+	name = "iron kukri"
+	icon_state = "kukri_iron"
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	force = DAMAGE_DAGGER+1
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
+
 /obj/item/weapon/knife/njora/iron
 
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
@@ -349,6 +356,13 @@
 /obj/item/weapon/knife/dagger/steel/special
 	icon_state = "sdaggeralt"
 	desc = "A dagger of refined steel, and even more refined appearance."
+
+/obj/item/weapon/knife/dagger/kukri/steel
+	name = "steel kukri"
+	icon_state = "kukri_steel"
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	force = DAMAGE_DAGGER+1
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 
 /obj/item/weapon/knife/dagger/steel/pestrasickle
 	name ="plaguebringer sickle"
@@ -472,7 +486,9 @@
 			if(QDELETED(target_head))
 				to_chat(user, span_notice("I need their head or else i can't take their face!"))
 				return
-
+			if(!(target.dna?.species.id in RACES_PLAYER_ALL))
+				to_chat(user, span_warning("I can't steal this face!"))
+				return
 			var/datum/beam/transfer_beam = user.Beam(target, icon_state = "drain_life", time = 6 SECONDS)
 
 			playsound(
