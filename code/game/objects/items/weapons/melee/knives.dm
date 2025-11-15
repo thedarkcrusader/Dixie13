@@ -107,16 +107,16 @@
 
 /obj/item/weapon/knife/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
-	if(user.used_intent.type == /datum/intent/cut && istype(A, /obj/structure/closet/crate/coffin)) // unsealing a coffin
-		if !A.sealed
-			to_chat(span_info, "The coffin has no seal to remove.")
+	if(user.used_intent.type == /datum/intent/dagger/cut && istype(A, /obj/structure/closet/crate/coffin)) // unsealing a coffin
+		var/obj/structure/closet/crate/coffin/casket = A
+		if (!casket.sealed)
+			to_chat(user, span_info("The coffin has no seal to remove."))
 		else
-			to_chat(span_info, "I start unsealing the coffin..")
+			to_chat(user, span_info("I start unsealing the coffin.."))
 			if(!do_after(user, 5 SECONDS, A))
 				return
 			record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 			record_round_statistic(STATS_GRAVES_ROBBED)
-			qdel(G)
 			if(isliving(user))
 				var/mob/living/L = user
 				if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
@@ -125,7 +125,7 @@
 					to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
 					L.apply_status_effect(/datum/status_effect/debuff/cursed)
 			SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
-			A.sealed = FALSE
+			casket.sealed = FALSE
 
 
 /datum/intent/dagger/chop
