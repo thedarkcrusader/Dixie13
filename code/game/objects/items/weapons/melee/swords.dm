@@ -92,21 +92,6 @@
 	. = ..()						//+3 force, +100 blade int, +50 int, +1 def, make silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, 100, 50, 1, TRUE)
 
-/obj/item/weapon/sword/rapier/caneblade
-	name = "cane blade"
-	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. Has a focus on stabbing"
-	icon = 'icons/roguetown/weapons/32/swords.dmi'
-	icon_state = "caneblade"
-	sellprice = 75 //Gold handle
-	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
-	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
-	force_wielded = 0
-	gripped_intents = null
-	alt_intents = null
-	parrysound = "rapier"
-	swingsound = BLADEWOOSH_SMALL
-	minstr = 6
-	wbalance = VERY_HARD_TO_DODGE
 
 //................ Arming Sword ............... //
 /obj/item/weapon/sword/arming
@@ -200,6 +185,21 @@
 	sellprice = 20
 	smeltresult = /obj/item/ingot/iron
 
+/obj/item/weapon/sword/rapier/caneblade
+	name = "cane blade"
+	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. Has a focus on stabbing"
+	icon = 'icons/roguetown/weapons/32/swords.dmi'
+	icon_state = "caneblade"
+	sellprice = 75 //Gold handle
+	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	force_wielded = 0
+	gripped_intents = null
+	alt_intents = null
+	parrysound = "rapier"
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 6
+	wbalance = VERY_HARD_TO_DODGE
 /*-------\
 | Sabres |	Onehanded, slightly weaker thrust, better for parries. Think rapier but cutting focus.
 \-------*/

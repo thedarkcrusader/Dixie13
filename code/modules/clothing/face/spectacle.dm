@@ -19,9 +19,9 @@
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
 
-/obj/item/clothing/face/spectacles/monacle
-	name = "silver monacle"
-	icon_state = "monacle"
+/obj/item/clothing/face/spectacles/monocle
+	name = "silver monocle"
+	icon_state = "monocle"
 	break_sound = "glassbreak"
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	max_integrity = 35
