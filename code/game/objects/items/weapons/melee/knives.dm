@@ -104,8 +104,6 @@
 /*------------\
 | Chop intent |	small AP, bonus damage
 \------------*/
-
-
 /datum/intent/dagger/chop
 	name = "chop"
 	icon_state = "inchop"
