@@ -37,8 +37,6 @@
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 	spawned.verbs |= /mob/living/carbon/human/proc/view_inquisition
 
-	spawned.add_spell(/datum/action/cooldown/spell/undirected/call_bird/inquisitor)
-
 	spawned.hud_used?.shutdown_bloodpool()
 	spawned.hud_used?.initialize_bloodpool()
 	spawned.hud_used?.bloodpool.set_fill_color("#dcdddb")
