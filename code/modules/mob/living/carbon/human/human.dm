@@ -12,6 +12,7 @@
 			else
 				user.visible_message("<span class='danger'>[user] starts to slit [src]'s throat with [held_item].</span>")
 			if(do_after(user, 5 SECONDS, src))
+			var/obj/item/bodypart/part = victim.get_bodypart(prob(50) ? BODY_ZONE_PRECISE_MOUTH : BODY_ZONE_PRECISE_NECK)
 				add_wound(/datum/wound/artery/neck)
 	else
 		if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
