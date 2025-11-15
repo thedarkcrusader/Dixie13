@@ -322,6 +322,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_race = RACES_PLAYER_ALL
+	surgery_cover = FALSE
 	max_integrity = 600 //Bad armor protection and very basic crit protection, but incredibly hard to break completely
 	flags_inv = null //free the breast
 	var/repair_amount = 6 //The amount of integrity the tattoos will repair themselves
