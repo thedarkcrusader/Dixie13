@@ -24,10 +24,6 @@
 		STATKEY_INT = 2,
 	) //8 Statline
 
-	spells = list(
-		/datum/action/cooldown/spell/undirected/call_bird/inquisitor
-	)
-
 	skills = list(
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_MASTER,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_MASTER,

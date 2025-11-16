@@ -32,10 +32,6 @@
 		TRAIT_PSYDONITE,
 	)
 
-	spells = list(
-		/datum/action/cooldown/spell/undirected/call_bird/inquisitor
-	)
-
 /datum/job/advclass/puritan/ordinator/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	GLOB.inquisition.add_member_to_position(spawned, GLOB.inquisition.benetarus, 100)
