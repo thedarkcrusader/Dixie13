@@ -19,12 +19,10 @@
 	)
 
 	jobstats = list(
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
 		STATKEY_PER = 3,
-		STATKEY_SPD = 2,
+		STATKEY_SPD = 3,
 		STATKEY_INT = 2,
-	)
+	) //8 Statline
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/call_bird/inquisitor
