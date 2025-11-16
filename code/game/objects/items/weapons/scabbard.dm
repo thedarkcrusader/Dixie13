@@ -143,7 +143,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	anvilrepair = /datum/skill/craft/carpentry
 	associated_skill = /datum/skill/combat/swords
-
+	max_integrity = INTEGRITY_STANDARD
 
 /obj/item/weapon/scabbard/kazengun/apply_components()
 	. = ..()
@@ -155,9 +155,11 @@
 	desc = "A cloud-patterned scabbard with a cloth sash. Used for blocking."
 	icon_state = "kazscab_steel"
 	item_state = "kazscab_steel"
+	max_integrity = INTEGRITY_STRONG
 
 /obj/item/weapon/scabbard/kazengun/gold
 	name = "gold-stained Xinyi scabbard"
 	desc = "An ornate, wooden scabbard with a sash. Great for parrying."
 	icon_state = "kazscab_gold"
 	item_state = "kazscab_gold"
+	max_integrity = INTEGRITY_STRONGEST
