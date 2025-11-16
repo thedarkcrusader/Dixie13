@@ -6,7 +6,7 @@
 	if(user.cmode)
 		if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 			if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-					playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
+				playsound(src, 'sound/surgery/scalpel1.ogg', 100, TRUE, -1)
 					if(user == src)
 						user.visible_message("<span class='danger'>[user] starts to slit [user.p_their()] throat with [held_item].</span>")
 					else
