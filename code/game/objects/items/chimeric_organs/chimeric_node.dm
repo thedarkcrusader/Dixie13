@@ -18,7 +18,19 @@
 		if(length(stored_node.forbidden_organ_slots))
 			. += span_warning("This node cannot be installed in: [english_list(stored_node.forbidden_organ_slots)]")
 		if(!length(stored_node.allowed_organ_slots) && !length(stored_node.forbidden_organ_slots))
-			. += span_notice("This node is compatible with any organ.")
+			. += span_blue("This node is compatible with any organ.")
+		if(length(stored_node.compatible_blood_types) || length(stored_node.preferred_blood_types))
+			. += span_notice("This node can use these blood types:")
+			for(var/datum/blood_type/blood_type as anything in stored_node.preferred_blood_types)
+				. += span_notice("   -[initial(blood_type.name)] Blood (Preferred)")
+			for(var/datum/blood_type/blood_type as anything in stored_node.compatible_blood_types)
+				if(blood_type in stored_node.preferred_blood_types)
+					continue
+				. += span_notice("   -[initial(blood_type.name)] Blood")
+		if(length(stored_node.incompatible_blood_types))
+			. += span_warning("This node isn't able to use these blood types:")
+			for(var/datum/blood_type/blood_type as anything in stored_node.incompatible_blood_types)
+				. += span_warning("   -[initial(blood_type.name)] Blood")
 
 /obj/item/chimeric_node/proc/setup_node(datum/chimeric_node/incoming_node, list/compatible_blood_types = list(), list/incompatible_blood_types = list(), list/preferred_blood_types = list(), base_blood_cost = 0.3, preferred_blood_bonus = 0.5, incompatible_blood_penalty = 2.0)
 	stored_node = new incoming_node
