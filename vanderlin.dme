@@ -3423,6 +3423,7 @@
 #include "code\modules\spells\spell_types\undirected\list_target\vicious_mimicry.dm"
 #include "code\modules\spells\spell_types\undirected\list_target\vicious_mockery.dm"
 #include "code\modules\spells\spell_types\undirected\list_target\convert_role\_convert_role.dm"
+#include "code\modules\spells\spell_types\undirected\list_target\convert_role\adept.dm"
 #include "code\modules\spells\spell_types\undirected\list_target\convert_role\brotherhood.dm"
 #include "code\modules\spells\spell_types\undirected\list_target\convert_role\church.dm"
 #include "code\modules\spells\spell_types\undirected\list_target\convert_role\guard.dm"

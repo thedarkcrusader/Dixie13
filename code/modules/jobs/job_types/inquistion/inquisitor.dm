@@ -15,7 +15,7 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	selection_color = JCOLOR_INQUISITION
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-
+	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 	outfit = /datum/outfit/inquisitor
 	display_order = JDO_PURITAN
 	advclass_cat_rolls = list(CTAG_PURITAN = 20)
