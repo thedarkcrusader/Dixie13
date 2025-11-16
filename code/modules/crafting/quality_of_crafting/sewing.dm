@@ -1612,32 +1612,12 @@
 	name = "shell bracelet"
 	output = /obj/item/clothing/neck/psycross/shell/bracelet
 	requirements = list(
-		/obj/item/natural/stone = 1,
+		/obj/item/carvedgem/shell/rawshell = 1,
 		/obj/item/natural/fibers = 1
 	)
 	craftdiff = 0
 	attacked_atom = /obj/item/natural/fibers
 	category = "Accessories"
-
-/datum/repeatable_crafting_recipe/sewing/naledi
-	name = "sojourner's wrappings"
-	output = /obj/item/clothing/wrists/bracers/naledi
-	requirements = list(
-		/obj/item/natural/cloth = 2,
-		/obj/item/natural/fibers = 1
-	)
-	craftdiff = 2
-	category = "Gloves"
-
-/datum/repeatable_crafting_recipe/sewing/naledi
-	name = "sojourner's wrappings"
-	output = /obj/item/clothing/wrists/bracers/naledi
-	requirements = list(
-		/obj/item/natural/cloth = 2,
-		/obj/item/natural/fibers = 1
-	)
-	craftdiff = 2
-	category = "Gloves"
 
 /datum/repeatable_crafting_recipe/sewing/psy_sack
 	name = "psydonian sack mask"
