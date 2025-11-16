@@ -55,7 +55,7 @@
 		gloves = /obj/item/clothing/gloves/eastgloves2
 		shoes = /obj/item/clothing/shoes/boots
 	else
-		armor = /obj/item/clothing/armor/basiceast/captainrobe/weak
+		armor = /obj/item/clothing/armor/basiceast/captainrobe
 		shoes = /obj/item/clothing/shoes/rumaclan
 
 

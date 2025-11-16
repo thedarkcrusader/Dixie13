@@ -1,6 +1,6 @@
 /obj/item/clothing/cloak/eastcloak1
 	name = "cloud-cutter's cloak"
-	desc = "A brown cloak with white swirls. Some Kazengites may recognize it as an old militaristic symbol."
+	desc = "A brown cloak with white swirls. A few may recognize it as an old militaristic symbol."
 	color = null
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	icon_state = "eastcloak1"
@@ -119,17 +119,12 @@
 
 /obj/item/clothing/armor/basiceast/captainrobe
 	name = "foreign robes"
-	desc = "Flower-styled robes, said to have been infused with magical protection. The Merchant Guild says that this is from the southern Kazengite region."
+	desc = "Flower-styled robes."
 	icon_state = "eastsuit4"
 	item_state = "eastsuit4"
 	armor = ARMOR_LEATHER_GOOD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 25 // Head Honcho gets a buff
 	sellprice = 25
-
-/obj/item/clothing/armor/basiceast/captainrobe/weak
-	desc = "Flower-styled robes, The Merchant Guild says that this is from the southern Kazengite region."
-	armor = ARMOR_LEATHER_GOOD //The Idea is that you're supposed to keep it for the drip.
-	misc_flags = CRAFTING_TEST_EXCLUDE
 
 
 // this robe spawns on a role that offers no leg protection nor further upgrades to the loadout, in exchange for better roundstart gear
