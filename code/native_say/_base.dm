@@ -651,6 +651,7 @@
 				e.preventDefault();
 				return;
 			}
+
 			const sel = window.getSelection();
 			const hasSelection = sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed;
 
@@ -687,9 +688,75 @@
 					const newCursorPos = mapRawToRendered(selectionStart);
 					setCursorPosition(newCursorPos);
 				} else if (selectionStart > 0) {
+					// Single character deletion
 					window.realText = window.realText.slice(0, selectionStart - 1) + window.realText.slice(selectionStart);
 					updatePreview();
 					const newCursorPos = mapRawToRendered(selectionStart - 1);
+					setCursorPosition(newCursorPos);
+				}
+			} else if (e.inputType === 'deleteWordBackward') {
+				e.preventDefault();
+				if (hasSelection) {
+					window.realText = window.realText.slice(0, selectionStart) + window.realText.slice(selectionEnd);
+					updatePreview();
+					const newCursorPos = mapRawToRendered(selectionStart);
+					setCursorPosition(newCursorPos);
+				} else if (selectionStart > 0) {
+					// selectionStart is already a RAW position from getCursorPosition()
+					let deleteFrom = selectionStart - 1;
+
+					// If we're on whitespace, skip it
+					if (/\\s/.test(window.realText\[deleteFrom\])) {
+						while (deleteFrom >= 0 && /\\s/.test(window.realText\[deleteFrom\])) {
+							deleteFrom--;
+						}
+					}
+
+					// Now we're at the last character of a word (or -1)
+					// Delete back to the start of this word only
+					while (deleteFrom >= 0 && !/\\s/.test(window.realText\[deleteFrom\])) {
+						deleteFrom--;
+					}
+
+					// deleteFrom is now pointing at whitespace before the word (or -1)
+					deleteFrom++;
+
+					// Delete from RAW text
+					window.realText = window.realText.slice(0, deleteFrom) + window.realText.slice(selectionStart);
+					updatePreview();
+
+					// Convert the new RAW position to rendered position for cursor
+					const newCursorPos = mapRawToRendered(deleteFrom);
+					setCursorPosition(newCursorPos);
+				}
+			} else if (e.inputType === 'deleteWordForward') {
+				e.preventDefault();
+				if (hasSelection) {
+					window.realText = window.realText.slice(0, selectionStart) + window.realText.slice(selectionEnd);
+					updatePreview();
+					const newCursorPos = mapRawToRendered(selectionStart);
+					setCursorPosition(newCursorPos);
+				} else if (selectionStart < window.realText.length) {
+					// Work with RAW cursor position in realText
+					let rawCursor = selectionStart;
+					let deleteTo = rawCursor;
+
+					// Skip any whitespace immediately after cursor in RAW text
+					while (deleteTo < window.realText.length && /\\s/.test(window.realText\[deleteTo\])) {
+						deleteTo++;
+					}
+
+					// Delete non-whitespace characters (the word) in RAW text
+					while (deleteTo < window.realText.length && !/\\s/.test(window.realText\[deleteTo\])) {
+						deleteTo++;
+					}
+
+					// Delete from RAW text
+					window.realText = window.realText.slice(0, rawCursor) + window.realText.slice(deleteTo);
+					updatePreview();
+
+					// Convert the RAW position to rendered position for cursor
+					const newCursorPos = mapRawToRendered(rawCursor);
 					setCursorPosition(newCursorPos);
 				}
 			} else if (e.inputType === 'deleteContentForward') {
