@@ -38,7 +38,7 @@
 
 	voicepack_m = /datum/voicepack/male/knight
 
-/datum/job/advclass/psydoniantemplar/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/advclass/sacrestant/psydoniantemplar/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Templar")
 
