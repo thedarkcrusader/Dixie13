@@ -31,6 +31,10 @@ VERB_MANAGER_SUBSYSTEM_DEF(input)
 
 	return ..()
 
+/datum/controller/subsystem/verb_manager/input/Recover()
+	setup_default_macro_sets()
+	refresh_client_macro_sets()
+
 // This is for when macro sets are eventualy datumized
 /datum/controller/subsystem/verb_manager/input/proc/setup_default_macro_sets()
 	macro_set = list(
