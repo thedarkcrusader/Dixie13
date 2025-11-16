@@ -142,7 +142,8 @@
 		"Desert Rakshari" = SKIN_COLOR_WOOD_ELF, // - (Mediterranean 1)
 		"Deep Desert Rakshari" = SKIN_COLOR_JUNGLE_ELF, // - (Latin)
 		"Oasis Rakshari" = SKIN_COLOR_HOMUNCULUS, // - (Grey-blue)
-		"Oasis Shade Rakshari" = SKIN_COLOR_ARACHNID_ICHOR, // - (Black-blue)
+		"Oasis Shade Rakshari" = SKIN_COLOR_NIGHTSHADE, // - (Black-blue)
+		"Quicksand Rakshari" = SKIN_COLOR_QUICKSAND, // Orange, apparently sphynx cats can be orange, who knew!
 	))
 
 /datum/species/rakshari/get_hairc_list()
