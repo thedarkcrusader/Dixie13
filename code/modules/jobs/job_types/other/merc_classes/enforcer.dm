@@ -1,6 +1,6 @@
 /datum/job/advclass/mercenary/enforcer
 	title = "Enforcer"
-	tutorial = "You're an exiled enforcer from an clan, robed in black, and known for wild antics and loose camaraderie, You once used your blade to shake down anyone who hasn't paid their 'protection fees', nowadays, you will fight for anyone for the right price."
+	tutorial = "You're an exiled enforcer from an clan that took refuges in the valorian regions long ago, near the beginning of Z's ascension, robed in black, and known for wild antics and loose camaraderie, You once used your blade to shake down anyone who hasn't paid their 'protection fees', nowadays, you will fight for anyone for the right price."
 	allowed_races = list(SPEC_ID_TRITON, SPEC_ID_HUMEN)
 	outfit = /datum/outfit/mercenary/enforcer
 	category_tags = list(CTAG_MERCENARY)
