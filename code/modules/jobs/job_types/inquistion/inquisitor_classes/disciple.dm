@@ -33,7 +33,7 @@
 
 	languages = list(/datum/language/oldpsydonic)
 
-/datum/job/advclass/disciple/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/advclass/sacrestant/disciple/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	GLOB.inquisition.add_member_to_school(spawned, "Benetarus", 0, "Disciple")
 
