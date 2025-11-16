@@ -11,10 +11,9 @@
 	var/window_open = FALSE
 
 	// Window sizing
-	var/window_width = 231
+	var/window_width = 300
 	var/window_height = 40
 	var/list/window_sizes = list("small" = 40, "medium" = 60, "large" = 80)
-	var/list/line_lengths = list("small" = 20, "medium" = 39, "large" = 59)
 
 	// Channel definitions - will be populated dynamically
 	var/list/datum/say_channel/available_channels = list()
@@ -236,11 +235,12 @@
 		window.historyIndex = -1;
 		window.tempMessage = '';
 		window.realText = '';
+		window.TYPING_THROTTLE = 2000;
 
 		const channels = [channels_json];
 		const quietChannels = [quiet_json];
 		const windowSizes = { small: [40 * scale], medium: [60 * scale], large: [80 * scale] };
-		const lineLengths = { small: 14, medium: 26, large: 39 };
+		const lineLengths = { small: 18, medium: 30, large: 43 };
 
 		const windowEl = document.getElementById('window');
 		const shineEl = document.getElementById('shine');
@@ -496,8 +496,8 @@
 			if (newSize !== window.currentSize) {
 				window.currentSize = newSize;
 				const newHeight = windowSizes\[newSize\];
-				window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
-				window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
+				window.location = 'byond://winset?id=native_say&size=[300 * scale]x' + newHeight;
+				window.location = 'byond://winset?id=native_say.browser&size=[300 * scale]x' + newHeight;
 			}
 		}
 
@@ -522,8 +522,8 @@
 
 			const newHeight = windowSizes\['small'\];
 			window.location = 'byond://winset?id=native_say&focus=true';
-			window.location = 'byond://winset?id=native_say&size=[231 * scale]x' + newHeight;
-			window.location = 'byond://winset?id=native_say.browser&size=[231 * scale]x' + newHeight;
+			window.location = 'byond://winset?id=native_say&size=[300 * scale]x' + newHeight;
+			window.location = 'byond://winset?id=native_say.browser&size=[300 * scale]x' + newHeight;
 
 			if (!quietChannels.includes(channel)) {
 				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=1';
@@ -566,6 +566,22 @@
 
 			let visible = !quietChannels.includes(window.currentChannel);
 			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=' + (visible ? '1' : '0');
+		}
+
+		function cycleToChannel(targetChannel) {
+			if (!channels.includes(targetChannel)) {
+				return;
+			}
+
+			window.currentChannel = targetChannel;
+			window.currentChannelIndex = channels.indexOf(targetChannel);
+			button.textContent = targetChannel;
+			applyTheme(targetChannel);
+
+			let visible = !quietChannels.includes(targetChannel);
+			window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=thinking;visible=' + (visible ? '1' : '0');
+
+			editor.focus();
 		}
 
 		function submitEntry() {
@@ -790,7 +806,24 @@
 			updateWindowSize();
 
 			if (!quietChannels.includes(window.currentChannel)) {
-				window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=typing';
+				const now = Date.now();
+
+				// Only send if enough time has passed since last call
+				if (now - window.lastTypingCall >= window.TYPING_THROTTLE) {
+					window.lastTypingCall = now;
+					window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=typing';
+				}
+
+				// Clear any existing timeout
+				if (window.typingTimeout) {
+					clearTimeout(window.typingTimeout);
+				}
+
+				// Set a timeout to send one final "typing" call after user stops
+				window.typingTimeout = setTimeout(function() {
+					window.lastTypingCall = Date.now();
+					window.location = 'byond://?src=' + encodeURIComponent('[ref(src)]') + ';action=typing';
+				}, window.TYPING_THROTTLE);
 			}
 		});
 
@@ -891,6 +924,7 @@
 		}, true);
 
 		window.openSayWindow = openWindow;
+		window.cycleToChannel = cycleToChannel;
 	</script>
 </body>
 </html>"}
@@ -967,24 +1001,50 @@
 	return client.start_typing()
 
 /datum/native_say/proc/open_say_window(channel_name)
+	if(window_open)
+		// Use the same focus logic as the Tab macro
+		winset(client, "input", "focus=false")
+		winset(client, "input", "command=disableInput")
+		winset(client, "input", "text-color=#ad9eb4")
+		winset(client, "input", "background-color=[COLOR_INPUT_DISABLED]")
+		winset(client, "map", "focus=false")
+
+		winset(client, "native_say", "focus=true")
+		winset(client, "native_say.browser", "focus=true")
+		client << output(null, "native_say.browser:editor.focus()")
+
+		if(channel_name)
+			client << output(null, "native_say.browser:cycleToChannel('[channel_name]')")
+		return
+
 	var/datum/say_channel/channel = current_channel
 	if(channel_name)
 		for(var/datum/say_channel/ch in available_channels)
 			if(ch.name == channel_name)
 				channel = ch
 				break
-
 	if(!channel && available_channels.len > 0)
 		channel = available_channels[1]
-
 	if(channel)
+		window_open = TRUE
+
 		var/scale = 1
 		if(client?.window_scaling)
 			scale = client?.window_scaling
 		if(client.prefs?.chat_scale)
 			scale *= client.prefs.chat_scale
-		winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=1")
+		winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=1;focus=true")
 		client << output(null, "native_say.browser:openSayWindow('[channel.name]')")
+
+		winset(client, "input", "focus=false")
+		winset(client, "input", "command=disableInput")
+		winset(client, "input", "text-color=#ad9eb4")
+		winset(client, "input", "background-color=[COLOR_INPUT_DISABLED]")
+		winset(client, "map", "focus=false")
+
+		winset(client, "native_say", "focus=true")
+		winset(client, "native_say.browser", "focus=true")
+		client << output(null, "native_say.browser:editor.focus()")
 
 /datum/native_say/proc/force_say()
 	client << output(null, "native_say.browser:submitEntry()")
