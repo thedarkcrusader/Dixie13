@@ -39,6 +39,8 @@
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/rakshari.dmi'
 	child_icon = 'icons/roguetown/mob/bodies/c/child-rakshari.dmi'
 
+	no_boobs = TRUE
+
 	exotic_bloodtype = /datum/blood_type/human/rakshari
 
 	offset_features_m = list(

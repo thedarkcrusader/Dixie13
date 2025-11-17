@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	 */
 	var/swap_female_clothes = FALSE
 
-	var/doesnt_have_breasts = FALSE
+	var/no_boobs = FALSE
 	/**
 	 * For species that don't have mammaries, like Rakshari.
 	 * Removes boob overlay
