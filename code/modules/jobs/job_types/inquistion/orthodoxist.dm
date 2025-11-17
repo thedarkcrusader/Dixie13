@@ -1,7 +1,7 @@
 /datum/job/orthodoxist
 	title = "Sacrestants"
 	department_flag = INQUISITION
-	faction = "Station"
+	faction = FACTION_TOWN
 	total_positions = 2 // TWO GOONS!!
 	spawn_positions = 2
 	allowed_races = RACES_PLAYER_GRENZ

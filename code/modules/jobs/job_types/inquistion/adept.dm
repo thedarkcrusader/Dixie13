@@ -1,17 +1,15 @@
 /datum/job/adept
 	title = "Adept"
-	tutorial = "You were a convicted criminal, the lowest scum of Vanderlin. \
-	Your master, the Inquisitor, saved you from the gallows \
-	and has given you true purpose in service to Psydon. \
-	You will not let him down."
+	tutorial = "You were a convicted criminal, a captured heretic. It matters not, you were and still are, the lowest scum of Vanderlin. \
+	Your master, the Lord Prafekt, saved you from the gallows and has given you true purpose in service to Psydon and the Oratorium Throni Vacui. \
+	You will not let him down. Not as if you had a choice, the explosive collar does not care whether you joined willingly or not."
 	department_flag = INQUISITION
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_SHEPHERD
 	selection_color = JCOLOR_INQUISITION
 	faction = FACTION_TOWN
-	total_positions = 1
-	spawn_positions = 1
-	min_pq = 5
+	total_positions = 2
+	spawn_positions = 2
 	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
@@ -31,6 +29,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/armor/gambeson/light/colored/black
 	wrists = /obj/item/clothing/neck/psycross/silver
+	neck = /obj/item/clothing/neck/gorget/explosive
 
 /datum/outfit/adept/pre_equip(mob/living/carbon/human/H)
 	..()

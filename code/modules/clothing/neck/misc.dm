@@ -376,8 +376,9 @@
 /obj/item/clothing/neck/gorget/explosive
 	name = "collar of servitude"
 	icon_state = "collar_of_servitude"
-	desc = "an ordinary gorget that has been imbued with a curse of the explosive sort by the inquisition. It is a powerfui tool designed to keep its wearer \
-		servile and obedient under threat of its explosive potential detonating on their necks."
+	desc = "An ordinary gorget that has been imbued with a curse of the explosive sort by the inquisition. \
+	It is a powerfui tool designed to keep its wearer \
+	servile and obedient under threat of its explosive potential detonating on their necks."
 	var/collar_unlocked = TRUE
 	var/is_in_neck_slot = FALSE
 	var/is_going_to_boom = FALSE
@@ -464,7 +465,7 @@
 /obj/item/collar_detonator
 	name = "collar detonator"
 	desc = "What seems to be an ordinary key at first is actually an enchanted contraption designed to \
-		detonate or unlock collar of servitudes used by the inquisition."
+	detonate or unlock collar of servitudes used by the Oratorium."
 	icon_state = "mazekey"
 	icon = 'icons/roguetown/items/keys.dmi'
 	w_class = WEIGHT_CLASS_TINY
