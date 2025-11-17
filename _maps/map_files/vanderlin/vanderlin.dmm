@@ -3429,7 +3429,7 @@
 /obj/structure/window/openclose/reinforced{
 	dir = 8
 	},
-/turf/open/floor/ruinedwood,
+/turf/open/floor/wood/nosmooth,
 /area/rogue/under/town/caverogue)
 "bKC" = (
 /obj/structure/chair/bench/church{
@@ -17721,7 +17721,7 @@
 /obj/structure/window/openclose/reinforced{
 	dir = 8
 	},
-/turf/open/floor/ruinedwood,
+/turf/open/floor/wood/nosmooth,
 /area/rogue/under/town/caverogue)
 "jam" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -20247,7 +20247,7 @@
 /obj/structure/window/openclose/reinforced{
 	dir = 1
 	},
-/turf/open/floor/ruinedwood/darker,
+/turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/town)
 "kos" = (
 /obj/structure/fluff/railing/wood{
@@ -21779,7 +21779,7 @@
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/access/keyset/manor/Noble2,
-/turf/open/floor/ruinedwood/darker,
+/turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/town)
 "ljt" = (
 /obj/structure/chair/wood/alt/chair3,
@@ -34972,7 +34972,7 @@
 /obj/structure/window/openclose/reinforced{
 	dir = 4
 	},
-/turf/open/floor/ruinedwood,
+/turf/open/floor/wood/nosmooth,
 /area/rogue/outdoors/beach)
 "slM" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -39025,7 +39025,7 @@
 	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/manor/Noble1,
-/turf/closed/wall/mineral/stonebrick,
+/turf/open/floor/herringbone,
 /area/rogue/indoors/town)
 "urH" = (
 /obj/structure/fluff/walldeco/church/line{
