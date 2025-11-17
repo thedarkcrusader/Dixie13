@@ -48,6 +48,5 @@
 		if(current_positions >= total_positions)
 			return FALSE
 
-	var/pq_prob = roll_chance
-	if(prob(pq_prob))
+	if(prob(roll_chance))
 		return TRUE
