@@ -59,8 +59,7 @@
 	miracles = list(
 		CLERIC_T0 = list(/datum/action/cooldown/spell/healing, /datum/action/cooldown/spell/undirected/conjure_item/summon_leech/pestra),
 		CLERIC_T1 = /datum/action/cooldown/spell/diagnose/holy,
-		CLERIC_T2 = /datum/action/cooldown/spell/attach_bodypart,
-		CLERIC_T3 = /datum/action/cooldown/spell/cure_rot,
+		CLERIC_T2 = list(/datum/action/cooldown/spell/attach_bodypart, /datum/action/cooldown/spell/cure_rot),
 	)
 
 /datum/devotion/divine/malum

@@ -12,8 +12,8 @@
 	required_items = list(/obj/item/clothing/neck/psycross/silver)
 
 	charge_required = FALSE
-	cooldown_time = 30 SECONDS
-	spell_cost = 125
+	cooldown_time = 20 SECONDS
+	spell_cost = 50
 
 /datum/action/cooldown/spell/attach_bodypart/is_valid_target(atom/cast_on)
 	. = ..()
