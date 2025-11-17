@@ -29,7 +29,6 @@
 	shirt = /obj/item/clothing/armor/chainmail
 	shoes = /obj/item/clothing/shoes/boots
 	backr = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/goldmask
 	wrists = /obj/item/clothing/wrists/bracers/jackchain
 	neck = /obj/item/clothing/neck/chaincoif
@@ -42,19 +41,39 @@
 	H.change_stat(STATKEY_CON, 2)
 	H.change_stat(STATKEY_INT, 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	backpack_contents = list(
+		/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1,
+	)
+
 	H.adjust_blindness(-3)
-	var/weapons = list("Halberd","Warhammer and Shield")
-	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+
+
+/datum/outfit/banditlead/leadsellsword/post_equip(mob/living/carbon/human/H)
+	var/list/selectableweapon = list(
+		"Halberd" = /obj/item/weapon/polearm/halberd, \
+		"Warhammer and Shield" = /obj/item/weapon/mace/warhammer/steel, \
+		)
+	var/weaponchoice = H.select_equippable(H, selectableweapon, message = "Choose Your Specialisation", title = "Fighter!")
 	H.set_blindness(0)
-	switch(weapon_choice)
-		if("Halberd") //Deserter watchman. Maybe should be shield and spear? spear and crossbow is kinda clumsy
-			backl= /obj/item/weapon/polearm/halberd
+	if(!weaponchoice)
+		return
+	var/grant_shield = TRUE
+	var/grant_sword = TRUE
+	switch(weaponchoice)
+		if("Halberd")
 			H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-			beltl = /obj/item/weapon/sword
-			scabbards = list(/obj/item/weapon/scabbard/sword)
-		if("Warhammer and Shield") //Mercenary on the wrong side of the law
-			beltl = /obj/item/weapon/mace/warhammer/steel
-			backl = /obj/item/weapon/shield/heater
+			grant_shield = FALSE
+		if("Warhammer and Shield")
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
+			grant_sword = FALSE
+	if(grant_shield)
+		var/shield_path = pick(list(/obj/item/weapon/shield/heater))
+		var/obj/item/shield = new shield_path()
+		if(!H.equip_to_appropriate_slot(shield))
+			qdel(shield)
+	if(grant_sword)
+		var/sword_path = pick(list(/obj/item/weapon/sword))
+		var/obj/item/sword = new sword_path()
+		if(!H.equip_to_appropriate_slot(sword))
+			qdel(sword)

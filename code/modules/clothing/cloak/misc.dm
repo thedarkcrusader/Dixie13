@@ -307,3 +307,15 @@
 	item_state = "poncho"
 	boobed = FALSE
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+
+/obj/item/clothing/cloak/cape/thief
+	name = "rogue's shawl"
+	desc = "A cape popular among scoundrels from all walks of life."
+	icon = 'icons/roguetown/clothing/special/thief.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/thief.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/thief.dmi'
+	sleevetype = "shirt"
+
+	icon_state = "thiefcloak"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	detail_color = CLOTHING_ASH_GREY
