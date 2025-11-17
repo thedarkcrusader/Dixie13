@@ -3386,6 +3386,7 @@
 #include "code\modules\spells\spell_types\undirected\seek_rival.dm"
 #include "code\modules\spells\spell_types\undirected\shadow_step.dm"
 #include "code\modules\spells\spell_types\undirected\locate_dead.dm"
+#include "code\modules\spells\spell_types\undirected\soul_speak.dm"
 #include "code\modules\spells\spell_types\undirected\tragedy.dm"
 #include "code\modules\spells\spell_types\undirected\transfix.dm"
 #include "code\modules\spells\spell_types\undirected\troll_shape.dm"

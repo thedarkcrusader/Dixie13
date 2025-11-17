@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/undirected/locate_dead
 	name = "Locate Corpse"
 	desc = ""
-	button_icon_state = "speakwithdead"
+	button_icon_state = "necraeye"
 	sound = 'sound/magic/whiteflame.ogg'
 
 	spell_type = SPELL_MIRACLE
@@ -10,7 +10,7 @@
 	required_items = list(/obj/item/clothing/neck/psycross/silver/necra)
 
 	invocation = "Undermaiden, guide my hand to those who have lost their way."
-	invocation_type = INVOCATION_SHOUT
+	invocation_type = INVOCATION_WHISPER
 
 	charge_required = FALSE
 	cooldown_time = 60 SECONDS
