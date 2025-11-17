@@ -1,0 +1,2 @@
+/obj/item/clothing/head/crown/circlet/silverdiadem : /obj/item/clothing/head/crown/circlet/diadem/gold{@OLD}
+/obj/item/clothing/head/crown/circlet/golddiadem : /obj/item/clothing/head/crown/circlet/diadem/silver{@OLD}

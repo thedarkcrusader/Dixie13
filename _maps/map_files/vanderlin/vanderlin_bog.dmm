@@ -1679,7 +1679,7 @@
 /obj/structure/table/church/m{
 	color = "#7D9BAE"
 	},
-/obj/item/clothing/head/crown/circlet/silverdiadem,
+/obj/item/clothing/head/crown/circlet/diadem/gold,
 /turf/open/floor/abyss_tile{
 	color = "#547285"
 	},

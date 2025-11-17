@@ -152,7 +152,7 @@
 /datum/anvil_recipe/valuables/silver/diadem
 	name = "Silver Diadem"
 	recipe_name = "a Silver Diadem"
-	created_item = /obj/item/clothing/head/crown/circlet/silverdiadem
+	created_item = /obj/item/clothing/head/crown/circlet/diadem/silver
 
 /datum/anvil_recipe/valuables/silver/nosechain
 	name = "2x Silver Nosechain's"
@@ -346,7 +346,7 @@
 /datum/anvil_recipe/valuables/gold/diadem
 	name = "Gold Diadem"
 	recipe_name = "a Gold Diadem"
-	created_item = /obj/item/clothing/head/crown/circlet/golddiadem
+	created_item = /obj/item/clothing/head/crown/circlet/diadem/gold
 
 /datum/anvil_recipe/valuables/gold/nosechain
 	name = "2x Gold Nosechain's"

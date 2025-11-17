@@ -1390,7 +1390,7 @@
 /area/rogue/outdoors/mountains)
 "qu" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/clothing/head/crown/circlet/golddiadem,
+/obj/item/clothing/head/crown/circlet/diadem/silver,
 /obj/item/statue/silver/vase,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/dungeon)

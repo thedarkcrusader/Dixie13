@@ -56,12 +56,12 @@
 /datum/supply_pack/jewelry/diademsilver
 	name = "Diadem Silver"
 	cost = 50
-	contains = /obj/item/clothing/head/crown/circlet/silverdiadem
+	contains = /obj/item/clothing/head/crown/circlet/diadem/silver
 
 /datum/supply_pack/jewelry/diademgold
 	name = "Diadem Gold"
 	cost = 100
-	contains = /obj/item/clothing/head/crown/circlet/golddiadem
+	contains = /obj/item/clothing/head/crown/circlet/diadem/gold
 
 /datum/supply_pack/jewelry/headdresssilver
 	name = "Headdress Silver"
