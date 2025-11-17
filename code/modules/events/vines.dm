@@ -1,7 +1,7 @@
 /datum/round_event/vines/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
-	for(var/area/rogue/outdoors/town/A in GLOB.areas)
+	for(var/area/outdoors/town/A in GLOB.areas)
 		for(var/turf/open/F as anything in A.get_turfs_from_all_zlevels())
 			if(F.density || isopenspace(F))
 				continue
