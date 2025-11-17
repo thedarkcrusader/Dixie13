@@ -258,7 +258,7 @@
 /datum/supply_pack/weapons/steel/mulyeog
 	name = "Mulyeog"
 	cost = 80
-	contains = /obj/item/weapon/sword/sabre/mulyeog
+	contains = /obj/item/weapon/sword/katana/mulyeog
 
 /datum/supply_pack/weapons/steel/nimcha
 	name = "Nimcha"
