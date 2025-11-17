@@ -230,13 +230,6 @@
 		for(var/X in GLOB.inquisition_positions)
 			peopleiknow += X
 			peopleknowme += X
-/*
-	if(exp_type && !length(exp_type))
-		exp_type = list(exp_type)
-
-	if(exp_types_granted && !length(exp_types_granted))
-		exp_types_granted = list(exp_types_granted)
-*/
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
