@@ -1003,11 +1003,6 @@
 /datum/native_say/proc/open_say_window(channel_name)
 	if(window_open)
 		// Use the same focus logic as the Tab macro
-		winset(client, "input", "focus=false")
-		winset(client, "input", "command=disableInput")
-		winset(client, "input", "text-color=#ad9eb4")
-		winset(client, "input", "background-color=[COLOR_INPUT_DISABLED]")
-		winset(client, "map", "focus=false")
 
 		winset(client, "native_say", "focus=true")
 		winset(client, "native_say.browser", "focus=true")
@@ -1035,12 +1030,6 @@
 			scale *= client.prefs.chat_scale
 		winset(client, "native_say", "size=[window_width * scale]x[window_sizes["small"] * scale];is-visible=1;focus=true")
 		client << output(null, "native_say.browser:openSayWindow('[channel.name]')")
-
-		winset(client, "input", "focus=false")
-		winset(client, "input", "command=disableInput")
-		winset(client, "input", "text-color=#ad9eb4")
-		winset(client, "input", "background-color=[COLOR_INPUT_DISABLED]")
-		winset(client, "map", "focus=false")
 
 		winset(client, "native_say", "focus=true")
 		winset(client, "native_say.browser", "focus=true")
