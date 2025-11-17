@@ -234,6 +234,32 @@
 	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCRE_PARRY
 
+/obj/item/weapon/mace/cane/artificer
+	name = "bronze walking stick"
+	desc = "A strange stave, made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "natural_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 35
+	minstr = 4
+	force = DAMAGE_MACE - 2
+	force_wielded = DAMAGE_MACE - 1
+	wdefense = MEDIOCRE_PARRY
+
+	/obj/item/weapon/mace/cane/necran
+	name = "necran rod"
+	desc = "Carved from dark stone, engraved with gold. Often carried by elderly Necrans."
+	icon = 'icons/roguetown/weapons/32/canes.dmi'
+	icon_state = "necran_cane"
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	sellprice = 40
+	minstr = 4
+	force = DAMAGE_MACE - 3
+	force_wielded = DAMAGE_MACE - 1
+	wdefense = MEDIOCRE_PARRY
+
 /obj/item/weapon/mace/cane/Initialize()
 	. = ..()
 	AddComponent(/datum/component/walking_stick)
