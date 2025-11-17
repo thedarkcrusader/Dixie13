@@ -1551,13 +1551,13 @@
 	wlength = WLENGTH_NORMAL
 	wdefense = GOOD_PARRY
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
+	melt_amount = 75
+	melting_material = /datum/material/steel
 
 /obj/item/weapon/sword/katana/mulyeog
 	name = "foreign straight blade"
 	desc = "A foreign sword used by cut-throats & thugs. There's a red tassel on the hilt."
 	icon_state = "eastsword1"
-	melt_amount = 75
-	melting_material = /datum/material/steel
 
 /obj/item/weapon/sword/katana/mulyeog/rumahench
 	name = "hwang blade"
