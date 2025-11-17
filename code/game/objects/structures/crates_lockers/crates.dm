@@ -69,7 +69,7 @@
 				to_chat(user, span_warning("The coffin's material prevents the tallow from sticking, it's seeping right off!"))
 				return
 			to_chat(user, span_info("I start sealing the coffin with tallow.."))
-			if(!do_after(user, 5 SECONDS, I))
+			if(!do_after(user, 5 SECONDS, src))
 				return
 			if(pacify_coffin(src, user))
 				src.add_overlay("graveconsecrated")
@@ -100,6 +100,7 @@
 					L.apply_status_effect(/datum/status_effect/debuff/cursed)
 			SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
 			src.sealed = FALSE
+			src.consecrated = FALSE
 			icon_state = "casket"
 	return
 

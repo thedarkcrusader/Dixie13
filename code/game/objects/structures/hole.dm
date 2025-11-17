@@ -17,6 +17,7 @@
 	alternative_icon_handling = TRUE
 	var/stage = 1
 	var/faildirt = 0
+	var/has_consecrated_coffin = FALSE // Does the grave contain a consecrated coffin ? Used to determine the level of curse a graverobber gets.
 
 /obj/structure/closet/dirthole/Initialize()
 	var/turf/open/floor/dirt/T = loc
@@ -277,6 +278,8 @@
 	for(var/obj/structure/closet/crate/coffin/C in contents)
 		for(var/mob/living/carbon/human/D in C.contents)
 			D.buried = TRUE
+		if (C.consecrated)
+			src.has_consecrated_coffin = TRUE // contains a consecrated coffin, that does not mean the grave itself is protected, it still requires sanctification.
 	opened = FALSE
 	return TRUE
 
