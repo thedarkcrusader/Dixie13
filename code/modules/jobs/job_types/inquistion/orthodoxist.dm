@@ -4,7 +4,7 @@
 	faction = FACTION_TOWN
 	total_positions = 2 // TWO GOONS!!
 	spawn_positions = 2
-	allowed_races = RACES_PLAYER_GRENZ
+	allowed_races = RACES_PLAYER_INQ
 	bypass_lastclass = TRUE
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	allowed_patrons = list(

@@ -158,6 +158,12 @@
 	SPEC_ID_AASIMAR,\
 )
 
+/// basically grenz races without aasimar (too old or ten-made, and as such cannot join the inquisition)
+#define RACES_PLAYER_INQ list(\
+	SPEC_ID_HUMEN,\
+	SPEC_ID_DWARF,\
+)
+
 /// Species who are affiliated with Zaladin
 #define RACES_PLAYER_ZALADIN list(\
 	SPEC_ID_HUMEN,\
