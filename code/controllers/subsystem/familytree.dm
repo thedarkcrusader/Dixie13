@@ -422,9 +422,9 @@ SUBSYSTEM_DEF(familytree)
 	if(my_neutral)
 		return (other_neutral || other.gender_choice_pref == ANY_GENDER)
 
-	// If they are neutral:
+	// If they are neutral(ANY_GENDER already checked):
 	if(other_neutral)
-		return (H.gender_choice_pref == ANY_GENDER)
+		return FALSE
 
 	if(H.gender_choice_pref == SAME_GENDER)
 		return (H.pronouns == other.pronouns)
