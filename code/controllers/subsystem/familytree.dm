@@ -415,7 +415,15 @@ SUBSYSTEM_DEF(familytree)
 		return TRUE
 
 	// Neutral pronouns can only match ANY_GENDER
-	if((H.pronouns == THEY_THEM || H.pronouns == IT_ITS) || (other.pronouns == THEY_THEM || other.pronouns == IT_ITS))
+	var/my_neutral = (H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
+	var/other_neutral = (other.pronouns == THEY_THEM || other.pronouns == IT_ITS)
+
+	// If I am neutral:
+	if(my_neutral)
+		return (other_neutral || other.gender_choice_pref == ANY_GENDER)
+
+	// If they are neutral:
+	if(other_neutral)
 		return (H.gender_choice_pref == ANY_GENDER)
 
 	if(H.gender_choice_pref == SAME_GENDER)
