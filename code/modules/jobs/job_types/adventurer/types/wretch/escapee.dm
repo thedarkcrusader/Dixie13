@@ -8,7 +8,7 @@
 
 	allowed_patrons = list(/datum/patron/divine/xylix, /datum/patron/inhumen/matthios, /datum/patron/godless/defiant)
 
-/datum/outfit/wretch/escapee/pe_equip(mob/living/carbon/human/H)
+/datum/outfit/wretch/escapee/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/neck/keffiyeh/colored/uncolored
 	mask = /obj/item/clothing/face/facemask/prisoner
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
