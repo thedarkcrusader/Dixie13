@@ -10044,10 +10044,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/church)
-"fgH" = (
-/obj/structure/window/solid,
-/turf/closed/basic,
-/area/indoors/town/manorgate)
 "fgP" = (
 /obj/structure/chair/wood/alt/chair3{
 	dir = 4
@@ -145318,11 +145314,11 @@ grI
 grI
 grI
 grI
-oTi
+oQK
 bBC
 bBC
 bBC
-oTi
+oQK
 grI
 grI
 grI
@@ -145724,7 +145720,7 @@ grI
 grI
 oTi
 oTi
-fgH
+oQK
 oTi
 oTi
 grI
