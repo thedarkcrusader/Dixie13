@@ -210,7 +210,7 @@
 
 /obj/item/weapon/mace/cane/merchant
 	name = "merchant's cane"
-	desc = "An expensive cane, decorated with gold and inlaid with a gem. A simbol of great wealth for the ownner"
+	desc = "An expensive cane, decorated with gold and inlaid with a gem. A symbol of great wealth for the ownner"
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
 	icon_state = "merchant_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
@@ -235,10 +235,11 @@
 	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/cane/bronze
-	name = "bronze walking stick"
-	desc = "A staff made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
+	name = "bronze cane"
+	desc = "A walking stick made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
 	icon_state = "artificer_cane"
+	item_state = "artificer_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 35
