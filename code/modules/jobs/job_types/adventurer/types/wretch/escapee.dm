@@ -1,6 +1,6 @@
 /datum/job/advclass/wretch/escapee
 	title = "Red Sands Escapee"
-	tutorial = "You are a survivor, a runaway. You managed to escape the brutal conditions of the zaladin silver mines, freeing yourself from a lifetime of servitude, but at a cost. You now roam faience, seeking your worth and redemption, to prove you are more than a dying workhorse. Your former whiskered masters still hunt you, show those fools that noone, not even gods can own you."
+	tutorial = "You are a survivor, a runaway. You managed to escape the brutal conditions of the zaladin silver mines, freeing yourself from a lifetime of servitude, but at a cost. You now roam Faience, seeking your worth and redemption, to prove you are more than a dying workhorse. Your former whiskered masters still hunt you, show those fools that noone, not even gods can own you."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/wretch/escapee
