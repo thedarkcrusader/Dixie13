@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/hermitcrab
 	icon = 'icons/roguetown/mob/monster/hermitcrab.dmi'
-	name = "hermit crab"
-	desc = ""
+	name = "murk crab"
+	desc = "A 10-legged sea creacher. A territorial scavenger with the crush force of a gator. Its strange blue blood is the subject of Pestran study."
 	icon_state = "hermitcrab"
 	icon_living = "hermitcrab"
 	icon_dead = "hermitcrab_dead"
@@ -13,21 +13,24 @@
 	vision_range = 2
 	aggro_vision_range = 2
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1,
-						/obj/item/natural/fur/rous = 1,/obj/item/alch/bone = 2)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 1,
+						/obj/item/alch/sinew = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 1,
 						/obj/item/alch/sinew = 1,
-						/obj/item/natural/fur/rous = 1, /obj/item/alch/bone = 4)
-	head_butcher = /obj/item/natural/head/rous
+						/obj/item/reagent_containers/food/snacks/meat/crableg = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 1,
+						/obj/item/alch/sinew = 1,
+						/obj/item/reagent_containers/food/snacks/meat/crableg = 2)
 
-	health = 30
-	maxHealth = 30
+	animal_type = /datum/blood_type/mollusc
+
+	health = 45
+	maxHealth = 45
 
 	base_intents = list(/datum/intent/simple/crabpincer)
 	attack_sound = 'sound/combat/wooshes/punch/punchwoosh (2).ogg'
-	melee_damage_lower = 12
-	melee_damage_upper = 14
+	melee_damage_lower = 8
+	melee_damage_upper = 16
 	melee_attack_cooldown = 3 SECONDS
 	accurate = TRUE
 	dextrous = TRUE
@@ -41,7 +44,7 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	deaggroprob = 0
-	defprob = 40
+	defprob = 30
 	defdrain = 5
 	retreat_health = 0.3
 	aggressive = TRUE
@@ -52,10 +55,7 @@
 	ai_controller = /datum/ai_controller/hermitcrab
 	//todo
 	food_type = list(
-		/obj/item/reagent_containers/food/snacks/cheddarslice,
-		/obj/item/reagent_containers/food/snacks/cheese_wedge,
-		/obj/item/reagent_containers/food/snacks/cheddar,
-		/obj/item/reagent_containers/food/snacks/cheese,
+		/obj/item/reagent_containers/food/snacks
 	)
 	tame_chance = 25
 	bonus_tame_chance = 15
@@ -84,17 +84,23 @@
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/Initialize()
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands
+	var/scale = 0.5 + 0.25 * rand(0, 2)
+	maxHealth *= scale
+	health *= scale
+	speed /= scale
 	. = ..()
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE
+
+	transform = transform.Scale(scale, scale)
+	update_transform()
 	update_appearance(UPDATE_OVERLAYS)
+
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CHUNKYFINGERS, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TINY, TRAIT_GENERIC)
-	transform = transform.Scale(0.75, 0.75)
-	update_transform()
 	//all this shit just to avoid making a subtype mobholder...
 	RegisterSignal(src, COMSIG_MOB_HOLDER_DEPOSIT, PROC_REF(mob_holder_deposit))
 	RegisterSignal(src, COMSIG_MOB_HOLDER_RELEASE, PROC_REF(mob_holder_release))
@@ -130,7 +136,7 @@
 		return
 	if(istype(ai_controller))
 		ai_controller.set_ai_status(ai_controller.get_expected_ai_status())
-	next_click = world.time + melee_attack_cooldown * 2
+	next_click = max(world.time + melee_attack_cooldown * 2, next_click)
 	OffBalance(melee_attack_cooldown * 2)
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/proc/mob_holder_embedded(me, obj/item/clothing/head/mob_holder/m_holder, mob/living/victim, obj/item/bodypart/bodypart)
@@ -156,6 +162,7 @@
 	return
 
 /mob/living/simple_animal/hostile/retaliate/hermitcrab/AttackingTarget(mob/living/passed_target)
+	SEND_SIGNAL(src, COMSIG_MOB_BREAK_SNEAK)
 	. = ..()
 	if(. && target && isturf(loc) && !get_active_held_item()) // if we're already a mob holder (somehow) don't do this
 		var/obj/item/clothing/head/mob_holder/m_holder = new(get_turf(src), src)

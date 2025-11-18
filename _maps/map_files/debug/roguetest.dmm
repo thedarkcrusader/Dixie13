@@ -6,22 +6,9 @@
 "ac" = (
 /turf/closed,
 /area)
-"am" = (
-/turf/open/floor/cobble,
-/area/rogue/indoors)
 "as" = (
 /turf/closed/basic,
 /area)
-"ax" = (
-/turf/closed/wall/mineral/stone,
-/area/rogue/indoors)
-"aD" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
-	},
-/turf/open/floor/carpet,
-/area/rogue/indoors)
 "aH" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -32,13 +19,7 @@
 /obj/item/clothing/gloves/chain,
 /obj/item/clothing/gloves/chain,
 /turf/open/floor/carpet,
-/area/rogue/indoors)
-"aI" = (
-/turf/open/floor/carpet,
-/area/rogue/indoors)
-"aL" = (
-/turf/open/floor/cobblerock,
-/area/rogue/outdoors/mountains/decap)
+/area/indoors)
 "aN" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -50,7 +31,7 @@
 /obj/item/clothing/head/helmet/sallet,
 /obj/item/clothing/head/helmet/sallet,
 /turf/open/floor/carpet,
-/area/rogue/indoors)
+/area/indoors)
 "aO" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -72,26 +53,20 @@
 /obj/item/clothing/head/helmet/visored/sallet,
 /obj/item/clothing/head/helmet/visored/sallet,
 /turf/open/floor/carpet,
-/area/rogue/indoors)
+/area/indoors)
 "be" = (
 /obj/structure/dungeon_descent,
 /turf/open/floor/cobblerock,
 /area/outdoors)
-"co" = (
-/turf/closed/mineral/random/med,
-/area/rogue/outdoors/mountains/decap)
-"cs" = (
-/turf/open/lava,
-/area/rogue/outdoors/mountains/decap)
 "cL" = (
 /obj/effect/landmark/start/mercenary,
 /obj/effect/landmark/start/mercenarylate,
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "cM" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
-/area/rogue/indoors)
+/area/indoors)
 "dc" = (
 /obj/effect/landmark/stall,
 /turf/open/floor/grass/yel,
@@ -111,7 +86,7 @@
 	dir = 4
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "dq" = (
 /obj/machinery/light/fueled/torchholder/r,
 /obj/structure/water_vent,
@@ -180,7 +155,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/dirt/road,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "eU" = (
 /turf/open/floor/cobble,
 /area/indoors/town/manor)
@@ -262,7 +237,7 @@
 	dir = 1
 	},
 /turf/open/floor/dirt/road,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "gn" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -338,7 +313,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "hr" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors)
@@ -450,7 +425,7 @@
 /obj/effect/landmark/start/adventurer,
 /obj/effect/landmark/start/adventurerlate,
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "jd" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -480,7 +455,13 @@
 /area/outdoors)
 "jn" = (
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
+"jp" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "js" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -514,7 +495,7 @@
 	dir = 8
 	},
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "jQ" = (
 /obj/structure/hotspring/border/eleven,
 /obj/effect/lily_petal/three{
@@ -627,7 +608,7 @@
 	aportalgoesto = "main"
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/outdoors/mountains/decap)
+/area/outdoors/mountains/decap)
 "lS" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -678,7 +659,7 @@
 	pixel_x = -32
 	},
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "mn" = (
 /turf/closed/wall/mineral/wooddark,
 /area/outdoors/mountains/decap)
@@ -947,6 +928,10 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"pm" = (
+/mob/living/simple_animal/hostile/retaliate/hermitcrab,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "pq" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/rotation_piece{
@@ -975,7 +960,7 @@
 /obj/item/clothing/head/helmet/heavy/crusader/t,
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/carpet,
-/area/rogue/indoors)
+/area/indoors)
 "qd" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -1148,7 +1133,7 @@
 /obj/structure/bars/grille,
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "rF" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/cobble,
@@ -1190,7 +1175,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/dirt,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "sg" = (
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/cobblerock,
@@ -1263,7 +1248,7 @@
 /obj/structure/bars/grille,
 /obj/structure/bars/grille,
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "sL" = (
 /turf/open/floor/tile/bfloorz,
 /area/indoors)
@@ -1338,6 +1323,10 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"tw" = (
+/obj/structure/fluff/railing/border,
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
 "tx" = (
 /obj/structure/window/openclose{
 	dir = 1
@@ -1632,7 +1621,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "uZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -1775,7 +1764,7 @@
 	desc = "Fight area test. Put whatever you want in this area i dont care"
 	},
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "xI" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -1857,7 +1846,7 @@
 /area/indoors)
 "yu" = (
 /turf/closed/wall/mineral/underbrick,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "yz" = (
 /turf/open/floor/cobblerock,
 /area/outdoors)
@@ -1894,9 +1883,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
-"yP" = (
-/turf/closed/mineral/bedrock,
-/area/rogue/outdoors/mountains/decap)
 "yQ" = (
 /obj/structure/bridge_stakes{
 	dir = 1
@@ -1924,7 +1910,7 @@
 	dir = 4
 	},
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "zd" = (
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass/yel,
@@ -1937,6 +1923,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"zi" = (
+/mob/living/carbon/human/species/human/northern/bum,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "zw" = (
 /obj/structure/window/openclose{
 	dir = 4
@@ -2180,7 +2170,7 @@
 	pixel_y = -32
 	},
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "CX" = (
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/dirt/road,
@@ -2194,7 +2184,7 @@
 /area/indoors)
 "DA" = (
 /turf/open/floor/dirt/road,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "DG" = (
 /obj/structure/channel_connector/drain,
 /obj/item/mould/ingot,
@@ -2303,7 +2293,13 @@
 	pixel_x = -32
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
+"Fd" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "Fe" = (
 /obj/structure/hotspring/border/ten,
 /turf/open/floor/dirt/road,
@@ -2547,7 +2543,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/dirt/road,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "Je" = (
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/grass/yel,
@@ -2599,6 +2595,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"JM" = (
+/turf/open/water,
+/area/indoors/town/manor)
 "JS" = (
 /obj/structure/water_pump{
 	dir = 1
@@ -2649,7 +2648,7 @@
 "KI" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "KN" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -2967,7 +2966,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "OG" = (
 /obj/structure/gearbox,
 /turf/open/floor/grass/yel,
@@ -3025,7 +3024,7 @@
 /area/indoors)
 "PD" = (
 /turf/open/floor/churchrough,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "PH" = (
 /obj/structure/rotation_piece{
 	dir = 1
@@ -3070,7 +3069,7 @@
 "PX" = (
 /obj/structure/bars/grille,
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "Qh" = (
 /obj/structure/gearbox,
 /turf/open/floor/cobble/mossy,
@@ -3178,7 +3177,7 @@
 /area/outdoors)
 "Rw" = (
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "RA" = (
 /obj/machinery/essence/combiner{
 	pixel_y = 10
@@ -3206,6 +3205,12 @@
 /obj/machinery/essence/reservoir/filled/life,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
+"RT" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "RV" = (
 /obj/structure/stockpile_storage,
 /turf/open/floor/cobblerock,
@@ -3330,7 +3335,7 @@
 "TY" = (
 /obj/machinery/light/fueled/chand,
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "Uc" = (
 /turf/open/floor/grass/yel,
 /area/indoors)
@@ -3339,7 +3344,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "Ut" = (
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
@@ -3380,7 +3385,7 @@
 /area/indoors)
 "UK" = (
 /turf/open/floor/dirt,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "UU" = (
 /obj/effect/temp_visual/particle_up,
 /turf/open/floor/tile/bfloorz,
@@ -3575,7 +3580,7 @@
 	dir = 8
 	},
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "XO" = (
 /obj/structure/window/openclose{
 	dir = 1
@@ -3683,7 +3688,7 @@
 	pixel_y = 0
 	},
 /turf/open/transparent/openspace,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "Zh" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -3724,7 +3729,7 @@
 "ZC" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobblerock,
-/area/rogue/under/town/basement)
+/area/under/town/basement)
 "ZE" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -5002,7 +5007,7 @@ as
 yu
 Rw
 Rw
-Rw
+pm
 Rw
 DA
 DA
@@ -5261,7 +5266,7 @@ ZC
 Rw
 Rw
 Rw
-Rw
+pm
 DA
 Rw
 Rw
@@ -5526,7 +5531,7 @@ DA
 DA
 Rw
 Rw
-Rw
+RT
 DA
 Rw
 DA
@@ -5773,6 +5778,7 @@ as
 yu
 Rw
 Rw
+pm
 Rw
 Rw
 Rw
@@ -5781,10 +5787,9 @@ Rw
 Rw
 Rw
 Rw
-Rw
-DA
-Rw
-Rw
+tw
+zi
+Fd
 DA
 Rw
 Rw
@@ -6040,7 +6045,7 @@ Rw
 Rw
 Rw
 Rw
-Rw
+jp
 Rw
 DA
 Rw
@@ -6289,7 +6294,7 @@ UK
 Rw
 DA
 DA
-Rw
+pm
 Rw
 Rw
 Rw
@@ -6801,7 +6806,7 @@ as
 yu
 Rw
 Rw
-Rw
+pm
 Rw
 Rw
 Rw
@@ -11965,7 +11970,7 @@ XE
 Lk
 UA
 mb
-yP
+mb
 ac
 ac
 ac
@@ -12463,10 +12468,10 @@ JW
 JW
 JW
 JW
-co
-co
-co
-cs
+JW
+JW
+JW
+uo
 uo
 JW
 JW
@@ -12709,23 +12714,23 @@ vG
 vG
 vG
 Bp
-yP
-yP
-yP
-yP
-yP
-yP
-yP
-yP
-yP
-yP
-yP
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
 Wq
 Wq
 Wq
 Wq
-yP
-yP
+mb
+mb
 mb
 mb
 xJ
@@ -12983,16 +12988,16 @@ ZM
 Wq
 Wq
 Wq
-yP
-yP
-yP
-aL
+mb
+mb
+mb
+xJ
 lQ
-aL
-yP
-yP
-yP
-yP
+xJ
+mb
+mb
+mb
+mb
 ac
 ac
 ac
@@ -17596,7 +17601,7 @@ tS
 tS
 Bp
 IL
-Ut
+JM
 SM
 Ut
 KW
@@ -72614,18 +72619,18 @@ jn
 jn
 PX
 yu
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
+hr
+hr
+hr
+hr
+hr
+hr
+hr
+hr
+hr
+hr
+hr
+hr
 ac
 ac
 ac
@@ -72871,11 +72876,11 @@ jn
 PX
 PX
 yu
-ax
-am
-am
+hr
+Sd
+Sd
 cM
-am
+Sd
 hr
 Tv
 rH
@@ -73636,12 +73641,12 @@ PD
 PD
 PD
 yu
-ax
-ax
-ax
-ax
-ax
-ax
+hr
+hr
+hr
+hr
+hr
+hr
 hr
 hr
 hr
@@ -73893,8 +73898,8 @@ PD
 PD
 OC
 yu
-ax
-aD
+hr
+Zh
 aH
 pU
 aN
@@ -74150,12 +74155,12 @@ PD
 PD
 PD
 PD
-aI
-aI
-aI
-aI
-aI
-aI
+nB
+nB
+nB
+nB
+nB
+nB
 nB
 nB
 nB

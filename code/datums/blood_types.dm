@@ -148,6 +148,11 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	name = "Animal"
 	used_table = /datum/chimeric_table/animal
 
+/datum/blood_type/mollusc
+	name = "Mollusc"
+	color = COLOR_CYAN
+	used_table = /datum/chimeric_table/mollusc
+
 /datum/blood_type/troll
 	name = "Troll"
 	used_table = /datum/chimeric_table/troll

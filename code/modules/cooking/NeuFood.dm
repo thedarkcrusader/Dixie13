@@ -72,6 +72,10 @@
 	name = "rotten bird meat"
 	icon_state = "chickencutlet"
 
+/obj/item/reagent_containers/food/snacks/rotten/crableg
+	name = "rotten crab leg"
+	icon_state = "crableg"
+
 /obj/item/reagent_containers/food/snacks/rotten/breadslice
 	name = "moldy bread"
 	icon_state = "loaf_slice"
@@ -396,28 +400,41 @@
 	taste_mult = 4
 
 /datum/reagent/consumable/soup/stew/chicken
+	name = "chicken stew"
 	color = "#baa21c"
 	taste_description = "chicken"
 
 /datum/reagent/consumable/soup/stew/meat
+	name = "meat stew"
 	color = "#80432a"
 	taste_description = "meat stew"
 
 /datum/reagent/consumable/soup/stew/meat_meagre
+	name = "meagre meat stew"
 	color = "#80432a"
 	taste_description = "meagre meat stew"
 
 /datum/reagent/consumable/soup/stew/fish
+	name = "fish stew"
 	color = "#c7816e"
 	taste_description = "fish stew"
 
 /datum/reagent/consumable/soup/stew/truffle
+	name = "truffle stew"
 	color = "#5f4a0e"
 	taste_description = "rich truffles"
 
 /datum/reagent/consumable/soup/stew/borowiki
+	name = "borowiki stew"
 	color = "#7c6b75"
 	taste_description = "hearty borowiki"
+
+/datum/reagent/consumable/soup/stew/crab
+	name = "crab bisque"
+	color = "#bb843b"
+	taste_description = "creamy seafood"
+	quality = DRINK_VERYGOOD // for now. soups need a way to interact with food preference
+	nutriment_factor = 20 // fish stew + even more stuff. very filling!
 
 /datum/reagent/water/spicy // filler, not important
 	taste_description = "something spicy"

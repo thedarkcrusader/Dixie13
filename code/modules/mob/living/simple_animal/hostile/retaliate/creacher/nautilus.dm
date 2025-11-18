@@ -18,14 +18,14 @@
 
 
 	// a pretty hefty haul, well worth the hunt if you can actually butcher it properly
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 2,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 2,
 						/obj/item/carvedgem/shell/rawshell = 2,
 						/obj/item/gem/pearl = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 3,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 3,
 						/obj/item/carvedgem/shell/rawshell = 2,
 						/obj/item/gem/pearl = 1,
 						/obj/item/gem/pearl_blue = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 4,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/crab = 4,
 						/obj/item/carvedgem/shell/rawshell = 3,
 						/obj/item/gem/pearl = 2,
 						/obj/item/gem/pearl_blue = 1)
@@ -237,7 +237,7 @@
 			qdel(G)
 		nauti.visible_message(span_boldwarning("[nauti] starts to retreat into their shell!"))
 		if(do_after(nauti, 3 SECONDS))
-			ADD_TRAIT(nauti, TRAIT_IMMOBILIZED, "[type]")
 			nauti.hide()
+			ADD_TRAIT(nauti, TRAIT_IMMOBILIZED, "[type]")
 	StartCooldown()
 	return TRUE

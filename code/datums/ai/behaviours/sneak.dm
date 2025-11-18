@@ -90,4 +90,4 @@
 /datum/ai_behavior/basic_sneak/hermitcrab
 	light_threshold = 1
 	sneak_cooldown_time = 15 SECONDS
-	sneak_alpha = 60
+	sneak_alpha = 80
