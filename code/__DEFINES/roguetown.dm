@@ -160,6 +160,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_GATEMASTER		"CAT_GATEMASTER"
 #define CTAG_WRETCH			"CAT_WRETCH"
 #define CTAG_INQUISITION	"CAT_INQUISITION"	// For Orthodoxist subclasses
+#define CTAG_NOBLEMINOR		"CAT_NOBLEMINOR" // for minor nobility on vanderlin
 #define CTAG_PURITAN "CAT_PURITAN"
 
 // Character category and its buys
