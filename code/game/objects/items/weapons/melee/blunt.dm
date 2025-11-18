@@ -217,8 +217,8 @@
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 50
 	minstr = 5
-	force = DAMAGE_MACE - 3
-	force_wielded = DAMAGE_MACE - 1
+	force = DAMAGE_MACE - 4
+	force_wielded = DAMAGE_MACE - 2
 	wdefense = MEDIOCRE_PARRY
 
 /obj/item/weapon/mace/cane/natural
@@ -228,22 +228,22 @@
 	icon_state = "natural_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	sellprice = 1
+	sellprice = 3
 	minstr = 4
-	force = DAMAGE_MACE - 3
-	force_wielded = DAMAGE_MACE - 1
+	force = DAMAGE_MACE - 5
+	force_wielded = DAMAGE_MACE - 3
 	wdefense = MEDIOCRE_PARRY
 
-/obj/item/weapon/mace/cane/artificer
+/obj/item/weapon/mace/cane/bronze
 	name = "bronze walking stick"
-	desc = "A strange stave, made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
+	desc = "A staff made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
 	icon_state = "artificer_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 35
 	minstr = 4
-	force = DAMAGE_MACE - 2
+	force = DAMAGE_MACE - 3
 	force_wielded = DAMAGE_MACE - 1
 	wdefense = MEDIOCRE_PARRY
 
