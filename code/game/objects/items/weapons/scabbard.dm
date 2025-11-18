@@ -142,7 +142,7 @@
 	wdefense = GREAT_PARRY
 	w_class = WEIGHT_CLASS_BULKY
 	anvilrepair = /datum/skill/craft/carpentry
-	associated_skill = /datum/skill/combat/swords
+	associated_skill = /datum/skill/combat/shields
 	max_integrity = INTEGRITY_STANDARD
 
 /obj/item/weapon/scabbard/kazengun/apply_components()
