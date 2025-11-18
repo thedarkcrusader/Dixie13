@@ -28,7 +28,7 @@
 		/datum/skill/misc/reading = 1,
 		/datum/skill/misc/athletics = 4,
 		/datum/skill/misc/medicine = 2,
-		/datum/skill/labor/mathematics = 6,
+		/datum/skill/labor/mathematics = 3, //They use math to calculate the trajectory of attacks, so they can parry behind them, trust, ook told me
 	)
 
 	traits = list(
@@ -36,7 +36,7 @@
 		TRAIT_HARDDISMEMBER,
 		TRAIT_NOPAINSTUN,
 		TRAIT_BREADY,
-		TRAIT_BLINDFIGHTING, //They use math to calculate the trajectory of attacks, so they can parry behind them, trust, ook told me
+		TRAIT_BLINDFIGHTING,
 		TRAIT_UNDODGING, //They can't dodge at all. This also mean that if they don't have anything to parry with, they're done.
 	)
 
