@@ -1015,6 +1015,10 @@
 /obj/item/coin/copper,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/orphanage)
+"ayR" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/dirt,
+/area/outdoors/town)
 "ayW" = (
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors/mountains)
@@ -2397,10 +2401,6 @@
 "bid" = (
 /turf/open/floor/naturalstone,
 /area/under/town/basement)
-"bie" = (
-/obj/machinery/light/fueled/torchholder/hotspring/standing,
-/turf/open/floor/cobblerock,
-/area/outdoors/town/roofs)
 "bio" = (
 /obj/structure/door/violet,
 /obj/effect/mapping_helpers/access/locker,
@@ -2469,6 +2469,10 @@
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/outdoors/town/roofs)
+"blq" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/dirt,
+/area/outdoors/town)
 "blv" = (
 /obj/machinery/light/fueled/wallfire{
 	pixel_y = -32
@@ -9760,6 +9764,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/outdoors/mountains)
+"eYM" = (
+/obj/machinery/light/fueled/firebowl,
+/turf/open/floor/grass/eora,
+/area/outdoors/town/roofs)
 "eYT" = (
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/bath)
@@ -11999,7 +12007,7 @@
 "gfO" = (
 /obj/structure/flora/hotspring_rocks/small/two,
 /obj/structure/wild_plant/nospread/manabloom,
-/turf/open/floor/grass/cold,
+/turf/open/floor/grass/eora,
 /area/outdoors/town/roofs)
 "gfZ" = (
 /obj/structure/bed/hay,
@@ -15038,6 +15046,10 @@
 	},
 /turf/open/floor/naturalstone,
 /area/under/cave)
+"hHM" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "hId" = (
 /obj/machinery/light/fueled/torchholder/r,
 /obj/structure/rack/shelf/biggest,
@@ -16276,7 +16288,7 @@
 /obj/structure/fluff/walldeco/mageguild{
 	pixel_y = 32
 	},
-/turf/open/floor/cobblerock/snow,
+/turf/open/floor/grass/cold,
 /area/outdoors/town)
 "iqX" = (
 /obj/structure/stairs/stone/church{
@@ -24143,6 +24155,10 @@
 	},
 /turf/open/floor/blocks/stonered,
 /area/indoors/town/manor)
+"mth" = (
+/obj/structure/fermentation_keg,
+/turf/open/floor/grass/eora,
+/area/outdoors/town/roofs)
 "mtn" = (
 /obj/structure/stairs{
 	dir = 4
@@ -33366,6 +33382,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/tavern)
+"qWC" = (
+/obj/structure/wild_plant/nospread/manabloom,
+/turf/open/floor/grass/eora,
+/area/outdoors/town/roofs)
 "qWS" = (
 /obj/structure/door/stone,
 /obj/effect/mapping_helpers/access/locker,
@@ -38408,6 +38428,10 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors/town)
+"twd" = (
+/obj/effect/lily_petal/three,
+/turf/open/floor/grass/eora,
+/area/outdoors/town/roofs)
 "twA" = (
 /obj/structure/fake_machine/scomm/r,
 /turf/open/floor/dirt,
@@ -40220,6 +40244,10 @@
 	},
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/chapel)
+"uwT" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing,
+/turf/open/floor/grass/eora,
+/area/outdoors/town/roofs)
 "uwX" = (
 /obj/structure/flora/grass,
 /obj/structure/flora/grass/bush/wall/tall/tundra,
@@ -41527,7 +41555,7 @@
 /area/outdoors/town/roofs)
 "vbK" = (
 /obj/structure/flora/hotspring_rocks/grassy,
-/turf/open/floor/snow/patchy,
+/turf/open/floor/grass/eora,
 /area/outdoors/town/roofs)
 "vbL" = (
 /obj/structure/fluff/railing/border{
@@ -44069,7 +44097,7 @@
 	dir = 8;
 	name = "Mage Guild and Tower North"
 	},
-/turf/open/floor/snow,
+/turf/open/floor/grass/cold,
 /area/outdoors/town)
 "wqb" = (
 /obj/machinery/light/fueled/firebowl/church,
@@ -44946,6 +44974,10 @@
 	},
 /turf/open/floor/concrete,
 /area/indoors/town/smithy)
+"wNk" = (
+/obj/structure/flora/newtree/snow,
+/turf/open/floor/dirt,
+/area/outdoors/town)
 "wNB" = (
 /obj/structure/table/wood,
 /turf/open/floor/cobble,
@@ -98630,8 +98662,8 @@ psM
 mlc
 mlc
 ipT
-omp
-jnM
+qMy
+gYK
 jnM
 omp
 jnM
@@ -98831,9 +98863,9 @@ cyT
 aNi
 mlc
 gMp
+qMy
 gYK
-jnM
-jnM
+qMy
 qMy
 qMy
 qMy
@@ -99042,8 +99074,8 @@ its
 its
 qMy
 gzt
-gzt
-xtF
+qMy
+raS
 cwC
 cwC
 jnM
@@ -99244,9 +99276,9 @@ its
 qMy
 qMy
 qMy
-its
-gzt
-gzt
+qMy
+qMy
+qMy
 wpX
 jnM
 cwC
@@ -99446,12 +99478,12 @@ its
 gzt
 fNN
 fNN
-its
-its
-its
-gzt
-gzt
-xtF
+qMy
+qMy
+qMy
+gYK
+qMy
+qMy
 jnM
 xlV
 jnM
@@ -99649,11 +99681,11 @@ gzt
 gzt
 fNN
 fNN
-gfG
-gfG
-its
-its
-gzt
+fNN
+blq
+gYK
+gYK
+qMy
 jnM
 jnM
 xlV
@@ -99850,12 +99882,12 @@ sbq
 qMy
 qMy
 qMy
-gzt
-gzt
-gzt
-gzt
-its
-its
+gYK
+gYK
+gYK
+gYK
+gYK
+qMy
 its
 jnM
 jnM
@@ -100051,14 +100083,14 @@ wbI
 lTl
 qMy
 leA
-gzt
-gzt
-gzt
-its
-its
+gYK
 qMy
-its
-its
+qMy
+qMy
+gYK
+qMy
+qMy
+hHM
 its
 jnM
 jnM
@@ -100252,11 +100284,11 @@ pHB
 wbI
 wbI
 qMy
-rgh
-sbq
-gzt
-gzt
-its
+wNk
+gYK
+gYK
+qMy
+gYK
 qMy
 qMy
 lTl
@@ -100454,10 +100486,10 @@ vvE
 vvE
 vvE
 qMy
-qMy
-sbq
-sbq
-iZh
+gYK
+gYK
+gYK
+ayR
 qMy
 lTl
 vvE
@@ -224268,9 +224300,9 @@ uWt
 uWt
 mpm
 jUX
-mpm
-jUX
-pPV
+mth
+urr
+eYM
 fEe
 fEe
 fEe
@@ -224454,9 +224486,9 @@ vqg
 uWt
 uWt
 rwa
-gYy
-gYy
-oqY
+urr
+urr
+urr
 gYy
 gYy
 uWt
@@ -224472,8 +224504,8 @@ uWt
 uWt
 oqY
 jUX
-jUX
-jUX
+urr
+urr
 jUX
 jUX
 jUX
@@ -224655,14 +224687,14 @@ ehP
 oqY
 uWt
 rwa
-gYy
+urr
+urr
+urr
 rwa
-oqY
-rwa
 gYy
-gYy
-gYy
-uWt
+urr
+urr
+urr
 uWt
 uWt
 rwa
@@ -224857,12 +224889,12 @@ ehP
 uWt
 rwa
 gYy
-pwK
+qWC
 oqY
 rwa
 rwa
 rwa
-nbM
+uwT
 mSD
 mSD
 gnY
@@ -225464,10 +225496,10 @@ uWt
 gYy
 fEe
 uXF
-fEe
-fEe
-fEe
-fEe
+urr
+urr
+urr
+urr
 pwK
 mSD
 pOm
@@ -225664,8 +225696,8 @@ ehP
 ehP
 rwa
 gYy
-fEe
-fEe
+urr
+urr
 mBN
 fNB
 fNB
@@ -228290,12 +228322,12 @@ ehP
 ehP
 gYy
 gYy
-pmD
-fEe
+twd
+urr
 fEe
 jUX
 jUX
-fEe
+urr
 gfO
 mSD
 dtd
@@ -228493,11 +228525,11 @@ ehP
 gYy
 oqY
 fEe
-pwK
-fEe
+qWC
+urr
 vbK
-fEe
-fEe
+urr
+urr
 fEe
 mSD
 bGg
@@ -228697,8 +228729,8 @@ oqY
 xOz
 nbM
 fEe
-fEe
-fEe
+urr
+urr
 oHt
 fEe
 mSD
@@ -228715,9 +228747,9 @@ jUX
 jUX
 jUX
 rwa
-rwa
-rwa
-gYy
+urr
+urr
+urr
 rwa
 gYy
 oqY
@@ -228914,10 +228946,10 @@ gYy
 gYy
 rwa
 rwa
-gYy
-gYy
-rwa
-rwa
+urr
+urr
+urr
+urr
 gYy
 gYy
 gYy
@@ -229096,7 +229128,7 @@ ehP
 ehP
 ehP
 ehP
-uWt
+urr
 uWt
 gYy
 oqY
@@ -229116,7 +229148,7 @@ rwa
 rwa
 uWt
 uWt
-rwa
+urr
 oqY
 gYy
 gYy
@@ -229298,8 +229330,8 @@ ehP
 ehP
 ehP
 ehP
-bie
-uWt
+uwT
+urr
 uWt
 gYy
 gYy
@@ -229314,8 +229346,8 @@ oqY
 gYy
 rwa
 rwa
-uWt
-uWt
+urr
+urr
 uWt
 rwa
 krN
@@ -229501,8 +229533,8 @@ ehP
 ehP
 ehP
 ehP
-bie
-uWt
+uwT
+urr
 rwa
 oqY
 gYy
@@ -229515,8 +229547,8 @@ gYy
 gYy
 gYy
 gYy
-rwa
-oqY
+urr
+urr
 krN
 krN
 krN
