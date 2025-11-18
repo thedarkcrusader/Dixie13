@@ -10597,6 +10597,7 @@
 /area/indoors/town/manor)
 "fuY" = (
 /obj/structure/table/wood/plain,
+/obj/item/quicksilver,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town/church/chapel)
 "fvm" = (
@@ -15455,7 +15456,6 @@
 /area/outdoors/town)
 "hTW" = (
 /obj/structure/table/stone_small,
-/obj/item/quicksilver,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/inquisition)
 "hTX" = (
@@ -40871,6 +40871,7 @@
 	name = "Old Church"
 	},
 /obj/effect/mapping_helpers/access/keyset/church/inquisition,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/inquisition)
 "uMn" = (
