@@ -1,42 +1,42 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/basic,
-/area)
+/area/rogue)
 "c" = (
 /obj/structure/stockpile_storage/metal,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "d" = (
 /obj/machinery/light/fueled/torchholder/hotspring{
 	pixel_y = -12;
 	pixel_x = -16
 	},
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "e" = (
 /obj/effect/landmark/start,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "g" = (
 /obj/structure/stockpile_storage,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "k" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "t" = (
 /obj/structure/fake_machine/titan,
 /obj/structure/throne,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "u" = (
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "x" = (
 /obj/structure/stockpile_storage/food,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "G" = (
 /obj/effect/landmark/start/adventurerlate,
 /obj/effect/landmark/latejoin,
@@ -44,11 +44,11 @@
 	dir = 8
 	},
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 "H" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/cobblerock,
-/area)
+/area/rogue)
 
 (1,1,1) = {"
 a

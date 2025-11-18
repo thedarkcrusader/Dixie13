@@ -1,52 +1,52 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "g" = (
 /turf/closed/mineral/bedrock,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "h" = (
 /obj/structure/kneestingers,
 /obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "j" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "k" = (
 /obj/structure/kneestingers,
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "l" = (
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "n" = (
 /turf/closed/mineral/bedrock,
-/area)
+/area/rogue)
 "p" = (
 /obj/item/ammo_casing/caseless/arrow,
 /turf/open/floor/naturalstone,
-/area)
+/area/rogue)
 "v" = (
 /turf/open/floor/naturalstone,
-/area)
+/area/rogue)
 "B" = (
 /mob/living/carbon/human/species/goblin/npc/ambush/cave,
 /turf/open/floor/naturalstone,
-/area)
+/area/rogue)
 "F" = (
 /obj/structure/ladder/earth,
 /turf/open/floor/naturalstone,
-/area)
+/area/rogue)
 "Q" = (
 /obj/structure/ladder/earth,
 /turf/open/floor/dirt,
-/area/under/tomb/cave)
+/area/rogue/under/tomb/cave)
 "R" = (
 /turf/open/transparent/openspace,
-/area)
+/area/rogue)
 
 (1,1,1) = {"
 g

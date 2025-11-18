@@ -1,35 +1,35 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/template_noop,
-/area)
+/area/rogue)
 "g" = (
 /turf/open/floor/grass/cold,
-/area)
+/area/rogue)
 "A" = (
 /turf/open/floor/dirt,
-/area)
+/area/rogue)
 "C" = (
 /turf/open/water/swamp,
-/area)
+/area/rogue)
 "K" = (
 /turf/open/water/swamp/deep,
-/area)
+/area/rogue)
 "L" = (
 /obj/machinery/light/fueled/firebowl/blackfire,
 /turf/template_noop,
-/area)
+/area/rogue)
 "T" = (
 /obj/structure/flora/tree/evil,
 /turf/open/floor/grass/cold,
-/area)
+/area/rogue)
 "U" = (
 /obj/structure/flora/tree/burnt,
 /turf/template_noop,
-/area)
+/area/rogue)
 "Y" = (
 /obj/structure/flora/tree/burnt,
 /turf/open/floor/grass/cold,
-/area)
+/area/rogue)
 
 (1,1,1) = {"
 a

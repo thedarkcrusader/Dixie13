@@ -3,19 +3,19 @@
 /obj/effect/dungeon_directional_helper/south,
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/cobblerock,
-/area/under/tomb)
+/area/rogue/under/tomb)
 "e" = (
 /turf/closed/wall/mineral/stone,
-/area/under/tomb)
+/area/rogue/under/tomb)
 "o" = (
 /turf/closed/wall/mineral/stone/moss,
-/area/under/tomb)
+/area/rogue/under/tomb)
 "K" = (
 /turf/open/floor/cobblerock,
-/area/under/tomb)
+/area/rogue/under/tomb)
 "Z" = (
 /turf/open/floor/cobble,
-/area/under/tomb)
+/area/rogue/under/tomb)
 
 (1,1,1) = {"
 e

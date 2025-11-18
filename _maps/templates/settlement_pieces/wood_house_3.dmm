@@ -14,10 +14,10 @@
 /area/template_noop)
 "d" = (
 /turf/open/floor/rooftop/green,
-/area)
+/area/rogue)
 "f" = (
 /turf/closed/wall/mineral/roofwall/center,
-/area)
+/area/rogue)
 "h" = (
 /turf/closed/wall/mineral/wooddark/slitted,
 /area/template_noop)
@@ -29,7 +29,7 @@
 /turf/closed/wall/mineral/roofwall/middle{
 	dir = 4
 	},
-/area)
+/area/rogue)
 "n" = (
 /obj/structure/chair/wood{
 	dir = 4
@@ -55,12 +55,12 @@
 /turf/closed/wall/mineral/roofwall/middle{
 	dir = 2
 	},
-/area)
+/area/rogue)
 "t" = (
 /turf/open/floor/rooftop/green{
 	dir = 1
 	},
-/area)
+/area/rogue)
 "v" = (
 /obj/effect/landmark/settlement_mob_spawn,
 /turf/open/floor/wood,
@@ -101,7 +101,7 @@
 /turf/open/floor/rooftop/green{
 	dir = 4
 	},
-/area)
+/area/rogue)
 "M" = (
 /obj/structure/stairs{
 	dir = 4
@@ -112,19 +112,19 @@
 /turf/closed/wall/mineral/roofwall/middle{
 	dir = 8
 	},
-/area)
+/area/rogue)
 "Q" = (
 /obj/structure/table/wood/crafted,
 /turf/open/floor/wood,
 /area/template_noop)
 "R" = (
 /turf/template_noop,
-/area)
+/area/rogue)
 "T" = (
 /turf/open/floor/rooftop/green{
 	dir = 8
 	},
-/area)
+/area/rogue)
 "U" = (
 /turf/open/floor/cobble,
 /area/template_noop)
@@ -147,7 +147,7 @@
 /turf/closed/wall/mineral/roofwall/middle{
 	dir = 1
 	},
-/area)
+/area/rogue)
 
 (1,1,1) = {"
 h

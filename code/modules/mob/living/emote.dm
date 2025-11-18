@@ -31,7 +31,7 @@
 	var/mob/living/carbon/follower = user
 	var/datum/patron/patron = follower.patron
 
-	var/in_literal_hell = ( istype(get_area(user), /area/underworld) )
+	var/in_literal_hell = ( istype(get_area(user), /area/rogue/underworld) )
 	if(!in_literal_hell && !patron?.can_pray(follower))
 		return
 

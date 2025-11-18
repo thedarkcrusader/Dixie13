@@ -120,7 +120,7 @@
 		return
 
 
-/obj/machinery/anvil/proc/process_minigame_result(quality_score, mob/living/user, total_fail)
+/obj/machinery/anvil/proc/process_minigame_result(quality_score, mob/user, total_fail)
 	if(!hingot || !hingot.currecipe)
 		return
 
@@ -149,19 +149,18 @@
 		recipe.skill_quality += skill_boost
 
 	if(recipe.progress >= 100 && !recipe.additional_items.len && !recipe.needed_item)
-		complete_recipe(user, quality_score)
+		complete_recipe(quality_score)
 
 	working_material = null
 
-/obj/machinery/anvil/proc/complete_recipe(mob/living/user, quality_score)
+/obj/machinery/anvil/proc/complete_recipe(quality_score)
 	if(!hingot || !hingot.currecipe)
 		return
 
 	var/datum/anvil_recipe/recipe = hingot.currecipe
 	var/obj/item/I = new recipe.created_item(loc)
 
-	I.OnCrafted(user.dir, user)
-
+	var/mob/living/user = usr
 	var/skill_level = 0
 	if(user)
 		skill_level = user.get_skill_level(recipe.appro_skill)
@@ -173,10 +172,9 @@
 
 	for(var/i in 1 to recipe.createditem_extra)
 		var/obj/item/extra = new recipe.created_item(loc)
-		extra.OnCrafted(user.dir, user)
 		recipe.handle_creation(extra, quality_score, skill_level)
 
-	user.visible_message("<span class='info'>[user] finishes crafting [I]!</span>")
+	usr?.visible_message("<span class='info'>[usr] finishes crafting [I]!</span>")
 
 	qdel(hingot)
 	hingot = null

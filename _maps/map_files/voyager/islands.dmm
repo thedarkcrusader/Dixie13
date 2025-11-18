@@ -1,17 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/basic,
-/area/outdoors/beach)
+/area/rogue/outdoors/beach)
 "k" = (
 /turf/open/transparent/openspace,
-/area/outdoors/beach)
+/area/rogue/outdoors/beach)
 "B" = (
 /obj/effect/landmark/terrain_generation_marker,
 /turf/closed/sea_fog,
-/area/outdoors/beach)
+/area/rogue/outdoors/beach)
 "K" = (
 /turf/closed/sea_fog,
-/area/outdoors/beach)
+/area/rogue/outdoors/beach)
 
 (1,1,1) = {"
 K
