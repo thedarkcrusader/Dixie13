@@ -2642,6 +2642,7 @@
 #include "code\modules\jobs\job_types\adventurer\types\wretch\berserker.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\bloodsucker.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\deserter.dm"
+#include "code\modules\jobs\job_types\adventurer\types\wretch\escapee.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\hedgemage.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\heretic.dm"
 #include "code\modules\jobs\job_types\adventurer\types\wretch\necromancer.dm"
