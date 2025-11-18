@@ -310,28 +310,59 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 			to_chat(HL, "<i>You hear a voice in your head... <b>[info]</i></b>")
 		qdel(P)
 
-/datum/ritual/transmutation/summonweapons
-	name = "Summon Weaponry"
-	center_requirement = /obj/item/ingot/steel
-	is_cultist_ritual = TRUE
+/datum/ritual/transmutation/summonoutfit
+	name = "Summon cult outfit and chains"
+	center_requirement = /obj/item/natural/cloth
 
-/datum/ritual/transmutation/summonweapons/invoke(mob/living/user, turf/center)
+/datum/ritual/transmutation/summonoutfit/invoke(mob/living/user, turf/center)
 	var/datum/effect_system/spark_spread/S = new(center)
 	S.set_up(1, 1, center)
 	S.start()
 
 	new /obj/item/clothing/head/helmet/skullcap/cult(center)
-	new /obj/item/clothing/head/helmet/skullcap/cult(center)
 
 	new /obj/item/clothing/cloak/half/shadowcloak/cult(center)
-	new /obj/item/clothing/cloak/half/shadowcloak/cult(center)
-
-	new /obj/item/weapon/sword/scimitar/falchion(center)
-	new /obj/item/weapon/knife/hunting(center)
-	new /obj/item/weapon/mace/spiked(center)
 
 	new /obj/item/rope/chain(center)
-	new /obj/item/rope/chain(center)
+
+	playsound(get_turf(center), pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
+/datum/ritual/transmutation/summonarmor
+	name = "Summon Darksteel Armor"
+	center_requirement = /obj/item/ingot/steel
+	n_req = /mob/living/carbon/human
+
+/datum/ritual/transmutation/summonarmor/invoke(mob/living/user, turf/center)
+	var/datum/effect_system/spark_spread/S = new(center)
+	S.set_up(1, 1, center)
+	S.start()
+
+	new /obj/item/clothing/armor/plate/full/zizo(center)
+
+	new /obj/item/clothing/pants/platelegs/zizo(center)
+
+	new /obj/item/clothing/shoes/boots/armor/zizo(center)
+
+	new /obj/item/clothing/head/helmet/heavy/zizo(center)
+
+	new /obj/item/clothing/gloves/plate/zizo(center)
+
+	playsound(get_turf(center), pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
+/datum/ritual/transmutation/summonweapon
+	name = "Summon Weapons"
+	center_requirement = /obj/item/ingot/steel
+
+/datum/ritual/transmutation/summonweapon/invoke(mob/living/user, turf/center)
+	var/datum/effect_system/spark_spread/S = new(center)
+	S.set_up(1, 1, center)
+	S.start()
+
+	new /obj/item/weapon/sword/long/greatsword/zizo(center)
+
+	new /obj/item/weapon/sword/arming(center)
+
+	new /obj/item/weapon/mace/steel(center)
 
 	playsound(get_turf(center), pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 
