@@ -14,7 +14,7 @@
 		STATKEY_PER = 1,
 		STATKEY_INT = -2,
 		STATKEY_SPD = -2,
-	) //7 - Statline
+	) //7 - Statline - The Idea is that they're tanky and supposed to be able to block hits for a longer time, hence higher CON and END
 
 	skills = list(
 		/datum/skill/misc/swimming = 2,
