@@ -1887,11 +1887,10 @@
 		var/best_coin_type = null
 		var/best_value = 0
 
-		for(var/coin_type in coins_types)
-			var/obj/item/coin/temp_coin = coin_type
+		for(var/obj/item/coin/temp_coin as anything in coins_types)
 			var/coin_value = initial(temp_coin.sellprice)
 			if(coin_value <= remaining_mammons && coin_value > best_value)
-				best_coin_type = coin_type
+				best_coin_type = temp_coin
 				best_value = coin_value
 
 		if(!best_coin_type)
