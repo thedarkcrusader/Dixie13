@@ -7371,7 +7371,6 @@
 /area/indoors/town)
 "dHZ" = (
 /obj/structure/door/iron/bars,
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble,
 /area/indoors/town/church/inquisition)
@@ -10752,7 +10751,6 @@
 /obj/structure/door/stone{
 	name = "Chambers"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/blocks,
 /area/indoors/town/church/inquisition)
@@ -17853,7 +17851,6 @@
 /obj/structure/door/stone{
 	name = "Interrogation"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble,
 /area/indoors/town/church/inquisition)
@@ -22141,7 +22138,6 @@
 /obj/structure/door/stone{
 	name = "Old Church"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/blocks,
 /area/indoors/town/church/inquisition)
@@ -24848,7 +24844,6 @@
 /obj/structure/door/stone{
 	name = "Chambers"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble,
 /area/indoors/town/church/inquisition)
@@ -30184,7 +30179,6 @@
 /obj/structure/door/stone{
 	name = "Ritter's Office"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/inquisition)
@@ -38017,7 +38011,6 @@
 /obj/structure/door/stone{
 	name = "Storage"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble,
 /area/indoors/town/church/inquisition)
@@ -38820,7 +38813,6 @@
 /area/indoors/town/tavern)
 "tGr" = (
 /obj/structure/door/iron/bars,
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/blocks,
 /area/indoors/town/church/inquisition)
@@ -40870,7 +40862,6 @@
 /obj/structure/door/stone{
 	name = "Old Church"
 	},
-/obj/effect/mapping_helpers/access/keyset/church/inquisition,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/inquisition)
