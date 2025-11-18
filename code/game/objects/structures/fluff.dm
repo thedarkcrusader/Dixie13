@@ -1130,7 +1130,7 @@
 
 /obj/structure/fluff/psycross/psycrucifix
 	name = "wooden psydonic crucifix"
-	desc = "A rarely seen symbol of absolute and devoted certainty, more common in Grenzelhoft: HE yet lyves. HE yet breathes."
+	desc = "A rarely seen symbol of absolute and devoted certainty, more common in Grenzelhoft: HE yet lives. HE yet breathes."
 	icon_state = "psycruci"
 	max_integrity = 80
 
@@ -1164,7 +1164,7 @@
 		to_chat(user, span_warning("Apple must be bitten once by two different people to conduct a wedding ceremony!"))
 		return FALSE
 
-	var/in_church = istype(get_area(user), /area/rogue/indoors/town/church/chapel)
+	var/in_church = istype(get_area(user), /area/indoors/town/church/chapel)
 	var/secret_marriage = !in_church && HAS_TRAIT(user, TRAIT_SECRET_OFFICIANT)
 
 	if(!in_church && !secret_marriage)
