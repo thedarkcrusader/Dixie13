@@ -327,12 +327,36 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 
 	playsound(get_turf(center), pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 
+/datum/ritual/transmutation/summonneant
+	name = "Summon Neant"
+	center_requirement = /obj/item/reagent_containers/lux
+	n_req = /obj/item/ingot/steel
+	s_req = /obj/item/ingot/steel
+
+	is_cultist_ritual = TRUE
+
+/datum/ritual/transmutation/summonneant/invoke(mob/living/user, turf/center)
+	var/datum/effect_system/spark_spread/S = new(center)
+	S.set_up(1, 1, center)
+	S.start()
+
+	new /obj/item/weapon/polearm/neant(center)
+
+	playsound(get_turf(center), pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
 /datum/ritual/transmutation/summonarmor
 	name = "Summon Darksteel Armor"
-	center_requirement = /obj/item/ingot/steel
-	n_req = /mob/living/carbon/human
+	center_requirement = /mob/living/carbon/human
+	n_req = /obj/item/ingot/steel
+
+	is_cultist_ritual = TRUE
 
 /datum/ritual/transmutation/summonarmor/invoke(mob/living/user, turf/center)
+	var/mob/living/carbon/human/target = locate() in center.contents
+	if(!target)
+		return
+	if(target.stat == DEAD)
+		target.gib(FALSE, FALSE, FALSE)
 	var/datum/effect_system/spark_spread/S = new(center)
 	S.set_up(1, 1, center)
 	S.start()
@@ -352,6 +376,8 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 /datum/ritual/transmutation/summonweapon
 	name = "Summon Weapons"
 	center_requirement = /obj/item/ingot/steel
+
+	is_cultist_ritual = TRUE
 
 /datum/ritual/transmutation/summonweapon/invoke(mob/living/user, turf/center)
 	var/datum/effect_system/spark_spread/S = new(center)
@@ -414,6 +440,23 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 		return
 	target.grant_undead_eyes()
 	to_chat(target, span_notice("I no longer fear the dark."))
+
+/datum/ritual/fleshcrafting/undead
+	name = "Dominate Undead"
+	center_requirement = /mob/living/carbon/human
+
+	w_req = /obj/item/organ/brain
+	e_req = /obj/item/organ/brain
+	n_req = /obj/item/reagent_containers/food/snacks/rotten/meat
+
+/datum/ritual/fleshcrafting/undead/invoke(mob/living/user, turf/center)
+	var/mob/living/carbon/human/target = locate() in center.contents
+	if(!target)
+		return
+	target.add_spell(/datum/action/cooldown/spell/gravemark)
+	target.add_spell(/datum/action/cooldown/spell/control_undead)
+	target.add_spell(/datum/action/cooldown/spell/decompose)
+	to_chat(target, span_notice("The undead bow down to my will."))
 
 /datum/ritual/fleshcrafting/nopain
 	name = "Painless Battle"
