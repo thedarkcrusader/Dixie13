@@ -66,6 +66,7 @@
 			return
 		H.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, 3, TRUE)
 		H.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 3, TRUE)
+		H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 2, 3, TRUE)
 		H.change_stat(STATKEY_INT, -2)
 		H.grant_language(/datum/language/undead)
 		return
