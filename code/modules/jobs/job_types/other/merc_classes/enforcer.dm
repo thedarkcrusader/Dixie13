@@ -10,9 +10,8 @@
 	jobstats = list(
 		STATKEY_CON = 3,
 		STATKEY_END = 2,
-		STATKEY_STR = 1,
 		STATKEY_PER = 1,
-		STATKEY_INT = -2,
+		STATKEY_INT = -1,
 		STATKEY_SPD = -2,
 	) //7 - Statline - The Idea is that they're tanky and supposed to be able to block hits for a longer time, hence higher CON and END
 
