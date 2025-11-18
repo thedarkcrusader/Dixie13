@@ -163,13 +163,15 @@
 		var/post_stack = existing_event.get_stress()
 		adjust_stress(post_stack-pre_stack)
 		existing_event.on_apply(src)
-		last_stress_event = existing_event
+		if(client)
+			last_stress_event = existing_event
 	else
 		new_event.timer += world.time
 		stressors += new_event
 		adjust_stress(new_event.get_stress())
 		new_event.on_apply(src)
-		last_stress_event = new_event
+		if(client)
+			last_stress_event = new_event
 	SEND_SIGNAL(src, COMSIG_MOB_ADD_STRESS, new_event)
 
 /// Accepts stress typepaths or a list of stress typepaths to remove.
