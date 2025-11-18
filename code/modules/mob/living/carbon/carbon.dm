@@ -13,7 +13,6 @@
 	QDEL_LIST(bodyparts)
 	QDEL_LIST(implants)
 	QDEL_NULL(dna)
-	last_stress_event = null
 	GLOB.carbon_list -= src
 
 /mob/living/carbon/ZImpactDamage(turf/T, levels)
