@@ -1,6 +1,9 @@
 /datum/job/advclass/psydoniantemplar // A templar, but for the Inquisition
 	title = "Psydonian Templar"
-	tutorial = "You are among the strongest students of the Ordo Benetarus. Top of your classes in both physical skill and intellectual matters, you’re here to prove you’re worthy of becoming an inquisitor. One simple step, before your skill is recognized."
+	tutorial = "You are among the strongest students of the Ordo Benetarus. \
+	Top of your classes in both physical skill and intellectual matters, \
+	you are here to prove your worth of becoming an inquisitor. \
+	One simple step, before your skill is recognized."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/psydoniantemplar
@@ -53,7 +56,7 @@
 
 	var/static/list/armors = list(
 		"Hauberk" = /obj/item/clothing/armor/chainmail/hauberk/fluted,
-		"Cuirass" = /obj/item/clothing/armor/cuirass/fluted,
+		"Cuirass, +1 SPD" = /obj/item/clothing/armor/cuirass/fluted,
 	)
 	var/armor_choice = spawned.select_equippable(player_client, armors, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
 	if(armor_choice == "Cuirass")

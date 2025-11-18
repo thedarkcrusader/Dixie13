@@ -1,5 +1,13 @@
-/datum/job/inquisitor
+/datum/job/prafekt
 	title = "Herr Prafekt"
+	tutorial = "\
+	This is the week. All your lessons have led to this moment. \
+	Your students follow you with eager steps and breathless anticipation. \
+	You are to observe their hunt, and see if they can banish the evils haunting Psydonia, \
+	to see if they can rise up to become true inquisitors. \
+	Your glory daes may be behind you, but nonetheless, \
+	you are a guide to them, and a monster to others. \
+	You are the thing that goes bump in the night."
 	department_flag = INQUISITION
 	faction = FACTION_TOWN
 	total_positions = 1
@@ -8,18 +16,17 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_INQ
 	allowed_patrons = list(/datum/patron/psydon) //You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Psydon!
-	tutorial = "This is the week. All your lessons have led to this moment. Your students follow you with eager steps and breathless anticipation. You’re to observe their hunt, and see if they can banish the evils haunting Psydonia, and rise up to become true inquisitors. A guide to them, a monster to others. You are the thing that goes bump in the night."
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	selection_color = JCOLOR_INQUISITION
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
-	outfit = /datum/outfit/inquisitor
+	outfit = /datum/outfit/prafekt
 	display_order = JDO_PURITAN
 	advclass_cat_rolls = list(CTAG_PURITAN = 20)
 	give_bank_account = 30
 	min_pq = 10
 	bypass_lastclass = TRUE
-	antag_role = /datum/antagonist/purishep
+	antag_role = /datum/antagonist/inquisition
 
 	languages = list(/datum/language/oldpsydonic)
 
@@ -27,11 +34,11 @@
 		/datum/action/cooldown/spell/undirected/call_bird/inquisitor
 	)
 
-/datum/outfit/inquisitor
-	abstract_type = /datum/outfit/inquisitor
+/datum/outfit/prafekt
+	abstract_type = /datum/outfit/prafekt
 	name = "Inquisitor"
 
-/datum/job/inquisitor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/prafekt/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	spawned.verbs |= /mob/living/carbon/human/proc/faith_test

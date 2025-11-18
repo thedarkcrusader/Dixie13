@@ -1,5 +1,5 @@
 
-/datum/antagonist/purishep
+/datum/antagonist/inquisition
 	name = "Inquisition"
 	antagpanel_category = "Inquisition"
 	roundend_category = "Inquisition"
@@ -8,31 +8,31 @@
 	isgoodguy = TRUE
 	antag_flags = FLAG_FAKE_ANTAG
 
-/datum/antagonist/purishep/on_gain()
-	if(!(locate(/datum/objective/purishep) in objectives))
-		var/datum/objective/purishep/escape_objective = new
+/datum/antagonist/inquisition/on_gain()
+	if(!(locate(/datum/objective/inquisition) in objectives))
+		var/datum/objective/inquisition/escape_objective = new
 		escape_objective.owner = owner
 		objectives += escape_objective
 		return
 	return ..()
 
-/datum/antagonist/purishep/on_removal()
+/datum/antagonist/inquisition/on_removal()
 	return ..()
 
 
-/datum/antagonist/purishep/greet()
+/datum/antagonist/inquisition/greet()
 	owner.announce_objectives()
 	..()
 
-/datum/objective/purishep
+/datum/objective/inquisition
 	explanation_text = "Hunt down and bring to heel all evils that infest this land. Deliver their confessions."
 
-/datum/objective/purishep/check_completion()
+/datum/objective/inquisition/check_completion()
 	if(GLOB.confessors)
 		if(GLOB.confessors.len >= 1)
 			return TRUE
 
-/datum/antagonist/purishep/roundend_report()
+/datum/antagonist/inquisition/roundend_report()
 	var/traitorwin = TRUE
 	if(objectives.len)
 		for(var/datum/objective/objective in objectives)
