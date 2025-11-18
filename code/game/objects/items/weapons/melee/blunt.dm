@@ -238,7 +238,7 @@
 	name = "bronze walking stick"
 	desc = "A strange stave, made from bronze and copper. The light on the top is entirely contained within, serving no functional purpose."
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
-	icon_state = "natural_cane"
+	icon_state = "artificer_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	sellprice = 35
