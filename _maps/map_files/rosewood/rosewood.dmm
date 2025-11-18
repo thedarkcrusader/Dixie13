@@ -431,7 +431,6 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town/manor)
 "ama" = (
-/obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/chair/bench/couch/lord_secondary,
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
@@ -2833,6 +2832,12 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/clocktower)
+"bvt" = (
+/obj/structure/bars/pipe{
+	pixel_y = 8
+	},
+/turf/open/transparent/openspace,
+/area/outdoors/town/roofs)
 "bvG" = (
 /obj/structure/fluff/nest,
 /mob/living/carbon/human/species/goblin/npc/ambush/cave,
@@ -8126,6 +8131,7 @@
 /obj/structure/fake_machine/titan{
 	pixel_y = 32
 	},
+/obj/structure/throne/statues,
 /turf/open/floor/carpet/lord/center,
 /area/indoors/town/manor)
 "edP" = (
@@ -16288,6 +16294,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
+"iqf" = (
+/obj/structure/stairs,
+/turf/open/floor/cobble,
+/area/indoors/town/garrison)
 "iqX" = (
 /obj/structure/stairs/stone/church{
 	dir = 4
@@ -19171,7 +19181,6 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/tile/masonic{
 	dir = 1
 	},
@@ -30993,6 +31002,17 @@
 /obj/structure/stairs/stone/church,
 /turf/open/floor/dirt/road,
 /area/outdoors/rtfield/safe)
+"pIX" = (
+/obj/structure/bars/pipe{
+	pixel_y = 8
+	},
+/obj/structure/bars/pipe{
+	dir = 9;
+	pixel_x = 10;
+	pixel_y = -9
+	},
+/turf/open/transparent/openspace,
+/area/outdoors/town/roofs)
 "pJo" = (
 /turf/open/floor/blocks,
 /area/outdoors/exposed/church)
@@ -34649,6 +34669,10 @@
 /obj/effect/mapping_helpers/access/keyset/town/gaffer,
 /turf/open/floor/cobblerock,
 /area/indoors/town/merc_guild)
+"rDX" = (
+/obj/machinery/light/fueled/firebowl/church,
+/turf/open/floor/tile,
+/area/indoors/town/manor)
 "rEf" = (
 /obj/structure/door,
 /obj/effect/mapping_helpers/access/keyset/church/grave,
@@ -35884,7 +35908,6 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/tile/masonic,
 /area/indoors/town/manor)
 "sjW" = (
@@ -71852,7 +71875,7 @@ xDk
 dIU
 xXy
 abS
-xXy
+iqf
 krn
 wav
 vkQ
@@ -143920,9 +143943,9 @@ grI
 grI
 grI
 grI
-grI
-grI
-grI
+kGe
+uxc
+uxc
 tZO
 dpI
 bay
@@ -144122,7 +144145,7 @@ grI
 grI
 grI
 grI
-grI
+bvt
 grI
 grI
 pBr
@@ -144324,7 +144347,7 @@ grI
 grI
 grI
 grI
-grI
+bvt
 grI
 grI
 qGM
@@ -144526,7 +144549,7 @@ grI
 grI
 grI
 grI
-kGe
+pIX
 uxc
 uxc
 uxc
@@ -145501,7 +145524,7 @@ qJl
 qJl
 qJl
 qJl
-qJl
+vvE
 vvE
 kcK
 sud
@@ -145703,8 +145726,8 @@ qJl
 qJl
 qJl
 qJl
-qJl
 vvE
+rDX
 ama
 jhp
 vjf
@@ -145905,7 +145928,7 @@ qJl
 qJl
 qJl
 qJl
-qJl
+vvE
 vvE
 iBY
 dtd
@@ -146107,7 +146130,7 @@ qJl
 qJl
 qJl
 qJl
-qJl
+vvE
 vvE
 edL
 bGg
@@ -146309,7 +146332,7 @@ qJl
 qJl
 qJl
 qJl
-qJl
+vvE
 vvE
 fFo
 pOm
@@ -146511,8 +146534,8 @@ qJl
 qJl
 qJl
 qJl
-qJl
 vvE
+rDX
 ama
 jhp
 vjf
@@ -146713,7 +146736,7 @@ qJl
 qJl
 qJl
 qJl
-qJl
+vvE
 vvE
 kyE
 jhp
