@@ -37,6 +37,7 @@
 		TRAIT_NOPAINSTUN,
 		TRAIT_BREADY,
 		TRAIT_BLINDFIGHTING, //They use math to calculate the trajectory of attacks, so they can parry behind them, trust, ook told me
+		TRAIT_UNDODGING, //They can't dodge at all. This also mean that if they don't have anything to parry with, they're done.
 	)
 
 /datum/job/advclass/mercenary/enforcer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
