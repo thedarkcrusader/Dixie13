@@ -160,6 +160,8 @@
 	var/datum/anvil_recipe/recipe = hingot.currecipe
 	var/obj/item/I = new recipe.created_item(loc)
 
+	I.OnCrafted(user.dir, user)
+
 	var/skill_level = 0
 	if(user)
 		skill_level = user.get_skill_level(recipe.appro_skill)
@@ -171,6 +173,7 @@
 
 	for(var/i in 1 to recipe.createditem_extra)
 		var/obj/item/extra = new recipe.created_item(loc)
+		extra.OnCrafted(user.dir, user)
 		recipe.handle_creation(extra, quality_score, skill_level)
 
 	user?.visible_message("<span class='info'>[user] finishes crafting [I]!</span>")
