@@ -9,16 +9,16 @@
 
 	jobstats = list(
 		STATKEY_CON = 3,
-		STATKEY_END = 1,
+		STATKEY_END = 2,
 		STATKEY_STR = 1,
-		STATKEY_PER = 2,
+		STATKEY_PER = 1,
 		STATKEY_INT = -2,
 		STATKEY_SPD = -2,
 	) //7 - Statline
 
 	skills = list(
 		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
+		/datum/skill/misc/climbing = 4,
 		/datum/skill/misc/sneaking = 2,
 		/datum/skill/combat/wrestling = 3,
 		/datum/skill/combat/unarmed = 2,
@@ -28,12 +28,15 @@
 		/datum/skill/misc/reading = 1,
 		/datum/skill/misc/athletics = 4,
 		/datum/skill/misc/medicine = 2,
+		/datum/skill/labor/mathematics = 6,
 	)
 
 	traits = list(
 		TRAIT_CRITICAL_RESISTANCE,
 		TRAIT_HARDDISMEMBER,
 		TRAIT_NOPAINSTUN,
+		TRAIT_BREADY,
+		TRAIT_BLINDFIGHTING, //They use math to calculate the trajectory of attacks, so they can parry behind them, trust, ook told me
 	)
 
 /datum/job/advclass/mercenary/enforcer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
