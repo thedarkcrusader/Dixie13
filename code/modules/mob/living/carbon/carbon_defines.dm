@@ -77,3 +77,5 @@
 
 	/// if they get a mana pool
 	has_initial_mana_pool = TRUE
+	/// To show their stress desc if there is one
+	var/datum/stress_event/last_stress_event = null

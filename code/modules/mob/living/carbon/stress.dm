@@ -82,12 +82,24 @@
 				remove_status_effect(/datum/status_effect/stress/stressvbad)
 				if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 					INVOKE_ASYNC(src, PROC_REF(play_mental_break_indicator))
+
+		var/event
+		if(last_stress_event?.desc)
+			var/desc = last_stress_event.get_desc()
+			if(islist(desc))
+				event = jointext(desc, " ")
+			else
+				event = desc
 		if(stress > oldstress)
-			to_chat(src, span_red("I gain stress."))
+			if(event)
+				to_chat(src, "[event]")
+			to_chat(src, span_red(" I gain stress."))
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_stress_indicator))
 		else
-			to_chat(src, span_green("I gain peace."))
+			if(event)
+				to_chat(src, "[event]")
+			to_chat(src, span_green(" I gain peace."))
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_relief_indicator))
 
@@ -151,11 +163,13 @@
 		var/post_stack = existing_event.get_stress()
 		adjust_stress(post_stack-pre_stack)
 		existing_event.on_apply(src)
+		last_stress_event = existing_event
 	else
 		new_event.timer += world.time
 		stressors += new_event
 		adjust_stress(new_event.get_stress())
 		new_event.on_apply(src)
+		last_stress_event = new_event
 	SEND_SIGNAL(src, COMSIG_MOB_ADD_STRESS, new_event)
 
 /// Accepts stress typepaths or a list of stress typepaths to remove.
