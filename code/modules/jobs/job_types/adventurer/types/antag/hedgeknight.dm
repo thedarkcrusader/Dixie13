@@ -9,16 +9,17 @@
 
 /datum/outfit/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/heavy/rust
-	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/armor/plate/rust
-	shirt = /obj/item/clothing/armor/chainmail/hauberk/iron
-	gloves = /obj/item/clothing/gloves/leather
+	head = /obj/item/clothing/head/helmet/sallet/iron
+	neck = /obj/item/clothing/neck/bevor/iron
+	mask = /obj/item/clothing/face/skullmask
+	cloak = /obj/item/clothing/cloak/templar/malumite/brown
+	armor = /obj/item/clothing/armor/plate/iron
+	shirt = /obj/item/clothing/armor/gambeson/heavy/colored/dark
+	gloves = /obj/item/clothing/gloves/plate/rust
 	pants = /obj/item/clothing/pants/platelegs/rust
-	shoes = /obj/item/clothing/shoes/boots
-	belt = /obj/item/storage/belt/leather
+	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
+	belt = /obj/item/storage/belt/leather/black
 	backr = /obj/item/storage/backpack/satchel/black
-	scabbards = list(/obj/item/weapon/scabbard/sword/noble)
 	backpack_contents = list(/obj/item/weapon/knife/dagger = 1)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

@@ -319,3 +319,9 @@
 	icon_state = "thiefcloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	detail_color = CLOTHING_ASH_GREY
+
+/obj/item/clothing/cloak/cape/thief/black
+	color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/cloak/cape/thief/brown
+	color = CLOTHING_MUD_BROWN

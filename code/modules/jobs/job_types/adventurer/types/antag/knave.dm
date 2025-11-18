@@ -30,9 +30,10 @@
 	//H.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/shirt/shortshirt/colored/random
+	shirt = /obj/item/clothing/armor/gambeson/arming
 	shoes = /obj/item/clothing/shoes/boots
 	mask = /obj/item/clothing/face/facemask/steel
+	gloves = /obj/item/clothing/gloves/angle
 	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/armor/leather
 	H.change_stat(STATKEY_END, 1)
@@ -47,7 +48,7 @@
 		if("Crossbow & Dagger") //Rogue
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
 			beltr = /obj/item/ammo_holder/quiver/bolts
-			cloak = /obj/item/clothing/cloak/cape/thief
+			cloak = /obj/item/clothing/cloak/cape/thief/black
 			head = /obj/item/clothing/head/roguehood/colored/black //cool cloak
 			beltl = /obj/item/weapon/knife/dagger/steel
 			backr = /obj/item/storage/backpack/satchel
@@ -58,7 +59,7 @@
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
 			beltl = /obj/item/ammo_holder/quiver/arrows
-			cloak = /obj/item/clothing/cloak/raincloak/furcloak
+			cloak = /obj/item/clothing/cloak/cape/thief/brown
 			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
