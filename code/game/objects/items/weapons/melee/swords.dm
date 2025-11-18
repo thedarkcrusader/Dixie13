@@ -1544,7 +1544,7 @@
 	icon_state = "eastsword1"
 	melt_amount = 75
 	melting_material = /datum/material/steel
-	wdefense = 3
+	wdefense = GOOD_PARRY
 
 /obj/item/weapon/sword/sabre/mulyeog/rumahench
 	name = "hwang blade"
@@ -1557,7 +1557,6 @@
 	desc = "A gold-stained with cloud patterns on the groove. One of a kind."
 	icon_state = "eastsword3"
 	max_integrity = 180
-	wdefense = 4
 
 /obj/item/weapon/sword/sabre/hook
 	name = "hook sword"
