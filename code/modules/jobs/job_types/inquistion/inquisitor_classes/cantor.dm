@@ -2,13 +2,15 @@
 	title = "Cantor"
 	tutorial = "While other prospective inquisitors have their blades or their cords, you have faith. The Ordo Venatari has allowed the Ordo Sanctae Cruoris to bless you - Psydon hears your prayers. Play your music, soothe your allies' souls, and lull the unwary to sleep."
 	outfit = /datum/outfit/job/cantor
-	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
+	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_INQUISITION, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	category_tags = list(CTAG_INQUISITION)
+	outfit = /datum/outfit/psyaltrist
+
 	jobstats = list(
-		STATKEY_STR = 1,
 		STATKEY_END = 1,
 		STATKEY_SPD = 3,
-	)
+	) //4 Statline
+
 	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
@@ -24,6 +26,7 @@
 	)
 	spells = list(
 		/datum/action/cooldown/spell/undirected/transfix/lesser,
+		/datum/action/cooldown/spell/vicious_mockery,
 	)
 
 /datum/outfit/job/cantor/pre_equip(mob/living/carbon/human/H)
@@ -39,15 +42,12 @@
 	beltr = /obj/item/weapon/knife/dagger/silver/psydon
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ring = /obj/item/clothing/ring/signet/silver
-	var/datum/inspiration/I = new /datum/inspiration(H)
-	I.grant_inspiration(H, bard_tier = BARD_T3)
 	backpack_contents = list(
 		/obj/item/key/inquisition = 1,
-		/obj/item/paper/inqslip/arrival/ortho = 1
+		/obj/item/paper/inqslip/arrival/ortho = 1,
+		/obj/item/collar_detonator = 1,
 	)
 
-
-	H.add_spell(/datum/action/cooldown/spell/vicious_mockery)
 	if(H.mind)
 		var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman", "Psyaltery", "Flute")
 		var/weapon_choice = browser_input_list(H, "Choose your instrument.", "TAKE UP ARMS", weapons)
