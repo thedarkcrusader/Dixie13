@@ -296,7 +296,7 @@
 /*	.............   Sausages on sticks   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/sausage_sticked
 	name = "sausage onna stick"
-	desc = "A sausage skewered for convenience and cleanliness, classic Grenzlehoftian street food."
+	desc = "A sausage skewered for convenience and cleanliness, classic Grenzelhoftian street food."
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+1)
 	icon_state = "sausageonastick"
 	tastes = list("savory sausage" = 2)
@@ -318,7 +318,7 @@
 
 /obj/item/reagent_containers/food/snacks/cooked/griddledog
 	name = "griddledog"
-	desc = "A classic piece of Grenzlehoftian street food, the fried butterdough is a Vanderlinian adulteration."
+	desc = "A classic piece of Grenzelhoftian street food, the fried butterdough is a Vanderlinian adulteration."
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+BUTTERDOUGHSLICE_NUTRITION+2)
 	icon_state = "griddledog"
 	tastes = list("savory sausage" = 2, "crispy butterdough" = 1)

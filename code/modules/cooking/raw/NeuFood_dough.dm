@@ -757,7 +757,7 @@
 
 /obj/item/reagent_containers/food/snacks/crimsoncake_cooked
 	name = "crimson pine cake"
-	desc = "A fusion of Crimson Elf and Grenzlehoftian cuisines, the cake originates from the Valorian Republics. Rumor has it that one of the many casus belli in the Republics was based upon a disagreement on the cakes exact recipe."
+	desc = "A fusion of Crimson Elf and Grenzelhoftian cuisines, the cake originates from the Valorian Republics. Rumor has it that one of the many casus belli in the Republics was based upon a disagreement on the cakes exact recipe."
 	icon_state = "crimsonpinecake"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/crimsoncake_slice
