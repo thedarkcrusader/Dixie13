@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 		qdel(P)
 
 /datum/ritual/transmutation/summonoutfit
-	name = "Summon cult outfit and chains"
+	name = "Summon Cult Outfit"
 	center_requirement = /obj/item/natural/cloth
 
 /datum/ritual/transmutation/summonoutfit/invoke(mob/living/user, turf/center)
@@ -330,12 +330,16 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 /datum/ritual/transmutation/summonneant
 	name = "Summon Neant"
 	center_requirement = /obj/item/reagent_containers/lux
-	n_req = /obj/item/ingot/steel
+	n_req = /mob/living/carbon/human
 	s_req = /obj/item/ingot/steel
 
 	is_cultist_ritual = TRUE
 
 /datum/ritual/transmutation/summonneant/invoke(mob/living/user, turf/center)
+	var/mob/living/carbon/human/noble = locate() in get_step(center, NORTH)
+	if(!(noble.is_noble()))
+		return
+	noble.gib()
 	var/datum/effect_system/spark_spread/S = new(center)
 	S.set_up(1, 1, center)
 	S.start()
@@ -449,6 +453,8 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	w_req = /obj/item/organ/brain
 	e_req = /obj/item/organ/brain
 	n_req = /obj/item/reagent_containers/food/snacks/rotten/meat
+
+	is_cultist_ritual = TRUE
 
 /datum/ritual/fleshcrafting/undead/invoke(mob/living/user, turf/center)
 	var/mob/living/carbon/human/target = locate() in center.contents
