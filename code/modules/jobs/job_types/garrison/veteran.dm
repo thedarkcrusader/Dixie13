@@ -17,7 +17,7 @@
 	allowed_ages = list(AGE_OLD, AGE_IMMORTAL)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	blacklisted_species = list(SPEC_ID_HALFLING)
-
+	cmode_music = "sound/music/cmode/towner/CombatVeteran.ogg"
 	advclass_cat_rolls = list(CTAG_VETERAN = 20)
 	give_bank_account = 35
 	can_have_apprentices = FALSE
