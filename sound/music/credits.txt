@@ -67,7 +67,7 @@ Good Men Die Young - Gaffer
 (BRASS) - Sling Blade - Xylixian theme
 (BRASS) - Triumph Over Evil - Ravoxian theme
 (BRASS) - Phases of the moon - Noccite theme
-(BRASS) - Four-Man Party - Town Elder (other than Mayor)
+(BRASS) - Four-Man Party - Town Elder (other than Mayor & Acolyte)
 (BRASS) - Thread Softly - Veteran
 (BRASS) - Turncoat - Abyssorian theme
 
