@@ -17,13 +17,13 @@
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 1,
+		/datum/skill/combat/axesmaces = 4,
 		/datum/skill/misc/swimming = 2,
 		/datum/skill/misc/climbing = 3,
 		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
+		/datum/skill/combat/unarmed = 3,
 		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/shields = 1,
+		/datum/skill/combat/shields = 3,
 		/datum/skill/misc/reading = 1,
 		/datum/skill/misc/athletics = 3,
 		/datum/skill/misc/medicine = 2,
