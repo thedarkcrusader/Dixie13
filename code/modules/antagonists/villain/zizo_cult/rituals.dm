@@ -348,6 +348,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	name = "Summon Darksteel Armor"
 	center_requirement = /mob/living/carbon/human
 	n_req = /obj/item/ingot/steel
+	s_req = /obj/item/ingot/steel
 
 	is_cultist_ritual = TRUE
 
@@ -457,6 +458,24 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	target.add_spell(/datum/action/cooldown/spell/control_undead)
 	target.add_spell(/datum/action/cooldown/spell/decompose)
 	to_chat(target, span_notice("The undead bow down to my will."))
+
+/datum/ritual/fleshcrafting/arcane
+	name = "Siphon Arcane"
+	center_requirement = /mob/living/carbon/human
+
+	n_req = /mob/living/carbon/human
+
+/datum/ritual/fleshcrafting/arcane/invoke(mob/living/user, turf/center)
+	var/mob/living/carbon/human/cultist = locate() in center.contents
+	var/mob/living/carbon/human/mage = locate() in get_step(center, NORTH)
+	if(!(mage.mana_pool?.intrinsic_recharge_sources & MANA_ALL_LEYLINES))
+		return
+	mage.gib()
+	cultist.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
+	cultist.adjust_spell_points(20)
+	cultist.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
+	cultist.generate_random_attunements(rand(6, 8))
+	to_chat(cultist, span_notice("Stolen Arcane prowess floods my mind, ZIZO empowers me."))
 
 /datum/ritual/fleshcrafting/nopain
 	name = "Painless Battle"
