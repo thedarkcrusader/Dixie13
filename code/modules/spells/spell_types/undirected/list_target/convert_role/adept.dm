@@ -7,7 +7,7 @@
 	accept_message = "F-fine just don't kill me!"
 	refuse_message = "I FOLLOW MY GOD INTO DEATH!!!"
 
-/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/can_convert(mob/living/carbon/human/cast_on)
+/datum/action/cooldown/spell/undirected/list_target/convert_role/adept/cast(mob/living/carbon/human/cast_on)
 	. = ..()
 	if(!.)
 		return
