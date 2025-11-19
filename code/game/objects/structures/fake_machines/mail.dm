@@ -866,6 +866,15 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			everyhermes.inqlock()
 
 	if(href_list["buy"])
+		var/list/spawnable
+		for(var/turf/turf as anything in get_adjacent_open_turfs(get_turf(src)))
+			if(turf.is_blocked_turf(TRUE, src))
+				continue
+			spawnable += turf
+
+		if(!length(spawnable))
+			return
+
 		var/path = text2path(href_list["buy"])
 		var/datum/inqports/PA = GLOB.inqsupplies[path]
 
@@ -877,8 +886,10 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			coin_loaded = FALSE
 			update_appearance()
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-		var/obj/item/bought = new PA.item_type(get_turf(src))
-		usr.put_in_hands(bought, FALSE)
+
+		var/obj/bought = new PA.item_type(pick(turfs))
+		if(isitem(bought))
+			usr.put_in_hands(bought, FALSE)
 
 	return display_marquette(usr)
 
