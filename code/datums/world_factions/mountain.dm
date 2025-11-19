@@ -63,7 +63,8 @@
 		/datum/supply_pack/tools/thresher,
 		/datum/supply_pack/tools/plough,
 		/datum/supply_pack/tools/bucket,
-		/datum/supply_pack/weapons/iron/bayonet, //kind-of a tool
+		///Weapon (Singular)
+		/datum/supply_pack/weapons/iron/bayonet,
 		// Food - Hearty dwarven fare
 		/datum/supply_pack/food/meat,
 		/datum/supply_pack/food/drinks/blackgoat,

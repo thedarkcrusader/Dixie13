@@ -272,7 +272,8 @@
 	experimental_onback = TRUE
 	damage_mult = 3.5
 	dropshrink = 0.7
-	possible_item_intents = list(/datum/intent/shoot/musket, /datum/intent/shoot/musket/arc, POLEARM_BASH)
+	possible_item_intents = list(INTENT_GENERIC)
+	gripped_intents = list(/datum/intent/shoot/musket, /datum/intent/shoot/musket/arc, POLEARM_BASH)
 	associated_skill = /datum/skill/combat/polearms
 	slot_flags = ITEM_SLOT_BACK
 	wlength = WLENGTH_LONG
@@ -292,6 +293,11 @@
 	. = ..()
 	var/obj/item/ramrod/musket/rrod = new(src)
 	rod = rrod
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/attack_self(mob/living/user, params)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return TRUE
+	interact(user)
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/musket/update_icon_state()
 	. = ..()
@@ -316,6 +322,29 @@
 				"wturn" = 0,
 				"eturn" = 0,
 				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 5,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0
+				)
+			if("wielded") return list(
+				"shrink" = 0.5,
+				"sx" = 0,
+				"sy" = -3,
+				"nx" = 11,
+				"ny" = 0,
+				"wx" = -4,
+				"wy" = -4,
+				"ex" = 4,
+				"ey" = -5,
+				"nturn" = -45,
+				"sturn" = 45,
+				"wturn" = 45,
+				"eturn" = 45,
+				"nflip" = 4,
 				"sflip" = 0,
 				"wflip" = 5,
 				"eflip" = 0,
@@ -354,6 +383,7 @@
 			user.put_in_hands(bayonet)
 			bayonet_affixed = FALSE
 			possible_item_intents -= SPEAR_THRUST
+			gripped_intents -= POLEARM_THRUST
 			sharpness = IS_BLUNT
 			bayonet.max_blade_int = max_blade_int
 			bayonet.blade_int = blade_int
@@ -363,7 +393,7 @@
 			spread -= bayonet.spread
 			force -= bayonet.force
 			bayonet = null
-			to_chat(user, "<span class='info'>I remove the bayonet from \the [src].</span>")
+			to_chat(user, span_info("I remove the bayonet from \the [src]."))
 			playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 		update_appearance(UPDATE_ICON_STATE)
 	..()
@@ -375,7 +405,7 @@
 		var/mob/living/carbon/human/H = user
 		if(istype(H.get_active_held_item(), /obj/item/weapon/knife/dagger/bayonet))
 			if(!H.is_holding(src))
-				to_chat(user, "<span class='warning'>I need to hold \the [src] to affix a bayonet to it!</span>")
+				to_chat(user, span_warning("I need to hold \the [src] to affix a bayonet to it!"))
 				return
 			if(do_after(user, ramtime SECONDS, src))
 				var/obj/item/weapon/knife/dagger/bayonet/attached_bayonet = H.get_active_held_item()
@@ -383,13 +413,14 @@
 				bayonet = attached_bayonet
 				bayonet_affixed = TRUE
 				possible_item_intents += SPEAR_THRUST
+				gripped_intents += POLEARM_THRUST
 				sharpness = IS_SHARP
 				max_blade_int = attached_bayonet.max_blade_int
 				blade_int = attached_bayonet.blade_int
 				armor_penetration = 5
 				spread += bayonet.spread
 				force += bayonet.force
-				to_chat(user, "<span class='info'>I affix the bayonet to \the [src].</span>")
+				to_chat(user, span_info("I affix the bayonet to \the [src]."))
 				playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
 			update_appearance(UPDATE_ICON_STATE)
 	..()
