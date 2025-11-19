@@ -15293,7 +15293,7 @@
 /obj/item/book/bibble/psy,
 /obj/item/flashlight/flare/torch/lantern/psycenser,
 /obj/item/clothing/head/helmet/heavy/psydonbarbute,
-/obj/item/clothing/cloak/psyaltrist,
+/obj/item/clothing/cloak/cantor,
 /obj/item/clothing/armor/cuirass/psydon,
 /obj/item/instrument/psyaltery,
 /obj/effect/spawner/map_spawner/loot/potion_vitals,

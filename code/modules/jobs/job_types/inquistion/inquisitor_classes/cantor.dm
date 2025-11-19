@@ -4,7 +4,6 @@
 	outfit = /datum/outfit/job/cantor
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_INQUISITION, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	category_tags = list(CTAG_INQUISITION)
-	outfit = /datum/outfit/psyaltrist
 
 	jobstats = list(
 		STATKEY_END = 1,
