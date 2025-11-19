@@ -9,13 +9,12 @@
 
 /datum/outfit/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/sallet/iron
-	neck = /obj/item/clothing/neck/bevor/iron
-	mask = /obj/item/clothing/face/skullmask
-	cloak = /obj/item/clothing/cloak/templar/malumite/brown
+	head = /obj/item/clothing/head/helmet/visored/knight/iron
+	neck = /obj/item/clothing/neck/gorget
+	cloak = /obj/item/clothing/cloak/stabard
 	armor = /obj/item/clothing/armor/plate/iron
 	shirt = /obj/item/clothing/armor/gambeson/heavy/colored/dark
-	gloves = /obj/item/clothing/gloves/plate/rust
+	gloves = /obj/item/clothing/gloves/chain/iron
 	pants = /obj/item/clothing/pants/platelegs/rust
 	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
 	belt = /obj/item/storage/belt/leather/black
