@@ -421,14 +421,6 @@
 	created_item = /obj/item/weapon/sword/long/greatsword/zwei
 	craftdiff = 3
 
-/datum/anvil_recipe/weapons/iron/flamberge
-	name = "Flamberge (+Bar x2)"
-	recipe_name = "a Flamberge"
-	appro_skill = /datum/skill/craft/weaponsmithing
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
-	created_item = /obj/item/weapon/sword/long/greatsword/flamberge
-	craftdiff = 3
-
 /datum/anvil_recipe/weapons/iron/claymore
 	name = "Iron Claymore (+Bar x2)"
 	recipe_name = "a Iron Claymore"
@@ -715,12 +707,12 @@
 	created_item = /obj/item/weapon/sword/long/greatsword
 	craftdiff = 4
 
-/datum/anvil_recipe/weapons/steel/flamberge
-	name = "Steel Flamberge (+Bar x2)"
+/datum/anvil_recipe/weapons/flamberge
+	name = "Flamberge (+Bar x3)"
 	recipe_name = "a Flamberge"
 	appro_skill = /datum/skill/craft/weaponsmithing
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
-	created_item = /obj/item/weapon/sword/long/greatsword/steelflamberge
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/long/greatsword/flamberge
 	craftdiff = 4
 
 /datum/anvil_recipe/weapons/steel/claymore
