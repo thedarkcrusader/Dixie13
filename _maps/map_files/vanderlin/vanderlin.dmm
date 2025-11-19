@@ -463,15 +463,6 @@
 "akL" = (
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/indoors/town/clinic_large/apothecary)
-"akR" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 8
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
 "akW" = (
 /obj/structure/window/openclose{
 	dir = 8
@@ -2336,7 +2327,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "bhD" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -2792,9 +2783,6 @@
 	dir = 8
 	},
 /area/rogue/outdoors/town/roofs)
-"bvy" = (
-/turf/open/floor/church/purple,
-/area/rogue/indoors/inq/import)
 "bvE" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -5851,7 +5839,7 @@
 	pixel_x = -5
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "dcZ" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/head/sack{
@@ -10065,15 +10053,6 @@
 	},
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/rtfield/safe)
-"fhY" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
 "fiq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -11844,7 +11823,7 @@
 	},
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "gej" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -12628,15 +12607,6 @@
 /obj/item/coin/silver/pile,
 /turf/open/floor/greenstone/glyph1,
 /area/rogue/indoors/town/vault)
-"gyn" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 8
-	},
-/turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
 "gyB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/crafted_closet/inn/chest,
@@ -18814,7 +18784,7 @@
 /obj/item/speakerinq,
 /obj/item/inqarticles/bmirror,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "jLz" = (
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/hexstone,
@@ -24618,7 +24588,7 @@
 /obj/item/rope,
 /obj/item/rope,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "mWJ" = (
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/transparent/openspace,
@@ -24705,7 +24675,7 @@
 	pixel_x = -9
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "mXX" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -31949,7 +31919,7 @@
 	pixel_x = -5
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "qSu" = (
 /obj/structure/stairs{
 	dir = 8
@@ -33384,7 +33354,7 @@
 	},
 /obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "rDM" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/cobble,
@@ -40404,7 +40374,7 @@
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/church/purple,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "vyL" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -41252,7 +41222,7 @@
 /obj/item/weapon/shield/wood,
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/church/purple,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "vWW" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/closed/wall/mineral/stone,
@@ -41588,13 +41558,6 @@
 "weA" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/smithy)
-"weP" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/obj/structure/fluff/walldeco/church/line,
-/turf/open/floor/churchbrick,
-/area/rogue/indoors/inq/import)
 "wfd" = (
 /turf/closed/wall/mineral/pipe,
 /area/rogue/under/town/caverogue)
@@ -114652,12 +114615,12 @@ vgJ
 vgJ
 fgn
 fgn
-bvy
-bvy
-bvy
-bvy
-bvy
-bvy
+rap
+rap
+rap
+rap
+rap
+rap
 fgn
 fgn
 vgJ
@@ -114854,12 +114817,12 @@ vgJ
 vgJ
 fgn
 mXV
-akR
+hHw
 qSq
-bvy
-bvy
+rap
+rap
 bhw
-akR
+hHw
 mWx
 fgn
 vgJ
@@ -115056,12 +115019,12 @@ vgJ
 vgJ
 fgn
 vWS
-bvy
+rap
 dcR
-gyn
-gyn
+urH
+urH
 rDy
-bvy
+rap
 vyI
 dhF
 vgJ
@@ -115258,12 +115221,12 @@ vgJ
 vgJ
 fgn
 gdY
-gyn
-weP
-bvy
-bvy
-fhY
-gyn
+urH
+hBC
+rap
+rap
+gif
+urH
 jLy
 dhF
 vgJ

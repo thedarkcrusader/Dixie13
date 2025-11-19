@@ -735,7 +735,7 @@
 	pixel_y = 29
 	},
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "fP" = (
 /obj/structure/door/violet{
 	name = "Mage's Quarters"
@@ -1661,7 +1661,7 @@
 /area/rogue/indoors/town/church)
 "nG" = (
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "nL" = (
 /obj/structure/stairs/fancy/r{
 	dir = 1;
@@ -2531,7 +2531,7 @@
 	density = 0
 	},
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "wv" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/closet/crate/chest/old_crate,
@@ -2608,7 +2608,7 @@
 /obj/item/bedsheet/wool,
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "wZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -3692,7 +3692,7 @@
 /obj/item/scomstone,
 /obj/item/weapon/whip/antique,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "GU" = (
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
@@ -4542,7 +4542,7 @@
 "OZ" = (
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "Pb" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -5697,7 +5697,7 @@
 /obj/item/bedsheet/fabric,
 /obj/item/book/bibble,
 /turf/open/floor/ruinedwood/spiral,
-/area/rogue/indoors/inq/import)
+/area/rogue/indoors/town/church/inquisition)
 "Za" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";

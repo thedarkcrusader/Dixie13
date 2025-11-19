@@ -877,14 +877,8 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			coin_loaded = FALSE
 			update_appearance()
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-		var/list/turfs = list()
-		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/inq/import]
-		for(var/turf/T in A)
-			turfs += T
-		var/turf/T = pick(turfs)
-		var/pathi = pick(PA.item_type)
-		playsound(T, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-		new pathi(get_turf(T))
+		var/obj/item/bought = new PA.item_type(get_turf(src))
+		usr.put_in_hands(bought, FALSE)
 
 	return display_marquette(usr)
 
