@@ -11,7 +11,7 @@
 /datum/outfit/wretch/escapee/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/neck/keffiyeh/colored/uncolored //bunch of stuff stolen from a guard/slaver, styled like the desert rider
 	mask = /obj/item/clothing/face/facemask/prisoner //marked mask, I imagine zaladin would brand slaves but we don't have that so this works
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
+	cloak = /obj/item/clothing/cloak/cape/crusader
 	wrists = /obj/item/rope/net
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather/advanced
