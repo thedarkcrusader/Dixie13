@@ -138,7 +138,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
-		if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron?.type in job.allowed_patrons))
+		if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
 			JobDebug("GRJ incompatible with patron, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
@@ -293,7 +293,7 @@ SUBSYSTEM_DEF(job)
 					else
 						player.client?.activate_triumph_buy(TRIUMPH_BUY_RACE_ALL)
 
-				if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron?.type in job.allowed_patrons))
+				if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
 					JobDebug("DO incompatible with patron, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 					continue
 
@@ -501,7 +501,7 @@ SUBSYSTEM_DEF(job)
 			if(length(job.blacklisted_species) && (player.client.prefs.pref_species.id in job.blacklisted_species))
 				return
 
-			if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron?.type in job.allowed_patrons))
+			if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
 				continue
 
 			if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
@@ -766,7 +766,7 @@ SUBSYSTEM_DEF(job)
 	if(length(job.blacklisted_species) && (player.client.prefs.pref_species.id in job.blacklisted_species))
 		return
 
-	if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron?.type in job.allowed_patrons))
+	if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
 		return
 
 	if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
