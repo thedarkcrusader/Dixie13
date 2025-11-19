@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	dungeon_id = "center"
 
 /obj/structure/dungeon_entry/center/vanderlin
-	icon_state = "portal_noenter"
+	//icon_state = "portal_noenter"
 	//entry_requirements = list("Time" = "day")
 
 /obj/structure/dungeon_entry
