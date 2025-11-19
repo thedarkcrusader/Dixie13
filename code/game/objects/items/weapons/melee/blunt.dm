@@ -170,7 +170,7 @@
 
 /obj/item/weapon/mace/cane/
 	name = "wooden cane"
-	desc = "A simple wooden cane, carved right from wood. Good for supporting your weight."
+	desc = "A simple wooden cane, whittled from wood. Good for supporting your weight."
 	icon = 'icons/roguetown/weapons/32/canes.dmi'
 	icon_state = "simple_cane"
 	possible_item_intents = list(/datum/intent/mace/strike)
