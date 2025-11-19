@@ -36,7 +36,7 @@
 			wrists = /obj/item/clothing/neck/psycross/silver/dendor
 			H.cmode_music = 'sound/music/cmode/garrison/CombatForestGarrison.ogg'
 		if(/datum/patron/divine/abyssor)
-			head = /obj/item/clothing/head/helmet/heavy/abyssor
+			head = /obj/item/clothing/head/helmet/heavy/necked/abyssor
 			wrists = /obj/item/clothing/neck/psycross/silver/abyssor
 			H.cmode_music = 'sound/music/cmode/church/CombatAbyssor.ogg'
 		if(/datum/patron/divine/necra)
