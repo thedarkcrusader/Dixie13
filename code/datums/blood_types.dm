@@ -150,7 +150,8 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 
 /datum/blood_type/mollusc
 	name = "Mollusc"
-	color = COLOR_CYAN
+	color = COLOR_TEAL
+	reagent_type = /datum/reagent/blood/mollusc
 	used_table = /datum/chimeric_table/mollusc
 
 /datum/blood_type/troll

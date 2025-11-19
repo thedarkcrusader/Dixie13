@@ -23,6 +23,7 @@
 						/obj/item/reagent_containers/food/snacks/meat/crableg = 2)
 
 	animal_type = /datum/blood_type/mollusc
+	footstep_type = FOOTSTEP_MOB_CLAW
 
 	health = 45
 	maxHealth = 45
@@ -35,6 +36,11 @@
 	accurate = TRUE
 	dextrous = TRUE
 	held_items = list(null, null)
+
+	density = FALSE
+	mob_size = MOB_SIZE_SMALL
+	pass_flags = PASSMOB|PASSGRILLE|PASSTABLE|PASSWINDOW
+	ventcrawler = VENTCRAWLER_ALWAYS
 	can_be_held = TRUE
 
 	base_constitution = 3
@@ -50,15 +56,12 @@
 	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/hermitcrab
-	density = FALSE
 
 	ai_controller = /datum/ai_controller/hermitcrab
-	//todo
 	food_type = list(
-		/obj/item/reagent_containers/food/snacks
+		/obj/item/reagent_containers/food/snacks //scavengers.
 	)
-	tame_chance = 25
-	bonus_tame_chance = 15
+	tame_chance = DENDOR_TAME_PROB_MEDIUM
 
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle,
@@ -98,9 +101,9 @@
 	update_transform()
 	update_appearance(UPDATE_OVERLAYS)
 
-	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_CHUNKYFINGERS, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_TINY, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_CHUNKYFINGERS, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_TINY, ROUNDSTART_TRAIT)
 	//all this shit just to avoid making a subtype mobholder...
 	RegisterSignal(src, COMSIG_MOB_HOLDER_DEPOSIT, PROC_REF(mob_holder_deposit))
 	RegisterSignal(src, COMSIG_MOB_HOLDER_RELEASE, PROC_REF(mob_holder_release))

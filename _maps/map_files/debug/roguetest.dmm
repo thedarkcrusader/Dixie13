@@ -20,6 +20,10 @@
 /obj/item/clothing/gloves/chain,
 /turf/open/floor/carpet,
 /area/indoors)
+"aL" = (
+/mob/living/simple_animal/hostile/retaliate/megaleech,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "aN" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -359,6 +363,10 @@
 /obj/structure/irrigation_channel,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"im" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "ir" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -575,6 +583,10 @@
 /obj/structure/essence_node/rare,
 /turf/open/floor/tile/bfloorz,
 /area/indoors)
+"lD" = (
+/mob/living/simple_animal/hostile/retaliate/megaleech/tame,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "lF" = (
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
@@ -928,10 +940,6 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"pm" = (
-/mob/living/simple_animal/hostile/retaliate/hermitcrab,
-/turf/open/floor/cobblerock,
-/area/under/town/basement)
 "pq" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/rotation_piece{
@@ -2096,6 +2104,10 @@
 "Ce" = (
 /turf/closed/mineral/bedrock,
 /area/indoors)
+"Ck" = (
+/mob/living/simple_animal/hostile/retaliate/megaleech/tame/saddled,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "Cr" = (
 /obj/structure/gearbox,
 /turf/open/floor/cobblerock,
@@ -2458,6 +2470,10 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"Hv" = (
+/mob/living/simple_animal/hostile/retaliate/megaleech/tame/saddled,
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
 "Hx" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = 32;
@@ -2761,6 +2777,10 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"Mt" = (
+/mob/living/simple_animal/hostile/retaliate/megaleech/tame,
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
 "Mu" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/grass,
@@ -3575,6 +3595,10 @@
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
 /area/outdoors/mountains/decap)
+"XK" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
 "XN" = (
 /obj/structure/wallladder{
 	dir = 8
@@ -4244,7 +4268,7 @@ Rw
 Rw
 Rw
 EY
-Rw
+im
 EY
 Rw
 Rw
@@ -4501,11 +4525,11 @@ UK
 UK
 Rw
 Rw
-Rw
+im
 Rw
 DA
 DA
-Rw
+lD
 Rw
 Rw
 Rw
@@ -4758,13 +4782,13 @@ Rw
 Rw
 Rw
 Rw
-Rw
-Rw
-Rw
-DA
+im
 Rw
 Rw
 DA
+Rw
+Rw
+Mt
 Rw
 Rw
 Rw
@@ -5007,18 +5031,18 @@ as
 yu
 Rw
 Rw
-pm
 Rw
+aL
 DA
 DA
 Rw
 Rw
 Rw
 Rw
-DA
+XK
 Rw
 Rw
-Rw
+lD
 Rw
 Rw
 DA
@@ -5266,13 +5290,13 @@ ZC
 Rw
 Rw
 Rw
-pm
+Rw
 DA
 Rw
 Rw
 Rw
 DA
-DA
+XK
 Rw
 Rw
 Rw
@@ -5529,7 +5553,7 @@ Rw
 DA
 DA
 DA
-Rw
+im
 Rw
 RT
 DA
@@ -5778,15 +5802,15 @@ as
 yu
 Rw
 Rw
-pm
 Rw
 Rw
 Rw
 Rw
 Rw
+aL
 Rw
 Rw
-Rw
+im
 tw
 zi
 Fd
@@ -6043,7 +6067,7 @@ Rw
 Rw
 Rw
 Rw
-Rw
+im
 Rw
 jp
 Rw
@@ -6294,13 +6318,13 @@ UK
 Rw
 DA
 DA
-pm
+Rw
 Rw
 Rw
 Rw
 Rw
 UK
-Rw
+im
 Rw
 Rw
 Rw
@@ -6557,13 +6581,13 @@ DA
 Rw
 Rw
 UK
-Rw
+im
 DA
 Rw
-Rw
+Ck
 Rw
 DA
-DA
+Hv
 Rw
 Rw
 Rw
@@ -6806,7 +6830,6 @@ as
 yu
 Rw
 Rw
-pm
 Rw
 Rw
 Rw
@@ -6815,6 +6838,7 @@ Rw
 Rw
 Rw
 Rw
+im
 Rw
 Rw
 Rw
@@ -7063,7 +7087,7 @@ as
 yu
 DA
 Rw
-Rw
+aL
 Rw
 Rw
 Rw
@@ -7071,6 +7095,7 @@ Rw
 DA
 Rw
 Rw
+im
 Rw
 Rw
 Rw
@@ -7078,8 +7103,7 @@ Rw
 Rw
 Rw
 Rw
-Rw
-Rw
+Ck
 DA
 Rw
 yu
@@ -7328,10 +7352,10 @@ Rw
 Rw
 Rw
 Rw
+im
 Rw
 Rw
-Rw
-Rw
+Ck
 Rw
 Rw
 Rw
@@ -7585,7 +7609,7 @@ UK
 Rw
 Rw
 hq
-Rw
+im
 hq
 DA
 Rw

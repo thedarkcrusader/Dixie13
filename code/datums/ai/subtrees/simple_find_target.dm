@@ -35,6 +35,15 @@
 /datum/ai_planning_subtree/aggro_find_target/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	controller.queue_behavior(/datum/ai_behavior/find_aggro_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 
+/datum/ai_planning_subtree/aggro_find_target/if_hungry
+	var/hunger_threshold = 50
+
+/datum/ai_planning_subtree/aggro_find_target/if_hungry/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	if(istype(controller.pawn, /mob/living/simple_animal/hostile/retaliate))
+		var/mob/living/simple_animal/hostile/retaliate/mob = controller.pawn
+		if(SEND_SIGNAL(mob, COMSIG_MOB_RETURN_HUNGER) <= hunger_threshold)
+			controller.queue_behavior(/datum/ai_behavior/find_aggro_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+
 
 /datum/ai_planning_subtree/aggro_find_target/bum
 

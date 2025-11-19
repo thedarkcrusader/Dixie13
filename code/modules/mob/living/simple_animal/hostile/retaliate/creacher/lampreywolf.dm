@@ -34,6 +34,8 @@
 	maxHealth = LAMPREYVOLF_HEALTH
 	gender = MALE
 	var/is_pack_alpha = FALSE
+	animal_species = /mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha
+	footstep_type = FOOTSTEP_MOB_SLIME
 
 	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
 					/obj/item/bodypart,
@@ -67,7 +69,7 @@
 	dodgetime = 17
 	aggressive = 1
 	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/lampreywolf
+	remains_type = /obj/effect/decal/remains/wolf
 
 	ai_controller = /datum/ai_controller/lampreywolf
 	var/static/list/pet_commands = list(
@@ -90,16 +92,15 @@
 	AddComponent(/datum/component/ai_aggro_system)
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
 
-	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
 	if(is_pack_alpha)
-		ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, ROUNDSTART_TRAIT)
 	else
-		ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, ROUNDSTART_TRAIT)
 		if(prob(50))
 			gender = FEMALE
 			icon_living = "lampreyvolf2"
 			icon_state = icon_living
-			remains_type = /obj/effect/decal/remains/lampreywolf/f
 
 	update_appearance(UPDATE_OVERLAYS)
 
@@ -223,20 +224,6 @@
 	base_constitution = 10
 	base_strength = 10
 	base_speed = 14
-
-
-/obj/effect/decal/remains/lampreywolf
-	name = "remains"
-	gender = MALE
-	icon_state = "lampreyvolf1_dead"
-	icon = 'icons/roguetown/mob/monster/lamprey_volf.dmi'
-
-/obj/effect/decal/remains/lampreywolf/f
-	gender = FEMALE
-	icon_state = "lampreyvolf2_dead"
-
-/obj/effect/decal/remains/lampreywolf/alpha
-	icon_state = "lampreyvolf3_dead"
 
 /datum/intent/simple/bite/lampreywolf
 	penfactor = 5

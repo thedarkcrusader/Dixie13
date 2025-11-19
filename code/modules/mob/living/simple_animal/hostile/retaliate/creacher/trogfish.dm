@@ -48,6 +48,7 @@
 	remains_type = /obj/effect/decal/remains/trogfish
 	body_eater = TRUE
 	gender = NEUTER
+	footstep_type = FOOTSTEP_MOB_SLIME
 
 	ai_controller = /datum/ai_controller/trogfish
 
@@ -80,7 +81,7 @@
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands
 	. = ..()
 	AddComponent(/datum/component/ai_aggro_system)
-	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
 
 	var/datum/action/cooldown/mob_cooldown/trogfish_burst/burst = new()
 	burst.Grant(src)

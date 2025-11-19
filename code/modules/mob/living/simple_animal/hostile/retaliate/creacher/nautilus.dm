@@ -63,7 +63,6 @@
 	dodgetime = 50
 	aggressive = 1
 	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/nautilus
 	body_eater = TRUE
 	limb_destroyer = TRUE
 	slowed_by_drag = FALSE
@@ -78,10 +77,10 @@
 /mob/living/simple_animal/hostile/retaliate/nautilus/Initialize()
 	. = ..()
 	update_appearance(UPDATE_OVERLAYS)
-	ADD_TRAIT(src, TRAIT_NOHANDGRABS, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_GOOD_SWIM, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOTIGHTGRABMESSAGE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHANDGRABS, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOTIGHTGRABMESSAGE, ROUNDSTART_TRAIT)
 	//ai's not gonna use this so it does need controller keys
 	var/datum/action/cooldown/mob_cooldown/nautilus_hide/hide = new()
 	hide.Grant(src)
@@ -209,11 +208,6 @@
 	penfactor = 10
 	canparry = FALSE
 	item_damage_type = "slash"
-
-
-/obj/effect/decal/remains/nautilus
-	icon_state = "nautilus_dead"
-	icon = 'icons/roguetown/mob/monster/nautilus.dmi'
 
 // not used by ai because they naturally hide
 /datum/action/cooldown/mob_cooldown/nautilus_hide
