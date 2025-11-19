@@ -31,7 +31,6 @@
 
 	traits = list(
 		TRAIT_MEDIUMARMOR,
-		TRAIT_GENERIC
 	)
 
 /datum/job/advclass/mercenary/housecarl/after_spawn(mob/living/carbon/human/spawned, client/player_client)
