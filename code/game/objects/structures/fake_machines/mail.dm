@@ -887,7 +887,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			update_appearance()
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 
-		var/obj/bought = new PA.item_type(pick(turfs))
+		var/obj/bought = new PA.item_type(pick(spawnable))
 		if(isitem(bought))
 			usr.put_in_hands(bought, FALSE)
 
