@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/megaleech
 	icon = 'icons/roguetown/mob/monster/megaleech.dmi'
-	name = "megaleech"
+	name = "dire leech"
 	desc = ""
 	icon_state = "megaleech"
 	icon_living = "megaleech"
@@ -42,10 +42,10 @@
 	bonus_tame_chance = 15
 
 	base_intents = list(/datum/intent/simple/bite/megaleech)
-	rmb_intent = list(/datum/rmb_intent/megaleech_feed)
-	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	melee_damage_lower = 1
-	melee_damage_upper = 1
+	possible_rmb_intents = list(/datum/rmb_intent/megaleech_feed)
+	//attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
+	melee_damage_lower = 4
+	melee_damage_upper = 10
 	retreat_distance = 10
 	minimum_distance = 10
 	base_speed = 8
@@ -87,6 +87,8 @@
 	. = ..()
 	var/mob/living/L = target
 	if(. && istype(target) && L.blood_volume > 0 && SEND_SIGNAL(src, COMSIG_MOB_RETURN_HUNGER) < 100)
+		if(HAS_TRAIT(living_mob, TRAIT_BLOODLOSS_IMMUNE))
+			return
 		var/blood_taken = min(L.blood_volume, blood_gulp)
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -116,7 +118,7 @@
 	. = ..()
 	deaggroprob = 30
 	if(can_buckle)
-		AddComponent(/datum/component/riding/saiga)
+		AddComponent(/datum/component/riding/megaleech)
 
 /mob/living/simple_animal/hostile/retaliate/megaleech/simple_limb_hit(zone)
 	if(!zone)
@@ -178,19 +180,32 @@
 	desc = "RMB - Feed a target blood from yourself."
 	icon_state = "special"
 	// per bump of the do_after
-	var/feed_amount = 5
+	var/feed_amount = 10
+	var/busy = FALSE
 
 /datum/rmb_intent/megaleech_feed/special_attack(mob/living/user, atom/target)
-	if(!isliving(target) || !isanimal(user))
+	if(!isliving(target) || !isanimal(user) || busy)
 		return
+	var/giving = !user.cmode
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
+			return
 	var/mob/living/simple_animal/A = user
 	var/mob/living/L = target
 	var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) * A.food_max / 100
-	if(do_after(A, 1 SECONDS, extra_checks=CALLBACK(A, PROC_REF(can_feed), A, L), max_interact_count = 10, display_over_user = TRUE))
-		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - A.blood_volume, feed_amount, hunger)
+	busy = TRUE
+	while(do_after(A, 1 SECONDS, extra_checks=CALLBACK(src, PROC_REF(can_feed), A, L, giving), display_over_user = TRUE))
+		var/blood_given = 0
+		if(giving)
+			blood_given = min(BLOOD_VOLUME_NORMAL - L.blood_volume, feed_amount, hunger)
+		else
+			blood_given = -min(A.food_max - hunger, feed_amount, L.blood_volume)
 		L.blood_volume += blood_given
-		L.handle_blood()
+		hunger -= blood_given
 		SEND_SIGNAL(user, COMSIG_MOB_ADJUST_HUNGER, -blood_given)
+	L.handle_blood() // call this early and someone bleeding will immediately die
+	busy = FALSE
 
-/datum/rmb_intent/megaleech_feed/proc/can_feed(mob/living/user, mob/living/target)
-	return SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) > 0 && target.blood_volume < BLOOD_VOLUME_MAXIMUM
+/datum/rmb_intent/megaleech_feed/proc/can_feed(mob/living/user, mob/living/target, giving)
+	return SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) > 0 && target.blood_volume < BLOOD_VOLUME_NORMAL

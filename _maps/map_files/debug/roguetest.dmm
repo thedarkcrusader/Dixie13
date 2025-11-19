@@ -1932,7 +1932,7 @@
 /turf/open/floor/dirt/road,
 /area/outdoors)
 "zi" = (
-/mob/living/carbon/human/species/human/northern/bum,
+/mob/living/simple_animal/hostile/retaliate/nautilus,
 /turf/open/floor/cobblerock,
 /area/under/town/basement)
 "zw" = (

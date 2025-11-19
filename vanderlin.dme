@@ -1003,6 +1003,7 @@
 #include "code\datums\components\riding\goat.dm"
 #include "code\datums\components\riding\human.dm"
 #include "code\datums\components\riding\lampreywolf.dm"
+#include "code\datums\components\riding\megaleech.dm"
 #include "code\datums\components\riding\mole.dm"
 #include "code\datums\components\riding\pig.dm"
 #include "code\datums\components\riding\saiga.dm"

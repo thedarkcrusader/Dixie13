@@ -5,7 +5,7 @@
 	icon_state = "nautilus"
 	icon_living = "nautilus"
 	icon_dead = "nautilus_dead"
-	SET_BASE_PIXEL(-16, 0)
+	SET_BASE_PIXEL(-16, -8)
 
 	faction = list(FACTION_SEA)
 	speak_emote = list("gurgles", "bubbles")
@@ -55,7 +55,8 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	deaggroprob = 0
-	defprob = 15
+	d_intent = INTENT_PARRY
+	defprob = 25
 	defdrain = 10
 	del_on_deaggro = 999 SECONDS
 	retreat_health = 0
@@ -81,7 +82,7 @@
 	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_NOTIGHTGRABMESSAGE, ROUNDSTART_TRAIT)
-	//ai's not gonna use this so it does need controller keys
+	//ai's not gonna use this so it doesnt need controller keys
 	var/datum/action/cooldown/mob_cooldown/nautilus_hide/hide = new()
 	hide.Grant(src)
 
