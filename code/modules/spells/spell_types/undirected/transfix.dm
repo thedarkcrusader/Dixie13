@@ -135,3 +135,7 @@
 	spell_cost = 150
 
 	powerful = TRUE
+
+/datum/action/cooldown/spell/undirected/transfix/lesser
+	name = "Psydon's Lullaby"
+

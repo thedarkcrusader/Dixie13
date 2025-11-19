@@ -1,8 +1,9 @@
-/datum/job/advclass/sacrestant/psyaltrist
-	title = "Psyaltrist"
-	tutorial = "Every inquisitor has their second. You aim to keep spirits and faith high, while handling the needs of the inquisitor. Not a glamorous role, but a vital one. “Maybe his lordship would prefer the lute, today, over the viola?”"
+/datum/job/advclass/cantor
+	title = "Cantor"
+	tutorial = "While other prospective inquisitors have their blades or their cords, you have faith. The Ordo Venatari has allowed the Ordo Sanctae Cruoris to bless you - Psydon hears your prayers. Play your music, soothe your allies' souls, and lull the unwary to sleep."
+	outfit = /datum/outfit/job/cantor
+	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH, TRAIT_INQUISITION, TRAIT_PSYDONIAN_GRIT, TRAIT_PSYDONITE)
 	category_tags = list(CTAG_INQUISITION)
-	outfit = /datum/outfit/psyaltrist
 
 	jobstats = list(
 		STATKEY_END = 1,
@@ -11,54 +12,26 @@
 
 	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
-		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
+		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/magic/blood = SKILL_LEVEL_JOURNEYMAN, //for their transfix. taught the basics by the Ordo Sanctae
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
 	)
-
-	traits = list(	TRAIT_DODGEEXPERT,
-		TRAIT_EMPATH,
-		TRAIT_INQUISITION,
-		TRAIT_SILVER_BLESSED,
-		TRAIT_PSYDONIAN_GRIT,
-		TRAIT_PSYDONITE,)
-
-	spells = list(/datum/action/cooldown/spell/vicious_mockery)
-
-	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
-
-/datum/job/advclass/sacrestant/psyaltrist/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	GLOB.inquisition.add_member_to_school(spawned, "Order of the Venatari", 0, "Psyaltrist")
-
-	var/datum/inspiration/I = new /datum/inspiration(spawned)
-	I.grant_inspiration(spawned, bard_tier = BARD_T3)
-
-	var/static/list/instruments = list(
-		"Harp" = /obj/item/instrument/harp,
-		"Lute" = /obj/item/instrument/lute,
-		"Accordion" = /obj/item/instrument/accord,
-		"Guitar" = /obj/item/instrument/guitar,
-		"Hurdy-Gurdy" = /obj/item/instrument/hurdygurdy,
-		"Viola" = /obj/item/instrument/viola,
-		"Vocal Talisman" = /obj/item/instrument/vocals,
-		"Psyaltery" = /obj/item/instrument/psyaltery,
-		"Flute" = /obj/item/instrument/flute,
+	spells = list(
+		/datum/action/cooldown/spell/undirected/transfix/lesser,
+		/datum/action/cooldown/spell/vicious_mockery,
 	)
 
-	spawned.select_equippable(player_client, instruments)
-
-/datum/outfit/psyaltrist
-	name = "Psyaltrist"
-	armor = /obj/item/clothing/armor/leather/studded/psyaltrist
+/datum/outfit/job/cantor/pre_equip(mob/living/carbon/human/H)
+	armor = /obj/item/clothing/armor/leather/studded/cantor
 	backl = /obj/item/storage/backpack/satchel/otavan
-	cloak = /obj/item/clothing/cloak/psyaltrist
+	cloak = /obj/item/clothing/cloak/cantor
 	shirt = /obj/item/clothing/armor/gambeson/heavy/inq
 	gloves = /obj/item/clothing/gloves/leather/otavan
 	wrists = /obj/item/clothing/neck/psycross/silver
@@ -73,3 +46,31 @@
 		/obj/item/paper/inqslip/arrival/ortho = 1,
 		/obj/item/collar_detonator = 1,
 	)
+
+	if(H.mind)
+		var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman", "Psyaltery", "Flute")
+		var/weapon_choice = browser_input_list(H, "Choose your instrument.", "TAKE UP ARMS", weapons)
+		H.set_blindness(0)
+		switch(weapon_choice)
+			if("Harp")
+				backr = /obj/item/instrument/harp
+			if("Lute")
+				backr = /obj/item/instrument/lute
+			if("Accordion")
+				backr = /obj/item/instrument/accord
+			if("Guitar")
+				backr = /obj/item/instrument/guitar
+			if("Hurdy-Gurdy")
+				backr = /obj/item/instrument/hurdygurdy
+			if("Viola")
+				backr = /obj/item/instrument/viola
+			if("Vocal Talisman")
+				backr = /obj/item/instrument/vocals
+			if("Psyaltery")
+				backr = /obj/item/instrument/psyaltery
+			if("Flute")
+				backr = /obj/item/instrument/flute
+
+/datum/outfit/job/cantor/post_equip(mob/living/carbon/human/H, visuals_only)
+	. = ..()
+	GLOB.inquisition.add_member_to_school(H, "Order of the Venatari", 0, "Cantor")

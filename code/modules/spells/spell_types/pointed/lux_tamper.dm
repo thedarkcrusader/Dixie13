@@ -9,18 +9,18 @@
 	sound = 'sound/magic/psydonbleeds.ogg'
 	invocation = "I BLEED, SO THAT YOU MIGHT ENDURE!"
 	invocation_type = "shout"
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/skill/magic/blood
 	cooldown_time = 1 MINUTES // 60 seconds cooldown
 
 /datum/action/cooldown/spell/psydonlux_tamper/cast(mob/living/carbon/human/H)
 	. = ..()
 	var/mob/living/user = owner
 	if(!ishuman(H))
-		to_chat(user, span_warning("I cannot merge my Lux with Luxless beings."))
+		to_chat(user, span_warning("I cannot merge my blood with unworthy beings."))
 		return FALSE
 
 	if(H == user)
-		to_chat(user, span_warning("I refuse to tamper with my own Lux."))
+		to_chat(user, span_warning("I cannot tamper with my own blood."))
 		return FALSE
 
 	if(H.stat == DEAD)
@@ -67,7 +67,7 @@
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#487e97")
 
 	// Notify the user and target
-	to_chat(user, span_notice("You purify their Lux with the merging of theirs and your own, for a mote."))
-	to_chat(H, span_info("You feel a strange stirring sensation pour over your Lux, stealing your wounds."))
+	to_chat(user, span_notice("You purify their blood with the merging of theirs and your own, for a mote."))
+	to_chat(H, span_info("You feel a strange stirring sensation pour through your blood, stealing your wounds."))
 
 	return TRUE
