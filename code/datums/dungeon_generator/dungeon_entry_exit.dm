@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 
 /obj/structure/dungeon_entry/center/vanderlin
 	icon_state = "portal_noenter"
-	entry_requirements = list("Time" = "day")
+	//entry_requirements = list("Time" = "day")
 
 /obj/structure/dungeon_entry
 	name = "The Tomb of Matthios"
