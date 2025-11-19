@@ -421,6 +421,22 @@
 	created_item = /obj/item/weapon/sword/long/greatsword/zwei
 	craftdiff = 3
 
+/datum/anvil_recipe/weapons/iron/flamberge
+	name = "Flamberge (+Bar x2)"
+	recipe_name = "a Flamberge"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = /obj/item/weapon/sword/long/greatsword/flamberge
+	craftdiff = 3
+
+/datum/anvil_recipe/weapons/iron/claymore
+	name = "Iron Claymore (+Bar x2)"
+	recipe_name = "a Iron Claymore"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = /obj/item/weapon/sword/long/greatsword/ironclaymore
+	craftdiff = 3
+
 /datum/anvil_recipe/weapons/iron/elvenclub
 	name = "Elven Warclub"
 	recipe_name = "a Warclub"
@@ -697,6 +713,22 @@
 	appro_skill = /datum/skill/craft/weaponsmithing
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/weapon/sword/long/greatsword
+	craftdiff = 4
+
+/datum/anvil_recipe/weapons/steel/flamberge
+	name = "Steel Flamberge (+Bar x2)"
+	recipe_name = "a Flamberge"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/long/greatsword/steelflamberge
+	craftdiff = 4
+
+/datum/anvil_recipe/weapons/steel/claymore
+	name = "Steel Claymore (+Bar x2)"
+	recipe_name = "a Steel Claymore"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/weapon/sword/long/greatsword/steelclaymore
 	craftdiff = 4
 
 /datum/anvil_recipe/weapons/silver/noble_sword_scabbard
