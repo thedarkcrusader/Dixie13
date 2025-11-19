@@ -165,7 +165,7 @@
 
 /obj/item/contraption/wood_metalizer
 	name = "wood metalizer"
-	desc = "A creation of genious or insanity. This cursed contraption is somehow able to turn wood into metal."
+	desc = "A creation of genius or insanity. This cursed contraption is somehow able to turn wood into metal."
 	icon_state = "metalizer"
 	on_icon = "metalizer_flick"
 	off_icon = "metalizer_off"

@@ -236,7 +236,7 @@
 /// Book Types:
 /obj/item/book/granter/spellbook/horrible	//makeable with magic stones (bad quality ones)
 	name = "poorly made tome of the arcyne"
-	desc = "A poorly made book,  it barely glows with arcyne and has only small notes on arcyne symbols."
+	desc = "A poorly made book, it barely glows with arcyne and has only small notes on arcyne symbols."
 	bookquality = 1
 	sellprice = 15
 
@@ -248,13 +248,13 @@
 
 /obj/item/book/granter/spellbook/apprentice	//apprentices get made with obsidian
 	name = "apprentice tome of the arcyne"
-	desc = "A carefully made book,  faintly glowing with arcyne and half filled with notes and theory on arcyne symbols."
+	desc = "A carefully made book, faintly glowing with arcyne and half filled with notes and theory on arcyne symbols."
 	bookquality = 3
 	sellprice = 75
 
 /obj/item/book/granter/spellbook/adept	//refugee mages &normal loot
 	name = "adept tome of the arcyne"
-	desc = "A well made book,  it shines moderately with arcyne light. It has been filled with notes of varying degrees on the arcyne "
+	desc = "A well-made book, it shines moderately with arcyne light. It has been filled with notes of varying degrees on the arcyne "
 	bookquality = 4
 	sellprice = 150
 
@@ -272,7 +272,7 @@
 
 /obj/item/book/granter/spellbook/legendary	//max tier lootmade item
 	name = "legendary tome of the arcyne"
-	desc = "An incredible book that gives off glowing arcyne motes,  it is filled with runes and arcyne theories that is hard for even masters of arcyne to understand. The arcyne script glows and practically whispers from the page.."
+	desc = "An incredible book that gives off glowing arcyne motes, it is filled with runes and arcyne theories that is hard for even masters of arcyne to understand. The arcyne script glows and practically whispers from the page.."
 	bookquality = 12
 	sellprice = 400
 

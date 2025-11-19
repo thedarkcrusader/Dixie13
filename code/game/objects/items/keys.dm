@@ -750,7 +750,7 @@
 // grenchensnacker
 /obj/item/key/porta
 	name = "strange key"
-	desc = "Was this key enchanted by a locksmith..?"
+	desc = "Was this key enchanted by a locksmith...?"
 	icon_state = "eyekey"
 	lockids = list("porta")
 

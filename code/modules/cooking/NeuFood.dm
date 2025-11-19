@@ -547,7 +547,7 @@
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
 	name = "salt"
-	desc = "A survialist's best friend, great for preserving meat."
+	desc = "A survivalist's best friend, great for preserving meat."
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/flour = 1)

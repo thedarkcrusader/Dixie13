@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/reagent_containers/food/snacks/fish
 	abstract_type = /obj/item/reagent_containers/food/snacks/fish
 	name = "fish"
-	desc = "very bland"
+	desc = "Very bland."
 	desc = ""
 	icon_state = "carpcom"
 	icon = 'icons/roguetown/misc/fish.dmi'

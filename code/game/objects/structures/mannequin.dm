@@ -721,7 +721,7 @@
 ////Subtypes/////
 /obj/structure/mannequin/male
 	name = "mannequin"
-	desc = "Its unsettlingly still."
+	desc = "It's unsettlingly still."
 	icon_state = "man"
 
 /*

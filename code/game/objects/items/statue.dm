@@ -69,7 +69,7 @@
 
 /obj/item/statue/iron/deformed
 	name = "deformed iron statue"
-	desc = "Theres something strange about this statue..."
+	desc = "There's something strange about this statue..."
 	icon_state = "istatue1"
 	smeltresult = /obj/item/ore/iron
 	sellprice = 10

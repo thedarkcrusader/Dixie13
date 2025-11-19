@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/undirected/touch/bladeofpsydon
 	name = "Blade of Psydon"
-	desc = "The manifestation of the higher concept of a blade itself. Said to be drawn upon from Noc's tresury of wisdom, each casting a poor facsimile of the perfect weapon They hold."
+	desc = "The manifestation of the higher concept of a blade itself. Said to be drawn upon from Noc's treasury of wisdom, each casting a poor facsimile of the perfect weapon They hold."
 	button_icon_state = "boundkatar"
 	can_cast_on_self = TRUE
 

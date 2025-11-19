@@ -195,7 +195,7 @@
 
 /obj/item/reagent_containers/food/snacks/cooked/royal_truffle
 	name = "royal truffles"
-	desc = "The height of decadence, a precious truffle pig, turned into a amusing meal, served on a bed of its beloved golden truffles."
+	desc = "The height of decadence, a precious truffle pig, turned into an amusing meal, served on a bed of its beloved golden truffles."
 	icon_state = "royaltruffles"
 	base_icon_state = "royaltruffles"
 	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+COOKED_MEAT_NUTRITION+2)
@@ -216,7 +216,7 @@
 /*	.............   Frything   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/strange
 	name = "fried strange meat"
-	desc = "Whatever it was, its roasted."
+	desc = "Whatever it was, it's roasted."
 	icon_state = "fried_strange"
 	base_icon_state = "fried_strange"
 	list_reagents = list(/datum/reagent/consumable/nutriment = RAWMEAT_NUTRITION) // raw meat nutrition but without getting sick
@@ -230,7 +230,7 @@
 /*	.............   Sausage & Wiener   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/sausage
 	name = "sausage"
-	desc = "Delicious flesh stuffed in a intestine casing."
+	desc = "Delicious flesh stuffed in an intestine casing."
 	icon_state = "wiener"
 	base_icon_state = "wiener"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION)

@@ -7,7 +7,7 @@
 	\n\n\
 	A fellow soldier had been given the title of Forest Warden for their valorant efforts \
 	and they've plucked you from one dangerous position into another. \
-	Atleast with your battle-family by your side, you will never die alone."
+	At least with your battle-family by your side, you will never die alone."
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_FORGUARD
@@ -85,7 +85,7 @@
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) //given to every class so they can atleast repair their armor.
+	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) //given to every class so they can at least repair their armor.
 	H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)

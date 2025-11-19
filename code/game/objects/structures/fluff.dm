@@ -506,7 +506,7 @@
 //vampire
 /obj/structure/fluff/wallclock/vampire
 	name = "ancient clock"
-	desc = "This appears to be a clock, but a pair of red lights blink in a recess where the face ought be."
+	desc = "This appears to be a clock, but a pair of red lights blink in a recess where the face ought to be."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "wallclockvampire"
 	density = FALSE

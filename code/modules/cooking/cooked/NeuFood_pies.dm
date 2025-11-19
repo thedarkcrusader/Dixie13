@@ -301,7 +301,7 @@
 
 /obj/item/reagent_containers/food/snacks/foodbase/handpieraw
 	name = "raw handpie"
-	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
+	desc = "The dwarven take on pies, called pierogi in their dialect. A fistful of food to stand the test of time."
 	icon_state = "handpie_raw"
 	cooked_smell = /datum/pollutant/food/pie_base
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
@@ -344,7 +344,7 @@
 
 /obj/item/reagent_containers/food/snacks/handpie
 	name = "handpie"
-	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time. This is pretty dry."
+	desc = "The dwarven take on pies, called pierogi in their dialect. A fistful of food to stand the test of time. This is pretty dry."
 	icon_state = "handpie"
 	bitesize = 4
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION)
@@ -353,7 +353,7 @@
 	faretype = FARE_FINE
 
 /obj/item/reagent_containers/food/snacks/handpie/good
-	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
+	desc = "The dwarven take on pies, called pierogi in their dialect. A fistful of food to stand the test of time."
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 4
 	tastes = list("crispy dough" = 1)

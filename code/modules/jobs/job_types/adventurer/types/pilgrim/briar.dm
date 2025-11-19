@@ -72,7 +72,7 @@
 		devotion.grant_to(H)
 
 /datum/outfit/adventurer/briar
-	var/tutorial = "<br><br><font color='#44720e'><span class='bold'>You know well how to make a shrine to Dendor, wood, thorns, and the head of a favored animal.<br><br>Choose a path stinging, devouring or growing, and make your sacrifices...<br><br>Remember - Dendor will only grant special powers from Blessing the first time you do recieve it, and only those mastering all his Miracles can unlock their full potential.  </span></font><br><br>"
+	var/tutorial = "<br><br><font color='#44720e'><span class='bold'>You know well how to make a shrine to Dendor, wood, thorns, and the head of a favored animal.<br><br>Choose a path stinging, devouring or growing, and make your sacrifices...<br><br>Remember - Dendor will only grant special powers from Blessing the first time you do receive it, and only those mastering all his Miracles can unlock their full potential.  </span></font><br><br>"
 
 /datum/outfit/adventurer/briar/post_equip(mob/living/carbon/human/H)
 	..()

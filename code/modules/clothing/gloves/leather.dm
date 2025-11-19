@@ -30,7 +30,7 @@
 
 /obj/item/clothing/gloves/leather/masterwork
 	name = "masterwork leather gloves"
-	desc = "These gloves are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
+	desc = "These gloves are a craftsmanship marvel. Made with the finest leather. Strong, nimble, reliable."
 	max_integrity = INTEGRITY_STRONG
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "piercing" = 0, "fire" = 0, "acid" = 0)

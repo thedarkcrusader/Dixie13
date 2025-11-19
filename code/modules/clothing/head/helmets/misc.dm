@@ -508,7 +508,7 @@
 //............... Feldshers Cage ............... //
 /obj/item/clothing/head/helmet/feld
 	name = "feldsher's cage"
-	desc = "To protect me from the maggets and creachers I treat."
+	desc = "To protect me from the maggots and creachers I treat."
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	icon_state = "headcage"
 	worn_x_dimension = 64

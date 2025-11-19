@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(mana_fountains)
 		if(initial(fueluse) > 0)
 			if(fueluse > 0)
 				fueluse = max(fueluse - 10, 0)
-			if(fueluse == 0)//It's litterally powered by arcane lava. It's not gonna run out of fuel.
+			if(fueluse == 0)//It's literally powered by arcane lava. It's not gonna run out of fuel.
 				fueluse = 4000
 		update_appearance(UPDATE_ICON_STATE)
 

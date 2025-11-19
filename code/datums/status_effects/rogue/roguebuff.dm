@@ -882,7 +882,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/nocblessed
 	name = "Blessed by Noc"
-	desc = "I have been blessed by Noc since i was born, with his help i can see and think better than anyone."
+	desc = "I have been blessed by Noc since I was born, with his help I can see and think better than anyone."
 	icon_state = "intelligence"
 
 

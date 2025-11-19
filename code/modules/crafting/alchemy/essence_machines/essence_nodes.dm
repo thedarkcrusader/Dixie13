@@ -195,7 +195,7 @@
 
 /obj/item/essence_node_portable
 	name = "essence node"
-	desc = "A large amount of essence still wrapped within it's enviormental shell. It still beats with alchemical energy."
+	desc = "A large amount of essence still wrapped within its environmental shell. It still beats with alchemical energy."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "essence"
 	w_class = WEIGHT_CLASS_BULKY

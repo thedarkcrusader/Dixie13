@@ -709,7 +709,7 @@
 
 /obj/item/reagent_containers/food/snacks/strawbycake_cooked
 	name = "strawberry cake"
-	desc = "Tradidtionally made with sugarbeet frosting, an elvish treat as old as time. Commonly served at elf weddings."
+	desc = "Traditionally made with sugarbeet frosting, an elvish treat as old as time. Commonly served at elf weddings."
 	icon_state = "strawberrycake"
 	dropshrink = 0.8
 	slices_num = 6
@@ -902,7 +902,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake
 	name = "griddlecake"
-	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevelance no one quite knows its origin."
+	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevalence no one quite knows its origin."
 	bitesize = 6
 	icon_state = "griddlecake"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
@@ -920,7 +920,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake/lemon
 	name = "lemon griddlecake"
-	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevelance no one quite knows its origin."
+	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevalence no one quite knows its origin."
 	bitesize = 6
 	icon_state = "griddlecakelemon"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
@@ -939,7 +939,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake/apple
 	name = "apple griddlecake"
-	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevelance no one quite knows its origin."
+	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevalence no one quite knows its origin."
 	bitesize = 6
 	icon_state = "griddlecakeapple"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
@@ -958,7 +958,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake/berry
 	name = "jacksberry griddlecake"
-	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevelance no one quite knows its origin."
+	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevalence no one quite knows its origin."
 	bitesize = 6
 	icon_state = "griddlecakeberry"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
@@ -975,7 +975,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake/berry_poison
 	name = "jacksberry griddlecake"
-	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevelance no one quite knows its origin."
+	desc = "Enjoyed by mercenaries throughout Psydonia, though despite its prevalence no one quite knows its origin."
 	bitesize = 6
 	icon_state = "griddlecakeberry"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR, /datum/reagent/berrypoison = 12)

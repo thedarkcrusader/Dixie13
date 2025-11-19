@@ -125,7 +125,7 @@
 
 /obj/item/clothing/shoes/boots/leather/masterwork
 	name = "masterwork leather boots"
-	desc = "These boots are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
+	desc = "These boots are a craftsmanship marvel. Made with the finest leather. Strong, nimble, reliable."
 	max_integrity = INTEGRITY_STANDARD + 100
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "piercing" = 0,"fire" = 0, "acid" = 0)
@@ -162,7 +162,7 @@
 
 /obj/item/clothing/shoes/boots/clothlinedanklets
 	name = "cloth lined anklets"
-	desc = "Cloth anklets lined with with fibers, foot remains bare."
+	desc = "Cloth anklets lined with fibers, foot remains bare."
 	gender = PLURAL
 	icon_state = "clothlinedanklets"
 	item_state = "furlinedanklets"

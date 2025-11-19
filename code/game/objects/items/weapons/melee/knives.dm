@@ -227,7 +227,7 @@
 	force = DAMAGE_DAGGER + 2
 	max_integrity = INTEGRITY_POOR
 	name = "steel scissors"
-	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
+	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron counterpart."
 	icon_state = "sscissors"
 	melting_material = /datum/material/steel
 	melt_amount = 75
@@ -304,7 +304,7 @@
 /obj/item/weapon/knife/dagger/kukri/iron
 	name = "iron kukri"
 	icon_state = "kukri_iron"
-	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. Its design makes it great for chopping through vegetation and other obstacles."
 	force = DAMAGE_DAGGER+1
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 
@@ -360,7 +360,7 @@
 /obj/item/weapon/knife/dagger/kukri/steel
 	name = "steel kukri"
 	icon_state = "kukri_steel"
-	desc = "A hefty knife that originated in the Southeastern reaches of Faience. It's design makes it great for chopping through vegetation and other obstacles."
+	desc = "A hefty knife that originated in the Southeastern reaches of Faience. Its design makes it great for chopping through vegetation and other obstacles."
 	force = DAMAGE_DAGGER+1
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
 
@@ -604,7 +604,7 @@
 
 /obj/item/weapon/knife/stone/kukri
 	name = "joapstone kukri"
-	desc = "A kukri made out of joapstone. Its more of a ceremonial piece than it is an implement of war, its somewhat fragile. Be gentle with it."
+	desc = "A kukri made out of joapstone. It's more of a ceremonial piece than it is an implement of war, it's somewhat fragile. Be gentle with it."
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "kukri_jade"
 	max_integrity = INTEGRITY_POOR - 100
@@ -615,7 +615,7 @@
 
 /obj/item/weapon/knife/stone/opal
 	name = "opaloise knife"
-	desc = "A beautiful knife carved out of opaloise. Its not intended for combat. It's presence is vital in some Crimson Elven ceremonies."
+	desc = "A beautiful knife carved out of opaloise. It's not intended for combat. Its presence is vital in some Crimson Elven ceremonies."
 	icon = 'icons/roguetown/gems/gem_opal.dmi'
 	icon_state = "knife_opal"
 	max_integrity = INTEGRITY_POOR - 100

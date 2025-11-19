@@ -34,7 +34,7 @@
 
 /obj/structure/innouous_rock
 	name = "mana crystal deposit"
-	desc = "These large mana crystals deposit are known to bring fortune to miners who ventures into the deep dark depths of the world."
+	desc = "These large mana crystals deposit are known to bring fortune to miners who venture into the deep dark depths of the world."
 	icon = 'icons/mob/creacher/trolls/troll_cave.dmi'
 	icon_state = "troll_hide"
 	SET_BASE_PIXEL(-16, 0)

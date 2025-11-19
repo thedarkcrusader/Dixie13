@@ -224,12 +224,12 @@
 	icon_state = "amethyst"
 	sellprice = 18
 	arcyne_potency = 25
-	desc = "A pink crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
+	desc = "A pink crystal, it surges with magical energy, yet its artificial nature means it's worth little."
 	attuned = /datum/attunement/arcyne
 
 /obj/item/mimictrinket
 	name = "mimic trinket"
-	desc = "A small mimic, imbued with the arcyne to make it docile. It can transform into most things it touchs. "
+	desc = "A small mimic, imbued with the arcyne to make it docile. It can transform into most things it touches."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "mimic_trinket"
 	possible_item_intents = list(/datum/intent/use)

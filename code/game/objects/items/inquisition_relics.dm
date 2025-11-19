@@ -1,7 +1,7 @@
 
 /obj/structure/closet/crate/chest/inqreliquary
 	name = "oratorium reliquary"
-	desc = "A foreboding red chest with a intricate lock design. It seems to only fit a very specific key. Choose wisely."
+	desc = "A foreboding red chest with an intricate lock design. It seems to only fit a very specific key. Choose wisely."
 	icon_state = "chestweird1"
 	base_icon_state = "chestweird1"
 
@@ -14,7 +14,7 @@
 // Reliquary Box and key - The Box Which contains these
 /obj/structure/reliquarybox
 	name = "oratorium reliquary"
-	desc = "A foreboding red chest with a intricate lock design. It seems to only fit a very specific key. Choose wisely."
+	desc = "A foreboding red chest with an intricate lock design. It seems to only fit a very specific key. Choose wisely."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "chestweird1"
 	anchored = TRUE
@@ -195,7 +195,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/censerbuff
 	name = "Inspired by Psydon."
-	desc = "The lingering blessing of Pyson tells me to ENDURE."
+	desc = "The lingering blessing of Psydon tells me to ENDURE."
 	icon_state = "censerbuff"
 
 /datum/status_effect/buff/censerbuff

@@ -120,7 +120,7 @@
 //................ Arming Jacket ............... //
 /obj/item/clothing/armor/gambeson/arming
 	name = "arming jacket"
-	desc = "Thick quilted cloth, a gambesson for the discerning knight. it is meant to be used under heavier armor."
+	desc = "Thick quilted cloth, a gambeson for the discerning knight. it is meant to be used under heavier armor."
 	icon_state = "arming"
 	sellprice = VALUE_GAMBESSON+BONUS_VALUE_MODEST
 

@@ -467,7 +467,7 @@
 
 /datum/blueprint_recipe/wall/pipe
 	name = "Pipe Wall"
-	desc = "A wall with a pipe embeded into it."
+	desc = "A wall with a pipe embedded into it."
 	required_materials = list(
 		/obj/item/natural/brick = 2,
 		/obj/item/ingot/bronze = 1,

@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(patron_sound_themes, list(
 /datum/patron/divine/ravox
 	name = RAVOX
 	domain = "God of Warfare, Justice, and Bravery"
-	desc = "Crafted from the the blade of Psydon, a champion of all who seek righteousness for themselves and others."
+	desc = "Crafted from the blade of Psydon, a champion of all who seek righteousness for themselves and others."
 	flaws = "Carelessness, Aggression, Pride"
 	worshippers = "Warriors, Sellswords, Guardsmen"
 	sins = "Cowardice, Cruelty, Stagnation"

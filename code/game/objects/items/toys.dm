@@ -475,7 +475,7 @@
 
 /obj/item/toy/cards/deck/syndicate
 	name = "cards"
-	desc = "a pack of cards."
+	desc = "A pack of cards."
 	icon_state = "deck_syndicate_full"
 	deckstyle = "syndicate"
 	card_hitsound = 'sound/blank.ogg'
