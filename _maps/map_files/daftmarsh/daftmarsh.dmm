@@ -631,6 +631,14 @@
 /obj/structure/fake_machine/hailerboard,
 /turf/open/floor/cobblerock,
 /area/outdoors/town)
+"aEb" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/landmark/stall,
+/turf/open/floor/woodturned,
+/area/outdoors/town)
 "aEc" = (
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/cobble,
@@ -945,6 +953,14 @@
 	},
 /turf/open/floor/carpet,
 /area/indoors/town/tavern)
+"aUt" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/landmark/stall,
+/turf/open/floor/twig,
+/area/outdoors/town)
 "aUF" = (
 /obj/structure/fluff/nest{
 	name = "patch of straw"
@@ -1390,6 +1406,14 @@
 /obj/structure/flora/grass/bush/wall,
 /turf/open/floor/cobblerock,
 /area/under/cavewet)
+"bqy" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/structure/closet/crate/chest/wicker,
+/turf/open/floor/wood,
+/area/outdoors/town)
 "bqO" = (
 /obj/machinery/light/fueled/hearth,
 /obj/machinery/light/fueled/torchholder/c,
@@ -9984,6 +10008,11 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church/inquisition)
+"jhm" = (
+/obj/structure/fluff/railing/wood,
+/obj/effect/landmark/stall,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors/town)
 "jhn" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/water/bath,
@@ -10973,6 +11002,14 @@
 /obj/item/fishing/lure,
 /turf/open/floor/wood,
 /area/indoors/town)
+"kdC" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/landmark/stall,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors/town)
 "kdP" = (
 /obj/structure/ladder,
 /obj/structure/fake_machine/atm,
@@ -13018,6 +13055,11 @@
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/twig,
 /area/indoors/town/bath)
+"lRT" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/closet/crate/chest/wicker,
+/turf/open/floor/woodturned,
+/area/outdoors/town)
 "lSz" = (
 /obj/effect/landmark/start/orphan,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -14811,6 +14853,14 @@
 /obj/structure/fake_machine/atm,
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors/town)
+"nBN" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors/town)
 "nCz" = (
 /obj/structure/ladder,
 /turf/open/floor/wood/nosmooth,
@@ -15202,14 +15252,6 @@
 	},
 /turf/open/floor/wood,
 /area/under/town/basement)
-"nYb" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "End of the Cargo Docks";
-	name = "End of the Cargo Docks";
-	completion_range = 5
-	},
-/turf/open/floor/twig,
-/area/outdoors/town)
 "nYo" = (
 /obj/structure/flora/grass/bush/wall,
 /turf/open/floor/grass/red,
@@ -16183,6 +16225,16 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/outdoors/town/roofs)
+"oUS" = (
+/obj/structure/fluff/railing/wood,
+/obj/machinery/light/fueled/lanternpost/fixed,
+/obj/effect/landmark/bounty_location{
+	location_name = "End of the Cargo Docks";
+	name = "End of the Cargo Docks";
+	completion_range = 5
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors/town)
 "oWq" = (
 /obj/structure/bookcase/random/legends,
 /obj/machinery/light/fueled/wallfire/candle,
@@ -17370,6 +17422,14 @@
 "qcN" = (
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
+"qcY" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/turf/open/floor/wood,
+/area/outdoors/town)
 "qdw" = (
 /obj/structure/closet/crate/chest/wicker,
 /turf/open/floor/wood,
@@ -23670,6 +23730,11 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/churchmarble,
 /area/indoors/town/church)
+"wrI" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/turf/open/floor/woodturned/nosmooth,
+/area/outdoors/town)
 "wrS" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /obj/structure/closet/crate/chest/neu,
@@ -25539,6 +25604,11 @@
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/tile,
 /area/indoors/town/manor)
+"ygX" = (
+/obj/structure/fluff/railing/wood,
+/obj/effect/landmark/stall,
+/turf/open/floor/woodturned,
+/area/outdoors/town)
 "yhd" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/weapon/surgery/hemostat,
@@ -111642,7 +111712,7 @@ pin
 not
 iHi
 iHi
-gIB
+oUS
 pin
 pin
 pin
@@ -112245,10 +112315,10 @@ pin
 pin
 pin
 pin
-cqq
+kdC
 iHi
 iHi
-ncZ
+jhm
 pin
 pin
 pin
@@ -112447,10 +112517,10 @@ pin
 pin
 pin
 pin
-cyS
+aEb
 oQv
 oQv
-ezQ
+ygX
 pin
 pin
 pin
@@ -112650,7 +112720,7 @@ pin
 pin
 pin
 not
-nYb
+sQG
 sQG
 gIB
 pin
@@ -112851,10 +112921,10 @@ pin
 pin
 pin
 pin
-lOv
+aUt
 iHi
 ogF
-hjR
+wrI
 pin
 pin
 pin
@@ -113053,10 +113123,10 @@ pin
 pin
 pin
 pin
-mvL
+qcY
 wtg
 oQv
-ezQ
+lRT
 pin
 pin
 pin
@@ -113255,10 +113325,10 @@ pin
 pin
 pin
 pin
-mvL
+bqy
 wtg
 iHi
-ncZ
+jhm
 pin
 pin
 pin
@@ -113457,10 +113527,10 @@ pin
 pin
 pin
 pin
-cqq
+nBN
 oQv
 oQv
-ncZ
+jhm
 pin
 pin
 pin
