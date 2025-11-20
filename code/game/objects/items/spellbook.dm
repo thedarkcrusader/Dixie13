@@ -1,7 +1,7 @@
 /**
  * Spellbooks for learning arcane points.
  * Difficult to learn by default, has multipliers for weed, gems and rituals.
- * Inherits most of it's functionality from default granters, however also has some copy paste from roguebooks for parity.
+ * Inherits most of its functionality from default granters, however also has some copy paste from roguebooks for parity.
  */
 
 /obj/item/book/granter/spellbook
@@ -439,7 +439,7 @@
 								qdel(src)
 						else
 							user.visible_message(span_warning("[user] sets down [the_rock] upon the surface of [src] and watches expectantly. Without warning, the rock violently pops like a squashed gourd!"), \
-							span_notice("No! My precious stone! It musn't have wanted to share its mysteries with me..."))
+							span_notice("No! My precious stone! It mustn't have wanted to share its mysteries with me..."))
 							user.electrocute_act(5, src)
 							qdel(P)
 		else

@@ -226,7 +226,7 @@
 // -------------- BERRY PIE -----------------
 /obj/item/reagent_containers/food/snacks/pie/cooked/berry
 	name = "berry pie"
-	desc = "A sweet pie made from jackberries. A popular choice for banquets among peasants, and enjoyed by all."
+	desc = "A sweet pie made from jacksberries. A popular choice for banquets among peasants, and enjoyed by all."
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRUITPIE_NUTRITION)
 	slices_num = 4
 	tastes = list("butterdough" = 1, "berries" = 1)

@@ -142,7 +142,7 @@
 
 /obj/item/key/clinic
 	name = "clinic key"
-	desc = "The Phyisickers key, for the Clinic doors."
+	desc = "The Physicker's key, for the Clinic doors."
 	icon_state = "mazekey"
 	lockids = list(ACCESS_CLINIC)
 

@@ -175,7 +175,7 @@
 
 /obj/item/clothing/shoes/boots/armor/vampire
 	name = "ancient ceremonial boots"
-	desc = "Antediluvian boots with ceremonial ornamets from ages past."
+	desc = "Antediluvian boots with ceremonial ornaments from ages past."
 	icon_state = "vboots"
 	item_state = "vboots"
 	prevent_crits = ALL_CRITICAL_HITS_VAMP

@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(patron_sound_themes, list(
 
 /datum/patron/divine/xylix
 	name = XYLIX
-	domain = "Diety of Trickery, Freedom, and Inspiration"
+	domain = "Deity of Trickery, Freedom, and Inspiration"
 	desc = "Crafted from the silver tongue of Psydon. Xylix is a force of change and deceit, yet allows little known of their gender let alone presence."
 	flaws = "Petulance, Deception, Gambling-Prone"
 	worshippers = "Cheats, Performers, The Hopeless"

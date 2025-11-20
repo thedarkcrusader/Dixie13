@@ -27,7 +27,7 @@
 
 /obj/item/melee/touch_attack/bladeofpsydon
 	name = "\improper arcyne push dagger"
-	desc = "This blade throbs, translucent and iridiscent, blueish arcyne energies running through it's translucent surface..."
+	desc = "This blade throbs, translucent and iridescent, blueish arcyne energies running through its translucent surface..."
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "katar_bound"
 	force = 24

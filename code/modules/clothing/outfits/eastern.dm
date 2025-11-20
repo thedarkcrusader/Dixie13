@@ -28,7 +28,7 @@
 
 /obj/item/clothing/cloak/psyaltrist
 	name = "psyalter's stole"
-	desc = "A silk stole embroidered with silver fillagree and with concealed pockets in its back worn over a hymnal-scroll. It is worn as the traditional garb of a graduate of the choir leaders of the cathedrals of Grenzelhoft, and is a symbol of their station."
+	desc = "A silk stole embroidered with silver filigree and with concealed pockets in its back worn over a hymnal-scroll. It is worn as the traditional garb of a graduate of the choir leaders of the cathedrals of Grenzelhoft, and is a symbol of their station."
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	icon_state = "psaltertabard"
 	item_state = "psaltertabard"
@@ -304,7 +304,7 @@
 
 /obj/item/clothing/shirt/undershirt/easttats
 	name = "bouhoi bujeog tattoos"
-	desc = "A mystic style of tattoos used to honor the kin that fell generations ago, an sign of companionship and secretive brotherhood. These are styled into the shape of clouds, created by a mystical ink which shifts and moves in ripples like a pond to harden where your skin is struck. It's movement causes you to shudder."
+	desc = "A mystic style of tattoos used to honor the kin that fell generations ago, a sign of companionship and secretive brotherhood. These are styled into the shape of clouds, created by a mystical ink which shifts and moves in ripples like a pond to harden where your skin is struck. Its movement causes you to shudder."
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

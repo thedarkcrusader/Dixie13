@@ -467,7 +467,7 @@
 	name = "War Veteran"
 	greet_text = span_boldwarning("I have fought in the goblin wars.. albeit at a cost.")
 	weight = 25
-	req_text = "Be middle aged or old"
+	req_text = "Be middle-aged or old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
 /datum/special_trait/war_veteran/on_apply(mob/living/carbon/human/character, silent)

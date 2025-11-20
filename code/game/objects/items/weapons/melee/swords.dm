@@ -575,7 +575,7 @@
 
 /obj/item/weapon/sword/rapier/psy/relic
 	name = "retribution"
-	desc = "A rapier as swift as the inquisitors of the Ordo Venetari. Strike evil at its heart. Purge the unholy through the slightest window it offers, in Psydon’s name."
+	desc = "A rapier as swift as the inquisitors of the Ordo Venatari. Strike evil at its heart. Purge the unholy through the slightest window it offers, in Psydon’s name."
 
 /obj/item/weapon/sword/rapier/dec
 	icon_state = "decrapier"
@@ -941,7 +941,7 @@
 
 /obj/item/weapon/sword/long/ravox
 	name = "duel settler"
-	desc = "The tenets of ravoxian duels are enscribed upon the blade of this sword."
+	desc = "The tenets of Ravoxian duels are inscribed upon the blade of this sword."
 	icon = 'icons/roguetown/weapons/64/patron.dmi'
 	icon_state = "ravoxflamberge"
 	force = DAMAGE_SWORD + 2

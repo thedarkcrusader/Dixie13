@@ -30,7 +30,7 @@
 
 /obj/item/clothing/pants/trou/leather/splint
 	name = "splint plate trousers"
-	desc = "Affordable armored pants for regular soldiers, they seem simple and their craftmanship is solid, makes sure all stays in place with a plated codpiece."
+	desc = "Affordable armored pants for regular soldiers, they seem simple and their craftsmanship is solid, makes sure all stays in place with a plated codpiece."
 	icon_state = "splintlegs"
 	armor = ARMOR_MAILLE_IRON
 	max_integrity = INTEGRITY_STANDARD

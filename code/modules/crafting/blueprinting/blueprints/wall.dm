@@ -457,7 +457,7 @@
 
 /datum/blueprint_recipe/wall/underbrick
 	name = "Underbrick Wall"
-	desc = "A large stoneblock wall."
+	desc = "A large stone-block wall."
 	required_materials = list(
 		/obj/item/natural/stoneblock = 4,
 	)

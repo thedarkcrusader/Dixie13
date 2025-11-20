@@ -4,7 +4,7 @@
 	name = "infernal watcher"
 	icon_state = "watcher"
 	icon_living = "watcher"
-	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it was been pointless to keep count."
+	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it has been pointless to keep count."
 	tier = 3
 	icon_dead = "vvd"
 	gender = MALE

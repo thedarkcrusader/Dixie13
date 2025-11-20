@@ -46,7 +46,7 @@
 
 /obj/item/clothing/gloves/leather/phys
 	name = "physicker's gloves"
-	desc = "Improved grip for wielding disembowled organs."
+	desc = "Improved grip for wielding disemboweled organs."
 	icon_state = "surggloves"
 
 /obj/item/clothing/gloves/leather/apothecary

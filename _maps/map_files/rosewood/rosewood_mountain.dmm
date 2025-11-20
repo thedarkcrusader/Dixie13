@@ -2527,7 +2527,7 @@
 /area/under/mountains/anvil/lower)
 "uu" = (
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus{
-	name = "Guardian Collossus"
+	name = "Guardian Colossus"
 	},
 /turf/open/floor/carpet/royalblack,
 /area/under/mountains/anvil/dungeon/lower)
@@ -5206,7 +5206,7 @@
 /area/under/mountains/anvil/dungeon/lower)
 "PP" = (
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus{
-	name = "Guardian Collossus"
+	name = "Guardian Colossus"
 	},
 /turf/open/floor/carpet/purple,
 /area/under/mountains/anvil/dungeon)
@@ -5382,7 +5382,7 @@
 /area/under/mountains/anvil/dungeon/lower)
 "QV" = (
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus{
-	name = "Guardian Collossus"
+	name = "Guardian Colossus"
 	},
 /turf/open/floor/cobblerock,
 /area/under/mountains/anvil/upper)

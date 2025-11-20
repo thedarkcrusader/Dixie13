@@ -11,7 +11,7 @@
 
 /obj/item/carvedgem/shell
 	name = "shell base"
-	desc = "if you encountered this, its a bug!"
+	desc = "if you encountered this, it's a bug!"
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "raw_shell"
 	grid_height = 32
@@ -164,7 +164,7 @@
 //.....................Rose......................//
 /obj/item/carvedgem/rose/
 	name = "rose base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_rose.dmi'
 	icon_state = "raw_rose"
 	grid_height = 32
@@ -319,7 +319,7 @@
 
 /obj/item/carvedgem/jade
 	name = "joapstone base"
-	desc =  "if you are seeing this, its a bug, report it to coders"
+	desc =  "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "cutgem_jade"
 	grid_height = 32
@@ -457,7 +457,7 @@
 
 /obj/item/carvedgem/onyxa
 	name = "onyxa base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_onyxa.dmi'
 	icon_state = "cutgem_onyxa"
 	grid_height = 32
@@ -603,7 +603,7 @@
 
 /obj/item/carvedgem/turq
 	name = "ceruleabaster base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_turq.dmi'
 	icon_state = "cutgem_turq"
 	grid_height = 32
@@ -750,7 +750,7 @@
 
 /obj/item/carvedgem/coral
 	name = "aoetal base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_coral.dmi'
 	icon_state = "cutgem_coral"
 	grid_height = 32
@@ -896,7 +896,7 @@
 
 /obj/item/carvedgem/amber
 	name = "petriamber base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_amber.dmi'
 	icon_state = "cutgem_amber"
 	grid_height = 32
@@ -1042,7 +1042,7 @@
 
 /obj/item/carvedgem/opal
 	name = "opaloise base"
-	desc = "if you are seeing this, its a bug, report it to coders"
+	desc = "if you are seeing this, it's a bug, report it to coders"
 	icon = 'icons/roguetown/gems/gem_opal.dmi'
 	icon_state = "cutgem_opal"
 	grid_height = 32
@@ -1170,7 +1170,7 @@
 
 /obj/item/carvedgem/opal/crab
 	name = "opaloise crab sculpture"
-	desc = "A large sculpture of a crab carved out of opaloise. Don't stick your fingers in its pincers, thats a terrible idea."
+	desc = "A large sculpture of a crab carved out of opaloise. Don't stick your fingers in its pincers, that's a terrible idea."
 	icon_state = "crab_opal"
 	grid_height = 64
 	grid_width = 64

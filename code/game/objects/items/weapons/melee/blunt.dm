@@ -622,7 +622,7 @@
 	force_wielded = DAMAGE_CLUB_WIELD
 	slowdown = 1
 	name = "copper warclub"
-	desc = "A two-handed club, decorated with a crown of spikes. A barbaric besign, good enough to be used as a weapon."
+	desc = "A two-handed club, decorated with a crown of spikes. A barbaric design, good enough to be used as a weapon."
 	icon_state = "cwarclub"
 	melting_material = /datum/material/copper
 	melt_amount = 75

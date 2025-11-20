@@ -105,7 +105,7 @@
 // Ranger, bows and knives
 /datum/job/advclass/forestguard/ranger
 	title = "Forest Ranger"
-	tutorial = "In the Wars you were always one of the fastest, aswell as one of the frailest in the platoon. \ Your trusty bow has served you well- of course, none you've set your sights on have found the tongue to disagree."
+	tutorial = "In the Wars you were always one of the fastest, as well as one of the frailest in the platoon. \ Your trusty bow has served you well- of course, none you've set your sights on have found the tongue to disagree."
 	outfit = /datum/outfit/forestguard/ranger
 	category_tags = list(CTAG_FORGARRISON)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
