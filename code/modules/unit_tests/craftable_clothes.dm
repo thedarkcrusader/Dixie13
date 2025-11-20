@@ -67,9 +67,7 @@ abstract types are automatically excluded.
 		/obj/item/clothing/armor/plate/fluted/ornate/ordinator, //inqport
 		/obj/item/clothing/armor/plate/fluted,
 		/obj/item/clothing/cloak/templar, //base type
-		/obj/item/clothing/wrists/bracers/naledi, //Inqstuff
-		/obj/item/clothing/shirt/dress/maid/lord, // Lord colors, worldspawn only
-		/obj/item/clothing/armor/gambeson/tailcoat/lord,
+		/obj/item/clothing/wrists/bracers/naledi //Inqstuff
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.
 	/// excludes paths along with their subtypes

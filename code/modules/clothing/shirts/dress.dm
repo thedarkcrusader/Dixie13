@@ -131,6 +131,7 @@
 	detail_color = CLOTHING_DARK_INK
 
 /obj/item/clothing/shirt/dress/maid/lord
+	misc_flags = CRAFTING_TEST_EXCLUDE
 	uses_lord_coloring = LORD_SECONDARY
 
 //................ Servant Gown   ............... //

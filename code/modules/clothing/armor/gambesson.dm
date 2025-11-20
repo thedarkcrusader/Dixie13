@@ -97,6 +97,7 @@
 	armor = ARMOR_PADDED
 
 /obj/item/clothing/armor/gambeson/tailcoat/lord
+	misc_flags = CRAFTING_TEST_EXCLUDE
 	uses_lord_coloring = LORD_SECONDARY
 
 //................ Padded Dress ............... //
