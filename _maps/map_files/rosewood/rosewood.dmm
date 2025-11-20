@@ -710,6 +710,16 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town)
+"asa" = (
+/obj/structure/pottery_lathe,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/turf/open/floor/blocks/newstone,
+/area/under/town/basement)
 "ase" = (
 /obj/structure/rack,
 /obj/item/clothing/cloak/tabard/knight/guard{
@@ -1047,6 +1057,9 @@
 /area/indoors/town/bath)
 "ayR" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
+/obj/structure/handcart{
+	dir = 4
+	},
 /turf/open/floor/dirt,
 /area/outdoors/town)
 "ayW" = (
@@ -1240,8 +1253,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "aEm" = (
-/obj/structure/table/wood/plain,
-/obj/structure/fluff/millstone,
+/obj/machinery/light/fueled/hearth,
+/obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "aEs" = (
@@ -1373,6 +1386,10 @@
 /obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_y = 3;
 	pixel_x = -3
+	},
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town)
@@ -2033,7 +2050,7 @@
 "aXc" = (
 /obj/structure/bars,
 /turf/open/floor/hexstone,
-/area/indoors/town/steward)
+/area/indoors/town/manorgate)
 "aXs" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -2662,6 +2679,7 @@
 "bpk" = (
 /obj/structure/chair/stool,
 /obj/effect/landmark/start/forestguard,
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "bpH" = (
@@ -2708,6 +2726,7 @@
 	pixel_x = 1;
 	pixel_y = -2
 	},
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "bqR" = (
@@ -3767,6 +3786,10 @@
 /area/under/town/basement)
 "bSo" = (
 /obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
+	},
 /turf/open/floor/blocks,
 /area/indoors/town/smithy)
 "bSv" = (
@@ -4414,14 +4437,15 @@
 /area/outdoors/town)
 "cio" = (
 /obj/structure/table/wood/plain,
-/obj/item/cooking/pan{
-	pixel_x = 8
-	},
 /obj/item/weapon/knife/cleaver{
 	pixel_x = -4;
 	pixel_y = 7
 	},
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
+	},
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "cir" = (
@@ -6780,6 +6804,9 @@
 /area/under/town/basement)
 "dqH" = (
 /obj/machinery/light/fueled/hearth,
+/obj/item/cooking/pan{
+	pixel_x = 8
+	},
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "dqP" = (
@@ -9629,11 +9656,21 @@
 /area/outdoors/town)
 "eRG" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
-/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
 /obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/meat/fatty,
 /obj/structure/fluff/railing/wood,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "eRN" = (
@@ -10915,6 +10952,7 @@
 /obj/effect/landmark/start/forestguard{
 	dir = 1
 	},
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "fAj" = (
@@ -15185,6 +15223,10 @@
 /obj/machinery/light/fueled/torchholder/r,
 /obj/structure/rack/shelf/biggest,
 /obj/item/needle,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
+	},
 /turf/open/floor/cobble,
 /area/indoors/villagegarrison)
 "hIu" = (
@@ -20487,6 +20529,14 @@
 /obj/structure/closet/crate/chest,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town/orphanage)
+"kti" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/carpet/royalblack,
+/area/indoors/town/garrison)
 "ktn" = (
 /obj/structure/hotspring,
 /obj/structure/bridge,
@@ -25406,6 +25456,10 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock/alt,
 /area/outdoors/town/roofs)
+"mVl" = (
+/obj/structure/carpet,
+/turf/open/floor/wood/nosmooth,
+/area/indoors/villagegarrison)
 "mVx" = (
 /obj/structure/table/wood/crafted,
 /obj/item/storage/backpack/satchel/surgbag,
@@ -28662,7 +28716,7 @@
 "ovp" = (
 /obj/structure/fake_machine/vendor/steward,
 /turf/closed/wall/mineral/stone,
-/area/indoors/town/steward)
+/area/indoors/town/manorgate)
 "ovx" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/herringbone,
@@ -30251,6 +30305,7 @@
 	pixel_x = 9;
 	pixel_y = 7
 	},
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "phe" = (
@@ -33334,6 +33389,7 @@
 /obj/effect/landmark/start/forestwarden{
 	dir = 8
 	},
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "qND" = (
@@ -33890,6 +33946,14 @@
 	dir = 1
 	},
 /area/outdoors/town/roofs)
+"rdH" = (
+/obj/structure/table/wood/plain,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/soilsons)
 "rdN" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = 32;
@@ -39411,6 +39475,12 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors/town)
+"tNV" = (
+/obj/structure/handcart{
+	dir = 4
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/rtfield/safe)
 "tOe" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -40211,6 +40281,7 @@
 /obj/structure/chair/stool,
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/effect/landmark/start/forestguard,
+/obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
 "unC" = (
@@ -46570,6 +46641,10 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = -12;
+	pixel_y = 5
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/garrison)
 "xvC" = (
@@ -46608,6 +46683,14 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/bath)
+"xws" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/carafe/water{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet/royalblack,
+/area/indoors/town/garrison)
 "xwv" = (
 /obj/structure/carpet/blue,
 /turf/open/floor/ruinedwood/chevron,
@@ -63097,7 +63180,7 @@ jyq
 dkb
 oWZ
 rzv
-mTv
+asa
 gQu
 ifc
 dkb
@@ -100887,7 +100970,7 @@ gYK
 gYK
 gYK
 ayR
-qMy
+kvJ
 lTl
 vvE
 vvE
@@ -101623,7 +101706,7 @@ vNX
 qBU
 uSs
 bqz
-bLX
+tNV
 sMd
 uZj
 llC
@@ -101825,7 +101908,7 @@ uSs
 vNX
 hFK
 afI
-bLX
+tNV
 uZj
 mwc
 ssB
@@ -104938,7 +105021,7 @@ its
 jnM
 jnM
 jnM
-bcv
+sfn
 aXc
 aXc
 aXc
@@ -112453,7 +112536,7 @@ mEE
 heF
 aaF
 vhJ
-fdF
+xws
 aaF
 ahv
 oLB
@@ -113114,9 +113197,9 @@ hwo
 qEh
 hwo
 kUq
-dzU
+mVl
 qNt
-dzU
+mVl
 hzY
 ulw
 ulw
@@ -136121,7 +136204,7 @@ laD
 cDC
 oMg
 cCg
-bWx
+rdH
 cQg
 kUz
 seq
@@ -152450,7 +152533,7 @@ oeg
 rtW
 jiR
 jTO
-fdF
+kti
 fdF
 nRU
 ouT
