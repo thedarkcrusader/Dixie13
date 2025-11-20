@@ -1554,6 +1554,7 @@
 	melt_amount = 75
 	melting_material = /datum/material/steel
 
+
 /obj/item/weapon/sword/katana/mulyeog
 	name = "foreign straight blade"
 	desc = "A foreign sword used by cut-throats & thugs. There's a red tassel on the hilt."
@@ -1561,16 +1562,18 @@
 
 /obj/item/weapon/sword/katana/mulyeog/rumahench
 	name = "hwang blade"
-	desc = "A foreign steel sword with cloud patterns on the groove. An blade of the Ruma clan's insignia along it."
+	desc = "A foreign steel sword with cloud patterns on the groove."
 	icon_state = "eastsword2"
 
 /obj/item/weapon/sword/katana/mulyeog/rumacaptain
 	force = 25
 	force_wielded = 30
 	name = "samjeongdo"
-	desc = "A gold-stained with cloud patterns on the groove. One of a kind. It is a symbol of status within the Ruma clan."
+	desc = "A gold-stained with cloud patterns on the groove. One of a kind."
 	icon_state = "eastsword3"
 	wdefense = GREAT_PARRY
+
+
 
 /obj/item/weapon/sword/sabre/hook
 	name = "hook sword"
