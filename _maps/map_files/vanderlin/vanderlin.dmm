@@ -3682,6 +3682,12 @@
 	},
 /turf/open/floor/cobble,
 /area/under/town/basement)
+"bZo" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/blocks,
+/area/indoors/town/cell)
 "bZA" = (
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/blocks,
@@ -18393,8 +18399,7 @@
 "jCE" = (
 /obj/structure/fluff/walldeco/chains{
 	alpha = 220;
-	pixel_x = 4;
-	pixel_y = 7
+	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -63327,7 +63332,7 @@ obo
 obo
 hPa
 obo
-xTA
+bZo
 xOi
 rie
 eUU
