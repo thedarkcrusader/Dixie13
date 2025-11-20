@@ -307,8 +307,8 @@
 
 	if(length(blood_costs_by_type))
 		to_chat(user, span_notice("Blood types that can sustain this organ:"))
-		for(var/blood_type in blood_costs_by_type)
-			to_chat(user, span_notice("  [blood_type]: [round(blood_costs_by_type[blood_type], 0.1)] units/sec"))
+		for(var/datum/blood_type/blood_type as anything in blood_costs_by_type)
+			to_chat(user, span_notice("  [initial(blood_type.name)] Blood: [round(blood_costs_by_type[blood_type], 0.1)] units/sec"))
 
 	to_chat(target, span_userdanger("You feel alien flesh merging with your [selected_organ.name]!"))
 
