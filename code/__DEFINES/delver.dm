@@ -22,7 +22,7 @@
 #define SLOT_ARMOR "armor"
 #define SLOT_SHIELD "shield"
 
-GLOBAL_LIST_INIT(gem_quality_names, list(
+GLOBAL_LIST_INIT(gem_quality_names, alist(
 	GEM_CHIPPED = "Chipped",
 	GEM_FLAWED = "Flawed",
 	GEM_REGULAR = "",
