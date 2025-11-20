@@ -123,7 +123,7 @@
 	desc = "A bottle with the Lirvas-crest cork-seal."
 	list_reagents = list(/datum/reagent/consumable/ethanol/rtoper = 48)
 	auto_label_name = "larvas cider"
-	auto_label_desc = "An especially tart cider from the petty kingdom of Lirvas. Rumor has it the brewers let the barrels age in the bog, which results in that especially stong flavour."
+	auto_label_desc = "An especially tart cider from the petty kingdom of Lirvas. Rumor has it the brewers let the barrels age in the bog, which results in that especially strong flavour."
 
 /obj/item/reagent_containers/glass/bottle/nred
 	desc = "A bottle with the City of Norwandine cork-seal."
