@@ -1017,6 +1017,8 @@ There are several things that need to be remembered:
 			hideboob = TRUE
 		if(cloak?.flags_inv & HIDEBOOB)
 			hideboob = TRUE
+		if(species?.no_boobs)
+			hideboob = TRUE
 		var/use_female_sprites = FALSE
 		if(species?.sexes)
 			if(gender == FEMALE && !species.swap_female_clothes)
@@ -1078,6 +1080,8 @@ There are several things that need to be remembered:
 		var/armsindex = get_limbloss_index(ARM_RIGHT, ARM_LEFT)
 		var/hideboob = FALSE
 		if(cloak?.flags_inv & HIDEBOOB)
+			hideboob = TRUE
+		if(species?.no_boobs)
 			hideboob = TRUE
 		var/use_female_sprites = FALSE
 		if(species?.sexes)
@@ -1554,34 +1558,36 @@ generate/load female uniform sprites matching all previously decided variables
 
 //produces a key based on the human's limbs
 /mob/living/carbon/human/generate_icon_render_key()
-	. = "[dna.species.limbs_id]"
-
+	. = list(dna.species.limbs_id)
 	if(dna.species.use_skintones)
-		. += "-coloured-[skin_tone]"
+		. += "coloured"
+		. += skin_tone
 	else
-		. += "-not_coloured"
+		. += "not_coloured"
 
-	. += "-[gender]"
-	. += "-[age]"
+	. += gender
+	. += age
 
 	for(var/obj/item/bodypart/BP as anything in bodyparts)
-		. += "-[BP.body_zone]"
+		. += BP.body_zone
 		if(BP.status == BODYPART_ORGANIC)
-			. += "-organic"
+			. += "organic"
 		else
-			. += "-robotic"
+			. += "robotic"
 		if(BP.rotted)
-			. += "-rotted"
+			. += "rotted"
 		if(BP.skeletonized)
-			. += "-skeletonized"
+			. += "skeletonized"
 		if(BP.dmg_overlay_type)
-			. += "-[BP.dmg_overlay_type]"
+			. += BP.dmg_overlay_type
 
 		for(var/datum/bodypart_feature/feature as anything in BP.bodypart_features)
-			. += "-[feature.accessory_type]-[feature.accessory_colors]"
+			. += feature.accessory_type
+			. += feature.accessory_colors
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
-		. += "-husk"
+		. += "husk"
+	return jointext(., "-")
 
 /mob/living/carbon/human/load_limb_from_cache()
 	..()
