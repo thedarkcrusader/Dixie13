@@ -1608,6 +1608,7 @@
 #include "code\game\objects\items\quicksilver.dm"
 #include "code\game\objects\items\ropechainbola.dm"
 #include "code\game\objects\items\scrolls.dm"
+#include "code\game\objects\items\servant_bell.dm"
 #include "code\game\objects\items\signal_horn.dm"
 #include "code\game\objects\items\soap.dm"
 #include "code\game\objects\items\spellbook.dm"

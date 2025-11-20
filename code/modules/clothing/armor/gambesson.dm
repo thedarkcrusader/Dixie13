@@ -97,7 +97,7 @@
 	armor = ARMOR_PADDED
 
 /obj/item/clothing/armor/gambeson/tailcoat/lord
-	uses_lord_coloring = LORD_DETAIL_AND_COLOR | LORD_SECONDARY
+	uses_lord_coloring = LORD_SECONDARY
 
 //................ Padded Dress ............... //
 /obj/item/clothing/armor/gambeson/heavy/dress

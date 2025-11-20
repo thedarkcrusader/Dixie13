@@ -353,6 +353,12 @@
 	created_item = /obj/item/plate/silver
 	craftdiff = 2
 
+/datum/anvil_recipe/tools/silver/servantbell
+	name = "Service Bell"
+	created_item = /obj/item/servant_bell
+	craftdiff = 3
+
+
 // --------- GOLD -----------
 
 /datum/anvil_recipe/tools/gold
