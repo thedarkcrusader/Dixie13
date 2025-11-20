@@ -8361,6 +8361,12 @@
 /area/outdoors/town)
 "ehd" = (
 /obj/structure/closet/crate/chest/wicker/random_soilson,
+/obj/item/neuFarm/seed/coffee,
+/obj/item/neuFarm/seed/coffee,
+/obj/item/neuFarm/seed/coffee,
+/obj/item/neuFarm/seed/avocado,
+/obj/item/neuFarm/seed/avocado,
+/obj/item/neuFarm/seed/avocado,
 /turf/open/floor/cobblerock/alt,
 /area/indoors/soilsons)
 "ehf" = (
@@ -11439,6 +11445,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
+/obj/item/reagent_containers/glass/carafe/water,
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/manor)
 "fPM" = (
@@ -11574,10 +11581,6 @@
 "fSE" = (
 /turf/open/water,
 /area/outdoors/river)
-"fSJ" = (
-/obj/item/statue/silver/urn,
-/turf/open/transparent/openspace,
-/area/outdoors/mountains)
 "fSM" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -23056,6 +23059,11 @@
 /area/under/cavewet)
 "lKi" = (
 /obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/carafe/silver/redwine,
+/obj/item/reagent_containers/glass/cup/silver{
+	pixel_y = 1;
+	pixel_x = 9
+	},
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors/town/manor)
 "lKj" = (
@@ -29850,6 +29858,13 @@
 "oVs" = (
 /turf/open/floor/naturalstone,
 /area/under/cavewet)
+"oVD" = (
+/obj/structure/closet/crate/chest/wicker/random_soilson,
+/obj/item/neuFarm/seed/tangerine,
+/obj/item/neuFarm/seed/tangerine,
+/obj/item/neuFarm/seed/tangerine,
+/turf/open/floor/cobblerock/alt,
+/area/indoors/soilsons)
 "oVL" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/cobblerock,
@@ -45381,6 +45396,18 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble,
 /area/under/town/sewer)
+"wLm" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 8
+	},
+/obj/item/reagent_containers/glass/carafe/water,
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_y = 11;
+	pixel_x = 12
+	},
+/turf/open/floor/carpet/royalblack,
+/area/indoors/town/manor)
 "wLq" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "jagged";
@@ -96407,7 +96434,7 @@ qJl
 qJl
 qJl
 qGk
-ehd
+oVD
 bYT
 bYT
 fng
@@ -108632,7 +108659,7 @@ vvE
 nvG
 pvU
 lpv
-yed
+wLm
 yed
 xKZ
 pvU
@@ -164640,7 +164667,7 @@ ehP
 ehP
 ehP
 ehP
-fSJ
+ehP
 ehP
 ehP
 ehP
