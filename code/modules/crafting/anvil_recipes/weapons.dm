@@ -707,7 +707,7 @@
 	created_item = /obj/item/weapon/sword/long/greatsword
 	craftdiff = 4
 
-/datum/anvil_recipe/weapons/flamberge
+/datum/anvil_recipe/weapons/steel/flamberge
 	name = "Flamberge (+Bar x3)"
 	recipe_name = "a Flamberge"
 	appro_skill = /datum/skill/craft/weaponsmithing
