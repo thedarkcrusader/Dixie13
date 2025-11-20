@@ -1,8 +1,3 @@
-/area
-	name = "roguetown"
-	icon_state = "rogue"
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-
 /area/indoors
 	name = "indoors rt"
 	icon_state = "indoors"
