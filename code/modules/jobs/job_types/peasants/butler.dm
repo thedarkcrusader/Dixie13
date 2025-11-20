@@ -41,6 +41,7 @@
 		armor = /obj/item/clothing/shirt/dress/maid/lord
 		cloak = /obj/item/clothing/cloak/apron/maid
 		belt = /obj/item/storage/belt/leather/cloth_belt
+		pants = /obj/item/clothing/pants/tights/colored/black
 	shoes = /obj/item/clothing/shoes/nobleboot
 	beltr = /obj/item/storage/keyring/butler
 	beltl = /obj/item/storage/belt/pouch/coins/mid

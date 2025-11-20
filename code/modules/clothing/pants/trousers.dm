@@ -134,7 +134,7 @@
 
 /obj/item/clothing/pants/trou/formal
 	name = "formal trousers"
-	desc = "A formal pair of trousers."
+	desc = "A formal pair of formal trousers."
 	icon_state = "butlerpants"
 	item_state = "butlerpants"
 	detail_tag = "_detail"

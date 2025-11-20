@@ -33,6 +33,7 @@
 		armor = /obj/item/clothing/shirt/dress/maid/servant
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/leather/cloth_belt
+		pants = /obj/item/clothing/pants/tights/colored/black
 		cloak = /obj/item/clothing/cloak/apron/maid
 		head = /obj/item/clothing/head/maidband
 	neck = /obj/item/key/manor
