@@ -241,7 +241,7 @@
 	keys = list(/obj/item/key/priest, /obj/item/key/church, /obj/item/key/graveyard,  /obj/item/key/inquisition)
 
 /obj/item/storage/keyring/inquisitor
-	keys = list(/obj/item/key/inquisition, /obj/item/key/church)
+	keys = list(/obj/item/key/inquisition)
 
 /obj/item/storage/keyring/adept
 	keys = list(/obj/item/key/inquisition)
