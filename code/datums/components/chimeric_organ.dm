@@ -43,6 +43,10 @@
 	RegisterSignal(parent, COMSIG_ORGAN_INSERTED, PROC_REF(on_inserted))
 	RegisterSignal(parent, COMSIG_ORGAN_REMOVED, PROC_REF(on_removed))
 
+	var/obj/item/organ/O = parent
+	if(O.owner)
+		on_inserted(null, O.owner)
+
 /datum/component/chimeric_organ/Destroy()
 	stop_processing()
 	cleanup_nodes()
