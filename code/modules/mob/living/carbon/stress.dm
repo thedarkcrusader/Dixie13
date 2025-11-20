@@ -93,12 +93,14 @@
 		if(stress > oldstress)
 			if(event)
 				to_chat(src, "[event]")
+				last_stress_event = null
 			to_chat(src, span_red(" I gain stress."))
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_stress_indicator))
 		else
 			if(event)
 				to_chat(src, "[event]")
+				last_stress_event = null
 			to_chat(src, span_green(" I gain peace."))
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_relief_indicator))
