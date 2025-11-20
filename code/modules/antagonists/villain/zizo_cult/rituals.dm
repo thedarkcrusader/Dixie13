@@ -486,6 +486,36 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	cultist.generate_random_attunements(rand(6, 8))
 	to_chat(cultist, span_notice("Stolen Arcane prowess floods my mind, ZIZO empowers me."))
 
+/datum/ritual/fleshcrafting/curse
+    name = "Hollow Curse"
+    center_requirement = /mob/living/carbon/human
+
+    w_req = /obj/item/alch/sinew
+    e_req = /obj/item/alch/sinew
+    n_req = /obj/item/natural/fur/volf
+    s_req = /obj/item/natural/fur/volf
+
+/datum/ritual/fleshcrafting/curse/invoke(mob/living/user, turf/center)
+    var/mob/living/carbon/human/target = locate() in center.contents
+    if(!target)
+        return
+    if(!target.mind)
+        to_chat(target, span_warning("A mindless servant is useless to me!"))
+        return
+    to_chat(target, span_warning("My very being, body, soul, and mind is contorted and twisted violently into a ball of flesh and fur, until I am reshaped anew as an abomination!"))
+    addtimer(CALLBACK(src, PROC_REF(get_hollowed), target, center), 5 SECONDS)
+
+/datum/ritual/fleshcrafting/curse/proc/get_hollowed(mob/living/victim, turf/place)
+    if(QDELETED(victim))
+        return
+    if(place != get_turf(victim))
+        return
+    if(!victim.mind)
+        return
+    var/mob/living/wll = new /mob/living/carbon/human/species/demihuman(place)
+    victim.mind.transfer_to(wll)
+    victim.gib()
+
 /datum/ritual/fleshcrafting/nopain
 	name = "Painless Battle"
 	center_requirement = /mob/living/carbon/human
@@ -502,6 +532,35 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	to_chat(target, span_notice("I no longer feel pain, but it has come at a terrible cost."))
 	target.change_stat(STATKEY_STR, -2)
 	target.change_stat(STATKEY_CON, -3)
+
+/datum/ritual/fleshcrafting/immortality
+	name = "Flawed Immortality"
+	center_requirement = /mob/living/carbon/human
+
+	n_req = /mob/living/carbon/human
+
+/datum/ritual/fleshcrafting/immortality/invoke(mob/living/user, turf/center)
+	var/mob/living/carbon/human/target = locate() in center.contents
+	var/mob/living/carbon/human/victim = locate() in get_step(center, NORTH)
+	if(!(is_species(victim, /datum/species/aasimar)))
+		return
+	victim.gib()
+	ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_NODISMEMBER, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_NODEATH, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_SPELLBLOCK, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_WOUNDREGEN, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_PACIFISM, TRAIT_GENERIC)
+	ADD_TRAIT(user, TRAIT_ABOMINATION, TRAIT_GENERIC)
+	to_chat(target, span_notice("ZIZO EMPOWERS ME!! SOMETHING HAS GONE WRONG, THE RITUAL FAILED BUT WHAT IT LEFT ME WITH IS STILL POWER!!"))
+	target.change_stat(STATKEY_STR, -6)
+	target.change_stat(STATKEY_CON, -7)
+	target.change_stat(STATKEY_SPD, -7)
 
 /datum/ritual/fleshcrafting/fleshform
 	name = "Stronger Form"

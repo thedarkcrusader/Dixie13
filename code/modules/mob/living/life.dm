@@ -35,6 +35,14 @@
 			for(var/datum/wound/wound as anything in get_wounds())
 				wound.heal_wound(1)
 
+		if(HAS_TRAIT(src, TRAIT_WOUNDREGEN))
+			handle_wounds()
+			handle_embedded_objects()
+			handle_blood()
+			//passively heal wounds
+			for(var/datum/wound/wound as anything in get_wounds())
+				wound.heal_wound(10)
+
 		/// ENDURE AS HE DOES.
 		if(!stat && HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT) && !HAS_TRAIT(src, TRAIT_PARALYSIS))
 			handle_wounds()
