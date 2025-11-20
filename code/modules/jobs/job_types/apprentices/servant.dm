@@ -24,7 +24,7 @@
 
 /datum/outfit/servant/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == FEMALE)
+	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/undershirt/formal
 		pants = /obj/item/clothing/pants/trou/formal/shorts
 		belt = /obj/item/storage/belt/leather/suspenders

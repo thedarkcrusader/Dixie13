@@ -37,12 +37,11 @@
 		shirt = /obj/item/clothing/shirt/undershirt/formal
 		belt = /obj/item/storage/belt/leather/suspenders // aware that these render over shit like coats. it's a problem for another day, in my time.
 		pants = /obj/item/clothing/pants/trou/formal
-		shoes = /obj/item/clothing/shoes/nobleboot
 	else
 		armor = /obj/item/clothing/shirt/dress/maid/lord
 		cloak = /obj/item/clothing/cloak/apron/maid
 		belt = /obj/item/storage/belt/leather/cloth_belt
-		shoes = /obj/item/clothing/shoes/simpleshoes
+	shoes = /obj/item/clothing/shoes/nobleboot
 	beltr = /obj/item/storage/keyring/butler
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	backr = /obj/item/storage/backpack/satchel
