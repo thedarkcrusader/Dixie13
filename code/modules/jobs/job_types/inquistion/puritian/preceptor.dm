@@ -64,4 +64,5 @@
 	gloves = /obj/item/clothing/gloves/bandages/pugilist
 	neck = /obj/item/clothing/neck/psycross/g
 	wrists = /obj/item/clothing/wrists/bracers/naledi
+	ring = /obj/item/clothing/ring/signet
 
