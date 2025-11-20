@@ -1015,6 +1015,36 @@
 /obj/item/coin/copper,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/orphanage)
+"ayP" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/paper{
+	pixel_y = -3;
+	pixel_x = -5
+	},
+/obj/item/paper{
+	pixel_x = 4
+	},
+/obj/item/paper{
+	info = "I like watching."
+	},
+/obj/item/paper{
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/paper{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/natural/feather{
+	pixel_y = 3;
+	pixel_x = 4
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/bath)
 "ayR" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/dirt,
@@ -12404,6 +12434,19 @@
 /obj/item/clothing/pants/tights,
 /turf/open/floor/carpet/stellar,
 /area/under/town/basement)
+"gpL" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/soap/bath,
+/obj/item/soap/bath{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/obj/item/soap/bath{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/bath)
 "gpQ" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -28542,6 +28585,19 @@
 /obj/machinery/light/fueled/oven/east,
 /turf/open/floor/cobble,
 /area/indoors/town)
+"osT" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/soap,
+/obj/item/soap{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/soap{
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/bath)
 "osX" = (
 /obj/structure/hotspring/border/ten,
 /turf/open/floor/cobblerock/alt,
@@ -44632,6 +44688,8 @@
 "wvY" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /obj/structure/rack/shelf/biggest,
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/pestle,
 /turf/open/floor/cobble,
 /area/indoors/town/bath)
 "wwc" = (
@@ -95203,7 +95261,7 @@ iob
 iob
 iob
 enx
-ruE
+ayP
 vqa
 qJl
 qJl
@@ -95405,7 +95463,7 @@ orM
 uuB
 sdE
 enx
-ruE
+osT
 vqa
 qJl
 qJl
@@ -96011,7 +96069,7 @@ usc
 wrd
 iob
 enx
-ruE
+gpL
 vqa
 qJl
 qJl
