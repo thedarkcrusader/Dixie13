@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(patron_sound_themes, list(
 /datum/patron/divine/malum
 	name = MALUM
 	domain = "God of Toil, Innovation, and Creation"
-	desc = "Crafted from the hands of Psydon. He would later use his own to construct wonderous inventions."
+	desc = "Crafted from the hands of Psydon. He would later use his own to construct wondrous inventions."
 	flaws = "Obsessive, Exacting, Overbearing"
 	worshippers = "Smiths, Miners, Sculptors"
 	sins = "Cheating, Shoddy Work, Suicide"

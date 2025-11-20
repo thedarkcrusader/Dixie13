@@ -422,7 +422,7 @@
 
 /obj/item/merctoken
 	name = "mercenary token"
-	desc = "A small, palm-fitting bound scroll - a minuature writ of commendation for a mercenary under MGE."
+	desc = "A small, palm-fitting bound scroll - a miniature writ of commendation for a mercenary under MGE."
 	icon_state = "merctoken"
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_TINY
