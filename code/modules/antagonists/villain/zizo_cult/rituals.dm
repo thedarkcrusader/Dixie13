@@ -472,6 +472,8 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 
 	n_req = /mob/living/carbon/human
 
+	is_cultist_ritual = TRUE
+
 /datum/ritual/fleshcrafting/arcane/invoke(mob/living/user, turf/center)
 	var/mob/living/carbon/human/cultist = locate() in center.contents
 	var/mob/living/carbon/human/mage = locate() in get_step(center, NORTH)
