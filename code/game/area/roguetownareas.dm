@@ -437,6 +437,10 @@
 	name = "Keep Kitchen"
 	icon_state = "kitchen"
 
+/area/indoors/town/manor/kitchen/cellar
+	name = "Keep Kitchen Cellar"
+	icon_state = "kitchen"
+
 /area/indoors/town/manor/servant
 	name = "Servants' Quarters"
 	icon_state = "servant"
