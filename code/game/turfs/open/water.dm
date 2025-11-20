@@ -36,6 +36,8 @@
 	shine = SHINE_SHINY
 	no_over_text = FALSE
 	water_level = 2
+	spread_chance = 0
+	burn_power = 0
 	var/uses_level = TRUE
 	var/datum/reagent/water_reagent = /datum/reagent/water
 	var/mapped = TRUE // infinite source of water
@@ -46,8 +48,8 @@
 	var/swimdir = FALSE
 	var/notake = FALSE // cant pick up with reagent containers
 	var/set_relationships_on_init = TRUE
-	var/list/blocked_flow_directions = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
-	var/childless = FALSE
+	// A bitflag of blocked directions. ONLY works because we only allow cardinal flow.
+	var/blocked_flow_directions = 0
 
 	var/cached_use = 0
 
@@ -55,6 +57,7 @@
 
 	/// Fishing element for this specific water tile
 	var/datum/fish_source/fishing_datum = /datum/fish_source/ocean
+	flags_1 = CONDUCT_1
 
 /turf/open/water/proc/set_watervolume(volume)
 	water_volume = volume
@@ -93,8 +96,11 @@
 	check_surrounding_water()
 
 /turf/open/water/proc/toggle_block_state(dir, value)
-	blocked_flow_directions["[dir]"] = value
-	if(blocked_flow_directions["[dir]"])
+	if(value)
+		blocked_flow_directions |= dir
+	else
+		blocked_flow_directions &= ~dir
+	if(blocked_flow_directions & dir)
 		var/turf/open/water/river/water = get_step(src, dir)
 		if(!istype(water))
 			return
@@ -426,15 +432,16 @@
 				adjust_originate_watervolume(-2)
 			playsound(user, pick(wash), 100, FALSE)
 
-			//handle hygiene
-			if(isliving(user))
-				var/mob/living/hygiene_target = user
-				var/list/equipped_items = hygiene_target.get_equipped_items()
-				if(length(equipped_items) > 0)
-					to_chat(user, span_notice("I could probably clean myself faster if I weren't wearing clothes..."))
-					hygiene_target.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
-				else
-					hygiene_target.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
+			L.ExtinguishMob()
+			//handle hygiene and clean off alcohol
+			var/list/equipped_items = L.get_equipped_items()
+			if(length(equipped_items) > 0)
+				to_chat(user, span_notice("I could probably clean myself faster if I weren't wearing clothes..."))
+				L.adjust_hygiene(HYGIENE_GAIN_CLOTHED * cleanliness_factor)
+				L.adjust_fire_stacks(-4)
+			else
+				L.adjust_hygiene(HYGIENE_GAIN_UNCLOTHED * cleanliness_factor)
+				L.adjust_fire_stacks(-2)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /turf/open/water/attackby_secondary(obj/item/item2wash, mob/user, params)

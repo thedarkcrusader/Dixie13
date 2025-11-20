@@ -26,7 +26,7 @@
 
 /datum/objective/personal/ravox_duel/reward_owner()
 	. = ..()
-	owner.current.adjust_stat_modifier("ravox_blessing", STATKEY_STR, 1)
+	owner.current.adjust_stat_modifier(STATMOD_RAVOX_BLESSING, STATKEY_STR, 1)
 
 /datum/objective/personal/ravox_duel/update_explanation_text()
 	explanation_text = "Win [duels_required] duel\s with honor against other warriors to prove your might!"
@@ -59,7 +59,7 @@
 		qdel(src)
 
 	if(challenger_mob.surrendering || challenger_mob.incapacitated(IGNORE_GRAB))
-		challenged_mob.visible_message(span_notice("[challenged_mob] defeats [challenged_mob] in the honor duel!"))
+		challenged_mob.visible_message(span_notice("[challenged_mob] defeats [challenger_mob] in the honor duel!"))
 		finish_duel(challenger_mob, challenged_mob)
 		return
 	else if(challenged_mob.surrendering || challenged_mob.incapacitated(IGNORE_GRAB))

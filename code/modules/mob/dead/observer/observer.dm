@@ -189,7 +189,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 				pixel_y = base_pixel_y
 				invisibility = INVISIBILITY_OBSERVER
 				alpha = 100
-	update_appearance()
 
 	if(!T)
 		T = SSmapping.get_station_center()
@@ -323,11 +322,6 @@ Works together with spawning an observer, noted above.
 			if(force_respawn)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 				return ..()
-			#ifdef USES_PQ
-			var/datum/antagonist/zombie/Z = mind.has_antag_datum(/datum/antagonist/zombie)
-			if(Z && get_playerquality(ckey) < 15)
-				can_reenter_corpse = FALSE
-			#endif
 			// if(!Z.revived)
 			// 	if(!(world.time % 5))
 			// 		to_chat(src, "<span class='warning'>I'm preparing to walk again.</span>")
@@ -942,8 +936,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		icon_state = client?.prefs.admin_ghost_icon
 
 	client.prefs.apply_character_randomization_prefs()
-
-	update_appearance()
 
 /mob/dead/observer/can_perform_action(atom/movable/target, action_bitflags)
 	return IsAdminGhost(usr)

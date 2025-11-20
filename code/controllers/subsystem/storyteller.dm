@@ -231,6 +231,14 @@ SUBSYSTEM_DEF(gamemode)
 			CHRONICLE_STATS_MOST_BEAUTIFUL_PERSON,
 			CHRONICLE_STATS_UGLIEST_PERSON,
 		),
+		"Emotion" = list(
+			CHRONICLE_STATS_JOKESTER,
+			CHRONICLE_STATS_CRYBABY,
+		),
+		"Piety" = list(
+			CHRONICLE_STATS_PIOUS,
+			CHRONICLE_STATS_FOUL_MOUTH,
+		),
 	)
 
 	/// Chosen chronicle stats of the notable people, which show at the end round panel
@@ -456,6 +464,8 @@ SUBSYSTEM_DEF(gamemode)
 
 	check_roundstart_gods_rankings()
 
+	initialize_culinary_globals()
+
 	pick_chronicle_stats()
 
 	. = ..()
@@ -506,6 +516,10 @@ SUBSYSTEM_DEF(gamemode)
 		update_crew_infos()
 		next_storyteller_process = world.time + STORYTELLER_WAIT_TIME
 		current_storyteller.process(STORYTELLER_WAIT_TIME * 0.1)
+
+/datum/controller/subsystem/gamemode/proc/initialize_culinary_globals()
+	GLOB.selectable_foods = get_global_selectable_foods()
+	GLOB.selectable_drinks = get_global_selectable_drinks()
 
 /// Gets the number of antagonists the antagonist injection events will stop rolling after.
 /datum/controller/subsystem/gamemode/proc/get_antag_cap()
@@ -795,7 +809,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	handle_post_setup_roundstart_events()
 	handle_post_setup_points()
-	refresh_alive_stats()
+	refresh_alive_stats(first_post_roundstart_check = TRUE)
 	roundstart_event_view = FALSE
 	return TRUE
 
@@ -1430,7 +1444,7 @@ SUBSYSTEM_DEF(gamemode)
 	return highest
 
 /// Refreshes statistics regarding alive statuses of certain professions or antags, like nobles
-/datum/controller/subsystem/gamemode/proc/refresh_alive_stats(roundstart = FALSE)
+/datum/controller/subsystem/gamemode/proc/refresh_alive_stats(roundstart = FALSE, first_post_roundstart_check = FALSE)
 	if(SSticker.current_state == GAME_STATE_FINISHED)
 		return
 
@@ -1575,7 +1589,7 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_CLERGY)
 			if((human_mob.mind.assigned_role.title in GLOB.serf_positions) || (human_mob.mind.assigned_role.title in GLOB.peasant_positions) || (human_mob.mind.assigned_role.title in GLOB.company_positions))
 				record_round_statistic(STATS_ALIVE_TRADESMEN)
-			if(!human_mob.is_literate())
+			if(!human_mob.is_literate() && !roundstart && !first_post_roundstart_check)
 				record_round_statistic(STATS_ILLITERATES)
 			if(HAS_TRAIT(human_mob, TRAIT_FOREIGNER))
 				record_round_statistic(STATS_FOREIGNERS)
@@ -1595,11 +1609,9 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_PACIFISTS)
 			if(human_mob.family_datum && human_mob.family_member_datum)
 				var/datum/family_member/member = human_mob.family_member_datum
-				// Check if they have children (making them a parent)
 				if(member.children.len > 0)
 					record_round_statistic(STATS_PARENTS)
-				// Check if married or has children
-				if(human_mob.IsWedded() || member.children.len > 0)
+				if(human_mob.IsWedded())
 					record_round_statistic(STATS_MARRIED)
 
 			// Species
@@ -1775,6 +1787,57 @@ SUBSYSTEM_DEF(gamemode)
 	if(length(potential_passers) > 0)
 		var/mob/living/carbon/human/selected_passerby = pick(potential_passers)
 		set_chronicle_stat(CHRONICLE_STATS_RANDOM_PASSERBY, selected_passerby, "RANDOM PASSERBY", "#888888", "just happening to be here")
+
+	// Featured chronicle stats
+	var/highest_laughs = -1
+	var/highest_cries = -1
+	var/highest_prayers = -1
+	var/highest_slurs = -1
+	var/mob/living/top_jokester
+	var/mob/living/top_crybaby
+	var/mob/living/top_pious
+	var/mob/living/top_foul_mouth
+
+	for(var/stat_category in GLOB.chronicle_featured_stats)
+		var/list/category_data = GLOB.chronicle_featured_stats[stat_category]
+		for(var/datum/weakref/mob_ref in category_data)
+			var/mob/living/mob = mob_ref.resolve()
+			if(!mob || !(mob in current_valid_humans))
+				continue
+
+			var/count = category_data[mob_ref]
+
+			if(stat_category == FEATURED_STATS_JOKESTERS)
+				if(count > highest_laughs)
+					highest_laughs = count
+					top_jokester = mob
+
+			if(stat_category == FEATURED_STATS_CRYBABIES)
+				if(count > highest_cries)
+					highest_cries = count
+					top_crybaby = mob
+
+			if(stat_category == FEATURED_STATS_DEVOUT)
+				if(count > highest_prayers)
+					highest_prayers = count
+					top_pious = mob
+
+			if(stat_category == FEATURED_STATS_SPECIESISTS)
+				if(count > highest_slurs)
+					highest_slurs = count
+					top_foul_mouth = mob
+
+	if(top_jokester && highest_laughs > 1)
+		set_chronicle_stat(CHRONICLE_STATS_JOKESTER, top_jokester, "JOKESTER", "#fff89b", "[highest_laughs] laughs")
+
+	if(top_crybaby && highest_cries > 1)
+		set_chronicle_stat(CHRONICLE_STATS_CRYBABY, top_crybaby, "CRYBABY", "#8bc1ee", "[highest_cries] cries")
+
+	if(top_pious && highest_prayers > 1)
+		set_chronicle_stat(CHRONICLE_STATS_PIOUS, top_pious, "PIOUS", "#faf5c7", "[highest_prayers] prayers")
+
+	if(top_foul_mouth && highest_slurs > 1)
+		set_chronicle_stat(CHRONICLE_STATS_FOUL_MOUTH, top_foul_mouth, "FOUL MOUTH", "#e23f3f", "[highest_slurs] slurs")
 
 	pick_chronicle_stats()
 
