@@ -40,3 +40,20 @@
 	item_state = "aproncook"
 	body_parts_covered = GROIN
 	boobed = FALSE
+
+/obj/item/clothing/cloak/apron/maid
+	name = "maid apron"
+	desc = "The frilly apron of a housemaster. It has pockets to store small things."
+	detail_color = "_detail"
+	slot_flags = ITEM_SLOT_ARMOR | ITEM_SLOT_CLOAK
+	detail_color = CLOTHING_DARK_INK
+	icon_state = "maidapron"
+	item_state = "maidapron"
+	boobed = FALSE
+	grid_width = 64
+	grid_height = 64
+
+/obj/item/clothing/cloak/apron/maid/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/cloak)
+

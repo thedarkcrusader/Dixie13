@@ -115,6 +115,32 @@
 	detail_color = CLOTHING_ROYAL_MAJENTA
 
 // End royal clothes
+
+//Servant Clothing:
+//................ Maid Dress   ............... //
+/obj/item/clothing/shirt/dress/maid
+	name = "maid dress"
+	desc = "A dress befitting the housekeeper of a lord's staff. While not as intricate as a royal's, it is indicative of the house's status."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	boobed = TRUE
+	icon_state = "maiddress"
+	detail_tag = "_detail"
+	detail_color = CLOTHING_DARK_INK
+
+/obj/item/clothing/shirt/dress/maid/lord
+	uses_lord_coloring = LORD_SECONDARY
+
+//................ Servant Gown   ............... //
+/obj/item/clothing/shirt/dress/maid/servant
+	name = "servant gown"
+	desc = "A dress worn by those of manors and noble staff. Commonly black, though some estates dye them to their house colors."
+	icon_state = "maidgown"
+	detail_color = CLOTHING_SOOT_BLACK
+
+//End Servant Clothing
+
 /obj/item/clothing/shirt/dress/gen/sexy
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
