@@ -59,7 +59,7 @@
 	if(modified)
 		return TRUE
 	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
+		to_chat(user, span_warning("Leftovers aren't suitable for this."))
 		return TRUE
 	var/obj/item/reagent_containers/peppermill/mill = I
 	if(istype(mill) && (!modified))
@@ -412,7 +412,7 @@
 	if(modified)
 		return TRUE
 	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
+		to_chat(user, span_warning("Leftovers aren't suitable for this."))
 		return TRUE
 	else if(istype(mill))
 		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))

@@ -484,7 +484,7 @@
 				return
 			var/obj/item/bodypart/head/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 			if(QDELETED(target_head))
-				to_chat(user, span_notice("I need their head or else i can't take their face!"))
+				to_chat(user, span_notice("I need their head or else I can't take their face!"))
 				return
 			if(!(target.dna?.species.id in RACES_PLAYER_ALL))
 				to_chat(user, span_warning("I can't steal this face!"))

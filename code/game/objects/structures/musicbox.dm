@@ -109,7 +109,7 @@
 	. += "Volume: [curvol]/100"
 	if(lock_check(TRUE))
 		. += span_info("It's [locked() ? "locked" : "unlocked"].")
-		. += span_info("It's keyhole has [access2string()] etched next to it.")
+		. += span_info("Its keyhole has [access2string()] etched next to it.")
 
 /obj/structure/fake_machine/musicbox/proc/toggle_music()
 	if(!playing)

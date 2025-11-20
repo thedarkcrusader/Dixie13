@@ -812,7 +812,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	item_flags |= IN_INVENTORY
 
-// called just after an item is sucessfully picked up (loc has changed)
+// called just after an item is successfully picked up (loc has changed)
 /obj/item/proc/afterpickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isliving(user))

@@ -885,7 +885,7 @@
 /obj/item/inqarticles/garrote/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(istype(I, /obj/item/rope/inqarticles/inquirycord))
-		user.visible_message(span_warning("[user] starts to rethread the [src] using the [I]."))
+		user.visible_message(span_warning("[user] starts to rethread the [src] using \the [I]."))
 		if(do_after(user, 12 SECONDS, user))
 			qdel(I)
 			obj_broken = FALSE

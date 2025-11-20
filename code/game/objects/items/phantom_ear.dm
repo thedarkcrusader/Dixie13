@@ -43,7 +43,7 @@
 /obj/item/phantom_ear/proc/timed_delete()
 	if(QDELETED(src))
 		return
-	src.visible_message(span_warning("The [src] escapes this worlds grasp!"))
+	src.visible_message(span_warning("The [src] escapes this world's grasp!"))
 	if(linked_living)
 		to_chat(linked_living.resolve(), span_warning("I feel a tension release, my phantom ear has safely escaped!"))
 	qdel(src)

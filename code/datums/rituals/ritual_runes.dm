@@ -754,7 +754,7 @@ GLOBAL_LIST(teleport_runes)
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/attack_hand(mob/living/user)
 	if(summoning && isarcyne(user))
-		to_chat(user, span_warning("You release the summon from it's containment!"))
+		to_chat(user, span_warning("You release the summon from its containment!"))
 		playsound(usr, 'sound/magic/teleport_diss.ogg', 75, TRUE)
 		do_invoke_glow()
 		sleep(20)

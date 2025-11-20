@@ -49,7 +49,7 @@
 	s.start()
 	new ash_type(loc)
 	visible_message(span_warning("[src] explodes!"),
-		span_hear("I hear a explosion!"))
+		span_hear("I hear an explosion!"))
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	qdel(src)
 

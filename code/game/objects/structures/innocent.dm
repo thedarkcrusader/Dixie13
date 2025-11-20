@@ -61,11 +61,11 @@
 
 	to_chat(user, span_notice("You carefully detach the crystals from the rock..."))
 	if(!do_after(user, 3 SECONDS, src))
-		to_chat(user, span_warning("The crystals crumbles as you try to detach it!"))
+		to_chat(user, span_warning("The crystals crumble as you try to detach it!"))
 		qdel(src)
 		return
 
-	to_chat(user, span_warning("You sucessfully detach the crystals from the rock!"))
+	to_chat(user, span_warning("You successfully detach the crystals from the rock!"))
 	for(var/i in 1 to 3)
 		new /obj/item/mana_battery/mana_crystal/standard(loc)
 	qdel(src)
@@ -80,11 +80,11 @@
 
 	to_chat(user, span_notice("You carefully detach the crystals from the rock..."))
 	if(!do_after(user, 1.5 SECONDS, src))
-		to_chat(user, span_warning("The crystals crumbles as you try to detach it!"))
+		to_chat(user, span_warning("The crystals crumble as you try to detach it!"))
 		qdel(src)
 		return
 
-	to_chat(user, span_warning("You sucessfully detach the crystals from the rock!"))
+	to_chat(user, span_warning("You successfully detach the crystals from the rock!"))
 	for(var/i in 1 to 3)
 		new /obj/item/mana_battery/mana_crystal/standard(loc)
 	qdel(src)

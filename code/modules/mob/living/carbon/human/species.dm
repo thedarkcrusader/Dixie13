@@ -1822,7 +1822,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
 		if(H.can_see_cone(user))
-			if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
+			if(H.check_shields(I, I.force, "\the [I]", MELEE_ATTACK, I.armor_penetration))
 				return 0
 	if(H.check_block())
 		H.visible_message("<span class='warning'>[H] blocks [I]!</span>", \

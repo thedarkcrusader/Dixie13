@@ -402,7 +402,7 @@
 /obj/item/clothing/neck/gorget/explosive/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_NECK)
-		to_chat(user, span_warning("The collar tightens its hold on you, red aura emenates from its gem. Reminding you of your lowly station."))
+		to_chat(user, span_warning("The collar tightens its hold on you, red aura emanates from its gem. Reminding you of your lowly station."))
 		collar_unlocked = FALSE
 		is_in_neck_slot = TRUE
 		return
@@ -445,7 +445,7 @@
 
 /obj/item/clothing/neck/gorget/explosive/proc/go_boom()
 	if(!is_in_neck_slot || !is_going_to_boom)
-		visible_message(span_notice("The red aura eminating from [src] stops!"))
+		visible_message(span_notice("The red aura emanating from [src] stops!"))
 		return
 
 	explosion(src, 1, 1, 2, 3) //first one to make sure wearer is damaged heavily
@@ -600,7 +600,7 @@
 		total_sellprice += I.sellprice
 		for(var/obj/item/item in I.contents)
 			total_sellprice += item.sellprice
-		to_chat(user, span_notice("The item and its contents is worth [total_sellprice] mammons."))
+		to_chat(user, span_notice("The item and its contents are worth [total_sellprice] mammons."))
 
 /obj/item/clothing/neck/shalal
 	name = "desert rider medal"

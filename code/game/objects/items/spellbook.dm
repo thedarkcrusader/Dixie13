@@ -176,7 +176,7 @@
 		qualityoflearn += rune.spellbonus
 		rune.do_invoke_glow()
 	if(stored_gem)
-		to_chat(user, span_smallnotice("I can feel the magical energies imbued within the crystaline dust scattered upon my tome resonate with the arcyne..."))
+		to_chat(user, span_smallnotice("I can feel the magical energies imbued within the crystalline dust scattered upon my tome resonate with the arcyne..."))
 		qualityoflearn += stored_gem
 		stored_gem = FALSE
 	if(!isarcyne(user))
@@ -203,7 +203,7 @@
 	user.log_message("successfully studied their spellbook and gained spellpoints", LOG_ATTACK, color="orange")
 	onlearned(user)
 	if(prob(55))
-		to_chat(user, span_notice("Confounded arcyne mysteries, my notes has gone in circles. I must sleep before I can bring myself to open this damned thing again..."))
+		to_chat(user, span_notice("Confounded arcyne mysteries, my notes have gone in circles. I must sleep before I can bring myself to open this damned thing again..."))
 		user.mind?.add_sleep_experience(/datum/skill/misc/reading, reader.STAINT*10)
 	to_chat(user, span_small("My notes include passages I've read before, but don't understand. I must sleep on their meaning..."))
 
@@ -226,7 +226,7 @@
 			if(src.allowed_readers.len <= 2 && !src.allowed_readers.Find(user))
 				src.allowed_readers += M
 			else
-				to_chat(user, span_smallnotice("I can't change this pleboid to my tome..."))
+				to_chat(user, span_smallnotice("I can't chain this pleboid to my tome..."))
 			playsound(src.loc, "punch", 25, TRUE, -1)
 			log_combat(user, M, "attacked", src)
 	else

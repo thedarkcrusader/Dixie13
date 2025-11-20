@@ -396,7 +396,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	else
 		summoned = new mob_to_summon(loc)
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
-		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
+		summoned.status_flags += GODMODE//It's not meant to be killable until released from its planar binding.
 		summoned.binded = TRUE	//No auto movement, no moving to targets
 		summoned.SetParalyzed(90 SECONDS)
 		summoned.candodge = FALSE
@@ -502,7 +502,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/collossus
 
 /datum/runerituals/summoning/abberant
-	name = "summoning abberant from the void"
+	name = "summoning aberrant from the void"
 	desc = "summons a long forgotten creature"
 	blacklisted = FALSE
 	tier = 4

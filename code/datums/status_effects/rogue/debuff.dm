@@ -462,7 +462,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/drunk
 	name = "Eoran Wine"
-	desc = span_warning("I am intoxicated from ambromsia not meant for mortal mouths.\n")
+	desc = span_warning("I am intoxicated from ambrosia not meant for mortal mouths.\n")
 	icon_state = "drunk"
 
 /datum/status_effect/debuff/mesmerised
@@ -473,7 +473,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/mesmerised
 	name = "Mesmerised"
-	desc = span_warning("Their beauty is otherwordly...")
+	desc = span_warning("Their beauty is otherworldly...")
 	icon_state = "acid"
 
 

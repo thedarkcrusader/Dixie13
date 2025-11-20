@@ -25,7 +25,7 @@
 	summon_primer = "You are ancient. A construct built in an age before men, a time of dragons. Your builders don't seem to be around anymore, and time has past with you in standby. How you respond, is up to you."
 	tier = 3
 
-	faction = list("abberant")
+	faction = list("aberrant")
 	emote_hear = null
 	emote_see = null
 	speed = 5
@@ -102,7 +102,7 @@
 
 /// Segments of the actual beam, these hurt if you stand in them
 /obj/effect/obeliskbeam
-	name = "abberant beam"
+	name = "aberrant beam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "obeliskbeam_mid"
 	layer = ABOVE_MOB_LAYER
