@@ -1,5 +1,6 @@
 /datum/job/servant
 	title = "Servant"
+
 	tutorial = "You are the faceless, nameless labor that keeps the royal court fed, washed, and attended to. \
 	You work your fingers to the bone nearly every dae, \
 	and have naught to show for it but boney fingers. \
@@ -23,29 +24,33 @@
 
 /datum/outfit/servant/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/simpleshoes
-	pants = /obj/item/clothing/pants/tights/colored/uncolored
-	shirt = /obj/item/clothing/shirt/undershirt/colored/uncolored
-	belt = /obj/item/storage/belt/leather/rope
-	beltl = /obj/item/storage/belt/pouch/coins/poor
-	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/recipe_book/cooking = 1)
-	neck = /obj/item/key/manor
-	if(H.gender == MALE)
-		armor = /obj/item/clothing/armor/leather/vest/colored/black
+	if(H.gender == FEMALE)
+		shirt = /obj/item/clothing/shirt/undershirt/formal
+		pants = /obj/item/clothing/pants/trou/formal/shorts
+		belt = /obj/item/storage/belt/leather/suspenders
+		shoes = /obj/item/clothing/shoes/boots // i would prefer socks and shoes but this is what's most aesthetic right now
 	else
-		cloak = /obj/item/clothing/cloak/apron
+		armor = /obj/item/clothing/shirt/dress/maid/servant
+		shoes = /obj/item/clothing/shoes/simpleshoes
+		belt = /obj/item/storage/belt/leather/cloth_belt
+		cloak = /obj/item/clothing/cloak/apron/maid
+		head = /obj/item/clothing/head/maidband
+	neck = /obj/item/key/manor
+	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/recipe_book/cooking = 1, /obj/item/storage/belt/pouch/coins/poor = 1)
+
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, pick(1,1,2), TRUE)
 	H.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
 	H.change_stat(STATKEY_SPD, 1)
 	H.change_stat(STATKEY_END, 1)
 	ADD_TRAIT(H, TRAIT_ROYALSERVANT, TRAIT_GENERIC)

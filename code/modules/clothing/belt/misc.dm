@@ -132,6 +132,12 @@
 	desc = "A pair of suspenders which go over the shoulders. Used for keeping one's pants in place in an admittably fashionable style."
 	icon_state = "suspenders"
 
+/obj/item/storage/belt/leather/cloth_belt
+	name = "cloth belt"
+	desc = "This belt has been sewn out of cloth, as opposed to tied. Which makes it superior. Obviously."
+	icon_state = "clothsash"
+	salvage_result = /obj/item/natural/cloth
+
 /obj/item/storage/belt/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."

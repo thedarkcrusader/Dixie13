@@ -126,3 +126,4 @@
 	name = "formal shirt"
 	desc = "A comfortable yet functional dress shirt often worn by the staff of a noble household."
 	icon_state = "butlershirt"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_maids.dmi'
