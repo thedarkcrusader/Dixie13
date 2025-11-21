@@ -66,6 +66,12 @@
 				dodge_speed = floor(dodge_speed * 0.25)
 				drained += 12
 
+	var/time_since_last = world.time - last_dodge
+
+	if(time_since_last < 20)
+		drained += 5
+
+	last_dodge = world.time
 
 
 		if((H.get_encumbrance() > 0.7) || H.legcuffed)

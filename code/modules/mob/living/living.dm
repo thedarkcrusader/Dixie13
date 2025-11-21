@@ -1478,19 +1478,19 @@
 		if(G.chokehold)
 			combat_modifier -= 0.1 // BUFF: Reduced chokehold penalty (was 0.15)
 
-	resist_chance += ((((STASTR - L.STASTR)/4) + wrestling_diff) * 5 + rand(-5, 5))
+	resist_chance += ((((STASTR - L.STASTR)/3) + wrestling_diff) * 5)
 	resist_chance *= combat_modifier * stamina_factor * (1/positioning_modifier)
-	resist_chance = clamp(resist_chance, 8, 90)
+	resist_chance = clamp(resist_chance, 5, 95)
 
 	var/time_grabbed = S_TIMER_COOLDOWN_TIMELEFT(src, "broke_free")
 	if(time_grabbed)
 		resist_chance += min(time_grabbed / 50, 20) // Up to +20% after long grabs
 
 	if(moving_resist) //we resisted by trying to move
-		client?.move_delay = world.time + 20
+		client?.move_delay = world.time + 50
 
-	adjust_stamina(rand(3,7))
-	pulledby.adjust_stamina(rand(2,6))
+	adjust_stamina(rand(2,5))
+	pulledby.adjust_stamina(rand(2,5))
 	if(iscarbon(pulledby))
 		var/mob/living/carbon/carbon_pulledby = pulledby
 		carbon_pulledby.add_grab_fatigue(0.5)

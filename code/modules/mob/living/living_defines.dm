@@ -233,5 +233,6 @@
 
 	var/datum/blood_type/animal_type
 
+	var/last_dodge = 0
 	/// cooldown for the next time this person can offer
 	COOLDOWN_DECLARE(offer_cooldown)
