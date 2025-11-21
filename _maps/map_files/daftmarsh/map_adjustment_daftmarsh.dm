@@ -33,6 +33,7 @@
 		/datum/job/adventurer = 8, //Not sure on this one but I generally want to cut down on the non-town roles.
 		/datum/job/pilgrim = 15,
 		/datum/job/adept = 1,
+		/datum/job/clinicapprentice = 2,
 	)
 
 	ages_adjust = list(
