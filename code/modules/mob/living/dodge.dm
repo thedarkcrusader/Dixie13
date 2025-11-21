@@ -71,8 +71,6 @@
 	if(time_since_last < 20)
 		drained += 5
 
-	last_dodge = world.time
-
 
 		if((H.get_encumbrance() > 0.7) || H.legcuffed)
 			H.Knockdown(1)
