@@ -11,7 +11,7 @@
 		/datum/attunement/fire = 0.5
 	)
 
-	invocation = "FIREBALL!!!"
+	invocation = "ONI SOMA!!!"
 	invocation_type = INVOCATION_SHOUT
 
 	charge_time = 2.5 SECONDS
@@ -22,8 +22,7 @@
 	spell_flags = SPELL_RITUOS
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 
-	invocation = "ONI SOMA!!!"
-	invocation_type = INVOCATION_SHOUT
+
 
 /datum/action/cooldown/spell/projectile/fireball/ready_projectile(obj/projectile/magic/aoe/fireball/to_fire, atom/target, mob/user, iteration)
 	. = ..()
