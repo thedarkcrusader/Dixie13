@@ -7,7 +7,7 @@
 	icon_dead = "megaleech_dead"
 
 	animal_species = /mob/living/simple_animal/hostile/retaliate/megaleech
-	faction = list(FACTION_SEA, FACTION_RATS) // not so different, you and I
+	faction = list(FACTION_SEA) // not so different, you and I
 	gender = FEMALE
 	footstep_type = FOOTSTEP_MOB_SLIME
 	emote_see = list("looks around.", "chews some leaves.")
@@ -75,6 +75,8 @@
 /mob/living/simple_animal/hostile/retaliate/megaleech/Initialize()
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands // due to signal overridings from pet commands
 	. = ..()
+	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(on_pre_attack))
+
 	var/datum/component/generic_mob_hunger/hunger = GetComponent(/datum/component/generic_mob_hunger)
 	if(hunger)
 		hunger.hunger_drain = 1
@@ -83,12 +85,20 @@
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
 
+/mob/living/simple_animal/hostile/retaliate/megaleech/Destroy()
+	UnregisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET)
+	return ..()
+
+//do our rmb intent out of combat. Scuffed? Absolutely. Alternatives? A pain in the ass.
+/mob/living/simple_animal/hostile/retaliate/megaleech/proc/on_pre_attack(datum/source, atom/target)
+	if(!cmode && rmb_intent)
+		rmb_intent.special_attack(src, target)
+		return COMPONENT_HOSTILE_NO_PREATTACK
+
 /mob/living/simple_animal/hostile/retaliate/megaleech/AttackingTarget(mob/living/passed_target)
 	. = ..()
 	var/mob/living/L = target
 	if(. && istype(target) && L.blood_volume > 0 && SEND_SIGNAL(src, COMSIG_MOB_RETURN_HUNGER) < 100)
-		if(HAS_TRAIT(living_mob, TRAIT_BLOODLOSS_IMMUNE))
-			return
 		var/blood_taken = min(L.blood_volume, blood_gulp)
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -128,36 +138,28 @@
 			return "head"
 		if(BODY_ZONE_PRECISE_L_EYE)
 			return "head"
-		if(BODY_ZONE_PRECISE_NOSE)
-			return "snout"
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return "snout"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
 		if(BODY_ZONE_HEAD)
 			return "head"
+		if(BODY_ZONE_PRECISE_NOSE)
+			return "mouth"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return "mouth"
+		if(BODY_ZONE_PRECISE_SKULL)
+			return "mouth"
+		if(BODY_ZONE_PRECISE_EARS)
+			return "mouth"
+		if(BODY_ZONE_PRECISE_NECK)
+			return "neck"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return "belly"
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			return "tail"
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			return "tail"
 		if(BODY_ZONE_R_LEG)
-			return "leg"
+			return "tail"
 		if(BODY_ZONE_L_LEG)
-			return "leg"
-		if(BODY_ZONE_R_ARM)
-			return "foreleg"
-		if(BODY_ZONE_L_ARM)
-			return "foreleg"
+			return "tail"
 
 	return ..()
 
@@ -177,7 +179,7 @@
 
 /datum/rmb_intent/megaleech_feed
 	name = "feed"
-	desc = "RMB - Feed a target blood from yourself."
+	desc = "RMB - Feed a target blood from yourself. Or, take a target's blood if you're in combat mode"
 	icon_state = "special"
 	// per bump of the do_after
 	var/feed_amount = 10
@@ -186,26 +188,57 @@
 /datum/rmb_intent/megaleech_feed/special_attack(mob/living/user, atom/target)
 	if(!isliving(target) || !isanimal(user) || busy)
 		return
-	var/giving = !user.cmode
-	if(iscarbon(target))
-		var/mob/living/carbon/C = target
-		if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
-			return
 	var/mob/living/simple_animal/A = user
 	var/mob/living/L = target
-	var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) * A.food_max / 100
+	var/giving = !user.cmode
+
+	if(!giving)
+		var/noBlood = L.blood_volume == 0
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
+				noBlood = TRUE
+		if(noBlood)
+			to_chat(user, span_warning("They have no blood to drink."))
+			return
+		if(SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) == 100)
+			to_chat(user, span_warning("I'm full."))
+			return
+
+		user.visible_message(span_danger("[user] starts drinking the blood of [L]."), span_danger("I start drinking the blood of [L]."), null, COMBAT_MESSAGE_RANGE)
+	else
+		if(SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) == 0)
+			to_chat(user, span_warning("I have no blood to give."))
+			return
+		if(L.blood_volume >= BLOOD_VOLUME_NORMAL)
+			to_chat(user, span_warning("They need no blood."))
+			return
+		user.visible_message(span_green("[user] starts feeding blood to [L]."), span_danger("I start feeding blood to [L]."), null, COMBAT_MESSAGE_RANGE)
 	busy = TRUE
 	while(do_after(A, 1 SECONDS, extra_checks=CALLBACK(src, PROC_REF(can_feed), A, L, giving), display_over_user = TRUE))
+		var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) * A.food_max / 100
 		var/blood_given = 0
 		if(giving)
 			blood_given = min(BLOOD_VOLUME_NORMAL - L.blood_volume, feed_amount, hunger)
 		else
-			blood_given = -min(A.food_max - hunger, feed_amount, L.blood_volume)
+			blood_given = -min(A.food_max - hunger, feed_amount * 0.6, L.blood_volume) // we feed slower than we attack
 		L.blood_volume += blood_given
-		hunger -= blood_given
 		SEND_SIGNAL(user, COMSIG_MOB_ADJUST_HUNGER, -blood_given)
-	L.handle_blood() // call this early and someone bleeding will immediately die
+		playsound(A, 'sound/misc/drink_blood.ogg', 50, FALSE, -4)
+	L.handle_blood() // call this early and someone bleeding will immediately die from so many updates
 	busy = FALSE
 
 /datum/rmb_intent/megaleech_feed/proc/can_feed(mob/living/user, mob/living/target, giving)
-	return SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) > 0 && target.blood_volume < BLOOD_VOLUME_NORMAL
+	if(HAS_TRAIT(target, TRAIT_BLOODLOSS_IMMUNE)) // if, for some god damn reason you were
+		return FALSE
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
+			return FALSE
+	var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER)
+	if(hunger == null)
+		return FALSE
+	if(giving)
+		return hunger > 0 && target.blood_volume < BLOOD_VOLUME_NORMAL
+	else
+		return hunger < 100 && target.blood_volume > 0
