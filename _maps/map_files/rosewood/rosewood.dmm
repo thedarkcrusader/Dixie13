@@ -10023,7 +10023,6 @@
 /obj/structure/door/swing{
 	lockid = "MountainManorEast"
 	},
-/obj/effect/mapping_helpers/access/keyset/manor/Noble1,
 /turf/open/floor/grass/cold,
 /area/indoors/town)
 "fct" = (
