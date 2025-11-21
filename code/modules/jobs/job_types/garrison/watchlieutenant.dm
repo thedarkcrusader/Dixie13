@@ -41,7 +41,7 @@
 	neck = /obj/item/clothing/neck/chaincoif/iron
 	beltl = /obj/item/weapon/mace/bludgeon
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/storage/keyring/lieutenant, /obj/item/weapon/knife/dagger/steel, /obj/item/rope/chain)
+	backpack_contents = list(/obj/item/storage/keyring/lieutenant, /obj/item/weapon/knife/dagger/steel, /obj/item/rope/chain, /obj/item/book/law)
 	if(H.dna && !(H.dna.species.id in RACES_PLAYER_NONDISCRIMINATED)) // to prevent examine stress
 		mask = /obj/item/clothing/face/shepherd/clothmask
 

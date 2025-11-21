@@ -36,7 +36,7 @@
 	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/storage/keyring/dungeoneer
 	backr = /obj/item/storage/backpack/satchel	// lack of satchel requires dealing with the merchant to correct, which requires entering town; not ideal. N.
-	backpack_contents = list(/obj/item/clothing/head/menacing)
+	backpack_contents = list(/obj/item/clothing/head/menacing, /obj/item/rope/chain, /obj/item/book/law)
 
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
