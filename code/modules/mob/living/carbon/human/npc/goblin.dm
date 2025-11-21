@@ -17,7 +17,7 @@
 	flee_in_pain = TRUE
 	stand_attempts = 6
 	bloodpool = 250 // Small, frail creechers with not so much vitality to gain from.
-	dodgetime = 30 //they can dodge easily, but have a cooldown on it
+	dodgetime = 3 SECONDS //they can dodge easily, but have a cooldown on it
 
 /mob/living/carbon/human/species/goblin/apply_prefs_job(client/player_client, datum/job/job)
 	return

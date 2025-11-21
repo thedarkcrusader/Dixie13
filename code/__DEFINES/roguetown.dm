@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_SERVANT		"CAT_SERVANT" 		// Servant class - 4 type of servant to fill in someplace.
 #define CTAG_GATEMASTER		"CAT_GATEMASTER"
 #define CTAG_WRETCH			"CAT_WRETCH"
-#define CTAG_INQUISITION	"CAT_INQUISITION"	// For Orthodoxist subclasses
+#define CTAG_INQUISITION	"CAT_INQUISITION"	// For Sacrestants subclasses
 #define CTAG_PURITAN "CAT_PURITAN"
 
 // Character category and its buys
