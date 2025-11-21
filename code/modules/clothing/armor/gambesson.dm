@@ -85,21 +85,6 @@
 	icon = 'icons/roguetown/clothing/special/steward.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/steward.dmi'
 
-/obj/item/clothing/armor/gambeson/tailcoat
-	name = "tailcoat"
-	desc = "A finely-sewn tailcoat often worn by those on the brink of the upper echelons of Astratan caste."
-	icon_state = "butlercoat"
-	item_state = "butlercoat"
-	detail_tag = "_detail"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_maids.dmi'
-	detail_color = CLOTHING_DARK_INK
-	slot_flags = ITEM_SLOT_ARMOR
-	armor = ARMOR_PADDED
-
-/obj/item/clothing/armor/gambeson/tailcoat/lord
-	misc_flags = CRAFTING_TEST_EXCLUDE
-	uses_lord_coloring = LORD_SECONDARY
-
 //................ Padded Dress ............... //
 /obj/item/clothing/armor/gambeson/heavy/dress
 	name = "padded dress"

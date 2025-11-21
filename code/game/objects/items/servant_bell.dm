@@ -82,9 +82,9 @@
 			continue
 		player.apply_status_effect(/datum/status_effect/signal_horn/servant_bell, null, origin_turf)
 		var/dirText = ""
-		if(player.z > origin_turf.z)
-			dirText = " above me"
 		if(player.z < origin_turf.z)
+			dirText = " above me"
+		if(player.z > origin_turf.z)
 			dirText = " below me"
 
 		//sound played for other players, by fem_tanyl !!!1!!

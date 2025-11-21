@@ -33,7 +33,7 @@
 /datum/outfit/butler/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		armor = /obj/item/clothing/armor/gambeson/tailcoat/lord
+		armor = /obj/item/clothing/armor/leather/jacket/tailcoat/lord
 		shirt = /obj/item/clothing/shirt/undershirt/formal
 		belt = /obj/item/storage/belt/leather/suspenders // aware that these render over shit like coats. it's a problem for another day, in my time.
 		pants = /obj/item/clothing/pants/trou/formal

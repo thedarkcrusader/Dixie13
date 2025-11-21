@@ -217,6 +217,23 @@
 
 	body_parts_covered = COVERAGE_SHIRT
 
+//................ Silk Jacket ............... //
+
+/obj/item/clothing/armor/leather/jacket/tailcoat
+	name = "tailcoat"
+	desc = "A finely-sewn tailcoat often worn by those on the brink of the upper echelons of Astratan caste."
+	icon_state = "butlercoat"
+	item_state = "butlercoat"
+	detail_tag = "_detail"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_maids.dmi'
+	detail_color = CLOTHING_DARK_INK
+	slot_flags = ITEM_SLOT_ARMOR
+	armor = ARMOR_PADDED
+
+/obj/item/clothing/armor/leather/jacket/tailcoat/lord
+	misc_flags = CRAFTING_TEST_EXCLUDE
+	uses_lord_coloring = LORD_SECONDARY
+
 //................ Hand´s Coat ............... //
 /obj/item/clothing/armor/leather/jacket/hand
 	name = "noble coat"

@@ -1073,7 +1073,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/tailcoat
 	name =  "tailcoat"
-	output = /obj/item/clothing/armor/gambeson/tailcoat
+	output = /obj/item/clothing/armor/leather/jacket/tailcoat
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2)
 	craftdiff = 4

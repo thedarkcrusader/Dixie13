@@ -352,7 +352,7 @@
 		/obj/item/natural/fibers = 1,
 	)
 	output = /obj/item/storage/belt/leather/suspenders
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/leather/vest
 	name = "leather vest"
