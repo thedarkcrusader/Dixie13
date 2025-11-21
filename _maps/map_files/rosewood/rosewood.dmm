@@ -9441,9 +9441,6 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/wood,
 /area/indoors/town/magician)
-"eLU" = (
-/turf/open/transparent,
-/area/indoors/town/tavern)
 "eMb" = (
 /obj/item/reagent_containers/glass/cup/silver{
 	pixel_x = -7;
@@ -16491,7 +16488,7 @@
 /area/indoors/town)
 "irR" = (
 /obj/structure/fluff/railing/border,
-/turf/open/transparent,
+/turf/open/transparent/openspace,
 /area/indoors/town/tavern)
 "irU" = (
 /obj/structure/fluff/railing/wood{
@@ -28269,7 +28266,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
-/turf/open/transparent,
+/turf/open/transparent/openspace,
 /area/indoors/town/tavern)
 "onm" = (
 /obj/structure/chair/bench/church{
@@ -28525,7 +28522,7 @@
 /area/indoors/town/bath)
 "orZ" = (
 /obj/machinery/light/fueled/chand,
-/turf/open/transparent,
+/turf/open/transparent/openspace,
 /area/indoors/town/tavern)
 "osn" = (
 /obj/structure/table/wood{
@@ -39725,10 +39722,6 @@
 /obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/theatre)
-"tXm" = (
-/obj/machinery/light/fueled/wallfire/candle/r,
-/turf/open/transparent,
-/area/indoors/town/tavern)
 "tXJ" = (
 /obj/effect/waterfall{
 	pixel_y = 5
@@ -43053,7 +43046,7 @@
 /area/indoors/town/tavern)
 "vEz" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/transparent,
+/turf/open/transparent/openspace,
 /area/indoors/town/tavern)
 "vEK" = (
 /turf/closed/wall/mineral/wood,
@@ -145004,7 +144997,7 @@ gDj
 lDc
 uoe
 iSS
-eLU
+eZB
 vEz
 qjP
 nHv
@@ -145206,7 +145199,7 @@ gDj
 qjP
 uoe
 iSS
-eLU
+eZB
 orZ
 qjP
 uqM
@@ -145408,8 +145401,8 @@ qjP
 qjP
 qZt
 iSS
-eLU
-eLU
+eZB
+eZB
 qjP
 qjP
 gfB
@@ -145610,9 +145603,9 @@ gDj
 qjP
 uoe
 iSS
-eLU
-eLU
-eLU
+eZB
+eZB
+eZB
 qsH
 gDj
 qmO
@@ -145812,9 +145805,9 @@ gDj
 xln
 uoe
 iSS
-eLU
+eZB
 orZ
-eLU
+eZB
 qsH
 gDj
 gDj
@@ -146014,9 +146007,9 @@ qjP
 qjP
 uoe
 iSS
-eLU
-eLU
-eLU
+eZB
+eZB
+eZB
 qsH
 gDj
 gDj
@@ -147226,9 +147219,9 @@ qjP
 qjP
 uoe
 iSS
-eLU
-eLU
-eLU
+eZB
+eZB
+eZB
 qsH
 rag
 rag
@@ -147428,9 +147421,9 @@ gDj
 vtd
 uoe
 iSS
-eLU
+eZB
 orZ
-eLU
+eZB
 hDR
 vku
 nlY
@@ -147630,9 +147623,9 @@ gDj
 qjP
 uoe
 iSS
-eLU
-eLU
-eLU
+eZB
+eZB
+eZB
 qsH
 bCe
 bCe
@@ -147832,8 +147825,8 @@ qjP
 qjP
 qZt
 iSS
-eLU
-eLU
+eZB
+eZB
 one
 jmM
 evU
@@ -148034,7 +148027,7 @@ gDj
 qjP
 uoe
 iSS
-eLU
+eZB
 orZ
 irR
 eZB
@@ -148236,8 +148229,8 @@ gDj
 hEK
 uoe
 iSS
-eLU
-tXm
+eZB
+rnv
 irR
 rnv
 eZB
