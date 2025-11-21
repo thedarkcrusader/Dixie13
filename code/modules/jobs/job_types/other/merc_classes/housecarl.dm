@@ -39,7 +39,7 @@
 
 /datum/outfit/mercenary/housecarl
 	name = "Housecarl"
-	head = /obj/item/clothing/head/helmet/nasal
+	head = /obj/item/clothing/head/helmet/coppergate
 	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	gloves = /obj/item/clothing/gloves/leather/black
@@ -49,6 +49,6 @@
 	neck = /obj/item/clothing/neck/highcollier/iron
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
 	belt = /obj/item/storage/belt/leather/mercenary/black
-	beltl = /obj/item/weapon/sword
+	beltl = /obj/item/weapon/sword/short/iron
 	pants = /obj/item/clothing/pants/trou/leather
-	backl = /obj/item/weapon/shield/tower
+	backl = /obj/item/weapon/shield/wood
