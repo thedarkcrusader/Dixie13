@@ -742,10 +742,13 @@
 	set hidden = 1
 	if(stat)
 		return
-	if(pulledby)
-		to_chat(src, span_warning("I'm grabbed!"))
-		resist_grab()
-		return
+	if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
+		var/fail_resist = resist_grab()
+		if(fail_resist)
+			to_chat(src, span_warning("I failed to resist their grab and i can't get up!"))
+			return
+		else
+			to_chat(src, span_notice("I resisted their grab!"))
 	if(resting)
 		if(!HAS_TRAIT(src, TRAIT_FLOORED))
 			visible_message(span_notice("[src] begins standing up."), span_notice("I begin to stand up."))
