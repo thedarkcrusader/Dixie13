@@ -26,6 +26,8 @@
 
 /obj/item/servant_bell/attack_self(mob/living/user, params)
 	. = ..()
+	if(!istype(user)) //???
+		return
 	if(HAS_TRAIT(user, TRAIT_NOBLE))
 		if(COOLDOWN_FINISHED(src, ring_bell_noble))
 			ring_bell(user)
@@ -68,11 +70,7 @@
 		//	continue
 		if(!(player.z in originMultiZ))
 			continue
-		var/jobFound = FALSE
-		for(var/sType in servant_types)
-			if(istype(player.mind.assigned_role, sType))
-				jobFound = TRUE
-		if(!jobFound)
+		if(!is_type_in_list(player.mind.assigned_role, sType))
 			continue
 		if(!player.can_hear())
 			continue
@@ -87,15 +85,15 @@
 		if(player.z > origin_turf.z)
 			dirText = " below me"
 
-		//sound played for other players, by fem_tanyl !!!1!!
-		to_chat(player, span_warning("I hear a service bell being rang[dirText]."))
+		to_chat(player, span_warning("I hear a service bell being rung[dirText]."))
 		if(distance <= 7)
 			continue
+		//sound played for other players, by fem_tanyl !!!1!!
 		player.playsound_local(get_turf(player), 'sound/items/servant_bell.ogg', 35, FALSE, pressure_affected = FALSE)
 
 /datum/status_effect/signal_horn/servant_bell
 	id = "servant bell indicator"
-	duration = 15 SECONDS
+	duration = 30 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/servant_bell
 
 /atom/movable/screen/alert/status_effect/servant_bell
