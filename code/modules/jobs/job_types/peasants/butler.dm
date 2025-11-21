@@ -50,7 +50,7 @@
 		/obj/item/book/manners = 1,
 		/obj/item/recipe_book/cooking = 1,
 		/obj/item/weapon/knife/villager = 1,
-		/obj/item/servant_bell = 1)
+		/obj/item/servant_bell = 3)
 
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)

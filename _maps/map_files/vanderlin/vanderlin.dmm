@@ -1620,7 +1620,6 @@
 "aTK" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/manor/heir/heir2)
 "aTV" = (
@@ -8612,8 +8611,6 @@
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
 /obj/machinery/light/fueled/wallfire/candle,
-/obj/item/servant_bell,
-/obj/item/servant_bell,
 /turf/open/floor/hexstone,
 /area/indoors/town/manor/lord_appt)
 "eEK" = (
@@ -8979,10 +8976,6 @@
 /obj/item/natural/feather{
 	pixel_x = -15;
 	pixel_y = 4
-	},
-/obj/item/servant_bell{
-	pixel_x = 8;
-	pixel_y = 13
 	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor/archivist)
@@ -31383,7 +31376,6 @@
 	},
 /obj/item/storage/belt/pouch/coins/mid,
 /obj/item/reagent_containers/glass/bottle/strongpoison,
-/obj/item/servant_bell,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/manor/hand)
 "qnN" = (
@@ -36031,7 +36023,6 @@
 "sSq" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/manor/heir/heir1)
 "sSx" = (
