@@ -27,7 +27,7 @@
 	holder.screen += buttons
 	holder.click_intercept = src
 	init_blueprint_recipes()
-	RegisterSignal(holder.mob, COMSIG_MOUSE_ENTERED, PROC_REF(on_mouse_moved))
+	RegisterSignal(holder.mob, COMSIG_USER_MOUSE_ENTERED, PROC_REF(on_mouse_moved))
 	RegisterSignal(holder?.mob, COMSIG_ATOM_MOUSE_ENTERED, PROC_REF(on_mouse_moved_pre))
 
 /datum/blueprint_system/proc/quit()
@@ -39,7 +39,7 @@
 		recipe_browser.close()
 		recipe_browser = null
 	if(holder?.mob)
-		UnregisterSignal(holder.mob, COMSIG_MOUSE_ENTERED)
+		UnregisterSignal(holder.mob, COMSIG_USER_MOUSE_ENTERED)
 		UnregisterSignal(holder.mob, COMSIG_ATOM_MOUSE_ENTERED)
 	qdel(src)
 
@@ -165,7 +165,9 @@
 		return
 	on_mouse_moved(source, get_turf(atom), params)
 
-/datum/blueprint_system/proc/on_mouse_moved(datum/source, turf/turf, params)
+/datum/blueprint_system/proc/on_mouse_moved(datum/source, atom/source, params)
+	var/turf/turf = get_turf(source)
+
 	if(turf == preview_image?.loc)
 		return
 	if(!preview_image || !turf)
