@@ -12,20 +12,6 @@
 	max_integrity = INTEGRITY_STRONGEST
 	item_weight = 5.5 * STEEL_MULTIPLIER
 
-//................ Coppergate ............... //
-/obj/item/clothing/head/helmet/coppergate
-	name = "coppergate helmet"
-	desc = "A typical style of helmet worn by Sea Elf pirates, this helmet comes with metal flaps that protects the cheeks."
-	icon_state = "coppergate"
-	sellprice = VALUE_STEEL_SMALL_ITEM
-	smeltresult = /obj/item/fertilizer/ash
-	melting_material = /datum/material/steel
-	melt_amount = 75
-
-
-	body_parts_covered = COVERAGE_NASAL
-	max_integrity = INTEGRITY_STRONGEST
-	item_weight = 5.5 * STEEL_MULTIPLIER
 
 //................ Skull Cap ............... //
 /obj/item/clothing/head/helmet/skullcap

@@ -39,7 +39,7 @@
 
 /datum/outfit/mercenary/housecarl
 	name = "Housecarl"
-	head = /obj/item/clothing/head/helmet/coppergate
+	head = /obj/item/clothing/head/helmet/nasal
 	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	gloves = /obj/item/clothing/gloves/leather/black
