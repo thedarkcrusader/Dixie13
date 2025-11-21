@@ -230,7 +230,7 @@
 
 /obj/item/dendor_blessing/devouring/check_blessing_requirements(mob/living/user)
 	if(!user.get_spell(/datum/action/cooldown/spell/undirected/bless_crops))
-		to_chat(user, span_warning("My faith to Dendor isn't sufficient enough..."))
+		to_chat(user, span_warning("My faith to Dendor is insufficient..."))
 		return FALSE
 	return ..()
 
@@ -284,7 +284,7 @@
 
 /obj/item/dendor_blessing/lording/check_blessing_requirements(mob/living/user)
 	if(!user.get_spell(/datum/action/cooldown/spell/healing))
-		to_chat(user, span_warning("My faith to Dendor isn't sufficient enough..."))
+		to_chat(user, span_warning("My faith to Dendor is insufficient..."))
 		return FALSE
 	return ..()
 

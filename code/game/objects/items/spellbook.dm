@@ -342,7 +342,7 @@
 /obj/item/spellbook_unfinished/pre_arcyne/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(P, /obj/item/gem/amethyst))
-		user.visible_message(span_notice("I run my arcyne energy into the crystal. It's artifical lattices pulse and then fall dormant. It must not be strong enough to make a spellbook with!"))
+		user.visible_message(span_notice("I run my arcyne energy into the crystal. Its artificial lattices pulse and then fall dormant. It must not be strong enough to make a spellbook with!"))
 		return
 	if(istype(P, /obj/item/gem/violet))
 		if(isturf(loc)&& (found_table))

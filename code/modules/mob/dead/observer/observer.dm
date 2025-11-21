@@ -409,7 +409,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>My spirit has been snatched away by Graggar!</span>")
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		to_chat(usr, "<span class='warning'>Another consciousness is in your body...It is resisting you.</span>")
+		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 
 	remove_client_colour(/datum/client_colour/monochrome)

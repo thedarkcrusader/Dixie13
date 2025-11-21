@@ -103,7 +103,7 @@
 				qdel(src)
 		if(I.get_sharpness())
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Cutting the dough in strips and making a prezzel..."))
+			to_chat(user, span_notice("Cutting the dough into strips and making a prezzel..."))
 			if(do_after(user, short_cooktime, src))
 				if(user.get_skill_level(/datum/skill/craft/cooking) >= 2 || isdwarf(user))
 					new /obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw/good(loc)

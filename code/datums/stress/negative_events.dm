@@ -207,7 +207,7 @@
 /datum/stress_event/delf
 	timer = 30 SECONDS
 	stress_change = 1
-	desc = "<span class='red'>A loathesome dark elf.</span>"
+	desc = "<span class='red'>A loathsome dark elf.</span>"
 
 /datum/stress_event/tieb
 	timer = 30 SECONDS
