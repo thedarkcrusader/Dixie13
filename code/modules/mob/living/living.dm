@@ -742,10 +742,13 @@
 	set hidden = 1
 	if(stat)
 		return
-	if(pulledby)
-		to_chat(src, span_warning("I'm grabbed!"))
-		resist_grab()
-		return
+	if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
+		var/fail_resist = resist_grab()
+		if(fail_resist)
+			to_chat(src, span_warning("I failed to resist their grab and i can't get up!"))
+			return
+		else
+			to_chat(src, span_notice("I resisted their grab!"))
 	if(resting)
 		if(!HAS_TRAIT(src, TRAIT_FLOORED))
 			visible_message(span_notice("[src] begins standing up."), span_notice("I begin to stand up."))
@@ -1308,7 +1311,12 @@
 	changeNext_move(CLICK_CD_MELEE)
 
 	if(prob(counter_chance))
-		var/counter_type = pick(list("knee" = 45, "elbow" = 45, "stomp" = 10))
+		var/fist_skill = get_skill_level(/datum/skill/combat/unarmed) 
+		var/counter_type
+		if(fist_skill >= 4)
+			counter_type = pick(list("knee" = 45, "elbow" = 45,  "stomp" = 10))
+		else
+			counter_type = pick(list("knee" = 45, "elbow" = 45))
 		switch(counter_type)
 			if("knee")
 				visible_message("<span class='danger'>[src] drives a knee into [attacker]'s midsection!</span>", \
@@ -1478,7 +1486,7 @@
 		if(G.chokehold)
 			combat_modifier -= 0.1 // BUFF: Reduced chokehold penalty (was 0.15)
 
-	resist_chance += ((((STASTR - L.STASTR)/3) + wrestling_diff) * 5)
+	resist_chance += ((((STASTR - L.STASTR)/2) + wrestling_diff) * 5)
 	resist_chance *= combat_modifier * stamina_factor * (1/positioning_modifier)
 	resist_chance = clamp(resist_chance, 5, 95)
 
