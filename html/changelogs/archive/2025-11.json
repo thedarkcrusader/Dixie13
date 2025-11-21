@@ -493,5 +493,169 @@
                 "bugfix": "The Psyaltrist role now gets the \\\"of the inquisition\\\", \\\"psydonian grit\\\", and etc.. traits."
             }
         ]
+    },
+    "2025-11-16": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Special Traits not working round start"
+            }
+        ],
+        "snowyseshi": [
+            {
+                "balance": "Lich skeleton stats raised, lich skeleton can't dodge anymore."
+            },
+            {
+                "bugfix": "undead parry bug"
+            },
+            {
+                "balance": "Deadite buffs/tweaks"
+            }
+        ],
+        "Rannoooo": [
+            {
+                "bugfix": "Werewolf stats fixed, down to the intended 15."
+            },
+            {
+                "code_imp": "Removed armor_penetration var from werevolf claws, combined it's value with the claw's penfactor var"
+            }
+        ],
+        "SarmentiCampbell": [
+            {
+                "balance": "rebalanced a few things."
+            }
+        ]
+    },
+    "2025-11-17": {
+        "YellowHarlequin": [
+            {
+                "image": "Added 4 new accessories and 1 new beard for Rakshari"
+            },
+            {
+                "code_imp": "Rakshari can only wear Rakshari-specific accessories now"
+            },
+            {
+                "code_imp": "Children can no longer use customizer accessories, they didn't fit right in most cases anyway."
+            },
+            {
+                "code_imp": "Removed color customization from accessories, it wasn't functional anyways."
+            }
+        ],
+        "Wrench-1": [
+            {
+                "rscadd": "Give the Herr Prafekt their Inquisition summon bird back"
+            }
+        ],
+        "PineappleMan929": [
+            {
+                "spellcheck": "fixed ported azure peak language"
+            }
+        ]
+    },
+    "2025-11-18": {
+        "wgtjunior743": [
+            {
+                "code_imp": "Remove the mind from species hostiles npc and make them receive the skills directly"
+            }
+        ],
+        "Draggeru": [
+            {
+                "map": "Fixes some small issues with Vanderlin"
+            },
+            {
+                "map": "Touches up the noble estates"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fix surgery tool craft not working correctly on the anvil"
+            }
+        ],
+        "ladesplat": [
+            {
+                "map": "added MinorLordKeep.dmm"
+            }
+        ]
+    },
+    "2025-11-19": {
+        "wgtjunior743": [
+            {
+                "rscadd": "Timelock"
+            },
+            {
+                "rscdel": "PQ usage for timelock"
+            },
+            {
+                "qol": "Added the species lock, sexes lock and patron lock at the preference menu."
+            },
+            {
+                "rscdel": "PQ does not affect rare classes roll anymore."
+            }
+        ]
+    },
+    "2025-11-20": {
+        "SarmentiCampbell": [
+            {
+                "rscdel": "Removed Prog Psydonite"
+            }
+        ]
+    },
+    "2025-11-21": {
+        "SarmentiCampbell": [
+            {
+                "balance": "Pronouns change."
+            },
+            {
+                "rscadd": "Add in Enforcer."
+            }
+        ],
+        "YellowHarlequin": [
+            {
+                "image": "Modified f/rakshari.dmi and child-rakshari.dmi"
+            },
+            {
+                "image": "removes all the humen child stuff from child-rakshari.dmi"
+            },
+            {
+                "code_imp": "female Rakshari offsets"
+            },
+            {
+                "code_imp": "removes boob overlay from female Rakshari clothes"
+            }
+        ],
+        "ediblebomb, kyres1": [
+            {
+                "rscadd": "Added muskets, they don't need to be wound unlike puffers, and can have bayonets affixed to them for use as spears."
+            },
+            {
+                "rscadd": "The Merchant can now buy a musket for a very high price."
+            },
+            {
+                "rscadd": "Grenzelhoftian Mercenaries now have a choice between a Zweihander or a Musket."
+            },
+            {
+                "image": "Musket and musket ramrod sprites by kyres1/@noodle_buster."
+            }
+        ],
+        "Gatsby229": [
+            {
+                "rscadd": "Added Profane Razor,  a new tool for assassins"
+            },
+            {
+                "rscadd": "Added lock picks to the assassins stash"
+            }
+        ],
+        "SmokingCrackForChrist": [
+            {
+                "rscadd": "New Wretch subclass, the Antiquarian - A gadgeteer thief from Heartfelt that relies on cantrips and is probably going to super-hell. Don't ask about the flies. 5 spells to go with the aforementioned Antiquarian, and a new mask to go with the Antiquarian."
+            },
+            {
+                "sound": "Added the song SALON (BETA) by T87-Suflurhead, added new sounds to go along with the new spells."
+            }
+        ],
+        "wgtjunior743": [
+            {
+                "bugfix": "Some jobs not reopening slots upon cryoing"
+            }
+        ]
     }
 }
