@@ -70,7 +70,7 @@
 		//	continue
 		if(!(player.z in originMultiZ))
 			continue
-		if(!is_type_in_list(player.mind.assigned_role, sType))
+		if(!is_type_in_list(player.mind.assigned_role, servant_types))
 			continue
 		if(!player.can_hear())
 			continue
