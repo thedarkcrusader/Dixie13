@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			if(!HAS_TRAIT(src, TRAIT_KEENEARS))
 				if(istype(speaker, /mob/living))
 					var/mob/living/L = speaker
-					namepart = "Unknown [(L.pronouns == SHE_HER) ? "Woman" : "Man"]"
+					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
 				else
 					namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"
