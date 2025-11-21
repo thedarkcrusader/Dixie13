@@ -115,7 +115,7 @@
 	uses_lord_coloring = LORD_PRIMARY
 
 /obj/item/clothing/armor/leather/vest/colored/black
-	color = CLOTHING_DARK_INK
+	color = CLOTHING_SOOT_BLACK
 
 /obj/item/clothing/armor/leather/vest/colored/innkeep // repath to correct padded vest some day
 	name = "padded vest"
@@ -129,7 +129,7 @@
 	icon_state = "winterjacket"
 	detail_tag = "_detail"
 	color = CLOTHING_WHITE
-	detail_color = CLOTHING_SOOT_BLACK
+	detail_color = CLOTHING_DARK_INK
 	uses_lord_coloring = LORD_PRIMARY
 
 //................ Jacket ............... //	- Has a small storage space

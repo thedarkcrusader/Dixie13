@@ -19,6 +19,10 @@
 /obj/item/clothing/pants/tights/colored/black
 	color = CLOTHING_SOOT_BLACK
 
+/obj/item/clothing/pants/tights/colored/black/servant_shorts_temp
+	name = "shorts"
+	icon_state = "sailorpants"
+
 /obj/item/clothing/pants/tights/colored/white
 	color = CLOTHING_CHALK_WHITE
 

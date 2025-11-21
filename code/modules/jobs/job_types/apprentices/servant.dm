@@ -24,18 +24,31 @@
 
 /datum/outfit/servant/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
-		shirt = /obj/item/clothing/shirt/undershirt/formal
-		pants = /obj/item/clothing/pants/trou/formal/shorts
-		belt = /obj/item/storage/belt/leather/suspenders
-		shoes = /obj/item/clothing/shoes/boots // i would prefer socks and shoes but this is what's most aesthetic right now
-	else
-		armor = /obj/item/clothing/shirt/dress/maid/servant
+	if(H.age == AGE_CHILD)
+		if(H.gender == MALE)
+			armor = /obj/item/clothing/armor/leather/vest/colored/black
+			shirt = /obj/item/clothing/shirt/shortshirt
+			belt = /obj/item/storage/belt/leather/black
+			pants = /obj/item/clothing/pants/tights/colored/black/servant_shorts_temp
+		else
+			armor = /obj/item/clothing/shirt/dress/maid
+			pants = /obj/item/clothing/pants/tights/colored/white
+			cloak = /obj/item/clothing/cloak/apron
+			belt = /obj/item/storage/belt/leather/cloth_belt
 		shoes = /obj/item/clothing/shoes/simpleshoes
-		belt = /obj/item/storage/belt/leather/cloth_belt
-		pants = /obj/item/clothing/pants/tights/colored/white
-		cloak = /obj/item/clothing/cloak/apron/maid
-		head = /obj/item/clothing/head/maidband
+	else
+		if(H.gender == MALE)
+			shirt = /obj/item/clothing/shirt/undershirt/formal
+			pants = /obj/item/clothing/pants/trou/formal/shorts
+			belt = /obj/item/storage/belt/leather/suspenders
+			shoes = /obj/item/clothing/shoes/boots // i would prefer socks and shoes but this is what's most aesthetic right now
+		else
+			armor = /obj/item/clothing/shirt/dress/maid/servant
+			shoes = /obj/item/clothing/shoes/simpleshoes
+			belt = /obj/item/storage/belt/leather/cloth_belt
+			pants = /obj/item/clothing/pants/tights/colored/white
+			cloak = /obj/item/clothing/cloak/apron/maid
+			head = /obj/item/clothing/head/maidband
 	neck = /obj/item/key/manor
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/recipe_book/cooking = 1, /obj/item/storage/belt/pouch/coins/poor = 1)
