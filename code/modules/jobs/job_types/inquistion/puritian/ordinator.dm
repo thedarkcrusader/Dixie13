@@ -17,13 +17,12 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
+		STATKEY_STR = 2,
+		STATKEY_CON = 1,
 		STATKEY_END = 1,
-		STATKEY_CON = 2,
-		STATKEY_PER = 2,
-		STATKEY_SPD = 2,
-		STATKEY_INT = 2,
-	)
+		STATKEY_PER = 1,
+		STATKEY_INT = 1,
+	) //6 Statline due to them having armors.
 
 	traits = list(
 		TRAIT_STEELHEARTED,
@@ -46,7 +45,7 @@
 	var/gear_choice = browser_input_list(spawned, "CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.", gear)
 	switch(gear_choice)
 		if("Covenant And Creed (Broadsword + Shield)")
-			spawned.put_in_hands(new /obj/item/weapon/sword/long/greatsword/broadsword/psy/relic(get_turf(spawned)), TRUE)
+			spawned.put_in_hands(new /obj/item/weapon/sword/long/broadsword/psy/relic(get_turf(spawned)), TRUE)
 			spawned.put_in_hands(new /obj/item/paper/inqslip/arrival/inq(get_turf(spawned)), TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/weapon/shield/tower/metal/psy, ITEM_SLOT_BACK_R, TRUE)
 			var/annoyingbag = spawned.get_item_by_slot(ITEM_SLOT_BACK_L)

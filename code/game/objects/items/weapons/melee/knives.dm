@@ -486,7 +486,9 @@
 			if(QDELETED(target_head))
 				to_chat(user, span_notice("I need their head or else i can't take their face!"))
 				return
-
+			if(!(target.dna?.species.id in RACES_PLAYER_ALL))
+				to_chat(user, span_warning("I can't steal this face!"))
+				return
 			var/datum/beam/transfer_beam = user.Beam(target, icon_state = "drain_life", time = 6 SECONDS)
 
 			playsound(
@@ -699,3 +701,12 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
 	sellprice = 5
 	melt_amount = 50
+
+/obj/item/weapon/knife/throwingknife/throwcard
+	name = "Calling Card"
+	desc = "A thin sheet of pig-iron stamped into a calling card, too thin and useless to be smelted. You've been had. From Heartfelt with love."
+	icon_state = "throwcard"
+	throw_speed = 5
+	max_integrity = INTEGRITY_WORST - 50 // It's not about how effective it is, it's about sending a message.
+	embedding = list("embedded_pain_multiplier" = 2, "embed_chance" = 50, "embedded_fall_chance" = 5)
+	sellprice = 2
