@@ -247,13 +247,22 @@
 
 	var/datum/chimeric_node/new_node = node_to_graft.stored_node
 
-	chimeric.handle_node_injection(
+	var/value = chimeric.handle_node_injection(
 		tier = node_to_graft.node_tier,
 		purity = node_to_graft.node_purity,
 		slot = node_slot,
 		injected_node = new_node
 	)
 
+	if(!value)
+		display_results(
+			user,
+			target,
+			span_warning("[selected_organ.name] has failed!"),
+			span_warning("[user] recoils."),
+			""
+		)
+		return FALSE
 	node_to_graft.stored_node = null
 	qdel(node_to_graft)
 	node_to_graft = null

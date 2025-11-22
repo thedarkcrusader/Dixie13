@@ -292,6 +292,7 @@
 			var/datum/chimeric_node/special/injected_special = injected_node
 			injected_special.setup()
 			handle_special_injection(injected_special)
+	return TRUE
 
 /datum/component/chimeric_organ/proc/consume_any_blood(datum/component/blood_stability/blood_stab, amount)
 	for(var/blood_type in blood_stab.blood_stability)
