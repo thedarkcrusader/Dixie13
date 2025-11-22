@@ -1316,7 +1316,7 @@
 		if(fist_skill >= 4)
 			counter_type = pick(list("knee" = 45, "elbow" = 45,  "stomp" = 10))
 		else
-			counter_type = pick(list("knee" = 45, "elbow" = 45))
+			counter_type = pick(list("knee" = 50, "elbow" = 50))
 		switch(counter_type)
 			if("knee")
 				visible_message("<span class='danger'>[src] drives a knee into [attacker]'s midsection!</span>", \
