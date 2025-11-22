@@ -48,9 +48,6 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(istype(target.wear_neck, /obj/item/clothing/neck/psycross/silver) || istype(target.wear_wrists, /obj/item/clothing/neck/psycross/silver) )
 		to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
 		return
-	if(length(SSmapping.retainer.cultists) >= 8)
-		to_chat(user, span_danger("The veil is too strong to support more than seven lackeys."))
-		return
 	var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
 	var/alert = browser_alert(target, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST?", "???", list("Yield", "Resist"))
 	target.Immobilize(3 SECONDS)
