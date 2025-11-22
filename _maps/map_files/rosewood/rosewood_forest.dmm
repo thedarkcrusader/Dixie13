@@ -72,6 +72,9 @@
 /obj/item/clothing/gloves/leather/advanced,
 /obj/item/clothing/armor/leather/advanced,
 /obj/item/clothing/armor/leather/advanced,
+/obj/item/clothing/shirt/ornate/dress,
+/obj/item/clothing/shirt/ornate/tunic,
+/obj/item/clothing/face/facemask/goldveil,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "bb" = (
@@ -2366,6 +2369,10 @@
 /obj/item/reagent_containers/food/snacks/produce/manabloom,
 /obj/structure/hotspring,
 /turf/open/floor/naturalstone,
+/area/outdoors/woods)
+"WN" = (
+/obj/structure/dye_bin/luxury,
+/turf/open/floor/snow,
 /area/outdoors/woods)
 "WQ" = (
 /obj/structure/flora/hotspring_rocks,
@@ -34806,7 +34813,7 @@ DG
 DG
 DG
 DG
-jV
+WN
 uj
 ZO
 uj
