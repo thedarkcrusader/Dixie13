@@ -1706,10 +1706,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("save")
 					save_preferences()
 					save_character()
+					if(isnewplayer(user))
+						var/mob/dead/new_player/player = user
+						player.cache_multi_ready_characters()
 
 				if("load")
 					load_preferences()
 					load_character()
+					if(isnewplayer(user))
+						var/mob/dead/new_player/player = user
+						player.cache_multi_ready_characters()
 
 				if("changeslot")
 					selected_accent = ACCENT_DEFAULT
