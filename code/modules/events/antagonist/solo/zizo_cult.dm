@@ -36,7 +36,6 @@
 		"Adept",
 		"Royal Knight",
 		"Templar",
-		"Assassin",
 	)
 
 /datum/round_event/antagonist/solo/zizo_cultist

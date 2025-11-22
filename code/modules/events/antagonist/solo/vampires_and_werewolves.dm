@@ -37,7 +37,6 @@
 		"Adept",
 		"Royal Knight",
 		"Templar",
-		"Assassin",
 	)
 
 /datum/round_event/antagonist/solo/vampires_and_werewolves

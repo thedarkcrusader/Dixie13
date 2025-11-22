@@ -40,7 +40,7 @@
 		"Inquisitor",
 		"Absolver",
 		"Confessor",
-		"Orthodoxist",
+		"Sacrestants",
 		"Adept",
 		"Royal Knight",
 		"Templar",

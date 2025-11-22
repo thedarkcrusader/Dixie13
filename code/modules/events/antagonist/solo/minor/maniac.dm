@@ -28,7 +28,6 @@
 		"Confessor",
 		"Sacrestants",
 		"Adept",
-		"Assassin",
 	)
 
 	denominator = 30
