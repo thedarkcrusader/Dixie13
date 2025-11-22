@@ -56,6 +56,24 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"aS" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/clothing/face/phys,
+/obj/item/clothing/face/phys,
+/obj/item/clothing/gloves/leather/phys,
+/obj/item/clothing/gloves/leather/phys,
+/obj/item/clothing/shirt/robe/phys,
+/obj/item/clothing/shirt/robe/phys,
+/obj/item/clothing/neck/phys,
+/obj/item/clothing/neck/phys,
+/obj/item/clothing/pants/trou/leather/advanced,
+/obj/item/clothing/pants/trou/leather/advanced,
+/obj/item/clothing/gloves/leather/advanced,
+/obj/item/clothing/gloves/leather/advanced,
+/obj/item/clothing/armor/leather/advanced,
+/obj/item/clothing/armor/leather/advanced,
+/turf/open/floor/grass/cold,
+/area/outdoors/woods)
 "bb" = (
 /obj/effect/falling_sakura,
 /obj/item/clothing/head/flowercrown/salvia,
@@ -2448,6 +2466,49 @@
 "YX" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
+/area/outdoors/woods)
+"YY" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/neck/coif/cloth,
+/obj/item/clothing/neck/coif/cloth,
+/obj/item/clothing/neck/coif/cloth,
+/obj/item/clothing/neck/coif/cloth,
+/obj/item/clothing/neck/coif/cloth,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/cloak/poncho,
+/obj/item/clothing/cloak/poncho,
+/obj/item/clothing/cloak/poncho,
+/obj/item/clothing/cloak/poncho,
+/obj/item/clothing/cloak/poncho,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/cloak/raincloak/colored/random,
+/obj/item/clothing/shirt/undershirt/fancy,
+/obj/item/clothing/shirt/undershirt/fancy,
+/obj/item/clothing/shirt/undershirt/fancy,
+/obj/item/clothing/shirt/undershirt/lowcut,
+/obj/item/clothing/shirt/undershirt/lowcut,
+/obj/item/clothing/shirt/undershirt/lowcut,
+/obj/item/clothing/shirt/undershirt/sash/colored/random,
+/obj/item/clothing/shirt/undershirt/sash/colored/random,
+/obj/item/clothing/shirt/undershirt/sash/colored/random,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "YZ" = (
 /obj/effect/falling_sakura,
@@ -35751,7 +35812,7 @@ jV
 jV
 Le
 Le
-DG
+YY
 DG
 Le
 Iu
@@ -36156,7 +36217,7 @@ Wv
 Qo
 Qo
 DG
-DG
+aS
 DG
 DG
 DG
