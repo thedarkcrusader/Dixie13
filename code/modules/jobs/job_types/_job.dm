@@ -555,7 +555,7 @@
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = is_banned_from(player_client.ckey, "Appearance")
 	var/mob/dead/new_player/np = player_client?.mob
-	if(istype(np) && np.multi_ready_assigned_slot)
+	if(istype(np) && player_client?.prefs?.multi_char_ready)
 		np.ensure_multi_ready_character_loaded()
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
