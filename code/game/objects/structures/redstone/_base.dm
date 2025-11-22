@@ -13,6 +13,8 @@
 	var/list/power_sources = list() // Track all power sources and their strengths
 	var/list/power_update_queue = list() // Prevent infinite loops during updates
 	var/updating_power = FALSE
+	var/true_pattern
+	var/source_only = FALSE
 
 /obj/structure/redstone/Initialize()
 	. = ..()
@@ -177,8 +179,10 @@
 
 
 /obj/structure/redstone/proc/receive_power(incoming_power, obj/structure/redstone/source, mob/user)
-	// Default behavior - just pass through the power
-	set_power(incoming_power, user, source)
+    if(source_only)
+        return
+    // Default behavior - just pass through the power
+    set_power(incoming_power, user, source)
 
 /obj/structure/redstone/proc/clear_power_source(obj/structure/redstone/source)
 	// Remove a specific power source
@@ -224,19 +228,29 @@
 		if(wire_connections[dir])
 			wire_pattern += dir
 
-	if(wire_pattern)
-		var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire_[wire_pattern]")
-		wire_overlay.layer = layer - 0.01
+	if(true_pattern)
+		var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire_[true_pattern]")
+		wire_overlay.layer = layer + 0.01
 		if(powered)
 			wire_overlay.color = "#FF0000" // Red when powered
 		else
 			wire_overlay.color = "#8B4513" // Brown when unpowered
 		. += wire_overlay
+
 	else
-		var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire")
-		wire_overlay.layer = layer - 0.01
-		if(powered)
-			wire_overlay.color = "#FF0000" // Red when powered
+		if(wire_pattern)
+			var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire_[wire_pattern]")
+			wire_overlay.layer = layer + 0.01
+			if(powered)
+				wire_overlay.color = "#FF0000" // Red when powered
+			else
+				wire_overlay.color = "#8B4513" // Brown when unpowered
+			. += wire_overlay
 		else
-			wire_overlay.color = "#8B4513" // Brown when unpowered
-		. += wire_overlay
+			var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire")
+			wire_overlay.layer = layer - 0.01
+			if(powered)
+				wire_overlay.color = "#FF0000" // Red when powered
+			else
+				wire_overlay.color = "#8B4513" // Brown when unpowered
+			. += wire_overlay

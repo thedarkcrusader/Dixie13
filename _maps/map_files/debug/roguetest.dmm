@@ -1272,6 +1272,11 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"gJ" = (
+/obj/structure/door,
+/obj/structure/redstone/dust,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "hd" = (
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
@@ -1414,7 +1419,7 @@
 /turf/open/floor/carpet,
 /area/indoors)
 "jH" = (
-/obj/structure/channel_connector/furnace,
+/obj/structure/redstone/dust,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "jM" = (
@@ -1476,6 +1481,10 @@
 	dir = 8
 	},
 /area/outdoors/mountains/decap)
+"la" = (
+/obj/structure/redstone/dispenser,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "lf" = (
 /obj/structure/flora/grass/bush/wall,
 /turf/open/floor/tile,
@@ -1540,6 +1549,10 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
+"mk" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "mo" = (
 /obj/structure/bridge_stakes{
 	dir = 1
@@ -1611,6 +1624,11 @@
 /obj/effect/landmark/stall,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"nv" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/structure/redstone/dust,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "nz" = (
 /obj/structure/chair/bench/couch/middle{
 	dir = 4
@@ -1639,6 +1657,10 @@
 /obj/machinery/essence/reservoir,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
+"oc" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "oe" = (
 /obj/machinery/essence/splitter,
 /obj/structure/table/vtable,
@@ -2489,6 +2511,10 @@
 /obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
+"BA" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "BB" = (
 /obj/effect/landmark/bounty_location/warehouse,
 /turf/open/floor/wood,
@@ -3160,6 +3186,12 @@
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
+"PW" = (
+/obj/structure/redstone/repeater{
+	dir = 8
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "Qi" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass/yel,
@@ -3356,7 +3388,7 @@
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
 "Vh" = (
-/obj/structure/metal_channel,
+/obj/structure/redstone/pressure_plate,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "Vk" = (
@@ -3485,10 +3517,8 @@
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "XI" = (
-/obj/structure/channel_connector/drain,
-/obj/item/mould/ingot,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
+/turf/open/transparent/openspace,
+/area)
 "XJ" = (
 /obj/structure/table/wood/crafted,
 /obj/item/paper/scroll/keep_plans,
@@ -13523,8 +13553,8 @@ MJ
 MJ
 MJ
 ko
-Vh
-XI
+MJ
+MJ
 MJ
 jN
 at
@@ -13779,8 +13809,8 @@ jN
 de
 MJ
 MJ
-jH
-Vh
+MJ
+MJ
 MJ
 MJ
 jN
@@ -15840,7 +15870,7 @@ uc
 DL
 Rq
 MJ
-MJ
+mk
 Ra
 jN
 Fj
@@ -16604,9 +16634,9 @@ ac
 ac
 at
 QN
-QN
-Wr
-QN
+oc
+BA
+oc
 jN
 Be
 Rq
@@ -16861,15 +16891,15 @@ ac
 ac
 at
 tL
-QN
+oc
 Wr
-Wr
+PW
 uc
 Go
 Rq
 MJ
-MJ
-MJ
+jH
+Vh
 jN
 jN
 hA
@@ -17118,14 +17148,14 @@ ac
 ac
 at
 QN
-QN
+la
 tL
-Wr
+BA
 jN
 fz
 Rq
 MJ
-MJ
+jH
 jN
 iC
 sE
@@ -17377,12 +17407,12 @@ at
 at
 at
 QN
-Wr
+BA
 jN
 jN
 jN
-MJ
-MJ
+jH
+jH
 jN
 dj
 ru
@@ -17634,11 +17664,11 @@ ac
 ac
 at
 QN
-Wr
-Wr
-Wr
-jf
-mE
+BA
+BA
+BA
+gJ
+nv
 zU
 jN
 Cm
@@ -80856,8 +80886,8 @@ ac
 ac
 ac
 ac
-ac
-ac
+XI
+XI
 ac
 ac
 ac
@@ -81113,8 +81143,8 @@ ac
 ac
 ac
 ac
-ac
-ac
+XI
+XI
 ac
 ac
 ac
@@ -81368,10 +81398,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -81625,10 +81655,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -81882,10 +81912,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -82139,10 +82169,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -82396,10 +82426,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -82653,10 +82683,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -82912,8 +82942,8 @@ ac
 ac
 ac
 ac
-ac
-ac
+XI
+XI
 ac
 ac
 ac
@@ -83170,9 +83200,9 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
+XI
+XI
+XI
 ac
 ac
 ac
@@ -83427,9 +83457,9 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
+XI
+XI
+XI
 ac
 ac
 ac
@@ -83684,13 +83714,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
+XI
+XI
+XI
 Zs
 Of
 Of
@@ -83941,13 +83971,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -84198,13 +84228,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -84455,13 +84485,13 @@ as
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -84712,12 +84742,12 @@ as
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+XI
+XI
+XI
+XI
+XI
+XI
 ac
 ac
 ac
@@ -84970,9 +85000,9 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
+XI
+XI
+XI
 ac
 ac
 ac

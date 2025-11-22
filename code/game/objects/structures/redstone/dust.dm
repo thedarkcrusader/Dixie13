@@ -9,8 +9,20 @@
 	return max(0, source_obj.power_level - 1)
 
 /obj/structure/redstone/dust/receive_power(incoming_power, obj/structure/redstone/source, mob/user)
-	set_power(incoming_power, user, source)
-	maptext = "[power_level]"
+    if(source && istype(source, /obj/structure/redstone/dust))
+        // If this source previously powered us, we need to accept updates from it
+        // even if the power is lower (so we can turn off)
+        if(ref(source) in power_sources)
+            set_power(incoming_power, user, source)
+            maptext = "[power_level]"
+            return
+
+        // New source - only accept if it's actually giving us more power
+        if(incoming_power <= power_level)
+            return
+
+    set_power(incoming_power, user, source)
+    maptext = "[power_level]"
 
 /obj/structure/redstone/dust/update_overlays()
 	. = ..()

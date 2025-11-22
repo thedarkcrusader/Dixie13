@@ -2,6 +2,7 @@
 	name = "redstone pressure plate"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "pressureplate"
+	source_only = TRUE
 	var/active = FALSE
 	var/list/current_occupants = list()
 	var/activation_weight = 1 // Minimum number of objects needed to activate
@@ -53,17 +54,10 @@
 			icon_state = "pressureplate"
 			playsound(src, 'sound/misc/pressurepad_down.ogg', 65, extrarange = 2)
 			set_power(15, null, null)
-			if(length(current_occupants) > 0)
-				var/atom/movable/first_occupant = current_occupants[1]
-				if(ismob(first_occupant))
-					visible_message("[src] clicks as [first_occupant] steps on it.")
-				else
-					visible_message("[src] clicks as something is placed on it.")
 		else
 			icon_state = "pressureplate"
 			playsound(src, 'sound/misc/pressurepad_up.ogg', 65, extrarange = 2)
 			clear_power_source(null)
-			visible_message("[src] clicks as the pressure is released.")
 
 /obj/structure/redstone/pressure_plate/examine(mob/user)
 	. = ..()

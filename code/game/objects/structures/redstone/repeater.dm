@@ -2,6 +2,7 @@
 	name = "redstone repeater"
 	desc = "Amplifies and delays redstone signals. Right-click to adjust delay, alt-click to rotate."
 	icon_state = "repeater"
+	true_pattern = "repeater"
 	var/delay_ticks = 2 // Default delay (1-4 ticks)
 	var/input_power = 0
 	var/output_power = 0
@@ -100,16 +101,11 @@
 /obj/structure/redstone/repeater/update_overlays()
 	. = ..()
 	var/mutable_appearance/delay_overlay = mutable_appearance(icon, "delay_[delay_ticks]")
-	overlays += delay_overlay
-
-	var/mutable_appearance/direction_overlay = mutable_appearance(icon, "repeater_arrow")
-	direction_overlay.dir = facing_dir
-	overlays += direction_overlay
-
 	if(powered)
-		var/mutable_appearance/power_overlay = mutable_appearance(icon, "repeater_on")
-		power_overlay.dir = facing_dir
-		overlays += power_overlay
+		delay_overlay.color = "#FF0000" // Red when powered
+	else
+		delay_overlay.color = "#8B4513" // Brown when unpowered
+	overlays += delay_overlay
 
 /obj/structure/redstone/repeater/update_icon()
 	. = ..()
