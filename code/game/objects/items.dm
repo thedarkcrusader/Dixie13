@@ -1111,12 +1111,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if((get_sharpness() || damtype == BURN) && (w_class >= WEIGHT_CLASS_NORMAL) && force >= 10)
 		return force * (affecting.get_damage() / affecting.max_damage)
 
-/obj/item/proc/get_dismember_sound()
-	if(damtype == BURN)
-		. = 'sound/blank.ogg'
-	else
-		. = "desceration"
-
 /obj/item/proc/open_flame(flame_heat=700)
 	var/turf/location = loc
 	if(ismob(location))
