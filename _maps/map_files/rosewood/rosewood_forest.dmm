@@ -939,11 +939,6 @@
 /obj/effect/mob_spawn/human/corpse,
 /turf/open/floor/snow,
 /area/outdoors/woods)
-"sb" = (
-/turf/open/floor/underworld/road{
-	icon_state = "ash3"
-	},
-/area/outdoors/woods)
 "si" = (
 /obj/structure/hotspring/border/twelve,
 /obj/effect/lily_petal/three,
@@ -1786,12 +1781,9 @@
 "Lj" = (
 /obj/item/paper{
 	info = "This letter is addressed to the coward who abandoned their komrades. You will die a painful death at the hands of the Pale Order should you ever return to Wintermare. Astrata&#39;s light shines upon you so that you may spread Noc&#39;s wisdom to your fellow infidels. Do not mistake this gesture as mercy. Your inquisition has no business spreading falsities upon our Father's blessed realm.";
-	name = "message for the survivor";
-	icon_state = "paperwrite"
+	name = "message for the survivor"
 	},
-/turf/open/floor/underworld/road{
-	icon_state = "ash3"
-	},
+/turf/open/floor/underworld/road,
 /area/outdoors/woods)
 "LJ" = (
 /obj/structure/fluff/railing/border,
@@ -2495,11 +2487,6 @@
 /obj/structure/hotspring/border/twelve,
 /obj/effect/falling_sakura,
 /turf/open/floor/naturalstone,
-/area/outdoors/woods)
-"ZO" = (
-/turf/open/floor/underworld/road{
-	icon_state = "ash2"
-	},
 /area/outdoors/woods)
 "ZS" = (
 /obj/structure/flora/grass/herb/urtica,
@@ -34135,7 +34122,7 @@ DG
 dA
 NH
 wt
-sb
+wt
 Qb
 wt
 Le
@@ -34536,7 +34523,7 @@ CN
 DG
 CN
 NH
-ZO
+wt
 pn
 NH
 dA
@@ -34740,15 +34727,15 @@ wt
 Ww
 wt
 dA
-ZO
+wt
 uj
 wt
 NH
 CN
-ZO
 wt
-sb
-sb
+wt
+wt
+wt
 Qb
 jV
 jV
@@ -34944,12 +34931,12 @@ CN
 xQ
 wt
 wt
-ZO
+wt
 wt
 dA
 Qb
 jV
-sb
+wt
 wt
 NH
 jV
@@ -35143,7 +35130,7 @@ DG
 NH
 DE
 wt
-ZO
+wt
 Lj
 CN
 rq
@@ -35550,7 +35537,7 @@ NH
 Sv
 dA
 dA
-sb
+wt
 NH
 wt
 CN
@@ -35954,7 +35941,7 @@ kM
 jV
 dA
 jV
-sb
+wt
 dA
 dA
 wt
