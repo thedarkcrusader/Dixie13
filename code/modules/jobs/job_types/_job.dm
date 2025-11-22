@@ -534,12 +534,25 @@
 		return // Disconnected while checking for the appearance ban.
 	return spawn_instance
 
+/mob/dead/new_player/proc/ensure_multi_ready_character_loaded()
+	if(!multi_ready_assigned_slot || !client?.prefs)
+		return FALSE
+
+	// Force reload the assigned character slot
+	client.prefs.load_character(multi_ready_assigned_slot)
+	client.prefs.default_slot = multi_ready_assigned_slot
+
+	return TRUE
+
 /// Applies the preference options to the spawning mob, taking the job into account. Assumes the client has the proper mind.
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
 	return
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = is_banned_from(player_client.ckey, "Appearance")
+	var/mob/dead/new_player/np = player_client?.mob
+	if(istype(np) && np.multi_ready_assigned_slot)
+		np.ensure_multi_ready_character_loaded()
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
 	if(fully_randomize)

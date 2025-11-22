@@ -139,6 +139,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["tip_delay"]			>> tip_delay
 	S["ui_scale"]			>> ui_scale
 	S["chat_scale"]			>> chat_scale
+	S["multi_char_ready"] >> multi_char_ready
+
+	S["multi_ready_slots"] >> multi_ready_slots
+	if(!islist(multi_ready_slots))
+		multi_ready_slots = list()
 
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
@@ -245,6 +250,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["ui_scale"], ui_scale)
 	WRITE_FILE(S["chat_scale"], chat_scale)
 	WRITE_FILE(S["key_bindings"], key_bindings)
+	WRITE_FILE(S["multi_char_ready"], multi_char_ready)
+	WRITE_FILE(S["multi_ready_slots"], multi_ready_slots)
 	return TRUE
 
 /datum/preferences/proc/_load_species(S)

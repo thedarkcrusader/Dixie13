@@ -122,7 +122,7 @@
 /obj/structure/roller/rotation_break()
 	set_rotations_per_minute(0)
 
-/obj/structure/roller/set_stress_use(new_stress)
+/obj/structure/roller/set_stress_use(new_stress, check_network)
 	return TRUE
 
 /obj/structure/roller/set_rotations_per_minute(rpm)

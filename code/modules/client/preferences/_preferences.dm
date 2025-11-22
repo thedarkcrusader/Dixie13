@@ -235,6 +235,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	///this is our chat scale
 	var/chat_scale = 1
 
+	/// Whether multi-character readying is enabled
+	var/multi_char_ready = FALSE
+	/// List of character slot indices selected for multi-ready (in priority order)
+	var/list/multi_ready_slots = list()
+
+	var/datum/multi_ready_ui/multi_ready_panel
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -301,9 +308,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	// FIRST ROW
 	dat += "<tr>"
 	dat += "<td style='width:33%;text-align:left'>"
-	dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
+	dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a> <br>"
+	dat += "<a href='?_src_=prefs;preference=multi;task=menu'>Character Ready Order</a>"
+	dat += "<br><b>Chat Scale:</b> <a href='?_src_=prefs;preference=chat_scale;task=input'>[chat_scale]</a>"
 	dat += "</td>"
-
 
 	dat += "<td style='width:33%;text-align:center'>"
 	if(SStriumphs.triumph_buys_enabled)
@@ -452,7 +460,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
 	dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
 
-	dat += "<br><b>Chat Scale:</b> <a href='?_src_=prefs;preference=chat_scale;task=input'>[chat_scale]</a>"
 	dat += "<br></td>"
 
 	dat += "</tr></table>"
@@ -922,6 +929,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				UpdateJobPreference(user, href_list["text"], text2num(href_list["level"]))
 			else
 				SetChoices(user)
+		return 1
+	else if(href_list["preference"] == "multi")
+		open_multi_ready()
 		return 1
 
 	else if(href_list["preference"] == "antag")
