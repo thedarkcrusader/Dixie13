@@ -43,7 +43,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	gloves = /obj/item/clothing/gloves/leather/black
-	backr = /obj/item/weapon/greataxe/steel
+	backr = /obj/item/weapon/polearm/halberd/bardiche/woodcutter
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/highcollier/iron
