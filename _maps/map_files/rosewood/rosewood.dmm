@@ -6530,7 +6530,7 @@
 	pixel_y = 6
 	},
 /obj/structure/fluff/signage{
-	name = "Rosewood Train- South East";
+	name = "Rosewood Train- South West";
 	dir = 8;
 	density = 0;
 	pixel_y = -2
@@ -10600,7 +10600,7 @@
 	pixel_y = 10
 	},
 /obj/structure/fluff/signage{
-	name = "Psydon's Church - East";
+	name = "Pale Order's Church - East";
 	pixel_x = 3
 	},
 /turf/open/floor/snow,
@@ -12057,7 +12057,7 @@
 /area/indoors/town/church/chapel)
 "gdJ" = (
 /obj/structure/fluff/signage{
-	name = "Psydon's Church - Upstairs";
+	name = "Pale Order's Church - Upstairs";
 	pixel_y = 22;
 	pixel_x = 3
 	},
@@ -12579,7 +12579,7 @@
 	pixel_x = -1
 	},
 /obj/structure/fluff/signage{
-	name = "Rosewood Train- East";
+	name = "Rosewood Train- West";
 	dir = 8;
 	density = 0;
 	pixel_y = 3;
@@ -20193,7 +20193,7 @@
 	pixel_x = 10
 	},
 /obj/structure/fluff/signage{
-	name = "Psydon's Church and Dock - North East";
+	name = "Pale Order's Church and Dock - North East";
 	pixel_y = 34;
 	pixel_x = 11
 	},
@@ -20390,6 +20390,7 @@
 /obj/structure/door/viewport{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/access/keyset/garrison/general,
 /turf/open/floor/cobble,
 /area/indoors/town/garrison)
 "kpS" = (
@@ -21009,7 +21010,7 @@
 /obj/structure/fluff/signage{
 	dir = 1;
 	pixel_y = -3;
-	name = "Keep - North"
+	name = "Keep - North West"
 	},
 /turf/open/floor/cobble/snow,
 /area/outdoors/town)
@@ -24522,6 +24523,10 @@
 /obj/structure/roguerock,
 /turf/open/floor/naturalstone,
 /area/under/cave)
+"mvT" = (
+/obj/structure/bars,
+/turf/closed,
+/area/under/town/sewer)
 "mwa" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -27863,8 +27868,8 @@
 /obj/structure/door/viewport{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/access/keyset/town/mercenary,
 /obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/garrison/general,
 /turf/open/floor/dirt/road,
 /area/indoors/town/cell)
 "ocb" = (
@@ -71589,11 +71594,11 @@ sIM
 sIM
 oHr
 wZR
-ufr
-xDw
-xDw
-xDw
-ufr
+kGa
+kGa
+vnY
+kGa
+kGa
 sGM
 qJl
 hhK
@@ -71791,11 +71796,11 @@ flB
 sIM
 jMn
 wZR
-ufr
-ufr
-ufr
-ufr
-ufr
+kGa
+kGa
+vnY
+kGa
+kGa
 sGM
 qJl
 hhK
@@ -80073,11 +80078,11 @@ qJl
 qJl
 qJl
 sGM
-fTm
-fTm
-cKQ
-fTm
-fTm
+rbI
+mvT
+mvT
+mvT
+rbI
 sGM
 qJl
 qJl
@@ -80275,11 +80280,11 @@ qJl
 qJl
 qJl
 sGM
-fTm
-fTm
-cKQ
-fTm
-fTm
+rbI
+rbI
+rbI
+rbI
+rbI
 sGM
 qJl
 qJl
@@ -177877,7 +177882,7 @@ qJl
 qJl
 qJl
 qJl
-raF
+qJl
 qJl
 qJl
 qJl
@@ -230717,7 +230722,7 @@ qJl
 qJl
 xOh
 vNn
-mdG
+vgb
 mdG
 enD
 dYc
