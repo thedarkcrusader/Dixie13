@@ -17,10 +17,6 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
-"ao" = (
-/obj/effect/landmark/start/orthodoxist,
-/turf/open/floor/grass/cold,
-/area/outdoors/woods)
 "au" = (
 /obj/item/natural/rock{
 	pixel_x = 3;
@@ -70,6 +66,12 @@
 	dir = 8
 	},
 /area/outdoors/mountains)
+"bm" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/woodturned/nosmooth/saiga,
+/area/indoors)
 "bo" = (
 /obj/structure/hotspring/border/eleven,
 /turf/open/floor/naturalstone,
@@ -77,10 +79,20 @@
 "bt" = (
 /turf/open/floor/ruinedwood,
 /area/indoors)
-"bC" = (
-/obj/structure/window/openclose/reinforced{
+"bu" = (
+/obj/effect/decal/cleanable/blood/tracks{
 	dir = 8
 	},
+/turf/open/floor/underworld/road,
+/area/indoors)
+"bA" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibbl2"
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/woods)
+"bC" = (
+/obj/effect/decal/cleanable/debris/glass,
 /turf/open/floor/blocks,
 /area/indoors)
 "bE" = (
@@ -132,6 +144,9 @@
 /obj/structure/flora/newtree/snow,
 /turf/open/floor/snow,
 /area/outdoors/woods)
+"bY" = (
+/turf/closed/basic,
+/area/indoors)
 "bZ" = (
 /obj/item/book/tales1,
 /turf/open/floor/cobble,
@@ -147,10 +162,6 @@
 	},
 /turf/open/floor/snow/patchy,
 /area/outdoors/woods)
-"cm" = (
-/obj/structure/tent_wall,
-/turf/open/floor/cobblerock,
-/area/indoors)
 "cu" = (
 /mob/living/simple_animal/hostile/retaliate/fae/glimmerwing,
 /turf/open/floor/grass/cold,
@@ -161,7 +172,6 @@
 /turf/open/floor/snow/patchy,
 /area/outdoors/woods)
 "cy" = (
-/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/closet/crate/chest/neu,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/indoors)
@@ -169,6 +179,10 @@
 /obj/structure/table/wood/plain_alt,
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/ruinedwood,
+/area/indoors)
+"cM" = (
+/obj/effect/decal/cleanable/debris/stone,
+/turf/open/floor/woodturned/nosmooth/saiga,
 /area/indoors)
 "cN" = (
 /obj/machinery/light/fueled/torchholder/r,
@@ -241,6 +255,10 @@
 "dW" = (
 /turf/open/floor/cobblerock/snow,
 /area/outdoors/woods)
+"ea" = (
+/obj/item/natural/stoneblock,
+/turf/open/floor/underworld/road,
+/area/indoors)
 "eb" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -259,27 +277,6 @@
 /obj/effect/landmark/mapGenerator/rosewood/forest,
 /turf/closed/basic,
 /area/under/cave)
-"ej" = (
-/obj/machinery/light/fueled/wallfire/candle/r,
-/obj/structure/closet/crate/chest/wicker,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/kitchen/spoon,
-/obj/item/kitchen/spoon,
-/turf/open/floor/hay,
-/area/indoors)
 "ek" = (
 /obj/structure/flora/hotspring_rocks/small,
 /obj/effect/lily_petal/three,
@@ -291,10 +288,6 @@
 /obj/structure/hotspring/border/five,
 /obj/effect/falling_sakura,
 /turf/open/floor/naturalstone,
-/area/outdoors/woods)
-"ev" = (
-/obj/machinery/light/fueled/campfire/densefire,
-/turf/open/floor/snow/patchy,
 /area/outdoors/woods)
 "ez" = (
 /obj/structure/table/wood/treestump,
@@ -326,6 +319,10 @@
 "fi" = (
 /turf/closed/wall/mineral/wood,
 /area/indoors)
+"fj" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/grass/cold,
+/area/outdoors/woods)
 "fk" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -348,9 +345,9 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "ft" = (
-/obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/twig,
-/area/indoors)
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/dirt/road,
+/area/outdoors/woods)
 "fw" = (
 /obj/structure/hotspring/border/ten,
 /obj/effect/falling_sakura,
@@ -372,6 +369,13 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/snow,
 /area/outdoors/woods)
+"fR" = (
+/obj/item/fertilizer/ash{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/turf/open/floor/wood/nosmooth/saiga,
+/area/indoors)
 "fU" = (
 /obj/structure/stairs,
 /turf/open/floor/grass/cold,
@@ -404,6 +408,9 @@
 	},
 /turf/open/floor/snow/rough,
 /area/outdoors/woods)
+"gF" = (
+/turf/open/floor/cobble/alt,
+/area/outdoors/woods)
 "ha" = (
 /obj/structure/door/weak,
 /turf/open/floor/ruinedwood,
@@ -416,23 +423,12 @@
 /obj/structure/wild_plant/nospread/poppy,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
-"hQ" = (
-/obj/structure/fake_machine/mail/r{
-	mailtag = "Inquisition"
-	},
-/turf/open/floor/grass/cold,
-/area/outdoors/woods)
 "ic" = (
 /turf/closed/wall/mineral/decostone/cand,
 /area/outdoors/woods)
 "id" = (
 /turf/closed/mineral/bedrock,
 /area/under/cave)
-"ik" = (
-/obj/machinery/light/fueled/hearth,
-/obj/item/reagent_containers/glass/bucket/pot/stone,
-/turf/open/floor/hay,
-/area/indoors)
 "is" = (
 /turf/open/floor/metal/alt,
 /area/outdoors/mountains)
@@ -456,9 +452,10 @@
 /turf/open/floor/snow/patchy,
 /area/outdoors/woods)
 "iQ" = (
-/obj/structure/door/weak/bolt{
+/obj/effect/decal/cleanable/blood/tracks{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/debris/stone,
 /turf/open/floor/herringbone,
 /area/indoors)
 "iS" = (
@@ -512,6 +509,7 @@
 /area/indoors)
 "ko" = (
 /obj/structure/fluff/railing/border,
+/obj/effect/decal/cleanable/debris/wood,
 /turf/open/floor/woodturned/nosmooth/saiga,
 /area/indoors)
 "kq" = (
@@ -530,6 +528,19 @@
 /obj/structure/hotspring/border/three,
 /obj/machinery/light/fueled/torchholder/hotspring/standing,
 /turf/open/floor/naturalstone,
+/area/outdoors/woods)
+"kD" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibbl3"
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/woods)
+"kM" = (
+/obj/item/fertilizer/ash{
+	pixel_x = -12;
+	pixel_y = 8
+	},
+/turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "kT" = (
 /turf/open/floor/ruinedwood,
@@ -557,7 +568,6 @@
 /turf/open/floor/metal/alt,
 /area/outdoors/mountains)
 "lo" = (
-/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/rack/shelf{
 	pixel_y = 0;
 	pixel_x = 32
@@ -566,13 +576,9 @@
 	pixel_x = 24;
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/food/snacks/tallow/red{
-	pixel_x = 38;
-	pixel_y = 9
-	},
-/obj/item/inqarticles/tallowpot{
-	pixel_y = 9;
-	pixel_x = 32
+/obj/item/natural/stoneblock{
+	pixel_x = -8;
+	pixel_y = 11
 	},
 /turf/open/floor/herringbone,
 /area/indoors)
@@ -591,6 +597,12 @@
 /obj/structure/flora/hotspring_rocks/small/five,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
+"lB" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/herringbone,
+/area/indoors)
 "lF" = (
 /obj/structure/chair/stool,
 /obj/effect/landmark/start/adventurerlate{
@@ -646,13 +658,8 @@
 "mG" = (
 /turf/open/floor/dirt/road,
 /area/indoors)
-"mP" = (
-/obj/structure/bed/hay,
-/obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/hay,
-/area/indoors)
 "mW" = (
-/obj/machinery/light/fueled/torchholder/l,
+/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/herringbone,
 /area/indoors)
 "ng" = (
@@ -727,6 +734,10 @@
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/snow,
 /area/outdoors/woods)
+"oB" = (
+/obj/structure/flora/newtree/snow,
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "oE" = (
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/snow,
@@ -741,8 +752,8 @@
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
 "oN" = (
-/obj/structure/door/weak/bolt{
-	dir = 4
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibbl3"
 	},
 /turf/open/floor/woodturned/nosmooth/saiga,
 /area/indoors)
@@ -754,6 +765,12 @@
 /obj/structure/roguerock,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"oT" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibbl2"
+	},
+/turf/open/floor/dirt,
+/area/indoors)
 "pe" = (
 /obj/effect/falling_sakura,
 /obj/effect/falling_sakura,
@@ -770,14 +787,21 @@
 /turf/open/floor/herringbone,
 /area/indoors)
 "pn" = (
-/turf/open/floor/twig,
-/area/indoors)
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "pq" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
 /turf/open/floor/metal/alt,
 /area/outdoors/mountains)
+"ps" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibbl3"
+	},
+/turf/open/floor/underworld/road,
+/area/indoors)
 "pu" = (
 /obj/structure/hotspring/border/three,
 /turf/open/floor/naturalstone,
@@ -882,13 +906,17 @@
 "qH" = (
 /turf/closed/mineral,
 /area/under/cave)
-"qO" = (
-/obj/structure/door/weak/bolt,
-/turf/open/floor/wood/nosmooth/saiga,
-/area/indoors)
 "qR" = (
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/snow,
+/area/outdoors/woods)
+"qV" = (
+/mob/living/simple_animal/hostile/retaliate/raccoon,
+/turf/open/floor/herringbone,
+/area/indoors)
+"rq" = (
+/obj/machinery/light/fueled/campfire,
+/turf/open/floor/cobblerock,
 /area/outdoors/woods)
 "rz" = (
 /turf/open/water/swamp,
@@ -910,10 +938,15 @@
 /obj/structure/fluff/railing/tall/palisade,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"sa" = (
+/obj/effect/mob_spawn/human/corpse,
+/turf/open/floor/snow,
+/area/outdoors/woods)
 "sb" = (
-/obj/structure/fluff/psycross/psycrucifix/stone,
-/turf/open/floor/twig,
-/area/indoors)
+/turf/open/floor/underworld/road{
+	icon_state = "ash3"
+	},
+/area/outdoors/woods)
 "si" = (
 /obj/structure/hotspring/border/twelve,
 /obj/effect/lily_petal/three,
@@ -973,12 +1006,6 @@
 /obj/structure/hotspring,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
-"tu" = (
-/obj/structure/door/weak/bolt{
-	dir = 1
-	},
-/turf/open/floor/wood/nosmooth/saiga,
-/area/indoors)
 "ty" = (
 /obj/structure/flora/grass/herb/urtica,
 /obj/effect/falling_sakura,
@@ -1023,9 +1050,12 @@
 /turf/open/floor/dirt,
 /area/outdoors/woods)
 "uj" = (
-/obj/structure/tent_wall,
-/turf/open/floor/snow/patchy,
-/area/indoors)
+/obj/item/fertilizer/ash{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors/woods)
 "uy" = (
 /obj/structure/flora/newtree/snow,
 /obj/structure/flora/newtree/snow,
@@ -1053,6 +1083,11 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"vh" = (
+/obj/structure/bed/sleepingbag,
+/obj/effect/landmark/start/orthodoxist,
+/turf/open/floor/naturalstone,
+/area/under/cave)
 "vn" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/snow,
@@ -1078,12 +1113,8 @@
 /turf/open/floor/dirt,
 /area/indoors/shelter/woods)
 "wt" = (
-/obj/item/book/bibble/psy{
-	pixel_x = -11;
-	pixel_y = 10
-	},
-/turf/open/floor/hay,
-/area/indoors)
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "wu" = (
 /obj/structure/fluff/signage{
 	dir = 1;
@@ -1096,11 +1127,6 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/turned,
 /area/indoors)
-"wE" = (
-/obj/effect/landmark/start/absolver,
-/obj/structure/chair/stool,
-/turf/open/floor/snow/patchy,
-/area/outdoors/woods)
 "wH" = (
 /obj/structure/hotspring,
 /obj/effect/falling_sakura,
@@ -1113,10 +1139,6 @@
 /obj/structure/hotspring,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
-"xb" = (
-/obj/item/weapon/thresher/military,
-/turf/open/floor/hay,
-/area/indoors)
 "xe" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/dirt,
@@ -1137,9 +1159,9 @@
 /turf/open/floor/dirt/road,
 /area/outdoors/woods)
 "xq" = (
-/obj/structure/tent_wall,
-/turf/open/floor/grass/cold,
-/area/indoors)
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/dirt,
+/area/outdoors/woods)
 "xr" = (
 /obj/structure/flora/newtree/snow,
 /obj/structure/flora/newtree/snow,
@@ -1150,7 +1172,6 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "xy" = (
-/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
@@ -1162,15 +1183,15 @@
 	},
 /turf/open/floor/snow/patchy,
 /area/outdoors/woods)
-"xI" = (
-/turf/open/floor/snow,
-/area/indoors)
+"xQ" = (
+/obj/item/fertilizer/ash,
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "xW" = (
-/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
-/turf/open/floor/woodturned/nosmooth/saiga,
+/turf/open/transparent/openspace,
 /area/indoors)
 "yb" = (
 /obj/structure/flora/newtree/snow,
@@ -1205,10 +1226,6 @@
 	dir = 4
 	},
 /area/outdoors/mountains)
-"yR" = (
-/obj/structure/tent_wall,
-/turf/open/floor/snow,
-/area/indoors)
 "yT" = (
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/snow/patchy,
@@ -1264,10 +1281,6 @@
 "zx" = (
 /turf/open/water,
 /area/outdoors/woods)
-"zz" = (
-/obj/structure/bed/hay,
-/turf/open/floor/twig,
-/area/indoors)
 "zA" = (
 /turf/closed/basic,
 /area/outdoors/woods)
@@ -1327,6 +1340,10 @@
 /obj/item/fishingrod,
 /turf/open/floor/ruinedwood,
 /area/outdoors/woods)
+"Az" = (
+/obj/effect/decal/cleanable/debris/glass,
+/turf/open/floor/wood/nosmooth/saiga,
+/area/indoors)
 "AN" = (
 /obj/structure/flora/hotspring_rocks/small/five,
 /obj/effect/falling_sakura,
@@ -1362,23 +1379,9 @@
 /turf/open/floor/naturalstone,
 /area/under/cave)
 "Bt" = (
-/obj/structure/rack/shelf{
-	pixel_y = 0;
-	pixel_x = 32
-	},
-/obj/item/inqarticles/indexer{
-	pixel_x = 35;
-	pixel_y = 12
-	},
-/obj/item/inqarticles/indexer{
-	pixel_x = 41;
-	pixel_y = 11
-	},
-/obj/item/inqarticles/indexer{
-	pixel_x = 38;
-	pixel_y = 9
-	},
-/turf/open/floor/herringbone,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/debris/glass,
+/turf/open/floor/dirt/road,
 /area/indoors)
 "Bv" = (
 /obj/effect/falling_sakura,
@@ -1395,43 +1398,12 @@
 /obj/structure/bed/hay,
 /turf/open/floor/ruinedwood,
 /area/indoors/shelter/woods)
+"BQ" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/herringbone,
+/area/indoors)
 "BT" = (
-/obj/structure/rack/shelf{
-	pixel_y = 0;
-	pixel_x = 32
-	},
-/obj/item/paper/inqslip/accusation{
-	pixel_x = 24;
-	pixel_y = 41
-	},
-/obj/item/paper/inqslip/accusation{
-	pixel_x = 21;
-	pixel_y = 44
-	},
-/obj/item/paper/inqslip/accusation{
-	pixel_x = 29;
-	pixel_y = 43
-	},
-/obj/item/paper/inqslip/confession{
-	pixel_y = 9;
-	pixel_x = 25
-	},
-/obj/item/paper/inqslip/confession{
-	pixel_y = 9;
-	pixel_x = 31
-	},
-/obj/item/paper/inqslip/confession{
-	pixel_y = 10;
-	pixel_x = 37
-	},
-/obj/item/paper/inqslip/confession{
-	pixel_y = 10;
-	pixel_x = 42
-	},
-/obj/item/clothing/neck/talkstone{
-	pixel_x = 32;
-	pixel_y = 11
-	},
+/obj/effect/decal/cleanable/debris/stone,
 /turf/open/floor/herringbone,
 /area/indoors)
 "Ci" = (
@@ -1476,6 +1448,17 @@
 	},
 /turf/open/floor/wood/nosmooth,
 /area/indoors)
+"DE" = (
+/obj/machinery/light/fueled/campfire/pyre,
+/obj/item/clothing/neck/psycross/silver{
+	pixel_x = -1;
+	pixel_y = 0;
+	sellprice = 25;
+	name = "charred silver psycross";
+	desc = "This was worn by a man burned at the stake. You may share his fate for wearing it."
+	},
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "DF" = (
 /obj/effect/lily_petal/two,
 /obj/effect/falling_sakura,
@@ -1525,10 +1508,6 @@
 	},
 /turf/open/floor/metal,
 /area/outdoors/mountains)
-"EB" = (
-/obj/structure/bed/hay,
-/turf/open/floor/hay,
-/area/indoors)
 "ED" = (
 /turf/open/floor/snow,
 /area/outdoors/mountains)
@@ -1551,6 +1530,10 @@
 /obj/structure/table/wood/treestump,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"Fn" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/herringbone,
+/area/indoors)
 "Fp" = (
 /turf/open/floor/blocks,
 /area/indoors)
@@ -1600,13 +1583,6 @@
 /obj/machinery/light/fueled/torchholder/hotspring/standing,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
-"GH" = (
-/obj/effect/landmark/start/adept{
-	dir = 1
-	},
-/obj/structure/chair/stool,
-/turf/open/floor/snow/patchy,
-/area/outdoors/woods)
 "GK" = (
 /obj/item/natural/rock{
 	pixel_x = -9;
@@ -1626,6 +1602,9 @@
 /obj/structure/flora/newtree/snow,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"GR" = (
+/turf/open/floor/underworld/road,
+/area/indoors)
 "GU" = (
 /obj/structure/stairs,
 /turf/open/floor/ruinedwood,
@@ -1665,16 +1644,19 @@
 	},
 /turf/open/floor/metal/alt,
 /area/outdoors/mountains)
+"HN" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/woodturned/nosmooth/saiga,
+/area/indoors)
+"If" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/wood/nosmooth/saiga,
+/area/indoors)
 "In" = (
 /obj/structure/hotspring/border/seven,
 /turf/open/floor/naturalstone,
-/area/outdoors/woods)
-"Iu" = (
-/obj/effect/landmark/start/adept{
-	dir = 8
-	},
-/obj/structure/chair/stool,
-/turf/open/floor/snow/patchy,
 /area/outdoors/woods)
 "IE" = (
 /obj/structure/chair/stool,
@@ -1702,12 +1684,14 @@
 "IZ" = (
 /turf/open/water/cleanshallow,
 /area/outdoors/woods)
-"Jc" = (
-/obj/effect/landmark/start/orthodoxist{
-	dir = 1
+"Je" = (
+/obj/item/fertilizer/ash{
+	pixel_x = -5;
+	pixel_y = -5
 	},
-/turf/open/floor/snow,
-/area/outdoors/woods)
+/mob/living/carbon/human/species/rousman/ambush,
+/turf/open/floor/wood/nosmooth/saiga,
+/area/indoors)
 "Ji" = (
 /turf/open/floor/cobble,
 /area/under/cave)
@@ -1759,7 +1743,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/turf/open/floor/woodturned/nosmooth/saiga,
+/turf/open/transparent/openspace,
 /area/indoors)
 "Kv" = (
 /obj/effect/falling_sakura,
@@ -1801,6 +1785,16 @@
 	dir = 8
 	},
 /turf/open/floor/dirt,
+/area/outdoors/woods)
+"Lj" = (
+/obj/item/paper{
+	info = "<font face="Segoe Script" color=#5f103f>This letter is addressed to the coward who abandoned their komrades. You will die a painful death at the hands of the Pale Order should you ever return to Wintermare. Astrata&#39;s light shines upon you so that you may spread Noc&#39;s wisdom to your fellow infidels. Do not mistake this gesture as mercy. Your inquisition has no business spreading falsities upon our Father's blessed realm.</font>";
+	name = "message for the survivor";
+	icon_state = "paperwrite"
+	},
+/turf/open/floor/underworld/road{
+	icon_state = "ash3"
+	},
 /area/outdoors/woods)
 "LJ" = (
 /obj/structure/fluff/railing/border,
@@ -1845,6 +1839,13 @@
 "Mo" = (
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/snow/patchy,
+/area/outdoors/woods)
+"Ms" = (
+/obj/item/natural/stoneblock{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "Mu" = (
 /obj/item/candle/yellow/lit/infinite/strong/skull,
@@ -1951,6 +1952,12 @@
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"Oq" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/open/floor/herringbone,
+/area/indoors)
 "Os" = (
 /obj/structure/rack,
 /obj/item/grown/log/tree/stick,
@@ -2120,17 +2127,12 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "Rt" = (
-/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/fermentation_keg/water{
 	pixel_y = 8;
 	pixel_x = -7
 	},
-/obj/structure/fermentation_keg/water{
-	pixel_x = 9;
-	pixel_y = -3;
-	anchored = 1
-	},
-/turf/open/floor/herringbone,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/underworld/road,
 /area/indoors)
 "Rv" = (
 /obj/structure/door/weak/bolt{
@@ -2158,23 +2160,7 @@
 /turf/open/floor/dirt/road,
 /area/indoors)
 "RT" = (
-/obj/machinery/light/fueled/torchholder/r,
-/obj/structure/rack/shelf{
-	pixel_y = 0;
-	pixel_x = 32
-	},
-/obj/item/reagent_containers/food/snacks/tallow/red{
-	pixel_x = 30;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/snacks/tallow/red{
-	pixel_x = 39;
-	pixel_y = 10
-	},
-/obj/item/inqarticles/tallowpot{
-	pixel_x = 35;
-	pixel_y = 10
-	},
+/obj/effect/decal/cleanable/debris/glass,
 /turf/open/floor/herringbone,
 /area/indoors)
 "Sb" = (
@@ -2188,6 +2174,13 @@
 "Sr" = (
 /turf/open/floor/dirt/road,
 /area/under/cave)
+"Sv" = (
+/obj/item/fertilizer/ash{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/turf/open/floor/underworld/road,
+/area/outdoors/woods)
 "Sw" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -2244,10 +2237,6 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
-"Tt" = (
-/obj/structure/roguetent,
-/turf/open/floor/hay,
-/area/indoors)
 "Tz" = (
 /obj/item/book/fishing,
 /turf/open/floor/cobblerock,
@@ -2311,22 +2300,26 @@
 "VA" = (
 /turf/closed/wall/mineral/craftstone,
 /area/indoors)
+"VC" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/naturalstone,
+/area/under/cave)
 "VF" = (
 /turf/open/transparent/openspace,
 /area/outdoors/woods)
 "VL" = (
 /turf/open/floor/snow/patchy,
 /area/under/cave)
+"VQ" = (
+/obj/item/natural/wood/plank{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/turf/open/floor/woodturned/nosmooth/saiga,
+/area/indoors)
 "VR" = (
 /turf/open/floor/blocks,
 /area/outdoors/mountains)
-"Wf" = (
-/obj/structure/table/wood/large/corner_new{
-	dir = 6
-	},
-/obj/item/weapon/knife,
-/turf/open/floor/snow/patchy,
-/area/outdoors/woods)
 "Wq" = (
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass/cold,
@@ -2343,12 +2336,27 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
+"Ww" = (
+/obj/machinery/light/fueled/campfire/pyre,
+/obj/item/clothing/neck/psycross/silver{
+	pixel_x = -1;
+	pixel_y = 0;
+	sellprice = 25;
+	name = "charred silver psycross";
+	desc = "This was worn by a man burned at the stake. You may share his fate for wearing it."
+	},
+/turf/open/floor/dirt,
+/area/outdoors/woods)
 "WJ" = (
 /obj/effect/falling_sakura,
 /obj/item/reagent_containers/food/snacks/produce/manabloom,
 /obj/structure/hotspring,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
+"WL" = (
+/obj/effect/decal/cleanable/debris/glass,
+/turf/open/floor/underworld/road,
+/area/indoors)
 "WQ" = (
 /obj/structure/flora/hotspring_rocks,
 /turf/open/floor/naturalstone,
@@ -2400,26 +2408,12 @@
 "Yd" = (
 /turf/closed/wall/mineral/decostone,
 /area/outdoors/woods)
-"Yq" = (
-/obj/structure/table/wood/large/corner_new{
-	dir = 10
-	},
-/obj/item/reagent_containers/food/snacks/meat/salami,
-/turf/open/floor/snow/patchy,
-/area/outdoors/woods)
 "Ys" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
 /turf/open/floor/metal/alt,
 /area/outdoors/mountains)
-"YB" = (
-/obj/effect/landmark/start/puritan{
-	dir = 4
-	},
-/obj/structure/chair/stool,
-/turf/open/floor/snow/patchy,
-/area/outdoors/woods)
 "YF" = (
 /obj/structure/hotspring/border/ten,
 /obj/machinery/light/fueled/torchholder/hotspring{
@@ -2435,9 +2429,6 @@
 "YO" = (
 /turf/open/floor/ruinedwood,
 /area/outdoors/woods)
-"YU" = (
-/turf/open/floor/hay,
-/area/indoors)
 "YW" = (
 /obj/structure/stairs/stone{
 	dir = 4;
@@ -2499,15 +2490,20 @@
 "ZC" = (
 /turf/closed/wall/mineral/decostone,
 /area/under/cave)
+"ZD" = (
+/obj/effect/decal/cleanable/debris/stone,
+/turf/open/floor/blocks,
+/area/indoors)
 "ZH" = (
 /obj/structure/hotspring/border/twelve,
 /obj/effect/falling_sakura,
 /turf/open/floor/naturalstone,
 /area/outdoors/woods)
 "ZO" = (
-/obj/structure/roguetent,
-/turf/open/floor/snow/patchy,
-/area/indoors)
+/turf/open/floor/underworld/road{
+	icon_state = "ash2"
+	},
+/area/outdoors/woods)
 "ZS" = (
 /obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/dirt,
@@ -32328,7 +32324,7 @@ DG
 DG
 DG
 DG
-zL
+oB
 DG
 DG
 zL
@@ -33533,12 +33529,12 @@ Le
 DG
 GQ
 DG
-GQ
-GQ
-XI
-XI
-XI
-XI
+DG
+DG
+jV
+jV
+jV
+jV
 DG
 GQ
 GQ
@@ -33730,17 +33726,17 @@ Zb
 dA
 DG
 jV
-jV
+sa
 Le
 DG
 DG
 DG
 DG
 DG
-GQ
-GQ
 DG
-GQ
+DG
+DG
+DG
 DG
 DG
 DG
@@ -33938,18 +33934,18 @@ Le
 DG
 DG
 DG
-xq
-xq
-xq
 DG
 DG
+NH
+NH
+NH
 DG
 DG
 DG
 DG
 NH
-GQ
-GQ
+DG
+DG
 GQ
 DG
 DG
@@ -34139,19 +34135,19 @@ jV
 jV
 jV
 DG
-xq
-xq
-mP
-xq
-xq
-Le
+dA
+NH
+wt
+sb
+Qb
+wt
 Le
 Le
 DG
 DG
 DG
-GQ
-GQ
+DG
+DG
 DG
 GQ
 DG
@@ -34341,18 +34337,18 @@ jV
 jV
 jV
 jV
-xq
-EB
-YU
-zz
-uj
-Le
 DG
-uj
-xq
-uj
-yR
-yR
+NH
+NH
+Qb
+wt
+NH
+dA
+NH
+NH
+dA
+dA
+NH
 jV
 jV
 Le
@@ -34542,19 +34538,19 @@ dW
 CN
 DG
 CN
-jV
-yR
-uj
+NH
+ZO
 pn
-uj
-uj
-Le
-Le
-uj
-xb
+NH
+dA
+Qb
+kw
+NH
+wt
+wt
 ft
 pn
-yR
+Qb
 jV
 jV
 jV
@@ -34743,20 +34739,20 @@ DG
 DG
 DG
 DG
-DG
-DG
-jV
-uj
+wt
+Ww
+wt
+dA
 ZO
 uj
-jV
-Le
-Le
+wt
+NH
+CN
 ZO
-YU
-YU
+wt
 sb
-yR
+sb
+Qb
 jV
 jV
 jV
@@ -34946,21 +34942,21 @@ XI
 jV
 DG
 DG
-DG
-dW
-jV
-jV
-DG
-jV
-jV
-jV
-yR
-xI
-YU
 wt
-yR
+CN
+xQ
+wt
+wt
+ZO
+wt
+dA
+Qb
 jV
-XI
+sb
+wt
+NH
+jV
+jV
 jV
 XI
 jV
@@ -35145,22 +35141,22 @@ FL
 jV
 jV
 Le
-ao
 DG
-Le
-Le
 DG
-dW
-DG
+NH
+DE
+wt
+ZO
+Lj
 CN
-CN
+rq
+wt
 DG
-DG
+NH
+Qb
+wt
 xq
-cm
-xq
-xq
-xq
+Qb
 DG
 jV
 jV
@@ -35349,16 +35345,16 @@ jV
 DG
 DG
 Le
-Le
-YB
-Le
+wt
+NH
+wt
 jV
-jV
+wt
+wt
 DG
-DG
-SK
-SK
-dW
+gF
+NH
+NH
 dW
 DG
 CN
@@ -35551,18 +35547,18 @@ DG
 Le
 Le
 Le
-wE
-ev
-GH
-DG
-jV
-jV
-jV
-DG
-SK
-DG
-DG
-DG
+NH
+Ww
+NH
+Sv
+dA
+dA
+sb
+NH
+wt
+CN
+CN
+dA
 SK
 SK
 DG
@@ -35754,17 +35750,17 @@ Le
 DG
 DG
 Le
-Iu
+NH
+NH
 DG
-DG
-Jc
-yR
-xq
-Tt
-yR
-jV
-jV
-jV
+dA
+dA
+dA
+wt
+wt
+gF
+dA
+dA
 jV
 jV
 jV
@@ -35957,16 +35953,16 @@ DG
 DG
 DG
 DG
-DG
+kM
 jV
+dA
 jV
-xq
-ik
-YU
-uj
-Yq
-jV
-DG
+sb
+dA
+dA
+wt
+NH
+NH
 DG
 jV
 jV
@@ -36162,11 +36158,11 @@ DG
 DG
 DG
 DG
-yR
-yR
-ej
-uj
-Wf
+wt
+wt
+wt
+wt
+dA
 Le
 Le
 jV
@@ -36359,16 +36355,16 @@ DG
 DG
 DG
 DG
-hQ
 DG
 DG
 DG
 DG
 DG
-xq
-xq
-xq
 DG
+jV
+jV
+jV
+dA
 Le
 Le
 Le
@@ -36562,7 +36558,7 @@ DG
 DG
 Fp
 BD
-oN
+yz
 oN
 BD
 BD
@@ -36765,10 +36761,10 @@ DG
 Fp
 yz
 yz
+ea
 yz
-yz
-Fp
-DG
+ZD
+Ms
 DG
 DG
 DG
@@ -36965,11 +36961,11 @@ DG
 BD
 BD
 BD
-yz
-yz
-yz
-yz
-Fp
+VQ
+WL
+ps
+GR
+oT
 Fp
 BD
 DG
@@ -37165,14 +37161,14 @@ QJ
 DG
 DG
 BD
-tk
+GR
 tk
 RT
 Bt
 BT
 lo
 tk
-tk
+mG
 BD
 DG
 DG
@@ -37368,13 +37364,13 @@ DG
 DG
 Cv
 tk
-tk
+fR
 BD
 BD
 BD
 BD
-tk
-tk
+If
+GR
 Cv
 DG
 DG
@@ -37571,12 +37567,12 @@ DG
 Fp
 tk
 tk
-mW
+Hs
 BD
 BD
 Rt
-tk
-tk
+fR
+Az
 BD
 DG
 DG
@@ -37776,7 +37772,7 @@ BD
 yz
 Sw
 Sw
-yz
+bu
 BD
 BD
 BD
@@ -37976,9 +37972,9 @@ DG
 DG
 BD
 yz
-yz
-yz
-yz
+GR
+HN
+bm
 Fp
 DG
 DG
@@ -38183,11 +38179,11 @@ Cv
 BD
 BD
 DG
-DG
+kD
 DG
 rX
 DG
-DG
+kD
 DG
 jV
 DG
@@ -38994,7 +38990,7 @@ DG
 DG
 DG
 DG
-DG
+bA
 DG
 GQ
 XI
@@ -39195,7 +39191,7 @@ DG
 GQ
 DG
 DG
-DG
+kD
 GQ
 GQ
 DG
@@ -39603,7 +39599,7 @@ GQ
 DG
 DG
 DG
-DG
+Ka
 DG
 DG
 DG
@@ -39803,7 +39799,7 @@ DG
 DG
 DG
 DG
-DG
+bA
 GQ
 DG
 GQ
@@ -40814,7 +40810,7 @@ DG
 NH
 NH
 NH
-DG
+kD
 DG
 DG
 DG
@@ -41620,7 +41616,7 @@ Ko
 Ko
 Ko
 DG
-DG
+fj
 NH
 NH
 DG
@@ -41819,8 +41815,8 @@ Ko
 Ko
 Ko
 Ko
-Ko
-Ko
+Wr
+Wr
 DG
 DG
 DG
@@ -42021,9 +42017,9 @@ Ko
 Ko
 Ko
 Ko
-Ko
-Ko
-Ko
+Wr
+VC
+Wr
 DG
 DG
 DG
@@ -42223,8 +42219,8 @@ Ko
 Ko
 Ko
 Ko
-Ko
-Ko
+vh
+Wr
 Ko
 Ko
 Ko
@@ -77165,7 +77161,7 @@ pq
 oc
 Fp
 yz
-yz
+cM
 yz
 yz
 Fp
@@ -77368,8 +77364,8 @@ Fp
 Fp
 yz
 Mk
-Mk
-yz
+bY
+wa
 BD
 BD
 BD
@@ -77571,9 +77567,9 @@ BD
 iQ
 BD
 BD
-iQ
+wa
 BD
-cy
+tk
 BD
 RB
 ng
@@ -77767,16 +77763,16 @@ ng
 ng
 ng
 EA
-qO
 tk
 tk
-Hs
-Hs
-Hs
-Hs
+wa
+lB
+Fn
+Oq
+RT
+Je
 tk
 tk
-tu
 RB
 ng
 ng
@@ -78377,7 +78373,7 @@ ng
 oc
 Fp
 xW
-Ku
+wa
 Ku
 xy
 BD
@@ -117969,7 +117965,7 @@ ng
 VR
 BD
 BD
-mW
+RT
 Mk
 Mk
 mW
@@ -118171,10 +118167,10 @@ ng
 VR
 jI
 pk
-Hs
-Hs
-Hs
-Hs
+BQ
+qV
+BQ
+BQ
 pk
 IW
 VR
@@ -118374,7 +118370,7 @@ VR
 BD
 BD
 MD
-Hs
+mW
 Hs
 MD
 BD
@@ -118576,7 +118572,7 @@ VR
 VR
 BD
 BD
-pk
+Hs
 pk
 BD
 BD

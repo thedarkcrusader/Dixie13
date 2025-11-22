@@ -23,3 +23,12 @@
 	ages_adjust = list(
 		/datum/job/forestguard = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	)
+
+	blacklist = list(
+		/datum/job/inquisitor,
+		/datum/job/absolver,
+		/datum/job/adept,
+	)
+	slot_adjust = list(
+		/datum/job/orthodoxist = 1
+	)
