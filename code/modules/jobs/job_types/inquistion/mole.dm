@@ -23,7 +23,8 @@
 	ADD_TRAIT(spawned, TRAIT_INQMOLE, TRAIT_GENERIC)
 	var/obj/item/storage/keyring/adept/L = new(get_turf(src))
 	spawned.equip_to_appropriate_slot(L)
-	to_chat(spawned, "<br><font color='#ff0000'><span class='bold'>I follow the orderes of the Inquisitor, and their sacresstants, Absolver too. I guess, why not.</span></font><br>")
+	spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) //In case their job don't give them reading.
+	to_chat(spawned, "<br><font color='#ff0000'><span class='bold'>I'm a mole for the inquisition, I must gather intel on heresy and heretics in town and report back to my inquisitorial superiors with my findings.</span></font><br>")
 
 /datum/job/advclass/orphan //This is for mule's orphan, Unlike regular orphans though, they have +1 in climbing and expert in Sneaking,  but they can't steal.
 	title = "Orphan"
