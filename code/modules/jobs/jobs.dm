@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(inquisition_positions, list(
 	/datum/job/orthodoxist::title,
 	/datum/job/absolver::title,
 	/datum/job/adept::title,
+	/datum/job/villager/mule::title,
 	))
 GLOBAL_PROTECT(inquisition_positions)
 

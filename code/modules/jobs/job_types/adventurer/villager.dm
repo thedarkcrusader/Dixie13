@@ -11,7 +11,7 @@
 	min_pq = -100
 	banned_leprosy = FALSE
 	bypass_lastclass = TRUE
-
+	allowed_ages = ALL_AGES_LIST_CHILD
 	advclass_cat_rolls = list(CTAG_TOWNER = 20)
 	allowed_races = RACES_PLAYER_ALL
 
