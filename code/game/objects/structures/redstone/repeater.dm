@@ -37,28 +37,47 @@
 	return (direction == REVERSE_DIR(facing_dir))
 
 /obj/structure/redstone/repeater/get_network_neighbors()
-	// Repeaters only allow network traversal on INPUT side
-	// Output side is isolated (different network segment)
 	var/list/neighbors = list()
-	var/input_dir = REVERSE_DIR(dir)
-	var/turf/T = get_step(src, input_dir)
-	for(var/obj/structure/redstone/R in T)
-		if(can_connect_to(R, input_dir) && R.can_connect_to(src, dir))
+
+	// Input side - for receiving power
+	var/input_dir = REVERSE_DIR(facing_dir)
+	var/turf/input_turf = get_step(src, input_dir)
+	for(var/obj/structure/redstone/R in input_turf)
+		if(can_connect_to(R, input_dir) && R.can_connect_to(src, facing_dir))
 			neighbors += R
+
+	// Output side - direct adjacency
+	var/turf/output_turf = get_step(src, facing_dir)
+	for(var/obj/structure/redstone/R in output_turf)
+		if(can_connect_to(R, facing_dir) && R.can_connect_to(src, input_dir))
+			neighbors += R
+
+	// Output side - through wall (since repeaters have send_wall_power = TRUE)
+	if(send_wall_power && isclosedturf(output_turf))
+		var/list/wall_neighbors = get_wall_power_neighbors(facing_dir, output_turf)
+		neighbors |= wall_neighbors
+
 	return neighbors
 
 // Called after network recalculation to check input state
 /obj/structure/redstone/repeater/on_power_changed()
-	// Check what power we're receiving from behind
 	var/turf/input_turf = get_step(src, REVERSE_DIR(facing_dir))
 	var/input_power = 0
 
+	// Check for direct adjacency
 	for(var/obj/structure/redstone/R in input_turf)
 		if(R.can_connect_to(src, facing_dir))
 			input_power = max(input_power, R.get_effective_power())
 
-	var/should_be_on = (input_power > 0)
+	// Check for power through wall
+	if(isclosedturf(input_turf))
+		for(var/check_dir in GLOB.cardinals)
+			var/turf/beyond_wall = get_step(input_turf, check_dir)
+			for(var/obj/structure/redstone/R in beyond_wall)
+				if(R.send_wall_power && R.get_effective_power() > 0)
+					input_power = max(input_power, R.get_effective_power())
 
+	var/should_be_on = (input_power > 0)
 	// Schedule state change if needed
 	if(should_be_on && !output_active && scheduled_state != 1)
 		scheduled_state = 1

@@ -279,16 +279,22 @@
 
 	for(var/check_dir in GLOB.cardinals)
 		if(check_dir == REVERSE_DIR(direction))
-			continue  // Don't check back towards source
+			continue
 
 		var/turf/beyond_wall = get_step(wall_turf, check_dir)
+
 		for(var/obj/structure/redstone/torch/torch in beyond_wall)
-			// Check if torch is attached to this wall
 			if(torch.attached_dir == REVERSE_DIR(check_dir))
 				neighbors += torch
 
 		for(var/obj/structure/redstone/dust/dust in beyond_wall)
 			neighbors += dust
+
+		// Add repeaters that face toward or away from the wall
+		for(var/obj/structure/redstone/repeater/rep in beyond_wall)
+			// Include if repeater's input faces the wall
+			if(REVERSE_DIR(rep.facing_dir) == REVERSE_DIR(check_dir))
+				neighbors += rep
 
 	return neighbors
 

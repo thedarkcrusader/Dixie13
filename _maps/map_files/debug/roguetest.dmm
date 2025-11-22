@@ -1203,6 +1203,12 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
+"fH" = (
+/obj/structure/rotation_piece/cog{
+	dir = 4
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "fQ" = (
 /obj/structure/bridge_stakes,
 /turf/open/floor/dirt/road,
@@ -1361,6 +1367,9 @@
 /obj/structure/hotspring/border/three,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"jn" = (
+/turf/closed/mineral/bedrock,
+/area)
 "jq" = (
 /obj/structure/table/wood/plain,
 /obj/item/cooking/skewer{
@@ -1508,12 +1517,6 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/tile,
 /area/indoors/town/manor)
-"lM" = (
-/obj/structure/redstone/torch{
-	dir = 2
-	},
-/turf/open/floor/cobblerock,
-/area)
 "lQ" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -1613,6 +1616,11 @@
 /area/indoors)
 "nm" = (
 /obj/effect/landmark/stall,
+/turf/open/floor/grass/yel,
+/area/outdoors)
+"no" = (
+/obj/structure/flora/grass,
+/obj/structure/gearbox,
 /turf/open/floor/grass/yel,
 /area/outdoors)
 "nz" = (
@@ -2038,9 +2046,6 @@
 /obj/structure/well,
 /turf/open/water,
 /area/outdoors)
-"sS" = (
-/turf/closed/wall/mineral/stone,
-/area)
 "sW" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -2168,12 +2173,6 @@
 	},
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
-"uE" = (
-/obj/structure/roller{
-	dir = 1
-	},
-/turf/open/floor/cobblerock,
-/area)
 "uL" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
@@ -2316,11 +2315,11 @@
 /turf/open/floor/wood,
 /area/indoors)
 "yu" = (
-/obj/structure/rotation_piece/cog{
-	dir = 4
+/obj/structure/roller{
+	dir = 1
 	},
 /turf/open/floor/cobblerock,
-/area/outdoors)
+/area)
 "yJ" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/blocks,
@@ -2498,8 +2497,7 @@
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
 "Be" = (
-/obj/structure/floordoor,
-/turf/open/floor/cobblerock,
+/turf/closed/wall/mineral/stone,
 /area)
 "Bg" = (
 /obj/structure/stockpile_storage{
@@ -2526,6 +2524,12 @@
 /obj/structure/gearbox,
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"CD" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "CO" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/cobblerock,
@@ -2808,11 +2812,6 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/manor)
-"Gq" = (
-/obj/structure/flora/grass,
-/obj/structure/gearbox,
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "Gu" = (
 /obj/structure/pottery_lathe,
 /turf/open/floor/wood,
@@ -2952,9 +2951,11 @@
 /turf/open/floor/dirt/road,
 /area/outdoors)
 "IZ" = (
-/obj/structure/redstone/pressure_plate,
+/obj/structure/roller{
+	dir = 1
+	},
 /turf/open/floor/cobblerock,
-/area)
+/area/outdoors)
 "Jc" = (
 /obj/structure/hotspring/border/seven,
 /obj/structure/bridge{
@@ -2973,6 +2974,10 @@
 	},
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
+"Jw" = (
+/mob/living/carbon/human/species/kobold,
+/turf/open/floor/cobblerock,
+/area)
 "JM" = (
 /obj/structure/well,
 /turf/open/floor/cobblerock,
@@ -3165,10 +3170,6 @@
 /obj/structure/roguerock,
 /turf/open/water,
 /area/outdoors/mountains/decap)
-"Pf" = (
-/obj/item/reagent_containers/food/snacks/tart/cooked/pineapple,
-/turf/open/floor/cobblerock,
-/area)
 "Pg" = (
 /obj/structure/hotspring/border/five,
 /obj/structure/bridge{
@@ -3195,6 +3196,12 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"PS" = (
+/obj/structure/redstone/torch{
+	dir = 2
+	},
+/turf/open/floor/cobblerock,
+/area)
 "PV" = (
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
@@ -3229,12 +3236,6 @@
 /obj/structure/well,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
-"Rc" = (
-/obj/structure/roller{
-	dir = 1
-	},
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "Rq" = (
 /turf/open/floor/wood,
 /area/indoors/town/manor)
@@ -3297,11 +3298,9 @@
 /turf/open/floor/cobble,
 /area/indoors/town/manor)
 "Tj" = (
-/obj/structure/roller{
-	dir = 1
-	},
+/obj/structure/floordoor,
 /turf/open/floor/cobblerock,
-/area/outdoors)
+/area)
 "Tr" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/grass/herb/symphitum,
@@ -3407,9 +3406,7 @@
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
 "Vh" = (
-/obj/structure/redstone/repeater{
-	dir = 1
-	},
+/obj/structure/redstone/pressure_plate,
 /turf/open/floor/cobblerock,
 /area)
 "Vk" = (
@@ -3580,7 +3577,10 @@
 /turf/open/floor/cobblerock,
 /area/outdoors/mountains/decap)
 "Zn" = (
-/turf/closed/mineral/bedrock,
+/obj/structure/redstone/repeater{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
 /area)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
@@ -12794,7 +12794,7 @@ rN
 rN
 rN
 rN
-Pf
+Jw
 rN
 as
 as
@@ -13045,13 +13045,13 @@ as
 as
 as
 rN
+Tj
+XI
+PS
 Be
+Zn
 XI
-lM
-sS
 Vh
-XI
-IZ
 rN
 as
 as
@@ -13559,13 +13559,13 @@ as
 as
 as
 rN
+Tj
+XI
+Zn
 Be
+Zn
 XI
 Vh
-sS
-Vh
-XI
-IZ
 rN
 as
 as
@@ -14073,13 +14073,13 @@ as
 as
 as
 rN
+Tj
+XI
+XI
 Be
+Zn
 XI
-XI
-sS
 Vh
-XI
-IZ
 rN
 as
 as
@@ -14587,13 +14587,13 @@ as
 as
 as
 rN
+Tj
+XI
+XI
 Be
 XI
 XI
-sS
-XI
-XI
-IZ
+Vh
 rN
 as
 as
@@ -15101,13 +15101,13 @@ as
 as
 rN
 rN
-Be
-Vh
+Tj
+Zn
 XI
-sS
+Be
+Zn
+Zn
 Vh
-Vh
-IZ
 rN
 as
 as
@@ -15615,13 +15615,13 @@ as
 as
 rN
 rN
+Tj
+Zn
+XI
 Be
-Vh
+Zn
 XI
-sS
 Vh
-XI
-IZ
 rN
 as
 as
@@ -16127,16 +16127,16 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+rN
+Tj
+Zn
+XI
+Be
+Zn
+XI
+Zn
+Vh
+rN
 ac
 ac
 ac
@@ -16384,16 +16384,16 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 ac
 ac
 ac
@@ -18462,14 +18462,14 @@ as
 at
 oH
 oH
-yu
+fH
 oH
 oH
 oH
 oH
 at
-Zn
-Zn
+jn
+jn
 at
 bH
 xp
@@ -18719,16 +18719,16 @@ as
 at
 oH
 oH
-Tj
-Tj
-Tj
-Tj
-Tj
-Tj
-uE
-uE
-Tj
-Rc
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
+yu
+yu
+IZ
+CD
 Ua
 Ua
 cJ
@@ -18982,10 +18982,10 @@ AP
 AP
 AP
 at
-Zn
-Zn
+jn
+jn
 at
-Gq
+no
 Yr
 xh
 hO
