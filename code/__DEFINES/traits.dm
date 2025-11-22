@@ -434,7 +434,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BLACKLEG					"Blackleg" //Rig coin, dice, cards in your favor
 #define TRAIT_INQUISITION 				"Member of the Oratorium Throni Vacui"
 #define TRAIT_PURITAN					"Puritan"
-#define TRAIT_MOLE						"A Spy of the Oratorium Throni Vacui"
+#define TRAIT_INQMOLE					"Res Adeptus of the Oratorium Throni Vacui"
 #define TRAIT_SILVER_BLESSED 			"Silver Blessed"
 
 // Inhumen patron trait bonuses:

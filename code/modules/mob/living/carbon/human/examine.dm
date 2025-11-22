@@ -729,10 +729,10 @@
 		inquisition_text = "Subordinate to me in the Psydonic Inquisitorial Sect."
 	if(HAS_TRAIT(src, TRAIT_PURITAN) && HAS_TRAIT(examiner, TRAIT_PURITAN))
 		inquisition_text = "The Lorde-Inquisitor of the Sect sent here. That's me."
-	if(HAS_TRAIT(src, TRAIT_MOLE) && HAS_TRAIT(examiner, TRAIT_INQUISITION))
-		inquisition_text = "A spy."
-	if(HAS_TRAIT(src, TRAIT_MOLE) && HAS_TRAIT(examiner, TRAIT_PURITAN))
-		inquisition_text = "A spy."
+	if(HAS_TRAIT(src, TRAIT_INQMOLE) && HAS_TRAIT(examiner, TRAIT_INQUISITION))
+		inquisition_text = "A Res Adeptus of our Psydonic Inquisitorial Sect."
+	if(HAS_TRAIT(src, TRAIT_INQMOLE) && HAS_TRAIT(examiner, TRAIT_PURITAN))
+		inquisition_text = "A Res Adeptus of our Psydonic Inquisitorial Sect."
 
 
 	return inquisition_text

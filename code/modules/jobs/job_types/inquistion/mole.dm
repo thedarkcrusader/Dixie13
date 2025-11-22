@@ -1,8 +1,8 @@
 /datum/job/villager/mole
-	title = "Mole"
-	tutorial = "You've lived in this shithole for effectively all your life. \
-	You are not an explorer, nor exactly a warrior in many cases. \
-	You're just some average poor bastard who thinks they'll be something someday."
+	title = "Res Adeptus"
+	tutorial = "You are a Res Adeptus of the inquisition, unwillingly abducted and put to intense torment by the inquisition,\
+	you are now a hidden traitor to your home, a heretic unwilling.\
+	You follow the commands of the inquisition members and contribute by spying on the townsfolk"
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_FOREIGNERS
@@ -16,10 +16,11 @@
 	display_order = JDO_SHEPHERD
 	selection_color = JCOLOR_INQUISITION
 	faction = FACTION_TOWN
+	shows_in_list = FALSE
 
 /datum/job/villager/mole/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	ADD_TRAIT(spawned, TRAIT_MOLE, TRAIT_GENERIC)
+	ADD_TRAIT(spawned, TRAIT_INQMOLE, TRAIT_GENERIC)
 	var/obj/item/storage/keyring/adept/L = new(get_turf(src))
 	spawned.equip_to_appropriate_slot(L)
 	to_chat(spawned, "<br><font color='#ff0000'><span class='bold'>I follow the orderes of the Inquisitor, and their sacresstants, Absolver too. I guess, why not.</span></font><br>")
