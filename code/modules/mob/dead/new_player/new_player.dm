@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	/// Current character index being used
 	var/multi_ready_index = 1
 
-	var/multi_ready_assigned_slot = 1
+	var/multi_ready_assigned_slot = 0
 
 	hud_type = /datum/hud/new_player
 
