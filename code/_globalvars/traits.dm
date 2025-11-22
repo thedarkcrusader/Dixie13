@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Noble Blooded" = TRAIT_NOBLE,
 		"Empath" = TRAIT_EMPATH,
 		"Battleready" = TRAIT_BREADY,
+		"Sixth-Sense" = TRAIT_BLINDFIGHTING,
 		"Mail Training" = TRAIT_MEDIUMARMOR,
 		"Plate Training" = TRAIT_HEAVYARMOR,
 		"Fast Reflexes" = TRAIT_DODGEEXPERT,
@@ -172,6 +173,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Recognized" = TRAIT_RECOGNIZED,
 		"Member of the Oratorium Throni Vacui" = TRAIT_INQUISITION,
 		"A Spy of the Oratorium Throni Vacui" = TRAIT_MULE
+		"Unyielding" = TRAIT_UNDODGING,
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS
@@ -210,6 +212,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_EMPATH = "I can notice when people are stressed.",
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
+	TRAIT_UNDODGING = span_danger("I am unable to dodge, the only way i could avoid a blow would be by blocking or parrying it."),
+	TRAIT_BLINDFIGHTING = span_info("I have an incredible sense of awareness, allowing me to parry even when I can't see it coming."),
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
 	TRAIT_HEAVYARMOR = "I can move freely in heavy armor.",
 	TRAIT_DODGEEXPERT = "I can dodge easily while only wearing light armor.",

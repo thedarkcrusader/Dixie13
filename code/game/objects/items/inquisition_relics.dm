@@ -353,10 +353,9 @@
 	var/added_force
 	var/added_blade_int
 	var/added_int
-	var/added_def
 	var/silver
 
-/datum/component/psyblessed/Initialize(preblessed = FALSE, force, blade_int, int, def, makesilver)
+/datum/component/psyblessed/Initialize(preblessed = FALSE, force, blade_int, int, makesilver)
 	if(!istype(parent, /obj/item/weapon))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
@@ -364,7 +363,6 @@
 	added_force = force
 	added_blade_int = blade_int
 	added_int = int
-	added_def = def
 	silver = makesilver
 	if(pre_blessed)
 		apply_bless()
@@ -402,7 +400,6 @@
 			I.max_blade_int += added_blade_int
 			I.blade_int = I.max_blade_int
 		I.modify_max_integrity(I.max_integrity + added_int)
-		I.wdefense += added_def
 		I.name = "blessed [I.name]"
 		if(silver)
 			I.enchant(/datum/enchantment/silver)
@@ -956,6 +953,16 @@
 		span_userdanger("[user] [pick("garrotes", "asphyxiates")] me!"), span_hear("I hear the sickening sound of cordage!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
 		user.changeNext_move(CLICK_CD_RESIST)	//Stops spam for choking.
+
+/obj/item/inqarticles/garrote/razor // To yische, who said not to give this out constantly, I respectfully disagree when it comes to assassin
+	name = "Profane Razor" // Its very not non lethal now.  Strangle your prey with glee
+	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable"
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "garrote"
+	item_state = "garrote"
+	resistance_flags = INDESTRUCTIBLE
+	choke_damage = 20
+	sellprice = 100
 
 /obj/item/clothing/head/inqarticles/blackbag
 	name = "black bag"
