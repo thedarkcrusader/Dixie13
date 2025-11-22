@@ -2677,6 +2677,7 @@
 #include "code\modules\jobs\job_types\inquistion\absolver.dm"
 #include "code\modules\jobs\job_types\inquistion\adept.dm"
 #include "code\modules\jobs\job_types\inquistion\inquisitor.dm"
+#include "code\modules\jobs\job_types\inquistion\mole.dm"
 #include "code\modules\jobs\job_types\inquistion\orthodoxist.dm"
 #include "code\modules\jobs\job_types\inquistion\adept_classes\brutal_zealot.dm"
 #include "code\modules\jobs\job_types\inquistion\adept_classes\reformed_thief.dm"
