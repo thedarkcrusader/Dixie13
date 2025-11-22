@@ -13,7 +13,7 @@
 	min_pq = -20
 	bypass_lastclass = TRUE
 
-	allowed_ages = list(AGE_CHILD, AGE_ADULT, AGE_IMMORTAL)
+	allowed_ages = list(AGE_CHILD, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/servant
@@ -167,6 +167,7 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 	outfit = /datum/outfit/gaffer_assistant
 	give_bank_account = TRUE
+	exp_types_granted = list(EXP_TYPE_MERCENARY)
 
 /datum/outfit/gaffer_assistant/pre_equip(mob/living/carbon/human/H)
 	..()
