@@ -4,7 +4,7 @@
 	allowed_races = list(SPEC_ID_ELF, SPEC_ID_HALF_ELF)
 	outfit = /datum/outfit/mercenary/housecarl
 	category_tags = list(CTAG_MERCENARY)
-	total_positions = 5
+	total_positions = 3
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
 	jobstats = list(
