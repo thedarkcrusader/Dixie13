@@ -5,8 +5,8 @@
 	needs_attachment = FALSE
 	attachement_type = null
 
-/datum/chimeric_node/special/tiny/final_setup()
+/datum/chimeric_node/special/delayer/final_setup()
 	ADD_TRAIT(attached_organ, "delayed", "[REF(src)]")
 
-/datum/chimeric_node/special/tiny/removal_setup()
+/datum/chimeric_node/special/delayer/removal_setup()
 	REMOVE_TRAIT(attached_organ, "delayed", "[REF(src)]")
