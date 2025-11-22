@@ -54,10 +54,14 @@
 	var/outfit = null
 	var/outfit_female = null
 
-	var/exp_requirements = 0
+	/// Associated List of Exp Types and time required, 60 means 1 Hour.
+	var/list/exp_requirements = list()
 
-	var/exp_type = ""
-	var/exp_type_department = ""
+	/// Exp types required to UNLOCK this job
+	var/list/exp_type = list()
+
+	/// Exp types this job awards when played
+	var/list/exp_types_granted = list()
 
 	//The amount of good boy points playing this role will earn you towards a higher chance to roll antagonist next round
 	//can be overridden by antag_rep.txt config
@@ -574,7 +578,7 @@
 	if(title_override)
 		return title_override
 
-	if(mob.gender == FEMALE && f_title)
+	if(mob.pronouns == SHE_HER && f_title)
 		return f_title
 
 	return title
@@ -771,6 +775,5 @@
 				outfit = outfit_id
 		else
 			outfit = outfit_entry
-
 
 	return TRUE

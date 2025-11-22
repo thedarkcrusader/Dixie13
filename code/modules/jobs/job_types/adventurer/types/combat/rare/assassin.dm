@@ -7,7 +7,6 @@
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 2
 	inherit_parent_title = TRUE //this prevents advjob from being set back to "Assassin" in equipme
-	min_pq = 6
 
 /datum/outfit/adventurer/assassin/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -136,7 +135,7 @@
 			var/prev_real_name = H.real_name
 			var/prev_name = H.name
 			var/honorary = "Lord"
-			if(H.gender == FEMALE)
+			if(H.pronouns == SHE_HER)
 				honorary = "Lady"
 			H.real_name = "[honorary] [prev_real_name]"
 			H.name = "[honorary] [prev_name]"

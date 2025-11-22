@@ -15,7 +15,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	faction = FACTION_TOWN
 	total_positions = 0
 	spawn_positions = 1
-	min_pq = 25
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/list_target/grant_title,
@@ -33,6 +32,15 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 	job_bitflag = BITFLAG_ROYALTY
 
+	exp_type = list(EXP_TYPE_NOBLE, EXP_TYPE_LIVING, EXP_TYPE_LEADERSHIP)
+	exp_types_granted  = list(EXP_TYPE_NOBLE, EXP_TYPE_LEADERSHIP)
+	exp_requirements = list(
+		EXP_TYPE_LIVING = 1200,
+		EXP_TYPE_NOBLE = 900,
+		EXP_TYPE_LEADERSHIP = 300
+	)
+
+
 /datum/job/lord/get_informed_title(mob/mob, change_title = FALSE, new_title)
 	if(change_title)
 		ruler_title = new_title
@@ -46,12 +54,14 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	SSticker.rulermob = spawned
 	var/mob/living/carbon/human/H = spawned
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, lord_color_choice)), 7 SECONDS)
-	if(spawned.gender == MALE)
-		SSfamilytree.AddRoyal(H, FAMILY_FATHER)
+	if(spawned.pronouns != SHE_HER)
 		ruler_title = "[SSmapping.config.monarch_title]"
 	else
-		SSfamilytree.AddRoyal(H, FAMILY_MOTHER)
 		ruler_title = "[SSmapping.config.monarch_title_f]"
+	if(spawned.gender == MALE)
+		SSfamilytree.AddRoyal(H, FAMILY_FATHER)
+	else
+		SSfamilytree.AddRoyal(H, FAMILY_MOTHER)
 	to_chat(world, "<b>[span_notice(span_big("[H.real_name] is [ruler_title] of [SSmapping.config.map_name]."))]</b>")
 	to_chat(world, "<br>")
 	if(GLOB.keep_doors.len > 0)
