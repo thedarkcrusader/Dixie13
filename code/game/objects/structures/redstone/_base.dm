@@ -118,6 +118,10 @@
 // COMPONENT INTERFACE PROCS
 // ============================================
 
+/obj/structure/redstone/proc/get_network_neighbors()
+	// By default, same as connected neighbors
+	return get_connected_neighbors()
+
 // Get all components in this network via BFS
 /obj/structure/redstone/proc/get_network()
 	var/list/network = list(src)
@@ -127,16 +131,18 @@
 		var/obj/structure/redstone/current = to_check[1]
 		to_check -= current
 
-		// Regular wire connections
-		var/list/neighbors = current.get_connected_neighbors()
+		// Get neighbors for network traversal (this may be different from power output)
+		var/list/neighbors = current.get_network_neighbors()
 		for(var/obj/structure/redstone/neighbor in neighbors)
 			if(!(neighbor in network))
 				network += neighbor
 				to_check += neighbor
 
-		// Also include wall-power connections in the network
+		// Wall-power connections: check in BOTH directions
+		// 1. If this component sends wall power, include recipients
 		if(current.send_wall_power)
-			for(var/direction in current.get_output_directions())
+			// Check ALL cardinal directions for walls, not just output directions
+			for(var/direction in GLOB.cardinals)
 				var/turf/T = get_step(current, direction)
 				if(isclosedturf(T))
 					var/list/wall_neighbors = current.get_wall_power_neighbors(direction, T)
@@ -144,6 +150,42 @@
 						if(!(neighbor in network))
 							network += neighbor
 							to_check += neighbor
+
+		// 2. If this component can receive wall power, find sources through walls
+		if(current.can_connect_wires)
+			for(var/direction in GLOB.cardinals)
+				var/turf/T = get_step(current, direction)
+				if(isclosedturf(T))
+					// Check all sides of the wall for components
+					for(var/check_dir in GLOB.cardinals)
+						var/turf/source_turf = get_step(T, check_dir)
+						for(var/obj/structure/redstone/potential_source in source_turf)
+							var/should_include = FALSE
+
+							// Include if they can send wall power to us
+							if(potential_source.send_wall_power)
+								// Check if we're in their wall power range
+								// We need to check the direction from the source TO the wall
+								var/source_to_wall_dir = REVERSE_DIR(check_dir)
+
+								// Manually check if we can be powered through this wall
+								// Don't use get_wall_power_neighbors since it has the REVERSE_DIR check
+								var/turf/wall_from_source = get_step(potential_source, source_to_wall_dir)
+								if(wall_from_source == T)
+									// Check if we're on a valid side of this wall from the source's perspective
+									for(var/final_check_dir in GLOB.cardinals)
+										var/turf/check_turf = get_step(T, final_check_dir)
+										if(check_turf == current.loc)
+											should_include = TRUE
+											break
+
+							// Also include any dust/wire on the other side
+							else if(potential_source.can_connect_wires)
+								should_include = TRUE
+
+							if(should_include && !(potential_source in network))
+								network += potential_source
+								to_check += potential_source
 
 	return network
 

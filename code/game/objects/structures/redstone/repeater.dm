@@ -36,6 +36,17 @@
 /obj/structure/redstone/repeater/can_receive_from(obj/structure/redstone/source, direction)
 	return (direction == REVERSE_DIR(facing_dir))
 
+/obj/structure/redstone/repeater/get_network_neighbors()
+	// Repeaters only allow network traversal on INPUT side
+	// Output side is isolated (different network segment)
+	var/list/neighbors = list()
+	var/input_dir = REVERSE_DIR(dir)
+	var/turf/T = get_step(src, input_dir)
+	for(var/obj/structure/redstone/R in T)
+		if(can_connect_to(R, input_dir) && R.can_connect_to(src, dir))
+			neighbors += R
+	return neighbors
+
 // Called after network recalculation to check input state
 /obj/structure/redstone/repeater/on_power_changed()
 	// Check what power we're receiving from behind
