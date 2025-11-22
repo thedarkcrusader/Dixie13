@@ -911,6 +911,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				SetChoices(user)
 		return 1
 	else if(href_list["preference"] == "multi")
+		if(isnewplayer(user))
+			var/mob/dead/new_player/player = user
+			player.cache_multi_ready_characters()
 		open_multi_ready()
 		return 1
 
