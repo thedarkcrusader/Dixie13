@@ -75,6 +75,13 @@
 /obj/item/clothing/shirt/ornate/dress,
 /obj/item/clothing/shirt/ornate/tunic,
 /obj/item/clothing/face/facemask/goldveil,
+/obj/item/weapon/scabbard/knife,
+/obj/item/weapon/scabbard/knife,
+/obj/item/weapon/scabbard/sword,
+/obj/item/weapon/scabbard/sword,
+/obj/item/weapon/scabbard/sword,
+/obj/item/weapon/scabbard/sword,
+/obj/item/weapon/scabbard/sword,
 /turf/open/floor/grass/cold,
 /area/outdoors/woods)
 "bb" = (
