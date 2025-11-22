@@ -17,7 +17,7 @@
 	if(!owner || !prefs)
 		return
 	var/html = build_html()
-	var/datum/browser/popup = new(owner, "multireadyui", "Multi-Character Ready", 450, 550)
+	var/datum/browser/popup = new(owner.mob, "multireadyui", "Multi-Character Ready", 450, 550)
 	popup.set_content(html)
 	popup.open()
 
