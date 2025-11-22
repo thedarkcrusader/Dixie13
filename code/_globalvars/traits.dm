@@ -172,6 +172,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Recruited" = TRAIT_RECRUITED,
 		"Recognized" = TRAIT_RECOGNIZED,
 		"Member of the Oratorium Throni Vacui" = TRAIT_INQUISITION,
+		"Unyielding" = TRAIT_UNDODGING,
 		"A Spy of the Oratorium Throni Vacui" = TRAIT_MOLE
 	),
 	/obj/item/bodypart = list(
