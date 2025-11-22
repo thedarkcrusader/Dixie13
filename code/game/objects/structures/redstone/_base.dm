@@ -1,4 +1,3 @@
-
 /obj/structure/redstone
 	name = "redstone component"
 	icon = 'icons/obj/redstone.dmi'
@@ -6,7 +5,7 @@
 	density = FALSE
 
 	var/power_level = 0           // Current power level (0-15)
-	var/redstone_role = 0         // Bitmask of roles
+	var/redstone_role = NONE         // Bitmask of roles
 	var/can_connect_wires = TRUE  // Whether dust can connect to this
 	var/send_wall_power = FALSE   // Whether this component can power through walls
 	var/true_pattern              // For custom wire overlay patterns
@@ -113,6 +112,62 @@
 	for(var/obj/structure/redstone/R in components)
 		R.on_power_changed()
 		R.update_appearance(UPDATE_OVERLAYS)
+
+		R.trigger_adjacent_structures()
+
+// ============================================
+// NON-REDSTONE STRUCTURE INTERACTION
+// ============================================
+
+/obj/structure/redstone/proc/trigger_adjacent_structures()
+	// Check all adjacent turfs for non-redstone structures
+	for(var/direction in GLOB.cardinals)
+		var/turf/T = get_step(src, direction)
+		if(!T)
+			continue
+
+		// Check for wall power transmission
+		if(send_wall_power && isclosedturf(T))
+			trigger_structures_through_wall(direction, T)
+		else
+			// Direct adjacency
+			for(var/obj/structure/S in T)
+				if(S.redstone_structure && !istype(S, /obj/structure/redstone))
+					// Only trigger on powered/unpowered state changes (0 to non-zero or non-zero to 0)
+					var/was_powered = (S.last_redstone_power > 0)
+					var/is_powered = (power_level > 0)
+					if(was_powered != is_powered)
+						S.last_redstone_power = power_level
+						S.redstone_triggered(power_level, src)
+
+	// Also check current turf
+	for(var/obj/structure/S in loc)
+		if(S.redstone_structure && !istype(S, /obj/structure/redstone))
+			// Only trigger on powered/unpowered state changes
+			var/was_powered = (S.last_redstone_power > 0)
+			var/is_powered = (power_level > 0)
+			if(was_powered != is_powered)
+				S.last_redstone_power = power_level
+				S.redstone_triggered(power_level, src)
+
+/obj/structure/redstone/proc/trigger_structures_through_wall(direction, turf/wall_turf)
+	// Check all sides of the wall for non-redstone structures
+	for(var/check_dir in GLOB.cardinals)
+		if(check_dir == REVERSE_DIR(direction))
+			continue  // Don't check back towards source
+
+		var/turf/beyond_wall = get_step(wall_turf, check_dir)
+		if(!beyond_wall)
+			continue
+
+		for(var/obj/structure/S in beyond_wall)
+			if(S.redstone_structure && !istype(S, /obj/structure/redstone))
+				// Only trigger on powered/unpowered state changes
+				var/was_powered = (S.last_redstone_power > 0)
+				var/is_powered = (power_level > 0)
+				if(was_powered != is_powered)
+					S.last_redstone_power = power_level
+					S.redstone_triggered(power_level, src)
 
 // ============================================
 // COMPONENT INTERFACE PROCS

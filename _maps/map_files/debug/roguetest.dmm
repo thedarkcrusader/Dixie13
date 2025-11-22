@@ -1201,6 +1201,7 @@
 /area/outdoors)
 "fz" = (
 /obj/machinery/light/fueled/torchholder/r,
+/obj/structure/floordoor,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
 "fQ" = (
@@ -1413,9 +1414,8 @@
 /turf/open/floor/carpet,
 /area/indoors)
 "jH" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/grass/yel,
-/area/outdoors)
+/turf/open/transparent/openspace,
+/area)
 "jM" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/decorstone,
@@ -1646,6 +1646,12 @@
 "ou" = (
 /turf/closed/wall/mineral/decorstone,
 /area/outdoors)
+"ov" = (
+/obj/structure/rotation_piece/cog{
+	dir = 4
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "oB" = (
 /obj/structure/window/openclose{
 	dir = 4
@@ -1661,14 +1667,6 @@
 /obj/structure/soil/debug_soil/random,
 /turf/open/floor/dirt/road,
 /area/outdoors)
-"oR" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
-"pb" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
 "pc" = (
 /turf/open/floor/cobblerock,
 /area/indoors)
@@ -1860,6 +1858,12 @@
 /obj/effect/island_tester,
 /turf/closed/basic,
 /area/outdoors)
+"pN" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "pQ" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/wood,
@@ -1996,6 +2000,10 @@
 /area/outdoors/mountains/decap)
 "ru" = (
 /turf/open/floor/blocks,
+/area/indoors/town/manor)
+"rN" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/wood,
 /area/indoors/town/manor)
 "sd" = (
 /obj/structure/flora/grass/herb/symphitum,
@@ -2165,10 +2173,6 @@
 	},
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
-"uF" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/wood,
-/area/indoors/town/manor)
 "uL" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
@@ -2310,6 +2314,10 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
 /area/indoors)
+"yu" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "yJ" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/blocks,
@@ -2440,10 +2448,6 @@
 /obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
 /area/outdoors/mountains/decap)
-"AK" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/cobblerock,
-/area/outdoors)
 "AM" = (
 /obj/structure/fluff/millstone,
 /obj/structure/table/wood/plain,
@@ -2877,6 +2881,10 @@
 /obj/effect/temp_visual/wave_up,
 /turf/open/floor/tile/bfloorz,
 /area/indoors)
+"HB" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "HK" = (
 /obj/structure/hotspring/border/two,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -2937,6 +2945,10 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"IZ" = (
+/obj/structure/redstone/pressure_plate,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "Jc" = (
 /obj/structure/hotspring/border/seven,
 /obj/structure/bridge{
@@ -2976,6 +2988,11 @@
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
+"JW" = (
+/obj/structure/flora/grass,
+/obj/structure/gearbox,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "Kc" = (
 /obj/effect/landmark/stall,
 /turf/open/floor/dirt,
@@ -3090,12 +3107,6 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors)
-"Mw" = (
-/obj/structure/redstone/repeater{
-	dir = 2
-	},
-/turf/open/floor/cobblerock,
-/area/outdoors)
 "MG" = (
 /obj/structure/gearbox,
 /turf/open/floor/dirt,
@@ -3103,6 +3114,12 @@
 "MJ" = (
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
+"MK" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area)
 "MV" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/grass,
@@ -3145,6 +3162,9 @@
 	},
 /turf/open/floor/wood,
 /area/indoors)
+"Oo" = (
+/turf/closed/mineral/bedrock,
+/area)
 "OZ" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
@@ -3224,6 +3244,12 @@
 /obj/structure/hotspring/border,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"Sf" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "Si" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -3274,6 +3300,12 @@
 /obj/item/bin/water/gross,
 /turf/open/floor/cobble,
 /area/indoors/town/manor)
+"Tj" = (
+/obj/structure/redstone/repeater{
+	dir = 2
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "Tr" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/grass/herb/symphitum,
@@ -3379,8 +3411,9 @@
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
 "Vh" = (
-/turf/open/transparent/openspace,
-/area)
+/obj/structure/redstone/dust,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "Vk" = (
 /turf/open/water/sewer,
 /area/outdoors)
@@ -3507,7 +3540,6 @@
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "XI" = (
-/obj/structure/essence_node/rare,
 /obj/structure/redstone/dust,
 /turf/open/floor/grass/yel,
 /area/outdoors)
@@ -3549,10 +3581,11 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
 /area/outdoors/mountains/decap)
-"Zr" = (
-/obj/structure/redstone/pressure_plate,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
+"Zn" = (
+/obj/structure/essence_node/rare,
+/obj/structure/redstone/dust,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/indoors)
@@ -15866,7 +15899,7 @@ uc
 DL
 Rq
 MJ
-pb
+HB
 Ra
 jN
 Fj
@@ -16631,12 +16664,12 @@ ac
 at
 QN
 QN
-AK
-jH
+Vh
+XI
 jN
 Be
-uF
-oR
+rN
+yu
 MJ
 nY
 jN
@@ -16888,14 +16921,14 @@ ac
 at
 tL
 QN
-AK
+Vh
 Wr
 uc
 Go
 Rq
-oR
-oR
-Zr
+yu
+yu
+IZ
 jN
 jN
 hA
@@ -17145,8 +17178,8 @@ ac
 at
 QN
 QN
-XI
-Mw
+Zn
+Tj
 jN
 fz
 Rq
@@ -18433,14 +18466,14 @@ as
 at
 oH
 oH
-Wr
+ov
 oH
 oH
 oH
 oH
 at
-ac
-ac
+Oo
+Oo
 at
 bH
 xp
@@ -18690,16 +18723,16 @@ as
 at
 oH
 oH
-Wr
-Wr
-Wr
-Wr
-Wr
-at
-ac
-ac
-at
-QN
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+MK
+MK
+Sf
+pN
 Ua
 Ua
 cJ
@@ -18953,10 +18986,10 @@ AP
 AP
 AP
 at
-ac
-ac
+Oo
+Oo
 at
-qc
+JW
 Yr
 xh
 hO
@@ -80882,8 +80915,8 @@ ac
 ac
 ac
 ac
-Vh
-Vh
+jH
+jH
 ac
 ac
 ac
@@ -81139,8 +81172,8 @@ ac
 ac
 ac
 ac
-Vh
-Vh
+jH
+jH
 ac
 ac
 ac
@@ -81394,10 +81427,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -81651,10 +81684,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -81908,10 +81941,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82165,10 +82198,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82422,10 +82455,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82679,10 +82712,10 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82938,8 +82971,8 @@ ac
 ac
 ac
 ac
-Vh
-Vh
+jH
+jH
 ac
 ac
 ac
@@ -83196,9 +83229,9 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
+jH
+jH
+jH
 ac
 ac
 ac
@@ -83453,9 +83486,9 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
+jH
+jH
+jH
 ac
 ac
 ac
@@ -83710,13 +83743,13 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 Zs
 Of
 Of
@@ -83967,13 +84000,13 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84224,13 +84257,13 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84481,13 +84514,13 @@ as
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84738,12 +84771,12 @@ as
 ac
 ac
 ac
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84996,9 +85029,9 @@ ac
 ac
 ac
 ac
-Vh
-Vh
-Vh
+jH
+jH
+jH
 ac
 ac
 ac

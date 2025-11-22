@@ -23,8 +23,8 @@
 	requires_bodypart_type = BODYPART_ORGANIC
 
 /datum/surgery/chimeric_grafting
-	name = "Chimeric Node Grafting"
-	desc = "Graft a harvested node into a chimeric organ."
+	name = "Humor Grafting"
+	desc = "Graft a harvested humor into a chimeric organ."
 	category = "Pestran"
 	steps = list(
 		/datum/surgery_step/incise,
@@ -144,8 +144,8 @@
 
 
 /datum/surgery_step/graft_chimeric_node
-	name = "graft chimeric node"
-	desc = "Graft a harvested node into a chimeric organ."
+	name = "graft humor"
+	desc = "Graft a harvested humor into a chimeric organ."
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SHARP = 60,
@@ -160,7 +160,7 @@
 /datum/surgery_step/graft_chimeric_node/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/obj/item/held = user.get_inactive_held_item()
 	if(!istype(held, /obj/item/chimeric_node))
-		to_chat(user, span_warning("You need to hold a chimeric node in your other hand to graft it!"))
+		to_chat(user, span_warning("You need to hold a humor in your other hand to graft it!"))
 		return FALSE
 
 	var/list/available_organs = target.get_organs_in_zone(target_zone)

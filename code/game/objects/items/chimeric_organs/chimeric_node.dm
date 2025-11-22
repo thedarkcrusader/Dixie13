@@ -1,7 +1,7 @@
 
 /obj/item/chimeric_node
-	name = "chimeric node"
-	desc = "A preserved piece of flesh containing a chimeric node. It pulses with unnatural life."
+	name = "umors"
+	desc = "A preserved piece of flesh containing a humor. It pulses with unnatural life."
 	icon = 'icons/obj/chimeric_nodes.dmi'
 	icon_state = "capillary"
 	var/datum/chimeric_node/stored_node
@@ -58,7 +58,7 @@
 	. = ..()
 	if(!stored_node)
 		return
-	name = "[lowertext(stored_node.name)] chimeric node"
+	name = "[lowertext(stored_node.name)] humor"
 
 /mob/living/proc/generate_random_chimeric_organs(amount = 3)
 	for(var/i=1 to amount)
