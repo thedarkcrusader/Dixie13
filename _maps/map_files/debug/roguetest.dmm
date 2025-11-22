@@ -1201,7 +1201,6 @@
 /area/outdoors)
 "fz" = (
 /obj/machinery/light/fueled/torchholder/r,
-/obj/structure/floordoor,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
 "fQ" = (
@@ -1509,6 +1508,12 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/tile,
 /area/indoors/town/manor)
+"lM" = (
+/obj/structure/redstone/torch{
+	dir = 2
+	},
+/turf/open/floor/cobblerock,
+/area)
 "lQ" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -1645,12 +1650,6 @@
 /area/indoors/town/manor)
 "ou" = (
 /turf/closed/wall/mineral/decorstone,
-/area/outdoors)
-"ov" = (
-/obj/structure/rotation_piece/cog{
-	dir = 4
-	},
-/turf/open/floor/cobblerock,
 /area/outdoors)
 "oB" = (
 /obj/structure/window/openclose{
@@ -1858,12 +1857,6 @@
 /obj/effect/island_tester,
 /turf/closed/basic,
 /area/outdoors)
-"pN" = (
-/obj/structure/roller{
-	dir = 1
-	},
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "pQ" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/wood,
@@ -2002,9 +1995,8 @@
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
 "rN" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/wood,
-/area/indoors/town/manor)
+/turf/open/floor/cobblerock,
+/area)
 "sd" = (
 /obj/structure/flora/grass/herb/symphitum,
 /turf/open/floor/grass/yel,
@@ -2046,6 +2038,9 @@
 /obj/structure/well,
 /turf/open/water,
 /area/outdoors)
+"sS" = (
+/turf/closed/wall/mineral/stone,
+/area)
 "sW" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -2173,6 +2168,12 @@
 	},
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
+"uE" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area)
 "uL" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
@@ -2315,9 +2316,11 @@
 /turf/open/floor/wood,
 /area/indoors)
 "yu" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
+/obj/structure/rotation_piece/cog{
+	dir = 4
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "yJ" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/blocks,
@@ -2495,11 +2498,9 @@
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
 "Be" = (
-/obj/structure/redstone/repeater{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/indoors/town/manor)
+/obj/structure/floordoor,
+/turf/open/floor/cobblerock,
+/area)
 "Bg" = (
 /obj/structure/stockpile_storage{
 	storage_id = "foods"
@@ -2807,6 +2808,11 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/manor)
+"Gq" = (
+/obj/structure/flora/grass,
+/obj/structure/gearbox,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "Gu" = (
 /obj/structure/pottery_lathe,
 /turf/open/floor/wood,
@@ -2947,8 +2953,8 @@
 /area/outdoors)
 "IZ" = (
 /obj/structure/redstone/pressure_plate,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
+/turf/open/floor/cobblerock,
+/area)
 "Jc" = (
 /obj/structure/hotspring/border/seven,
 /obj/structure/bridge{
@@ -2988,11 +2994,6 @@
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
-"JW" = (
-/obj/structure/flora/grass,
-/obj/structure/gearbox,
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "Kc" = (
 /obj/effect/landmark/stall,
 /turf/open/floor/dirt,
@@ -3114,12 +3115,6 @@
 "MJ" = (
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
-"MK" = (
-/obj/structure/roller{
-	dir = 1
-	},
-/turf/open/floor/cobblerock,
-/area)
 "MV" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/grass,
@@ -3162,9 +3157,6 @@
 	},
 /turf/open/floor/wood,
 /area/indoors)
-"Oo" = (
-/turf/closed/mineral/bedrock,
-/area)
 "OZ" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
@@ -3173,6 +3165,10 @@
 /obj/structure/roguerock,
 /turf/open/water,
 /area/outdoors/mountains/decap)
+"Pf" = (
+/obj/item/reagent_containers/food/snacks/tart/cooked/pineapple,
+/turf/open/floor/cobblerock,
+/area)
 "Pg" = (
 /obj/structure/hotspring/border/five,
 /obj/structure/bridge{
@@ -3233,6 +3229,12 @@
 /obj/structure/well,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
+"Rc" = (
+/obj/structure/roller{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "Rq" = (
 /turf/open/floor/wood,
 /area/indoors/town/manor)
@@ -3243,12 +3245,6 @@
 "RF" = (
 /obj/structure/hotspring/border,
 /turf/open/floor/dirt/road,
-/area/outdoors)
-"Sf" = (
-/obj/structure/roller{
-	dir = 1
-	},
-/turf/open/floor/cobblerock,
 /area/outdoors)
 "Si" = (
 /obj/structure/table/wood{
@@ -3301,8 +3297,8 @@
 /turf/open/floor/cobble,
 /area/indoors/town/manor)
 "Tj" = (
-/obj/structure/redstone/repeater{
-	dir = 2
+/obj/structure/roller{
+	dir = 1
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors)
@@ -3411,9 +3407,11 @@
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
 "Vh" = (
-/obj/structure/redstone/dust,
+/obj/structure/redstone/repeater{
+	dir = 1
+	},
 /turf/open/floor/cobblerock,
-/area/outdoors)
+/area)
 "Vk" = (
 /turf/open/water/sewer,
 /area/outdoors)
@@ -3541,8 +3539,8 @@
 /area/indoors/town/manor)
 "XI" = (
 /obj/structure/redstone/dust,
-/turf/open/floor/grass/yel,
-/area/outdoors)
+/turf/open/floor/cobblerock,
+/area)
 "XJ" = (
 /obj/structure/table/wood/crafted,
 /obj/item/paper/scroll/keep_plans,
@@ -3582,10 +3580,8 @@
 /turf/open/floor/cobblerock,
 /area/outdoors/mountains/decap)
 "Zn" = (
-/obj/structure/essence_node/rare,
-/obj/structure/redstone/dust,
-/turf/open/floor/grass/yel,
-/area/outdoors)
+/turf/closed/mineral/bedrock,
+/area)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/indoors)
@@ -12791,15 +12787,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+Pf
+rN
 as
 as
 as
@@ -13048,15 +13044,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+Be
+XI
+lM
+sS
+Vh
+XI
+IZ
+rN
 as
 as
 as
@@ -13305,15 +13301,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -13562,15 +13558,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+Be
+XI
+Vh
+sS
+Vh
+XI
+IZ
+rN
 as
 as
 as
@@ -13819,15 +13815,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -14076,15 +14072,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+Be
+XI
+XI
+sS
+Vh
+XI
+IZ
+rN
 as
 as
 as
@@ -14333,15 +14329,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -14590,15 +14586,15 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+Be
+XI
+XI
+sS
+XI
+XI
+IZ
+rN
 as
 as
 as
@@ -14846,16 +14842,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -15103,16 +15099,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+Be
+Vh
+XI
+sS
+Vh
+Vh
+IZ
+rN
 as
 as
 as
@@ -15360,16 +15356,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -15617,16 +15613,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+Be
+Vh
+XI
+sS
+Vh
+XI
+IZ
+rN
 as
 as
 as
@@ -15874,16 +15870,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
+rN
 as
 as
 as
@@ -16664,12 +16660,12 @@ ac
 at
 QN
 QN
-Vh
-XI
+Wr
+QN
 jN
-Be
-rN
-yu
+Rq
+Rq
+MJ
 MJ
 nY
 jN
@@ -16921,14 +16917,14 @@ ac
 at
 tL
 QN
-Vh
+Wr
 Wr
 uc
 Go
 Rq
-yu
-yu
-IZ
+MJ
+MJ
+MJ
 jN
 jN
 hA
@@ -17178,8 +17174,8 @@ ac
 at
 QN
 QN
-Zn
-Tj
+tL
+Wr
 jN
 fz
 Rq
@@ -18466,14 +18462,14 @@ as
 at
 oH
 oH
-ov
+yu
 oH
 oH
 oH
 oH
 at
-Oo
-Oo
+Zn
+Zn
 at
 bH
 xp
@@ -18723,16 +18719,16 @@ as
 at
 oH
 oH
-Sf
-Sf
-Sf
-Sf
-Sf
-Sf
-MK
-MK
-Sf
-pN
+Tj
+Tj
+Tj
+Tj
+Tj
+Tj
+uE
+uE
+Tj
+Rc
 Ua
 Ua
 cJ
@@ -18986,10 +18982,10 @@ AP
 AP
 AP
 at
-Oo
-Oo
+Zn
+Zn
 at
-JW
+Gq
 Yr
 xh
 hO

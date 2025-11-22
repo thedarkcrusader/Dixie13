@@ -98,8 +98,11 @@
 		var/list/neighbors = highest.get_power_output_neighbors()
 		for(var/obj/structure/redstone/neighbor in neighbors)
 			if(neighbor.redstone_role & REDSTONE_ROLE_SOURCE)
-				// Sources can be inverted (like torches)
 				neighbor.receive_source_power(highest_power, highest)
+				// DON'T continue - let the source propagate if it has power
+				var/source_power = neighbor.get_source_power()
+				if(source_power > 0 && !(neighbor in to_process))
+					to_process += neighbor
 				continue
 
 			var/received = neighbor.calculate_received_power(highest_power, highest)
