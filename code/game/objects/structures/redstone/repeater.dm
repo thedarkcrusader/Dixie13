@@ -1,138 +1,96 @@
 /obj/structure/redstone/repeater
 	name = "redstone repeater"
-	desc = "Amplifies and delays redstone signals. Right-click to adjust delay, alt-click to rotate."
+	desc = "Amplifies and delays redstone signals."
 	icon_state = "repeater"
+	redstone_role = REDSTONE_ROLE_PROCESSOR
 	true_pattern = "repeater"
-	var/delay_ticks = 2 // Default delay (1-4 ticks)
-	var/input_power = 0
-	var/output_power = 0
-	var/processing_signal = FALSE
-	var/obj/structure/redstone/current_input_source
-	var/facing_dir = NORTH // Direction the repeater is facing (output direction)
+	var/facing_dir = NORTH
+	var/delay_ticks = 2
+	var/output_active = FALSE
+	var/scheduled_state = -1  // -1 = no change scheduled, 0 = turning off, 1 = turning on
 	can_connect_wires = TRUE
 	send_wall_power = TRUE
 
 /obj/structure/redstone/repeater/Initialize()
 	. = ..()
 	facing_dir = dir
-	update_directional_connections()
 
-/obj/structure/redstone/repeater/proc/update_directional_connections()
-	wire_connections = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
-	connected_components = list()
+/obj/structure/redstone/repeater/get_source_power()
+	return output_active ? 15 : 0
 
-	var/input_dir = turn(facing_dir, 180) // Opposite of facing direction
-	var/output_dir = facing_dir
+/obj/structure/redstone/repeater/get_effective_power()
+	return output_active ? 15 : 0
 
-	// Connect to input (back) and output (front)
-	var/turf/input_turf = get_step(src, input_dir)
-	var/turf/output_turf = get_step(src, output_dir)
-
-	// Check input side
-	for(var/obj/structure/redstone/component in input_turf)
-		if(component.can_connect_wires && component.can_connect_to(src, turn(input_dir, 180)))
-			wire_connections[dir2text(input_dir)] = 1
-			connected_components += component
-
-	// Check output side
-	for(var/obj/structure/redstone/component in output_turf)
-		if(component.can_connect_wires && component.can_connect_to(src, turn(output_dir, 180)))
-			wire_connections[dir2text(output_dir)] = 1
-			connected_components += component
-
-	// Update icon to show direction
-	update_icon()
-
-/obj/structure/redstone/repeater/proc/dir2text(direction)
-	switch(direction)
-		if(NORTH) return "1"
-		if(SOUTH) return "2"
-		if(EAST) return "4"
-		if(WEST) return "8"
-		else return "1"
-
-/obj/structure/redstone/repeater/proc/text2dir(text)
-	switch(text)
-		if("1") return NORTH
-		if("2") return SOUTH
-		if("4") return EAST
-		if("8") return WEST
-		else return NORTH
-
-/obj/structure/redstone/repeater/get_input_directions()
-	return list(turn(facing_dir, 180))
-
-/obj/structure/redstone/repeater/receive_power(incoming_power, obj/structure/redstone/source, mob/user)
-	var/source_dir = get_dir(src, source)
-	if(!(source_dir in get_input_directions())) // Not from input side
-		return
-
-	if(processing_signal)
-		return
-
-	input_power = incoming_power
-	current_input_source = source
-
-	if(input_power > 0)
-		processing_signal = TRUE
-		spawn(delay_ticks)
-			if(current_input_source && current_input_source.power_level > 0)
-				output_power = 15
-				set_power(output_power, user, null) // Don't pass source to prevent feedback
-			processing_signal = FALSE
-	else
-		processing_signal = TRUE
-		spawn(delay_ticks)
-			// Double-check that the input is still off
-			if(!current_input_source || current_input_source.power_level <= 0)
-				output_power = 0
-				set_power(0, user, null)
-			processing_signal = FALSE
-
-/obj/structure/redstone/repeater/can_connect_to(obj/structure/redstone/other, dir)
-	// Only connect on input/output faces
-	var/input_dir = turn(facing_dir, 180)
-	return (dir == facing_dir || dir == input_dir)
-
-/obj/structure/redstone/repeater/get_power_directions()
-	// Repeaters only send power in their facing direction
+/obj/structure/redstone/repeater/get_output_directions()
 	return list(facing_dir)
 
-/obj/structure/redstone/repeater/update_overlays()
-	. = ..()
-	var/mutable_appearance/delay_overlay = mutable_appearance(icon, "delay_[delay_ticks]")
-	if(powered)
-		delay_overlay.color = "#FF0000" // Red when powered
-	else
-		delay_overlay.color = "#8B4513" // Brown when unpowered
-	overlays += delay_overlay
+/obj/structure/redstone/repeater/get_input_directions()
+	return list(REVERSE_DIR(facing_dir))
+
+/obj/structure/redstone/repeater/get_connection_directions()
+	return list(facing_dir, REVERSE_DIR(facing_dir))
+
+/obj/structure/redstone/repeater/can_connect_to(obj/structure/redstone/other, direction)
+	return (direction == facing_dir || direction == REVERSE_DIR(facing_dir))
+
+/obj/structure/redstone/repeater/can_receive_from(obj/structure/redstone/source, direction)
+	return (direction == REVERSE_DIR(facing_dir))
+
+// Called after network recalculation to check input state
+/obj/structure/redstone/repeater/on_power_changed()
+	// Check what power we're receiving from behind
+	var/turf/input_turf = get_step(src, REVERSE_DIR(facing_dir))
+	var/input_power = 0
+
+	for(var/obj/structure/redstone/R in input_turf)
+		if(R.can_connect_to(src, facing_dir))
+			input_power = max(input_power, R.get_effective_power())
+
+	var/should_be_on = (input_power > 0)
+
+	// Schedule state change if needed
+	if(should_be_on && !output_active && scheduled_state != 1)
+		scheduled_state = 1
+		spawn(delay_ticks)
+			if(scheduled_state == 1)
+				output_active = TRUE
+				power_level = 15
+				scheduled_state = -1
+				schedule_network_update()
+				update_appearance(UPDATE_OVERLAYS)
+	else if(!should_be_on && output_active && scheduled_state != 0)
+		scheduled_state = 0
+		spawn(delay_ticks)
+			if(scheduled_state == 0)
+				output_active = FALSE
+				power_level = 0
+				scheduled_state = -1
+				schedule_network_update()
+				update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/redstone/repeater/update_icon()
 	. = ..()
 	icon_state = "repeater"
 	dir = facing_dir
 
+/obj/structure/redstone/repeater/update_overlays()
+	. = ..()
+	var/mutable_appearance/delay_overlay = mutable_appearance(icon, "delay_[delay_ticks]")
+	delay_overlay.color = output_active ? "#FF0000" : "#8B4513"
+	. += delay_overlay
+
+/obj/structure/redstone/repeater/attack_hand(mob/user)
+	delay_ticks = (delay_ticks % 4) + 1
+	to_chat(user, "<span class='notice'>Delay set to [delay_ticks] tick\s.</span>")
+	update_appearance(UPDATE_OVERLAYS)
+
 /obj/structure/redstone/repeater/AltClick(mob/user)
 	if(!Adjacent(user))
 		return
-
 	facing_dir = turn(facing_dir, 90)
+	dir = facing_dir
 	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(facing_dir)].</span>")
-	update_directional_connections()
-
-	for(var/obj/structure/redstone/component in connected_components)
-		component.update_wire_connections()
-
-/obj/structure/redstone/repeater/attack_hand(mob/user)
-	if(!Adjacent(user))
-		return
-
-	delay_ticks++
-	if(delay_ticks > 4)
-		delay_ticks = 1
-
-	to_chat(user, "<span class='notice'>You adjust the [name] delay to [delay_ticks] tick\s.</span>")
-	update_overlays()
+	schedule_network_update()
 
 /obj/structure/redstone/repeater/proc/dir2text_readable(direction)
 	switch(direction)
@@ -140,9 +98,8 @@
 		if(SOUTH) return "south"
 		if(EAST) return "east"
 		if(WEST) return "west"
-		else return "north"
+	return "unknown"
 
 /obj/structure/redstone/repeater/examine(mob/user)
 	. = ..()
-	. += "It is facing [dir2text_readable(facing_dir)] and has a delay of [delay_ticks] tick\s."
-	. += "Right-click to adjust the delay, alt-click to rotate."
+	. += "Facing [dir2text_readable(facing_dir)], delay: [delay_ticks] tick\s."

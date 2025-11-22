@@ -1201,7 +1201,6 @@
 /area/outdoors)
 "fz" = (
 /obj/machinery/light/fueled/torchholder/r,
-/obj/machinery/essence/test_tube,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
 "fQ" = (
@@ -1271,11 +1270,6 @@
 	dir = 8
 	},
 /turf/open/floor/blocks,
-/area/indoors/town/manor)
-"gJ" = (
-/obj/structure/door,
-/obj/structure/redstone/dust,
-/turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "hd" = (
 /obj/structure/hotspring/border/five,
@@ -1419,9 +1413,8 @@
 /turf/open/floor/carpet,
 /area/indoors)
 "jH" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
+/turf/open/transparent/openspace,
+/area)
 "jM" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/decorstone,
@@ -1481,10 +1474,6 @@
 	dir = 8
 	},
 /area/outdoors/mountains/decap)
-"la" = (
-/obj/structure/redstone/dispenser,
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "lf" = (
 /obj/structure/flora/grass/bush/wall,
 /turf/open/floor/tile,
@@ -1499,6 +1488,10 @@
 /obj/structure/door/window,
 /turf/open/floor/tile/bfloorz,
 /area)
+"lm" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "ln" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/effect/falling_sakura,
@@ -1549,10 +1542,6 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
-"mk" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
 "mo" = (
 /obj/structure/bridge_stakes{
 	dir = 1
@@ -1624,11 +1613,6 @@
 /obj/effect/landmark/stall,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"nv" = (
-/obj/machinery/light/fueled/torchholder/r,
-/obj/structure/redstone/dust,
-/turf/open/floor/churchbrick,
-/area/indoors/town/manor)
 "nz" = (
 /obj/structure/chair/bench/couch/middle{
 	dir = 4
@@ -1657,10 +1641,6 @@
 /obj/machinery/essence/reservoir,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
-"oc" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "oe" = (
 /obj/machinery/essence/splitter,
 /obj/structure/table/vtable,
@@ -2189,6 +2169,10 @@
 	dir = 8
 	},
 /area/outdoors/mountains/decap)
+"vb" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/wood,
+/area/indoors/town/manor)
 "vg" = (
 /obj/machinery/light/fueled/smelter,
 /turf/open/floor/blocks/stonered/tiny,
@@ -2245,6 +2229,10 @@
 /obj/item/reagent_containers/glass/carafe/water,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"wS" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "wY" = (
 /obj/structure/flora/sakura{
 	pixel_y = -13
@@ -2498,7 +2486,9 @@
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
 "Be" = (
-/obj/machinery/essence/reservoir/filled/life,
+/obj/structure/redstone/repeater{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/indoors/town/manor)
 "Bg" = (
@@ -2511,10 +2501,6 @@
 /obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
-"BA" = (
-/obj/structure/redstone/dust,
-/turf/open/floor/cobblerock,
-/area/outdoors)
 "BB" = (
 /obj/effect/landmark/bounty_location/warehouse,
 /turf/open/floor/wood,
@@ -3186,12 +3172,6 @@
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
-"PW" = (
-/obj/structure/redstone/repeater{
-	dir = 8
-	},
-/turf/open/floor/cobblerock,
-/area/outdoors)
 "Qi" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass/yel,
@@ -3341,6 +3321,10 @@
 	},
 /turf/closed/wall/mineral/decorstone,
 /area/under/town/basement)
+"TM" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "TN" = (
 /obj/effect/landmark/house_spot{
 	house_id = "9x9_2";
@@ -3388,7 +3372,7 @@
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
 "Vh" = (
-/obj/structure/redstone/pressure_plate,
+/obj/structure/redstone/dust,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "Vk" = (
@@ -3517,8 +3501,9 @@
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
 "XI" = (
-/turf/open/transparent/openspace,
-/area)
+/obj/structure/redstone/pressure_plate,
+/turf/open/floor/churchbrick,
+/area/indoors/town/manor)
 "XJ" = (
 /obj/structure/table/wood/crafted,
 /obj/item/paper/scroll/keep_plans,
@@ -15870,7 +15855,7 @@ uc
 DL
 Rq
 MJ
-mk
+wS
 Ra
 jN
 Fj
@@ -16634,13 +16619,13 @@ ac
 ac
 at
 QN
-oc
-BA
-oc
+QN
+Wr
+lm
 jN
 Be
-Rq
-MJ
+vb
+Vh
 MJ
 nY
 jN
@@ -16891,15 +16876,15 @@ ac
 ac
 at
 tL
-oc
+QN
 Wr
-PW
+TM
 uc
 Go
 Rq
-MJ
-jH
 Vh
+Vh
+XI
 jN
 jN
 hA
@@ -17148,14 +17133,14 @@ ac
 ac
 at
 QN
-la
+QN
 tL
-BA
+TM
 jN
 fz
 Rq
 MJ
-jH
+MJ
 jN
 iC
 sE
@@ -17407,12 +17392,12 @@ at
 at
 at
 QN
-BA
+TM
 jN
 jN
 jN
-jH
-jH
+MJ
+MJ
 jN
 dj
 ru
@@ -17664,11 +17649,11 @@ ac
 ac
 at
 QN
-BA
-BA
-BA
-gJ
-nv
+Wr
+Wr
+Wr
+jf
+mE
 zU
 jN
 Cm
@@ -80886,8 +80871,8 @@ ac
 ac
 ac
 ac
-XI
-XI
+jH
+jH
 ac
 ac
 ac
@@ -81143,8 +81128,8 @@ ac
 ac
 ac
 ac
-XI
-XI
+jH
+jH
 ac
 ac
 ac
@@ -81398,10 +81383,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -81655,10 +81640,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -81912,10 +81897,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82169,10 +82154,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82426,10 +82411,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82683,10 +82668,10 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -82942,8 +82927,8 @@ ac
 ac
 ac
 ac
-XI
-XI
+jH
+jH
 ac
 ac
 ac
@@ -83200,9 +83185,9 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
+jH
+jH
+jH
 ac
 ac
 ac
@@ -83457,9 +83442,9 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
+jH
+jH
+jH
 ac
 ac
 ac
@@ -83714,13 +83699,13 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 Zs
 Of
 Of
@@ -83971,13 +83956,13 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84228,13 +84213,13 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84485,13 +84470,13 @@ as
 ac
 ac
 ac
-XI
-XI
-XI
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -84742,12 +84727,12 @@ as
 ac
 ac
 ac
-XI
-XI
-XI
-XI
-XI
-XI
+jH
+jH
+jH
+jH
+jH
+jH
 ac
 ac
 ac
@@ -85000,9 +84985,9 @@ ac
 ac
 ac
 ac
-XI
-XI
-XI
+jH
+jH
+jH
 ac
 ac
 ac
