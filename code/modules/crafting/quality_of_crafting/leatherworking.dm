@@ -1002,12 +1002,12 @@
 	craftdiff = 3
 	category = "Shoes"
 
-/datum/repeatable_crafting_recipe/leather/psyaltrist
+/datum/repeatable_crafting_recipe/leather/cantor
 	name = "cuir-bouilli armor"
 	requirements = list(
 		/obj/item/natural/hide/cured = 3,
 		/obj/item/ingot/iron = 1,
 	)
-	output = /obj/item/clothing/armor/leather/studded/psyaltrist
+	output = /obj/item/clothing/armor/leather/studded/cantor
 	craftdiff = 3
 	category = "Armor"
