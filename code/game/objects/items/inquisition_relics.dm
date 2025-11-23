@@ -955,7 +955,8 @@
 		C.visible_message(span_danger("[user] [pick("garrotes", "asphyxiates")] [C]!"), \
 		span_userdanger("[user] [pick("garrotes", "asphyxiates")] me!"), span_hear("I hear the sickening sound of cordage!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
-		if(!/obj/item/inqarticles/garrote)
+		var/obj/item/inqarticles/garrote = pain
+		if(!pain)
 			user.changeNext_move(CLICK_CD_EXHAUSTED)	//Stops spam for choking.
 		else
 			user.changeNext_move(CLICK_CD_RESIST) //HAHAHAHA I WIN, I GET TO SLEEP NPW(to future coders, disregard this comment, it is the ramblings of a sleep deprived madman, no maintainers,Im not removing this.)
