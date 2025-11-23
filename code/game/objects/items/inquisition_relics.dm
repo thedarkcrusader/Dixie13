@@ -958,7 +958,7 @@
 		if(/obj/item/inqarticles/garrote)
 			user.changeNext_move(CLICK_CD_RESIST)	//Stops spam for choking.
 		else
-			user.changeNext_move() //HAHAHAHA I WIN, I GET TO SLEEP NPW(to future coders, disregard this comment, it is the ramblings of a sleep deprived madman)
+			user.changeNext_move(CLICK_CD_EXHAUSTED) //HAHAHAHA I WIN, I GET TO SLEEP NPW(to future coders, disregard this comment, it is the ramblings of a sleep deprived madman)
 
 /obj/item/inqarticles/garrote/razor // To yische, who said not to give this out constantly, I respectfully disagree when it comes to assassin
 	name = "Profane Razor" // Its very not non lethal now.  Strangle your prey with glee
