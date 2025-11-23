@@ -22,6 +22,8 @@ LINEN BINS
 
 	var/list/dream_messages = list("white")
 	var/datum/weakref/signal_sleeper //this is our goldylocks
+	// Used for the tucked buffs.
+	var/obj/structure/bed/bed_tucked
 
 /obj/item/bedsheet/Initialize()
 	. = ..()
@@ -77,6 +79,20 @@ LINEN BINS
 	UnregisterSignal(sleeper, COMSIG_PARENT_QDELETING)
 	signal_sleeper = null
 
+
+/obj/item/bedsheet/attack_hand(mob/user, params)
+	if(bed_tucked)
+		to_chat(user, span_notice("You start to remove the [src] from the [bed_tucked]."))
+		if(do_after(user, 2 SECONDS, src))
+			bed_tucked.sheet_tucked = FALSE
+			bed_tucked.sheet_on = null
+			bed_tucked = null
+			return ..()
+	else
+		return ..()
+
+
+//
 /obj/item/bedsheet/cloth
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'

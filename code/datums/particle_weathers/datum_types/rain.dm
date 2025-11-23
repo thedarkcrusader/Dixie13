@@ -35,6 +35,9 @@
 
 	temperature_modification = -1
 
+/datum/particle_weather/rain_gentle/tick()
+	weather_apply_wetness()
+
 /datum/particle_weather/rain_storm
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
@@ -58,6 +61,7 @@
 	COOLDOWN_DECLARE(thunder)
 
 /datum/particle_weather/rain_storm/tick()
+	weather_apply_wetness()
 	if(!COOLDOWN_FINISHED(src, thunder))
 		return
 
@@ -97,3 +101,21 @@
 		var/turf/lightning_turf = get_turf(lightning_destination)
 		new /obj/effect/temp_visual/target/lightning(lightning_turf)
 		COOLDOWN_START(src, thunder, rand(5, 40) * 1 SECONDS)
+
+/datum/particle_weather/proc/weather_apply_wetness()
+	// Loop over all mobs
+	for(var/client/client in GLOB.clients)
+		if(!client.mob)
+			continue
+		var/client_z = client.mob.z
+		if(!isliving(client.mob))
+			continue
+		if(!("[client_z]" in GLOB.weatherproof_z_levels))
+			if(SSmapping.level_has_any_trait(client_z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
+				GLOB.weatherproof_z_levels |= "[client_z]"
+		if("[client_z]" in GLOB.weatherproof_z_levels)
+			continue
+		var/mob/living/C_L = client.mob
+		if(C_L)
+			C_L.SoakMob(FULL_BODY)
+

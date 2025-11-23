@@ -13,7 +13,7 @@
 
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | WETABLE
 
 	strip_delay = 4 SECONDS
 	equip_delay_other = 4 SECONDS

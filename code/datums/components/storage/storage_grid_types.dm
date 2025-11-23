@@ -373,3 +373,12 @@
 			)
 		)
 	)
+
+/datum/component/storage/concrete/grid/drying_rack
+	max_w_class = WEIGHT_CLASS_HUGE
+	screen_max_rows = 8
+	screen_max_columns = 4
+
+/datum/component/storage/concrete/grid/drying_rack/New(datum/P, ...)
+	. = ..()
+	set_holdable(list(/obj/item/clothing))

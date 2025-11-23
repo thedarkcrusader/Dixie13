@@ -60,7 +60,7 @@
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
-	resistance_flags = null
+	resistance_flags = WETABLE
 	color = CLOTHING_OLD_LEATHER
 	salvage_result = null
 
@@ -78,7 +78,7 @@
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
-	resistance_flags = null
+	resistance_flags = WETABLE
 	color = CLOTHING_ASH_GREY
 	sellprice = 20
 
@@ -129,7 +129,7 @@
 	name = "funny shoes"
 	desc = "Shoes typically worn by a Jester."
 	icon_state = "jestershoes"
-	resistance_flags = null
+	resistance_flags = WETABLE
 	sellprice = 10
 
 /obj/item/clothing/shoes/jester/Initialize()

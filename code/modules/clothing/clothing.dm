@@ -1,12 +1,13 @@
 /obj/item/clothing
 	name = "clothing"
-	resistance_flags = FLAMMABLE
+	resistance_flags = FLAMMABLE | WETABLE
 	obj_flags = CAN_BE_HIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 200
 	integrity_failure = 0.1
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	var/last_wet_stress  = 0
 
 	//Here we have salvage vars!
 	salvage_result = /obj/item/natural/cloth
@@ -73,6 +74,7 @@
 	var/hoodtype
 	var/hoodtoggled = FALSE
 	var/adjustable = CANT_CADJUST
+	var/proper_drying = FALSE
 
 /obj/item/clothing/Initialize()
 	. = ..()
@@ -94,6 +96,8 @@
 
 /obj/item/clothing/Initialize(mapload, ...)
 	AddElement(/datum/element/update_icon_updates_onmob, slot_flags)
+	if(resistance_flags & WETABLE)
+		AddComponent(/datum/component/wet)
 	return ..()
 
 /obj/item/clothing/Destroy()
@@ -132,6 +136,9 @@
 			. += span_notice("It has one torn sleeve.")
 		else
 			. += span_notice("Both its sleeves have been torn!")
+	desc = initial(desc)
+	if(proper_drying)
+		desc +=span_notice("\n This was properly washed and dried off, it smells good!")
 
 /obj/item/clothing/MiddleClick(mob/user, params)
 	..()
@@ -261,6 +268,9 @@
 		RemoveHood()
 	if(adjustable > 0)
 		ResetAdjust()
+	if(resistance_flags & WETABLE)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
 
 /obj/item/clothing/MouseDrop(atom/over_object)
 	. = ..()
@@ -313,6 +323,8 @@
 				if(variable in user.vars)
 					LAZYSET(user_vars_remembered, variable, user.vars[variable])
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
+		if(resistance_flags & WETABLE)
+			RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_user_move), override = TRUE)
 
 	for(var/trait in clothing_traits)
 		ADD_CLOTHING_TRAIT(user, trait)
@@ -467,7 +479,7 @@ BLIND     // can't see anything
 	prevent_crits = initial(prevent_crits)
 	gas_transfer_coefficient = initial(gas_transfer_coefficient)
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/living/carbon/human/user, slot)
 	if(hoodtype && !(slot & (ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK)))
 		RemoveHood()
 	if(adjustable > 0)
@@ -520,3 +532,32 @@ BLIND     // can't see anything
 				H.update_fov_angles()
 	else
 		RemoveHood()
+
+/obj/item/clothing/proc/on_user_move()
+	if(!iscarbon(loc))
+		return
+
+	var/mob/living/carbon/C = loc
+
+	if(proper_drying && !C.has_stress_type(/datum/stress_event/washed_cloth))
+		C.add_stress(/datum/stress_event/washed_cloth)
+		proper_drying = FALSE
+		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
+		if(particle_spewer)
+			particle_spewer.RemoveComponent()
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.2))
+
+		var/datum/component/wet/W = GetComponent(/datum/component/wet)
+		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
+			C.add_stress(/datum/stress_event/noble_tarnished_cloth)
+
+		if(C.mind?.assigned_role == /datum/job/farmer || C.mind?.assigned_role == /datum/job/soilchild || HAS_TRAIT(C, TRAIT_LEECHIMMUNE) || istriton(C))
+			return
+
+		var/now = world.time
+		if(now - last_wet_stress >= 60 SECONDS)
+			last_wet_stress = now
+			C.add_stress(/datum/stress_event/wet_cloth)
+
+

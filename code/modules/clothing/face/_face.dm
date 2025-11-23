@@ -7,7 +7,7 @@
 	body_parts_covered = FACE
 	slot_flags = ITEM_SLOT_MASK
 
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | WETABLE
 
 	strip_delay = 40
 	equip_delay_other = 40

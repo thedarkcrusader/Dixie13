@@ -130,6 +130,21 @@
 			// check to see if we're a noble drinking soup
 			if(ishuman(user) && istype(src, /obj/item/reagent_containers/glass/bowl))
 				var/mob/living/carbon/human/human_user = user
+				var/obj/item/reagent_containers/glass/bowl/bowl_check = src
+				if(bowl_check.dirty)
+					human_user.add_stress(/datum/stress_event/dirty_bowl)
+				else
+					if(istype(bowl_check.reagents, /datum/reagent/consumable/soup))
+						var/datum/reagent/consumable/soup/soup_check = bowl_check.reagents
+						soup_check.taste_mult +=1
+				if(!bowl_check.reagents.total_volume > 0 && !bowl_check.reagents.get_reagent_amount(/datum/reagent/water) == reagents.total_volume)
+					bowl_check.usages +=1
+				if(bowl_check.usages >= bowl_check.max_usages)
+					bowl_check.dirty = TRUE
+					var/datum/component/particle_spewer = bowl_check.GetComponent(/datum/component/particle_spewer/sparkle)
+					if(particle_spewer)
+						particle_spewer.RemoveComponent()
+					bowl_check.add_overlay("dirty_bowl")
 				if(human_user.is_noble()) // egads we're an unmannered SLOB
 					human_user.add_stress(/datum/stress_event/noble_bad_manners)
 					if(prob(25))

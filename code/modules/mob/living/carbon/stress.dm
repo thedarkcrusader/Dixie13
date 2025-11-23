@@ -82,12 +82,27 @@
 				remove_status_effect(/datum/status_effect/stress/stressvbad)
 				if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 					INVOKE_ASYNC(src, PROC_REF(play_mental_break_indicator))
+
+		var/event
+		var/datum/stress_event/last_event = (length(stressors) ? stressors[length(stressors)] : null)
+
+		if(last_event?.desc)
+			var/desc = last_event.get_desc()
+			event = islist(desc) ? jointext(desc, " ") : desc
+
 		if(stress > oldstress)
-			to_chat(src, span_red("I gain stress."))
+			if(event && last_event.stress_change > 0)
+				to_chat(src, "[event]")
+			to_chat(src, span_red(" I gain stress."))
+
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_stress_indicator))
 		else
-			to_chat(src, span_green("I gain peace."))
+			if(event && last_event.stress_change <= 0)
+				to_chat(src, "[event]")
+			to_chat(src, span_green(" I gain peace."))
+
+
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_relief_indicator))
 

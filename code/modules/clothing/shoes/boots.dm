@@ -26,7 +26,7 @@
 	armor_class = AC_HEAVY
 	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/armorsmithing
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | WETABLE
 	pickup_sound = "rustle"
 	equip_sound = 'sound/foley/equip/equip_armor_plate.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -94,7 +94,7 @@
 	icon_state = "leatherboots"
 	item_state = "leatherboots"
 	armor = list("blunt" = 20, "slash" = 20, "stab" = 20,  "piercing" = 10, "fire" = 0, "acid" = 0)
-	resistance_flags = FLAMMABLE
+	resistance_flags = FLAMMABLE | WETABLE
 	sellprice = 10
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1

@@ -1922,13 +1922,33 @@
 		return TRUE
 	return FALSE
 
-/mob/living/proc/SoakMob(locations)
+
+/mob/living/proc/SoakMob(locations, dirty_water = FALSE)
+	var/mob/living/carbon/human/H
+	if(ishuman(src))
+		H = src
 	if(locations & CHEST)
 		ExtinguishMob()
+		if(H)
+			for(var/obj/item/clothing/C in get_equipped_items())
+				if(C.resistance_flags & WETABLE)
+					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
 		if(locations & HEAD)
 			adjust_fire_stacks(-2)
 		else
 			adjust_fire_stacks(-1)
+	else
+		if(H)
+			if(locations == FEET)
+				var/list/shoes = list(H.shoes)
+				for(var/obj/item/clothing/C in shoes)
+					if(C.resistance_flags & WETABLE)
+						SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+			else
+				var/list/below_chest = list(H.wear_pants, H.shoes)
+				for(var/obj/item/clothing/C in below_chest)
+					if(C.resistance_flags & WETABLE)
+						SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)

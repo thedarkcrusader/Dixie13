@@ -26,6 +26,7 @@
 	if(!do_after(user, (10 SECONDS - (user.get_skill_level(/datum/skill/craft/cooking) * 9)), source))
 		return FALSE
 	user.adjust_stamina(25)
+	nobles_seen_servant_work(user)
 	return TRUE
 
 /datum/brewing_recipe/butter/gote

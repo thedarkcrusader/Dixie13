@@ -8,7 +8,7 @@
 	sleevetype = "leg"
 
 	body_parts_covered = GROIN|LEGS
-	resistance_flags = FLAMMABLE
+	resistance_flags = FLAMMABLE | WETABLE
 	max_integrity = INTEGRITY_WORST
 	prevent_crits = list(BCLASS_LASHING)
 	permeability_coefficient = 0.9

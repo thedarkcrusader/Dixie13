@@ -343,6 +343,9 @@
 			return
 	if(water_volume < 10)
 		return
+	var/dirty_water_turf = FALSE
+	if(cleanliness_factor < 0)
+		dirty_water_turf = TRUE
 	if(istype(AM, /obj/item/reagent_containers/food/snacks/fish))
 		var/obj/item/reagent_containers/food/snacks/fish/F = AM
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_FISH_RELEASED, F)
@@ -351,13 +354,18 @@
 		else
 			F.visible_message("<span class='warning'>[F] slowly sinks motionlessly into \the [src] and disappears...</span>")
 		qdel(F)
+	if(istype(AM, /obj/item/clothing))
+		var/obj/item/clothing/cloth = AM
+		if(cloth.resistance_flags & WETABLE)
+			SEND_SIGNAL(cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water_turf)
 	if(isliving(AM) && !AM.throwing)
 		var/mob/living/L = AM
 		if(L.body_position == LYING_DOWN || water_level == 3)
-			L.SoakMob(FULL_BODY)
-		else
-			if(water_level == 2)
-				L.SoakMob(BELOW_CHEST)
+			L.SoakMob(FULL_BODY, dirty_water_turf)
+		else if(water_level == 2)
+			L.SoakMob(BELOW_CHEST, dirty_water_turf)
+		else if(water_level == 1)
+			L.SoakMob(FEET, dirty_water_turf)
 		if(water_overlay)
 			if(water_level > 1 && !istype(oldLoc, type))
 				playsound(AM, 'sound/foley/waterenter.ogg', 100, FALSE)
@@ -453,6 +461,13 @@
 	if(do_after(user, 3 SECONDS, src))
 		if(wash_in)
 			item2wash.wash(CLEAN_WASH)
+		if(item2wash.resistance_flags & WETABLE)
+			var/obj/item/clothing/item2wash_cloth = item2wash
+			if(cleanliness_factor > 0)
+				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
+			else
+				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = TRUE, wash = TRUE)
+		nobles_seen_servant_work(user)
 		playsound(user, pick(wash), 100, FALSE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
