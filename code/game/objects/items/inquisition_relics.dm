@@ -968,7 +968,7 @@
 	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/assassin_choke)
 	sellprice = 100
 
-	/datum/intent/garrote/assassin_choke
+		/datum/intent/garrote/assassin_choke
 		name = "choke"
 		icon_state = "inchoke"
 			desc = "Used to begin choking the target out."
