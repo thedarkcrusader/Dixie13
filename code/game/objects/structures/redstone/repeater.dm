@@ -4,6 +4,7 @@
 	icon_state = "repeater"
 	redstone_role = REDSTONE_ROLE_PROCESSOR
 	true_pattern = "repeater"
+	should_block = FALSE
 
 	var/facing_dir = NORTH
 	var/delay_ticks = 2
@@ -225,6 +226,10 @@
 	var/mutable_appearance/delay_overlay = mutable_appearance(icon, "delay_[delay_ticks]")
 	delay_overlay.color = output_active ? "#FF0000" : "#8B4513"
 	. += delay_overlay
+
+	if(output_active)
+		var/mutable_appearance/em = emissive_appearance(icon, "delay_[delay_ticks]")
+		. += em
 
 	if(locked)
 		var/mutable_appearance/lock_overlay = mutable_appearance(icon, "repeater_lock")

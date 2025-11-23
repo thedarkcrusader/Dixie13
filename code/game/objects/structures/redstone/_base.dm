@@ -9,6 +9,7 @@
 	var/can_connect_wires = TRUE  // Whether dust can connect to this
 	var/send_wall_power = FALSE   // Whether this component can power through walls
 	var/true_pattern              // For custom wire overlay patterns
+	var/should_block = TRUE
 
 	// Network tracking
 	var/static/list/update_queue = list()
@@ -401,9 +402,20 @@
 
 	var/pattern_to_use = true_pattern ? true_pattern : (wire_pattern ? wire_pattern : "wire")
 	var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire_[pattern_to_use]")
-	wire_overlay.layer = layer + 0.01
-	wire_overlay.color = (power_level > 0) ? "#FF0000" : "#8B4513"
+	wire_overlay.layer = layer - 0.01
+	if(power_level > 0)
+		var/brightness = 0.3 + (power_level / 15.0) * 0.7
+		wire_overlay.color = rgb(255 * brightness, 0, 0)
+	else
+		wire_overlay.color = "#8B4513"
 	. += wire_overlay
+
+	if(power_level > 0)
+		var/mutable_appearance/em = emissive_appearance(icon, "wire_[pattern_to_use]")
+		. += em
+		if(should_block)
+			var/mutable_appearance/em_block = emissive_blocker(icon, icon_state)
+			. += em_block
 
 /proc/trigger_redstone_at(turf/T, power_level, mob/user)
 	for(var/obj/structure/redstone/component in T)

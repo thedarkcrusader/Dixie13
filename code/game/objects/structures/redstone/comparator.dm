@@ -215,10 +215,16 @@
 	var/mutable_appearance/rear_torch = mutable_appearance(icon, "torch_rear")
 	rear_torch.color = (output_power > 0) ? "#FF0000" : "#8B4513"
 	. += rear_torch
+	if(output_power > 0)
+		var/mutable_appearance/em = emissive_appearance(icon, "torch_rear")
+		. += em
 
 	var/mutable_appearance/front_torch = mutable_appearance(icon, "torch_front")
 	front_torch.color = (mode == "subtract") ? "#FF0000" : "#8B4513"
 	. += front_torch
+	if(mode == "subtract")
+		var/mutable_appearance/em = emissive_appearance(icon, "torch_front")
+		. += em
 
 /obj/structure/redstone/comparator/attack_hand(mob/user)
 	mode = (mode == "compare") ? "subtract" : "compare"
