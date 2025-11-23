@@ -7,7 +7,8 @@
 	var/facing_dir = NORTH
 	var/delay_ticks = 2
 	var/output_active = FALSE
-	var/scheduled_state = -1  // -1 = no change scheduled, 0 = turning off, 1 = turning on
+	var/scheduled_state = -1
+	var/last_input_state = FALSE
 	can_connect_wires = TRUE
 	send_wall_power = TRUE
 
@@ -39,64 +40,109 @@
 /obj/structure/redstone/repeater/get_network_neighbors()
 	var/list/neighbors = list()
 
-	// Input side - for receiving power
 	var/input_dir = REVERSE_DIR(facing_dir)
 	var/turf/input_turf = get_step(src, input_dir)
 	for(var/obj/structure/redstone/R in input_turf)
 		if(can_connect_to(R, input_dir) && R.can_connect_to(src, facing_dir))
 			neighbors += R
 
-	// Output side - direct adjacency
 	var/turf/output_turf = get_step(src, facing_dir)
 	for(var/obj/structure/redstone/R in output_turf)
 		if(can_connect_to(R, facing_dir) && R.can_connect_to(src, input_dir))
 			neighbors += R
 
-	// Output side - through wall (since repeaters have send_wall_power = TRUE)
 	if(send_wall_power && isclosedturf(output_turf))
 		var/list/wall_neighbors = get_wall_power_neighbors(facing_dir, output_turf)
 		neighbors |= wall_neighbors
 
+	// Also check for wall power INPUT sources (for network connectivity)
+	if(isclosedturf(input_turf))
+		var/list/wall_sources = get_wall_power_sources(input_dir, input_turf)
+		neighbors |= wall_sources
+
 	return neighbors
 
-// Called after network recalculation to check input state
+// Find components that could be powering US through a wall
+/obj/structure/redstone/repeater/proc/get_wall_power_sources(direction, turf/wall_turf)
+	var/list/sources = list()
+
+	for(var/check_dir in GLOB.cardinals)
+		if(check_dir == REVERSE_DIR(direction))
+			continue  // Don't check back towards ourselves
+
+		var/turf/beyond_wall = get_step(wall_turf, check_dir)
+		for(var/obj/structure/redstone/R in beyond_wall)
+			if(!R.send_wall_power)
+				continue
+			// Check if this component is actually outputting TOWARDS the wall
+			var/dir_to_wall = REVERSE_DIR(check_dir)
+			if(dir_to_wall in R.get_output_directions())
+				sources += R
+
+	return sources
+
 /obj/structure/redstone/repeater/on_power_changed()
-	var/turf/input_turf = get_step(src, REVERSE_DIR(facing_dir))
+	var/input_dir = REVERSE_DIR(facing_dir)
+	var/turf/input_turf = get_step(src, input_dir)
 	var/input_power = 0
 
-	// Check for direct adjacency
+	// Direct adjacency input
 	for(var/obj/structure/redstone/R in input_turf)
 		if(R.can_connect_to(src, facing_dir))
 			input_power = max(input_power, R.get_effective_power())
 
-	// Check for power through wall
+	// Wall power input - need to check if source is FACING the wall
 	if(isclosedturf(input_turf))
 		for(var/check_dir in GLOB.cardinals)
+			if(check_dir == REVERSE_DIR(input_dir))
+				continue  // Don't check back towards ourselves
+
 			var/turf/beyond_wall = get_step(input_turf, check_dir)
 			for(var/obj/structure/redstone/R in beyond_wall)
-				if(R.send_wall_power && R.get_effective_power() > 0)
-					input_power = max(input_power, R.get_effective_power())
+				if(!R.send_wall_power)
+					continue
+				// Check if this component is outputting TOWARDS the wall
+				var/dir_to_wall = REVERSE_DIR(check_dir)
+				if(!(dir_to_wall in R.get_output_directions()))
+					continue
+				input_power = max(input_power, R.get_effective_power())
 
-	var/should_be_on = (input_power > 0)
-	// Schedule state change if needed
-	if(should_be_on && !output_active && scheduled_state != 1)
-		scheduled_state = 1
-		spawn(delay_ticks)
-			if(scheduled_state == 1)
-				output_active = TRUE
-				power_level = 15
-				scheduled_state = -1
-				schedule_network_update()
-				update_appearance(UPDATE_OVERLAYS)
-	else if(!should_be_on && output_active && scheduled_state != 0)
-		scheduled_state = 0
-		spawn(delay_ticks)
-			if(scheduled_state == 0)
-				output_active = FALSE
-				power_level = 0
-				scheduled_state = -1
-				schedule_network_update()
-				update_appearance(UPDATE_OVERLAYS)
+	var/input_on = (input_power > 0)
+
+	if(input_on == last_input_state)
+		return
+
+	last_input_state = input_on
+
+	if(input_on)
+		if(!output_active && scheduled_state != 1)
+			scheduled_state = 1
+			spawn(delay_ticks)
+				apply_scheduled_state()
+		else if(scheduled_state == 0)
+			scheduled_state = -1
+	else
+		if(output_active && scheduled_state != 0)
+			scheduled_state = 0
+			spawn(delay_ticks)
+				apply_scheduled_state()
+		else if(scheduled_state == 1)
+			scheduled_state = -1
+
+/obj/structure/redstone/repeater/proc/apply_scheduled_state()
+	if(scheduled_state == -1)
+		return
+
+	if(scheduled_state == 1 && !output_active)
+		output_active = TRUE
+		power_level = 15
+	else if(scheduled_state == 0 && output_active)
+		output_active = FALSE
+		power_level = 0
+
+	scheduled_state = -1
+	schedule_network_update()
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/redstone/repeater/update_icon()
 	. = ..()

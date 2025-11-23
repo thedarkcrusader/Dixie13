@@ -60,27 +60,30 @@
 
 /proc/recalculate_network(list/components)
 	// Step 1: Reset all non-source power levels
+	// BUT: check if component is actively outputting (like a repeater with output_active)
 	for(var/obj/structure/redstone/R in components)
-		if(!(R.redstone_role & REDSTONE_ROLE_SOURCE))
-			R.power_level = 0
+		if(R.redstone_role & REDSTONE_ROLE_SOURCE)
+			continue
+		// Check if this component is actively generating power (processors like repeaters)
+		if(R.get_source_power() > 0)
+			continue
+		R.power_level = 0
 
 	// Step 2: Propagate from sources using BFS by power level
 	var/list/to_process = list()
 
-	// Start with all sources
+	// Start with all sources AND any component actively outputting power
 	for(var/obj/structure/redstone/R in components)
-		if(R.redstone_role & REDSTONE_ROLE_SOURCE)
-			if(R.get_source_power() > 0)
-				to_process += R
+		if(R.get_source_power() > 0)
+			to_process += R
 
 	// Process in order of power level (highest first)
 	var/iterations = 0
-	var/max_iterations = length(components) * 16 // Safety limit
+	var/max_iterations = length(components) * 16
 
 	while(length(to_process) && iterations < max_iterations)
 		iterations++
 
-		// Find highest power component
 		var/obj/structure/redstone/highest = null
 		var/highest_power = -1
 		for(var/obj/structure/redstone/R in to_process)
@@ -94,14 +97,18 @@
 
 		to_process -= highest
 
-		// Propagate to neighbors
 		var/list/neighbors = highest.get_power_output_neighbors()
 		for(var/obj/structure/redstone/neighbor in neighbors)
 			if(neighbor.redstone_role & REDSTONE_ROLE_SOURCE)
 				neighbor.receive_source_power(highest_power, highest)
-				// DON'T continue - let the source propagate if it has power
 				var/source_power = neighbor.get_source_power()
 				if(source_power > 0 && !(neighbor in to_process))
+					to_process += neighbor
+				continue
+
+			// Skip neighbors that are actively outputting - they're self-powered
+			if(neighbor.get_source_power() > 0)
+				if(!(neighbor in to_process))
 					to_process += neighbor
 				continue
 
@@ -115,7 +122,6 @@
 	for(var/obj/structure/redstone/R in components)
 		R.on_power_changed()
 		R.update_appearance(UPDATE_OVERLAYS)
-
 		R.trigger_adjacent_structures()
 
 // ============================================
