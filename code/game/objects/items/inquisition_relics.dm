@@ -965,7 +965,6 @@
 	item_state = "garrote"
 	resistance_flags = INDESTRUCTIBLE
 	choke_damage = 20
-	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/assassin_choke)
 	sellprice = 100
 	user.changeNext_move(CLICK_CD_EXHAUSTED)	//Fuck you 5 second deaths
 
