@@ -965,14 +965,169 @@
 	item_state = "garrote"
 	resistance_flags = INDESTRUCTIBLE
 	choke_damage = 20
-	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/assassin_choke)
+	gripped_intents = list(/datum/intent/garrote/assassin_grab, /datum/intent/garrote/assassin_choke)
 	sellprice = 100
 
+/obj/item/inqarticles/garrote/razor/atom_break(damage_flag, silent)
+	. = ..()
+	obj_broken = TRUE
+	if(!ismob(loc))
+		return
+	var/mob/M = loc
+	active = FALSE
+	if(altgripped || HAS_TRAIT(src, TRAIT_WIELDED))
+		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
+		if(ismob(loc))
+			twohanded.unwield(loc)
+		wipeslate(lastcarrier)
+		if(lastcarrier.pulling)
+			lastcarrier.stop_pulling()
+	if(break_sound)
+		playsound(get_turf(src), break_sound, 80, TRUE)
+	update_icon()
+	to_chat(M, "The [src] SNAPS...!")
+	name = "\proper snapped seizing garrote"
+
+/obj/item/inqarticles/garrote/razor/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 9,"ny" = -6,"wx" = -6,"wy" = -4,"ex" = 4,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 90,"wturn" = 93,"eturn" = -12,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 9,"ny" = -6,"wx" = -6,"wy" = -4,"ex" = 4,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 90,"wturn" = 93,"eturn" = -12,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
 /datum/intent/garrote/assassin_choke
-name = "choke"
-icon_state = "inchoke"
-desc = "Used to begin choking the target out."
-no_attack = TRUE
+	name = "choke"
+	icon_state = "inchoke"
+	desc = "Used to begin choking the target out."
+	no_attack = TRUE
+
+/datum/intent/garrote/assassin_grab
+	name = "grab"
+	icon_state = "ingrab"
+	desc = "Used to wrap around the target."
+	no_attack = TRUE
+
+/obj/item/inqarticles/garrote/razor/proc/wipeslate(mob/user)
+	if(victim)
+		REMOVE_TRAIT(victim, TRAIT_MUTE, "garroteCordage")
+		REMOVE_TRAIT(victim, TRAIT_GARROTED, TRAIT_GENERIC)
+		victim = null
+		currentgrab = null
+	if(HAS_TRAIT(src, TRAIT_WIELDED))
+		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
+		if(ismob(loc))
+			twohanded.unwield(loc)
+		active = FALSE
+		playsound(loc, 'sound/items/garroteshut.ogg', 65, TRUE)
+
+/obj/item/inqarticles/garrote/razor/attack_self(mob/user)
+	if(obj_broken)
+		to_chat(user, span_warning("It's useless now, although.."))
+		to_chat(user, span_notice("I could rethread it with more cordage."))
+		return
+	if(HAS_TRAIT(src, TRAIT_WIELDED))
+		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
+		if(ismob(loc))
+			twohanded.unwield(loc)
+		active = FALSE
+		if(user.pulling)
+			user.stop_pulling()
+		playsound(loc, 'sound/items/garroteshut.ogg', 65, TRUE)
+		wipeslate(user)
+		return
+	if(gripped_intents)
+		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
+		if(ismob(loc))
+			twohanded.wield(loc)
+		active = TRUE
+		if(HAS_TRAIT(src, TRAIT_WIELDED))
+			playsound(loc, pick('sound/items/garrote.ogg', 'sound/items/garrote2.ogg'), 65, TRUE)
+			return
+
+/obj/item/inqarticles/garrote/razor/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	lastcarrier = user
+	wipeslate(lastcarrier)
+	if(active)
+		if(lastcarrier.pulling)
+			lastcarrier.stop_pulling()
+		playsound(user, 'sound/items/garroteshut.ogg', 65, TRUE)
+		active = FALSE
+	if(!obj_broken)
+		if(icon_state != initial(icon_state))
+			icon_state = initial(icon_state)
+			icon_angle = initial(icon_angle)
+
+/obj/item/inqarticles/garrote/razor/dropped(mob/user, silent)
+	. = ..()
+	wipeslate(lastcarrier)
+	if(active)
+		if(lastcarrier.pulling)
+			lastcarrier.stop_pulling()
+		playsound(user, 'sound/items/garroteshut.ogg', 65, TRUE)
+		active = FALSE
+	if(!obj_broken)
+		if(icon_state != initial(icon_state))
+			icon_state = initial(icon_state)
+			icon_angle = initial(icon_angle)
+
+/obj/item/inqarticles/garrote/razor/attacked_by(obj/item/I, mob/living/user)
+	. = ..()
+	if(istype(I, /obj/item/rope/inqarticles/inquirycord))
+		user.visible_message(span_warning("[user] starts to rethread the [src] using the [I]."))
+		if(do_after(user, 12 SECONDS, user))
+			qdel(I)
+			obj_broken = FALSE
+			update_integrity(max_integrity)
+			icon_state = initial(icon_state)
+			icon_angle = initial(icon_angle)
+			name = initial(name)
+		else
+			user.visible_message(span_warning("[user] stops rethreading the [src]."))
+		return
+
+/obj/item/inqarticles/garrote/razor/afterattack(mob/living/target, mob/living/user, proximity_flag, click_parameters)
+	. = ..()
+	if(istype(user.used_intent, /datum/intent/garrote/assassin_grab))	// Grab your target first.
+		if(!iscarbon(target))
+			return
+		if(!proximity_flag)
+			return
+		if(victim == target)
+			return
+		if(user.pulling)
+			user.stop_pulling(FALSE)
+		/*
+		if(HAS_TRAIT(target, TRAIT_GRABIMMUNE))
+			playsound(loc, pick('sound/items/garrote.ogg', 'sound/items/garrote2.ogg'), 65, TRUE)
+			user.visible_message(span_danger("[target] slips past [user]'s attempt to [src] them!"))
+			return
+		*/
+		// THROAT TARGET RESTRICTION. HEAVILY REQUESTED.
+		if(user.zone_selected != "neck")
+			to_chat(user, span_warning("I need to wrap it around their throat."))
+			return
+		victim = target
+		playsound(loc, 'sound/items/garrotegrab.ogg', 100, TRUE)
+		ADD_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE, TRAIT_GENERIC)
+		ADD_TRAIT(user, TRAIT_NOSTRUGGLE, TRAIT_GENERIC)
+		ADD_TRAIT(target, TRAIT_GARROTED, TRAIT_GENERIC)
+		ADD_TRAIT(target, TRAIT_MUTE, "garroteCordage")
+		if(target != user)
+			user.start_pulling(target, state = 1, item_override = src)
+		user.visible_message(span_danger("[user] wraps the [src] around [target]'s throat!"))
+		user.adjust_stamina(25)
+		user.changeNext_move(CLICK_CD_MELEE)
+		REMOVE_TRAIT(user, TRAIT_NOSTRUGGLE, TRAIT_GENERIC)
+		REMOVE_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE, TRAIT_GENERIC)
+		var/obj/item/grabbing/I = user.get_inactive_held_item()
+		if(istype(I, /obj/item/grabbing/))
+			I.icon_state = null
+			currentgrab = I
 
 	if(istype(user.used_intent, /datum/intent/garrote/assassin_choke))	// Get started.
 	if(!victim)
