@@ -121,6 +121,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNORESLOWDOWN	"ignoreslow"
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
+#define TRAIT_SANGUINE			"sanguine"
 /// The mob has the stasis effect.
 /// Does nothing on its own, applied via status effect.
 #define TRAIT_STASIS "in_stasis"

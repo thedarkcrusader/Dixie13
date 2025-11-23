@@ -25,7 +25,7 @@
 	if((method == INGEST) && L.clan)
 		L.adjust_bloodpool(reac_volume)
 		L.clan.handle_bloodsuck(BLOOD_PREFERENCE_FANCY)
-	if(method == INJECT)
+	if(method == INJECT || (HAS_TRAIT(L, TRAIT_SANGUINE) && (method == INGEST)))
 		SEND_SIGNAL(L, COMSIG_HANDLE_INFUSION, data["blood_type"], reac_volume)
 
 
