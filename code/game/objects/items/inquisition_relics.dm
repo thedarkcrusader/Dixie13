@@ -786,7 +786,7 @@
 		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
 		if(ismob(loc))
 			twohanded.unwield(loc)
-		assassin_wipeslate(lastcarrier)
+		wipeslate(lastcarrier)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
 	if(break_sound)
@@ -818,7 +818,7 @@
 	desc = "Used to wrap around the target."
 	no_attack = TRUE
 
-/obj/item/inqarticles/garrote/proc/assassin_wipeslate(mob/user)
+/obj/item/inqarticles/garrote/proc/wipeslate(mob/user)
 	if(victim)
 		REMOVE_TRAIT(victim, TRAIT_MUTE, "garroteCordage")
 		REMOVE_TRAIT(victim, TRAIT_GARROTED, TRAIT_GENERIC)
@@ -844,7 +844,7 @@
 		if(user.pulling)
 			user.stop_pulling()
 		playsound(loc, 'sound/items/garroteshut.ogg', 65, TRUE)
-		assassin_wipeslate(user)
+		wipeslate(user)
 		return
 	if(gripped_intents)
 		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
@@ -858,7 +858,7 @@
 /obj/item/inqarticles/garrote/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	lastcarrier = user
-	assassin_wipeslate(lastcarrier)
+	wipeslate(lastcarrier)
 	if(active)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
@@ -871,7 +871,7 @@
 
 /obj/item/inqarticles/garrote/dropped(mob/user, silent)
 	. = ..()
-	assassin_wipeslate(lastcarrier)
+	wipeslate(lastcarrier)
 	if(active)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
@@ -979,7 +979,7 @@
 		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
 		if(ismob(loc))
 			twohanded.unwield(loc)
-		assassin_wipeslate(lastcarrier)
+		wipeslate(lastcarrier)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
 	if(break_sound)
@@ -1011,7 +1011,7 @@
 	desc = "Used to wrap around the target."
 	no_attack = TRUE
 
-/obj/item/inqarticles/garrote/razor/proc/assassin_wipeslate(mob/user)
+/obj/item/inqarticles/garrote/razor/proc/wipeslate(mob/user)
 	if(victim)
 		REMOVE_TRAIT(victim, TRAIT_MUTE, "garroteCordage")
 		REMOVE_TRAIT(victim, TRAIT_GARROTED, TRAIT_GENERIC)
@@ -1037,7 +1037,7 @@
 		if(user.pulling)
 			user.stop_pulling()
 		playsound(loc, 'sound/items/garroteshut.ogg', 65, TRUE)
-		assassin_wipeslate(user)
+		wipeslate(user)
 		return
 	if(gripped_intents)
 		var/datum/component/two_handed/twohanded = GetComponent(/datum/component/two_handed)
@@ -1051,7 +1051,7 @@
 /obj/item/inqarticles/garrote/razor/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	lastcarrier = user
-	assassin_wipeslate(lastcarrier)
+	wipeslate(lastcarrier)
 	if(active)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
@@ -1064,7 +1064,7 @@
 
 /obj/item/inqarticles/garrote/razor/dropped(mob/user, silent)
 	. = ..()
-	assassin_wipeslate(lastcarrier)
+	wipeslate(lastcarrier)
 	if(active)
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
