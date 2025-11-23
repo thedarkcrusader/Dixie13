@@ -2,7 +2,7 @@
 /obj/structure/redstone/observer
 	name = "redstone observer"
 	desc = "Detects changes in the block it's observing and emits a redstone pulse."
-	icon_state = "observer"
+	icon_state = "comparator"
 	redstone_role = REDSTONE_ROLE_SOURCE
 	var/direction = NORTH
 	var/turf/observing_turf
@@ -42,7 +42,7 @@
 	if(!observing_turf)
 		return
 	RegisterSignal(observing_turf, COMSIG_TURF_CHANGE, PROC_REF(on_observed_change))
-	RegisterSignal(observing_turf, COMSIG_ATOM_ENTERED, PROC_REF(on_observed_change))
+	RegisterSignal(observing_turf, COMSIG_TURF_ENTERED, PROC_REF(on_observed_change))
 	RegisterSignal(observing_turf, COMSIG_TURF_EXITED, PROC_REF(on_observed_change))
 
 /obj/structure/redstone/observer/proc/unregister_observation_signals()
@@ -91,7 +91,7 @@
 
 /obj/structure/redstone/observer/update_icon()
 	. = ..()
-	icon_state = pulsing ? "observer_pulse" : "observer"
+	icon_state = pulsing ? "comparator" : "comparator"
 	dir = direction
 
 /obj/structure/redstone/observer/AltClick(mob/user)
