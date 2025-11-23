@@ -971,7 +971,7 @@
 	/datum/intent/garrote/assassin_choke
 	name = "choke"
 	icon_state = "inchoke"
-	desc = "Used to begin choking the target out."
+desc = "Used to begin choking the target out."
 	no_attack = TRUE
 
 	if(istype(user.used_intent, /datum/intent/garrote/assassin_choke))	// Get started.
