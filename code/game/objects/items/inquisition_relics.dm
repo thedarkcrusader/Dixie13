@@ -968,7 +968,6 @@
 	item_state = "garrote"
 	resistance_flags = INDESTRUCTIBLE
 	choke_damage = 20
-	gripped_intents = list(/datum/intent/garrote/assassin_grab, /datum/intent/garrote/assassin_choke)
 	sellprice = 100
 
 /obj/item/clothing/head/inqarticles/blackbag
