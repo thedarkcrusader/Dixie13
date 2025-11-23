@@ -160,18 +160,27 @@
 				S.redstone_triggered(power_level, src)
 
 /obj/structure/redstone/proc/trigger_structures_through_wall(direction, turf/wall_turf)
-	// Check all sides of the wall for non-redstone structures
+	var/list/turfs_to_check = list()
+
+	// 1. Check cardinal directions around the wall (Standard horizontal wall power)
 	for(var/check_dir in GLOB.cardinals)
 		if(check_dir == REVERSE_DIR(direction))
-			continue  // Don't check back towards source
-
-		var/turf/beyond_wall = get_step(wall_turf, check_dir)
-		if(!beyond_wall)
 			continue
+		var/turf/T = get_step(wall_turf, check_dir)
+		if(T) turfs_to_check += T
 
-		for(var/obj/structure/S in beyond_wall)
+	// 2. Check Vertical (Multi-Z wall power)
+	// A repeater powering a wall should trigger machines sitting ON TOP of the wall or BELOW it
+	var/turf/above = GET_TURF_ABOVE(wall_turf)
+	if(above) turfs_to_check += above
+
+	var/turf/below = GET_TURF_BELOW(wall_turf)
+	if(below) turfs_to_check += below
+
+	// Process all identified turfs
+	for(var/turf/T in turfs_to_check)
+		for(var/obj/structure/S in T)
 			if(S.redstone_structure && !istype(S, /obj/structure/redstone))
-				// Only trigger on powered/unpowered state changes
 				var/was_powered = (S.last_redstone_power > 0)
 				var/is_powered = (power_level > 0)
 				if(was_powered != is_powered)
@@ -195,59 +204,66 @@
 		var/obj/structure/redstone/current = to_check[1]
 		to_check -= current
 
-		// Get neighbors for network traversal (this may be different from power output)
+		// Standard neighbor traversal
 		var/list/neighbors = current.get_network_neighbors()
 		for(var/obj/structure/redstone/neighbor in neighbors)
 			if(!(neighbor in network))
 				network += neighbor
 				to_check += neighbor
 
-		// Wall-power connections: check in BOTH directions
-		// 1. If this component sends wall power, include recipients
+		// --- WALL POWER LOGIC ---
+
+		// A. If THIS component sends wall power, look for recipients (Cardinals + Vertical)
 		if(current.send_wall_power)
-			// Check ALL cardinal directions for walls, not just output directions
 			for(var/direction in GLOB.cardinals)
 				var/turf/T = get_step(current, direction)
 				if(isclosedturf(T))
+					// get_wall_power_neighbors now handles the vertical checks (see below)
 					var/list/wall_neighbors = current.get_wall_power_neighbors(direction, T)
 					for(var/obj/structure/redstone/neighbor in wall_neighbors)
 						if(!(neighbor in network))
 							network += neighbor
 							to_check += neighbor
 
-		// 2. If this component can receive wall power, find sources through walls
+		// B. If THIS component receives wall power, look for sources through walls
 		if(current.can_connect_wires)
+
+			// 1. Check Horizontal Walls (Standard)
 			for(var/direction in GLOB.cardinals)
 				var/turf/T = get_step(current, direction)
 				if(isclosedturf(T))
-					// Check all sides of the wall for components
+					// Check neighbors of that wall for sources
 					for(var/check_dir in GLOB.cardinals)
 						var/turf/source_turf = get_step(T, check_dir)
 						for(var/obj/structure/redstone/potential_source in source_turf)
-							var/should_include = FALSE
+							// (Logic shortened: Check if source powers the wall)
+							if(potential_source.send_wall_power && (REVERSE_DIR(check_dir) in potential_source.get_output_directions()))
+								if(!(potential_source in network))
+									network += potential_source
+									to_check += potential_source
 
-							// Include if they can send wall power to us
-							if(potential_source.send_wall_power)
-								// Check if we're in their wall power range
-								// We need to check the direction from the source TO the wall
-								var/source_to_wall_dir = REVERSE_DIR(check_dir)
+			// 2. Check Vertical Walls (Multi-Z)
+			// If I am dust, check the turf BELOW me. Is it a wall?
+			var/turf/turf_below = GET_TURF_BELOW(current.loc)
+			if(turf_below && isclosedturf(turf_below))
+				// Look for sources on the LOWER Z-level pointing at this wall
+				for(var/check_dir in GLOB.cardinals)
+					var/turf/source_turf = get_step(turf_below, check_dir) // Side of the wall
+					for(var/obj/structure/redstone/potential_source in source_turf)
+						// If that source is pointing AT the wall below me
+						if(potential_source.send_wall_power && (REVERSE_DIR(check_dir) in potential_source.get_output_directions()))
+							if(!(potential_source in network))
+								network += potential_source
+								to_check += potential_source
 
-								// Manually check if we can be powered through this wall
-								// Don't use get_wall_power_neighbors since it has the REVERSE_DIR check
-								var/turf/wall_from_source = get_step(potential_source, source_to_wall_dir)
-								if(wall_from_source == T)
-									// Check if we're on a valid side of this wall from the source's perspective
-									for(var/final_check_dir in GLOB.cardinals)
-										var/turf/check_turf = get_step(T, final_check_dir)
-										if(check_turf == current.loc)
-											should_include = TRUE
-											break
-
-							// Also include any dust/wire on the other side
-							else if(potential_source.can_connect_wires)
-								should_include = TRUE
-
-							if(should_include && !(potential_source in network))
+			// If I am dust, check the turf ABOVE me. Is it a wall? (Rare, but possible)
+			var/turf/turf_above = GET_TURF_ABOVE(current.loc)
+			if(turf_above && isclosedturf(turf_above))
+				for(var/check_dir in GLOB.cardinals)
+					var/turf/source_turf = get_step(turf_above, check_dir)
+					for(var/obj/structure/redstone/potential_source in source_turf)
+						if(potential_source.send_wall_power && (REVERSE_DIR(check_dir) in potential_source.get_output_directions()))
+							if(!(potential_source in network))
 								network += potential_source
 								to_check += potential_source
 
@@ -280,27 +296,45 @@
 	return neighbors
 
 // Find components that can be powered through a wall
+// Find components that can be powered through a wall
 /obj/structure/redstone/proc/get_wall_power_neighbors(direction, turf/wall_turf)
 	var/list/neighbors = list()
 
+	// 1. Horizontal check (Around the wall)
 	for(var/check_dir in GLOB.cardinals)
 		if(check_dir == REVERSE_DIR(direction))
 			continue
 
 		var/turf/beyond_wall = get_step(wall_turf, check_dir)
 
+		// Add torches attached to wall
 		for(var/obj/structure/redstone/torch/torch in beyond_wall)
 			if(torch.attached_dir == REVERSE_DIR(check_dir))
 				neighbors += torch
 
+		// Add dust/wire
 		for(var/obj/structure/redstone/dust/dust in beyond_wall)
 			neighbors += dust
 
-		// Add repeaters that face toward or away from the wall
+		// Add repeaters facing away from wall
 		for(var/obj/structure/redstone/repeater/rep in beyond_wall)
-			// Include if repeater's input faces the wall
 			if(REVERSE_DIR(rep.facing_dir) == REVERSE_DIR(check_dir))
 				neighbors += rep
+
+	// 2. Vertical Check (Up/Down)
+	// Check Above (Classic behavior: Repeater into block powers dust on top of block)
+	var/turf/above = GET_TURF_ABOVE(wall_turf)
+	if(above)
+		for(var/obj/structure/redstone/dust/dust in above)
+			neighbors += dust
+		// Note: Usually repeaters/torches on top don't receive power FROM the block they sit on
+		// unless specific conditions are met, but you can add them here if desired.
+
+	// Check Below (Repeater into block powers dust below block)
+	var/turf/below = GET_TURF_BELOW(wall_turf)
+	if(below)
+		for(var/obj/structure/redstone/dust/dust in below)
+			neighbors += dust
 
 	return neighbors
 
