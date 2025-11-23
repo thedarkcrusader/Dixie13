@@ -9,9 +9,12 @@
 	var/facing_dir = NORTH
 	var/delay_ticks = 2
 	var/output_active = FALSE
-	var/scheduled_state = -1
+
+	// Logic State Tracking
+	var/scheduled_state = -1      // 1 = Turning ON, 0 = Turning OFF, -1 = Idle
+	var/pending_turn_off = FALSE  // If TRUE, we must turn off immediately after turning on
 	var/last_input_state = FALSE
-	var/locked = FALSE // New variable for locking mechanics
+	var/locked = FALSE
 
 	can_connect_wires = TRUE
 	send_wall_power = TRUE
@@ -43,176 +46,172 @@
 
 /obj/structure/redstone/repeater/get_network_neighbors()
 	var/list/neighbors = list()
-
 	var/input_dir = REVERSE_DIR(facing_dir)
+
+	// Input side
 	var/turf/input_turf = get_step(src, input_dir)
 	for(var/obj/structure/redstone/R in input_turf)
 		if(can_connect_to(R, input_dir) && R.can_connect_to(src, facing_dir))
 			neighbors += R
+	if(isclosedturf(input_turf))
+		neighbors |= get_wall_power_sources(input_dir, input_turf)
 
+	// Output side
 	var/turf/output_turf = get_step(src, facing_dir)
 	for(var/obj/structure/redstone/R in output_turf)
 		if(can_connect_to(R, facing_dir) && R.can_connect_to(src, input_dir))
 			neighbors += R
-
 	if(send_wall_power && isclosedturf(output_turf))
-		var/list/wall_neighbors = get_wall_power_neighbors(facing_dir, output_turf)
-		neighbors |= wall_neighbors
-
-	// Also check for wall power INPUT sources (for network connectivity)
-	if(isclosedturf(input_turf))
-		var/list/wall_sources = get_wall_power_sources(input_dir, input_turf)
-		neighbors |= wall_sources
+		neighbors |= get_wall_power_neighbors(facing_dir, output_turf)
 
 	return neighbors
 
 /obj/structure/redstone/repeater/proc/update_lock_status()
 	var/should_be_locked = FALSE
-
-	// Check Left and Right relative to facing direction
 	var/list/side_dirs = list(turn(facing_dir, 90), turn(facing_dir, -90))
 
 	for(var/check_dir in side_dirs)
 		var/turf/T = get_step(src, check_dir)
 		if(!T) continue
-
-		// Check for repeaters (or comparators in the future)
 		for(var/obj/structure/redstone/repeater/R in T)
-			// The neighbor must be facing TOWARDS us (their facing_dir == reverse of check_dir)
-			// And they must be powered
 			if(R.facing_dir == REVERSE_DIR(check_dir) && R.output_active)
 				should_be_locked = TRUE
 				break
-
-		if(should_be_locked)
-			break
+		if(should_be_locked) break
 
 	if(locked != should_be_locked)
 		locked = should_be_locked
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE // Status changed
+		return TRUE
+	return FALSE
 
-	return FALSE // Status did not change
-
-/// When WE change state, we must wake up neighbors to our sides
-/// in case we are the ones supposed to be locking THEM.
 /obj/structure/redstone/repeater/proc/trigger_lock_updates()
-	// I am facing NORTH. I am to the WEST of the guy to my East.
-	// If I am powered, and facing East, I lock him.
-	// Therefore, we check the turf in front of us.
-
 	var/turf/front_turf = get_step(src, facing_dir)
 	if(front_turf)
 		for(var/obj/structure/redstone/repeater/victim in front_turf)
-			// If the victim is facing perpendicular to us, we are locking them
-			// We are facing NORTH. Victim is facing EAST.
-			// Vector dot product is 0.
 			if(victim.facing_dir == turn(facing_dir, 90) || victim.facing_dir == turn(facing_dir, -90))
 				victim.schedule_network_update()
 
-// Find components that could be powering US through a wall
 /obj/structure/redstone/repeater/proc/get_wall_power_sources(direction, turf/wall_turf)
 	var/list/sources = list()
-
 	for(var/check_dir in GLOB.cardinals)
-		if(check_dir == REVERSE_DIR(direction))
-			continue  // Don't check back towards ourselves
-
+		if(check_dir == REVERSE_DIR(direction)) continue
 		var/turf/beyond_wall = get_step(wall_turf, check_dir)
 		for(var/obj/structure/redstone/R in beyond_wall)
-			if(!R.send_wall_power)
-				continue
-			// Check if this component is actually outputting TOWARDS the wall
+			if(!R.send_wall_power) continue
 			var/dir_to_wall = REVERSE_DIR(check_dir)
 			if(dir_to_wall in R.get_output_directions())
 				sources += R
-
 	return sources
 
 /obj/structure/redstone/repeater/on_power_changed()
-	// 1. Check if we are locked.
-	// If lock status CHANGED, we might need to process input immediately.
+	// 1. Lock Check
 	var/lock_changed = update_lock_status()
+	if(locked) return
 
-	// 2. If we are currently locked, we do absolutely nothing.
-	// We maintain our current output state regardless of input.
-	if(locked)
-		return
-
-	// 3. Calculate Input (Standard Logic)
+	// 2. Calculate Input
 	var/input_dir = REVERSE_DIR(facing_dir)
 	var/turf/input_turf = get_step(src, input_dir)
 	var/input_power = 0
 
-	// Direct adjacency input
+	// Direct input
 	for(var/obj/structure/redstone/R in input_turf)
 		if(R.can_connect_to(src, facing_dir))
 			input_power = max(input_power, R.get_effective_power())
 
-	// Wall power input logic
+	// Wall input
 	if(isclosedturf(input_turf))
 		for(var/check_dir in GLOB.cardinals)
 			if(check_dir == REVERSE_DIR(input_dir)) continue
 			var/turf/beyond_wall = get_step(input_turf, check_dir)
 			for(var/obj/structure/redstone/R in beyond_wall)
 				if(!R.send_wall_power) continue
-				var/dir_to_wall = REVERSE_DIR(check_dir)
-				if(!(dir_to_wall in R.get_output_directions())) continue
+				if(!(REVERSE_DIR(check_dir) in R.get_output_directions())) continue
 				input_power = max(input_power, R.get_effective_power())
 
 	var/input_on = (input_power > 0)
 
-	// Optimization: If input state hasn't changed, and we weren't just unlocked, do nothing
 	if(input_on == last_input_state && !lock_changed)
 		return
 
 	last_input_state = input_on
 
-	// Scheduling logic
+	// 3. Scheduling Logic with Pulse Sustaining
 	if(input_on)
+		// Input turned ON
 		if(!output_active && scheduled_state != 1)
+			// We were OFF, start the timer to turn ON
 			scheduled_state = 1
+			pending_turn_off = FALSE // Reset any pending cutoff
 			spawn(delay_ticks)
 				apply_scheduled_state()
-		else if(scheduled_state == 0) // Was scheduled to turn off, but input returned
+
+		else if(scheduled_state == 1)
+			// We were ALREADY waiting to turn ON, but maybe we had a pending_turn_off queued?
+			// Since input is back, we cancel the pending cutoff.
+			pending_turn_off = FALSE
+
+		else if(scheduled_state == 0)
+			// We were scheduled to turn OFF, but input came back. Cancel the turn-off.
 			scheduled_state = -1
+			pending_turn_off = FALSE
+
 	else
+		// Input turned OFF
 		if(output_active && scheduled_state != 0)
+			// We are currently ON, schedule turn OFF
 			scheduled_state = 0
 			spawn(delay_ticks)
 				apply_scheduled_state()
-		else if(scheduled_state == 1) // Was scheduled to turn on, but input lost
-			scheduled_state = -1
+
+		else if(scheduled_state == 1)
+			pending_turn_off = TRUE
 
 /obj/structure/redstone/repeater/proc/apply_scheduled_state()
-	// If we got locked while waiting for the timer, abort the change!
 	update_lock_status()
+
+	// If locked, we abandon the schedule change.
+	// In MC, if you lock a repeater mid-pulse, it usually freezes the OUTPUT.
+	// So if we were about to change output, locking prevents it.
 	if(locked)
 		scheduled_state = -1
+		pending_turn_off = FALSE
 		return
 
+	// Safety check: if scheduled_state was cancelled (set to -1) elsewhere
 	if(scheduled_state == -1)
 		return
 
 	var/state_changed = FALSE
+	var/current_state = scheduled_state // Cache current intent
 
-	if(scheduled_state == 1 && !output_active)
+	// Reset schedule variable now, so we can schedule new things inside this block
+	scheduled_state = -1
+
+	if(current_state == 1 && !output_active)
+		// Turning ON
 		output_active = TRUE
 		power_level = 15
 		state_changed = TRUE
-	else if(scheduled_state == 0 && output_active)
+
+		// Handling the "Short Pulse" logic
+		if(pending_turn_off)
+			pending_turn_off = FALSE
+			// We finished turning ON, but the input is already gone.
+			// Schedule the turn OFF immediately.
+			scheduled_state = 0
+			spawn(delay_ticks)
+				apply_scheduled_state()
+
+	else if(current_state == 0 && output_active)
+		// Turning OFF
 		output_active = FALSE
 		power_level = 0
 		state_changed = TRUE
 
-	scheduled_state = -1
-
 	if(state_changed)
-		// Standard Update: Power the wire in front of us
 		schedule_network_update()
-		// Locking Update: Check if we are locking a neighbor to our side
 		trigger_lock_updates()
-
 		update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/redstone/repeater/update_icon()
@@ -222,7 +221,6 @@
 
 /obj/structure/redstone/repeater/update_overlays()
 	. = ..()
-
 	var/mutable_appearance/delay_overlay = mutable_appearance(icon, "delay_[delay_ticks]")
 	delay_overlay.color = output_active ? "#FF0000" : "#8B4513"
 	. += delay_overlay
@@ -237,16 +235,18 @@
 		. += lock_overlay
 
 /obj/structure/redstone/repeater/attack_hand(mob/user)
+	if(locked)
+		to_chat(user, "<span class='warning'>The repeater is locked!</span>")
+		return
 	delay_ticks = (delay_ticks % 4) + 1
 	to_chat(user, "<span class='notice'>Delay set to [delay_ticks] tick\s.</span>")
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/redstone/repeater/AltClick(mob/user)
-	if(!Adjacent(user))
-		return
+	if(!Adjacent(user)) return
 	facing_dir = turn(facing_dir, 90)
 	dir = facing_dir
-	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(facing_dir)].</span>")
+	to_chat(user, "<span class='notice'>You rotate the [name].</span>")
 	schedule_network_update()
 
 /obj/structure/redstone/repeater/proc/dir2text_readable(direction)

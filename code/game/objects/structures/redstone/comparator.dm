@@ -11,15 +11,19 @@
 	var/main_input = 0
 	var/side_input_left = 0
 	var/side_input_right = 0
+
 	var/output_power = 0
+	var/scheduled_target = -1 // For the 1-tick delay handling
+
+	var/last_storage_signal = 0
 
 	can_connect_wires = TRUE
-	send_wall_power = TRUE // Allows powering dust above/below the target wall
+	send_wall_power = TRUE
 
 /obj/structure/redstone/comparator/Initialize()
 	. = ..()
 	direction = dir
-	// We process to check containers, as they don't emit network updates themselves
+	// We process to check containers
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/redstone/comparator/Destroy()
@@ -50,8 +54,7 @@
 /obj/structure/redstone/comparator/get_network_neighbors()
 	var/list/neighbors = list()
 
-	// 1. Get standard Redstone Neighbors (Wire, Dust, Repeaters)
-	// We check inputs (Rear, Left, Right) and Output (Front)
+	// 1. Standard Redstone Neighbors
 	for(var/dir in get_connection_directions())
 		var/turf/T = get_step(src, dir)
 		for(var/obj/structure/redstone/R in T)
@@ -59,13 +62,11 @@
 				neighbors += R
 
 	// 2. Wall Power OUTPUT (Front)
-	// If facing a wall, we join the network of things touching that wall (including Up/Down for Multi-Z)
 	var/turf/front = get_step(src, direction)
 	if(isclosedturf(front))
 		neighbors |= get_wall_power_neighbors(direction, front)
 
 	// 3. Wall Power INPUT (Rear & Sides)
-	// If there is a wall behind us or to the side, we need to network with the sources *powering* that wall
 	for(var/input_dir in get_input_directions())
 		var/turf/T = get_step(src, input_dir)
 		if(isclosedturf(T))
@@ -76,12 +77,10 @@
 /obj/structure/redstone/comparator/proc/get_wall_power_sources(input_dir, turf/wall_turf)
 	var/list/sources = list()
 	for(var/check_dir in GLOB.cardinals)
-		if(check_dir == REVERSE_DIR(input_dir)) continue // Don't check back at ourselves
-
+		if(check_dir == REVERSE_DIR(input_dir)) continue
 		var/turf/beyond_wall = get_step(wall_turf, check_dir)
 		for(var/obj/structure/redstone/R in beyond_wall)
 			if(!R.send_wall_power) continue
-			// Is this component pointing AT the wall?
 			var/dir_to_wall = REVERSE_DIR(check_dir)
 			if(dir_to_wall in R.get_output_directions())
 				sources += R
@@ -90,17 +89,16 @@
 /obj/structure/redstone/comparator/get_wall_power_neighbors(direction, turf/wall_turf)
 	var/list/neighbors = list()
 
-	// 1. Horizontal
+	// Horizontal
 	for(var/check_dir in GLOB.cardinals)
 		if(check_dir == REVERSE_DIR(direction)) continue
 		var/turf/beyond_wall = get_step(wall_turf, check_dir)
-
 		for(var/obj/structure/redstone/dust/dust in beyond_wall)
 			neighbors += dust
 		for(var/obj/structure/redstone/repeater/rep in beyond_wall)
 			if(REVERSE_DIR(rep.facing_dir) == REVERSE_DIR(check_dir)) neighbors += rep
 
-	// 2. Vertical (Multi-Z)
+	// Vertical (Multi-Z)
 	var/turf/above = GET_TURF_ABOVE(wall_turf)
 	if(above)
 		for(var/obj/structure/redstone/dust/dust in above) neighbors += dust
@@ -112,13 +110,12 @@
 	return neighbors
 
 /obj/structure/redstone/comparator/process()
-	var/old_main = main_input
-	var/storage_signal = get_storage_signal()
+	// 1. Get the current state of the container
+	var/current_storage_signal = get_storage_signal()
 
-	if(storage_signal > main_input)
-		main_input = storage_signal
-		recalculate_output()
-	else if(storage_signal < main_input && old_main == storage_signal)
+	// 2. Only recalculate if the STORAGE ITSELF changed.
+	// Do not compare against main_input (which might be high due to a wire).
+	if(current_storage_signal != last_storage_signal)
 		on_power_changed()
 
 /obj/structure/redstone/comparator/on_power_changed()
@@ -132,12 +129,43 @@
 	// 2. Calculate Main Input (Rear)
 	var/rear_dir = REVERSE_DIR(direction)
 	var/redstone_signal = get_power_from_side(rear_dir)
-	var/storage_signal = get_storage_signal()
 
-	main_input = max(redstone_signal, storage_signal)
+	// Update the separate storage tracker
+	last_storage_signal = get_storage_signal()
 
-	// 3. Output
-	recalculate_output()
+	// Set the actual main input
+	main_input = max(redstone_signal, last_storage_signal)
+
+	// 3. Determine Desired Output
+	var/max_side = max(side_input_left, side_input_right)
+	var/desired_output = 0
+
+	if(mode == "compare")
+		// MAINTAIN STRENGTH: If Main >= Side, output Main. Else 0.
+		desired_output = (main_input >= max_side) ? main_input : 0
+	else // subtract
+		desired_output = max(0, main_input - max_side)
+
+	if(desired_output != output_power)
+		// Prevent spamming spawns if we are already scheduled for this target
+		if(scheduled_target != desired_output)
+			scheduled_target = desired_output
+			spawn(1)
+				apply_scheduled_output()
+
+/obj/structure/redstone/comparator/proc/apply_scheduled_output()
+	// If we changed our mind mid-delay (fast pulse), handle it or cancel
+	if(scheduled_target == -1) return
+
+	if(output_power != scheduled_target)
+		output_power = scheduled_target
+		power_level = output_power
+
+		// Only now do we update the network
+		schedule_network_update()
+		update_appearance(UPDATE_OVERLAYS)
+
+	scheduled_target = -1
 
 /obj/structure/redstone/comparator/proc/get_power_from_side(side_dir)
 	var/turf/T = get_step(src, side_dir)
@@ -145,52 +173,28 @@
 
 	// A. Direct Connection
 	for(var/obj/structure/redstone/R in T)
-		if(R.can_connect_to(src, REVERSE_DIR(side_dir))) // Standard Check
+		if(R.can_connect_to(src, REVERSE_DIR(side_dir)))
 			found_power = max(found_power, R.get_effective_power())
 
 	// B. Wall Power (Reading through a block)
 	if(isclosedturf(T))
-		// Check everything touching that wall
 		for(var/check_dir in GLOB.cardinals)
-			if(check_dir == REVERSE_DIR(side_dir)) continue // Don't look back at us
-
+			if(check_dir == REVERSE_DIR(side_dir)) continue
 			var/turf/source_turf = get_step(T, check_dir)
 			for(var/obj/structure/redstone/R in source_turf)
 				if(R.send_wall_power)
-					// Is it pointing AT the block?
 					if(REVERSE_DIR(check_dir) in R.get_output_directions())
 						found_power = max(found_power, R.get_effective_power())
 
 	return found_power
 
-/obj/structure/redstone/comparator/proc/recalculate_output()
-	var/max_side = max(side_input_left, side_input_right)
-	var/new_output = 0
-
-	if(mode == "compare")
-		new_output = (main_input >= max_side) ? main_input : 0
-	else // subtract
-		new_output = max(0, main_input - max_side)
-
-	if(new_output != output_power)
-		output_power = new_output
-		power_level = output_power
-
-		// Visuals
-		update_appearance(UPDATE_OVERLAYS)
-
-		// Update Network
-		schedule_network_update()
-
 /obj/structure/redstone/comparator/proc/get_storage_signal()
 	var/turf/back_turf = get_step(src, REVERSE_DIR(direction))
 
-	// 1. Direct Storage
 	for(var/obj/O in back_turf)
 		var/datum/component/storage/storage_comp = O.GetComponent(/datum/component/storage)
 		if(storage_comp)
 			return calculate_storage_fullness(storage_comp, O)
-
 	return 0
 
 /obj/structure/redstone/comparator/proc/calculate_storage_fullness(datum/component/storage/storage_comp, obj/O)
@@ -204,7 +208,6 @@
 
 	return round((total / max_capacity) * 15)
 
-
 /obj/structure/redstone/comparator/update_icon()
 	. = ..()
 	icon_state = (mode == "subtract") ? "comparator_subtract" : "comparator"
@@ -215,6 +218,7 @@
 	var/mutable_appearance/rear_torch = mutable_appearance(icon, "torch_rear")
 	rear_torch.color = (output_power > 0) ? "#FF0000" : "#8B4513"
 	. += rear_torch
+
 	if(output_power > 0)
 		var/mutable_appearance/em = emissive_appearance(icon, "torch_rear")
 		. += em
@@ -222,6 +226,7 @@
 	var/mutable_appearance/front_torch = mutable_appearance(icon, "torch_front")
 	front_torch.color = (mode == "subtract") ? "#FF0000" : "#8B4513"
 	. += front_torch
+
 	if(mode == "subtract")
 		var/mutable_appearance/em = emissive_appearance(icon, "torch_front")
 		. += em
@@ -229,7 +234,7 @@
 /obj/structure/redstone/comparator/attack_hand(mob/user)
 	mode = (mode == "compare") ? "subtract" : "compare"
 	to_chat(user, "<span class='notice'>Mode changed to [mode].</span>")
-	recalculate_output()
+	on_power_changed() // Recalculate
 	update_appearance(UPDATE_ICON | UPDATE_OVERLAYS)
 
 /obj/structure/redstone/comparator/AltClick(mob/user)
@@ -237,7 +242,5 @@
 	direction = turn(direction, 90)
 	dir = direction
 	to_chat(user, "<span class='notice'>You rotate the [name].</span>")
-
-	// Rotation changes connections, so update network
 	schedule_network_update()
-	on_power_changed() // Recalculate local inputs immediately
+	on_power_changed()

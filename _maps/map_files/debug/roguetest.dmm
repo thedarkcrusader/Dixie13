@@ -1948,14 +1948,6 @@
 	},
 /turf/open/floor/tile/kitchen,
 /area/indoors/town/manor)
-"qS" = (
-/obj/structure/redstone/comparator{
-	dir = 1;
-	pixel_y = 1;
-	mode = "subtract"
-	},
-/turf/open/floor/cobblerock,
-/area)
 "qZ" = (
 /turf/closed/mineral/random/high,
 /area/outdoors/mountains/decap)
@@ -2030,6 +2022,14 @@
 /obj/item/recipe_book/survival,
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
+"sv" = (
+/obj/structure/redstone/comparator{
+	dir = 1;
+	pixel_y = 1;
+	mode = "subtract"
+	},
+/turf/open/floor/cobblerock,
+/area)
 "sE" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks,
@@ -12318,10 +12318,10 @@ Vh
 Vh
 Vh
 Vh
-Vh
-Vh
+rN
 IZ
-Zn
+sv
+rN
 yu
 Vh
 as
@@ -12573,10 +12573,10 @@ as
 as
 Vh
 Vh
-Be
-IZ
-Zn
-rN
+Vh
+Vh
+Vh
+Vh
 Vh
 Vh
 Vh
@@ -12833,9 +12833,9 @@ Vh
 Vh
 Vh
 Vh
-Vh
+rN
 IZ
-Zn
+sv
 yu
 Vh
 as
@@ -14634,8 +14634,8 @@ Vh
 rN
 HQ
 IZ
+rN
 Be
-Vh
 Vh
 as
 as
@@ -15918,7 +15918,7 @@ Vh
 Vh
 Vh
 IZ
-qS
+sv
 rN
 yu
 Vh
@@ -77856,7 +77856,7 @@ jH
 jH
 jH
 jH
-rN
+jH
 jH
 jH
 jH
@@ -78113,7 +78113,7 @@ jH
 jH
 jH
 jH
-rN
+jH
 jH
 jH
 jH
@@ -78370,7 +78370,7 @@ jH
 jH
 jH
 jH
-rN
+jH
 jH
 jH
 jH
