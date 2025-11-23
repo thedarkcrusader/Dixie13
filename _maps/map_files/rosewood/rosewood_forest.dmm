@@ -1077,7 +1077,6 @@
 /area/outdoors/woods)
 "vh" = (
 /obj/structure/bed/sleepingbag,
-/obj/effect/landmark/start/orthodoxist,
 /turf/open/floor/naturalstone,
 /area/under/cave)
 "vn" = (
@@ -1777,13 +1776,6 @@
 	dir = 8
 	},
 /turf/open/floor/dirt,
-/area/outdoors/woods)
-"Lj" = (
-/obj/item/paper{
-	info = "This letter is addressed to the coward who abandoned their komrades. You will die a painful death at the hands of the Pale Order should you ever return to Wintermare. Astrata&#39;s light shines upon you so that you may spread Noc&#39;s wisdom to your fellow infidels. Do not mistake this gesture as mercy. Your inquisition has no business spreading falsities upon our Father's blessed realm.";
-	name = "message for the survivor"
-	},
-/turf/open/floor/underworld/road,
 /area/outdoors/woods)
 "LJ" = (
 /obj/structure/fluff/railing/border,
@@ -35131,7 +35123,7 @@ NH
 DE
 wt
 wt
-Lj
+wt
 CN
 rq
 wt

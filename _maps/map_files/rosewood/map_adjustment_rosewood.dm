@@ -25,10 +25,21 @@
 	)
 
 	blacklist = list(
+		// Inquisition
 		/datum/job/inquisitor,
 		/datum/job/absolver,
 		/datum/job/adept,
+		/datum/job/orthodoxist,
+		/datum/job/advclass/disciple,
+		// RACES_PLAYER_GRENZ
+		/datum/job/advclass/combat/swordmaster,
+		/datum/job/advclass/mercenary/grenzelhoft,
+		/datum/job/advclass/pilgrim/rare/grenzelhoft,
+		/datum/job/advclass/pilgrim/rare/preacher,
+		/datum/job/advclass/veteran/merc,
 	)
-	slot_adjust = list(
-		/datum/job/orthodoxist = 1
+
+	migrant_blacklist = list(
+		/datum/migrant_wave/crusade,
+		/datum/migrant_wave/grenzelhoft_visit,
 	)
