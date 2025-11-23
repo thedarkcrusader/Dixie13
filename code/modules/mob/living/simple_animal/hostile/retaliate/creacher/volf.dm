@@ -34,6 +34,8 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
 					/obj/item/bodypart,
 					/obj/item/organ)
+	tame_chance = 25
+	bonus_tame_chance = 15
 
 	base_intents = list(/datum/intent/simple/bite)
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
