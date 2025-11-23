@@ -101,7 +101,14 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			if(!HAS_TRAIT(src, TRAIT_KEENEARS))
 				if(istype(speaker, /mob/living))
 					var/mob/living/L = speaker
-					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
+					// This isn't accurate purposely
+					var/appendage = "Man"
+					switch(L.client.prefs.voice_type)
+						if(VOICE_TYPE_FEM)
+							appendage = "Woman"
+						if(VOICE_TYPE_ANDRO)
+							appendage = "Figure"
+					namepart = "Unknown [appendage]"
 				else
 					namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"
