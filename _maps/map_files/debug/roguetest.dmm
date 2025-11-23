@@ -1271,6 +1271,14 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
+"gM" = (
+/obj/structure/redstone/comparator{
+	dir = 1;
+	pixel_y = 1;
+	mode = "subtract"
+	},
+/turf/open/floor/cobblerock,
+/area)
 "hd" = (
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
@@ -2022,14 +2030,6 @@
 /obj/item/recipe_book/survival,
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
-"sv" = (
-/obj/structure/redstone/comparator{
-	dir = 1;
-	pixel_y = 1;
-	mode = "subtract"
-	},
-/turf/open/floor/cobblerock,
-/area)
 "sE" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks,
@@ -11548,7 +11548,7 @@ Zn
 rN
 Vh
 Vh
-XI
+QV
 IZ
 Zn
 yu
@@ -12320,7 +12320,7 @@ Vh
 Vh
 rN
 IZ
-sv
+gM
 rN
 yu
 Vh
@@ -12835,7 +12835,7 @@ Vh
 Vh
 rN
 IZ
-sv
+gM
 yu
 Vh
 as
@@ -15918,7 +15918,7 @@ Vh
 Vh
 Vh
 IZ
-sv
+gM
 rN
 yu
 Vh
