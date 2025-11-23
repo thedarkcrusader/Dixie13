@@ -410,8 +410,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
 
-	cache_multi_ready_characters()
-
 	var/datum/job/job = SSjob.GetJob(rank)
 
 	SSjob.AssignRole(src, job, 1)
@@ -421,6 +419,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
 		CRASH("Failed to find a latejoin spawn point.")
+	islatejoin = TRUE
 	var/mob/living/character = create_character(destination)
 	character.islatejoin = TRUE
 	if(!character)
