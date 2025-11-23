@@ -30,7 +30,6 @@
 		/datum/job/absolver,
 		/datum/job/adept,
 		/datum/job/orthodoxist,
-		/datum/job/advclass/disciple,
 		// RACES_PLAYER_GRENZ
 		/datum/job/advclass/combat/swordmaster,
 		/datum/job/advclass/mercenary/grenzelhoft,
