@@ -965,7 +965,34 @@
 	item_state = "garrote"
 	resistance_flags = INDESTRUCTIBLE
 	choke_damage = 20
+	gripped_intents = list(/datum/intent/garrote/grab, /datum/intent/garrote/assassin_choke)
 	sellprice = 100
+
+	/datum/intent/garrote/assassin_choke
+		name = "choke"
+		icon_state = "inchoke"
+		desc = "Used to begin choking the target out."
+		no_attack = TRUE
+
+	if(istype(user.used_intent, /datum/intent/garrote/assassin_choke))	// Get started.
+	if(!victim)
+		to_chat(user, span_warning("Who am I choking? What?"))
+		return
+	if(!proximity_flag)
+		return
+	if(user.zone_selected != "neck")
+		to_chat(user, span_warning("I need to constrict the throat."))
+		return
+	user.adjust_stamina(rand(4, 8))
+	var/mob/living/carbon/C = victim
+	// if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
+	playsound(loc, pick('sound/items/garrotechoke1.ogg', 'sound/items/garrotechoke2.ogg', 'sound/items/garrotechoke3.ogg', 'sound/items/garrotechoke4.ogg', 'sound/items/garrotechoke5.ogg'), 100, TRUE)
+	if(prob(40))
+		C.emote("choke")
+	C.adjustOxyLoss(choke_damage)
+	C.visible_message(span_danger("[user] [pick("garrotes", "asphyxiates")] [C]!"), \
+	span_userdanger("[user] [pick("garrotes", "asphyxiates")] me!"), span_hear("I hear the sickening sound of cordage!"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
 	user.changeNext_move(CLICK_CD_EXHAUSTED)	//Fuck you 5 second deaths
 
 /obj/item/clothing/head/inqarticles/blackbag
