@@ -49,6 +49,7 @@
 	neck = /obj/item/clothing/neck/highcollier/iron
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
 	belt = /obj/item/storage/belt/leather/mercenary/black
+	beltr = /obj/item/storage/belt/pouch/coins/poor
 	beltl = /obj/item/weapon/sword/short/iron
 	pants = /obj/item/clothing/pants/trou/leather
 	backl = /obj/item/weapon/shield/wood
