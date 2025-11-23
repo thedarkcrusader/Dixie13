@@ -68,6 +68,7 @@
 	var/obj/item/organ/selected_organ
 
 /datum/surgery_step/create_chimeric_organ/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	/*
 	var/list/available_organs = target.get_organs_in_zone(target_zone)
 
 	if(!available_organs.len)
@@ -94,7 +95,9 @@
 		if(!choice)
 			return FALSE
 		selected_organ = organ_names[choice]
+	*/
 
+	selected_organ = target.getorganslot(ORGAN_SLOT_HEART)
 	if(!selected_organ)
 		return FALSE
 
