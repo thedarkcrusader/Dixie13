@@ -33,12 +33,12 @@
 /mob/living/carbon/human/get_alt_name()
 	if(name != GetVoice())
 		// This isn't accurate purposely
-		var/appendage = "Man"
-		switch(client.prefs.voice_type)
+		var/appendage = "Figure"
+		switch(client?.prefs.voice_type)
 			if(VOICE_TYPE_FEM)
 				appendage = "Woman"
-			if(VOICE_TYPE_ANDRO)
-				appendage = "Figure"
+			if(VOICE_TYPE_MASC)
+				appendage = "Man"
 		return "Unknown [appendage]"
 
 /mob/living/carbon/human/proc/forcesay(list/append) //this proc is at the bottom of the file because quote fuckery makes notepad++ cri

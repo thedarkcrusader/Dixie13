@@ -102,12 +102,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 				if(istype(speaker, /mob/living))
 					var/mob/living/L = speaker
 					// This isn't accurate purposely
-					var/appendage = "Man"
-					switch(L.client.prefs.voice_type)
+					var/appendage = "Figure"
+					switch(L.client?.prefs.voice_type)
 						if(VOICE_TYPE_FEM)
 							appendage = "Woman"
-						if(VOICE_TYPE_ANDRO)
-							appendage = "Figure"
+						if(VOICE_TYPE_MASC)
+							appendage = "Man"
 					namepart = "Unknown [appendage]"
 				else
 					namepart = "Unknown"
