@@ -74,7 +74,7 @@
 	backr = /obj/item/weapon/polearm/spear/billhook
 	backl = /obj/item/storage/backpack/satchel
 	scabbards = list(/obj/item/weapon/scabbard/sword)
-	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special, /obj/item/rope/chain = 1, /obj/item/book/law)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -113,7 +113,7 @@
 	gloves = /obj/item/clothing/gloves/chain
 	beltr = /obj/item/weapon/sword/rapier
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special, /obj/item/rope/chain = 1, /obj/item/book/law)
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -149,7 +149,7 @@
 	beltr = /obj/item/weapon/mace/cudgel
 	neck = /obj/item/clothing/neck/bevor
 	gloves = /obj/item/clothing/gloves/leather
-	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special, /obj/item/rope/chain = 1, /obj/item/book/law)
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

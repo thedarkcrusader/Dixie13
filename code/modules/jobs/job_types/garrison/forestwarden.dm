@@ -58,7 +58,7 @@
 	beltr = /obj/item/storage/belt/pouch/coins/mid
 	backr = /obj/item/weapon/polearm/halberd/bardiche/warcutter
 	backl = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/signal_horn = 1, /obj/item/book/law)
 
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)

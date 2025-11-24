@@ -55,7 +55,7 @@
 	beltr = /obj/item/weapon/sword/arming
 	backl = /obj/item/storage/backpack/satchel
 	scabbards = list(/obj/item/weapon/scabbard/sword/noble)
-	backpack_contents = list(/obj/item/storage/keyring/manorguard = 1)
+	backpack_contents = list(/obj/item/storage/keyring/manorguard = 1, /obj/item/rope/chain = 1, /obj/item/book/law)
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
