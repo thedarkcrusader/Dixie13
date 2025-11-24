@@ -91,3 +91,57 @@
 
 	controller.queue_behavior(/datum/ai_behavior/papameat_defend, BB_PAPAMEAT_TARGET)
 
+
+/datum/ai_planning_subtree/meatvine_bridge
+
+/datum/ai_planning_subtree/meatvine_bridge/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	// Don't bridge if we're doing critical tasks
+	if(controller.blackboard[BB_PAPAMEAT_HEALING])
+		return
+	if(controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+		return
+
+	// Check if we have a bridge request
+	var/datum/bridge_request/request = controller.blackboard[BB_BRIDGE_TARGET]
+	if(!request || !request.target_location)
+		controller.clear_blackboard_key(BB_BRIDGE_TARGET)
+		controller.clear_blackboard_key(BB_BRIDGING)
+		return
+
+	// Check if request is too old (>60 seconds)
+	if(world.time - request.timestamp > 600)
+		controller.clear_blackboard_key(BB_BRIDGE_TARGET)
+		controller.clear_blackboard_key(BB_BRIDGING)
+		return
+
+	// Already bridging
+	if(controller.blackboard[BB_BRIDGING])
+		controller.queue_behavior(/datum/ai_behavior/meatvine_bridge, BB_BRIDGE_TARGET)
+		return SUBTREE_RETURN_FINISH_PLANNING
+
+	// Start bridging
+	controller.queue_behavior(/datum/ai_behavior/meatvine_bridge, BB_BRIDGE_TARGET)
+	return SUBTREE_RETURN_FINISH_PLANNING
+
+/datum/ai_planning_subtree/meatvine_destroy_obstacle
+
+/datum/ai_planning_subtree/meatvine_destroy_obstacle/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	// Don't attack obstacles if we're healing papameat
+	if(controller.blackboard[BB_PAPAMEAT_HEALING])
+		return
+
+	// Check if we have an obstacle target
+	var/atom/obstacle = controller.blackboard[BB_OBSTACLE_TARGET]
+	if(!obstacle || QDELETED(obstacle))
+		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
+		controller.clear_blackboard_key(BB_ATTACKING_OBSTACLE)
+		return
+
+	// Already attacking
+	if(controller.blackboard[BB_ATTACKING_OBSTACLE])
+		controller.queue_behavior(/datum/ai_behavior/meatvine_destroy_obstacle, BB_OBSTACLE_TARGET)
+		return SUBTREE_RETURN_FINISH_PLANNING
+
+	// Start attacking
+	controller.queue_behavior(/datum/ai_behavior/meatvine_destroy_obstacle, BB_OBSTACLE_TARGET)
+	return SUBTREE_RETURN_FINISH_PLANNING

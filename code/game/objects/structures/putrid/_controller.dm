@@ -44,6 +44,11 @@
 	// Papameat death mechanics
 	var/vines_lost_per_papameat_death = 150 // How many vines die when a papameat is destroyed
 
+	var/list/blocked_spread_locations = list()
+	var/list/obstacle_targets = list()
+	var/bridge_request_cooldown = 0
+	var/bridge_request_interval = 10
+
 /obj/effect/meatvine_controller/Initialize(mapload, ...)
 	. = ..()
 	if(!isfloorturf(loc))
@@ -413,6 +418,118 @@
 	if(wall_generation_cooldown > 0)
 		wall_generation_cooldown--
 
+	if(bridge_request_cooldown > 0)
+		bridge_request_cooldown--
+
+	// Check for blocked spreads and request bridging
+	if(bridge_request_cooldown <= 0 && prob(20))
+		check_for_bridge_opportunities()
+
+
+/obj/effect/meatvine_controller/proc/check_for_bridge_opportunities()
+	if(!length(vines))
+		return
+
+	// Sample some vines to check for blocked spreads
+	var/checks = min(10, vines.len)
+	for(var/i = 1 to checks)
+		var/obj/structure/meatvine/SV = pick(vines)
+		var/turf/vine_turf = get_turf(SV)
+
+		for(var/direction in GLOB.cardinals)
+			var/turf/blocked = get_step(vine_turf, direction)
+
+			// Check if this location blocks spreading
+			if(!can_spread_to(blocked))
+				// Look ahead to see if we can bridge across
+				var/turf/bridge_target = find_bridge_target(vine_turf, direction)
+				if(bridge_target)
+					request_bridge(blocked, bridge_target)
+					bridge_request_cooldown = bridge_request_interval
+					return
+
+/obj/effect/meatvine_controller/proc/can_spread_to(turf/T)
+	if(!T)
+		return FALSE
+	if(istype(T, /turf/open/transparent/openspace))
+		return FALSE
+	if(istype(T, /turf/open/water))
+		return FALSE
+	if(istype(T, /turf/open/lava))
+		return FALSE
+	return TRUE
+
+
+/obj/effect/meatvine_controller/proc/find_bridge_target(turf/start, direction)
+	// Look up to 3 tiles ahead in the direction
+	var/turf/current = start
+
+	for(var/i = 1 to 3)
+		current = get_step(current, direction)
+		if(!current)
+			return null
+
+		// If we find a valid spread location, this is our bridge target
+		if(can_spread_to(current) && isfloorturf(current))
+			// Make sure there's not already a vine here
+			if(!locate(/obj/structure/meatvine) in current)
+				return current
+
+	return null
+
+/obj/effect/meatvine_controller/proc/request_bridge(turf/blocked_turf, turf/target_turf)
+	// Store this bridge request
+	var/datum/bridge_request/request = new()
+	request.blocked_location = blocked_turf
+	request.target_location = target_turf
+	request.timestamp = world.time
+
+	blocked_spread_locations += request
+
+	// Signal nearby mobs
+	for(var/mob/living/simple_animal/hostile/retaliate/meatvine/defender in range(30, blocked_turf))
+		if(!defender.ai_controller)
+			continue
+
+		var/datum/ai_controller/meatvine_defender/ai = defender.ai_controller
+		if(!istype(ai))
+			continue
+
+		// Don't interrupt critical tasks
+		if(ai.blackboard[BB_PAPAMEAT_HEALING])
+			continue
+		if(ai.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+			continue
+
+		// Assign this bridge request
+		ai.set_blackboard_key(BB_BRIDGE_TARGET, request)
+		return
+
+/obj/effect/meatvine_controller/proc/mark_obstacle_for_destruction(atom/obstacle)
+	if(obstacle in obstacle_targets)
+		return
+
+	obstacle_targets += obstacle
+
+	// Signal nearby mobs to attack it
+	for(var/mob/living/simple_animal/hostile/retaliate/meatvine/defender in range(30, obstacle))
+		if(!defender.ai_controller)
+			continue
+
+		var/datum/ai_controller/meatvine_defender/ai = defender.ai_controller
+		if(!istype(ai))
+			continue
+
+		// Don't interrupt critical tasks
+		if(ai.blackboard[BB_PAPAMEAT_HEALING])
+			continue
+
+		ai.set_blackboard_key(BB_OBSTACLE_TARGET, obstacle)
+		return
+
+/obj/effect/meatvine_controller/proc/check_obstacle_destroyed(atom/obstacle)
+	if(obstacle in obstacle_targets)
+		obstacle_targets -= obstacle
 
 /obj/effect/meatvine_controller/proc/attempt_wall_generation()
 	if(wall_budget < wall_cost)
@@ -693,11 +810,6 @@
 			if(can_place_wall_at(T))
 				spawn_spacevine_piece(T, /obj/structure/meatvine/heavy)
 
-/datum/wall_segment
-	var/pattern_type = "generic"
-	var/list/planned_walls = list()
-	var/growth_rate = 1
-
 /obj/effect/meatvine_controller/proc/get_step_multiz(turf/start, direction, distance)
 	var/turf/current = start
 	for(var/i = 1 to abs(distance))
@@ -708,3 +820,13 @@
 		if(!current)
 			return null
 	return current
+
+/datum/wall_segment
+	var/pattern_type = "generic"
+	var/list/planned_walls = list()
+	var/growth_rate = 1
+
+/datum/bridge_request
+	var/turf/blocked_location
+	var/turf/target_location
+	var/timestamp

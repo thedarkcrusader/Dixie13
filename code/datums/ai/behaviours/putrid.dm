@@ -134,3 +134,134 @@
 	. = ..()
 	if(!succeeded)
 		controller.clear_blackboard_key(BB_PAPAMEAT_TARGET)
+
+
+/datum/ai_behavior/meatvine_bridge
+	action_cooldown = 0.5 SECONDS
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+
+/datum/ai_behavior/meatvine_bridge/setup(datum/ai_controller/controller, bridge_key)
+	. = ..()
+	var/datum/bridge_request/request = controller.blackboard[bridge_key]
+
+	if(!request || !request.target_location)
+		return FALSE
+
+	controller.set_blackboard_key(BB_BRIDGING, TRUE)
+	set_movement_target(controller, request.target_location)
+
+/datum/ai_behavior/meatvine_bridge/perform(delta_time, datum/ai_controller/controller, bridge_key)
+	. = ..()
+	var/mob/living/simple_animal/our_mob = controller.pawn
+	var/datum/bridge_request/request = controller.blackboard[bridge_key]
+
+	if(!request || !request.target_location)
+		finish_action(controller, FALSE, bridge_key)
+		return
+
+	// Check if we've reached the target
+	if(get_turf(our_mob) == request.target_location)
+		// Try to spread here
+		attempt_bridge_spread(our_mob, request)
+		finish_action(controller, TRUE, bridge_key)
+		return
+
+	// Check if we're close enough (adjacent)
+	if(get_dist(our_mob, request.target_location) <= 1)
+		// Try to spread from adjacent position
+		attempt_bridge_spread(our_mob, request)
+		finish_action(controller, TRUE, bridge_key)
+		return
+
+/datum/ai_behavior/meatvine_bridge/proc/attempt_bridge_spread(mob/living/simple_animal/our_mob, datum/bridge_request/request)
+	// Find the nearest vine to spread from
+	var/obj/structure/meatvine/nearest_vine = null
+	var/min_dist = INFINITY
+
+	for(var/obj/structure/meatvine/SV in range(3, request.target_location))
+		if(SV.master)
+			var/dist = get_dist(SV, request.target_location)
+			if(dist < min_dist)
+				min_dist = dist
+				nearest_vine = SV
+
+	if(nearest_vine && nearest_vine.master)
+		// Create a new vine at the target location
+		nearest_vine.master.spawn_spacevine_piece(request.target_location)
+
+		// Visual feedback
+		request.target_location.pollute_turf(/datum/pollutant/rot, 30)
+
+/datum/ai_behavior/meatvine_bridge/finish_action(datum/ai_controller/controller, succeeded, bridge_key)
+	. = ..()
+	controller.clear_blackboard_key(BB_BRIDGING)
+	controller.clear_blackboard_key(BB_BRIDGE_TARGET)
+
+/datum/ai_behavior/meatvine_destroy_obstacle
+	action_cooldown = 0.5 SECONDS
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+
+/datum/ai_behavior/meatvine_destroy_obstacle/setup(datum/ai_controller/controller, obstacle_key)
+	. = ..()
+	var/atom/obstacle = controller.blackboard[obstacle_key]
+
+	if(!obstacle || QDELETED(obstacle))
+		return FALSE
+
+	controller.set_blackboard_key(BB_ATTACKING_OBSTACLE, TRUE)
+	set_movement_target(controller, obstacle)
+
+/datum/ai_behavior/meatvine_destroy_obstacle/perform(delta_time, datum/ai_controller/controller, obstacle_key)
+	. = ..()
+	var/mob/living/simple_animal/our_mob = controller.pawn
+	var/atom/obstacle = controller.blackboard[obstacle_key]
+
+	if(!obstacle || QDELETED(obstacle))
+		finish_action(controller, FALSE, obstacle_key)
+		return
+
+	// Check if obstacle still blocks spreading
+	if(!is_blocking_obstacle(obstacle))
+		finish_action(controller, TRUE, obstacle_key)
+		return
+
+	// Check if we're close enough to attack
+	if(get_dist(our_mob, obstacle) <= 1)
+		// Attack the obstacle
+		our_mob.face_atom(obstacle)
+		obstacle.attack_animal(our_mob)
+
+		// Check if it's destroyed
+		if(QDELETED(obstacle))
+			finish_action(controller, TRUE, obstacle_key)
+			return
+	else
+		// Keep moving toward it
+		set_movement_target(controller, obstacle)
+
+/datum/ai_behavior/meatvine_destroy_obstacle/proc/is_blocking_obstacle(atom/A)
+	// Check if this atom blocks vine spreading
+	if(istype(A, /obj/structure))
+		var/obj/structure/S = A
+		if(S.density)
+			return TRUE
+	if(istype(A, /obj/machinery))
+		var/obj/machinery/M = A
+		if(M.density)
+			return TRUE
+	return FALSE
+
+/datum/ai_behavior/meatvine_destroy_obstacle/finish_action(datum/ai_controller/controller, succeeded, obstacle_key)
+	. = ..()
+	controller.clear_blackboard_key(BB_ATTACKING_OBSTACLE)
+
+	if(succeeded)
+		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
+
+		// Notify controller that obstacle was destroyed
+		var/mob/living/simple_animal/our_mob = controller.pawn
+		for(var/obj/structure/meatvine/SV in range(10, our_mob))
+			if(SV.master)
+				var/atom/obstacle = controller.blackboard[obstacle_key]
+				SV.master.check_obstacle_destroyed(obstacle)
+				break

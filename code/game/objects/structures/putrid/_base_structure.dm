@@ -243,15 +243,14 @@
 		Vine.transfer_feromones(amount - 1)
 
 
+
 /obj/structure/meatvine/proc/spread()
 	if(!master || master.isdying)
 		return
-
 	var/turf/T = src.loc
 	var/direction = pick(GLOB.cardinals)
 	var/step = get_step(src, direction)
 
-	// Check if we can use organic matter to spread
 	var/using_organic_matter = FALSE
 	if(master.organic_matter >= master.organic_matter_per_spread)
 		using_organic_matter = TRUE
@@ -261,6 +260,7 @@
 		var/turf/open/floor/F = step
 		while(isopenspace(F))
 			F = GET_TURF_BELOW(F)
+
 		var/stairs = TRUE
 		while(stairs && locate(/obj/structure/stairs, F))
 			if(isopenspace(GET_TURF_ABOVE(F)))
@@ -268,16 +268,13 @@
 				F = get_step(F, direction)
 			else
 				stairs = FALSE
+
 		if(!isfloorturf(F))
 			return
 
-		// Check if there's a rotted vine we can restore
 		var/obj/structure/meatvine/existing = locate(/obj/structure/meatvine, F)
 		if(existing && !existing.master)
-			// This is a rotted vine, restore it!
 			existing.restore_vine(master)
-
-			// If we used organic matter, still try bonus spread
 			if(using_organic_matter && prob(75))
 				attempt_bonus_spread(T, direction)
 			return
@@ -285,11 +282,16 @@
 		if(!existing)
 			if(master)
 				if(!can_enter_turf(F))
+					// Check if there's a blocking structure we should mark for destruction
+					for(var/obj/structure/S in F)
+						if(S.density && !istype(S, /obj/structure/meatvine))
+							master.mark_obstacle_for_destruction(S)
+					for(var/obj/machinery/M in F)
+						if(M.density)
+							master.mark_obstacle_for_destruction(M)
 					return
 
 				master.spawn_spacevine_piece(F)
-
-				// If we used organic matter, spread again in a different direction
 				if(using_organic_matter && prob(75))
 					attempt_bonus_spread(T, direction)
 				return
@@ -298,7 +300,6 @@
 		for(var/obj/structure/meatvineborder/Vine in T)
 			if(Vine.dir == obstructed_dir)
 				return
-
 		var/obj/structure/meatvineborder/Vine = new /obj/structure/meatvineborder(src.loc)
 		Vine.dir = obstructed_dir
 

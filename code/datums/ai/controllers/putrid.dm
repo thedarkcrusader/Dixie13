@@ -1,24 +1,28 @@
+
 /datum/ai_controller/meatvine_defender
 	movement_delay = 0.5 SECONDS
 	ai_movement = /datum/ai_movement/hybrid_pathing
-
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
 		BB_PAPAMEAT_TARGET = null,
 		BB_PAPAMEAT_HEALING = FALSE,
 		BB_CORPSE_TO_FEED = null,
-		BB_FEEDING_CORPSE = FALSE
+		BB_FEEDING_CORPSE = FALSE,
+		BB_BRIDGE_TARGET = null,
+		BB_BRIDGING = FALSE,
+		BB_OBSTACLE_TARGET = null,
+		BB_ATTACKING_OBSTACLE = FALSE
 	)
-
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/papameat_sacrifice, // Highest priority
+		/datum/ai_planning_subtree/papameat_sacrifice,
+		/datum/ai_planning_subtree/meatvine_bridge,
+		/datum/ai_planning_subtree/meatvine_destroy_obstacle,
 		/datum/ai_planning_subtree/papameat_feed_corpse,
 		/datum/ai_planning_subtree/papameat_defend,
 		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)
-
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 /datum/ai_controller/meatvine_defender/New(atom/new_pawn)

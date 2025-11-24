@@ -3,6 +3,10 @@
 #define BB_PAPAMEAT_HEALING "bb_papameat_healing"
 #define BB_CORPSE_TO_FEED "bb_corpse_to_feed"
 #define BB_FEEDING_CORPSE "bb_feeding_corpse"
+#define BB_BRIDGE_TARGET "bridge_target"
+#define BB_BRIDGING "bridging"
+#define BB_OBSTACLE_TARGET "obstacle_target"
+#define BB_ATTACKING_OBSTACLE "attacking_obstacle"
 
 // Signal for papameat damage
 #define COMSIG_PAPAMEAT_DAMAGED "papameat_damaged"
