@@ -311,7 +311,7 @@
 		if("A VIOLENT NATURE")
 			H.cmode_music = 'sound/music/cmode/antag/CombatBeest.ogg'
 			H.set_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-			H.mind.special_items["Murderer's Cowl"] = /obj/item/clothing/face/murdercowl // Yup. It's Plok!
+			H.mind.special_items["Murderer's Cowl"] = /obj/item/clothing/face/murdercowl
 			H.mind.special_items["In Advance of a Broken Skull"] = /obj/item/weapon/mace/steel/profhammer // If you touch the name you die
 			H.mind.special_items["Splint Armor"] = /obj/item/clothing/armor/leather/splint
 			H.change_stat(STATKEY_STR, 1)
