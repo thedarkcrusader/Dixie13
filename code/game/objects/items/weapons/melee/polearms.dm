@@ -527,7 +527,7 @@
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_AXE_WIELD
 	name = "bardiche"
-	desc = "A grand axe of northernly design, renowned for easily chopping off limbs clean with brutal strength."
+	desc = "A grand axe of northern design, renowned for easily chopping off limbs clean with brutal strength."
 	icon_state = "ancient_bardiche"
 
 /obj/item/weapon/polearm/halberd/bardiche/dendor
