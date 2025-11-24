@@ -49,3 +49,15 @@
 
 	var/datum/antagonist/new_antag = new /datum/antagonist/skeleton/knight()
 	H.mind.add_antag_datum(new_antag)
+
+/obj/item/clothing/armor/plate/blkknight/death
+	color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/shoes/boots/armor/blkknight/death
+	color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/gloves/plate/blk/death
+	color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/pants/platelegs/blk/death
+	color = CLOTHING_SOOT_BLACK
