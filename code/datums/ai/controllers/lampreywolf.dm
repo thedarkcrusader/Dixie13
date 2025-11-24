@@ -1,20 +1,23 @@
-//mix of wolf and saiga ai
 /datum/ai_controller/lampreywolf
 	movement_delay = 0.2 SECONDS
 
 	ai_movement = /datum/ai_movement/hybrid_pathing
 
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_TARGET_BLOOD_THRESHOLD = 1, // all the way
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/blooded(),
 		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends(),
 		BB_BASIC_MOB_FLEEING = TRUE,
 	)
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/aggro_find_target,
+		/datum/ai_planning_subtree/aggro_find_target/if_hungry,
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic_watcher,
 		/datum/ai_planning_subtree/spacing/lampreywolf, // this helps with move targets
+		/datum/ai_planning_subtree/find_dead_bodies,
+		/datum/ai_planning_subtree/eat_dead_body/drink_blood,
 		)
 
 	idle_behavior = /datum/idle_behavior/idle_random_walk
@@ -41,4 +44,5 @@
 
 /datum/ai_planning_subtree/spacing/lamprey_volf/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
-	return SUBTREE_RETURN_FINISH_PLANNING
+	if(.)
+		return SUBTREE_RETURN_FINISH_PLANNING

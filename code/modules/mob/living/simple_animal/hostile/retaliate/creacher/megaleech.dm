@@ -7,49 +7,44 @@
 	icon_dead = "megaleech_dead"
 
 	animal_species = /mob/living/simple_animal/hostile/retaliate/megaleech
-	faction = list(FACTION_SEA) // not so different, you and I
+	faction = list(FACTION_SEA)
 	gender = FEMALE
 	footstep_type = FOOTSTEP_MOB_SLIME
-	emote_see = list("looks around.", "chews some leaves.")
+	emote_see = list("looks around.", "slobbers a little.")
 	move_to_delay = 8
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
 						/obj/item/natural/hide = 1,
-						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 3,
+						/obj/item/alch/waterdust = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 2,
 						/obj/item/reagent_containers/food/snacks/fat = 1,
 						/obj/item/natural/hide = 2,
-						/obj/item/alch/sinew = 2,
-						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 4,
-						/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/natural/hide = 4,
-						/obj/item/alch/sinew = 2,
-						/obj/item/alch/bone = 1)
-	head_butcher = /obj/item/natural/head/saiga
+						/obj/item/alch/waterdust = 2)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
+						/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/natural/hide = 3,
+						/obj/item/alch/waterdust = 3,
+						/obj/item/natural/worms/leech/parasite = 1)
 
-	health = 120
-	maxHealth = 120
+	health = 100
+	maxHealth = 100
 	blood_gulp = 30
 
 	food_max = BLOOD_VOLUME_OKAY // this is absurdly high compared to most mobs but it's used for bloodfeeding
 
-	food_type = list(/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
-					/obj/item/reagent_containers/food/snacks/produce/grain/oat,
-					/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry,
-					/obj/item/reagent_containers/food/snacks/produce/fruit/apple)
+	food_type = list(/obj/item/reagent_containers/food/snacks/blood_dough)
 	tame_chance = 25
 	bonus_tame_chance = 15
 
-	base_intents = list(/datum/intent/simple/bite/megaleech)
-	possible_rmb_intents = list(/datum/rmb_intent/megaleech_feed)
+	base_intents = list(/datum/intent/simple/bite)
+	possible_rmb_intents = list(/datum/rmb_intent/simple/blood_leech)
 	//attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	melee_damage_lower = 4
-	melee_damage_upper = 10
+	melee_damage_lower = 8
+	melee_damage_upper = 12
 	retreat_distance = 10
 	minimum_distance = 10
 	base_speed = 8
-	base_constitution = 16
+	base_constitution = 12
 	base_strength = 9
 	base_endurance = 12
 	can_buckle = TRUE
@@ -60,7 +55,6 @@
 	ai_controller = /datum/ai_controller/megaleech
 
 	var/static/list/pet_commands = list(
-		/datum/pet_command/fish,
 		/datum/pet_command/idle,
 		/datum/pet_command/free,
 		/datum/pet_command/good_boy,
@@ -68,7 +62,6 @@
 		/datum/pet_command/attack,
 		/datum/pet_command/attack/leech_blood,
 		/datum/pet_command/attack/give_blood,
-		/datum/pet_command/play_dead,
 		/datum/pet_command/protect_owner,
 		/datum/pet_command/aggressive,
 		/datum/pet_command/calm,
@@ -81,7 +74,7 @@
 
 	var/datum/component/generic_mob_hunger/hunger = GetComponent(/datum/component/generic_mob_hunger)
 	if(hunger)
-		hunger.hunger_drain = 1
+		hunger.hunger_drain = 4
 	AddElement(/datum/element/ai_retaliate)
 
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
@@ -172,71 +165,3 @@
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
 	update_appearance(UPDATE_OVERLAYS)
-
-
-/datum/intent/simple/bite/megaleech
-	penfactor = 50
-
-
-/datum/rmb_intent/megaleech_feed
-	name = "feed"
-	desc = "RMB - Feed a target blood from yourself. Or, take a target's blood if you're in combat mode"
-	icon_state = "special"
-	/// how much blood we steal/give per do_after
-	var/feed_amount = 10
-
-/datum/rmb_intent/megaleech_feed/special_attack(mob/living/user, atom/target)
-	if(!isliving(target) || !isanimal(user) || user.doing())
-		return
-	if(user == target)
-		return //freak.
-	var/mob/living/simple_animal/A = user
-	var/mob/living/L = target
-	var/giving = !user.cmode
-
-	if(!giving)
-		var/noBlood = L.blood_volume == 0
-		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
-				noBlood = TRUE
-		if(noBlood)
-			to_chat(user, span_warning("They have no blood to drink."))
-			return
-		if(SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) == 100)
-			to_chat(user, span_warning("I'm full."))
-			return
-
-		user.visible_message(span_danger("[user] starts drinking the blood of [L]."), span_danger("I start drinking the blood of [L]."), null, COMBAT_MESSAGE_RANGE)
-	else
-		if(SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) == 0)
-			to_chat(user, span_warning("I have no blood to give."))
-			return
-		if(L.blood_volume >= BLOOD_VOLUME_NORMAL)
-			to_chat(user, span_warning("They need no blood."))
-			return
-		user.visible_message(span_green("[user] starts feeding blood to [L]."), span_danger("I start feeding blood to [L]."), null, COMBAT_MESSAGE_RANGE)
-	while(do_after(A, 1 SECONDS, extra_checks=CALLBACK(src, PROC_REF(can_feed), A, L, giving), display_over_user = TRUE, interaction_key = DOAFTER_SOURCE_LEECH_BLOOD))
-		var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER) * A.food_max / 100
-		var/blood = 0
-		if(giving)
-			blood = min(BLOOD_VOLUME_NORMAL - L.blood_volume, feed_amount, hunger)
-		else
-			blood = -min(A.food_max - hunger, feed_amount, L.blood_volume)
-		L.blood_volume += blood
-		SEND_SIGNAL(user, COMSIG_MOB_ADJUST_HUNGER, -blood)
-		playsound(A, 'sound/misc/drink_blood.ogg', 50, FALSE, -4)
-
-
-/datum/rmb_intent/megaleech_feed/proc/can_feed(mob/living/user, mob/living/target, giving)
-	if(iscarbon(target))
-		var/mob/living/carbon/C = target
-		if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits)) // if for some god damn reason you weren't earlier but are now... maybe you're a skeleton?
-			return FALSE
-	var/hunger = SEND_SIGNAL(user, COMSIG_MOB_RETURN_HUNGER)
-	if(hunger == null)
-		return FALSE
-	if(giving)
-		return hunger > 0 && target.blood_volume < BLOOD_VOLUME_NORMAL
-	else
-		return hunger < 100 && target.blood_volume > 0

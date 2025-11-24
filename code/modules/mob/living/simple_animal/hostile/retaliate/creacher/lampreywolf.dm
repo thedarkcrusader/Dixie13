@@ -16,16 +16,13 @@
 	aggro_vision_range = 9
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
-						/obj/item/natural/fur/volf = 1,
 						/obj/item/alch/bone = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
 						/obj/item/natural/hide = 1,
-						/obj/item/natural/fur/volf = 2,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
 						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur/volf = 3,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 2)
 	head_butcher = /obj/item/natural/head/volf
@@ -37,18 +34,18 @@
 	animal_species = /mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha
 	footstep_type = FOOTSTEP_MOB_SLIME
 
-	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
-					/obj/item/bodypart,
-					/obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/blood_dough)
+	food_max = BLOOD_VOLUME_SURVIVE * 1.5 // these guys can't drink nearly as much blood on their own as a single dire leech
 
 	base_intents = list(/datum/intent/simple/bite/lampreywolf)
+	possible_rmb_intents = list(/datum/rmb_intent/simple/blood_leech)
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 
 	// pack tactics, steal blood and get out of there
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	melee_attack_cooldown = 2 SECONDS
-	var/blood_steal = 30 // how much blood are we stealing per bite
+	blood_gulp = 30 // how much blood are we stealing per bite
 	retreat_health = 0.3
 
 	base_constitution = 8
@@ -78,9 +75,10 @@
 		/datum/pet_command/free,
 		/datum/pet_command/good_boy,
 		/datum/pet_command/follow,
+		/datum/pet_command/attack/leech_blood,
+		/datum/pet_command/attack/give_blood,
 		/datum/pet_command/attack,
 		/datum/pet_command/fetch,
-		/datum/pet_command/play_dead,
 		/datum/pet_command/protect_owner,
 		/datum/pet_command/aggressive,
 		/datum/pet_command/calm,
@@ -89,8 +87,17 @@
 /mob/living/simple_animal/hostile/retaliate/lampreywolf/Initialize()
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands // due to signal overridings from pet commands
 	. = ..()
+	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(on_pre_attack))
 	AddComponent(/datum/component/ai_aggro_system)
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
+	AddElement(/datum/element/ai_retaliate)
+
+	var/datum/component/generic_mob_hunger/hunger = GetComponent(/datum/component/generic_mob_hunger)
+	if(hunger)
+		hunger.hunger_drain = 4
+		if(!tame)
+			SEND_SIGNAL(src, COMSIG_MOB_DRAIN_HUNGER, -50) // start hungrier
+
 
 	ADD_TRAIT(src, TRAIT_GOOD_SWIM, ROUNDSTART_TRAIT)
 	if(is_pack_alpha)
@@ -103,6 +110,32 @@
 			icon_state = icon_living
 
 	update_appearance(UPDATE_OVERLAYS)
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/Destroy()
+	UnregisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET)
+	return ..()
+
+//do our rmb intent out of combat. Scuffed? Absolutely. Alternatives? A pain in the ass.
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/proc/on_pre_attack(datum/source, atom/target)
+	if(!cmode && rmb_intent)
+		rmb_intent.special_attack(src, target)
+		return COMPONENT_HOSTILE_NO_PREATTACK
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/AttackingTarget(mob/living/passed_target)
+	. = ..()
+	var/mob/living/L = target
+	if(. && istype(target) && L.blood_volume > 0 && SEND_SIGNAL(src, COMSIG_MOB_RETURN_HUNGER) < 100)
+		var/blood_taken = min(L.blood_volume, blood_gulp)
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
+				return
+			drinksomeblood(C, zone_selected)
+		else
+			L.blood_volume -= blood_taken
+			L.handle_blood()
+			playsound(loc, 'sound/misc/drink_blood.ogg', 100, FALSE, -4)
+		SEND_SIGNAL(src, COMSIG_MOB_ADJUST_HUNGER, blood_taken) // chance of minor overflow but it's negligible
 
 /mob/living/simple_animal/hostile/retaliate/lampreywolf/death(gibbed)
 	..()
@@ -188,31 +221,18 @@
 	return ..()
 
 
-/mob/living/simple_animal/hostile/retaliate/lampreywolf/AttackingTarget(mob/living/passed_target)
-	. = ..()
-	if(. && isliving(target))
-		var/mob/living/L = target
-		var/bloodToLose = min(blood_steal, L.blood_volume)
-		L.blood_volume = max(L.blood_volume - bloodToLose, 0)
-		L.handle_blood()
-
-		blood_volume = min(blood_volume + bloodToLose, BLOOD_VOLUME_MAXIMUM)
-		handle_blood()
-
-
-
 /mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha
 	name = "alpha luperey"
 	desc = ""
 	icon_state = "lampreyvolf3"
 	icon_living = "lampreyvolf3"
-	icon_dead = "lampreyvolf_dead"
+	icon_dead = "lampreyvolf3_dead"
 
 	is_pack_alpha = TRUE
 
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	blood_steal = 50
+	blood_gulp = 50 //vampire tier
 	retreat_distance = 3
 	retreat_health = 0.2
 
@@ -220,10 +240,31 @@
 
 	health = ALPHA_LAMPREYVOLF_HEALTH
 	maxHealth = ALPHA_LAMPREYVOLF_HEALTH
+	food_max = BLOOD_VOLUME_BAD
 
 	base_constitution = 10
 	base_strength = 10
 	base_speed = 14
+
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/tame
+	tame = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/tame/saddled/Initialize()
+	. = ..()
+	var/obj/item/natural/saddle/S = new(src)
+	ssaddle = S
+	update_appearance(UPDATE_OVERLAYS)
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha/tame
+	tame = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha/tame/saddled/Initialize()
+	. = ..()
+	var/obj/item/natural/saddle/S = new(src)
+	ssaddle = S
+	update_appearance(UPDATE_OVERLAYS)
+
 
 /datum/intent/simple/bite/lampreywolf
 	penfactor = 5

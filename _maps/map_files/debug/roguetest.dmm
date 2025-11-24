@@ -20,10 +20,6 @@
 /obj/item/clothing/gloves/chain,
 /turf/open/floor/carpet,
 /area/indoors)
-"aL" = (
-/mob/living/simple_animal/hostile/retaliate/megaleech,
-/turf/open/floor/cobblerock,
-/area/under/town/basement)
 "aN" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -158,6 +154,10 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
+"eR" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha/tame,
 /turf/open/floor/dirt/road,
 /area/under/town/basement)
 "eU" = (
@@ -584,7 +584,7 @@
 /turf/open/floor/tile/bfloorz,
 /area/indoors)
 "lD" = (
-/mob/living/simple_animal/hostile/retaliate/megaleech/tame,
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha/tame/saddled,
 /turf/open/floor/cobblerock,
 /area/under/town/basement)
 "lF" = (
@@ -918,6 +918,10 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/churchbrick,
 /area/indoors/town/manor)
+"oH" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/tame/saddled,
+/turf/open/floor/dirt/road,
+/area/under/town/basement)
 "oK" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass/yel,
@@ -931,6 +935,10 @@
 /obj/structure/hotspring/border/three,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"oS" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/tame,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "oZ" = (
 /obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/cobble,
@@ -1935,6 +1943,10 @@
 /mob/living/simple_animal/hostile/retaliate/nautilus,
 /turf/open/floor/cobblerock,
 /area/under/town/basement)
+"zj" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf/alpha,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "zw" = (
 /obj/structure/window/openclose{
 	dir = 4
@@ -2104,10 +2116,6 @@
 "Ce" = (
 /turf/closed/mineral/bedrock,
 /area/indoors)
-"Ck" = (
-/mob/living/simple_animal/hostile/retaliate/megaleech/tame/saddled,
-/turf/open/floor/cobblerock,
-/area/under/town/basement)
 "Cr" = (
 /obj/structure/gearbox,
 /turf/open/floor/cobblerock,
@@ -2327,6 +2335,10 @@
 /obj/structure/gearbox,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"Fv" = (
+/mob/living/simple_animal/hostile/retaliate/lampreywolf,
+/turf/open/floor/cobblerock,
+/area/under/town/basement)
 "Fw" = (
 /turf/open/floor/dirt/road,
 /area/outdoors)
@@ -2470,10 +2482,6 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
-"Hv" = (
-/mob/living/simple_animal/hostile/retaliate/megaleech/tame/saddled,
-/turf/open/floor/dirt/road,
-/area/under/town/basement)
 "Hx" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = 32;
@@ -2611,9 +2619,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
-"JM" = (
-/turf/open/water,
-/area/indoors/town/manor)
 "JS" = (
 /obj/structure/water_pump{
 	dir = 1
@@ -2777,10 +2782,6 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor)
-"Mt" = (
-/mob/living/simple_animal/hostile/retaliate/megaleech/tame,
-/turf/open/floor/dirt/road,
-/area/under/town/basement)
 "Mu" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/grass,
@@ -4528,8 +4529,8 @@ Rw
 im
 Rw
 DA
-DA
-lD
+eR
+Rw
 Rw
 Rw
 Rw
@@ -4788,7 +4789,7 @@ Rw
 DA
 Rw
 Rw
-Mt
+DA
 Rw
 Rw
 Rw
@@ -5031,8 +5032,8 @@ as
 yu
 Rw
 Rw
+Fv
 Rw
-aL
 DA
 DA
 Rw
@@ -5548,7 +5549,7 @@ Rw
 Rw
 Rw
 Rw
-Rw
+zj
 Rw
 DA
 DA
@@ -5560,7 +5561,7 @@ DA
 Rw
 DA
 Rw
-Rw
+oS
 Rw
 Rw
 DA
@@ -5802,12 +5803,12 @@ as
 yu
 Rw
 Rw
+Fv
 Rw
 Rw
 Rw
 Rw
 Rw
-aL
 Rw
 Rw
 im
@@ -6074,7 +6075,7 @@ Rw
 DA
 Rw
 Rw
-DA
+oH
 Rw
 Rw
 DA
@@ -6584,10 +6585,10 @@ UK
 im
 DA
 Rw
-Ck
+Rw
 Rw
 DA
-Hv
+DA
 Rw
 Rw
 Rw
@@ -6830,7 +6831,7 @@ as
 yu
 Rw
 Rw
-Rw
+Fv
 Rw
 Rw
 Rw
@@ -7087,7 +7088,7 @@ as
 yu
 DA
 Rw
-aL
+Rw
 Rw
 Rw
 Rw
@@ -7103,7 +7104,7 @@ Rw
 Rw
 Rw
 Rw
-Ck
+Rw
 DA
 Rw
 yu
@@ -7355,7 +7356,7 @@ Rw
 im
 Rw
 Rw
-Ck
+Rw
 Rw
 Rw
 Rw
@@ -17625,7 +17626,7 @@ tS
 tS
 Bp
 IL
-JM
+Ut
 SM
 Ut
 KW

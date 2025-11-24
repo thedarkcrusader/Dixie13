@@ -508,7 +508,13 @@
 	list_reagents = list(/datum/reagent/flour = 1)
 	volume = 1
 	sellprice = 0
-	var/water_added
+	var/reagent_added
+	/// What reagents can we mix with flour. Entries:
+	/// /datum/reagent = list("#wetcolorhex", /obj/item/reagent_containers/food/what_we_become)
+	var/list/reagent_results = list(
+		/datum/reagent/water = list("#d9d0cb", /obj/item/reagent_containers/food/snacks/dough_base),
+		/datum/reagent/blood = list("#d65e5e", /obj/item/reagent_containers/food/snacks/blood_dough)
+	)
 
 /datum/reagent/flour
 	name = "flour"
@@ -531,28 +537,34 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	var/obj/item/reagent_containers/glass/R = I
 	if(isturf(loc)&& (found_table))
-		if(!istype(R) || (water_added))
+		if(!istype(R) || (reagent_added))
 			return ..()
-		if(!R.reagents.has_reagent(/datum/reagent/water, 10))
-			to_chat(user, span_notice("Needs more water to work it."))
-			return TRUE
-		to_chat(user, span_notice("Adding water, now it's time to knead it..."))
-		playsound(get_turf(user), 'sound/foley/splishy.ogg', 100, TRUE, -1)
-		if(do_after(user, 1.5 SECONDS, src))
-			name = "wet flour"
-			desc = "Destined for greatness, at your hands."
-			R.reagents.remove_reagent(/datum/reagent/water, 10)
-			water_added = TRUE
-			color = "#d9d0cb"
+		for(var/acceptable in reagent_results)
+			if(R.reagents.has_reagent(acceptable))
+				if(!R.reagents.has_reagent(acceptable, 10)) // we have it, just not enough
+					to_chat(user, span_notice("Needs more liquid to work it."))
+					continue
+				to_chat(user, span_notice("Adding, now it's time to knead it..."))
+				playsound(get_turf(user), 'sound/foley/splishy.ogg', 100, TRUE, -1)
+				if(do_after(user, 1.5 SECONDS, src))
+					name = "wet flour"
+					desc = "Destined for greatness, at your hands."
+					R.reagents.remove_reagent(acceptable, 10)
+					reagent_added = acceptable
+					color = reagent_results[acceptable][1]
+				break
 	else
 		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
-	if(water_added)
+	if(reagent_added)
+		var/result = LAZYACCESSASSOC(reagent_results, reagent_added, 2)
+		if(!result) //wtf?
+			return ..()
 		short_cooktime = (40 - ((user.get_skill_level(/datum/skill/craft/cooking))*5))
 		playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
 		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/dough_base/base = new /obj/item/reagent_containers/food/snacks/dough_base(get_turf(src))
+			var/obj/item/reagent_containers/food/base = new result(get_turf(src))
 			base.set_quality(recipe_quality)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(src)

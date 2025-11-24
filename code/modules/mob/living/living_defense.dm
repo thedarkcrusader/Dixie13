@@ -105,7 +105,8 @@
 	var/obj/item/I
 	if(istype(AM, /obj/item))
 		I = AM
-	if(throwingdatum && ismobholder(throwingdatum.thrownthing) && throwingdatum.thrownthing:held_mob == AM)
+	var/obj/item/clothing/head/mob_holder/MH = throwingdatum?.thrownthing
+	if(istype(MH) && MH.held_mob == AM)
 		I = throwingdatum.thrownthing
 	if(I)
 		var/zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
