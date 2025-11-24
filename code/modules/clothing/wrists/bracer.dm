@@ -16,7 +16,7 @@
 
 /obj/item/clothing/wrists/bracers/ancient
 	name = "ancient vambraces"
-	desc = "Very old vambraces"
+	desc = "Very old vambraces."
 	icon_state = "ancientbracers"
 	item_state = "ancientbracers"
 
