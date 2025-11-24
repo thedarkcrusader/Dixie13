@@ -78,5 +78,5 @@
 
 /obj/item/clothing/armor/chainmail/hauberk/ancient
 	name = "ancient hauberk"
-	desc = "A very old hauberk"
+	desc = "A very old hauberk."
 	icon_state = "ancienthauberk"
