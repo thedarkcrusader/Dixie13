@@ -119,7 +119,7 @@
 
 /obj/item/clothing/face/murdercowl
 	name = "Murderer's Cowl"
-	desc = "Destruction and violence, it's just part of our nature."
+	desc = "Look, I'm a cleaner. I can feel no remorse when seeing a dead body. To me it's merely cold, rotting flesh."
 	icon_state = "murdercowl"
 	blocksound = SOFTHIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
