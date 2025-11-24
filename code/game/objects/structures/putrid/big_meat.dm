@@ -95,3 +95,48 @@
 
 /obj/structure/meatvine/papameat/grow()
 	return
+
+
+/obj/structure/meatvine/papameat/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
+	. = ..()
+	if(.)
+		// Send signal to all nearby mobs when damaged
+		var/integrity_percent = atom_integrity / max_integrity
+		SEND_SIGNAL(src, COMSIG_PAPAMEAT_DAMAGED, src, integrity_percent)
+
+		// Send critical signal if below threshold
+		if(integrity_percent < PAPAMEAT_CRITICAL_HEALTH)
+			SEND_SIGNAL(src, COMSIG_PAPAMEAT_CRITICAL, src)
+
+/obj/structure/meatvine/papameat/proc/consume_mob(mob/living/sacrifice)
+	if(!istype(sacrifice) || sacrifice.stat != DEAD)
+		return FALSE
+
+	visible_message("<span class='danger'>[src] absorbs [sacrifice]!</span>")
+
+	// Heal the papameat based on mob size
+	var/heal_amount = 100
+	if(ismob(sacrifice))
+		var/mob/living/L = sacrifice
+		heal_amount = max(50, L.maxHealth * 0.5)
+
+	atom_integrity = min(atom_integrity + heal_amount, max_integrity)
+
+	// Feed the controller
+	if(master)
+		master.feed_organic_matter(100)
+
+	qdel(sacrifice)
+	return TRUE
+
+/obj/structure/meatvine/papameat/proc/sacrifice_living_mob(mob/living/sacrifice)
+	if(!istype(sacrifice) || sacrifice.stat == DEAD)
+		return FALSE
+
+	visible_message("<span class='danger'>[sacrifice] throws itself into [src], being consumed alive!</span>")
+
+	// Damage and eventually kill the mob
+	sacrifice.adjustBruteLoss(sacrifice.health + 10)
+
+	// Then consume them
+	return consume_mob(sacrifice)
