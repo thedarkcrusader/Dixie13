@@ -657,5 +657,96 @@
                 "bugfix": "Some jobs not reopening slots upon cryoing"
             }
         ]
+    },
+    "2025-11-22": {
+        "7erracotta": [
+            {
+                "rscadd": "the steel kukri\\n:cl:\\n<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->\\n<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->\\n## Pre-Merge Checklist\\n<!-- Don't bother filling these in while creating your Pull Request, just click the checkboxes after the Pull Request is opened and you are redirected to the page. -->\\n- [x] You tested this on a local server.\\n- [x] This code did not runtime during testing.\\n- [x] You documented all of your changes.\\n<!-- Neither the compiler nor workflow checks are perfect at detecting runtimes and errors. It is important to test your code/feature/fix locally. -->"
+            }
+        ],
+        "Wouju": [
+            {
+                "balance": "Gave, almost all, combat spells invocations"
+            }
+        ],
+        "PineappleMan929": [
+            {
+                "rscadd": "Middle-aged and old servants"
+            },
+            {
+                "balance": "humens can't intrinsically read anymore."
+            }
+        ]
+    },
+    "2025-11-23": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Preferences shows properly the roles that halfling can or cannot play."
+            }
+        ],
+        "snowyseshi": [
+            {
+                "bugfix": "fixed inquisitors recieving church key"
+            },
+            {
+                "rscadd": "Added new Prafekt class"
+            },
+            {
+                "rscadd": "Changed creed's parent and removed some of its intents"
+            },
+            {
+                "balance": "Inquisition enchant doesn't give defense anymore"
+            },
+            {
+                "balance": "reduced katar force and pen a bit"
+            },
+            {
+                "map": "change path of a mapped in weapon in the bog"
+            }
+        ],
+        "SmokingCrackForChrist": [
+            {
+                "balance": "Gives the Inhumen Iconoclast gorgets."
+            }
+        ],
+        "tired-wired": [
+            {
+                "rscadd": "Adds Extremist Psydonism."
+            }
+        ]
+    },
+    "2025-11-24": {
+        "Somniworld": [
+            {
+                "qol": "Adds a description to nocshades and the confessor mask regarding night-vision + the ability to put nocshades in the confessor's mask."
+            },
+            {
+                "bugfix": "Fixes the Noc-Shades not updating your nightvision when turned on/off or taken off."
+            },
+            {
+                "bugfix": "The Oratorium reliquary menu no longer is French"
+            },
+            {
+                "rscadd": "Grants Necran clergy a new T2 miracle : Locate corpse, which allows them to find bodies, though said body may be a deadite."
+            }
+        ],
+        "Snack-Max": [
+            {
+                "rscadd": "New Mercenary: Elvish Housecarl"
+            }
+        ],
+        "Gatsby229": [
+            {
+                "rscadd": "Adds throat slitting"
+            }
+        ],
+        "KevinfromHP": [
+            {
+                "rscdel": "Longer Week is disabled unless an admin re-enables it for the time being."
+            },
+            {
+                "qol": "Removed the timelock from the tomb of Matthios"
+            }
+        ]
     }
 }
