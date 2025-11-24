@@ -111,7 +111,6 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.modifier_set_stat_to("[type]", STATKEY_STR, 16)
 			dreamer.modifier_set_stat_to("[type]", STATKEY_CON, 16)
 			dreamer.modifier_set_stat_to("[type]", STATKEY_END, 16)
-			dreamer.AddComponent(/datum/component/theme_music)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			dreamer.remove_stat_modifier(STATMOD_AGE)
 			if(heart) // clear any inscryptions, in case of being made maniac midround
@@ -124,6 +123,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		owner.current.refresh_looping_ambience()
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
+	owner.AddComponent(/datum/component/theme_music)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
@@ -152,8 +152,10 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		for(var/trait in final_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		owner.current.clear_fullscreen("maniac")
-		qdel(owner.GetComponent(/datum/component/theme_music))
 	QDEL_LIST(wonders_made)
+	var/datum/component/themesong = owner.GetComponent(/datum/component/theme_music)
+	if(themesong)
+		themesong.RemoveComponent()
 	wonders_made = null
 	owner.learned_recipes -= recipe_progression
 	owner.special_role = null
