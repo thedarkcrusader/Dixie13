@@ -9,33 +9,40 @@
 	var/slowdown_size = 200
 	var/collapse_size = 1000
 
-	// Papameat spawning
-	var/papameat_spawn_threshold = 50 // Minimum vines before first papameat
-	var/papameat_spawn_interval = 150 // Spawn new papameat every X vines
-	var/max_papameats = 2 // Maximum papameats at once
+	// Papameat spawning - DYNAMIC BASED ON AREA SIZE
+	var/papameat_spawn_threshold = 30 // Minimum vines before first papameat
+	var/papameat_vines_per_papameat = 100 // How many vines support each papameat
 	var/list/obj/structure/meatvine/papameat/papameats = list()
 
 	// Organic matter feeding system
 	var/organic_matter = 0
-	var/organic_matter_max = 1000
+	var/organic_matter_max = 2000
+	var/organic_matter_per_spread = 2 // Cost per spread when accelerated
 	var/organic_matter_per_humor = 250 // Cost to spawn a humor node
+
+	// Feed tracking for humor spawning
+	var/total_feeds = 0 // Total number of times we've been fed
+	var/feeds_per_humor = 3 // Spawn humor every X feeds
 	var/humor_spawn_chance = 5 // Base chance per process tick when at max matter
 
 	// Wall generation system
-	var/list/wall_segments = list() // Tracks active wall building
+	var/list/wall_segments = list()
 	var/wall_generation_cooldown = 0
-	var/min_wall_generation_interval = 50 // Minimum vines before attempting new wall
-	var/wall_budget = 0 // Accumulates over time to trigger wall generation
-	var/wall_budget_per_tick = 0.5 // How much budget we gain per process tick
-	var/wall_cost = 10 // Cost to start a new wall segment
+	var/min_wall_generation_interval = 50
+	var/wall_budget = 0
+	var/wall_budget_per_tick = 0.5
+	var/wall_cost = 10
 
 	// Wall pattern preferences
 	var/list/wall_patterns = list(
-		"corridor" = 3,      // Parallel walls creating corridors
-		"chamber" = 2,       // Enclosed rooms
-		"snake" = 4,         // Winding single walls
-		"junction" = 2       // T or + shaped intersections
+		"corridor" = 3,
+		"chamber" = 2,
+		"snake" = 4,
+		"junction" = 2
 	)
+
+	// Papameat death mechanics
+	var/vines_lost_per_papameat_death = 150 // How many vines die when a papameat is destroyed
 
 /obj/effect/meatvine_controller/Initialize(mapload, ...)
 	. = ..()
@@ -68,17 +75,23 @@
 	if(istype(SV, /obj/structure/meatvine/papameat))
 		papameats += SV
 
-/obj/effect/meatvine_controller/proc/can_spawn_papameat()
+/obj/effect/meatvine_controller/proc/get_max_papameats()
+	// Calculate maximum papameats based on current vine count
 	if(vines.len < papameat_spawn_threshold)
+		return 0
+
+	return max(1, round((vines.len - papameat_spawn_threshold) / papameat_vines_per_papameat) + 1)
+
+/obj/effect/meatvine_controller/proc/can_spawn_papameat()
+	var/max_papameats = get_max_papameats()
+
+	if(max_papameats <= 0)
 		return FALSE
+
 	if(papameats.len >= max_papameats)
 		return FALSE
 
-	// Calculate how many papameats we should have based on size
-	var/expected_papameats = round((vines.len - papameat_spawn_threshold) / papameat_spawn_interval) + 1
-	expected_papameats = min(expected_papameats, max_papameats)
-
-	return papameats.len < expected_papameats
+	return TRUE
 
 /obj/effect/meatvine_controller/proc/try_spawn_papameat()
 	if(!can_spawn_papameat())
@@ -146,11 +159,16 @@
 
 /obj/effect/meatvine_controller/proc/feed_organic_matter(amount)
 	organic_matter = min(organic_matter + amount, organic_matter_max)
+	total_feeds++
 
 	// Visual feedback
 	var/turf/T = get_turf(src)
 	if(T)
 		T.pollute_turf(/datum/pollutant/rot, 50)
+
+	// Check if we should spawn humor based on feed count
+	if(total_feeds >= feeds_per_humor)
+		try_spawn_humor_from_feeds()
 
 /obj/effect/meatvine_controller/proc/try_spawn_humor()
 	if(organic_matter < organic_matter_per_humor)
@@ -159,6 +177,17 @@
 	if(!prob(humor_spawn_chance))
 		return FALSE
 
+	return spawn_humor_node()
+
+/obj/effect/meatvine_controller/proc/try_spawn_humor_from_feeds()
+	// Guaranteed humor spawn based on feed count
+	if(total_feeds < feeds_per_humor)
+		return FALSE
+
+	total_feeds -= feeds_per_humor
+	return spawn_humor_node()
+
+/obj/effect/meatvine_controller/proc/spawn_humor_node()
 	// Find a suitable location near a papameat or the controller
 	var/list/spawn_locations = list()
 
@@ -230,9 +259,65 @@
 
 	qdel(table)
 
-	organic_matter -= organic_matter_per_humor
+	// Only consume organic matter if we spawned from matter (not feeds)
+	if(organic_matter >= organic_matter_per_humor)
+		organic_matter -= organic_matter_per_humor
 
 	return TRUE
+
+/obj/effect/meatvine_controller/proc/papameat_destroyed(obj/structure/meatvine/papameat/dead_papameat)
+	// Remove from tracking
+	papameats -= dead_papameat
+
+	// Kill a portion of the vines
+	var/vines_to_kill = min(vines_lost_per_papameat_death, vines.len - 1) // Always leave at least 1
+
+	if(vines_to_kill <= 0)
+		return
+
+	// Prioritize killing vines farthest from remaining papameats
+	var/list/vine_distances = list()
+
+	for(var/obj/structure/meatvine/SV in vines)
+		if(istype(SV, /obj/structure/meatvine/papameat))
+			continue // Don't kill other papameats
+
+		var/min_dist = INFINITY
+
+		// Find distance to nearest remaining papameat
+		for(var/obj/structure/meatvine/papameat/PM in papameats)
+			var/dist = get_dist(SV, PM)
+			if(dist < min_dist)
+				min_dist = dist
+
+		// If no papameats left, just use distance from controller
+		if(min_dist == INFINITY)
+			min_dist = get_dist(SV, src)
+
+		vine_distances[SV] = min_dist
+
+	// Sort by distance (farthest first)
+	var/list/sorted_vines = sortTim(vine_distances, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+
+	// Kill the farthest vines
+	var/killed = 0
+	for(var/obj/structure/meatvine/SV in sorted_vines)
+		if(killed >= vines_to_kill)
+			break
+
+		SV.rot()
+		vines -= SV
+		growth_queue -= SV
+
+		killed++
+
+	// Visual effect at papameat location
+	var/turf/death_turf = get_turf(dead_papameat)
+	if(death_turf)
+		death_turf.pollute_turf(/datum/pollutant/rot, 200)
+		// Could add more visual effects here
+	if(!length(papameats))
+		die()
 
 /obj/effect/meatvine_controller/process()
 	if(!vines.len)
@@ -242,11 +327,11 @@
 		qdel(src)
 		return
 
-	// Try to spawn papameat
-	if(prob(10)) // 10% chance per tick
+	// Try to spawn papameat if we need more
+	if(prob(10))
 		try_spawn_papameat()
 
-	// Try to spawn humor if conditions are met
+	// Try to spawn humor from organic matter
 	if(organic_matter >= organic_matter_per_humor)
 		try_spawn_humor()
 
@@ -279,7 +364,15 @@
 			vines -= SV
 		else
 			queue_end += SV
-			if(prob(20))
+
+			// Enhanced growth chance with organic matter
+			var/growth_chance = 20
+			var/can_use_matter = organic_matter >= organic_matter_per_spread
+
+			if(can_use_matter)
+				growth_chance = 40 // Double chance when we have organic matter
+
+			if(prob(growth_chance))
 				SV.grow()
 				continue
 			else
@@ -290,8 +383,16 @@
 							SV.buckle_mob(C)
 						else
 							C.try_wrap_up("meat", "meatthings")
+
 			if(!reached_collapse_size)
-				SV.spread()
+				// Try to spread with organic matter boost
+				if(can_use_matter && prob(50)) // 50% chance to use matter for spread
+					organic_matter -= organic_matter_per_spread
+					SV.spread()
+					SV.spread() // Spread twice when using organic matter
+				else
+					SV.spread()
+
 		if(i >= length)
 			break
 	growth_queue = growth_queue + queue_end
@@ -302,7 +403,7 @@
 
 		// Try to generate walls when we have budget
 		if(wall_budget >= wall_cost && wall_generation_cooldown <= 0)
-			if(prob(15)) // 15% chance per tick when budget available
+			if(prob(15))
 				attempt_wall_generation()
 
 	// Update existing wall segments
@@ -335,7 +436,7 @@
 			if(isfloorturf(T) && !locate(/obj/structure/meatvine/heavy, T))
 				open_count++
 
-		if(open_count >= 2) // At least 2 open cardinal directions
+		if(open_count >= 2)
 			candidates += SV
 
 	if(!length(candidates))
@@ -357,28 +458,25 @@
 			segment = generate_junction(start_loc)
 
 	if(segment)
-		// Validate that this segment won't trap structures
 		if(!validate_wall_segment(segment))
 			qdel(segment)
 			return FALSE
 
 		wall_segments += segment
 		wall_budget -= wall_cost
-		wall_generation_cooldown = rand(30, 60) // Cooldown between wall generations
+		wall_generation_cooldown = rand(30, 60)
 		return TRUE
 
 	return FALSE
 
 /obj/effect/meatvine_controller/proc/generate_corridor(turf/start_loc)
-	// Creates two parallel walls forming a corridor
 	var/direction = pick(GLOB.cardinals)
 	var/perpendicular = turn(direction, pick(90, -90))
 
 	var/datum/wall_segment/segment = new()
 	segment.pattern_type = "corridor"
-	segment.growth_rate = 1 // One wall piece per tick
+	segment.growth_rate = 1
 
-	// Build path for first wall
 	var/turf/current = start_loc
 	var/length = rand(4, 8)
 	for(var/i = 1 to length)
@@ -388,7 +486,6 @@
 		segment.planned_walls += next
 		current = next
 
-	// Build parallel wall
 	current = get_step(start_loc, perpendicular)
 	if(!can_place_wall_at(current))
 		current = get_step(start_loc, turn(perpendicular, 180))
@@ -405,7 +502,6 @@
 	return length(segment.planned_walls) >= 4 ? segment : null
 
 /obj/effect/meatvine_controller/proc/generate_chamber(turf/start_loc)
-	// Creates a rectangular enclosed space
 	var/datum/wall_segment/segment = new()
 	segment.pattern_type = "chamber"
 	segment.growth_rate = 1
@@ -413,7 +509,6 @@
 	var/width = rand(3, 6)
 	var/height = rand(3, 6)
 
-	// Top and bottom walls
 	for(var/x = 0 to width)
 		var/turf/top = locate(start_loc.x + x, start_loc.y + height, start_loc.z)
 		var/turf/bottom = locate(start_loc.x + x, start_loc.y, start_loc.z)
@@ -423,7 +518,6 @@
 		if(can_place_wall_at(bottom))
 			segment.planned_walls += bottom
 
-	// Side walls (skip corners already placed)
 	for(var/y = 1 to height - 1)
 		var/turf/left = locate(start_loc.x, start_loc.y + y, start_loc.z)
 		var/turf/right = locate(start_loc.x + width, start_loc.y + y, start_loc.z)
@@ -433,14 +527,12 @@
 		if(can_place_wall_at(right))
 			segment.planned_walls += right
 
-	// Leave a gap for entrance/exit
 	if(length(segment.planned_walls) > 3)
 		segment.planned_walls -= pick(segment.planned_walls)
 
 	return length(segment.planned_walls) >= 6 ? segment : null
 
 /obj/effect/meatvine_controller/proc/generate_snake_wall(turf/start_loc)
-	// Creates a winding single wall
 	var/datum/wall_segment/segment = new()
 	segment.pattern_type = "snake"
 	segment.growth_rate = 1
@@ -453,7 +545,6 @@
 		var/turf/next = get_step(current, current_dir)
 
 		if(!can_place_wall_at(next))
-			// Try turning
 			var/new_dir = pick(turn(current_dir, 90), turn(current_dir, -90))
 			next = get_step(current, new_dir)
 
@@ -464,29 +555,25 @@
 		segment.planned_walls += next
 		current = next
 
-		// Random chance to turn
 		if(prob(30))
 			current_dir = pick(turn(current_dir, 90), turn(current_dir, -90))
 
 	return length(segment.planned_walls) >= 4 ? segment : null
 
 /obj/effect/meatvine_controller/proc/generate_junction(turf/start_loc)
-	// Creates a T or + shaped intersection
 	var/datum/wall_segment/segment = new()
 	segment.pattern_type = "junction"
 	segment.growth_rate = 1
 
 	var/main_dir = pick(GLOB.cardinals)
-	var/make_plus = prob(50) // 50% chance for + instead of T
+	var/make_plus = prob(50)
 
-	// Main axis
 	var/length = rand(3, 5)
 	for(var/i = -length to length)
 		var/turf/T = get_step_multiz(start_loc, main_dir, i)
 		if(can_place_wall_at(T))
 			segment.planned_walls += T
 
-	// Cross axis (one or both directions)
 	var/cross_dir = turn(main_dir, 90)
 	for(var/i = 1 to length)
 		var/turf/T = get_step_multiz(start_loc, cross_dir, i)
@@ -508,26 +595,21 @@
 	if(T.is_blocked_turf())
 		return FALSE
 
-	// Don't place walls on existing heavy vines
 	if(locate(/obj/structure/meatvine/heavy, T))
 		return FALSE
 
-	// Don't place too close to papameat
 	for(var/obj/structure/meatvine/papameat/PM in range(3, T))
 		return FALSE
 
-	// Don't place on lairs
 	if(locate(/obj/structure/meatvine/lair, T))
 		return FALSE
 
 	return TRUE
 
 /obj/effect/meatvine_controller/proc/validate_wall_segment(datum/wall_segment/segment)
-	// Check if this wall segment would trap important structures
 	if(!length(segment.planned_walls))
 		return FALSE
 
-	// Get all important structures we need to protect
 	var/list/protected_structures = list()
 	for(var/obj/structure/meatvine/papameat/PM in papameats)
 		if(PM.master == src)
@@ -538,25 +620,21 @@
 			protected_structures += L
 
 	if(!length(protected_structures))
-		return TRUE // No structures to protect, segment is fine
+		return TRUE
 
-	// Check each protected structure
 	for(var/obj/structure/meatvine/protected in protected_structures)
 		if(would_enclose_structure(protected, segment.planned_walls))
-			return FALSE // This segment would trap something
+			return FALSE
 
 	return TRUE
 
 /obj/effect/meatvine_controller/proc/would_enclose_structure(obj/structure/meatvine/structure, list/new_walls)
-	// Check if adding these walls would completely box in the structure
 	var/turf/center = get_turf(structure)
 	if(!center)
 		return FALSE
 
-	// For papameats, check a larger area (5x5)
 	var/check_range = istype(structure, /obj/structure/meatvine/papameat) ? 3 : 2
 
-	// Check if structure has at least 2 escape routes after walls are placed
 	var/escape_routes = 0
 	var/list/checked_dirs = list()
 
@@ -566,29 +644,24 @@
 			checked_dirs += direction
 
 			if(escape_routes >= 2)
-				return FALSE // Has multiple exits, not enclosed
+				return FALSE
 
-	// If we have less than 2 escape routes, it's getting enclosed
 	return escape_routes < 2
 
 /obj/effect/meatvine_controller/proc/has_path_out(turf/start, initial_direction, list/planned_walls, max_distance = 3)
-	// Check if there's a path in this direction that doesn't hit a wall
 	var/turf/current = start
 
 	for(var/i = 1 to max_distance)
 		current = get_step(current, initial_direction)
 		if(!current || !isfloorturf(current))
-			return FALSE // Hit a real wall or edge
+			return FALSE
 
-		// Check if this turf will become a wall
 		if(current in planned_walls)
-			return FALSE // Path blocked by planned wall
+			return FALSE
 
-		// Check if there's already a heavy wall here
 		if(locate(/obj/structure/meatvine/heavy, current))
-			return FALSE // Path blocked by existing wall
+			return FALSE
 
-	// Made it through the distance without hitting walls
 	return TRUE
 
 /obj/effect/meatvine_controller/proc/update_wall_segments()
@@ -598,16 +671,12 @@
 			qdel(segment)
 			continue
 
-		// Before growing, revalidate that we're not about to trap something
-		// Check every few walls placed
 		if(length(segment.planned_walls) % 3 == 0)
 			if(!validate_wall_segment(segment))
-				// Abort this segment, it's becoming problematic
 				wall_segments -= segment
 				qdel(segment)
 				continue
 
-		// Grow walls from this segment
 		for(var/i = 1 to segment.growth_rate)
 			if(!length(segment.planned_walls))
 				break
@@ -615,23 +684,20 @@
 			var/turf/T = segment.planned_walls[1]
 			segment.planned_walls -= T
 
-			// Check if there's already a floor vine to convert
 			var/obj/structure/meatvine/floor/existing = locate() in T
 			if(existing && !istype(existing, /obj/structure/meatvine/heavy))
 				vines -= existing
 				growth_queue -= existing
 				qdel(existing)
 
-			// Place wall
 			if(can_place_wall_at(T))
 				spawn_spacevine_piece(T, /obj/structure/meatvine/heavy)
 
 /datum/wall_segment
 	var/pattern_type = "generic"
 	var/list/planned_walls = list()
-	var/growth_rate = 1 // How many walls to place per tick
+	var/growth_rate = 1
 
-// Helper proc for getting stepped location with distance
 /obj/effect/meatvine_controller/proc/get_step_multiz(turf/start, direction, distance)
 	var/turf/current = start
 	for(var/i = 1 to abs(distance))

@@ -75,7 +75,7 @@
 
 /obj/structure/meatvine/Crossed(atom/movable/AM)
 	. = ..()
-	if(istype(AM, /mob/living/simple_animal/hostile/meatvine))
+	if(istype(AM, /mob/living/simple_animal/hostile/retaliate/meatvine))
 		var/mob/living/L = AM
 		// Remove bounding component when entering a meatvine
 		var/datum/component/bounded/B = L.GetComponent(/datum/component/bounded)
@@ -87,7 +87,7 @@
 
 /obj/structure/meatvine/Uncrossed(atom/movable/AM)
 	. = ..()
-	if(istype(AM, /mob/living/simple_animal/hostile/meatvine))
+	if(istype(AM, /mob/living/simple_animal/hostile/retaliate/meatvine))
 		var/mob/living/L = AM
 		// Check if they're moving to a non-meatvine turf
 		var/turf/new_loc = get_turf(L)
@@ -137,7 +137,7 @@
 			if(isliving(thing))
 				var/mob/living/Mob = thing
 
-				if(Mob.stat != DEAD || istype(Mob, /mob/living/simple_animal/hostile/meatvine))
+				if(Mob.stat != DEAD || istype(Mob, /mob/living/simple_animal/hostile/retaliate/meatvine))
 					continue
 
 				Mob.try_wrap_up("meat", "meatthings")
@@ -158,6 +158,25 @@
 
 	for(var/obj/structure/meatvineborder/Vine in T)
 		Vine.color = "#55ffff"
+
+
+/obj/structure/meatvine/proc/restore_vine(obj/effect/meatvine_controller/new_master)
+	if(!new_master)
+		return FALSE
+
+	color = initial(color)
+
+	master = new_master
+	new_master.vines += src
+	new_master.growth_queue += src
+
+	var/turf/T = get_turf(src)
+	for(var/obj/structure/meatvineborder/Vine in T)
+		Vine.color = initial(Vine.color)
+
+	update_borders()
+
+	return TRUE
 
 /obj/structure/meatvine/update_overlays()
 	. = ..()
@@ -202,7 +221,12 @@
 	return
 
 /obj/structure/meatvine/proc/transfer_feromones(amount)
-	if(prob(5))
+	// Enhanced spread chance with organic matter
+	var/spread_chance = 5
+	if(master && master.organic_matter >= master.organic_matter_per_spread)
+		spread_chance = 15 // Triple the chance when we have organic matter
+
+	if(prob(spread_chance))
 		spread()
 		grow()
 
@@ -214,11 +238,10 @@
 	for(var/direction in GLOB.cardinals)
 		var/turf/step = get_step(T, direction)
 		var/obj/structure/meatvine/Vine = locate(/obj/structure/meatvine, step)
-
 		if(!Vine)
 			continue
-
 		Vine.transfer_feromones(amount - 1)
+
 
 /obj/structure/meatvine/proc/spread()
 	if(!master || master.isdying)
@@ -226,7 +249,14 @@
 
 	var/turf/T = src.loc
 	var/direction = pick(GLOB.cardinals)
-	var/step = get_step(src,direction)
+	var/step = get_step(src, direction)
+
+	// Check if we can use organic matter to spread
+	var/using_organic_matter = FALSE
+	if(master.organic_matter >= master.organic_matter_per_spread)
+		using_organic_matter = TRUE
+		master.organic_matter -= master.organic_matter_per_spread
+
 	if(isopenturf(step))
 		var/turf/open/floor/F = step
 		while(isopenspace(F))
@@ -241,11 +271,27 @@
 		if(!isfloorturf(F))
 			return
 
-		if(!locate(/obj/structure/meatvine,F))
+		// Check if there's a rotted vine we can restore
+		var/obj/structure/meatvine/existing = locate(/obj/structure/meatvine, F)
+		if(existing && !existing.master)
+			// This is a rotted vine, restore it!
+			existing.restore_vine(master)
+
+			// If we used organic matter, still try bonus spread
+			if(using_organic_matter && prob(75))
+				attempt_bonus_spread(T, direction)
+			return
+
+		if(!existing)
 			if(master)
 				if(!can_enter_turf(F))
 					return
+
 				master.spawn_spacevine_piece(F)
+
+				// If we used organic matter, spread again in a different direction
+				if(using_organic_matter && prob(75))
+					attempt_bonus_spread(T, direction)
 				return
 	else
 		var/obstructed_dir = get_dir(T, step)
@@ -255,6 +301,36 @@
 
 		var/obj/structure/meatvineborder/Vine = new /obj/structure/meatvineborder(src.loc)
 		Vine.dir = obstructed_dir
+
+/obj/structure/meatvine/proc/attempt_bonus_spread(turf/origin, avoided_direction)
+	if(!master)
+		return
+
+	var/list/other_dirs = GLOB.cardinals.Copy()
+	other_dirs -= avoided_direction
+	if(!length(other_dirs))
+		return
+
+	var/bonus_dir = pick(other_dirs)
+	var/turf/bonus_step = get_step(origin, bonus_dir)
+	if(!isopenturf(bonus_step))
+		return
+
+	var/turf/open/floor/BF = bonus_step
+	while(isopenspace(BF))
+		BF = GET_TURF_BELOW(BF)
+
+	if(!isfloorturf(BF))
+		return
+
+	// Check for rotted vine first
+	var/obj/structure/meatvine/existing = locate(/obj/structure/meatvine, BF)
+	if(existing && !existing.master)
+		existing.restore_vine(master)
+		return
+
+	if(!existing && can_enter_turf(BF))
+		master.spawn_spacevine_piece(BF)
 
 /obj/structure/meatvine/proc/can_enter_turf(turf/output_turf)
 	if(output_turf.is_blocked_turf())

@@ -25,8 +25,11 @@
 	set_light(3, 3, 1, l_color = "#ff6533")
 
 /obj/structure/meatvine/papameat/Destroy()
+	// Notify master before destruction
+	if(master)
+		master.papameat_destroyed(src)
+
 	puff_gas(TRUE)
-	master.die()
 	STOP_PROCESSING(SSfastprocess, src)
 	qdel(Particle)
 	return ..()
@@ -77,7 +80,7 @@
 				transfer_feromones(5)
 
 			if(prob(1))
-				var/mobtype = pick(/mob/living/simple_animal/hostile/meatvine, /mob/living/simple_animal/hostile/meatvine/range)
+				var/mobtype = pick(/mob/living/simple_animal/hostile/retaliate/meatvine, /mob/living/simple_animal/hostile/retaliate/meatvine/range)
 				new mobtype(loc)
 
 			if(healed && (master.vines.len <= master.collapse_size) && master.reached_collapse_size)
@@ -102,11 +105,11 @@
 	if(.)
 		// Send signal to all nearby mobs when damaged
 		var/integrity_percent = atom_integrity / max_integrity
-		SEND_SIGNAL(src, COMSIG_PAPAMEAT_DAMAGED, src, integrity_percent)
+		SEND_GLOBAL_SIGNAL(COMSIG_PAPAMEAT_DAMAGED, src, integrity_percent)
 
 		// Send critical signal if below threshold
 		if(integrity_percent < PAPAMEAT_CRITICAL_HEALTH)
-			SEND_SIGNAL(src, COMSIG_PAPAMEAT_CRITICAL, src)
+			SEND_GLOBAL_SIGNAL(COMSIG_PAPAMEAT_CRITICAL, src)
 
 /obj/structure/meatvine/papameat/proc/consume_mob(mob/living/sacrifice)
 	if(!istype(sacrifice) || sacrifice.stat != DEAD)

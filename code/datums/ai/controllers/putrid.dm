@@ -42,7 +42,7 @@
 		return
 
 	// Check distance - only respond if within range
-	if(get_dist(our_mob, damaged_papameat) > 30)
+	if(get_dist_3d(our_mob, damaged_papameat) > 30)
 		return
 
 	set_blackboard_key(BB_PAPAMEAT_TARGET, damaged_papameat)
@@ -55,7 +55,7 @@
 		return
 
 	// Check if we should sacrifice ourselves
-	if(get_dist(our_mob, critical_papameat) > 20)
+	if(get_dist_3d(our_mob, critical_papameat) > 20)
 		return
 
 	set_blackboard_key(BB_PAPAMEAT_TARGET, critical_papameat)

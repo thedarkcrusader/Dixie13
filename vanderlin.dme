@@ -1815,6 +1815,7 @@
 #include "code\game\objects\structures\putrid\big_meat.dm"
 #include "code\game\objects\structures\putrid\border.dm"
 #include "code\game\objects\structures\putrid\meatvine.dm"
+#include "code\game\objects\structures\putrid\mobs.dm"
 #include "code\game\objects\structures\redstone\_base.dm"
 #include "code\game\objects\structures\redstone\comparator.dm"
 #include "code\game\objects\structures\redstone\dispenser.dm"
