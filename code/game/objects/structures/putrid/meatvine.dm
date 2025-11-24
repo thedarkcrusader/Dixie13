@@ -38,6 +38,7 @@
 	resistance_flags = CAN_BE_HIT
 
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/Mob
+	var/mob_death_registered = FALSE
 
 /obj/structure/meatvine/lair/Initialize()
 	. = ..()
@@ -47,6 +48,10 @@
 
 /obj/structure/meatvine/lair/Destroy()
 	puff_gas(TRUE)
+	if(Mob && !QDELETED(Mob))
+		UnregisterSignal(Mob, COMSIG_LIVING_DEATH)
+	if(master)
+		master.lair_destroyed(src)
 
 	return ..()
 
@@ -78,12 +83,8 @@
 	if(!Mob)
 		var/mobtype = pick(/mob/living/simple_animal/hostile/retaliate/meatvine, /mob/living/simple_animal/hostile/retaliate/meatvine/range)
 		Mob = new mobtype(loc)
+		register_spawned_mob(Mob)
 		puff_gas()
-		return
-
-	if(Mob.stat == DEAD)
-		qdel(Mob.GetComponent(/datum/component/bounded))
-		Mob = null
 		return
 
 	Mob.adjustBruteLoss(-10)
@@ -91,6 +92,36 @@
 	Mob.adjustOxyLoss(-5)
 
 	puff_gas()
+
+/obj/structure/meatvine/lair/proc/register_spawned_mob(mob/living/M)
+	if(!M || QDELETED(M))
+		return
+
+	Mob = M
+	Mob.master = master
+	mob_death_registered = TRUE
+	RegisterSignal(M, COMSIG_LIVING_DEATH, PROC_REF(on_mob_death))
+
+/obj/structure/meatvine/lair/proc/on_mob_death(mob/living/source)
+	SIGNAL_HANDLER
+
+	// Convert lair back to regular floor
+	var/turf/T = get_turf(src)
+	if(T && master)
+		// Remove from master's lists
+		master.lairs -= src
+		master.vines -= src
+		master.growth_queue -= src
+
+		// Store master reference before deletion
+		var/obj/effect/meatvine_controller/saved_master = master
+
+		// Delete the lair
+		master = null
+		qdel(src)
+
+		// Spawn regular floor in its place
+		saved_master.spawn_spacevine_piece(T, /obj/structure/meatvine/floor)
 
 /obj/structure/meatvine/lair/rot()
 	. = ..()

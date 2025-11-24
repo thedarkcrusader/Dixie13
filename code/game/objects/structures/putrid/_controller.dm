@@ -49,6 +49,11 @@
 	var/bridge_request_cooldown = 0
 	var/bridge_request_interval = 10
 
+	var/list/obj/structure/meatvine/lair/lairs = list()
+	var/lair_spawn_threshold = 10 // Minimum vines before first lair
+	var/lair_vines_per_lair = 30 // How many vines support each lair
+	var/min_lair_spacing = 5 // Minimum distance between lairs
+
 /obj/effect/meatvine_controller/Initialize(mapload, ...)
 	. = ..()
 	if(!isfloorturf(loc))
@@ -79,6 +84,44 @@
 	// Track papameats separately
 	if(istype(SV, /obj/structure/meatvine/papameat))
 		papameats += SV
+	if(istype(SV, /obj/structure/meatvine/lair))
+		lairs += SV
+
+
+/obj/effect/meatvine_controller/proc/get_max_lairs()
+	// Calculate maximum lairs based on current vine count
+	if(vines.len < lair_spawn_threshold)
+		return 0
+
+	return max(1, round((vines.len - lair_spawn_threshold) / lair_vines_per_lair) + 1)
+
+/obj/effect/meatvine_controller/proc/can_spawn_lair()
+	var/max_lairs = get_max_lairs()
+
+	if(max_lairs <= 0)
+		return FALSE
+
+	if(lairs.len >= max_lairs)
+		return FALSE
+
+	return TRUE
+
+/obj/effect/meatvine_controller/proc/can_spawn_lair_at(turf/T)
+	// Check if we can spawn any lairs at all
+	if(!can_spawn_lair())
+		return FALSE
+
+	// Check spacing from existing lairs
+	for(var/obj/structure/meatvine/lair/existing_lair in lairs)
+		if(get_dist(T, existing_lair) < min_lair_spacing)
+			return FALSE
+
+	// Check spacing from papameats (lairs shouldn't block papameat areas)
+	for(var/obj/structure/meatvine/papameat/PM in papameats)
+		if(get_dist(T, PM) < 8)
+			return FALSE
+
+	return TRUE
 
 /obj/effect/meatvine_controller/proc/get_max_papameats()
 	// Calculate maximum papameats based on current vine count
@@ -145,6 +188,11 @@
 	spawn_spacevine_piece(spawn_loc, /obj/structure/meatvine/papameat)
 
 	return TRUE
+
+
+/obj/effect/meatvine_controller/proc/lair_destroyed(obj/structure/meatvine/lair/dead_lair)
+	// Remove from tracking
+	lairs -= dead_lair
 
 /obj/effect/meatvine_controller/proc/check_papameat_clearance(turf/center)
 	// Check 5x5 area centered on the turf (2 tiles in each direction)
@@ -425,6 +473,10 @@
 	if(bridge_request_cooldown <= 0 && prob(20))
 		check_for_bridge_opportunities()
 
+	// Clean up dead lairs from tracking list
+	for(var/obj/structure/meatvine/lair/L in lairs)
+		if(QDELETED(L) || L.master != src)
+			lairs -= L
 
 /obj/effect/meatvine_controller/proc/check_for_bridge_opportunities()
 	if(!length(vines))
@@ -486,46 +538,11 @@
 
 	blocked_spread_locations += request
 
-	// Signal nearby mobs
-	for(var/mob/living/simple_animal/hostile/retaliate/meatvine/defender in range(30, blocked_turf))
-		if(!defender.ai_controller)
-			continue
-
-		var/datum/ai_controller/meatvine_defender/ai = defender.ai_controller
-		if(!istype(ai))
-			continue
-
-		// Don't interrupt critical tasks
-		if(ai.blackboard[BB_PAPAMEAT_HEALING])
-			continue
-		if(ai.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
-			continue
-
-		// Assign this bridge request
-		ai.set_blackboard_key(BB_BRIDGE_TARGET, request)
-		return
-
 /obj/effect/meatvine_controller/proc/mark_obstacle_for_destruction(atom/obstacle)
 	if(obstacle in obstacle_targets)
 		return
 
 	obstacle_targets += obstacle
-
-	// Signal nearby mobs to attack it
-	for(var/mob/living/simple_animal/hostile/retaliate/meatvine/defender in range(30, obstacle))
-		if(!defender.ai_controller)
-			continue
-
-		var/datum/ai_controller/meatvine_defender/ai = defender.ai_controller
-		if(!istype(ai))
-			continue
-
-		// Don't interrupt critical tasks
-		if(ai.blackboard[BB_PAPAMEAT_HEALING])
-			continue
-
-		ai.set_blackboard_key(BB_OBSTACLE_TARGET, obstacle)
-		return
 
 /obj/effect/meatvine_controller/proc/check_obstacle_destroyed(atom/obstacle)
 	if(obstacle in obstacle_targets)

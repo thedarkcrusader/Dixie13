@@ -22,6 +22,8 @@
 
 	pass_flags = PASSTABLE
 
+	var/obj/effect/meatvine_controller/master
+
 /mob/living/simple_animal/hostile/retaliate/meatvine/Destroy()
 	puff_gas()
 	var/turf/turf = get_turf(src)

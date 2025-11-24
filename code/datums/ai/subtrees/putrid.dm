@@ -101,8 +101,13 @@
 	if(controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
 		return
 
-	// Check if we have a bridge request
-	var/datum/bridge_request/request = controller.blackboard[BB_BRIDGE_TARGET]
+	// Check if we have an obstacle target
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+	if(!length(mob?.master?.blocked_spread_locations))
+		return
+	var/datum/bridge_request/request = pick(mob.master.blocked_spread_locations)
+	controller.set_blackboard_key(BB_BRIDGE_TARGET, request)
+
 	if(!request || !request.target_location)
 		controller.clear_blackboard_key(BB_BRIDGE_TARGET)
 		controller.clear_blackboard_key(BB_BRIDGING)
@@ -131,7 +136,11 @@
 		return
 
 	// Check if we have an obstacle target
-	var/atom/obstacle = controller.blackboard[BB_OBSTACLE_TARGET]
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+	if(!length(mob?.master?.obstacle_targets))
+		return
+	var/atom/obstacle = pick(mob.master.obstacle_targets)
+	controller.set_blackboard_key(BB_OBSTACLE_TARGET, obstacle)
 	if(!obstacle || QDELETED(obstacle))
 		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
 		controller.clear_blackboard_key(BB_ATTACKING_OBSTACLE)

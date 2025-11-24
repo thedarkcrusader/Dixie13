@@ -126,7 +126,7 @@
 		rot()
 		return
 
-	if(prob(1))
+	if(prob(1) && master.can_spawn_lair_at(T))
 		master.spawn_spacevine_piece(T, /obj/structure/meatvine/lair)
 		qdel(src)
 	else
@@ -145,8 +145,9 @@
 			else
 				qdel(thing)
 
-			master?.spawn_spacevine_piece(T, /obj/structure/meatvine/lair)
-			qdel(src)
+			if(master.can_spawn_lair_at(T))
+				master?.spawn_spacevine_piece(T, /obj/structure/meatvine/lair)
+				qdel(src)
 
 	return
 
