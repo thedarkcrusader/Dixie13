@@ -120,10 +120,10 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 				heart.maniacs = list()
 			dreamer.remove_stress(/datum/stress_event/saw_wonder)
 			dreamer.remove_curse(/datum/curse/zizo)
+			dreamer.AddComponent(/datum/component/theme_music)
 		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		owner.current.refresh_looping_ambience()
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
-	owner.AddComponent(/datum/component/theme_music)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
@@ -144,6 +144,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.set_patron(/datum/patron/inhumen/zizo)
 			dreamer.cmode_music = old_cm
 			dreamer.remove_stat_modifier("[type]")
+			var/datum/component/themesong = dreamer.GetComponent(/datum/component/theme_music)
+			if(themesong)
+				themesong.RemoveComponent()
 			phy.bleed_mod *= 2
 			UnregisterSignal(dreamer, COMSIG_LIVING_DEATH)
 			var/client/client = dreamer?.client
@@ -153,9 +156,6 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		owner.current.clear_fullscreen("maniac")
 	QDEL_LIST(wonders_made)
-	var/datum/component/themesong = owner.GetComponent(/datum/component/theme_music)
-	if(themesong)
-		themesong.RemoveComponent()
 	wonders_made = null
 	owner.learned_recipes -= recipe_progression
 	owner.special_role = null
