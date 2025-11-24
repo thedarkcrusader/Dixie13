@@ -230,7 +230,7 @@
 
 /datum/stress_event/saw_old_party
 	stress_change = -2
-	desc = span_green("Its always good to see an old friends face.")
+	desc = span_green("It's always good to see an old friend's face.")
 	timer = 2 MINUTES
 
 /datum/stress_event/astrata_grandeur
