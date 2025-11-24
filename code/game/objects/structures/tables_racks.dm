@@ -159,8 +159,8 @@
 				deconstruct(TRUE, 1)
 			return
 
-	if(istype(I, /obj/item/plate/tray))
-		var/obj/item/plate/tray/T = I
+	if(istype(I, /obj/item/tray))
+		var/obj/item/tray/T = I
 		if(T.contents.len > 0) // If the tray isn't empty
 			for(var/obj/item/scattered_item as anything in T.contents)
 				scattered_item.forceMove(drop_location())

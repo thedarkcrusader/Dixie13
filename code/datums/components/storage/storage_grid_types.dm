@@ -382,3 +382,12 @@
 /datum/component/storage/concrete/grid/drying_rack/New(datum/P, ...)
 	. = ..()
 	set_holdable(list(/obj/item/clothing))
+
+/datum/component/storage/concrete/grid/tray
+	max_w_class = WEIGHT_CLASS_BULKY
+	screen_max_rows = 6
+	screen_max_columns = 1
+
+/datum/component/storage/concrete/grid/tray/New(datum/P, ...)
+	. = ..()
+	set_holdable(list(/obj/item/plate))

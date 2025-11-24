@@ -4,6 +4,7 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "platter"
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	possible_item_intents = list(/datum/intent/use, /datum/intent/food)
 	w_class = WEIGHT_CLASS_NORMAL
 	///How many things fit on this plate?
 	var/max_items = 2
@@ -72,6 +73,8 @@
 	if(!iscarbon(A))
 		return
 	if(!contents.len)
+		return
+	if(user.used_intent.type != /datum/intent/food)
 		return
 	var/obj/item/object_to_eat = contents[1]
 	A.attackby(object_to_eat, user)
@@ -278,16 +281,46 @@
 	sellprice = 85
 	max_fork_usages = 11
 
-/obj/item/plate/tray
+/obj/item/tray
 	name = "tray"
 	desc = "Best used when hosting for banquets or drunken taverns."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
-	max_items = 6
-	grid_width = 64
-	grid_height = 32
-	max_fork_usages = 11
+	force = 5
+	throwforce = 10
+	throw_speed = 3
+	throw_range = 5
+	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/plate/tray/psy
+/obj/item/tray/psy
 	name = "tray"
 	icon_state = "tray_psy"
+
+/obj/item/tray/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/tray)
+
+/obj/item/tray/attack(mob/living/M, mob/living/user)
+	..()
+	// Drop all the things. All of them.
+	var/list/obj/item/oldContents = contents.Copy()
+	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_QUICK_EMPTY)
+
+	// Make each item scatter a bit
+	for(var/obj/item/I in oldContents)
+		if(I)
+			do_scatter(I)
+
+	if(prob(10))
+		M.Paralyze(4 SECONDS)
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/item/tray/proc/do_scatter(obj/item/I)
+	if(I)
+		for(var/i in 1 to rand(1, 2))
+			var/xOffset = rand(-16, 16)  // Adjust the range as needed
+			var/yOffset = rand(-16, 16)  // Adjust the range as needed
+			I.x = xOffset
+			I.y = yOffset
+
+			sleep(rand(2, 4))

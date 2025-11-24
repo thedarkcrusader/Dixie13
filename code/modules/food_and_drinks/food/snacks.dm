@@ -367,32 +367,33 @@ All foods are distributed among various categories. Use common sense.
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
 
-	var/obj/item/kitchen/fork/fork_check = user.get_active_held_item()
-	var/obj/item/plate/plate_check
-
-	if(istype(loc,/obj/item/plate))
-		plate_check = loc
-
-	if(fork_check)
-		if(!plate_check)
-			if(HAS_TRAIT(M,TRAIT_NOBLE))
-				M.add_stress(/datum/stress_event/noble_ate_with_just_a_fork)
-		else
-			if(plate_check.dirty)
-				M.add_stress(/datum/stress_event/dirty_platter)
-			else if(faretype != FARE_LAVISH && !plate_check.dirty)
-				faretype += 1
-			plate_check.fork_usages +=1
-			if(plate_check.fork_usages >= plate_check.max_fork_usages)
-				plate_check.dirty = TRUE
-				var/datum/component/particle_spewer = plate_check.GetComponent(/datum/component/particle_spewer/sparkle)
-				if(particle_spewer)
-					particle_spewer.RemoveComponent()
-				plate_check.add_overlay("dirty_platter")
-
 	if(iscarbon(M))
 		if(!canconsume(M, user))
 			return FALSE
+
+		var/obj/item/kitchen/fork/fork_check = user.get_active_held_item()
+		var/obj/item/plate/plate_check
+
+		if(istype(loc,/obj/item/plate))
+			plate_check = loc
+
+		if(fork_check)
+			if(!plate_check)
+				if(HAS_TRAIT(M,TRAIT_NOBLE))
+					M.add_stress(/datum/stress_event/noble_ate_with_just_a_fork)
+			else
+				if(plate_check.dirty)
+					M.add_stress(/datum/stress_event/dirty_platter)
+				else if(faretype != FARE_LAVISH && !plate_check.dirty)
+					faretype += 1
+				plate_check.fork_usages +=1
+				if(plate_check.fork_usages >= plate_check.max_fork_usages)
+					plate_check.dirty = TRUE
+					var/datum/component/particle_spewer = plate_check.GetComponent(/datum/component/particle_spewer/sparkle)
+					if(particle_spewer)
+						particle_spewer.RemoveComponent()
+					plate_check.add_overlay("dirty_platter")
+
 
 		var/fullness = M.nutrition + 10
 		for(var/datum/reagent/consumable/C in M.reagents.reagent_list) //we add the nutrition value of what we're currently digesting
