@@ -63,8 +63,8 @@
 					if(DirtyWater)
 						to_chat(user, span_warning("[cloth_check] water is too dirty to polish anything with it!"))
 						return
-					to_chat(user, ("You start polishing the [src] with the [cloth_check]"))
-					user.visible_message(span_notice("[user] starts to polish the [src] [shoes_check]."))
+					to_chat(user, ("You start polishing the [shoes_check] with the [cloth_check]"))
+					user.visible_message(span_notice("[user] starts to polish the [shoes_check] of [src]."))
 					if(do_after(user, 2 SECONDS, src))
 						cloth_check.reagents.remove_all(1)
 						shoes_check.polished = 1
@@ -75,11 +75,11 @@
 						to_chat(user, ("You polished the [name]."))
 					return
 				else if(istype(held_item, /obj/item/natural/cloth) && user?.used_intent?.type == INTENT_USE && shoes_check.polished == 1)
-					to_chat(user, span_notice("The [name] are already polished."))
+					to_chat(user, span_notice("The [shoes_check] are already polished."))
 					return
 				if(istype(held_item, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && shoes_check.polished == 1)
-					to_chat(user, ("You start polishing the [src] with the animal"))
-					user.visible_message(span_notice("[user] starts to polish the [src] [shoes_check]."))
+					to_chat(user, ("You start polishing the [shoes_check] with the animal"))
+					user.visible_message(span_notice("[user] starts to polish the [shoes_check] of [src]."))
 					if(do_after(user, 2 SECONDS, src))
 						shoes_check.polished = 2
 						if(HAS_TRAIT(user, TRAIT_NOBLE))
@@ -89,7 +89,7 @@
 							particle_spewer.RemoveComponent()
 						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 15 MINUTES)
 						target.add_stress(/datum/stress_event/extra_shiny_shoes)
-						to_chat(user, ("You polished the [name]."))
+						to_chat(user, ("You polished the [shoes_check]."))
 					return
 				if(istype(held_item, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && shoes_check.polished == 2)
 					to_chat(user, ("You can't possibily make it shine more."))

@@ -18,14 +18,14 @@
 
 /datum/component/particle_spewer/sparkle/process()
 	if(world.time >= end_time)
+		if(istype(source_object, /obj/item/clothing/shoes))
+			var/obj/item/clothing/shoes/shoes = source_object
+			shoes.polished = 0
 		RemoveComponent()
 		return
 	return ..()
 
 /datum/component/particle_spewer/sparkle/Destroy()
-	if(istype(source_object, /obj/item/clothing/shoes))
-		var/obj/item/clothing/shoes/shoes = source_object
-		shoes.polished = 0
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
