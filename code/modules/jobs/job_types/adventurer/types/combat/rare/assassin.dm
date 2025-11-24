@@ -358,7 +358,7 @@
 			rafters, with his organs spilled on the floor. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
 			)
 		if("NOTHING, THIS IS MY FIRST KILL! (HUNTED!)")
-			H.change_stat(STATKEY_LCK, 2) // Gonna need it.
+			H.change_stat(STATKEY_LCK, 1) // Gonna need it.
 			H.change_stat(STATKEY_END, 1)
 			ADD_TRAIT(H, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC)
 			to_chat(H,span_info("\
