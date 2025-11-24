@@ -17,7 +17,7 @@
 	body_parts_covered = FEET
 	slot_flags = ITEM_SLOT_SHOES
 	prevent_crits = list(BCLASS_LASHING, BCLASS_TWIST)
-	resistance_flags = FLAMMABLE | WETABLE
+	resistance_flags = FLAMMABLE
 
 	permeability_coefficient = 0.5
 	slowdown = 0

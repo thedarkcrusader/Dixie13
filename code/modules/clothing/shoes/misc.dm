@@ -94,6 +94,7 @@
 /obj/item/clothing/shoes/sandals
 	name = "sandals"
 	desc = "Standard sandals."
+	resistance_flags = WETABLE
 	gender = PLURAL
 	icon_state = "sandals"
 	item_state = "sandals"
@@ -129,7 +130,6 @@
 	name = "funny shoes"
 	desc = "Shoes typically worn by a Jester."
 	icon_state = "jestershoes"
-	resistance_flags = WETABLE
 	sellprice = 10
 
 /obj/item/clothing/shoes/jester/Initialize()
