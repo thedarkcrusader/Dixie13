@@ -60,6 +60,10 @@
 	var/mob/living/carbon/human/H = user
 	H.verbs |= /mob/living/carbon/human/proc/who_targets
 
+/datum/antagonist/assassin/greet()
+	. = ..()
+	owner.current.playsound_local(get_turf(owner.current), 'sound/misc/WEAREUNDERATTACK.ogg', 80, FALSE, pressure_affected = FALSE)
+
 /datum/antagonist/assassin/roundend_report()
 	var/traitorwin = FALSE
 	for(var/obj/item/I in owner.current) // Check to see if the Assassin has their profane dagger on them, and then check the souls contained therein.
