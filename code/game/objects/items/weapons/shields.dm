@@ -282,7 +282,7 @@
 
 /obj/item/weapon/shield/tower/metal/ancient
 	name = "ancient shield"
-	desc = "An ancient knightly, kite shaped steel shield"
+	desc = "An ancient, knightly, kite-shaped steel shield."
 	icon_state = "ancientsh"
 
 /obj/item/weapon/shield/tower/metal/psy
