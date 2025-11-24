@@ -172,7 +172,7 @@
 	if(visual_delay)
 		after_glide = visual_delay
 	else
-		after_glide = MOVEMENT_ADJUSTED_GLIDE_SIZE(add_delay, 1)
+		after_glide = DELAY_TO_GLIDE_SIZE(add_delay)
 
 	mob.set_glide_size(after_glide)
 
