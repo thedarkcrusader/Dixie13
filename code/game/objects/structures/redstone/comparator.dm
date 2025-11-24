@@ -4,7 +4,6 @@
 	icon_state = "comparator"
 	redstone_role = REDSTONE_ROLE_PROCESSOR
 
-	var/direction = NORTH
 	var/mode = "compare" // "compare" or "subtract"
 
 	// Inputs (Cached)
@@ -22,7 +21,6 @@
 
 /obj/structure/redstone/comparator/Initialize()
 	. = ..()
-	direction = dir
 	// We process to check containers
 	START_PROCESSING(SSobj, src)
 
@@ -37,13 +35,13 @@
 	return output_power
 
 /obj/structure/redstone/comparator/get_output_directions()
-	return list(direction)
+	return list(dir)
 
 /obj/structure/redstone/comparator/get_input_directions()
-	return list(REVERSE_DIR(direction), turn(direction, 90), turn(direction, -90))
+	return list(REVERSE_DIR(dir), turn(dir, 90), turn(dir, -90))
 
 /obj/structure/redstone/comparator/get_connection_directions()
-	return list(direction, REVERSE_DIR(direction), turn(direction, 90), turn(direction, -90))
+	return list(dir, REVERSE_DIR(dir), turn(dir, 90), turn(dir, -90))
 
 /obj/structure/redstone/comparator/can_connect_to(obj/structure/redstone/other, dir)
 	return TRUE // Connects on all sides
@@ -62,9 +60,9 @@
 				neighbors += R
 
 	// 2. Wall Power OUTPUT (Front)
-	var/turf/front = get_step(src, direction)
+	var/turf/front = get_step(src, dir)
 	if(isclosedturf(front))
-		neighbors |= get_wall_power_neighbors(direction, front)
+		neighbors |= get_wall_power_neighbors(dir, front)
 
 	// 3. Wall Power INPUT (Rear & Sides)
 	for(var/input_dir in get_input_directions())
@@ -120,14 +118,14 @@
 
 /obj/structure/redstone/comparator/on_power_changed()
 	// 1. Calculate Side Inputs
-	var/left_dir = turn(direction, 90)
-	var/right_dir = turn(direction, -90)
+	var/left_dir = turn(dir, 90)
+	var/right_dir = turn(dir, -90)
 
 	side_input_left = get_power_from_side(left_dir)
 	side_input_right = get_power_from_side(right_dir)
 
 	// 2. Calculate Main Input (Rear)
-	var/rear_dir = REVERSE_DIR(direction)
+	var/rear_dir = REVERSE_DIR(dir)
 	var/redstone_signal = get_power_from_side(rear_dir)
 
 	// Update the separate storage tracker
@@ -189,7 +187,7 @@
 	return found_power
 
 /obj/structure/redstone/comparator/proc/get_storage_signal()
-	var/turf/back_turf = get_step(src, REVERSE_DIR(direction))
+	var/turf/back_turf = get_step(src, REVERSE_DIR(dir))
 
 	for(var/obj/O in back_turf)
 		var/datum/component/storage/storage_comp = O.GetComponent(/datum/component/storage)
@@ -211,7 +209,6 @@
 /obj/structure/redstone/comparator/update_icon()
 	. = ..()
 	icon_state = (mode == "subtract") ? "comparator_subtract" : "comparator"
-	dir = direction
 
 /obj/structure/redstone/comparator/update_overlays()
 	. = ..()
@@ -239,8 +236,7 @@
 
 /obj/structure/redstone/comparator/AltClick(mob/user)
 	if(!Adjacent(user)) return
-	direction = turn(direction, 90)
-	dir = direction
+	dir = turn(dir, 90)
 	to_chat(user, "<span class='notice'>You rotate the [name].</span>")
 	schedule_network_update()
 	on_power_changed()

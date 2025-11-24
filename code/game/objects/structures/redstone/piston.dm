@@ -5,7 +5,6 @@
 	icon_state = "piston"
 	redstone_role = REDSTONE_ROLE_OUTPUT
 	var/extended = FALSE
-	var/direction = NORTH
 	var/can_pull = FALSE
 	var/obj/structure/piston_head/head
 	var/extending = FALSE
@@ -13,7 +12,6 @@
 
 /obj/structure/redstone/piston/Initialize()
 	. = ..()
-	direction = dir
 	create_piston_head()
 
 /obj/structure/redstone/piston/Destroy()
@@ -23,10 +21,10 @@
 
 /obj/structure/redstone/piston/get_input_directions()
 	var/list/dirs = GLOB.cardinals.Copy()
-	dirs -= direction // Don't receive from front
+	dirs -= dir // Don't receive from front
 	return dirs
 
-/obj/structure/redstone/piston/can_connect_to(obj/structure/redstone/other, dir)
+/obj/structure/redstone/piston/can_connect_to(obj/structure/redstone/other, direction)
 	return (dir != direction)
 
 /obj/structure/redstone/piston/on_power_changed()
@@ -40,14 +38,14 @@
 /obj/structure/redstone/piston/proc/create_piston_head()
 	head = new /obj/structure/piston_head(get_turf(src))
 	head.parent_piston = src
-	head.set_direction(direction)
+	head.set_direction(dir)
 	head.layer = layer - 0.1
 
 /obj/structure/redstone/piston/proc/extend_piston()
 	if(extended || extending)
 		return
 	extending = TRUE
-	var/turf/target_turf = get_step(src, direction)
+	var/turf/target_turf = get_step(src, dir)
 	if(!can_extend_to(target_turf))
 		extending = FALSE
 		return
@@ -81,7 +79,7 @@
 	return TRUE
 
 /obj/structure/redstone/piston/proc/push_objects(turf/target_turf)
-	var/turf/push_target = get_step(target_turf, direction)
+	var/turf/push_target = get_step(target_turf, dir)
 	if(!push_target)
 		return
 	for(var/obj/O in target_turf)
@@ -94,7 +92,7 @@
 /obj/structure/redstone/piston/proc/pull_objects()
 	if(!head)
 		return
-	var/turf/pull_source = get_step(head, direction)
+	var/turf/pull_source = get_step(head, dir)
 	var/turf/pull_target = head.loc
 	if(!pull_source)
 		return
@@ -111,14 +109,13 @@
 	if(extended)
 		base_state += "_extended"
 	icon_state = base_state
-	dir = direction
 
 /obj/structure/redstone/piston/AltClick(mob/user)
 	if(!Adjacent(user) || extended)
 		return
-	direction = turn(direction, 90)
+	dir = turn(dir, 90)
 	if(head)
-		head.set_direction(direction)
+		head.set_direction(dir)
 	update_icon()
 	to_chat(user, "<span class='notice'>You rotate the [name].</span>")
 
@@ -135,11 +132,9 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER - 0.01
 	var/obj/structure/redstone/piston/parent_piston
-	var/direction = NORTH
 
 /obj/structure/piston_head/proc/set_direction(new_dir)
-	direction = new_dir
-	dir = direction
+	dir = new_dir
 
 /obj/structure/piston_head/Destroy()
 	if(parent_piston)

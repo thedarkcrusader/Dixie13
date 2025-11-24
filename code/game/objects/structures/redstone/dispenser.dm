@@ -4,14 +4,12 @@
 	desc = "Dispenses items when powered."
 	icon_state = "dispenser"
 	redstone_role = REDSTONE_ROLE_OUTPUT
-	var/direction = NORTH
 	var/dispensing = FALSE
 	var/last_power = 0
 	can_connect_wires = TRUE
 
 /obj/structure/redstone/dispenser/Initialize()
 	. = ..()
-	direction = dir
 	AddComponent(/datum/component/storage/concrete/grid/bin)
 
 /obj/structure/redstone/dispenser/on_power_changed()
@@ -26,13 +24,13 @@
 	dispensing = TRUE
 
 	var/obj/item/dispensed = contents[rand(1, length(contents))]
-	var/turf/target_turf = get_step(src, direction)
+	var/turf/target_turf = get_step(src, dir)
 
 	if(istype(dispensed, /obj/item/reagent_containers))
 		handle_reagent_container(dispensed, target_turf)
 	else
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, dispensed, get_turf(src), TRUE)
-		var/turf/throw_target = get_step(target_turf, direction)
+		var/turf/throw_target = get_step(target_turf, dir)
 		dispensed.throw_at(throw_target, 3, 1)
 
 	spawn(2)
@@ -58,13 +56,10 @@
 	if(pickup > 0)
 		pool.transfer_to_atom(null, pickup, container)
 
-/obj/structure/redstone/dispenser/update_icon()
-	. = ..()
-	dir = direction
 
 /obj/structure/redstone/dispenser/AltClick(mob/user)
 	if(!Adjacent(user))
 		return
-	direction = turn(direction, 90)
+	dir = turn(dir, 90)
 	update_icon()
 	to_chat(user, "<span class='notice'>You rotate the [name].</span>")

@@ -4,7 +4,6 @@
 	desc = "Detects changes in the block it's observing and emits a redstone pulse."
 	icon_state = "comparator"
 	redstone_role = REDSTONE_ROLE_SOURCE
-	var/direction = NORTH
 	var/turf/observing_turf
 	var/last_observed_state
 	var/pulse_length = 2
@@ -13,7 +12,6 @@
 
 /obj/structure/redstone/observer/Initialize()
 	. = ..()
-	direction = dir
 	update_observing_turf()
 	register_observation_signals()
 
@@ -25,17 +23,17 @@
 	return pulsing ? 15 : 0
 
 /obj/structure/redstone/observer/get_output_directions()
-	return list(REVERSE_DIR(direction))
+	return list(REVERSE_DIR(dir))
 
 /obj/structure/redstone/observer/can_connect_to(obj/structure/redstone/other, dir)
-	return (dir == REVERSE_DIR(direction))
+	return (dir == REVERSE_DIR(dir))
 
 /obj/structure/redstone/observer/can_receive_from(obj/structure/redstone/source, direction)
 	return FALSE
 
 /obj/structure/redstone/observer/proc/update_observing_turf()
 	unregister_observation_signals()
-	observing_turf = get_step(src, direction)
+	observing_turf = get_step(src, dir)
 	last_observed_state = get_turf_state(observing_turf)
 
 /obj/structure/redstone/observer/proc/register_observation_signals()
@@ -92,12 +90,11 @@
 /obj/structure/redstone/observer/update_icon()
 	. = ..()
 	icon_state = pulsing ? "comparator" : "comparator"
-	dir = direction
 
 /obj/structure/redstone/observer/AltClick(mob/user)
 	if(!Adjacent(user))
 		return
-	direction = turn(direction, 90)
+	dir = turn(dir, 90)
 	update_observing_turf()
 	register_observation_signals()
 	update_icon()
