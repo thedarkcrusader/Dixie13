@@ -446,9 +446,9 @@
 /obj/item/coin/inqcoin/attack_self(mob/living/user)
 	if(quantity > 1 || !base_type)
 		return
-	if(world.time < flip_cd + 30)
+	if(!COOLDOWN_FINISHED(src, flip_cd))
 		return
-	flip_cd = world.time
+	COOLDOWN_START(src, flip_cd, 3 SECONDS)
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
 	if(prob(50))
 		user.visible_message(span_info("[user] flips the coin. ENDURE!"))
