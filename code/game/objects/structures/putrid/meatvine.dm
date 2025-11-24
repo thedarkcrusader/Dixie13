@@ -50,6 +50,8 @@
 
 	var/list/borders_overlays = list()
 
+	var/list/beams = list()
+
 /obj/structure/meatvine/proc/rot()
 	color = "#55ffff"
 	master = null
@@ -258,7 +260,6 @@
 	resistance_flags = CAN_BE_HIT
 
 	var/mob/living/simple_animal/hostile/meatvine/Mob
-	var/datum/beam/current_beam = null
 
 /obj/structure/meatvine/lair/Initialize()
 	. = ..()
@@ -298,6 +299,11 @@
 		master = null
 
 	update_borders()
+	for(var/atom in beams)
+		var/datum/beam/beam = beams[atom]
+		beams -= atom
+		qdel(beam)
+
 	return ..()
 
 /obj/structure/meatvine/proc/can_buckle(mob/living/M)
@@ -307,6 +313,36 @@
 
 /obj/structure/meatvine/user_buckle_mob(mob/living/M, mob/user)
 	return
+
+/obj/structure/meatvine/Crossed(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob/living/simple_animal/hostile/meatvine))
+		var/mob/living/L = AM
+		// Remove bounding component when entering a meatvine
+		var/datum/component/bounded/B = L.GetComponent(/datum/component/bounded)
+		if(B)
+			qdel(B)
+			var/datum/beam/current_beam = beams[AM]
+			beams -= AM
+			qdel(current_beam)
+
+/obj/structure/meatvine/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob/living/simple_animal/hostile/meatvine))
+		var/mob/living/L = AM
+		// Check if they're moving to a non-meatvine turf
+		var/turf/new_loc = get_turf(L)
+		if(!locate(/obj/structure/meatvine, new_loc))
+			// Add bounding component back to this meatvine
+			L.AddComponent(/datum/component/bounded, src, 0, 3)
+
+			var/datum/beam/current_beam = new(src, AM, time = INFINITY, icon_state = "meat", beam_type = /obj/effect/ebeam/meat)
+			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
+			if(AM in beams)
+				var/datum/beam/old_beam = beams[AM]
+				qdel(old_beam)
+			beams |= AM
+			beams[AM] = current_beam
 
 /obj/structure/meatvine/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	. = ..()
@@ -383,15 +419,11 @@
 	if(!Mob)
 		var/mobtype = pick(/mob/living/simple_animal/hostile/meatvine, /mob/living/simple_animal/hostile/meatvine/range)
 		Mob = new mobtype(loc)
-		current_beam = new(src, Mob, time = INFINITY, icon_state = "meat", beam_type = /obj/effect/ebeam/meat)
-		INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
-		Mob.AddComponent(/datum/component/bounded, src, 0, 3)
 		puff_gas()
 		return
 
 	if(Mob.stat == DEAD)
 		qdel(Mob.GetComponent(/datum/component/bounded))
-		QDEL_NULL(current_beam)
 		Mob = null
 		return
 
@@ -405,7 +437,6 @@
 	..()
 	if(Mob)
 		qdel(Mob.GetComponent(/datum/component/bounded))
-	QDEL_NULL(current_beam)
 	Mob = null
 
 /obj/effect/ebeam/meat
