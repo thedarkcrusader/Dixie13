@@ -331,10 +331,7 @@
 		rot()
 		return
 
-	if(prob(feromone_weight))
-		master.spawn_spacevine_piece(T, /obj/structure/meatvine/heavy)
-		qdel(src)
-	else if(prob(1))
+	if(prob(1))
 		master.spawn_spacevine_piece(T, /obj/structure/meatvine/lair)
 		qdel(src)
 	else

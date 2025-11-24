@@ -12,7 +12,7 @@
 	// Papameat spawning
 	var/papameat_spawn_threshold = 50 // Minimum vines before first papameat
 	var/papameat_spawn_interval = 150 // Spawn new papameat every X vines
-	var/max_papameats = 5 // Maximum papameats at once
+	var/max_papameats = 2 // Maximum papameats at once
 	var/list/obj/structure/meatvine/papameat/papameats = list()
 
 	// Organic matter feeding system
@@ -21,8 +21,21 @@
 	var/organic_matter_per_humor = 250 // Cost to spawn a humor node
 	var/humor_spawn_chance = 5 // Base chance per process tick when at max matter
 
-	// Humor tracking
-	var/list/spawned_humors = list()
+	// Wall generation system
+	var/list/wall_segments = list() // Tracks active wall building
+	var/wall_generation_cooldown = 0
+	var/min_wall_generation_interval = 50 // Minimum vines before attempting new wall
+	var/wall_budget = 0 // Accumulates over time to trigger wall generation
+	var/wall_budget_per_tick = 0.5 // How much budget we gain per process tick
+	var/wall_cost = 10 // Cost to start a new wall segment
+
+	// Wall pattern preferences
+	var/list/wall_patterns = list(
+		"corridor" = 3,      // Parallel walls creating corridors
+		"chamber" = 2,       // Enclosed rooms
+		"snake" = 4,         // Winding single walls
+		"junction" = 2       // T or + shaped intersections
+	)
 
 /obj/effect/meatvine_controller/Initialize(mapload, ...)
 	. = ..()
@@ -43,7 +56,6 @@
 /obj/effect/meatvine_controller/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
 	papameats.Cut()
-	spawned_humors.Cut()
 	return ..()
 
 /obj/effect/meatvine_controller/proc/spawn_spacevine_piece(turf/location, piece_type = /obj/structure/meatvine/floor)
@@ -219,7 +231,6 @@
 	qdel(table)
 
 	organic_matter -= organic_matter_per_humor
-	spawned_humors += humor
 
 	return TRUE
 
@@ -284,3 +295,350 @@
 		if(i >= length)
 			break
 	growth_queue = growth_queue + queue_end
+
+	// Accumulate wall budget
+	if(vines.len >= min_wall_generation_interval)
+		wall_budget += wall_budget_per_tick
+
+		// Try to generate walls when we have budget
+		if(wall_budget >= wall_cost && wall_generation_cooldown <= 0)
+			if(prob(15)) // 15% chance per tick when budget available
+				attempt_wall_generation()
+
+	// Update existing wall segments
+	update_wall_segments()
+
+	// Decay cooldown
+	if(wall_generation_cooldown > 0)
+		wall_generation_cooldown--
+
+
+/obj/effect/meatvine_controller/proc/attempt_wall_generation()
+	if(wall_budget < wall_cost)
+		return FALSE
+
+	// Pick a pattern
+	var/pattern = pickweight(wall_patterns)
+
+	// Find a suitable starting location
+	var/list/candidates = list()
+	for(var/obj/structure/meatvine/floor/SV in vines)
+		if(istype(SV, /obj/structure/meatvine/papameat))
+			continue
+		if(!isfloorturf(SV.loc))
+			continue
+
+		// Prefer locations with some open space around them
+		var/open_count = 0
+		for(var/direction in GLOB.cardinals)
+			var/turf/T = get_step(SV.loc, direction)
+			if(isfloorturf(T) && !locate(/obj/structure/meatvine/heavy, T))
+				open_count++
+
+		if(open_count >= 2) // At least 2 open cardinal directions
+			candidates += SV
+
+	if(!length(candidates))
+		return FALSE
+
+	var/obj/structure/meatvine/start_vine = pick(candidates)
+	var/turf/start_loc = get_turf(start_vine)
+
+	// Create wall segment based on pattern
+	var/datum/wall_segment/segment
+	switch(pattern)
+		if("corridor")
+			segment = generate_corridor(start_loc)
+		if("chamber")
+			segment = generate_chamber(start_loc)
+		if("snake")
+			segment = generate_snake_wall(start_loc)
+		if("junction")
+			segment = generate_junction(start_loc)
+
+	if(segment)
+		// Validate that this segment won't trap structures
+		if(!validate_wall_segment(segment))
+			qdel(segment)
+			return FALSE
+
+		wall_segments += segment
+		wall_budget -= wall_cost
+		wall_generation_cooldown = rand(30, 60) // Cooldown between wall generations
+		return TRUE
+
+	return FALSE
+
+/obj/effect/meatvine_controller/proc/generate_corridor(turf/start_loc)
+	// Creates two parallel walls forming a corridor
+	var/direction = pick(GLOB.cardinals)
+	var/perpendicular = turn(direction, pick(90, -90))
+
+	var/datum/wall_segment/segment = new()
+	segment.pattern_type = "corridor"
+	segment.growth_rate = 1 // One wall piece per tick
+
+	// Build path for first wall
+	var/turf/current = start_loc
+	var/length = rand(4, 8)
+	for(var/i = 1 to length)
+		var/turf/next = get_step(current, direction)
+		if(!can_place_wall_at(next))
+			break
+		segment.planned_walls += next
+		current = next
+
+	// Build parallel wall
+	current = get_step(start_loc, perpendicular)
+	if(!can_place_wall_at(current))
+		current = get_step(start_loc, turn(perpendicular, 180))
+
+	if(can_place_wall_at(current))
+		segment.planned_walls += current
+		for(var/i = 1 to length)
+			var/turf/next = get_step(current, direction)
+			if(!can_place_wall_at(next))
+				break
+			segment.planned_walls += next
+			current = next
+
+	return length(segment.planned_walls) >= 4 ? segment : null
+
+/obj/effect/meatvine_controller/proc/generate_chamber(turf/start_loc)
+	// Creates a rectangular enclosed space
+	var/datum/wall_segment/segment = new()
+	segment.pattern_type = "chamber"
+	segment.growth_rate = 1
+
+	var/width = rand(3, 6)
+	var/height = rand(3, 6)
+
+	// Top and bottom walls
+	for(var/x = 0 to width)
+		var/turf/top = locate(start_loc.x + x, start_loc.y + height, start_loc.z)
+		var/turf/bottom = locate(start_loc.x + x, start_loc.y, start_loc.z)
+
+		if(can_place_wall_at(top))
+			segment.planned_walls += top
+		if(can_place_wall_at(bottom))
+			segment.planned_walls += bottom
+
+	// Side walls (skip corners already placed)
+	for(var/y = 1 to height - 1)
+		var/turf/left = locate(start_loc.x, start_loc.y + y, start_loc.z)
+		var/turf/right = locate(start_loc.x + width, start_loc.y + y, start_loc.z)
+
+		if(can_place_wall_at(left))
+			segment.planned_walls += left
+		if(can_place_wall_at(right))
+			segment.planned_walls += right
+
+	// Leave a gap for entrance/exit
+	if(length(segment.planned_walls) > 3)
+		segment.planned_walls -= pick(segment.planned_walls)
+
+	return length(segment.planned_walls) >= 6 ? segment : null
+
+/obj/effect/meatvine_controller/proc/generate_snake_wall(turf/start_loc)
+	// Creates a winding single wall
+	var/datum/wall_segment/segment = new()
+	segment.pattern_type = "snake"
+	segment.growth_rate = 1
+
+	var/turf/current = start_loc
+	var/current_dir = pick(GLOB.cardinals)
+	var/length = rand(6, 12)
+
+	for(var/i = 1 to length)
+		var/turf/next = get_step(current, current_dir)
+
+		if(!can_place_wall_at(next))
+			// Try turning
+			var/new_dir = pick(turn(current_dir, 90), turn(current_dir, -90))
+			next = get_step(current, new_dir)
+
+			if(!can_place_wall_at(next))
+				break
+			current_dir = new_dir
+
+		segment.planned_walls += next
+		current = next
+
+		// Random chance to turn
+		if(prob(30))
+			current_dir = pick(turn(current_dir, 90), turn(current_dir, -90))
+
+	return length(segment.planned_walls) >= 4 ? segment : null
+
+/obj/effect/meatvine_controller/proc/generate_junction(turf/start_loc)
+	// Creates a T or + shaped intersection
+	var/datum/wall_segment/segment = new()
+	segment.pattern_type = "junction"
+	segment.growth_rate = 1
+
+	var/main_dir = pick(GLOB.cardinals)
+	var/make_plus = prob(50) // 50% chance for + instead of T
+
+	// Main axis
+	var/length = rand(3, 5)
+	for(var/i = -length to length)
+		var/turf/T = get_step_multiz(start_loc, main_dir, i)
+		if(can_place_wall_at(T))
+			segment.planned_walls += T
+
+	// Cross axis (one or both directions)
+	var/cross_dir = turn(main_dir, 90)
+	for(var/i = 1 to length)
+		var/turf/T = get_step_multiz(start_loc, cross_dir, i)
+		if(can_place_wall_at(T))
+			segment.planned_walls += T
+
+	if(make_plus)
+		cross_dir = turn(main_dir, -90)
+		for(var/i = 1 to length)
+			var/turf/T = get_step_multiz(start_loc, cross_dir, i)
+			if(can_place_wall_at(T))
+				segment.planned_walls += T
+
+	return length(segment.planned_walls) >= 5 ? segment : null
+
+/obj/effect/meatvine_controller/proc/can_place_wall_at(turf/T)
+	if(!isfloorturf(T))
+		return FALSE
+	if(T.is_blocked_turf())
+		return FALSE
+
+	// Don't place walls on existing heavy vines
+	if(locate(/obj/structure/meatvine/heavy, T))
+		return FALSE
+
+	// Don't place too close to papameat
+	for(var/obj/structure/meatvine/papameat/PM in range(3, T))
+		return FALSE
+
+	// Don't place on lairs
+	if(locate(/obj/structure/meatvine/lair, T))
+		return FALSE
+
+	return TRUE
+
+/obj/effect/meatvine_controller/proc/validate_wall_segment(datum/wall_segment/segment)
+	// Check if this wall segment would trap important structures
+	if(!length(segment.planned_walls))
+		return FALSE
+
+	// Get all important structures we need to protect
+	var/list/protected_structures = list()
+	for(var/obj/structure/meatvine/papameat/PM in papameats)
+		if(PM.master == src)
+			protected_structures += PM
+
+	for(var/obj/structure/meatvine/lair/L in vines)
+		if(L.master == src)
+			protected_structures += L
+
+	if(!length(protected_structures))
+		return TRUE // No structures to protect, segment is fine
+
+	// Check each protected structure
+	for(var/obj/structure/meatvine/protected in protected_structures)
+		if(would_enclose_structure(protected, segment.planned_walls))
+			return FALSE // This segment would trap something
+
+	return TRUE
+
+/obj/effect/meatvine_controller/proc/would_enclose_structure(obj/structure/meatvine/structure, list/new_walls)
+	// Check if adding these walls would completely box in the structure
+	var/turf/center = get_turf(structure)
+	if(!center)
+		return FALSE
+
+	// For papameats, check a larger area (5x5)
+	var/check_range = istype(structure, /obj/structure/meatvine/papameat) ? 3 : 2
+
+	// Check if structure has at least 2 escape routes after walls are placed
+	var/escape_routes = 0
+	var/list/checked_dirs = list()
+
+	for(var/direction in GLOB.cardinals)
+		if(has_path_out(center, direction, new_walls, check_range))
+			escape_routes++
+			checked_dirs += direction
+
+			if(escape_routes >= 2)
+				return FALSE // Has multiple exits, not enclosed
+
+	// If we have less than 2 escape routes, it's getting enclosed
+	return escape_routes < 2
+
+/obj/effect/meatvine_controller/proc/has_path_out(turf/start, initial_direction, list/planned_walls, max_distance = 3)
+	// Check if there's a path in this direction that doesn't hit a wall
+	var/turf/current = start
+
+	for(var/i = 1 to max_distance)
+		current = get_step(current, initial_direction)
+		if(!current || !isfloorturf(current))
+			return FALSE // Hit a real wall or edge
+
+		// Check if this turf will become a wall
+		if(current in planned_walls)
+			return FALSE // Path blocked by planned wall
+
+		// Check if there's already a heavy wall here
+		if(locate(/obj/structure/meatvine/heavy, current))
+			return FALSE // Path blocked by existing wall
+
+	// Made it through the distance without hitting walls
+	return TRUE
+
+/obj/effect/meatvine_controller/proc/update_wall_segments()
+	for(var/datum/wall_segment/segment in wall_segments)
+		if(!length(segment.planned_walls))
+			wall_segments -= segment
+			qdel(segment)
+			continue
+
+		// Before growing, revalidate that we're not about to trap something
+		// Check every few walls placed
+		if(length(segment.planned_walls) % 3 == 0)
+			if(!validate_wall_segment(segment))
+				// Abort this segment, it's becoming problematic
+				wall_segments -= segment
+				qdel(segment)
+				continue
+
+		// Grow walls from this segment
+		for(var/i = 1 to segment.growth_rate)
+			if(!length(segment.planned_walls))
+				break
+
+			var/turf/T = segment.planned_walls[1]
+			segment.planned_walls -= T
+
+			// Check if there's already a floor vine to convert
+			var/obj/structure/meatvine/floor/existing = locate() in T
+			if(existing && !istype(existing, /obj/structure/meatvine/heavy))
+				vines -= existing
+				growth_queue -= existing
+				qdel(existing)
+
+			// Place wall
+			if(can_place_wall_at(T))
+				spawn_spacevine_piece(T, /obj/structure/meatvine/heavy)
+
+/datum/wall_segment
+	var/pattern_type = "generic"
+	var/list/planned_walls = list()
+	var/growth_rate = 1 // How many walls to place per tick
+
+// Helper proc for getting stepped location with distance
+/obj/effect/meatvine_controller/proc/get_step_multiz(turf/start, direction, distance)
+	var/turf/current = start
+	for(var/i = 1 to abs(distance))
+		if(distance > 0)
+			current = get_step(current, direction)
+		else
+			current = get_step(current, turn(direction, 180))
+		if(!current)
+			return null
+	return current
