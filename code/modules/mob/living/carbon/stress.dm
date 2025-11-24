@@ -34,6 +34,7 @@
 	var/stressbuffer = 0
 	/// List of stressor instances
 	var/list/stressors = list()
+	var/datum/stress_event/last_announced_event
 	COOLDOWN_DECLARE(stress_indicator)
 
 /mob/living/carbon/adjust_stress(amt)
@@ -89,22 +90,29 @@
 		if(last_event?.desc)
 			var/desc = last_event.get_desc()
 			event = islist(desc) ? jointext(desc, " ") : desc
+
 		if(stress > oldstress)
 			if(event && last_event.stress_change > 0)
-				to_chat(src, "[event]")
+				if(last_announced_event != last_event)
+					to_chat(src, "[event]")
+					last_announced_event = last_event
 			to_chat(src, span_red(" I gain stress."))
+
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_stress_indicator))
 		else
 			if(event && last_event.stress_change <= 0)
-				to_chat(src, "[event]")
+				if(last_announced_event != last_event)
+					last_announced_event = last_event
+					to_chat(src, "[event]")
 			to_chat(src, span_green(" I gain peace."))
+		
+
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_relief_indicator))
 
 		if(hud_used?.stressies)
 			hud_used.stressies.update_appearance(UPDATE_OVERLAYS)
-
 	oldstress = stress
 
 	if(stress >= STRESS_INSANE && prob(5))
