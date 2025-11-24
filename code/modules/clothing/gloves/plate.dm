@@ -26,8 +26,8 @@
 	item_weight = 7 * IRON_MULTIPLIER
 
 /obj/item/clothing/gloves/plate/ancient
-	name = "plate gauntlets"
-	desc = "Plated gauntlets made out of steel. Offers the best protection against melee attacks."
+	name = "ancient gauntlets"
+	desc = "Ancient plated gauntlets made out of steel."
 	icon_state = "agauntlets"
 
 /obj/item/clothing/gloves/plate/iron
