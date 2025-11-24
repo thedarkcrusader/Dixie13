@@ -122,7 +122,7 @@
 		if(do_after(user, 2 SECONDS, src))
 			cloth_check.reagents.remove_all(1)
 			polished = 1
-			AddComponent(/datum/component/particle_spewer/sparkle, 1 MINUTES)
+			AddComponent(/datum/component/particle_spewer/sparkle, 15 MINUTES)
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				user.add_stress(/datum/stress_event/noble_polishing_shoe)
 			to_chat(user, ("You polished the [name]."))
@@ -139,7 +139,7 @@
 			var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 			if(particle_spewer)
 				particle_spewer.RemoveComponent()
-			AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 1 MINUTES)
+			AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 15 MINUTES)
 			to_chat(user, ("You polished the [name]."))
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && polished == 2)

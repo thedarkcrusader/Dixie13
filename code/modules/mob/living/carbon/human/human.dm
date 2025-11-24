@@ -68,7 +68,7 @@
 					if(do_after(user, 2 SECONDS, src))
 						cloth_check.reagents.remove_all(1)
 						shoes_check.polished = 1
-						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle, 1 MINUTES)
+						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle, 15 MINUTES)
 						if(HAS_TRAIT(user, TRAIT_NOBLE))
 							user.add_stress(/datum/stress_event/noble_polishing_shoe)
 						target.add_stress(/datum/stress_event/shiny_shoes)
@@ -87,7 +87,7 @@
 						var/datum/component/particle_spewer = shoes_check.GetComponent(/datum/component/particle_spewer/sparkle)
 						if(particle_spewer)
 							particle_spewer.RemoveComponent()
-						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 1 MINUTES)
+						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 15 MINUTES)
 						target.add_stress(/datum/stress_event/extra_shiny_shoes)
 						to_chat(user, ("You polished the [name]."))
 					return
