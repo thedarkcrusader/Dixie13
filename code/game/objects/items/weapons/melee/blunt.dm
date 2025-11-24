@@ -289,6 +289,29 @@
 	wdefense = GREAT_PARRY
 	sellprice = 75
 
+/obj/item/weapon/mace/steel/profhammer
+	name = "claw hammer"
+	desc = "I feel like something bad is going to happen to me. I feel like something bad has happened. It hasn't reached me yet, but it's on its way."
+	force = DAMAGE_MACE+1
+	icon_state = "profhammer"
+	wbalance = HARD_TO_DODGE
+	wdefense = GREAT_PARRY
+	sellprice = 15 // Looks like a normal hammer to me!
+	resistance_flags = INDESTRUCTIBLE
+	stealthy_audio = TRUE
+	w_class = WEIGHT_CLASS_SMALL
+	wlength = WLENGTH_SHORT
+	gripsprite = FALSE
+
+/obj/item/weapon/mace/steel/profhammer/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+	if(!istype(target))
+		return FALSE
+	if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the hammer will do 20 damage or 14
+		force = DAMAGE_MACE * 2
+	else
+		force = DAMAGE_MACE + 2
+	return FALSE
+
 //................ Spiked club ............... //
 /obj/item/weapon/mace/spiked
 	force = DAMAGE_MACE+2

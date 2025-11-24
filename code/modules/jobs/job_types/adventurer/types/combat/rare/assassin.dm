@@ -291,6 +291,32 @@
 	ADD_TRAIT(H, TRAIT_VILLAIN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
+	var/assboon = list("AN ARCHER'S PRIZED WEAPONRY","A MAP TO THE KEEP'S WALLS","TUNNEL PLANS FROM A DWARF","AN EXPLOSIVE ENTRANCE","A VIOLENT NATURE","NOTHING, THIS IS MY FIRST KILL!")
+	var/assboon_choice = input("YOU HAVE STOWED A BOON FROM A PAST VICTIM. WHAT IS IT?", "MURDERER! MURDERER! MURDERER!") as anything in assboon
+	switch(assboon_choice)
+		if("AN ARCHER'S PRIZED WEAPONRY")
+			H.mind.special_items["Slurbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
+			H.mind.special_items["Bolts"] = /obj/item/ammo_holder/quiver/bolts
+		if ("A MAP TO THE KEEP'S WALLS")
+			H.mind.special_items["Keep Plans"] = /obj/item/paper/scroll/keep_plans
+			if(GLOB.keep_doors.len > 0)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
+		if("TUNNEL PLANS FROM A DWARF")
+			H.mind.special_items["Steel Pick"] = /obj/item/weapon/pick/steel
+			H.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
+		if("AN EXPLOSIVE ENTRANCE")
+			H.mind.special_items["Canister Bomb"] = /obj/item/explosive/canister_bomb
+			H.mind.special_items["Breaching Charge A"] = /obj/item/breach_charge
+			H.mind.special_items["Breaching Charge B"] = /obj/item/breach_charge
+		if("A VIOLENT NATURE")
+			H.cmode_music = 'sound/music/cmode/antag/CombatBeest.ogg'
+			H.set_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
+			H.mind.special_items["Murderer's Cowl"] = /obj/item/clothing/face/murdercowl // Yup. It's Plok!
+			H.mind.special_items["In Advance of a Broken Skull"] = /obj/item/weapon/mace/steel/profhammer // If you touch the name you die
+			H.mind.special_items["Splint Armor"] = /obj/item/clothing/armor/leather/splint
+			H.change_stat(STATKEY_STR, 1)
+		if("NOTHING, THIS IS MY FIRST KILL!")
+			H.change_stat(STATKEY_LCK, 1)
 
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_SPD, 2)
