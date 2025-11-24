@@ -115,17 +115,12 @@
 		x = next_x
 		y = next_y
 
-	update_icon()
-	on_step()
-
-	sleep(refresh)
-	process_step()
-
-
-/obj/effect/tracker/update_icon()
-	. = ..()
 	pixel_x = absolute_X % 32
 	pixel_y = absolute_Y % 32
+
+	on_step()
+
+	addtimer(CALLBACK(src, PROC_REF(process_step)), refresh)
 
 /obj/effect/tracker/proc/on_expire(bumped_atom = FALSE)
 	return

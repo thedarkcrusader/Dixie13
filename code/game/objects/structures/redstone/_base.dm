@@ -105,7 +105,6 @@
 
 	updating_power = FALSE
 
-
 /obj/structure/redstone/proc/calculate_received_power(obj/structure/redstone/source_obj)
 	// Default: receive the source's current power level
 	return source_obj.power_level

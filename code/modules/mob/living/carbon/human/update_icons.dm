@@ -760,7 +760,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1]
-		inv?.update_icon()
+		inv?.update_appearance(UPDATE_ICON)
 
 	if(wear_mask)
 		update_hud_wear_mask(wear_mask)
