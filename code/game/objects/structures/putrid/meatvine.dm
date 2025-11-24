@@ -111,8 +111,6 @@
 
 /obj/structure/meatvine/papameat/Initialize()
 	. = ..()
-	master = new(loc)
-
 	START_PROCESSING(SSfastprocess, src)
 
 	Particle = new(src, /particles/papameat)
@@ -124,6 +122,39 @@
 	master.die()
 	STOP_PROCESSING(SSfastprocess, src)
 	qdel(Particle)
+	return ..()
+
+/obj/structure/meatvine/papameat/attackby(obj/item/I, mob/user, params)
+	if(!master)
+		return ..()
+
+	// Check if item is organic matter
+	var/organic_value = 0
+
+	if(istype(I, /obj/item/reagent_containers/food))
+		var/obj/item/reagent_containers/food/meat = I
+		if(meat.foodtype & MEAT)
+			organic_value = 10
+	else if(istype(I, /obj/item/bodypart))
+		organic_value = 50
+	else if(istype(I, /mob/living))
+		var/mob/living/L = I
+		if(L.stat == DEAD)
+			organic_value = 100
+	else if(istype(I, /obj/item/organ))
+		organic_value = 30
+
+	if(organic_value > 0)
+		to_chat(user, "<span class='notice'>The meatvine absorbs [I]!</span>")
+		master.feed_organic_matter(organic_value)
+		qdel(I)
+
+		// Chance to grow immediately when fed
+		if(prob(30))
+			spread()
+
+		return TRUE
+
 	return ..()
 
 /obj/structure/meatvine/papameat/process()
