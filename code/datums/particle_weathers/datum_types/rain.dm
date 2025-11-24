@@ -115,7 +115,11 @@
 				GLOB.weatherproof_z_levels |= "[client_z]"
 		if("[client_z]" in GLOB.weatherproof_z_levels)
 			continue
-		var/mob/living/C_L = client.mob
+		var/mob/living/carbon/human/C_L = client.mob
+		var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
 		if(C_L)
-			C_L.SoakMob(FULL_BODY)
+			if(!rainhood)
+				C_L.SoakMob(FULL_BODY)
+			else
+				C_L.SoakMob(FEET)
 
