@@ -268,7 +268,7 @@
 		return GLOB.blood_types[dna.species.exotic_bloodtype]
 	return GLOB.blood_types[dna.human_blood_type]
 
-// This is has more potential uses, and is probably faster than the old proc.
+// This has more potential uses, and is probably faster than the old proc.
 /proc/get_safe_blood(bloodtype)
 	. = list()
 	if(!bloodtype)
@@ -304,7 +304,7 @@
 
 	if(istype(T, /turf/open/water))
 		var/turf/open/water/W = T
-		if(!W.children)
+		if(!LAZYLEN(W.children))
 			W.water_reagent = blood.reagent_type // this is dumb, but it works for now
 			W.mapped = FALSE // no infinite vitae glitch
 			W.water_volume = 10
