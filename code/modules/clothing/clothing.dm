@@ -546,7 +546,7 @@ BLIND     // can't see anything
 		if(particle_spewer)
 			particle_spewer.RemoveComponent()
 
-	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.2))
+	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.7))
 
 		var/datum/component/wet/W = GetComponent(/datum/component/wet)
 		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
