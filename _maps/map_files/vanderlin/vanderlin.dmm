@@ -32455,11 +32455,11 @@
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
-/obj/item/plate/tray{
+/obj/item/tray{
 	pixel_y = 5
 	},
-/obj/item/plate/tray,
-/obj/item/plate/tray{
+/obj/item/tray,
+/obj/item/tray{
 	pixel_y = -6
 	},
 /obj/structure/rack/shelf/biggest,
