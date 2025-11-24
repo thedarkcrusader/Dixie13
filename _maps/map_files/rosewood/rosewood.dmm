@@ -5364,6 +5364,7 @@
 	pixel_y = 14
 	},
 /obj/structure/table/wood/plain_alt,
+/obj/item/essence_node_jar,
 /turf/open/floor/twig,
 /area/indoors/town/bath)
 "cFo" = (
@@ -10199,6 +10200,20 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/herringbone,
 /area/under/town/basement)
+"ffl" = (
+/obj/machinery/essence/reservoir{
+	pixel_y = 14
+	},
+/obj/structure/table/wood{
+	dir = 6;
+	icon_state = "largetable"
+	},
+/obj/item/essence_node_jar{
+	pixel_x = -17;
+	pixel_y = 4
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/bath)
 "ffr" = (
 /obj/structure/window/openclose/reinforced{
 	dir = 8
@@ -13774,6 +13789,10 @@
 	pixel_y = -6
 	},
 /obj/structure/table/wood/plain_alt,
+/obj/item/essence_node_jar{
+	pixel_x = -11;
+	pixel_y = 15
+	},
 /turf/open/floor/cobble,
 /area/indoors/town/bath)
 "gUI" = (
@@ -44727,6 +44746,7 @@
 	pixel_y = 14
 	},
 /obj/structure/table/wood/plain_alt,
+/obj/item/essence_node_jar,
 /turf/open/floor/twig,
 /area/indoors/town/bath)
 "wtw" = (
@@ -95645,7 +95665,7 @@ ehP
 ehP
 csx
 vqa
-sNk
+ffl
 enx
 kUe
 wta
