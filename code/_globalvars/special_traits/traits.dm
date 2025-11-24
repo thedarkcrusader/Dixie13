@@ -971,7 +971,8 @@
 	greet_text = span_notice("Baotha adore me so much that she gave me some goodies, dope tbh.")
 	weight = 10
 	allowed_patrons = list(/datum/patron/inhumen/baotha)
-	req_text = "Have Baotha as your Patron"
+	req_text = "Have Baotha as your Patron and do not be a Iconoclast, a profane paladin or a inhumen cleric"
+	restricted_jobs = list(/datum/job/advclass/wretch/heretic, /datum/job/advclass/combat/inhumencleric, /datum/job/advclass/combat/profanepaladin)
 
 /datum/special_trait/baothan/on_apply(mob/living/carbon/human/character, silent)
 	var/holder = character.patron?.devotion_holder
