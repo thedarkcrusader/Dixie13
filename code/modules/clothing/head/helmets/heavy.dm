@@ -98,7 +98,7 @@
 
 /obj/item/clothing/head/helmet/heavy/ancient
 	name = "ancient savoyard"
-	desc = "A terrifying old savoyard"
+	desc = "A terrifying old savoyard."
 	icon_state = "ancientsavoyard"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND

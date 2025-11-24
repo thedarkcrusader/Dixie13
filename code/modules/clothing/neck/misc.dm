@@ -376,7 +376,7 @@
 /obj/item/clothing/neck/gorget/ancient
 	name = "gorget"
 	icon_state = "ancientgorget"
-	desc = "A very old gorget"
+	desc = "A very old gorget."
 
 /obj/item/clothing/neck/gorget/explosive
 	name = "collar of servitude"
