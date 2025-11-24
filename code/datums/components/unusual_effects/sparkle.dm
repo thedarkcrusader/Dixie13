@@ -22,7 +22,7 @@
 		return
 	return ..()
 
-datum/component/particle_spewer/sparkle/Destroy()
+/datum/component/particle_spewer/sparkle/Destroy()
 	if(istype(source_object, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/shoes = source_object
 		shoes.polished = 0
