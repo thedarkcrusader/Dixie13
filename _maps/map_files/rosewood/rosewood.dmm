@@ -601,6 +601,10 @@
 	pixel_x = 0;
 	pixel_y = 41
 	},
+/obj/item/carvedgem/opal/duck{
+	pixel_x = 25;
+	pixel_y = -25
+	},
 /turf/open/water/bath,
 /area/indoors/town/manor)
 "apm" = (
@@ -2732,6 +2736,10 @@
 /obj/structure/carpet,
 /turf/open/floor/wood/nosmooth,
 /area/indoors/villagegarrison)
+"bqP" = (
+/mob/living/simple_animal/pet/cat/black,
+/turf/open/floor/church,
+/area/indoors/town/clinic_large)
 "bqR" = (
 /obj/item/key/apartments/apartment25{
 	name = "apartment xxvi key";
@@ -10081,6 +10089,9 @@
 /obj/structure/closet/crate/chest,
 /obj/item/gem/blue,
 /obj/item/storage/belt/pouch/coins/rich,
+/obj/item/clothing/wrists/goldbracelet,
+/obj/item/clothing/neck/goldamulet,
+/obj/item/clothing/face/facemask/goldveil,
 /turf/open/floor/carpet/lord/left,
 /area/indoors/town/manor)
 "fcH" = (
@@ -10345,9 +10356,9 @@
 /obj/structure/table/wood/counter{
 	dir = 8
 	},
-/obj/item/candle/yellow/lit{
-	pixel_x = -13;
-	pixel_y = 2
+/obj/item/candle/yellow/lit/infinite{
+	pixel_y = -1;
+	pixel_x = -10
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/tavern)
@@ -12827,9 +12838,9 @@
 /obj/structure/table/wood/counter{
 	dir = 4
 	},
-/obj/item/candle/yellow/lit{
+/obj/item/candle/yellow/lit/infinite{
 	pixel_x = 8;
-	pixel_y = 9
+	pixel_y = 8
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/tavern)
@@ -13913,12 +13924,12 @@
 /area/indoors/town/church)
 "gZK" = (
 /obj/structure/table/wood/counter,
-/obj/item/candle/yellow/lit{
-	pixel_x = -7;
-	pixel_y = -1
-	},
 /obj/item/alch/herb/rosa{
 	pixel_y = -7
+	},
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = -10;
+	pixel_y = 4
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/tavern)
@@ -24788,6 +24799,12 @@
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/book/manners,
 /obj/item/clothing/cloak/poncho,
+/obj/item/clothing/head/crown/circlet/opal,
+/obj/item/clothing/neck/opalamulet,
+/obj/item/clothing/head/crown/circlet/goldheaddress{
+	name = "gold headdress";
+	desc = "a fancy headdress made out of zenarii. Light and fashionable."
+	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town/manor)
 "mCK" = (
@@ -28489,13 +28506,13 @@
 /obj/structure/table/wood/counter{
 	dir = 4
 	},
-/obj/item/candle/yellow/lit{
-	pixel_x = -5;
-	pixel_y = -9
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = -2;
+	pixel_y = -4
 	},
-/obj/item/candle/yellow/lit{
-	pixel_x = 6;
-	pixel_y = 2
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = 8;
+	pixel_y = 7
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/tavern)
@@ -28846,13 +28863,13 @@
 /area/indoors/town/church/chapel)
 "oyn" = (
 /obj/structure/table/wood/counter,
-/obj/item/candle/yellow/lit{
-	pixel_x = 4;
-	pixel_y = 3
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = 0;
+	pixel_y = -2
 	},
-/obj/item/candle/yellow/lit{
-	pixel_x = -6;
-	pixel_y = 9
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = -11;
+	pixel_y = 6
 	},
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/tavern)
@@ -29156,6 +29173,11 @@
 	dir = 1
 	},
 /turf/open/floor/tile/kitchen,
+/area/indoors/town/tavern)
+"oGs" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/pet/cat,
+/turf/open/floor/ruinedwood/turned,
 /area/indoors/town/tavern)
 "oGy" = (
 /obj/structure/fluff/railing/border{
@@ -41188,6 +41210,8 @@
 /obj/item/clothing/shirt/undershirt/fancy,
 /obj/item/clothing/gloves/leather/phys,
 /obj/item/clothing/head/roguehood/phys,
+/obj/item/clothing/head/physhat,
+/obj/item/clothing/armor/leather/jacket/handjacket,
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "uKH" = (
@@ -41234,6 +41258,7 @@
 /area/outdoors/town)
 "uLs" = (
 /obj/structure/fermentation_keg/water,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/wood,
 /area/indoors/town/manor)
 "uLJ" = (
@@ -101836,7 +101861,7 @@ uJx
 avC
 ngP
 ngP
-dHO
+bqP
 ngP
 ngP
 ngP
@@ -105110,7 +105135,7 @@ lZM
 lZM
 pfl
 cgg
-cgg
+oGs
 lZM
 lZM
 pfl
