@@ -1,4 +1,3 @@
-
 /datum/component/theme_music
 	var/music_enabled = FALSE
 	var/datum/looping_sound/theme_song/combat_music_loop
