@@ -81,6 +81,7 @@
 		var/datum/component/bounded/B = L.GetComponent(/datum/component/bounded)
 		if(B)
 			qdel(B)
+		if(AM in beams)
 			var/datum/beam/current_beam = beams[AM]
 			beams -= AM
 			qdel(current_beam)
