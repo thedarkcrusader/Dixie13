@@ -555,10 +555,11 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	ADD_TRAIT(user, TRAIT_PACIFISM, TRAIT_GENERIC)
 	ADD_TRAIT(user, TRAIT_ABOMINATION, TRAIT_GENERIC)
 	to_chat(target, span_notice("ZIZO EMPOWERS ME!! SOMETHING HAS GONE WRONG, THE RITUAL FAILED BUT WHAT IT LEFT ME WITH IS STILL POWER!!"))
-	target.change_stat(STATKEY_STR, -6)
-	target.change_stat(STATKEY_CON, -7)
-	target.change_stat(STATKEY_END, -7)
-	target.change_stat(STATKEY_SPD, -7)
+	target.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -3)
+	target.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -4)
+	target.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -4)
+	target.Knockdown(5 SECONDS)
+	target.emote("agony", forced = TRUE)
 
 /datum/ritual/fleshcrafting/fleshform
 	name = "Stronger Form"
