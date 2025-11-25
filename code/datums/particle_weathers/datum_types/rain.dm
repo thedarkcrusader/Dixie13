@@ -36,7 +36,7 @@
 	temperature_modification = -1
 
 /datum/particle_weather/rain_gentle/tick()
-	weather_apply_wetness()
+	//weather_apply_wetness() It is going through the roof atm
 
 /datum/particle_weather/rain_storm
 	name = "Rain"
@@ -61,7 +61,7 @@
 	COOLDOWN_DECLARE(thunder)
 
 /datum/particle_weather/rain_storm/tick()
-	weather_apply_wetness()
+	//weather_apply_wetness() It is going through the roof atm
 	if(!COOLDOWN_FINISHED(src, thunder))
 		return
 
