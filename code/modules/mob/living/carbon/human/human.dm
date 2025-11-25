@@ -68,11 +68,12 @@
 					if(do_after(user, 2 SECONDS, src))
 						cloth_check.reagents.remove_all(1)
 						shoes_check.polished = 1
-						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle, 15 MINUTES)
+						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle)
+						addtimer(CALLBACK(shoes_check, TYPE_PROC_REF(/obj/item/clothing/shoes, lose_shine)), 15 MINUTES)
 						if(HAS_TRAIT(user, TRAIT_NOBLE))
 							user.add_stress(/datum/stress_event/noble_polishing_shoe)
 						target.add_stress(/datum/stress_event/shiny_shoes)
-						to_chat(user, ("You polished the [name]."))
+						to_chat(user, ("You polished the [shoes_check]."))
 					return
 				else if(istype(held_item, /obj/item/natural/cloth) && user?.used_intent?.type == INTENT_USE && shoes_check.polished == 1)
 					to_chat(user, span_notice("The [shoes_check] are already polished."))
@@ -86,8 +87,9 @@
 							user.add_stress(/datum/stress_event/noble_polishing_shoe)
 						var/datum/component/particle_spewer = shoes_check.GetComponent(/datum/component/particle_spewer/sparkle)
 						if(particle_spewer)
-							particle_spewer.RemoveComponent()
-						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 15 MINUTES)
+							qdel(particle_spewer)
+						shoes_check.AddComponent(/datum/component/particle_spewer/sparkle, shine_more = TRUE)
+						addtimer(CALLBACK(shoes_check, TYPE_PROC_REF(/obj/item/clothing/shoes, lose_shine)), 15 MINUTES)
 						target.add_stress(/datum/stress_event/extra_shiny_shoes)
 						to_chat(user, ("You polished the [shoes_check]."))
 					return

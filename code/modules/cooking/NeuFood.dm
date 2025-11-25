@@ -255,11 +255,11 @@
 			soup_check.taste_mult +=1
 	if(!reagents.total_volume > 0 && !reagents.get_reagent_amount(/datum/reagent/water) == reagents.total_volume)
 		usages +=1
-	if(usages >= max_usages)
+	if(usages >= max_usages && !dirty)
 		dirty = TRUE
 		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 		if(particle_spewer)
-			particle_spewer.RemoveComponent()
+			qdel(particle_spewer)
 		add_overlay("dirty_bowl")
 	playsound(get_turf(src), 'sound/misc/eat.ogg', rand(30, 60), TRUE)
 	user.visible_message(span_info("[user] eats from [src]."), \

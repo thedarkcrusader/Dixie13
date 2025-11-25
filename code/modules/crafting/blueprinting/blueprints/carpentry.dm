@@ -490,7 +490,7 @@
 	craftdiff = 1
 
 /datum/blueprint_recipe/carpentry/dryclothes
-	name = "A place to dry clothes"
+	name = "Clothline"
 	desc = "It can dry clothes well."
 	result_type = /obj/structure/dryclothes
 	required_materials = list(

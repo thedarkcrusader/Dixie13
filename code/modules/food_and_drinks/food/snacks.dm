@@ -387,11 +387,11 @@ All foods are distributed among various categories. Use common sense.
 				else if(faretype != FARE_LAVISH && !plate_check.dirty)
 					faretype += 1
 				plate_check.fork_usages +=1
-				if(plate_check.fork_usages >= plate_check.max_fork_usages)
+				if(plate_check.fork_usages >= plate_check.max_fork_usages && !plate_check.dirty)
 					plate_check.dirty = TRUE
 					var/datum/component/particle_spewer = plate_check.GetComponent(/datum/component/particle_spewer/sparkle)
 					if(particle_spewer)
-						particle_spewer.RemoveComponent()
+						qdel(particle_spewer)
 					plate_check.add_overlay("dirty_platter")
 
 

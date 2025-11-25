@@ -21,6 +21,14 @@
 	var/dirty = FALSE
 	var/cleaned = FALSE
 
+/obj/item/plate/dirty
+	dirty = TRUE
+
+/obj/item/plate/Initialize(mapload, ...)
+	. = ..()
+	if(dirty)
+		add_overlay("dirty_platter")
+
 /obj/item/plate/attackby(obj/item/I, mob/living/carbon/user, params)
 	if(!length(contents) && istype(I, /obj/item/natural/cloth) && user?.used_intent?.type == INTENT_USE)
 		if(dirty)

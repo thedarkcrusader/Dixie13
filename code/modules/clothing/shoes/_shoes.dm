@@ -122,9 +122,10 @@
 		if(do_after(user, 2 SECONDS, src))
 			cloth_check.reagents.remove_all(1)
 			polished = 1
-			AddComponent(/datum/component/particle_spewer/sparkle, 15 MINUTES)
+			AddComponent(/datum/component/particle_spewer/sparkle)
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				user.add_stress(/datum/stress_event/noble_polishing_shoe)
+			addtimer(CALLBACK(src, PROC_REF(lose_shine)), 10 SECONDS)
 			to_chat(user, ("You polished the [name]."))
 		return
 	else if(istype(I, /obj/item/natural/cloth) && user?.used_intent?.type == INTENT_USE && polished == 1)
@@ -136,10 +137,11 @@
 			polished = 2
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				user.add_stress(/datum/stress_event/noble_polishing_shoe)
-			var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
+			var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle, shine_more = TRUE)
 			if(particle_spewer)
-				particle_spewer.RemoveComponent()
-			AddComponent(/datum/component/particle_spewer/sparkle/spark_more, 15 MINUTES)
+				qdel(particle_spewer)
+			AddComponent(/datum/component/particle_spewer/sparkle)
+			addtimer(CALLBACK(src, PROC_REF(lose_shine)), 10 SECONDS)
 			to_chat(user, ("You polished the [name]."))
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && polished == 2)
@@ -153,3 +155,10 @@
 		desc += ("\nThis shoe was polished, it looks quite nice.")
 	if(polished == 2)
 		desc += span_notice("\nThis shoe was polished to a shine, it looks immaculate!")
+
+/obj/item/clothing/shoes/proc/lose_shine()
+	if(polished == 1 || polished == 2)
+		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
+		if(particle_spewer)
+			qdel(particle_spewer)
+		polished = 0
