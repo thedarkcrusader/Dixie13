@@ -36,7 +36,7 @@
 	temperature_modification = -1
 
 /datum/particle_weather/rain_gentle/tick()
-	//weather_apply_wetness() It is going through the roof atm
+	weather_apply_wetness()
 
 /datum/particle_weather/rain_storm
 	name = "Rain"
@@ -61,7 +61,7 @@
 	COOLDOWN_DECLARE(thunder)
 
 /datum/particle_weather/rain_storm/tick()
-	//weather_apply_wetness() It is going through the roof atm
+	weather_apply_wetness()
 	if(!COOLDOWN_FINISHED(src, thunder))
 		return
 
@@ -103,23 +103,30 @@
 		COOLDOWN_START(src, thunder, rand(5, 40) * 1 SECONDS)
 
 /datum/particle_weather/proc/weather_apply_wetness()
-	// Loop over all mobs
+	// Loop over all clients and only apply wetness to outdoors players
 	for(var/client/client in GLOB.clients)
 		if(!client.mob)
 			continue
 		var/client_z = client.mob.z
-		if(!isliving(client.mob))
+		if(!ishuman(client.mob))
 			continue
 		if(!("[client_z]" in GLOB.weatherproof_z_levels))
 			if(SSmapping.level_has_any_trait(client_z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
 				GLOB.weatherproof_z_levels |= "[client_z]"
 		if("[client_z]" in GLOB.weatherproof_z_levels)
 			continue
+		var/turf/T = get_turf(client.mob)
+		if(T)
+			if(!T.outdoor_effect || T.outdoor_effect.weatherproof)
+				continue
+		else
+			continue
 		var/mob/living/carbon/human/C_L = client.mob
-		var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
-		if(C_L)
-			if(!rainhood)
-				C_L.SoakMob(FULL_BODY)
-			else
-				C_L.SoakMob(FEET)
+		if(!C_L)
+			continue
 
+		var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
+		if(!rainhood)
+			C_L.SoakMob(FULL_BODY)
+		else
+			C_L.SoakMob(FEET)
