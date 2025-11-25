@@ -3295,12 +3295,6 @@
 /obj/item/clothing/neck/talkstone,
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/church/inquisition)
-"bOA" = (
-/obj/structure/mirror/fancy{
-	desc = "There is an idea of a Patrick Bateman; some kind of abstraction. But there is no real me: only an entity, something illusory. And though I can hide my cold gaze, and you can shake my hand and feel flesh gripping yours and maybe you can even sense our lifestyles are probably comparable... I simply am not there"
-	},
-/turf/closed/wall/mineral/stone,
-/area/under/town/basement)
 "bOC" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
@@ -68466,7 +68460,7 @@ cBr
 cBr
 cBr
 cBr
-bOA
+pCt
 uSl
 pCt
 uSl
