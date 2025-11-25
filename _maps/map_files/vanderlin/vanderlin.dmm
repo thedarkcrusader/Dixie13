@@ -2951,7 +2951,7 @@
 /area/indoors/town/dwarfin)
 "bHt" = (
 /turf/open/water/cleanshallow,
-/area/indoors/town/cell)
+/area/indoors/town/cell/exposed)
 "bHF" = (
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /obj/effect/decal/cleanable/debris/glass,
@@ -8725,7 +8725,7 @@
 "ezP" = (
 /obj/item/weapon/thresher,
 /turf/open/floor/dirt,
-/area/indoors/town/cell)
+/area/indoors/town/cell/exposed)
 "eAp" = (
 /obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/cobble/mossy,
@@ -9835,7 +9835,7 @@
 "eZO" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/dirt,
-/area/indoors/town/cell)
+/area/indoors/town/cell/exposed)
 "fac" = (
 /obj/structure/door{
 	lockid = "apartment19";
@@ -16419,7 +16419,7 @@
 "iyE" = (
 /obj/item/weapon/hoe/stone,
 /turf/open/floor/dirt,
-/area/indoors/town/cell)
+/area/indoors/town/cell/exposed)
 "iyS" = (
 /obj/structure/rack,
 /obj/item/natural/cloth,
@@ -21183,6 +21183,9 @@
 "lhY" = (
 /turf/open/floor/dirt/road,
 /area/outdoors/town/roofs)
+"lia" = (
+/turf/open/floor/dirt,
+/area/indoors/town/cell/exposed)
 "lix" = (
 /obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/ruinedwood/spiral,
@@ -26307,7 +26310,7 @@
 "nUy" = (
 /obj/item/needle/thorn,
 /turf/open/floor/dirt,
-/area/indoors/town/cell)
+/area/indoors/town/cell/exposed)
 "nUA" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -37894,6 +37897,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/herringbone,
 /area/indoors/town/garrison)
+"tVh" = (
+/turf/open/transparent/openspace,
+/area/indoors/town/cell/exposed)
 "tVz" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/carafe/teapot/tea{
@@ -63243,7 +63249,7 @@ omW
 kdv
 puV
 iyE
-uNR
+lia
 aoP
 aoP
 aoP
@@ -63444,9 +63450,9 @@ pSG
 omW
 kdv
 oBU
-uNR
-uNR
-uNR
+lia
+lia
+lia
 aoP
 aoP
 xeY
@@ -63647,8 +63653,8 @@ omW
 kdv
 oBU
 bHt
-uNR
-uNR
+lia
+lia
 aoP
 djH
 fhL
@@ -63848,7 +63854,7 @@ pSG
 omW
 xKu
 oBU
-uNR
+lia
 nUy
 aoP
 aoP
@@ -64656,7 +64662,7 @@ pSG
 omW
 xKu
 oBU
-uNR
+lia
 eZO
 aoP
 aoP
@@ -64859,8 +64865,8 @@ omW
 kdv
 oBU
 bHt
-uNR
-uNR
+lia
+lia
 aoP
 djH
 fhL
@@ -65061,8 +65067,8 @@ omW
 kdv
 oBU
 bHt
-uNR
-uNR
+lia
+lia
 aoP
 aoP
 xeY
@@ -65264,7 +65270,7 @@ kdv
 eHB
 bHt
 ezP
-uNR
+lia
 aoP
 aoP
 fhL
@@ -103643,8 +103649,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -103845,9 +103851,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -104047,9 +104053,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -104249,8 +104255,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -105057,8 +105063,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -105259,9 +105265,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 sot
 sot
@@ -105461,9 +105467,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 sot
 jYr
@@ -105663,9 +105669,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 sot
 lhC
@@ -144044,8 +144050,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -144246,9 +144252,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -144448,9 +144454,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -144650,8 +144656,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -145458,8 +145464,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -145660,9 +145666,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 bUp
 bUp
@@ -145862,9 +145868,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 bUp
 wDM
@@ -146064,9 +146070,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 sot
 sot
@@ -184445,8 +184451,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -184647,9 +184653,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -184849,9 +184855,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -185051,8 +185057,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -185859,8 +185865,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -186061,9 +186067,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -186263,9 +186269,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -186465,9 +186471,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -224846,8 +224852,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -225048,9 +225054,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -225250,9 +225256,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -225452,8 +225458,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -226260,8 +226266,8 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -226462,9 +226468,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -226664,9 +226670,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu
@@ -226866,9 +226872,9 @@ kkF
 omW
 xKu
 xKu
-ljy
-ljy
-ljy
+tVh
+tVh
+tVh
 xKu
 xKu
 xKu

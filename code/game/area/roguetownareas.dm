@@ -597,6 +597,10 @@
 	background_track_night = null
 	converted_type = /area/outdoors/exposed/manorgarri
 
+/area/indoors/town/cell/exposed //useful for dungeons with skylights for farming purposes
+	name = "exposed dungeon cell"
+	outdoors = TRUE
+
 /area/indoors/town/tavern
 	name = "tavern"
 	icon_state = "tavern"
