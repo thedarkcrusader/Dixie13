@@ -6,8 +6,8 @@
 	var/isdying = FALSE
 
 	// Growth thresholds
-	var/slowdown_size = 200
-	var/collapse_size = 1000
+	var/slowdown_size = 2000000
+	var/collapse_size = 10000000
 
 	// Papameat spawning - DYNAMIC BASED ON AREA SIZE
 	var/papameat_spawn_threshold = 30 // Minimum vines before first papameat
