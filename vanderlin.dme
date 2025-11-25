@@ -2578,6 +2578,7 @@
 #include "code\modules\jobs\job_types\adventurer\types\_advclass.dm"
 #include "code\modules\jobs\job_types\adventurer\types\antag\brigand.dm"
 #include "code\modules\jobs\job_types\adventurer\types\antag\leadsellsword.dm"
+#include "code\modules\jobs\job_types\adventurer\types\antag\leadbrigand.dm"
 #include "code\modules\jobs\job_types\adventurer\types\antag\hedgeknight.dm"
 #include "code\modules\jobs\job_types\adventurer\types\antag\knave.dm"
 #include "code\modules\jobs\job_types\adventurer\types\antag\roguemage.dm"
