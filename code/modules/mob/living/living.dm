@@ -746,7 +746,7 @@
 		var/fail_resist = resist_grab()
 		if(fail_resist)
 			to_chat(src, span_warning("I failed to resist their grab and i can't get up!"))
-			return
+			return FALSE
 		else
 			to_chat(src, span_notice("I resisted their grab!"))
 	if(resting)
