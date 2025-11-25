@@ -26,9 +26,10 @@
 
 	var/list/meat_side_overlays
 
+	var/borders = TRUE
 	var/list/borders_overlays = list()
 
-	var/list/beams = list()
+	var/static/list/beams = list() // :3
 
 
 /obj/structure/meatvine/Initialize()
@@ -184,6 +185,8 @@
 	. = ..()
 	var/turf/T = get_turf(src)
 
+	if(!borders)
+		return
 	for(var/direction in GLOB.alldirs)
 		var/turf/step = get_step(T, direction)
 		var/obj/structure/meatvine/Vine = locate(/obj/structure/meatvine, step)

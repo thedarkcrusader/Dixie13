@@ -15,3 +15,5 @@
 // Papameat health thresholds
 #define PAPAMEAT_CRITICAL_HEALTH 0.3 // 30% health
 #define PAPAMEAT_SACRIFICE_RANGE 2 // Must be within 2 tiles to sacrifice
+
+#define COMSIG_MEATVINE_RESOURCE_CHANGE "meatvine_resource_change"

@@ -33,6 +33,10 @@
 	var/wall_budget_per_tick = 0.5
 	var/wall_cost = 10
 
+	var/consumed_resource_pool = 0
+	var/consumed_resource_max = 500
+	var/consumed_resource_regen_rate = 2 // Per process tick
+
 	// Wall pattern preferences
 	var/list/wall_patterns = list(
 		"corridor" = 3,
@@ -212,6 +216,7 @@
 
 /obj/effect/meatvine_controller/proc/feed_organic_matter(amount)
 	organic_matter = min(organic_matter + amount, organic_matter_max)
+	consumed_resource_pool = min(consumed_resource_max, consumed_resource_pool + amount)
 	total_feeds++
 
 	// Visual feedback
@@ -477,6 +482,33 @@
 	for(var/obj/structure/meatvine/lair/L in lairs)
 		if(QDELETED(L) || L.master != src)
 			lairs -= L
+
+	// Regenerate resource pool for consumed mobs
+	if(consumed_resource_pool < consumed_resource_max)
+		consumed_resource_pool = min(consumed_resource_pool + consumed_resource_regen_rate, consumed_resource_max)
+
+	SEND_SIGNAL(src, COMSIG_MEATVINE_RESOURCE_CHANGE, consumed_resource_pool)
+
+
+/obj/effect/meatvine_controller/proc/consume_client_mob(mob/living/C)
+	if(!C.client)
+		return FALSE
+
+	// Create a consumed ghost mob
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = new(get_turf(C))
+	consumed.master = src
+	// Transfer client
+	C.client.mob = consumed
+	consumed.ckey = C.ckey
+
+	to_chat(consumed, "<span class='userdanger'>You have been consumed by the meatvine! You can now spread it using your abilities.</span>")
+	return TRUE
+
+/obj/effect/meatvine_controller/proc/try_spend_resources(amount)
+	if(consumed_resource_pool >= amount)
+		consumed_resource_pool -= amount
+		return TRUE
+	return FALSE
 
 /obj/effect/meatvine_controller/proc/check_for_bridge_opportunities()
 	if(!length(vines))

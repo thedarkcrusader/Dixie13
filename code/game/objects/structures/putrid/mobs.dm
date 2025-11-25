@@ -8,6 +8,7 @@
 	faction = list("meat")
 	health = 60
 	maxHealth = 60
+	hud_type = /datum/hud/putrid
 	//melee_damage = 25
 	//move_speed = 0
 	see_in_dark = 10
@@ -23,6 +24,15 @@
 	pass_flags = PASSTABLE
 
 	var/obj/effect/meatvine_controller/master
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_PUTRID, INNATE_TRAIT)
+	add_spell(/datum/action/cooldown/meatvine/spread_floor)
+	add_spell(/datum/action/cooldown/meatvine/spread_wall)
+	add_spell(/datum/action/cooldown/meatvine/spread_lair)
+	add_spell(/datum/action/cooldown/meatvine/spread_spike)
+	add_spell(/datum/action/cooldown/meatvine/spread_healing_well)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/Destroy()
 	puff_gas()

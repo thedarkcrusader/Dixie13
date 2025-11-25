@@ -129,6 +129,9 @@
 	if(master)
 		master.feed_organic_matter(100)
 
+	if(sacrifice.client)
+		master.consume_client_mob(sacrifice)
+
 	qdel(sacrifice)
 	return TRUE
 
