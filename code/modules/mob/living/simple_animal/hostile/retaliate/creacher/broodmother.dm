@@ -152,7 +152,7 @@
 	SEND_SIGNAL(src, COMSIG_BROODMOTHER_BIOMASS_CHANGE, end_amount, tier)
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/get_biomass_amounts()
-	return alist(
+	return list(
 		1 = tier_1_biomass_amount,
 		2 = tier_2_biomass_amount,
 		3 = tier_3_biomass_amount,
