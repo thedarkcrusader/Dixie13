@@ -146,7 +146,6 @@
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && polished == 2)
 		to_chat(user, ("You can't possibily make it shine more."))
-		return
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()
