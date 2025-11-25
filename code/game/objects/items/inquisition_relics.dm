@@ -749,6 +749,7 @@
 	throw_speed = 3
 	throw_range = 7
 	grid_height = 32
+	var/assassin_choke = 40
 	grid_width = 32
 	throwforce = 15
 	force_wielded = 0
@@ -954,9 +955,9 @@
 		to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
 		var/pain = /obj/item/inqarticles/garrote
 		if(!pain)
-			user.changeNext_move(CLICK_CD_EXHAUSTED)	//Stops spam for choking.
+			user.changeNext_move(assassin_choke)	//Stops spam for choking.
 		else
-			user.changeNext_move(CLICK_CD_RESIST) //HAHAHAHA I WIN, I GET TO SLEEP NPW(to future coders, disregard this comment, it is the ramblings of a sleep deprived madman, no maintainers,Im not removing this.)
+			user.changeNext_move(CLICK_CD_RESIST) //HAHAHAHA I WIN, I GET TO SLEEP NOW(to future coders, disregard this comment, it is the ramblings of a insomniac, no maintainers,Im not removing this.)
 
 /obj/item/inqarticles/garrote/razor // To yische, who said not to give this out constantly, I respectfully disagree when it comes to assassin
 	name = "Profane Razor" // Its very not non lethal now.  Strangle your prey with glee
