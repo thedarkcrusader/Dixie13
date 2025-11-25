@@ -36,6 +36,10 @@
 	damage_deflection = 0
 	resistance_flags = CAN_BE_HIT
 
+/obj/structure/mob_wrap/Destroy()
+	dump()
+	. = ..()
+
 /obj/structure/mob_wrap/proc/dump()
 	for(var/atom/movable/AM in contents)
 		if(istype(AM, /obj/structure/closet))
