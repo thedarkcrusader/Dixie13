@@ -23,4 +23,5 @@
 	first.Turn(rand(-90, 90))
 	animate(transform = first, time = 0.3 SECONDS)
 
-	QDEL_IN(spawned, duration)
+	spawn(duration)
+		qdel(spawned)

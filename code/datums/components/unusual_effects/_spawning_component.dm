@@ -17,8 +17,6 @@
 	var/duration = 0.7 SECONDS
 	///the spawn intervals in game ticks
 	var/spawn_interval = 1
-	///particles still in the process of animating
-	var/list/living_particles = list()
 	///list of particles that finished (added only as a failsafe)
 	var/list/dead_particles = list()
 	///x offset for source_object
@@ -95,7 +93,7 @@
 	))
 
 	STOP_PROCESSING(SSfastprocess, src)
-	QDEL_LIST(living_particles)
+
 	QDEL_LIST(dead_particles)
 	source_object = null
 	QDEL_NULL(animate_holder)
@@ -125,24 +123,18 @@
 		spawned.icon_state = particle_state
 		spawned.blend_mode = particle_blending
 
-		living_particles |= spawned
-
-		RegisterSignal(spawned, COMSIG_PARENT_QDELETING, PROC_REF(particle_qdeleting))
 		animate_particle(spawned)
 
 ///this is the proc that gets overridden when we create new particle spewers that control its movements
 //example is animating upwards over duration and deleting
 /datum/component/particle_spewer/proc/animate_particle(obj/effect/abstract/particle/spawned)
 	animate_holder?.animate_object(spawned)
-	QDEL_IN(spawned, duration)
+	spawn(duration)
+		qdel(spawned)
 
 /datum/component/particle_spewer/proc/adjust_animate_steps()
 	animate_holder.add_animation_step(list(alpha = 75, time = duration))
 	animate_holder.add_animation_step(list(pixel_y = offset_y + 64, time = duration))
-
-/datum/component/particle_spewer/proc/particle_qdeleting(obj/effect/abstract/particle/spawned)
-	living_particles -= spawned
-	UnregisterSignal(spawned, COMSIG_PARENT_QDELETING)
 
 /datum/component/particle_spewer/proc/handle_equip_offsets(datum/source, mob/equipper, slot)
 	SIGNAL_HANDLER
