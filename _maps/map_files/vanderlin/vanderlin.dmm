@@ -2354,9 +2354,8 @@
 /area/outdoors/town)
 "bpf" = (
 /obj/structure/water_pipe,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
+/obj/machinery/light/fueled/torchholder{
+	dir = 4
 	},
 /turf/open/floor/concrete,
 /area/under/town/basement)
@@ -5079,7 +5078,7 @@
 /area/under/town/sewer)
 "cLJ" = (
 /obj/structure/water_pipe,
-/obj/machinery/light/fueled/wallfire/candle,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks/stonered,
 /area/under/town/basement)
 "cLR" = (
@@ -11709,7 +11708,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/indoors/town)
 "geB" = (
-/obj/machinery/light/fueled/wallfire/candle,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks,
 /area/indoors/town/cell)
 "geU" = (
@@ -14294,9 +14293,6 @@
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor/dungeoneer)
 "huz" = (
@@ -17855,9 +17851,6 @@
 	},
 /obj/item/clothing/head/sack,
 /obj/structure/closet/crate/crafted_closet/dark,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor/dungeoneer)
 "jsj" = (
@@ -20322,9 +20315,8 @@
 /area/outdoors/mountains)
 "kIw" = (
 /obj/structure/fluff/steamvent,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
+/obj/machinery/light/fueled/torchholder{
+	dir = 4
 	},
 /turf/open/floor/metal/alt,
 /area/indoors/town/dwarfin)
@@ -27268,11 +27260,10 @@
 /turf/open/transparent/openspace,
 /area/indoors/town/church/inquisition)
 "ocU" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
-	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/fueled/torchholder{
+	dir = 4
+	},
 /turf/open/floor/cobble,
 /area/under/town/basement)
 "odf" = (
@@ -29239,8 +29230,8 @@
 /turf/open/floor/cobble,
 /area/under/town/basement)
 "paT" = (
-/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks,
 /area/under/town/basement)
 "paU" = (
@@ -30404,8 +30395,8 @@
 /turf/closed/mineral/random/low_nonval,
 /area/under/cave)
 "pIe" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
+/obj/machinery/light/fueled/torchholder{
+	dir = 1
 	},
 /turf/open/floor/cobble,
 /area/indoors/town/cell)
@@ -30817,12 +30808,6 @@
 /obj/structure/fluff/steamvent,
 /turf/open/floor/metal/barograte,
 /area/indoors/town/bath)
-"pTp" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/twig,
-/area/indoors/town/manor/dungeoneer)
 "pTy" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/manor/kitchen)
@@ -39321,8 +39306,8 @@
 /turf/open/floor/churchmarble,
 /area/under/town/basement)
 "urB" = (
-/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/cobble,
 /area/under/town/basement)
 "urI" = (
@@ -40528,10 +40513,10 @@
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/garrison)
 "vbN" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/fueled/torchholder{
+	dir = 1
+	},
 /turf/open/floor/blocks,
 /area/under/town/basement)
 "vck" = (
@@ -64780,7 +64765,7 @@ xzl
 okq
 xOi
 uSl
-gfO
+kMs
 sQE
 tpB
 kDv
@@ -65387,7 +65372,7 @@ aGn
 kHq
 gBa
 lBF
-nKk
+veb
 lqR
 yit
 tyO
@@ -67006,7 +66991,7 @@ tQv
 tQv
 jrT
 rzF
-bAf
+kMs
 tpB
 uSl
 fff
@@ -68013,7 +67998,7 @@ iLA
 ikB
 rpX
 cZi
-pTp
+cZi
 rzF
 sQE
 cCR
