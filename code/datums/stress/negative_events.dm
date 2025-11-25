@@ -371,6 +371,37 @@
 	stress_change = 5
 	desc = span_boldred("I have failed the guillotine drop! What a shame!")
 
+//// 1 stress event for each type of clothing! ///
+/datum/stress_event/maiddress
+	timer = 999 MINUTES
+	stress_change = 5
+	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+
+/datum/stress_event/maiddress/noble
+	stress_change = 6
+	desc = "<span class='red'>Wearing this is beneath me! I will not tolerate this another second!</span>"
+
+/datum/stress_event/maidband
+	timer = 999 MINUTES
+	stress_change = 3
+	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+
+/datum/stress_event/maidband/noble
+	timer = 999 MINUTES
+	stress_change = 4
+	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+
+/datum/stress_event/maidapron
+	timer = 999 MINUTES
+	stress_change = 3
+	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+
+/datum/stress_event/maidapron/noble
+	timer = 999 MINUTES
+	stress_change = 5
+	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+
+/// End Maid stress
 
 /datum/stress_event/noble_impoverished_food
 	stress_change = 3

@@ -147,3 +147,22 @@
 	desc = "A pleated cloth headband. It has gained widespread popularity from Valorian nobles travelling with their servants."
 	icon_state = "maidband"
 	body_parts_covered = NONE
+
+/obj/item/clothing/head/maidband/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot & (ITEM_SLOT_HEAD) && user.job)
+		var/datum/job/J = SSjob.GetJob(user.job)
+		if(istype(J, /datum/job/butler) || istype(J, /datum/job/servant))
+			return //even if they roll noble blood or something, they wont lose their mind.
+		if(HAS_TRAIT(user, TRAIT_NOBLE))
+			user.add_stress(/datum/stress_event/maidband/noble)
+			return
+		if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
+			user.add_stress(/datum/stress_event/maidband)
+
+/obj/item/clothing/head/maidband/dropped(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.head == src)
+			H.remove_stress(/datum/stress_event/maidband)

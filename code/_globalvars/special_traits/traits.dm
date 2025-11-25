@@ -974,7 +974,7 @@
 	allowed_patrons = list(/datum/patron/godless/godless, /datum/patron/godless/naivety)
 	allowed_jobs = list(/datum/job/butler)
 	req_text = "Non-Aasimar. Butler. Godless or Naive. No Antagonist roles."
-	weight = 10
+	weight = 20
 
 /datum/special_trait/immortal_butler/can_apply(mob/living/carbon/human/character)
 	return character.mind && character.mind.isactuallygood()

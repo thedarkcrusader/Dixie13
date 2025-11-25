@@ -140,10 +140,7 @@
 
 	body_parts_covered = COVERAGE_SHIRT
 	item_weight = 2.2
-
-/obj/item/clothing/armor/leather/jacket/Initialize(mapload, ...)
-	. = ..()
-	AddComponent(/datum/component/storage/concrete/grid/cloak)
+	pocket_storage_component_path = /datum/component/storage/concrete/grid/cloak
 
 /obj/item/clothing/armor/leather/jacket/dropped(mob/living/carbon/human/user)
 	..()

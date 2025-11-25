@@ -134,6 +134,26 @@
 	misc_flags = CRAFTING_TEST_EXCLUDE
 	uses_lord_coloring = LORD_SECONDARY
 
+/obj/item/clothing/shirt/dress/maid/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot & (ITEM_SLOT_SHIRT | ITEM_SLOT_ARMOR) && user.job)
+		var/datum/job/J = SSjob.GetJob(user.job)
+		if(istype(J, /datum/job/butler) || istype(J, /datum/job/servant))
+			return //even if they roll noble blood or something, they wont lose their mind.
+		if(HAS_TRAIT(user, TRAIT_NOBLE))
+			user.add_stress(/datum/stress_event/maiddress/noble)
+			return
+		if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
+			user.add_stress(/datum/stress_event/maiddress)
+
+/obj/item/clothing/shirt/dress/maid/dropped(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.wear_armor == src)
+			H.remove_stress(/datum/stress_event/maiddress)
+
+
 //................ Servant Gown   ............... //
 /obj/item/clothing/shirt/dress/maid/servant
 	name = "servant gown"

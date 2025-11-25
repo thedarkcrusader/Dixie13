@@ -52,8 +52,24 @@
 	boobed = FALSE
 	grid_width = 64
 	grid_height = 64
+	pocket_storage_component_path = /datum/component/storage/concrete/grid/cloak
 
-/obj/item/clothing/cloak/apron/maid/Initialize(mapload, ...)
+/obj/item/clothing/cloak/apron/maid/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/grid/cloak)
+	if(slot & (ITEM_SLOT_ARMOR | ITEM_SLOT_CLOAK) && user.job)
+		var/datum/job/J = SSjob.GetJob(user.job)
+		if(istype(J, /datum/job/butler) || istype(J, /datum/job/servant))
+			return //even if they roll noble blood or something, they wont lose their mind.
+		if(HAS_TRAIT(user, TRAIT_NOBLE))
+			user.add_stress(/datum/stress_event/maidapron/noble)
+			return
+		if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
+			user.add_stress(/datum/stress_event/maidapron)
+
+/obj/item/clothing/cloak/apron/maid/dropped(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.wear_armor == src || H.cloak == src)
+			H.remove_stress(/datum/stress_event/maidapron)
 
