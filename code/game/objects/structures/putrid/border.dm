@@ -5,7 +5,6 @@
 	icon_state = "border"
 
 	anchored = TRUE
-	density = TRUE
 	flags_1 = ON_BORDER_1
 
 	//armor = list(MELEE = 10, BULLET = 30, LASER = -10, ENERGY = 100, BOMB = -10, BIO = 100, FIRE = -200, ACID = -300)

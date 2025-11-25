@@ -15,6 +15,8 @@
 	opacity = TRUE
 	pass_flags = null
 
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_OBJ
+
 
 	max_integrity = 50
 	resistance_flags = CAN_BE_HIT
