@@ -35,11 +35,13 @@
 			to_chat(user, ("You start cleaning the [src] with the [cloth_check]"))
 			if(do_after(user, 2 SECONDS, src))
 				cloth_check.reagents.remove_all(1)
+				cut_overlay("dirty_platter")
+				AddComponent(/datum/component/particle_spewer/sparkle)
+				nobles_seen_servant_work(user)
+				fork_usages = 0
 				dirty = FALSE
 				cleaned = TRUE
-				AddComponent(/datum/component/particle_spewer/sparkle)
-				fork_usages = 0
-				cut_overlay("dirty_platter")
+				to_chat(user, ("You cleaned the [src]"))
 				return
 		else
 			to_chat(user, span_notice("This platter is already clean."))
