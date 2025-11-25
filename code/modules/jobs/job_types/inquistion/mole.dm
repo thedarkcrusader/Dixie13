@@ -26,7 +26,7 @@
 	spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) //In case their job don't give them reading.
 	to_chat(spawned, "<br><font color='#ff0000'><span class='bold'>I'm a mole for the inquisition, I must gather intel on heresy and heretics in town and report back to my inquisitorial superiors with my findings.</span></font><br>")
 
-/datum/job/advclass/orphan //This is for mule's orphan, Unlike regular orphans though, they have +1 in climbing and expert in Sneaking,  but they can't steal.
+/datum/job/advclass/mole_orphan //This is for mule's orphan, Unlike regular orphans though, they have +1 in climbing and expert in Sneaking,  but they can't steal.
 	title = "Orphan"
 	tutorial = "Before you could even form words, you were abandoned, or perhaps lost. \
 	Ever since, you have lived in the Orphanage under the Matron's care. \
