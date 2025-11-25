@@ -965,3 +965,40 @@
 	var/datum/inspiration/I = new /datum/inspiration(character)
 	I.grant_inspiration(character, bard_tier = BARD_T2)
 	character.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
+
+/datum/special_trait/immortal_butler
+	name = "The Immortal Butler"
+	greet_text = span_notice("I have seen this family through countless generations. Their faces change. Mine has not. Over time, this has desensitized me into indifference for my job, and the world as a whole.")
+	allowed_ages = NORMAL_AGES_LIST
+	restricted_races = list(SPEC_ID_AASIMAR)
+	allowed_patrons = list(/datum/patron/godless/godless, /datum/patron/godless/naivety)
+	allowed_jobs = list(/datum/job/butler)
+	req_text = "Non-Aasimar. Butler. Godless or Naive. No Antagonist roles."
+	weight = 10
+
+/datum/special_trait/immortal_butler/can_apply(mob/living/carbon/human/character)
+	return character.mind && character.mind.isactuallygood()
+
+//decaps still work, burning should still work, total gibbing should still work
+/datum/special_trait/immortal_butler/on_apply(mob/living/carbon/human/character, silent)
+	//we gotta wipe the slate for age
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_STR, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_PER, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_END, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_CON, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_INT, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_SPD, 0)
+	character.set_stat_modifier(STATMOD_AGE, STATKEY_LCK, 0)
+	character.age = AGE_IMMORTAL
+
+	ADD_TRAIT(character, TRAIT_PACIFISM, "[type]") // "i would advise against that, sire." if this wasn't here this wouldn't even be a consideration
+	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
+	ADD_TRAIT(character, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(character, TRAIT_NOPAINSTUN, "[type]")
+	ADD_TRAIT(character, TRAIT_NOLIMBDISABLE, "[type]")
+	ADD_TRAIT(character, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(character, TRAIT_BLOODLOSS_IMMUNE, "[type]")
+	ADD_TRAIT(character, TRAIT_ZOMBIE_IMMUNE, "[type]")
+	ADD_TRAIT(character, TRAIT_NECRA_CURSE, "[type]")
+	ADD_TRAIT(character, TRAIT_NODEATH, "[type]") // fuck it let's have some fun
+

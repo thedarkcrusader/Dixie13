@@ -1,6 +1,6 @@
 /obj/item/servant_bell
 	name = "service bell"
-	desc = "Summon a servant to you. While ineffective against those who live in death, the latent silver in this bell resonates its chime in the minds of those who serve you."
+	desc = "Summon a servant to you. This enchanted bell resonates its chime in the minds of those who serve you. There is not enough silver present to be effective against those who live in death."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "servantbell"
 	detail_tag = "_detail"
@@ -26,16 +26,18 @@
 
 /obj/item/servant_bell/attack_self(mob/living/user, params)
 	. = ..()
-	if(!istype(user)) //???
+	if(!istype(user)) // ???
 		return
 	if(HAS_TRAIT(user, TRAIT_NOBLE))
 		if(COOLDOWN_FINISHED(src, ring_bell_noble))
 			ring_bell(user)
+			// reset both cooldowns so we can't just have a noble ring it and then a beggar
 			COOLDOWN_START(src, ring_bell_noble, noble_cooldown)
 			COOLDOWN_START(src, nearby_ring_bell, nearby_cooldown)
 			return
 	else if(COOLDOWN_FINISHED(src, ring_bell))
 		ring_bell(user)
+		// same as above
 		COOLDOWN_START(src, ring_bell, cooldown)
 		COOLDOWN_START(src, nearby_ring_bell, nearby_cooldown)
 		return
@@ -80,11 +82,11 @@
 			continue
 		player.apply_status_effect(/datum/status_effect/signal_horn/servant_bell, null, origin_turf)
 		var/dirText = ""
-		if(player.z < origin_turf.z)
-			dirText = " above me"
-		if(player.z > origin_turf.z)
-			dirText = " below me"
-
+		var/z_dist = origin_turf.z - player.z
+		if(z_dist != 0)
+			var/abs_z = abs(z_dist) // we can tell which floor it's on if it's only 2 away
+			dirText += abs_z > 2 ? " far" : " [abs_z] stories"
+			dirText += z_dist > 0 ? " above me" : " below me"
 		to_chat(player, span_warning("I hear a service bell being rung[dirText]."))
 		if(distance <= 7)
 			continue
@@ -93,7 +95,7 @@
 
 /datum/status_effect/signal_horn/servant_bell
 	id = "servant bell indicator"
-	duration = 30 SECONDS
+	duration = 25 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/servant_bell
 
 /atom/movable/screen/alert/status_effect/servant_bell

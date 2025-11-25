@@ -39,7 +39,10 @@
 	else
 		if(H.gender == MALE)
 			shirt = /obj/item/clothing/shirt/undershirt/formal
-			pants = /obj/item/clothing/pants/trou/formal/shorts
+			if(h.age == OLD)
+				pants = /obj/item/clothing/pants/trou/formal // no one wants to see your wrinkly legs, codger
+			else
+				pants = /obj/item/clothing/pants/trou/formal/shorts
 			belt = /obj/item/storage/belt/leather/suspenders
 			shoes = /obj/item/clothing/shoes/boots // i would prefer socks and shoes but this is what's most aesthetic right now
 		else
