@@ -39,7 +39,7 @@
 	else
 		if(H.gender == MALE)
 			shirt = /obj/item/clothing/shirt/undershirt/formal
-			if(h.age == OLD)
+			if(H.age == AGE_CHILD)
 				pants = /obj/item/clothing/pants/trou/formal // no one wants to see your wrinkly legs, codger
 			else
 				pants = /obj/item/clothing/pants/trou/formal/shorts
