@@ -27,6 +27,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/Initialize()
 	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_PUTRID, INNATE_TRAIT)
 	add_spell(/datum/action/cooldown/meatvine/spread_floor)
 	add_spell(/datum/action/cooldown/meatvine/spread_wall)
