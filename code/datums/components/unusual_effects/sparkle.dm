@@ -7,10 +7,10 @@
 	spawn_interval = 0.3 SECONDS
 	burst_amount = 0
 	offsets = FALSE
-	var/spark_total_duration = 9999 MINUTES
+	var/spark_total_duration
 	var/end_time = 0
 
-/datum/component/particle_spewer/sparkle/Initialize(spark_total_duration)
+/datum/component/particle_spewer/sparkle/Initialize(spark_total_duration = 9999 MINUTES)
 	. = ..()
 	spark_total_duration = spark_total_duration
 	START_PROCESSING(SSprocessing, src)
