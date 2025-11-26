@@ -20,14 +20,14 @@
 	var/fork_usages = 0
 	var/dirty = FALSE
 	var/cleaned = FALSE
+	var/start_dirty = FALSE
 
 /obj/item/plate/dirty
 	dirty = TRUE
 
 /obj/item/plate/Initialize(mapload, ...)
 	. = ..()
-	if(dirty)
-		add_overlay("dirty_platter")
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/plate/attackby(obj/item/I, mob/living/carbon/user, params)
 	if(!length(contents) && istype(I, /obj/item/natural/cloth) && user?.used_intent?.type == INTENT_USE)
@@ -36,18 +36,18 @@
 			if(cloth_check.reagents.total_volume < 0.1)
 				to_chat(user, span_warning("[cloth_check] is too dry to clean with!"))
 				return
-			var/DirtyWater = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
-			if(DirtyWater)
+			var/dirtyWater = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
+			if(dirtyWater)
 				to_chat(user, span_warning("[cloth_check] water is too dirty to clean anything with it!"))
 				return
 			to_chat(user, ("You start cleaning the [src] with the [cloth_check]"))
 			if(do_after(user, 2 SECONDS, src))
 				cloth_check.reagents.remove_all(1)
-				cut_overlay("dirty_platter")
-				AddComponent(/datum/component/particle_spewer/sparkle)
-				nobles_seen_servant_work(user)
-				fork_usages = 0
 				dirty = FALSE
+				update_appearance(UPDATE_OVERLAYS)
+				AddComponent(/datum/component/particle_spewer/sparkle)
+				user.nobles_seen_servant_work()
+				fork_usages = 0
 				cleaned = TRUE
 				to_chat(user, ("You cleaned the [src]"))
 				return
@@ -334,3 +334,10 @@
 			I.y = yOffset
 
 			sleep(rand(2, 4))
+
+/obj/item/plate/update_overlays()
+	. = ..()
+	if(dirty)
+		. += "dirty_platter"
+
+

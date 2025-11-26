@@ -33,7 +33,7 @@
 	if(!drying_timer && !has_wet_items)
 		// Start loop
 		drying_timer = addtimer(CALLBACK(src, PROC_REF(process_drying)), 10 SECONDS, TIMER_STOPPABLE)
-	nobles_seen_servant_work(usr)
+	usr.nobles_seen_servant_work()
 
 
 /obj/structure/dryclothes/proc/on_item_removed(datum/source, obj/item/I)
@@ -43,7 +43,7 @@
 	if(!length(STR.contents()))
 		if(drying_timer)
 			drying_timer = null
-	nobles_seen_servant_work(usr)
+	usr.nobles_seen_servant_work()
 
 /obj/structure/dryclothes/proc/process_drying()
 
@@ -71,23 +71,3 @@
 		drying_timer = addtimer(CALLBACK(src, PROC_REF(process_drying)), 10 SECONDS, TIMER_STOPPABLE)
 	else
 		drying_timer = null
-
-/proc/nobles_seen_servant_work(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = usr
-		if(!is_servant_job(H.mind.assigned_role))
-			return
-	else
-		return
-
-	var/list/nobles = list()
-	for(var/mob/living/carbon/human/target in viewers(6, user))
-		if(!target.mind || target.stat != CONSCIOUS)
-			continue
-		if(!HAS_TRAIT(target, TRAIT_NOBLE))
-			continue
-		nobles += target
-	if(length(nobles))
-		for(var/mob/living/carbon/human/target in nobles)
-			if(!target.has_stress_type(/datum/stress_event/noble_seen_servant_work))
-				target.add_stress(/datum/stress_event/noble_seen_servant_work)

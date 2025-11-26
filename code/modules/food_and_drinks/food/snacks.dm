@@ -392,7 +392,7 @@ All foods are distributed among various categories. Use common sense.
 					var/datum/component/particle_spewer = plate_check.GetComponent(/datum/component/particle_spewer/sparkle)
 					if(particle_spewer)
 						qdel(particle_spewer)
-					plate_check.add_overlay("dirty_platter")
+					plate_check.update_overlays()
 
 
 		var/fullness = M.nutrition + 10
@@ -512,15 +512,15 @@ All foods are distributed among various categories. Use common sense.
 		if(slice_bclass == BCLASS_CHOP)
 			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
 			slice(W, user)
-			nobles_seen_servant_work(user)
+			user.nobles_seen_servant_work()
 			return TRUE
 		if(slice_bclass == BCLASS_CUT)
 			user.visible_message("<span class='notice'>[user] slices [src]!</span>")
 			slice(W, user)
-			nobles_seen_servant_work(user)
+			user.nobles_seen_servant_work()
 			return TRUE
 		else if(slice(W, user))
-			nobles_seen_servant_work(user)
+			user.nobles_seen_servant_work()
 			return TRUE
 
 /obj/item/reagent_containers/food/snacks/proc/slice(obj/item/W, mob/user)

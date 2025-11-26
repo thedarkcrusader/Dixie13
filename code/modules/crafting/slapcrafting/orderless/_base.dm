@@ -122,7 +122,7 @@
 /datum/orderless_slapcraft/proc/try_finish(mob/user)
 	user.adjust_experience(related_skill, skill_xp_gained)
 	if(related_skill == /datum/skill/craft/cooking)
-		nobles_seen_servant_work(user)
+		user.nobles_seen_servant_work()
 	var/turf/source_turf = get_turf(hosted_source)
 	if(output_item)
 		var/obj/item/new_item = new output_item(source_turf)

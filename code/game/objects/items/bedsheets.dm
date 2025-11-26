@@ -22,8 +22,7 @@ LINEN BINS
 
 	var/list/dream_messages = list("white")
 	var/datum/weakref/signal_sleeper //this is our goldylocks
-	// Used for the tucked buffs.
-	var/obj/structure/bed/bed_tucked
+	var/bed_tucked = FALSE
 
 /obj/item/bedsheet/Initialize()
 	. = ..()
@@ -84,9 +83,10 @@ LINEN BINS
 	if(bed_tucked)
 		to_chat(user, span_notice("You start to remove the [src] from the [bed_tucked]."))
 		if(do_after(user, 2 SECONDS, src))
-			bed_tucked.sheet_tucked = FALSE
-			bed_tucked.sheet_on = null
-			bed_tucked = null
+			var/obj/structure/bed/bed = locate() in loc
+			if(bed)
+				bed.sheet_tucked = FALSE
+				bed.sheet_on = FALSE
 			return ..()
 	else
 		return ..()

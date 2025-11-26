@@ -7,7 +7,6 @@
 	max_integrity = 200
 	integrity_failure = 0.1
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	var/last_wet_stress  = 0
 
 	//Here we have salvage vars!
 	salvage_result = /obj/item/natural/cloth
@@ -75,6 +74,7 @@
 	var/hoodtoggled = FALSE
 	var/adjustable = CANT_CADJUST
 	var/proper_drying = FALSE
+	COOLDOWN_DECLARE(wet_stress_cd)
 
 /obj/item/clothing/Initialize()
 	. = ..()
@@ -555,9 +555,7 @@ BLIND     // can't see anything
 		if(C.mind?.assigned_role == /datum/job/farmer || C.mind?.assigned_role == /datum/job/soilchild || HAS_TRAIT(C, TRAIT_LEECHIMMUNE) || istriton(C))
 			return
 
-		var/now = world.time
-		if(now - last_wet_stress >= 60 SECONDS)
-			last_wet_stress = now
-			C.add_stress(/datum/stress_event/wet_cloth)
-
+	if(COOLDOWN_FINISHED(src, wet_stress_cd))
+		COOLDOWN_START(src, wet_stress_cd, 60 SECONDS)
+		C.add_stress(/datum/stress_event/wet_cloth)
 

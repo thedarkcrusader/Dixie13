@@ -189,6 +189,8 @@
 
 /obj/item/reagent_containers/glass/bowl/update_overlays()
 	. = ..()
+	if(dirty)
+		. += "dirty_bowl"
 	if(!reagents?.total_volume)
 		return
 	// ONE MILLION YEARS DUNGEON FOR NPC1314
@@ -226,11 +228,11 @@
 			to_chat(user, ("You start cleaning the [src] with the [cloth_check]"))
 			if(do_after(user, 2 SECONDS, src))
 				cloth_check.reagents.remove_all(1)
-				cut_overlay("dirty_bowl")
-				AddComponent(/datum/component/particle_spewer/sparkle)
-				nobles_seen_servant_work(user)
-				usages = 0
 				dirty = FALSE
+				update_appearance(UPDATE_OVERLAYS)
+				AddComponent(/datum/component/particle_spewer/sparkle)
+				user.nobles_seen_servant_work()
+				usages = 0
 				cleaned = TRUE
 				to_chat(user, ("You cleaned the [src]"))
 				return
@@ -603,7 +605,7 @@
 			var/obj/item/reagent_containers/food/snacks/dough_base/base = new /obj/item/reagent_containers/food/snacks/dough_base(get_turf(src))
 			base.set_quality(recipe_quality)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			nobles_seen_servant_work(user)
+			user.nobles_seen_servant_work()
 			qdel(src)
 	else
 		..()

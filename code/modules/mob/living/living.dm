@@ -1923,12 +1923,13 @@
 	return FALSE
 
 
-/mob/living/proc/SoakMob(locations, dirty_water = FALSE)
+/mob/living/proc/SoakMob(locations, dirty_water = FALSE, rain = FALSE)
 	var/mob/living/carbon/human/H
 	if(ishuman(src))
 		H = src
 	if(locations & CHEST)
-		ExtinguishMob()
+		if(!rain)
+			ExtinguishMob()
 		if(H)
 			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.resistance_flags & WETABLE)

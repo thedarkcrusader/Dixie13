@@ -144,7 +144,7 @@
 					var/datum/component/particle_spewer = bowl_check.GetComponent(/datum/component/particle_spewer/sparkle)
 					if(particle_spewer)
 						qdel(particle_spewer)
-					bowl_check.add_overlay("dirty_bowl")
+					bowl_check.update_overlays()
 				if(human_user.is_noble()) // egads we're an unmannered SLOB
 					human_user.add_stress(/datum/stress_event/noble_bad_manners)
 					if(prob(25))

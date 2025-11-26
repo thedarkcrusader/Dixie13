@@ -126,7 +126,7 @@
 					SEND_SIGNAL(clothing_item, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
 				else
 					SEND_SIGNAL(clothing_item, COMSIG_ATOM_WATER_INCREASE, 20, dirty = TRUE, wash = TRUE)
-		nobles_seen_servant_work(user)
+		user.nobles_seen_servant_work()
 	reagents.remove_reagent(removereg, 5)
 
 	playsound(user, pick_n_take(wash), 100, FALSE)

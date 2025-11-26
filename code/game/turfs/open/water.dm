@@ -470,7 +470,7 @@
 				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
 			else
 				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = TRUE, wash = TRUE)
-		nobles_seen_servant_work(user)
+		user.nobles_seen_servant_work()
 		playsound(user, pick(wash), 100, FALSE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

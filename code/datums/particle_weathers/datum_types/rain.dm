@@ -15,6 +15,27 @@
 	wind                   = 2
 	spin                   = 0 // explicitly set spin to 0 - there is a bug that seems to carry generators over from old particle effects
 
+/datum/particle_weather/rain/try_weather_act(mob/living/L)
+	if(!L.mind)
+		return
+	if(can_weather(L))
+		weather_sound_effect(L)
+		if(can_weather_effect(L))
+			weather_act(L)
+			var/mob/living/carbon/C_L
+			if(iscarbon(L))
+				C_L = L
+			if(!C_L)
+				return
+			var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
+			if(!rainhood)
+				C_L.SoakMob(FULL_BODY, dirty_water = FALSE, rain = TRUE)
+
+			else
+				C_L.SoakMob(FEET, dirty_water = FALSE, rain = TRUE)
+	else
+		stop_weather_sound_effect(L)
+
 /datum/particle_weather/rain_gentle
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
@@ -34,9 +55,6 @@
 	forecast_tag = "rain"
 
 	temperature_modification = -1
-
-/datum/particle_weather/rain_gentle/tick()
-	weather_apply_wetness()
 
 /datum/particle_weather/rain_storm
 	name = "Rain"
@@ -61,7 +79,6 @@
 	COOLDOWN_DECLARE(thunder)
 
 /datum/particle_weather/rain_storm/tick()
-	weather_apply_wetness()
 	if(!COOLDOWN_FINISHED(src, thunder))
 		return
 
@@ -102,31 +119,3 @@
 		new /obj/effect/temp_visual/target/lightning(lightning_turf)
 		COOLDOWN_START(src, thunder, rand(5, 40) * 1 SECONDS)
 
-/datum/particle_weather/proc/weather_apply_wetness()
-	// Loop over all clients and only apply wetness to outdoors players
-	for(var/client/client in GLOB.clients)
-		if(!client.mob)
-			continue
-		var/client_z = client.mob.z
-		if(!ishuman(client.mob))
-			continue
-		if(!("[client_z]" in GLOB.weatherproof_z_levels))
-			if(SSmapping.level_has_any_trait(client_z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
-				GLOB.weatherproof_z_levels |= "[client_z]"
-		if("[client_z]" in GLOB.weatherproof_z_levels)
-			continue
-		var/turf/T = get_turf(client.mob)
-		if(T)
-			if(!T.outdoor_effect || T.outdoor_effect.weatherproof)
-				continue
-		else
-			continue
-		var/mob/living/carbon/human/C_L = client.mob
-		if(!C_L)
-			continue
-
-		var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
-		if(!rainhood)
-			C_L.SoakMob(FULL_BODY)
-		else
-			C_L.SoakMob(FEET)

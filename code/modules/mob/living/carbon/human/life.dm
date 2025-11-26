@@ -259,7 +259,7 @@
 		last_fire_update = null
 		..()
 
-/mob/living/carbon/human/SoakMob(locations)
+/mob/living/carbon/human/SoakMob(locations, dirty_water = FALSE, rain = FALSE)
 	. = ..()
 	var/coverhead
 	//add belt slots to this for rusting

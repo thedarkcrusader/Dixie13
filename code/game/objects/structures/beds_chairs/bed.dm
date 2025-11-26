@@ -29,7 +29,7 @@
 
 	//For the bed and sheet buff
 	var/sheet_tucked = FALSE
-	var/obj/item/bedsheet/sheet_on
+	var/sheet_on = FALSE
 
 /obj/structure/bed/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -40,6 +40,12 @@
 /obj/structure/bed/attack_paw(mob/user)
 	return attack_hand(user)
 
+
+/obj/structure/bed/Initialize(mapload, ...)
+	. = ..()
+	var/obj/item/bedsheet/sheet = locate() in loc
+	if(sheet)
+		sheet_on = TRUE
 
 /obj/structure/bed/examine(mob/user)
 	. = ..()
@@ -61,11 +67,11 @@
 		to_chat(user, span_notice("You start tucking the [sheet] into the [src]."))
 		if(do_after(user, 2 SECONDS, src))
 			sheet_tucked = TRUE
+			sheet_on = TRUE
 			user.dropItemToGround(sheet)
 			sheet.forceMove(get_turf(src))
-			sheet.bed_tucked = src
-			sheet_on = sheet
-			nobles_seen_servant_work(user)
+			sheet.bed_tucked = TRUE
+			user.nobles_seen_servant_work()
 	else
 		return ..()
 

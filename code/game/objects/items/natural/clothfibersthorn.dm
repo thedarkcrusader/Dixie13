@@ -117,7 +117,7 @@
 	cleaner_component.cleaning_effectiveness = (effectiveness * 100) % 100
 	cleaner_component.cleaning_strength = CLEAN_WASH
 	playsound(cleaner, pick('sound/foley/cloth_wipe (1).ogg','sound/foley/cloth_wipe (2).ogg', 'sound/foley/cloth_wipe (3).ogg'), 25, FALSE)
-	nobles_seen_servant_work(cleaner)
+	cleaner.nobles_seen_servant_work()
 	return TRUE
 
 /obj/item/natural/cloth/proc/on_clean_success(datum/source, atom/target, mob/living/user, clean_succeeded)
