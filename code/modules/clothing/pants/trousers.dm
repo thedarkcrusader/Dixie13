@@ -17,6 +17,9 @@
 	salvage_result = /obj/item/natural/hide/cured
 	item_weight = 3
 
+/obj/item/clothing/pants/trou/black
+	color = CLOTHING_SOOT_BLACK
+
 /obj/item/clothing/pants/trou/leather
 	name = "leather trousers"
 	desc = "Standard leather pants for hardy workers."

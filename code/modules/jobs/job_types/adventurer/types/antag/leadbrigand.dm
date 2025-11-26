@@ -9,7 +9,7 @@
         STATKEY_END = 2,
         STATKEY_CON = 3,
         STATKEY_INT = 1,
-        STATKEY_SPD = -1,
+		STATKEY_SPD = -1,
     )
 
     skills = list(
@@ -60,7 +60,7 @@
 
 /datum/job/advclass/banditlead/leadbrigand/after_spawn(mob/living/carbon/human/H)
     . = ..()
-    var/weapons = list("Great Axe", "Warhammer and Shield")
+    var/weapons = list("Great Axe", "Katar and Knuckle")
     var/weapon_choice = input(H, "CHOOSE YOUR WEAPON.", "GO ROB SOME FOOLS.") as anything in weapons
     switch(weapon_choice)
         if("Great Axe")
@@ -68,9 +68,8 @@
             H.equip_to_slot_or_del(new /obj/item/weapon/axe/steel, ITEM_SLOT_BELT_L, TRUE)
             H.put_in_hands(new /obj/item/weapon/scabbard/sword/noble(get_turf(H)), TRUE)
             H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-            H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
         if("Katar and Knuckle")
-            H.equip_to_slot_or_del(new /obj/item/weapon/mace/warhammer/steel, ITEM_SLOT_BELT_L, TRUE)
-            H.equip_to_slot_or_del(new /obj/item/weapon/shield/heater, ITEM_SLOT_BACK_L, TRUE)
-            H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-            H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+            H.equip_to_slot_or_del(new /obj/item/weapon/katar, ITEM_SLOT_BELT_L, TRUE)
+            H.equip_to_slot_or_del(new /obj/item/weapon/knuckles, ITEM_SLOT_BELT_R, TRUE)
+            H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+            H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)

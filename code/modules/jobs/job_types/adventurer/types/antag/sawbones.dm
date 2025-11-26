@@ -9,16 +9,21 @@
 	..()
 	mask = /obj/item/clothing/face/facemask/steel
 	head = /obj/item/clothing/head/tophat
-	armor = /obj/item/clothing/armor/leather/vest
-	shirt = /obj/item/clothing/shirt/shortshirt
+	neck = /obj/item/clothing/neck/gorget/copper
+	armor = /obj/item/clothing/armor/cuirass/iron
+	shirt = /obj/item/clothing/shirt/undershirt/fancy
+	cloak = /obj/item/clothing/shirt/clothvest/black
+	wrists = /obj/item/clothing/wrists/bracers/leather
+	gloves = /obj/item/clothing/gloves/fingerless
 	belt = /obj/item/storage/belt/leather
-	beltr = /obj/item/weapon/knife/cleaver /// proper self defense an tree aquiring
-	pants = /obj/item/clothing/pants/trou
-	shoes = /obj/item/clothing/shoes/simpleshoes
+	beltl = /obj/item/weapon/axe/steel /// proper self defense an tree aquiring
+	pants = /obj/item/clothing/pants/trou/black
+	shoes = /obj/item/clothing/shoes/nobleboot
 	backr = /obj/item/storage/backpack/satchel
 	backl = /obj/item/storage/backpack/satchel/surgbag
-	backpack_contents = list(/obj/item/natural/worms/leech = 1, /obj/item/natural/cloth = 2,)
-	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	backpack_contents = list(/obj/item/natural/worms/leech = 1, /obj/item/natural/cloth = 2,/obj/item/reagent_containers/glass/bottle/water = 1,)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)

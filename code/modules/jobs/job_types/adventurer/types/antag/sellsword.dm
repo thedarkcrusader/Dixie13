@@ -28,7 +28,8 @@
 	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/trou/leather/splint
 	shirt = /obj/item/clothing/armor/gambeson/heavy
-	shoes = /obj/item/clothing/shoes/boots
+	wrists = /obj/item/clothing/wrists/bracers/ironjackchain
+	shoes = /obj/item/clothing/shoes/boots/armor/ironmaille
 	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel
