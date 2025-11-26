@@ -78,21 +78,15 @@ LINEN BINS
 	UnregisterSignal(sleeper, COMSIG_PARENT_QDELETING)
 	signal_sleeper = null
 
-
 /obj/item/bedsheet/attack_hand(mob/user, params)
-	if(bed_tucked)
-		to_chat(user, span_notice("You start to remove the [src] from the [bed_tucked]."))
-		if(do_after(user, 2 SECONDS, src))
-			var/obj/structure/bed/bed = locate() in loc
-			if(bed)
-				bed.sheet_tucked = FALSE
-				bed.sheet_on = FALSE
-			return ..()
-	else
+	var/obj/structure/bed/bed = locate() in loc
+	if(!bed)
 		return ..()
-
-
-//
+	to_chat(user, span_notice("You start to remove the [src] from the [bed_tucked]."))
+	if(do_after(user, 2 SECONDS, src))
+		bed.sheet_tucked = FALSE
+		bed.sheet_on = FALSE
+		return ..()
 /obj/item/bedsheet/cloth
 	desc = ""
 	icon = 'icons/roguetown/misc/structure.dmi'

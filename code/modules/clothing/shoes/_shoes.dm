@@ -137,16 +137,15 @@
 			polished = 2
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				user.add_stress(/datum/stress_event/noble_polishing_shoe)
-			var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle, shine_more = TRUE)
+			var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 			if(particle_spewer)
 				qdel(particle_spewer)
-			AddComponent(/datum/component/particle_spewer/sparkle)
+			AddComponent(/datum/component/particle_spewer/sparkle, shine_more = TRUE)
 			addtimer(CALLBACK(src, PROC_REF(lose_shine)), 10 SECONDS)
 			to_chat(user, ("You polished the [name]."))
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && polished == 2)
 		to_chat(user, ("You can't possibily make it shine more."))
-		return
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()

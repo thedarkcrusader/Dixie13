@@ -422,9 +422,6 @@
 	desc = span_red("This menial chore insults my station, i should not need to polish a pair of shoes.")
 	timer = 5 MINUTES
 
-
-
-
 /datum/stress_event/destroyed_past //gaffer destroying their trophies
 	stress_change = 4
 	desc = span_red("A piece of my history is destroyed, how will they know my great past?")
