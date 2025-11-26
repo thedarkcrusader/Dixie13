@@ -687,7 +687,7 @@
 		else
 			to_chat(user, span_info("The [src] already has redtallow in it."))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow)) // Tells players to make redtallow.
-		to_chat(user,span_info("Normal tallow lacks the properties to act as wax. Mix the rendered fat with viscera first."))
+		to_chat(user,span_warning("Normal tallow lacks the properties to act as wax. Mix the rendered fat with viscera first."))
 
 	if(istype(I, /obj/item/flashlight/flare/torch))
 		heatedup = 28
