@@ -972,7 +972,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 						if(fallingas > 10)
 							to_chat(src, ("This bed is so cozy..."))
 							add_stress(/datum/stress_event/cozy_sleep)
-							Sleeping(300)
+							Sleeping(30 SECONDS)
 							bed_check.sheet_tucked = FALSE
 
 				if(fallingas > 15)

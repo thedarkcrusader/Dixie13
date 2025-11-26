@@ -190,7 +190,7 @@
 /obj/item/reagent_containers/glass/bowl/update_overlays()
 	. = ..()
 	if(dirty)
-		. += "dirty_bowl"
+		. += mutable_appearance(icon, "dirty_bowl")
 	if(!reagents?.total_volume)
 		return
 	// ONE MILLION YEARS DUNGEON FOR NPC1314
@@ -262,7 +262,7 @@
 		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 		if(particle_spewer)
 			qdel(particle_spewer)
-		add_overlay("dirty_bowl")
+		update_appearance(UPDATE_OVERLAYS)
 	playsound(get_turf(src), 'sound/misc/eat.ogg', rand(30, 60), TRUE)
 	user.visible_message(span_info("[user] eats from [src]."), \
 			span_notice("I swallow a gulp of [src]."))

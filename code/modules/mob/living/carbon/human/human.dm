@@ -95,7 +95,6 @@
 					return
 				if(istype(held_item, /obj/item/reagent_containers/food/snacks/fat) && user?.used_intent?.type == INTENT_USE && shoes_check.polished == 2)
 					to_chat(user, ("You can't possibily make it shine more."))
-					return
 
 /mob/living/carbon/human/Initialize()
 	// verbs += /mob/living/proc/mob_sleep

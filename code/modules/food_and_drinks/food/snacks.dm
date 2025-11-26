@@ -394,7 +394,6 @@ All foods are distributed among various categories. Use common sense.
 						qdel(particle_spewer)
 					plate_check.update_overlays()
 
-
 		var/fullness = M.nutrition + 10
 		for(var/datum/reagent/consumable/C in M.reagents.reagent_list) //we add the nutrition value of what we're currently digesting
 			fullness += C.nutriment_factor * C.volume / C.metabolization_rate

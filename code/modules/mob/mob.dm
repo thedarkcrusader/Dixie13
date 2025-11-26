@@ -1369,13 +1369,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	var/list/nobles = list()
-	for(var/mob/living/carbon/human/target in viewers(6, src))
+	for(var/mob/living/carbon/human/target as anything in viewers(6, src))
 		if(!target.mind || target.stat != CONSCIOUS)
 			continue
 		if(!HAS_TRAIT(target, TRAIT_NOBLE))
 			continue
 		nobles += target
 	if(length(nobles))
-		for(var/mob/living/carbon/human/target in nobles)
+		for(var/mob/living/carbon/human/target as anything in nobles)
 			if(!target.has_stress_type(/datum/stress_event/noble_seen_servant_work))
 				target.add_stress(/datum/stress_event/noble_seen_servant_work)

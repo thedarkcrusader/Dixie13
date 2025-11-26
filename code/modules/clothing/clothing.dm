@@ -138,7 +138,7 @@
 			. += span_notice("Both its sleeves have been torn!")
 	desc = initial(desc)
 	if(proper_drying)
-		desc +=span_notice("\n This was properly washed and dried off, it smells good!")
+		desc += span_notice("\n This was properly washed and dried off, it smells good!")
 
 /obj/item/clothing/MiddleClick(mob/user, params)
 	..()

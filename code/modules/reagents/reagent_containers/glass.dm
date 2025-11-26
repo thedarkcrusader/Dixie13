@@ -133,10 +133,9 @@
 				var/obj/item/reagent_containers/glass/bowl/bowl_check = src
 				if(bowl_check.dirty)
 					human_user.add_stress(/datum/stress_event/dirty_bowl)
-				else
-					if(istype(bowl_check.reagents, /datum/reagent/consumable/soup))
-						var/datum/reagent/consumable/soup/soup_check = bowl_check.reagents
-						soup_check.taste_mult +=1
+				else if(istype(bowl_check.reagents, /datum/reagent/consumable/soup))
+					var/datum/reagent/consumable/soup/soup_check = bowl_check.reagents
+					soup_check.taste_mult +=1
 				if(!bowl_check.reagents.total_volume > 0 && !bowl_check.reagents.get_reagent_amount(/datum/reagent/water) == reagents.total_volume)
 					bowl_check.usages +=1
 				if(bowl_check.usages >= bowl_check.max_usages && !bowl_check.dirty)
@@ -144,7 +143,7 @@
 					var/datum/component/particle_spewer = bowl_check.GetComponent(/datum/component/particle_spewer/sparkle)
 					if(particle_spewer)
 						qdel(particle_spewer)
-					bowl_check.update_overlays()
+					bowl_check.update_appearance(UPDATE_OVERLAYS)
 				if(human_user.is_noble()) // egads we're an unmannered SLOB
 					human_user.add_stress(/datum/stress_event/noble_bad_manners)
 					if(prob(25))

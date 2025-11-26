@@ -338,6 +338,4 @@
 /obj/item/plate/update_overlays()
 	. = ..()
 	if(dirty)
-		. += "dirty_platter"
-
-
+		. += mutable_appearance(icon, "dirty_platter")

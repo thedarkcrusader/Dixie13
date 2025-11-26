@@ -18,23 +18,20 @@
 /datum/particle_weather/rain/try_weather_act(mob/living/L)
 	if(!L.mind)
 		return
-	if(can_weather(L))
-		weather_sound_effect(L)
-		if(can_weather_effect(L))
-			weather_act(L)
-			var/mob/living/carbon/C_L
-			if(iscarbon(L))
-				C_L = L
-			if(!C_L)
-				return
-			var/obj/item/clothing/head/hooded/rainhood = locate(/obj/item/clothing/head/hooded/rainhood) in list(C_L.head)
-			if(!rainhood)
-				C_L.SoakMob(FULL_BODY, dirty_water = FALSE, rain = TRUE)
-
-			else
-				C_L.SoakMob(FEET, dirty_water = FALSE, rain = TRUE)
-	else
+	if(!can_weather(L))
 		stop_weather_sound_effect(L)
+		return	
+	weather_sound_effect(L)
+	if(can_weather_effect(L))
+		weather_act(L)
+		var/mob/living/carbon/C = L
+		if(!istype(C))
+			return
+		var/obj/item/clothing/head/hooded/rainhood = C.head
+		if(!istype(rainhood))
+			C.SoakMob(FULL_BODY, dirty_water = FALSE, rain = TRUE)
+		else
+			C.SoakMob(FEET, dirty_water = FALSE, rain = TRUE)
 
 /datum/particle_weather/rain_gentle
 	name = "Rain"

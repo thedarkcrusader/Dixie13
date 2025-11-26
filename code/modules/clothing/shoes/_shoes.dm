@@ -114,8 +114,8 @@
 		if(cloth_check.reagents.total_volume < 0.1)
 			to_chat(user, span_warning("[cloth_check] is too dry to polish with!"))
 			return
-		var/DirtyWater = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
-		if(DirtyWater)
+		var/dirty_water = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
+		if(dirty_water)
 			to_chat(user, span_warning("[cloth_check] water is too dirty to polish anything with it!"))
 			return
 		to_chat(user, ("You start polishing the [src] with the [cloth_check]"))
