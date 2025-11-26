@@ -28,9 +28,9 @@
 		owner.adjust_triumphs(profane.release_profane_souls(owner)) // Every soul saved earns you a big fat triumph.
 		return
 	if(pacify_coffin(cast_on, owner))
-		if(pacify_coffin(cast_on, owner).doubleconsecrated)
+		if(checkdoubleconsecration(cast_on, owner)) // Check if the thing we're casting the rites on is a grave with an already-consecrated casket.
 			cast_on.icon_state = "gravedoubleconsecrated"
-			owner.visible_message(span_rose("The air gets colder as [owner] consecrates [cast_on], woe betide any graverobber."), span_rose("Necra's gaze turns over to [cast_on] as I consecrate it. Any graverobbing attempt will now get severely punished!"))
+			owner.visible_message(span_rose("The air gets colder as [owner] consecrates [cast_on], woe betide any graverobber."), span_rose("Necra's gaze turns over to [cast_on] as I consecrate it. Any who would rob this grave will pay a dire toll."))
 		else
 			owner.visible_message(span_rose("[owner] consecrates [cast_on]."), span_rose("My funeral rites have been performed on [cast_on]."))
 		cast_on.add_overlay("graveconsecrated")

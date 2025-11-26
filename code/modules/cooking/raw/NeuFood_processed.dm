@@ -62,6 +62,21 @@
 	bitesize = 1
 	dropshrink = 0.75
 
+// Redtallow can be crafted using visceras (rendered from animal sinew)
+/datum/repeatable_crafting_recipe/food/snacks/tallow/red
+	name = "red tallow"
+
+	requirements = list(
+		/obj/item/alch/viscera = 1,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
+	)
+
+	starting_atom = /obj/item/alch/viscera
+	attacked_atom = /obj/item/reagent_containers/food/snacks/tallow
+	output = /obj/item/reagent_containers/food/snacks/tallow/red
+	craft_time = 1 SECONDS
+	subtypes_allowed = TRUE
+
 /obj/item/reagent_containers/food/snacks/tallow/red
 	name = "redtallow"
 	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \

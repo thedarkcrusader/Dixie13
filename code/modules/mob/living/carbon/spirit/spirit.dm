@@ -176,7 +176,6 @@
 	if(!coffin)
 		return FALSE
 	var/success = FALSE
-	var/doubleconsecrated = FALSE
 	if(isliving(coffin))
 		if(pacify_corpse(coffin, user))
 			success = TRUE
@@ -188,11 +187,6 @@
 			continue
 		if(pacify_corpse(head.brainmob, user))
 			success = TRUE
-	if(istype(coffin, /obj/structure/closet/dirthole/closed)) // If the "coffin" is actually a grave containing a sanctified casket, with a valid target, doubly-sanctify it, and make anyone trying to graverob regret it.
-		var/obj/structure/closet/dirthole/closed/grave = coffin
-		if(grave.has_consecrated_coffin)
-			doubleconsecrated = TRUE
-
 	//if this is a deep search, we will also search the contents of the container to pacify (EXCEPT MOBS, SINCE WE HANDLED THOSE)
 	if(deep)
 		for(var/atom/movable/stuffing in coffin)
@@ -201,6 +195,17 @@
 			if(pacify_coffin(stuffing, user, deep))
 				success = TRUE
 	return success
+
+/// Proc that searches inside an atom, specifically for sanctified coffins.
+/proc/checkdoubleconsecration(atom/movable/coffin, mob/user)
+	if(!coffin)
+		return FALSE
+	var/doubleconsecrated = FALSE
+	if(istype(coffin, /obj/structure/closet/dirthole/closed)) // If the "coffin" is actually a grave containing a sanctified casket, with a valid target, doubly-sanctify it, and make anyone trying to graverob regret it.
+		var/obj/structure/closet/dirthole/closed/grave = coffin
+		if(grave.has_consecrated_coffin)
+			doubleconsecrated = TRUE
+	return doubleconsecrated
 
 /// Proc that finds the client associated with a given corpse and either 1. Lets ghosts skip Underworld and return to lobby 2. Gives spirits a toll
 /proc/pacify_corpse(mob/living/corpse, mob/user)
