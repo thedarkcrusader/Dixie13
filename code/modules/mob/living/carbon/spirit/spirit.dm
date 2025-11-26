@@ -197,14 +197,13 @@
 	return success
 
 /// Proc that searches inside an atom, specifically for sanctified coffins.
-/proc/checkdoubleconsecration(atom/movable/coffin, mob/user)
-	if(!coffin)
-		return FALSE
+/proc/checkdoubleconsecration(obj/structure/closet/dirthole/closed/gravetoconsecrate, mob/user)
 	var/doubleconsecrated = FALSE
-	if(istype(coffin, /obj/structure/closet/dirthole/closed)) // If the "coffin" is actually a grave containing a sanctified casket, with a valid target, doubly-sanctify it, and make anyone trying to graverob regret it.
-		var/obj/structure/closet/dirthole/closed/grave = coffin
-		if(grave.has_consecrated_coffin)
-			doubleconsecrated = TRUE
+	if(!gravetoconsecrate)
+		return FALSE
+// If the grave contains a sanctified casket, mark the tomb as doubly-sanctified. This will make anyone trying to graverob regret it.
+	if(gravetoconsecrate.has_consecrated_coffin)
+		doubleconsecrated = TRUE
 	return doubleconsecrated
 
 /// Proc that finds the client associated with a given corpse and either 1. Lets ghosts skip Underworld and return to lobby 2. Gives spirits a toll
