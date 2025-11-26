@@ -312,6 +312,61 @@
 		force = DAMAGE_MACE + 2
 	return FALSE
 
+/obj/item/weapon/mace/steel/profhammer/examine(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_ASSASSIN))
+		. += "claw hammer whispers, \"[span_danger("IT'S TIME! IT'S TIME!")]\""
+
+/obj/item/weapon/mace/steel/profhammer/pickup(mob/living/M)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if (!HAS_TRAIT(H, TRAIT_ASSASSIN)) // Non-assassins don't like holding the hammer.
+			H.add_stress(/datum/stress_event/profanehammer)
+			to_chat(M, "<span class='danger'>Your breath chills as you pick up the hammer. Something's wrong.</span>")
+			var/message = pick(
+				"<span class='danger'>It hurts... It hurts... I have to scream...</span>",
+				"<span class='danger'>There is no life... Without death... I'm in hell...</span>",
+				"<span class='danger'>I'm dreaming... I'm cold and wet... I feel heavy... Like I've been drugged...</span>",
+				"<span class='danger'>Good times... They never last...</span>",
+				"<span class='danger'>I'm in hell... I'm in hell...</span>",
+				"<span class='danger'>Stay in the light... Please...</span>",
+				"<span class='danger'>No mouth... I must scream... No mouth... I must scream...</span>",
+				"<span class='danger'>He's... Here... The Boogeyman...</span>",
+				"<span class='danger'>No more room in hells... No more room...</span>",
+				"<span class='danger'>I don't... Need eyes to see... Anymore...</span>",
+				"<span class='danger'>This isn't a dream... This is really happening...</span>",
+				"<span class='danger'>I'm scared to close my eyes... I'm scared to open them...</span>",
+				"<span class='danger'>I can't feel... The air on my skin...</span>")
+//			H.visible_message("profane dagger whispers, \"[message]\"")
+			to_chat(M, "profane dagger whispers, \"[message]\"")
+		else
+			var/message = pick(
+				"<span class='danger'>KILL! KILL! KILL!</span>",
+				"<span class='danger'>SMASH THEIR FUCKING BRAINS IN!</span>",
+				"<span class='danger'>WHAT THE FUCK ARE YOU WAITING FOR?!</span>",
+				"<span class='danger'>VIOLENCE WITHOUT PASSION IS FUCKING POINTLESS!</span>",
+				"<span class='danger'>DO YOU LIKE HURTING OTHER PEOPLE?</span>",
+				"<span class='danger'>GRAGGAR! GRAGGAR! GRAGGAR!</span>",
+				"<span class='danger'>I FUCKING HATE THESE PEOPLE.</span>",
+				"<span class='danger'>SEND THEM TO THE HELLS.</span>",
+				"<span class='danger'>RIP THEIR TEETH OUT!</span>",
+				"<span class='danger'>TIME TO DIE, BITCH!</span>",
+				"<span class='danger'>I AM THE BEAST I WORSHIP!</span>",
+				"<span class='danger'>SAVE THEIR TEARS! I HATE WHINING!</span>",
+				"<span class='danger'>MY BLOODHUNT! YOU'RE GONNA DIE!</span>",
+				"<span class='danger'>AHAHAHAHA!!! HAHAHA!! HA!</span>",
+				"<span class='danger'>WAR HAS NEVER BEEN SO MUCH FUN!</span>",
+				"<span class='danger'>VIOLENCE IS FOR WILD BEASTS!</span>",
+				"<span class='danger'>BAPTIZE THEM IN THEIR OWN BLOOD!</span>",
+				"<span class='danger'>STRIP THE FLESH! SALT THE WOUND!</span>",
+				"<span class='danger'>KICK HIS FUCKING ASS!</span>",
+				"<span class='danger'>THE RIDE IS OVER! TIME TO DIE! HAHAHA!</span>",
+				"<span class='danger'>THIS FEELING IS COMING BACK TO ME! THE SENSATION OF KILLING!</span>")
+//			H.visible_message("profane dagger whispers, \"[message]\"")
+			to_chat(M, "claw hammer whispers, \"[message]\"")
+
+
 //................ Spiked club ............... //
 /obj/item/weapon/mace/spiked
 	force = DAMAGE_MACE+2
