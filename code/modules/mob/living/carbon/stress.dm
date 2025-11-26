@@ -34,7 +34,7 @@
 	var/stressbuffer = 0
 	/// List of stressor instances
 	var/list/stressors = list()
-	var/datum/stress_event/last_announced_event
+	var/last_announced_event_type
 	COOLDOWN_DECLARE(stress_indicator)
 
 /mob/living/carbon/adjust_stress(amt)
@@ -86,28 +86,29 @@
 
 		var/event
 		var/datum/stress_event/last_event = (length(stressors) ? stressors[length(stressors)] : null)
-
+		var/event_type = last_event?.type
+		
 		if(last_event?.desc)
 			var/desc = last_event.get_desc()
 			event = islist(desc) ? jointext(desc, " ") : desc
-
+			
 		if(stress > oldstress)
 			if(event && last_event.stress_change > 0)
-				if(last_announced_event != last_event)
+				if(last_announced_event_type != event_type)
 					to_chat(src, "[event]")
-					last_announced_event = last_event
+					last_announced_event_type = event_type
 			to_chat(src, span_red(" I gain stress."))
-
+			
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_stress_indicator))
+			
 		else
 			if(event && last_event.stress_change <= 0)
-				if(last_announced_event != last_event)
-					last_announced_event = last_event
+				if(last_announced_event_type != event_type)
 					to_chat(src, "[event]")
+					last_announced_event_type = event_type
 			to_chat(src, span_green(" I gain peace."))
-		
-
+			
 			if(!rogue_sneaking && !HAS_TRAIT(src, TRAIT_IMPERCEPTIBLE))
 				INVOKE_ASYNC(src, PROC_REF(play_relief_indicator))
 
