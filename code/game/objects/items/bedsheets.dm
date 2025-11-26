@@ -79,13 +79,14 @@ LINEN BINS
 	signal_sleeper = null
 
 /obj/item/bedsheet/attack_hand(mob/user, params)
-	var/obj/structure/bed/bed = locate() in loc
-	if(!bed)
+	if(!bed_tucked)
 		return ..()
 	to_chat(user, span_notice("You start to remove the [src] from the [bed_tucked]."))
 	if(do_after(user, 2 SECONDS, src))
-		bed.sheet_tucked = FALSE
-		bed.sheet_on = FALSE
+		var/obj/structure/bed/bed = locate() in loc
+		if(bed)
+			bed.sheet_tucked = FALSE
+			bed.sheet_on = FALSE
 		return ..()
 /obj/item/bedsheet/cloth
 	desc = ""
