@@ -24195,9 +24195,6 @@
 /obj/structure/ladder,
 /turf/open/floor/cobblerock,
 /area/under/town/basement)
-"mBR" = (
-/turf/closed/mineral,
-/area/indoors/town/manor/garrison)
 "mBY" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -109713,7 +109710,7 @@ iOo
 qGR
 cBr
 cBr
-mBR
+cBr
 ntJ
 hro
 hro
@@ -188097,7 +188094,7 @@ cBr
 cBr
 cBr
 cBr
-dqH
+fle
 fle
 wno
 wno
@@ -188299,7 +188296,7 @@ cBr
 cBr
 cBr
 cBr
-dqH
+fle
 lJN
 vMm
 deM
@@ -188501,7 +188498,7 @@ cBr
 cBr
 cBr
 cBr
-dqH
+fle
 deL
 aHX
 deM
@@ -188703,7 +188700,7 @@ cBr
 cBr
 cBr
 cBr
-dqH
+fle
 lJN
 wYg
 deM
@@ -188905,7 +188902,7 @@ cBr
 cBr
 cBr
 cBr
-dqH
+fle
 fle
 fle
 fle
