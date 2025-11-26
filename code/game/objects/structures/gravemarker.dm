@@ -19,6 +19,7 @@
 	for(var/obj/structure/closet/dirthole/hole in loc)
 		if(pacify_coffin(hole, user))
 			user.visible_message(span_rose("[user] consecrates [hole]."), span_rose("I consecrate [hole]."))
+			hole.isconsecrated += 1 // reinforce the level of consecration
 			SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, hole)
 			record_round_statistic(STATS_GRAVES_CONSECRATED)
 	return ..()

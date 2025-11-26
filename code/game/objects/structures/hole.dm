@@ -18,6 +18,8 @@
 	var/stage = 1
 	var/faildirt = 0
 	var/has_consecrated_coffin = FALSE // Does the grave contain a consecrated coffin ? Used to determine the level of curse a graverobber gets.
+	var/isconsecrated = 0 // Has the "burial rites" miracle been used on this grave. 0 = No consecration. 1 = Simple consecration (you get cursed by Necra) 2 and above = Double consecration (your lux gets ripped out, or a limb gets skeletonized.)
+
 
 /obj/structure/closet/dirthole/Initialize()
 	var/turf/open/floor/dirt/T = loc
@@ -195,21 +197,42 @@
 			stage = 3
 			climb_offset = 0
 			open()
-			for(var/obj/structure/gravemarker/G in loc)
-				record_featured_stat(FEATURED_STATS_CRIMINALS, user)
-				record_round_statistic(STATS_GRAVES_ROBBED)
-				qdel(G)
-				if(isliving(user))
-					var/mob/living/L = user
-					if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
-						to_chat(user, "<span class='warning'>Necra turns a blind eye to my deeds.</span>")
-					else
-						to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
-						L.apply_status_effect(/datum/status_effect/debuff/cursed)
-				SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+			switch(src.isconsecrated)
+				if(0) // not consecrated, proceed
+					return
+				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
+					if(isliving(user))
+						var/mob/living/L = user
+						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get tagged as graverobbers in EOR stats.
+							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+							record_round_statistic(STATS_GRAVES_ROBBED)
+						if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // the part where she curses you.
+							to_chat(user, span_warning("Necra turns a blind eye to my deeds."))
+						else
+							to_chat(user, span_warning("Necra shuns my blasphemous deeds!"))
+							L.apply_status_effect(/datum/status_effect/debuff/cursed)
+					SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
+						qdel(G)
+				if(>=2) // if double-consecrated (2 or higher), you better be a Necran, or I explode your lux.
+					if(isliving(user))
+						var/mob/living/L = user
+					if(L.patron?.type != /datum/patron/divine/necra) // non-necran get IN BIG TROUBLE, ACTUALLY.
+						record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+						record_round_statistic(STATS_GRAVES_ROBBED)
+						var/lux_state = L.get_lux_status()
+							if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
+								if(L.age == AGE_CHILD) // unless you're a kid, in which case Necra is a bit more lenient. She only turns one of your arms into dust.
+									to_chat(user, span_alertwarning("Necra's gaze turns on me as I pay the toll for my trespasses!"))
+									// WIP
+								else
+									to_chat(user, span_alertwarning("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
+									// TODO: take your lux out
+
 		stage_update()
 		attacking_shovel.heldclod = new(attacking_shovel)
 		attacking_shovel.update_appearance(UPDATE_ICON_STATE)
+		src.isconsecrated = 0 // remove consecration levels
 
 /datum/status_effect/debuff/cursed
 	id = "cursed"
