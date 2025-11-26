@@ -261,7 +261,7 @@
 
 /datum/stress_event/profane // When a non-assassin touches a profane dagger
 	timer = 3 MINUTES
-	stress_change = 2
+	stress_change = 3
 	desc = "<span class='red'>I hear the voices of the damned from this cursed blade!</span>"
 
 /datum/stress_event/coldhead
@@ -660,7 +660,7 @@
 	desc = span_warning("Why did i drink that?")
 	stress_change = 15
 	timer = 10 MINUTES
-  
+
 /datum/stress_event/dead_bird
 	timer = 5 MINUTES
 	stress_change = 3
