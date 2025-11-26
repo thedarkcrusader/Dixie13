@@ -271,7 +271,6 @@
 	if(resistance_flags & WETABLE)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
-
 /obj/item/clothing/MouseDrop(atom/over_object)
 	. = ..()
 	var/mob/M = usr
@@ -547,7 +546,6 @@ BLIND     // can't see anything
 			particle_spewer.RemoveComponent()
 
 	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.7))
-
 		var/datum/component/wet/W = GetComponent(/datum/component/wet)
 		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
 			C.add_stress(/datum/stress_event/noble_tarnished_cloth)

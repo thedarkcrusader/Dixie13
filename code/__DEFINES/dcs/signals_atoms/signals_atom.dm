@@ -18,7 +18,6 @@
 
 #define COMSIG_ATOM_PROXY_WATER_USE "proxy_water_usage"
 
-
 ///from base of atom/attackby(): (/obj/item, /mob/living, params)
 #define COMSIG_ATOM_ATTACKBY "atom_attackby"
 /// From base of [atom/proc/attacby_secondary()]: (/obj/item/weapon, /mob/user, params)

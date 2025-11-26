@@ -137,7 +137,6 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		playsound(src, 'sound/misc/enflame.ogg', 100, TRUE)
 		return 1
 
-
 ///called when the obj is destroyed by fire
 /obj/proc/burn()
 	if(resistance_flags & ON_FIRE)

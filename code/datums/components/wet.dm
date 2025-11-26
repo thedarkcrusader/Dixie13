@@ -64,5 +64,3 @@
 /datum/component/wet/proc/unregister_usage(atom/source, mob/living/dropper)
 	UnregisterSignal(parent, COMSIG_ITEM_DROPPED)
 	UnregisterSignal(dropper, COMSIG_ATOM_PROXY_WATER_USE)
-
-

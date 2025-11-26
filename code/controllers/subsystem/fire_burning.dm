@@ -31,7 +31,6 @@ SUBSYSTEM_DEF(fire_burning)
 				return
 			continue
 
-
 		var/datum/component/wet/W = O.GetComponent(/datum/component/wet)
 		var/is_wet = FALSE
 
