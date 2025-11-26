@@ -478,7 +478,7 @@ BLIND     // can't see anything
 	prevent_crits = initial(prevent_crits)
 	gas_transfer_coefficient = initial(gas_transfer_coefficient)
 
-/obj/item/clothing/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/equipped(mob/living/carbon/user, slot)
 	if(hoodtype && !(slot & (ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK)))
 		RemoveHood()
 	if(adjustable > 0)
