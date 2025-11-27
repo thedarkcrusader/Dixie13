@@ -392,7 +392,7 @@ All foods are distributed among various categories. Use common sense.
 					var/datum/component/particle_spewer = plate_check.GetComponent(/datum/component/particle_spewer/sparkle)
 					if(particle_spewer)
 						qdel(particle_spewer)
-					plate_check.update_overlays()
+					plate_check.update_appearance(UPDATE_OVERLAYS)
 
 		var/fullness = M.nutrition + 10
 		for(var/datum/reagent/consumable/C in M.reagents.reagent_list) //we add the nutrition value of what we're currently digesting
