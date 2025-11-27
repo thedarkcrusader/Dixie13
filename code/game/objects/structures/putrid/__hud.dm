@@ -10,6 +10,7 @@
 	/atom/movable/screen/putrid/personal/cover,\
 	/atom/movable/screen/putrid/personal/background,\
 	/atom/movable/screen/putrid/personal/bar/personal_resource_bar,\
+	/atom/movable/screen/putrid/personal/bar/evolution,\
 ))
 
 /atom/movable/screen/putrid
@@ -34,7 +35,7 @@
 	icon_state = "backgroundLEFT"
 	screen_loc = "WEST,CENTER-2"
 	plane = HUD_PLANE
-	layer = BACKHUD_LAYER - 0.2
+	layer = BACKHUD_LAYER - 0.3
 
 /atom/movable/screen/putrid/bar
 	icon = 'icons/mob/putrid_hud/18x200.dmi'
@@ -74,7 +75,8 @@
 
 /atom/movable/screen/putrid/bar/Destroy()
 	. = ..()
-	UnregisterSignal(hud.mymob, COMSIG_MEATVINE_RESOURCE_CHANGE)
+	if(hud?.mymob)
+		UnregisterSignal(hud.mymob, COMSIG_MEATVINE_RESOURCE_CHANGE)
 
 /atom/movable/screen/putrid/bar/resource_bar
 	name = "Meatvine Resources"
@@ -98,12 +100,14 @@
 	icon_state = "backgroundRIGHT"
 	screen_loc = "EAST:+11,CENTER-2"
 	plane = HUD_PLANE
-	layer = BACKHUD_LAYER - 0.2
+	layer = BACKHUD_LAYER - 0.3
 
 /atom/movable/screen/putrid/personal/bar
 	icon = 'icons/mob/putrid_hud/18x200.dmi'
-	layer = BACKHUD_LAYER - 0.1
+	layer = BACKHUD_LAYER - 0.2
 	var/current_alpha_mask_filter_offset = 0
+	var/signal = COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE
+	var/mask_state = "mask"
 
 /atom/movable/screen/putrid/personal/bar/info_blurb(mob/living/simple_animal/hostile/retaliate/meatvine/consumed)
 	to_chat(consumed, span_info("Personal resources - [consumed.personal_resource_pool]"))
@@ -111,7 +115,7 @@
 
 /atom/movable/screen/putrid/personal/bar/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
-	add_filter("alpha_mask_filter", 10, alpha_mask_filter(icon = icon('icons/mob/putrid_hud/18x200.dmi', icon_state = "mask"), y = current_alpha_mask_filter_offset, flags = MASK_INVERSE))
+	add_filter("alpha_mask_filter", 10, alpha_mask_filter(icon = icon('icons/mob/putrid_hud/18x200.dmi', icon_state = mask_state), y = current_alpha_mask_filter_offset, flags = MASK_INVERSE))
 
 /atom/movable/screen/putrid/personal/bar/proc/on_resource_change(datum/source, current_resources)
 	SIGNAL_HANDLER
@@ -127,7 +131,7 @@
 
 /atom/movable/screen/putrid/personal/bar/proc/setup_mob()
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
-	RegisterSignal(consumed, COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE, PROC_REF(on_resource_change))
+	RegisterSignal(consumed, signal, PROC_REF(on_resource_change))
 
 	if(consumed)
 		var/percentage = (consumed.personal_resource_pool / consumed.personal_resource_max) * 100
@@ -136,13 +140,34 @@
 
 /atom/movable/screen/putrid/personal/bar/Destroy()
 	. = ..()
-	UnregisterSignal(hud.mymob, COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE)
+	if(hud?.mymob)
+		UnregisterSignal(hud.mymob, signal)
 
 /atom/movable/screen/putrid/personal/bar/personal_resource_bar
 	name = "Personal Resources"
 	icon_state = "points"
 	color = "#33ff66"
 	screen_loc = "EAST:+16,CENTER-2:+22"
+
+/atom/movable/screen/putrid/personal/bar/evolution
+	name = ""
+	icon_state = "goal"
+	color = null
+	screen_loc = "EAST:+16,CENTER-2:+22"
+	signal = COMSIG_MEATVINE_PERSONAL_EVOLUTION_CHANGE
+	mask_state = "mask_goal"
+	layer = BACKHUD_LAYER - 0.1
+
+/atom/movable/screen/putrid/personal/bar/evolution/info_blurb(mob/living/simple_animal/hostile/retaliate/meatvine/consumed)
+	return
+
+/atom/movable/screen/putrid/personal/bar/evolution/on_resource_change(datum/source, current_resources)
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
+	if(!consumed)
+		return
+
+	var/percentage = (current_resources / consumed.evolution_max) * 100
+	set_alpha_offset(200 / 100 * percentage)
 
 /datum/hud/putrid/New(mob/owner)
 	..()

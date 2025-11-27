@@ -18,6 +18,7 @@
 
 #define COMSIG_MEATVINE_RESOURCE_CHANGE "meatvine_resource_change"
 #define COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE "personal_resource_change"
+#define COMSIG_MEATVINE_PERSONAL_EVOLUTION_CHANGE "personal_evolution_change"
 
 #define PERSONAL_RESOURCE_MAX 100
 #define PERSONAL_RESOURCE_REGEN_RATE 0.5 // Per life tick
