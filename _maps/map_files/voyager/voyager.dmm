@@ -1845,7 +1845,7 @@
 /turf/open/floor/ruinedwood,
 /area/ship/middeck)
 "rh" = (
-/obj/effect/landmark/start/orthodoxist,
+/obj/effect/landmark/start/sacrestants,
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
 /obj/machinery/light/fueled/torchholder/l,
@@ -3829,7 +3829,7 @@
 /turf/open/transparent/openspace,
 /area/outdoors/beach)
 "JD" = (
-/obj/effect/landmark/start/orthodoxist,
+/obj/effect/landmark/start/sacrestants,
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
 /obj/structure/fluff/walldeco/psybanner{
