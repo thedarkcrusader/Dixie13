@@ -570,6 +570,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	fully_heal()
 	regenerate_limbs()
+	regenerate_organs()
 
 /datum/ritual/fleshcrafting/fleshform
 	name = "Stronger Form"
