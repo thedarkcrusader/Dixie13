@@ -560,6 +560,16 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	target.adjust_stat_modifier(STATMOD_ABOM, STATKEY_END, -4)
 	target.Knockdown(5 SECONDS)
 	target.emote("agony", forced = TRUE)
+	target.verbs |= /mob/living/carbon/human/proc/regenerate
+
+/mob/living/carbon/human/proc/regenerate()
+	set name = "Regenerate"
+	set category = "ZIZO"
+
+	to_chat(src, "<span class='redtext'>ZIZO EMPOWERS ME!</span>")
+	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	fully_heal()
+	regenerate_limbs()
 
 /datum/ritual/fleshcrafting/fleshform
 	name = "Stronger Form"
