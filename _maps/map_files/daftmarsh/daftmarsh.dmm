@@ -8343,6 +8343,10 @@
 	pixel_x = 32;
 	mailtag = "Captain"
 	},
+/obj/item/servant_bell{
+	pixel_x = 5;
+	pixel_y = 12
+	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
 "hJg" = (
@@ -11317,6 +11321,7 @@
 "knv" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
+/obj/item/servant_bell,
 /turf/open/floor/tile/masonic,
 /area/indoors/town/manor)
 "knK" = (
@@ -15889,6 +15894,10 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
+/obj/item/servant_bell{
+	pixel_x = -7;
+	pixel_y = 10
+	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/manor)
 "osR" = (
@@ -17196,6 +17205,7 @@
 /area/outdoors/rtfield)
 "pKw" = (
 /obj/structure/table/wood/plain_alt,
+/obj/item/servant_bell,
 /turf/open/floor/tile/checkeralt,
 /area/indoors/town/manor)
 "pKC" = (
@@ -17786,6 +17796,14 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/church)
+"qoy" = (
+/obj/structure/table/wood{
+	icon_state = "longtable";
+	dir = 1
+	},
+/obj/item/servant_bell,
+/turf/open/floor/blocks/newstone/alt,
+/area/indoors/town/manor)
 "qoB" = (
 /turf/open/floor/carpet/lord/center,
 /area/under/town/sewer)
@@ -18819,6 +18837,13 @@
 /obj/structure/chair/stool,
 /turf/open/floor/church,
 /area/indoors/town/church)
+"rlj" = (
+/obj/structure/table/wood{
+	icon_state = "longtable"
+	},
+/obj/item/servant_bell,
+/turf/open/floor/blocks/newstone/alt,
+/area/indoors/town/manor)
 "rlt" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/woodturned,
@@ -22991,6 +23016,7 @@
 	icon_state = "longtable"
 	},
 /obj/structure/mirror/fancy,
+/obj/item/servant_bell,
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/manor)
 "vAw" = (
@@ -168840,7 +168866,7 @@ gHx
 uLf
 uwx
 uwx
-mEK
+qoy
 tQc
 moY
 nee
@@ -169850,7 +169876,7 @@ pPo
 uLf
 uwx
 uwx
-bDm
+rlj
 vpq
 moY
 pfv
