@@ -150,14 +150,15 @@
 
 /obj/item/clothing/head/maidband/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot & (ITEM_SLOT_HEAD) && user.job)
+	if(!user.job)
+		return
+	if(slot & slot_flags)
 		var/datum/job/J = SSjob.GetJob(user.job)
 		if(istype(J, /datum/job/butler) || istype(J, /datum/job/servant))
 			return //even if they roll noble blood or something, they wont lose their mind.
 		if(HAS_TRAIT(user, TRAIT_NOBLE))
 			user.add_stress(/datum/stress_event/maidband/noble)
-			return
-		if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
+		else if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
 			user.add_stress(/datum/stress_event/maidband)
 
 /obj/item/clothing/head/maidband/dropped(mob/user)

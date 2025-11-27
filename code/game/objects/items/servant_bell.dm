@@ -62,21 +62,19 @@
 	user.visible_message("[user] rings [src].")
 	nearby_ring_bell(user)
 	var/turf/origin_turf = get_turf(src)
-	var/list/originMultiZ = get_multiz_accessible_levels(origin_turf.z)
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.stat == DEAD)
+			continue
+		if(!player.can_hear())
 			continue
 		if(isbrain(player))
 			continue
 		//if(player == user)
 		//	continue
-		if(!(player.z in originMultiZ))
+		if(!is_in_zweb(player.z, origin_turf.z))
 			continue
 		if(!is_type_in_list(player.mind.assigned_role, servant_types))
 			continue
-		if(!player.can_hear())
-			continue
-
 		var/distance = get_dist(player, origin_turf)
 		if(distance > hear_distance)
 			continue
@@ -85,7 +83,13 @@
 		var/z_dist = origin_turf.z - player.z
 		if(z_dist != 0)
 			var/abs_z = abs(z_dist) // we can tell which floor it's on if it's only 2 away
-			dirText += abs_z > 2 ? " far" : " [abs_z] stories"
+			switch(abs_z)
+				if(1)
+					dirText += " one story"
+				if(2)
+					dirText += " two stories"
+				else
+					dirText += " far"
 			dirText += z_dist > 0 ? " above me" : " below me"
 		to_chat(player, span_warning("I hear a service bell being rung[dirText]."))
 		if(distance <= 7)
