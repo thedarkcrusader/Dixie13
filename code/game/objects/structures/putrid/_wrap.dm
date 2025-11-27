@@ -53,7 +53,7 @@
 	if(new_texture)
 		texture_overlay = mutable_appearance(icon = icon, icon_state = new_texture)
 		texture_overlay.blend_mode = BLEND_MULTIPLY
-		filters += alpha_mask_filter(icon = icon(icon, icon_state))
+		texture_overlay.filters += alpha_mask_filter(icon = icon(icon, icon_state))
 	add_overlay(texture_overlay)
 
 

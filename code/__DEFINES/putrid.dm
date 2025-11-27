@@ -17,3 +17,10 @@
 #define PAPAMEAT_SACRIFICE_RANGE 2 // Must be within 2 tiles to sacrifice
 
 #define COMSIG_MEATVINE_RESOURCE_CHANGE "meatvine_resource_change"
+#define COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE "personal_resource_change"
+
+#define PERSONAL_RESOURCE_MAX 100
+#define PERSONAL_RESOURCE_REGEN_RATE 0.5 // Per life tick
+#define HEALING_WELL_DRAIN_AMOUNT 50
+#define HEALING_WELL_DRAIN_TIME 30 SECONDS
+#define HEALING_WELL_DRAIN_COOLDOWN 60 SECONDS

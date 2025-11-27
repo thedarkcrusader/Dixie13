@@ -14,6 +14,8 @@
 	var/burn_heal_amount = 2
 	var/toxin_heal_amount = 1
 	var/suffocation_heal_amount = 1
+	var/is_being_drained = FALSE
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/drainer = null
 
 /obj/structure/meatvine/healing_well/Initialize()
 	. = ..()
@@ -47,6 +49,40 @@
 		UnregisterSignal(floor_vine, COMSIG_PARENT_QDELETING)
 	floor_vine = null
 	return ..()
+
+
+/obj/structure/meatvine/healing_well/proc/start_drain(mob/living/simple_animal/hostile/retaliate/meatvine/draining_mob)
+	is_being_drained = TRUE
+	drainer = draining_mob
+	qdel(GetComponent(/datum/component/aura_healing))
+	animate(src, alpha = 100, time = 1 SECONDS)
+	set_light(1, 1, 1, l_color = "#ff6533")
+
+/obj/structure/meatvine/healing_well/proc/finish_drain()
+	is_being_drained = FALSE
+	drainer = null
+	icon_state = "heal_pool_drained"
+
+	addtimer(CALLBACK(src, PROC_REF(restore_healing)), HEALING_WELL_DRAIN_COOLDOWN)
+
+/obj/structure/meatvine/healing_well/proc/restore_healing()
+	if(QDELETED(src) || is_being_drained)
+		return
+	icon_state = "heal_pool"
+
+	AddComponent(/datum/component/aura_healing, \
+		range = heal_range, \
+		requires_visibility = TRUE, \
+		brute_heal = brute_heal_amount, \
+		burn_heal = burn_heal_amount, \
+		toxin_heal = toxin_heal_amount, \
+		suffocation_heal = suffocation_heal_amount, \
+		simple_heal = 2, \
+		healing_color = "#ff6533", \
+		limit_to_trait = TRAIT_PUTRID, \
+	)
+	animate(src, alpha = 255, time = 1 SECONDS)
+	set_light(3, 2, 2, l_color = "#ff6533")
 
 /obj/structure/meatvine/healing_well/proc/on_floor_destroyed(datum/source)
 	SIGNAL_HANDLER
