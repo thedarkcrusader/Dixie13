@@ -110,14 +110,14 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 		if(HL.real_name != paper_name)
 			continue
 		if(HL == SSticker.rulermob)
-			continue
+			break
 		if(HL.mind?.assigned_role.title in GLOB.church_positions)
 			to_chat(HL, span_warning("I sense an unholy presence loom near my soul."))
 			to_chat(user, span_danger("They are protected..."))
-			continue
+			break
 		if(istype(HL.wear_neck, /obj/item/clothing/neck/psycross/silver) || istype(HL.wear_wrists, /obj/item/clothing/neck/psycross/silver))
 			to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
-			continue
+			break
 		if(!HAS_TRAIT(HL, TRAIT_NOSLEEP))
 			to_chat(HL, span_userdanger("I'm so sleepy..."))
 			HL.SetSleeping(5 SECONDS)
