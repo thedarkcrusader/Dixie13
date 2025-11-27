@@ -77,7 +77,7 @@
 /obj/structure/meatvine/Crossed(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living/simple_animal/hostile/retaliate/meatvine))
-		var/mob/living/L = AM
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/L = AM
 		// Remove bounding component when entering a meatvine
 		var/datum/component/bounded/B = L.GetComponent(/datum/component/bounded)
 		if(B)
@@ -90,12 +90,14 @@
 /obj/structure/meatvine/Uncrossed(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living/simple_animal/hostile/retaliate/meatvine))
-		var/mob/living/L = AM
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/L = AM
+		if(!L.tether_distance)
+			return
 		// Check if they're moving to a non-meatvine turf
 		var/turf/new_loc = get_turf(L)
 		if(!locate(/obj/structure/meatvine, new_loc))
 			// Add bounding component back to this meatvine
-			L.AddComponent(/datum/component/bounded, src, 0, 3)
+			L.AddComponent(/datum/component/bounded, src, 0, L.tether_distance)
 
 			var/datum/beam/current_beam = new(src, AM, time = INFINITY, icon_state = "meat", beam_type = /obj/effect/ebeam/meat)
 			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))

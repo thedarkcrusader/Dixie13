@@ -340,3 +340,5 @@
 #define COMSIG_HIDE_RADIUS "hide_radius"
 /// send this signal to remove a list of tip ids(use tip_names as tip ids): (/list/tip_ids_to_remove)
 #define COMSIG_TIPS_REMOVE "comsig_tip_remove"
+///used incase we care about a tracker dying
+#define COMSIG_LIVING_TRACKER_REMOVED "tracker_removed"

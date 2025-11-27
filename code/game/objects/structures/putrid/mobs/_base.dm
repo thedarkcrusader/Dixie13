@@ -20,6 +20,8 @@
 	can_buckle = TRUE
 	buckle_lying = 0
 
+	var/tether_distance = 3
+
 	var/obj/effect/meatvine_controller/master
 	var/personal_resource_pool = 0
 	var/personal_resource_max = PERSONAL_RESOURCE_MAX
@@ -30,9 +32,10 @@
 	var/evolution_progress = 0
 	var/evolution_max = 100
 	var/list/possible_evolutions = list(
-		/mob/living/simple_animal/hostile/retaliate/meatvine/range/two,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/range,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/runner,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/tank,
 	)
-	var/chosen_evolution = null
 
 	var/list/personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well
@@ -155,6 +158,12 @@
 	SEND_SIGNAL(src, COMSIG_MEATVINE_PERSONAL_EVOLUTION_CHANGE, evolution_progress)
 	if(evolution_progress >= evolution_max)
 		to_chat(src, span_nicegreen("You are ready to evolve! Find a hive and click on it to begin evolution."))
+		var/datum/component/team_monitor/monitor = return_tracker()
+		if(!monitor)
+			monitor = create_tracker()
+		var/atom/closest_struct = get_closest_atom(/obj/structure/meatvine/papameat, master.papameats, src)
+		var/datum/component/tracking_beacon/beacon = closest_struct.AddComponent(/datum/component/tracking_beacon, monitor_key, null, null, TRUE, "#f3d594")
+		monitor.add_to_tracking_network(beacon)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/proc/regenerate_personal_resources(seconds_per_tick)
 	if(is_draining_well)

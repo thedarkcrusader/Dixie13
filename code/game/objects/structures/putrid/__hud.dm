@@ -232,6 +232,9 @@
 	var/atom/movable/screen/putrid/personal/bar/personal_resource_bar/personal_bar = locate(/atom/movable/screen/putrid/personal/bar/personal_resource_bar) in static_inventory
 	personal_bar?.setup_mob()
 
+	var/atom/movable/screen/putrid/personal/bar/evolution/evolution = locate(/atom/movable/screen/putrid/personal/bar/evolution) in static_inventory
+	evolution?.setup_mob()
+
 #undef RENDER_TARGET_RESOURCE_MASK
 #undef PUTRID_ELEMENTS
 #undef PERSONAL_PUTRID_ELEMENTS

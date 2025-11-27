@@ -187,6 +187,9 @@
 
 	if(nearest_vine && nearest_vine.master)
 		// Create a new vine at the target location
+		var/obj/structure/meatvine/vine = locate(/obj/structure/meatvine) in request.target_location
+		if(vine)
+			return FALSE
 		nearest_vine.master.spawn_spacevine_piece(request.target_location)
 
 		// Visual feedback
@@ -194,6 +197,10 @@
 
 /datum/ai_behavior/meatvine_bridge/finish_action(datum/ai_controller/controller, succeeded, bridge_key)
 	. = ..()
+	if(succeeded)
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+		var/datum/bridge_request/request = controller.blackboard[BB_BRIDGE_TARGET]
+		mob.master.blocked_spread_locations -= request
 	controller.clear_blackboard_key(BB_BRIDGING)
 	controller.clear_blackboard_key(BB_BRIDGE_TARGET)
 
