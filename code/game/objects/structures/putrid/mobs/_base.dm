@@ -6,8 +6,26 @@
 	icon_living = "bloodling_stage_1"
 	icon_dead = "bloodling_stage_1_dead"
 	faction = list("meat")
-	health = 60
-	maxHealth = 60
+
+	health = VOLF_HEALTH
+	maxHealth = VOLF_HEALTH
+
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+
+	base_constitution = 6
+	base_strength = 6
+	base_speed = 12
+
+	simple_detect_bonus = 20
+	retreat_distance = 0
+	minimum_distance = 0
+	deaggroprob = 0
+	defprob = 35
+	defdrain = 5
+
+	aggressive = 1
+
 	hud_type = /datum/hud/putrid
 	see_in_dark = 10
 
