@@ -16,7 +16,7 @@
 
 	// Check if another mob is already healing
 	if(controller.blackboard[BB_PAPAMEAT_HEALING])
-		return // We're already on our way
+		return SUBTREE_RETURN_FINISH_PLANNING
 
 	// Check if another mob is close enough and also healing
 	for(var/mob/living/simple_animal/nearby in range(10, papameat))

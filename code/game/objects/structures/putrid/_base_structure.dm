@@ -30,6 +30,7 @@
 	var/list/borders_overlays = list()
 
 	var/static/list/beams = list() // :3
+	var/is_full = FALSE
 
 
 /obj/structure/meatvine/Initialize()
@@ -286,7 +287,7 @@
 				attempt_bonus_spread(T, direction)
 			return
 
-		if(!existing)
+		if(!existing || !existing.is_full)
 			if(master)
 				if(!can_enter_turf(F))
 					// Check if there's a blocking structure we should mark for destruction

@@ -1,7 +1,8 @@
 
 /datum/ai_controller/meatvine_defender
 	movement_delay = 0.5 SECONDS
-	ai_movement = /datum/ai_movement/hybrid_pathing
+	max_target_distance = 200
+	ai_movement = /datum/ai_movement/hybrid_pathing/wormhole_aware
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 	blackboard = list(
@@ -15,7 +16,9 @@
 		BB_OBSTACLE_TARGET = null,
 		BB_ATTACKING_OBSTACLE = FALSE,
 		BB_EVOLUTION_TARGET = null,
-		BB_ABILITY_TO_USE = null
+		BB_ABILITY_TO_USE = null,
+		BB_WORMHOLE_TARGET = null,
+		BB_LAST_WORMHOLE_CHECK = 0,
 	)
 
 	planning_subtrees = list(

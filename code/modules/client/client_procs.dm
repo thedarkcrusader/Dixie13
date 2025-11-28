@@ -639,7 +639,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(!ban_cache_start && SSban_cache?.query_started)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(build_ban_cache), src)
 
-//	send_resources()
+	send_resources()
 
 
 	generate_clickcatcher()

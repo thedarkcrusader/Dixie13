@@ -1,7 +1,7 @@
 
 /datum/ai_behavior/papameat_sacrifice
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/papameat_sacrifice/setup(datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -40,7 +40,7 @@
 
 /datum/ai_behavior/papameat_feed_corpse
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/papameat_feed_corpse/setup(datum/ai_controller/controller, corpse_key)
 	. = ..()
@@ -103,7 +103,7 @@
 
 /datum/ai_behavior/papameat_defend
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/papameat_defend/setup(datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -138,7 +138,7 @@
 
 /datum/ai_behavior/meatvine_bridge
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/meatvine_bridge/setup(datum/ai_controller/controller, bridge_key)
 	. = ..()
@@ -206,7 +206,7 @@
 
 /datum/ai_behavior/meatvine_destroy_obstacle
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/meatvine_destroy_obstacle/setup(datum/ai_controller/controller, obstacle_key)
 	. = ..()
@@ -275,7 +275,7 @@
 
 /datum/ai_behavior/meatvine_evolve
 	action_cooldown = 0.5 SECONDS
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 
 /datum/ai_behavior/meatvine_evolve/setup(datum/ai_controller/controller, target_key)
 	. = ..()

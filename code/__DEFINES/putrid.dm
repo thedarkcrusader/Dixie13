@@ -9,6 +9,8 @@
 #define BB_ATTACKING_OBSTACLE "attacking_obstacle"
 #define BB_EVOLUTION_TARGET "evolution_target"
 #define BB_ABILITY_TO_USE "ability_to_use"
+#define BB_WORMHOLE_TARGET "wormhole_target"
+#define BB_LAST_WORMHOLE_CHECK "last_wormhole_check"
 
 // Signal for papameat damage
 #define COMSIG_PAPAMEAT_DAMAGED "papameat_damaged"

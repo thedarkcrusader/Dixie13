@@ -1,5 +1,6 @@
 /obj/structure/meatvine/floor
 	icon_state = "tile_1"
+	is_full = TRUE
 
 /obj/structure/meatvine/floor/Initialize()
 	. = ..()
@@ -23,6 +24,7 @@
 
 	max_integrity = 50
 	resistance_flags = CAN_BE_HIT
+	is_full = TRUE
 
 
 /obj/structure/meatvine/heavy/CanPass(atom/movable/mover, turf/target)
