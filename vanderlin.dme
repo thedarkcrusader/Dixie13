@@ -1829,6 +1829,7 @@
 #include "code\game\objects\structures\putrid\actions\mob_actions\endure.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\evade.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\neurotoxin.dm"
+#include "code\game\objects\structures\putrid\actions\mob_actions\repair_wall.dm"
 #include "code\game\objects\structures\putrid\mobs\_base.dm"
 #include "code\game\objects\structures\putrid\mobs\artiliary.dm"
 #include "code\game\objects\structures\putrid\mobs\broodmother.dm"

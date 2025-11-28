@@ -320,7 +320,19 @@
 	if(!ability || !ability.IsAvailable())
 		return FALSE
 
+	// Check if ability requires movement to a target
+	var/atom/movement_target = ability.get_movement_target(controller)
+	if(movement_target)
+		// Dynamically add movement requirement flag
+		behavior_flags |= AI_BEHAVIOR_REQUIRE_MOVEMENT
+		set_movement_target(controller, movement_target)
+	else
+		// Remove movement flag if it was previously set
+		behavior_flags &= ~AI_BEHAVIOR_REQUIRE_MOVEMENT
+
 	return TRUE
+
+
 
 /datum/ai_behavior/use_personal_ability/perform(delta_time, datum/ai_controller/controller, ability_key)
 	. = ..()
@@ -330,10 +342,22 @@
 		finish_action(controller, FALSE, ability_key)
 		return
 
-	// Try to use the ability
+	// Check if we need to be at a location first
+	var/atom/movement_target = ability.get_movement_target(controller)
+	if(movement_target)
+		var/mob/living/simple_animal/our_mob = controller.pawn
+		var/required_range = ability.get_required_range()
+
+		if(get_dist(our_mob, movement_target) > required_range)
+			// Still moving toward target
+			our_mob.face_atom(movement_target)
+			return
+
+	// We're in position (or no movement needed), use the ability
 	var/success = ability.ai_use_ability(controller)
 	finish_action(controller, success, ability_key)
 
 /datum/ai_behavior/use_personal_ability/finish_action(datum/ai_controller/controller, succeeded, ability_key)
 	. = ..()
+	behavior_flags &= ~AI_BEHAVIOR_REQUIRE_MOVEMENT
 	controller.clear_blackboard_key(BB_ABILITY_TO_USE)

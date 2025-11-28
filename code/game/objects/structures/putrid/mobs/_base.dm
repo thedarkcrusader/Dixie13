@@ -56,7 +56,7 @@
 	)
 
 	var/list/personal_abilities = list(
-		/datum/action/cooldown/meatvine/personal/drain_well
+		/datum/action/cooldown/meatvine/personal/drain_well,
 	)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/Initialize()

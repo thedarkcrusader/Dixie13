@@ -36,3 +36,12 @@
 	// Base implementation - override in subtypes
 	// Return TRUE if ability was successfully used
 	return FALSE
+
+/datum/action/cooldown/meatvine/personal/proc/get_movement_target(datum/ai_controller/controller)
+    // Override in subtypes that need movement
+    // Return the atom to move toward, or null if no movement needed
+    return null
+
+/datum/action/cooldown/meatvine/personal/proc/get_required_range()
+    // How close do we need to be to the movement target?
+    return 1 // Default: adjacent
