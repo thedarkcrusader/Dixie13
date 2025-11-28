@@ -272,3 +272,68 @@
 				var/atom/obstacle = controller.blackboard[obstacle_key]
 				SV.master.check_obstacle_destroyed(obstacle)
 				break
+
+/datum/ai_behavior/meatvine_evolve
+	action_cooldown = 0.5 SECONDS
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+
+/datum/ai_behavior/meatvine_evolve/setup(datum/ai_controller/controller, target_key)
+	. = ..()
+	var/obj/structure/meatvine/papameat/papameat = controller.blackboard[target_key]
+
+	if(!papameat || QDELETED(papameat))
+		return FALSE
+
+	set_movement_target(controller, papameat)
+
+/datum/ai_behavior/meatvine_evolve/perform(delta_time, datum/ai_controller/controller, target_key)
+	. = ..()
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+	var/obj/structure/meatvine/papameat/papameat = controller.blackboard[target_key]
+
+	if(!papameat || QDELETED(papameat))
+		finish_action(controller, FALSE, target_key)
+		return
+
+	// Check if we're close enough
+	if(get_dist(mob, papameat) <= 1)
+		// Begin evolution
+		papameat.begin_evolution(mob)
+		finish_action(controller, TRUE, target_key)
+		return
+
+	// Keep moving toward papameat
+	mob.face_atom(papameat)
+
+/datum/ai_behavior/meatvine_evolve/finish_action(datum/ai_controller/controller, succeeded, target_key)
+	. = ..()
+	controller.clear_blackboard_key(BB_EVOLUTION_TARGET)
+
+
+/datum/ai_behavior/use_personal_ability
+	action_cooldown = 0.5 SECONDS
+
+/datum/ai_behavior/use_personal_ability/setup(datum/ai_controller/controller, ability_key)
+	. = ..()
+	var/datum/action/cooldown/meatvine/personal/ability = controller.blackboard[ability_key]
+
+	if(!ability || !ability.IsAvailable())
+		return FALSE
+
+	return TRUE
+
+/datum/ai_behavior/use_personal_ability/perform(delta_time, datum/ai_controller/controller, ability_key)
+	. = ..()
+	var/datum/action/cooldown/meatvine/personal/ability = controller.blackboard[ability_key]
+
+	if(!ability || !ability.IsAvailable())
+		finish_action(controller, FALSE, ability_key)
+		return
+
+	// Try to use the ability
+	var/success = ability.ai_use_ability(controller)
+	finish_action(controller, success, ability_key)
+
+/datum/ai_behavior/use_personal_ability/finish_action(datum/ai_controller/controller, succeeded, ability_key)
+	. = ..()
+	controller.clear_blackboard_key(BB_ABILITY_TO_USE)

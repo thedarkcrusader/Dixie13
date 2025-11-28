@@ -35,7 +35,14 @@ GLOBAL_LIST_EMPTY(putrid_evolutions)
 		return FALSE
 
 	// Show evolution selection screen
-	show_evolution_screen(evolving_mob)
+	if(evolving_mob.client)
+		show_evolution_screen(evolving_mob)
+	else
+		var/path = pick(evolving_mob.possible_evolutions)
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = new path(get_turf(evolving_mob))
+		mob.master = evolving_mob.master
+		qdel(evolving_mob)
+
 	return TRUE
 
 /obj/structure/meatvine/papameat/proc/show_evolution_screen(mob/living/simple_animal/hostile/retaliate/meatvine/evolving_mob)

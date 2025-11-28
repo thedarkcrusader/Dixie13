@@ -11,3 +11,7 @@
 		/mob/living/simple_animal/hostile/retaliate/meatvine/infantry,
 		/mob/living/simple_animal/hostile/retaliate/meatvine/artiliery,
 	)
+
+	personal_abilities = list(
+		/datum/action/cooldown/meatvine/personal/ranged/spread/lethal
+	)

@@ -6,7 +6,8 @@
 	base_background_icon_state = "button_bg"
 	active_background_icon_state = "button_bg1"
 	button_icon_state = "spread"
-	check_flags = NONE
+	panel = "Putrid"
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_PHASED
 	click_to_activate = TRUE
 	unset_after_click = TRUE
 	cooldown_time = 3 SECONDS

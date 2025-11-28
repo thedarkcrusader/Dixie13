@@ -22,3 +22,17 @@
 		return FALSE
 
 	return TRUE
+
+/datum/action/cooldown/meatvine/personal/Activate(atom/target)
+	StartCooldown()
+	return TRUE
+
+/datum/action/cooldown/meatvine/personal/proc/evaluate_ai_score(datum/ai_controller/controller)
+	// Base implementation - override in subtypes
+	// Return 0 to not use, higher scores = higher priority
+	return 0
+
+/datum/action/cooldown/meatvine/personal/proc/ai_use_ability(datum/ai_controller/controller)
+	// Base implementation - override in subtypes
+	// Return TRUE if ability was successfully used
+	return FALSE

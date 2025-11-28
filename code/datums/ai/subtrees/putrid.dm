@@ -154,3 +154,89 @@
 	// Start attacking
 	controller.queue_behavior(/datum/ai_behavior/meatvine_destroy_obstacle, BB_OBSTACLE_TARGET)
 	return SUBTREE_RETURN_FINISH_PLANNING
+
+
+/datum/ai_planning_subtree/meatvine_evolve
+
+/datum/ai_planning_subtree/meatvine_evolve/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+
+	if(!istype(mob))
+		return
+
+	if(!length(mob.possible_evolutions))
+		return
+
+	// Don't evolve if we're doing critical tasks
+	if(controller.blackboard[BB_PAPAMEAT_HEALING])
+		return
+	if(controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+		return
+	if(controller.blackboard[BB_FEEDING_CORPSE])
+		return
+
+	// Check if ready to evolve
+	if(mob.evolution_progress < mob.evolution_max)
+		return
+
+	// Find nearest papameat
+	if(!mob.master?.papameats || !length(mob.master.papameats))
+		return
+
+	var/obj/structure/meatvine/papameat/nearest_papa = null
+	var/min_dist = INFINITY
+
+	for(var/obj/structure/meatvine/papameat/PM in mob.master.papameats)
+		if(QDELETED(PM))
+			continue
+		var/dist = get_dist(mob, PM)
+		if(dist < min_dist)
+			min_dist = dist
+			nearest_papa = PM
+
+	if(!nearest_papa)
+		return
+
+	controller.set_blackboard_key(BB_EVOLUTION_TARGET, nearest_papa)
+	controller.queue_behavior(/datum/ai_behavior/meatvine_evolve, BB_EVOLUTION_TARGET)
+	return SUBTREE_RETURN_FINISH_PLANNING
+
+
+/datum/ai_planning_subtree/use_personal_abilities
+
+/datum/ai_planning_subtree/use_personal_abilities/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = controller.pawn
+
+	if(!istype(mob))
+		return
+
+	// Don't use abilities if we're doing critical tasks
+	if(controller.blackboard[BB_PAPAMEAT_HEALING])
+		return
+	if(controller.blackboard[BB_FEEDING_CORPSE])
+		return
+	if(controller.blackboard[BB_BRIDGING])
+		return
+
+	// Evaluate all available abilities
+	var/datum/action/cooldown/meatvine/personal/best_ability = null
+	var/best_score = 0
+
+	for(var/datum/action/cooldown/meatvine/personal/ability in mob.actions)
+		if(!istype(ability))
+			continue
+
+		if(!ability.IsAvailable())
+			continue
+
+		var/score = ability.evaluate_ai_score(controller)
+		if(score > best_score)
+			best_score = score
+			best_ability = ability
+
+	if(!best_ability || best_score <= 0)
+		return
+
+	controller.set_blackboard_key(BB_ABILITY_TO_USE, best_ability)
+	controller.queue_behavior(/datum/ai_behavior/use_personal_ability, BB_ABILITY_TO_USE)
+	return SUBTREE_RETURN_FINISH_PLANNING
