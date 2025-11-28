@@ -148,22 +148,15 @@
 	icon_state = "maidband"
 	body_parts_covered = NONE
 
-/obj/item/clothing/head/maidband/equipped(mob/living/carbon/human/user, slot)
-	. = ..()
-	if(!user.job)
-		return
-	if(slot & slot_flags)
-		var/datum/job/J = SSjob.GetJob(user.job)
-		if(istype(J, /datum/job/butler) || istype(J, /datum/job/servant))
-			return //even if they roll noble blood or something, they wont lose their mind.
-		if(HAS_TRAIT(user, TRAIT_NOBLE))
-			user.add_stress(/datum/stress_event/maidband/noble)
-		else if(J.department_flag & (GARRISON | OUTSIDERS | CHURCHMEN | NOBLEMEN)) // Notice how I've excluded the inquisition.
-			user.add_stress(/datum/stress_event/maidband)
-
-/obj/item/clothing/head/maidband/dropped(mob/user)
-	. = ..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.head == src)
-			H.remove_stress(/datum/stress_event/maidband)
+/obj/item/clothing/head/maidband/Initialize(mapload, ...)
+	..()
+	// I fucking love pilgrims
+	AddComponent(
+		/datum/component/equipment_stress/job_specific, \
+		/datum/stress_event/maidband, \
+		list(TRAIT_VILLAIN = null, TRAIT_NOBLE = /datum/stress_event/maidband/noble), \
+		immune_jobs = list(/datum/job/prince, /datum/job/squire, /datum/job/advclass/pilgrim/noble, /datum/job/advclass/pilgrim/rare/zaladin, /datum/job/advclass/pilgrim/rare/grenzelhoft, /datum/job/advclass/pilgrim/rare/merchant), \
+		immune_departments = (NOBLEMEN | GARRISON | OUTSIDERS | COMPANY), \
+		department_exceptions = list(/datum/job/advclass/pilgrim, /datum/job/grabber), \
+		inverse = TRUE, \
+	)
