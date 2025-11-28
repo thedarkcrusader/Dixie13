@@ -8,6 +8,7 @@
 	pass_flags = LETPASSTHROW
 	max_integrity = 30
 	resistance_flags = CAN_BE_HIT
+	layer = LOW_SIGIL_LAYER
 	var/obj/structure/meatvine/floor/floor_vine = null
 	var/heal_range = 3
 	var/brute_heal_amount = 2

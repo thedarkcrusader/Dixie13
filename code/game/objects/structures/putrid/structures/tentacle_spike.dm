@@ -8,6 +8,7 @@
 	pass_flags = LETPASSTHROW
 	max_integrity = 20
 	resistance_flags = CAN_BE_HIT
+	layer = LOW_SIGIL_LAYER
 	borders = FALSE
 	var/spike_count = 1
 	var/max_spikes = 5

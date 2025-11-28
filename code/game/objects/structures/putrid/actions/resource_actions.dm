@@ -194,8 +194,8 @@
 		to_chat(owner, "<span class='warning'>Failed to spread!</span>")
 		// Refund resources if nothing was built
 		consumed.master.consumed_resource_pool += total_cost
-
-	return ..()
+	. = ..()
+	return TRUE
 
 /datum/action/cooldown/meatvine/proc/get_build_turfs(turf/center)
 	var/list/turfs = list()
@@ -492,6 +492,48 @@
 	new_well.master = controller
 	controller.vines += new_well
 	controller.growth_queue += new_well
+	return TRUE
+
+/datum/action/cooldown/meatvine/spread_wormhole
+	name = "Build Intestinal Passage"
+	desc = "Build an intestinal wormhole on meatvine floor. Connect multiple to create a travel network. Cost: 150 resources."
+	button_icon_state = "intestine_wormhole"
+	resource_cost = 150
+	spread_type = /obj/structure/meatvine/intestine_wormhole
+	spread_range = 5
+	cooldown_time = 1 MINUTES
+	show_preview = TRUE
+	var/wormhole_network_id = "default" // Can set this to create separate networks
+
+/datum/action/cooldown/meatvine/spread_wormhole/can_spread_to_turf(turf/T)
+	if(!isfloorturf(T))
+		return FALSE
+
+	// Must have a meatvine floor
+	var/obj/structure/meatvine/floor/floor_vine = locate(/obj/structure/meatvine/floor) in T
+	if(!floor_vine)
+		return FALSE
+
+	// Check if there's already a wormhole here
+	if(locate(/obj/structure/meatvine/intestine_wormhole) in T)
+		return FALSE
+
+	return TRUE
+
+/datum/action/cooldown/meatvine/spread_wormhole/do_spread(turf/T, obj/effect/meatvine_controller/controller)
+	var/obj/structure/meatvine/intestine_wormhole/new_wormhole = new spread_type(T)
+	new_wormhole.master = controller
+	new_wormhole.wormhole_id = wormhole_network_id
+	controller.vines += new_wormhole
+	controller.growth_queue += new_wormhole
+
+	// Count existing wormholes in network
+	var/network_count = 0
+	for(var/obj/structure/meatvine/intestine_wormhole/wormhole in controller.vines)
+		if(wormhole.wormhole_id == wormhole_network_id)
+			network_count++
+
+	to_chat(owner, "<span class='notice'>Intestinal passage created. Network size: [network_count]</span>")
 	return TRUE
 
 #undef MULTI_CONSTRUCT_NONE

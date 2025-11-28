@@ -68,6 +68,7 @@
 	add_spell(/datum/action/cooldown/meatvine/spread_lair)
 	add_spell(/datum/action/cooldown/meatvine/spread_spike)
 	add_spell(/datum/action/cooldown/meatvine/spread_healing_well)
+	add_spell(/datum/action/cooldown/meatvine/spread_wormhole)
 
 	for(var/path in personal_abilities)
 		add_spell(path)
@@ -112,8 +113,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/UnarmedAttack(atom/A, proximity_flag, params, atom/source)
 
-	if(!istype(A, /obj/structure/meatvine/papameat))
+	if(!istype(A, /obj/structure/meatvine/papameat) && !istype(A, /obj/structure/meatvine/intestine_wormhole))
 		return . = ..()
+
+	if(istype(A, /obj/structure/meatvine/intestine_wormhole))
+		var/obj/structure/meatvine/intestine_wormhole/hole = A
+		hole.try_use(src)
+		return TRUE
+
 	// Check if we have something buckled to feed
 	if(has_buckled_mobs())
 		var/atom/movable/buckled_thing = buckled_mobs[1]
