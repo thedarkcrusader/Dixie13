@@ -46,10 +46,18 @@
 		"werevolf": "puppydog",
 		"verevolf": "puppydog",
 		"verewolf": "puppydog",
+		"werewolves": "puppydogs",
+		"werevolves": "puppydogs",
+		"verewolves": "puppydogs",
+		"verevolves": "puppydogs",
 		"manwolf": "man-dog",
 		"manvolf": "man-dog",
+		"man-wolf": "man-dog",
 		"man-volf": "man-dog",
-		"man-wolf": "man-dog"
+		"manwolves": "man-dogs",
+		"manvolves": "man-dogs",
+		"man-wolves": "man-dogs",
+		"man-volves": "man-dogs"
 		}
 
 }
