@@ -10,7 +10,7 @@
 #define STATMOD_FLAW "flaw"
 
 // For misc things.
-#define STATMOD_ABOM "Zizoid Abomination"
+#define STATMOD_ABOM "zizo_cult_abomination"
 
 // Patrons
 #define STATMOD_ASTRATA_BLESSING "astrata_blessing"
