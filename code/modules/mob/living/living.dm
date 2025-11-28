@@ -2956,4 +2956,4 @@
 
 	if(hud_used)
 		var/atom/movable/screen/eye_intent/eyet = locate() in hud_used.static_inventory
-		eyet.update_appearance(UPDATE_ICON)
+		eyet?.update_appearance(UPDATE_ICON)
