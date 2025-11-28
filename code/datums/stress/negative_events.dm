@@ -375,31 +375,29 @@
 /datum/stress_event/maiddress
 	timer = 999 MINUTES
 	stress_change = 5
-	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+	desc = span_red("I really don't like wearing this. It's servant clothing.")
 
 /datum/stress_event/maiddress/noble
 	stress_change = 6
-	desc = "<span class='red'>Wearing this is beneath me! I will not tolerate this another second!</span>"
+	desc = span_red("Wearing this is beneath me! I will not tolerate this another second!")
 
 /datum/stress_event/maidband
 	timer = 999 MINUTES
 	stress_change = 3
-	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+	desc = span_red("I really don't like wearing this. It's servant clothing.")
 
 /datum/stress_event/maidband/noble
-	timer = 999 MINUTES
 	stress_change = 4
-	desc = "<span class='red'>Wearing this is beneath me! I will not tolerate this another second!</span>"
+	desc = span_red("Wearing this is beneath me! I will not tolerate this another second!")
 
 /datum/stress_event/maidapron
 	timer = 999 MINUTES
 	stress_change = 3
-	desc = "<span class='red'>I really don't like wearing this... It's servant clothing.</span>"
+	desc = span_red("I really don't like wearing this. It's servant clothing.")
 
 /datum/stress_event/maidapron/noble
-	timer = 999 MINUTES
 	stress_change = 5
-	desc = "<span class='red'>Wearing this is beneath me! I will not tolerate this another second!</span>"
+	desc = span_red("Wearing this is beneath me! I will not tolerate this another second!")
 
 /// End Maid stress
 
