@@ -90,6 +90,9 @@
 	if(dist < 3 || dist > 10)
 		return 0
 
+	if(!can_see(mob, target, 9))
+		return 0
+
 	// Score higher when at optimal range (5-7 tiles)
 	if(dist >= 5 && dist <= 7)
 		return 80

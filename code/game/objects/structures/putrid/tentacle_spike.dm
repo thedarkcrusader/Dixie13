@@ -1,5 +1,5 @@
 /obj/structure/meatvine/tentacle_spike
-	icon = 'icons/obj/cellular/meat_wall.dmi'
+	icon = 'icons/obj/cellular/meat.dmi'
 	icon_state = "spike"
 	name = "tentacle spike"
 	desc = "A sharp, twisted spike of corrupted flesh."
@@ -16,6 +16,7 @@
 
 /obj/structure/meatvine/tentacle_spike/Initialize()
 	. = ..()
+	icon_state = null
 	var/turf/T = get_turf(src)
 	floor_vine = locate(/obj/structure/meatvine/floor) in T
 

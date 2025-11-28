@@ -1,3 +1,6 @@
+/obj/structure/meatvine/floor
+	icon_state = "tile_1"
+
 /obj/structure/meatvine/floor/Initialize()
 	. = ..()
 
