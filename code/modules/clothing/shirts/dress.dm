@@ -135,7 +135,7 @@
 	uses_lord_coloring = LORD_SECONDARY
 
 /obj/item/clothing/shirt/dress/maid/Initialize(mapload, ...)
-	..()
+	. = ..()
 	// I fucking love pilgrims
 	AddComponent(
 		/datum/component/equipment_stress/job_specific, \

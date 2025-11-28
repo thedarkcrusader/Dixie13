@@ -149,7 +149,7 @@
 	body_parts_covered = NONE
 
 /obj/item/clothing/head/maidband/Initialize(mapload, ...)
-	..()
+	. = ..()
 	// I fucking love pilgrims
 	AddComponent(
 		/datum/component/equipment_stress/job_specific, \

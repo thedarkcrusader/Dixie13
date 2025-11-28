@@ -54,7 +54,7 @@
 	pocket_storage_component_path = /datum/component/storage/concrete/grid/cloak
 
 /obj/item/clothing/cloak/apron/maid/Initialize(mapload, ...)
-	..()
+	. = ..()
 	// I fucking love pilgrims
 	AddComponent(
 		/datum/component/equipment_stress/job_specific, \
