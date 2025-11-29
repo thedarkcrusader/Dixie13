@@ -226,6 +226,7 @@
 	detail_color = CLOTHING_DARK_INK
 	slot_flags = ITEM_SLOT_ARMOR
 	armor = ARMOR_PADDED
+	allowed_ages = ALL_AGES_LIST
 
 /obj/item/clothing/armor/leather/jacket/tailcoat/lord
 	misc_flags = CRAFTING_TEST_EXCLUDE

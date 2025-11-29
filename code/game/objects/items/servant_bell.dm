@@ -116,7 +116,7 @@
 			COOLDOWN_START(src, ring_bell, cooldown)
 		else
 			playsound(src, 'sound/items/servant_bell.ogg', 80, TRUE)
-r
+
 /obj/item/servant_bell/proc/ring_bell(mob/living/user)
 	user.visible_message("[user] rings [src].")
 	playsound(src, 'sound/items/servant_bell.ogg', 100, TRUE)
@@ -162,6 +162,8 @@ r
 		player.playsound_local(get_turf(player), 'sound/items/servant_bell.ogg', 35, FALSE, pressure_affected = FALSE)
 
 /obj/item/servant_bell/proc/add_servant(mob/living/carbon/human/H)
+	if(length(bound_servants) >= max_servants)
+		return
 	var/obj/item/organ/brain/B = H.getorgan(/obj/item/organ/brain)
 	if(!istype(B))
 		return
