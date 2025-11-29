@@ -206,28 +206,63 @@
 						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get tagged as graverobbers in EOR stats.
 							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 							record_round_statistic(STATS_GRAVES_ROBBED)
-						if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // the part where she curses you.
+						if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
 							to_chat(user, span_warning("Necra turns a blind eye to my deeds."))
-						else
+						else // the part where she curses you.
 							to_chat(user, span_warning("Necra shuns my blasphemous deeds!"))
 							L.apply_status_effect(/datum/status_effect/debuff/cursed)
 					SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
 					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
 						qdel(G)
-				if(>=2) // if double-consecrated (2 or higher), you better be a Necran, or I explode your lux.
+				if(2 to INFINITY) // if double-consecrated (2 or higher), you better be a Necran, or I explode your lux.
 					if(isliving(user))
-						var/mob/living/L = user
-					if(L.patron?.type != /datum/patron/divine/necra) // non-necran get IN BIG TROUBLE, ACTUALLY.
-						record_featured_stat(FEATURED_STATS_CRIMINALS, user)
-						record_round_statistic(STATS_GRAVES_ROBBED)
-						var/lux_state = L.get_lux_status()
+						var/mob/living/carbon/human/L = user
+						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get IN BIG TROUBLE, ACTUALLY.
+							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+							record_round_statistic(STATS_GRAVES_ROBBED)
+							var/lux_state = L.get_lux_status()
+							var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+							var/list/limbs_to_pick_from = list() // empty list that gets filled with limbs to turn to dust, should they exist
 							if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
-								if(L.age == AGE_CHILD) // unless you're a kid, in which case Necra is a bit more lenient. She only turns one of your arms into dust.
-									to_chat(user, span_alertwarning("Necra's gaze turns on me as I pay the toll for my trespasses!"))
-									// WIP
+								if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich)) // unless you're a kid (and not an undead), in which case Necra is a bit more lenient. She only turns one of your arms into dust.
+									to_chat(user, span_alertwarning("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
+									for(var/zone in limb_list)
+										limb = L.get_bodypart(zone)
+										if(limb)
+											limbs_to_pick_from += limb
+									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to remove
+									if (picked_limb)
+										to_chat(user, span_crit("I watch in horror as my [picked_limb] turns to dust before my eyes! "))
+										qdel(pick(L.limbs_to_pick_from))
+									else // How did you manage that?
+										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
 								else
-									to_chat(user, span_alertwarning("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
-									// TODO: take your lux out
+									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we're going to destroy one of your phylacteries.
+										for(var/obj/item/phylactery/to_be_consumed in L.phylacteries) // cycle through all phylacteries until there is none left
+											playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
+											if(!length(phylacteries)) // no phylacteries left, don't screw over the lich, let them try and cause a bit more damage as a hail Mary.
+												to_chat(owner, span_userdanger("Necra has tried targetting one of my phylacteries, but I had none left! HAHAHAHAHA!"))
+												return
+
+											L.phylacteries -= to_be_consumed
+
+											to_be_consumed.start_shaking()
+
+											sleep(timer) // we sleep so we can later check the other phylacteries in the loop
+
+											if(!QDELETED(to_be_consumed)) // check if the phylactery got destroyed while we were resurrecting.
+												to_chat(owner, span_userdanger("Curse this wench-goddess! Necra has fractured one of my phylacteries!"))
+												qdel(to_be_consumed)
+												return // phylactery destroyed, neat
+									else
+										to_chat(user, span_alertwarning("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
+										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
+						else
+							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+								to_chat(user, span_warning("I speak the hallowed words of Necra and the One, the grave's watchers softly release their grip over my soul.."))
+							else // Even Necrans get cursed, but it's miles better than losing your lux or your arm
+								to_chat(user, span_warning("I mutter Necra's hallowed rites, and although my devotion is recognized, my trespass remains great, I am cursed!"))
+								L.apply_status_effect(/datum/status_effect/debuff/cursed)
 
 		stage_update()
 		attacking_shovel.heldclod = new(attacking_shovel)
