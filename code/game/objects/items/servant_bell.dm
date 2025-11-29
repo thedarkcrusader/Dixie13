@@ -1,5 +1,5 @@
 /obj/item/servant_bell
-	name = "service bell"
+	name = "servant bell"
 	desc = "An enchanted bell whose chime resonates in the minds of those bound to it."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "servantbell"
