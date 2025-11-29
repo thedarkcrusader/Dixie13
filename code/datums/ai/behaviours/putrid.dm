@@ -263,7 +263,6 @@
 	controller.clear_blackboard_key(BB_ATTACKING_OBSTACLE)
 
 	if(succeeded)
-		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
 
 		// Notify controller that obstacle was destroyed
 		var/mob/living/simple_animal/our_mob = controller.pawn
@@ -272,6 +271,7 @@
 				var/atom/obstacle = controller.blackboard[obstacle_key]
 				SV.master.check_obstacle_destroyed(obstacle)
 				break
+		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
 
 /datum/ai_behavior/meatvine_evolve
 	action_cooldown = 0.5 SECONDS

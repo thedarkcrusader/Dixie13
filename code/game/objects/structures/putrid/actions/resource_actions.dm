@@ -442,7 +442,6 @@
 	var/obj/structure/meatvine/tentacle_spike/new_spike = new spread_type(T)
 	new_spike.master = controller
 	controller.vines += new_spike
-	controller.growth_queue += new_spike
 	return TRUE
 
 /datum/action/cooldown/meatvine/spread_healing_well
@@ -491,7 +490,6 @@
 	var/obj/structure/meatvine/healing_well/new_well = new spread_type(T)
 	new_well.master = controller
 	controller.vines += new_well
-	controller.growth_queue += new_well
 	return TRUE
 
 /datum/action/cooldown/meatvine/spread_wormhole
@@ -525,7 +523,6 @@
 	new_wormhole.master = controller
 	new_wormhole.wormhole_id = wormhole_network_id
 	controller.vines += new_wormhole
-	controller.growth_queue += new_wormhole
 
 	// Count existing wormholes in network
 	var/network_count = 0

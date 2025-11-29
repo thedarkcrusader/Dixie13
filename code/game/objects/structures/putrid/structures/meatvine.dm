@@ -40,6 +40,7 @@
 	density = FALSE
 	opacity = FALSE
 	pass_flags = null
+	is_full = TRUE
 
 	max_integrity = 30
 	resistance_flags = CAN_BE_HIT
@@ -120,7 +121,6 @@
 		// Remove from master's lists
 		master.lairs -= src
 		master.vines -= src
-		master.growth_queue -= src
 
 		// Store master reference before deletion
 		var/obj/effect/meatvine_controller/saved_master = master
