@@ -78,6 +78,8 @@
 		add_spell(path)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/Destroy()
+	master.mobs -= src
+	master = null
 	puff_gas()
 	var/turf/turf = get_turf(src)
 	turf.pollute_turf(/datum/pollutant/steam, 100)
@@ -140,6 +142,7 @@
 	var/monitor_key = "putrid_[REF(master)]"
 	putrid_monitor = AddComponent(/datum/component/team_monitor, monitor_key, null)
 	putrid_monitor.show_hud(src)
+	master.mobs |= src
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/proc/add_team_tracker(atom/target, timer)
 	var/tracker = target.AddComponent(/datum/component/tracking_beacon, "putrid_[REF(master)]", null, null, TRUE, "#ec2626")

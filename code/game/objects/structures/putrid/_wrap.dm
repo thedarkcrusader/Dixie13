@@ -23,8 +23,8 @@
 	return P
 
 /obj/structure/mob_wrap
-	desc = "A big wrapped package."
-	name = "large parcel"
+	desc = "A big wrapped cocoon made of meat."
+	name = "meat cocoon"
 	icon = 'icons/obj/wrap.dmi'
 	icon_state = "deliverycrate5"
 	density = TRUE

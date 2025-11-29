@@ -25,6 +25,8 @@
 
 /datum/action/cooldown/meatvine/personal/Activate(atom/target)
 	StartCooldown()
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = owner
+	consumed.personal_resource_pool -= personal_resource_cost
 	return TRUE
 
 /datum/action/cooldown/meatvine/personal/proc/evaluate_ai_score(datum/ai_controller/controller)

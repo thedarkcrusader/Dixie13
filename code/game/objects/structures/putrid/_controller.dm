@@ -59,6 +59,8 @@
 	var/lair_vines_per_lair = 30
 	var/min_lair_spacing = 5
 
+	var/list/mobs = list()
+
 /obj/effect/meatvine_controller/Initialize(mapload, ...)
 	. = ..()
 	if(!isfloorturf(loc))
@@ -341,6 +343,7 @@
 
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = new(get_turf(C))
 	consumed.master = src
+	consumed.generate_monitor()
 	C.client.mob = consumed
 	consumed.ckey = C.ckey
 
@@ -708,6 +711,10 @@
 		if(!current)
 			return null
 	return current
+
+/obj/effect/meatvine_controller/proc/add_hive_tracker(atom/target, timer)
+	for(var/mob/living/simple_animal/hostile/retaliate/meatvine/mob in mobs)
+		mob.add_team_tracker(target, timer)
 
 /datum/wall_segment
 	var/pattern_type = "generic"

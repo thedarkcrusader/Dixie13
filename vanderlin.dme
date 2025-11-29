@@ -1825,6 +1825,7 @@
 #include "code\game\objects\structures\putrid\actions\mob_actions\drain_well.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\endure.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\evade.dm"
+#include "code\game\objects\structures\putrid\actions\mob_actions\mark_target.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\neurotoxin.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\repair_wall.dm"
 #include "code\game\objects\structures\putrid\mobs\_base.dm"

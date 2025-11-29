@@ -13,4 +13,5 @@
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
 		/datum/action/cooldown/meatvine/personal/repair_walls,
+		/datum/action/cooldown/meatvine/personal/mark_target,
 	)

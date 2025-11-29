@@ -43,9 +43,6 @@
 		to_chat(owner, span_warning("There are no damaged walls nearby to repair!"))
 		return FALSE
 
-	// Repair all connected walls
-	mob.personal_resource_pool -= personal_resource_cost
-
 	for(var/obj/structure/meatvine/heavy/wall in connected_walls)
 		wall.update_integrity(wall.max_integrity)
 		wall.update_appearance()
