@@ -31,6 +31,5 @@
 /// a sound was played : (sound_player, sound_file)
 #define COMSIG_GLOB_SOUND_PLAYED "!sound_played"
 
-
 /// The monarch set lord colors, update all things that use it (primary, secondary)
 #define COMSIG_LORD_COLORS_SET "mob_set_lord"
