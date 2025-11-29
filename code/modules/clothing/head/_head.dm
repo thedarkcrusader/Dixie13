@@ -20,7 +20,7 @@
 	grid_height = 32
 	grid_width = 64
 
-	resistance_flags = FLAMMABLE | WETABLE
+	resistance_flags = FLAMMABLE
 
 	sewrepair = TRUE
 	anvilrepair = null

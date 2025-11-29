@@ -359,7 +359,7 @@
 		qdel(F)
 	if(istype(AM, /obj/item/clothing))
 		var/obj/item/clothing/cloth = AM
-		if(cloth.resistance_flags & WETABLE)
+		if(cloth.wetable)
 			SEND_SIGNAL(cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water_turf)
 	if(isliving(AM) && !AM.throwing)
 		var/mob/living/L = AM
@@ -464,8 +464,8 @@
 	if(do_after(user, 3 SECONDS, src))
 		if(wash_in)
 			item2wash.wash(CLEAN_WASH)
-		if(item2wash.resistance_flags & WETABLE)
-			var/obj/item/clothing/item2wash_cloth = item2wash
+		var/obj/item/clothing/item2wash_cloth = item2wash
+		if(item2wash_cloth && item2wash_cloth.wetable)
 			if(cleanliness_factor > 0)
 				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
 			else

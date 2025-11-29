@@ -1,6 +1,6 @@
 /obj/item/clothing
 	name = "clothing"
-	resistance_flags = FLAMMABLE | WETABLE
+	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	blade_dulling = DULLING_CUT
@@ -73,6 +73,8 @@
 	var/hoodtype
 	var/hoodtoggled = FALSE
 	var/adjustable = CANT_CADJUST
+
+	var/wetable = TRUE
 	var/proper_drying = FALSE
 	COOLDOWN_DECLARE(wet_stress_cd)
 
@@ -96,7 +98,7 @@
 
 /obj/item/clothing/Initialize(mapload, ...)
 	AddElement(/datum/element/update_icon_updates_onmob, slot_flags)
-	if(resistance_flags & WETABLE)
+	if(wetable)
 		AddComponent(/datum/component/wet)
 	return ..()
 
@@ -268,7 +270,7 @@
 		RemoveHood()
 	if(adjustable > 0)
 		ResetAdjust()
-	if(resistance_flags & WETABLE)
+	if(wetable)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 /obj/item/clothing/MouseDrop(atom/over_object)
@@ -322,7 +324,7 @@
 				if(variable in user.vars)
 					LAZYSET(user_vars_remembered, variable, user.vars[variable])
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
-		if(resistance_flags & WETABLE)
+		if(wetable)
 			RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_user_move), override = TRUE)
 
 	for(var/trait in clothing_traits)
@@ -545,7 +547,7 @@ BLIND     // can't see anything
 		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 		if(particle_spewer)
 			particle_spewer.RemoveComponent()
-	
+
 	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.7))
 		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
 			C.add_stress(/datum/stress_event/noble_tarnished_cloth)

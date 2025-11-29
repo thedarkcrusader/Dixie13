@@ -12,7 +12,7 @@
 	equip_delay_self = 3 SECONDS
 	unequip_delay_self = 2 SECONDS
 
-	resistance_flags = FIRE_PROOF | WETABLE
+	resistance_flags = FIRE_PROOF
 	blocksound = PLATEHIT
 	blade_dulling = DULLING_BASHCHOP
 

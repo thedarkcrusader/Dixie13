@@ -60,7 +60,6 @@
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
-	resistance_flags = WETABLE
 	color = CLOTHING_OLD_LEATHER
 	salvage_result = null
 
@@ -78,7 +77,6 @@
 	gender = PLURAL
 	icon_state = "simpleshoe"
 	item_state = "simpleshoe"
-	resistance_flags = WETABLE
 	color = CLOTHING_ASH_GREY
 	sellprice = 20
 
@@ -94,7 +92,6 @@
 /obj/item/clothing/shoes/sandals
 	name = "sandals"
 	desc = "Standard sandals."
-	resistance_flags = WETABLE
 	gender = PLURAL
 	icon_state = "sandals"
 	item_state = "sandals"

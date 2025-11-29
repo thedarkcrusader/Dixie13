@@ -13,7 +13,7 @@
 
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
-	resistance_flags = FIRE_PROOF | WETABLE
+	resistance_flags = FIRE_PROOF
 
 	strip_delay = 4 SECONDS
 	equip_delay_other = 4 SECONDS
@@ -26,6 +26,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	abstract_type = /obj/item/clothing/neck
+	wetable = FALSE
 
 
 /obj/item/clothing/neck/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, dummy_block = FALSE)

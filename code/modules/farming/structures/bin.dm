@@ -121,7 +121,7 @@
 		user.visible_message("<span class='info'>[user] starts to wash [to_wash] in [src].</span>")
 		if(istype(to_wash, /obj/item/clothing))
 			var/obj/item/clothing/clothing_item = to_wash
-			if(clothing_item.resistance_flags & WETABLE)
+			if(clothing_item.wetable)
 				if(!reagents.has_reagent(/datum/reagent/water/gross))
 					SEND_SIGNAL(clothing_item, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
 				else

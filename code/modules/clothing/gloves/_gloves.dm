@@ -19,7 +19,7 @@
 
 	body_parts_covered = HANDS
 	slot_flags = ITEM_SLOT_GLOVES
-	resistance_flags = FIRE_PROOF | WETABLE
+	resistance_flags = FIRE_PROOF
 
 	attack_verb = list("challenged")
 	max_integrity = INTEGRITY_WORST

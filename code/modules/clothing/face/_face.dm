@@ -7,7 +7,7 @@
 	body_parts_covered = FACE
 	slot_flags = ITEM_SLOT_MASK
 
-	resistance_flags = FIRE_PROOF | WETABLE
+	resistance_flags = FIRE_PROOF
 
 	strip_delay = 40
 	equip_delay_other = 40
@@ -22,6 +22,7 @@
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
 	abstract_type = /obj/item/clothing/face
+	wetable = FALSE
 
 /obj/item/clothing/face/attack_self(mob/user, params)
 	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))

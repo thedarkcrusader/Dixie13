@@ -260,7 +260,6 @@
 		..()
 
 /mob/living/carbon/human/SoakMob(locations, dirty_water = FALSE, rain = FALSE)
-	. = ..()
 	var/coverhead
 	//add belt slots to this for rusting
 	var/list/body_parts = list(head, wear_mask, wear_wrists, wear_shirt, wear_neck, cloak, wear_armor, wear_pants, backr, backl, gloves, shoes, belt, wear_ring)
@@ -273,8 +272,43 @@
 				coverhead = TRUE
 	if(locations & HEAD)
 		if(!coverhead)
-			var/mob/living/carbon/V = src
-			V.add_stress(/datum/stress_event/coldhead)
+			add_stress(/datum/stress_event/coldhead)
+
+	if(locations & CHEST)
+		if(!rain)
+			ExtinguishMob()
+		for(var/obj/item/clothing/C in get_equipped_items())
+			if(C.wetable)
+				SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+		if(locations & HEAD)
+			adjust_fire_stacks(-2)
+		else
+			adjust_fire_stacks(-1)
+	else
+		if(locations == FEET)
+			var/list/shoes = list(src.shoes)
+			for(var/obj/item/clothing/C in shoes)
+				if(C.wetable)
+					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+		else
+			var/list/below_chest = list(wear_pants, shoes)
+			for(var/obj/item/clothing/C in below_chest)
+				if(C.wetable)
+					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //END FIRE CODE
 
 
