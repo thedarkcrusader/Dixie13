@@ -8,10 +8,6 @@
 /datum/wet/New(atom/P)
 	parent = P
 
-/datum/wet/Destroy()
-	parent = null
-	return ..()
-
 
 /datum/wet/proc/get_examine_text()
 	if(water_stacks < 0)
