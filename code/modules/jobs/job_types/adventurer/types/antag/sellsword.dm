@@ -1,4 +1,4 @@
-/datum/job/advclass/sellsword //Polearm strength class, starts with billhook, godendag or Javelin and buckler with medium armor training
+/datum/job/advclass/bandit/sellsword //Polearm strength class, starts with billhook, godendag or Javelin and buckler with medium armor training
 	title = "Sellsword"
 	tutorial = "Perhaps a mercenary, perhaps a deserter - at one time, you killed for a master in return for gold. Now you live with no such master over your head - and take what you please."
 	allowed_sexes = list(MALE, FEMALE)

@@ -1,4 +1,4 @@
-/datum/job/advclass/hedgeknight //heavy knight class - main frontliner, single slot force modifier
+/datum/job/advclass/bandit/hedgeknight //heavy knight class - main frontliner, single slot force modifier
 	title = "Hedge Knight"
 	tutorial = "A noble fallen from grace, your tarnished armor sits upon your shoulders as a heavy reminder of the life you've lost. Take back what is rightfully yours."
 	outfit = /datum/outfit/bandit/hedgeknight

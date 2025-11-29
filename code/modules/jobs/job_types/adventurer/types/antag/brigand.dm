@@ -1,4 +1,4 @@
-/datum/job/advclass/brigand //Strength/Fist/Flail class, starts with axe and strength, katar and speed or Flail and shield. Medium armored
+/datum/job/advclass/bandit/brigand //Strength/Fist/Flail class, starts with axe and strength, katar and speed or Flail and shield. Medium armored
 	title = "Brigand"
 	tutorial = "Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you."
 	outfit = /datum/outfit/bandit/brigand
