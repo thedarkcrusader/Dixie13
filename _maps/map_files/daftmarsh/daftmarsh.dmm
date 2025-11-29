@@ -8343,9 +8343,9 @@
 	pixel_x = 32;
 	mailtag = "Captain"
 	},
-/obj/item/servant_bell{
-	pixel_x = 5;
-	pixel_y = 12
+/obj/item/servant_bell/lord{
+	pixel_x = 10;
+	pixel_y = 19
 	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
@@ -11321,7 +11321,6 @@
 "knv" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
 /turf/open/floor/tile/masonic,
 /area/indoors/town/manor)
 "knK" = (
@@ -13148,16 +13147,13 @@
 /obj/structure/rack/shelf/big{
 	pixel_y = 0
 	},
-/obj/item/servant_bell{
-	pixel_x = -7;
-	pixel_y = -1
-	},
-/obj/item/servant_bell{
-	pixel_x = -2;
-	pixel_y = 0
-	},
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
+	},
+/obj/item/servant_bell,
+/obj/item/servant_bell{
+	pixel_x = 7;
+	pixel_y = 0
 	},
 /turf/open/floor/cobble,
 /area/under/town/basement)
@@ -15894,8 +15890,8 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/obj/item/servant_bell{
-	pixel_x = -7;
+/obj/item/servant_bell/lord{
+	pixel_x = -8;
 	pixel_y = 10
 	},
 /turf/open/floor/carpet/royalblack,
@@ -17205,7 +17201,10 @@
 /area/outdoors/rtfield)
 "pKw" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/open/floor/tile/checkeralt,
 /area/indoors/town/manor)
 "pKC" = (
@@ -17801,7 +17800,10 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord{
+	pixel_x = 8;
+	pixel_y = 7
+	},
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town/manor)
 "qoB" = (
@@ -18841,7 +18843,10 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord{
+	pixel_x = -4;
+	pixel_y = 8
+	},
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town/manor)
 "rlt" = (
@@ -23016,7 +23021,6 @@
 	icon_state = "longtable"
 	},
 /obj/structure/mirror/fancy,
-/obj/item/servant_bell,
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/manor)
 "vAw" = (
@@ -24508,6 +24512,14 @@
 	dir = 1
 	},
 /obj/item/plate/gold,
+/obj/item/servant_bell/lord{
+	pixel_x = 0;
+	pixel_y = 19
+	},
+/obj/item/servant_bell/lord{
+	pixel_x = 11;
+	pixel_y = 19
+	},
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/manor)
 "wRw" = (

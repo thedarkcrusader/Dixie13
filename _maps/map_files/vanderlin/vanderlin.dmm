@@ -982,7 +982,7 @@
 "ayQ" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/manor/heir/heir2)
 "ayW" = (
@@ -8720,9 +8720,9 @@
 	pixel_x = 13;
 	pixel_y = 14
 	},
-/obj/item/servant_bell{
+/obj/item/servant_bell/lord{
 	pixel_x = -1;
-	pixel_y = 11
+	pixel_y = 14
 	},
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/manor/lord_appt)
@@ -13918,9 +13918,9 @@
 /obj/structure/mirror,
 /obj/structure/table/wood/plain_alt,
 /obj/item/key/lord,
-/obj/item/servant_bell{
+/obj/item/servant_bell/lord{
 	pixel_x = 13;
-	pixel_y = 12
+	pixel_y = 15
 	},
 /turf/open/floor/hexstone,
 /area/indoors/town/manor/lord_appt)
@@ -20577,9 +20577,9 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/servant_bell{
+/obj/item/servant_bell/lord{
 	pixel_x = 8;
-	pixel_y = 16
+	pixel_y = 13
 	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor/captain)
@@ -35585,9 +35585,9 @@
 "sIo" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/table/wood/plain_alt,
-/obj/item/servant_bell{
-	pixel_x = 9;
-	pixel_y = 14
+/obj/item/servant_bell/lord{
+	pixel_x = 8;
+	pixel_y = 13
 	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor/archivist)
@@ -45515,7 +45515,7 @@
 "xQe" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/manor/heir/heir1)
 "xQl" = (
@@ -45553,7 +45553,7 @@
 /obj/item/key/courtphys,
 /obj/item/reagent_containers/glass/bottle,
 /obj/item/reagent_containers/glass/bottle,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/hexstone,
 /area/indoors/town/manor/phys)
 "xQW" = (

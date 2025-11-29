@@ -573,21 +573,21 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/servant_bell{
-	pixel_x = 2;
-	pixel_y = 12
-	},
-/obj/item/servant_bell{
-	pixel_x = 7;
-	pixel_y = 11
-	},
 /obj/item/key/guest{
 	pixel_x = -7;
 	pixel_y = 7
 	},
 /obj/item/servant_bell{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/item/servant_bell{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/obj/item/servant_bell{
 	pixel_x = 5;
-	pixel_y = 15
+	pixel_y = 12
 	},
 /turf/open/floor/cobble,
 /area/under/town/basement)
@@ -1200,7 +1200,7 @@
 "aBE" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/manor)
 "aBK" = (
@@ -3184,7 +3184,7 @@
 	pixel_y = 6
 	},
 /obj/item/storage/belt/pouch/coins/poor,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
 "bCY" = (
@@ -5597,8 +5597,6 @@
 "cKJ" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
-/obj/item/servant_bell,
-/obj/item/servant_bell,
 /turf/open/floor/carpet/lord/center,
 /area/indoors/town/manor)
 "cKK" = (
@@ -24694,9 +24692,9 @@
 /area/outdoors/town/roofs)
 "mtI" = (
 /obj/structure/table/wood/crafted,
-/obj/item/servant_bell{
+/obj/item/servant_bell/lord{
 	pixel_x = 10;
-	pixel_y = 15
+	pixel_y = 16
 	},
 /turf/open/floor/churchmarble,
 /area/indoors/town/manor)
@@ -39915,7 +39913,7 @@
 /area/indoors/town/orphanage)
 "tPJ" = (
 /obj/structure/closet/crate/drawer,
-/obj/item/servant_bell,
+/obj/item/servant_bell/lord,
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
 "tPN" = (
@@ -43063,6 +43061,14 @@
 "vso" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/table/stone_small,
+/obj/item/servant_bell/lord{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/servant_bell/lord{
+	pixel_x = -1;
+	pixel_y = 10
+	},
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "vsv" = (
@@ -45432,8 +45438,8 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/servant_bell{
-	pixel_x = 6;
+/obj/item/servant_bell/lord{
+	pixel_x = 8;
 	pixel_y = 6
 	},
 /turf/open/floor/carpet/red,
