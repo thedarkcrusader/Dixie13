@@ -110,6 +110,13 @@
 		QDEL_NULL(hood)
 	if(uses_lord_coloring)
 		UnregisterSignal(SSdcs, COMSIG_LORD_COLORS_SET)
+	if(wetable)
+		var/mob/user = loc
+		if(istype(user))
+			UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+		if(wet)
+			qdel(wet)
+			wet = null
 	return ..()
 
 /obj/item/clothing/get_inspect_entries(list/inspect_list)
