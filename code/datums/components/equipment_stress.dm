@@ -62,15 +62,15 @@
 	return slot & ((slot_flags_override || I.slot_flags) | additional_slot_flags)
 
 
-/// job specific variety for equipment stress
+/// job specific variety for equipment stress. this will attempt to use their mind's assigned role and fall back to mob job if necessary.
 /datum/component/equipment_stress/job_specific
 	/// these jobs will not gain the stress event
 	var/list/immune_jobs
-	/// These department flags will not be affected. Defaults NONE
+	/// These department flags will not be affected.
 	var/immune_departments
 	/// Jobs to make exception to within department flags
 	var/list/department_exceptions
-	/// Invert the behaviors so only the immune jobs/departments are affected instead. Defaults FALSE
+	/// Invert the behaviors so only the immune jobs/departments are affected instead.
 	var/inverse
 
 /datum/component/equipment_stress/job_specific/Initialize(stress_type, alt_stress, slot_flags_override, additional_slot_flags, immune_jobs, immune_departments, department_exceptions, inverse)
@@ -83,15 +83,12 @@
 	src.inverse = inverse
 
 /datum/component/equipment_stress/job_specific/apply_stress(mob/user)
-	var/datum/job/J = SSjob.GetJob(user.job)
+	var/datum/job/J = user.mind?.assigned_role || SSjob.GetJob(user.job)
 	if(istype(J))
-		// This is extremely fucked up and weird.
 		// When you invert this it'll return true for any immune job or non-exceptioned department job.
-		// This or statement has to be done in this order because it lets you do some weird but neat stuff without shorthand.
 			// An example of this is targeting the OUTSIDER department, but making exception to pilgrim adv classes.
-			// This evaluates the first part to false, so it checks the second half.
-			// Now we can shove something like /datum/job/advclass/pilgrim/noble in the immune_jobs, which evaluates to TRUE, so TRUE ^ TRUE == FALSE
-		if(inverse ^ ((J.department_flag & immune_departments && !is_type_in_list(J, department_exceptions)) || is_type_in_list(J, immune_jobs)))
+			// Then shove something like /datum/job/advclass/pilgrim/noble in the immune_jobs, which evaluates to TRUE, so TRUE ^ TRUE == FALSE
+		if(inverse ^ (is_type_in_list(J, immune_jobs) || (J.department_flag & immune_departments && !is_type_in_list(J, department_exceptions))))
 			return
 	else if(inverse) //jobless try to conform to the general rule
 		return
