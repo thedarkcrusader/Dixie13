@@ -4274,6 +4274,7 @@
 "clE" = (
 /obj/structure/closet/crate/drawer/inn,
 /obj/item/storage/belt/pouch/coins/mid,
+/obj/item/servant_bell,
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "clH" = (
@@ -36374,6 +36375,7 @@
 "tdD" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
+/obj/item/servant_bell,
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "tdE" = (

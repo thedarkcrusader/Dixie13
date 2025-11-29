@@ -5458,6 +5458,7 @@
 /area/under/town/sewer)
 "cHh" = (
 /obj/structure/table/wood/fancy/purple,
+/obj/item/servant_bell,
 /turf/open/floor/carpet/purple,
 /area/indoors/town)
 "cHn" = (
@@ -41284,6 +41285,7 @@
 	dir = 5
 	},
 /obj/structure/carpet/blue,
+/obj/item/servant_bell,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town)
 "uDZ" = (
