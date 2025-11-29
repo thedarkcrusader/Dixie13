@@ -146,5 +146,3 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 	EXP_TYPE_GHOST = list(), // dead people, observers
 ))
 GLOBAL_PROTECT(exp_specialmap)
-
-GLOBAL_LIST_EMPTY(join_servants)
