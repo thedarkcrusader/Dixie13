@@ -53,18 +53,17 @@
 
 	has_wet_items = FALSE
 	for(var/obj/item/clothing/C in STR.contents())
-		var/datum/component/wet/W = C.GetComponent(/datum/component/wet)
-		if(!W)
+		if(!C.wet)
 			continue
-		var/old_wet = W.water_stacks
-		SEND_SIGNAL(C, COMSIG_ATOM_WATER_USE, 5)
-		if(old_wet < 0 && W.water_stacks == 0 && !W.dirty_water && W.washed)
+		var/old_wet = C.wet.water_stacks
+		C.wet.use_water(5)
+		if(old_wet < 0 && C.wet.water_stacks == 0 && !C.wet.dirty_water && C.wet.washed)
 			C.proper_drying = TRUE
 			C.AddComponent(/datum/component/particle_spewer/sparkle)
-		else if(old_wet < 0 && W.water_stacks == 0 && W.dirty_water)
-			W.dirty_water = FALSE
+		else if(old_wet < 0 && C.wet.water_stacks == 0 && C.wet.dirty_water)
+			C.wet.dirty_water = FALSE
 
-		if(W.water_stacks < 0)
+		if(C.wet.water_stacks < 0)
 			has_wet_items = TRUE
 	// Reschedule only if we still have wet items
 	if(has_wet_items)

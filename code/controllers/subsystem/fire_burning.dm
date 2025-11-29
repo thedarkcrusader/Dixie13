@@ -31,15 +31,16 @@ SUBSYSTEM_DEF(fire_burning)
 				return
 			continue
 
-		var/datum/component/wet/W = O.GetComponent(/datum/component/wet)
 		var/is_wet = FALSE
 
-		if(W)
-			var/dry_amount = round(fire_intensity / 5)
-			W.try_use_water_stacks(dry_amount)
+		if(istype(O, /obj/item/clothing))
+			var/obj/item/clothing/cloth = O
+			if(cloth.wet)
+				var/dry_amount = round(fire_intensity / 5)
+				cloth.wet.use_water(dry_amount)
 
-			if(W.water_stacks < 0)
-				is_wet = TRUE   // stop it from burning while it is wet
+				if(cloth.wet.water_stacks < 0)
+					is_wet = TRUE   // stop it from burning while it is wet
 
 		if(O.resistance_flags & ON_FIRE) //in case an object is extinguished while still in currentrun
 			if(!(O.resistance_flags & FIRE_PROOF) && !is_wet)

@@ -360,7 +360,7 @@
 	if(istype(AM, /obj/item/clothing))
 		var/obj/item/clothing/cloth = AM
 		if(cloth.wetable)
-			SEND_SIGNAL(cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water_turf)
+			cloth.wet.add_water(20, dirty_water_turf)
 	if(isliving(AM) && !AM.throwing)
 		var/mob/living/L = AM
 		if(L.body_position == LYING_DOWN || water_level == 3)
@@ -467,9 +467,9 @@
 		var/obj/item/clothing/item2wash_cloth = item2wash
 		if(item2wash_cloth && item2wash_cloth.wetable)
 			if(cleanliness_factor > 0)
-				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
+				item2wash_cloth.wet.add_water(20, dirty = FALSE, washed_properly = TRUE)
 			else
-				SEND_SIGNAL(item2wash_cloth, COMSIG_ATOM_WATER_INCREASE, 20, dirty = TRUE, wash = TRUE)
+				item2wash_cloth.wet.add_water(20, dirty = TRUE, washed_properly = TRUE)
 		user.nobles_seen_servant_work()
 		playsound(user, pick(wash), 100, FALSE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

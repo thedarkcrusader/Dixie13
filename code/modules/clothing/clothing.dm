@@ -74,6 +74,7 @@
 	var/hoodtoggled = FALSE
 	var/adjustable = CANT_CADJUST
 
+	var/datum/wet/wet
 	var/wetable = TRUE
 	var/proper_drying = FALSE
 	COOLDOWN_DECLARE(wet_stress_cd)
@@ -96,10 +97,11 @@
 	if(hoodtype)
 		MakeHood()
 
+
 /obj/item/clothing/Initialize(mapload, ...)
 	AddElement(/datum/element/update_icon_updates_onmob, slot_flags)
 	if(wetable)
-		AddComponent(/datum/component/wet)
+		wet = new(src)
 	return ..()
 
 /obj/item/clothing/Destroy()
@@ -138,9 +140,16 @@
 			. += span_notice("It has one torn sleeve.")
 		else
 			. += span_notice("Both its sleeves have been torn!")
-	desc = initial(desc)
+	if(wet)
+		var/list/t = wet.get_examine_text()
+		if(t)
+			for(var/line in t)
+				. += line
 	if(proper_drying)
 		desc += span_notice("\n This was properly washed and dried off, it smells good!")
+
+
+
 
 /obj/item/clothing/MiddleClick(mob/user, params)
 	..()
@@ -539,7 +548,6 @@ BLIND     // can't see anything
 		return
 
 	var/mob/living/carbon/C = loc
-	var/datum/component/wet/W = GetComponent(/datum/component/wet)
 
 	if(proper_drying && !C.has_stress_type(/datum/stress_event/washed_cloth))
 		C.add_stress(/datum/stress_event/washed_cloth)
@@ -548,14 +556,14 @@ BLIND     // can't see anything
 		if(particle_spewer)
 			particle_spewer.RemoveComponent()
 
-	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.7))
-		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
+	if(wet.use_water(0.7))
+		if(HAS_TRAIT(C, TRAIT_NOBLE) && wet.water_stacks == 0)
 			C.add_stress(/datum/stress_event/noble_tarnished_cloth)
 
 		if(C.mind?.assigned_role == /datum/job/farmer || C.mind?.assigned_role == /datum/job/soilchild || HAS_TRAIT(C, TRAIT_LEECHIMMUNE) || istriton(C))
 			return
 
-	if(W && W.water_stacks < 0)
+	if(wet.water_stacks < 0)
 		if(COOLDOWN_FINISHED(src, wet_stress_cd))
 			COOLDOWN_START(src, wet_stress_cd, 60 SECONDS)
 			C.add_stress(/datum/stress_event/wet_cloth)

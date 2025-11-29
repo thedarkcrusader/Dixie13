@@ -279,22 +279,21 @@
 			ExtinguishMob()
 		for(var/obj/item/clothing/C in get_equipped_items())
 			if(C.wetable)
-				SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+				C.wet.add_water(20, dirty_water)
 		if(locations & HEAD)
 			adjust_fire_stacks(-2)
 		else
 			adjust_fire_stacks(-1)
 	else
 		if(locations == FEET)
-			var/list/shoes = list(src.shoes)
-			for(var/obj/item/clothing/C in shoes)
-				if(C.wetable)
-					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+			var/obj/item/clothing/C = shoes
+			if(C && C.wetable)
+				C.wet.add_water(20, dirty_water)
 		else
 			var/list/below_chest = list(wear_pants, shoes)
 			for(var/obj/item/clothing/C in below_chest)
 				if(C.wetable)
-					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
+					C.wet.add_water(20, dirty_water)
 
 
 

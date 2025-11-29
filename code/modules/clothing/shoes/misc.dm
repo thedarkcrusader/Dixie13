@@ -44,6 +44,7 @@
 	sellprice = 10
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
+	wetable = FALSE
 
 /obj/item/clothing/shoes/apothboots
 	name = "apothecary boots"
@@ -53,6 +54,7 @@
 	item_state = "apothboots"
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15,  "piercing" = 5, "fire" = 0, "acid" = 0)
 	sellprice = 10
+	wetable = FALSE
 
 /obj/item/clothing/shoes/simpleshoes
 	name = "shoes"
@@ -115,6 +117,7 @@
 	icon_state = "shalal"
 	item_state = "shalal"
 	sellprice = 15
+	wetable = FALSE
 
 /obj/item/clothing/shoes/tribal
 	name = "primative shoes"
@@ -140,6 +143,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 25, "slash" = 25, "stab" = 25,  "piercing" = 15, "fire" = 0, "acid" = 0)
 	sellprice = 20
+	wetable = FALSE
 
 /obj/item/clothing/shoes/otavan
 	name = "grenzelhoftian leather boots"
@@ -151,6 +155,7 @@
 	blocksound = SOFTHIT
 	max_integrity = 200
 	armor = ARMOR_LEATHER_GOOD
+	wetable = FALSE
 
 /obj/item/clothing/shoes/otavan/inqboots
 	name = "inquisitorial boots"

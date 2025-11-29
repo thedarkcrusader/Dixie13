@@ -123,9 +123,9 @@
 			var/obj/item/clothing/clothing_item = to_wash
 			if(clothing_item.wetable)
 				if(!reagents.has_reagent(/datum/reagent/water/gross))
-					SEND_SIGNAL(clothing_item, COMSIG_ATOM_WATER_INCREASE, 20, dirty = FALSE, wash = TRUE)
+					clothing_item.wet.add_water(20, dirty = FALSE, washed_properly = TRUE)
 				else
-					SEND_SIGNAL(clothing_item, COMSIG_ATOM_WATER_INCREASE, 20, dirty = TRUE, wash = TRUE)
+					clothing_item.wet.add_water(20, dirty = TRUE, washed_properly = TRUE)
 		user.nobles_seen_servant_work()
 	reagents.remove_reagent(removereg, 5)
 

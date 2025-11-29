@@ -149,7 +149,6 @@
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()
-	desc = initial(desc)
 	if(polished == 1)
 		desc += ("\nThis shoe was polished, it looks quite nice.")
 	if(polished == 2)
