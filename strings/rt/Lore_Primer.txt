@@ -250,9 +250,9 @@ While it's not required reading, leadership roles may find this information usef
 	</details>
 
 	<details>
-		<summary><strong> Progressive Psydonism </strong></summary>
+		<summary><strong> Extremist Psydonism </strong></summary>
 		<br>
-		A schism within the orthodox church of Psydon, this progressive faction believes that worship is possible through The Ten. Rather than striving to cut down The Ten, progressive Psydonites instead look for signs of His will expressed through the pieces left behind.
+		A small splinter of Orthodox Psydonism, believing the nine pieces are lies and propaganda, and that Psydon lives still.
 		<br><br>
 	</details>
 
