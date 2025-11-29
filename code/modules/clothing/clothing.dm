@@ -537,6 +537,7 @@ BLIND     // can't see anything
 		return
 
 	var/mob/living/carbon/C = loc
+	var/datum/component/wet/W = GetComponent(/datum/component/wet)
 
 	if(proper_drying && !C.has_stress_type(/datum/stress_event/washed_cloth))
 		C.add_stress(/datum/stress_event/washed_cloth)
@@ -544,16 +545,16 @@ BLIND     // can't see anything
 		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
 		if(particle_spewer)
 			particle_spewer.RemoveComponent()
-
+	
 	if(SEND_SIGNAL(src, COMSIG_ATOM_WATER_USE, 0.7))
-		var/datum/component/wet/W = GetComponent(/datum/component/wet)
 		if(HAS_TRAIT(C, TRAIT_NOBLE) && W.water_stacks == 0)
 			C.add_stress(/datum/stress_event/noble_tarnished_cloth)
 
 		if(C.mind?.assigned_role == /datum/job/farmer || C.mind?.assigned_role == /datum/job/soilchild || HAS_TRAIT(C, TRAIT_LEECHIMMUNE) || istriton(C))
 			return
 
-	if(COOLDOWN_FINISHED(src, wet_stress_cd))
-		COOLDOWN_START(src, wet_stress_cd, 60 SECONDS)
-		C.add_stress(/datum/stress_event/wet_cloth)
+	if(W && W.water_stacks < 0)
+		if(COOLDOWN_FINISHED(src, wet_stress_cd))
+			COOLDOWN_START(src, wet_stress_cd, 60 SECONDS)
+			C.add_stress(/datum/stress_event/wet_cloth)
 
