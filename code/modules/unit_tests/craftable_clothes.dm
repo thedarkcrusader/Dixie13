@@ -65,6 +65,8 @@ abstract types are automatically excluded.
 		/obj/item/clothing/armor/plate/fluted/ornate/ordinator, //inqport
 		/obj/item/clothing/armor/plate/fluted,
 		/obj/item/clothing/cloak/templar, //base type
+
+
 		/obj/item/clothing/cloak/cape/thief/brown, //Recolors for bandits
 		/obj/item/clothing/cloak/cape/thief/black,
 		/obj/item/clothing/shirt/clothvest/black,
