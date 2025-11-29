@@ -49,7 +49,6 @@
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_INT, 1)
 		H.change_stat(STATKEY_PER, 1)
-		H.adjust_spell_points(1)
 	H.change_stat(STATKEY_STR, -1)
 	H.change_stat(STATKEY_INT, 3)
 	H.change_stat(STATKEY_CON, 1)

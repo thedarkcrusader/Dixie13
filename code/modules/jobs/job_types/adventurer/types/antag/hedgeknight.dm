@@ -1,4 +1,4 @@
-/datum/job/advclass/hedgeknight //heavy knight class - just like black knight adventurer class. starts with heavy armor training and plate, but less weapon skills than brigand, sellsword and knave
+/datum/job/advclass/hedgeknight //heavy knight class - main frontliner, single slot force modifier
 	title = "Hedge Knight"
 	tutorial = "A noble fallen from grace, your tarnished armor sits upon your shoulders as a heavy reminder of the life you've lost. Take back what is rightfully yours."
 	outfit = /datum/outfit/bandit/hedgeknight
@@ -42,16 +42,16 @@
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Longsword & Shield")
+		if("Longsword & Shield") //Survivability based
 			backl = /obj/item/weapon/shield/tower/metal
 			beltl = /obj/item/weapon/sword/long
 			scabbards = list(/obj/item/weapon/scabbard/sword/noble)
 			H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-		if("Eagle Beak")
+		if("Eagle Beak") //More lethal two handed option
 			backl = /obj/item/weapon/polearm/eaglebeak
 			H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		if("Two-handed Flail")
+		if("Two-handed Flail") //Nerfed strength so you aren't deleting people, get ready to facetank because you also can't block
 			backl = /obj/item/weapon/flail/peasant
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 			H.change_stat(STATKEY_STR, -1)

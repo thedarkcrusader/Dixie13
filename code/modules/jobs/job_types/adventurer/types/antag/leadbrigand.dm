@@ -1,12 +1,12 @@
-/datum/job/advclass/banditlead/leadbrigand //Strength class, starts with axe or flails and medium armor training
+/datum/job/advclass/banditlead/leadbrigand //Based off brigand, less armored, less intelligent leader, slower, more specced combat wise
     title = "Warband Leader"
     tutorial = "You lead these groups of free men through the worst of the worst, standing on the front line while leading by example, you could have cared less for leadership but time changed you. Tactics started making sense, the success started pouring in."
     category_tags = list(CTAG_BANDITLEAD)
     allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
     jobstats = list(
         STATKEY_STR = 2,
-		STATKEY_PER = -2,
-        STATKEY_END = 2,
+		STATKEY_PER = -1,
+        STATKEY_END = 1, //Forced middle age, technically +2
         STATKEY_CON = 3,
         STATKEY_INT = 1,
 		STATKEY_SPD = -1,
@@ -15,7 +15,7 @@
     skills = list(
         /datum/skill/misc/reading = 1,
         /datum/skill/misc/climbing = 3,
-        /datum/skill/misc/athletics = 4,
+        /datum/skill/misc/athletics = 3,
         /datum/skill/misc/sewing = 1,
         /datum/skill/misc/medicine = 1,
         /datum/skill/craft/crafting = 2,
@@ -60,16 +60,19 @@
 
 /datum/job/advclass/banditlead/leadbrigand/after_spawn(mob/living/carbon/human/H)
     . = ..()
-    var/weapons = list("Great Axe", "Katar and Knuckle")
+    var/weapons = list("Great Axe", "Katar and Knuckle","Great Mace")
     var/weapon_choice = input(H, "CHOOSE YOUR WEAPON.", "GO ROB SOME FOOLS.") as anything in weapons
     switch(weapon_choice)
-        if("Great Axe")
-            H.equip_to_slot_or_del(new /obj/item/weapon/greataxe/steel, ITEM_SLOT_BACK_L, TRUE)
+        if("Iron Great Axe") //Big damage dealer, 3 ingot recipe so they instead get iron
+            H.equip_to_slot_or_del(new /obj/item/weapon/greataxe, ITEM_SLOT_BACK_L, TRUE)
             H.equip_to_slot_or_del(new /obj/item/weapon/axe/steel, ITEM_SLOT_BELT_L, TRUE)
-            H.put_in_hands(new /obj/item/weapon/scabbard/sword/noble(get_turf(H)), TRUE)
             H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-        if("Katar and Knuckle")
+        if("Katar and Knuckle") //Rushdown dual wielder, break armor with your katar and finish fights with your knuckles
             H.equip_to_slot_or_del(new /obj/item/weapon/katar, ITEM_SLOT_BELT_L, TRUE)
             H.equip_to_slot_or_del(new /obj/item/weapon/knuckles, ITEM_SLOT_BELT_R, TRUE)
             H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
             H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+        if("Great Mace") //Hard anti armor, big man big stick
+            H.equip_to_slot_or_del(new /obj/item/weapon/mace/goden/steel, ITEM_SLOT_BACK_L, TRUE)
+            H.equip_to_slot_or_del(new /obj/item/weapon/axe/steel, ITEM_SLOT_BELT_L, TRUE)
+            H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

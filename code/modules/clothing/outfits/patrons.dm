@@ -31,11 +31,6 @@
 	desc = "Light blacks and greys, with a tinge of red, the everlasting fire of Malum's iron hammer as it strikes."
 	icon_state = "malumtabard"
 
-/obj/item/clothing/cloak/templar/malumite/brown
-	name = "heavy fur cloak"
-	desc = "A well made, well taken care of piece of cold weather wear, has convienient pockets."
-	color = CLOTHING_MUD_BROWN
-
 /obj/item/clothing/cloak/templar/necran
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	alternate_worn_layer = TABARD_LAYER

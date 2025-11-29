@@ -1,4 +1,4 @@
-/datum/job/advclass/brigand //Strength/Unarmed class, starts with axe and strength or katar and speed. Medium armored
+/datum/job/advclass/brigand //Strength/Fist/Flail class, starts with axe and strength, katar and speed or Flail and shield. Medium armored
 	title = "Brigand"
 	tutorial = "Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you."
 	outfit = /datum/outfit/bandit/brigand
@@ -8,7 +8,7 @@
 /datum/outfit/bandit/brigand/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -41,7 +41,7 @@
 	H.change_stat(STATKEY_SPD, -1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
-	var/weapons = list("Battleaxe & Mace","Katar")
+	var/weapons = list("Battleaxe & Mace","Katar","Flail and Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -52,8 +52,15 @@
 			H.change_stat(STATKEY_STR, 1)
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		if("Katar") //Unarmed grappler, gains +1 spd in statline for better chasing
-			beltr = /obj/item/weapon/katar
+			beltl = /obj/item/weapon/katar
 			H.change_stat(STATKEY_SPD, 2)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			gloves = /obj/item/clothing/gloves/bandages/weighted //Craftable and only needing 6 cloth and level 2 sewing, reckon it's fine to give
+		if("Flail and Shield") //Flail buries armor, doesn't need a stat bonus.
+			beltl= /obj/item/weapon/flail
+			backl= /obj/item/weapon/shield/heater
+			gloves = /obj/item/clothing/gloves/leather
+			H.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
+
