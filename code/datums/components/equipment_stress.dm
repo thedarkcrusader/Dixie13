@@ -6,7 +6,7 @@
 	/// If this could overlap, place them in priority order (best/worst first).
 	/// If no traits are found, uses the default stress type.
 	/// Assign null event associations to make negation cases.
-	var/list/alist/alt_stress
+	var/alist/alt_stress
 	/// Optional override for specific flags e.g. shirt but not armor. Leave null to use item defaults.
 	var/slot_flags_override
 	/// Additional slot flags. You'd mostly likely use this for ITEM_SLOT_HANDS if this is for weird clothing stuff.
