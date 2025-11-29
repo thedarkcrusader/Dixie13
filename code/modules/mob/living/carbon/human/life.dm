@@ -296,22 +296,6 @@
 				if(C.wetable)
 					SEND_SIGNAL(C, COMSIG_ATOM_WATER_INCREASE, 20, dirty_water)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//END FIRE CODE
-
-
 //This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, CHEST, GROIN, etc. See setup.dm for the full list)
 /mob/living/carbon/human/proc/get_heat_protection_flags(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = 0
