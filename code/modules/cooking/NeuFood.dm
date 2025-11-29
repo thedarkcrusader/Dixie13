@@ -186,7 +186,6 @@
 	else
 		desc += "\nThis bowl looks properly stored and clean enough."
 
-
 /obj/item/reagent_containers/glass/bowl/update_overlays()
 	. = ..()
 	if(dirty)
