@@ -107,6 +107,7 @@
 
 	Mob = M
 	Mob.master = master
+	Mob.generate_monitor()
 	mob_death_registered = TRUE
 	RegisterSignal(M, COMSIG_LIVING_DEATH, PROC_REF(on_mob_death))
 	var/datum/hud/putrid/hud = M.hud_used

@@ -46,6 +46,7 @@
 	var/is_draining_well = FALSE
 	var/obj/structure/meatvine/healing_well/draining_target = null
 	var/last_drain_time = 0
+	var/datum/component/team_monitor/putrid_monitor
 
 	var/evolution_progress = 0
 	var/evolution_max = 100
@@ -59,16 +60,19 @@
 		/datum/action/cooldown/meatvine/personal/drain_well,
 	)
 
+	var/list/structures = list(
+		/datum/action/cooldown/meatvine/spread_spike,
+	)
+
 /mob/living/simple_animal/hostile/retaliate/meatvine/Initialize()
 	. = ..()
 	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_PUTRID, INNATE_TRAIT)
 	add_spell(/datum/action/cooldown/meatvine/spread_floor)
 	add_spell(/datum/action/cooldown/meatvine/spread_wall)
-	add_spell(/datum/action/cooldown/meatvine/spread_lair)
-	add_spell(/datum/action/cooldown/meatvine/spread_spike)
-	add_spell(/datum/action/cooldown/meatvine/spread_healing_well)
-	add_spell(/datum/action/cooldown/meatvine/spread_wormhole)
+
+	for(var/path in structures)
+		add_spell(path)
 
 	for(var/path in personal_abilities)
 		add_spell(path)
@@ -130,6 +134,21 @@
 		var/obj/structure/meatvine/papameat/nearest_papa = A
 		nearest_papa.begin_evolution(src)
 		return TRUE
+
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/proc/generate_monitor()
+	var/monitor_key = "putrid_[REF(master)]"
+	putrid_monitor = AddComponent(/datum/component/team_monitor, monitor_key, null)
+	putrid_monitor.show_hud(src)
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/proc/add_team_tracker(atom/target, timer)
+	var/tracker = target.AddComponent(/datum/component/tracking_beacon, "putrid_[REF(master)]", null, null, TRUE, "#ec2626")
+	putrid_monitor.add_to_tracking_network(tracker)
+	if(timer)
+		addtimer(CALLBACK(src, PROC_REF(remove_team_tracker), tracker), timer)
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/proc/remove_team_tracker(datum/component/tracking_beacon/tracker)
+	qdel(tracker)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/proc/try_feed_to_papameat(atom/movable/food, obj/structure/meatvine/papameat/nearest_papa, mob/user)
 	if(!nearest_papa)

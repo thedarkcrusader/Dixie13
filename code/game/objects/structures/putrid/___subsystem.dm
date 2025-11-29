@@ -35,7 +35,8 @@ SUBSYSTEM_DEF(meatvines)
 				continue
 
 			vine.grow()
-			vine.spread(vine.master.hive_spread_chance)
+			if(!QDELETED(vine))
+				vine.spread(vine?.master?.hive_spread_chance)
 
 		if(current_edge_index > length(current_queue))
 			current_edge_index = 1

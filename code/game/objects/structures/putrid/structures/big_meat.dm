@@ -41,6 +41,7 @@ GLOBAL_LIST_EMPTY(putrid_evolutions)
 		var/path = pick(evolving_mob.possible_evolutions)
 		var/mob/living/simple_animal/hostile/retaliate/meatvine/mob = new path(get_turf(evolving_mob))
 		mob.master = evolving_mob.master
+		mob.generate_monitor()
 		qdel(evolving_mob)
 
 	return TRUE

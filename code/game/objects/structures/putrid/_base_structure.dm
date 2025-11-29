@@ -72,7 +72,14 @@
 		beams -= atom
 		qdel(beam)
 
-	return ..()
+	var/turf/old_turf = get_turf(src)
+	. = ..()
+	for(var/dir in GLOB.cardinals)
+		var/turf/neighbor_turf = get_step(old_turf, dir)
+		var/obj/structure/meatvine/neighbor = locate(/obj/structure/meatvine) in neighbor_turf
+		if(neighbor)
+			SSmeatvines.check_vine_neighbors(neighbor)
+
 
 /obj/structure/meatvine/proc/is_edge_vine()
 	var/turf/T = get_turf(src)
@@ -89,7 +96,8 @@
 			return TRUE
 
 		// No vine = edge (can spread)
-		if(!locate(/obj/structure/meatvine) in step)
+		var/obj/structure/meatvine/struct = locate(/obj/structure/meatvine) in step
+		if(!struct || QDELING(struct))
 			return TRUE
 
 	return FALSE
