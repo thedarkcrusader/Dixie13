@@ -837,7 +837,7 @@
 	set_lying_angle(0)
 
 /mob/living/proc/rest_checks_callback()
-	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED) || pulledby)
+	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return FALSE
 	return TRUE
 
