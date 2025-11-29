@@ -63,7 +63,7 @@
 	playsound(src, 'sound/items/servant_bell.ogg', 80, TRUE)
 	user.visible_message(span_noticesmall("[user] rings [src] in front of [user == H ? "[user.p_them()]self" : H] like a pendulum..."))
 	if(do_after(user, 6 SECONDS, H))
-		if(H.real_name in bound_servants && H.name == H.real_name)
+		if((H.real_name in bound_servants) && H.name == H.real_name)
 			to_chat(user, span_warning("[src] is already bound to this bell."))
 		else if(H.is_dead())
 			to_chat(user, span_warning("What good is a dead servant?"))
