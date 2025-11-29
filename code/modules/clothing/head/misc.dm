@@ -46,7 +46,7 @@
 
 /obj/item/clothing/head/headband/naledi
 	name = "sojourner's headband"
-	desc = "A traditional garment, carried by those who survived the lonesome pilgrimage through Naledi's cursed dunes. Like a helmet, it will ward off killing blows; but unlike a helmet, it will keep the sweat out of your eyes and the mistakes out of your incantations. </br>'..We had our tests; we had our places of sin and vice. We were to look out for brother and sister, arm-in-arm, to ensure none of us fell. And yet we all did. We all allowed that to become what is. The daemons that roam our streets, that snatch our children from our bed, that eat our wives and break our husbands. They are us, our own creations and perversions. They are humanity as humanity sees itself, made manifest through our own twisted arcyne magicks..'"
+	desc = "A traditional monk's headband, for those disciples who prefer the sweat out of their eyes."
 	icon_state = "headband"
 	color = "#48443b"
 	sewrepair = TRUE
@@ -225,7 +225,7 @@
 		to_chat(user, "<span class='warning'>Remove [target.p_their()] headgear first!</span>")
 		return
 	target.visible_message("<span class='warning'>[user] forces [src] onto [target]'s head!</span>", \
-	"<span class='danger'>[target] forces [src] onto your head!</span>", "<i>I cant see anything.</i>")
+	"<span class='danger'>[target] forces [src] onto your head!</span>", "<i>I can't see anything.</i>")
 	if(ishuman(target)) // If the target is human and not in combat mode, stun them the same way a feint would.
 		var/mob/living/carbon/human/T = target
 		if(!T.cmode)

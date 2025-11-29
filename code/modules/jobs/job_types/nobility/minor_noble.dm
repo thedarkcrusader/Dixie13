@@ -9,7 +9,6 @@
 	faction = FACTION_TOWN
 	total_positions = 2
 	spawn_positions = 2
-	min_pq = 1
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 
@@ -27,12 +26,14 @@
 
 	job_bitflag = BITFLAG_ROYALTY
 
+	exp_types_granted  = list(EXP_TYPE_NOBLE)
+
 /datum/outfit/noble/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/honorary = "Lord"
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER)
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
@@ -71,7 +72,7 @@
 		beltr = /obj/item/weapon/knife/dagger/steel/special
 		scabbards = list(/obj/item/weapon/scabbard/knife)
 		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		backpack_contents = list(/obj/item/reagent_containers/glass/bottle/glazed_teapot/tea = 1, /obj/item/reagent_containers/glass/bottle/glazed_teacup = 3)
+		backpack_contents = list(/obj/item/reagent_containers/glass/carafe/teapot/tea = 1, /obj/item/reagent_containers/glass/cup/teacup/fancy = 3)
 	else
 		beltr = /obj/item/weapon/sword/rapier/dec
 		scabbards = list(/obj/item/weapon/scabbard/sword/noble)

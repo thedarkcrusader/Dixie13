@@ -4,7 +4,7 @@
 	name = ""
 	desc = ""
 	icon_state = ""
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/32/shields.dmi'
 	slot_flags = ITEM_SLOT_BACK
 	flags_1 = null
 	force = 10
@@ -175,6 +175,7 @@
 /obj/item/weapon/shield/tower/spidershield
 	name = "spider shield"
 	desc = "A bulky shield of spike-like lengths molten together. The motifs evoke anything but safety and protection."
+	icon = 'icons/roguetown/weapons/32/elven.dmi'
 	icon_state = "spidershield"
 
 /obj/item/weapon/shield/tower/getonmobprop(tag)
@@ -188,7 +189,7 @@
 
 /obj/item/weapon/shield/tower/hoplite
 	name = "ancient shield"
-	desc = "A gigantic, bronze reinforced shield that covers the entire body. An aasimar relic from an era long past."
+	desc = "A gigantic, bronze reinforced shield that covers the entire body. An Aasimar relic from an era long past."
 	icon_state = "boeotian"
 	possible_item_intents = list(/datum/intent/shield/bash/metal, /datum/intent/shield/block/metal)
 	force = 20
@@ -282,6 +283,7 @@
 /obj/item/weapon/shield/tower/metal/psy
 	name = "Covenant"
 	desc = "The Ordo Benetarus holds a mantra: A Psydonian endures. A Psydonian preserves themselves. A Psydonian preserves His flock. Protect them."
+	icon = 'icons/roguetown/weapons/32/psydonite.dmi'
 	icon_state = "psyshield"
 	force = 20
 	throwforce = 10
@@ -302,7 +304,7 @@
 
 /obj/item/weapon/shield/tower/buckleriron
 	name = "iron buckler"
-	desc = "A small sized iron shield, popular among mercenaries due to it's light weight and ease of mobility."
+	desc = "A small sized iron shield, popular among mercenaries due to its light weight and ease of mobility."
 	icon_state = "ironbuckler"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
 	force = 10

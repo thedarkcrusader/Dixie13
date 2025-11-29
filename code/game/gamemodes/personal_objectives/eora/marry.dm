@@ -37,13 +37,13 @@
 /datum/objective/personal/marry/complete_objective(escalatation_type = ESCALATION_INTERVENTION_ONLY)
 	. = ..()
 	owner.current.remove_stress(/datum/stress_event/eora_matchmaking)
-	to_chat(owner.current, span_greentext("You have married and thefore completed Eora's wish!"))
+	to_chat(owner.current, span_greentext("You have married and therefore completed Eora's wish!"))
 	adjust_storyteller_influence(EORA, 10)
 	UnregisterSignal(SSdcs, COMSIG_GLOBAL_MARRIAGE)
 
 /datum/objective/personal/marry/complete_objectiv/reward_owner()
 	. = ..()
-	owner.current.adjust_stat_modifier("eora_marriage", STATKEY_LCK, 1)
+	owner.current.adjust_stat_modifier(STATMOD_EORA_MARRIAGE, STATKEY_LCK, 1)
 
 /datum/objective/personal/marry/update_explanation_text()
 	explanation_text = "Eora wants you to find your true love and marry them! Perhaps [lovebird_name], the [lovebird_job] could be a good match?"

@@ -49,7 +49,7 @@
 /obj/item/reagent_containers/food/snacks/rotten/Initialize()
 	var/mutable_appearance/rotflies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
 	add_overlay(rotflies)
-	rot_away_timer = QDEL_IN_STOPPABLE(src, 10 MINUTES)
+	rot_away_timer = QDEL_IN_STOPPABLE(src, 15 MINUTES)
 	. = ..()
 
 /obj/item/reagent_containers/food/snacks/rotten/meat
@@ -415,6 +415,10 @@
 	color = "#5f4a0e"
 	taste_description = "rich truffles"
 
+/datum/reagent/consumable/soup/stew/borowiki
+	color = "#7c6b75"
+	taste_description = "hearty borowiki"
+
 /datum/reagent/water/spicy // filler, not important
 	taste_description = "something spicy"
 	color = "#ea9f9fc6"
@@ -515,7 +519,7 @@
 		if(!R.reagents.has_reagent(/datum/reagent/water, 10))
 			to_chat(user, span_notice("Needs more water to work it."))
 			return TRUE
-		to_chat(user, span_notice("Adding water, now its time to knead it..."))
+		to_chat(user, span_notice("Adding water, now it's time to knead it..."))
 		playsound(get_turf(user), 'sound/foley/splishy.ogg', 100, TRUE, -1)
 		if(do_after(user, 1.5 SECONDS, src))
 			name = "wet flour"
@@ -543,7 +547,7 @@
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
 	name = "salt"
-	desc = "A survialist's best friend, great for preserving meat."
+	desc = "A survivalist's best friend, great for preserving meat."
 	gender = PLURAL
 	icon_state = "salt"
 	list_reagents = list(/datum/reagent/flour = 1)

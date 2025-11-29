@@ -1,6 +1,6 @@
 /datum/spell_node/arcyne_eye
 	name = "Arcyne Eye"
-	desc = "Imbue yourself with the ability to percieve magical phenomena."
+	desc = "Imbue yourself with the ability to perceive magical phenomena."
 	node_x = 0
 	node_y = 0
 	spell_type = /datum/action/cooldown/spell/undirected/arcyne_eye
@@ -422,7 +422,7 @@
 
 /datum/spell_node/magic_stone
 	name = "Magicians Brick"
-	desc = "Concentrate your intelect into an arcyne brick."
+	desc = "Concentrate your intellect into an arcyne brick."
 	node_x = LEFT_X_TIER_2
 	node_y = LEFT_Y_LEFT - 50
 	prerequisites = list(/datum/spell_node/earth_affinity)
@@ -578,13 +578,13 @@
 	prerequisites = list(/datum/spell_node/frost_affinity)
 	spell_type = /datum/action/cooldown/spell/chill_touch
 
-/datum/spell_node/frostbite
-	name = "Frostbite"
-	desc = "Cause numbing frost to form on a creature."
+/datum/spell_node/cone_of_frost
+	name = "Cone of Frost"
+	desc = "Let forth a wave of frost to form."
 	node_x = UP_X_RIGHT + 50
 	node_y = UP_Y_TIER_2 + 50
 	prerequisites = list(/datum/spell_node/chill_touch)
-	spell_type = /datum/action/cooldown/spell/status/frostbite
+	spell_type = /datum/action/cooldown/spell/cone/staggered/cone_of_cold
 
 /datum/spell_node/frostbolt
 	name = "Frostbolt"

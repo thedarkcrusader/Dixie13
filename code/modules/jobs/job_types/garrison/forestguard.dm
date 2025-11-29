@@ -7,14 +7,13 @@
 	\n\n\
 	A fellow soldier had been given the title of Forest Warden for their valorant efforts \
 	and they've plucked you from one dangerous position into another. \
-	Atleast with your battle-family by your side, you will never die alone."
+	At least with your battle-family by your side, you will never die alone."
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_FORGUARD
 	faction = FACTION_TOWN
 	total_positions = 4
 	spawn_positions = 4
-	min_pq = 5
 	bypass_lastclass = TRUE
 	selection_color = "#0d6929"
 
@@ -29,6 +28,12 @@
 	advclass_cat_rolls = list(CTAG_FORGARRISON = 20)
 
 	job_bitflag = BITFLAG_GARRISON
+
+	exp_type = list(EXP_TYPE_GARRISON)
+	exp_types_granted  = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
+	exp_requirements = list(
+		EXP_TYPE_GARRISON = 600
+	)
 
 /datum/outfit/forestguard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -46,6 +51,10 @@
 
 /datum/job/forestguard/after_spawn(mob/living/carbon/spawned, client/player_client)
 	..()
+
+
+/datum/job/advclass/forestguard
+	exp_types_granted  = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 
 // Ravager, whips, flails, axes and swords and shields.
 /datum/job/advclass/forestguard/infantry
@@ -76,7 +85,7 @@
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) //given to every class so they can atleast repair their armor.
+	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE) //given to every class so they can at least repair their armor.
 	H.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
@@ -96,7 +105,7 @@
 // Ranger, bows and knives
 /datum/job/advclass/forestguard/ranger
 	title = "Forest Ranger"
-	tutorial = "In the Wars you were always one of the fastest, aswell as one of the frailest in the platoon. \ Your trusty bow has served you well- of course, none you've set your sights on have found the tongue to disagree."
+	tutorial = "In the Wars you were always one of the fastest, as well as one of the frailest in the platoon. \ Your trusty bow has served you well- of course, none you've set your sights on have found the tongue to disagree."
 	outfit = /datum/outfit/forestguard/ranger
 	category_tags = list(CTAG_FORGARRISON)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
@@ -190,7 +199,7 @@
 
 /datum/outfit/forestguard/ruffian/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/helmet/medium/decorated/skullmet //placeholder, I have to sprite something new for the Brats, like a gator skull
+	head = /obj/item/clothing/head/helmet/medium/decorated/rousskullmet //placeholder, I have to sprite something new for the Brats, like a gator skull
 	neck = /obj/item/clothing/neck/highcollier
 	shirt = /obj/item/clothing/shirt/undershirt/colored/black
 	beltl = /obj/item/weapon/knife/dagger //just a normal iron dagger

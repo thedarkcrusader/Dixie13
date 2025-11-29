@@ -4,6 +4,7 @@
 	outfit = /datum/outfit/bandit/knave
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
+	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_THIEF)
 
 /datum/outfit/bandit/knave/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -57,7 +58,7 @@
 			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
+			beltr = /obj/item/weapon/sword/short/iron //steel sword like literally every adventurer gets
 			beltl = /obj/item/ammo_holder/quiver/arrows
 			cloak = /obj/item/clothing/cloak/cape/thief/brown
 			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat

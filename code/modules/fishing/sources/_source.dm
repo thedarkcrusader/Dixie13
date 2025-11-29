@@ -303,10 +303,9 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 	if(isfish(reward))
 		var/obj/item/reagent_containers/food/snacks/fish/caught_fish = reward
 		caught_fish.randomize_size_and_weight()
-		record_round_statistic(STATS_FISH_CAUGHT)
 	return reward
 
-/// Returns the fish table, with with the unavailable items from fish_counts removed.
+/// Returns the fish table, with the unavailable items from fish_counts removed.
 /datum/fish_source/proc/get_fish_table(atom/location, from_explosion = FALSE)
 	var/list/table = fish_table.Copy()
 	for(var/result in table)

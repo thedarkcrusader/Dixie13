@@ -6,6 +6,8 @@
 	outfit = /datum/outfit/bandit/roguemage
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/CombatRogueMage.ogg'
+	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
+
 
 /datum/outfit/bandit/roguemage/pre_equip(mob/living/carbon/human/H)
 	..()
