@@ -33,10 +33,7 @@
 		belt = /obj/item/storage/belt/leather/suspenders
 		shoes = /obj/item/clothing/shoes/boots
 	else
-		if(H.age == AGE_CHILD)
-			armor = /obj/item/clothing/shirt/dress/maid // until i get the gown sprite
-		else
-			armor = /obj/item/clothing/shirt/dress/maid/servant
+		armor = /obj/item/clothing/shirt/dress/maid/servant
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/leather/cloth_belt
 		pants = /obj/item/clothing/pants/tights/colored/white

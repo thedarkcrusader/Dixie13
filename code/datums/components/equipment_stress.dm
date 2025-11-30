@@ -62,7 +62,7 @@
 	return slot & ((slot_flags_override || I.slot_flags) | additional_slot_flags)
 
 
-/// job specific variety for equipment stress. this will attempt to use their mind's assigned role and fall back to mob job if necessary.
+/// job specific variety for equipment stress. this will check assigned role and mob job.
 /datum/component/equipment_stress/job_specific
 	/// these jobs will not gain the stress event
 	var/list/immune_jobs
@@ -83,14 +83,19 @@
 	src.inverse = inverse
 
 /datum/component/equipment_stress/job_specific/apply_stress(mob/user)
-	var/datum/job/J = user.mind?.assigned_role || SSjob.GetJob(user.job)
-	if(istype(J))
-		// When you invert this it'll return true for any immune job or non-exceptioned department job.
-			// An example of this is targeting the OUTSIDER department, but making exception to pilgrim adv classes.
-			// Then shove something like /datum/job/advclass/pilgrim/noble in the immune_jobs, which evaluates to TRUE, so TRUE ^ TRUE == FALSE
-		if(inverse ^ (is_type_in_list(J, immune_jobs) || (J.department_flag & immune_departments && !is_type_in_list(J, department_exceptions))))
-			return
-	else if(inverse) //jobless try to conform to the general rule
-		return
-	return ..()
-
+	var/list/jobs = list(SSjob.GetJob(user.job))
+	jobs |= list(user.mind?.assigned_role) // jobs tend to lie, so let's check both.
+	var/run_stress = TRUE // by default, we will try and run stress.
+	for(var/datum/job/J in jobs)
+		if(!run_stress)
+			break
+		var/datum/job/PJ = J // let's check parent class for those pesky advclasses
+		while(PJ)
+			//if either your mob job or your mind job are an immune job or department, we will not run the stress.
+			if(is_type_in_list(PJ, immune_jobs) || (PJ.department_flag & immune_departments && !is_type_in_list(PJ, department_exceptions)))
+				run_stress = FALSE
+				break
+			PJ = PJ.parent_job
+	//xor will invert the result if its TRUE.
+	if(run_stress ^ inverse)
+		return ..()

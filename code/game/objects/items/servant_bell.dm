@@ -8,6 +8,7 @@
 	dyeable = TRUE
 	detail_tag = "_detail"
 	detail_color = CLOTHING_MAGE_BLUE
+	sellprice = VALUE_SILVER_TINY_ITEM
 
 	dropshrink = 0.7
 	grid_height = 32
@@ -16,7 +17,7 @@
 	/// associative list of the names of servants to a weakref to their brain
 	var/alist/bound_servants = list()
 	var/max_servants = 6
-	/// used for adding roundstart individuals to the bell
+	/// used for adding roundstart individuals to the bell. This will actively update the targets if they cryo or latejoin.
 	var/list/job_targets
 	/// jobs who can use/configure this bell without needing to be a noble
 	var/list/noble_exemptions = list(/datum/job/butler)
@@ -32,10 +33,10 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_new_jobber))
 	RegisterSignal(SSdcs, COMSIG_GLOB_HUMAN_ENTER_CRYO, PROC_REF(remove_servant)) // cryo'd people can just get removed, qol.
-	// somehow we've been created after setup with job targets.
+	// somehow we've been created after setup with job targets, maybe we're in a latejoin butler's satchel?
 	if(job_targets && SSticker.current_state > GAME_STATE_PREGAME)
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
-			if(is_type_in_list(H.mind?.assigned_role || SSjob.GetJob(H.job), job_targets))
+			if(is_type_in_list(H.mind?.assigned_role, job_targets) || is_type_in_list(SSjob.GetJob(user.job), job_targets))
 				add_servant(H)
 
 /obj/item/servant_bell/Destroy()
@@ -69,7 +70,7 @@
 			to_chat(user, span_warning("What good is a dead servant?"))
 		else if(H.mind?.has_antag_datum(/datum/antagonist/zombie))
 			to_chat(user, span_warning("The deadite curse resists the bell's charm."))
-		else if(HAS_TRAIT(H, TRAIT_NOBLE) || H.can_block_magic(MAGIC_RESISTANCE_MIND, 0)) // this'll screw over a noble blood butler, thems the breaks
+		else if(HAS_TRAIT(H, TRAIT_NOBLE) || H.can_block_magic(MAGIC_RESISTANCE_MIND, 0) || H.job == "Faceless One") // this'll screw over a noble blood butler, thems the breaks
 			to_chat(user, span_warning("The enchantment seems to fail."))
 		else
 			add_servant(H)
@@ -204,7 +205,7 @@
 		add_servant(spawned)
 
 /obj/item/servant_bell/proc/is_bell_proficient(mob/living/user)
-	return HAS_TRAIT(user, TRAIT_NOBLE) || is_type_in_list(user.mind?.assigned_role || SSjob.GetJob(user.job), noble_exemptions)
+	return HAS_TRAIT(user, TRAIT_NOBLE) || is_type_in_list(user.mind?.assigned_role, noble_exemptions) || is_type_in_list(SSjob.GetJob(user.job), noble_exemptions)
 
 /// Keep Bell
 /obj/item/servant_bell/lord
