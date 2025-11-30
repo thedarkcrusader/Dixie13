@@ -21,7 +21,7 @@
 		H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/reading, pick(0,1,1), TRUE)
 		H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
@@ -44,6 +44,10 @@
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_END, 1)
 	H.change_stat(STATKEY_SPD, 2)
+	if(H.age == AGE_OLD)
+		H.change_stat(STATKEY_SPD, -1) // Tradeoffs, in-exchange for master climbing.
+		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/reading, pick(1,1,2), TRUE)
 	H.grant_language(/datum/language/thievescant)
 	to_chat(H, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
 
