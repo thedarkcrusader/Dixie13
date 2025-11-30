@@ -231,9 +231,10 @@
 										if(limb)
 											limbs_to_pick_from += limb
 									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
+									var/obj/item/bodypart/part_to_bonify = L.get_bodypart(picked_limb) // skeletonize proc requires static type, hence why we do this.
 									if (picked_limb)
 										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to dust before my eyes! "))
-										picked_limb.skeletonize(L.get_bodypart(picked_limb), FALSE)
+										part_to_bonify.skeletonize(FALSE)
 									else // How did you manage that?
 										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
 								else
@@ -254,11 +255,14 @@
 										// 		to_chat(owner, span_userdanger("Curse this wench-goddess! Necra has fractured one of my phylacteries!"))
 										// 		qdel(to_be_consumed)
 										// 		return // phylactery destroyed, neat
-									//else
-									to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
-									L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
+									if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // if you're a graverobber but not a Necran, you still get punished, but way less
+										to_chat(user, span_info("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
+										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
+									else
+										to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
+										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
 						else
-							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // this typically means you're a gravetender or cleric
 								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
 							else // Even Necrans get cursed, but it's miles better than losing your lux or your arm
 								to_chat(user, span_warning("I mutter Necra's hallowed rites, and although my devotion is recognized, my trespass remains great, I am cursed!"))
@@ -279,6 +283,17 @@
 /atom/movable/screen/alert/status_effect/debuff/cursed
 	name = "Cursed"
 	desc = "Necra has punished me by my blasphemous deeds with terribly bad luck."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/majorcurse
+	id = "majorcurse"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/majorcurse
+	effectedstats = list(STATKEY_LCK = -5) // Last 2 whole daes and stacks with the normal curse.
+	duration = 60 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/majorcurse
+	name = "Great hex of Necra"
+	desc = "I have brought Necra's ire upon myself! Fortune conspires against me!"
 	icon_state = "debuff"
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
