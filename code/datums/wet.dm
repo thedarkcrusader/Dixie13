@@ -6,6 +6,7 @@
 	var/washed = FALSE
 
 /datum/wet/New(atom/P)
+	. = ..()
 	parent = P
 
 /datum/wet/Destroy()
