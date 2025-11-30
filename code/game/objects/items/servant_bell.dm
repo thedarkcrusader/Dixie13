@@ -36,7 +36,7 @@
 	// somehow we've been created after setup with job targets, maybe we're in a latejoin butler's satchel?
 	if(job_targets && SSticker.current_state > GAME_STATE_PREGAME)
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
-			if(is_type_in_list(H.mind?.assigned_role, job_targets) || is_type_in_list(SSjob.GetJob(user.job), job_targets))
+			if(is_type_in_list(H.mind?.assigned_role, job_targets) || is_type_in_list(SSjob.GetJob(H.job), job_targets))
 				add_servant(H)
 
 /obj/item/servant_bell/Destroy()
