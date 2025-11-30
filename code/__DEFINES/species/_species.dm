@@ -228,6 +228,15 @@
 	SPEC_ID_TRITON,\
 )
 
+/// Steward - specifically removes halfling
+#define RACES_STEWARD list(\
+	SPEC_ID_HUMEN,\
+	SPEC_ID_DWARF,\
+	SPEC_ID_AASIMAR,\
+	SPEC_ID_ELF,\
+	SPEC_ID_HALF_ELF,\
+)
+
 /// The tennite temple's paladins - Hallowed species excluding Harpies due to their inability to wear plate
 #define RACES_TEMPLAR list(\
 	SPEC_ID_HUMEN,\
