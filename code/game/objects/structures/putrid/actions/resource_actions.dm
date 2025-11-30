@@ -533,6 +533,40 @@
 	to_chat(owner, "<span class='notice'>Intestinal passage created. Network size: [network_count]</span>")
 	return TRUE
 
+/datum/action/cooldown/meatvine/spread_tracking_beacon
+	name = "Erect Probing Mass"
+	desc = "Erects a probing mass on meatvine floor. Marks any creature that enters its range for tracking. Cost: 150 resources."
+	button_icon_state = "tracking_beacon"
+	resource_cost = 150
+	spread_type = /obj/structure/meatvine/tracking_beacon
+	spread_range = 5
+	cooldown_time = 2 MINUTES
+	show_preview = TRUE
+
+/datum/action/cooldown/meatvine/spread_tracking_beacon/can_spread_to_turf(turf/T)
+	if(!isfloorturf(T))
+		return FALSE
+	var/obj/structure/meatvine/floor/floor_vine = locate(/obj/structure/meatvine/floor) in T
+	if(!floor_vine)
+		return FALSE
+	if(locate(/obj/structure/meatvine/tracking_beacon) in T)
+		return FALSE
+	for(var/obj/structure/meatvine/tracking_beacon/existing_beacon in range(5, T))
+		return FALSE
+
+	return TRUE
+
+/datum/action/cooldown/meatvine/spread_tracking_beacon/Activate(atom/target)
+	var/turf/T = get_turf(target)
+	if(!T)
+		return FALSE
+
+	for(var/obj/structure/meatvine/tracking_beacon/existing_beacon in range(5, T))
+		to_chat(owner, "<span class='warning'>Too close to another tracking beacon!</span>")
+		return FALSE
+
+	return ..()
+
 #undef MULTI_CONSTRUCT_NONE
 #undef MULTI_CONSTRUCT_LINE
 #undef MULTI_CONSTRUCT_CROSS

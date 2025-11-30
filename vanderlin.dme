@@ -1844,6 +1844,7 @@
 #include "code\game\objects\structures\putrid\structures\intestine_wormhole.dm"
 #include "code\game\objects\structures\putrid\structures\meatvine.dm"
 #include "code\game\objects\structures\putrid\structures\tentacle_spike.dm"
+#include "code\game\objects\structures\putrid\structures\tracking_beacon.dm"
 #include "code\game\objects\structures\redstone\_base.dm"
 #include "code\game\objects\structures\redstone\comparator.dm"
 #include "code\game\objects\structures\redstone\dispenser.dm"
