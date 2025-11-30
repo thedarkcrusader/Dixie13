@@ -613,3 +613,27 @@
 	name = "Electrified"
 	desc = "Your body is charged with unstable electricity!"
 	icon_state = "dazed"
+
+/datum/status_effect/debuff/blackbriar
+	id = "blackbriar"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/blackbriar
+	status_type = STATUS_EFFECT_UNIQUE
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -2, STATKEY_END = -4, STATKEY_SPD = -2, STATKEY_LCK = -1)
+	duration = -1
+
+/datum/status_effect/debuff/blackbriar/on_apply()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.gain_trauma_type(/datum/brain_trauma/mild/nervous_cough)
+
+/datum/status_effect/debuff/blackbriar/on_remove()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.cure_trauma_type(/datum/brain_trauma/mild/nervous_cough)
+
+/atom/movable/screen/alert/status_effect/debuff/blackbriar
+	name = "Black Briar Curse"
+	desc = span_danger("The Black Briar curse makes its way through my body...")
+	icon_state = "bleed1"

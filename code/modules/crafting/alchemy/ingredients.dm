@@ -171,6 +171,21 @@
 	else
 		icon_state = "rosa"
 
+/obj/item/alch/herb/cursedrosa
+	name = "blacksteel rosa"
+	icon_state = "cursedrosa"
+
+/obj/item/alch/herb/cursedrosa/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot & ITEM_SLOT_MOUTH)
+		icon_state = "cursedrosa_mouth"
+	else
+		icon_state = "cursedrosa"
+
+/obj/item/alch/herb/cursedrosa/New()
+	. = ..()
+	AddComponent()
+
 /obj/item/alch/herb/euphorbia
 	name = "euphorbia"
 	icon_state = "euphorbia"
