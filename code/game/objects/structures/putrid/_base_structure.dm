@@ -67,11 +67,6 @@
 	SSmeatvines.unregister_vine(src)
 	update_borders()
 
-	for(var/atom in beams)
-		var/datum/beam/beam = beams[atom]
-		beams -= atom
-		qdel(beam)
-
 	var/turf/old_turf = get_turf(src)
 	. = ..()
 	for(var/dir in GLOB.cardinals)
