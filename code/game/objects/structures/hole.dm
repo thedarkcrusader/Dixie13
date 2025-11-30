@@ -263,17 +263,17 @@
 										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
 							else // No lux? We skeletonize your arm.
 								to_chat(user, span_alertwarning("Without lux in my body, I must pay a much more physical toll."))
-									for(var/zone in limb_list)
-										var/limb = L.get_bodypart(zone)
-										if(limb)
-											limbs_to_pick_from += limb
-									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
-									var/obj/item/bodypart/part_to_bonify = L.get_bodypart(picked_limb) // skeletonize proc requires static type, hence why we do this.
-									if (picked_limb)
-										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
-										part_to_bonify.skeletonize(FALSE)
-									else // How did you manage that?
-										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+								for(var/zone in limb_list)
+									var/limb = L.get_bodypart(zone)
+									if(limb)
+										limbs_to_pick_from += limb
+								var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
+								var/obj/item/bodypart/part_to_bonify = L.get_bodypart(picked_limb) // skeletonize proc requires static type, hence why we do this.
+								if (picked_limb)
+									to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
+									part_to_bonify.skeletonize(FALSE)
+								else // How did you manage that?
+									to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
 						else
 							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // this typically means you're a gravetender or cleric
 								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
