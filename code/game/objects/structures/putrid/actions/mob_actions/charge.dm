@@ -135,7 +135,7 @@
 
 /datum/action/cooldown/meatvine/personal/charge_attack/evaluate_ai_score(datum/ai_controller/controller)
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = owner
-	var/atom/target = consumed.target
+	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 
 	if(!target)
 		return 0
@@ -149,8 +149,7 @@
 	return 0
 
 /datum/action/cooldown/meatvine/personal/charge_attack/ai_use_ability(datum/ai_controller/controller)
-	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = owner
-	var/atom/target = consumed.target
+	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 
 	if(!target)
 		return FALSE

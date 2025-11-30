@@ -59,6 +59,7 @@
 
 	var/list/personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/burrow_through,
 	)
 
 	var/list/structures = list(

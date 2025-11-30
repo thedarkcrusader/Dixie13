@@ -1821,6 +1821,7 @@
 #include "code\game\objects\structures\putrid\actions\mob_actions\_base.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\_ranged.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\acid_spread.dm"
+#include "code\game\objects\structures\putrid\actions\mob_actions\burrow_through.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\charge.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\corrosion.dm"
 #include "code\game\objects\structures\putrid\actions\mob_actions\crushing_sweep.dm"

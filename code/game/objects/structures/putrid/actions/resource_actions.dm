@@ -175,7 +175,7 @@
 		return FALSE
 
 	// Calculate total cost
-	var/total_cost = resource_cost * build_turfs.len
+	var/total_cost = resource_cost * length(build_turfs)
 
 	// Try to spend resources
 	if(!consumed.master.try_spend_resources(total_cost))
