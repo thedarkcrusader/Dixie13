@@ -242,6 +242,15 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	new /obj/item/scrying/eye(center)
 	to_chat(user, span_notice("The All-seeing Eye. To see beyond sight."))
 
+/datum/ritual/transmutation/cross
+	name = "Summon Amulet of Zizo"
+	center_requirement = /obj/item/clothing/neck/psycross
+
+/datum/ritual/transmutation/cross/invoke(mob/living/user, turf/center)
+	. = ..()
+	new /obj/item/clothing/neck/psycross/zizo(center)
+	to_chat(user, span_notice("The psycross is transmuted into an amulet of Zizo."))
+
 /datum/ritual/transmutation/criminalstool
 	name = "Criminal's Tool"
 	center_requirement = /obj/item/natural/cloth
