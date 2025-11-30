@@ -91,7 +91,7 @@
 					if(ishuman(victim) && !victim.clan)
 						if(victim.stat != DEAD)
 							to_chat(src, "<span class='warning'>Your victim faints from the excessive draining.</span>")
-							victim.SetUnconscious(500)
+							victim.SetUnconscious(50 SECONDS)
 					if(!ishuman(victim))
 						if(victim.stat != DEAD)
 							victim.SetUnconscious(500)
