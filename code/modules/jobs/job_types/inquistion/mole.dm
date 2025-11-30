@@ -16,6 +16,7 @@
 	selection_color = JCOLOR_INQUISITION
 	faction = FACTION_TOWN
 	shows_in_list = FALSE
+	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 
 /datum/job/villager/mole/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
