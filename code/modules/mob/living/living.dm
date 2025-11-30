@@ -833,6 +833,11 @@
 			set_resting(TRUE, silent = TRUE)
 		return
 
+	if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
+		var/fail_resist = resist_grab()
+		if(fail_resist)
+			return
+
 	set_body_position(STANDING_UP)
 	set_lying_angle(0)
 
