@@ -232,8 +232,8 @@
 											limbs_to_pick_from += limb
 									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
 									if (picked_limb)
-										to_chat(user, span_crit("I watch in horror as the skin on my [picked_limb] turns to dust before my eyes! "))
-										L.skeletonize(L.get_bodypart(picked_limb), FALSE)
+										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to dust before my eyes! "))
+										picked_limb.skeletonize(L.get_bodypart(picked_limb), FALSE)
 									else // How did you manage that?
 										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
 								else
@@ -255,11 +255,11 @@
 										// 		qdel(to_be_consumed)
 										// 		return // phylactery destroyed, neat
 									//else
-									to_chat(user, span_alertwarning("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
+									to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
 									L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
 						else
 							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
-								to_chat(user, span_warning("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
+								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
 							else // Even Necrans get cursed, but it's miles better than losing your lux or your arm
 								to_chat(user, span_warning("I mutter Necra's hallowed rites, and although my devotion is recognized, my trespass remains great, I am cursed!"))
 								L.apply_status_effect(/datum/status_effect/debuff/cursed)
