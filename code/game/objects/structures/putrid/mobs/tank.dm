@@ -7,3 +7,8 @@
 		/mob/living/simple_animal/hostile/retaliate/meatvine/goliath,
 		/mob/living/simple_animal/hostile/retaliate/meatvine/defender,
 	)
+
+	personal_abilities = list(
+		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/literally_too_angry_to_die,
+	)

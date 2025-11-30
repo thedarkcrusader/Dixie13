@@ -13,5 +13,6 @@
 	)
 
 	personal_abilities = list(
+		/datum/action/cooldown/meatvine/personal/drain_well,
 		/datum/action/cooldown/meatvine/personal/ranged/spread/lethal
 	)

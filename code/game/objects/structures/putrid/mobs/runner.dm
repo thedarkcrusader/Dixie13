@@ -8,3 +8,8 @@
 		/mob/living/simple_animal/hostile/retaliate/meatvine/flyer,
 		/mob/living/simple_animal/hostile/retaliate/meatvine/broodmother,
 	)
+
+	personal_abilities = list(
+		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/evade,
+	)
