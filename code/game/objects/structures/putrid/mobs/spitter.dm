@@ -9,7 +9,6 @@
 
 	possible_evolutions = list(
 		/mob/living/simple_animal/hostile/retaliate/meatvine/infantry,
-		/mob/living/simple_animal/hostile/retaliate/meatvine/artiliery,
 	)
 
 	personal_abilities = list(

@@ -1,11 +1,9 @@
-/mob/living/simple_animal/hostile/retaliate/meatvine/tank
+/mob/living/simple_animal/hostile/retaliate/meatvine/warrior
 	icon_state = "turret"
 	icon_living = "turret"
 	icon_dead = "turret_destroyed"
 
-	possible_evolutions = list(
-		/mob/living/simple_animal/hostile/retaliate/meatvine/defender,
-	)
+	possible_evolutions = list()
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,

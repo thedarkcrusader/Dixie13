@@ -46,35 +46,22 @@
 	add_prerequisite_display(C)
 
 /mob/camera/evolution_picker/proc/add_prerequisite_display(client/C)
-	// Display parent evolutions (going upwards)
-	var/list/parent_evos = list()
-	var/list/current_evos = evolving_mob.possible_evolutions
+	// Display the current mob below the evolution choices
+	var/mob_type = evolving_mob.type
+	if(mob_type && mob_type != /mob/living/simple_animal/hostile/retaliate/meatvine)
+		var/obj/screen/evolution_choice/current_preview = new()
+		current_preview.evolution_path = mob_type
+		current_preview.available = FALSE
+		current_preview.picker = src
+		current_preview.screen_loc = "8,4"  // Centered below current choices
+		current_preview.color = "#555555"
+		current_preview.alpha = 200
 
-	for(var/evo_path in current_evos)
-		var/mob/living/simple_animal/hostile/retaliate/meatvine/temp_mob = evo_path
-		var/list/their_evolutions = initial(temp_mob.possible_evolutions)
-		if(length(their_evolutions))
-			for(var/their_evo in their_evolutions)
-				if(!(their_evo in parent_evos))
-					parent_evos += their_evo
+		current_preview.update_appearance()
 
-	if(length(parent_evos))
-		var/total_parents = length(parent_evos)
-		var/parent_start_x = 8 - (total_parents * 1.5)
+		evolution_buttons += current_preview
+		C.screen += current_preview
 
-		for(var/i = 1 to total_parents)
-			var/evo_path = parent_evos[i]
-			var/obj/screen/evolution_choice/parent_preview = new()
-			parent_preview.evolution_path = evo_path
-			parent_preview.available = FALSE
-			parent_preview.picker = src
-			parent_preview.screen_loc = "[parent_start_x + (i * 2.5)],10"
-			parent_preview.color = "#555555"
-
-			parent_preview.update_appearance()
-
-			evolution_buttons += parent_preview
-			C.screen += parent_preview
 
 /mob/camera/evolution_picker/proc/show_future_evolutions(evolution_path, hovered_button_x)
 	if(!evolving_mob?.client)
@@ -83,41 +70,71 @@
 	hide_future_evolutions()
 
 	var/client/C = evolving_mob.client
-	var/mob/living/simple_animal/hostile/retaliate/meatvine/temp_mob = evolution_path
-	if(!(temp_mob in GLOB.putrid_evolutions))
-		GLOB.putrid_evolutions |= temp_mob
-		var/mob/living/simple_animal/hostile/retaliate/meatvine/real = new evolution_path(get_turf(src))
-		GLOB.putrid_evolutions[temp_mob] = real.possible_evolutions.Copy()
-		qdel(real)
 
-	var/list/future_evos = GLOB.putrid_evolutions[temp_mob]
+	// Build the entire evolution chain for this path
+	var/list/evolution_tiers = list()
+	var/list/current_tier = list(evolution_path)
+	evolution_tiers += list(current_tier)
 
-	if(!length(future_evos))
-		return
+	// Keep going until we find no more evolutions
+	while(length(current_tier))
+		var/list/next_tier = list()
 
-	var/total_future = length(future_evos)
-	// Center the future evolutions around the hovered button's x position
-	// If even count, center on the gap between buttons for better visual balance
-	var/future_start_x
-	if(total_future % 2 == 0)  // Even count - center on gap
-		future_start_x = hovered_button_x - (total_future * 1.25) - 1.25
-	else  // Odd count - center on middle button
-		future_start_x = hovered_button_x - (total_future * 1.25)
+		for(var/evo_path in current_tier)
+			var/mob/living/simple_animal/hostile/retaliate/meatvine/temp_mob = evo_path
+			if(!(temp_mob in GLOB.putrid_evolutions))
+				GLOB.putrid_evolutions |= temp_mob
+				var/mob/living/simple_animal/hostile/retaliate/meatvine/real = new evo_path(get_turf(src))
+				GLOB.putrid_evolutions[temp_mob] = real.possible_evolutions.Copy()
+				qdel(real)
 
-	for(var/i = 1 to total_future)
-		var/evo_path = future_evos[i]
-		var/obj/screen/evolution_choice/preview = new()
-		preview.evolution_path = evo_path
-		preview.available = FALSE
-		preview.picker = src
-		preview.screen_loc = "[future_start_x + (i * 2.5)],10"  // Changed from 4 to 10 (above)
-		preview.color = "#555555"
-		preview.alpha = 200
+			var/list/future_evos = GLOB.putrid_evolutions[temp_mob]
+			if(length(future_evos))
+				next_tier += future_evos
 
-		preview.update_appearance()
+		if(length(next_tier))
+			evolution_tiers += list(next_tier)
+			current_tier = next_tier
+		else
+			break
 
-		future_preview_buttons += preview
-		C.screen += preview
+	// Now display each tier above the previous one
+	var/y_pos = 9
+	var/previous_tier_center = hovered_button_x
+
+	for(var/list/tier in evolution_tiers)
+		var/total_in_tier = length(tier)
+		var/tier_start_x
+
+		if(total_in_tier == 1)
+			tier_start_x = previous_tier_center
+		else if(total_in_tier % 2 == 0)
+			tier_start_x = previous_tier_center - (total_in_tier / 2.0 * 2.5) + 1.25
+		else
+			tier_start_x = previous_tier_center - (floor(total_in_tier / 2.0) * 2.5)
+
+		for(var/i = 1 to total_in_tier)
+			var/evo_path = tier[i]
+			var/obj/screen/evolution_choice/preview = new()
+			preview.evolution_path = evo_path
+			preview.available = FALSE
+			preview.picker = src
+			preview.screen_loc = "[tier_start_x + ((i - 1) * 2.5)],[y_pos]"
+			preview.color = "#555555"
+			preview.alpha = 200
+
+			preview.update_appearance()
+
+			future_preview_buttons += preview
+			C.screen += preview
+
+		// Calculate center of this tier for the next tier to use
+		if(total_in_tier == 1)
+			previous_tier_center = tier_start_x
+		else
+			previous_tier_center = tier_start_x + ((total_in_tier - 1) * 2.5) / 2
+
+		y_pos += 2  // Move up for next tier
 
 /mob/camera/evolution_picker/proc/hide_future_evolutions()
 	if(!evolving_mob?.client)

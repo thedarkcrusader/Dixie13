@@ -7,4 +7,7 @@
 
 	minimum_distance = 2
 
-	possible_evolutions = list()
+	possible_evolutions = list(
+		/mob/living/simple_animal/hostile/retaliate/meatvine/artiliery,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/warrior,
+	)

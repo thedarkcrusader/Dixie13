@@ -3,7 +3,10 @@
 	icon_living = "turret"
 	icon_dead = "turret_destroyed"
 
-	possible_evolutions = list()
+	possible_evolutions = list(
+		/mob/living/simple_animal/hostile/retaliate/meatvine/goliath,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/warrior,
+	)
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,

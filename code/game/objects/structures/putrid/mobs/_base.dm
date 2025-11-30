@@ -54,6 +54,7 @@
 		/mob/living/simple_animal/hostile/retaliate/meatvine/range,
 		/mob/living/simple_animal/hostile/retaliate/meatvine/runner,
 		/mob/living/simple_animal/hostile/retaliate/meatvine/tank,
+		/mob/living/simple_animal/hostile/retaliate/meatvine/constructor,
 	)
 
 	var/list/personal_abilities = list(
@@ -78,12 +79,13 @@
 		add_spell(path)
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/Destroy()
-	master.mobs -= src
-	master = null
-	puff_gas()
-	var/turf/turf = get_turf(src)
-	turf.pollute_turf(/datum/pollutant/steam, 100)
-	turf.add_liquid(/datum/reagent/blood, 20)
+	if(master)
+		master?.mobs -= src
+		master = null
+		puff_gas()
+		var/turf/turf = get_turf(src)
+		turf.pollute_turf(/datum/pollutant/steam, 100)
+		turf.add_liquid(/datum/reagent/blood, 20)
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/meatvine/death()
