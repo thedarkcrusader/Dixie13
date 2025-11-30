@@ -5,7 +5,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/adventurer/fisher
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Fisher Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'//pilgrims aren't towners, this fits them more for a combat on the woods
 
@@ -54,3 +54,7 @@
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/flint
 		backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)
+
+/datum/job/advclass/pilgrim/fisher
+	category_tags = list(CTAG_TOWNER)
+	exp_types_granted  = list(EXP_TYPE_INQUISITION)

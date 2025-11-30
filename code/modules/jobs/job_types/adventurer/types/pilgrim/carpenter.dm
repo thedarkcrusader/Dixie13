@@ -6,7 +6,7 @@
 
 	outfit = /datum/outfit/adventurer/carpenter
 
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Carpenter Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg' // pilgrims aren't towners, this fits them more for a combat on the woods
 
@@ -44,3 +44,8 @@
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_SPD, -1)
+
+
+/datum/job/advclass/carpenter/mole
+	category_tags = list(CTAG_TOWNER)
+	exp_types_granted  = list(EXP_TYPE_INQUISITION)

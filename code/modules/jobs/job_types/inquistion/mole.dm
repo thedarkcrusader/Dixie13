@@ -52,6 +52,7 @@
 	traits = list(
         TRAIT_ORPHAN,
 	)
+	exp_types_granted  = list(EXP_TYPE_INQUISITION)
 
 /datum/outfit/muleorphan/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -6,7 +6,7 @@
 
 	outfit = /datum/outfit/adventurer/hunter
 
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Hunter Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg' // pilgrims aren't towners, this fits them more for a combat on the woods
 
@@ -59,5 +59,13 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/adventurer/hunter // Everything is the same
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Hunteress Apprentice"
+
+/datum/job/advclass/pilgrim/hunter/mole
+	category_tags = list(CTAG_TOWNER)
+	exp_types_granted  = list(EXP_TYPE_INQUISITION)
+
+/datum/job/advclass/pilgrim/huntress/mole
+	category_tags = list(CTAG_TOWNER)
+	exp_types_granted  = list(EXP_TYPE_INQUISITION)

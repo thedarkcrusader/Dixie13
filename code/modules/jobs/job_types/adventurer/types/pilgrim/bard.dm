@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/adventurer/bard
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Aspiring Bard"
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 
@@ -73,3 +73,8 @@
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_SPD, 2)
 	H.change_stat(STATKEY_STR, -1)
+
+
+/datum/job/advclass/pilgrim/bard/mole
+	category_tags = list(CTAG_TOWNER)
+	exp_types_granted  = list(EXP_TYPE_BARD, EXP_TYPE_INQUISITION)

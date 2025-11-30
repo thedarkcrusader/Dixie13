@@ -5,7 +5,6 @@
 	outfit = /datum/outfit/adventurer/woodcutter
 	apprentice_name = "Woodcutter"
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg' // pilgrims aren't towners, this fits them more for a combat on the woods
-	category_tags = list(CTAG_PILGRIM)
 
 /datum/outfit/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -36,3 +35,4 @@
 	backpack_contents = list(/obj/item/flint = 1)
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_END, 1) // Tree chopping builds endurance
+
