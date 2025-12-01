@@ -51,6 +51,7 @@
 
 	var/list/blocked_spread_locations = list()
 	var/list/obstacle_targets = list()
+	var/list/cooldown_obstacles = list()
 	var/bridge_request_cooldown = 0
 	var/bridge_request_interval = 10
 
@@ -658,12 +659,25 @@
 /obj/effect/meatvine_controller/proc/mark_obstacle_for_destruction(atom/obstacle)
 	if(obstacle in obstacle_targets)
 		return
+	if(obstacle in cooldown_obstacles)
+		return
 
 	obstacle_targets += obstacle
 
 /obj/effect/meatvine_controller/proc/check_obstacle_destroyed(atom/obstacle)
 	if(obstacle in obstacle_targets)
 		obstacle_targets -= obstacle
+
+/obj/effect/meatvine_controller/proc/cooldown_obstacle(atom/obstacle)
+	if(obstacle in obstacle_targets)
+		obstacle_targets -= obstacle
+
+		cooldown_obstacles |= obstacle
+		addtimer(CALLBACK(src, PROC_REF(readd_obstacle), obstacle), 2 MINUTES)
+
+/obj/effect/meatvine_controller/proc/readd_obstacle(atom/obstacle)
+	cooldown_obstacles -= obstacle
+	obstacle_targets |= obstacle
 
 /obj/effect/meatvine_controller/proc/would_enclose_structure(obj/structure/meatvine/structure, list/new_walls)
 	var/turf/center = get_turf(structure)

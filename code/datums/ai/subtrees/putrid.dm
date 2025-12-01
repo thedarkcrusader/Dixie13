@@ -18,6 +18,9 @@
 	if(controller.blackboard[BB_PAPAMEAT_HEALING])
 		return SUBTREE_RETURN_FINISH_PLANNING
 
+	if(get_dist(papameat, controller.pawn) >= 75)
+		return
+
 	// Check if another mob is close enough and also healing
 	for(var/mob/living/simple_animal/nearby in range(10, papameat))
 		if(nearby == controller.pawn)
@@ -46,13 +49,16 @@
 		return SUBTREE_RETURN_FINISH_PLANNING
 
 	// Look for nearby corpses
-	var/mob/living/our_mob = controller.pawn
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/our_mob = controller.pawn
 	var/obj/structure/meatvine/papameat/nearest_papameat = null
 	var/min_dist = INFINITY
 
 	// Find nearest papameat
-	for(var/obj/structure/meatvine/papameat/PM in range(30, our_mob))
+
+	for(var/obj/structure/meatvine/papameat/PM in our_mob.master.papameats)
 		var/dist = get_dist(our_mob, PM)
+		if(dist > 30)
+			continue
 		if(dist < min_dist)
 			min_dist = dist
 			nearest_papameat = PM
@@ -140,6 +146,14 @@
 	if(!length(mob?.master?.obstacle_targets))
 		return
 	var/atom/obstacle = pick(mob.master.obstacle_targets)
+	var/list/obstacles = mob.master.obstacle_targets.Copy()
+	while(get_dist(obstacle, mob) > 30 && length(obstacles))
+		var/atom/old_obstacle = obstacle
+		obstacle = pick_n_take(obstacles)
+		if(!locate(/obj/structure/meatvine/floor) in range(mob.tether_distance, obstacle))
+			mob.master.cooldown_obstacle(obstacle)
+			obstacle = old_obstacle
+
 	controller.set_blackboard_key(BB_OBSTACLE_TARGET, obstacle)
 	if(!obstacle || QDELETED(obstacle))
 		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)

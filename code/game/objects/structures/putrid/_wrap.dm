@@ -27,7 +27,7 @@
 	name = "meat cocoon"
 	icon = 'icons/obj/wrap.dmi'
 	icon_state = "deliverycrate5"
-	density = TRUE
+	density = FALSE
 	var/mutable_appearance/texture_overlay
 	var/mutable_appearance/details
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER

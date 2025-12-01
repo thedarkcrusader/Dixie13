@@ -11,7 +11,7 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_PAPAMEAT_HEALING, TRUE)
-	set_movement_target(controller, papameat)
+	set_movement_target(controller, papameat, /datum/ai_movement/hybrid_pathing/gnome)
 
 /datum/ai_behavior/papameat_sacrifice/perform(delta_time, datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -112,7 +112,7 @@
 	if(!papameat || QDELETED(papameat))
 		return FALSE
 
-	set_movement_target(controller, papameat)
+	set_movement_target(controller, papameat, /datum/ai_movement/hybrid_pathing/gnome)
 
 /datum/ai_behavior/papameat_defend/perform(delta_time, datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -148,7 +148,7 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_BRIDGING, TRUE)
-	set_movement_target(controller, request.target_location)
+	set_movement_target(controller, request.target_location, /datum/ai_movement/hybrid_pathing)
 
 /datum/ai_behavior/meatvine_bridge/perform(delta_time, datum/ai_controller/controller, bridge_key)
 	. = ..()
@@ -216,12 +216,13 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_ATTACKING_OBSTACLE, TRUE)
-	set_movement_target(controller, obstacle)
+	set_movement_target(controller, obstacle, /datum/ai_movement/hybrid_pathing)
 
 /datum/ai_behavior/meatvine_destroy_obstacle/perform(delta_time, datum/ai_controller/controller, obstacle_key)
 	. = ..()
 	var/mob/living/simple_animal/our_mob = controller.pawn
 	var/atom/obstacle = controller.blackboard[obstacle_key]
+	var/turf/obstacle_turf = get_turf(obstacle)
 
 	if(!obstacle || QDELETED(obstacle))
 		finish_action(controller, FALSE, obstacle_key)
@@ -229,7 +230,7 @@
 
 	// Check if obstacle still blocks spreading
 	if(!is_blocking_obstacle(obstacle))
-		finish_action(controller, TRUE, obstacle_key)
+		finish_action(controller, TRUE, obstacle_key, obstacle_turf)
 		return
 
 	// Check if we're close enough to attack
@@ -240,7 +241,7 @@
 
 		// Check if it's destroyed
 		if(QDELETED(obstacle))
-			finish_action(controller, TRUE, obstacle_key)
+			finish_action(controller, TRUE, obstacle_key, obstacle_turf)
 			return
 	else
 		// Keep moving toward it
@@ -258,20 +259,33 @@
 			return TRUE
 	return FALSE
 
-/datum/ai_behavior/meatvine_destroy_obstacle/finish_action(datum/ai_controller/controller, succeeded, obstacle_key)
+/datum/ai_behavior/meatvine_destroy_obstacle/finish_action(datum/ai_controller/controller, succeeded, obstacle_key, turf/obstacle_turf)
 	. = ..()
 	controller.clear_blackboard_key(BB_ATTACKING_OBSTACLE)
 
 	if(succeeded)
-
 		// Notify controller that obstacle was destroyed
-		var/mob/living/simple_animal/our_mob = controller.pawn
-		for(var/obj/structure/meatvine/SV in range(10, our_mob))
-			if(SV.master)
-				var/atom/obstacle = controller.blackboard[obstacle_key]
-				SV.master.check_obstacle_destroyed(obstacle)
-				break
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/our_mob = controller.pawn
+		if(our_mob.master)
+			var/atom/obstacle = controller.blackboard[obstacle_key]
+			our_mob.master.check_obstacle_destroyed(obstacle)
 		controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
+		if(obstacle_turf)
+			for(var/obj/structure/structure in obstacle_turf.contents)
+				if(is_blocking_obstacle(structure))
+					if(istype(structure, /obj/structure/table/wood/treestump))
+						qdel(structure)
+						continue
+					controller.set_blackboard_key(BB_ATTACKING_OBSTACLE, TRUE)
+					our_mob.master.mark_obstacle_for_destruction(structure)
+					controller.set_blackboard_key(BB_OBSTACLE_TARGET, structure)
+					break
+	else
+		var/mob/living/simple_animal/hostile/retaliate/meatvine/our_mob = controller.pawn
+		if(our_mob.master)
+			var/atom/obstacle = controller.blackboard[BB_OBSTACLE_TARGET]
+			our_mob.master.cooldown_obstacle(obstacle)
+			controller.clear_blackboard_key(BB_OBSTACLE_TARGET)
 
 /datum/ai_behavior/meatvine_evolve
 	action_cooldown = 0.5 SECONDS

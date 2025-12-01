@@ -75,7 +75,6 @@
 		if(neighbor)
 			SSmeatvines.check_vine_neighbors(neighbor)
 
-
 /obj/structure/meatvine/proc/is_edge_vine()
 	var/turf/T = get_turf(src)
 
@@ -299,7 +298,14 @@
 /obj/structure/meatvine/proc/mark_obstacles(turf/F)
 	for(var/obj/structure/S in F)
 		if(S.density && !istype(S, /obj/structure/meatvine))
+			if(istype(S, /obj/structure/flora/newtree))
+				S.take_damage(50)
+				continue
+			if(istype(S, /obj/structure/table/wood/treestump))
+				qdel(S)
+				continue
 			master.mark_obstacle_for_destruction(S)
+
 	for(var/obj/machinery/M in F)
 		if(M.density)
 			master.mark_obstacle_for_destruction(M)
