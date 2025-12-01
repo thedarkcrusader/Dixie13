@@ -6,10 +6,10 @@
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/cursedrosa/RegisterWithParent()
-	RegisterSignals(parent, list(COMSIG_MOVABLE_CROSSED, COMSIG_MOVABLE_UNCROSSED), PROC_REF(atom_crossed))
+	RegisterSignals(parent, list(COMSIG_MOVABLE_CROSSED), PROC_REF(atom_crossed))
 
 /datum/component/cursedrosa/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_MOVABLE_CROSSED, COMSIG_MOVABLE_UNCROSSED))
+	UnregisterSignal(parent, list(COMSIG_MOVABLE_CROSSED))
 
 /datum/component/cursedrosa/proc/atom_crossed(source, atom/movable/AM)
 	if(!ishuman(AM) || HAS_TRAIT(AM, TRAIT_TOXIMMUNE) || HAS_TRAIT(AM, TRAIT_PIERCEIMMUNE))

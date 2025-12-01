@@ -614,26 +614,39 @@
 	desc = "Your body is charged with unstable electricity!"
 	icon_state = "dazed"
 
-/datum/status_effect/debuff/blackbriar
-	id = "blackbriar"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/blackbriar
+/datum/status_effect/debuff/black_briar1
+	id = "blackbriar1"
+	alert_type = null
 	status_type = STATUS_EFFECT_UNIQUE
-	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -2, STATKEY_END = -4, STATKEY_SPD = -2, STATKEY_LCK = -1)
+	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_END = -3)
 	duration = -1
 
-/datum/status_effect/debuff/blackbriar/on_apply()
+/datum/status_effect/debuff/black_briar1/on_apply()
 	. = ..()
+	owner.add_stress(/datum/stress_event/black_briar1)
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		C.gain_trauma_type(/datum/brain_trauma/mild/nervous_cough)
+		C.gain_trauma(/datum/brain_trauma/mild/nervous_cough)
 
-/datum/status_effect/debuff/blackbriar/on_remove()
+/datum/status_effect/debuff/black_briar1/on_remove()
 	. = ..()
+	owner.remove_stress(/datum/stress_event/black_briar1)
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.cure_trauma_type(/datum/brain_trauma/mild/nervous_cough)
 
-/atom/movable/screen/alert/status_effect/debuff/blackbriar
-	name = "Black Briar Curse"
-	desc = span_danger("The Black Briar curse makes its way through my body...")
-	icon_state = "bleed1"
+//these will both stack with each other
+/datum/status_effect/debuff/black_briar2
+	id = "blackbriar2"
+	alert_type = null
+	status_type = STATUS_EFFECT_UNIQUE
+	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_END = -3, STATKEY_SPD = -3, STATKEY_PER = -3, STATKEY_INT = -3)
+	duration = -1
+
+/datum/status_effect/debuff/black_briar2/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stress_event/black_briar2)
+
+/datum/status_effect/debuff/black_briar2/on_remove()
+	. = ..()
+	owner.remove_stress(/datum/stress_event/black_briar2)

@@ -681,3 +681,13 @@
 	timer = 1 MINUTES
 	stress_change = 1
 	desc = span_red("The horrid wails of the dead call for relief! I can ENDURE such calls...")
+
+/datum/stress_event/black_briar1
+	timer = 999 MINUTES
+	stress_change = 5
+	desc = span_briar("I feel something scratching at my lungs...")
+
+/datum/stress_event/black_briar2
+	timer = 999 MINUTES
+	stress_change = 10
+	desc = span_briar("I want to feel the sun shine on my skin... I want to go outside and plant my soles in the dirt... I hear music... I love music...")
