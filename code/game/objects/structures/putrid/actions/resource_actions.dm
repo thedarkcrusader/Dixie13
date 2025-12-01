@@ -102,9 +102,7 @@
 /datum/action/cooldown/meatvine/proc/on_mouse_moved_pre(datum/source, atom/atom, params)
 	on_mouse_moved(source, get_turf(atom), params)
 
-/datum/action/cooldown/meatvine/proc/on_mouse_moved(datum/source, atom/source, params)
-	var/turf/turf = get_turf(source)
-
+/datum/action/cooldown/meatvine/proc/on_mouse_moved(datum/source, turf/turf, params)
 	if(!show_preview || !preview_image)
 		return
 

@@ -165,9 +165,7 @@
 		return
 	on_mouse_moved(source, get_turf(atom), params)
 
-/datum/blueprint_system/proc/on_mouse_moved(datum/source, atom/source, params)
-	var/turf/turf = get_turf(source)
-
+/datum/blueprint_system/proc/on_mouse_moved(datum/source, turf/turf, params)
 	if(turf == preview_image?.loc)
 		return
 	if(!preview_image || !turf)

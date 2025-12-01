@@ -185,3 +185,6 @@
 	if(master_destroyed_callback)
 		master_destroyed_callback.Invoke()
 	on_bound_destroyed()
+
+#undef BOUNDED_TIP
+#undef BOUNDS_TIP
