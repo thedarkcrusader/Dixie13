@@ -1,0 +1,1 @@
+{"author":"SarmentiCampbell","delete-after":true,"changes":[{"rscadd":"Added a new special trait related to baotha"},{"qol":"Admins now know if someone got gibbed due to being given a admin-only patron"},{"code_imp":"un-hardcode maniac's theme song and turn it into a component"}]}
