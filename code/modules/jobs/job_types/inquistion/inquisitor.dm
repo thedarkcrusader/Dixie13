@@ -379,6 +379,9 @@
 					if(/datum/patron/godless/rashan)
 						held_confession.bad_type = "A FOLLOWER OF A FALSE GOD"
 						held_confession.antag = "worshiper of the false god, Rashan-Kahl"
+					if(/datum/patron/godless/galadros)
+						held_confession.bad_type = "A WORSHIPPER OF THE DRACONIC"
+						held_confession.antag = "worshiper of the false god, Galadros"
 					if(/datum/patron/inhumen/baotha)
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
