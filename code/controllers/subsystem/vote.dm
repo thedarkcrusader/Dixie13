@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(vote)
 				return vote
 	return 0
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, forced_popup = FALSE)
 	if(!mode)
 		if(started_time && initiator_key)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
@@ -294,6 +294,9 @@ SUBSYSTEM_DEF(vote)
 		var/vp = CONFIG_GET(number/vote_period)
 		to_chat(world, "\n<font color='purple'><b>[text]</b>\nClick <a href='byond://?src=[REF(src)]'>here</a> to place your vote.\nYou have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
+		if(forced_popup)
+			for(var/client/C in GLOB.clients)
+				browser_alert(C, "New vote started by [initiator], you can click <a href='byond://?src=[REF(src)]'>here</a> to place your vote.")
 //		for(var/c in GLOB.clients)
 //			var/client/C = c
 //			var/datum/action/vote/V = new

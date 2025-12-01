@@ -379,7 +379,13 @@
 			type = "map"
 		if("Custom")
 			type = "custom"
-	SSvote.initiate_vote(type, usr.key)
+	var/force = input("Force the players into seeing a popup about the vote?") as null|anything in list("Yes", "No")
+	switch(force)
+		if("Yes")
+			force = TRUE
+		if("No")
+			force = FALSE
+	SSvote.initiate_vote(type, usr.key, force)
 
 /datum/admins/proc/adjusttriumphs(mob/living/M in GLOB.mob_list)
 	set name = "Adjust Triumphs"
