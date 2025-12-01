@@ -25,13 +25,12 @@
 		/datum/ai_planning_subtree/papameat_sacrifice,      // Highest priority
 		/datum/ai_planning_subtree/meatvine_evolve,         // Evolution when ready
 		/datum/ai_planning_subtree/use_personal_abilities,  // Use abilities tactically
+		/datum/ai_planning_subtree/papameat_defend,
+		/datum/ai_planning_subtree/aggro_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/meatvine_bridge,
 		/datum/ai_planning_subtree/meatvine_destroy_obstacle,
 		/datum/ai_planning_subtree/papameat_feed_corpse,
-		/datum/ai_planning_subtree/papameat_defend,
-		/datum/ai_planning_subtree/flee_target,
-		/datum/ai_planning_subtree/aggro_find_target,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)
 
 
