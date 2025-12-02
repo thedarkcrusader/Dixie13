@@ -9,5 +9,6 @@
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/lunge,
 		/datum/action/cooldown/meatvine/personal/literally_too_angry_to_die,
 	)

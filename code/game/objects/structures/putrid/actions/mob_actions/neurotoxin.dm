@@ -17,3 +17,16 @@
 	name = "neurotoxin spit"
 	icon_state = "neurotoxin"
 	damage = 25
+	damage_type = TOX
+	paralyze = 2 SECONDS
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
+
+/obj/projectile/neurotoxin/on_hit(atom/target, blocked = 0, pierce_hit)
+	if(ishuman(target))
+		var/mob/living/carbon/human/h_mob = target
+		if(h_mob.can_inject())
+			h_mob.adjust_stamina(-40)
+	return ..()
+
+/obj/effect/temp_visual/impact_effect/neurotoxin
+	icon_state = "impact_neurotoxin"
