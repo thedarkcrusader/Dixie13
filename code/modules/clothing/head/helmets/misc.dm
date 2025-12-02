@@ -32,7 +32,7 @@
 	name = "decorative coppergate helmet"
 	desc = "Worn by proud Sea Elf clan leaders this decorative helmet design signifies wealth and authority."
 	icon_state = "decorative_coppergate"
-	sellprice = VALUE_STEEL_SMALL_ITEM
+	sellprice = VALUE_STEEL_SMALL_ITEM+BONUS_VALUE_MODEST
 	smeltresult = /obj/item/fertilizer/ash
 	melting_material = /datum/material/steel
 	melt_amount = 75
