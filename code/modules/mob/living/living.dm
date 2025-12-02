@@ -1316,7 +1316,7 @@
 	changeNext_move(CLICK_CD_MELEE)
 
 	if(prob(counter_chance))
-		var/fist_skill = get_skill_level(/datum/skill/combat/unarmed) 
+		var/fist_skill = get_skill_level(/datum/skill/combat/unarmed)
 		var/counter_type
 		if(fist_skill >= 4)
 			counter_type = pick(list("knee" = 45, "elbow" = 45,  "stomp" = 10))
@@ -1501,6 +1501,18 @@
 
 	if(moving_resist) //we resisted by trying to move
 		client?.move_delay = world.time + 50
+
+	var/pain_factor = 1
+	if(istype(pulledby, /mob/living/carbon))
+		var/mob/living/carbon/C = pulledby
+		var/pain = C.get_pain_factor()
+		if(pain)
+			if(resist_chance <= 20)
+				pain_factor += (pain * 1.5)
+			else
+				pain_factor += (pain * 1.2)
+
+	resist_chance *= pain_factor
 
 	adjust_stamina(rand(2,5))
 	pulledby.adjust_stamina(rand(2,5))
