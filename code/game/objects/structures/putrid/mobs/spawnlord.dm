@@ -7,9 +7,13 @@
 
 	structures = list(
 		/datum/action/cooldown/meatvine/spread_wormhole,
+		/datum/action/cooldown/meatvine/spread_lair,
+		/datum/action/cooldown/meatvine/spread_wall_multi,
 	)
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/lunge,
+		/datum/action/cooldown/meatvine/personal/transfer_resources/improved,
 		/datum/action/cooldown/meatvine/personal/mark_target,
 	)
