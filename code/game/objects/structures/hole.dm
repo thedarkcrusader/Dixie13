@@ -197,7 +197,7 @@
 			stage = 3
 			climb_offset = 0
 			open()
-			switch(src.isconsecrated)
+			switch(src.isconsecrated) // this is where we handle folks being cursed by Necra for graverobbing.
 				if(0) // not consecrated, proceed
 					return
 				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
@@ -224,56 +224,48 @@
 							var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 							var/list/limbs_to_pick_from = list() // empty list that gets filled with limbs to turn to dust, should they exist
 							if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
-								if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich)) // unless you're a kid (and not an undead), in which case Necra is a bit more lenient. She only turns one of your arms into bones.
-									to_chat(user, span_alertwarning("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
+								if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich) && !HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // unless you're a kid (and not an undead), in which case Necra is a bit more lenient. She only turns one of your arms into bones.
+									to_chat(user, span_userdanger("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
 									for(var/zone in limb_list)
 										var/limb = L.get_bodypart(zone)
 										if(limb)
 											limbs_to_pick_from += limb
 									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
-									var/obj/item/bodypart/part_to_bonify = L.get_bodypart(picked_limb) // skeletonize proc requires static type, hence why we do this.
+									var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
 									if (picked_limb)
 										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
 										part_to_bonify.skeletonize(FALSE)
 									else // How did you manage that?
 										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+										L.apply_status_effect(/datum/status_effect/debuff/cursed) // not the full 10 minute version, as I expect this would only be called when bugs happen.
 								else
-										// if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we're going to destroy one of your phylacteries.
-										// for(var/obj/item/phylactery/to_be_consumed in L.phylacteries) // cycle through all phylacteries until there is none left
-										// 	playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
-										// 	if(!length(phylacteries)) // no phylacteries left, don't screw over the lich, let them try and cause a bit more damage as a hail Mary.
-										// 		to_chat(owner, span_userdanger("Necra has tried targetting one of my phylacteries, but I had none left! HAHAHAHAHA!"))
-										// 		return
-
-										// 	L.phylacteries -= to_be_consumed
-
-										// 	to_be_consumed.start_shaking()
-
-										// 	sleep(timer) // we sleep so we can later check the other phylacteries in the loop
-
-										// 	if(!QDELETED(to_be_consumed)) // check if the phylactery got destroyed while we were resurrecting.
-										// 		to_chat(owner, span_userdanger("Curse this wench-goddess! Necra has fractured one of my phylacteries!"))
-										// 		qdel(to_be_consumed)
-										// 		return // phylactery destroyed, neat
+									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we debuff you for -5 LCK. This lasts an hour, dangerous enough to be avoided but not crippling.
+										to_chat(user, span_userdanger("Even my necromantic mastery cannot protect me from Necra's undivided attention, I am cursed!"))
+										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 									if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // if you're a graverobber but not a Necran, you still get punished, but way less
-										to_chat(user, span_info("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
+										to_chat(user, span_userdanger("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
 										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 									else
-										to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body freezes over, and although the wave has passed, the cold remains.."))
+										to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body feels freezing.."))
 										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
 							else // No lux? We skeletonize your arm.
+								if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+									to_chat(user, span_userdanger("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
+									L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
+								else
 								to_chat(user, span_alertwarning("Without lux in my body, I must pay a much more physical toll."))
-								for(var/zone in limb_list)
-									var/limb = L.get_bodypart(zone)
-									if(limb)
-										limbs_to_pick_from += limb
-								var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
-								var/obj/item/bodypart/part_to_bonify = L.get_bodypart(picked_limb) // skeletonize proc requires static type, hence why we do this.
-								if (picked_limb)
-									to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
-									part_to_bonify.skeletonize(FALSE)
-								else // How did you manage that?
-									to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+									for(var/zone in limb_list)
+										var/limb = L.get_bodypart(zone)
+										if(limb)
+											limbs_to_pick_from += limb
+									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
+									var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
+									if (picked_limb)
+										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
+										part_to_bonify.skeletonize(FALSE)
+									else // How did you manage that?
+										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+										L.apply_status_effect(/datum/status_effect/debuff/cursed)
 						else
 							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // this typically means you're a gravetender or cleric
 								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
