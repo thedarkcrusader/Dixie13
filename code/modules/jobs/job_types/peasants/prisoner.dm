@@ -81,8 +81,8 @@
 			H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.change_stat(STATKEY_SPD, -2) // Bigger boy.
-			H.change_stat(STATKEY_STR, 2)
-			H.change_stat(STATKEY_PER, -2)
+			H.change_stat(STATKEY_STR, 1)
+			H.change_stat(STATKEY_PER, -1)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			to_chat(H,span_info("\
 			A noble threw me a false purse, once. I found him blabbering to the guards. I broke both their heads in with a cudgel.")
@@ -96,7 +96,7 @@
 			armor = /obj/item/clothing/armor/leather/jacket/sea
 			H.change_stat(STATKEY_SPD, 2)
 			H.change_stat(STATKEY_END, 2)
-			H.change_stat(STATKEY_STR, -1)
+			H.change_stat(STATKEY_STR, -2)
 			H.change_stat(STATKEY_CON, -1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			to_chat(H,span_info("\
@@ -108,7 +108,7 @@
 			H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.change_stat(STATKEY_SPD, -2)
 			H.change_stat(STATKEY_END, 1)
-			H.change_stat(STATKEY_CON, 2)
+			H.change_stat(STATKEY_CON, 1)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			to_chat(H,span_info("\
 			I hear the air split with the rattle of my chains. Break your skull, shatter your spine!")
@@ -118,7 +118,6 @@
 			H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			armor = /obj/item/clothing/armor/leather/hide/steppe // They REALLY need it.
 			H.change_stat(STATKEY_END, 1)
-			H.change_stat(STATKEY_STR, 1)
 			H.change_stat(STATKEY_CON, 3) // They spawn with -1 con, it's +2
 			H.change_stat(STATKEY_PER, -3)
 			H.change_stat(STATKEY_INT, -2)
