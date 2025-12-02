@@ -1107,7 +1107,7 @@
 
 /obj/item/weapon/sword/long/greatsword/steelflamberge
 	name = "steel flamberge"
-	desc = "A steel varient of the Flamberge, It's wave-like form distributes force better, and is less likely to break on impact."
+	desc = "A steel variant of the Flamberge, It's wave-like form distributes force better, and is less likely to break on impact."
 	icon_state = "steelflamberge"
 	wbalance = DODGE_CHANCE_NORMAL
 	sellprice = 120
