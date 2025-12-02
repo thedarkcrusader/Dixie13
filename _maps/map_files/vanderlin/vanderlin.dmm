@@ -22868,6 +22868,12 @@
 /obj/structure/stairs,
 /turf/open/floor/grass,
 /area/outdoors/town)
+"lQZ" = (
+/obj/structure/fake_machine/scomm{
+	pixel_y = -32
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/cell)
 "lRf" = (
 /obj/structure/roguerock,
 /turf/open/water,
@@ -24437,6 +24443,14 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/hexstone,
 /area/outdoors/town/roofs)
+"mBL" = (
+/obj/structure/fake_machine/mail/r{
+	mailtag = "Manor Dungeon";
+	pixel_y = -30;
+	pixel_x = 0
+	},
+/turf/open/floor/blocks,
+/area/indoors/town/cell)
 "mBN" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
@@ -38420,13 +38434,22 @@
 /turf/open/floor/wood,
 /area/indoors/soilsons)
 "tNt" = (
-/obj/item/paper{
-	pixel_x = -11
-	},
 /obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable"
+	},
+/obj/item/paper{
+	pixel_x = -11
+	},
+/obj/item/paper{
+	pixel_x = -11
+	},
+/obj/item/paper{
+	pixel_x = -11
+	},
+/obj/item/paper{
+	pixel_x = -11
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/cell)
@@ -63886,7 +63909,7 @@ eHB
 hVu
 puV
 ugV
-aoP
+mBL
 puV
 fhL
 fhL
@@ -64896,7 +64919,7 @@ bph
 fhL
 hVu
 iiA
-uhw
+lQZ
 eHB
 fhL
 bph
