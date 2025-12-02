@@ -55,8 +55,7 @@
 
 /obj/structure/stairs/OnCrafted(dirin, mob/user)
 	dir = dirin
-	var/turf/partner = get_step_multiz(get_turf(src), UP)
-	partner = get_step(partner, dirin)
+	var/turf/partner = get_step_multiz(src, dirin|UP)
 	if(isopenturf(partner))
 		var/obj/structure/stairs/stairs = locate() in partner
 		if(!stairs)
@@ -67,8 +66,7 @@
 /obj/structure/stairs/d/OnCrafted(dirin, mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	dir = dirin
-	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
-	partner = get_step(partner, turn(dir, 180))
+	var/turf/partner = get_step_multiz(src, turn(dir, 180)|DOWN)
 	if(isopenturf(partner))
 		var/obj/structure/stairs/stairs = locate() in partner
 		if(!stairs)
@@ -83,8 +81,7 @@
 /obj/structure/stairs/stone/d/OnCrafted(dirin, mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	dir = turn(dirin, 180)
-	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
-	partner = get_step(partner, dirin)
+	var/turf/partner = get_step_multiz(src, dirin|DOWN)
 	if(isopenturf(partner))
 		var/obj/structure/stairs/stairs = locate() in partner
 		if(!stairs)

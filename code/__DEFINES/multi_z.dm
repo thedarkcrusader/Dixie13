@@ -1,3 +1,7 @@
+// WHEN THESE MACROS HAVE ARGUMENTS NAMED TURF, THEY MEAN IT!!!
+// DO NOT TRY PASSING A MOVABLE TO THIS, IT WILL BREAK AND RUNTIME IF THE MOVABLE ISN'T ON A TURF!
+// YOU HAVE BEEN WARNED!!!!!!!
+
 /// Attempt to get the turf below the provided one according to Z traits
 #define GET_TURF_BELOW(turf) (\
 	(!(turf) || !length(SSmapping.multiz_levels) || !SSmapping.multiz_levels[(turf).z][Z_LEVEL_DOWN]) ? null : get_step((turf), DOWN))
