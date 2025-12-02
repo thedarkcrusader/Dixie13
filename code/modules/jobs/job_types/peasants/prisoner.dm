@@ -55,6 +55,7 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_PRISONER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 
 	var/prisarchetype = pickweight(list("Swords" = 3, "Polearms" = 3, "Maces" = 3, "Daggers" = 3, "Flails" = 2, "BERSERKERRR" = 2, "Unarmed" = 1,)) // Archetype roll!
 	switch(prisarchetype)
