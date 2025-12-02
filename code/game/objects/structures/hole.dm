@@ -225,7 +225,7 @@
 							var/list/limbs_to_pick_from = list() // empty list that gets filled with limbs to turn to dust, should they exist
 							if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
 								if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich) && !HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // unless you're a kid (and not an undead), in which case Necra is a bit more lenient. She only turns one of your arms into bones.
-									to_chat(user, span_userdanger("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
+									to_chat(user, span_crit("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
 									for(var/zone in limb_list)
 										var/limb = L.get_bodypart(zone)
 										if(limb)
@@ -240,20 +240,21 @@
 										L.apply_status_effect(/datum/status_effect/debuff/cursed) // not the full 10 minute version, as I expect this would only be called when bugs happen.
 								else
 									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we debuff you for -5 LCK. This lasts an hour, dangerous enough to be avoided but not crippling.
-										to_chat(user, span_userdanger("Even my necromantic mastery cannot protect me from Necra's undivided attention, I am cursed!"))
-										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
-									if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // if you're a graverobber but not a Necran, you still get punished, but way less
-										to_chat(user, span_userdanger("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
+										to_chat(user, span_crit("Even my necromantic mastery cannot protect me from Necra's undivided attention, I am cursed!"))
 										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 									else
-										to_chat(user, span_crit("As I open the grave, a flow of ghostly energy washes over me! My entire body feels freezing.."))
-										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
+										if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // if you're a graverobber but not a Necran, you still get punished, but way less
+											to_chat(user, span_crit("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
+											L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
+										else
+											to_chat(user, span_userdanger("As I open the grave, a flow of ghostly energy washes over me! My entire body feels freezing.."))
+											L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
 							else // No lux? We skeletonize your arm.
 								if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
 									to_chat(user, span_userdanger("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
 									L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 								else
-									to_chat(user, span_alertwarning("Without lux in my body, I must pay a more physical toll."))
+									to_chat(user, span_userdanger("Without lux in my body, I must pay a more physical toll."))
 									for(var/zone in limb_list)
 										var/limb = L.get_bodypart(zone)
 										if(limb)
@@ -269,7 +270,7 @@
 						else
 							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // this typically means you're a gravetender or cleric
 								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
-							else // Even Necrans get cursed, but it's miles better than losing your lux or your arm
+							else // Even Necrans get minorly cursed, but it's miles better than losing your lux or your arm
 								to_chat(user, span_warning("I mutter Necra's hallowed rites, and although my devotion is recognized, my trespass remains great, I am cursed!"))
 								L.apply_status_effect(/datum/status_effect/debuff/cursed)
 					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
