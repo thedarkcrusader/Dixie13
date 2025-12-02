@@ -464,12 +464,13 @@
 	if(do_after(user, 3 SECONDS, src))
 		if(wash_in)
 			item2wash.wash(CLEAN_WASH)
-		var/obj/item/clothing/item2wash_cloth = item2wash
-		if(item2wash_cloth && item2wash_cloth.wetable)
-			if(cleanliness_factor > 0)
-				item2wash_cloth.wet.add_water(20, dirty = FALSE, washed_properly = TRUE)
-			else
-				item2wash_cloth.wet.add_water(20, dirty = TRUE, washed_properly = TRUE)
+		if(istype(item2wash, /obj/item/clothing))
+			var/obj/item/clothing/item2wash_cloth = item2wash
+			if(item2wash_cloth && item2wash_cloth.wetable)
+				if(cleanliness_factor > 0)
+					item2wash_cloth.wet.add_water(20, dirty = FALSE, washed_properly = TRUE)
+				else
+					item2wash_cloth.wet.add_water(20, dirty = TRUE, washed_properly = TRUE)
 		user.nobles_seen_servant_work()
 		playsound(user, pick(wash), 100, FALSE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
