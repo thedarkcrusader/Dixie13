@@ -12,7 +12,7 @@
 	impact_explode = FALSE
 	embedchance = 100
 
-	sticky = TRUE
+	sticky = TRUE  //dear god borbop PLEASE let your code with the sticky var work
 	ex_dev = 1
 	ex_heavy = 1
 	ex_light = 3

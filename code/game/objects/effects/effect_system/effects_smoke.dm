@@ -176,10 +176,7 @@
 		M.emote("cough")
 		return 1
 
-/datum/effect_system/smoke_spread/sleeping
-	effect_type = /obj/effect/particle_effect/smoke/sleeping
-
-/obj/effect/particle_effect/smoke/napgas
+/datum/effect_system/smoke_spre/obj/effect/particle_effect/smoke/napgas
 	color = "#4a3c5f"
 	lifetime = 10
 
