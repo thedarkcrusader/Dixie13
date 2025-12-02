@@ -121,3 +121,7 @@
 /obj/item/holy_grenade/ready/Initialize(mapload, ...)
 	. = ..()
 	lose_hearing_sensitivity()
+
+/obj/item/smokebomb/napgas
+	name = "Valeriana sleeping gas canister"
+	datum_to_spread = /datum/effect_system/smoke_spread/napgas

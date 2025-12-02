@@ -21,6 +21,7 @@
 	output = /obj/item/explosive/bottle/homemade
 	craft_time = 1 SECONDS
 	subtypes_allowed = TRUE
+	craftdiff = 1
 	reagent_subtypes_allowed = TRUE
 
 /datum/repeatable_crafting_recipe/bomb/smokebomb
@@ -36,6 +37,7 @@
 	attacked_atom = /obj/item/reagent_containers/glass/bottle
 	output = /obj/item/smokebomb
 	craft_time = 1 SECONDS
+	craftdiff = 1
 	subtypes_allowed = TRUE
 
 /datum/repeatable_crafting_recipe/bomb/poisonbomb
@@ -51,7 +53,23 @@
 	attacked_atom = /obj/item/smokebomb
 	output = /obj/item/smokebomb/poison_bomb
 	craft_time = 1 SECONDS
-	craftdiff = 1
+	craftdiff = 2
+	subtypes_allowed = TRUE
+
+	/datum/repeatable_crafting_recipe/bomb/poisonbomb
+	name = "poison bomb"
+
+	requirements = list(
+		/obj/item/smokebomb = 1,
+		/obj/item/alch/herb/valeriana = 1,
+		/obj/item/alch/herb/mentha = 1,
+	)
+
+	starting_atom = /obj/item/alch/herb/valeriana
+	attacked_atom = /obj/item/smokebomb
+	output = /obj/item/smokebomb/napgas
+	craft_time = 1 SECONDS
+	craftdiff = 2
 	subtypes_allowed = TRUE
 
 /datum/repeatable_crafting_recipe/bomb/pipe_bomb
@@ -88,6 +106,22 @@
 	subtypes_allowed = TRUE
 	reagent_subtypes_allowed = TRUE
 
+	/datum/repeatable_crafting_recipe/bomb/time_bomb
+	name = "Time Bomb"
+
+	requirements = list(
+		/obj/item/natural/fibers = 3,
+		/obj/item/explosive/canister_bomb = 3
+	)
+
+	starting_atom = /obj/item/natural/fibers
+	attacked_atom = /obj/item/explosive/canister_bomb
+	output = /obj/item/explosive/time_bomb
+	craft_time = 11 SECONDS
+	craftdiff = 2
+	subtypes_allowed = TRUE
+	reagent_subtypes_allowed = TRUE
+
 /datum/repeatable_crafting_recipe/bomb/gunpowder
 	name = "blastpowder"
 	requirements = list(
@@ -103,6 +137,7 @@
 	starting_atom = /obj/item/pestle
 	output = /obj/item/reagent_containers/powder/blastpowder
 	output_amount = 3
+	craftdiff = 1
 	craft_time = 5 SECONDS
 
 /datum/repeatable_crafting_recipe/bomb/breaching_charge
