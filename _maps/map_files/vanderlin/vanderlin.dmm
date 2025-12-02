@@ -3612,9 +3612,11 @@
 /area/indoors/town/merc_guild)
 "bWx" = (
 /obj/item/gem/violet,
-/obj/structure/table/wood/reinforced_alter,
 /obj/structure/closet/crate/chest/neu_iron{
 	pixel_y = 8
+	},
+/obj/structure/table/wood/reinf_long{
+	dir = 8
 	},
 /turf/open/floor/carpet/lord/left,
 /area/indoors/town/vault)
@@ -13671,6 +13673,9 @@
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/hexstone,
 /area/outdoors/town/roofs)
+"gSq" = (
+/turf/open/floor/blocks,
+/area/indoors/town/vault)
 "gSE" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/manor)
@@ -14727,9 +14732,11 @@
 /turf/open/floor/metal/alt,
 /area/under/town/basement)
 "hsA" = (
-/obj/structure/table/wood/reinforced_alter,
 /obj/structure/closet/crate/chest/neu_iron{
 	pixel_y = 8
+	},
+/obj/structure/table/wood/reinf_long{
+	dir = 4
 	},
 /turf/open/floor/carpet/lord/right,
 /area/indoors/town/vault)
@@ -30797,7 +30804,7 @@
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
-/turf/open/floor/cobble/alt,
+/turf/open/floor/blocks,
 /area/indoors/town/vault)
 "pWp" = (
 /obj/machinery/light/fueled/wallfire/candle,
@@ -35224,7 +35231,9 @@
 /obj/structure/closet/crate/chest/neu_iron{
 	pixel_y = 8
 	},
-/obj/structure/table/wood/reinforced_alter,
+/obj/structure/table/wood/reinf_long{
+	dir = 8
+	},
 /turf/open/floor/carpet/lord/left,
 /area/indoors/town/vault)
 "sfy" = (
@@ -41965,9 +41974,11 @@
 /area/indoors/town/theatre)
 "vxk" = (
 /obj/item/gem/yellow,
-/obj/structure/table/wood/reinforced_alter,
 /obj/structure/closet/crate/chest/neu_iron{
 	pixel_y = 8
+	},
+/obj/structure/table/wood/reinf_long{
+	dir = 4
 	},
 /turf/open/floor/carpet/lord/right,
 /area/indoors/town/vault)
@@ -67743,11 +67754,11 @@ omW
 xKu
 fbg
 uHB
-uHB
+gSq
 xgl
 fiX
 xgl
-uHB
+gSq
 uHB
 fbg
 cjj
@@ -68146,13 +68157,13 @@ pSG
 omW
 xKu
 mMZ
-uHB
-uHB
+gSq
+gSq
 xgl
 vwL
 xgl
 uHB
-uHB
+gSq
 mMZ
 cjj
 vOh
