@@ -10,7 +10,7 @@
 	grid_height = 64
 	grid_width = 32
 	impact_explode = FALSE
-	embedchance = 100
+	var/embedchance = 100
 
 	sticky = TRUE  //dear god borbop PLEASE let your code with the sticky var work
 	ex_dev = 1
