@@ -48,6 +48,7 @@
 			armor = /obj/item/clothing/shirt/robe/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 			ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)//accustomed to death
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 		if(/datum/patron/divine/eora)
 			mask = /obj/item/clothing/face/operavisage
 			neck = /obj/item/clothing/neck/psycross/silver/eora
