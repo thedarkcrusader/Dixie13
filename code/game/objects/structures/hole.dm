@@ -253,7 +253,7 @@
 									to_chat(user, span_userdanger("Even my pacts cannot protect me from Necra's undivided wrath, I am cursed !"))
 									L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 								else
-								to_chat(user, span_alertwarning("Without lux in my body, I must pay a much more physical toll."))
+									to_chat(user, span_alertwarning("Without lux in my body, I must pay a more physical toll."))
 									for(var/zone in limb_list)
 										var/limb = L.get_bodypart(zone)
 										if(limb)

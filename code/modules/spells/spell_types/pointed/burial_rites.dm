@@ -29,15 +29,15 @@
 		return
 	if(pacify_coffin(cast_on, owner))
 		if(checkdoubleconsecration(cast_on, owner)) // Check if the thing we're casting the rites on is a grave with an already-consecrated casket.
-			var/obj/structure/closet/dirthole/closed/grave = cast_on // This should only ever get called on graves anyways.
+			var/obj/structure/closet/dirthole/grave = cast_on // This should only ever get called on graves anyways.
 			cast_on.icon_state = "gravedoubleconsecrated"
 			owner.visible_message(span_rose("The air gets colder as [owner] consecrates [cast_on], woe betide any graverobber."), span_rose("Necra's gaze turns over to [cast_on] as I consecrate it. Any who would rob this grave will pay a dire toll."))
 			grave.isconsecrated += 1 // this is how we define a grave as "doubly consecrated"
 		else
 			owner.visible_message(span_rose("[owner] consecrates [cast_on]."), span_rose("My funeral rites have been performed on [cast_on]."))
 		cast_on.add_overlay("graveconsecrated")
-		if(istype(cast_on, /obj/structure/closet/dirthole/closed)) // if it's a grave, increase it's level of consecration.
-			var/obj/structure/closet/dirthole/closed/grave = cast_on
+		if(istype(cast_on, /obj/structure/closet/dirthole)) // if it's a grave, increase it's level of consecration.
+			var/obj/structure/closet/dirthole/grave = cast_on
 			grave.isconsecrated += 1
 		SEND_SIGNAL(owner, COMSIG_GRAVE_CONSECRATED, cast_on)
 		record_round_statistic(STATS_GRAVES_CONSECRATED)
