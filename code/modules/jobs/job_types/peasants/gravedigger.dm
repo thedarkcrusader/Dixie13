@@ -33,7 +33,7 @@
 	beltl = /obj/item/storage/keyring/gravetender
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	backr = /obj/item/weapon/shovel
-
+	backpack_contents = list(/obj/item/inqarticles/tallowpot, /obj/item/reagent_containers/food/snacks/tallow/red) // Needed for coffin sanctification, they get enough for one, the rest they must source themselves.
 	if(H.patron != /datum/patron/divine/necra)
 		H.set_patron(/datum/patron/divine/necra)
 
