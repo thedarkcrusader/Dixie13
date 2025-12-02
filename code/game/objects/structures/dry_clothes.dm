@@ -53,7 +53,7 @@
 
 	has_wet_items = FALSE
 	for(var/obj/item/clothing/C in STR.contents())
-		if(!C.wet)
+		if(!C.wetable)
 			continue
 		var/old_wet = C.wet.water_stacks
 		C.wet.use_water(5)
