@@ -109,14 +109,13 @@
 
 /// Get the turf above/below us corresponding to the direction we're moving on the stairs.
 /obj/structure/stairs/proc/get_target_loc(dirmove)
-	var/turf/zturf
+	var/turf/newtarg
 	if(dirmove == dir)
-		zturf = GET_TURF_ABOVE(get_turf(src))
+		// the optimization macro here is beacuse this can be called in pathfinding
+		// and therefore can be quite expensive
+		newtarg = GET_TURF_ABOVE_DIAGONAL(get_turf(src), UP|dirmove)
 	else if(dirmove == REVERSE_DIR(dir))
-		zturf = GET_TURF_BELOW(get_turf(src))
-	if(!zturf)
-		return // not moving up or down
-	var/turf/newtarg = get_step(zturf, dirmove)
+		newtarg = GET_TURF_BELOW_DIAGONAL(get_turf(src), DOWN|dirmove)
 	if(!newtarg)
 		return // nowhere to move to???
 	for(var/obj/structure/stairs/partner in newtarg)
