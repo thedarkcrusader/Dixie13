@@ -1,8 +1,8 @@
 
-/obj/item/explosive/canister_bomb
-	name = "Canister Bomb"
-	desc = "A professional Grenzelhoftian explosive, filled with lead shrapnel and sticky blastpowder. This specific grenade design was recently declassified, being left over from the first Grenzelhoft-Rosewood war."
-	icon_state = "canbomb"
+/obj/item/explosive/sticky
+	name = "Sticky Bomb"
+	desc = "A regular blastpowder bomb covered in sticky goo, held on a stick. It looks very unsafe"
+	icon_state = ""
 	icon = 'icons/obj/bombs.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 0
@@ -12,15 +12,9 @@
 	impact_explode = FALSE
 	embedchance = 100
 
-	prob2fail = 5
-
+	sticky = TRUE
 	ex_dev = 1
 	ex_heavy = 1
 	ex_light = 3
 
 	det_time = 5 SECONDS
-
-
-
-
-
