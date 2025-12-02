@@ -126,8 +126,8 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 			var/dry_amount = round(added / 5)
 			cloth.wet.use_water(dry_amount)
 
-		if(cloth.wet.water_stacks < 0)
-			is_wet = TRUE   // supress the damage while it still wet
+			if(cloth.wet.water_stacks < 0)
+				is_wet = TRUE   // supress the damage while it still wet
 	if(!is_wet && added && !(resistance_flags & FIRE_PROOF))
 		take_damage(CLAMP(0.02 * added, 0, 20), BURN, "fire", 0)
 
