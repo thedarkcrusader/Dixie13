@@ -28,6 +28,9 @@
 	exp_requirements = list(
 		EXP_TYPE_GARRISON = 300
 	)
+	spells = list(
+		/datum/action/cooldown/spell/undirected/seek_prisoner,
+	)
 
 	traits = list(TRAIT_STEELHEARTED)
 
