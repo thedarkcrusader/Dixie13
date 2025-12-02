@@ -239,7 +239,7 @@
 										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
 										L.apply_status_effect(/datum/status_effect/debuff/cursed) // not the full 10 minute version, as I expect this would only be called when bugs happen.
 								else
-									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we debuff you for -5 LCK. This lasts an hour, dangerous enough to be avoided but not crippling.
+									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we debuff you for -5 LCK. This lasts an hour, dangerous enough to be avoided but not too crippling.
 										to_chat(user, span_crit("Even my necromantic mastery cannot protect me from Necra's undivided attention, I am cursed!"))
 										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 									else
