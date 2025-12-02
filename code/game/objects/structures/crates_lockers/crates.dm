@@ -48,7 +48,7 @@
 	open_sound_volume = 25
 	close_sound_volume = 50
 	var/sealed = FALSE // is the casket sealed? If not, we can still open and close it freely.
-	var/consecrated = FALSE // Is the casket consecrated (AKA was there someone inside when we sealed it) ?
+	var/consecrated = FALSE // Is the casket consecrated (AKA was there someone inside when we sealed it)?
 
 /obj/structure/closet/crate/coffin/open(mob/living/user)
 	if (!sealed) // if it's not sealed, process as usual.
@@ -56,7 +56,12 @@
 	else // if it's sealed, you must unseal it with a sharp object first.
 		to_chat(user, span_warning("The casket is sealed with red tallow, you must slice it open with a dagger or knife first."))
 
-
+/obj/structure/closet/crate/coffin/examine(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_GRAVEROBBER) && src.consecrated) // only people who are greenlit to dig out graves can tell if a coffin is consecrated.
+		. += span_rose("This consecrated coffin hosts a body.")
+	else if (HAS_TRAIT(user, TRAIT_GRAVEROBBER) && src.sealed && !src.consecrated)
+		. += span_warning("It is sealed, but has no body.")
 
 /obj/structure/closet/crate/coffin/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
