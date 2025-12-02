@@ -8,21 +8,21 @@
 
 /datum/outfit/bandit/knave/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
@@ -31,9 +31,10 @@
 	//H.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/shirt/shortshirt/colored/random
+	shirt = /obj/item/clothing/armor/gambeson/arming
 	shoes = /obj/item/clothing/shoes/boots
 	mask = /obj/item/clothing/face/facemask/steel
+	gloves = /obj/item/clothing/gloves/angle
 	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/armor/leather
 	H.change_stat(STATKEY_END, 1)
@@ -48,20 +49,22 @@
 		if("Crossbow & Dagger") //Rogue
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
 			beltr = /obj/item/ammo_holder/quiver/bolts
-			cloak = /obj/item/clothing/cloak/raincloak/colored/mortus //cool cloak
+			cloak = /obj/item/clothing/cloak/cape/thief/black
+			head = /obj/item/clothing/head/roguehood/colored/black //cool cloak
 			beltl = /obj/item/weapon/knife/dagger/steel
 			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1) //rogue gets lockpicks
-			H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltr = /obj/item/weapon/sword/short/iron //steel sword like literally every adventurer gets
 			beltl = /obj/item/ammo_holder/quiver/arrows
+			cloak = /obj/item/clothing/cloak/cape/thief/brown
 			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
-			H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BRUSHWALK, TRAIT_GENERIC)

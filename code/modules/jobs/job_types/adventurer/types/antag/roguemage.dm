@@ -17,20 +17,23 @@
 	H.set_patron(/datum/patron/inhumen/zizo)//its either noc or zizo, and because they got kicked from the academy and are working with matthios worshippers, definetly zizo
 	H.grant_language(/datum/language/undead)
 	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
-	shoes = /obj/item/clothing/shoes/simpleshoes
+	shoes = /obj/item/clothing/shoes/nobleboot
+	gloves = /obj/item/clothing/gloves/angle
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/shirt/shortshirt
+	shirt = /obj/item/clothing/armor/gambeson
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/reagent_containers/glass/bottle/manapot
+	beltl = /obj/item/weapon/knife/dagger
 	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/clothing/face/spectacles/sglasses, /obj/item/chalk = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 	mask = /obj/item/clothing/face/facemask/steel //idk if this makes it so they cant cast but i want all of the bandits to have the same mask
-	neck = /obj/item/clothing/neck/coif
+	neck = /obj/item/clothing/neck/chaincoif/iron
+	scabbards = list(/obj/item/weapon/scabbard/knife)
 
 	r_hand = /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) //needs climbing to get into hideout
@@ -48,12 +51,11 @@
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_INT, 1)
 		H.change_stat(STATKEY_PER, 1)
-		H.adjust_spell_points(1)
 	H.change_stat(STATKEY_STR, -1)
 	H.change_stat(STATKEY_INT, 3)
 	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_END, -1)
-	H.adjust_spell_points(1)
+	H.adjust_spell_points(5)
 	H.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
 
 /datum/outfit/bandit/roguemage/post_equip(mob/living/carbon/human/H)
@@ -70,5 +72,6 @@
 	var/static/list/selectablerobe = list(
 		"Black robes" = /obj/item/clothing/shirt/robe/colored/black,
 		"Mage robes" = /obj/item/clothing/shirt/robe/colored/mage,
+		"Leather Coat" = /obj/item/clothing/armor/leather/jacket/leathercoat/duelcoat/grey,
 	)
 	H.select_equippable(H, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")
