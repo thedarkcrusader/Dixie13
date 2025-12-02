@@ -56,7 +56,7 @@
 	craftdiff = 2
 	subtypes_allowed = TRUE
 
-	/datum/repeatable_crafting_recipe/bomb/napgas
+/datum/repeatable_crafting_recipe/bomb/napgas
 	name = "Sleeping gas Bomb"
 
 	requirements = list(
@@ -106,7 +106,7 @@
 	subtypes_allowed = TRUE
 	reagent_subtypes_allowed = TRUE
 
-	/datum/repeatable_crafting_recipe/bomb/time_bomb
+/datum/repeatable_crafting_recipe/bomb/time_bomb
 	name = "Time Bomb"
 
 	requirements = list(
