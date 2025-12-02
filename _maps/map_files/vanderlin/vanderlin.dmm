@@ -11616,7 +11616,7 @@
 /area/indoors/town/tavern)
 "fNP" = (
 /obj/structure/fermentation_keg/water,
-/turf/open/floor/wood,
+/turf/open/floor/woodturned,
 /area/indoors/town/manor/halls/w)
 "fNW" = (
 /obj/structure/bars/cemetery,
