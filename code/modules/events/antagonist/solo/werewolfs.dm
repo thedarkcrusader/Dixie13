@@ -40,6 +40,7 @@
 		"Adept",
 		"Royal Knight",
 		"Templar",
+		"Assassin",
 	)
 
 /datum/round_event/antagonist/solo/werewolf
