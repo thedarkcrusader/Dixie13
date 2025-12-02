@@ -39,7 +39,6 @@
 /datum/job/hand/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	var/mob/living/carbon/human/H = spawned
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_OMMER), 10 SECONDS)
 
 	if(GLOB.keep_doors.len > 0)
@@ -49,6 +48,7 @@
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(agent_callback), H))
 	else
 		agent_callback(H)
+	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/job/hand/proc/agent_callback(mob/living/carbon/human/H)
 	addtimer(CALLBACK(src, PROC_REF(know_agents), H), 6 SECONDS)
