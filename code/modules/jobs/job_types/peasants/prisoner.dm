@@ -11,7 +11,7 @@
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
 	total_positions = 0
-	spawn_positions = 4 // It's a full party of dungeon rats. God help them all.
+	spawn_positions = 3 // It's a full party of dungeon rats. God help them all.
 	min_pq = -100
 	can_random = FALSE
 	banned_leprosy = FALSE
