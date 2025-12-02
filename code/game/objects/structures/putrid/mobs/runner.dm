@@ -11,9 +11,11 @@
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
+		/datum/action/cooldown/meatvine/personal/lunge,
 		/datum/action/cooldown/meatvine/personal/evade,
 	)
 
 	structures = list(
 		/datum/action/cooldown/meatvine/spread_tracking_beacon,
+		/datum/action/cooldown/meatvine/spread_spike_multi,
 	)

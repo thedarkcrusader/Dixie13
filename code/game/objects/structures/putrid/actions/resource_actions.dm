@@ -565,6 +565,107 @@
 
 	return ..()
 
+/datum/action/cooldown/meatvine/spread_spike_multi
+	name = "Spread Spike Line (x3)"
+	desc = "Spread 3 tentacle spikes in a line perpendicular to your facing direction. Can stack up to 5 spikes per tile. Cost: 150 resources."
+	button_icon_state = "tentacle_spikes_multi"
+	resource_cost = 50
+	spread_type = /obj/structure/meatvine/tentacle_spike
+	spread_range = 5
+	cooldown_time = 45 SECONDS
+	multi_construct_count = 3
+	multi_construct_pattern = MULTI_CONSTRUCT_LINE
+	show_preview = TRUE
+	should_replace = FALSE
+	var/use_consumed_resources = TRUE
+
+/datum/action/cooldown/meatvine/spread_spike_multi/can_spread_to_turf(turf/T)
+	if(!isfloorturf(T))
+		return FALSE
+
+	// Must have a meatvine floor
+	var/obj/structure/meatvine/floor/floor_vine = locate(/obj/structure/meatvine/floor) in T
+	if(!floor_vine)
+		return FALSE
+
+	// Check if there's already a spike here
+	var/obj/structure/meatvine/tentacle_spike/existing_spike = locate(/obj/structure/meatvine/tentacle_spike) in T
+	if(existing_spike)
+		// If spike exists, check if we can add to it
+		if(!existing_spike.can_add_spike())
+			return FALSE
+
+	return TRUE
+
+/datum/action/cooldown/meatvine/spread_spike_multi/do_spread(turf/T, obj/effect/meatvine_controller/controller)
+	var/obj/structure/meatvine/tentacle_spike/existing_spike = locate(/obj/structure/meatvine/tentacle_spike) in T
+
+	if(existing_spike)
+		if(existing_spike.add_spike())
+			return TRUE
+		else
+			to_chat(owner, span_warning("Maximum spikes reached at [get_area_name(T)]!"))
+			return FALSE
+
+	var/obj/structure/meatvine/tentacle_spike/new_spike = new spread_type(T)
+	new_spike.master = controller
+	controller.vines += new_spike
+
+	return TRUE
+
+/datum/action/cooldown/meatvine/spread_spike_multi/Activate(atom/target)
+	var/mob/living/simple_animal/hostile/retaliate/meatvine/user = owner
+	if(!istype(user))
+		return FALSE
+
+	if(!user.master)
+		to_chat(user, span_warning("You have no master controller!"))
+		return FALSE
+
+	var/obj/effect/meatvine_controller/controller = user.master
+
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf)
+		return FALSE
+
+	// Check range
+	if(get_dist(user, target_turf) > spread_range)
+		to_chat(user, span_warning("Target is too far away!"))
+		return FALSE
+
+	var/list/construct_turfs = get_build_turfs(target_turf)
+
+	if(!length(construct_turfs))
+		to_chat(user, span_warning("No valid placement locations!"))
+		return FALSE
+
+	var/total_cost = resource_cost * length(construct_turfs)
+
+	if(use_consumed_resources)
+		if(controller.consumed_resource_pool < total_cost)
+			to_chat(user, span_warning("Not enough resources! Need [total_cost], have [controller.consumed_resource_pool]."))
+			return FALSE
+
+	var/successful_placements = 0
+
+	for(var/turf/T as anything in construct_turfs)
+		if(use_consumed_resources)
+			if(controller.consumed_resource_pool < resource_cost)
+				to_chat(user, span_warning("Ran out of resources after placing [successful_placements] spikes!"))
+				break
+
+		if(do_spread(T, controller))
+			if(use_consumed_resources)
+				controller.consumed_resource_pool -= resource_cost
+			successful_placements++
+
+	if(successful_placements > 0)
+		. = ..()
+		return TRUE
+	else
+		to_chat(user, span_warning("Failed to place any spikes!"))
+		return FALSE
+
 #undef MULTI_CONSTRUCT_NONE
 #undef MULTI_CONSTRUCT_LINE
 #undef MULTI_CONSTRUCT_CROSS
