@@ -154,6 +154,7 @@
 			var/obj/item/weapon/polearm/halberd/bardiche/dendor/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/divine/necra)
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			var/obj/item/weapon/flail/sflail/necraflail/P = new(get_turf(src))
 			H.equip_to_appropriate_slot(P)
 		if(/datum/patron/divine/pestra)
