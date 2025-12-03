@@ -1289,6 +1289,18 @@
 	gender = NEUTER
 	specuse = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_ELF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING, SPEC_ID_HALF_ORC)
 
+/datum/sprite_accessory/hair/head/unkemptcurls
+	name = "Unkempt Curls"
+	icon_state = "unkempt_curls"
+	gender = NEUTER
+	specuse = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_ELF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING, SPEC_ID_HALF_ORC)
+
+/datum/sprite_accessory/hair/head/shrinepriestess
+	name = "Shrine Priestess"
+	icon_state = "shrine_priestess"
+	gender = NEUTER
+	specuse = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_ELF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING, SPEC_ID_HALF_ORC)
+
 /datum/sprite_accessory/hair/head/triton
 	name = "Base Triton"
 	abstract_type = /datum/sprite_accessory/hair/head/triton

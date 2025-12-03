@@ -322,6 +322,8 @@
 		/datum/sprite_accessory/hair/head/hyenamane,
 		/datum/sprite_accessory/hair/head/kajam,
 		/datum/sprite_accessory/hair/head/mermaid,
+		/datum/sprite_accessory/hair/head/unkemptcurls,
+		/datum/sprite_accessory/hair/head/shrinepriestess,
 		)
 
 /datum/customizer/bodypart_feature/hair/head/humanoid/triton
