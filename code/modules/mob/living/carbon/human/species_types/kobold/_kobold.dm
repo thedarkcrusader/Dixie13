@@ -42,8 +42,8 @@
 
 	enflamed_icon = "widefire"
 
-	soundpack_m = /datum/voicepack/male/kobold
-	soundpack_f = /datum/voicepack/female/kobold
+	soundpack_m = /datum/voicepack/other/kobold
+	soundpack_f = /datum/voicepack/other/kobold
 
 	exotic_bloodtype = /datum/blood_type/human/kobold
 
@@ -122,12 +122,12 @@
 	if(prob(1) && !(H.rogue_sneaking))
 		if(!COOLDOWN_FINISHED(src, kobold_cooldown))
 			return
-		var/emote = "grumble"
-		if(prob(50))
+		var/emote = "sniff"
+		if(prob(35))
 			emote = "cough"
 		H.emote(emote, forced = TRUE)
 
-		COOLDOWN_START(src, kobold_cooldown, 3 MINUTES)
+		COOLDOWN_START(src, kobold_cooldown, 5 MINUTES)
 
 /datum/species/kobold/get_skin_list()
 	return sortList(list(
