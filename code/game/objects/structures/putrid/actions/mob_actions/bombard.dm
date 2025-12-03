@@ -255,7 +255,6 @@
 
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	density = FALSE
-	anchored = TRUE
 
 	var/datum/action/cooldown/meatvine/personal/bombard/linked_bombard
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/origin_mob
