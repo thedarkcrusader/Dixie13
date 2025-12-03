@@ -59,7 +59,7 @@
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-		COMSIG_ATOM_EXITED = PROC_REF(roller_exit),
+		COMSIG_ATOM_EXIT = PROC_REF(roller_exit),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
@@ -195,13 +195,12 @@
 		return
 	SSmove_manager.stop_looping(thing, SSconveyors)
 
-/obj/structure/roller/proc/roller_exit(datum/source, atom/movable/exiting_atom, direction)
+/obj/structure/roller/proc/roller_exit(datum/source, atom/movable/exiting_atom, turf/exit_turf)
 	SIGNAL_HANDLER
 
 	if(!ismovable(exiting_atom))
 		return
 
-	var/turf/exit_turf = get_step(src, direction)
 	var/obj/structure/roller/next_roller = locate(/obj/structure/roller) in exit_turf
 
 	// Stop conveying if no operating roller in exit direction
