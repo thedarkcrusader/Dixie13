@@ -17,8 +17,6 @@
 
 	/// Base healing before adjustments
 	var/base_healing = 25
-	/// The actual amount healed
-	var/amount_healed = 25
 	/// Wound healing modifier
 	var/wound_modifier = 0.25
 	/// Blood healing amount
@@ -193,12 +191,11 @@
 					cast_on.visible_message(span_info("No Gods answer these prayers."), span_notice("No Gods answer these prayers."))
 					return
 				cast_on.visible_message(span_info("A choral sound comes from above and [cast_on] is healed!"), span_notice("I am bathed in healing choral hymns!"))
-
+	var/amount_healed = base_healing
+	
 	if(conditional_buff)
 		to_chat(owner, span_greentext("Channeling my patron's power is easier in these conditions!"))
-		amount_healed = base_healing + situational_bonus
-	else
-		amount_healed = base_healing
+		amount_healed += situational_bonus
 
 	cast_on.adjustToxLoss(-amount_healed)
 	cast_on.adjustOxyLoss(-amount_healed)
@@ -231,7 +228,6 @@
 	spell_cost = 45
 
 	base_healing = 50
-	amount_healed = 50
 	wound_modifier = 0.5
 	blood_restoration = BLOOD_VOLUME_SURVIVE
 	stun_undead = TRUE
