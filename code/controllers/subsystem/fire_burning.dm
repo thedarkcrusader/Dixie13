@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(fire_burning)
 
 		if(istype(O, /obj/item/clothing))
 			var/obj/item/clothing/cloth = O
-			if(cloth.wetable)
+			if(cloth.wet)
 				var/dry_amount = round(fire_intensity / 5)
 				cloth.wet.use_water(dry_amount)
 
