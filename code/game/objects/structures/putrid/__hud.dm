@@ -19,6 +19,8 @@
 /atom/movable/screen/putrid/Click(location, control, params)
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = usr
+	if(!istype(consumed))
+		return
 	info_blurb(consumed)
 
 /atom/movable/screen/putrid/proc/info_blurb(mob/living/simple_animal/hostile/retaliate/meatvine/consumed)
@@ -55,6 +57,8 @@
 /atom/movable/screen/putrid/bar/proc/on_resource_change(datum/source, current_resources)
 	SIGNAL_HANDLER
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
+	if(!istype(consumed))
+		return
 	if(!consumed?.master)
 		return
 
@@ -66,6 +70,8 @@
 
 /atom/movable/screen/putrid/bar/proc/setup_mob()
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
+	if(!istype(consumed))
+		return
 	RegisterSignal(consumed?.master, COMSIG_MEATVINE_RESOURCE_CHANGE, PROC_REF(on_resource_change))
 
 	if(consumed?.master)
@@ -120,6 +126,8 @@
 /atom/movable/screen/putrid/personal/bar/proc/on_resource_change(datum/source, current_resources)
 	SIGNAL_HANDLER
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
+	if(!istype(consumed))
+		return
 	if(!consumed)
 		return
 
@@ -131,6 +139,8 @@
 
 /atom/movable/screen/putrid/personal/bar/proc/setup_mob()
 	var/mob/living/simple_animal/hostile/retaliate/meatvine/consumed = hud?.mymob
+	if(!istype(consumed))
+		return
 	RegisterSignal(consumed, signal, PROC_REF(on_resource_change))
 
 	if(consumed)

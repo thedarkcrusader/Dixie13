@@ -72,13 +72,9 @@
 	victim.balloon_alert(victim, "flung!")
 	playsound(user, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE)
 
-	// Apply initial stun
 	victim.Knockdown(stun_duration)
-
-	// Store initial position to check if they actually moved
 	var/turf/start_turf = get_turf(victim)
 
-	// Throw the victim with a callback to check for collision
 	victim.throw_at(
 		target_turf,
 		fling_distance,

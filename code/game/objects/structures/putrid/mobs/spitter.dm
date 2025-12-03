@@ -13,5 +13,7 @@
 
 	personal_abilities = list(
 		/datum/action/cooldown/meatvine/personal/drain_well,
-		/datum/action/cooldown/meatvine/personal/ranged/spread/lethal
+		/datum/action/cooldown/meatvine/personal/lunge,
+		/datum/action/cooldown/meatvine/personal/ranged/spread/lethal,
+		/datum/action/cooldown/meatvine/personal/slow_ground,
 	)

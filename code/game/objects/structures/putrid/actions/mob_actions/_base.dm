@@ -1,4 +1,3 @@
-
 /datum/action/cooldown/meatvine/personal
 	name = "Personal Ability"
 	desc = "Uses personal resources"
@@ -8,6 +7,10 @@
 	active_background_icon_state = "button_bg1"
 	check_flags = NONE
 	var/personal_resource_cost = 10
+
+/datum/action/cooldown/meatvine/personal/Grant(mob/granted_to)
+	. = ..()
+	RegisterSignal(owner, COMSIG_MEATVINE_PERSONAL_RESOURCE_CHANGE, PROC_REF(update_status_on_signal))
 
 /datum/action/cooldown/meatvine/personal/IsAvailable()
 	. = ..()

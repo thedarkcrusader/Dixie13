@@ -28,6 +28,11 @@
 	var/list/preview_images = list()  // For multi-construction previews
 	var/should_replace = FALSE
 
+/datum/action/cooldown/meatvine/Grant(mob/granted_to)
+	. = ..()
+	if(!istype(src, /datum/action/cooldown/meatvine/personal))
+		RegisterSignal(owner, COMSIG_MEATVINE_RESOURCE_CHANGE, PROC_REF(update_status_on_signal))
+
 /datum/action/cooldown/meatvine/IsAvailable()
 	. = ..()
 	if(!.)
