@@ -497,9 +497,9 @@
 	if(!isliving(target))
 		return
 	var/mob/living/attacked_target = target
-	if(attacked_target.real_name in fingers)
-		return
 	if(!attacked_target.client)
+		return
+	if(attacked_target.real_name in fingers)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
@@ -520,6 +520,7 @@
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
 			return
+		fingers.Remove(null)
 		var/list/choices = list()
 		for(var/F in fingers)
 			if(fingers[F] == TRUE)
@@ -527,7 +528,9 @@
 			else
 				choices["<s>[F]</s>"] = F
 		var/choice = choices[browser_input_list(user, "Reattach/Sever a Finger", "THE LIST", choices)]
-		if(choice)
+		if(QDELETED(src))
+			return
+		if(!QDELETED(user) && choice)
 			fingers[choice] = !fingers[choice]
 			user.mind.cached_frumentarii += fingers
 			playsound(src, 'sound/items/write.ogg', 50, FALSE, -4, ignore_walls = FALSE)
@@ -538,6 +541,7 @@
 	user.mind.cached_frumentarii += fingers
 
 /obj/item/paper/scroll/frumentarii/proc/rebuild_info()
+	fingers.Remove(null)
 	info = null
 	info += "<div style='vertical-align:top'>"
 	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>Known Agents</h2>"
