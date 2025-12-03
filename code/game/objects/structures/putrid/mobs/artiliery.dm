@@ -1,7 +1,9 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/artiliery
-	icon_state = "harvester"
-	icon_living = "harvester"
-	icon_dead = "harvester_dead"
+	icon_state = "artiliery"
+	icon_living = "artiliery"
+	icon_dead = "artiliery_dead"
+	icon = 'icons/obj/cellular/putrid_large.dmi'
+
 	ranged = TRUE
 	projectiletype = /obj/projectile/meatbullet
 

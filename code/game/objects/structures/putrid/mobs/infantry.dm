@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/infantry
-	icon_state = "harvester"
-	icon_living = "harvester"
-	icon_dead = "harvester_dead"
+	icon_state = "infantry"
+	icon_living = "infantry"
+	icon_dead = "infantry_dead"
 	ranged = TRUE
 	projectiletype = /obj/projectile/meatbullet
 

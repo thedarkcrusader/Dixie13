@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/warrior
-	icon_state = "turret"
-	icon_living = "turret"
-	icon_dead = "turret_destroyed"
+	icon_state = "warrior"
+	icon_living = "warrior"
+	icon_dead = "warrior_dead"
+	icon = 'icons/obj/cellular/putrid_large.dmi'
 
 	possible_evolutions = list()
 

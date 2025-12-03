@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/spawnlord
-	icon_state = "bloodling_stage_4"
-	icon_living = "bloodling_stage_4"
-	icon_dead = "bloodling_stage_4_dead"
+	icon_state = "spawnlord"
+	icon_living = "spawnlord"
+	icon_dead = "spawnlord_dead"
+	icon = 'icons/obj/cellular/wide_putrid.dmi'
 
 	possible_evolutions = list()
 
@@ -17,3 +18,7 @@
 		/datum/action/cooldown/meatvine/personal/transfer_resources/improved,
 		/datum/action/cooldown/meatvine/personal/mark_target,
 	)
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/defender/update_overlays()
+	. = ..()
+	. += emissive_appearance(icon, "spawnlord_emissive")

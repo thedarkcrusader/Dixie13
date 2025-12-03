@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/broodmother
-	icon_state = "bloodling_stage_4"
-	icon_living = "bloodling_stage_4"
-	icon_dead = "bloodling_stage_4_dead"
+	icon_state = "broodmother"
+	icon_living = "broodmother"
+	icon_dead = "broodmother_dead"
+	icon = 'icons/obj/cellular/putrid_large.dmi'
 
 	possible_evolutions = list()
 

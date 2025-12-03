@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/goliath
-	icon_state = "turret"
-	icon_living = "turret"
-	icon_dead = "turret_destroyed"
+	icon_state = "goliath"
+	icon_living = "goliath"
+	icon_dead = "goliath_dead"
+	icon = 'icons/obj/cellular/putrid_large.dmi'
 
 	possible_evolutions = list()
 

@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/defender
-	icon_state = "turret"
-	icon_living = "turret"
-	icon_dead = "turret_destroyed"
+	icon_state = "defender"
+	icon_living = "defender"
+	icon_dead = "defender_dead"
+	icon = 'icons/obj/cellular/wide_putrid.dmi'
 
 	possible_evolutions = list(
 		/mob/living/simple_animal/hostile/retaliate/meatvine/goliath,
@@ -15,3 +16,7 @@
 		/datum/action/cooldown/meatvine/personal/charge_attack,
 		/datum/action/cooldown/meatvine/personal/fling,
 	)
+
+/mob/living/simple_animal/hostile/retaliate/meatvine/defender/update_overlays()
+	. = ..()
+	. += emissive_appearance(icon, "defender_emissive")

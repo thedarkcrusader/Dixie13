@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/meatvine/constructor
-	icon_state = "bloodling_stage_4"
-	icon_living = "bloodling_stage_4"
-	icon_dead = "bloodling_stage_4_dead"
+	icon_state = "constructor"
+	icon_living = "constructor"
+	icon_dead = "constructor_dead"
 
 	possible_evolutions = list(
 		/mob/living/simple_animal/hostile/retaliate/meatvine/broodmother,
