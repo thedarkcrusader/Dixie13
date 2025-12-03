@@ -20,7 +20,7 @@
 		return
 	if(!can_weather(L))
 		stop_weather_sound_effect(L)
-		return	
+		return
 	weather_sound_effect(L)
 	if(can_weather_effect(L))
 		weather_act(L)
@@ -33,7 +33,7 @@
 		else
 			C.SoakMob(FEET, dirty_water = FALSE, rain = TRUE)
 
-/datum/particle_weather/rain_gentle
+/datum/particle_weather/rain/rain_gentle
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/rain
@@ -53,7 +53,7 @@
 
 	temperature_modification = -1
 
-/datum/particle_weather/rain_storm
+/datum/particle_weather/rain/rain_storm
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/rain
@@ -75,7 +75,7 @@
 
 	COOLDOWN_DECLARE(thunder)
 
-/datum/particle_weather/rain_storm/tick()
+/datum/particle_weather/rain/rain_storm/tick()
 	if(!COOLDOWN_FINISHED(src, thunder))
 		return
 

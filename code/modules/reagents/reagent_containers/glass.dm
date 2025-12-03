@@ -136,7 +136,7 @@
 				else if(istype(bowl_check.reagents, /datum/reagent/consumable/soup))
 					var/datum/reagent/consumable/soup/soup_check = bowl_check.reagents
 					soup_check.taste_mult +=1
-				if(!bowl_check.reagents.total_volume > 0 && !bowl_check.reagents.get_reagent_amount(/datum/reagent/water) == reagents.total_volume)
+				if(bowl_check.reagents.get_reagent_amount(/datum/reagent/water) != bowl_check.reagents.total_volume)
 					bowl_check.usages += 1
 				if(bowl_check.usages >= bowl_check.max_usages && !bowl_check.dirty)
 					bowl_check.dirty = TRUE

@@ -220,8 +220,8 @@
 			if(cloth_check.reagents.total_volume < 0.1)
 				to_chat(user, span_warning("[cloth_check] is too dry to clean with!"))
 				return
-			var/DirtyWater = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
-			if(DirtyWater)
+			var/dirtywater = cloth_check.reagents.get_reagent_amount(/datum/reagent/water/gross)
+			if(dirtywater)
 				to_chat(user, span_warning("[cloth_check] water is too dirty to clean anything with it!"))
 				return
 			to_chat(user, ("You start cleaning the [src] with the [cloth_check]"))
@@ -254,7 +254,7 @@
 		if(istype(reagents, /datum/reagent/consumable/soup))
 			var/datum/reagent/consumable/soup/soup_check = reagents
 			soup_check.taste_mult +=1
-	if(!reagents.total_volume > 0 && !reagents.get_reagent_amount(/datum/reagent/water) == reagents.total_volume)
+	if(reagents.get_reagent_amount(/datum/reagent/water) != reagents.total_volume)
 		usages +=1
 	if(usages >= max_usages && !dirty)
 		dirty = TRUE
