@@ -307,9 +307,9 @@
 	if(!istype(target))
 		return FALSE
 	if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the hammer will do 20 damage or 14
-		force = DAMAGE_MACE * 2
+		force = DAMAGE_MACE * 1.2
 	else
-		force = DAMAGE_MACE + 2
+		force = DAMAGE_MACE + 1
 	return FALSE
 
 /obj/item/weapon/mace/steel/profhammer/examine(mob/user)
