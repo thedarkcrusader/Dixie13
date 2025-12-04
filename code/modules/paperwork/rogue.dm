@@ -512,7 +512,7 @@
 		return
 
 	fingers[attacked_target.real_name] = TRUE
-	user.mind.cached_frumentarii += fingers
+	user.mind.cached_frumentarii = fingers
 	rebuild_info()
 
 /obj/item/paper/scroll/frumentarii/attackby(obj/item/P, mob/living/carbon/human/user, params)
