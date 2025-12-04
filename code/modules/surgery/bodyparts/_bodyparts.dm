@@ -161,53 +161,65 @@
 		return
 	return ..()
 
+/obj/item/bodypart/proc/try_butcher_bodypart(mob/living/user, held_item)
+	/// The time it takes to butcher a body part with zero butchery skill.
+	var/const/BASE_TIME = 21 SECONDS
+	/// The reduction in butchery time per level in butchery.
+	var/const/TIME_PER_LEVEL = 3 SECONDS
+	/// How much XP is granted? Scaled by int.
+	var/const/XP_GAINED = 1/3
+	if(skeletonized)
+		to_chat(user, span_warning("\The [src] has no meat to butcher."))
+		return
+	var/used_time = BASE_TIME
+	var/butcher_level = user.get_skill_level(/datum/skill/labor/butchering)
+	used_time -= butcher_level * TIME_PER_LEVEL
+	visible_message("[user] begins to butcher \the [src].")
+	playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+	// for each level above
+	var/steaks = 1
+	switch(butcher_level)
+		if(SKILL_LEVEL_JOURNEYMAN)
+			steaks = 2
+		if(SKILL_LEVEL_EXPERT, SKILL_LEVEL_MASTER)
+			steaks = 3
+		if(SKILL_LEVEL_LEGENDARY)
+			steaks = 4 // the steaks have never been higher
+	if(!do_after(user, used_time, src))
+		return FALSE // cancelled/failed
+	var/obj/item/reagent_containers/food/snacks/meat/steak/steak
+	var/steak_type = original_owner?.dna?.species?.meat || /obj/item/reagent_containers/food/snacks/meat/steak //Meat depends on species.
+	for(var/steak_index in 1 to steaks)
+		steak = new steak_type(get_turf(src))
+		if(rotted)
+			steak.become_rotten()
+	new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+	user.adjust_experience(/datum/skill/labor/butchering, XP_GAINED * user.STAINT, FALSE)
+	qdel(src)
+	return TRUE
+
 /obj/item/bodypart/MiddleClick(mob/living/user, params)
 	var/obj/item/held_item = user.get_active_held_item()
-	var/datum/species/S = original_owner?.dna?.species
 	if(held_item)
-		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-			if(!skeletonized)
-				var/used_time = 21 SECONDS
-				if(user.mind)
-					used_time -= (user.get_skill_level(/datum/skill/labor/butchering) * 3 SECONDS)
-				visible_message("[user] begins to butcher \the [src].")
-				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-				var/steaks = 1
-				switch(user.get_skill_level(/datum/skill/labor/butchering))
-					if(3)
-						steaks = 2
-					if(4 to 5)
-						steaks = 3
-					if(6)
-						steaks = 4 // the steaks have never been higher
-				var/amt2raise = user.STAINT/3
-				if(do_after(user, used_time, src))
-					var/obj/item/reagent_containers/food/snacks/meat/steak/steak
-					var/steak_type = S?.meat || /obj/item/reagent_containers/food/snacks/meat/steak
-					for(steaks, steaks>0, steaks--)
-						steak = new steak_type(get_turf(src))	//Meat depends on species.
-						if(rotted)
-							steak.become_rotten()
-					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-					user.adjust_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
-					qdel(src)
-			else
-				to_chat(user, span_warning("[src] has no meat to butcher."))
-	else if(isanimal(user))
-		if(!skeletonized)
-			visible_message("[user] begins to eat \the [src].")
-			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			if(do_after(user, 3 SECONDS, src))
-				var/obj/item/reagent_containers/food/snacks/meat/steak/steak
-				var/steak_type = S?.meat || /obj/item/reagent_containers/food/snacks/meat/steak
-				steak = new steak_type(get_turf(src))	//Meat depends on species.
-				if(rotted)
-					steak.become_rotten()
-				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-				qdel(src)
-		else
-			to_chat(user, span_warning("[src] has no meat to eat."))
-	..()
+		if(is_short_blade(held_item))
+			try_butcher_bodypart(user, held_item)
+			return
+	else if(isanimal(user)) // turns it into a chunk of meat. yuck!
+		if(skeletonized)
+			to_chat(user, span_warning("\The [src] has no meat to eat."))
+			return
+		visible_message("[user] begins to eat \the [src].")
+		playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+		if(do_after(user, 3 SECONDS, src))
+			var/obj/item/reagent_containers/food/snacks/meat/steak/steak
+			var/steak_type = original_owner?.dna?.species?.meat || /obj/item/reagent_containers/food/snacks/meat/steak
+			steak = new steak_type(get_turf(src))	//Meat depends on species.
+			if(rotted)
+				steak.become_rotten()
+			new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+			qdel(src)
+		return
+	return ..() // we didn't do anything above, fall back to parent functionality
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
 	if(ishuman(C))
