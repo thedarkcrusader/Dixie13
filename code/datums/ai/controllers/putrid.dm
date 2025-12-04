@@ -6,7 +6,7 @@
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/meatvine(),
 		BB_PAPAMEAT_TARGET = null,
 		BB_PAPAMEAT_HEALING = FALSE,
 		BB_CORPSE_TO_FEED = null,
@@ -19,6 +19,7 @@
 		BB_ABILITY_TO_USE = null,
 		BB_WORMHOLE_TARGET = null,
 		BB_LAST_WORMHOLE_CHECK = 0,
+		BB_MEATVINE_ATTACK_FAIL = list(),
 	)
 
 	planning_subtrees = list(
@@ -27,7 +28,7 @@
 		/datum/ai_planning_subtree/use_personal_abilities,  // Use abilities tactically
 		/datum/ai_planning_subtree/papameat_defend,
 		/datum/ai_planning_subtree/aggro_find_target,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/meatvine,
 		/datum/ai_planning_subtree/meatvine_bridge,
 		/datum/ai_planning_subtree/meatvine_destroy_obstacle,
 		/datum/ai_planning_subtree/papameat_feed_corpse,

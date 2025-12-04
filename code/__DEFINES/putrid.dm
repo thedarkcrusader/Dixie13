@@ -11,6 +11,7 @@
 #define BB_ABILITY_TO_USE "ability_to_use"
 #define BB_WORMHOLE_TARGET "wormhole_target"
 #define BB_LAST_WORMHOLE_CHECK "last_wormhole_check"
+#define BB_MEATVINE_ATTACK_FAIL "attack_fail_meatvine"
 
 // Signal for papameat damage
 #define COMSIG_PAPAMEAT_DAMAGED "papameat_damaged"

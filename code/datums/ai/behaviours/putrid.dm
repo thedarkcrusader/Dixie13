@@ -11,7 +11,7 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_PAPAMEAT_HEALING, TRUE)
-	set_movement_target(controller, papameat, /datum/ai_movement/hybrid_pathing/gnome)
+	set_movement_target(controller, papameat)
 
 /datum/ai_behavior/papameat_sacrifice/perform(delta_time, datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -112,7 +112,7 @@
 	if(!papameat || QDELETED(papameat))
 		return FALSE
 
-	set_movement_target(controller, papameat, /datum/ai_movement/hybrid_pathing/gnome)
+	set_movement_target(controller, papameat)
 
 /datum/ai_behavior/papameat_defend/perform(delta_time, datum/ai_controller/controller, papameat_key)
 	. = ..()
@@ -148,7 +148,7 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_BRIDGING, TRUE)
-	set_movement_target(controller, request.target_location, /datum/ai_movement/hybrid_pathing)
+	set_movement_target(controller, request.target_location)
 
 /datum/ai_behavior/meatvine_bridge/perform(delta_time, datum/ai_controller/controller, bridge_key)
 	. = ..()
@@ -216,7 +216,7 @@
 		return FALSE
 
 	controller.set_blackboard_key(BB_ATTACKING_OBSTACLE, TRUE)
-	set_movement_target(controller, obstacle, /datum/ai_movement/hybrid_pathing)
+	set_movement_target(controller, obstacle)
 
 /datum/ai_behavior/meatvine_destroy_obstacle/perform(delta_time, datum/ai_controller/controller, obstacle_key)
 	. = ..()

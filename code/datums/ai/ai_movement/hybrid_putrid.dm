@@ -22,6 +22,9 @@
 		var/advanced = TRUE
 		var/turf/current_turf = get_turf(movable_pawn)
 
+		// Store location before movement attempt
+		var/turf/location_before_move = current_turf
+
 		// Check for wormhole shortcuts periodically
 		var/last_check = controller.blackboard[BB_LAST_WORMHOLE_CHECK]
 		if(!last_check)
@@ -98,6 +101,13 @@
 					falling_back -= used_ref
 					fallback_fail -= used_ref
 				else
+					// Movement failed - check if it's due to bounds
+					if(is_blocked_by_bounds(movable_pawn, controller))
+						SEND_SIGNAL(movable_pawn, COMSIG_AI_GENERAL_CHANGE, "At bounds edge, cancelling action")
+						controller.CancelActions()
+						stop_moving_towards(controller)
+						continue
+
 					// Movement failed - increment failure counter
 					controller.pathing_attempts++
 
@@ -194,6 +204,13 @@
 						// Successfully completed A* path - allow basic movement again on next iteration
 						controller.pathing_attempts = 0
 				else
+					// Movement failed in advanced pathing - check if it's due to bounds
+					if(location_before_move == get_turf(movable_pawn) && is_blocked_by_bounds(movable_pawn, controller))
+						SEND_SIGNAL(movable_pawn, COMSIG_AI_GENERAL_CHANGE, "At bounds edge, cancelling action")
+						controller.CancelActions()
+						stop_moving_towards(controller)
+						continue
+
 					if(!falling_back[used_ref])
 						generate_path = TRUE
 						controller.clear_blackboard_key(future_path_blackboard_key)
@@ -233,6 +250,41 @@
 					max_path_distance + 1, max_path_distance + 1, minimum_distance, id=controller.get_access())
 				controller.clear_blackboard_key(future_path_blackboard_key)
 				SEND_SIGNAL(controller.pawn, COMSIG_AI_PATH_GENERATED, controller.movement_path)
+
+
+/datum/ai_movement/hybrid_pathing/wormhole_aware/proc/is_blocked_by_bounds(atom/movable/pawn, datum/ai_controller/controller)
+	// Check if the pawn has a bounded component
+	var/datum/component/bounded/bounds = pawn.GetComponent(/datum/component/bounded)
+	if(!bounds)
+		return FALSE
+
+	// Check if the pawn has a movement target
+	if(!controller.current_movement_target)
+		return FALSE
+
+	var/turf/current_loc = get_turf(pawn)
+	var/turf/target_loc = get_turf(controller.current_movement_target)
+
+	if(!current_loc || !target_loc)
+		return FALSE
+
+	var/atom/bounds_origin = bounds.master
+	if(!bounds_origin)
+		return FALSE
+
+	var/turf/origin_turf = get_turf(bounds_origin)
+	if(!origin_turf)
+		return FALSE
+
+	var/current_distance = get_dist(current_loc, origin_turf)
+	var/max_distance = bounds.max_dist
+
+	if(current_distance >= max_distance)
+		var/target_distance = get_dist(target_loc, origin_turf)
+		if(target_distance > current_distance)
+			return TRUE
+
+	return FALSE
 
 /datum/ai_movement/hybrid_pathing/wormhole_aware/proc/find_wormhole_shortcut(atom/movable/pawn, atom/target, datum/ai_controller/controller)
 	// Find nearby wormholes
