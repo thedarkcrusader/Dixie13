@@ -189,7 +189,7 @@
 			M.add_nausea(5)
 			M.reagents.add_reagent(/datum/reagent/medicine/herbal/valeriana_draught, 2)
 			M.emote("cough")
-			if(prob(50))
+			if(prob(20))
 				to_chat(M, span_warning("The gas makes you incredibly tired, you think you might pass out..."))
 			return 1
 
