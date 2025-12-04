@@ -531,7 +531,7 @@
 		if(!choice || QDELETED(src) || QDELETED(user))
 			return
 			fingers[choice] = !fingers[choice]
-			user.mind.cached_frumentarii += fingers
+			user.mind.cached_frumentarii = fingers
 			playsound(src, 'sound/items/write.ogg', 50, FALSE, -4, ignore_walls = FALSE)
 	rebuild_info()
 
