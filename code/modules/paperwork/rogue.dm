@@ -530,9 +530,9 @@
 		var/choice = choices[browser_input_list(user, "Reattach/Sever a Finger", "THE LIST", choices)]
 		if(!choice || QDELETED(src) || QDELETED(user))
 			return
-			fingers[choice] = !fingers[choice]
-			user.mind.cached_frumentarii = fingers
-			playsound(src, 'sound/items/write.ogg', 50, FALSE, -4, ignore_walls = FALSE)
+		fingers[choice] = !fingers[choice]
+		user.mind.cached_frumentarii = fingers
+		playsound(src, 'sound/items/write.ogg', 50, FALSE, -4, ignore_walls = FALSE)
 	rebuild_info()
 
 /obj/item/paper/scroll/frumentarii/read(mob/user)
