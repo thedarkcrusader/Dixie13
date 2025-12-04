@@ -381,7 +381,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(stat == DEAD)
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item)
-			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if((butcher_results || guaranteed_butcher_results) && is_short_blade(held_item))
 				if(src.buckled && istype(src.buckled, /obj/structure/meathook))
 					var/obj/structure/meathook/hook = buckled
 					hook.butchery(user, src)

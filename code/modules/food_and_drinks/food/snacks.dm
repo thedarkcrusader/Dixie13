@@ -479,7 +479,7 @@ All foods are distributed among various categories. Use common sense.
 		..() // -> item/attackby()
 		return 0
 
-	if(W.get_sharpness() && W.wlength == WLENGTH_SHORT)
+	if(is_short_blade(W))
 		if((slices_num <= 0 || !slices_num) || !slice_path) //is the food sliceable?
 			return FALSE
 		if(slice_bclass == BCLASS_CHOP)
