@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(job)
 	if(!latejoin)
 		position_limit = job.spawn_positions
 	JobDebug("Player: [player] is now Rank: [job.get_informed_title(player)], JCP:[job.current_positions], JPL:[position_limit]")
-	if(player?.client?.prefs.multi_char_ready)
+	if(istype(player) && player?.client?.prefs.multi_char_ready)
 		player.finalize_multi_ready_character()
 	player.mind.set_assigned_role(job)
 	unassigned -= player
