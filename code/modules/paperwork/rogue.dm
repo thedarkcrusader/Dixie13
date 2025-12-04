@@ -528,9 +528,8 @@
 			else
 				choices["<s>[F]</s>"] = F
 		var/choice = choices[browser_input_list(user, "Reattach/Sever a Finger", "THE LIST", choices)]
-		if(QDELETED(src))
+		if(!choice || QDELETED(src) || QDELETED(user))
 			return
-		if(!QDELETED(user) && choice)
 			fingers[choice] = !fingers[choice]
 			user.mind.cached_frumentarii += fingers
 			playsound(src, 'sound/items/write.ogg', 50, FALSE, -4, ignore_walls = FALSE)
