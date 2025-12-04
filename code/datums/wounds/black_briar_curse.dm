@@ -1,146 +1,234 @@
-#define INFECTION_DEATH (5 MINUTES)
-#define INFECTION_LATE 0.6
-#define INFECTION_MID 0.3
-#define INFECTION_HIDDEN 0.1
-#define INFECTION_NEXT_SPREAD_COOLDOWN INFECTION_DEATH * 0.05
-
-#define INFECTION_ROOT_MAX INFECTION_DEATH
-#define INFECTION_ROOT_LATE INFECTION_ROOT_MAX * INFECTION_LATE
-#define INFECTION_ROOT_MID INFECTION_ROOT_MAX * INFECTION_MID
-
-#define INFECTION_LIMB_MAX INFECTION_DEATH * INFECTION_LATE
-#define INFECTION_LIMB_DISABLE INFECTION_LIMB_MAX * 0.8
+#define BBC_TIME_MAX (60 MINUTES)
+#define BBC_TIME_MAX_LIMB BBC_TIME_MAX * 0.5
+#define BBC_TIME_LATE 	0.75
+#define BBC_TIME_MID	0.25
+#define BBC_TIME_HIDDEN	0.1
 
 // carbons only! this shit is mostly about limbs
 /datum/wound/black_briar_curse
+	abstract_type = (/datum/wound/black_briar_curse)
+
 	category = "Disease"
 	name = "umbrosal cordycepsis"
-	desc = "Commonly referred to as the Black Biar curse."
+	desc = "Commonly referred to as the Black Briar curse."
 	check_name = "<span class='briar'><B>BLACK BRIAR</B></span>"
 
 	severity = WOUND_SEVERITY_BIOHAZARD
 	sleep_healing = 0
+	bleed_rate = null
 
+	// the body zones this curse type targets
+	var/list/body_zones
+	// all of these instances of this in a body
+	var/list/root_network
+
+	var/max_infection = BBC_TIME_MAX_LIMB
 	// this goes up every onlife. once the total reaches 30 MINUTES, you are dead. non-root infection contributes to the root, nasty.
 	var/infection = 0
-	// when it can try and infect a limb again, world.time + INFECTION_NEXT_SPREAD_COOLDOWN
-	var/next_limb_infection
+	var/infection_percent = 0
+	// used to skip rebuilds when they're unnecessary
+	var/can_rebuild = TRUE
+
+/datum/wound/black_briar_curse/Destroy(force)
+	. = ..()
+	LAZYNULL(root_network)
 
 /datum/wound/black_briar_curse/get_check_name(mob/user)
-	if(infection > INFECTION_HIDDEN * ((bodypart_owner.body_part & CHEST) ? INFECTION_ROOT_MAX : INFECTION_LIMB_MAX))
+	if(infection > BBC_TIME_HIDDEN * max_infection)
 		return ..()
+
+/datum/wound/black_briar_curse/can_apply_to_bodypart(obj/item/bodypart/affected)
+	. = ..()
+	if(!(affected.body_zone in body_zones))
+		return FALSE
 
 /datum/wound/black_briar_curse/can_apply_to_mob(mob/living/affected)
 	. = ..()
-	if(!. || !iscarbon(affected))
-		return
-	return affected.getorganslot(ORGAN_SLOT_LUNGS) && !HAS_TRAIT(affected, TRAIT_TOXIMMUNE)
+	if(!iscarbon(affected))
+		return FALSE
+	return . && affected.getorganslot(ORGAN_SLOT_LUNGS) && !HAS_TRAIT(affected, TRAIT_TOXIMMUNE)
 
 /datum/wound/black_briar_curse/can_stack_with(datum/wound/other)
-	if(istype(other, type))
+	if(istype(other, /datum/wound/black_briar_curse))
 		var/datum/wound/black_briar_curse/O = other
-		O.infection += ((bodypart_owner.body_part & CHEST) ? INFECTION_ROOT_MAX : INFECTION_LIMB_MAX) * 0.01
+		O.infection = min(O.infection + O.max_infection * 0.05, O.max_infection)
 		return FALSE
 	return TRUE
 
-/datum/wound/black_briar_curse/has_special_infection()
-	return bodypart_owner.body_part & CHEST
+/datum/wound/black_briar_curse/on_bodypart_gain(obj/item/bodypart/affected)
+	. = ..()
+	infection = min(infection, max_infection * BBC_TIME_HIDDEN)
 
 /datum/wound/black_briar_curse/on_mob_gain(mob/living/affected)
 	. = ..()
-	var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
-	if(chest && !chest.has_wound(type))
-		// we just got added and there's no root? let's move to the chest then and become it.
-		if(infection)
-			infection = min(infection, INFECTION_LIMB_MAX * INFECTION_HIDDEN)
-		apply_to_bodypart(chest, TRUE)
+	if(bodypart_owner.body_zone != BODY_ZONE_CHEST)
+		var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
+		if(istype(chest) && !chest.has_wound(/datum/wound/black_briar_curse/chest))
+			can_rebuild = FALSE
+			qdel(src) // we just got added and there's no root? let's make a chest wound instead.
+			chest.add_wound(/datum/wound/black_briar_curse/chest, TRUE)
+			return
+	can_rebuild = TRUE
+	rebuild_root_network(affected)
+
+/datum/wound/black_briar_curse/on_bodypart_loss(obj/item/bodypart/affected, mob/living/affected_mob)
+	. = ..()
 
 /datum/wound/black_briar_curse/on_mob_loss(mob/living/affected)
 	. = ..()
-	if(bodypart_owner?.body_part & CHEST)
-		REMOVE_TRAIT(affected, TRAIT_IMMOBILIZED, "[type]")
-		affected.remove_movespeed_modifier(MOVESPEED_ID_BLACK_BRIAR)
-		//kill all the tumors
-		for(var/datum/wound/black_briar_curse/tumor in affected.get_wounds())
-			if(tumor == src)
-				continue
-			tumor.whp = 0
-			tumor.heal_wound(1)
+	rebuild_root_network(affected)
 
 /datum/wound/black_briar_curse/on_life()
 	. = ..()
-	var/max_infection = (bodypart_owner.body_part & CHEST) ? INFECTION_ROOT_MAX : INFECTION_LIMB_MAX
-	infection = clamp(infection + rand(20, 25) - owner.STAEND, 0, max_infection)
-	var/infection_percent = min(infection / max_infection, 1) // this shouldnt actually happen but there might be a rounding error at some point
-	//basically what we're doing is forcing an inverse multiplicative graph to actually land where we want it to on the max pain.
-	//so we take the inverse of the function and run our pain against it, which is currently 40, and that is our offset from 1
+	// No, this will not correlate to dungeon or island waits. But it's expensive to check, so we're gonna deal with asynced rate.
+	infection = clamp(infection + (rand(20, 25) - owner.STAEND) * (SSmobs.wait * 0.1) , 0, max_infection)
+	infection_percent = min(infection / max_infection, 1)
+	//basically what we're doing is forcing a multiplicative inverse function to actually land where we want it to on the max pain.
+	//so we take the inverse of the function and run our pain against it, which is the second number, and that is our offset from 1
 	//if someone ends up tweaking it for balance this will be very annoying to actually understand
-	var/woundpain_inverse = (1 - INFECTION_HIDDEN) / (1 + 40)
+	var/woundpain_inverse = (1 - BBC_TIME_HIDDEN) / (1 + 40)
 	//the pain should roughly start just a little bit after the infection is no longer hidden
 	//because we really don't wanna overshoot somehow and get an undefined number we're gonna give a .001 bump
-	woundpain = max(0, (1 - INFECTION_HIDDEN) / (1.001 + woundpain_inverse - infection_percent) - 1)
+	woundpain = max(0, (1 - BBC_TIME_HIDDEN) / (1.001 + woundpain_inverse - infection_percent) - 1)
+	to_chat(owner, "[bodypart_owner.body_zone] - [infection / 10] sec - [infection_percent * 100]%")
 
-	switch(bodypart_owner.body_zone)
-		if(BODY_ZONE_HEAD)
-			if(infection_percent > INFECTION_HIDDEN && prob(2 * infection_percent))
-				owner.blur_eyes(rand(3, 6))
-		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
-			if(infection > INFECTION_LIMB_DISABLE ^ disabling)
-				disabling = TRUE ^ disabling
-				bodypart_owner.update_disabled()
-		if(BODY_ZONE_CHEST) // root/chest. This should be the only one assigning traits, movespeed mods, etc. It'll be a pain in the ass to track otherwise.
-			owner.adjust_energy((owner.STAEND - 20) * infection_percent)
-			var/list/uninfected_bodyparts = list(BODY_ZONE_HEAD, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+/datum/wound/black_briar_curse/proc/rebuild_root_network(mob/living/affected)
+	if(!can_rebuild)
+		return
+	var/list/new_roots
+	var/list/networked_tumors = list()
+	for(var/datum/wound/black_briar_curse/tumor in affected.get_wounds())
+		var/obj/item/bodypart/bp = tumor.bodypart_owner
+		if(bp?.body_zone) // each tumor tries to grab its body zone
+			var/datum/weakref/tumor_ref = LAZYACCESS(tumor.root_network, bp.body_zone)
+			if(!tumor_ref?.resolve())
+				tumor_ref = WEAKREF(tumor)
+			LAZYSET(new_roots, tumor.bodypart_owner.body_zone, tumor_ref)
+			networked_tumors += tumor
+		LAZYNULL(tumor.root_network)
+	for(var/datum/wound/black_briar_curse/tumor in networked_tumors)
+		tumor.root_network = new_roots.Copy()
+
+/datum/wound/black_briar_curse/chest
+	//show_in_book = FALSE
+	body_zones = list(BODY_ZONE_CHEST)
+	max_infection = BBC_TIME_MAX
+	// when it can try and infect a limb again, world.time + BBC_SPREAD_COOLDOWN
+	var/next_limb_infection = 0
+
+/datum/wound/black_briar_curse/chest/has_special_infection()
+	return TRUE
+
+/datum/wound/black_briar_curse/chest/on_mob_loss(mob/living/affected)
+	. = ..()
+	can_rebuild = FALSE
+	for(var/datum/wound/black_briar_curse/tumor in affected.get_wounds()) // killed it at the source, we can kill the others too
+		if(tumor != src)
+			tumor.can_rebuild = FALSE
+			qdel(tumor)
+
+/datum/wound/black_briar_curse/chest/on_life()
+	. = ..()
+	owner.adjust_energy((owner.STAEND - 20) * (SSmobs.wait * 0.1) * infection_percent)
+	if(infection_percent >= 1)
+		owner.death()
+	if(infection_percent > BBC_TIME_LATE)
+		owner.apply_status_effect(/datum/status_effect/debuff/black_briar2)
+	else
+		owner.remove_status_effect(/datum/status_effect/debuff/black_briar2)
+	if(infection_percent > BBC_TIME_MID)
+		owner.apply_status_effect(/datum/status_effect/debuff/black_briar1)
+		if(world.time > next_limb_infection && prob(4))
+			var/list/uninfected_bodyparts = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+			uninfected_bodyparts -= root_network
 			var/mob/living/carbon/C = owner
-			var/total_infection = 0
-			var/slowdown = 0
-			for(var/datum/wound/black_briar_curse/tumor in owner.get_wounds())
-				uninfected_bodyparts -= tumor.bodypart_owner.body_zone
-				total_infection += tumor.infection
-				if(tumor.bodypart_owner.body_part & LEGS)
-					slowdown += tumor.infection
-
-			if(slowdown)
-				var/immobilizing = HAS_TRAIT_FROM(owner, TRAIT_IMMOBILIZED, "[type]")
-				if(slowdown >= (INFECTION_LIMB_DISABLE * 2) && !HAS_TRAIT(owner, TRAIT_NO_IMMOBILIZE))
-					if(!immobilizing)
-						ADD_TRAIT(owner, TRAIT_IMMOBILIZED, "[type]")
-				else if(immobilizing)
-					REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "[type]")
-				slowdown /= INFECTION_LIMB_MAX * owner.num_legs
-				owner.add_movespeed_modifier(MOVESPEED_ID_BLACK_BRIAR, multiplicative_slowdown = slowdown / (INFECTION_LIMB_MAX * owner.num_legs), override = TRUE)
-			else
-				owner.remove_movespeed_modifier(MOVESPEED_ID_BLACK_BRIAR)
+			var/obj/item/bodypart/BP = C.get_bodypart_complex(uninfected_bodyparts)
+			var/wound_type = get_black_briar_wound_type(BP?.body_zone)
+			if(wound_type)
+				BP.add_wound(wound_type, TRUE)
+			next_limb_infection = world.time + max_infection * BBC_TIME_HIDDEN
+	else
+		owner.remove_status_effect(/datum/status_effect/debuff/black_briar1)
+		var/_emote = pick("yawn", "cough", "clearthroat")
+		if(prob(0.5))
+			owner.emote(_emote, forced = TRUE)
 
 
-			to_chat(owner, "[total_infection / 10] - [total_infection / INFECTION_DEATH * 100]%")
+/datum/wound/black_briar_curse/head
+	show_in_book = FALSE
+	body_zones = list(BODY_ZONE_HEAD)
 
-			if(total_infection > INFECTION_ROOT_LATE)
-				owner.apply_status_effect(/datum/status_effect/debuff/black_briar2)
-			else
-				owner.remove_status_effect(/datum/status_effect/debuff/black_briar2)
-			if(total_infection > INFECTION_ROOT_MID)
-				owner.apply_status_effect(/datum/status_effect/debuff/black_briar1)
-				if(world.time > next_limb_infection && prob(4))
-					var/obj/item/bodypart/BP = C.get_bodypart_complex(uninfected_bodyparts)
-					BP?.add_wound(type, TRUE)
-					next_limb_infection = world.time + INFECTION_NEXT_SPREAD_COOLDOWN
-			else
-				owner.remove_status_effect(/datum/status_effect/debuff/black_briar1)
-				var/_emote = pick("yawn", "cough", "clearthroat")
-				if(prob(0.5))
-					owner.emote(_emote, forced = TRUE)
+/datum/wound/black_briar_curse/head/on_life()
+	. = ..()
+	if(infection_percent >= BBC_TIME_HIDDEN && prob(3 * infection_percent))
+		owner.blur_eyes(rand(3, 6))
 
 
-#undef INFECTION_LIMB_DISABLE
-#undef INFECTION_LIMB_MAX
+/datum/wound/black_briar_curse/arm
+	//show_in_book = FALSE
+	body_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 
-#undef INFECTION_ROOT_MID
-#undef INFECTION_ROOT_LATE
-#undef INFECTION_ROOT_MAX
+/datum/wound/black_briar_curse/arm/on_life()
+	. = ..()
+	if((infection_percent >= BBC_TIME_LATE) ^ disabling) // if these two are synced up, we got no issues here
+		disabling = !disabling
+		if(bodypart_owner.can_be_disabled)
+			bodypart_owner.update_disabled()
 
-#undef INFECTION_NEXT_SPREAD_COOLDOWN
-#undef INFECTION_HIDDEN
-#undef INFECTION_MID
-#undef INFECTION_LATE
-#undef INFECTION_DEATH
+
+/datum/wound/black_briar_curse/leg
+	//show_in_book = FALSE
+	body_zones = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	// used for left and rights.
+	var/specific_zone
+	//prevents redundant calls on second leg
+	var/too_slow = FALSE
+
+/datum/wound/black_briar_curse/leg/on_bodypart_gain(obj/item/bodypart/affected)
+	. = ..()
+	specific_zone = affected.body_zone
+
+/datum/wound/black_briar_curse/leg/on_mob_loss(mob/living/affected)
+	. = ..()
+	var/datum/wound/black_briar_curse/leg/other
+	if(!too_slow)
+		var/datum/weakref/WR = LAZYACCESS(root_network, specific_zone == BODY_ZONE_L_LEG ? BODY_ZONE_R_LEG : BODY_ZONE_L_LEG)
+		other = WR?.resolve()
+		other?.too_slow = TRUE
+		REMOVE_TRAIT(affected, TRAIT_IMMOBILIZED, "[type]")
+	affected.remove_movespeed_modifier("[MOVESPEED_ID_BLACK_BRIAR]_[specific_zone]", (!other == TRUE))
+	too_slow = FALSE
+
+/datum/wound/black_briar_curse/leg/on_life()
+	. = ..()
+	var/datum/wound/black_briar_curse/leg/other
+	if(!too_slow)
+		var/datum/weakref/WR = LAZYACCESS(root_network, specific_zone == BODY_ZONE_L_LEG ? BODY_ZONE_R_LEG : BODY_ZONE_L_LEG)
+		other = WR?.resolve()
+		other?.too_slow = TRUE
+		var/immobilizing = HAS_TRAIT_FROM(owner, TRAIT_IMMOBILIZED, "[type]")
+		if(other?.infection_percent >= 1 && infection_percent >= 1 && !HAS_TRAIT(owner, TRAIT_NO_IMMOBILIZE))
+			if(!immobilizing)
+				ADD_TRAIT(owner, TRAIT_IMMOBILIZED, "[type]")
+		else if(immobilizing)
+			REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "[type]")
+	//only the second leg updates on these if they exist
+	owner.add_movespeed_modifier("[MOVESPEED_ID_BLACK_BRIAR]_[specific_zone]", (!other == TRUE), multiplicative_slowdown = infection_percent, override = TRUE)
+	too_slow = FALSE
+
+#undef BBC_TIME_HIDDEN
+#undef BBC_TIME_MID
+#undef BBC_TIME_LATE
+#undef BBC_TIME_MAX_LIMB
+#undef BBC_TIME_MAX
+
+/proc/get_black_briar_wound_type(var/def_zone)
+	switch(def_zone)
+		if(BODY_ZONE_HEAD)
+			return /datum/wound/black_briar_curse/head
+		if(BODY_ZONE_CHEST)
+			return /datum/wound/black_briar_curse/chest
+		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+			return /datum/wound/black_briar_curse/arm
+		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+			return /datum/wound/black_briar_curse/leg

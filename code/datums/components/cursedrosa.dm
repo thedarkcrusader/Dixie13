@@ -18,20 +18,16 @@
 	if(NOBLOOD in target.dna?.species?.species_traits)
 		return
 
-	var/potential_zones = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT)
+	var/potential_zones = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/dam = rand(ARMOR_GLOVES_LEATHER_GOOD["stab"], ARMOR_GLOVES_CHAIN["stab"] + 5)
 	if(target.body_position == LYING_DOWN)
-		potential_zones |= list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_PRECISE_STOMACH, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
-		dam += 10
-	var/def_zone
-	var/obj/item/bodypart/affecting
-	while(length(potential_zones) && !affecting)
-		def_zone = pick(potential_zones)
-		affecting = target.get_bodypart(def_zone)
-		potential_zones -= def_zone
+		potential_zones |= list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+	var/obj/item/bodypart/affecting = target.get_bodypart_complex(potential_zones)
 	if(!affecting)
-		return //one must wonder how you even achieved this. you don't even have a CHEST?
-	if(target.getarmor(def_zone, "stab", 0, simulate=TRUE) - dam > 0)
+		return
+	if(target.getarmor(affecting.body_zone, "stab", 0, simulate=TRUE) - dam > 0)
 		return //we blocked it
 	playsound(parent, 'sound/combat/hits/hi_arrow.ogg', 15, TRUE, -4)
-	affecting.add_wound(/datum/wound/black_briar_curse, TRUE)
+	var/wound_type = get_black_briar_wound_type(affecting.body_zone)
+	if(wound_type && (!affecting.has_wound(wound_type) || prob(30)))
+		affecting.add_wound(wound_type, TRUE)
