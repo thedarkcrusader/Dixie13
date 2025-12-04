@@ -136,7 +136,7 @@
 	force = DAMAGE_MACE - 4
 	force_wielded = DAMAGE_MACE - 2
 	wdefense = MEDIOCRE_PARRY
-	sellprice = 15
+	sellprice = 45
 
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_BULKY

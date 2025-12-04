@@ -22,12 +22,8 @@
 /obj/item/clothing/face/spectacles/monocle
 	name = "silver monocle"
 	icon_state = "monocle"
-	break_sound = "glassbreak"
-	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	max_integrity = 35
-	integrity_failure = 0.5
-	resistance_flags = FIRE_PROOF
-	body_parts_covered = EYES
+
 
 /obj/item/clothing/face/spectacles/Crossed(mob/crosser)
 	if(isliving(crosser) && !obj_broken)
