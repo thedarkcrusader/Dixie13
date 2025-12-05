@@ -607,6 +607,11 @@
 	background_track_night = null
 	converted_type = /area/outdoors/exposed/cell
 
+//Should only be used for dungeon farms with a view to the sky above
+/area/indoors/town/cell/exposed
+	name = "exposed dungeon cell"
+	outdoors = TRUE
+
 /area/indoors/town/tavern
 	name = "tavern"
 	icon_state = "tavern"
