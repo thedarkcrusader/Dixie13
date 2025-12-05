@@ -184,7 +184,7 @@
 
 /obj/item/alch/herb/cursedrosa/New()
 	. = ..()
-	AddComponent()
+	AddComponent(/datum/component/cursedrosa)
 
 /obj/item/alch/herb/euphorbia
 	name = "euphorbia"

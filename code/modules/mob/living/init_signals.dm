@@ -161,6 +161,28 @@
 	SIGNAL_HANDLER
 	remove_stat_modifier(TRAIT_LEPROSY)
 
+///Called when TRAIT_BLACK_BRIAR is added to the mob.
+/mob/living/proc/on_black_briar_trait_gain(datum/source)
+	SIGNAL_HANDLER
+	if(!iscarbon(src))
+		return
+	//delete all previous copies except the one we need if they had it already
+	var/datum/wound/black_briar_curse/chest/root
+	for(var/datum/wound/black_briar_curse/tumor in get_wounds())
+		if(!istype(tumor, /datum/wound/black_briar_curse/chest))
+			tumor.can_rebuild = FALSE
+			qdel(tumor)
+		else
+			root = tumor
+	root?.rebuild_root_network()
+	if(!root)
+		var/obj/item/bodypart/bp = get_bodypart() // defaults to chest
+		root = bp?.add_wound(/datum/wound/black_briar_curse/chest, TRUE)
+	root?.infection = root.max_infection * BBC_TIME_LATE
+	root?.infection_percent = BBC_TIME_LATE
+
+//nothing happens when we remove it so we don't need a remove
+
 ///Called when TRAIT_CRATEMOVER is added to the mob.
 /mob/living/proc/on_cratemover_trait_gain(datum/source)
 	SIGNAL_HANDLER
