@@ -2,7 +2,7 @@
 #define BBC_TIME_MID	0.3
 #define BBC_TIME_HIDDEN	0.1
 
-#define BBC_TIME_MAX (60 MINUTES)
+#define BBC_TIME_MAX (75 MINUTES)
 #define BBC_TIME_MAX_LIMB BBC_TIME_MAX * 0.5
 
 // carbons only! this shit is mostly about limbs
