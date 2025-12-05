@@ -9081,7 +9081,7 @@
 /turf/open/floor/metal/barograte,
 /area/under/town/sewer)
 "evT" = (
-/obj/structure/dungeon_entry/center,
+/obj/structure/dungeon_entry,
 /turf/open/floor/cobble,
 /area/under/cavewet)
 "evU" = (
@@ -22535,6 +22535,7 @@
 /obj/structure/table/vtable/v2,
 /obj/item/key/mnoble3,
 /obj/item/alch/herb/rosa,
+/obj/item/servant_bell,
 /turf/open/floor/carpet/purple,
 /area/indoors/town)
 "lfG" = (
@@ -24154,8 +24155,6 @@
 "maH" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/item/reagent_containers/glass/carafe/silver/redwine,
-/obj/structure/table/wood/fancy/purple,
-/obj/item/servant_bell,
 /turf/open/floor/carpet/purple,
 /area/indoors/town)
 "mbe" = (
@@ -24925,6 +24924,7 @@
 	dir = 9
 	},
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/dryclothes,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town)
 "mrx" = (
@@ -35034,15 +35034,6 @@
 	pixel_y = -4
 	},
 /obj/machinery/light/fueled/wallfire/candle/r,
-/obj/structure/table/stone_small,
-/obj/item/servant_bell/lord{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/item/servant_bell/lord{
-	pixel_x = -1;
-	pixel_y = 10
-	},
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "rkt" = (
@@ -35233,6 +35224,14 @@
 "rpp" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/table/stone_small,
+/obj/item/servant_bell/lord{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/servant_bell/lord{
+	pixel_x = 8;
+	pixel_y = 7
+	},
 /turf/open/floor/herringbone,
 /area/indoors/town/manor)
 "rpM" = (
@@ -46247,6 +46246,7 @@
 "wGx" = (
 /obj/structure/table/vtable/v2,
 /obj/item/key/mnoble3,
+/obj/item/servant_bell,
 /turf/open/floor/carpet/purple,
 /area/indoors/town)
 "wGF" = (
@@ -251339,4 +251339,3 @@ fVy
 fVy
 fVy
 "}
-
