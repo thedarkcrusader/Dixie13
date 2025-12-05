@@ -4633,8 +4633,8 @@
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors/town/roofs)
 "clf" = (
-/obj/structure/window/stained,
 /obj/structure/fluff/walldeco/vinez/blue,
+/obj/structure/window/stained/silver/alt,
 /turf/open/floor/church,
 /area/indoors/town/clinic_large)
 "clr" = (
@@ -9081,7 +9081,7 @@
 /turf/open/floor/metal/barograte,
 /area/under/town/sewer)
 "evT" = (
-/obj/structure/dungeon_entry,
+/obj/structure/dungeon_entry/center/vanderlin,
 /turf/open/floor/cobble,
 /area/under/cavewet)
 "evU" = (
@@ -27982,10 +27982,6 @@
 /obj/structure/fake_machine/scomm/r,
 /turf/open/floor/snow/patchy,
 /area/outdoors/town/roofs)
-"nQE" = (
-/obj/structure/window/stained,
-/turf/open/floor/churchmarble,
-/area/indoors/town/clinic_large)
 "nQK" = (
 /obj/structure/table/wood/plain,
 /obj/item/recipe_book/arcyne,
@@ -30322,8 +30318,8 @@
 /turf/open/floor/snow/patchy,
 /area/outdoors/mountains)
 "oSd" = (
-/obj/structure/window/stained,
 /obj/structure/fluff/walldeco/vinez/blue,
+/obj/structure/window/stained/silver/alt,
 /turf/open/floor/churchmarble,
 /area/indoors/town/clinic_large)
 "oSt" = (
@@ -34619,10 +34615,6 @@
 /obj/effect/decal/cleanable/food/egg_smudge,
 /turf/open/floor/tile,
 /area/indoors/town/tavern)
-"rbr" = (
-/obj/structure/window/stained,
-/turf/open/floor/church,
-/area/indoors/town/clinic_large)
 "rbI" = (
 /turf/closed/wall/mineral/stone,
 /area/under/town/sewer)
@@ -101741,8 +101733,8 @@ cfL
 tzp
 uJx
 tzp
-nQE
-nQE
+wJB
+wJB
 uJx
 sRp
 ngP
@@ -101945,7 +101937,7 @@ nVT
 uJx
 cAC
 qrd
-rbr
+gCq
 ngP
 dke
 pAf
@@ -102147,7 +102139,7 @@ pZk
 pZk
 dHO
 rKL
-rbr
+gCq
 ngP
 dke
 pAf
@@ -102959,7 +102951,7 @@ ngP
 ngP
 dHO
 dke
-nQE
+wJB
 gzt
 omp
 omp
@@ -103161,7 +103153,7 @@ dHO
 ahE
 dHO
 dke
-nQE
+wJB
 gzt
 omp
 omp
@@ -104163,7 +104155,7 @@ cwC
 jnM
 tzp
 oSd
-nQE
+wJB
 uJx
 jRU
 nwO
@@ -104367,8 +104359,8 @@ cwC
 jnM
 gzt
 tzp
-rbr
-rbr
+gCq
+gCq
 tzp
 hsD
 ngP
