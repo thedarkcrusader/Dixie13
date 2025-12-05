@@ -5218,13 +5218,6 @@
 /obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/dirt/road,
 /area/under/town/basement)
-"cJg" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/stone/moss,
-/area/indoors/town/manor/dungeoneer)
 "cJm" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/undershirt/priest,
@@ -7616,6 +7609,13 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/church)
+"dRr" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/machinery/light/fueled/wallfire/candle,
+/turf/open/floor/twig,
+/area/indoors/town/manor/dungeoneer)
 "dRA" = (
 /obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/grass,
@@ -8262,7 +8262,6 @@
 "ekL" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/needle,
-/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/twig,
 /area/indoors/town/manor/dungeoneer)
 "ekM" = (
@@ -10949,7 +10948,6 @@
 /turf/open/floor/wood,
 /area/indoors/town)
 "fxK" = (
-/obj/structure/stockpile_storage/food,
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
@@ -25485,6 +25483,7 @@
 	pixel_x = 17;
 	pixel_y = 4
 	},
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/blocks,
 /area/indoors/town/manor/dungeoneer)
 "ngH" = (
@@ -29040,6 +29039,10 @@
 /obj/item/natural/cloth,
 /turf/open/floor/churchrough,
 /area/indoors/town/clinic_large)
+"oZy" = (
+/obj/structure/stockpile_storage,
+/turf/open/floor/cobble/alt,
+/area/indoors/town/vault)
 "oZB" = (
 /obj/structure/bed/inn/double,
 /obj/item/bedsheet/double_pelt,
@@ -31106,6 +31109,9 @@
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/blocks,
 /area/indoors/town/manor/dungeoneer)
 "qco" = (
@@ -32010,6 +32016,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
 /turf/open/floor/twig,
 /area/indoors/town/manor/dungeoneer)
 "qBd" = (
@@ -32069,7 +32078,6 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/machinery/light/fueled/wallfire/candle,
 /obj/item/reagent_containers/glass/bottle/beer/fireleaf{
 	pixel_x = 4;
 	pixel_y = 8
@@ -45700,6 +45708,10 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/transparent/openspace,
 /area/indoors/town/clocktower)
+"xuk" = (
+/obj/structure/stockpile_storage/food,
+/turf/open/floor/blocks,
+/area/indoors/town/vault)
 "xuq" = (
 /obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
@@ -67776,7 +67788,7 @@ frr
 jgn
 frr
 gWZ
-hmy
+oZy
 deQ
 syq
 bvT
@@ -67982,7 +67994,7 @@ fxK
 mMZ
 syq
 paH
-nAm
+dRr
 nAm
 qBa
 bvT
@@ -68180,10 +68192,10 @@ frr
 vwL
 frr
 hmy
-gWZ
+xuk
 mMZ
 syq
-cJg
+paH
 lWy
 twf
 twf
