@@ -1,10 +1,3 @@
-#define BBC_TIME_LATE 	0.7
-#define BBC_TIME_MID	0.3
-#define BBC_TIME_HIDDEN	0.1
-
-#define BBC_TIME_MAX (75 MINUTES)
-#define BBC_TIME_MAX_LIMB BBC_TIME_MAX * 0.5
-
 // carbons only! this shit is mostly about limbs
 /datum/wound/black_briar_curse
 	abstract_type = (/datum/wound/black_briar_curse)
@@ -235,9 +228,6 @@
 	//only the second leg updates on these if they exist
 	owner.add_movespeed_modifier("[MOVESPEED_ID_BLACK_BRIAR]_[specific_zone]", (!other == TRUE), multiplicative_slowdown = infection_percent, override = TRUE)
 	too_slow = FALSE
-
-#undef BBC_TIME_MAX_LIMB
-#undef BBC_TIME_MAX
 
 /proc/get_black_briar_wound_type(var/def_zone)
 	switch(def_zone)
