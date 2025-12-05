@@ -1,9 +1,9 @@
 
 /obj/item/explosive/sticky
 	name = "Sticky Bomb"
-	desc = "A strange engorged leach with blastpowder leaking out of its maw. It looks like it is in severe pain, and it seems to be covered in especially sticky slime."
-	icon_state = ""
-	icon = 'icons/obj/bombs.dmi'
+	desc = "A strange engorged leach with blastpowder leaking out of its maw. It looks like it is in severe pain, and it seems to be covered in especially sticky slime, but at the same time has a very dry mouth, dry enough to light on fire. What foul whoreson would make this?."
+	icon_state = "leech"
+	icon = 'icons/roguetown/items/surgery.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
