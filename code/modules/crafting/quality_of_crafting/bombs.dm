@@ -157,13 +157,13 @@
 	name = "homemade sticky bomb"
 
 	requirements = list(
-		/obj/item/grown/log/tree/stake = 1,
 		/obj/item/reagent_containers/food/snacks/spiderhoney = 1,
-		/obj/item/explosive = 1,
+		/obj/item/reagent_containers/powder/blastpowder = 3,
+		/obj/item/natural/worms/leech = 1,
 	)
 
-	starting_atom = /obj/item/grown/log/tree/stake
-	attacked_atom = /obj/item/explosive
+	starting_atom = /obj/item/reagent_containers/powder/blastpowder
+	attacked_atom = /obj/item/natural/worms/leech
 	output = /obj/item/explosive/sticky
 	craft_time = 1 SECONDS
 	subtypes_allowed = TRUE

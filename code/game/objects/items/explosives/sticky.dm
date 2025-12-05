@@ -1,7 +1,7 @@
 
 /obj/item/explosive/sticky
 	name = "Sticky Bomb"
-	desc = "A regular blastpowder bomb covered in sticky goo, held on a stick. It looks very unsafe"
+	desc = "A strange engorged leach with blastpowder leaking out of its maw. It looks like it is in severe pain, and it seems to be covered in especially sticky slime."
 	icon_state = ""
 	icon = 'icons/obj/bombs.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
