@@ -45118,6 +45118,9 @@
 	},
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/effect/mapping_helpers/access/keyset/manor/atarms,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shirt/undershirt/fancy,
+/obj/item/clothing/pants/tights/colored/black,
 /turf/open/floor/woodturned,
 /area/indoors/town/manor/knight)
 "xaz" = (
