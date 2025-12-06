@@ -10,6 +10,7 @@
 	severity = WOUND_SEVERITY_BIOHAZARD
 	sleep_healing = 0
 	bleed_rate = null
+	whp = null
 
 	// the body zones this curse type targets
 	var/list/body_zones
@@ -23,12 +24,14 @@
 	// used to skip rebuilds when they're unnecessary
 	var/can_rebuild = TRUE
 
+	var/can_examine = FALSE
+
 /datum/wound/black_briar_curse/Destroy(force)
 	. = ..()
 	LAZYNULL(root_network)
 
 /datum/wound/black_briar_curse/get_check_name(mob/user)
-	if(infection > BBC_TIME_HIDDEN * max_infection)
+	if(can_examine || infection > BBC_STAGE_HIDDEN * max_infection)
 		return ..()
 
 /datum/wound/black_briar_curse/can_apply_to_bodypart(obj/item/bodypart/affected)
@@ -38,12 +41,18 @@
 
 /datum/wound/black_briar_curse/can_apply_to_mob(mob/living/affected)
 	. = ..()
-	if(!iscarbon(affected))
+	if(!. || !iscarbon(affected))
 		return FALSE
-	var/mob/living/carbon/human/C = affected
+	var/mob/living/carbon/C = affected
 	if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
 		return FALSE
-	return . && affected.getorganslot(ORGAN_SLOT_LUNGS) && !HAS_TRAIT(affected, TRAIT_TOXIMMUNE)
+	if(is_species(C, /datum/species/werewolf) || C.mind?.has_antag_datum(/datum/antagonist/werewolf)) // Dendor protects
+		return FALSE
+	if(C.mind?.has_antag_datum(/datum/antagonist/vampire) || C.mind?.has_antag_datum(/datum/antagonist/zombie)) // weird/gross blood = cant live in it
+		return FALSE
+	if(HAS_TRAIT(affected, TRAIT_TOXIMMUNE))
+		return FALSE
+	return C.getorganslot(ORGAN_SLOT_LUNGS)
 
 /datum/wound/black_briar_curse/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/black_briar_curse))
@@ -56,8 +65,8 @@
 
 /datum/wound/black_briar_curse/on_bodypart_gain(obj/item/bodypart/affected)
 	. = ..()
-	infection = min(infection, max_infection * BBC_TIME_HIDDEN)
-	infection_percent = min(infection_percent, BBC_TIME_HIDDEN)
+	infection = min(infection, max_infection * BBC_STAGE_HIDDEN)
+	infection_percent = min(infection_percent, BBC_STAGE_HIDDEN)
 
 /datum/wound/black_briar_curse/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -67,8 +76,8 @@
 		if(istype(chest) && !chest.has_wound(/datum/wound/black_briar_curse/chest)) // we just got added and there's no root? let's make a chest wound instead.
 			can_rebuild = FALSE
 			var/datum/wound/black_briar_curse/chest/wound = chest.add_wound(/datum/wound/black_briar_curse/chest, TRUE)
-			wound?.infection = min(infection, wound.max_infection * BBC_TIME_HIDDEN)
-			wound?.infection_percent = min(infection_percent, BBC_TIME_HIDDEN)
+			wound?.infection = min(infection, wound.max_infection * BBC_STAGE_HIDDEN)
+			wound?.infection_percent = min(infection_percent, BBC_STAGE_HIDDEN)
 			qdel(src)
 			return
 		remove_immunity(affected) // if we're just a new wound, delete that shit
@@ -87,11 +96,55 @@
 	//basically what we're doing is forcing a multiplicative inverse function to actually land where we want it to on the max pain.
 	//so we take the inverse of the function and run our pain against it, which is the second number, and that is our offset from 1
 	//if someone ends up tweaking it for balance this will be very annoying to actually understand
-	var/woundpain_inverse = (1 - BBC_TIME_HIDDEN) / (1 + 40)
+	var/woundpain_inverse = (1 - BBC_STAGE_HIDDEN) / (1 + 40)
 	//the pain should roughly start just a little bit after the infection is no longer hidden
 	//because we really don't wanna overshoot somehow and get an undefined number we're gonna give a .001 bump
-	woundpain = max(0, (1 - BBC_TIME_HIDDEN) / (1.001 + woundpain_inverse - infection_percent) - 1)
+	woundpain = max(0, (1 - BBC_STAGE_HIDDEN) / (1.001 + woundpain_inverse - infection_percent) - 1)
 	to_chat(owner, "[bodypart_owner.body_zone] - [round(infection / 10)] sec - [round(infection_percent * 100, 0.5)]%")
+
+/datum/wound/black_briar_curse/heal_wound(heal_amount, datum/source, full_heal = FALSE)
+	if(full_heal)
+		return ..()
+	if(infection_percent >= 1)
+		return FALSE
+	if(!istype(source, /datum/action/cooldown/spell/healing))
+		return FALSE
+	var/datum/action/cooldown/spell/healing/miracle = source
+	if(!isliving(miracle.owner))
+		return FALSE
+	var/mob/living/caster = miracle.owner
+
+	var/heal_percent = round(heal_amount * 0.01 / 2, 0.005)
+	var/old_infection_percent = 0
+	switch(caster.patron?.type)
+		if(/datum/patron/divine/malum)
+			infection_percent = min(1, infection_percent + heal_percent)
+			if(can_examine)
+				owner.visible_message(span_danger("The briar gets worse!"), span_briar("I feel thorns digging into me!")) //don't heal as malum, he likes this shit
+			if(!HAS_TRAIT(owner, TRAIT_NOPAIN))
+				if(infection_percent >= BBC_STAGE_LATE && prob(30))
+					owner.emote("agony")
+				else if(infection_percent >= BBC_STAGE_MID && prob(50))
+					owner.emote("painscream")
+				bodypart_owner.lingering_pain += 5
+		if(/datum/patron/divine/dendor, /datum/patron/divine/pestra)
+			var/infection_min = 0
+			var/list/stages = list(BBC_STAGE_MID, BBC_STAGE_LATE, 1)
+			for(var/i = length(stages), i > 0, i--)
+				if(infection_percent - stages[i] >= 0)
+					infection_min = stages[i]
+					break
+			infection_percent = max(infection_min, infection_percent - heal_percent)
+			if(can_examine && (!infection_min || infection_percent - infection_min > heal_percent / 4))
+				owner.visible_message(span_green("It seems to retract the briar!"), span_green("I feel the briar retracting!"))
+		else
+			return FALSE
+	infection = infection_percent * max_infection
+	if(infection <= 0)
+		whp = 0
+		..()
+	return round(heal_amount * abs((old_infection_percent - infection_percent) / heal_percent), DAMAGE_PRECISION)
+
 
 /datum/wound/black_briar_curse/proc/rebuild_root_network(mob/living/affected)
 	if(!can_rebuild)
@@ -140,16 +193,16 @@
 /datum/wound/black_briar_curse/chest/on_life()
 	. = ..()
 	if(length(root_network) < 2) // we can't get worse without a limb being infected
-		infection = min(infection, max_infection * BBC_TIME_LATE)
-		infection_percent = min(infection_percent, BBC_TIME_LATE)
+		infection = min(infection, max_infection * BBC_STAGE_LATE)
+		infection_percent = min(infection_percent, BBC_STAGE_LATE)
 	owner.adjust_energy((owner.STAEND - 20) * (SSmobs.wait * 0.1) * infection_percent)
 	if(infection_percent >= 1)
 		owner.death()
-	if(infection_percent > BBC_TIME_LATE)
+	if(infection_percent > BBC_STAGE_LATE)
 		owner.apply_status_effect(/datum/status_effect/debuff/black_briar2)
 	else
 		owner.remove_status_effect(/datum/status_effect/debuff/black_briar2)
-	if(infection_percent > BBC_TIME_MID)
+	if(infection_percent > BBC_STAGE_MID)
 		owner.apply_status_effect(/datum/status_effect/debuff/black_briar1)
 		if(!HAS_TRAIT(owner, TRAIT_BLACK_BRIAR) && world.time > next_limb_infection && prob(4))
 			var/list/uninfected_bodyparts = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
@@ -159,12 +212,14 @@
 			var/wound_type = get_black_briar_wound_type(BP?.body_zone)
 			if(wound_type)
 				BP.add_wound(wound_type, TRUE)
-			next_limb_infection = world.time + max_infection * BBC_TIME_HIDDEN
+			next_limb_infection = world.time + max_infection * BBC_STAGE_HIDDEN
 	else
 		owner.remove_status_effect(/datum/status_effect/debuff/black_briar1)
 		var/_emote = pick("yawn", "cough", "clearthroat")
 		if(prob(0.5))
 			owner.emote(_emote, forced = TRUE)
+	if(infection_percent > BBC_STAGE_HIDDEN)
+		can_examine = TRUE // Once it's been identified, we'll always know if we have it if it goes back below hidden
 
 
 /datum/wound/black_briar_curse/head
@@ -173,7 +228,7 @@
 
 /datum/wound/black_briar_curse/head/on_life()
 	. = ..()
-	if(infection_percent > BBC_TIME_HIDDEN && prob(3 * infection_percent))
+	if(infection_percent > BBC_STAGE_HIDDEN && prob(3 * infection_percent))
 		owner.blur_eyes(rand(4, 6))
 		owner.stuttering = max(owner.stuttering, 10)
 
@@ -183,7 +238,7 @@
 
 /datum/wound/black_briar_curse/arm/on_life()
 	. = ..()
-	if((infection_percent > BBC_TIME_LATE) ^ disabling) // if these two are synced up, we dont need to callw
+	if((infection_percent > BBC_STAGE_LATE) ^ disabling) // if these two are synced up, we dont need to callw
 		disabling = !disabling
 		if(bodypart_owner.can_be_disabled)
 			bodypart_owner.update_disabled()

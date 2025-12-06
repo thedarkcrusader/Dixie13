@@ -962,7 +962,7 @@
 		if(admin_revive)
 			qdel(wound)
 		else
-			wound.heal_wound(wound.whp)
+			wound.heal_wound(wound.whp, null, TRUE)
 	ExtinguishMob()
 	fire_stacks = 0
 	divine_fire_stacks = 0

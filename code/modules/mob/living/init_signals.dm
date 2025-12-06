@@ -178,8 +178,8 @@
 	if(!root)
 		var/obj/item/bodypart/bp = get_bodypart() // defaults to chest
 		root = bp?.add_wound(/datum/wound/black_briar_curse/chest, TRUE)
-	root?.infection = root.max_infection * BBC_TIME_LATE
-	root?.infection_percent = BBC_TIME_LATE
+	root?.infection = root.max_infection * BBC_STAGE_LATE
+	root?.infection_percent = BBC_STAGE_LATE
 
 //nothing happens when we remove it so we don't need a remove
 

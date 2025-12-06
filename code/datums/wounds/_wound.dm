@@ -281,14 +281,14 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/on_death()
 	return
 
-/// Heals this wound by the given amount, and deletes it if it's healed completely
-/datum/wound/proc/heal_wound(heal_amount)
+/// Heals this wound by the given amount, and deletes it if it's healed completely. Extra args passed to subtypes for checks
+/datum/wound/proc/heal_wound(heal_amount, datum/source, full_heal = FALSE)
 	// Wound cannot be healed normally, whp is null
-	if(isnull(whp) || !heal_amount)
+	if(isnull(whp) || (!heal_amount && !full_heal))
 		return FALSE
 	var/amount_healed = min(whp, round(heal_amount, DAMAGE_PRECISION))
 	whp -= amount_healed
-	if(whp <= 0)
+	if(whp <= 0 || full_heal)
 		if(!should_persist())
 			if(bodypart_owner)
 				remove_from_bodypart(src)
@@ -296,7 +296,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				remove_from_mob(src)
 			else
 				qdel(src)
-
 	return amount_healed
 
 // Kinda icky

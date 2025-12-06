@@ -172,7 +172,7 @@
 		icon_state = "rosa"
 
 /obj/item/alch/herb/cursedrosa
-	name = "blacksteel rosa"
+	name = "Black Briar rosa"
 	icon_state = "cursedrosa"
 
 /obj/item/alch/herb/cursedrosa/equipped(mob/living/carbon/human/user, slot)

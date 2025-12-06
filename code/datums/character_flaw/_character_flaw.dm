@@ -770,10 +770,13 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/blackbriar/after_spawn(mob/user)
 	var/mob/living/carbon/human/H = user
-	if(HAS_TRAIT(H, TRAIT_BLACK_BRIAR))
-		H.get_random_flaw()
-		return
-	ADD_TRAIT(user, TRAIT_BLACK_BRIAR, "[type]")
+	var/obj/item/bodypart/chest/chest = H.get_bodypart()
+	if(chest && !chest.has_wound(/datum/wound/black_briar_curse/chest))
+		var/datum/wound/black_briar_curse/chest/master_wound = LAZYACCESS(GLOB.primordial_wounds, /datum/wound/black_briar_curse/chest)
+		if(master_wound?.can_apply_to_bodypart(chest))
+			ADD_TRAIT(user, TRAIT_BLACK_BRIAR, "[type]")
+			return
+	H.get_random_flaw()
 
 /datum/charflaw/lux_taken
 	name = "Lux-less"

@@ -104,6 +104,6 @@
 #define BBC_TIME_MAX_LIMB BBC_TIME_MAX * 0.5
 
 /// Black Briar time ratios
-#define BBC_TIME_LATE 	0.7
-#define BBC_TIME_MID	0.3
-#define BBC_TIME_HIDDEN	0.1
+#define BBC_STAGE_LATE 	0.7
+#define BBC_STAGE_MID	0.3
+#define BBC_STAGE_HIDDEN	0.1
