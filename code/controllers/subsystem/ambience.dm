@@ -111,6 +111,14 @@ SUBSYSTEM_DEF(ambience)
 	if(!client || isobserver(client.mob))
 		return
 
+	var/briar = FALSE
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		var/obj/item/bodypart/chest/chest = C.get_bodypart()
+		var/datum/wound/black_briar_curse/chest/wound = chest?.has_wound(/datum/wound/black_briar_curse/chest)
+		if(wound?.infection_percent >= BBC_STAGE_LATE)
+			briar = TRUE
+
 	var/datum/antagonist/maniac/maniac = mind?.has_antag_datum(/datum/antagonist/maniac)
 
 	if(!can_hear() || maniac?.music_enabled)
@@ -129,6 +137,8 @@ SUBSYSTEM_DEF(ambience)
 		vol *= 1.2
 	else if(music_enabled && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE))
 		used = 'sound/music/dreamer_is_still_asleep.ogg'
+	else if(music_enabled && briar)
+		used = 'sound/music/death.ogg'
 	else if(music_enabled && HAS_TRAIT(src, TRAIT_DRUQK))
 		used = 'sound/music/spice.ogg'
 

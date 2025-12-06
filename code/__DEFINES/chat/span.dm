@@ -30,6 +30,7 @@
 #define span_boldannounce(str) ("<span class='boldannounce'>" + str + "</span>")
 #define span_boldnotice(str) ("<span class='boldnotice'>" + str + "</span>")
 #define span_boldwarning(str) ("<span class='boldwarning'>" + str + "</span>")
+#define span_briar(str) ("<span class='briar'>" + str + "</span>")
 #define span_centcomradio(str) ("<span class='centcomradio'>" + str + "</span>")
 #define span_changeling(str) ("<span class='changeling'>" + str + "</span>")
 #define span_changelingbold(str) ("<span class='changelingbold'>" + str + "</span>")

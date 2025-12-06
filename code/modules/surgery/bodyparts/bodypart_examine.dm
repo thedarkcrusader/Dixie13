@@ -169,6 +169,7 @@
 		if(!wound.check_name)
 			continue
 		wound_strings |= wound.get_check_name(user)
+	wound_strings -= null
 	status += wound_strings
 
 	if(skeletonized)

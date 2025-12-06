@@ -208,7 +208,7 @@
 	var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(owner.zone_selected))
 	if(affecting)
 		affecting.heal_damage(base_healing, base_healing)
-		affecting.heal_wounds(base_healing * wound_modifier)
+		affecting.heal_wounds(base_healing * wound_modifier, src)
 		C.update_damage_overlays()
 
 /datum/action/cooldown/spell/healing/profane

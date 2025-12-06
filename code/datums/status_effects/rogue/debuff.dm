@@ -613,3 +613,40 @@
 	name = "Electrified"
 	desc = "Your body is charged with unstable electricity!"
 	icon_state = "dazed"
+
+/datum/status_effect/debuff/black_briar1
+	id = "blackbriar1"
+	alert_type = null
+	status_type = STATUS_EFFECT_UNIQUE
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2)
+	duration = -1
+
+/datum/status_effect/debuff/black_briar1/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stress_event/black_briar1)
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.gain_trauma(/datum/brain_trauma/mild/nervous_cough)
+
+/datum/status_effect/debuff/black_briar1/on_remove()
+	. = ..()
+	owner.remove_stress(/datum/stress_event/black_briar1)
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.cure_trauma_type(/datum/brain_trauma/mild/nervous_cough)
+
+//these will both stack with each other
+/datum/status_effect/debuff/black_briar2
+	id = "blackbriar2"
+	alert_type = null
+	status_type = STATUS_EFFECT_UNIQUE
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -2, STATKEY_PER = -2, STATKEY_INT = -2)
+	duration = -1
+
+/datum/status_effect/debuff/black_briar2/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stress_event/black_briar2)
+
+/datum/status_effect/debuff/black_briar2/on_remove()
+	. = ..()
+	owner.remove_stress(/datum/stress_event/black_briar2)

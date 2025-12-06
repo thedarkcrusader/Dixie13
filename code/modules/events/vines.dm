@@ -202,6 +202,7 @@
 	desc = ""
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Light1"
+	base_icon_state = "Light"
 	anchored = TRUE
 	density = FALSE
 	layer = SPACEVINE_LAYER
@@ -221,7 +222,7 @@
 /obj/structure/vine/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)
-	icon_state = "Light[rand(1,2)]"
+	icon_state = "[base_icon_state][rand(1,2)]"
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
 
 /obj/structure/vine/Destroy()
@@ -464,9 +465,33 @@
 	if(isvineimmune(mover))
 		return TRUE
 
+
+/// gonna level with ya the code above is a shitfest so
+/// this has probably no practicality being used in a vine controller as of now
+/obj/structure/vine/black_briar
+	name = "black briar"
+	desc = "Some victories come at a horrible price."
+	icon_state = "Med1"
+	base_icon_state = "Med"
+	energy = 1
+	max_integrity = 300
+	damage_deflection = 25
+	buckle_prevents_pull = TRUE
+	attacked_sound = list('sound/combat/hits/armor/chain_slashed (1).ogg', 'sound/combat/hits/armor/chain_slashed (2).ogg', 'sound/combat/hits/armor/chain_slashed (3).ogg')
+	var/permanent_buckle = FALSE
+
+/obj/structure/vine/black_briar/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursedrosa)
+
+/obj/structure/vine/black_briar/unbuckle_mob(mob/living/buckled_mob, force)
+	if(!permanent_buckle || force)
+		. = ..()
+
+
 /proc/isvineimmune(atom/A)
 	. = FALSE
 	if(isliving(A))
 		var/mob/living/M = A
-		if((FACTION_VINES in M.faction) || (FACTION_PLANTS in M.faction))
+		if((FACTION_VINES in M.faction) || (FACTION_PLANTS in M.faction) || HAS_TRAIT(M, TRAIT_KNEESTINGER_IMMUNITY))
 			. = TRUE

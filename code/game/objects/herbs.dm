@@ -173,6 +173,16 @@
 
 	herbtype = /obj/item/alch/herb/rosa
 
+/obj/structure/flora/grass/herb/cursedrosa
+	name = "blacksteel rosa"
+	icon_state = "cursedrosa2"
+
+	herbtype = /obj/item/alch/herb/cursedrosa
+
+/obj/structure/flora/grass/herb/cursedrosa/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursedrosa)
+
 /obj/structure/flora/grass/herb/euphorbia
 	name = "euphorbia"
 	icon_state = "euphorbia2"

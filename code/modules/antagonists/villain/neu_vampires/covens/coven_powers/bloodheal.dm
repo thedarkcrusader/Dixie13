@@ -58,7 +58,7 @@
 		var/wounds_to_heal = min(1, length(owner.get_wounds()))
 		for(var/i in 1 to wounds_to_heal)
 			var/datum/wound/wound = owner.get_wounds()[i]
-			wound.heal_wound(500 * level)
+			wound.heal_wound(500 * level, src)
 
 	// Brain damage healing (only at higher levels)
 	if(level >= 4)
