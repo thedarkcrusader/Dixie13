@@ -618,7 +618,7 @@
 	id = "blackbriar1"
 	alert_type = null
 	status_type = STATUS_EFFECT_UNIQUE
-	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_END = -3)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2)
 	duration = -1
 
 /datum/status_effect/debuff/black_briar1/on_apply()
@@ -640,7 +640,7 @@
 	id = "blackbriar2"
 	alert_type = null
 	status_type = STATUS_EFFECT_UNIQUE
-	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_END = -3, STATKEY_SPD = -3, STATKEY_PER = -3, STATKEY_INT = -3)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -2, STATKEY_PER = -2, STATKEY_INT = -2)
 	duration = -1
 
 /datum/status_effect/debuff/black_briar2/on_apply()

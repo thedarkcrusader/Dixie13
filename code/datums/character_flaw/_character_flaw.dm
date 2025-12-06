@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Chronic Back Pain" = /datum/charflaw/chronic_back_pain,
 	"Old War Wound" = /datum/charflaw/old_war_wound,
 	"Chronic Arthritis" = /datum/charflaw/chronic_arthritis,
-	"Black Lung" = /datum/charflaw/blackbriar,
+	"Black Lung" = /datum/charflaw/black_briar,
 	"Luxless" = /datum/charflaw/lux_taken,
 	"Witless Pixie" = /datum/charflaw/witless_pixie,
 	"Random Flaw or No Flaw"=/datum/charflaw/randflaw,
@@ -764,11 +764,11 @@ GLOBAL_LIST_INIT(character_flaws, list(
 					BP.lingering_pain += pain_amount
 					break
 
-/datum/charflaw/blackbriar
+/datum/charflaw/black_briar
 	name = "Black Lung"
 	desc = "Thorns dig into your lungs with every breath. Every exhale is painful, yet sweet. You have tasted the <span class='briar'>Black Rose</span> of Wintermare, and it has tasted you. You are now its host. Sleep knowing that this will kill you one dae. Alas, that dae has not come. Not yet."
 
-/datum/charflaw/blackbriar/after_spawn(mob/user)
+/datum/charflaw/black_briar/after_spawn(mob/user)
 	var/mob/living/carbon/human/H = user
 	var/obj/item/bodypart/chest/chest = H.get_bodypart()
 	if(chest && !chest.has_wound(/datum/wound/black_briar_curse/chest))
