@@ -147,6 +147,7 @@
 #define JDO_MINER 28.8
 #define JDO_MATRON 28.9
 #define JDO_GRAVEMAN 29
+#define JDO_MASON 29.1
 
 #define JDO_JESTER 30
 #define JDO_BARD 30.1
