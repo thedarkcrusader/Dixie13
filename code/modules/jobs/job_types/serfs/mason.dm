@@ -1,7 +1,7 @@
 //dwarf, master mason
 
 /datum/job/mason
-	title = "Carpenter"
+	title = "Mason"
 	tutorial = "This city's walls have a memory, and you are their confidant. You work stone, polish marble, and carve statues for the vainglory of your overlord. \
 	Your true liege, however, is this town's stone. Treat it well, and when your foolish master inevitably gets overthrown, all you have maintained shall in turn protect you."
 	department_flag = PEASANTS
