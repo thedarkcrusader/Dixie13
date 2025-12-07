@@ -520,7 +520,6 @@
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
 			return
-		fingers.Remove(null)
 		var/list/choices = list()
 		for(var/F in fingers)
 			if(fingers[F] == TRUE)
@@ -540,7 +539,6 @@
 	user.mind.cached_frumentarii += fingers
 
 /obj/item/paper/scroll/frumentarii/proc/rebuild_info()
-	fingers.Remove(null)
 	info = null
 	info += "<div style='vertical-align:top'>"
 	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>Known Agents</h2>"
