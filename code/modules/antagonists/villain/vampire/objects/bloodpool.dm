@@ -332,7 +332,7 @@
 			to_chat(user, span_danger("I AM ANCIENT, I AM THE LAND. EVEN THE SUN BOWS TO ME."))
 			lord.ascended = TRUE
 			var/list/all_subordinates = user.clan_position.get_all_subordinates()
-			for(var/datum/clan_hierarchy_node/node in all_subordinates)
+			for(var/datum/clan_hierarchy_node/node as anything in all_subordinates)
 				var/mob/living/carbon/human/subordinate_body = node.assigned_member
 				if(!subordinate_body)
 					continue
