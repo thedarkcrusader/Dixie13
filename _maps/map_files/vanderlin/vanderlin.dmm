@@ -9086,9 +9086,6 @@
 /turf/open/floor/woodturned,
 /area/indoors/town/manor/squire)
 "eDx" = (
-/obj/structure/closet/crate/chest/neu_iron{
-	name = "spare keys"
-	},
 /obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted,
 /obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted,
 /obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted,
@@ -9096,6 +9093,7 @@
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/closet/crate/chest/neu_iron,
 /turf/open/floor/woodturned,
 /area/indoors/town/manor/knight)
 "eDQ" = (
@@ -45115,10 +45113,6 @@
 /turf/open/floor/metal,
 /area/indoors/town/clocktower)
 "xar" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/effect/mapping_helpers/access/keyset/manor/atarms,
 /obj/item/clothing/shoes/nobleboot,
