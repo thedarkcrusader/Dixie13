@@ -1581,9 +1581,6 @@
 /area/indoors/town/steward)
 "aQs" = (
 /obj/structure/fermentation_keg/water,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/tile,
 /area/indoors/town/manor/knight)
