@@ -577,15 +577,6 @@ SUBSYSTEM_DEF(gamemode)
 			if(!ishuman(player))
 				continue
 
-			if(no_antags && length(player.mind.antag_datums))
-				var/real = FALSE
-				for(var/datum/antagonist/antag_datum as anything in player.mind.antag_datums)
-					if(!(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
-						real = TRUE
-						break
-				if(real)
-					continue
-
 			if(length(restricted_roles) && restricted_roles[player.mind.assigned_role?.type])
 				continue
 
@@ -597,6 +588,15 @@ SUBSYSTEM_DEF(gamemode)
 
 			if(be_special && !(be_special in player.client.prefs?.be_special))
 				continue
+
+			if(no_antags && length(player.mind.antag_datums))
+				var/real = FALSE
+				for(var/datum/antagonist/antag_datum as anything in player.mind.antag_datums)
+					if(!(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
+						real = TRUE
+						break
+				if(real)
+					continue
 
 			checked_one_box = TRUE
 
