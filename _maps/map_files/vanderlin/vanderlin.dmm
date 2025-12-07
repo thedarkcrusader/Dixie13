@@ -10629,13 +10629,6 @@
 /turf/open/floor/carpet,
 /area/under/town/basement)
 "fum" = (
-/obj/structure/bookcase/random/eoratica{
-	name = "bookcase (Self Torture Manuscripts)";
-	pixel_x = 29;
-	pixel_y = 1;
-	density = 0;
-	opacity = 0
-	},
 /obj/structure/chair/stool/bar,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/church/purple,
@@ -21336,6 +21329,14 @@
 	},
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors/butchershop)
+"lnn" = (
+/obj/structure/bookcase/random/eoratica{
+	name = "bookcase (Self Torture Manuscripts)";
+	density = 0;
+	opacity = 0
+	},
+/turf/open/floor/churchbrick,
+/area/indoors/town/church/inquisition)
 "lno" = (
 /obj/effect/landmark/tram/queued_path/cargo_map_enter{
 	next_path_id = "point_1"
@@ -116014,7 +116015,7 @@ mdX
 nZD
 kpS
 xKu
-xKu
+ixF
 ixF
 pBU
 cdK
@@ -116215,7 +116216,7 @@ xKu
 mdX
 xKu
 xKu
-ixF
+xKu
 ixF
 eXL
 pBU
@@ -116418,7 +116419,7 @@ mdX
 xKu
 xKu
 xKu
-ixF
+xKu
 ixF
 ixF
 ixF
@@ -156415,7 +156416,7 @@ oKg
 tIN
 ylA
 xKu
-xKu
+wFp
 wFp
 wFp
 wFp
@@ -156616,7 +156617,7 @@ gxd
 vNs
 jcI
 ylA
-wFp
+ylA
 wFp
 wFp
 wFp
@@ -156817,9 +156818,9 @@ pjM
 vNs
 vNs
 mzz
+lnn
 nTY
 xKu
-wFp
 wFp
 wFp
 wFp
@@ -157020,7 +157021,7 @@ fum
 pVk
 waE
 nTY
-xKu
+nTY
 xKu
 wFp
 wFp
@@ -157222,7 +157223,7 @@ nTY
 nTY
 vLJ
 ylA
-xKu
+nTY
 xKu
 xKu
 wFp
