@@ -1018,6 +1018,7 @@
 /area/indoors/town/church/inquisition)
 "azh" = (
 /obj/structure/fluff/clock,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/tile,
 /area/indoors/town/manor/knight)
 "azk" = (
@@ -1580,6 +1581,10 @@
 /area/indoors/town/steward)
 "aQs" = (
 /obj/structure/fermentation_keg/water,
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/tile,
 /area/indoors/town/manor/knight)
 "aQE" = (
@@ -25597,12 +25602,6 @@
 	},
 /turf/open/floor/grass/eora,
 /area/outdoors/eora)
-"nhZ" = (
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/woodturned/nosmooth,
-/area/indoors/town/manor/squire)
 "nif" = (
 /obj/structure/fluff/walldeco/gear{
 	pixel_y = 24
@@ -25769,6 +25768,15 @@
 "nkM" = (
 /turf/closed/wall/mineral/wooddark/window,
 /area/indoors/butchershop)
+"nln" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/pelt,
+/obj/effect/landmark/start/squire{
+	dir = 8
+	},
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/woodturned/nosmooth,
+/area/indoors/town/manor/squire)
 "nlr" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
@@ -30726,9 +30734,7 @@
 /area/under/town/basement)
 "pRm" = (
 /obj/structure/bookcase/random/myths,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors/town/manor/squire)
 "pRp" = (
@@ -113313,8 +113319,8 @@ sot
 nYr
 sot
 opE
-kAw
 vNa
+kAw
 buC
 pRm
 opE
@@ -113919,10 +113925,10 @@ sot
 nYr
 sot
 opE
+nln
+wBt
 iyw
 qJC
-iyw
-nhZ
 opE
 aQs
 wjW
