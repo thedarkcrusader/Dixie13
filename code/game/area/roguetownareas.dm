@@ -597,6 +597,11 @@
 	background_track_night = null
 	converted_type = /area/outdoors/exposed/manorgarri
 
+//Should only be used for dungeon farms with a view to the sky above
+/area/indoors/town/cell/exposed
+	name = "exposed dungeon cell"
+	outdoors = TRUE
+
 /area/indoors/town/tavern
 	name = "tavern"
 	icon_state = "tavern"
@@ -683,7 +688,7 @@
 	icon_state = "clinic_feld"
 
 /area/indoors/town/thieves_guild
-	first_time_text = "Thieves Guild"
+	first_time_text = "Thieves' Guild"
 	icon_state = "thieves_guild"
 
 /area/indoors/town/merc_guild
@@ -1036,24 +1041,3 @@
 	background_track_dusk = null
 	background_track_night = null
 	first_time_text = "The Brig"
-
-
-/area/indoors/inq
-	name = "The Inquisition"
-	icon_state = "chapel"
-	first_time_text = "THE ORATORIUM"
-
-/area/indoors/inq/office
-	name = "The Inquisitor's Office"
-	icon_state = "chapel"
-
-/area/indoors/inq/basement
-	name = "The Inquisition's Basement"
-	icon_state = "chapel"
-
-/area/indoors/inq/import
-	name = "foreign imports"
-	icon_state = "warehouse"
-
-/area/indoors/inq/import/can_craft_here()
-	return FALSE
