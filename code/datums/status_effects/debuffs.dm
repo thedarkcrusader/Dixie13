@@ -492,4 +492,4 @@
 /datum/status_effect/grab_counter_cd
 	id = "grab_counter_cd"
 	alert_type = /atom/movable/screen/alert/status_effect/grab_counter_cd
-	duration = 10
+	duration = 60
