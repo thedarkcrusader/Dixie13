@@ -25,22 +25,20 @@
 	antag_datum = /datum/antagonist/werewolf
 
 	restricted_roles = list(
-		"Monarch",
-		"Consort",
-		"Hand",
-		"Captain",
-		"Prince",
-		"Priest",
-		"Merchant",
-		"Forest Warden",
-		"Inquisitor",
-		"Absolver",
-		"Confessor",
-		"Sacrestants",
-		"Adept",
-		"Royal Knight",
-		"Templar",
-		"Assassin",
+		/datum/job/lord,
+		/datum/job/consort,
+		/datum/job/priest,
+		/datum/job/advclass/hand,
+		/datum/job/captain,
+		/datum/job/advclass/heir,
+		/datum/job/advclass/puritan,
+		/datum/job/absolver,
+		/datum/job/advclass/sacrestant,
+		/datum/job/advclass/adept,
+		/datum/job/merchant,
+		/datum/job/forestwarden,
+		/datum/job/advclass/royalknight,
+		/datum/job/templar,
 	)
 
 /datum/round_event/antagonist/solo/werewolf

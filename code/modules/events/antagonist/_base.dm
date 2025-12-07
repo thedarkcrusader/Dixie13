@@ -18,6 +18,33 @@
 	)
 	var/secondary_prob = 25
 
+/datum/round_event_control/antagonist/New()
+	. = ..()
+	restricted_roles = typecacheof(restricted_roles)
+	exclusive_roles = typecacheof(exclusive_roles)
+	protected_roles = typecacheof(protected_roles)
+	needed_job = typecacheof(needed_job)
+
+/datum/round_event_control/antagonist/canSpawnEvent(players_amt, gamemode, fake_check)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(!check_required())
+		return FALSE
+
+/datum/round_event_control/antagonist/return_failure_string(players_amt)
+	. =..()
+	if(!check_enemies())
+		if(.)
+			. += ", "
+		. += "No Enemies"
+	if(!check_required())
+		if(.)
+			. += ", "
+		. += "No Required"
+	return .
+
 /datum/round_event_control/antagonist/runEvent(random = FALSE, admin_forced = TRUE)
 	. = ..()
 	try_trigger_minor_event()
@@ -46,17 +73,21 @@
 /datum/round_event_control/antagonist/proc/check_required()
 	if(!length(exclusive_roles))
 		return TRUE
-	for(var/mob/M in GLOB.mob_living_list)
-		if(M.stat == DEAD)
+
+	for(var/mob/M as anything in GLOB.player_list)
+		if(!M.mind || M.stat == DEAD)
 			continue // Dead players cannot count as passing requirements
-		if(M.mind && (M.mind.assigned_role.title in exclusive_roles))
+		if(exclusive_roles[M.mind.assigned_role?.type])
 			return TRUE
+
+	return FALSE
 
 /datum/round_event_control/antagonist/proc/trim_candidates(list/candidates)
 	if(length(needed_job))
 		for(var/mob/living/candidate in candidates)
-			if(!(candidate.mind?.assigned_role.title in needed_job))
+			if(!needed_job[candidate.mind.assigned_role?.type])
 				candidates -= candidate
+
 	return candidates
 
 /// Check if our enemy_roles requirement is met, if return_players is set then we will return the list of enemy players instead
@@ -89,23 +120,3 @@
 	. = ..()
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_roles |= protected_roles
-
-/datum/round_event_control/antagonist/canSpawnEvent(players_amt, gamemode, fake_check)
-	. = ..()
-	if(!check_required())
-		return FALSE
-
-	if(!.)
-		return
-
-/datum/round_event_control/antagonist/return_failure_string(players_amt)
-	. =..()
-	if(!check_enemies())
-		if(.)
-			. += ", "
-		. += "No Enemies"
-	if(!check_required())
-		if(.)
-			. += ", "
-		. += "No Required"
-	return .

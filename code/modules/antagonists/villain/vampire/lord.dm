@@ -29,32 +29,31 @@
 		return
 
 	var/list/restricted_roles = list(
-		"Monarch",
-		"Consort",
-		"Hand",
-		"Captain",
-		"Prince",
-		"Priest",
-		"Merchant",
-		"Forest Warden",
-		"Inquisitor",
-		"Absolver",
-		"Confessor",
-		"Sacrestants",
-		"Adept",
-		"Royal Knight",
-		"Templar",
-		"Assassin",
+		/datum/job/lord,
+		/datum/job/consort,
+		/datum/job/priest,
+		/datum/job/advclass/hand,
+		/datum/job/captain,
+		/datum/job/advclass/heir,
+		/datum/job/advclass/puritan,
+		/datum/job/absolver,
+		/datum/job/advclass/sacrestant,
+		/datum/job/advclass/adept,
+		/datum/job/merchant,
+		/datum/job/forestwarden,
+		/datum/job/advclass/royalknight,
+		/datum/job/templar,
 	)
 
-	var/list/candidates = SSgamemode.get_candidates(ROLE_NBEAST, ROLE_NBEAST, living_players = TRUE, restricted_roles = restricted_roles)
+	var/list/candidates = SSgamemode.get_candidates(ROLE_NBEAST, ROLE_NBEAST, living_players = TRUE, no_antags = TRUE, restricted_roles = restricted_roles)
 	var/thralls = rand(2, 3)
 
 	candidates -= owner.current
 
+	if(!length(candidates))
+		return
+
 	for(var/i = 1 to thralls)
-		if(!length(candidates))
-			return
 		var/mob/living/carbon/human/human = pick_n_take(candidates)
 		var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(owner.current.clan, TRUE)
 		human.mind.add_antag_datum(new_antag)

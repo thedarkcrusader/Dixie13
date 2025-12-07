@@ -13,22 +13,20 @@
 	minor_roleset = TRUE
 
 	restricted_roles = list(
-		"Monarch",
-		"Consort",
-		"Priest",
-		"Captain",
-		"Hand",
-		"Forest Warden",
-		"Royal Knight",
-		"Templar",
-		"Bandit",
-		"Wretch",
-		"Inquisitor",
-		"Absolver",
-		"Confessor",
-		"Sacrestants",
-		"Adept",
-		"Assassin",
+		/datum/job/lord,
+		/datum/job/consort,
+		/datum/job/priest,
+		/datum/job/advclass/hand,
+		/datum/job/captain,
+		/datum/job/advclass/heir,
+		/datum/job/advclass/puritan,
+		/datum/job/absolver,
+		/datum/job/advclass/sacrestant,
+		/datum/job/advclass/adept,
+		/datum/job/merchant,
+		/datum/job/forestwarden,
+		/datum/job/advclass/royalknight,
+		/datum/job/templar,
 	)
 
 	denominator = 30
