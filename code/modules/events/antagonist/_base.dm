@@ -77,7 +77,7 @@
 	for(var/mob/M as anything in GLOB.player_list)
 		if(!M.mind || M.stat == DEAD)
 			continue // Dead players cannot count as passing requirements
-		if(exclusive_roles[M.mind.assigned_role?.type])
+		if(is_type_in_typecache(M.mind.assigned_role, exclusive_roles))
 			return TRUE
 
 	return FALSE
