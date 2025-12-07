@@ -85,7 +85,7 @@
 /datum/round_event_control/antagonist/proc/trim_candidates(list/candidates)
 	if(length(needed_job))
 		for(var/mob/living/candidate in candidates)
-			if(!needed_job[candidate.mind.assigned_role?.type])
+			if(!is_type_in_typecache(candidate.mind.assigned_role, needed_job))
 				candidates -= candidate
 
 	return candidates
@@ -119,4 +119,4 @@
 /datum/round_event_control/antagonist/New()
 	. = ..()
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
-		restricted_roles |= protected_roles
+		restricted_roles |= typecacheof(protected_roles)

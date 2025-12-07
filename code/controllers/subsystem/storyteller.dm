@@ -577,10 +577,10 @@ SUBSYSTEM_DEF(gamemode)
 			if(!ishuman(player))
 				continue
 
-			if(length(restricted_roles) && restricted_roles[player.mind.assigned_role?.type])
+			if(length(restricted_roles) && is_type_in_typecache(player.mind.assigned_role, restricted_roles))
 				continue
 
-			if(length(required_roles) && !required_roles[player.mind.assigned_role?.type])
+			if(length(required_roles) && !is_type_in_typecache(player.mind.assigned_role, required_roles))
 				continue
 
 			if(player.mind.special_role)
