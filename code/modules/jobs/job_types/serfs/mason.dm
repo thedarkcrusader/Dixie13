@@ -20,46 +20,51 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
+	jobstats = list(
+			STATKEY_STR = 1,
+			STATKEY_INT = 2,
+			STATKEY_END = 1,
+			STATKEY_CON = 1,
+			STATKEY_SPD = -1,
+	)
 
-/datum/outfit/mason/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mining, rand(1,3), TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/carpentry, rand(1,2), TRUE)
-	H.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	if(prob(5))
-		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+	skills = list(
+		/datum/skill/combat/crossbows = 2,
+		/datum/skill/combat/wrestling = 3,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/combat/swords = 2,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/combat/shields = 2,
+		/datum/skill/misc/swimming = 1,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/riding = 4,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 2,
+		/datum/skill/misc/sewing = 1,
+		/datum/skill/craft/cooking = 1,
+	)
 
-
-	head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu)
+/datum/outfit/mason
+	name = "Mason"
+	head = /obj/item/clothing/head/hatfur
 	armor = /obj/item/clothing/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/apron/waist/colored/brown
 	neck = /obj/item/storage/belt/pouch/coins/mid
 	pants = /obj/item/clothing/pants/trou
-	shirt = pick(/obj/item/clothing/shirt/undershirt/colored/random, /obj/item/clothing/shirt/tunic/colored/random)
+	shirt = /obj/item/clothing/shirt/undershirt/colored/random
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/hammer
 	beltr = /obj/item/weapon/chisel
 	backl = /obj/item/storage/backpack/backpack
 
-	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_INT, 2)
-	H.change_stat(STATKEY_END, 1)
-	H.change_stat(STATKEY_CON, 1)
-	H.change_stat(STATKEY_SPD, -1)
-
+/datum/outfit/mason/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(prob(5))
+		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 	if(H.dna.species.id == SPEC_ID_DWARF)
 		head = /obj/item/clothing/head/helmet/leather/minershelm
 		H.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'
