@@ -170,6 +170,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	desc = "It sparkles with forbidden magic energy. It makes all the heart aches go away."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "heart-on"
+	w_class =  WEIGHT_CLASS_SMALL
 
 /obj/item/corruptedheart/attack(mob/living/target, mob/living/user, params)
 	if(!istype(user.patron, /datum/patron/inhumen/zizo))
