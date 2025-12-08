@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
-	var/incomelist = [60, 80, 100]
+	var/incomelist = list(60, 80, 100)
 	noble_income = pick(incomelist)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
