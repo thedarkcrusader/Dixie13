@@ -17,7 +17,7 @@
 	apprentice_name = "Servant"
 	give_bank_account = 60
 	var/incomelist = list(60, 80, 100)
-	noble_income = 60
+	var/noble_income = 60
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 	allowed_ages = ALL_AGES_LIST_CHILD
