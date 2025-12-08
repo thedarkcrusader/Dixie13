@@ -62,7 +62,7 @@
 
 /* RAIDER SKELETONS */
 
- /datum/job/skeleton/raider
+/datum/job/skeleton/raider
 	title = "Skeleton Raider"
 	outfit = /datum/outfit/skeleton/raider
 	cmode_music = 'sound/music/cmode/antag/combatskeleton.ogg'
@@ -93,7 +93,7 @@
 
 /* CULT SUMMONS */
 
- /datum/job/skeleton/zizoid
+/datum/job/skeleton/zizoid
 	title = "Cult Summon"
 	outfit = /datum/outfit/skeleton/zizoid
 	cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
@@ -128,7 +128,7 @@
 	equipped_human.underwear = "Nude"
 
 /* RAIDER SKELETON OUTFIT */
- /datum/outfit/skeleton/raider
+/datum/outfit/skeleton/raider
 	name = "Skeleton Raider"
 
 /datum/outfit/skeleton/raider/pre_equip(mob/living/carbon/human/equipped_human)
@@ -185,6 +185,6 @@
 			equipped_human.put_in_hands(P, forced = TRUE)
 
 /* ZIZOID CULT SUMMON OUTFIT */
- /datum/outfit/skeleton/zizoid
+/datum/outfit/skeleton/zizoid
 	name = "Cult Summon"
 
