@@ -13,7 +13,7 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	blacklisted_species = list(SPEC_ID_HALFLING)
-
+		cmode_music = 'sound/music/cmode/church/CombatNoc.ogg'
 	outfit = /datum/outfit/archivist
 	spells = list(
 		/datum/action/cooldown/spell/undirected/learn,
@@ -74,6 +74,7 @@
 	H.grant_language(/datum/language/deepspeak)
 	if(istype(H.patron, /datum/patron/inhumen/zizo))
 		H.grant_language(/datum/language/undead)
+		cmode_music = 'sound/music/cmode/antag/combat_deadlyshadows.ogg'
 	H.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)

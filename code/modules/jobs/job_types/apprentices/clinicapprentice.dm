@@ -23,7 +23,7 @@
 	//you can have 20 year olds in the same group as 60 year olds
 	allowed_ages = ALL_AGES_LIST_CHILD
 	allowed_races = RACES_PLAYER_ALL
-
+	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	give_bank_account = 5
 
 	skills = list(
