@@ -294,11 +294,13 @@ GLOBAL_LIST_EMPTY(hidden_door_managers)
 	new_door.desc = source_turf.desc
 	new_door.icon = source_turf.icon
 	new_door.icon_state = source_turf.icon_state
+	new_door.color = source_turf.color
 
 	new_door.uses_integrity = source_turf.uses_integrity
-	new_door.max_integrity = source_turf.max_integrity
-	new_door.update_integrity(new_door.max_integrity)
-	new_door.integrity_failure = source_turf.integrity_failure
+	if(new_door.uses_integrity)
+		new_door.max_integrity = source_turf.max_integrity
+		new_door.update_integrity(new_door.max_integrity)
+		new_door.integrity_failure = source_turf.integrity_failure
 	new_door.damage_deflection = source_turf.damage_deflection
 	new_door.explosion_block = source_turf.explosion_block
 	new_door.blade_dulling = source_turf.blade_dulling
