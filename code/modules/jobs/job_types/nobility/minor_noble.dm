@@ -16,9 +16,9 @@
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
-	rich = 60
-	richer = 80
-	richest = 100
+	var/rich = 60
+	var/richer = 80
+	var/richest = 100
 	noble_income = pick(rich, richer, richest)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
