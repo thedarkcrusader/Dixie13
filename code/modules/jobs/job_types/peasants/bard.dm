@@ -16,6 +16,11 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 	exp_types_granted  = list(EXP_TYPE_BARD)
 
+	spells = list(
+		/datum/action/cooldown/spell/vicious_mockery,
+		/datum/action/cooldown/spell/bardic_inspiration
+	)
+
 	jobstats = list(
 		STATKEY_PER = 1,
 		STATKEY_SPD = 2,

@@ -18,7 +18,7 @@
 	allowed_races = RACES_BUTLER
 
 	outfit = /datum/outfit/butler
-	give_bank_account = 30
+	give_bank_account = 30 // Along with the pouch, enough to purchase some ingredients from the farm and give hard working servants a silver here and there. Still need the assistance of the crown's coffers to do anything significant
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'
 
 	exp_type = list(EXP_TYPE_LIVING)
