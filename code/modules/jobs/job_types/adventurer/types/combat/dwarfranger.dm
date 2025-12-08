@@ -7,7 +7,7 @@
 	outfit = /datum/outfit/adventurer/dranger
 	category_tags = list(CTAG_ADVENTURER)
 
-	exp_types_granted  = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_RANGER)
+	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_RANGER)
 
 /datum/outfit/adventurer/dranger/pre_equip(mob/living/carbon/human/H)
 	..()
