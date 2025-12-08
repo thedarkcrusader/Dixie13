@@ -15,7 +15,6 @@
 
 	outfit = /datum/outfit/mageapprentice
 	display_order = JDO_WAPP
-	min_pq = 3 //they actually have good magick now
 	give_bank_account = TRUE
 	bypass_lastclass = TRUE
 	banned_leprosy = FALSE

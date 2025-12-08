@@ -6,7 +6,6 @@
 	outfit = /datum/outfit/adventurer/merchant
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 2
-	min_pq = 0
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	is_recognized = TRUE
 

@@ -7,7 +7,6 @@
 	allowed_races = RACES_PLAYER_NONHERETICAL
 	outfit = /datum/outfit/adventurer/cleric
 	category_tags = list(CTAG_ADVENTURER)
-	min_pq = 0
 	total_positions = 4
 	allowed_patrons = ALL_CLERIC_PATRONS
 

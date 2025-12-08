@@ -6,7 +6,6 @@
 	total_positions = 4
 
 	outfit = /datum/outfit/adventurer/monk
-	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 

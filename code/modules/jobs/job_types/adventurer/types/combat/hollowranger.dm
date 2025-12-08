@@ -10,7 +10,6 @@
 		SPEC_ID_HARPY,\
 	)
 	outfit = /datum/outfit/adventurer/hollowranger
-	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 

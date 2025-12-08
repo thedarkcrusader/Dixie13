@@ -139,8 +139,6 @@
 	var/list/peopleiknow = list()
 	var/list/peopleknowme = list()
 
-	var/min_pq = -999
-
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE
@@ -264,7 +262,8 @@
 		ADD_TRAIT(spawned, trait, JOB_TRAIT)
 
 	for(var/datum/language/to_learn as anything in languages)
-		spawned.grant_language(to_learn)
+		if(!spawned.has_language(to_learn))
+			spawned.grant_language(to_learn)
 
 	if(is_foreigner)
 		ADD_TRAIT(spawned, TRAIT_FOREIGNER, TRAIT_GENERIC)
@@ -615,7 +614,6 @@
 	data["job_flags"] = job_flags
 	data["allowed_sexes"] = allowed_sexes
 	data["allowed_races"] = allowed_races
-	data["min_pq"] = min_pq
 	data["give_bank_account"] = give_bank_account
 	data["can_random"] = can_random
 	data["always_show_on_latechoices"] = always_show_on_latechoices
@@ -701,7 +699,6 @@
 	job_flags = data["job_flags"]
 	allowed_sexes = data["allowed_sexes"]
 	allowed_races = data["allowed_races"]
-	min_pq = data["min_pq"]
 	give_bank_account = data["give_bank_account"]
 	can_random = data["can_random"]
 	always_show_on_latechoices = data["always_show_on_latechoices"]

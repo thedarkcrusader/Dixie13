@@ -13,7 +13,6 @@
 		SPEC_ID_RAKSHARI,\
 	)
 	outfit = /datum/outfit/adventurer/ranger
-	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 

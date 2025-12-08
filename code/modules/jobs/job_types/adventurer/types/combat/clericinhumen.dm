@@ -6,7 +6,6 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/adventurer/inhumencleric
 	category_tags = list(CTAG_ADVENTURER)
-	min_pq = 0
 	total_positions = 4
 	allowed_patrons = ALL_PROFANE_PATRONS
 

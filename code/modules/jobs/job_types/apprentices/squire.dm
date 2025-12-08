@@ -20,7 +20,6 @@
 	outfit = /datum/outfit/squire
 	display_order = JDO_SQUIRE
 	give_bank_account = TRUE
-	min_pq = 0
 	bypass_lastclass = TRUE
 	selection_color = "#304529"
 	advclass_cat_rolls = list(CTAG_SQUIRE = 20)

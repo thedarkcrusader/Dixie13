@@ -16,7 +16,6 @@
 	outfit = /datum/outfit/shophand
 	display_order = JDO_SHOPHAND
 	give_bank_account = 10
-	min_pq = -10
 	bypass_lastclass = TRUE
 	can_have_apprentices = FALSE
 
