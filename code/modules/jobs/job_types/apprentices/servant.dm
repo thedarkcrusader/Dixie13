@@ -10,7 +10,7 @@
 	faction = FACTION_TOWN
 	total_positions = 5
 	spawn_positions = 5
-	min_pq = -20
+
 	bypass_lastclass = TRUE
 
 	allowed_ages = list(AGE_CHILD, AGE_ADULT, AGE_IMMORTAL)
@@ -60,7 +60,7 @@
 	faction = FACTION_TOWN
 	total_positions = 2
 	spawn_positions = 2
-	min_pq = -20
+
 	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
@@ -111,7 +111,7 @@
 	faction = FACTION_TOWN
 	total_positions = 0
 	spawn_positions = 0
-	min_pq = -20
+
 	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
@@ -160,7 +160,6 @@
 	faction = FACTION_TOWN
 	total_positions = 1
 	spawn_positions = 1
-	min_pq = 8
 	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL

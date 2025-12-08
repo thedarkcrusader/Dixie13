@@ -23,7 +23,7 @@
 	job_bitflag = BITFLAG_ROYALTY
 
 	exp_type = list(EXP_TYPE_MEDICAL)
-	exp_types_granted  = list(EXP_TYPE_NOBLE, EXP_TYPE_MEDICAL)
+	exp_types_granted = list(EXP_TYPE_NOBLE, EXP_TYPE_MEDICAL)
 	exp_requirements = list(
 		EXP_TYPE_MEDICAL = 900
 	)

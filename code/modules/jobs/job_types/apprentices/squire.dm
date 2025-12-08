@@ -20,14 +20,12 @@
 	outfit = /datum/outfit/squire
 	display_order = JDO_SQUIRE
 	give_bank_account = TRUE
-	min_pq = 0
 	bypass_lastclass = TRUE
 	selection_color = "#304529"
 	advclass_cat_rolls = list(CTAG_SQUIRE = 20)
 	can_have_apprentices = FALSE
 
-	exp_types_granted  = list(EXP_TYPE_GARRISON)
-
+	exp_types_granted = list(EXP_TYPE_GARRISON)
 
 /datum/outfit/squire
 	shirt = /obj/item/clothing/shirt/undershirt/colored/guard
@@ -40,7 +38,7 @@
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	exp_type = list(EXP_TYPE_GARRISON)
-	exp_types_granted  = list(EXP_TYPE_GARRISON)
+	exp_types_granted = list(EXP_TYPE_GARRISON)
 
 /datum/job/advclass/squire/lancer
 	title = "Pikeman Squire"

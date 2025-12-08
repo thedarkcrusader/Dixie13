@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/bapprentice
 	display_order = JDO_BAPP
 	give_bank_account = TRUE
-	min_pq = -10
+
 	bypass_lastclass = TRUE
 
 	can_have_apprentices = FALSE
