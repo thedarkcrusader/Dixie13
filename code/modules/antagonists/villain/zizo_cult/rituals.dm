@@ -505,14 +505,20 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
     s_req = /obj/item/natural/fur/volf
 
 /datum/ritual/fleshcrafting/curse/invoke(mob/living/user, turf/center)
-    var/mob/living/carbon/human/target = locate() in center.contents
-    if(!target)
-        return
-    if(!target.mind)
-        to_chat(target, span_warning("A mindless servant is useless to me!"))
-        return
-    to_chat(target, span_warning("My very being, body, soul, and mind is contorted and twisted violently into a ball of flesh and fur, until I am reshaped anew as an abomination!"))
-    addtimer(CALLBACK(src, PROC_REF(get_hollowed), target, center), 5 SECONDS)
+	var/mob/living/carbon/human/target = locate() in center.contents
+	if(!target)
+		return
+	if(!target.mind)
+		to_chat(target, span_warning("A mindless servant is useless to me!"))
+		return
+	if(target.mob_biotypes & MOB_UNDEAD)
+		to_chat(target, span_warning("The curse doesn't take hold!"))
+		return
+	if(target.mind.has_antag_datum(/datum/antagonist/werewolf))
+		to_chat(target, span_warning("The curse doesn't take hold!"))
+		return
+	to_chat(target, span_warning("My very being, body, soul, and mind is contorted and twisted violently into a ball of flesh and fur, until I am reshaped anew as an abomination!"))
+	addtimer(CALLBACK(src, PROC_REF(get_hollowed), target, center), 5 SECONDS)
 
 /datum/ritual/fleshcrafting/curse/proc/get_hollowed(mob/living/victim, turf/place)
     if(QDELETED(victim))
