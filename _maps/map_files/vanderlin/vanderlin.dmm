@@ -4782,8 +4782,8 @@
 /turf/open/floor/greenstone,
 /area/indoors/town/garrison)
 "cyJ" = (
-/obj/structure/lever/hidden{
-	redstone_id = "inquisition"
+/obj/structure/lever/hidden/inquisition{
+	redstone_id = "INQ1"
 	},
 /turf/closed/wall/mineral/stone/moss,
 /area/outdoors/woods_safe)
@@ -7037,10 +7037,6 @@
 	},
 /turf/open/floor/blocks/paving,
 /area/indoors/town/clinic_large/apothecary)
-"dFy" = (
-/obj/structure/fluff/walldeco/vinez,
-/turf/closed/mineral,
-/area/outdoors/woods_safe)
 "dGc" = (
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/structure/fluff/walldeco/church/line{
@@ -8157,12 +8153,10 @@
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors/town/manor/knight/knight2)
 "elY" = (
-/obj/effect/mapping_helpers/secret_door_creator{
-	name = "Inquisition Secret Door";
-	redstone_id = "inquisition";
-	vip_message = "Orphan";
-	vips = list("Orphan")
+/obj/effect/mapping_helpers/secret_door_creator/inquisition{
+	redstone_id = "INQ1"
 	},
+/obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/stone/moss,
 /area/outdoors/woods_safe)
 "eme" = (
@@ -9287,7 +9281,7 @@
 /area/outdoors/town)
 "eNk" = (
 /obj/structure/fluff/walldeco/vinez,
-/turf/closed/wall/mineral/stone,
+/turf/closed/wall/mineral/stone/moss,
 /area/outdoors/woods_safe)
 "eNN" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/innie{
@@ -9950,8 +9944,8 @@
 /turf/open/floor/carpet/red,
 /area/indoors/town/garrison)
 "fci" = (
-/obj/structure/lever/hidden{
-	redstone_id = "doorroom"
+/obj/structure/lever/hidden/thieves_guild{
+	redstone_id = "orphanage"
 	},
 /turf/closed/wall/mineral/stone,
 /area/indoors/town)
@@ -15481,11 +15475,8 @@
 /turf/open/floor/wood,
 /area/indoors/town)
 "iaP" = (
-/obj/effect/mapping_helpers/secret_door_creator{
-	name = "Orphanage Secret Door";
-	redstone_id = "doorroom";
-	vip_message = "Orphan";
-	vips = list("Orphan")
+/obj/effect/mapping_helpers/secret_door_creator/thieves_guild{
+	redstone_id = "orphanage"
 	},
 /turf/closed/wall/mineral/stone,
 /area/indoors/town)
@@ -17869,6 +17860,13 @@
 /obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks/stonered/tiny,
 /area/under/town/basement)
+"joR" = (
+/obj/structure/fluff/walldeco/vinez,
+/obj/effect/mapping_helpers/secret_door_creator/inquisition{
+	redstone_id = "INQ2"
+	},
+/turf/closed/mineral,
+/area/under/cave)
 "jpa" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -24736,6 +24734,12 @@
 /obj/structure/fluff/nest,
 /turf/open/floor/dirt,
 /area/outdoors/rtfield/safe)
+"ncY" = (
+/obj/structure/lever/hidden/inquisition{
+	redstone_id = "INQ2"
+	},
+/turf/closed/mineral,
+/area/under/cave)
 "ndf" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -37129,12 +37133,6 @@
 	},
 /turf/open/floor/tile/bath,
 /area/indoors/town/bath)
-"tyO" = (
-/obj/machinery/light/fueled/wallfire/candle/blue{
-	pixel_y = -32
-	},
-/turf/closed/wall/mineral/stone,
-/area/indoors/town/church/inquisition)
 "tyQ" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass/mixyel,
@@ -116212,7 +116210,7 @@ ylA
 xKu
 xKu
 xKu
-mdX
+xKu
 xKu
 xKu
 ixF
@@ -116413,8 +116411,8 @@ enS
 ylA
 nTY
 nTY
-mdX
-mdX
+xKu
+xKu
 xKu
 xKu
 xKu
@@ -116613,9 +116611,9 @@ enS
 enS
 enS
 pCb
-tyO
+nTY
 jEk
-mdX
+xKu
 kpS
 xKu
 xKu
@@ -117022,7 +117020,7 @@ nmC
 fWp
 xzR
 xzR
-xzR
+xKu
 xKu
 kpS
 xKu
@@ -117225,7 +117223,7 @@ fWp
 fWp
 ctW
 ctW
-xzR
+kpS
 tYH
 ctW
 xzR
@@ -117427,7 +117425,7 @@ fWp
 fWp
 fWp
 fWp
-nZD
+joR
 nZD
 ctW
 ctW
@@ -117629,7 +117627,7 @@ gsr
 fWp
 mdX
 mdX
-kpS
+ncY
 xzR
 mdX
 xKu
@@ -117825,7 +117823,7 @@ enS
 enS
 enS
 yhn
-tyO
+nTY
 ylA
 xKu
 mdX
@@ -119229,7 +119227,7 @@ xKu
 xKu
 xKu
 xKu
-kpS
+xKu
 xKu
 nTY
 nTY
@@ -156997,7 +156995,7 @@ nNF
 wXf
 wXf
 upC
-dFy
+eNk
 eNk
 gaU
 jEk
@@ -157199,7 +157197,7 @@ dDu
 wXf
 mFI
 tfN
-dFy
+eNk
 xWA
 fWp
 nTY
@@ -157401,7 +157399,7 @@ ahY
 hwU
 eGL
 lUV
-dFy
+eNk
 uCn
 fWp
 nTY
@@ -158007,7 +158005,7 @@ wXf
 wXf
 cSo
 upC
-dFy
+eNk
 mFI
 lNy
 nTY
@@ -158209,8 +158207,8 @@ iss
 lUV
 mFI
 nXd
-dFy
-xKu
+eNk
+byB
 vVS
 nTY
 lHf
@@ -199425,13 +199423,13 @@ ylA
 nTY
 nTY
 nTY
-uWX
-uWX
-uWX
-uWX
-uWX
-xKu
-xKu
+vVS
+vVS
+vVS
+vVS
+vVS
+vVS
+vVS
 xKu
 xKu
 xKu
@@ -199633,7 +199631,7 @@ mGu
 mGu
 mGu
 mGu
-xKu
+vVS
 xKu
 xKu
 xKu
@@ -199822,8 +199820,8 @@ wFp
 xKu
 xKu
 xKu
-xKu
-quZ
+vVS
+nTY
 pvX
 bls
 mGu
@@ -199835,7 +199833,7 @@ mGu
 mGu
 mGu
 mGu
-xKu
+vVS
 xKu
 xKu
 xKu
@@ -200025,19 +200023,19 @@ xKu
 xKu
 xKu
 xKu
+vVS
+vVS
+vVS
+vVS
 xKu
 xKu
 xKu
 xKu
 xKu
-xKu
-xKu
-xKu
-xKu
-xKu
-xKu
-xKu
-xKu
+vVS
+vVS
+vVS
+vVS
 xKu
 xKu
 xKu

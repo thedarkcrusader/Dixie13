@@ -31,14 +31,8 @@
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 300
 	)
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
-
-/datum/job/archivist/after_spawn(mob/living/carbon/spawned, client/player_client)
-	. = ..()
-	var/mob/living/carbon/human/H = spawned
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/outfit/archivist/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -31,6 +31,7 @@
 		EXP_TYPE_LIVING = 600,
 		EXP_TYPE_NOBLE = 300,
 	)
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 /datum/outfit/hand
 	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
@@ -40,11 +41,6 @@
 	. = ..()
 	var/mob/living/carbon/human/H = spawned
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_OMMER), 10 SECONDS)
-
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
-	addtimer(CALLBACK(src, PROC_REF(know_agents), H), 5 SECONDS)
 
 /datum/job/hand/proc/know_agents(mob/living/carbon/human/H)
 	if(!GLOB.roundstart_court_agents.len)

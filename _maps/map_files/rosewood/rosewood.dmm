@@ -2505,8 +2505,8 @@
 /turf/open/floor/carpet,
 /area/indoors/town/theatre)
 "bjg" = (
-/obj/structure/lever/hidden{
-	redstone_id = "matthiosroom"
+/obj/structure/lever/hidden/thieves_guild{
+	redstone_id = "orphanage_1"
 	},
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/orphanage)
@@ -12431,12 +12431,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/orphanage)
 "giL" = (
-/obj/effect/mapping_helpers/secret_door_creator{
-	name = "Orphanage Secret Door";
-	vip_message = "Orphan";
-	vips = list("Orphan");
-	redstone_id = "matthiosroom2"
-	},
+/obj/effect/mapping_helpers/secret_door_creator/thieves_guild,
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/orphanage)
 "giU" = (
@@ -17775,15 +17770,6 @@
 /obj/item/bedsheet/pelt,
 /turf/open/floor/blocks,
 /area/indoors/town/church/inquisition)
-"iUo" = (
-/obj/effect/mapping_helpers/secret_door_creator{
-	name = "Orphanage Secret Door";
-	vip_message = "Orphan";
-	vips = list("Orphan");
-	redstone_id = "matthiosroom"
-	},
-/turf/closed/wall/mineral/stone,
-/area/indoors/town/orphanage)
 "iUu" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -27608,8 +27594,8 @@
 /turf/open/floor/snow/rough,
 /area/outdoors/town)
 "nQl" = (
-/obj/structure/lever/hidden{
-	redstone_id = "Thieves1"
+/obj/structure/lever/hidden/thieves_guild{
+	redstone_id = "thieves_guild"
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/under/town/sewer)
@@ -40143,8 +40129,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "tWr" = (
-/obj/effect/mapping_helpers/secret_door_creator{
-	redstone_id = "Thieves1"
+/obj/effect/mapping_helpers/secret_door_creator/thieves_guild{
+	redstone_id = s
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/under/town/sewer)
@@ -41126,8 +41112,8 @@
 /turf/open/floor/blocks,
 /area/indoors/town/smithy)
 "uyH" = (
-/obj/structure/lever/hidden{
-	redstone_id = "matthiosroom2"
+/obj/structure/lever/hidden/thieves_guild{
+	redstone_id = "orphanage_2"
 	},
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/orphanage)
@@ -140107,7 +140093,7 @@ xmk
 xmk
 xmk
 xmk
-iUo
+giL
 bjg
 xmk
 xmk

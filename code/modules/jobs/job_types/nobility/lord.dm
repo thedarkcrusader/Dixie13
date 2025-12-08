@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		EXP_TYPE_NOBLE = 900,
 		EXP_TYPE_LEADERSHIP = 300
 	)
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 
 /datum/job/lord/get_informed_title(mob/mob, change_title = FALSE, new_title)
@@ -64,8 +65,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		SSfamilytree.AddRoyal(H, FAMILY_MOTHER)
 	to_chat(world, "<b>[span_notice(span_big("[H.real_name] is [ruler_title] of [SSmapping.config.map_name]."))]</b>")
 	to_chat(world, "<br>")
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 7 SECONDS)
 
 /datum/outfit/lord/map_override(mob/living/carbon/human/H)
 	if(SSmapping.config.map_name != "Voyage")
@@ -138,7 +137,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/job/exlord //just used to change the lords title
 	title = "Ex-Monarch"

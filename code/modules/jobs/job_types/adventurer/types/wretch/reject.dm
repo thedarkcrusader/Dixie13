@@ -16,6 +16,7 @@
 	total_positions = 1
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 	outfit = /datum/outfit/wretch/reject
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 /datum/outfit/wretch/reject
 	head = /obj/item/clothing/head/crown/circlet
@@ -41,10 +42,6 @@
 /datum/outfit/wretch/reject/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 10 SECONDS)
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
-
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/shirt/dress/royal/prince
 		H.job = "Disowned Prince"

@@ -33,6 +33,7 @@
 		EXP_TYPE_ADVENTURER = 300,
 		EXP_TYPE_THIEF = 300
 	)
+	mind_traits = list(TRAIT_KNOW_THIEF_DOORS)
 
 
 /datum/outfit/matron/pre_equip(mob/living/carbon/human/H)
