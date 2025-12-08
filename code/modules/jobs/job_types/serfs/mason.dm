@@ -2,7 +2,7 @@
 
 /datum/job/mason
 	title = "Mason"
-	tutorial = "This city's walls have a memory, and you are their confidant. You work stone, polish marble, and carve statues for the vainglory of your overlord. \
+	tutorial = "This city's walls have a memory, and you are their confidant. You work pavement, polish marble, and carve statues for the vainglory of your overlord. \
 	Your true liege, however, is this town's stone. Treat it well, and when your foolish master inevitably gets overthrown, all you have maintained shall in turn protect you."
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
@@ -42,7 +42,18 @@
 		/datum/skill/misc/reading = 2,
 		/datum/skill/misc/sewing = 1,
 		/datum/skill/craft/cooking = 1,
+
 	)
+
+/datum/job/mason/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	if(spawned.dna.species.id == SPEC_ID_DWARF)
+		spawned.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'
+	if(prob(5))
+		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		spawned.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+		spawned.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 
 /datum/outfit/mason
 	name = "Mason"
@@ -60,11 +71,9 @@
 
 /datum/outfit/mason/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(prob(5))
-		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+	shirt = pick(/obj/item/clothing/shirt/undershirt/colored/random, /obj/item/clothing/shirt/tunic/colored/random)
 	if(H.dna.species.id == SPEC_ID_DWARF)
 		head = /obj/item/clothing/head/helmet/leather/minershelm
-		H.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'
+	else
+		head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu)
+
