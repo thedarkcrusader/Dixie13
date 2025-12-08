@@ -16,7 +16,10 @@
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
-	noble_income = pick(60, 80, 100)
+	rich = 60
+	richer = 80
+	richest = 100
+	noble_income = pick(rich, richer, richest)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 	allowed_ages = ALL_AGES_LIST_CHILD
