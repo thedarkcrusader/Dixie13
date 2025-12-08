@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
 	give_bank_account = 60
-	noble_income = 16
+	noble_income = rand(60, 80, 100)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 	allowed_ages = ALL_AGES_LIST_CHILD
