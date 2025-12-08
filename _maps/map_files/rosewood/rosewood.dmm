@@ -27595,7 +27595,7 @@
 /area/outdoors/town)
 "nQl" = (
 /obj/structure/lever/hidden/thieves_guild{
-	redstone_id = s
+	redstone_id = "thieves_guild"
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/under/town/sewer)
