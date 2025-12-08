@@ -14739,17 +14739,9 @@
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/orphanage)
 "htz" = (
-/obj/structure/closet/crate/crafted_closet,
-/obj/item/clothing/cloak/apron/maid,
-/obj/item/clothing/cloak/apron/maid,
-/obj/item/clothing/head/maidband,
-/obj/item/clothing/head/maidband,
-/obj/item/clothing/shirt/dress/maid/servant,
-/obj/item/clothing/shirt/dress/maid/servant,
-/obj/item/storage/belt/leather/cloth_belt,
-/obj/item/storage/belt/leather/cloth_belt,
-/obj/item/clothing/shoes/simpleshoes,
-/obj/item/clothing/shoes/simpleshoes,
+/obj/structure/table/wood/plain_alt,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
 /turf/open/floor/wood,
 /area/indoors/town/manor/servant)
 "htO" = (
@@ -21560,8 +21552,10 @@
 "lca" = (
 /obj/item/key/manor,
 /obj/item/key/manor,
-/obj/structure/closet/crate/chest/crafted,
 /obj/item/key/manor,
+/obj/structure/closet/crate/crafted_closet/atarms,
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/manor/atarms,
 /turf/open/floor/wood,
 /area/indoors/town/manor/servanthead)
 "lcb" = (
@@ -28159,8 +28153,6 @@
 /obj/item/broom,
 /obj/item/broom,
 /obj/item/broom,
-/obj/item/storage/sack,
-/obj/item/storage/sack,
 /turf/open/floor/wood,
 /area/indoors/town/manor/servant)
 "oxQ" = (
@@ -28663,6 +28655,10 @@
 "oKO" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/manor)
+"oLa" = (
+/obj/structure/bed/shit,
+/turf/open/floor/wood,
+/area/indoors/town/cell)
 "oLc" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -34507,7 +34503,6 @@
 /area/under/dungeon)
 "rJq" = (
 /obj/structure/bed/shit,
-/obj/effect/landmark/start/prisoner,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 1
 	},
@@ -35503,10 +35498,10 @@
 /area/indoors/town/cell)
 "sit" = (
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/manor/general,
 /obj/structure/door{
 	name = "Butler's Quarters"
 	},
+/obj/effect/mapping_helpers/access/keyset/manor/atarms,
 /turf/open/floor/tile,
 /area/indoors/town/manor/servanthead)
 "siw" = (
@@ -43550,12 +43545,22 @@
 /turf/open/floor/cobble,
 /area/under/town/basement)
 "wgF" = (
+/obj/structure/closet/crate/crafted_closet,
+/obj/item/clothing/cloak/apron/maid,
+/obj/item/clothing/cloak/apron/maid,
+/obj/item/clothing/head/maidband,
+/obj/item/clothing/head/maidband,
+/obj/item/clothing/shirt/dress/maid/servant,
+/obj/item/clothing/shirt/dress/maid/servant,
+/obj/item/storage/belt/leather/cloth_belt,
+/obj/item/storage/belt/leather/cloth_belt,
+/obj/item/clothing/shoes/simpleshoes,
+/obj/item/clothing/shoes/simpleshoes,
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/blocks,
+/turf/open/floor/cobble,
 /area/indoors/town/manor/servanthead)
 "wgG" = (
 /obj/structure/door/fancy{
@@ -63081,7 +63086,7 @@ pSG
 omW
 xKu
 puV
-qqT
+oLa
 hEy
 xuJ
 fhL
