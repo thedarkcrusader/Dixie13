@@ -77,7 +77,12 @@
 	for(var/mob/M as anything in GLOB.player_list)
 		if(!M.mind || M.stat == DEAD)
 			continue // Dead players cannot count as passing requirements
-		if(is_type_in_typecache(M.mind.assigned_role, exclusive_roles))
+
+		var/datum/job/tested_job = M.mind?.assigned_role
+		if(tested_job.parent_job)
+			tested_job = tested_job.parent_job
+
+		if(is_type_in_typecache(tested_job, exclusive_roles))
 			return TRUE
 
 	return FALSE
@@ -85,7 +90,11 @@
 /datum/round_event_control/antagonist/proc/trim_candidates(list/candidates)
 	if(length(needed_job))
 		for(var/mob/living/candidate in candidates)
-			if(!is_type_in_typecache(candidate.mind.assigned_role, needed_job))
+			var/datum/job/tested_job = candidate.mind?.assigned_role
+			if(tested_job.parent_job)
+				tested_job = tested_job.parent_job
+
+			if(!is_type_in_typecache(tested_job, needed_job))
 				candidates -= candidate
 
 	return candidates

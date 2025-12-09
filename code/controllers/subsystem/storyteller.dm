@@ -577,10 +577,14 @@ SUBSYSTEM_DEF(gamemode)
 			if(!ishuman(player))
 				continue
 
-			if(length(restricted_roles) && is_type_in_typecache(player.mind.assigned_role, restricted_roles))
+			var/datum/job/tested_job = player.mind.assigned_role
+			if(tested_job.parent_job)
+				tested_job = tested_job.parent_job
+
+			if(length(restricted_roles) && is_type_in_typecache(tested_job, restricted_roles))
 				continue
 
-			if(length(required_roles) && !is_type_in_typecache(player.mind.assigned_role, required_roles))
+			if(length(required_roles) && !is_type_in_typecache(tested_job, required_roles))
 				continue
 
 			if(player.mind.special_role)
