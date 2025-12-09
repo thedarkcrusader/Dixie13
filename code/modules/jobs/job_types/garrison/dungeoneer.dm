@@ -36,7 +36,7 @@
 	head = /obj/item/clothing/head/dungeoneer
 	neck = 	/obj/item/clothing/neck/coif
 	pants = /obj/item/clothing/pants/trou
-	shoes = /obj/item/clothing/shoes/simpleshoes
+	shoes = /obj/item/clothing/shoes/boots/leather
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	cloak = /obj/item/clothing/cloak/stabard/colored/dungeon
 	armor = /obj/item/clothing/armor/cuirass/iron/rust
