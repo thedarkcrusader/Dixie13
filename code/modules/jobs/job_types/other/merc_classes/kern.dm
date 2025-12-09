@@ -33,7 +33,7 @@
 	)
 
 /datum/outfit/mercenary/kern
-	name = "Kern"
+	name = "Kern (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/roguehood/colored/black
 	belt = /obj/item/storage/belt/leather/mercenary/black

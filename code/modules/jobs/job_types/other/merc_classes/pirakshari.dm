@@ -39,7 +39,7 @@
 	spawned.merctype = 1 //Desert Rider chain, 0 for Desert Rider Medal
 
 /datum/outfit/mercenary/desert_pirate
-	name = "Desert Rider"
+	name = "Desert Rider (Mercenary)"
 	pants = /obj/item/clothing/pants/trou/leather
 	beltr = /obj/item/weapon/sword/sabre
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/short

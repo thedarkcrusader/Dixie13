@@ -46,7 +46,7 @@
 	spawned.adjust_skillrank(/datum/skill/combat/shields, pick(0,0,1))
 
 /datum/outfit/mercenary/verderer
-	name = "Hollow Verderer"
+	name = "Hollow Verderer (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/armor/light/rust
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/colored/brown
 	head = /obj/item/clothing/head/helmet/leather/advanced

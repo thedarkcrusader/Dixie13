@@ -40,8 +40,8 @@
 	. = ..()
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
-		spawned.change_stat(STATKEY_CON, -1)
-		spawned.change_stat(STATKEY_PER, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, -1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
 
 	spawned.adjust_skillrank(/datum/skill/misc/sewing, pick(0,1), TRUE)
 	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(0,1), TRUE)

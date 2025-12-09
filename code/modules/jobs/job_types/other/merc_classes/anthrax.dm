@@ -33,11 +33,13 @@
 		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-		spawned.change_stat(STATKEY_STR, 2)
-		spawned.change_stat(STATKEY_CON, 1)
-		spawned.change_stat(STATKEY_END, 1)
-		spawned.change_stat(STATKEY_INT, -1)
-		spawned.change_stat(STATKEY_SPD, -1)
+
+		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, -1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
+
 		ADD_TRAIT(spawned, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	if(spawned.gender == MALE)
@@ -53,6 +55,11 @@
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+
+		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, 2)
+
 		spawned.change_stat(STATKEY_SPD, 2)
 		spawned.change_stat(STATKEY_END, 1)
 		spawned.change_stat(STATKEY_PER, 2)
@@ -62,7 +69,7 @@
 
 
 /datum/outfit/mercenary/anthrax
-	name = "Anthrax"
+	name = "Anthrax (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/black
 	pants = /obj/item/clothing/pants/trou/shadowpants

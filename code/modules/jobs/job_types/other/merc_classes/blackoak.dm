@@ -53,7 +53,7 @@
 
 
 /datum/outfit/mercenary/blackoak
-	name = "Black Oak's Guardian"
+	name = "Black Oak's Guardian (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half/colored/red
 	head = /obj/item/clothing/head/helmet/sallet/elven

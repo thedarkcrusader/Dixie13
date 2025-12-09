@@ -40,7 +40,7 @@
 	spawned.adjust_skillrank(/datum/skill/combat/shields, pick(0,0,1))
 
 /datum/outfit/mercenary/boltslinger
-	name = "Boltslinger"
+	name = "Boltslinger (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half
 	head = /obj/item/clothing/head/helmet/sallet

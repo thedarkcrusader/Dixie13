@@ -54,9 +54,8 @@
 		spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-		spawned.change_stat(STATKEY_PER, -2)
-		spawned.change_stat(STATKEY_END, -1)
-
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, -2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_END, -1)
 
 /datum/outfit/hunter
 	name = "Hunter"

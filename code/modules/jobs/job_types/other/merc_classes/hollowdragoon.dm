@@ -45,7 +45,7 @@
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 
 /datum/outfit/mercenary/dragoon
-	name = "Hollow Dragoon"
+	name = "Hollow Dragoon (Mercenary)"
 	head = /obj/item/clothing/head/helmet/heavy/rust
 	armor = /obj/item/clothing/armor/plate/rust
 	neck = /obj/item/clothing/neck/gorget

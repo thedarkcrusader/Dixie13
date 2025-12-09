@@ -43,7 +43,7 @@
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
 
 /datum/outfit/mercenary/steppesman
-	name = "Steppesman"
+	name = "Steppesman (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary/black

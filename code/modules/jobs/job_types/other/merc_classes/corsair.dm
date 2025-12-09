@@ -31,7 +31,7 @@
 	)
 
 /datum/outfit/adventurer/corsair
-	name = "Corsair"
+	name = "Corsair (Mercenary)"
 	head = /obj/item/clothing/head/helmet/leather/headscarf
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/leather/mercenary

@@ -62,7 +62,7 @@
 				species.accent_language = species.get_accent(species.native_language)
 
 /datum/outfit/mercenary/zalad
-	name = "Red Sands"
+	name = "Red Sands (Mercenary)"
 	shoes = /obj/item/clothing/shoes/shalal
 	head = /obj/item/clothing/head/helmet/sallet/zalad
 	gloves = /obj/item/clothing/gloves/angle

@@ -80,7 +80,7 @@
 		spawned.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		spawned.change_stat(STATKEY_PER, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
 
 
 /datum/outfit/gaffer

@@ -73,5 +73,5 @@
 /datum/job/innkeep/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.gender == FEMALE)
-		spawned.change_stat(STATKEY_STR, -1)
-		spawned.change_stat(STATKEY_CON, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)

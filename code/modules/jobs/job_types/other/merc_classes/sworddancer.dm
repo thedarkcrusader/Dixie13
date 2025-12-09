@@ -63,7 +63,7 @@
 	I.grant_inspiration(spawned, bard_tier = BARD_T3)
 
 /datum/outfit/mercenary/sworddancer
-	name = "Sword Dancer"
+	name = "Sword Dancer (Mercenary)"
 	head = /obj/item/clothing/head/bardhat
 	shoes = /obj/item/clothing/shoes/boots
 	pants = /obj/item/clothing/pants/tights/colored/random

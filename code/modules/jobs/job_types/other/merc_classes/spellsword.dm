@@ -46,7 +46,7 @@
 	spawned.merctype = 9
 
 /datum/outfit/mercenary/spellsword
-	name = "Spellsword"
+	name = "Spellsword (Mercenary)"
 	armor = /obj/item/clothing/armor/cuirass/iron
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers/leather

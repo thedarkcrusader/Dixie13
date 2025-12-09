@@ -59,11 +59,11 @@
 
 	// Age-based stat adjustments
 	if(spawned.age == AGE_OLD)
-		spawned.change_stat(STATKEY_END, 1) //to counteract the innate endurance loss
-		spawned.change_stat(STATKEY_PER, -1) //instead they lose some perception
+		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1) //to counteract the innate endurance loss
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, -1)  //instead they lose some perception
 
 /datum/outfit/mercenary/sellmage
-	name = "Sellmage"
+	name = "Sellmage (Mercenary)"
 	shirt = /obj/item/clothing/armor/chainmail/iron //intended, iron chainmail underneath the robe to stop knives
 	ring = /obj/item/clothing/ring/silver
 	gloves = /obj/item/clothing/gloves/leather

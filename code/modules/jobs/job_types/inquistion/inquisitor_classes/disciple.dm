@@ -73,7 +73,7 @@
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 /datum/outfit/disciple
-	name = "Disciple"
+	name = "Disciple (Sacrestants)"
 	shoes = /obj/item/clothing/shoes/psydonboots
 	armor = /obj/item/clothing/armor/regenerating/skin/disciple
 	backl = /obj/item/storage/backpack/satchel/otavan

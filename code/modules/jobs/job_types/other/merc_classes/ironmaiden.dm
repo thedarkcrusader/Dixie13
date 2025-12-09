@@ -38,7 +38,7 @@
 	spawned.merctype = 9
 
 /datum/outfit/mercenary/ironmaiden
-	name = "Iron Maiden"
+	name = "Iron Maiden (Mercenary)"
 	head = /obj/item/clothing/head/helmet/sallet
 	mask = /obj/item/clothing/face/facemask/steel
 	neck = /obj/item/clothing/neck/gorget

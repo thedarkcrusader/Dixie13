@@ -40,7 +40,7 @@
 	spawned.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,3))
 
 /datum/outfit/mercenary/valkyrie
-	name = "Valkyrie"
+	name = "Valkyrie (Mercenary)"
 	head = /obj/item/clothing/head/roguehood/colored/red
 	mask = /obj/item/clothing/face/shepherd/rag
 	pants = /obj/item/clothing/pants/trou/leather

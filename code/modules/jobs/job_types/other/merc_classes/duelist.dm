@@ -45,7 +45,7 @@
 	spawned.merctype = 8
 
 /datum/outfit/mercenary/duelist
-	name = "Duelist"
+	name = "Duelist (Mercenary)"
 	head = /obj/item/clothing/head/leather/duelhat
 	cloak = /obj/item/clothing/cloak/half/duelcape
 	armor = /obj/item/clothing/armor/leather/jacket/leathercoat/duelcoat

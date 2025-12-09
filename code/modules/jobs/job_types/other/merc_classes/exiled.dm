@@ -48,7 +48,7 @@
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 
 /datum/outfit/mercenary/exiled
-	name = "Exiled Warrior"
+	name = "Exiled Warrior (Mercenary)"
 	beltr = /obj/item/weapon/axe/iron
 	neck = /obj/item/clothing/neck/coif
 	pants = /obj/item/clothing/pants/loincloth

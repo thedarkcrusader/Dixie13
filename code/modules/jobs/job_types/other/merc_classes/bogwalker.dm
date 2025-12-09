@@ -50,7 +50,7 @@
 	spawned.adjust_skillrank(/datum/skill/misc/reading, reading_skill)
 
 /datum/outfit/mercenary/bogwalker
-	name = "Bogwalker"
+	name = "Bogwalker (Mercenary)"
 	head = /obj/item/clothing/head/helmet/kettle
 	armor = /obj/item/clothing/armor/leather/hide
 	shirt = /obj/item/clothing/shirt/tunic/colored/green

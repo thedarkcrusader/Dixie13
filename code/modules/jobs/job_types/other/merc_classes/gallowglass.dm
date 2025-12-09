@@ -33,7 +33,7 @@
 	)
 
 /datum/outfit/mercenary/gallowglass
-	name = "Gallowglass"
+	name = "Gallowglass (Mercenary)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/helmet/nasal
 	gloves = /obj/item/clothing/gloves/chain/iron

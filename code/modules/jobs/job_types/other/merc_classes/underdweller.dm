@@ -55,7 +55,7 @@
 		spawned.adjust_skillrank(/datum/skill/combat/swords, 4)
 
 /datum/outfit/mercenary/underdweller
-	name = "Underdweller"
+	name = "Underdweller (Mercenary)"
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/cuirass/iron
 	shoes = /obj/item/clothing/shoes/boots/armor/light

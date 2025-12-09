@@ -27,9 +27,10 @@
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-	spawned.change_stat(STATKEY_STR, pick(0,1))
-	spawned.change_stat(STATKEY_CON, pick(0,1))
-	spawned.change_stat(STATKEY_END, pick(0,1))
+	spawned.adjust_stat_modifier("job_stats", STATKEY_STR, pick(0,1))
+	spawned.adjust_stat_modifier("job_stats", STATKEY_CON, pick(0,1))
+	spawned.adjust_stat_modifier("job_stats", STATKEY_END, pick(0,1))
+
 
 
 /datum/outfit/stonemason_p

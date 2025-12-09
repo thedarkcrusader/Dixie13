@@ -35,10 +35,10 @@
 		spawned.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		spawned.change_stat(STATKEY_STR, 1)
-		spawned.change_stat(STATKEY_CON, 2)
-		spawned.change_stat(STATKEY_INT, -1)
-		spawned.change_stat(STATKEY_PER, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, -1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 2)
 	if(spawned.gender == MALE)
 		// Male: arcyne trident wielder
 		spawned.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident)
@@ -49,14 +49,14 @@
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		spawned.change_stat(STATKEY_INT, 2)
-		spawned.change_stat(STATKEY_PER, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 2)
 		if(!istype(spawned.patron, /datum/patron/inhumen/zizo))
 			spawned.set_patron(/datum/patron/divine/noc)
 	spawned.merctype = 10
 
 /datum/outfit/mercenary/abyssal
-	name = "Abyssal Guard"
+	name = "Abyssal Guard (Mercenary)"
 	shoes = /obj/item/clothing/shoes/sandals
 	belt = /obj/item/storage/belt/leather/mercenary
 	backl = /obj/item/storage/backpack/satchel

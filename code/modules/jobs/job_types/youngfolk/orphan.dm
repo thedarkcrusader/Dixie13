@@ -45,13 +45,28 @@
 		orphanage_renovated = TRUE
 
 	if(!orphanage_renovated)
-		spawned.change_stat(STATKEY_INT, round(rand(-4, 4)))
-		spawned.change_stat(STATKEY_LCK, rand(1,20))
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, rand(-4, 4))
+		spawned.STALUC = rand(1,20)
 	else
-		spawned.change_stat(STATKEY_INT, 4)
-		spawned.change_stat(STATKEY_CON, 2)
-		spawned.change_stat(STATKEY_END, 2)
-		spawned.change_stat(STATKEY_LCK, rand(7,20))
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 4)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 2)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 2)
+		spawned.STALUC = rand(7,20)
+
+	var/list/instruments = list(
+			/obj/item/instrument/lute,
+			/obj/item/instrument/accord,
+			/obj/item/instrument/guitar,
+			/obj/item/instrument/flute,
+			/obj/item/instrument/hurdygurdy,
+			/obj/item/instrument/viola,
+		)
+
+	var/hand_1 = spawned.get_active_held_item()
+	var/hand_2 = spawned.get_inactive_held_item()
+
+	if(instruments in hand_1 || instruments in hand_2)
+		spawned.adjust_skillrank(/datum/skill/misc/music, pick(2,3,4), TRUE)
 
 /datum/outfit/orphan
 	name = "Orphan"
@@ -95,5 +110,3 @@
 			/obj/item/instrument/hurdygurdy,
 			/obj/item/instrument/viola,
 		)
-
-		equipped_human.adjust_skillrank(/datum/skill/misc/music, pick(2,3,4), TRUE)
