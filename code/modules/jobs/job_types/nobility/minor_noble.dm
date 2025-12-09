@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
-	give_bank_account = 60
+	give_bank_account = 300 //Less than the monarch/consort but enough to be extravagant
 	noble_income = 60
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 

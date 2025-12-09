@@ -19,7 +19,6 @@
 	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/guard)
 	give_bank_account = 120
 	cmode_music = 'sound/music/cmode/antag/CombatSausageMaker.ogg'
-	noble_income = 11
 
 	job_bitflag = BITFLAG_ROYALTY | BITFLAG_GARRISON
 
