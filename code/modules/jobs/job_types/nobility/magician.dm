@@ -88,7 +88,6 @@
 
 /datum/outfit/magician/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	if(istype(H.patron, /datum/patron/inhumen/zizo))
 		H.grant_language(/datum/language/undead)
 	if(H.age == AGE_OLD)
