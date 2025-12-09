@@ -39,7 +39,6 @@
 		/datum/job/absolver,
 		/datum/job/advclass/sacrestant,
 		/datum/job/advclass/adept,
-		/datum/job/merchant,
 		/datum/job/forestwarden,
 		/datum/job/advclass/royalknight,
 		/datum/job/templar,

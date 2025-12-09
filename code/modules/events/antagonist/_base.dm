@@ -2,15 +2,16 @@
 /datum/round_event_control/antagonist
 	checks_antag_cap = TRUE
 	track = EVENT_TRACK_CHARACTER_INJECTION
-	///list of required roles, needed for this to form
+	// All lists are typecaches including subtypes of the input jobs
+	///list of required roles, needed for this to form, advclasses test their parent job.
 	var/list/exclusive_roles
-	/// Protected roles from the antag roll. People will not get those roles if a config is enabled
+	/// Protected roles from the antag roll, advclasses test their parent job. People will not get those roles if a config is enabled
 	var/list/protected_roles
-	/// Restricted roles from the antag roll
+	/// Restricted roles from the antag roll, advclasses test their parent job.
 	var/list/restricted_roles
-	var/event_icon_state
-	///these are the jobs we need to get the role
+	///these are the jobs we need to get the role, advclasses test their parent job.
 	var/list/needed_job
+	var/event_icon_state
 	var/minor_roleset = FALSE
 	var/list/secondary_events = list(
 		/datum/round_event_control/antagonist/solo/aspirant,
