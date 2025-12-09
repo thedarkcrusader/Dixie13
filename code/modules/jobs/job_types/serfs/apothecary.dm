@@ -71,3 +71,4 @@
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/clinic
 	beltr = /obj/item/storage/belt/pouch/coins/poor
+	ring = /obj/item/clothing/ring/apothecary_ring

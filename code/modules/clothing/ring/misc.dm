@@ -452,4 +452,21 @@
 /obj/item/clothing/ring/feldsher_ring
 	name = "feldsher's ring"
 	icon_state = "ring_feldsher"
-	desc = "A hallowed copper ring, ritualistically forged by Pestran clergymen upon the graduation of a feldsher. \n It bears a vulture skull, whose beak is crooked, and the copper was blessed with Pestra's rot: it will corrode in time, yet never lose its resilience. \n Although the wearer may not have Pestra as her patron, this ring is proof of Her blessing. This allows the feldsher to extract and manipulate Lux, so long as they follow Her teachings"
+	desc = "A hallowed copper ring, ritualistically forged by Pestran clergymen upon the graduation of a feldsher. \
+	\n It bears a vulture skull, which's beak is crooked, and the copper was blessed with Pestra's rot: it will corrode in time, yet never lose its resilience. \
+	\n Although the wearer may not have Pestra as her patron, this ring is proof of Her blessing. This allows the feldsher to extract and manipulate Lux, so long as they follow Her teachings"
+
+// ................... The Apothecary's ring .......................
+
+/obj/item/clothing/ring/apothecary_ring
+	name = "apothecary's ring"
+	icon_state = "ring_apothecary"
+	desc = "" // the description is handled upon examine.
+
+
+/obj/item/clothing/ring/apothecary_ring/examine(mob/user)
+	. = ..()
+	if(is_apothecary_job(user.mind.assigned_role))
+		. += span_info("A hefty bloody I had made out of thaumic iron. Although it has quite the shine, it doesn't get any easier to wear with time. It at least proves I'm a confirmed alchemist.")
+	else
+		. += "An uncomfortably heavy ring of thaumic iron. Whoever had it made must have been a skilled alchemist, as thaumic is notoriously hard to fabricate."
