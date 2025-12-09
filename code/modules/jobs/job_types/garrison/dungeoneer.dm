@@ -29,43 +29,51 @@
 		EXP_TYPE_GARRISON = 300
 	)
 
+	jobstats = list(
+		STATKEY_STR = 2,
+		STATKEY_INT = -2,
+		STATKEY_END = 2,
+		STATKEY_CON = 1,
+		STATKEY_SPD = -1,
+		STATKEY_PER = -1,
+	)
+
+	skills = list(
+		/datum/skill/combat/swords = 2,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/combat/whipsflails = 1,
+		/datum/skill/combat/wrestling = 4,
+		/datum/skill/craft/cooking = 1,
+		/datum/skill/labor/butchering = 2,
+		/datum/skill/misc/athletics = 2,
+		/datum/skill/misc/climbing = 1,
+		/datum/skill/misc/medicine = 1,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/sewing = 1,
+		/datum/skill/misc/swimming = 1,
+	)
+
 	traits = list(TRAIT_STEELHEARTED)
 
-/datum/outfit/dungeoneer/pre_equip(mob/living/carbon/human/H)
-	..()
+/datum/job/dungeoneer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	if(prob(30))
+		spawned.clamped_adjust_skillrank(/datum/skill/misc/medicine, 1, 2, TRUE)
+	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
+	if(spawned.dna?.species?.id == SPEC_ID_HUMEN)
+		spawned.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+
+/datum/outfit/dungeoneer
 	head = /obj/item/clothing/head/dungeoneer
 	neck = 	/obj/item/clothing/neck/coif
+	armor = /obj/item/clothing/armor/cuirass/iron/rust
+	cloak = /obj/item/clothing/cloak/stabard/colored/dungeon
+	shirt = /obj/item/clothing/shirt/shortshirt/colored/merc
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/boots/leather
-	wrists = /obj/item/clothing/wrists/bracers/leather
-	cloak = /obj/item/clothing/cloak/stabard/colored/dungeon
-	armor = /obj/item/clothing/armor/cuirass/iron/rust
-	shirt = /obj/item/clothing/shirt/shortshirt/colored/merc
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/storage/belt/pouch/coins/poor
 	backr = /obj/item/storage/backpack/satchel	// lack of satchel requires dealing with the merchant to correct, which requires entering town; not ideal. N.
 	backpack_contents = list(/obj/item/clothing/head/menacing, /obj/item/storage/keyring/dungeoneer, /obj/item/weapon/knuckles)
-
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) // Allow reading notes passed to the literate noble prisoner, or writing reports. N. See peasants\prisoner.dm.
-	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, pick(1,1,2), TRUE)
-	H.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
-	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_INT, -2)
-	H.change_stat(STATKEY_END, 2)
-	H.change_stat(STATKEY_CON, 1)
-	H.change_stat(STATKEY_SPD, -1)
-	H.change_stat(STATKEY_PER, -1)
-	if(H.dna?.species)
-		if(H.dna.species.id == SPEC_ID_HUMEN)
-			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
-	H.verbs |= /mob/living/carbon/human/proc/torture_victim
