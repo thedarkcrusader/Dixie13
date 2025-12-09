@@ -13169,7 +13169,9 @@
 	icon_state = "longtable";
 	dir = 9
 	},
-/obj/item/weapon/knuckles,
+/obj/item/natural/bundle/fibers{
+	pixel_x = 8
+	},
 /turf/open/floor/blocks,
 /area/indoors/town/cell)
 "gEE" = (
