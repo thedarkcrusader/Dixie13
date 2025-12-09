@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	total_positions = 5
 
-	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
+	cmode_music = 'sound/music/cmode/adventurer/CombatDream.ogg'
 	exp_types_granted  = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT, EXP_TYPE_MEDICAL)
 
 /datum/outfit/mercenary/ironmaiden
