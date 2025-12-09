@@ -244,7 +244,8 @@
 	M.add_stress(/datum/stress_event/herbal_calm)
 
 /datum/reagent/medicine/herbal/valeriana_draught/on_mob_life(mob/living/carbon/M)
-	if(M.has_status_effect(/datum/status_effect/drowsiness) < sleep_power)
+	var/datum/status_effect/drowsiness = M.has_status_effect(/datum/status_effect/drowsiness)
+	if(drowsiness?.duration < sleep_power)
 		M.adjust_drowsiness_up_to(10 SECONDS, 60 SECONDS)
 	M.adjust_stamina(2)
 	. = ..()
@@ -369,7 +370,7 @@
 	M.add_stress(/datum/stress_event/herbal_focus)
 
 /datum/reagent/buff/herbal/scholar_focus/on_mob_life(mob/living/carbon/M)
-	if(M.has_status_effect(/datum/status_effect/drowsiness) > 0)
+	if(M.has_status_effect(/datum/status_effect/drowsiness))
 		M.adjust_drowsiness(-6 SECONDS)
 	//TODO: Boost learning and skill gain slightly
 	if(prob(5))
