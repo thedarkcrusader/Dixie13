@@ -65,7 +65,7 @@
 	var/hand_1 = spawned.get_active_held_item()
 	var/hand_2 = spawned.get_inactive_held_item()
 
-	if(instruments in hand_1 || instruments in hand_2)
+	if((instruments in hand_1) || (instruments in hand_2))
 		spawned.adjust_skillrank(/datum/skill/misc/music, pick(2,3,4), TRUE)
 
 /datum/outfit/orphan
