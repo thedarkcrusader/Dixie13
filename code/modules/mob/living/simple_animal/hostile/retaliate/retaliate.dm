@@ -78,13 +78,12 @@
 	if(M.used_intent.type == INTENT_HELP)
 		if(tame)
 			var/friend_ref = REF(M)
-			if(!(friend_ref in faction))
+			if(!(friend_ref in faction) && (!owner || M == owner))
+				owner = M
 				befriend(M)
-
-		if(enemies.len)
-			if(tame)
-				enemies = list()
-				src.visible_message("<span class='notice'>[src] calms down.</span>")
+				if(enemies.len)
+					enemies = list()
+					src.visible_message("<span class='notice'>[src] calms down.</span>")
 
 /mob/living/simple_animal/hostile/retaliate
 	var/aggressive = 0
