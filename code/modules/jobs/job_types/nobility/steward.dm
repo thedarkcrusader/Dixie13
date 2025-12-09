@@ -10,16 +10,22 @@
 	faction = FACTION_TOWN
 	total_positions = 1
 	spawn_positions = 1
-	min_pq = 2
 	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	blacklisted_species = list(SPEC_ID_HALFLING)
 
 	outfit = /datum/outfit/steward
 	give_bank_account = 150 //The guy who HANDLES THE MONEY should start with more than the captain.
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 	job_bitflag = BITFLAG_ROYALTY
+
+	exp_type = list(EXP_TYPE_LIVING)
+	exp_types_granted  = list(EXP_TYPE_NOBLE)
+	exp_requirements = list(
+		EXP_TYPE_LIVING = 300
+	)
 
 /datum/outfit/steward/pre_equip(mob/living/carbon/human/H)
 	..()
