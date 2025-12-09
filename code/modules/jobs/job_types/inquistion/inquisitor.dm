@@ -15,7 +15,7 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	selection_color = JCOLOR_INQUISITION
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-
+	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 	outfit = /datum/outfit/inquisitor
 	display_order = JDO_PURITAN
 	advclass_cat_rolls = list(CTAG_PURITAN = 20)
@@ -292,8 +292,6 @@
 				if(/datum/faith/psydon)
 					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra)
 						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
-					else if(victim_patron.type == /datum/patron/psydon/progressive)
-						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/godless/naivety)
 						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
 					else if(victim_patron.type == /datum/patron/psydon)
@@ -381,6 +379,9 @@
 					if(/datum/patron/godless/rashan)
 						held_confession.bad_type = "A FOLLOWER OF A FALSE GOD"
 						held_confession.antag = "worshiper of the false god, Rashan-Kahl"
+					if(/datum/patron/godless/galadros)
+						held_confession.bad_type = "A WORSHIPPER OF THE DRACONIC"
+						held_confession.antag = "worshiper of the false god, Galadros"
 					if(/datum/patron/inhumen/baotha)
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)

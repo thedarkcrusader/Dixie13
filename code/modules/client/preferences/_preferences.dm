@@ -1193,7 +1193,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(!patreon)
 						to_chat(user, "This is a patreon exclusive feature, your headshot link will be applied but others will only be able to view it if you are a patreon supporter.")
 
-					to_chat(user, span_notice("Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]"))
+					to_chat(user, span_notice("Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or ANYTHING AI generated.</span>"]"))
 					to_chat(user, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
 					to_chat(user, span_notice("Keep in mind that the photo will be downsized to 325x325 pixels, so the more square the photo, the better it will look."))
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
@@ -1995,10 +1995,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			to_chat(user, "[loadout.description]")
 
 /datum/preferences/proc/get_job_lock_html(datum/job/job, mob/user, used_name)
-	if((length(job.allowed_races) && !(user.client.prefs.pref_species.id in job.allowed_races)) || \
-		(length(job.blacklisted_species) && (user.client.prefs.pref_species.id in job.blacklisted_species)))
+	var/player_species = user.client.prefs.pref_species.id
+	var/fails_allowed = length(job.allowed_races) && !(player_species in job.allowed_races)
+	var/fails_blacklist = length(job.blacklisted_species) && (player_species in job.blacklisted_species)
+	if(fails_allowed || fails_blacklist)
 		if(!user.client.has_triumph_buy(TRIUMPH_BUY_RACE_ALL))
-			var/races_text = jointext(job.allowed_races, ", ")
+			var/list/allowed_races = job.allowed_races.Copy()
+			for(var/blacklist in job.blacklisted_species)
+				allowed_races -= blacklist
+			var/races_text = jointext(allowed_races, ", ")
 			return make_lock_row(
 				used_name,
 				"\[SPECIES LOCK\]",
