@@ -18,7 +18,7 @@
 	outfit = /datum/outfit/steward
 	give_bank_account = 150 //The guy who HANDLES THE MONEY should start with more than the captain.
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-
+    noble_income = 20
 	job_bitflag = BITFLAG_ROYALTY
 
 	exp_type = list(EXP_TYPE_LIVING)
