@@ -190,7 +190,7 @@
 	desc = "A steel blade with a gold handle, intended to be concealed inside of a cane. Has a focus on stabbing"
 	icon = 'icons/roguetown/weapons/32/swords.dmi'
 	icon_state = "caneblade"
-	sellprice = 75 //Gold handle
+	sellprice = 100 //Gold handle
 	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	force_wielded = 0
