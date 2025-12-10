@@ -534,7 +534,7 @@
 	desc = "Let forth a wave of maddening mind-energy."
 	node_x = UP_X_LEFT
 	node_y = UP_Y_TIER_2
-	prerequisites = list(/datum/spell_node/dark_attunement)
+	prerequisites = list(/datum/spell_node/dark_affinity)
 	spell_type = /datum/action/cooldown/spell/cone/staggered/eldritch_blast
 
 /datum/spell_node/encode_thoughts
@@ -542,7 +542,7 @@
 	desc = "Incept an intrusive thought into the mind of your target. They may not agree with it."
 	node_x = UP_X_LEFT - 50
 	node_y = UP_Y_TIER_2
-	prerequisites = list(/datum/spell_node/dark_attunement)
+	prerequisites = list(/datum/spell_node/dark_affinity)
 	spell_type = /datum/action/cooldown/spell/undirected/list_target/encode_thoughts
 
 /datum/spell_node/mind_sliver
