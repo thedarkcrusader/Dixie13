@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list('strings/rt/bumaggrolines.txt'))
 	ai_controller = /datum/ai_controller/human_bum
 	faction = list(FACTION_BUMS, FACTION_TOWN)
 	ambushable = FALSE
-	dodgetime = 30
+	dodgetime = 3 SECONDS
 	flee_in_pain = TRUE
 	possible_rmb_intents = list()
 

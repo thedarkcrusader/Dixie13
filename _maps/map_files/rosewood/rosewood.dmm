@@ -8397,7 +8397,7 @@
 /turf/open/floor/carpet/lord/right,
 /area/indoors/town/manor)
 "eeV" = (
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 4
 	},
 /turf/open/floor/churchmarble,
@@ -21973,7 +21973,7 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
 "kXW" = (
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 4
 	},
 /obj/structure/chair/stool/bar,

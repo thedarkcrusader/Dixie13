@@ -4867,7 +4867,7 @@
 "eHv" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -6364,7 +6364,7 @@
 /area/outdoors/town/roofs)
 "ghV" = (
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -8098,7 +8098,7 @@
 /area/indoors/town/garrison)
 "hzT" = (
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -8827,7 +8827,7 @@
 "ikM" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/cloth,
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 4
 	},
 /turf/open/floor/cobble,
@@ -11474,7 +11474,7 @@
 "kOD" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/cloth,
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 8
 	},
 /turf/open/floor/cobble,

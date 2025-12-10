@@ -1,4 +1,4 @@
-/datum/job/orthodoxist
+/datum/job/sacrestants
 	title = "Sacrestants"
 	department_flag = INQUISITION
 	faction = "Station"
@@ -33,7 +33,7 @@
 		EXP_TYPE_INQUISITION = 120
 	)
 
-/datum/job/orthodoxist/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/sacrestants/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim

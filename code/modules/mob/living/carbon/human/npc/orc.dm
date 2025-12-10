@@ -15,7 +15,7 @@
 
 /mob/living/carbon/human/species/orc/slaved
 	ai_controller = /datum/ai_controller/human_npc
-	dodgetime = 15 //they can dodge easily, but have a cooldown on it
+	dodgetime = 1.5 SECONDS //they can dodge easily, but have a cooldown on it
 	canparry = TRUE
 	wander = FALSE
 
@@ -34,7 +34,7 @@
 
 /mob/living/carbon/human/species/orc/npc
 	ai_controller = /datum/ai_controller/human_npc
-	dodgetime = 15 //they can dodge easily, but have a cooldown on it
+	dodgetime = 1.5 SECONDS //they can dodge easily, but have a cooldown on it
 	canparry = TRUE
 	flee_in_pain = FALSE
 

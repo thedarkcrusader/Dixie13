@@ -4948,7 +4948,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/r{
@@ -13417,7 +13417,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 1
 	},
 /turf/open/floor/churchbrick,
@@ -23062,7 +23062,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/r{
@@ -39462,7 +39462,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/orthodoxist{
+/obj/effect/landmark/start/sacrestants{
 	dir = 1
 	},
 /turf/open/floor/churchbrick,
