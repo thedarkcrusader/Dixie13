@@ -21556,8 +21556,6 @@
 /obj/item/key/manor,
 /obj/item/key/manor,
 /obj/structure/closet/crate/crafted_closet/atarms,
-/obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/manor/atarms,
 /turf/open/floor/wood,
 /area/indoors/town/manor/servanthead)
 "lcb" = (
