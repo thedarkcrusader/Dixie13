@@ -739,6 +739,18 @@ SUBSYSTEM_DEF(plexora)
 
 	SSblackbox.record_feedback("tally", "admin_say_relay", 1, "Asay external") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/datum/world_topic/plx_givetriumphs
+	keyword = "PLX_givetriumphs"
+	require_comms_key = TRUE
+
+/datum/world_topic/plx_givetriumphs/Run(list/input)
+	var/ckey = input["ckey"]
+	var/amount = input["amount"]
+	var/reason = input["reason"]
+	amount = text2num(amount)
+	adjust_triumphs(ckey, amount, reason, counted = FALSE, silent = FALSE, override_bonus = TRUE)
+
+	return "[ckey] awarded [amount] triumphs.  They now have [SStriumphs.get_triumphs(ckey)]."
 
 #undef OLD_PLEXORA_CONFIG
 #undef AUTH_HEADER
