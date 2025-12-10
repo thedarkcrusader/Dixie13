@@ -119,7 +119,7 @@
 	cost = 5
 	node_x = -50
 	node_y = 50
-	prerequisites = list(/datum/spell_node/dark_attunement, /datum/spell_node/electric_affinity)
+	prerequisites = list(/datum/spell_node/dark_affinity, /datum/spell_node/electric_affinity)
 	is_passive = TRUE
 
 /datum/spell_node/blood_pact/on_node_buy(mob/user)
