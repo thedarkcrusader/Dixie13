@@ -21555,7 +21555,11 @@
 /obj/item/key/manor,
 /obj/item/key/manor,
 /obj/item/key/manor,
-/obj/structure/closet/crate/crafted_closet/atarms,
+/obj/structure/closet/crate/chest/neu_iron{
+	name = "spare keys"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/atarms,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/wood,
 /area/indoors/town/manor/servanthead)
 "lcb" = (
