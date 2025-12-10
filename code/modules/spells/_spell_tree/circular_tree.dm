@@ -516,7 +516,7 @@
 	prerequisites = list(/datum/spell_node/frost_affinity)
 	spell_type = /datum/action/cooldown/spell/aoe/on_turf/snap_freeze
 
-/datum/spell_node/dark_attunement
+/datum/spell_node/dark_affinity
 	name = "Dark Affinity"
 	desc = "Feel the light vanish."
 	cost = 3
@@ -525,7 +525,7 @@
 	prerequisites = list(/datum/spell_node/prestidigitation)
 	is_passive = TRUE
 
-/datum/spell_node/death_affinity/on_node_buy(mob/user)
+/datum/spell_node/dark_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/dark, 0.15)
 	to_chat(user, span_notice("The void whispers secrets to you."))
 
