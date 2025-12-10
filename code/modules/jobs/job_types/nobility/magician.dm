@@ -100,7 +100,6 @@
 		/obj/item/storage/keyring/mage = 1
 	)
 
-
 /datum/outfit/magician/post_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
 	var/static/list/selectablehat = list(
@@ -119,3 +118,4 @@
 		"Wizard robes" = /obj/item/clothing/shirt/robe/wizard,
 	)
 	equipped_human.select_equippable(equipped_human, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")
+

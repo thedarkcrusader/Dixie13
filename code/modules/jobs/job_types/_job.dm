@@ -451,7 +451,8 @@
 			if(QDELETED(src))
 				return
 
-		previous_picked_types |= picked_pack.type
+		if(picked_pack.type)
+			previous_picked_types |= picked_pack.type
 
 		picked_pack.pick_pack(src)
 

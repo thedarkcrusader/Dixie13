@@ -8,6 +8,7 @@
 	tutorial = "These lands have forfeited Psydon and the Ten. You have come to restore the True faith to these people and tear out the rot festering within."
 	outfit = /datum/outfit/specialinquisitor
 	antag_role = /datum/antagonist/purishep
+	allowed_patrons = list(/datum/patron/psydon)
 	allowed_races = list(SPEC_ID_HUMEN)
 	is_recognized = TRUE
 
@@ -48,7 +49,6 @@
 
 /datum/job/migrant/specialinquisitor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.set_patron(/datum/patron/psydon)
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 	spawned.verbs |= /mob/living/carbon/human/proc/faith_test
 	spawned.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
@@ -91,6 +91,7 @@
 	tutorial = "Crusader of the true faith, you came from Grenzelhoft under the command of the Inquisitor. Obey them as they lead you to smite the heathens."
 	allowed_races = RACES_PLAYER_GRENZ
 	is_recognized = TRUE
+	allowed_patrons = list(/datum/patron/psydon)
 	outfit = /datum/outfit/inquisition_crusader
 
 	jobstats = list(
@@ -132,8 +133,6 @@
 	else
 		spawned.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
-
-	spawned.set_patron(/datum/patron/psydon)
 
 	var/datum/species/species = spawned.dna?.species
 	if(!species)

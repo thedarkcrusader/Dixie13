@@ -3,7 +3,7 @@
 	tutorial = "A savage and deft warrior-women, you hail from the mysterious isle of Issa. In your youth you learned to partake in the hunts amid the treetops and proved your worth through countless bouts."
 	allowed_sexes = list(FEMALE)
 	allowed_races = list(SPEC_ID_HUMEN, SPEC_ID_DROW, SPEC_ID_HALF_DROW, SPEC_ID_TRITON)
-	outfit = /datum/outfit/amazon
+	outfit = /datum/outfit/adventurer/amazon
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
@@ -41,8 +41,8 @@
 		TRAIT_NOPAINSTUN
 	)
 
-/datum/outfit/amazon
-	name = "Amazon"
+/datum/outfit/adventurer/amazon
+	name = "Amazon (Adventurer)"
 	neck = /obj/item/ammo_holder/dartpouch/poisondarts
 	backl = /obj/item/weapon/polearm/spear
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/short

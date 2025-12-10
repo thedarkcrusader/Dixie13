@@ -80,7 +80,7 @@
 /datum/job/migrant/nomadrider
 	title = "Nomad Rider"
 	tutorial = "You are a nomad riding behind the khan, his voice a compass his will the unyielding law that guides your path to these unknown lands"
-	outfit = /datum/outfit/adventurer/nomad
+	outfit = /datum/outfit/pilgrim/nomad
 	allowed_races = RACES_PLAYER_ALL
 
 /datum/migrant_wave/nomad_migration
