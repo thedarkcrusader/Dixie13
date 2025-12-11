@@ -47,17 +47,14 @@
 
 /datum/job/advclass/wretch/necromancer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
+	if(prob(1))
+		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 	spawned.mana_pool?.intrinsic_recharge_sources &= ~MANA_ALL_LEYLINES
 	spawned.mana_pool?.set_intrinsic_recharge(MANA_SOULS)
 	spawned.mana_pool?.ethereal_recharge_rate += 0.1
 
 	wretch_select_bounty(spawned)
-
-/datum/outfit/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
-	..()
-	if(prob(1))
-		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 /datum/outfit/wretch/necromancer
 	name = "Necromancer (Wretch)"
