@@ -73,7 +73,7 @@
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
-/datum/outfit/magician/
+/datum/outfit/magician
 	name = "Court Mage"
 	backr = /obj/item/storage/backpack/satchel
 	cloak = /obj/item/clothing/cloak/black_cloak
