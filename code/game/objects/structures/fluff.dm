@@ -175,7 +175,7 @@
 	density = TRUE
 	anchored = TRUE
 	blade_dulling = DULLING_BASHCHOP
-	pass_flags_self = PASSTABLE|PASSGRILLE|LETPASSTHROW
+	pass_flags_self = PASSTABLE|PASSGRILLE|LETPASSTHROW|PASSSTRUCTURE|NOTLETPASSTHROWNMOB
 	max_integrity = 700
 	damage_deflection = 12
 	integrity_failure = 0.15
@@ -189,14 +189,13 @@
 	if(isobserver(mover))
 		return TRUE
 	. = ..()
-	if(.)
-		if(density && mover.throwing && isitem(mover))
-			var/obj/item/I = mover
-			var/chance = 100 - I.w_class * 25
-			if(isliving(I.throwing.thrower))
-				var/mob/living/L = I.throwing.thrower
-				chance += (L.STALUC - 10) * 10
-			return prob(clamp(chance, 0, 100))
+	if(. && density && mover.throwing && isitem(mover))
+		var/obj/item/I = mover
+		var/chance = 100 - (I.w_class-1) * 30
+		if(isliving(I.throwing.thrower))
+			var/mob/living/L = I.throwing.thrower
+			chance += (L.STALUC - 10) * 10
+		return prob(clamp(chance, 0, 100))
 
 /obj/structure/bars/bent
 	icon_state = "barsbent"
