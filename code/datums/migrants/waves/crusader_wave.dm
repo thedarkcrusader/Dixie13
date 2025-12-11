@@ -11,6 +11,7 @@
 	allowed_patrons = list(/datum/patron/psydon)
 	allowed_races = list(SPEC_ID_HUMEN)
 	is_recognized = TRUE
+	exp_types_granted  = list(EXP_TYPE_COMBAT)
 
 	jobstats = list(
 		STATKEY_INT = 2,
@@ -61,7 +62,7 @@
 	species.accent_language = species.get_accent(species.native_language)
 
 /datum/outfit/specialinquisitor
-	name = "Episcopal Inquisitor"
+	name = "Episcopal Inquisitor (Migrant Wave)"
 	wrists = /obj/item/clothing/neck/psycross/silver
 	neck = /obj/item/clothing/neck/bevor
 	shirt = /obj/item/clothing/shirt/undershirt/fancy
@@ -93,7 +94,7 @@
 	is_recognized = TRUE
 	allowed_patrons = list(/datum/patron/psydon)
 	outfit = /datum/outfit/inquisition_crusader
-
+	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
 		STATKEY_END = 2,
 		STATKEY_CON = 2,
@@ -141,7 +142,7 @@
 	species.accent_language = species.get_accent(species.native_language)
 
 /datum/outfit/inquisition_crusader
-	name = "Episcopal Crusader"
+	name = "Episcopal Crusader (Migrant Wave)"
 	head = /obj/item/clothing/head/helmet/heavy/crusader
 	neck = /obj/item/clothing/neck/coif/cloth
 	armor = /obj/item/clothing/armor/chainmail/hauberk

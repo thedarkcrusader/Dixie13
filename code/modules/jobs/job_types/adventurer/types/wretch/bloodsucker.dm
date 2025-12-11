@@ -61,7 +61,6 @@
 
 	pack_traits = list(
 		TRAIT_NOBLE,
-		TRAIT_FOREIGNER,
 		TRAIT_DODGEEXPERT
 	)
 
@@ -78,7 +77,6 @@
 		/obj/item/storage/belt/pouch/coins/mid = 1,
 		/obj/item/weapon/knife/dagger/steel/special = 1,
 		/obj/item/clothing/face/shepherd/rag = 1
-
 	)
 
 /datum/job_pack/bloodsucker_noble/can_pick_pack(mob/living/carbon/human/picker, list/previous_picked_types)
@@ -159,7 +157,6 @@
 	pack_traits = list(
 		TRAIT_MEDIUMARMOR,
 		TRAIT_NOBLE,
-		TRAIT_FOREIGNER
 	)
 
 	pack_contents = list(
@@ -217,7 +214,6 @@
 
 	pack_traits = list(
 		TRAIT_DODGEEXPERT,
-		TRAIT_FOREIGNER
 	)
 
 	pack_spells = list(
@@ -274,7 +270,6 @@
 
 	pack_traits = list(
 		TRAIT_DODGEEXPERT,
-		TRAIT_FOREIGNER
 	)
 
 	pack_contents = list(
@@ -295,7 +290,6 @@
 		/obj/item/weapon/knife/dagger/steel/special = 1,
 		/obj/item/clothing/face/shepherd/rag = 1
 	)
-
 
 /datum/job_pack/bloodsucker_vagrant/pick_pack(mob/living/carbon/human/picker)
 	. = ..()

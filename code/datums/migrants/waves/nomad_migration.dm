@@ -4,11 +4,11 @@
 	migrant_job = /datum/job/migrant/khan
 
 /datum/job/migrant/khan
-	title = "khan"
+	title = "Khan"
 	tutorial = "The khan rides at the head of a small horde of nomads, crossing into unfamiliar land in search of pasture and a place to set up tents"
 	outfit = /datum/outfit/khan
 	allowed_races = RACES_PLAYER_FOREIGNNOBLE
-
+	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
 		STATKEY_STR = 2,
 		STATKEY_END = 2,
@@ -56,7 +56,7 @@
 	new /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled(get_turf(spawned))
 
 /datum/outfit/khan
-	name = "khan"
+	name = "Khan (Migrant Wave)"
 	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/leather/steel
 	wrists = /obj/item/clothing/wrists/bracers/leather
