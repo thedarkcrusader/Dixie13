@@ -664,13 +664,9 @@
 			var/datum/outfit/O = GLOB.custom_outfits[outfit_key]
 			if(O)
 				outfit_data = O.get_json_data()
+				outfit_data["id"] = outfit_key
 
-		data["outfit"] = list(
-			"id" = outfit_key,
-			"custom_outfit_data" = outfit_data
-		)
-
-
+		data["outfit"] = outfit_data
 
 	return data
 
@@ -755,24 +751,34 @@
 
 
 	if(data["outfit"])
-		var/list/outfit_entry = data["outfit"]
-		if(islist(outfit_entry))
-			var/outfit_id = outfit_entry["id"]
-			var/custom_outfit_data = outfit_entry["custom_outfit_data"]
+		var/list/outfit_data = data["outfit"]
 
-			if(custom_outfit_data)
+		// Check if it's the OLD wrapper structure (with duplicate IDs)
+		if(islist(outfit_data) && outfit_data["custom_outfit_data"])
+			var/list/custom_outfit_data = outfit_data["custom_outfit_data"]
+			if(islist(custom_outfit_data))
 				var/datum/outfit/O = new
 				O.load_from(custom_outfit_data)
-				if(O.id in GLOB.custom_outfits)
-					outfit = O.id
-					return
-				GLOB.custom_outfits[O.id] = O
+
+				if(!(O.id in GLOB.custom_outfits))
+					GLOB.custom_outfits[O.id] = O
+					message_admins("[key_name(usr)] from the job [title] loaded a custom outfit (old format): [O.name]")
+					to_chat(admin, span_notice("Successfully loaded outfit [O.name] from old format."))
+
 				outfit = O.id
-				message_admins("[key_name(usr)]from the job [title] it was loaded a custom outfit: [O.name]")
+
+		// Check if it's the NEW direct outfit data structure
+		else if(islist(outfit_data) && outfit_data["outfit_type"])
+			var/datum/outfit/O = new
+			O.load_from(outfit_data)
+
+			if(!(O.id in GLOB.custom_outfits))
+				GLOB.custom_outfits[O.id] = O
+				message_admins("[key_name(usr)] from the job [title] loaded a custom outfit: [O.name]")
 				to_chat(admin, span_notice("Successfully loaded outfit [O.name]."))
-			else
-				outfit = outfit_id
+
+			outfit = O.id
 		else
-			outfit = outfit_entry
+			outfit = data["outfit"]
 
 	return TRUE
