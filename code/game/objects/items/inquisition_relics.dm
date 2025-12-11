@@ -749,7 +749,7 @@
 	throw_speed = 3
 	throw_range = 7
 	grid_height = 32
-	var/assassin_choke = 40
+	var/choke_change_next = 4 SECONDS
 	grid_width = 32
 	throwforce = 15
 	force_wielded = 0
@@ -953,15 +953,11 @@
 		C.visible_message(span_danger("[user] [pick("garrotes", "asphyxiates")] [C]!"), \
 		span_userdanger("[user] [pick("garrotes", "asphyxiates")] me!"), span_hear("I hear the sickening sound of cordage!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("I [pick("garrote", "asphyxiate")] [C]!"))
-		var/pain = /obj/item/inqarticles/garrote
-		if(!pain)
-			user.changeNext_move(assassin_choke)	//Stops spam for choking.
-		else
-			user.changeNext_move(CLICK_CD_RESIST) //HAHAHAHA I WIN, I GET TO SLEEP NOW(to future coders, disregard this comment, it is the ramblings of a insomniac, no maintainers,Im not removing this.)
+		user.changeNext_move(choke_change_next)
 
 /obj/item/inqarticles/garrote/razor // To yische, who said not to give this out constantly, I respectfully disagree when it comes to assassin
 	name = "Profane Razor" // Its very not non lethal now.  Strangle your prey with glee
-	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable. The wire, when used on armor surrounding the neck, magickally glides through it to reach its target. Strangle your prey with glee."
+	desc = "A thin strand of phantom black wire strung between steel grasps. The grasps are cold to the touch, even through gloves, and the strand of wire, while appearing fragile, is seemingly unbreakable. The wire, when used on armor surrounding the neck, magickally phases through it to reach its target. Strangle your prey with glee."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "garrote"
 	item_state = "garrote"
