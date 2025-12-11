@@ -251,7 +251,6 @@
 								else
 									to_chat(user, span_userdanger("Without lux in my body, I must pay a more physical toll."))
 									var/picked_limb = L.get_bodypart_complex(limb_list) // pick one arm to bonify
-									to_chat(user, span_warning("Picked limb : [picked_limb]"))
 									var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
 									if (picked_limb)
 										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
