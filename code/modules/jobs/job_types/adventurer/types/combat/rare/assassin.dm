@@ -85,10 +85,6 @@
 		/datum/skill/misc/music = 1,
 	)
 
-	pack_traits = list(
-		TRAIT_FOREIGNER
-	)
-
 	pack_contents = list(
 		/obj/item/clothing/head/bardhat = ITEM_SLOT_HEAD,
 		/obj/item/clothing/shoes/boots = ITEM_SLOT_SHOES,
@@ -149,10 +145,6 @@
 
 	pack_skills = list(
 		/datum/skill/labor/fishing = 1,
-	)
-
-	pack_traits = list(
-		TRAIT_FOREIGNER
 	)
 
 	pack_contents = list(
