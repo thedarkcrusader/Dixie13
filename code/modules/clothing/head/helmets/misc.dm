@@ -25,7 +25,6 @@
 	melt_amount = 75
 
 
-	body_parts_covered = COVERAGE_NASAL
 	max_integrity = INTEGRITY_STRONGEST
 	item_weight = 5.5 * STEEL_MULTIPLIER
 

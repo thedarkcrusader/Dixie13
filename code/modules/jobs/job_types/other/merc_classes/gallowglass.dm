@@ -17,7 +17,7 @@
 /datum/outfit/mercenary/gallowglass/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
-	head = /obj/item/clothing/head/helmet/nasal
+	head = /obj/item/clothing/head/helmet/gallowglass
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary/black
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron
