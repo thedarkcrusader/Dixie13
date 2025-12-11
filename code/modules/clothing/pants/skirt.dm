@@ -38,7 +38,7 @@
 	armor = list("blunt" = 65, "slash" = 50, "stab" = 25, "piercing" = 25,"fire" = 0, "acid" = 0)
 
 /obj/item/clothing/pants/skirt/patkilt/colored
-	misc_flags = CRAFTING_TEST_EXLUDE
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/pants/skirt/patkilt/colored/blue
 	color = CLOTHING_BERRY_BLUE
