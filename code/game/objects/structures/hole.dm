@@ -197,11 +197,11 @@
 			stage = 3
 			climb_offset = 0
 			open()
-			switch(src.isconsecrated) // this is where we handle folks being cursed by Necra for graverobbing.
+			switch(isconsecrated) // this is where we handle folks being cursed by Necra for graverobbing.
 				if(0) // not consecrated, proceed
 					return
 				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
-					if(isliving(user))
+					if(ishuman(user))
 						var/mob/living/L = user
 						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get tagged as graverobbers in EOR stats.
 							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
@@ -215,22 +215,17 @@
 					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
 						qdel(G)
 				if(2 to INFINITY) // if double-consecrated (2 or higher), you better be a Necran, or I explode your lux.
-					if(isliving(user))
+					if(ishuman(user))
 						var/mob/living/carbon/human/L = user
+						var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM) // used to pick which arm to skeletonize
 						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get IN BIG TROUBLE, ACTUALLY.
 							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 							record_round_statistic(STATS_GRAVES_ROBBED)
 							var/lux_state = L.get_lux_status()
-							var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
-							var/list/limbs_to_pick_from = list() // empty list that gets filled with limbs to turn to dust, should they exist
 							if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
 								if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich) && !HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // unless you're a kid (and not an undead), in which case Necra is a bit more lenient. She only turns one of your arms into bones.
 									to_chat(user, span_crit("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
-									for(var/zone in limb_list)
-										var/limb = L.get_bodypart(zone)
-										if(limb)
-											limbs_to_pick_from += limb
-									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
+									var/picked_limb = L.get_bodypart_complex(limb_list) // pick one arm to bonify
 									var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
 									if (picked_limb)
 										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
@@ -255,11 +250,8 @@
 									L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
 								else
 									to_chat(user, span_userdanger("Without lux in my body, I must pay a more physical toll."))
-									for(var/zone in limb_list)
-										var/limb = L.get_bodypart(zone)
-										if(limb)
-											limbs_to_pick_from += limb
-									var/picked_limb = pick(limbs_to_pick_from) // pick one arm to bonify
+									var/picked_limb = L.get_bodypart_complex(limb_list) // pick one arm to bonify
+									to_chat(user, span_warning("Picked limb : [picked_limb]"))
 									var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
 									if (picked_limb)
 										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
@@ -278,29 +270,9 @@
 		stage_update()
 		attacking_shovel.heldclod = new(attacking_shovel)
 		attacking_shovel.update_appearance(UPDATE_ICON_STATE)
-		src.isconsecrated = 0 // remove consecration levels
+		isconsecrated = 0 // remove consecration levels
 
-/datum/status_effect/debuff/cursed
-	id = "cursed"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/cursed
-	effectedstats = list(STATKEY_LCK = -5) // More severe so that the permanent debuff from having the perk makes it actually worth it.
-	duration = 10 MINUTES
 
-/atom/movable/screen/alert/status_effect/debuff/cursed
-	name = "Cursed"
-	desc = "Necra has punished me by my blasphemous deeds with terribly bad luck."
-	icon_state = "debuff"
-
-/datum/status_effect/debuff/majorcurse
-	id = "majorcurse"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/majorcurse
-	effectedstats = list(STATKEY_LCK = -5) // Last 2 whole daes and stacks with the normal curse.
-	duration = 60 MINUTES
-
-/atom/movable/screen/alert/status_effect/debuff/majorcurse
-	name = "Great hex of Necra"
-	desc = "I have brought Necra's ire upon myself! Fortune conspires against me!"
-	icon_state = "debuff"
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
 	var/turf/T = get_turf(src)
@@ -359,7 +331,7 @@
 		for(var/mob/living/carbon/human/D in C.contents)
 			D.buried = TRUE
 		if (C.consecrated)
-			src.has_consecrated_coffin = TRUE // contains a consecrated coffin, that does not mean the grave itself is protected, it still requires sanctification.
+			has_consecrated_coffin = TRUE // contains a consecrated coffin, that does not mean the grave itself is protected, it still requires sanctification.
 	opened = FALSE
 	return TRUE
 
