@@ -5,7 +5,7 @@
 	///Stores the hashed values of traits such as skin tones, hair style, and gender
 	var/unique_identity
 	var/datum/blood_type/human/human_blood_type
-	var/datum/species/species = new /datum/species/human //The type of mutant race the player is if applicable (i.e. potato-man)
+	var/datum/species/species = new /datum/species/human/northern //The type of mutant race the player is if applicable (i.e. potato-man)
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/real_name //Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
 	var/mob/living/holder
@@ -146,9 +146,10 @@
 		else
 			return
 		deathsound = new_race.deathsound
-		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+		if(old_species.properly_gained)
+			old_species.on_species_loss(src, new_race, pref_load)
 		//BODYPARTS AND FEATURES
 		if(pref_load)
 			dna.features = pref_load.features.Copy()
