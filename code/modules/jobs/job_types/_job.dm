@@ -21,6 +21,9 @@
 	//Players will be allowed to spawn in as jobs that are set to "Station"
 	var/faction = FACTION_NONE
 
+	///Whether this job can be chosen if the player is already an antagonist
+	var/antags_can_pick = TRUE
+
 	/// How many players can be this job
 	var/total_positions = 0
 
@@ -576,7 +579,7 @@
 	if(title_override)
 		return title_override
 
-	if(mob.gender == FEMALE && f_title)
+	if(mob.pronouns == SHE_HER && f_title)
 		return f_title
 
 	return title
@@ -773,4 +776,3 @@
 			outfit = outfit_entry
 
 	return TRUE
-

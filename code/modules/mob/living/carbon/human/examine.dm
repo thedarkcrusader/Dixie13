@@ -131,7 +131,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/stranger = user
 			var/is_male = FALSE
-			if(gender == MALE)
+			if(pronouns != SHE_HER)
 				is_male = TRUE
 			if(family_datum == stranger.family_datum && family_datum)
 				var/family_text = ReturnRelation(user)
@@ -204,14 +204,17 @@
 
 		var/list/known_frumentarii = user.mind?.cached_frumentarii
 		if(name in known_frumentarii)
-			. += span_greentext("<b>[m1] an agent of the court!</b>")
+			if(known_frumentarii[name])
+				. += span_greentext("<b>[m1] an agent of the court!</b>")
+			else
+				. += span_redtext("[m1] an ex-agent of the court.")
 
 		if(user != src)
 			if(HAS_TRAIT(src, TRAIT_OLDPARTY) && HAS_TRAIT(user, TRAIT_OLDPARTY))
 				. += span_green("Ahh... my old friend!")
 
 			if(HAS_TRAIT(src, TRAIT_THIEVESGUILD) && HAS_TRAIT(user, TRAIT_THIEVESGUILD))
-				. += span_green("A member of the Thieves Guild.")
+				. += span_green("A member of the Thieves' Guild.")
 
 			if((HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(user, TRAIT_CABAL)) || (src.patron?.type == /datum/patron/inhumen/zizo && HAS_TRAIT(user, TRAIT_CABAL)))
 				. += span_purple("A fellow seeker of Her ascension.")

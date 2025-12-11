@@ -15,7 +15,7 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	selection_color = JCOLOR_INQUISITION
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-
+	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/adept)
 	outfit = /datum/outfit/inquisitor
 	display_order = JDO_PURITAN
 	advclass_cat_rolls = list(CTAG_PURITAN = 20)
@@ -55,7 +55,7 @@
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
 	var/honorary = "Herr Prafekt"
-	if(spawned.gender == FEMALE)
+	if(spawned.pronouns == SHE_HER)
 		honorary = "Frau Prafekt"
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
@@ -379,6 +379,9 @@
 					if(/datum/patron/godless/rashan)
 						held_confession.bad_type = "A FOLLOWER OF A FALSE GOD"
 						held_confession.antag = "worshiper of the false god, Rashan-Kahl"
+					if(/datum/patron/godless/galadros)
+						held_confession.bad_type = "A WORSHIPPER OF THE DRACONIC"
+						held_confession.antag = "worshiper of the false god, Galadros"
 					if(/datum/patron/inhumen/baotha)
 						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
 						held_confession.antag = "worshiper of " + initial(antag_type:name)
