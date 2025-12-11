@@ -17,6 +17,9 @@
 	alternative_icon_handling = TRUE
 	var/stage = 1
 	var/faildirt = 0
+	var/has_consecrated_coffin = FALSE // Does the grave contain a consecrated coffin ? Used to determine the level of curse a graverobber gets.
+	var/is_consecrated = 0 // Has the "burial rites" miracle been used on this grave. 0 = No consecration. 1 = Simple consecration (you get cursed by Necra) 2 and above = Double consecration (your lux gets ripped out, or a limb gets skeletonized.)
+
 
 /obj/structure/closet/dirthole/Initialize()
 	var/turf/open/floor/dirt/T = loc
@@ -194,32 +197,83 @@
 			stage = 3
 			climb_offset = 0
 			open()
-			for(var/obj/structure/gravemarker/G in loc)
-				record_featured_stat(FEATURED_STATS_CRIMINALS, user)
-				record_round_statistic(STATS_GRAVES_ROBBED)
-				qdel(G)
-				if(isliving(user))
-					var/mob/living/L = user
-					if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
-						to_chat(user, "<span class='warning'>Necra turns a blind eye to my deeds.</span>")
-					else
-						to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
-						L.apply_status_effect(/datum/status_effect/debuff/cursed)
-				SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+			switch(is_consecrated) // this is where we handle folks being cursed by Necra for graverobbing.
+				if(0) // not consecrated, proceed
+					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
+						qdel(G)
+					return
+
+				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
+					if(ishuman(user))
+						var/mob/living/L = user
+						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get tagged as graverobbers in EOR stats.
+							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+							record_round_statistic(STATS_GRAVES_ROBBED)
+						if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+							to_chat(user, span_warning("Necra turns a blind eye to my deeds."))
+						else // the part where she curses you.
+							to_chat(user, span_warning("Necra shuns my blasphemous deeds!"))
+							L.apply_status_effect(/datum/status_effect/debuff/cursed)
+					SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
+						qdel(G)
+
+				if(2 to INFINITY) // if double-consecrated (2 or higher), you better be a Necran, or I explode your lux.
+					if(ishuman(user))
+						var/mob/living/carbon/human/L = user
+						var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM) // used to pick which arm to skeletonize
+
+						if(L.patron?.type != /datum/patron/divine/necra) // non-necran get IN BIG TROUBLE, ACTUALLY.
+							record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+							record_round_statistic(STATS_GRAVES_ROBBED)
+							var/lux_state = L.get_lux_status()
+							var/picked_limb = L.get_bodypart_complex(limb_list) // pick one arm to bonify, not necessarily used.
+							var/obj/item/bodypart/part_to_bonify = picked_limb // skeletonize proc requires static type, hence why we do this.
+							/* Necra doesn't strip you of lux if you're a normal child. Maniacs, werewolves, etc.. count as "normal".
+							Instead, your arm becomes skeletonized, which outs you to any onlooker. */
+							if(L.age == AGE_CHILD && !L.mind.has_antag_datum(/datum/antagonist/vampire/) && !L.mind.has_antag_datum(/datum/antagonist/lich) && !HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+								to_chat(user, span_crit("Necra's mercy saves me from a grim future, but I nevertheless have to pay for my blasphemy."))
+
+								if (picked_limb)
+									to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
+									part_to_bonify.skeletonize(FALSE)
+								else // How did you manage that?
+									to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+									L.apply_status_effect(/datum/status_effect/debuff/cursed) // not the full 10 minute version, as I expect this would only be called when bugs happen.
+
+							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // if you're a graverobber but not a Necran, you "just" get -5 LCK for a whole hour
+								to_chat(user, span_crit("Even my pacts cannot protect me from Necra's wrath, I am cursed !"))
+								L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
+							else
+								if(lux_state == LUX_HAS_LUX) // if you have lux, Necra takes it
+									if(L.mind.has_antag_datum(/datum/antagonist/lich)) // if you're a lich, we debuff you for -5 LCK. This lasts an hour, dangerous enough to be avoided but not too crippling.
+										to_chat(user, span_crit("Even my necromantic mastery cannot protect me from Necra's undivided attention, I am cursed!"))
+										L.apply_status_effect(/datum/status_effect/debuff/majorcurse)
+									else
+										to_chat(user, span_userdanger("As I open the grave, a flow of ghostly energy washes over me! My entire body feels freezing.."))
+										L.apply_status_effect(/datum/status_effect/debuff/lux_drained)
+								else // No lux? We skeletonize your arm.
+									to_chat(user, span_userdanger("Without lux in my body, I must pay a more physical toll."))
+									if (picked_limb)
+										to_chat(user, span_crit("I watch in horror as the skin on [picked_limb] turns to bones before my eyes! "))
+										part_to_bonify.skeletonize(FALSE)
+									else // How did you manage that?
+										to_chat(user, span_crit("Somehow, I have no arms with which to pay the toll, how did I dig this grave up, again?"))
+									L.apply_status_effect(/datum/status_effect/debuff/cursed)
+						else
+							if(HAS_TRAIT(L, TRAIT_GRAVEROBBER)) // this typically means you're a gravetender or cleric
+								to_chat(user, span_info("I speak the hallowed words of Necra, and she releases her grip over my soul.."))
+							else // Even Necrans get minorly cursed, but it's miles better than losing your lux or your arm
+								to_chat(user, span_warning("I mutter Necra's hallowed rites, and although my devotion is recognized, my trespass remains great, I am cursed!"))
+								L.apply_status_effect(/datum/status_effect/debuff/cursed)
+					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
+						qdel(G)
 		stage_update()
 		attacking_shovel.heldclod = new(attacking_shovel)
 		attacking_shovel.update_appearance(UPDATE_ICON_STATE)
+		is_consecrated = 0 // remove consecration levels
 
-/datum/status_effect/debuff/cursed
-	id = "cursed"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/cursed
-	effectedstats = list(STATKEY_LCK = -5) // More severe so that the permanent debuff from having the perk makes it actually worth it.
-	duration = 10 MINUTES
 
-/atom/movable/screen/alert/status_effect/debuff/cursed
-	name = "Cursed"
-	desc = "Necra has punished me by my blasphemous deeds with terribly bad luck."
-	icon_state = "debuff"
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
 	var/turf/T = get_turf(src)
@@ -277,6 +331,8 @@
 	for(var/obj/structure/closet/crate/coffin/C in contents)
 		for(var/mob/living/carbon/human/D in C.contents)
 			D.buried = TRUE
+		if (C.consecrated)
+			has_consecrated_coffin = TRUE // contains a consecrated coffin, that does not mean the grave itself is protected, it still requires sanctification.
 	opened = FALSE
 	return TRUE
 

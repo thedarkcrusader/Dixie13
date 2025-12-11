@@ -45,6 +45,7 @@
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 			ADD_TRAIT(H, TRAIT_DEADNOSE, TRAIT_GENERIC)//accustomed to death
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			beltr = /obj/item/weapon/shovel/small //so they can bury the dead
 		if(/datum/patron/divine/eora)
 			wrists = /obj/item/clothing/neck/psycross/silver/eora
