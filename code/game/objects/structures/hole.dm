@@ -18,7 +18,7 @@
 	var/stage = 1
 	var/faildirt = 0
 	var/has_consecrated_coffin = FALSE // Does the grave contain a consecrated coffin ? Used to determine the level of curse a graverobber gets.
-	var/isconsecrated = 0 // Has the "burial rites" miracle been used on this grave. 0 = No consecration. 1 = Simple consecration (you get cursed by Necra) 2 and above = Double consecration (your lux gets ripped out, or a limb gets skeletonized.)
+	var/is_consecrated = 0 // Has the "burial rites" miracle been used on this grave. 0 = No consecration. 1 = Simple consecration (you get cursed by Necra) 2 and above = Double consecration (your lux gets ripped out, or a limb gets skeletonized.)
 
 
 /obj/structure/closet/dirthole/Initialize()
@@ -197,7 +197,7 @@
 			stage = 3
 			climb_offset = 0
 			open()
-			switch(isconsecrated) // this is where we handle folks being cursed by Necra for graverobbing.
+			switch(is_consecrated) // this is where we handle folks being cursed by Necra for graverobbing.
 				if(0) // not consecrated, proceed
 					return
 				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
@@ -269,7 +269,7 @@
 		stage_update()
 		attacking_shovel.heldclod = new(attacking_shovel)
 		attacking_shovel.update_appearance(UPDATE_ICON_STATE)
-		isconsecrated = 0 // remove consecration levels
+		is_consecrated = 0 // remove consecration levels
 
 
 
