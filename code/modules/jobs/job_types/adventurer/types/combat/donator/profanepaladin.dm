@@ -50,7 +50,9 @@
 		devotion.grant_to(spawned)
 
 	switch(spawned.patron?.type)
-		if(/datum/patron/inhumen/graggar || /datum/patron/inhumen/graggar_zizo)
+		if(/datum/patron/inhumen/graggar)
+			spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
+		if(/datum/patron/inhumen/graggar_zizo)
 			spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 		if(/datum/patron/inhumen/zizo)
 			spawned.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
@@ -84,13 +86,21 @@
 /datum/outfit/adventurer/profanepaladin/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	switch(H.patron?.type)
-		if(/datum/patron/inhumen/graggar, /datum/patron/inhumen/graggar_zizo)
+		if(/datum/patron/inhumen/graggar)
 			head = /obj/item/clothing/head/helmet/graggar
 			armor = /obj/item/clothing/armor/plate/full/graggar
 			gloves = /obj/item/clothing/gloves/plate/graggar
 			pants = /obj/item/clothing/pants/platelegs/graggar
 			shoes = /obj/item/clothing/shoes/boots/armor/graggar
 			cloak = /obj/item/clothing/cloak/graggar
+		if(/datum/patron/inhumen/graggar_zizo)
+			head = /obj/item/clothing/head/helmet/graggar
+			armor = /obj/item/clothing/armor/plate/full/graggar
+			gloves = /obj/item/clothing/gloves/plate/graggar
+			pants = /obj/item/clothing/pants/platelegs/graggar
+			shoes = /obj/item/clothing/shoes/boots/armor/graggar
+			cloak = /obj/item/clothing/cloak/graggar
+			H.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 		if(/datum/patron/inhumen/zizo)
 			head = /obj/item/clothing/head/helmet/visored/zizo
 			armor = /obj/item/clothing/armor/plate/full/zizo
