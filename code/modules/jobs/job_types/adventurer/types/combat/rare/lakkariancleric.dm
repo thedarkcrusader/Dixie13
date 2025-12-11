@@ -10,14 +10,6 @@
 
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
-/datum/outfit/adventurer/lakkariancleric/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.virginity = TRUE
-	H.cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
-
-	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
-	cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
-
 	skills = list(
 		/datum/skill/combat/wrestling = 3,
 		/datum/skill/combat/unarmed = 2,

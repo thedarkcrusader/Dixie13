@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/wretch/necromancer
 	cmode_music = 'sound/music/cmode/antag/CombatLich.ogg'
 	total_positions = 1
-	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
+	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	allowed_patrons = list(/datum/patron/inhumen/zizo)
 	spell_points = 7
 	languages = list(/datum/language/undead)
@@ -52,14 +52,12 @@
 	spawned.mana_pool?.set_intrinsic_recharge(MANA_SOULS)
 	spawned.mana_pool?.ethereal_recharge_rate += 0.1
 
-	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
+	wretch_select_bounty(spawned)
 
 /datum/outfit/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
-
-	wretch_select_bounty(spawned)
 
 /datum/outfit/wretch/necromancer
 	name = "Necromancer (Wretch)"

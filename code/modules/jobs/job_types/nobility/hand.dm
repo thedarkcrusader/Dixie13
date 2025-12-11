@@ -50,7 +50,7 @@
 		agent_callback(spawned)
 
 /datum/job/hand/proc/agent_callback(mob/living/carbon/human/H)
-	addtimer(CALLBACK(src, PROC_REF(know_agents), spawned), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(know_agents), H), 6 SECONDS)
 
 /datum/job/hand/proc/know_agents(mob/living/carbon/human/H)
 	if(!GLOB.roundstart_court_agents.len)

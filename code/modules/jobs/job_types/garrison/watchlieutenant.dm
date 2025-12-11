@@ -23,14 +23,6 @@
 	give_bank_account = 50
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	exp_type = list(EXP_TYPE_GARRISON)
-	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_GARRISON, EXP_TYPE_LEADERSHIP)
-	exp_requirements = list(
-		EXP_TYPE_GARRISON = 900
-	)
-
-
-//................. Base Gear .............. //
-/datum/outfit/lieutenant/pre_equip(mob/living/carbon/human/H)
 	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_GARRISON, EXP_TYPE_LEADERSHIP)
 	exp_requirements = list(EXP_TYPE_GARRISON = 900)
 
@@ -117,7 +109,6 @@
 		var/obj/item/clothing/mask = new /obj/item/clothing/face/shepherd/clothmask()
 		if(!equipped_human.equip_to_slot_if_possible(mask, ITEM_SLOT_MASK))
 			qdel(mask)
-
 
 /datum/outfit/lieutenant/post_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
