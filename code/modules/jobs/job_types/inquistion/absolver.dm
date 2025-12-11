@@ -58,7 +58,7 @@
 	languages = list(/datum/language/oldpsydonic)
 
 	exp_type = list(EXP_TYPE_INQUISITION)
-	exp_types_granted  = list(EXP_TYPE_INQUISITION)
+	exp_types_granted = list(EXP_TYPE_INQUISITION)
 	exp_requirements = list(
 		EXP_TYPE_INQUISITION = 600
 	)

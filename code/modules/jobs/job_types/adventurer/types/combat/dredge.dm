@@ -6,7 +6,6 @@
 	outfit = /datum/outfit/adventurer/dredge
 	category_tags = list(CTAG_ADVENTURER)
 	total_positions = 7
-	min_pq = 0
 
 /datum/outfit/adventurer/dredge/pre_equip(mob/living/carbon/human/H)
 	..()

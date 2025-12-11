@@ -8,7 +8,7 @@
 	total_positions = 5
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatDream.ogg' // Medicators are from the isle of Enigma, they're loosely related to Heartfelt
-	exp_types_granted  = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT, EXP_TYPE_MEDICAL)
+	exp_types_granted = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT, EXP_TYPE_MEDICAL)
 
 /datum/outfit/mercenary/ironmaiden
 	head = /obj/item/clothing/head/helmet/sallet

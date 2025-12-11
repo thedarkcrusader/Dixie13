@@ -21,7 +21,7 @@
 	is_foreigner = TRUE
 
 	job_bitflag = BITFLAG_CHURCH
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 
 /datum/outfit/adept // Base outfit for Adepts, before loadouts
 	name = "Adept"
@@ -50,4 +50,4 @@
 		H.mind.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
 
 /datum/job/advclass/adept
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)

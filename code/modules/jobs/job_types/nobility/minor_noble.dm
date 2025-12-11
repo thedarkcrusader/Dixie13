@@ -26,7 +26,7 @@
 
 	job_bitflag = BITFLAG_ROYALTY
 
-	exp_types_granted  = list(EXP_TYPE_NOBLE)
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 
 /datum/outfit/noble/pre_equip(mob/living/carbon/human/H)
 	..()
