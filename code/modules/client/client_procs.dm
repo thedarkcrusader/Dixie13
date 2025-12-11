@@ -1391,6 +1391,13 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		for(var/sound_path as anything in SSsounds.all_music_sounds)
 			src << load_resource(sound_path, -1)
 
+/client/proc/is_donator()
+	if(patreon?.has_access(ACCESS_ASSISTANT_RANK))
+		return TRUE
+	if(twitch?.has_access(ACCESS_TWITCH_SUB_TIER_1))
+		return TRUE
+	return FALSE
+
 #undef LIMITER_SIZE
 #undef CURRENT_SECOND
 #undef SECOND_COUNT

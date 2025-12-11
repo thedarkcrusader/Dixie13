@@ -243,8 +243,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	// C/parent can be a client_interface
 	if(isclient(parent))
-		if(parent?.patreon?.has_access(ACCESS_ASSISTANT_RANK) || parent?.twitch?.has_access(ACCESS_TWITCH_SUB_TIER_1))
-			donator = TRUE
+		donator = parent.is_donator()
 
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		custom_names[custom_name_id] = get_default_name(custom_name_id)
