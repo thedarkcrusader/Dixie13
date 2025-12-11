@@ -73,6 +73,20 @@
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
+	if(istype(spawned.patron, /datum/patron/inhumen/zizo))
+		spawned.grant_language(/datum/language/undead)
+
+	spawned.adjust_skillrank(/datum/skill/magic/arcane, pick(0,1))
+
+	if(spawned.age == AGE_OLD)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+
+	spawned.virginity = TRUE
+
+	if(spawned.gender == MALE && spawned.dna?.species && spawned.dna.species.id != SPEC_ID_MEDICATO)
+		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+
 /datum/outfit/magician
 	name = "Court Mage"
 	backr = /obj/item/storage/backpack/satchel
@@ -85,18 +99,6 @@
 	neck = /obj/item/clothing/neck/mana_star
 	belt = /obj/item/storage/belt/leather/plaquegold
 	backpack_contents = list(/obj/item/scrying = 1, /obj/item/chalk = 1,/obj/item/reagent_containers/glass/bottle/killersice = 1, /obj/item/book/granter/spellbook/master = 1, /obj/item/weapon/knife/dagger/silver/arcyne = 1, /obj/item/storage/keyring/mage = 1,)
-
-/datum/outfit/magician/pre_equip(mob/living/carbon/human/H)
-	..()
-	if(istype(H.patron, /datum/patron/inhumen/zizo))
-		H.grant_language(/datum/language/undead)
-	if(H.age == AGE_OLD)
-		H.change_stat(STATKEY_SPD, -1)
-		H.change_stat(STATKEY_INT, 1)
-	if(H.gender == MALE && H.dna.species.id != SPEC_ID_MEDICATOR)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
-	H.adjust_skillrank(/datum/skill/magic/arcane, pick(6,5), TRUE)
-	H.virginity = TRUE
 
 /datum/outfit/magician/post_equip(mob/living/carbon/human/H)
 	. = ..()
