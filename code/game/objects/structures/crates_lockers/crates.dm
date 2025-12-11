@@ -58,56 +58,62 @@
 
 /obj/structure/closet/crate/coffin/examine(mob/user)
 	. = ..()
-	if(HAS_TRAIT(user, TRAIT_GRAVEROBBER) && src.consecrated) // only people who are greenlit to dig out graves can tell if a coffin is consecrated.
-		. += span_rose("This consecrated coffin hosts a body.")
-	else if (HAS_TRAIT(user, TRAIT_GRAVEROBBER) && src.sealed && !src.consecrated)
-		. += span_warning("It is sealed, but has no body.")
+	if(HAS_TRAIT(user, TRAIT_GRAVEROBBER)) // only people who are greenlit to dig out graves can tell if a coffin is consecrated.
+		if(consecrated)
+			. += span_rose("This consecrated coffin hosts a body.")
+		else if (sealed)
+			. += span_warning("It is sealed, but has no body.")
 
 /obj/structure/closet/crate/coffin/attacked_by(obj/item/I, mob/living/user)
-	. = ..()
-	if(istype(I, /obj/item/inqarticles/tallowpot)) // consecrating and sealing a coffin with tallow.
-		var/obj/item/inqarticles/tallowpot/pot = I
-		if(!pot.tallow || !pot.heatedup)
-			to_chat(user, span_warning("I either lack tallow in the pot, or it is not warm enough."))
-		else
-			if (istype(src, /obj/structure/closet/crate/coffin/vampire)) // you cannot seal a vampire lord's casket.
-				to_chat(user, span_warning("The coffin's material prevents the tallow from sticking, it's seeping right off!"))
-				return
-			to_chat(user, span_info("I start sealing the coffin with tallow.."))
-			if(!do_after(user, 5 SECONDS, src))
-				return
-			if(pacify_coffin(src, user))
-				src.add_overlay("graveconsecrated")
-				user.visible_message(span_rose("[user] seals and consecrates [src]."), span_rose("I seal the coffin, consecrating it. I may bury it to protect it's inhabitant further."))
-				SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
-				record_round_statistic(STATS_GRAVES_CONSECRATED)
-				src.consecrated = TRUE
+	if(!user.cmode)
+		if(istype(I, /obj/item/inqarticles/tallowpot)) // consecrating and sealing a coffin with tallow.
+			var/obj/item/inqarticles/tallowpot/pot = I
+			if(!pot.tallow)
+				to_chat(user, span_warning("I lack tallow in the pot."))
 			else
-				to_chat(user, span_warning("The consecration failed, but you did seal the coffin."))
-			src.sealed = TRUE
-			icon_state = "casketconsecrated"
-		return
-	if(user.used_intent.type == /datum/intent/dagger/cut && istype(I, /obj/item/weapon/knife)) // unsealing a coffin
-		if (!src.sealed)
-			to_chat(user, span_info("The coffin has no seal to remove."))
-		else
-			to_chat(user, span_info("I start unsealing the coffin.."))
-			if(!do_after(user, 5 SECONDS, src))
-				return
-			record_featured_stat(FEATURED_STATS_CRIMINALS, user)
-			record_round_statistic(STATS_GRAVES_ROBBED)
-			if(isliving(user) && src.consecrated)
-				var/mob/living/L = user
-				if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
-					to_chat(user, "<span class='warning'>Necra turns a blind eye to my deeds.</span>")
+				if(!pot.heatedup)
+					to_chat(user, span_warning("The tallow is not warm enough."))
+					return
+				if (istype(src, /obj/structure/closet/crate/coffin/vampire)) // you cannot seal a vampire lord's casket.
+					to_chat(user, span_warning("The coffin's material prevents the tallow from sticking, it's seeping right off!"))
+					return
+				to_chat(user, span_info("I start sealing the coffin with tallow.."))
+				if(!do_after(user, 5 SECONDS, src))
+					return
+				if(pacify_coffin(src, user))
+					src.add_overlay("graveconsecrated")
+					user.visible_message(span_rose("[user] seals and consecrates [src]."), span_rose("I seal the coffin, consecrating it. I may bury it to protect it's inhabitant further."))
+					SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
+					record_round_statistic(STATS_GRAVES_CONSECRATED)
+					src.consecrated = TRUE
 				else
-					to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
-					L.apply_status_effect(/datum/status_effect/debuff/cursed)
-			SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
-			src.sealed = FALSE
-			src.consecrated = FALSE
-			icon_state = "casket"
-	return
+					to_chat(user, span_warning("The consecration failed, but you did seal the coffin."))
+				src.sealed = TRUE
+				icon_state = "casketconsecrated"
+				pot.remaining = max(pot.remaining - 150, 0) // take only 150 since each process tick removes 20 from the tallow pot, and sometimes people wait.
+			return
+		if(user.used_intent.type == /datum/intent/dagger/cut && istype(I, /obj/item/weapon/knife)) // unsealing a coffin
+			if (!src.sealed)
+				to_chat(user, span_info("The coffin has no seal to remove."))
+			else
+				to_chat(user, span_info("I start unsealing the coffin.."))
+				if(!do_after(user, 5 SECONDS, src))
+					return
+				record_featured_stat(FEATURED_STATS_CRIMINALS, user)
+				record_round_statistic(STATS_GRAVES_ROBBED)
+				if(isliving(user) && src.consecrated)
+					var/mob/living/L = user
+					if(HAS_TRAIT(L, TRAIT_GRAVEROBBER))
+						to_chat(user, "<span class='warning'>Necra turns a blind eye to my deeds.</span>")
+					else
+						to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
+						L.apply_status_effect(/datum/status_effect/debuff/cursed)
+				SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
+				src.sealed = FALSE
+				src.consecrated = FALSE
+				icon_state = "casket"
+		return
+	. = ..()
 
 
 
