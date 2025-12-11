@@ -60,7 +60,6 @@
 		TRAIT_STRONG_GRABBER,
 	)
 
-
 /datum/job_pack/assassin/pick_pack(mob/living/carbon/human/picker)
 	. = ..()
 	picker.job = name
@@ -211,9 +210,6 @@
 		/obj/item/clothing/shirt/shortshirt/colored/random = ITEM_SLOT_SHIRT,
 		/obj/item/clothing/shoes/boots/leather = ITEM_SLOT_SHOES,
 		/obj/item/storage/belt/pouch/coins/poor = ITEM_SLOT_NECK,
-
-
-
 	)
 
 	pack_backpack_contents = list(
@@ -230,7 +226,6 @@
 		/datum/skill/combat/axesmaces = 2,
 		/datum/skill/combat/swords = -2, // Trade-off
 	)
-
 
 	pack_contents = list(
 		/obj/item/clothing/head/armingcap = ITEM_SLOT_HEAD,
@@ -470,8 +465,6 @@
 		/datum/skill/craft/crafting = 1,
 		/datum/skill/craft/cooking = 3,
 	)
-
-	pack_traits = list()
 
 	pack_contents = list(
 		/obj/item/storage/backpack/satchel = ITEM_SLOT_BACK_L,
