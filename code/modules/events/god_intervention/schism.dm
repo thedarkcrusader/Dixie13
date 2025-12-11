@@ -159,8 +159,8 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 
 	// If no supporter found, fall back to any clergy member who has the challenger as his patron
 	if(!selected_priest)
-		for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-			if(human_mob.stat != DEAD && human_mob.client && (human_mob.mind?.assigned_role.title in GLOB.church_positions) && human_mob.patron == challenger)
+		for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(challenger.type))
+			if(human_mob.mind?.assigned_role.title in GLOB.church_positions)
 				selected_priest = human_mob
 				break
 
@@ -387,14 +387,14 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	var/highest_influence = 0
 	var/astrata_influence = get_storyteller_influence(ASTRATA) || 0
 
-	for(var/type in subtypesof(/datum/patron/divine) - list(/datum/patron/divine/astrata, /datum/patron/divine/eora))
-		var/datum/patron/divine/god = GLOB.patronlist[type]
+	for(var/patron_type in subtypesof(/datum/patron/divine) - list(/datum/patron/divine/astrata, /datum/patron/divine/eora))
+		var/datum/patron/divine/god = GLOB.patronlist[patron_type]
 		if(!god)
 			continue
 
 		var/has_clergy = FALSE
-		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			if(H.stat != DEAD && H.client && H.patron == god && (H.mind?.assigned_role.title in GLOB.church_positions))
+		for(var/mob/living/carbon/human/H in player_humans_by_patron(patron_type))
+			if((H.mind?.assigned_role.title in GLOB.church_positions))
 				has_clergy = TRUE
 				break
 

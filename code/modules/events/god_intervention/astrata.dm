@@ -22,13 +22,7 @@
 		return FALSE
 
 /datum/round_event/astrata_grandeur/start()
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/astrata))
-			continue
-
+	for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(/datum/patron/divine/astrata))
 		// Only for astratan clergy and nobles unless ascendant
 		if(!is_ascendant(ASTRATA) && (!(human_mob.mind?.assigned_role.title in GLOB.church_positions) && !human_mob.is_noble()))
 			continue

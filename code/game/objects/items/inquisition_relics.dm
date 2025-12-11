@@ -316,7 +316,7 @@
 		possible_item_intents = list(/datum/intent/weep)
 		user.update_a_intents()
 		for(var/mob/living/carbon/human/H in view(get_turf(src)))
-			if(H.patron?.type == /datum/patron/psydon)	//Psydonites get VERY depressed seeing an artifact get turned into an ulapool caber.
+			if(istype(H.patron, /datum/patron/psydon)) //Psydonites get VERY depressed seeing an artifact get turned into an ulapool caber.
 				H.add_stress(/datum/stress_event/syoncalamity)
 	if(isitem(A) && on && user.used_intent.type == /datum/intent/bless)
 		var/datum/component/psyblessed/CP = A.GetComponent(/datum/component/psyblessed)

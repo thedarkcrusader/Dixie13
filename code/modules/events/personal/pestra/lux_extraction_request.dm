@@ -17,11 +17,7 @@
 	if(!.)
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/pestra))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/pestra))
 		if(H.get_skill_level(/datum/skill/misc/medicine) < 3)
 			continue
 		return TRUE
@@ -31,11 +27,7 @@
 /datum/round_event/pestra_lux/start()
 	var/list/valid_targets = list()
 
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/pestra))
-			continue
+	for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(/datum/patron/divine/pestra))
 		if(human_mob.get_skill_level(/datum/skill/misc/medicine) < 3)
 			continue
 		valid_targets += human_mob

@@ -17,11 +17,7 @@
 	if(!.)
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/ravox))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/ravox))
 		if(H.age == AGE_CHILD)
 			continue
 		return TRUE
@@ -31,11 +27,7 @@
 /datum/round_event/ultimate_sacrifice/start()
 	var/list/valid_targets = list()
 
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/ravox))
-			continue
+	for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(/datum/patron/divine/ravox))
 		if(human_mob.age == AGE_CHILD)
 			continue
 		valid_targets += human_mob
