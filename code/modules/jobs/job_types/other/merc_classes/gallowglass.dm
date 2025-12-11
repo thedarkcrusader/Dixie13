@@ -29,6 +29,7 @@
 	shirt = /obj/item/clothing/armor/gambeson/light/striped
 	pants = /obj/item/clothing/pants/skirt/patkilt/colored/blue
 	backl = /obj/item/weapon/sword/long/greatsword/steelclaymore
+	backr = /obj/item/storage/backpack/satchel
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE) // main weapon skill  the gallowglass is REALLY good with their claymore however there is only one of them
 		H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
