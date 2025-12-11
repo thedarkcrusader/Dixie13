@@ -674,7 +674,7 @@
 
 /obj/item/inqarticles/tallowpot/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
-	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow/red))
+	if(isredtallow(I))
 		if(!tallow)
 			var/obj/item/reagent_containers/food/snacks/tallow/red/Q = I
 			tallow = Q
@@ -686,6 +686,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow)) // Tells players to make redtallow.
 		if(!isredtallow(I))
 			to_chat(user,span_warning("Normal tallow lacks the properties to act as wax. Add viscera to it first."))
+			return
 
 	if(istype(I, /obj/item/flashlight/flare/torch))
 		heatedup = 28
