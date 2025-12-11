@@ -740,8 +740,11 @@
 		var/list/tmp = data["traits"]
 		traits = tmp.Copy()
 	if(data["languages"])
-		var/list/tmp = data["languages"]
-		languages = tmp.Copy()
+		languages = list()
+		for(var/lang_path_text in data["languages"])
+			var/lang_path = text2path(lang_path_text)
+			if(lang_path)
+				languages += lang_path
 	if(data["jobstats"])
 		var/list/tmp = data["jobstats"]
 		jobstats = tmp.Copy()
