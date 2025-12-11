@@ -304,6 +304,79 @@
 	ADD_TRAIT(H, TRAIT_VILLAIN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
+	var/assboon = list("AN ARCHER'S PRIZED WEAPONRY","A MAP TO THE KEEP'S WALLS","TUNNEL PLANS FROM A DWARF","AN EXPLOSIVE ENTRANCE","A VIOLENT NATURE","A POISONED GOBLET","NOTHING, THIS IS MY FIRST KILL! (HUNTED!)")
+	var/assboon_choice = input("YOU HAVE STOWED A BOON FROM A PAST VICTIM. WHAT IS IT?", "MURDERER! MURDERER! MURDERER!") as anything in assboon
+	switch(assboon_choice)
+		if("AN ARCHER'S PRIZED WEAPONRY")
+			H.mind.special_items["Slurbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
+			H.mind.special_items["Bolts"] = /obj/item/ammo_holder/quiver/bolts
+			to_chat(H,span_info("\
+			Byron was the personal guard of a Count, so in the villages, he was untouchable. At night he trained his aim on the poorest of the poor. And in the day, \
+			he met the ground faster than the hands that pushed him off the castle walls. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if ("A MAP TO THE KEEP'S WALLS")
+			H.mind.special_items["Keep Plans"] = /obj/item/paper/scroll/keep_plans
+			if(GLOB.keep_doors.len > 0)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
+			to_chat(H,span_info("\
+			Jasper was the King's best friend at birth. So much so, that he had ignored his Hand's tendancies to torture hellspawn and drink their blood in the dungeons. \
+			He had never realized how helpless he was when he closed that big, wrought-iron door. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if("TUNNEL PLANS FROM A DWARF")
+			H.mind.special_items["Steel Pick"] = /obj/item/weapon/pick/steel
+			H.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
+			H.set_skillrank(/datum/skill/combat/axesmaces, 1, TRUE) // For the Pickaxe.
+			H.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE) // Just feels like they needed some more stuff here. A little lackluster.
+			to_chat(H,span_info("\
+			Uvash was a good man. Regrettably, the ecstacy of gold changes the living - and so, three Dwarves went missing in the fortress he called home. He never knew how \
+			good the sensation of killing felt until now. Yet soon, it was four, as he never accounted what eyes may be gazing in the \
+			dark. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if("AN EXPLOSIVE ENTRANCE")
+			H.mind.special_items["Canister Bomb A"] = /obj/item/explosive/canister_bomb
+			H.mind.special_items["Canister Bomb B"] = /obj/item/explosive/canister_bomb
+			H.mind.special_items["Breaching Charge A"] = /obj/item/breach_charge
+			H.mind.special_items["Breaching Charge B"] = /obj/item/breach_charge
+			H.adjust_skillrank(/datum/skill/craft/bombs, 3, TRUE)
+			ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC) // If only you didn't need to grind up flowers and shit to make bombs. Still gotta source bottles.
+			to_chat(H,span_info("\
+			Tanya's parents knew much of the living world, so it was natural she did as-well. Naught a believer in Noc, but with Dendor as her patron, she didn't \
+			need magics to have power. The guards extorting her family woke up to bombs rolled into their barracks. Tanya dared to wake up to \
+			a knife in her neck. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if("A VIOLENT NATURE")
+			H.cmode_music = 'sound/music/cmode/antag/CombatBeest.ogg'
+			H.set_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
+			H.mind.special_items["Murderer's Cowl"] = /obj/item/clothing/face/murdercowl
+			H.mind.special_items["In Advance of a Broken Skull"] = /obj/item/weapon/mace/steel/profhammer // If you touch the name you die
+			H.mind.special_items["Splint Armor"] = /obj/item/clothing/armor/leather/splint
+			H.change_stat(STATKEY_STR, 1)
+			to_chat(H,span_info("\
+			We all wear masks in life. Pierrot was a painter in the day, and at night, an artist. His noble spectators woke up to two, glowing gems piercing the dark, \
+			the false-eyes piercing through the dark hallway, and into their bedroom. They quickly met not Pierrot, but the brush that was his \
+			hammer. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if("A POISONED GOBLET")
+			H.mind.special_items["Killersice"] = /obj/item/reagent_containers/glass/bottle/killersice
+			H.mind.special_items["Golden Goblet"] = /obj/item/reagent_containers/glass/cup/golden
+			H.mind.special_items["Mortar"] = /obj/item/reagent_containers/glass/mortar
+			H.mind.special_items["Pestle"] = /obj/item/pestle
+			H.change_stat(STATKEY_INT, 1)
+			H.set_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
+			ADD_TRAIT(H, TRAIT_FORAGER, TRAIT_GENERIC)
+			to_chat(H,span_info("\
+			Gerhard started with rats, then worked his way up. It turns out, making a concoction that slowly worked through the body was easier \
+			than it looked, and the Innkeeper had been arrested after seven bodies had been tied to his establishment. The next day, Gerhard was found hanging from the \
+			rafters, with his organs spilled on the floor. WHAT A DELICIOUS EGO, I CLAIM IT FOR MY OWN!")
+			)
+		if("NOTHING, THIS IS MY FIRST KILL! (HUNTED!)")
+			H.change_stat(STATKEY_LCK, 1) // Gonna need it.
+			H.change_stat(STATKEY_END, 1)
+			ADD_TRAIT(H, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC)
+			to_chat(H,span_info("\
+			WHAT A GRAND AND INTOXICATING INNOCENCE! YOUR EGO WILL BE YOUR DOWNFALL! YOU ARE BEING HUNTED!")
+			)
 
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_SPD, 2)

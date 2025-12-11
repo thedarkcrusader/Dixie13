@@ -261,8 +261,13 @@
 
 /datum/stress_event/profane // When a non-assassin touches a profane dagger
 	timer = 3 MINUTES
-	stress_change = 2
+	stress_change = 3
 	desc = "<span class='red'>I hear the voices of the damned from this cursed blade!</span>"
+
+/datum/stress_event/profanehammer // When a non-assassin touches a profane dagger
+	timer = 3 MINUTES
+	stress_change = 4
+	desc = "<span class='red'>I hear the voices of the damned from this cursed hammer!</span>"
 
 /datum/stress_event/coldhead
 	timer = 60 SECONDS
