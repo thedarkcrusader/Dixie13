@@ -200,7 +200,7 @@
 			switch(is_consecrated) // this is where we handle folks being cursed by Necra for graverobbing.
 				if(0) // not consecrated, proceed
 					for(var/obj/structure/gravemarker/G in loc) // remove gravemarkers
-					qdel(G)
+						qdel(G)
 					return
 				if(1) // consecrated, if you're not necran clergy or a treasure hunter, you get cursed.
 					if(ishuman(user))

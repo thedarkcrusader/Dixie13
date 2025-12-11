@@ -81,25 +81,25 @@
 				if(!do_after(user, 5 SECONDS, src))
 					return
 				if(pacify_coffin(src, user))
-					src.add_overlay("graveconsecrated")
+					add_overlay("graveconsecrated")
 					user.visible_message(span_rose("[user] seals and consecrates [src]."), span_rose("I seal the coffin, consecrating it. I may bury it to protect it's inhabitant further."))
 					SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
 					record_round_statistic(STATS_GRAVES_CONSECRATED)
-					src.consecrated = TRUE
+					consecrated = TRUE
 				else
 					to_chat(user, span_warning("The consecration failed, but you did seal the coffin."))
-				src.sealed = TRUE
+				sealed = TRUE
 				icon_state = "casketconsecrated"
 				pot.remaining = max(pot.remaining - 150, 0) // take only 150 since each process tick removes 20 from the tallow pot, and sometimes people wait.
 			return
 		if(user.used_intent.type == /datum/intent/dagger/cut && istype(I, /obj/item/weapon/knife)) // unsealing a coffin
-			if (!src.sealed)
+			if (!sealed)
 				to_chat(user, span_info("The coffin has no seal to remove."))
 			else
 				to_chat(user, span_info("I start unsealing the coffin.."))
 				if(!do_after(user, 5 SECONDS, src))
 					return
-				if(L.patron?.type != /datum/patron/divine/necra) // necrans don't add to the grave robber counts, though they can still get cursed.
+				if(user.patron?.type != /datum/patron/divine/necra) // necrans don't add to the grave robber counts, though they can still get cursed.
 					record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 					record_round_statistic(STATS_GRAVES_ROBBED)
 				if(isliving(user) && src.consecrated)
@@ -110,8 +110,8 @@
 						to_chat(user, "<span class='warning'>Necra shuns my blasphemous deeds, I am cursed!</span>")
 						L.apply_status_effect(/datum/status_effect/debuff/cursed)
 				SEND_SIGNAL(user, COMSIG_GRAVE_ROBBED, user)
-				src.sealed = FALSE
-				src.consecrated = FALSE
+				sealed = FALSE
+				consecrated = FALSE
 				icon_state = "casket"
 		return
 	. = ..()
