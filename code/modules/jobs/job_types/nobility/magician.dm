@@ -31,6 +31,7 @@
 	skills = list(
 	/datum/skill/misc/reading = 6,
 	/datum/skill/misc/riding = 2 ,
+	/datum/skill/magic/arcane = 5,
 	/datum/skill/combat/wrestling = 2,
 	/datum/skill/combat/unarmed = 2,
 	/datum/skill/misc/athletics = 2, //old party member, he was an adventurer who saved the city, also buff wizard
