@@ -85,7 +85,7 @@
 
 	spawned.virginity = TRUE
 
-	if(spawned.gender == MALE && spawned.dna?.species && spawned.dna.species.id != SPEC_ID_MEDICATO)
+	if(spawned.gender == MALE && spawned.dna?.species && spawned.dna.species.id != SPEC_ID_MEDICATOR)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
 /datum/outfit/magician
