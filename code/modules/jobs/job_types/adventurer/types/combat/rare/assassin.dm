@@ -75,11 +75,6 @@
 /datum/job_pack/assassin/assassin_bard
 	name = "Bard"
 
-	pack_stats = list(
-		STATKEY_INT = 1,
-		STATKEY_SPD = 1
-	)
-
 	pack_skills = list(
 		/datum/skill/misc/music = 1,
 	)
@@ -187,11 +182,6 @@
 
 /datum/job_pack/assassin/assassin_hunter
 	name = "Hunter"
-
-	pack_stats = list(
-		STATKEY_PER = 1,
-		STATKEY_END = 1,
-	)
 
 	pack_skills = list(
 		/datum/skill/combat/bows = 2,
