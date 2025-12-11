@@ -14,6 +14,7 @@
 	display_order = JDO_PRINCE
 	give_bank_account = TRUE
 	bypass_lastclass = TRUE
+
 	can_have_apprentices = FALSE
 	noble_income = 20
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'

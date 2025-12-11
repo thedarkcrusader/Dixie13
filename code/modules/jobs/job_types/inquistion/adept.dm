@@ -22,7 +22,7 @@
 	is_foreigner = TRUE
 
 	job_bitflag = BITFLAG_CHURCH
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 	antag_role = /datum/antagonist/purishep
 	languages = list(/datum/language/oldpsydonic)
 
@@ -45,4 +45,4 @@
 	spawned.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
 
 /datum/job/advclass/adept
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)

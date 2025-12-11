@@ -85,6 +85,12 @@
 	faction = FACTION_TOWN
 	total_positions = 2
 	spawn_positions = 2
+
+	bypass_lastclass = TRUE
+
+	allowed_races = RACES_PLAYER_ALL
+
+	outfit = /datum/outfit/tapster
 	give_bank_account = TRUE
 	can_have_apprentices = FALSE
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'

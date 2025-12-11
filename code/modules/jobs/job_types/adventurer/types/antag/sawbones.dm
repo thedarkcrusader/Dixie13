@@ -4,7 +4,7 @@
 	outfit = /datum/outfit/bandit/sawbones
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/CombatBandit3.ogg'
-	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_MEDICAL)
+	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MEDICAL)
 
 	jobstats = list(
 		STATKEY_INT = 3,

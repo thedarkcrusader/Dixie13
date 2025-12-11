@@ -8,7 +8,7 @@
 	allowed_patrons = list(/datum/patron/divine/dendor)
 
 	total_positions = 4
-	exp_types_granted  = list(EXP_TYPE_CLERIC)
+	exp_types_granted = list(EXP_TYPE_CLERIC)
 
 	jobstats = list(
 		STATKEY_STR = 1,

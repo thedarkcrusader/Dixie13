@@ -8,7 +8,7 @@
 	total_positions = 4
 	allowed_patrons = ALL_PROFANE_PATRONS
 
-	exp_types_granted  = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
+	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
 	jobstats = list(
 		STATKEY_STR = 1,

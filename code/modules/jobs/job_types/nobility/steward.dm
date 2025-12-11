@@ -19,6 +19,21 @@
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 	job_bitflag = BITFLAG_ROYALTY
 	exp_type = list(EXP_TYPE_LIVING)
+	exp_types_granted = list(EXP_TYPE_NOBLE)
+	exp_requirements = list(
+		EXP_TYPE_LIVING = 300
+	)
+
+/datum/outfit/steward/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE
+	if(H.gender == FEMALE)
+		shirt = /obj/item/clothing/shirt/dress/stewarddress
+	else
+		shirt = /obj/item/clothing/shirt/undershirt/fancy
+		pants = /obj/item/clothing/pants/trou/leathertights
+
+	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 	exp_requirements = list(EXP_TYPE_LIVING = 300)
 

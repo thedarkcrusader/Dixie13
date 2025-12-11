@@ -18,7 +18,8 @@
 	allowed_ages = ALL_AGES_LIST_CHILD
 	spells = list(/datum/action/cooldown/spell/undirected/call_bird)
 	job_bitflag = BITFLAG_ROYALTY
-	exp_types_granted  = list(EXP_TYPE_NOBLE)
+
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
 		STATKEY_INT = 1

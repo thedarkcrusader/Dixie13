@@ -1,5 +1,4 @@
 /// A basis for migrants allowing for infinite selection and setting relevant variables.
-/// Positions and min_pq should not be changed.
 /datum/job/migrant
 	abstract_type = /datum/job/migrant
 	title = "Migrant"

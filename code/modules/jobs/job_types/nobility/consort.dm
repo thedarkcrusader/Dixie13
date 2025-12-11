@@ -23,7 +23,7 @@
 	job_bitflag = BITFLAG_ROYALTY
 
 	exp_type = list(EXP_TYPE_LIVING, EXP_TYPE_NOBLE)
-	exp_types_granted  = list(EXP_TYPE_NOBLE)
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 600,
 		EXP_TYPE_NOBLE = 300
@@ -52,6 +52,15 @@
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/consort
 	beltr = /obj/item/storage/belt/pouch/coins/rich
+
+/* ! ! ! CONSORT CLASSES ! ! !
+- Highborn: The "default" class, a typical Enigman noble. Decent with swords and a knife. Can sew and read pretty good. A little squishy.
+- Courtesan: Ex-classy or not-so-classy prostitute. Concerningly good with that knife and sneaking around. A little dumb.
+- Lowborn: A good wholesome peasant spouse. Can cook and swing a pitchfork good. Not so smart or perceptive.
+*/
+/datum/job/advclass/consort
+	inherit_parent_title = TRUE
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 
 /datum/job/advclass/consort/highborn
 	title = "Highborn Consort"

@@ -24,7 +24,7 @@
 	is_recognized = TRUE
 
 	exp_type = list(EXP_TYPE_LIVING)
-	exp_types_granted  = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT)
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 600
 	)
@@ -38,4 +38,4 @@
 	abstract_type = /datum/job/advclass/mercenary
 	blacklisted_species = list(SPEC_ID_HALFLING)
 	category_tags = list(CTAG_MERCENARY)
-	exp_types_granted  = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT)

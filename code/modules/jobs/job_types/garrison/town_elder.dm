@@ -21,7 +21,7 @@
 	can_have_apprentices = FALSE
 
 	exp_type = list(EXP_TYPE_BARD, EXP_TYPE_LIVING)
-	exp_types_granted  = list(EXP_TYPE_LEADERSHIP, EXP_TYPE_BARD)
+	exp_types_granted = list(EXP_TYPE_LEADERSHIP, EXP_TYPE_BARD)
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 1200,
 		EXP_TYPE_BARD = 300

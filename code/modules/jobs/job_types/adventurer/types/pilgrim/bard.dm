@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_PILGRIM)
 	apprentice_name = "Aspiring Bard"
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
-	exp_types_granted  = list(EXP_TYPE_BARD)
+	exp_types_granted = list(EXP_TYPE_BARD)
 
 	jobstats = list(
 		STATKEY_PER = 1,

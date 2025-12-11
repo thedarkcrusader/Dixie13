@@ -1,13 +1,19 @@
 /datum/job/mageapprentice
 	title = "Magician Apprentice"
 	tutorial = "Your family managed to send you to college to learn the Arcyne Arts.\
-	 It's been stressful, but you'll earn your degree and become a fully fleged Magician one dae.\
-	  As long as you can keep your grades up, that is..."
+	It's been stressful, but you'll earn your degree and become a fully fleged Magician one dae.\
+	As long as you can keep your grades up, that is..."
 	department_flag = APPRENTICES
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	faction = FACTION_TOWN
 	total_positions = 2
 	spawn_positions = 2
+
+	allowed_races = RACES_PLAYER_ALL
+	allowed_ages = list(AGE_CHILD, AGE_ADULT)
+	allowed_sexes = list(MALE, FEMALE)
+	cmode_music = "sound/music/cmode/adventurer/CombatSorcerer.ogg"
+	outfit = /datum/outfit/mageapprentice
 	display_order = JDO_WAPP
 	give_bank_account = TRUE
 	bypass_lastclass = TRUE

@@ -10,7 +10,7 @@
 	total_positions = 2
 	apprentice_name = "Physicker Apprentice"
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
-	exp_types_granted  = list(EXP_TYPE_MEDICAL)
+	exp_types_granted = list(EXP_TYPE_MEDICAL)
 
 	jobstats = list(
 		STATKEY_INT = -1,

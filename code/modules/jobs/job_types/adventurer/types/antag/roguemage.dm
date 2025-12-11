@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/bandit/roguemage
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/CombatRogueMage.ogg'
-	exp_types_granted  = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
+	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	magic_user = TRUE
 	allowed_patrons = list(/datum/patron/inhumen/zizo)
 	languages = list(/datum/language/undead)

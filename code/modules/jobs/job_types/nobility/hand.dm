@@ -21,7 +21,7 @@
 	noble_income = 22
 	job_bitflag = BITFLAG_ROYALTY
 	exp_type = list(EXP_TYPE_NOBLE, EXP_TYPE_LIVING)
-	exp_types_granted  = list(EXP_TYPE_NOBLE)
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 600,
 		EXP_TYPE_NOBLE = 300,
@@ -39,11 +39,18 @@
 
 /datum/job/hand/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
+	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), spawned, FAMILY_OMMER), 10 SECONDS)
 	if(GLOB.keep_doors.len > 0)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), spawned), 5 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(know_agents), spawned), 5 SECONDS)
-	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
+	// i know this sucks, but due to how job loading is, we can't just get the agents to load before the hand without some reworks
+	if(SSticker.current_state < GAME_STATE_PLAYING)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(agent_callback), spawned))
+	else
+		agent_callback(spawned)
+
+/datum/job/hand/proc/agent_callback(mob/living/carbon/human/H)
+	addtimer(CALLBACK(src, PROC_REF(know_agents), spawned), 6 SECONDS)
 
 /datum/job/hand/proc/know_agents(mob/living/carbon/human/H)
 	if(!GLOB.roundstart_court_agents.len)
@@ -52,10 +59,10 @@
 		to_chat(H, span_notice("We began the week with these agents:"))
 		for(var/name in GLOB.roundstart_court_agents)
 			to_chat(H, span_notice(name))
-		H.mind.cached_frumentarii |= GLOB.roundstart_court_agents
+			H.mind.cached_frumentarii[name] = TRUE
 
 /datum/job/advclass/hand
-	exp_types_granted  = list(EXP_TYPE_NOBLE)
+	exp_types_granted = list(EXP_TYPE_NOBLE)
 
 /datum/job/advclass/hand/hand
 	title = "Hand"

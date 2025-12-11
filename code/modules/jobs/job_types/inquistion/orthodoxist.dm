@@ -28,7 +28,7 @@
 	languages = list(/datum/language/oldpsydonic)
 
 	exp_type = list(EXP_TYPE_INQUISITION)
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 	exp_requirements = list(
 		EXP_TYPE_INQUISITION = 120
 	)
@@ -53,4 +53,4 @@
 		species.accent_language = species.get_accent(species.native_language)
 
 /datum/job/advclass/sacrestant
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)

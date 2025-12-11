@@ -14,7 +14,7 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/bard
 	cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
-	exp_types_granted  = list(EXP_TYPE_BARD)
+	exp_types_granted = list(EXP_TYPE_BARD)
 
 	spells = list(
 		/datum/action/cooldown/spell/vicious_mockery,

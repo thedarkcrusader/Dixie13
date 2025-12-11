@@ -1,13 +1,15 @@
 /datum/job/advclass/combat/heartfeltlord
 	title = "Lord of Heartfelt"
-	tutorial = "You are the proud lord of Heartfelt, \
-	but why have you come to Vanderlin?"
-	allowed_sexes = list(MALE)
+	tutorial = "You are the lord of Heartfelt, \
+	your kingdom lies in ruins ever since it's mechanical servants rose up. \
+	You have since fled to the kingdom of Vanderlin, \
+	the exact reason of your stay here are up to you."
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(SPEC_ID_HUMEN)
 	outfit = /datum/outfit/adventurer/heartfeltlord
 	total_positions = 1
 	roll_chance = 50
-
+	cmode_music = 'sound/music/cmode/adventurer/CombatDream.ogg'
 	skills = list(
 		/datum/skill/combat/axesmaces = 2,
 		/datum/skill/combat/crossbows = 3,
@@ -50,4 +52,8 @@
 	beltr = /obj/item/storage/belt/pouch/coins/rich
 	beltl = /obj/item/weapon/sword/long
 	gloves = /obj/item/clothing/gloves/leather/black
+	neck = /obj/item/clothing/neck/chaincoif
 	backpack_contents = list(/obj/item/scomstone = 1)
+
+
+

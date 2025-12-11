@@ -52,6 +52,10 @@
 	spawned.mana_pool?.set_intrinsic_recharge(MANA_SOULS)
 	spawned.mana_pool?.ethereal_recharge_rate += 0.1
 
+	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
+
+/datum/outfit/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
+	..()
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 

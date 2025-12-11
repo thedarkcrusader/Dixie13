@@ -21,7 +21,7 @@
 	//you can have 20 year olds in the same group as 60 year olds
 	allowed_ages = ALL_AGES_LIST_CHILD
 	allowed_races = RACES_PLAYER_ALL
-
+	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	outfit = /datum/outfit/clinicapprentice
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
@@ -45,6 +45,12 @@
 		TRAIT_FORAGER,
 		TRAIT_EMPATH
 	)
+
+	outfit = /datum/outfit/clinicapprentice
+
+	job_bitflag = BITFLAG_CONSTRUCTOR
+
+	exp_types_granted  = list(EXP_TYPE_MEDICAL)
 
 /datum/job/clinicapprentice/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()

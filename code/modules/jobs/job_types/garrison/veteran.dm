@@ -22,7 +22,7 @@
 	can_have_apprentices = FALSE
 	job_bitflag = BITFLAG_GARRISON
 	exp_type = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT)
-	exp_types_granted  = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT)
 	exp_requirements = list(
 		EXP_TYPE_ADVENTURER = 300,
 		EXP_TYPE_COMBAT = 1500
@@ -48,7 +48,7 @@
 
 /datum/job/advclass/veteran
 	inherit_parent_title = TRUE
-	exp_types_granted  = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT)
 
 /datum/job/advclass/veteran/battlemaster
 	title = "Veteran Battlemaster"

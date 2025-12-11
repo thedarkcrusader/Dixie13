@@ -18,6 +18,12 @@
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 
 	outfit = /datum/outfit/shophand
+	display_order = JDO_SHOPHAND
+	give_bank_account = 10
+	bypass_lastclass = TRUE
+	can_have_apprentices = FALSE
+	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
+	exp_types_granted = list(EXP_TYPE_MERCHANT_COMPANY)
 
 	exp_types_granted = list(EXP_TYPE_MERCHANT_COMPANY)
 
