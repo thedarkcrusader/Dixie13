@@ -1,4 +1,4 @@
-/datum/action/cooldown/spell/essence/daylight
+/datum/action/cooldown/spell/essence/divine_order
 	name = "Divine Order"
 	desc = "Call upon the divine to bring perfect order."
 	button_icon_state = "rune4"
