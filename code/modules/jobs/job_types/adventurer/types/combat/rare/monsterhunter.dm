@@ -63,7 +63,7 @@
 	. = ..()
 	if(H.patron)
 		switch(H.patron.type)
-			if(/datum/patron/psydon)
+			if(/datum/patron/psydon, /datum/patron/psydon/extremist)
 				wrists = /obj/item/clothing/neck/psycross/silver
 			if(/datum/patron/divine/astrata)
 				wrists = /obj/item/clothing/neck/psycross/silver/astrata
