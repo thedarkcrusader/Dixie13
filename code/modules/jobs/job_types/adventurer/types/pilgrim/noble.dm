@@ -53,7 +53,6 @@
 	if(!choice)
 		return
 		//Yeah this is copied from how lieutenant does it which in turn was copied from how rk does it lmao
-	var/shield_type = null
 	switch(choice)
 		if("Dagger")
 			spawned.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -85,7 +84,7 @@
 
 /datum/outfit/adventurer/noble/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
 	. = ..()
-		if(equipped_human.gender == FEMALE)
+	if(equipped_human.gender == FEMALE)
 		shirt = /obj/item/clothing/shirt/dress/silkdress/colored/random
 	if(equipped_human.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/colored/black

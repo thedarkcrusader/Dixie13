@@ -69,7 +69,7 @@
 	var/shield_type = null
 	switch(choice)
 		if("Dagger")
-			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			var/scabbard = new /obj/item/weapon/scabbard/knife/noble()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
@@ -81,7 +81,7 @@
 		if("Cane Blade")
 			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			var/scabbard = new /obj/item/weapon/scabbard/cane()
-			if(!H.equip_to_appropriate_slot(scabbard))
+			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
 
 
