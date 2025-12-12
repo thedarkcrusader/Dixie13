@@ -103,17 +103,12 @@
 	if(equipped_human.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/colored/black
 		shirt = /obj/item/clothing/shirt/tunic/colored/random
-
 	if(equipped_human.age == AGE_CHILD)
-		beltr = /obj/item/weapon/knife/dagger/steel/special
-		scabbards = list(/obj/item/weapon/scabbard/knife)
 		backpack_contents = list(
 			/obj/item/reagent_containers/glass/carafe/teapot/tea = 1,
 			/obj/item/reagent_containers/glass/cup/teacup/fancy = 3
 		)
 	else
-		beltr = /obj/item/weapon/sword/rapier/dec
-		scabbards = list(/obj/item/weapon/scabbard/sword/noble)
 		backpack_contents = list(
 			/obj/item/reagent_containers/glass/bottle/wine = 1,
 			/obj/item/reagent_containers/glass/cup/silver = 1
