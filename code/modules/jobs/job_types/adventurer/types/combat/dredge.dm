@@ -121,23 +121,15 @@
 			Like a raging current, I am unrelenting. My attacks will chip at my enemy until their skin sloughs, and their bones litter the dry, sandy shores.")
 			)
 		if("Psy")
-			neck = /obj/item/clothing/neck/psycross
-			head = /obj/item/clothing/head/brimmed
-			shirt = /obj/item/clothing/shirt/undershirt/puritan
-			gloves = /obj/item/clothing/gloves/leather/advanced
-			wrists = /obj/item/clothing/wrists/bracers/leather
-			armor = /obj/item/clothing/armor/leather/vest
-			cloak = /obj/item/clothing/cloak/raincloak/colored/mortus
-			pants = /obj/item/clothing/pants/tights/colored/black
-			H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-			if(!H.has_language(/datum/language/oldpsydonic))
-				H.grant_language(/datum/language/oldpsydonic)
-				to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
-			if(!istype(H.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
-				H.set_patron(/datum/patron/psydon, TRUE)
-			to_chat(H,span_info("\
+			spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			ADD_TRAIT(spawned, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(spawned, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+			if(!spawned.has_language(/datum/language/oldpsydonic))
+				spawned.grant_language(/datum/language/oldpsydonic)
+				to_chat(spawned, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
+			if(!istype(spawned.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
+				spawned.set_patron(/datum/patron/psydon, TRUE)
+			to_chat(spawned,span_info("\
 			The Ten are false gods, and I loathe those that worship the true corpse god, Necra. Psydon lives, my life for Psydon.")
 			)
 		if("Hide")
