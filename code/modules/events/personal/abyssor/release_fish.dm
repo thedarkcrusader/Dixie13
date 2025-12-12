@@ -18,11 +18,7 @@
 	if(!.)
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/abyssor))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/abyssor))
 		if(H.get_skill_level(/datum/skill/labor/fishing) < 2)
 			continue
 		return TRUE
@@ -32,11 +28,7 @@
 /datum/round_event/fish_release/start()
 	var/list/valid_targets = list()
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/abyssor))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/abyssor))
 		if(H.get_skill_level(/datum/skill/labor/fishing) < 2)
 			continue
 		valid_targets += H

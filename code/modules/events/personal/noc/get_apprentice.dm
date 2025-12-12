@@ -19,11 +19,7 @@
 
 	var/recipient_found = FALSE
 	var/potential_apprentices = 0
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/noc))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/noc))
 		if(length(H.return_apprentices()) >= H.return_max_apprentices())
 			continue
 		recipient_found = TRUE
@@ -43,11 +39,7 @@
 	var/list/valid_targets = list()
 
 	var/potential_apprentices = 0
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/noc))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/noc))
 		if(length(H.return_apprentices()) >= H.return_max_apprentices())
 			continue
 		valid_targets += H

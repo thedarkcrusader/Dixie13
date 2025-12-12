@@ -20,11 +20,7 @@
 	if(!length(GLOB.mana_fountains) || SSmapping.config.map_name == "Vanderlin")
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/noc))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/noc))
 		if(!H.is_noble())
 			continue
 		if(H.mana_pool && H.mana_pool.intrinsic_recharge_sources == NONE)
@@ -37,11 +33,7 @@
 
 	var/list/valid_targets = list()
 
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/noc))
-			continue
+	for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(/datum/patron/divine/noc))
 		if(!human_mob.is_noble())
 			continue
 		if(human_mob.mana_pool && human_mob.mana_pool.intrinsic_recharge_sources == NONE)

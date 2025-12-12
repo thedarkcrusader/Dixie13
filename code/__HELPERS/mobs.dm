@@ -439,3 +439,14 @@ GLOBAL_LIST_INIT(oldhc, sortList(list(
 		sleep(1)
 	if(set_original_dir)
 		AM.setDir(originaldir)
+
+/// Returns a list of all human mobs, with clients, that have the given patron.
+/// Takes a patron TYPEPATH as an argument. Not an instance.
+/proc/player_humans_by_patron(datum/patron/which_patron_type, exclude_dead = TRUE)
+	. = list()
+	for(var/mob/living/carbon/human/victim in GLOB.player_list)
+		if(!istype(victim) || (exclude_dead && (victim.stat == DEAD)) || !victim.client)
+			continue
+		if(!istype(victim.patron, which_patron_type))
+			continue
+		. += victim

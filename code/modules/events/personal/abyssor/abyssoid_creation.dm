@@ -17,27 +17,11 @@
 	. = ..()
 	if(!.)
 		return FALSE
-
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/abyssor))
-			continue
-		return TRUE
-
-	return FALSE
+	return GLOB.patron_follower_counts[/datum/patron/divine/abyssor::name] > 0
 
 /datum/round_event/create_abyssoids/start()
-	var/list/valid_targets = list()
-
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/abyssor))
-			continue
-		valid_targets += H
-
-	if(!length(valid_targets))
+	var/list/valid_targets = player_humans_by_patron(/datum/patron/divine/abyssor)
+	if(!length(valid_targets)) // shouldn't happen but better safe than sorry, clients can vanish anytime after all
 		return
 
 	var/mob/living/carbon/human/chosen_one = pick(valid_targets)

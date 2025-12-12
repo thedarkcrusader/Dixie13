@@ -20,11 +20,7 @@
 	var/recipient_found = FALSE
 	var/orphans = 0
 	var/potential_orphans = 0
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/eora))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/eora))
 		if(H.age == AGE_CHILD)
 			continue
 		recipient_found = TRUE
@@ -48,11 +44,7 @@
 	var/orphans = 0
 	var/potential_orphans = 0
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/eora))
-			continue
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/eora))
 		if(H.age == AGE_CHILD)
 			continue
 		valid_targets += H

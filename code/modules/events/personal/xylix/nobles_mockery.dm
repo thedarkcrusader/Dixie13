@@ -17,8 +17,8 @@
 	if(!.)
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client || !istype(H.patron, /datum/patron/divine/xylix) || H.is_noble())
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/xylix))
+		if(H.is_noble())
 			continue
 		if(H.get_spell(/datum/action/cooldown/spell/vicious_mockery))
 			return TRUE
@@ -27,8 +27,8 @@
 /datum/round_event/xylix_mocking_nobles/start()
 	var/list/valid_targets = list()
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client || !istype(H.patron, /datum/patron/divine/xylix) || H.is_noble())
+	for(var/mob/living/carbon/human/H in player_humans_by_patron(/datum/patron/divine/xylix))
+		if(H.is_noble())
 			continue
 		if(H.get_spell(/datum/action/cooldown/spell/vicious_mockery))
 			valid_targets += H

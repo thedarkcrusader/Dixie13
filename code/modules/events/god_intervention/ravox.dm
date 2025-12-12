@@ -23,13 +23,7 @@
 /datum/round_event/ravox_resolve/start()
 	var/mob/living/carbon/human/weakest
 	var/weakest_stat
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/ravox))
-			continue
-
+	for(var/mob/living/carbon/human/human_mob in player_humans_by_patron(/datum/patron/divine/ravox))
 		if(!weakest)
 			weakest_stat = human_mob.get_stat_level(STATKEY_STR)
 			weakest = human_mob

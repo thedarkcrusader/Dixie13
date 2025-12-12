@@ -16,24 +16,10 @@
 	if(!.)
 		return FALSE
 
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!istype(H) || H.stat == DEAD || !H.client)
-			continue
-		if(!H.patron || !istype(H.patron, /datum/patron/divine/ravox))
-			continue
-		return TRUE
-
-	return FALSE
+	return GLOB.patron_follower_counts[/datum/patron/divine/ravox::name] > 0
 
 /datum/round_event/ravox_combat/start()
-	var/list/valid_targets = list()
-
-	for(var/mob/living/carbon/human/human_mob in GLOB.player_list)
-		if(!istype(human_mob) || human_mob.stat == DEAD || !human_mob.client)
-			continue
-		if(!human_mob.patron || !istype(human_mob.patron, /datum/patron/divine/ravox))
-			continue
-		valid_targets += human_mob
+	var/list/valid_targets = player_humans_by_patron(/datum/patron/divine/ravox)
 
 	if(!length(valid_targets))
 		return
