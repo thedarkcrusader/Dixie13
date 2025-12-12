@@ -13,8 +13,8 @@
 		/datum/attunement/blood = 0.5,
 	)
 
-	invocation = "throws out his hand!"
 	invocation_type = INVOCATION_EMOTE
+	invocation_self_message = "throws out his hand!"
 
 	charge_time = 2 SECONDS
 	charge_drain = 1
