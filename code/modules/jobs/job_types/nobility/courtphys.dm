@@ -41,7 +41,7 @@
 	neck = /obj/item/clothing/neck/courtphysician
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/physician
-	beltr = /obj/item/weapon/mace/courtphysician
+	beltr = /obj/item/weapon/mace/cane/courtphysician
 	armor = /obj/item/clothing/shirt/robe/courtphysician
 	ring = /obj/item/clothing/ring/feldsher_ring
 	if(H.gender == FEMALE)

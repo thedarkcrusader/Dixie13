@@ -33,7 +33,8 @@
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich = 1, /obj/item/merctoken = 1)
 	beltr = /obj/item/weapon/sword/rapier
 	belt = /obj/item/storage/belt/leather/plaquesilver
-	beltl = /obj/item/storage/keyring/merchant
+	beltl = /obj/item/weapon/mace/cane/merchant
+	wrists = /obj/item/storage/keyring/merchant
 	armor = /obj/item/clothing/shirt/robe/merchant
 	head = /obj/item/clothing/head/chaperon/colored/greyscale/silk/random
 	ring = /obj/item/clothing/ring/gold/guild_mercator

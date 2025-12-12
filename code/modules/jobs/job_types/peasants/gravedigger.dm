@@ -32,6 +32,8 @@
 	beltl = /obj/item/storage/keyring/gravetender
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	backr = /obj/item/weapon/shovel
+	if(H.age == AGE_OLD)
+		l_hand = /obj/item/weapon/mace/cane/necran
 
 	if(H.patron != /datum/patron/divine/necra)
 		H.set_patron(/datum/patron/divine/necra)
