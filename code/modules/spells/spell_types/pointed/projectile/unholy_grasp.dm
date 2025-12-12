@@ -14,7 +14,8 @@
 	)
 
 	invocation_type = INVOCATION_EMOTE
-	invocation_self_message = "throws out his hand!"
+	invocation = span_userdanger("<b>%CASTER</b> casts %PRONOUN_their hands outward!")
+	invocation_self_message = span_danger("You throw out an unholy snare!")
 
 	charge_time = 2 SECONDS
 	charge_drain = 1
