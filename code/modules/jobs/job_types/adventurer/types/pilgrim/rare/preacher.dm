@@ -8,7 +8,7 @@
 	category_tags = list(CTAG_PILGRIM)
 	total_positions = 1
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
-	allowed_patrons = list(/datum/patron/psydon)
+	allowed_patrons = list(/datum/patron/psydon, /datum/patron/psydon/extremist)
 
 	skills = list(
 		/datum/skill/misc/reading = 4,

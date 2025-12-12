@@ -13,7 +13,7 @@
 	spawn_positions = 1
 	bypass_lastclass = TRUE
 
-	allowed_patrons = list(/datum/patron/psydon)
+	allowed_patrons = list(/datum/patron/psydon, /datum/patron/psydon/extremist)
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/adept
