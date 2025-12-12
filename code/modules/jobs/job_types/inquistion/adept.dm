@@ -23,7 +23,7 @@
 	mind_traits = list(TRAIT_KNOW_INQUISITION_DOORS)
 
 	job_bitflag = BITFLAG_CHURCH
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 
 /datum/outfit/adept // Base outfit for Adepts, before loadouts
 	name = "Adept"
@@ -41,7 +41,8 @@
 			return
 		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
 		H.mind.add_antag_datum(new_antag)
-		H.set_patron(/datum/patron/psydon, TRUE)
+		if(!istype(H.patron, /datum/patron/psydon)) // adepts are loser scum, we should allow them to be extremist psydonites
+			H.set_patron(/datum/patron/psydon, TRUE)
 		H.verbs |= /mob/living/carbon/human/proc/torture_victim
 		H.verbs |= /mob/living/carbon/human/proc/faith_test
 		H.verbs |= /mob/living/carbon/human/proc/view_inquisition
@@ -52,4 +53,4 @@
 		H.mind.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
 
 /datum/job/advclass/adept
-	exp_types_granted  = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
+	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
