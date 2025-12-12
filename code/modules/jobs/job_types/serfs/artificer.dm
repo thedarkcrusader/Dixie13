@@ -61,7 +61,7 @@
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/storage/belt/pouch/coins/mid
-	beltl = /obj/item/storage/keyring/artificer
+	beltl = /obj/item/weapon/mace/cane/bronze
 	mask = /obj/item/clothing/face/goggles
 	backl = /obj/item/storage/backpack/backpack
 	ring = /obj/item/clothing/ring/silver/makers_guild
@@ -71,6 +71,7 @@
 		/obj/item/flashlight/flare/torch/lantern = 1,
 		/obj/item/weapon/knife/villager = 1,
 		/obj/item/weapon/chisel = 1,
+		/obj/item/storage/keyring/artificer = 1
 	)
 
 /datum/outfit/artificer/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)

@@ -73,3 +73,7 @@
 	beltl = /obj/item/storage/keyring/gravetender
 	beltr = /obj/item/storage/belt/pouch/coins/poor
 	backr = /obj/item/weapon/shovel
+/datum/outfit/undertaker/pre_equip(mob/living/carbon/human/equipped_human, visuals_only)
+	. = ..()
+	if(equipped_human.age == AGE_OLD)
+		l_hand = /obj/item/weapon/mace/cane/necran

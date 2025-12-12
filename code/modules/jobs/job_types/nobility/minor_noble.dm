@@ -22,7 +22,9 @@
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_INT = 1
+		STATKEY_INT = 1,
+		STATKEY_SPD = 1,
+		STATKEY_CON = 1
 	)
 
 	skills = list(
@@ -55,15 +57,33 @@
 	if(istype(spawned.patron, /datum/patron/inhumen/baotha))
 		spawned.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 
-	if(spawned.gender == FEMALE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, 1)
-	if(spawned.gender == MALE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
+	var/static/list/selectable = list( \
+		"Dagger" = /obj/item/weapon/knife/dagger/silver, \
+		"Rapier" = /obj/item/weapon/sword/rapier/dec, \
+		"Cane Blade" = /obj/item/weapon/sword/rapier/caneblade, \
+		)
+	var/choice = spawned.select_equippable(spawned, selectable, time_limit = 1 MINUTES, message = "Choose your weapon", title = "NOBLE")
+	if(!choice)
+		return
+		//Yeah this is copied from how lieutenant does it which in turn was copied from how rk does it lmao
+	var/shield_type = null
+	switch(choice)
+		if("Dagger")
+			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			var/scabbard = new /obj/item/weapon/scabbard/knife/noble()
+			if(!spawned.equip_to_appropriate_slot(scabbard))
+				qdel(scabbard)
+		if("Rapier")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			var/scabbard = new /obj/item/weapon/scabbard/sword/noble()
+			if(!spawned.equip_to_appropriate_slot(scabbard))
+				qdel(scabbard)
+		if("Cane Blade")
+			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			var/scabbard = new /obj/item/weapon/scabbard/cane()
+			if(!H.equip_to_appropriate_slot(scabbard))
+				qdel(scabbard)
 
-	if(spawned.age == AGE_CHILD)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 2)
-	else
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 2)
 
 /datum/outfit/noble
 	name = "Noble"

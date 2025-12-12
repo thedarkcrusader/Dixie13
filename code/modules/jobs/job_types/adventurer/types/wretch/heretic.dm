@@ -92,7 +92,7 @@
 			spawned.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 			ADD_TRAIT(spawned, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
-		if(/datum/patron/psydon)
+		if(/datum/patron/psydon,  /datum/patron/psydon/extremist)
 			spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 			spawned.grant_language(/datum/language/oldpsydonic)
@@ -235,7 +235,7 @@
 			shoes = /obj/item/clothing/shoes/boots/armor
 			beltr = /obj/item/weapon/knife/dagger/steel/dirk/baotha
 			beltl = /obj/item/weapon/knife/dagger/steel/dirk/baotha
-		if(/datum/patron/psydon)
+		if(/datum/patron/psydon,  /datum/patron/psydon/extremist)
 			wrists = /obj/item/clothing/neck/psycross/g
 			armor = /obj/item/clothing/armor/cuirass/fluted
 			cloak = /obj/item/clothing/cloak/psydontabard

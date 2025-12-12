@@ -159,6 +159,10 @@
 			shoes = /obj/item/clothing/shoes/boots
 			pants = /obj/item/clothing/pants/trou/leather/mourning
 			armor = /obj/item/clothing/shirt/robe/necra
+			if(equipped_human.age == AGE_OLD)
+				l_hand = /obj/item/weapon/mace/cane/necran
+			else
+				backl = /obj/item/weapon/polearm/woodstaff/quarterstaff
 		if(/datum/patron/divine/eora)
 			mask = /obj/item/clothing/face/operavisage
 			neck = /obj/item/clothing/neck/psycross/silver/eora
@@ -203,6 +207,7 @@
 			neck = /obj/item/clothing/neck/psycross/silver/malum
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/shirt/robe/colored/red
+			backl = /obj/item/weapon/polearm/woodstaff/quarterstaff
 			backpack_contents += /obj/item/weapon/hammer/iron
 		else
 			head = /obj/item/clothing/head/roguehood/colored/random

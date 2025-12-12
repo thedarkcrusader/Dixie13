@@ -50,6 +50,8 @@
 
 /datum/job/migrant/specialinquisitor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
+	if(!istype(spawned.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
+		spawned.set_patron(/datum/patron/psydon)
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 	spawned.verbs |= /mob/living/carbon/human/proc/faith_test
 	spawned.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/reading/confessional)
@@ -134,6 +136,9 @@
 	else
 		spawned.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+
+	if(!istype(spawned.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
+		spawned.set_patron(/datum/patron/psydon)
 
 	var/datum/species/species = spawned.dna?.species
 	if(!species)
