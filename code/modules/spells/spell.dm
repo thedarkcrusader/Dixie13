@@ -694,7 +694,7 @@
 	var/used_invocation_message = invocation_list[INVOCATION_MESSAGE]
 	var/used_invocation_type = invocation_list[INVOCATION_TYPE]
 
-	switch(used_invocation_message)
+	switch(used_invocation_type)
 		if(INVOCATION_SHOUT)
 			invoker.say(used_invocation_message, forced = "spell ([src])")
 
