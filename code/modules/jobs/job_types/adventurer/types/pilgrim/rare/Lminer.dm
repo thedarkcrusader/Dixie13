@@ -39,7 +39,7 @@
 	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(3, 3, 4), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -1)
 		spawned.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 

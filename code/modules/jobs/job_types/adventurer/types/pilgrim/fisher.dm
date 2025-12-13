@@ -30,8 +30,8 @@
 
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
 
 /datum/outfit/pilgrim/fisher
 	name = "Fisher (Pilgrim)"

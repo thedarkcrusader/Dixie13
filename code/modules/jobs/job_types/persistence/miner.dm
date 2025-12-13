@@ -30,9 +30,9 @@
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-	spawned.adjust_stat_modifier("job_stats", STATKEY_STR, pick(0,1))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_CON, pick(0,1))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_END, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, pick(0,1))
 
 
 

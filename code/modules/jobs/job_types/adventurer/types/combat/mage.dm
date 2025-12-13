@@ -40,7 +40,7 @@
 
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
 
 
 /datum/outfit/adventurer/mage

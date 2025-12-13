@@ -45,7 +45,7 @@
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
 		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1)
 
 	wretch_select_bounty(spawned)

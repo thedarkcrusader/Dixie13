@@ -37,9 +37,9 @@
 /datum/job/advclass/bandit/sawbones/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
 
 
 /datum/outfit/bandit/sawbones

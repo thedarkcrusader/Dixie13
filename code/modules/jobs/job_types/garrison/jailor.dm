@@ -51,9 +51,9 @@
 	. = ..()
 	spawned.verbs |= /mob/living/carbon/human/proc/torture_victim
 
-	spawned.adjust_stat_modifier("job_stats", STATKEY_END, pick(4,5,6))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_INT, pick(-4,-5,-6))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_PER, pick(-3,-3,-4))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, pick(4,5,6))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, pick(-4,-5,-6))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, pick(-3,-3,-4))
 
 	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,1), TRUE)
 	spawned.adjust_skillrank(/datum/skill/combat/unarmed, pick(0,1), TRUE)

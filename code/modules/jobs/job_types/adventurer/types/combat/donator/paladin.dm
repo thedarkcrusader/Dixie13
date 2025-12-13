@@ -48,8 +48,8 @@
 		if(/datum/patron/psydon, /datum/patron/psydon/extremist)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 			spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
 			spawned.grant_language(/datum/language/oldpsydonic)
 			ADD_TRAIT(spawned, TRAIT_PSYDONIAN_GRIT, TRAIT_GENERIC)
 		if(/datum/patron/divine/astrata)

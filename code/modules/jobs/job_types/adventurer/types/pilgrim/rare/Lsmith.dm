@@ -52,9 +52,9 @@
 	spawned.adjust_skillrank(/datum/skill/misc/reading, pick(1, 2, 2), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, -2)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, -2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -2)
 		spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 
 /datum/outfit/pilgrim/masterblacksmith

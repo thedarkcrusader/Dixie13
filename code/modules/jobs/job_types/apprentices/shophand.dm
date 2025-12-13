@@ -58,7 +58,7 @@
 		if(3)
 			spawned.adjust_skillrank(/datum/skill/combat/swords, 1)
 			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
 
 /datum/outfit/shophand
 	name = "Shophand Base"

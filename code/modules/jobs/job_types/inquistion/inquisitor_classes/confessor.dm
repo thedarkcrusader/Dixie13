@@ -74,10 +74,10 @@
 			spawned.equip_to_slot_or_del(new /obj/item/clothing/armor/brigandine/light, ITEM_SLOT_ARMOR, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow, ITEM_SLOT_BACK_L, TRUE)
 			REMOVE_TRAIT(spawned, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 2)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -2)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 2)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -2)
 
 	// Bolt selection
 	var/quivers = list("Bolts - Steel-Tipped", "Sunderbolts - Silver-Tipped, Halved Damage")

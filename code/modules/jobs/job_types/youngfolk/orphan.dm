@@ -45,13 +45,13 @@
 		orphanage_renovated = TRUE
 
 	if(!orphanage_renovated)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, rand(-4, 4))
-		spawned.STALUC = rand(1,20)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, rand(-4, 4))
+		spawned.base_fortune = rand(1,20)
 	else
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 4)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 2)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 2)
-		spawned.STALUC = rand(7,20)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 4)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 2)
+		spawned.base_fortune = rand(7,20)
 
 	var/hand_1 = spawned.get_active_held_item()
 	var/hand_2 = spawned.get_inactive_held_item()

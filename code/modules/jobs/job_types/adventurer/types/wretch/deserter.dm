@@ -121,7 +121,7 @@
 	switch(helmetchoice)
 		if("None")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_CON, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
 
 	wretch_select_bounty(spawned)
 

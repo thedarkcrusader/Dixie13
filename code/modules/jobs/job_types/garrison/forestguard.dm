@@ -260,11 +260,11 @@
 
 /datum/job/advclass/forestguard/ruffian/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_stat_modifier("job_stats", STATKEY_STR, rand(-1, 1))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_INT, rand(-2, 2))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_CON, rand(-1, 1))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_END, rand(-1, 1))
-	spawned.adjust_stat_modifier("job_stats", STATKEY_LCK, rand(-4, 4))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, rand(-2, 2))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_LCK, rand(-4, 4))
 
 	spawned.verbs |= /mob/proc/haltyellorphan
 

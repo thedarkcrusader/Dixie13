@@ -40,8 +40,8 @@
 	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(2,2,3), TRUE)
 
 	if(spawned.dna?.species.id == "kobold")
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 2) // Go, my child. Destroy their ankles.
-		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 2) // Go, my child. Destroy their ankles.
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)

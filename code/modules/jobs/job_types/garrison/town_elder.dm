@@ -128,9 +128,9 @@
 		spawned.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
 
 /datum/outfit/town_elder/mayor
 	name = "Mayor (Town Elder)"
@@ -208,8 +208,8 @@
 		for(var/skill_type in craft_skills)
 			spawned.adjust_skillrank(skill_type, pick(0,0,1), TRUE)
 
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
 
 /datum/outfit/town_elder/master_of_crafts_and_labor
 	name = "Master of Crafts and Labor (Town Elder)"
@@ -345,7 +345,7 @@
 
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)
@@ -440,8 +440,8 @@
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
 
 /datum/outfit/town_elder/lorekeeper
 	name = "Lorekeeper (Town Elder)"
@@ -501,8 +501,8 @@
 	if(spawned.age == AGE_OLD)
 		spawned.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
 
 /datum/outfit/town_elder/dreamwatcher
 	name = "Dreamwatcher (Town Elder)"

@@ -73,8 +73,8 @@
 /datum/job/advclass/squire/lancer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()
@@ -125,8 +125,8 @@
 /datum/job/advclass/squire/footman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_CON, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()
@@ -179,7 +179,7 @@
 /datum/job/advclass/squire/skirmisher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()

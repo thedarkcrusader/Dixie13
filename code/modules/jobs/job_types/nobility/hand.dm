@@ -206,13 +206,13 @@
 /datum/job/advclass/hand/advisor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
-	spawned.adjust_stat_modifier("job_stats", STATKEY_INT, pick(0,1)) // Adjust from base of 4
+	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, pick(0,1)) // Adjust from base of 4
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_SPD, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, -1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
 
 /datum/outfit/hand/advisor
 	name = "Advisor (Hand)"

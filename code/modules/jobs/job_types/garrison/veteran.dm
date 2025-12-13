@@ -97,7 +97,7 @@
 		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
 
 /datum/outfit/vet/battlemaster
 	name = "Veteran Battlemaster"
@@ -328,7 +328,7 @@
 		if("Zweihander")
 			spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
 		if("Halberd")
 			spawned.put_in_hands(new /obj/item/weapon/polearm/halberd(get_turf(spawned)), TRUE)
 			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)

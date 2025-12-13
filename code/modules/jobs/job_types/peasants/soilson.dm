@@ -59,8 +59,8 @@
 	. = ..()
 	if(prob(5))
 		// Bonus stats
-		spawned.adjust_stat_modifier("job_stats", STATKEY_STR, 1)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
 
 		// Bonus skills
 		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)

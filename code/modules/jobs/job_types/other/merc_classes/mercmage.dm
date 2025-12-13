@@ -59,8 +59,8 @@
 
 	// Age-based stat adjustments
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier("job_stats", STATKEY_END, 1) //to counteract the innate endurance loss
-		spawned.adjust_stat_modifier("job_stats", STATKEY_PER, -1)  //instead they lose some perception
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1) //to counteract the innate endurance loss
+		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, -1)  //instead they lose some perception
 
 /datum/outfit/mercenary/sellmage
 	name = "Sellmage (Mercenary)"
