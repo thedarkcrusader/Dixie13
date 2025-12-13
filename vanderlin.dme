@@ -3394,6 +3394,7 @@
 #include "code\modules\spells\spell_types\undirected\mansion_portal.dm"
 #include "code\modules\spells\spell_types\undirected\message.dm"
 #include "code\modules\spells\spell_types\undirected\personality_commune.dm"
+#include "code\modules\spells\spell_types\undirected\regenerate.dm"
 #include "code\modules\spells\spell_types\undirected\rituos.dm"
 #include "code\modules\spells\spell_types\undirected\secondsight.dm"
 #include "code\modules\spells\spell_types\undirected\seek_orphan.dm"
