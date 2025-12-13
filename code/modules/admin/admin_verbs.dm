@@ -18,6 +18,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/toggle_aghost_invis,
 	/client/proc/admin_ghost,
 	/client/proc/generate_bulk_codes,
+	/client/proc/generate_custom_code,
 	/client/proc/generate_codes,
 	/client/proc/ghost_up,
 	/datum/admins/proc/start_vote,

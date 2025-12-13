@@ -18,6 +18,73 @@ GLOBAL_LIST_INIT(redeemed_codes, list())
 
 	generate_bulk_redemption_code()
 
+/client/proc/generate_custom_code()
+	set category = "GameMaster"
+	set name = "Generate Custom Code"
+
+	generate_custom_redemption_code()
+
+/proc/generate_custom_redemption_code()
+	if(!check_rights(R_FUN))
+		return
+
+	var/custom_code = input(usr, "Enter your custom code (e.g., 2025MONKE)", "Custom Code") as text|null
+	if(!custom_code)
+		return
+
+	custom_code = uppertext(trim(custom_code))
+
+	if(length(custom_code) < 3 || length(custom_code) > 50)
+		to_chat(usr, span_warning("Code must be between 3 and 50 characters long."))
+		return
+
+	// Check if code already exists
+	reload_global_stored_codes()
+	if(GLOB.stored_codes["[custom_code]"])
+		to_chat(usr, span_warning("This code already exists!"))
+		return
+
+	var/restrictions = browser_input_list(usr, "Add restrictions to this code?", "Code Restrictions", list("None", "Time Limited", "Use Limited", "Both"))
+
+	var/expiry_time = null
+	var/max_uses = null
+
+	if(restrictions == "Time Limited" || restrictions == "Both")
+		var/hours = input(usr, "How many hours should this code be valid for?", "Expiry Time") as num|null
+		if(hours < 0)
+			hours = 0
+		if(hours)
+			expiry_time = world.time + (hours * 36000)
+
+	if(restrictions == "Use Limited" || restrictions == "Both")
+		max_uses = input(usr, "Maximum number of redemptions allowed?", "Use Limit") as num|null
+
+	var/amount = input(usr, "Please enter an amount of triumphs to give", "Triumph Amount") as num|null
+	if(!amount)
+		return
+
+	// Save the custom code
+	var/json_file = file(CODE_STORAGE_PATH)
+	var/list/collated_data = list()
+
+	if(fexists(json_file))
+		var/list/old_data = json_decode(file2text(json_file))
+		collated_data += old_data
+
+	collated_data["[custom_code]"] = amount
+
+	var/payload = json_encode(collated_data)
+	fdel(json_file)
+	WRITE_FILE(json_file, payload)
+
+	save_code_metadata(custom_code, expiry_time, max_uses)
+	reload_global_stored_codes()
+
+	var/restrictions_text = get_restrictions_text(expiry_time, max_uses)
+	log_game("[key_name(usr)] generated a custom redemption code '[custom_code]' worth [amount] triumphs[restrictions_text].")
+	message_admins("[ADMIN_LOOKUP(usr)] generated a custom redemption code '[custom_code]' worth [amount] triumphs[restrictions_text].")
+	to_chat(usr, span_big("Your custom code has been created: [custom_code]"))
+
 /proc/generate_redemption_code()
 	if(!check_rights(R_FUN))
 		return
