@@ -7,6 +7,10 @@
 /obj/item/clothing/face/lordmask/l
 	icon_state = "lmask_l"
 
+/obj/item/clothing/face/lordmask/noprice
+	desc = "Half of your face turned gold. Doesn't seems to be real gold, Worthless."
+	sellprice = 0
+
 /obj/item/clothing/face/lordmask/faceless
 	name = "half-face"
 	desc = "A face for the faceless."

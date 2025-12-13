@@ -89,6 +89,10 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 	name = "Papakha"
 	item_path = /obj/item/clothing/head/papakha
 
+/datum/loadout_item/tophat
+	name = "Teller's Hat"
+	item_path = /obj/item/clothing/head/tophat
+
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -244,3 +248,7 @@ GLOBAL_LIST_INIT(loadout_items, subtypesof(/datum/loadout_item))
 /datum/loadout_item/jestershoes
 	name = "Jester's Shoes"
 	item_path = /obj/item/clothing/shoes/jester
+
+/datum/loadout_item/ghalfmask
+	name = "Golden Halfmask"
+	item_path = /obj/item/clothing/face/lordmask/noprice
