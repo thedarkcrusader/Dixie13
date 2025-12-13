@@ -49,6 +49,15 @@
 	craftdiff = 1
 	category = "Mask"
 
+/datum/repeatable_crafting_recipe/sewing/weaving/plague_mask
+	name = "Gas Mask"
+	output = /obj/item/clothing/face/phys/plaguebearer
+	requirements = list(/obj/item/clothing/face/phys = 1,
+				/obj/item/alch/herb/mentha = 2,
+				/obj/item/alch/herb/calendula = 1)		
+	craftdiff = 1
+	category = "Mask"
+
 /* craftdif of 2 = APPRENTICE */
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shadowgloves

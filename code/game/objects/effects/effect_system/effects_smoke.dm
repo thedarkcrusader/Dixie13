@@ -179,6 +179,24 @@
 /datum/effect_system/smoke_spread/sleeping
 	effect_type = /obj/effect/particle_effect/smoke/sleeping
 
+/obj/effect/particle_effect/smoke/napgas
+	color = "#4a3c5f"
+	lifetime = 10
+
+/obj/effect/particle_effect/smoke/napgas/smoke_mob(mob/living/carbon/M)
+	if(..())
+		if(!istype(M.wear_mask, /obj/item/clothing/face/phys/plaguebearer))
+			M.add_nausea(5)
+			M.reagents.add_reagent(/datum/reagent/medicine/herbal/valeriana_draught, 2)
+			M.emote("cough")
+			if(prob(20))
+				to_chat(M, span_warning("The gas makes you incredibly tired, you think you might pass out..."))
+			return 1
+
+
+/datum/effect_system/smoke_spread/napgas
+	effect_type = /obj/effect/particle_effect/smoke/napgas
+
 /////////////////////////////////////////////
 // Chem smoke
 /////////////////////////////////////////////
