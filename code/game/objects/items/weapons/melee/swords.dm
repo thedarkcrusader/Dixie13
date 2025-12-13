@@ -74,6 +74,7 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/weapon/sword/short/bronze
+	name = "bronze short sword"
 	desc = "A bronze sword of shortened design and a reduced grip for single hand use."
 	icon_state = "shortsword_bronze"
 	force = DAMAGE_SHORTSWORD
