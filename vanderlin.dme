@@ -2669,6 +2669,7 @@
 #include "code\modules\jobs\job_types\apprentices\squire.dm"
 #include "code\modules\jobs\job_types\apprentices\wapprentice.dm"
 #include "code\modules\jobs\job_types\church\monk.dm"
+#include "code\modules\jobs\job_types\church\noc_inquisitor.dm"
 #include "code\modules\jobs\job_types\church\priest.dm"
 #include "code\modules\jobs\job_types\church\templar.dm"
 #include "code\modules\jobs\job_types\garrison\dungeoneer.dm"
