@@ -144,7 +144,6 @@
 		to_chat(user, span_info("I put [money] mammon in [src]."))
 		playsound(get_turf(src), 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		return attack_hand(user)
-	return ..()
 
 /obj/structure/fake_machine/merchantvend/Topic(href, href_list)
 	. = ..()

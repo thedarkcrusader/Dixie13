@@ -613,3 +613,47 @@
 	name = "Electrified"
 	desc = "Your body is charged with unstable electricity!"
 	icon_state = "dazed"
+
+/datum/status_effect/debuff/paperwork_dread
+	id = "paper_dread"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/paperwork_dread
+	effectedstats = list(STATKEY_SPD = -2, STATKEY_LCK = -2, STATKEY_INT = -3, STATKEY_PER = -1)
+	duration = 12 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/paperwork_dread
+	name = "Apprehension"
+	desc = "<span class='warning'>A breathless expectancy. Of what? No-one knows!</span>\n" //the king in yellow
+
+/datum/status_effect/debuff/paperwork_dread/on_apply()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.add_stress(/datum/stress_event/paperwork_dread)
+
+/datum/status_effect/debuff/paperwork_dread/on_remove()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.remove_stress(/datum/stress_event/paperwork_dread)
+
+/datum/status_effect/debuff/unemployed
+	id = "unemployed"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/paperwork_dread
+	effectedstats = list(STATKEY_LCK = -1, STATKEY_INT = -2)
+	duration = 10 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/unemployed
+	name = "Estrangement"
+	desc = "<span class='warning'>myriad</span>\n"
+
+/datum/status_effect/debuff/unemployed/on_apply()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.add_stress(/datum/stress_event/merc_fired)
+
+/datum/status_effect/debuff/unemployed/on_remove()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.remove_stress(/datum/stress_event/merc_fired)

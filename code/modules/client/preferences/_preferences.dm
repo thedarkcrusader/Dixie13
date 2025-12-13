@@ -232,11 +232,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/ui_scale
 	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
 	var/list/culinary_preferences = list()
+	var/datum/catalyst_datum/catalyst
 
 /datum/preferences/New(client/C)
 	parent = C
 
 	migrant  = new /datum/migrant_pref(src)
+	catalyst = new /datum/catalyst_datum(src)
 
 	flavortext = null
 	headshot_link = null
@@ -1672,6 +1674,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					user << browse(null, "window=mob_occupation")
 					user << browse(null, "window=latechoices") //closes late job selection
 					user << browse(null, "window=migration") // Closes migrant menu
+					user << browse(null, "window=catalyst") // Closes catalyst menu
+
 
 					SStriumphs.remove_triumph_buy_menu(user.client)
 

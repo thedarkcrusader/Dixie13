@@ -17,30 +17,44 @@
 
 /obj/structure/fake_machine/hailer/Initialize(mapload)
 	. = ..()
-	SSroguemachine.hailer = src
+	SSroguemachine.hailer |= src
 
 /obj/structure/fake_machine/hailer/Destroy()
-	SSroguemachine.hailer = null
+	SSroguemachine.hailer -= src
 	return ..()
+
+/obj/structure/fake_machine/hailer/examine(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_BURDEN))
+		. += ""
+		user.add_stress(/datum/stress_event/ring_madness)
+		return
+	if(is_gaffer_assistant_job(user.mind.assigned_role))
+		. += ""
+		return
+	else
+		. += ""
 
 /obj/structure/fake_machine/hailer/attackby(obj/item/H, mob/user, params)
 	if(!HAS_TRAIT(user, TRAIT_BURDEN) && !is_gaffer_assistant_job(user.mind.assigned_role))
-		to_chat(user, span_danger("you can't feed the [src] without carrying his burden"))
+		to_chat(user, span_danger("you can't feed the [src] without carrying it's burden"))
 		return
 	if(istype(H, /obj/item/reagent_containers/powder/salt)) //mmmm, salt.
 		to_chat(user, "<span class='notice'>the [src]'s tongue slips between its bronze teeth to lap at the salt in [user]'s hand, finishing with effectionate licks across their palm... gross </span>")
 		say("mmmpphh... grrrrrhh... hhhrrrnnn...")
+		playsound(src, 'sound/gore/flesh_eat_03.ogg', 70, FALSE, ignore_walls = TRUE)
 		qdel(H)
 		return
 	if(!istype(H, /obj/item/paper))
 		to_chat(user, "<span class='notice'>the [src] only accepts paper</span>")
+		playsound(src, 'sound/misc/godweapons/gorefeast5.ogg', 70, FALSE, ignore_walls = TRUE)
 		say("GRRRRHHH!!...GRAAAAGH")
 		return
-	if(istype(H, /obj/item/paper) && (HAS_TRAIT(user, TRAIT_BURDEN)))
-		if(!user.transferItemToLoc(H, src))
-			return
-		to_chat(user, "<span class='notice'>I feed the [H] to the [src].</span>")
-		say("Bbbllrrr... fffrrrtt... brrrhh...")
+	if(!user.transferItemToLoc(H, src))
+		return
+	to_chat(user, "<span class='notice'>I feed the [H] to the [src].</span>")
+	playsound(src, 'sound/gore/flesh_eat_03.ogg', 70, FALSE, ignore_walls = TRUE)
+	say("Bbbllrrr... fffrrrtt... brrrhh...")
 	return ..()
 
 /obj/structure/fake_machine/hailer/interact(mob/user)
@@ -84,9 +98,10 @@
 				to_chat(usr, "<span class='warning'>You'll need something to write with!</span>")
 
 	if(href_list["read"])
-		var/obj/item/paper/I = locate(href_list["read"]) in SSroguemachine.hailer.contents
-		if(istype(I) && I.loc == SSroguemachine.hailer && in_range(src, usr))
-			I.read(usr)
+		for(var/obj/structure/fake_machine/hailer/hailer as anything in SSroguemachine.hailer)
+			var/obj/item/paper/I = locate(href_list["read"]) in hailer.contents
+			if(istype(I) && I.loc == hailer && in_range(src, usr))
+				I.read(usr)
 
 	if(href_list["rename"]) //this doesnt even update the menu in real time, people are gonna think it aint workin' for sure, lol, lmao - the clown
 		var/obj/item/I = locate(href_list["rename"]) in contents
@@ -129,6 +144,7 @@
 		"GGGGRRRRR... BLLRRTTT!!",
 		"NNNGGGRRBB... MMPHHH!!",
 		"Hhbbbh...Mhhaamm--maaahrhh...")
+	playsound(src, 'sound/surgery/organ2.ogg', 70, FALSE, ignore_walls = TRUE)
 	message = span_danger(message)
 	say(message)
 
@@ -149,6 +165,93 @@
 /obj/structure/fake_machine/hailerboard/Topic(href, href_list)
 	..()
 	if(href_list["read"])
-		var/obj/item/paper/I = locate(href_list["read"]) in SSroguemachine.hailer.contents
-		if(istype(I) && I.loc == SSroguemachine.hailer && in_range(src, usr))
-			I.read(usr, TRUE)
+		for(var/obj/structure/fake_machine/hailer/hailer as anything in SSroguemachine.hailer)
+			var/obj/item/paper/I = locate(href_list["read"]) in hailer.contents
+			if(istype(I) && I.loc == hailer && in_range(src, usr))
+				I.read(usr, TRUE)
+
+/obj/structure/fake_machine/hailer/inn_hailer
+	name = "INN-HAILER"
+	desc = "A machine that shares the parchment fed to it to all existing HAILERBOARDs for viewing. This one stands upright by it's own 'lungs'."
+	icon = 'icons/roguetown/misc/machines.dmi'
+	icon_state = "inn_hailer"
+	density = TRUE
+
+/obj/structure/fake_machine/hailer/inn_hailer/Initialize(mapload)
+	. = ..()
+	SSroguemachine.inn_hailer = src
+
+/obj/structure/fake_machine/hailer/inn_hailer/Destroy()
+	. = ..()
+	if(SSroguemachine.inn_hailer == src)
+		SSroguemachine.inn_hailer = null
+
+/obj/structure/fake_machine/hailer/inn_hailer/attackby(obj/item/I, mob/user, params)
+	if(!iscarbon(user))
+		return ..()
+	var/mob/living/carbon/innkeep = user
+	var/obj/item/clothing/neck/tyrants_chain/the_chain = locate() in innkeep.get_all_gear()
+	if(!the_chain)
+		to_chat(innkeep, span_danger("you can't feed the [src] without the chain."))
+		return
+	if(istype(I, /obj/item/reagent_containers/powder/salt)) //mmmm, salt.
+		to_chat(innkeep, "<span class='notice'>the [src]'s tongue slips between its bronze teeth to lap at the salt in [innkeep]'s hand, finishing with effectionate licks across their palm... gross </span>")
+		say("mmmpphh... grrrrrhh... hhhrrrnnn...")
+		playsound(src, 'sound/gore/flesh_eat_03.ogg', 70, FALSE, ignore_walls = TRUE)
+		qdel(I)
+		return
+	if(istype(I, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/food = I
+		if(food.eat_effect == /datum/status_effect/debuff/rotfood)
+			to_chat(innkeep, "<span class='notice'>the [src]'s tongue slips between its bronze teeth to lap at the [food] in [innkeep]'s hand, finishing with effectionate licks across their palm... gross </span>")
+			say("mmmpphh... grrrrrhh... hhhrrrnnn...")
+			playsound(src, 'sound/gore/flesh_eat_03.ogg', 70, FALSE, ignore_walls = TRUE)
+			qdel(food)
+			return
+	if(!istype(I, /obj/item/paper))
+		to_chat(innkeep, "<span class='notice'>the [src] only accepts paper</span>")
+		playsound(src, 'sound/misc/godweapons/gorefeast5.ogg', 70, FALSE, ignore_walls = TRUE)
+		say("GRRRRHHH!!...GRAAAAGH")
+		return
+	if(!innkeep.transferItemToLoc(I, src))
+		return
+	to_chat(innkeep, "<span class='notice'>I feed the [I] to the [src].</span>")
+	playsound(src, 'sound/gore/flesh_eat_03.ogg', 70, FALSE, ignore_walls = TRUE)
+	say("Bbbllrrr... fffrrrtt... brrrhh...")
+	return ..()
+
+/obj/structure/fake_machine/hailer/inn_hailer/proc/infestation_death()
+	playsound(src, 'sound/combat/gib (1).ogg', 70, FALSE, ignore_walls = TRUE)
+	//N/A needs the butchering effect of speweing blood and guts everywhere
+	qdel(src)
+
+/obj/structure/fake_machine/hailerboard/inn_hailer_board
+	name = "INN-HAILER BOARD"
+	desc = "A notice board that shows all the notices the Gaffer and the Innkeeper has put up"
+	icon = 'icons/roguetown/misc/machines.dmi'
+	icon_state = "hailerboard_inn"
+	density = TRUE
+	pixel_y = 0
+
+/obj/structure/fake_machine/hailerboard/inn_hailer_board/Initialize()
+	. = ..()
+	SSroguemachine.inn_hailer_b = src
+
+/obj/structure/fake_machine/hailerboard/inn_hailer_board/Destroy()
+	. = ..()
+	SSroguemachine.inn_hailer_b = null
+
+/obj/structure/fake_machine/hailerboard/inn_hailer_board/process()//they are inn hailing
+	. = ..()
+	var/message = pick(
+		"Hhhh... hhh... HHHHhhhhh...",
+		"Hoo... Hooo... HHH...",
+		"Ggggg... GGGHH... Hhhk...",
+		"Paaaaff... Hhhheeee... hhhhhh...")
+	playsound(src, 'sound/surgery/organ2.ogg', 70, FALSE, ignore_walls = TRUE)
+	say(span_danger(message))
+
+/obj/structure/fake_machine/hailerboard/inn_hailer_board/proc/infestation_death()
+	playsound(src, 'sound/combat/gib (1).ogg', 70, FALSE, ignore_walls = TRUE)
+	//N/A needs the butchering effect of speweing blood and guts everywhere
+	qdel(src)

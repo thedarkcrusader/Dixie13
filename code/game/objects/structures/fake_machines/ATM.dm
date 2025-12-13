@@ -78,8 +78,8 @@
 	if(ishuman(user))
 		if(istype(P, /obj/item/coin/inqcoin))
 			return
+		var/mob/living/carbon/human/H = user
 		if(istype(P, /obj/item/coin))
-			var/mob/living/carbon/human/H = user
 			if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE) && prob(33))
 				to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 				H.cursed_freak_out()
@@ -102,6 +102,167 @@
 				return
 			else
 				say("No account found. Submit your fingers for inspection.")
+				return
+		if(istype(P, /obj/item/paper/merc_work_onetime))
+			var/obj/item/paper/merc_work_onetime/WC = P
+			if(!WC.jobsdone)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("This contract is unfinished!")
+				return
+			var/mob/jobberref = WC.jobber.resolve()
+			if(jobberref in SStreasury.bank_accounts)
+				var/amt = SStreasury.bank_accounts[jobberref]
+				if(amt < WC.payment)
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					say("[jobberref.real_name] does not have enough funds to pay for this contract.")
+					return
+				budget2change(WC.payment, user)
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("[jobberref.real_name] does not have an account.")
+			return
+		if(istype(P, /obj/item/paper/merc_work_conti/))
+			var/obj/item/paper/merc_work_conti/CW = P
+			if(!CW.signed)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("This contract is not recognized as legitimate.")
+				return
+			if(CW.worktime < 1)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("This contract's payment obligations have been fulfilled.")
+				return
+			if(CW.daycount == GLOB.dayspassed) //if you wait a whole week you won't get your pay, but thats on you.
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("The payment cycle is not in effect.")
+				return
+			var/mob/jobberref = CW.jobber.resolve()
+			if(jobberref in SStreasury.bank_accounts)
+				var/amt2 = SStreasury.bank_accounts[jobberref]
+				if(amt2 < CW.payment)
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					say("[jobberref.real_name] does not have enough funds to pay for this contract.")
+					return
+				budget2change(CW.payment, user)
+				CW.worktime--
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("[jobberref.real_name] does not have an account.")
+			return
+		if(istype(P, /obj/item/paper/merc_will/adven_will))
+			var/obj/item/paper/merc_will/adven_will/AW = P
+			if(!AW.yuptheydied || !AW.stewardsigned)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("This... err... 'health insurance' can't be claimed without the proper signatures.")
+				return
+			H.flash_fullscreen("redflash3")
+			playsound(H, 'sound/combat/hits/bladed/genstab (1).ogg', 100, FALSE, -1)
+			var/mob/inheretorialref = AW.inheretorial.resolve()
+			if(H != inheretorialref)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("You are not the individual in this coverage")
+				return
+			var/mob/soontodieref = AW.soontodie.resolve()
+			if(soontodieref in SStreasury.bank_accounts)
+				var/deadsaccount = SStreasury.bank_accounts[soontodieref]
+				if(deadsaccount < 0) //generational debt mechanic
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					say("Your acquaintance, [soontodieref.real_name] has left you their debt. The crown thanks you, personally, for continuing to pay what is rightfully owned to the crown")
+					inheretorialref += deadsaccount
+					return
+				var/list/deposit_results2 = SStreasury.generate_money_account(deadsaccount, H)
+				if(islist(deposit_results2))
+					if(deposit_results2[2] != 0)
+						say("The crown is sorry for your loss... TAX OF [deposit_results2[2]] MAMMONS APPLIED!!")
+						record_featured_stat(FEATURED_STATS_TAX_PAYERS, H, deposit_results2[2])
+						GLOB.vanderlin_round_stats[STATS_TAXES_COLLECTED] += deposit_results2[2]
+				var/mob/yuptheydiedref = AW.yuptheydied.resolve()
+				if((yuptheydiedref in SStreasury.bank_accounts) && (deadsaccount > 0))
+					var/gaffersaccount = SStreasury.bank_accounts[yuptheydiedref]
+					var/gafferscut = deadsaccount * 0.05
+					gafferscut = round(gafferscut)
+					deadsaccount -= gafferscut
+					gaffersaccount += gafferscut
+				budget2change(deadsaccount, H)
+				qdel(AW)
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("[soontodieref.real_name] does not have an account to pay out.")
+			return
+		if(istype(P, /obj/item/paper/merc_will))
+			var/obj/item/paper/merc_will/MW = P
+			if(!MW.yuptheydied || !MW.stewardsigned)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("This... err... 'health insurance' can't be claimed without the proper signatures.")
+				return
+			H.flash_fullscreen("redflash3")
+			playsound(H, 'sound/combat/hits/bladed/genstab (1).ogg', 100, FALSE, -1)
+			var/mob/inheretorialref = MW.inheretorial.resolve()
+			if(H != inheretorialref)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("You are not the individual in this coverage")
+				return
+			var/mob/soontodieref = MW.soontodie.resolve()
+			if(soontodieref in SStreasury.bank_accounts)
+				var/deadsaccount = SStreasury.bank_accounts[soontodieref]
+				if(deadsaccount < 0) //generational debt mechanic
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					say("Your acquaintance, [soontodieref.real_name] has left you their debt. The crown thanks you, personally, for continuing to pay what is rightfully owned to the crown")
+					inheretorialref += deadsaccount
+					return
+				var/mob/yuptheydiedref = MW.yuptheydied.resolve()
+				if((yuptheydiedref in SStreasury.bank_accounts) && (deadsaccount > 0))
+					var/gaffersaccount = SStreasury.bank_accounts[yuptheydiedref]
+					var/gafferscut = deadsaccount * 0.05
+					gafferscut = round(gafferscut)
+					deadsaccount -= gafferscut
+					gaffersaccount += gafferscut
+				budget2change(deadsaccount, H)
+				qdel(MW)
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("[soontodieref.real_name] does not have an account to pay out.")
+			return
+		if(istype(P, /obj/item/paper/voucher))
+			var/obj/item/paper/voucher/voucher = P
+			var/treasury_value = SStreasury.treasury_value
+			var/voucherpay = SStreasury.herovoucher
+			if(!voucherpay)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("The crown is no longer accepting these vouchers")
+				return
+			if(voucherpay > treasury_value)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("[src] is not legitimate") //keeping it hush hush that they are fucking broke.
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("Enjoy the [voucherpay] mammons from the ever generous crown, 'we look forward to future achivements!'")
+			budget2change(voucherpay, H)
+			SStreasury.treasury_value -= voucherpay
+			qdel(voucher)
+		if(istype(P, /obj/item/paper/merchantprotectionpact_gaffpart))
+			var/obj/item/paper/merchantprotectionpact_gaffpart/garf
+			if(!garf.merchpart)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("garf") //N/A
+				return
+			if(garf.lastpay == GLOB.dayspassed)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("garf")
+				return
+			if(garf.merch  in SStreasury.bank_accounts)
+				var/merchantsaccounts = SStreasury.bank_accounts[garf.merch]
+				if(merchantsaccounts < garf.pay)
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					say("garf")
+					return
+				garf.lastpay = GLOB.dayspassed
+				budget2change(merchantsaccounts, H)
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				say("garf")
+				return
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			say("garf")
+			return
 	return ..()
 
 /obj/structure/fake_machine/atm/examine(mob/user)

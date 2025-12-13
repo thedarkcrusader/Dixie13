@@ -576,3 +576,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/death_arena/second
 	name = "Death arena spawn 2"
+
+/obj/effect/landmark/contracthole
+	name = "Round-start Mercenary contract placer"
+
+/obj/effect/landmark/contracthole/proc/addcontract(mob/living/carbon/human/employee)
+	new /obj/item/paper/merc_contract(src, employee)

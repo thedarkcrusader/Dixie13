@@ -87,7 +87,6 @@
 	max_integrity = INTEGRITY_STANDARD
 	item_weight = 12 * IRON_MULTIPLIER
 
-
 /obj/item/clothing/armor/plate/blkknight
 	name = "blacksteel plate"
 	desc = "A chestplate forged from blacksteel with shoulder guards, combining strength and agility."

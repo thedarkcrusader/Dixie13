@@ -44,7 +44,6 @@
 	ai_controller = /datum/ai_controller/minotaur
 	dendor_taming_chance = DENDOR_TAME_PROB_NONE
 
-
 /mob/living/simple_animal/hostile/retaliate/minotaur/Initialize()
 	. = ..()
 	AddComponent(/datum/component/ai_aggro_system)

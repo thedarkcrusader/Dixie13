@@ -13,7 +13,11 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 	var/last_death_report
 	var/obj/item/crown
 	var/obj/item/key
-	var/obj/structure/fake_machine/hailer/hailer
+	var/list/hailer = list()
+	var/obj/structure/fake_machine/headeater/headeater
+	var/obj/structure/fake_machine/falseheadeater/falseheadeater
+	var/obj/structure/fake_machine/hailer/inn_hailer/inn_hailer
+	var/obj/structure/fake_machine/hailerboard/inn_hailer_board/inn_hailer_b
 
 /datum/controller/subsystem/processing/roguemachine/fire(resumed = 0)
 	. = ..()

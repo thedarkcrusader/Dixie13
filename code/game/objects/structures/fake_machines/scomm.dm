@@ -12,6 +12,7 @@
 	var/listening = TRUE
 	var/speaking = TRUE
 	var/dictating = FALSE
+	var/merctakeover = FALSE
 
 /obj/structure/fake_machine/scomm/Initialize()
 	. = ..()
@@ -37,6 +38,8 @@
 	if(!user.is_literate())
 		. += "<span class='warning'>Uhhh... I can't read them...</span>"
 		return
+	if(merctakeover)
+		. += span_warningbig("LAW XX: THE LAW CANNOT BE ENFORCED AGAINST THE MERCENARY GUILD OR IT'S ILK.") //the 'it's' is a stand in for the headeater, also I don't actually remember how the laws are supposed to look so if it isn't "law[number]: [law]" change the start here
 	for(var/i in 1 to length(GLOB.laws_of_the_land))
 		. += span_info("[i]. [GLOB.laws_of_the_land[i]]")
 
@@ -162,7 +165,16 @@
 	for(var/obj/structure/fake_machine/scomm/S in SSroguemachine.scomm_machines)
 		S.say(message, spans = list("info"))
 
-
+/obj/structure/fake_machine/scomm/proc/getmerced()
+	var/time = rand(1, 12)
+	sleep(time)
+	var/saey = pick("")
+	say(saey)
+	for(var/mob/living/carbon/human/noble in range(src, loc))
+		if(HAS_TRAIT(noble, TRAIT_NOBLE) && !HAS_TRAIT(noble, TRAIT_DEAF)) //I know trait deaf isn't it but I cant find the code for canhear
+			noble.add_stress(/datum/stress_event/getmerced)
+	//N/A these should make sound
+	//N/A and an overlay for a bit
 
 //SCOMSTONE                 SCOMSTONE
 

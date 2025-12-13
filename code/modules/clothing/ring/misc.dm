@@ -310,6 +310,10 @@
 	if(HAS_TRAIT(user, TRAIT_BURDEN))
 		. += "An ancient ring made of pyrite amalgam, an engraved quote is hidden in the inner bridge; \"Heavy is the head that bows\""
 		user.add_stress(/datum/stress_event/ring_madness)
+		return
+	if(is_gaffer_assistant_job(user.mind.assigned_role))
+		. += ""
+		return
 	else
 		. += "A very old golden ring appointing its wearer as the Mercenary guild master, its strangely missing the crown for the centre stone"
 
@@ -324,16 +328,18 @@
 	if(HAS_TRAIT(user, TRAIT_BURDEN))
 		return TRUE
 
-	var/gaffed = alert(user, "Will you bear the burden? (Be the next Gaffer)", "YOUR DESTINY", "Yes", "No")
+	var/gaffed = browser_alert(user, "Will you bear the burden? (Be the next Gaffer)", "YOUR DESTINY", DEFAULT_INPUT_CHOICES)
 	var/gaffed_time = world.time
 
-	if((gaffed == "No" || world.time > gaffed_time + 5 SECONDS) && user.is_holding(src))
+	if((gaffed == CHOICE_NO || world.time > gaffed_time + 5 SECONDS) && user.is_holding(src))
 		user.dropItemToGround(src, force = TRUE)
 		to_chat(user, span_danger("With great effort, the ring slides off your palm to the floor below"))
 		return
 
-	if((gaffed == "Yes") && user.is_holding(src))
+	if((gaffed == CHOICE_YES) && user.is_holding(src))
+		GLOB.Beucratic_triumps += user.ckey
 		ADD_TRAIT(user, TRAIT_BURDEN, type)
+		ADD_TRAIT(user, TRAIT_MERCGUILD, type)
 		user.equip_to_slot_if_possible(src, ITEM_SLOT_RING, FALSE, FALSE, TRUE, TRUE)
 		to_chat(user, span_danger("A constricting weight grows around your neck as you adorn the ring"))
 		return TRUE
@@ -352,6 +358,7 @@
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(on_ring_drop),user), 5 MINUTES)
 	REMOVE_TRAIT (user, TRAIT_BURDEN, type)
+	REMOVE_TRAIT (user, TRAIT_MERCGUILD, type)
 	addtimer(CALLBACK(src, PROC_REF(psstt)), rand(10,20) SECONDS)
 
 /obj/item/clothing/ring/gold/burden/proc/psstt()
@@ -452,4 +459,33 @@
 /obj/item/clothing/ring/feldsher_ring
 	name = "feldsher's ring"
 	icon_state = "ring_feldsher"
-	desc = "A hallowed copper ring, ritualistically forged by Pestran clergymen upon the graduation of a feldsher. \n It bears a vulture skull, whose beak is crooked, and the copper was blessed with Pestra's rot: it will corrode in time, yet never lose its resilience. \n Although the wearer may not have Pestra as her patron, this ring is proof of Her blessing. This allows the feldsher to extract and manipulate Lux, so long as they follow Her teachings"
+	desc = "A hallowed copper ring, ritualistically forged by Pestran clergymen upon the graduation of a feldsher. \n It bears a vulture skull, whose beak is crooked, and the copper was blessed with pestra's rot : it will corrode in time, yet never lose it's resilience. \n Although the wearer may not have Pestra as her patron, this ring is proof of Her blessing. This allows the feldsher to extract and manipulate Lux, so long as they follow Her teachings"
+
+/obj/item/clothing/ring/weepers_boon
+	name = "Makers ring"
+	desc = "The wearer is a proud member of the Makers' guild."
+	icon_state = "ring_duel"
+	sellprice = 0
+	var/datum/weakref/merchant
+
+/obj/item/clothing/ring/weepers_boon/equipped(mob/user, slot)
+	. = ..()
+	merchant = WEAKREF(user)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/ring/weepers_boon/dropped(mob/user)
+	. = ..()
+	merchant = null
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/ring/weepers_boon/process()
+	. = ..()
+	var/mob/themerchant = merchant.resolve()
+	if(!isliving(themerchant))
+		return
+	if(!themerchant.client && !themerchant.ckey)
+		return
+	if(prob(5))
+		var/text = pick("")
+		to_chat(themerchant, span_danger(text))
+		//merchant.user.add_stress(/datum/stress_event/weepersring)

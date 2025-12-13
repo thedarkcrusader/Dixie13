@@ -69,7 +69,9 @@
 #define COMPANY			(1<<8)
 #define INQUISITION 	(1<<9)
 
-#define UNDEAD			(1<<10)
+#define MERCGUILD		(1<<10)
+
+#define UNDEAD			(1<<11)
 
 
 #define JCOLOR_NOBLE "#9c40bf"
@@ -78,6 +80,7 @@
 #define JCOLOR_SERF "#669968"
 #define JCOLOR_PEASANT "#936d6c"
 #define JCOLOR_INQUISITION "#FF0000"
+#define JCOLOR_MERCGUILD "#3b150e"
 
 // job display orders //
 
@@ -155,13 +158,13 @@
 #define JDO_CHIEF 32
 
 #define JDO_ADVENTURER 33
-#define JDO_GAFFER 33.1
-#define JDO_PILGRIM 34.2
-#define JDO_MIGRANT  34.3
+#define JDO_PILGRIM 34.1
+#define JDO_MIGRANT  34.2
 #define JDO_BANDIT 34.3
 #define JDO_WRETCH 34.4
 
-#define JDO_MERCENARY 35
+#define JDO_GAFFER 35
+#define JDO_MERCENARY 35.1
 
 #define JDO_VAGRANT 36
 #define JDO_ORPHAN 37

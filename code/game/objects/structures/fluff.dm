@@ -689,6 +689,42 @@
 	deconstructible = FALSE
 	density = TRUE
 	blade_dulling = DULLING_BASH
+	var/mutable_appearance/breaking
+
+/obj/structure/fluff/statue/astrata/Initialize()
+	GLOB.astrata_statues += src
+	. = ..()
+
+/obj/structure/fluff/statue/astrata/Destroy()
+	. = ..()
+	GLOB.astrata_statues -= src
+
+/obj/structure/fluff/statue/astrata/examine(mob/user)
+	. = ..()
+	if(!breaking)
+		return
+	if(!isliving(user))
+		return
+	var/mob/living/luser = user
+	if(luser.patron == /datum/patron/divine/astrata)
+		. += span_warning("HER VISAGE IS DEFILED!!")
+		//N/A a stressevent here would be fine
+		return
+	. += span_warning("It is the victim of petty vandalism...")
+
+
+/obj/structure/fluff/statue/astrata/proc/do_break()
+	if(!breaking)
+		playsound(src, 'sound/misc/gods/astrata_scream.ogg', 10, ignore_walls = TRUE)
+		playsound(src, 'sound/magic/enter_blood.ogg', 20, FALSE, ignore_walls = FALSE)
+		breaking = mutable_appearance(icon, "ast_defile")
+		add_overlay(breaking)
+		return
+	cut_overlay(breaking)
+	breaking = null
+
+/obj/structure/fluff/statue/astrata/OnCrafted(dirin, mob/user)
+	. = ..()
 	SET_BASE_PIXEL(-16, 0)
 
 /obj/structure/fluff/statue/astrata/bling
@@ -1396,8 +1432,11 @@
 /obj/structure/fluff/statue/gaffer/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_BURDEN))
-		. += "slumped and tortured, broken body pertrified and in pain, its chest rose and fell in synch with mine banishing any doubt left, it is me! my own visage glares back at me!"
+		. += "slumped and tortured, broken body pertrified and in pain, it's chest rose and fell in synch with mine banishing any doubt left, it is me! my own visage glares back at me!"
 		user.add_stress(/datum/stress_event/ring_madness)
+		return
+	if(is_gaffer_assistant_job(user.mind.assigned_role))
+		. += ""
 		return
 	if(ring_destroyed == TRUE)
 		. += "a statue depicting a decapitated man writhing in chains on the ground, it holds its hands out, pleading, in its palms is a glowing ring..."
@@ -1414,13 +1453,13 @@
 		to_chat(user, span_danger("It is not mine to have..."))
 		return
 	to_chat(user, span_danger("As you extend your hand over to the glowing ring, you feel a shiver go up your spine, as if unseen eyes turned to glare at you..."))
-	var/gaffed = alert(user, "Will you bear the burden? (Be the next Gaffer)", "YOUR DESTINY", "Yes", "No")
+	var/gaffed = browser_alert(user, "Will you bear the burden? (Be the next Gaffer)", "YOUR DESTINY", DEFAULT_INPUT_CHOICES)
 
-	if(gaffed == "No" && ring_destroyed == TRUE)
+	if(gaffed == CHOICE_NO && ring_destroyed == TRUE)
 		to_chat(user, span_danger("yes...best to leave it alone."))
 		return
 
-	if((gaffed == "Yes") && Adjacent(user) && ring_destroyed == TRUE)
+	if((gaffed == CHOICE_YES) && Adjacent(user) && ring_destroyed == TRUE)
 		var/obj/item/ring = new /obj/item/clothing/ring/gold/burden(loc)
 		ADD_TRAIT(user, TRAIT_BURDEN, type)
 		user.put_in_hands(ring)

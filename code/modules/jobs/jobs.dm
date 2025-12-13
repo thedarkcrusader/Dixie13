@@ -57,7 +57,6 @@ GLOBAL_LIST_INIT(serf_positions, list(
 	/datum/job/feldsher::title,
 	/datum/job/apothecary::title,
 	/datum/job/scribe::title,
-	/datum/job/gaffer::title,
 	/datum/job/butler::title,
 	/datum/job/persistence/carpenter::title,
 	/datum/job/persistence/stonemason::title,
@@ -88,7 +87,6 @@ GLOBAL_LIST_INIT(apprentices_positions, list(
 	/datum/job/mageapprentice::title,
 	/datum/job/servant::title,
 	/datum/job/tapster::title,
-	/datum/job/gaffer_assistant::title,
 	/datum/job/clinicapprentice::title,
 	))
 GLOBAL_PROTECT(apprentices_positions)
@@ -108,10 +106,17 @@ GLOBAL_LIST_INIT(company_positions, list(
 	))
 GLOBAL_PROTECT(company_positions)
 
+GLOBAL_LIST_INIT(mercguild_positions, list(
+	/datum/job/gaffer::title,
+	/datum/job/gaffer_assistant::title,
+	/datum/job/mercenary::title,
+	))
+GLOBAL_PROTECT(mercguild_positions)
+
+
 GLOBAL_LIST_INIT(allmig_positions, list(
 	/datum/job/pilgrim::title,
 	/datum/job/adventurer::title,
-	/datum/job/mercenary::title,
 	/datum/job/bandit::title,
 	/datum/job/wretch::title,
 	))
@@ -137,6 +142,7 @@ GLOBAL_LIST_EMPTY(job_assignment_order)
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.apprentices_positions
 	sorting_order += GLOB.allmig_positions
+	sorting_order += GLOB.mercguild_positions
 	sorting_order += GLOB.youngfolk_positions
 	return sorting_order
 

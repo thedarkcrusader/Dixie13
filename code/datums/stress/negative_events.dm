@@ -745,3 +745,23 @@
 	stress_change = 1
 	desc = span_red("I ate off a dirty bowl..")
 	timer = 1 MINUTES
+
+/datum/stress_event/merc_fired
+	timer = 5 MINUTES
+	stress_change = 2
+	desc = span_warning("I lost my job at the Mercenary Guild...")
+
+/datum/stress_event/touched_headeater_spawn
+	timer = 10 MINUTES
+	stress_change = 8
+	desc = span_warning("Foul, disgusting thing!!")
+
+/datum/stress_event/paperwork_dread
+	timer = 12 MINUTES
+	stress_change = 2
+	desc = span_warning("A breathless expectancy. Of what? No-one knows!")
+
+/datum/stress_event/getmerced
+	timer = 15 MINUTES
+	stress_change = 2
+	desc = span_warning("OHgh nogogogogog")

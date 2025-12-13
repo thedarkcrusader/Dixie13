@@ -655,3 +655,31 @@
 	name = "menear necklace"
 	desc = "A grim necklace made to show off the wearer's macabre collection of cut off humen ears."
 	icon_state = "menears"
+
+/obj/item/clothing/neck/tyrants_chain
+	name = "Nescient's chain"
+	desc = "A magnificant neckpiece made up of gold and gems, the interlocking gold chains are expertly engraved with poppies." //idk is it "poppies" in vanderlin common?
+	icon_state = "amuletg"
+	var/datum/weakref/innkeep
+
+/obj/item/clothing/neck/tyrants_chain/equipped(mob/user, slot)
+	. = ..()
+	innkeep = WEAKREF(user)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/neck/tyrants_chain/dropped(mob/user)
+	. = ..()
+	innkeep = null
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/neck/tyrants_chain/process()
+	. = ..()
+	var/mob/innkeeper = innkeep.resolve()
+	if(!isliving(innkeeper))
+		return
+	if(!innkeeper.client && !innkeeper.ckey)
+		return
+	if(prob(5))
+		var/text = pick("")
+		to_chat(innkeeper, span_green(text))
+		//innkeep.user.add_stress(/datum/stress_event/tyrantschain)

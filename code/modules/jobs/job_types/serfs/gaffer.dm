@@ -1,10 +1,11 @@
 /datum/job/gaffer
 	title = "Gaffer"
-	department_flag = SERFS
+	department_flag = MERCGUILD
 	faction = "Station"
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE )
 	total_positions = 1
 	spawn_positions = 1
+	selection_color = "#3b150e"
 
 	allowed_races = RACES_PLAYER_ALL
 	//I say we let all species be the gaffer, this is job concerns the adventurers and mercs, and those come in all types and sizes,
@@ -16,16 +17,13 @@
 	the next Guild Master. Gone are the excitements of your past, today your life is engrossed with two \
 	things: administrative work, and feeding the monstrous Head Eater. Act as the\
 	Mercenary Guild's master in town, and make sure your members bring back the heads of any slain monsters\
-	or bandits. For the Head Eater hungers..."
+	or beasts. For the Head Eater hungers..."
 
 	display_order = JDO_GAFFER
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
 	outfit = /datum/outfit/gaffer
 	give_bank_account = 20
 	bypass_lastclass = TRUE
-	selection_color = "#3b150e"
-
-	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/mercenary)
 
 	exp_type = list(EXP_TYPE_LIVING, EXP_TYPE_ADVENTURER, EXP_TYPE_RANGER, EXP_TYPE_MERCENARY)
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_RANGER, EXP_TYPE_MERCENARY, EXP_TYPE_LEADERSHIP)
@@ -61,6 +59,7 @@
 	ADD_TRAIT(H, TRAIT_BURDEN, type)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, type)
 	ADD_TRAIT(H, TRAIT_OLDPARTY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MERCGUILD, TRAIT_GENERIC)
 
 	H.change_stat(STATKEY_SPD, 2)
 	H.change_stat(STATKEY_PER, 1)
@@ -91,4 +90,3 @@
 		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.change_stat(STATKEY_PER, 1)
-

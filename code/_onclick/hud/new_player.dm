@@ -362,5 +362,21 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/lobby)
 	sleep(1.1 * LOBBY_SCREEN_SLIDE_DURATION)
 	set_button_status(TRUE)
 
+/atom/movable/screen/lobby/button/catalyst
+	name = "Catalyst"
+	screen_loc = "WEST:20,TOP:-200"
+	icon = 'icons/hud/lobby/catalyst.dmi'
+	icon_state = "catalyst"
+	base_icon_state = "catalyst"
+
+/atom/movable/screen/lobby/button/catalyst/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+
+	var/datum/catalyst_datum/catalyst = hud.mymob.client?.prefs.catalyst
+
+	catalyst.show_ui()
+
 #undef LOBBY_SCREEN_SLIDE_DURATION
 #undef MOVE_AMOUNT

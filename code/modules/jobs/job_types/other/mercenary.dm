@@ -6,7 +6,7 @@
 	gold is the great hypocritical lubricant in life, founding empires, driving brothers to kill one another. \
 	\n\n\
 	You care not. Another day, another mammon."
-	department_flag = OUTSIDERS
+	department_flag = MERCGUILD
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_MERCENARY
 	faction = FACTION_TOWN
@@ -33,6 +33,16 @@
 /datum/job/mercenary/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	to_chat(spawned, "<br><br><font color='#855b14'><span class='bold'>The Gaffer, who feeds and houses you may have work for you todae, go see him at the office outside your lodgings.</span></font><br><br>")
+	ADD_TRAIT(spawned, TRAIT_MERCGUILD, TRAIT_GENERIC)
+	for(var/obj/effect/landmark/contracthole/merchole in GLOB.landmarks_list)
+		if(istype(merchole, /obj/effect/landmark/contracthole))
+			merchole.addcontract(spawned)
+	if(SStreasury.herovoucher)
+		var/obj/item/voucher = new /obj/item/paper/voucher(get_turf(spawned))
+		if(!spawned.put_in_hands(voucher))
+			voucher.forceMove(get_turf(spawned))
+
+
 
 /datum/job/advclass/mercenary
 	abstract_type = /datum/job/advclass/mercenary
