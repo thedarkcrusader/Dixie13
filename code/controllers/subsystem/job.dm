@@ -213,12 +213,6 @@ SUBSYSTEM_DEF(job)
 		JobDebug("Eligibility failed: patron, Player: [player], Job: [job.title]")
 		return FALSE
 
-	#ifdef USES_PQ
-	if(get_playerquality(player.ckey) < job.min_pq)
-		JobDebug("Eligibility failed: PQ, Player: [player], Job: [job.title]")
-		return FALSE
-	#endif
-
 	if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
 		JobDebug("Eligibility failed: lastclass, Player: [player], Job: [job.title]")
 		return FALSE
