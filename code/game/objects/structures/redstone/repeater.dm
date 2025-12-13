@@ -39,8 +39,7 @@
 			wire_connections[dir2text(output_dir)] = 1
 			connected_components += component
 
-	// Update icon to show direction
-	update_icon()
+	update_appearance(UPDATE_ICON)
 
 /obj/structure/redstone/repeater/proc/dir2text(direction)
 	switch(direction)
@@ -111,7 +110,7 @@
 		power_overlay.dir = facing_dir
 		overlays += power_overlay
 
-/obj/structure/redstone/repeater/update_icon()
+/obj/structure/redstone/repeater/update_icon_state()
 	. = ..()
 	icon_state = "repeater"
 	dir = facing_dir

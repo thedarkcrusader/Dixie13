@@ -15,7 +15,7 @@
 	update_observing_turf()
 	last_observed_state = get_turf_state(observing_turf)
 	register_observation_signals()
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/redstone/observer/Destroy()
 	. = ..()
@@ -25,7 +25,7 @@
 	direction = new_dir
 	update_observing_turf()
 	register_observation_signals()
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/redstone/observer/proc/update_observing_turf()
 	// Unregister from old turf if it exists
@@ -93,13 +93,13 @@
 
 	pulsing = TRUE
 	set_power(15, null, null)
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	spawn(pulse_length * 10)
 		set_power(0, null, null)
 		pulsing = FALSE
-		update_icon()
+		update_appearance(UPDATE_ICON_STATE)
 
-/obj/structure/redstone/observer/update_icon()
+/obj/structure/redstone/observer/update_icon_state()
 	. = ..()
 	var/base_state = "observer"
 
@@ -118,7 +118,7 @@
 	direction = new_direction
 	update_observing_turf()
 	register_observation_signals()
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	return TRUE
 
 // Alt-click rotation functionality like piston
@@ -131,7 +131,7 @@
 	update_observing_turf()
 	register_observation_signals()
 	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(direction)].</span>")
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/redstone/observer/proc/dir2text_readable(dir)
 	switch(dir)

@@ -17,7 +17,7 @@
 	// Set direction based on placement or default
 	direction = dir
 	update_directional_connections()
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/redstone/comparator/get_input_directions()
@@ -27,7 +27,7 @@
 /obj/structure/redstone/comparator/proc/set_direction(new_dir)
 	direction = new_dir
 	update_directional_connections()
-	update_icon()
+	dir = direction
 
 /obj/structure/redstone/comparator/proc/update_directional_connections()
 	// Comparators have three inputs (back, left, right) and one output (front)
@@ -153,10 +153,10 @@
 /obj/structure/redstone/comparator/attack_hand(mob/user)
 	mode = (mode == "compare") ? "subtract" : "compare"
 	to_chat(user, "<span class='notice'>Comparator set to [mode] mode.</span>")
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	calculate_output(user)
 
-/obj/structure/redstone/comparator/update_icon()
+/obj/structure/redstone/comparator/update_icon_state()
 	. = ..()
 	var/base_state = "comparator"
 
@@ -164,19 +164,18 @@
 		base_state += "_subtract"
 
 	icon_state = base_state
-	dir = direction
 
+/obj/structure/redstone/comparator/update_overlays()
+	. = ..()
 	// Add power overlay if outputting
-	cut_overlays()
 	if(output_power > 0)
-		var/mutable_appearance/power_overlay = mutable_appearance(icon, "comparator_on")
-		overlays += power_overlay
+		. += mutable_appearance(icon, "comparator_on")
 
 // Method to handle rotation/direction setting during placement
 /obj/structure/redstone/comparator/proc/rotate_comparator(new_direction)
 	direction = new_direction
 	update_directional_connections()
-	update_icon()
+	dir = direction
 	return TRUE
 
 // Alt-click rotation functionality
@@ -188,18 +187,23 @@
 	direction = turn(direction, 90)
 	update_directional_connections()
 	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(direction)].</span>")
-	update_icon()
+	dir = direction
 
 	// Recalculate since inputs/outputs changed
 	calculate_output(user)
 
 /obj/structure/redstone/comparator/proc/dir2text_readable(dir)
 	switch(dir)
-		if(NORTH) return "north"
-		if(SOUTH) return "south"
-		if(EAST) return "east"
-		if(WEST) return "west"
-		else return "north"
+		if(NORTH)
+			return "north"
+		if(SOUTH)
+			return "south"
+		if(EAST)
+			return "east"
+		if(WEST)
+			return "west"
+
+	return "north"
 
 // Enhanced examine to show more storage details
 /obj/structure/redstone/comparator/examine(mob/user)

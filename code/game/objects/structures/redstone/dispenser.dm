@@ -91,19 +91,20 @@
 	// Rotate the dispenser
 	direction = turn(direction, 90)
 	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(direction)].</span>")
-	update_icon()
+	dir = direction
 
 /obj/structure/redstone/dispenser/proc/dir2text_readable(dir)
 	switch(dir)
-		if(NORTH) return "north"
-		if(SOUTH) return "south"
-		if(EAST) return "east"
-		if(WEST) return "west"
-		else return "north"
+		if(NORTH)
+			return "north"
+		if(SOUTH)
+			return "south"
+		if(EAST)
+			return "east"
+		if(WEST)
+			return "west"
 
-/obj/structure/redstone/dispenser/update_icon()
-	. = ..()
-	dir = direction
+	return "north"
 
 /obj/structure/redstone/dispenser/examine(mob/user)
 	. = ..()

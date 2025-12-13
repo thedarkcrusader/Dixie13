@@ -12,7 +12,7 @@
 /obj/structure/redstone/piston/Initialize()
 	. = ..()
 	direction = dir
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	create_piston_head()
 
 /obj/structure/redstone/piston/Destroy()
@@ -22,7 +22,7 @@
 
 /obj/structure/redstone/piston/proc/set_direction(new_dir)
 	direction = new_dir
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/redstone/piston/proc/create_piston_head()
 	// Create head at piston location (retracted position)
@@ -51,10 +51,10 @@
 	extended = TRUE
 	if(head)
 		head.forceMove(target_turf)
-	update_icon()
-	//playsound(src, 'sound/machines/piston_extend.ogg', 50)
-	spawn(5) // Slightly longer delay for glide
-		extending = FALSE
+
+	update_appearance(UPDATE_ICON_STATE)
+
+	addtimer(VARSET_CALLBACK(src, extending, FALSE), 0.5 SECONDS)
 
 /obj/structure/redstone/piston/proc/retract_piston(mob/user)
 	if(!extended || extending)
@@ -65,10 +65,10 @@
 	extended = FALSE
 	if(head)
 		head.forceMove(get_turf(src))
-	update_icon()
-	//playsound(src, 'sound/machines/piston_retract.ogg', 50)
-	spawn(5) // Slightly longer delay for glide
-		extending = FALSE
+
+	update_appearance(UPDATE_ICON_STATE)
+
+	addtimer(VARSET_CALLBACK(src, extending, FALSE), 0.5 SECONDS)
 
 /obj/structure/redstone/piston/proc/can_extend_to(turf/target_turf)
 	if(!target_turf)
@@ -106,7 +106,7 @@
 		M.forceMove(pull_target)
 		to_chat(M, "<span class='warning'>You are pulled by the sticky piston!</span>")
 
-/obj/structure/redstone/piston/update_icon()
+/obj/structure/redstone/piston/update_icon_state()
 	. = ..()
 	var/base_state = can_pull ? "sticky_piston" : "piston"
 
@@ -114,7 +114,6 @@
 		base_state += "_extended"
 
 	icon_state = base_state
-	dir = direction
 
 /obj/structure/redstone/piston/can_connect_to(obj/structure/redstone/other, dir)
 	// Pistons don't connect on their face
@@ -126,7 +125,7 @@
 	direction = new_direction
 	if(head)
 		head.set_direction(direction)
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	return TRUE
 
 /obj/structure/redstone/piston/AltClick(mob/user)
@@ -143,15 +142,20 @@
 	if(head)
 		head.set_direction(direction)
 	to_chat(user, "<span class='notice'>You rotate the [name] to face [dir2text_readable(direction)].</span>")
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/redstone/piston/proc/dir2text_readable(dir)
 	switch(dir)
-		if(NORTH) return "north"
-		if(SOUTH) return "south"
-		if(EAST) return "east"
-		if(WEST) return "west"
-		else return "north"
+		if(NORTH)
+			return "north"
+		if(SOUTH)
+			return "south"
+		if(EAST)
+			return "east"
+		if(WEST)
+			return "west"
+
+	return "north"
 
 /obj/structure/redstone/piston/examine(mob/user)
 	. = ..()
