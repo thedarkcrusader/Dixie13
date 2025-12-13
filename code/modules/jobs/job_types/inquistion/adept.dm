@@ -20,6 +20,8 @@
 	can_have_apprentices = FALSE
 	is_foreigner = TRUE
 
+	mind_traits = list(TRAIT_KNOW_INQUISITION_DOORS)
+
 	job_bitflag = BITFLAG_CHURCH
 	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
 

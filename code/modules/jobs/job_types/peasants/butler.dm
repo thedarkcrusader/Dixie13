@@ -24,11 +24,7 @@
 	exp_requirements = list(
 		EXP_TYPE_LIVING = 600
 	)
-
-/datum/job/butler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	if(length(GLOB.keep_doors) > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), spawned), 5 SECONDS)
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 /datum/outfit/butler/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -68,5 +64,4 @@
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_END, 1)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ROYALSERVANT, TRAIT_GENERIC)

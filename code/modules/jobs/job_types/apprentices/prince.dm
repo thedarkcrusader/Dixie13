@@ -28,15 +28,12 @@
 	noble_income = 20
 
 	exp_types_granted = list(EXP_TYPE_NOBLE)
-
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 /datum/job/prince/after_spawn(mob/living/carbon/spawned, client/player_client)
 	. = ..()
 	var/mob/living/carbon/human/H = spawned
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_PROGENY), 10 SECONDS)
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/job/advclass/heir
 	inherit_parent_title = TRUE

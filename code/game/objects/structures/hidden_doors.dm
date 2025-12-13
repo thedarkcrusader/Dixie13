@@ -1,5 +1,43 @@
-GLOBAL_LIST_EMPTY(keep_doors)
-GLOBAL_LIST_EMPTY(thieves_guild_doors)
+GLOBAL_LIST_EMPTY(hidden_door_managers)
+
+/// do NOT initialize these without an id.
+/datum/hidden_door_manager
+	var/id
+	var/accessor_trait
+	var/list/vip
+
+	var/list/doors = list()
+	//don't set this directly unless it's part of initialization. use set_phrase()
+	var/open_phrase
+
+/datum/hidden_door_manager/New(_id, _accessor_trait, list/_vip)
+	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_spawn))
+	if(!_id)
+		qdel(src)
+		return
+	id = _id
+	accessor_trait = _accessor_trait
+	vip = _vip
+	GLOB.hidden_door_managers[id] = src
+
+/datum/hidden_door_manager/Destroy(force, ...)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN)
+	GLOB.hidden_door_managers -= id
+	for(var/obj/structure/door/secret/door in doors)
+		door.door_manager = null
+	. = ..()
+
+/datum/hidden_door_manager/proc/set_phrase(new_phrase)
+	open_phrase = new_phrase
+	for(var/obj/structure/door/secret/door in doors)
+		door.open_phrase = new_phrase
+
+/datum/hidden_door_manager/proc/on_job_spawn(source, datum/job/job, mob/living/spawned, client/player_client)
+	//really these two factors should be synced but ya never know.
+	if((job.type in vip) || (accessor_trait && (accessor_trait in job.mind_traits) || (accessor_trait in job.traits)))
+		var/msg = "The [id]'s secret doors answer to: '[open_phrase]'"
+		spawned.mind?.store_memory(msg)
+
 
 /obj/structure/door/secret
 	name = "wall"
@@ -29,20 +67,32 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	//the perception DC to use this door
 	var/hidden_dc = 10
 
-	var/open_phrase = "open sesame"
+	var/datum/hidden_door_manager/door_manager
+	//used for door manager
+	var/id
+	/// Used for traits that automatically indicate there is a hidden door here.
+	var/accessor_trait
 
+	var/use_phrases = FALSE
+	var/open_phrase = "open sesame"
 	var/speaking_distance = 1
 	var/lang = /datum/language/common
 	var/list/vip
-	var/vipmessage
 
 /obj/structure/door/secret/Initialize(mapload, ...)
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
-	become_hearing_sensitive()
-	open_phrase = open_word() + " " + magic_word()
+	open_phrase = "[open_word()] [magic_word()]"
+	if(id)
+		door_manager = GLOB.hidden_door_managers[id] || new /datum/hidden_door_manager(id, accessor_trait, vip)
+		door_manager.doors += src
+		if(door_manager.open_phrase)
+			open_phrase = door_manager.open_phrase
+		else
+			door_manager.open_phrase = open_phrase
 
 /obj/structure/door/secret/Destroy(force)
+	door_manager?.doors -= src
 	lose_hearing_sensitivity()
 	return ..()
 
@@ -51,28 +101,6 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 		force_open()
 	else
 		force_closed()
-
-///// DOOR TYPES //////
-/obj/structure/door/secret/vault
-	vip = list(
-	/datum/job/lord,
-	/datum/job/consort,
-	/datum/job/steward,
-	/datum/job/hand,
-	)
-
-/obj/structure/door/secret/merchant
-	vip = list(
-		/datum/job/merchant,
-	)
-
-/obj/structure/door/secret/wizard //for wizard tower
-	vip = list(
-		/datum/job/magician,
-		/datum/job/mageapprentice,
-		/datum/job/archivist,
-	)
-	//make me look like an arcane door
 
 /obj/structure/door/secret/rattle()
 	return
@@ -93,12 +121,16 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	. = ..()
 	if(isliving(user))
 		var/mob/living/L = user
-		// they're trained at this
-		var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
-		if(L.stat_roll(STATKEY_PER, 25, hidden_dc - bonuses - 1))
-			. += span_purple("Something's not right about this wall...")
+		if(HAS_MIND_TRAIT(user, accessor_trait))
+			. += span_purple("There's a hidden door here...")
+		else
+			var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
+			if(L.STAPER + bonuses >= hidden_dc)
+				. += span_purple("Something isn't right about this wall...")
 
 /obj/structure/door/secret/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), original_message)
+	if(!use_phrases)
+		return FALSE
 	var/mob/living/carbon/human/H = speaker
 	if(speaker == src) //door speaking to itself
 		return FALSE
@@ -121,8 +153,9 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 			send_speech(span_purple("[open_phrase]..."), speaking_distance, src, message_language = lang, message_mods = mods)
 			return TRUE
 		if(findtext(message2recognize, "set phrase"))
-			var/new_pass = stripped_input(H, "What should the new close phrase be?")
+			var/new_pass = stripped_input(H, "What should the new open phrase be?")
 			open_phrase = new_pass
+			door_manager?.set_phrase(new_pass)
 			send_speech(span_purple("It is done, [flavor_name()]..."), speaking_distance, src, message_language = lang, message_mods = mods)
 			return TRUE
 
@@ -138,6 +171,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	if(!silent)
 		playsound(src, open_sound, 90)
 	if(!windowed)
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		set_opacity(FALSE)
 	animate(src, pixel_x = -22, alpha = 50, time = animate_time)
 	sleep(animate_time)
@@ -153,6 +187,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 /obj/structure/door/secret/force_open()
 	switching_states = TRUE
 	if(!windowed)
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		set_opacity(FALSE)
 	animate(src, pixel_x = -22, alpha = 50, time = animate_time)
 	sleep(animate_time)
@@ -178,6 +213,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	sleep(animate_time)
 	density = TRUE
 	if(!windowed)
+		mouse_opacity = MOUSE_OPACITY_ICON
 		set_opacity(TRUE)
 	door_opened = FALSE
 	layer = CLOSED_DOOR_LAYER
@@ -188,6 +224,7 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 /obj/structure/door/secret/force_closed()
 	switching_states = TRUE
 	if(!windowed)
+		mouse_opacity = MOUSE_OPACITY_ICON
 		set_opacity(TRUE)
 	animate(src, pixel_x = 0, alpha = 255, time = animate_time)
 	sleep(animate_time)
@@ -197,195 +234,53 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	air_update_turf(TRUE)
 	switching_states = FALSE
 
-/proc/open_word()
-	var/list/open_word = list(
-		"open",
-		"pass",
-		"part",
-		"break",
-		"reveal",
-		"unbar",
-		"gape", //You wanted this.
-		"extend",
-		"widen",
-		"unfold",
-		"rise"
-		)
-	return pick(open_word)
+/// mood determines opinion of the magic word. 1 = positive, 2 = negative
+/obj/structure/door/secret/proc/open_word()
+	return pick("open", "pass", "part", "break", "reveal", "unbar", "extend", "widen", "unfold", "rise", "remember")
 
-/proc/close_word()
-	var/list/close_word = list(
-		"close",
-		"seal",
-		"still",
-		"fade",
-		"retreat",
-		"consume",
-		"envelope",
-		"hide",
-		"halt",
-		"cease",
-		"vanish",
-		"end"
-		)
-	return pick(close_word)
+/obj/structure/door/secret/proc/magic_word()
+	return pick("sesame", "abyss", "fire", "wind", "psydonia", "shadow", "nite", "oblivion", "void", "time", "dead", "decay",
+		"gods", "ancient", "twisted", "corrupt", "secrets", "lore", "text", "ritual", "sacrifice", "deal", "pact", "bargain", "ritual", "dream",
+		"nitemare", "vision", "hunger",	"lust", "psydon")
 
+/obj/structure/door/secret/proc/flavor_name()
+	return pick("my friend", "love", "my love", "honey", "darling", "knave", "stranger", "companion", "mate", "you harlot",
+		"comrade", "fellow", "chum", "bafoon")
 
-/proc/magic_word()
-	var/list/magic_word = list(
-		"sesame",
-		"abyss",
-		"fire",
-		"wind",
-		"earth",
-		"shadow",
-		"nite",
-		"oblivion",
-		"void",
-		"time",
-		"dead",
-		"decay",
-		"gods",
-		"ancient",
-		"twisted",
-		"corrupt",
-		"secrets",
-		"lore",
-		"text",
-		"ritual",
-		"sacrifice",
-		"deal",
-		"pact",
-		"bargain",
-		"ritual",
-		"dream",
-		"nitemare",
-		"vision",
-		"hunger",
-		"lust",
-		"necra",
-		"noc",
-		"psydon"
-		)
-	return pick(magic_word)
-
-/proc/flavor_name()
-	var/list/flavor_name = list(
-		"my friend",
-		"love",
-		"my love",
-		"honey",
-		"darling",
-		"stranger",
-		"companion",
-		"mate",
-		"you harlot",
-		"comrade",
-		"fellow",
-		"chum",
-		"bafoon"
-		)
-	return pick(flavor_name)
-
-/obj/structure/door/secret/proc/set_phrase(new_phrase)
-	open_phrase = new_phrase
-
-///// KEEP DOORS /////
+///// DOOR TYPES //////
 /obj/structure/door/secret/keep
+	id = "keep"
 	hidden_dc = 14
-	vip = list(
-		/datum/job/lord,
-		/datum/job/consort,
-		/datum/job/prince,
-		/datum/job/hand,
-		/datum/job/butler,
-	)
+	use_phrases = TRUE
+	accessor_trait = TRAIT_KNOW_KEEP_DOORS
+	vip = list(/datum/job/lord, /datum/job/consort, /datum/job/prince, /datum/job/hand, /datum/job/butler, /datum/job/archivist)
 
-/obj/structure/door/secret/keep/Initialize()
-	. = ..()
-	if(length(GLOB.keep_doors) > 0)
-		var/obj/structure/door/secret/D = GLOB.keep_doors[1]
-		open_phrase = D.open_phrase
-	GLOB.keep_doors |= src
+//little note on these. This is specifically for psydonic inquisition. if you use these for rosewood's they are going to have issues with the fact it's psydonic.
+/obj/structure/door/secret/inquisition
+	id = "inquisition"
+	hidden_dc = 15
+	use_phrases = TRUE
+	accessor_trait = TRAIT_KNOW_INQUISITION_DOORS
+	vip = list(/datum/job/inquisitor)
+	lang = /datum/language/oldpsydonic
 
-/obj/structure/door/secret/keep/Destroy()
-	GLOB.keep_doors -= src
-	return ..()
-
-/obj/structure/door/secret/keep/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
-	if(!..())
-		return FALSE
-	var/mob/living/carbon/human/H = speaker
-
-	var/message2recognize = SANITIZE_HEAR_MESSAGE(raw_message)
-	if(is_type_in_list(H.mind?.assigned_role, vip) && findtext(message2recognize, "set phrase"))
-		for(var/obj/structure/door/secret/D in GLOB.keep_doors)
-			D.set_phrase(open_phrase)
-	return TRUE
-
-/obj/structure/door/secret/keep/examine(mob/user)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS))
-		. += span_purple("There's a hidden door here...")
-
-/obj/structure/lever/hidden/keep
-	hidden_dc = 14
-
-/obj/structure/lever/hidden/keep/feel_button(mob/living/user, ignore_dc = FALSE)
-	// they're trained at this
-	var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
-	if(HAS_TRAIT(user, TRAIT_KNOWKEEPPLANS) || (user.STAPER + bonuses) >= hidden_dc || ignore_dc)
-		..(user, ignore_dc = TRUE)// passes onto parent dc check, otherwise someone who knows the keep plans would still need perception
-
-/proc/know_keep_door_password(mob/living/carbon/human/H)
-	var/obj/structure/door/secret/D = GLOB.keep_doors[1]
-	var/msg = "The keep's secret doors answer to: '[D.open_phrase]'"
-	to_chat(H, span_notice(msg))
-	H.mind?.store_memory(msg)
-
-///// THIEVES GUILD DOORS /////
 /obj/structure/door/secret/thieves_guild
-	vip = list(
-		/datum/job/matron,
-	)
+	hidden_dc = 12
+	use_phrases = TRUE
+	id = "thieves' guild"
+	accessor_trait = TRAIT_KNOW_THIEF_DOORS
+	vip = list(/datum/job/matron)
 	lang = /datum/language/thievescant
-
-/obj/structure/door/secret/thieves_guild/Initialize()
-	. = ..()
-	if(length(GLOB.thieves_guild_doors))
-		var/obj/structure/door/secret/D = GLOB.thieves_guild_doors[1]
-		open_phrase = D.open_phrase
-	GLOB.thieves_guild_doors |= src
-
-/obj/structure/door/secret/thieves_guild/Destroy()
-	GLOB.thieves_guild_doors -= src
-	return ..()
-
-/obj/structure/door/secret/thieves_guild/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
-	if(!..())
-		return FALSE
-	var/mob/living/carbon/human/H = speaker
-
-	var/message2recognize = SANITIZE_HEAR_MESSAGE(raw_message)
-	if((is_type_in_list(H.mind?.assigned_role, vip)) && findtext(message2recognize, "set phrase"))
-		for(var/obj/structure/door/secret/D in GLOB.keep_doors)
-			D.set_phrase(open_phrase)
-	return TRUE
-
 
 ///// MAPPERS /////
 /obj/effect/mapping_helpers/secret_door_creator
-	name = "Secret door creator: Turns the given wall into a hidden door with a random password."
+	name = "Secret Door Creator"
 	icon = 'icons/effects/hidden_door.dmi'
 	icon_state = "hidden_door"
 
 	var/redstone_id
 
 	var/obj/structure/door/secret/door_type = /obj/structure/door/secret
-	var/datum/language/given_lang = /datum/language/thievescant //DEPRECATED
-	var/list/vips = list("Thief", "Matron") //DEPRECATED
-	var/vip_message = "Thief and Matron" //DEPRECATED
-
 	var/override_floor = TRUE //Will only use the below as the floor tile if true. Source turf have at least 1 baseturf to use false
 	var/turf/open/floor_turf = /turf/open/floor/blocks
 
@@ -399,6 +294,19 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 	new_door.desc = source_turf.desc
 	new_door.icon = source_turf.icon
 	new_door.icon_state = source_turf.icon_state
+	new_door.color = source_turf.color
+
+	new_door.uses_integrity = source_turf.uses_integrity
+	if(new_door.uses_integrity)
+		new_door.max_integrity = source_turf.max_integrity
+		new_door.update_integrity(new_door.max_integrity, FALSE)
+		new_door.integrity_failure = source_turf.integrity_failure
+	new_door.damage_deflection = source_turf.damage_deflection
+	new_door.explosion_block = source_turf.explosion_block
+	new_door.blade_dulling = source_turf.blade_dulling
+	new_door.attacked_sound = source_turf.attacked_sound
+	new_door.break_sound = source_turf.break_sound
+	new_door.resistance_flags = source_turf.resistance_flags
 
 	var/smooth = source_turf.smoothing_flags & ~SMOOTH_QUEUED
 	if(smooth)
@@ -421,5 +329,18 @@ GLOBAL_LIST_EMPTY(thieves_guild_doors)
 
 /obj/effect/mapping_helpers/secret_door_creator/keep
 	name = "Keep Secret Door Creator"
+	color = "#792BD0"
 	door_type = /obj/structure/door/secret/keep
+	override_floor = FALSE
+
+/obj/effect/mapping_helpers/secret_door_creator/inquisition
+	name = "Inquisition Secret Door Creator"
+	color = "#d02b2b"
+	door_type = /obj/structure/door/secret/inquisition
+	override_floor = FALSE
+
+/obj/effect/mapping_helpers/secret_door_creator/thieves_guild
+	name = "Thieves' Guild Secret Door Creator"
+	color = "#3ed02b"
+	door_type = /obj/structure/door/secret/thieves_guild
 	override_floor = FALSE

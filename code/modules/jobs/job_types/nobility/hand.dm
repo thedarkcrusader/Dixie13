@@ -31,6 +31,7 @@
 		EXP_TYPE_LIVING = 600,
 		EXP_TYPE_NOBLE = 300,
 	)
+	mind_traits = list(TRAIT_KNOW_KEEP_DOORS)
 
 /datum/outfit/hand
 	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
@@ -40,15 +41,11 @@
 	. = ..()
 	var/mob/living/carbon/human/H = spawned
 	addtimer(CALLBACK(SSfamilytree, TYPE_PROC_REF(/datum/controller/subsystem/familytree, AddRoyal), H, FAMILY_OMMER), 10 SECONDS)
-
-	if(GLOB.keep_doors.len > 0)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(know_keep_door_password), H), 5 SECONDS)
 	// i know this sucks, but due to how job loading is, we can't just get the agents to load before the hand without some reworks
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(agent_callback), H))
 	else
 		agent_callback(H)
-	ADD_TRAIT(H, TRAIT_KNOWKEEPPLANS, TRAIT_GENERIC)
 
 /datum/job/hand/proc/agent_callback(mob/living/carbon/human/H)
 	addtimer(CALLBACK(src, PROC_REF(know_agents), H), 6 SECONDS)

@@ -26,6 +26,7 @@
 	antag_role = /datum/antagonist/purishep
 
 	languages = list(/datum/language/oldpsydonic)
+	mind_traits = list(TRAIT_KNOW_INQUISITION_DOORS)
 
 	exp_type = list(EXP_TYPE_INQUISITION)
 	exp_types_granted = list(EXP_TYPE_INQUISITION, EXP_TYPE_COMBAT)
