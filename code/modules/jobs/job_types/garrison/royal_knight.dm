@@ -21,7 +21,7 @@
 	give_bank_account = 60
 	cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 	job_bitflag = BITFLAG_GARRISON
-
+	noble_income = 10
 	exp_type = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 	exp_types_granted = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 	exp_requirements = list(

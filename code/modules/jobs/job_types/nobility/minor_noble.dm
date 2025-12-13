@@ -14,8 +14,8 @@
 
 	outfit = /datum/outfit/noble
 	apprentice_name = "Servant"
-	give_bank_account = 60
-	noble_income = 16
+	give_bank_account = 300 //Less than the monarch/consort but enough to be extravagant
+	noble_income = 60
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 	allowed_ages = ALL_AGES_LIST_CHILD
@@ -28,6 +28,11 @@
 
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 
+/datum/job/minor_noble/after_spawn(mob/living/carbon/human/H)
+	. = ..()
+	var/incomelist = list(60, 80, 100)
+	noble_income = pick(incomelist)
+
 /datum/outfit/noble/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/prev_real_name = H.real_name
@@ -37,7 +42,6 @@
 		honorary = "Lady"
 	H.real_name = "[honorary] [prev_real_name]"
 	H.name = "[honorary] [prev_name]"
-
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)

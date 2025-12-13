@@ -22,9 +22,8 @@
 	outfit = /datum/outfit/hand
 	advclass_cat_rolls = list(CTAG_HAND = 20)
 	give_bank_account = 120
-	noble_income = 22
 	job_bitflag = BITFLAG_ROYALTY
-
+	noble_income = 20
 	exp_type = list(EXP_TYPE_NOBLE, EXP_TYPE_LIVING)
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 	exp_requirements = list(

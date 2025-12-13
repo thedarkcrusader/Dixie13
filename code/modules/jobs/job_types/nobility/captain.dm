@@ -18,8 +18,7 @@
 	spells = list(/datum/action/cooldown/spell/undirected/list_target/convert_role/guard)
 	give_bank_account = 120
 	cmode_music = 'sound/music/cmode/antag/CombatSausageMaker.ogg'
-	noble_income = 11
-
+	noble_income = 20
 	exp_type = list(EXP_TYPE_GARRISON)
 	exp_types_granted = list(EXP_TYPE_GARRISON, EXP_TYPE_NOBLE, EXP_TYPE_LEADERSHIP)
 	exp_requirements = list(

@@ -14,12 +14,10 @@
 
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	blacklisted_species = list(SPEC_ID_HALFLING)
-
 	outfit = /datum/outfit/steward
-	give_bank_account = 100
-	noble_income = 16
+	give_bank_account = 150 //The guy who HANDLES THE MONEY should start with more than the captain.
+	noble_income = 20
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-
 	job_bitflag = BITFLAG_ROYALTY
 
 	exp_type = list(EXP_TYPE_LIVING)

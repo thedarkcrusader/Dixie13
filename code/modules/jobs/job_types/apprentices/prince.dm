@@ -25,7 +25,6 @@
 	bypass_lastclass = TRUE
 
 	can_have_apprentices = FALSE
-	noble_income = 20
 
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 
