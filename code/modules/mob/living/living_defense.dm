@@ -102,8 +102,13 @@
 		return 0
 
 /mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum, damage_type = "blunt")
+	var/obj/item/I
 	if(istype(AM, /obj/item))
-		var/obj/item/I = AM
+		I = AM
+	var/obj/item/clothing/head/mob_holder/MH = throwingdatum?.thrownthing
+	if(istype(MH) && MH.held_mob == AM)
+		I = throwingdatum.thrownthing
+	if(I)
 		var/zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
 		SEND_SIGNAL(I, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 		if(!blocked)
@@ -174,10 +179,9 @@
 	user.changeNext_move(CLICK_CD_GRABBING)
 	var/skill_diff = 0
 	var/combat_modifier = 1
-	if(user.mind)
-		skill_diff += (user.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
-	if(mind)
-		skill_diff -= (get_skill_level(/datum/skill/combat/wrestling))
+
+	skill_diff -= (mind ? get_skill_level(/datum/skill/combat/wrestling) : 0) + get_wrestling_bonuses() //my wrestling
+	skill_diff += (user.mind ? user.get_skill_level(/datum/skill/combat/wrestling) : 0) + user.get_wrestling_bonuses() //their wrestling
 
 	if(user == src)
 		instant = TRUE
@@ -235,6 +239,14 @@
 		if(user.l_grab)
 			user.l_grab.grab_state = GRAB_AGGRESSIVE
 			user.l_grab.update_grab_intents()
+	if(HAS_TRAIT(user, TRAIT_NOHANDGRABS))
+		var/list/ct = user.contents
+		for(var/i = length(ct), i > 0, i--)
+			if(istype(ct[i], /obj/item/grabbing))
+				var/obj/item/grabbing/cti = ct[i]
+				cti.grab_state = GRAB_AGGRESSIVE
+				cti.update_grab_intents()
+				break
 
 	var/add_log = ""
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -245,7 +257,7 @@
 			stop_pulling()
 		user.set_pull_offsets(src, user.grab_state)
 	log_combat(user, src, "grabbed", addition="aggressive grab[add_log]")
-	return 1
+	return TRUE
 
 /turf/proc/grabbedintents(mob/living/user)
 	//RTD up and down
