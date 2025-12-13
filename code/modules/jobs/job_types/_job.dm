@@ -262,7 +262,8 @@
 		ADD_TRAIT(spawned, trait, JOB_TRAIT)
 
 	for(var/datum/language/to_learn as anything in languages)
-		spawned.grant_language(to_learn)
+		if(!spawned.has_language(to_learn))
+			spawned.grant_language(to_learn)
 
 	if(is_foreigner)
 		ADD_TRAIT(spawned, TRAIT_FOREIGNER, TRAIT_GENERIC)
@@ -450,7 +451,8 @@
 			if(QDELETED(src))
 				return
 
-		previous_picked_types |= picked_pack.type
+		if(picked_pack.type)
+			previous_picked_types |= picked_pack.type
 
 		picked_pack.pick_pack(src)
 
