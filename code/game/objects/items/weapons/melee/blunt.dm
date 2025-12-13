@@ -840,3 +840,15 @@
 	wbalance = DODGE_CHANCE_NORMAL
 	wdefense = AVERAGE_PARRY
 	sellprice = 25
+
+/obj/item/weapon/mace/shishpar/bronze
+	name = "bronze shishpar"
+	desc = "A heavy foreign mace with a sword-like handle. It's weight makes it a little hard to wield, but its capable of delivering devastating blows."
+	force = DAMAGE_MACE+1
+	force_wielded = DAMAGE_MACE_WIELD+2
+	icon_state = "shishpar_bronze"
+	wbalance = EASY_TO_DODGE
+	wdefense = GOOD_PARRY
+	sellprice = 25
+	max_blade_int = 105
+	max_integrity = INTEGRITY_STANDARD

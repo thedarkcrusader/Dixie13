@@ -126,6 +126,10 @@
 	additional_items = list(/obj/item/ingot/bronze)
 	created_item = /obj/item/weapon/sword/sabre/dadao/bronze
 
+/datum/anvil_recipe/weapons/bronze/dadao
+	name = "Bronze Shishpar (+1 Bronze Bar)"
+	additional_items = list(/obj/item/ingot/bronze)
+	created_item = /obj/item/weapon/mace/shishpar/bronze
 
 /datum/anvil_recipe/weapons/bronze/urumi
 	name = "Bronze Urumi (+1 Bronze Bar)"
