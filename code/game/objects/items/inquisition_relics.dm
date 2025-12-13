@@ -749,7 +749,7 @@
 	throw_speed = 3
 	throw_range = 7
 	grid_height = 32
-	var/choke_change_next = 4 SECONDS
+	var/choke_change_next = CLICK_CD_RESIST
 	grid_width = 32
 	throwforce = 15
 	force_wielded = 0
@@ -962,6 +962,7 @@
 	icon_state = "garrote"
 	item_state = "garrote"
 	resistance_flags = INDESTRUCTIBLE
+	var/choke_change_next = 2 SECONDS
 	choke_damage = 20
 	sellprice = 100
 
