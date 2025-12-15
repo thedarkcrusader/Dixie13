@@ -441,6 +441,46 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	. = ..()
 	GLOB.lich_starts += loc
 
+/obj/effect/landmark/start/union_general
+	name = "Union General"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/union_lieutenant
+	name = "Union Lieutenant"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/union_sergeant
+	name = "Union Sergeant"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/union_private
+	name = "Union Private"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/union_doctor
+	name = "Union Doctor"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/confederate_general
+	name = "Confederate General"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/confederate_lieutenant
+	name = "Confederate Lieutenant"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/confederate_sergeant
+	name = "Confederate Sergeant"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/confederate_private
+	name = "Confederate Private"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/confederate_doctor
+	name = "Confederate Doctor"
+	icon_state = "arrow"
+
 /obj/effect/landmark/admin
 	name = "admin"
 	icon = 'icons/mob/landmarks.dmi'
