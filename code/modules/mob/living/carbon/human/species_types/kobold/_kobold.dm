@@ -111,7 +111,7 @@
 	C.remove_language(/datum/language/common)
 
 /datum/species/kobold/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/kobold/after_creation(mob/living/carbon/C)
 	..()

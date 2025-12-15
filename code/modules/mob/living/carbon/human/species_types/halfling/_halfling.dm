@@ -94,7 +94,7 @@
 	nutrition_mod = 2
 
 /datum/species/halfling/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/halfling/after_creation(mob/living/carbon/C)
 	..()

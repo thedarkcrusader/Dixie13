@@ -107,7 +107,7 @@
 	hygiene_mod = 1.5
 
 /datum/species/halforc/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/halforc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

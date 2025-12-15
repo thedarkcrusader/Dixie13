@@ -113,7 +113,7 @@
 	)
 
 /datum/species/human/halfdrow/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/human/halfdrow/get_skin_list()
 	return sortList(list(

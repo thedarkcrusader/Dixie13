@@ -151,7 +151,7 @@
 	C.remove_language(/datum/language/deepspeak)
 
 /datum/species/triton/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/triton/qualifies_for_rank(rank, list/features)
 	return TRUE

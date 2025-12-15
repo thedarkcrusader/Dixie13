@@ -111,7 +111,7 @@
 	to_chat(C, "<span class='info'>I can speak Zalad with ,z before my speech.</span>")
 
 /datum/species/rakshari/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/rakshari/after_creation(mob/living/carbon/C)
 	..()

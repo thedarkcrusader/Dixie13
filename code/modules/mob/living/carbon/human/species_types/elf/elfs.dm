@@ -115,7 +115,7 @@
 	)
 
 /datum/species/elf/snow/check_roundstart_eligible()
-	return TRUE
+	return FALSE
 
 /datum/species/elf/snow/get_span_language(datum/language/message_language)
 	if(!message_language)
