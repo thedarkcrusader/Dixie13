@@ -34,6 +34,8 @@
 	var/custom_area_sound = null
 	var/list/other_z
 	var/delve = 0
+	/// Initial time of day offset in deciseconds (0-864000). If null, uses default or random time.
+	var/initial_time_of_day = null
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -175,6 +177,16 @@
 		LAZYOR(final_z, map_path)
 
 	delve = json["delve"]
+
+	var/timeTemp = json["initial_time_of_day"]
+	if (isnum(timeTemp))
+		if(timeTemp >= 0 && timeTemp < 864000)
+			initial_time_of_day = timeTemp
+		else
+			log_world("map_config initial_time_of_day must be between 0 and 864000 (24 hours in deciseconds)!")
+	else if (!isnull(timeTemp))
+		log_world("map_config initial_time_of_day is not a number!")
+		return
 
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests

@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(ticker)
 	var/timeDelayAdd = 120
 	//576000 dusk
 	//376000 day
-	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
+	var/gametime_offset = 216000		//Deciseconds to add to world.time for station time. Defaults to 6:00 AM (dawn start)
 	var/station_time_rate_multiplier = 40		//factor of station time progressal vs real time.
 
 	var/totalPlayers = 0					//used for pregame stats on statpanel
@@ -163,7 +163,10 @@ SUBSYSTEM_DEF(ticker)
 	login_music = pick('sound/music/title.ogg','sound/music/title2.ogg','sound/music/title3.ogg')
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-	if(CONFIG_GET(flag/randomize_shift_time))
+	// Check if map config specifies an initial time of day
+	if(!isnull(SSmapping.config.initial_time_of_day))
+		gametime_offset = SSmapping.config.initial_time_of_day
+	else if(CONFIG_GET(flag/randomize_shift_time))
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
