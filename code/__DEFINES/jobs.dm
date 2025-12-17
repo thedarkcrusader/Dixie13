@@ -72,8 +72,9 @@
 #define OUTSIDERS		(1<<7)
 #define COMPANY			(1<<8)
 #define INQUISITION 	(1<<9)
-
-#define UNDEAD			(1<<10)
+#define UNDEAD (1<<10)
+// #define NORTH  (1<<11)
+// #define SOUTH  (1<<12)
 
 
 #define JCOLOR_NOBLE "#9c40bf"
@@ -192,3 +193,5 @@
 #define BITFLAG_CONSTRUCTOR (1<<2)
 #define BITFLAG_GARRISON (1<<3)
 
+//#define BITFLAG_SOUTH (1<<4)
+//#define BITFLAG_NORTH (1<<5)

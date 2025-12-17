@@ -1,3 +1,24 @@
+GLOBAL_LIST_INIT(Northern_positions, list(
+	/datum/job/north/general::title,
+	/datum/job/north/lieutenant::title,
+	/datum/job/north/sergeant::title,
+	/datum/job/lieutenant::title,
+	/datum/job/north/private::title,
+	/datum/job/north/doctor::title
+	))
+GLOBAL_PROTECT(Northern_positions)
+
+GLOBAL_LIST_INIT(Southern_positions, list(
+	/datum/job/south/general::title,
+	/datum/job/south/lieutenant::title,
+	/datum/job/south/sergeant::title,
+	/datum/job/south/lieutenant::title,
+	/datum/job/south/private::title,
+	/datum/job/south/doctor::title
+	))
+GLOBAL_PROTECT(Southern_positions)
+
+
 GLOBAL_LIST_INIT(noble_positions, list(
 	/datum/job/lord::title,
 	/datum/job/consort::title,
