@@ -2,8 +2,8 @@
 	title = "Confederate General"
 	tutorial = "You are a General in the Confederate Army. You command the forces of the \
 	South, leading your men into battle against the Union forces. Your strategic mind and \
-	leadership skills are crucial to defending Southern independence."
-	department_flag = SOUTHERN
+	leadership skills are crucial to defending SOUTH independence."
+	department_flag = SOUTH
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_CONFEDERATE_GENERAL
 	faction = FACTION_SOUTH
